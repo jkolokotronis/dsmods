@@ -1,5 +1,4 @@
 local ToggleBuff=require "widgets/togglebuff"
-require "text"
 
 local RageBuff = Class(ToggleBuff, function(self, data)
 	local init={}
