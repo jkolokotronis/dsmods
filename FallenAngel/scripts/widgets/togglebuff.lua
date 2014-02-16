@@ -121,6 +121,11 @@ function ToggleBuff:DoToggle(setval)
     --print("Toggle:",self.state)
     self.image:SetTexture(self.normaltex[self.state].atlas,self.normaltex[self.state].tex)
 end
+--ignore trigger
+function ToggleBuff:ForceState(state)
+    self.state = state
+    self.image:SetTexture(self.normaltex[self.state].atlas,self.normaltex[self.state].tex)
+end
  
 function ToggleBuff:SetDisabledImage(tex)
     self.disabledtex = tex

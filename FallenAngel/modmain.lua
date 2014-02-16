@@ -12,13 +12,16 @@ local GetPlayer = GLOBAL.GetPlayer
 
 local StatusDisplays = require "widgets/statusdisplays"
 
+--local xx=require "prefabs/spells"
 
 PrefabFiles = {
 	"thief",
 	"barb",
 	"cleric",
+    "fairy",
 	"druid",
-	"darkknight"
+	"darkknight",
+    "spellbooks"
 }
 
 Assets = {
@@ -57,6 +60,8 @@ Assets = {
     Asset( "ATLAS", "bigportraits/druid.xml" ),
     Asset( "IMAGE", "bigportraits/darkknight.tex" ),
     Asset( "ATLAS", "bigportraits/darkknight.xml" ),
+
+    Asset("ANIM", "anim/fairy.zip"),
 
 }
 
@@ -113,6 +118,18 @@ end
 
 AddClassPostConstruct("widgets/statusdisplays", StatusDisplaysInit)
 
+
+
+function LinkPostInit(inst)
+
+end
+
+AddSimPostInit(function(inst)
+        if inst.prefab == "druid" then
+--                LinkPostInit(inst)
+        end
+end)
+--
 AddModCharacter("thief")
 AddModCharacter("barb")
 AddModCharacter("cleric")

@@ -1,6 +1,9 @@
 
 local MakePlayerCharacter = require "prefabs/player_common"
 
+local PetBuff = require "widgets/petbuff"
+
+
 
 local assets = {
 
@@ -34,8 +37,32 @@ local assets = {
 		-- Don't forget to include your character's custom assets!
         Asset( "ANIM", "anim/druid.zip" ),
 }
-local prefabs = {}
+local prefabs = {
+    "fairy",
+    "spell_earthquake",
+    "spell_lightning",
+   "spell_grow",
+   "spell_heal"
+}
 
+STRINGS.TABS.SPELLS = "Spells"
+RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon_atlas = "images/inventoryimages/herotab.xml"}
+
+STRINGS.NAMES.SPELL_LIGHTNING = "Call Lightning"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_LIGHTNING = "Call Lightning"
+STRINGS.RECIPE_DESC.SPELL_LIGHTNING = "Call Lightning"
+
+STRINGS.NAMES.SPELL_EARTHQUAKE = "Earthquake"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_EARTHQUAKE = "Earthquake"
+STRINGS.RECIPE_DESC.SPELL_EARTHQUAKE = "Earthquake"
+
+STRINGS.NAMES.SPELL_GROW = "Grow"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_GROW = "Grow"
+STRINGS.RECIPE_DESC.SPELL_GROW = "Grow"
+
+STRINGS.NAMES.SPELL_HEAL = "Heal"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_HEAL = "Heal"
+STRINGS.RECIPE_DESC.SPELL_HEAL = "Heal"
 
 local CHOP_SANITY_DELTA=-5
 local DIG_SANITY_DELTA=-5
@@ -43,6 +70,8 @@ local PICK_SANITY_DELTA=-2
 local PLANT_SANITY_DELTA=10
 local MURDER_SANITY_DELTA=-5
 
+local fairy
+local petBuff
 local ref
 
 local function onmurder(inst,data)
@@ -53,8 +82,27 @@ local function onmurder(inst,data)
     end
 end
 
+local function spawnFairy(inst)
+
+    fairy = SpawnPrefab("fairy")
+    fairy.Transform:SetPosition(inst.Transform:GetWorldPosition())
+    inst.SoundEmitter:PlaySound("dontstarve/common/ghost_spawn")
+    inst.components.leader:AddFollower(fairy)
+    inst:ListenForEvent("death",function()
+        petBuff:OnPetDies()
+    end)
+end
+
+local function despawnFairy(inst)
+    if(fairy and fairy.components.health and not fairy.components.health:IsDead()) then
+        fairy.components.health:Kill()
+        fairy=nil
+    end
+end
+
+
 local fn = function(inst)
-	
+
         local ref=inst
 
         local old_dig=ACTIONS.DIG.fn
@@ -136,7 +184,34 @@ local fn = function(inst)
 	inst.components.sanity:SetMax(250)
 	inst.components.hunger:SetMax(150)
 
+    inst.StatusDisplaysInit = function (class)
+        petBuff=PetBuff(class.owner)
+        class.rage = class:AddChild(petBuff)
+        class.rage:SetPosition(0,-100,0)
+        class.rage:SetOnClick(function(state) 
+            print("onclick",state) 
+            if(state and state=="on" and fairy==nil) then
+                spawnFairy(inst)
+            else
+                despawnFairy(inst)
+            end
+        end)
+    end
+
     inst:ListenForEvent("killed", onmurder)
+
+    inst:AddComponent("reader")
+
+    local booktab=RECIPETABS.SPELLS
+--    inst.components.builder:AddRecipeTab(booktab)
+    local r=Recipe("spell_lightning", {Ingredient("papyrus", 2), Ingredient("bird_egg", 2)}, booktab, {SCIENCE = 0, MAGIC = 0, ANCIENT = 0})
+    r.image="book_brimstone.tex"
+    r=Recipe("spell_earthquake", {Ingredient("papyrus", 2), Ingredient("seeds", 1), Ingredient("poop", 1)}, booktab, {SCIENCE = 1})
+    r.image="book_brimstone.tex"
+    r=Recipe("spell_grow", {Ingredient("papyrus", 2), Ingredient("nightmarefuel", 2)}, booktab, {MAGIC = 2})
+    r.image="book_gardening.tex"
+    r=Recipe("spell_heal", {Ingredient("papyrus", 2), Ingredient("redgem", 1)}, booktab, {MAGIC = 3})
+    r.image="book_gardening.tex"
 
 end
 

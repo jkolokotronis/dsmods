@@ -42,9 +42,13 @@ local RAGE_MS=1.75*TUNING.WILSON_RUN_SPEED
 local RAGE_FIREDMG=0.5
 local BASE_FIREDMG
 local BASE_FREEZING
-local def_attack_period
 local DAMAGE_MULT=1.5
 local EFFECTIVENESS_MULT=1.5
+local RAGE_SANITY_DELTA=-5
+local RAGE_HUNGER_DELTA=-10
+local RAGE_PERIOD=2
+
+local def_attack_period
 local ref
 
 
@@ -62,8 +66,8 @@ end
 
 local function rageProc(inst)
 
-	inst.components.sanity:DoDelta(-5,false)
-	inst.components.hunger:DoDelta(-10,false,false)
+	inst.components.sanity:DoDelta(RAGE_SANITY_DELTA,false)
+	inst.components.hunger:DoDelta(RAGE_HUNGER_DELTA,false,false)
 
 end
 
@@ -73,7 +77,7 @@ local function rageStart(inst)
 	inst.components.temperature.hurtrate=BASE_FREEZING/2.0
 	inst.components.health.fire_damage_scale = RAGE_FIREDMG
 	inst.components.combat.min_attack_period=def_attack_period/2.0
-	inst.task = inst:DoPeriodicTask(5, function() rageProc(inst) end)
+	inst.task = inst:DoPeriodicTask(RAGE_PERIOD, function() rageProc(inst) end)
 end
 
 local function rageEnd(inst)
@@ -82,21 +86,6 @@ local function rageEnd(inst)
 	inst.components.temperature.hurtrate=BASE_FREEZING
 	inst.components.combat.min_attack_period=def_attack_period
 	if inst.task then inst.task:Cancel() inst.task = nil end
-end
-
-
-
-local function BarbStatusDisplaysInit(class)
-        class.rage = class:AddChild(RageBuff(class.owner))
-        class.rage:SetPosition(0,-100,0)
-        class.rage:SetOnClick(function(state) 
-        	print(state) 
-        	if(state and state=="on") then
-        		rageStart(ref)
-        	else
-        		rageEnd(ref)
-        	end
-        end)  
 end
 
 local fn = function(inst)
