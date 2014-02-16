@@ -15,13 +15,14 @@ local StatusDisplays = require "widgets/statusdisplays"
 --local xx=require "prefabs/spells"
 
 PrefabFiles = {
+
+    "spellbooks",
 	"thief",
 	"barb",
 	"cleric",
     "fairy",
 	"druid",
 	"darkknight",
-    "spellbooks"
 }
 
 Assets = {

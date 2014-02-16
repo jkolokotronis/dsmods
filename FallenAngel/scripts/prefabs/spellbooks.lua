@@ -1,6 +1,6 @@
 local assets =
 {
-	Asset("ANIM", "anim/books.zip"),
+--	Asset("ANIM", "anim/books.zip"),
 	--Asset("SOUND", "sound/common.fsb"),
 }
  
