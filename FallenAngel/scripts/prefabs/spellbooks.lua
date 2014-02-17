@@ -11,6 +11,26 @@ local prefabs =
     "book_fx"
 }    
 
+local debris =
+{
+    common = 
+    {
+        "rocks",
+        "flint"
+    },
+ --[[    rare = 
+    {
+        "goldnugget",
+        "nitre"
+    },
+   veryrare =
+    {
+        "redgem",
+        "bluegem",
+        "marble",
+    },]]--
+}
+
 local SPELL_HEAL_AMOUNT=150
 local BUFF_LENGTH=30
 
@@ -20,7 +40,7 @@ function tentaclesfn(inst, reader)
 
     local numtentacles = 3
 
-    reader.components.sanity:DoDelta(-TUNING.SANITY_HUGE)
+    reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
 
     reader:StartThread(function()
         for k = 1, numtentacles do
@@ -58,7 +78,7 @@ end
 
 function growfn(inst, reader)
     print("got into grow")
-    reader.components.sanity:DoDelta(-TUNING.SANITY_LARGE)
+    reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
     local range = 30
     local pos = Vector3(reader.Transform:GetWorldPosition())
     local ents = TheSim:FindEntities(pos.x,pos.y,pos.z, range)
@@ -82,16 +102,25 @@ end
 
 function firefn(inst, reader)
 
-    local num_lightnings =  15
-    reader.components.sanity:DoDelta(-TUNING.SANITY_LARGE)
+    local num_lightnings =  1
+    reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
+    local pos=Vector3(reader.Transform:GetWorldPosition())
     reader:StartThread(function()
         for k = 0, num_lightnings do
-
-            local rad = math.random(3, 15)
-            local angle = k*((4*PI)/num_lightnings)
-            local pos = Vector3(reader.Transform:GetWorldPosition()) + Vector3(rad*math.cos(angle), 0, rad*math.sin(angle))
-            GetSeasonManager():DoLightningStrike(pos)
-            Sleep(math.random( .3, .5))
+           local lightning = SpawnPrefab("lightning")
+            lightning.Transform:SetPosition(pos:Get())
+            local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 20)
+            for k,v in pairs(ents) do
+                if not v:IsInLimbo() then
+                    if v.components.burnable and not v.components.fueled then
+                     v.components.burnable:Ignite()
+                    end
+                end
+                if( not v:HasTag("player") and not v:HasTag("pet") and v.components.combat) then
+                    v.components.combat:GetAttacked(reader, 40, nil)
+                end
+            end
+           Sleep(math.random( .3, .5))-- 
         end
     end)
     return true
@@ -99,13 +128,13 @@ end
 
 function healfn(inst, reader)
 
-    reader.components.sanity:DoDelta(-TUNING.SANITY_LARGE)
+    reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
     reader.components.health:DoDelta(SPELL_HEAL_AMOUNT)
     return true
 end
 
 function divinemightfn(inst, reader)
-
+    reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
     reader.origDamageMultiplier=reader.origDamageMultiplier or reader.components.combat.damagemultiplier
     reader.components.combat.damagemultiplier=DAMAGE_MULT
 --    inst.components.health:SetMaxHealth(300)
@@ -120,7 +149,7 @@ function divinemightfn(inst, reader)
 end
 
 function lightfn(inst, reader)
-
+    reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
     --it WILL crash and burn if applied to wx
     if(not reader.Light) then
         reader.entity:AddLight()
@@ -140,6 +169,111 @@ function lightfn(inst, reader)
         reader.lightTimer=nil
         reader.Light:Enable(false)
     end)
+    return true
+end
+
+local function GetDebris()
+    local rng = math.random()
+    local todrop = nil
+--    if rng < 0.75 then
+        todrop = debris.common[math.random(1, #debris.common)]
+--    elseif rng >= 0.75 and rng < 0.95 then
+--    else
+--        todrop = debris.rare[math.random(1, #debris.rare)]
+--    else
+--        todrop = debris.veryrare[math.random(1, #debris.veryrare)]
+--    end
+    return todrop
+end
+
+local function SpawnDebris(spawn_point)
+    local prefab = GetDebris()
+    if prefab then
+        local db = SpawnPrefab(prefab)
+        if math.random() < .5 then
+            db.Transform:SetRotation(180)
+        end
+        spawn_point.y = 35
+
+
+        db.Physics:Teleport(spawn_point.x,spawn_point.y,spawn_point.z)
+
+        return db
+    end
+end
+
+
+local function UpdateShadowSize(inst, height)
+    if inst.shadow then
+        local scaleFactor = Lerp(0.5, 1.5, height/35)
+        inst.shadow.Transform:SetScale(scaleFactor, scaleFactor, scaleFactor)
+    end
+end
+
+local function GiveDebrisShadow(inst)
+    local pt = Vector3(inst.Transform:GetWorldPosition())
+    inst.shadow = SpawnPrefab("warningshadow")
+    UpdateShadowSize(inst, 35)
+    inst.shadow.Transform:SetPosition(pt.x, 0, pt.z)
+end
+
+local function quake(inst,reader)
+    --mobs can't read books... yet it's bound to cause issues eventually
+    local attacker=reader
+    local pt=  Point(attacker.Transform:GetWorldPosition())
+    local pos=Vector3(reader.Transform:GetWorldPosition())
+
+        local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 20,nil, {'smashable'})
+        for k,v in pairs(ents) do
+            if v  and (not v:HasTag("player") and not v:HasTag("pet"))then  -- quakes shouldn't break the set dressing
+                if(v.components.combat and not v:IsInLimbo())then
+                    v.components.combat:GetAttacked(attacker, 100, nil)
+               
+
+                local spawn_point= Vector3(v.Transform:GetWorldPosition())
+                local db = SpawnDebris(spawn_point)    
+
+
+                if spawn_point.y < 2 then
+                    db.Physics:SetMotorVel(0,0,0)
+                end
+
+                if spawn_point.y <= .2 then
+                    PlayFallingSound(db)
+
+                    db.Physics:SetDamping(0.9)        
+
+                if math.random() < 0.75 then
+                    --spawn break effect
+                    db.SoundEmitter:PlaySound("dontstarve/common/stone_drop")
+                    local pt = Vector3(db.Transform:GetWorldPosition())
+                    local breaking = SpawnPrefab("ground_chunks_breaking")
+                    breaking.Transform:SetPosition(pt.x, 0, pt.z)
+                    db:Remove()
+                end
+
+                end
+
+                end
+            end
+        end
+end
+
+
+function earthquakefn(inst,reader)
+    reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
+    TheCamera:Shake("FULL", 0.3, 0.02, .5, 40)
+    inst.SoundEmitter:PlaySound("dontstarve/cave/earthquake", "earthquake")
+    inst.SoundEmitter:SetParameter("earthquake", "intensity", 1)
+    local num=1
+    reader:StartThread(function()
+        for i=1,num do
+            quake(inst,reader)
+            Sleep(0.5)
+        end
+    end)
+
+    inst:DoTaskInTime(3, function() inst.SoundEmitter:KillSound("earthquake") end)
     return true
 end
 
@@ -192,7 +326,7 @@ end
 
 
 return MakeSpell("spell_lightning", firefn, 5),
-       MakeSpell("spell_earthquake", tentaclesfn, 5),
+       MakeSpell("spell_earthquake", earthquakefn, 5),
        MakeSpell("spell_grow", growfn, 5),
        MakeSpell("spell_heal", healfn, 5),
        MakeSpell("spell_divinemight", divinemightfn, 5),

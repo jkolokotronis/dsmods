@@ -115,8 +115,7 @@ local fn = function(inst)
                 local wkb=act.target.components.workable
                 old_chop(act)
                 print(wkb.workleft)
-                if wkb and wkb.action == ACTIONS.CHOP and wkb.workleft <= 0 then
-                        print("chop chop")
+                if wkb and wkb.action == ACTIONS.CHOP and wkb.workleft <= 0 and act.doer:HasTag("player")then
                         inst.components.sanity:DoDelta(CHOP_SANITY_DELTA)
                 end
 
@@ -126,8 +125,7 @@ local fn = function(inst)
         ACTIONS.DIG.fn = function(act)
                 local ret=old_dig(act)
                 if ret and act.doer:HasTag("player") and act.target.components.workable and act.target.components.workable.action == ACTIONS.DIG then
-                print("dig",act.target)
-                        if(act.target.components.pickable) then
+                       if(act.target.components.pickable) then
                                 if(act.target.components.pickable.product and(act.target.components.pickable.product=="cutgrass" or act.target.components.pickable.product=="twigs"))then
                                         inst.components.sanity:DoDelta(DIG_SANITY_DELTA)
                                 end
@@ -139,7 +137,6 @@ local fn = function(inst)
 
         ACTIONS.PLANT.fn = function(act)
                 local ret=old_plant(act)
-                print("plant",act.target)
                 if(ret and act.doer:HasTag("player") and act.target.components.pickable) then
                         print(act.target.components.pickable)
                         if(act.target.components.pickable.product and (act.target.components.pickable.product=="cutgrass" or act.target.components.pickable.product=="twigs")) then
@@ -151,7 +148,6 @@ local fn = function(inst)
 
         
         ACTIONS.PICK.fn = function(act)
-                print("pick",act.target)
                 local ret=old_pick(act)
                 if(ret and act.doer:HasTag("player") and act.target.components.pickable) then
                         print(act.target.components.pickable)
@@ -189,7 +185,6 @@ local fn = function(inst)
         class.rage = class:AddChild(petBuff)
         class.rage:SetPosition(0,-100,0)
         class.rage:SetOnClick(function(state) 
-            print("onclick",state) 
             if(state and state=="on" and fairy==nil) then
                 spawnFairy(inst)
             else
@@ -204,14 +199,18 @@ local fn = function(inst)
 
     local booktab=RECIPETABS.SPELLS
 --    inst.components.builder:AddRecipeTab(booktab)
-    local r=Recipe("spell_lightning", {Ingredient("papyrus", 2), Ingredient("bird_egg", 2)}, booktab, {SCIENCE = 0, MAGIC = 0, ANCIENT = 0})
+    local r=Recipe("spell_lightning", {Ingredient("papyrus", 2), Ingredient("nightmarefuel", 2)}, booktab, {SCIENCE = 0, MAGIC = 0, ANCIENT = 0})
     r.image="book_brimstone.tex"
-    r=Recipe("spell_earthquake", {Ingredient("papyrus", 2), Ingredient("seeds", 1), Ingredient("poop", 1)}, booktab, {SCIENCE = 1})
+    r=Recipe("spell_earthquake", {Ingredient("papyrus", 2), Ingredient("nightmarefuel", 2)}, booktab,{MAGIC = 2})
     r.image="book_brimstone.tex"
-    r=Recipe("spell_grow", {Ingredient("papyrus", 2), Ingredient("nightmarefuel", 2)}, booktab, {MAGIC = 2})
+    r=Recipe("spell_grow", {Ingredient("papyrus", 2), Ingredient("seeds", 1), Ingredient("poop", 1)}, booktab, {MAGIC = 2})
     r.image="book_gardening.tex"
     r=Recipe("spell_heal", {Ingredient("papyrus", 2), Ingredient("redgem", 1)}, booktab, {MAGIC = 3})
     r.image="book_gardening.tex"
+
+
+    local ground = GetWorld()
+--    if(not ground.components.quaker)then     ground:AddComponent("quaker")
 
 end
 

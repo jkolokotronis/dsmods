@@ -1,6 +1,7 @@
 local require = GLOBAL.require
 require "class"
 require "widgets/text"
+require "stategraph"
 --
 local Ingredient = GLOBAL.Ingredient
 local RECIPETABS = GLOBAL.RECIPETABS
@@ -112,25 +113,26 @@ table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "druid")
 table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "darkknight")
 
 local function StatusDisplaysInit(class)
+    
     if GetPlayer() and GetPlayer().StatusDisplaysInit then
         GetPlayer().StatusDisplaysInit(class)
     end
 end
 
 AddClassPostConstruct("widgets/statusdisplays", StatusDisplaysInit)
-
-
-
-function LinkPostInit(inst)
-
-end
+--AddComponentPostInit("combat",)
+--AddStategraphPostInit = function(stategraph, fn)
+--AddStategraphActionHandler = function(stategraph, handler)
+--    env.AddStategraphState = function(stategraph, state)
+--        env.AddStategraphEvent = function(stategraph, event)
 
 AddSimPostInit(function(inst)
         if inst.prefab == "druid" then
 --                LinkPostInit(inst)
         end
 end)
---
+--\
+
 AddModCharacter("thief")
 AddModCharacter("barb")
 AddModCharacter("cleric")

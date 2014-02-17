@@ -53,7 +53,7 @@ local function auratest(inst, target)
         if target.components.follower and target.components.follower.leader == leader then return false end
     end
 
-    return target:HasTag("monster") or target:HasTag("prey")
+    return target:HasTag("monster") --or target:HasTag("prey")
 end
 
 local function fn(Sim)
@@ -78,6 +78,7 @@ local function fn(Sim)
     light:Enable(true)
     
     inst:AddTag("fairy")
+    inst:AddTag("pet")
     inst:AddTag("smallcreature")
     inst:AddTag("character")
     inst:AddTag("scarytoprey")
@@ -101,7 +102,6 @@ local function fn(Sim)
     inst.components.locomotor:EnableGroundSpeedMultiplier(false)
 --  inst.components.locomotor.groundspeedmultiplier = 10
 	
-
 
     inst:AddComponent("aura")
     inst.components.aura.radius = 3
