@@ -142,23 +142,6 @@ local function fn(Sim)
     inst.components.locomotor:SetTriggersCreep(false)
     
 
-    inst:AddComponent("aura")
-    inst.components.aura.radius = 3
-    inst.components.aura.tickperiod = 1
-    inst.components.aura.ignoreallies = true
-    inst.components.aura.auratestfn = auratest
-
-    inst:AddComponent("playerprox")
-    inst.components.playerprox:SetDist(1, 2)
-    inst.components.playerprox:SetOnPlayerNear(onnear)
-    inst.components.playerprox:SetOnPlayerFar(onfar)
-    
---    inst.components.locomotor.walkspeed = GetPlayer().components.locomotor.groundspeedmultiplier*GetPlayer().components.locomotor.walkspeed*GetPlayer().components.locomotor.fastmultiplier
---    inst.components.locomotor.runspeed = GetPlayer().components.locomotor.groundspeedmultiplier*GetPlayer().components.locomotor.walkspeed*GetPlayer().components.locomotor.fastmultiplier+4
---  inst.components.locomotor.isrunning = true
-
---    inst:SetStateGraph("SGghost")
-
     inst:SetStateGraph("SGshadowwaxwell")
 
     inst:AddComponent("inspectable")
@@ -178,16 +161,7 @@ local function fn(Sim)
     inst.components.combat:SetRetargetFunction(0.1, Retarget)
 --    inst.components.combat:SetKeepTargetFunction(KeepTarget)
     inst.components.combat.areahitdamagepercent=0.0
---[[
-    inst:AddComponent("combat")
-    inst.components.combat:SetKeepTargetFunction(ShouldKeepTarget)
-    inst.components.combat.canbeattackedfn = function(self, attacker) 
-        if attacker == GetPlayer() then 
-            return false 
-        end
-        return true
-    end
-    ------------------]]--
+
     inst:AddComponent("health")
     inst.components.health:SetMaxHealth(PET_HEALTH)
     inst.components.health:StartRegen(5,5)

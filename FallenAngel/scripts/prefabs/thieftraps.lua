@@ -276,9 +276,9 @@ return Prefab( "common/inventory/trap_doubleteeth", MakeDoubleTeethTrap, assets)
 Prefab( "common/inventory/trap_ice", MakeIceTrap, assets),
 Prefab( "common/inventory/trap_fire", MakeFireTrap, assets),
 Prefab( "common/inventory/trap_tentacle", MakeTentacleTrap, assets),
-		MakePlacer("common/trap_doubleteeth", "trap_doubleteeth", "trap_doubleteeth", "idle"),
-		MakePlacer("common/trap_ice", "trap_ice", "trap_ice", "idle"),
-		MakePlacer("common/trap_fire", "trap_fire", "trap_fire", "idle"),
-		MakePlacer("common/trap_tentacle", "trap_tentacle", "trap_tentacle", "idle")
+		MakePlacer("common/trap_doubleteeth_placer", "trap_teeth", "trap_teeth", "idle"),
+		MakePlacer("common/trap_ice_placer", "trap_teeth", "trap_teeth", "idle"),
+		MakePlacer("common/trap_fire_placer", "trap_teeth", "trap_teeth", "idle"),
+		MakePlacer("common/trap_tentacle_placer", "trap_teeth", "trap_teeth", "idle")
 --	   Prefab( "common/inventory/trap_teeth_maxwell", MakeTeethTrapMaxwell, assets) 
 

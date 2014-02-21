@@ -23,7 +23,9 @@ local ImageButton = require "widgets/imagebutton"
 --local xx=require "prefabs/spells"
 
 PrefabFiles = {
-
+    "dksword",
+    "thieftraps",
+    "arrows",
     "spellbooks",
 	"thief",
 	"barb",
@@ -37,7 +39,9 @@ PrefabFiles = {
     "necropet",
     "wizard",
     "tinkerer",
-    "thieftraps"
+    "thieftraps",
+    "arrows",
+    "bow"
 }
 
 Assets = {
@@ -158,20 +162,23 @@ GLOBAL.STRINGS.CHARACTERS.THIEF = {}
 GLOBAL.STRINGS.CHARACTERS.THIEF.DESCRIBE = {}
 GLOBAL.STRINGS.CHARACTERS.THIEF.DESCRIBE.EVERGREEN = "A template description of a tree."
 
-STRINGS.NAMES.ARROW = "Arrow"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARROW="Arrow"
-STRINGS.NAMES.BOW = "Bow"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARROW="Bow"
-STRINGS.NAMES.FIRETRAP = "FIRETRAP"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.FIRETRAP="FIRETRAP"
-STRINGS.NAMES.SPIKETRAP = "SPIKETRAP"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPIKETRAP="SPIKETRAP"
-STRINGS.NAMES.ICETRAP = "ICETRAP"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.ICETRAP="ICETRAP"
-STRINGS.NAMES.TENTACLETRAP = "TENTACLETRAP"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.TENTACLETRAP="TENTACLETRAP"
-STRINGS.NAMES.TELEPORTTRAP = "TELEPORTTRAP"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.TELEPORTTRAP="TELEPORTTRAP"
+GLOBAL.STRINGS.NAMES.ARROW = "Arrow"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARROW="Arrow"
+GLOBAL.STRINGS.NAMES.BOW = "Bow"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARROW="Bow"
+GLOBAL.STRINGS.NAMES.FIRETRAP = "FIRETRAP"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FIRETRAP="FIRETRAP"
+GLOBAL.STRINGS.NAMES.SPIKETRAP = "SPIKETRAP"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPIKETRAP="SPIKETRAP"
+GLOBAL.STRINGS.NAMES.ICETRAP = "ICETRAP"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ICETRAP="ICETRAP"
+GLOBAL.STRINGS.NAMES.TENTACLETRAP = "TENTACLETRAP"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.TENTACLETRAP="TENTACLETRAP"
+GLOBAL.STRINGS.NAMES.TELEPORTTRAP = "TELEPORTTRAP"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.TELEPORTTRAP="TELEPORTTRAP"
+
+GLOBAL.STRINGS.ACTIONS.RELOAD="Reload"
+
 
 
 local EVIL_SANITY_AURA_OVERRIDE={
@@ -223,11 +230,26 @@ table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "wizard")
 table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "tinkerer")
 
 local PetBuff = require "widgets/petbuff"
+
+local RELOAD = Action(1, true)
+RELOAD.id = "RELOAD"
+RELOAD.str = "Reload"
+RELOAD.fn = function(act)
+    if act.target and act.target.components.reloadable and act.invobject and act.invobject.components.reloading then
+        return act.target.components.reloadable:Reload(act.doer, act.invobject)
+    end
+
+end
+ 
+AddAction(RELOAD)
+GLOBAL.ACTIONS.RELOAD = RELOAD
+
+
 local function newControlsInit(class)
 
     if GetPlayer() and GetPlayer().newControlsInit then
         local xabilitybar = class.top_root:AddChild(Widget("abilitybar"))
-        xabilitybar:SetScale(1,1,1)
+--        xabilitybar:SetScale(1,1,1)
         xabilitybar:SetPosition(0,-30,0)
         GetPlayer().newControlsInit(xabilitybar)
     end

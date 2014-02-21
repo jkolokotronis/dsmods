@@ -39,7 +39,7 @@ local assets = {
         Asset( "ANIM", "anim/darkknight.zip" ),
 }
 local prefabs = {
-    "darkknightpet",
+    "dksword"
 }
 
 --        SANITY_NIGHT_MID = -100/(300*20),
@@ -219,8 +219,11 @@ local fn = function(inst)
         local leechbtn=cnt:AddChild(inst.leechCooldownButton)
         leechbtn:SetPosition(100,0,0)
     end
-
+local prefabs1 = {
+    "dksword",
+}
    
+    inst.components.inventory:GuaranteeItems(prefabs1)
 
 end
 

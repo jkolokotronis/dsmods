@@ -47,6 +47,34 @@ local RANGE_MULTIPLIER=1.5
 local ASSASSINATION_MULTIPLIER=5
 local SNEAK_HUNGER_MULT=2.0
 
+
+STRINGS.TABS.SUBTERFUGE = "Subterfuge"
+RECIPETABS["SUBTERFUGE"] = {str = "SUBTERFUGE", sort=999, icon = "trap_teeth.tex"}--, icon_atlas = "images/inventoryimages/herotab.xml"}
+
+STRINGS.NAMES.BOW = "Bow"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOW = "Bow"
+STRINGS.RECIPE_DESC.BOW = "Bow"
+
+STRINGS.NAMES.ARROWS = "Arrows"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARROWS = "Arrows"
+STRINGS.RECIPE_DESC.ARROWS = "Arrows"
+
+STRINGS.NAMES.TRAP_DOUBLETEETH = "Double Teeth Trap"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.TRAP_DOUBLETEETH = "Double Teeth Trap"
+STRINGS.RECIPE_DESC.TRAP_DOUBLETEETH = "Double Teeth Trap"
+
+STRINGS.NAMES.TRAP_ICE = "Ice Trap"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.TRAP_ICE = "Ice Trap"
+STRINGS.RECIPE_DESC.TRAP_ICE = "Ice Trap"
+
+STRINGS.NAMES.TREP_FIRE = "Fire Trap"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.TREP_FIRE = "Fire Trap"
+STRINGS.RECIPE_DESC.TREP_FIRE = "Fire Trap"
+
+STRINGS.NAMES.TRAP_TENTACLE = "Tentacle Trap"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.TRAP_TENTACLE = "Tentacle Trap"
+STRINGS.RECIPE_DESC.TRAP_TENTACLE = "Tentacle Trap"
+
 local sneakBuff
 
 local enterstealth=function(inst)
@@ -284,9 +312,23 @@ local fn = function(inst)
         return action_old(act)
     end
 
+    local booktab=RECIPETABS.SUBTERFUGE
+--    inst.components.builder:AddRecipeTab(booktab)
+    local r=Recipe("arrows", {Ingredient("twigs", 5), Ingredient("houndstooth", 1)}, booktab, {SCIENCE = 1})
+    r.image="book_brimstone.tex"
+    r=Recipe("bow", {Ingredient("twigs", 2), Ingredient("rope", 1),Ingredient("pigskin", 1)}, booktab,{SCIENCE = 1})
+    r.image="book_brimstone.tex"
+    r=Recipe("trap_doubleteeth", {Ingredient("houndstooth", 5), Ingredient("boards", 2), Ingredient("rocks", 2)}, booktab, {SCIENCE = 2})
+    r.image="trap_teeth.tex"
+    r=Recipe("trap_fire", {Ingredient("gunpowder", 4),Ingredient("boards", 2), Ingredient("stone", 2)}, booktab, {SCIENCE = 2})
+    r.image="trap_teeth.tex"
+    r=Recipe("trap_ice", {Ingredient("feather_robin_winter", 2), Ingredient("boards", 2), Ingredient("stone", 2)}, booktab, {SCIENCE = 2})
+    r.image="trap_teeth.tex"
+    r=Recipe("trap_tentacle", {Ingredient("tentaclespots", 2),Ingredient("boards", 2), Ingredient("nightmarefuel", 2)}, booktab, {MAGIC = 2})
+    r.image="trap_teeth.tex"
 
     inst.newControlsInit = function (class)
-                sneakBuff=SneakBuff(class.owner)
+                inst.sneakBuff=SneakBuff(class.owner)
                 class.rage = class:AddChild(sneakBuff)
                 class.rage:SetPosition(0,0,0)
                 class.rage:SetOnClick(function(state) 
@@ -295,7 +337,7 @@ local fn = function(inst)
 --                                inst.sg:GoToState("hide")
                                 inst.sg:GoToState("sneak")
                         elseif(inst:HasTag("notarget"))then
-                            leavestealth(act.doer)
+                            leavestealth(inst)
                             inst.sg:GoToState("idle")
                         end
                 end)
