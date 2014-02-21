@@ -1,11 +1,21 @@
 local assets=
 {
 
-    Asset("ANIM", "anim/skeleterror.zip"),
     Asset("SOUND", "sound/hound.fsb"),
     Asset("SOUND", "sound/ghost.fsb"),
+    Asset("ANIM", "anim/waxwell_shadow_mod.zip"),
+    Asset("SOUND", "sound/maxwell.fsb"),
+    Asset("ANIM", "anim/swap_pickaxe.zip"),
+    Asset("ANIM", "anim/swap_axe.zip"),
+    Asset("ANIM", "anim/swap_nightmaresword.zip"),
 }
 
+local items =
+{
+    AXE = "swap_axe",
+    PICK = "swap_pickaxe",
+    SWORD = "swap_nightmaresword"
+}
 local PET_HEALTH=300
 
 local function onnear(inst)
@@ -18,6 +28,13 @@ local function ShouldKeepTarget(inst, target)
     return false 
 end]]--
     
+local function EquipItem(inst, item)
+    if item then
+        inst.AnimState:OverrideSymbol("swap_object", item, item)
+        inst.AnimState:Show("ARM_carry") 
+        inst.AnimState:Hide("ARM_normal")
+    end
+end
 
 local function Retarget(inst)
 
@@ -95,10 +112,25 @@ local function fn(Sim)
     
     
 
-    anim:SetBank("skeleterror")
-    anim:SetBuild("Skeleterror")
+--    anim:SetBank("skeleterror")
+--    anim:SetBuild("Skeleterror")
 
-    inst.AnimState:PlayAnimation("idle")
+    anim:SetBank("wilson")
+    anim:SetBuild("waxwell_shadow_mod")
+
+    anim:Hide("ARM_carry")
+    anim:Hide("hat")
+    anim:Hide("hat_hair")
+    inst:AddComponent("inventory")
+    inst.components.inventory.dropondeath = false
+
+    inst.items = items
+    inst.equipfn = EquipItem
+
+    EquipItem(inst)
+
+    anim:PlayAnimation("idle")
+
 --    inst.AnimState:SetRayTestOnBB(true);
 
 
@@ -108,7 +140,7 @@ local function fn(Sim)
     inst.components.locomotor.walkspeed = TUNING.WILSON_RUN_SPEED
     inst.components.locomotor.runspeed = TUNING.WILSON_RUN_SPEED*3
     inst.components.locomotor:SetTriggersCreep(false)
-	
+    
 
     inst:AddComponent("aura")
     inst.components.aura.radius = 3
@@ -121,13 +153,11 @@ local function fn(Sim)
     inst.components.playerprox:SetOnPlayerNear(onnear)
     inst.components.playerprox:SetOnPlayerFar(onfar)
     
---    inst.components.locomotor.walkspeed = GetPlayer().components.locomotor.groundspeedmultiplier*GetPlayer().components.locomotor.walkspeed*GetPlayer().components.locomotor.fastmultiplier
---    inst.components.locomotor.runspeed = GetPlayer().components.locomotor.groundspeedmultiplier*GetPlayer().components.locomotor.walkspeed*GetPlayer().components.locomotor.fastmultiplier+4
---  inst.components.locomotor.isrunning = true
 
-    inst:SetStateGraph("SGghost")
---    inst:SetStateGraph("SGfairy")
-    
+--    inst:SetStateGraph("SGghost")
+
+    inst:SetStateGraph("SGshadowwaxwell")
+
     inst:AddComponent("inspectable")
         
     inst:AddComponent("follower")
@@ -139,23 +169,15 @@ local function fn(Sim)
 
     
     inst:AddComponent("combat")
+    inst.components.combat.hiteffectsymbol = "torso"
     inst.components.combat:SetDefaultDamage(TUNING.HOUND_DAMAGE)
     inst.components.combat:SetAttackPeriod(0.75)
-    inst.components.combat:SetRetargetFunction(0.1, retargetfn)
-    inst.components.combat:SetKeepTargetFunction(KeepTarget)
-    inst.components.combat.areahitdamagepercent=0.3
---[[
-	inst:AddComponent("combat")
-	inst.components.combat:SetKeepTargetFunction(ShouldKeepTarget)
-	inst.components.combat.canbeattackedfn = function(self, attacker) 
-		if attacker == GetPlayer() then 
-			return false 
-		end
-		return true
-	end
-    ------------------]]--
+    inst.components.combat:SetRetargetFunction(0.1, Retarget)
+--    inst.components.combat:SetKeepTargetFunction(KeepTarget)
+    inst.components.combat.areahitdamagepercent=0.0
+
     inst:AddComponent("health")
-    inst.components.health:SetMaxHealth(TUNING.PET_HEALTH)
+    inst.components.health:SetMaxHealth(PET_HEALTH)
     inst.components.health:StartRegen(5,5)
     inst.components.health:SetInvincible(false)
 
