@@ -329,7 +329,7 @@ local fn = function(inst)
 
     inst.newControlsInit = function (class)
                 inst.sneakBuff=SneakBuff(class.owner)
-                class.rage = class:AddChild(sneakBuff)
+                class.rage = class:AddChild(inst.sneakBuff)
                 class.rage:SetPosition(0,0,0)
                 class.rage:SetOnClick(function(state) 
                      print("onclick",state) 
