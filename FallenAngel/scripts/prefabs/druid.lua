@@ -2,7 +2,7 @@
 local MakePlayerCharacter = require "prefabs/player_common"
 
 local PetBuff = require "widgets/petbuff"
-
+local Widget = require "widgets/widget"
 
 
 local assets = {
@@ -70,33 +70,55 @@ local PICK_SANITY_DELTA=-2
 local PLANT_SANITY_DELTA=10
 local MURDER_SANITY_DELTA=-5
 
-local fairy
-local petBuff
 local ref
+
+
 
 local function onmurder(inst,data)
     local victim=data.victim
-    print(victim)
     if(victim:HasTag("animal") or victim:HasTag("bird"))then
         inst.components.sanity:DoDelta(MURDER_SANITY_DELTA)
     end
 end
 
+local function onPetDeath(inst)
+     GetPlayer().components.sanity:DoDelta(-TUNING.SANITY_LARGE)
+     GetPlayer().petBuff:OnPetDies()
+end
+
 local function spawnFairy(inst)
 
-    fairy = SpawnPrefab("fairy")
-    fairy.Transform:SetPosition(inst.Transform:GetWorldPosition())
+    if(inst.pet and not inst.pet.components.health:IsDead())then
+        return
+    end
+    inst.pet = SpawnPrefab("fairy")
+    inst.pet.Transform:SetPosition(inst.Transform:GetWorldPosition())
     inst.SoundEmitter:PlaySound("dontstarve/common/ghost_spawn")
-    inst.components.leader:AddFollower(fairy)
-    inst:ListenForEvent("death",function()
-        petBuff:OnPetDies()
+    inst.components.leader:AddFollower(inst.pet)
+    inst.pet:ListenForEvent("death",onPetDeath)
+    inst.pet:ListenForEvent("stopfollowing",function(f)
+        f.components.health:Kill()
+        inst.pet=nil
     end)
 end
 
 local function despawnFairy(inst)
-    if(fairy and fairy.components.health and not fairy.components.health:IsDead()) then
-        fairy.components.health:Kill()
-        fairy=nil
+    if(inst.pet and inst.pet.components.health and not inst.pet.components.health:IsDead()) then
+        inst.pet.components.health:Kill()
+        inst.pet=nil
+    end
+end
+
+
+local onloadfn = function(inst, data)
+    inst.hasPet=data.hasPet
+end
+
+local onsavefn = function(inst, data)
+    if(inst.pet and inst.pet.components.health and not inst.pet.components.health:IsDead())then
+        data.hasPet=true
+    else
+        data.hasPet=false
     end
 end
 
@@ -104,6 +126,10 @@ end
 local fn = function(inst)
 
         local ref=inst
+
+        
+    inst.OnLoad = onloadfn
+    inst.OnSave = onsavefn
 
         local old_dig=ACTIONS.DIG.fn
         local old_plant=ACTIONS.PLANT.fn
@@ -150,7 +176,6 @@ local fn = function(inst)
         ACTIONS.PICK.fn = function(act)
                 local ret=old_pick(act)
                 if(ret and act.doer:HasTag("player") and act.target.components.pickable) then
-                        print(act.target.components.pickable)
                         if(act.target.components.pickable.product and (act.target.components.pickable.product=="cutgrass" or act.target.components.pickable.product=="twigs")) then
                                 inst.components.sanity:DoDelta(PICK_SANITY_DELTA)
                         end
@@ -160,8 +185,9 @@ local fn = function(inst)
 
         ACTIONS.DEPLOY.fn = function(act)
                 local ret=old_deploy(act)
+--                print(act.invobject:GetPrefabName())
                 if(ret and act.doer:HasTag("player")) then
-                        if(act.invobject and (act.invobject.name=="Grass Tuft" or act.invobject.name=="Sapling")) then
+                        if(act.invobject and (act.invobject.name=="Grass Tuft" or act.invobject.name=="Sapling" or act.invobject.name=="Pine Cone")) then
                                 inst.components.sanity:DoDelta(PLANT_SANITY_DELTA)
                         end
                        -- print("deploy",act.invobject)
@@ -180,17 +206,36 @@ local fn = function(inst)
 	inst.components.sanity:SetMax(250)
 	inst.components.hunger:SetMax(150)
 
-    inst.StatusDisplaysInit = function (class)
-        petBuff=PetBuff(class.owner)
-        class.rage = class:AddChild(petBuff)
-        class.rage:SetPosition(0,-100,0)
-        class.rage:SetOnClick(function(state) 
-            if(state and state=="on" and fairy==nil) then
+    inst.newControlsInit = function (cnt)
+    
+        local pet=nil
+
+        inst.petBuff=PetBuff(cnt.owner)
+        local rage = cnt:AddChild(inst.petBuff)
+ --    class.rage:SetHAnchor(ANCHOR_MIDDLE)
+  --  class.rage:SetVAnchor(ANCHOR_TOP)
+        rage:SetPosition(0,0,0)
+        rage:SetOnClick(function(state) 
+            if(state and state=="on") then
                 spawnFairy(inst)
             else
                 despawnFairy(inst)
             end
         end)
+        if(inst.hasPet)then
+            local leader=inst.components.leader
+            for k,v in pairs(leader.followers) do
+                if k:HasTag("pet") then
+                    pet=k
+                end
+            end
+            print("found pet?",pet)
+            inst.pet=pet
+            if(pet)then
+                inst.petBuff:ForceState("on")
+                inst.pet:ListenForEvent("death",onPetDeath)
+            end
+        end
     end
 
     inst:ListenForEvent("killed", onmurder)

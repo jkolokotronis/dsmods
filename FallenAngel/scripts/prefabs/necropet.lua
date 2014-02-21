@@ -1,7 +1,8 @@
 local assets=
 {
-    Asset("ANIM", "anim/ghost.zip"),
-    Asset("ANIM", "anim/ghost_wendy_build.zip"),
+
+    Asset("ANIM", "anim/skeleterror.zip"),
+    Asset("SOUND", "sound/hound.fsb"),
     Asset("SOUND", "sound/ghost.fsb"),
 }
 
@@ -61,11 +62,13 @@ local function fn(Sim)
     
     inst.entity:AddTransform()
     local anim=inst.entity:AddAnimState()
-    inst.entity:AddSoundEmitter()
+
+    local sound = inst.entity:AddSoundEmitter()
+    local shadow = inst.entity:AddDynamicShadow()
+    shadow:SetSize( 2.5, 1.5 )
     inst.Transform:SetTwoFaced()
-    inst.entity:AddDynamicShadow()
-    inst.DynamicShadow:SetSize( .8, .5 )
-    inst.AnimState:SetBloomEffectHandle( "shaders/anim.ksh" )
+    inst.Transform:SetScale(0.75, 0.75, 0.75)
+
     
     inst.entity:AddPhysics()
  
@@ -77,30 +80,34 @@ local function fn(Sim)
     light:SetColour(155/255, 225/255, 250/255)
     light:Enable(true)
     
-    inst:AddTag("fairy")
+    inst:AddTag("skeleton")
+    inst:AddTag("undead")
     inst:AddTag("pet")
-    inst:AddTag("smallcreature")
     inst:AddTag("character")
     inst:AddTag("scarytoprey")
-   
-    MakeCharacterPhysics(inst, 1, .25)
+
+    MakeCharacterPhysics(inst, 10, .5)
+ 
+
     inst.Physics:SetCollisionGroup(COLLISION.FLYERS)
     inst.Physics:ClearCollisionMask()
     inst.Physics:CollidesWith(COLLISION.WORLD)
     
     
+
+    anim:SetBank("skeleterror")
+    anim:SetBuild("Skeleterror")
+
     inst.AnimState:PlayAnimation("idle")
-    inst.AnimState:SetRayTestOnBB(true);
+--    inst.AnimState:SetRayTestOnBB(true);
 
 
-    anim:SetBank("ghost")
-    anim:SetBuild("ghost_wendy_build")
---    anim:SetBank("fairy")
---    anim:SetBuild("butterfly")
-    
     inst:AddComponent("locomotor") -- locomotor must be constructed before the stategraph
     inst.components.locomotor:EnableGroundSpeedMultiplier(false)
 --  inst.components.locomotor.groundspeedmultiplier = 10
+    inst.components.locomotor.walkspeed = TUNING.WILSON_RUN_SPEED
+    inst.components.locomotor.runspeed = TUNING.WILSON_RUN_SPEED*3
+    inst.components.locomotor:SetTriggersCreep(false)
 	
 
     inst:AddComponent("aura")
@@ -117,9 +124,6 @@ local function fn(Sim)
 --    inst.components.locomotor.walkspeed = GetPlayer().components.locomotor.groundspeedmultiplier*GetPlayer().components.locomotor.walkspeed*GetPlayer().components.locomotor.fastmultiplier
 --    inst.components.locomotor.runspeed = GetPlayer().components.locomotor.groundspeedmultiplier*GetPlayer().components.locomotor.walkspeed*GetPlayer().components.locomotor.fastmultiplier+4
 --  inst.components.locomotor.isrunning = true
-    inst.components.locomotor.walkspeed = TUNING.WILSON_RUN_SPEED
-    inst.components.locomotor.runspeed = TUNING.WILSON_RUN_SPEED*2
-    inst.components.locomotor:SetTriggersCreep(false)
 
     inst:SetStateGraph("SGghost")
 --    inst:SetStateGraph("SGfairy")
@@ -129,15 +133,16 @@ local function fn(Sim)
     inst:AddComponent("follower")
 
     ---------------------       
-    inst:AddTag("FX")
     inst:AddTag("companion")
     inst:AddTag("notraptrigger")
-    inst:AddTag("light")
     ------------------
+
+    
     inst:AddComponent("combat")
-    inst.components.combat.defaultdamage = TUNING.ABIGAIL_DAMAGE_PER_SECOND
-    inst.components.combat.playerdamagepercent = TUNING.ABIGAIL_DMG_PLAYER_PERCENT
-    inst.components.combat:SetRetargetFunction(3, Retarget)
+    inst.components.combat:SetDefaultDamage(TUNING.HOUND_DAMAGE)
+    inst.components.combat:SetAttackPeriod(0.75)
+    inst.components.combat:SetRetargetFunction(0.1, retargetfn)
+    inst.components.combat:SetKeepTargetFunction(KeepTarget)
     inst.components.combat.areahitdamagepercent=0.3
 --[[
 	inst:AddComponent("combat")
@@ -150,7 +155,7 @@ local function fn(Sim)
 	end
     ------------------]]--
     inst:AddComponent("health")
-    inst.components.health:SetMaxHealth(PET_HEALTH)
+    inst.components.health:SetMaxHealth(TUNING.PET_HEALTH)
     inst.components.health:StartRegen(5,5)
     inst.components.health:SetInvincible(false)
 
@@ -161,4 +166,4 @@ local function fn(Sim)
     return inst
 end
 
-return Prefab( "common/fairy", fn, assets)
+return Prefab( "common/necropet", fn, assets)

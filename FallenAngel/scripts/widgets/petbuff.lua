@@ -12,8 +12,8 @@ local PetBuff = Class(ToggleBuff, function(self, data)
 	init["off"]=init["off"] or {}
 	init["off"].atlas=init["off"].atlas or "images/ui.xml"
 	init["off"].tex=init["off"].tex or "button_small.tex"
-	ToggleBuff._ctor(self, init)
 	init.name=init.name or "Pet"
+	ToggleBuff._ctor(self, init)
 	self.text:SetString("Pet")
 end)
 

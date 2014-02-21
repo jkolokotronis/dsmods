@@ -35,29 +35,45 @@ local assets = {
 		-- Don't forget to include your character's custom assets!
         Asset( "ANIM", "anim/thief.zip" ),
 }
-local prefabs = {}
+local prefabs = {
+    "trap_doubleteeth",
+    "trap_ice",
+    "trap_fire",
+    "trap_tentacle"
+}
 
 local BACKSTAB_MULTIPLIER=3
 local RANGE_MULTIPLIER=1.5
 local ASSASSINATION_MULTIPLIER=5
+local SNEAK_HUNGER_MULT=2.0
 
 local sneakBuff
+
+local enterstealth=function(inst)
+    inst.components.hunger:SetRate(SNEAK_HUNGER_MULT*TUNING.WILSON_HUNGER_RATE)
+    inst:AddTag("notarget")
+end
+
+local leavestealth=function(inst)
+    inst:RemoveTag("notarget")
+    inst.sneakBuff:ForceState("off")
+    inst.components.hunger:SetRate(TUNING.WILSON_HUNGER_RATE)
+
+end
 
 local onattacked=function(inst,data)
     local attacker=data.attacker
     local damage=data.damage
     local weapon=data.weapon
     if(damage and damage>0 and inst:HasTag("notarget"))then
-        inst:RemoveTag("notarget")
-        sneakBuff:ForceState("off")
+        leavestealth(inst)
     end
 end
 
 local onhitother=function(inst,data)
     local damage=data.damage
     if(damage and damage>0 and inst:HasTag("notarget"))then
-        inst:RemoveTag("notarget")
-        sneakBuff:ForceState("off")
+        leavestealth(inst)
     end
 end
 
@@ -83,7 +99,7 @@ local fn = function(inst)
         if(weapon and weapon.attackrange and weapon.attackrage>5)then
             return old*RANGE_MULTIPLIER
         end
-        if(sneaking)then
+        if(sneaking and not(target.components.combat and target.components.combat.target==GetPlayer()))then
             return old*ASSASSINATION_MULTIPLIER
         end
         if(target and target.components.combat and target.components.combat.target==GetPlayer())then
@@ -102,7 +118,7 @@ local fn = function(inst)
             inst.components.locomotor:Stop()
             inst.AnimState:PlayAnimation("hide")
             inst.SoundEmitter:PlaySound("dontstarve/movement/foley/hidebush")
-            inst:AddTag("notarget")
+            enterstealth(inst)
         end,
         
         onexit = function(inst)
@@ -122,7 +138,7 @@ local fn = function(inst)
         onenter = function(inst)
             inst.components.locomotor:Stop()
             inst.AnimState:PlayAnimation("hide_idle", true)
-            inst:AddTag("notarget")
+            enterstealth(inst)
         end,
         
         onexit = function(inst)
@@ -137,8 +153,7 @@ local fn = function(inst)
     local action_old=ACTIONS.FORCEATTACK.fn
     ACTIONS.FORCEATTACK.fn = function(act)
          if(act.doer and act.doer:HasTag("player") and act.doer:HasTag("notarget")) then
-            act.doer:RemoveTag("notarget")
-            sneakBuff:ForceState("off")
+            leavestealth(act.doer)
         end
         return action_old(act)
     end
@@ -146,8 +161,7 @@ local fn = function(inst)
     local action_old=ACTIONS.EAT.fn
     ACTIONS.EAT.fn = function(act)
         if(act.doer and act.doer:HasTag("player") and act.doer:HasTag("notarget")) then
-            act.doer:RemoveTag("notarget")
-            sneakBuff:ForceState("off")
+            leavestealth(act.doer)
         end
         return action_old(act)
     end
@@ -155,8 +169,7 @@ local fn = function(inst)
     local action_old=ACTIONS.MINE.fn
     ACTIONS.MINE.fn = function(act)
         if(act.doer and act.doer:HasTag("player") and act.doer:HasTag("notarget")) then
-            act.doer:RemoveTag("notarget")
-            sneakBuff:ForceState("off")
+            leavestealth(act.doer)
         end
         return action_old(act)
     end
@@ -164,8 +177,7 @@ local fn = function(inst)
     local action_old=ACTIONS.DIG.fn
     ACTIONS.DIG.fn = function(act)
          if(act.doer and act.doer:HasTag("player") and act.doer:HasTag("notarget")) then
-            act.doer:RemoveTag("notarget")
-            sneakBuff:ForceState("off")
+            leavestealth(act.doer)
         end
         return action_old(act)
     end
@@ -173,8 +185,7 @@ local fn = function(inst)
     local action_old=ACTIONS.GIVE.fn
     ACTIONS.GIVE.fn = function(act)
          if(act.doer and act.doer:HasTag("player") and act.doer:HasTag("notarget")) then
-            act.doer:RemoveTag("notarget")
-            sneakBuff:ForceState("off")
+            leavestealth(act.doer)
         end
         return action_old(act)
     end
@@ -182,8 +193,7 @@ local fn = function(inst)
     local action_old=ACTIONS.COOK.fn
     ACTIONS.COOK.fn = function(act)
         if(act.doer and act.doer:HasTag("player") and act.doer:HasTag("notarget")) then
-            act.doer:RemoveTag("notarget")
-            sneakBuff:ForceState("off")
+            leavestealth(act.doer)
         end
         return action_old(act)
     end
@@ -191,8 +201,7 @@ local fn = function(inst)
     local action_old=ACTIONS.DRY.fn
     ACTIONS.DRY.fn = function(act)
        if(act.doer and act.doer:HasTag("player") and act.doer:HasTag("notarget")) then
-            act.doer:RemoveTag("notarget")
-            sneakBuff:ForceState("off")
+            leavestealth(act.doer)
         end
         return action_old(act)
     end
@@ -200,8 +209,7 @@ local fn = function(inst)
     local action_old=ACTIONS.TALKTO.fn
     ACTIONS.TALKTO.fn = function(act)
          if(act.doer and act.doer:HasTag("player") and act.doer:HasTag("notarget")) then
-            act.doer:RemoveTag("notarget")
-            sneakBuff:ForceState("off")
+            leavestealth(act.doer)
         end
         return action_old(act)
     end
@@ -209,8 +217,7 @@ local fn = function(inst)
     local action_old=ACTIONS.BUILD.fn
     ACTIONS.BUILD.fn = function(act)
          if(act.doer and act.doer:HasTag("player") and act.doer:HasTag("notarget")) then
-            act.doer:RemoveTag("notarget")
-            sneakBuff:ForceState("off")
+            leavestealth(act.doer)
         end
         return action_old(act)
     end
@@ -218,8 +225,7 @@ local fn = function(inst)
     local action_old=ACTIONS.PLANT.fn
     ACTIONS.PLANT.fn = function(act)
          if(act.doer and act.doer:HasTag("player") and act.doer:HasTag("notarget")) then
-            act.doer:RemoveTag("notarget")
-            sneakBuff:ForceState("off")
+            leavestealth(act.doer)
         end
         return action_old(act)
     end
@@ -227,8 +233,7 @@ local fn = function(inst)
     local action_old=ACTIONS.HARVEST.fn
     ACTIONS.HARVEST.fn = function(act)
          if(act.doer and act.doer:HasTag("player") and act.doer:HasTag("notarget")) then
-            act.doer:RemoveTag("notarget")
-            sneakBuff:ForceState("off")
+            leavestealth(act.doer)
         end
         return action_old(act)
     end
@@ -236,32 +241,28 @@ local fn = function(inst)
     local action_old=ACTIONS.DEPLOY.fn
     ACTIONS.DEPLOY.fn = function(act)
         if(act.doer and act.doer:HasTag("player") and act.doer:HasTag("notarget")) then
-            act.doer:RemoveTag("notarget")
-            sneakBuff:ForceState("off")
+            leavestealth(act.doer)
         end
         return action_old(act)
     end
     local action_old=ACTIONS.CATCH.fn
     ACTIONS.CATCH.fn = function(act)
         if(act.doer and act.doer:HasTag("player") and act.doer:HasTag("notarget")) then
-            act.doer:RemoveTag("notarget")
-            sneakBuff:ForceState("off")
+            leavestealth(act.doer)
         end
         return action_old(act)
     end
     local action_old=ACTIONS.FISH.fn
     ACTIONS.FISH.fn = function(act)
         if(act.doer and act.doer:HasTag("player") and act.doer:HasTag("notarget")) then
-            act.doer:RemoveTag("notarget")
-            sneakBuff:ForceState("off")
+            leavestealth(act.doer)
         end
         return action_old(act)
     end
     local action_old=ACTIONS.USEITEM.fn
     ACTIONS.USEITEM.fn = function(act)
         if(act.doer and act.doer:HasTag("player") and act.doer:HasTag("notarget")) then
-            act.doer:RemoveTag("notarget")
-            sneakBuff:ForceState("off")
+            leavestealth(act.doer)
         end
         return action_old(act)
     end
@@ -269,25 +270,32 @@ local fn = function(inst)
     local action_old=ACTIONS.READ.fn
     ACTIONS.READ.fn = function(act)
         if(act.doer and act.doer:HasTag("player") and act.doer:HasTag("notarget")) then
-            act.doer:RemoveTag("notarget")
-            sneakBuff:ForceState("off")
+            leavestealth(act.doer)
+        end
+        return action_old(act)
+    end
+
+    local action_old=ACTIONS.PICK.fn
+    ACTIONS.PICK.fn = function(act)
+         if(act.doer and act.doer:HasTag("player") and act.doer:HasTag("notarget")and act.target.components.pickable and act.target.components.pickable.product 
+            and (act.target.components.pickable.product=="cutgrass" or act.target.components.pickable.product=="twigs") ) then
+            leavestealth(act.doer)
         end
         return action_old(act)
     end
 
 
-    inst.StatusDisplaysInit = function (class)
+    inst.newControlsInit = function (class)
                 sneakBuff=SneakBuff(class.owner)
                 class.rage = class:AddChild(sneakBuff)
-                class.rage:SetPosition(0,-100,0)
+                class.rage:SetPosition(0,0,0)
                 class.rage:SetOnClick(function(state) 
                      print("onclick",state) 
                         if(state and state=="on") then
 --                                inst.sg:GoToState("hide")
-                                inst:AddTag("notarget")
                                 inst.sg:GoToState("sneak")
                         elseif(inst:HasTag("notarget"))then
-                            inst:RemoveTag("notarget")
+                            leavestealth(act.doer)
                             inst.sg:GoToState("idle")
                         end
                 end)

@@ -111,9 +111,9 @@ local fn = function(inst)
 	inst.components.sanity:SetMax(150)
 	inst.components.locomotor.runspeed=BASE_MS
 
-	inst.StatusDisplaysInit = function (class)
+	inst.newControlsInit = function (class)
         class.rage = class:AddChild(RageBuff(class.owner))
-        class.rage:SetPosition(0,-100,0)
+        class.rage:SetPosition(0,0,0)
         class.rage:SetOnClick(function(state) 
         	print("onclick",state) 
         	if(state and state=="on") then

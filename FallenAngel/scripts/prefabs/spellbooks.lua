@@ -33,7 +33,7 @@ local debris =
 
 local SPELL_HEAL_AMOUNT=150
 local BUFF_LENGTH=30
-
+local EARTHQUAKE_MINING_EFFICIENCY=6
 
 function tentaclesfn(inst, reader)
     local pt = Vector3(reader.Transform:GetWorldPosition())
@@ -116,6 +116,7 @@ function firefn(inst, reader)
                      v.components.burnable:Ignite()
                     end
                 end
+
                 if( not v:HasTag("player") and not v:HasTag("pet") and v.components.combat) then
                     v.components.combat:GetAttacked(reader, 40, nil)
                 end
@@ -226,7 +227,12 @@ local function quake(inst,reader)
         local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 20,nil, {'smashable'})
         for k,v in pairs(ents) do
             if v  and (not v:HasTag("player") and not v:HasTag("pet"))then  -- quakes shouldn't break the set dressing
-                if(v.components.combat and not v:IsInLimbo())then
+
+                if v.components.workable and v.components.workable.action == ACTIONS.MINE then
+                    local numworks=EARTHQUAKE_MINING_EFFICIENCY
+                     v.components.workable:WorkedBy(reader, numworks)
+
+                elseif(v.components.combat and not v:IsInLimbo())then
                     v.components.combat:GetAttacked(attacker, 100, nil)
                
 
@@ -330,5 +336,5 @@ return MakeSpell("spell_lightning", firefn, 5),
        MakeSpell("spell_grow", growfn, 5),
        MakeSpell("spell_heal", healfn, 5),
        MakeSpell("spell_divinemight", divinemightfn, 5),
-       MakeSpell("spell_firestorm", firefn, 5),
+       MakeSpell("spell_calldiety", earthquakefn, 5),
        MakeSpell("spell_light", lightfn, 5)
