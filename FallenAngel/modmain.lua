@@ -248,10 +248,15 @@ GLOBAL.ACTIONS.RELOAD = RELOAD
 local function newControlsInit(class)
 
     if GetPlayer() and GetPlayer().newControlsInit then
-        local xabilitybar = class.top_root:AddChild(Widget("abilitybar"))
+        local xabilitybar = class.containerroot:AddChild(Widget("abilitybar"))
 --        xabilitybar:SetScale(1,1,1)
-        xabilitybar:SetPosition(0,-30,0)
+--    xabilitybar:SetOffset(GLOBAL.Vector3(0, 0, 0))
+        xabilitybar:SetPosition(0,400,0)
+
+
         GetPlayer().newControlsInit(xabilitybar)
+--            xabilitybar:SetHAnchor(ANCHOR_MIDDLE)
+--    xabilitybar:SetVAnchor(ANCHOR_TOP)
     end
 end
 
