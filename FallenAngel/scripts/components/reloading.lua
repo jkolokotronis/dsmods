@@ -8,7 +8,7 @@ end)
 function Reloading:CollectUseActions(doer, target, actions, right)
     
     if  target.components.reloadable and target.components.reloadable.ammotype == self.ammotype and
-        target.components.finiteuses and target.components.finiteuses.total>target.components.finiteuses.current) then
+        target.components.finiteuses and target.components.finiteuses.total>target.components.finiteuses.current then
         table.insert(actions, ACTIONS.RELOAD)
     end
 

@@ -67,9 +67,9 @@ STRINGS.NAMES.TRAP_ICE = "Ice Trap"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.TRAP_ICE = "Ice Trap"
 STRINGS.RECIPE_DESC.TRAP_ICE = "Ice Trap"
 
-STRINGS.NAMES.TREP_FIRE = "Fire Trap"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.TREP_FIRE = "Fire Trap"
-STRINGS.RECIPE_DESC.TREP_FIRE = "Fire Trap"
+STRINGS.NAMES.TRAP_FIRE = "Fire Trap"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.TRAP_FIRE = "Fire Trap"
+STRINGS.RECIPE_DESC.TRAP_FIRE = "Fire Trap"
 
 STRINGS.NAMES.TRAP_TENTACLE = "Tentacle Trap"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.TRAP_TENTACLE = "Tentacle Trap"
@@ -320,9 +320,9 @@ local fn = function(inst)
     r.image="book_brimstone.tex"
     r=Recipe("trap_doubleteeth", {Ingredient("houndstooth", 5), Ingredient("boards", 2), Ingredient("rocks", 2)}, booktab, {SCIENCE = 2})
     r.image="trap_teeth.tex"
-    r=Recipe("trap_fire", {Ingredient("gunpowder", 4),Ingredient("boards", 2), Ingredient("stone", 2)}, booktab, {SCIENCE = 2})
+    r=Recipe("trap_fire", {Ingredient("gunpowder", 4),Ingredient("boards", 2), Ingredient("rocks", 2)}, booktab, {SCIENCE = 2})
     r.image="trap_teeth.tex"
-    r=Recipe("trap_ice", {Ingredient("feather_robin_winter", 2), Ingredient("boards", 2), Ingredient("stone", 2)}, booktab, {SCIENCE = 2})
+    r=Recipe("trap_ice", {Ingredient("feather_robin_winter", 2), Ingredient("boards", 2), Ingredient("rocks", 2)}, booktab, {SCIENCE = 2})
     r.image="trap_teeth.tex"
     r=Recipe("trap_tentacle", {Ingredient("tentaclespots", 2),Ingredient("boards", 2), Ingredient("nightmarefuel", 2)}, booktab, {MAGIC = 2})
     r.image="trap_teeth.tex"

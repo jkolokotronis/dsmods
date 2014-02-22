@@ -148,8 +148,9 @@ local function red()
 
     inst:AddComponent("reloadable")
     inst.components.reloadable.ammotype="arrows"
-     self.returnuses = 0
-    self.ammotype = nil
+
+    inst:AddComponent("inventoryitem")
+    inst.components.inventoryitem.imagename="nightsword"
 
     return inst
 end

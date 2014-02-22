@@ -205,6 +205,7 @@ local function MakeDefaultTrap()
 	inst:AddComponent("inventoryitem")
 	inst.components.inventoryitem.nobounce = true
 	inst.components.inventoryitem:SetOnDroppedFn(OnDropped)
+    inst.components.inventoryitem.imagename="trap_teeth"
 	
 	inst:AddComponent("mine")
 	inst.components.mine:SetRadius(TUNING.TRAP_TEETH_RADIUS)
