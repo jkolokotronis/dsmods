@@ -49,7 +49,7 @@ local SNEAK_HUNGER_MULT=2.0
 
 
 STRINGS.TABS.SUBTERFUGE = "Subterfuge"
-RECIPETABS["SUBTERFUGE"] = {str = "SUBTERFUGE", sort=999, icon = "trap_teeth.tex"}--, icon_atlas = "images/inventoryimages/herotab.xml"}
+RECIPETABS["SUBTERFUGE"] = {str = "SUBTERFUGE", sort=999, icon = "trap_teeth.tex", icon_atlas = "images/inventoryimages.xml"}
 
 STRINGS.NAMES.BOW = "Bow"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOW = "Bow"

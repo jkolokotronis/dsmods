@@ -246,7 +246,7 @@ GLOBAL.ACTIONS.RELOAD = RELOAD
 
 
 local function newControlsInit(class)
-    local under_root=class.under_root;
+    local under_root=class;
     if GetPlayer() and GetPlayer().newControlsInit then
         local xabilitybar = under_root:AddChild(Widget("abilitybar"))
         xabilitybar:SetPosition(0,-30,0)
@@ -260,8 +260,8 @@ local function newControlsInit(class)
     end
 end
 
-AddClassPostConstruct("screens/playerhud",newControlsInit)
---AddClassPostConstruct("widgets/controls", newControlsInit)
+--AddClassPostConstruct("screens/playerhud",newControlsInit)
+AddClassPostConstruct("widgets/statusdisplays", newControlsInit)
 
 local newFlowerPicked=function(inst,picker)
 
