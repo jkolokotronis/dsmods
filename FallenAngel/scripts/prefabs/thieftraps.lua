@@ -49,7 +49,7 @@ local function OnIceExplode(inst, target)
     		--TODO find better sound 
         	inst.SoundEmitter:PlaySound("dontstarve/common/trap_teeth_trigger")
 --	    	target.components.combat:GetAttacked(inst, TUNING.TRAP_TEETH_DAMAGE*2)
-			target.components.freezable.Freeze(TRAP_FREEZE_TIME)
+			target.components.freezable:Freeze(TRAP_FREEZE_TIME)
 		end
     end
     if inst.components.finiteuses then
@@ -71,7 +71,7 @@ local function OnFireExplode(inst, target)
     
     GetClock():DoLightningLighting()
     
-    GetPlayer().components.playercontroller:ShakeCamera(self.inst, "FULL", 0.7, 0.02, .5, 40)
+    GetPlayer().components.playercontroller:ShakeCamera(inst, "FULL", 0.7, 0.02, .5, 40)
 
     local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, TRAP_EXPLOSION_RANGE)
 
@@ -82,7 +82,7 @@ local function OnFireExplode(inst, target)
 
             if v.components.workable and not v:HasTag("busy") then --Haaaaaaack!
                 v.components.workable:WorkedBy(self.inst, self.buildingdamage)
-            elseif v.components.burnable and not v.components.fueled and self.lightonexplode then
+            elseif v.components.burnable and not v.components.fueled  then
                 v.components.burnable:Ignite()
             end
 

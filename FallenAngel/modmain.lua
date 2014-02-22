@@ -26,6 +26,7 @@ PrefabFiles = {
     "dksword",
     "thieftraps",
     "arrows",
+    "bow",
     "spellbooks",
     "shields",
 	"thief",
@@ -40,9 +41,6 @@ PrefabFiles = {
     "necropet",
     "wizard",
     "tinkerer",
-    "thieftraps",
-    "arrows",
-    "bow"
 }
 
 Assets = {

@@ -16,7 +16,7 @@ function Reloadable:Reload(doer, item)
 	local max=self.inst.components.finiteuses.total
 	local current=self.inst.components.finiteuses.current
 	if(max>current)then
-		self.inst.components.finiteuses:SetUses(math.min(max,current+item.returnuses))
+		self.inst.components.finiteuses:SetUses(math.min(max,current+item.components.reloading.returnuses))
 		if(item.components.stackable)then
 			item.components.stackable:Get():Remove()
 		else
