@@ -1,7 +1,7 @@
 -- This information tells other players more about the mod
-name = "Fallen Angel"
+name = "Hero in the Dark"
 description = "wah wah"
-author = "Graham Jans (Ipsquiggle)"
+author = ""
 version = "1.0"
 
 -- This is the URL name of the mod's thread on the forum; the part after the index.php? and before the first & in the URL

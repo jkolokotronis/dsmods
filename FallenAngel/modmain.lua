@@ -27,6 +27,7 @@ PrefabFiles = {
     "thieftraps",
     "arrows",
     "spellbooks",
+    "shields",
 	"thief",
 	"barb",
 	"cleric",
@@ -162,20 +163,25 @@ GLOBAL.STRINGS.CHARACTERS.THIEF = {}
 GLOBAL.STRINGS.CHARACTERS.THIEF.DESCRIBE = {}
 GLOBAL.STRINGS.CHARACTERS.THIEF.DESCRIBE.EVERGREEN = "A template description of a tree."
 
-GLOBAL.STRINGS.NAMES.ARROW = "Arrow"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARROW="Arrow"
 GLOBAL.STRINGS.NAMES.BOW = "Bow"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARROW="Bow"
-GLOBAL.STRINGS.NAMES.FIRETRAP = "FIRETRAP"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FIRETRAP="FIRETRAP"
-GLOBAL.STRINGS.NAMES.SPIKETRAP = "SPIKETRAP"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPIKETRAP="SPIKETRAP"
-GLOBAL.STRINGS.NAMES.ICETRAP = "ICETRAP"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ICETRAP="ICETRAP"
-GLOBAL.STRINGS.NAMES.TENTACLETRAP = "TENTACLETRAP"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.TENTACLETRAP="TENTACLETRAP"
-GLOBAL.STRINGS.NAMES.TELEPORTTRAP = "TELEPORTTRAP"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.TELEPORTTRAP="TELEPORTTRAP"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOW = "Bow"
+GLOBAL.STRINGS.RECIPE_DESC.BOW = "Bow"
+GLOBAL.STRINGS.NAMES.ARROWS = "Arrows"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARROWS = "Arrows"
+GLOBAL.STRINGS.RECIPE_DESC.ARROWS = "Arrows"
+GLOBAL.STRINGS.NAMES.WOODENSHIELD = "Wooden Shield"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.WOODENSHIELD = "Wooden Shield"
+GLOBAL.STRINGS.RECIPE_DESC.WOODENSHIELD = "Wooden Shield"
+GLOBAL.STRINGS.NAMES.ROCKSHIELD = "Rock Shield"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ROCKSHIELD = "Rock Shield"
+GLOBAL.STRINGS.RECIPE_DESC.ROCKSHIELD = "Rock Shield"
+GLOBAL.STRINGS.NAMES.MARBLESHIELD = "Marble Shield"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.MARBLESHIELD = "Marble Shield"
+GLOBAL.STRINGS.RECIPE_DESC.MARBLESHIELD = "Marble Shield"
+GLOBAL.STRINGS.NAMES.BONESHIELD = "Bone Shield"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.BONESHIELD = "Bone Shield"
+GLOBAL.STRINGS.RECIPE_DESC.BONESHIELD = "Bone Shield"
+
 
 GLOBAL.STRINGS.ACTIONS.RELOAD="Reload"
 
@@ -353,6 +359,19 @@ AddSimPostInit(function(inst)
                 end
 
 
+        end
+        if inst:HasTag("player") and (inst.prefab=="darkknight" or inst.prefab=="cleric" or inst.prefab=="pally") then
+            --add shields
+            local r=Recipe("woodenshield", {Ingredient("log", 20),Ingredient("rope", 5) }, RECIPETABS.WAR,  GLOBAL.TECH.SCIENCE_ONE)
+            r.image="wdshield.tex"
+            r.atlas = "images/inventoryimages/wdshield.xml"
+            local r=Recipe("rockshield", {Ingredient("rocks", 20),Ingredient("rope", 5)}, RECIPETABS.WAR,  GLOBAL.TECH.SCIENCE_TWO)    
+            r.image="shield.tex"
+            r.atlas = "images/inventoryimages/shield.xml"
+            local r=Recipe("marbleshield", {Ingredient("marble", 20),Ingredient("rope", 5) }, RECIPETABS.WAR,  GLOBAL.TECH.SCIENCE_TWO)
+            r.image="shield.tex"
+            r.atlas = "images/inventoryimages/shield.xml"
+--            Recipe("boneshield", {Ingredient("bone", 1),Ingredient("rope", 5) }, RECIPETABS.WAR,  TECH.SCIENCE_TWO)
         end
 end)
 --\
