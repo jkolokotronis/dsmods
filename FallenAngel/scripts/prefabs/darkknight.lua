@@ -45,8 +45,8 @@ local prefabs = {
 --        SANITY_NIGHT_MID = -100/(300*20),
 local HT_RANGE=5
 local HT_DAMAGE=500
-local HT_LEECH=150
-local HT_COOLDOWN=960
+local HT_LEECH=250
+local HT_COOLDOWN=1440
 
 local BLAST_DMG=30
 local BLAST_LEECH=30

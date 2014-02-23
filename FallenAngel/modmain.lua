@@ -25,6 +25,7 @@ local ImageButton = require "widgets/imagebutton"
 
 PrefabFiles = {
     "dksword",
+    "holysword",
     "thieftraps",
     "arrows",
     "bow",
@@ -42,6 +43,7 @@ PrefabFiles = {
     "necropet",
     "wizard",
     "tinkerer",
+    "paladin",
 }
 
 Assets = {
@@ -63,6 +65,8 @@ Assets = {
     Asset( "ATLAS", "images/saveslot_portraits/wizard.xml" ),
     Asset( "IMAGE", "images/saveslot_portraits/tinkerer.tex" ),
     Asset( "ATLAS", "images/saveslot_portraits/tinkerer.xml" ),
+    Asset( "IMAGE", "images/saveslot_portraits/paladin.tex" ),
+    Asset( "ATLAS", "images/saveslot_portraits/paladin.xml" ),
 
     Asset( "IMAGE", "images/selectscreen_portraits/thief.tex" ),
     Asset( "ATLAS", "images/selectscreen_portraits/thief.xml" ),
@@ -82,6 +86,8 @@ Assets = {
     Asset( "ATLAS", "images/selectscreen_portraits/wizard.xml" ),
     Asset( "IMAGE", "images/selectscreen_portraits/tinkerer.tex" ),
     Asset( "ATLAS", "images/selectscreen_portraits/tinkerer.xml" ),
+    Asset( "IMAGE", "images/selectscreen_portraits/paladin.tex" ),
+    Asset( "ATLAS", "images/selectscreen_portraits/paladin.xml" ),
 
     Asset( "IMAGE", "images/selectscreen_portraits/wod_silho.tex" ),
     Asset( "ATLAS", "images/selectscreen_portraits/wod_silho.xml" ),
@@ -102,7 +108,8 @@ Assets = {
     Asset( "ATLAS", "bigportraits/wizard.xml" ),
     Asset( "IMAGE", "bigportraits/tinkerer.tex" ),
     Asset( "ATLAS", "bigportraits/tinkerer.xml" ),
-
+    Asset( "IMAGE", "bigportraits/paladin.tex" ),
+    Asset( "ATLAS", "bigportraits/paladin.xml" ),
 
 }
 
@@ -155,6 +162,11 @@ GLOBAL.STRINGS.CHARACTER_TITLES.tinkerer = "tinkerer"
 GLOBAL.STRINGS.CHARACTER_NAMES.tinkerer = "tinkerer"
 GLOBAL.STRINGS.CHARACTER_DESCRIPTIONS.tinkerer = "* An example of how to create a mod character."
 GLOBAL.STRINGS.CHARACTER_QUOTES.tinkerer = "\"I am a blank slate.\""
+
+GLOBAL.STRINGS.CHARACTER_TITLES.paladin = "paladin"
+GLOBAL.STRINGS.CHARACTER_NAMES.paladin = "paladin"
+GLOBAL.STRINGS.CHARACTER_DESCRIPTIONS.paladin = "* An example of how to create a mod character."
+GLOBAL.STRINGS.CHARACTER_QUOTES.paladin = "\"I am a blank slate.\""
 -- You can also add any kind of custom dialogue that you would like. Don't forget to make
 -- categores that don't exist yet using = {}
 -- note: these are UPPER-CASE charcacter name
@@ -233,6 +245,7 @@ table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "monk")
 table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "necromancer")
 table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "wizard")
 table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "tinkerer")
+table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "paladin")
 
 local PetBuff = require "widgets/petbuff"
 
@@ -378,7 +391,7 @@ AddSimPostInit(function(inst)
 
 
         end
-        if inst:HasTag("player") and (inst.prefab=="darkknight" or inst.prefab=="cleric" or inst.prefab=="pally") then
+        if inst:HasTag("player") and (inst.prefab=="darkknight" or inst.prefab=="cleric" or inst.prefab=="paladin") then
             --add shields
             local r=Recipe("woodenshield", {Ingredient("log", 20),Ingredient("rope", 5) }, RECIPETABS.WAR,  GLOBAL.TECH.SCIENCE_ONE)
             r.image="wdshield.tex"
@@ -403,4 +416,5 @@ AddModCharacter("monk")
 AddModCharacter("necromancer")
 AddModCharacter("wizard")
 AddModCharacter("tinkerer")
+AddModCharacter("paladin")
 
