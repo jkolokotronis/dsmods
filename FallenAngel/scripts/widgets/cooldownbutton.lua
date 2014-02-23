@@ -55,14 +55,15 @@ local CooldownButton = Class(Widget, function(self, data)
 end)
 
 function CooldownButton:countdownfn()
-print("self",self)
-print("cool",self.cooldowntimer)
     self.cooldowntimer=self.cooldowntimer-1
     if(self.cooldowntimer<=0)then
         self.cooldowntask:Cancel()
         self.cooldowntask=nil
         self:Enable()
         self.cooldowntext:Hide()
+        if(self.OnCountdownOver)then
+            self.OnCountdownOver()
+        end
     else
         self.cooldowntext:SetString(""..self.cooldowntimer)
     end    
@@ -70,7 +71,6 @@ end
 
 function CooldownButton:OnMouseButton(button, down, x, y)
 	if not self.focus then return false end
-    print("onmousedown",button,down,x,y)
     if(button==MOUSEBUTTON_LEFT and not down) then
     	self:DoClick()
     end
@@ -84,6 +84,9 @@ function CooldownButton:SetCooldown(cd)
     self.cooldown=cd
 end
 
+function CooldownButton:SetOnCountdownOver(fn)
+    self.OnCountdownOver=fn
+end
 --[[
 function CooldownButton:OnGainFocus()
 	if(not self.cooldowntask) then
@@ -143,6 +146,7 @@ function CooldownButton:ForceCooldown(state)
     self.cooldowntimer=state
     if(state>0)then
         self:Disable()
+        self:Show()
         self.cooldowntext:Show()
         self.cooldowntext:SetString(""..self.cooldown)
         self.cooldowntask=GetPlayer():DoPeriodicTask(1, function() self:countdownfn() end)

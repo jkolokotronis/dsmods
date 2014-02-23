@@ -32,8 +32,11 @@ local debris =
 }
 
 local SPELL_HEAL_AMOUNT=150
-local BUFF_LENGTH=30
 local EARTHQUAKE_MINING_EFFICIENCY=6
+local EARTHQUAKE_DAMAGE=100
+local CALL_DIETY_DAMAGE=100
+local BUFF_LENGTH=100
+local BB_LENGTH=12
 
 function tentaclesfn(inst, reader)
     local pt = Vector3(reader.Transform:GetWorldPosition())
@@ -111,14 +114,14 @@ function firefn(inst, reader)
             lightning.Transform:SetPosition(pos:Get())
             local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 20)
             for k,v in pairs(ents) do
-                if not v:IsInLimbo() then
+                if not v:HasTag("player") and not v:HasTag("pet") and not v:IsInLimbo() then
                     if v.components.burnable and not v.components.fueled then
                      v.components.burnable:Ignite()
                     end
-                end
 
-                if( not v:HasTag("player") and not v:HasTag("pet") and v.components.combat) then
-                    v.components.combat:GetAttacked(reader, 40, nil)
+                    if(v.components.combat) then
+                        v.components.combat:GetAttacked(reader, 40, nil)
+                    end
                 end
             end
            Sleep(math.random( .3, .5))-- 
@@ -136,40 +139,22 @@ end
 
 function divinemightfn(inst, reader)
     reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
-    reader.origDamageMultiplier=reader.origDamageMultiplier or reader.components.combat.damagemultiplier
-    reader.components.combat.damagemultiplier=DAMAGE_MULT
---    inst.components.health:SetMaxHealth(300)
-    if(reader.divineMightTimer) then
-        reader.divineMightTimer:Cancel()
-    end
-    reader.divineMightTimer=reader:DoTaskInTime(BUFF_LENGTH, function() 
-        reader.divineMightTimer=nil 
-        reader.components.combat.damagemultiplier=reader.origDamageMultiplier
-    end)
+    reader.buff_timers["divinemight"]:ForceCooldown(BUFF_LENGTH)
+    DivineMightSpellStart(inst, reader,BUFF_LENGTH)
     return true
 end
 
 function lightfn(inst, reader)
     reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
-    --it WILL crash and burn if applied to wx
-    if(not reader.Light) then
-        reader.entity:AddLight()
-    end
+    reader.buff_timers["light"]:ForceCooldown(BUFF_LENGTH)
+    LightSpellStart(inst, reader,BUFF_LENGTH)
+    return true
+end
 
-    if(reader.lightTimer) then
-        reader.lightTimer:Cancel()
-    end
-    reader.Light:SetRadius(3)
-    reader.Light:SetFalloff(0.75)
-    reader.Light:SetIntensity(.9)
-    reader.Light:SetColour(235/255,121/255,12/255)
-
-    reader.Light:Enable(true)
-    
-    reader.lightTimer=reader:DoTaskInTime(BUFF_LENGTH, function() 
-        reader.lightTimer=nil
-        reader.Light:Enable(false)
-    end)
+function bladebarrierfn(inst,reader)
+    reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
+    reader.buff_timers["bladebarrier"]:ForceCooldown(BB_LENGTH)
+    BladeBarrierSpellStart(inst, reader,BB_LENGTH)
     return true
 end
 
@@ -233,7 +218,7 @@ local function quake(inst,reader)
                      v.components.workable:WorkedBy(reader, numworks)
 
                 elseif(v.components.combat and not v:IsInLimbo())then
-                    v.components.combat:GetAttacked(attacker, 100, nil)
+                    v.components.combat:GetAttacked(attacker, EARTHQUAKE_DAMAGE, nil)
                
 
                 local spawn_point= Vector3(v.Transform:GetWorldPosition())
@@ -265,6 +250,27 @@ local function quake(inst,reader)
         end
 end
 
+function calldietyfn(inst,reader)
+    reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
+    TheCamera:Shake("FULL", 0.3, 0.02, .5, 40)
+    inst.SoundEmitter:PlaySound("dontstarve/cave/earthquake", "earthquake")
+    inst.SoundEmitter:SetParameter("earthquake", "intensity", 1)
+    local attacker=reader
+    local pos=Vector3(reader.Transform:GetWorldPosition())
+
+        local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 20,nil, {'smashable'})
+        for k,v in pairs(ents) do
+            if v  and (not v:HasTag("player") and not v:HasTag("pet"))then  -- quakes shouldn't break the set dressing
+
+
+                if(v.components.combat and not v:IsInLimbo())then
+                    v.components.combat:GetAttacked(attacker, CALL_DIETY_DAMAGE, nil)
+                end
+            end
+        end
+     inst:DoTaskInTime(3, function() inst.SoundEmitter:KillSound("earthquake") end)
+    return true
+end
 
 function earthquakefn(inst,reader)
     reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
@@ -336,5 +342,6 @@ return MakeSpell("spell_lightning", firefn, 5),
        MakeSpell("spell_grow", growfn, 5),
        MakeSpell("spell_heal", healfn, 5),
        MakeSpell("spell_divinemight", divinemightfn, 5),
-       MakeSpell("spell_calldiety", earthquakefn, 5),
-       MakeSpell("spell_light", lightfn, 5)
+       MakeSpell("spell_calldiety", calldietyfn, 5),
+       MakeSpell("spell_light", lightfn, 5),
+       MakeSpell("spell_bladebarrier", bladebarrierfn, 5)

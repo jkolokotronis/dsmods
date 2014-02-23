@@ -1,5 +1,6 @@
 
 local MakePlayerCharacter = require "prefabs/player_common"
+local CooldownButton = require "widgets/cooldownbutton"
 
 
 local assets = {
@@ -55,6 +56,38 @@ STRINGS.NAMES.SPELL_HEAL = "Heal"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_HEAL = "Heal"
 STRINGS.RECIPE_DESC.SPELL_HEAL = "Heal"
 
+STRINGS.NAMES.SPELL_BLADEBARRIER = "Blade Barrier"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_BLADEBARRIER = "Blade Barrier"
+STRINGS.RECIPE_DESC.SPELL_BLADEBARRIER = "Blade Barrier"
+
+local initBuffBar=function(inst,buff,timer,class,name)
+        inst.buff_timers[buff]=CooldownButton(class.owner)
+        inst.buff_timers[buff]:SetText(name)
+        --override clicks to never work
+        inst.buff_timers[buff]:SetOnClick(function() return false end)
+        inst.buff_timers[buff]:SetOnCountdownOver(function() inst.buff_timers[buff]:Hide() end)
+        if(timer and timer>0)then
+             inst.buff_timers[buff]:ForceCooldown(timer)
+        else
+            inst.buff_timers[buff]:Hide()
+        end
+        local btn=class:AddChild(inst.buff_timers[buff])
+        return btn
+end
+
+
+local onloadfn = function(inst, data)
+    inst.lightBuffUp=data.lightBuffUp
+    inst.dmBuffUp=data.dmBuffUp
+    inst.bbBuffUp=data.bbBuffUp
+end
+
+local onsavefn = function(inst, data)
+    data.lightBuffUp=inst.buff_timers["light"].cooldowntimer
+    data.dmBuffUp=inst.buff_timers["divinemight"].cooldowntimer
+    data.bbBuffUp=inst.buff_timers["bladebarrier"].cooldowntimer
+end
+
 
 
 local fn = function(inst)
@@ -73,6 +106,14 @@ local fn = function(inst)
 
     inst:AddComponent("reader")
 
+    inst.buff_timers={}
+--    inst.buff_timers["light"]={}
+--    inst.buff_timers["divinemight"]={}
+--    inst.buff_timers["bladebarrier"]={}
+
+    inst.OnLoad = onloadfn
+    inst.OnSave = onsavefn
+
     local booktab=RECIPETABS.SPELLS
 --    inst.components.builder:AddRecipeTab(booktab)
     local r=Recipe("spell_divinemight", {Ingredient("papyrus", 2), Ingredient("nightmarefuel", 2)}, booktab, {SCIENCE = 0, MAGIC = 0, ANCIENT = 0})
@@ -83,6 +124,17 @@ local fn = function(inst)
     r.image="book_gardening.tex"
     r=Recipe("spell_heal", {Ingredient("papyrus", 2), Ingredient("redgem", 1)}, booktab, {MAGIC = 3})
     r.image="book_gardening.tex"
+    r=Recipe("spell_bladebarrier", {Ingredient("papyrus", 2), Ingredient("redgem", 1)}, booktab, {MAGIC = 3})
+    r.image="book_gardening.tex"
+
+    inst.newControlsInit = function (class)
+        local btn=initBuffBar(inst,"light",inst.lightBuffUp,class,"light")
+        btn:SetPosition(-100,0,0)
+        local btn=initBuffBar(inst,"divinemight",inst.dmBuffUp,class,"DM")
+        btn:SetPosition(0,0,0)
+        local btn=initBuffBar(inst,"bladebarrier",inst.bbBuffUp,class,"BB")
+        btn:SetPosition(100,0,0)
+    end
 
 end
 

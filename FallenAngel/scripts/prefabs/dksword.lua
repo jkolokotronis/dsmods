@@ -6,6 +6,7 @@ local assets=
 }
 
 local DK_SWORD_LEECH=5
+local DK_SWORD_DAMAGE=40
 
 local function onattack(inst, attacker, target)
     if(attacker and attacker.components.health)then
@@ -44,7 +45,7 @@ local function fn(Sim)
     inst:AddTag("sharp")
     
     inst:AddComponent("weapon")
-    inst.components.weapon:SetDamage(TUNING.NIGHTSWORD_DAMAGE)
+    inst.components.weapon:SetDamage(DK_SWORD_DAMAGE)
     inst.components.weapon:SetOnAttack(onattack)
     
     inst:AddComponent("inspectable")

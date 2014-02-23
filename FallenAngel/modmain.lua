@@ -5,6 +5,7 @@ local Widget = require "widgets/widget"
 require "widgets/text"
 require "stategraph"
 require "constants"
+require "buffutil"
 --
 local Ingredient = GLOBAL.Ingredient
 local RECIPETABS = GLOBAL.RECIPETABS
@@ -293,6 +294,25 @@ end
 AddPrefabPostInit("flower", function(inst) inst.components.pickable.onpickedfn=newFlowerPicked end)
 AddPrefabPostInit("flower_evil", function(inst) inst.components.pickable.onpickedfn=newFlowerPicked end)
 
+
+AddComponentPostInit("dapperness", function(component,inst) 
+    function component:GetDapperness(owner)
+         local d=self.dapperness or 0
+        if self.dapperfn then
+            d=self.dapperfn(self.inst,owner)
+        end
+        print("got in override")
+        if(owner and owner:HasTag("player") and owner.prefab=="cleric" and d<0)then
+            print("got in dapperness nerf")
+            d=d*2
+        end
+        return d
+    end
+end)
+
+--AddClassPostConstruct("dapperness",function(class) )
+
+
 AddSimPostInit(function(inst)
         if inst:HasTag("player") and inst:HasTag("evil") then
 
@@ -302,7 +322,7 @@ AddSimPostInit(function(inst)
                     local total_dapperness = self.dapperness or 0
                     local mitigates_rain = false
                     for k,v in pairs (self.inst.components.inventory.equipslots) do
-                        if v.components.dapperness then
+                        if v.components.dapperness and v.prefab~="nightsword" and v.prefab~="armor_sanity" then
                             total_dapperness = total_dapperness + v.components.dapperness:GetDapperness(self.inst)
                             if v.components.dapperness.mitigates_rain then
                               mitigates_rain = true

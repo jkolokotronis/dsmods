@@ -61,13 +61,7 @@ local function spawnPet(inst)
     if(pet and not pet.components.health:IsDead())then
         return
     end
---    local pet=TheSim:FindFirstEntityWithTag("pet")
-
---    if(pet)then
---        inst.pet=pet
---    else
-        inst.pet = SpawnPrefab("darkknightpet")
---    end
+    inst.pet = SpawnPrefab("darkknightpet")
     inst.pet.Transform:SetPosition(inst.Transform:GetWorldPosition())
     inst.SoundEmitter:PlaySound("dontstarve/common/ghost_spawn")
     inst.components.leader:AddFollower(inst.pet)
