@@ -268,13 +268,14 @@ local function newControlsInit(class)
     if GetPlayer() and GetPlayer().newControlsInit then
         local xabilitybar = under_root:AddChild(Widget("abilitybar"))
         xabilitybar:SetPosition(0,-30,0)
-
-
-    xabilitybar:SetScaleMode(GLOBAL.SCALEMODE_PROPORTIONAL)
-    xabilitybar:SetMaxPropUpscale(1.25)
+        xabilitybar:SetScaleMode(GLOBAL.SCALEMODE_PROPORTIONAL)
+        xabilitybar:SetMaxPropUpscale(1.25)
+        xabilitybar:SetHAnchor(GLOBAL.ANCHOR_MIDDLE)
+        xabilitybar:SetVAnchor(GLOBAL.ANCHOR_TOP)
         GetPlayer().newControlsInit(xabilitybar)
-            xabilitybar:SetHAnchor(GLOBAL.ANCHOR_MIDDLE)
-    xabilitybar:SetVAnchor(GLOBAL.ANCHOR_TOP)
+    end
+    if GetPlayer() and GetPlayer().newStatusDisplaysInit then
+        GetPlayer().newStatusDisplaysInit(class)
     end
 end
 

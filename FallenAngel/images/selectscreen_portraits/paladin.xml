@@ -1,3 +1,3 @@
-<Atlas><Texture filename="darkknight.tex" />
-    <Elements><Element name="darkknight.tex" u1="0" u2="1" v1="0" v2="1" />
+<Atlas><Texture filename="paladin.tex" />
+    <Elements><Element name="paladin.tex" u1="0" u2="1" v1="0" v2="1" />
 </Elements></Atlas>

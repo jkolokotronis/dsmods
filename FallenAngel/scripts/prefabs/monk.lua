@@ -1,5 +1,7 @@
 
 local MakePlayerCharacter = require "prefabs/player_common"
+local KiBadge=require "widgets/kibadge"
+local KiBar=require "components/kibar"
 
 
 local assets = {
@@ -38,7 +40,32 @@ local prefabs = {}
 
 local BASE_MS=1.5*TUNING.WILSON_RUN_SPEED
 local UNARMED_DAMAGE=TUNING.UNARMED_DAMAGE*3
+local MAX_KI=100
+local KI_ATTACK_INCREASE=5
 
+
+local kidelta=function(status,data)
+    status.ki:SetPercent(data.newpercent, status.owner.components.kibar.max)
+    
+    if not data.overtime then
+        if data.newpercent > data.oldpercent then
+            status.ki:PulseGreen()
+            TheFrontEnd:GetSound():PlaySound("dontstarve/HUD/sanity_up")
+        elseif data.newpercent < data.oldpercent then
+            status.ki:PulseRed()
+            TheFrontEnd:GetSound():PlaySound("dontstarve/HUD/sanity_down")
+        end
+    end
+    
+end
+
+local onhitother=function(inst,data)
+    local damage=data.damage
+    local weapon=inst.components.combat:GetWeapon()
+    if(damage and damage>0 and (not weapon or weapon:HasTag("unarmed")))then
+        inst.components.kibar:DoDelta(KI_ATTACK_INCREASE)
+    end
+end
 
 local fn = function(inst)
 	
@@ -55,7 +82,23 @@ local fn = function(inst)
 	inst.components.hunger:SetMax(150)
     inst.components.combat:SetDefaultDamage(UNARMED_DAMAGE)
 
-    
+    inst:AddComponent("kibar")
+    inst.components.kibar.max=MAX_KI
+    inst.components.kibar.current=0
+
+    inst:ListenForEvent("onhitother", onhitother)
+
+
+    inst.newStatusDisplaysInit= function(class)
+
+        class.brain:SetPosition(-40,-40,0)
+
+        class.ki = class:AddChild(KiBadge(class.owner))
+        class.ki:SetPercent(class.owner.components.kibar:GetPercent(), class.owner.components.kibar.max)
+        class.ki:SetPosition(40,-40,0)
+
+        class.inst:ListenForEvent("kidelta", function(inst, data)  kidelta(class,data) end, class.owner)
+    end
 end
 
 return MakePlayerCharacter("monk", prefabs, assets, fn)
