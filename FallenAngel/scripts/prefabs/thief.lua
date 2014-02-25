@@ -47,11 +47,7 @@ local RANGE_MULTIPLIER=1.5
 local ASSASSINATION_MULTIPLIER=5
 local SNEAK_HUNGER_MULT=2.0
 
-
 STRINGS.TABS.SUBTERFUGE = "Subterfuge"
-RECIPETABS["SUBTERFUGE"] = {str = "SUBTERFUGE", sort=999, icon = "trap_teeth.tex", icon_atlas = "images/inventoryimages.xml"}
-
-
 
 STRINGS.NAMES.TRAP_DOUBLETEETH = "Double Teeth Trap"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.TRAP_DOUBLETEETH = "Double Teeth Trap"
@@ -144,7 +140,6 @@ local fn = function(inst)
         end,
         
         onexit = function(inst)
-            print("sneak exit")
 --            inst:RemoveTag("notarget")
         end,
         
@@ -164,7 +159,6 @@ local fn = function(inst)
         end,
         
         onexit = function(inst)
-            print("sneak idle exit")
 --            inst:RemoveTag("notarget")
         end
         
@@ -306,6 +300,7 @@ local fn = function(inst)
         return action_old(act)
     end
 
+RECIPETABS["SUBTERFUGE"] = {str = "SUBTERFUGE", sort=999, icon = "trap_teeth.tex", icon_atlas = "images/inventoryimages.xml"}
     local booktab=RECIPETABS.SUBTERFUGE
 --    inst.components.builder:AddRecipeTab(booktab)
     local r=Recipe("arrows", {Ingredient("twigs", 5), Ingredient("houndstooth", 1)}, booktab, {SCIENCE = 1})

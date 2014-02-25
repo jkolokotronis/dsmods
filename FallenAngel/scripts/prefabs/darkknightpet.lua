@@ -167,7 +167,7 @@ local function fn(Sim)
     inst.components.health:StartRegen(5,5)
     inst.components.health:SetInvincible(false)
 
-    local brain = require "brains/abigailbrain"
+    local brain = require "brains/darkknightpetbrain"
     inst:SetBrain(brain)
 
     

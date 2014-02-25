@@ -1,20 +1,20 @@
 local KiBar = Class(function(self, inst)
     self.inst = inst
-    self.max = 100
+    self.max = 200
     self.current = self.max
 
-    self.decrate = 1
-    self.period = 1
+    self.decrate = 10
+    self.period = 60
     
 --    self.task = self.inst:DoPeriodicTask(self.period, function() self:DoDec(self.period) end)
 	self.inst:ListenForEvent("respawn", function(inst) self:OnRespawn() end)
+    self.task = self.inst:DoPeriodicTask(self.period, function() self:DoDec(self.period) end)
 	
 end)
 
 
 function KiBar:OnRespawn()
-	
-end
+	end
 
 function KiBar:OnSave()
     if self.current ~= self.max then
@@ -26,6 +26,12 @@ function KiBar:OnLoad(data)
     if data.ki then
         self.current = data.ki
         self:DoDelta(0)
+    end
+end
+
+function KiBar:DoDc(dt)
+    if(self.current>0)then
+        self:DoDelta(-self.decrate*dt/self.period)
     end
 end
 

@@ -38,7 +38,6 @@ local assets = {
 local prefabs = {}
 
 STRINGS.TABS.SPELLS = "Spells"
-RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon_atlas = "images/inventoryimages/herotab.xml"}
 
 STRINGS.NAMES.SPELL_DIVINEMIGHT = "Divine Might"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_DIVINEMIGHT = "Divine Might"
@@ -114,6 +113,7 @@ local fn = function(inst)
     inst.OnLoad = onloadfn
     inst.OnSave = onsavefn
 
+RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon_atlas = "images/inventoryimages/herotab.xml"}
     local booktab=RECIPETABS.SPELLS
 --    inst.components.builder:AddRecipeTab(booktab)
     local r=Recipe("spell_divinemight", {Ingredient("papyrus", 2), Ingredient("nightmarefuel", 2)}, booktab, {SCIENCE = 0, MAGIC = 0, ANCIENT = 0})

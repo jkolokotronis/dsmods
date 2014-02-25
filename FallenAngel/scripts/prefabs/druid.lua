@@ -46,7 +46,6 @@ local prefabs = {
 }
 
 STRINGS.TABS.SPELLS = "Spells"
-RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon_atlas = "images/inventoryimages/herotab.xml"}
 
 STRINGS.NAMES.SPELL_LIGHTNING = "Call Lightning"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_LIGHTNING = "Call Lightning"
@@ -242,6 +241,7 @@ local fn = function(inst)
 
     inst:AddComponent("reader")
 
+RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon_atlas = "images/inventoryimages/herotab.xml"}
     local booktab=RECIPETABS.SPELLS
 --    inst.components.builder:AddRecipeTab(booktab)
     local r=Recipe("spell_lightning", {Ingredient("papyrus", 2), Ingredient("nightmarefuel", 2)}, booktab, {SCIENCE = 0, MAGIC = 0, ANCIENT = 0})

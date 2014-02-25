@@ -34,10 +34,32 @@ local assets = {
 		-- Don't forget to include your character's custom assets!
         Asset( "ANIM", "anim/tinkerer.zip" ),
 }
-local prefabs = {}
+local prefabs = {
+    "rjk1100",
+    "fizzlemanipulator",
+    "fizzlepet"
+}
 
 local DAMAGE_MULT=0.5
 local BASE_MS=1.25*TUNING.WILSON_RUN_SPEED
+
+STRINGS.TABS.TINKERING = "Tinkering"
+
+STRINGS.NAMES.FIZZLEMANIPULATOR = "Ecological manipulator of power"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.FIZZLEMANIPULATOR = "Who knew poop could be so much fun"
+STRINGS.RECIPE_DESC.FIZZLEMANIPULATOR = "Who knew poop could be so much fun"
+
+STRINGS.NAMES.RJK1100 = "RJK-1100 prototype rabbit station"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.RJK1100 = "Fizzlegear's Class RJK-1100 prototype rabbit station"
+STRINGS.RECIPE_DESC.RJK1100 = "Fizzlegear's Class RJK-1100 prototype rabbit station"
+
+STRINGS.NAMES.RJK1100_ITEM = "Fizzlegear's Class RJK-1100 prototype rabbit station"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.RJK1100_ITEM = "Fizzlegear's Class RJK-1100 prototype rabbit station"
+STRINGS.RECIPE_DESC.RJK1100_ITEM = "Fizzlegear's Class RJK-1100 prototype rabbit station"
+
+STRINGS.NAMES.FIZZLEPET = "Fizzlegear's Wonderous Automation Model XXI"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.FIZZLEPET = "It's Alive! Kinda..."
+STRINGS.RECIPE_DESC.FIZZLEPET = "It's Alive! Kinda..."
 
 local fn = function(inst)
 	
@@ -56,6 +78,16 @@ local fn = function(inst)
 	inst.components.hunger:SetMax(150)
 
     
+RECIPETABS["TINKERING"] = {str = "TINKERING", sort=999, icon = "trap_teeth.tex", icon_atlas = "images/inventoryimages.xml"}
+    local booktab=RECIPETABS.TINKERING
+--    inst.components.builder:AddRecipeTab(booktab)
+    local r=Recipe("fizzlemanipulator", {Ingredient("gears", 5), Ingredient("boards", 4),Ingredient("rocks", 4)}, booktab,{SCIENCE = 1},"fizzlemanipulator_placer")
+    r.image="book_brimstone.tex"
+    r=Recipe("rjk1100_item", {Ingredient("houndstooth", 5), Ingredient("boards", 2), Ingredient("rocks", 2)}, booktab, {SCIENCE = 2})
+    r.image="trap_teeth.tex"
+    r=Recipe("fizzlepet", {Ingredient("gears", 15),Ingredient("rope", 5), Ingredient("purplegem", 1), Ingredient("redgem", 1), Ingredient("bluegem", 1)}, booktab, {SCIENCE = 2})
+    r.image="trap_teeth.tex"
+
 end
 
 return MakePlayerCharacter("tinkerer", prefabs, assets, fn)

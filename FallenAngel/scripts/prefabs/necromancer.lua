@@ -39,7 +39,6 @@ local prefabs = {
 }
 
 STRINGS.TABS.SPELLS = "Spells"
-RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon_atlas = "images/inventoryimages/herotab.xml"}
 
 STRINGS.NAMES.SPELL_WAIL = "Call Lightning"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_LIGHTNING = "Call Lightning"
@@ -77,6 +76,8 @@ local fn = function(inst)
     inst:AddTag("evil")
     
     inst:AddComponent("reader")
+    
+RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon_atlas = "images/inventoryimages/herotab.xml"}
 end
 
 return MakePlayerCharacter("necromancer", prefabs, assets, fn)
