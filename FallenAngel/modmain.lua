@@ -24,6 +24,7 @@ local ImageButton = require "widgets/imagebutton"
 --local xx=require "prefabs/spells"
 
 PrefabFiles = {
+    "poopbricks",
     "fizzlepet",
     "fizzlemanipulator",
     "rjk1100",

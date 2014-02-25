@@ -42,6 +42,7 @@ local prefabs = {
 
 local DAMAGE_MULT=0.5
 local BASE_MS=1.25*TUNING.WILSON_RUN_SPEED
+local CLOCKWORK_MULT=6.0
 
 STRINGS.TABS.TINKERING = "Tinkering"
 
@@ -79,6 +80,19 @@ local fn = function(inst)
 	inst.components.health:SetMaxHealth(125)
 	inst.components.sanity:SetMax(300)
 	inst.components.hunger:SetMax(150)
+
+
+    local combatmod=inst.components.combat
+
+    function combatmod:CalcDamage (target, weapon, multiplier)
+
+        local old=Combat.CalcDamage(self,target,weapon,multiplier)
+        if(target and target:HasTag("chess"))then
+                return old*CLOCKWORK_MULT
+        else
+            return old
+        end
+    end
 
     
 RECIPETABS["TINKERING"] = {str = "TINKERING", sort=999, icon = "trap_teeth.tex", icon_atlas = "images/inventoryimages.xml"}

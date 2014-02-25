@@ -46,13 +46,13 @@ local prefabs = {
 local HT_RANGE=5
 local HT_DAMAGE=500
 local HT_LEECH=250
-local HT_COOLDOWN=1440
+local HT_COOLDOWN=1920
 
 local BLAST_DMG=30
 local BLAST_LEECH=30
 local BLAST_HUNGER=-30
 local BLAST_RANGE=15
-local BLAST_COOLDOWN=240
+local BLAST_COOLDOWN=960
 
 
 local function spawnPet(inst)

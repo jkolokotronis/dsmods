@@ -41,15 +41,19 @@ local prefabs = {
 
 --        SANITY_NIGHT_MID = -100/(300*20),
 local LAY_ON_HANDS_HP=250
-local LAY_ON_HANDS_COOLDOWN=1440
+local LAY_ON_HANDS_COOLDOWN=960
+local DIVINE_DEFENDER_COOLDOWN=480*4
+local DIVINE_DEFENDER_DURATION=15
 
 
 local onloadfn = function(inst, data)
     inst.lohcooldowntimer=data.lohcooldowntimer
+    inst.ddcooldowntimer=data.ddcooldowntimer
 end
 
 local onsavefn = function(inst, data)
     data.lohcooldowntimer=inst.lohCooldownButton.cooldowntimer
+    data.ddcooldowntimer=inst.divinedefenderCooldownButton.cooldowntimer
 end
 
 
@@ -86,6 +90,21 @@ local fn = function(inst)
         end
         local htbtn=cnt:AddChild(inst.lohCooldownButton)
         htbtn:SetPosition(-100,0,0)
+
+        inst.divinedefenderCooldownButton=CooldownButton(cnt.owner)
+        inst.divinedefenderCooldownButton:SetText("Defense")
+        inst.divinedefenderCooldownButton:SetOnClick(function()
+            inst.components.health.invincible=true
+            inst:DoTaskInTime(DIVINE_DEFENDER_DURATION, function() inst.components.health.invincible=false end)
+            return true
+        end)
+        inst.divinedefenderCooldownButton:SetCooldown(DIVINE_DEFENDER_COOLDOWN)
+        if(inst.ddcooldowntimer and inst.ddcooldowntimer>0)then
+             inst.divinedefenderCooldownButton:ForceCooldown(inst.ddcooldowntimer)
+             inst.components.health.invincible=false
+        end
+        local htbtn=cnt:AddChild(inst.divinedefenderCooldownButton)
+        htbtn:SetPosition(0,0,0)
 
     end
     local prefabs1 = {

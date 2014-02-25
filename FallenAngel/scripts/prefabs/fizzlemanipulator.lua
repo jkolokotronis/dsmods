@@ -8,10 +8,11 @@ local assets=
 	Asset("ANIM", "anim/cook_pot_food.zip"),
 }
 
-local prefabs = {}
-for k,v in pairs(cooking.recipes.cookpot) do
-	table.insert(prefabs, v.name)
-end
+local prefabs={
+	"poopbricks"
+}
+
+local BUILD_DURATION=10
 
 local function onhammered(inst, worker)
 	if inst.components.stewer.product and inst.components.stewer.done then
@@ -57,10 +58,11 @@ local widgetbuttoninfo = {
 }
 
 local function itemtest(inst, item, slot)
-	if cooking.IsCookingIngredient(item.prefab) then
+	if item.prefab=="poop" then
 		return true
 	end
 end
+
 
 --anim and sound callbacks
 
@@ -80,23 +82,15 @@ local function onopen(inst)
 end
 
 local function onclose(inst)
-	if not inst.components.stewer.cooking then
+	if not inst.cooldowntask then
 		inst.AnimState:PlayAnimation("idle_empty")
 		inst.SoundEmitter:KillSound("snd")
+	else
+		inst.AnimState:PlayAnimation("cooking_loop", true)
 	end
 	inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close", "close")
 end
 
-local function donecookfn(inst)
-	inst.AnimState:PlayAnimation("cooking_pst")
-	inst.AnimState:PushAnimation("idle_full")
-	inst.AnimState:OverrideSymbol("swap_cooked", "cook_pot_food", inst.components.stewer.product)
-	
-	inst.SoundEmitter:KillSound("snd")
-	inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish", "snd")
-	inst.Light:Enable(false)
-	--play a one-off sound
-end
 
 local function continuedonefn(inst)
 	inst.AnimState:PlayAnimation("idle_full")
@@ -115,21 +109,107 @@ local function harvestfn(inst)
 	inst.AnimState:PlayAnimation("idle_empty")
 end
 
-local function getstatus(inst)
-	if inst.components.stewer.cooking and inst.components.stewer:GetTimeToCook() > 15 then
-		return "COOKING_LONG"
-	elseif inst.components.stewer.cooking then
-		return "COOKING_SHORT"
-	elseif inst.components.stewer.done then
-		return "DONE"
-	else
-		return "EMPTY"
-	end
-end
 
 local function onfar(inst)
 	inst.components.container:Close()
 end
+
+
+local function fueltest(inst)
+	if inst.cooldowntask then
+		return true
+	end
+
+        local items=inst.components.container:FindItems(function(item)
+            if(item.prefab=="poop")then
+                return true
+            else
+                return false
+            end
+        end)
+        local taken={}
+        local counter=5
+        for k,v in pairs(items) do
+        	if(counter>0)then
+        	if(v.components.stackable )then
+        		if(v.components.stackable.stacksize<counter)then
+        			table.insert(taken,{item=v,count=-1})
+        			counter=counter-v.components.stackable.stacksize
+        		else
+        			table.insert(taken,{item=v,count=counter})
+        			counter=0
+        			break
+        		end
+        	else
+        		table.insert(taken, {item=v,count=-1})
+        		counter=counter-1
+        	end
+        	end
+        end
+
+        if(counter==0)then
+        	print("starting shit")
+        	for k,v in pairs(taken) do
+        		local count=v.count
+        		local it=v.item
+        		if(count>0)then
+        			for k = 1,count do
+        				inst.components.container:RemoveItem(it,false):Remove()
+        			end
+        		else
+	        		inst.components.container:RemoveItem(v.item,true):Remove()
+	        	end
+        	end
+        	 startcookfn(inst)
+	        inst.buildCooldown=BUILD_DURATION+GetTime()
+    	    inst.cooldowntask=inst:DoTaskInTime(BUILD_DURATION, function() inst.donecookfn(inst) end)
+        end
+        
+end
+
+
+local donecookfn=function(inst)
+	inst.AnimState:PlayAnimation("cooking_pst")
+	inst.AnimState:PushAnimation("idle_full")
+--	inst.AnimState:OverrideSymbol("swap_cooked", "cook_pot_food", inst.components.stewer.product)
+	
+	
+	inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish", "snd")
+	inst.Light:Enable(false)
+	--play a one-off sound
+	local loot = SpawnPrefab("poopbricks")
+        
+	local pt = Point(inst.Transform:GetWorldPosition())
+	        
+	loot.Transform:SetPosition(pt.x,pt.y,pt.z)
+	        
+		local angle = math.random()*2*PI
+		loot.Physics:SetVel(2*math.cos(angle), 10, 2*math.sin(angle))
+
+		if loot and loot.Physics  then
+		pt = pt + Vector3(math.cos(angle), 0, math.sin(angle))*((loot.Physics:GetRadius() or 1) )
+		loot.Transform:SetPosition(pt.x,pt.y,pt.z)
+	end
+	inst.AnimState:PlayAnimation("idle_empty")
+	inst.cooldowntask:Cancel()
+	inst.cooldowntask=nil
+	fueltest(inst)
+end
+
+
+local onloadfn = function(inst, data)
+	if(data.buildCooldown and data.buildCooldown>0)then
+		startcookfn(inst)
+  	    inst.cooldowntask=inst:DoTaskInTime(data.buildCooldown, function() inst.donecookfn(inst) end)
+	end
+end
+
+local onsavefn = function(inst, data)
+	if(inst.cooldowntask)then
+	    data.buildCooldown=GetTime()-inst.buildCooldown
+	end
+end
+
 
 local function onbuilt(inst)
 	inst.AnimState:PlayAnimation("place")
@@ -160,14 +240,8 @@ local function fn(Sim)
     inst.AnimState:SetBuild("cook_pot")
     inst.AnimState:PlayAnimation("idle_empty")
 
-    inst:AddComponent("stewer")
-    inst.components.stewer.onstartcooking = startcookfn
-    inst.components.stewer.oncontinuecooking = continuecookfn
-    inst.components.stewer.oncontinuedone = continuedonefn
-    inst.components.stewer.ondonecooking = donecookfn
-    inst.components.stewer.onharvest = harvestfn
-    
-    
+    inst.buildCooldown=0
+    inst.building=false
     
     inst:AddComponent("container")
     inst.components.container.itemtestfn = itemtest
@@ -177,15 +251,14 @@ local function fn(Sim)
     inst.components.container.widgetanimbuild = "ui_cookpot_1x4"
     inst.components.container.widgetpos = Vector3(200,0,0)
     inst.components.container.side_align_tip = 100
-    inst.components.container.widgetbuttoninfo = widgetbuttoninfo
-    inst.components.container.acceptsstacks = false
+--    inst.components.container.widgetbuttoninfo = widgetbuttoninfo
+
+    inst:ListenForEvent("itemget",fueltest)
+--    inst.components.container.acceptsstacks = false
 
     inst.components.container.onopenfn = onopen
     inst.components.container.onclosefn = onclose
 
-
-    inst:AddComponent("inspectable")
-	inst.components.inspectable.getstatus = getstatus
 
 
     inst:AddComponent("playerprox")
@@ -202,6 +275,9 @@ local function fn(Sim)
 
 	MakeSnowCovered(inst, .01)    
 	inst:ListenForEvent( "onbuilt", onbuilt)
+
+	inst.donecookfn=donecookfn
+
     return inst
 end
 
