@@ -318,9 +318,8 @@ AddComponentPostInit("dapperness", function(component,inst)
         if self.dapperfn then
             d=self.dapperfn(self.inst,owner)
         end
-        print("got in override")
         if(owner and owner:HasTag("player") and owner.prefab=="cleric" and d<0)then
-            print("got in dapperness nerf")
+          --  print("got in dapperness nerf")
             d=d*2
         end
         return d
@@ -410,6 +409,16 @@ AddSimPostInit(function(inst)
         end
 end)
 --\
+
+
+function makestackablePrefabPostInit(inst)
+    if(not inst.components.stackable)then
+    inst:AddComponent("stackable")
+        inst.components.stackable.maxsize = 40
+    end
+end
+
+AddPrefabPostInit("rabbit", makestackablePrefabPostInit)
 
 AddModCharacter("thief")
 AddModCharacter("barb")

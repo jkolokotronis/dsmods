@@ -1,4 +1,5 @@
 require "prefabutil"
+local brain = require "brains/fizzlepetbrain"
 local Container=require"components/container"
 
 
@@ -42,7 +43,7 @@ local function Retarget(inst)
 end
 
 local function ShouldKeepTarget(inst, target)
-    return false -- chester can't attack, and won't sleep if he has a target
+--    return false -- chester can't attack, and won't sleep if he has a target
 end
 
 
@@ -94,6 +95,21 @@ end
 local function refuel(inst)
     inst.brain:Start()
     inst.components.fueled:StartConsuming()
+
+end
+
+
+local onloadfn = function(inst, data)
+    inst.currentfuel=data.currentfuel
+    print("currentfuel",inst.components.fueled.currentfuel)
+    print("onload",data.currentfuel)
+    if(data.currentfuel and data.currentfuel<=0)then
+        inst:StopBrain()
+    end
+end
+
+local onsavefn = function(inst, data)
+    data.currentfuel=inst.components.fueled.currentfuel
 end
 
 local function percentchanged(inst,data)
@@ -117,6 +133,26 @@ local function percentchanged(inst,data)
     end
 end
 
+local function fueltest(inst)
+    percentchanged(inst,{percent=inst.components.fueled:GetPercent()})
+end
+
+
+local function ondeploy(inst, pt, deployer)
+    local turret = SpawnPrefab("fizzlepet") 
+    if turret then 
+        pt = Vector3(pt.x, 0, pt.z)
+        turret.Physics:SetCollides(false)
+        turret.Physics:Teleport(pt.x, pt.y, pt.z) 
+        turret.Physics:SetCollides(true)
+--        turret.syncanim("place")
+--        turret.syncanimpush("idle_loop", true)
+        turret.SoundEmitter:PlaySound("dontstarve/common/place_structure_stone")
+        deployer.components.leader:AddFollower(turret)
+        inst:Remove()
+    end         
+end
+
 local function fn()
     --print("chester - create_chester")
 
@@ -128,6 +164,10 @@ local function fn()
 --    inst:AddTag("chester")
     inst:AddTag("notraptrigger")
     inst:AddTag("pet")
+
+
+    inst.OnLoad=onloadfn
+    inst.OnSave=onsavefn
 
     inst.entity:AddTransform()
 
@@ -206,8 +246,6 @@ local function fn()
     inst:ListenForEvent("stopfollowing", OnStopFollowing)
     inst:ListenForEvent("startfollowing", OnStartFollowing)
 
-    local player=GetPlayer()
-    player.components.leader:AddFollower(inst)
 
     
     --("   container")
@@ -235,6 +273,9 @@ local function fn()
     inst.components.fueled:SetDepletedFn(outoffuel)
     inst.components.fueled.ontakefuelfn = refuel
     inst.components.fueled.accepting = true
+
+
+    inst:ListenForEvent("itemget",fueltest)
     inst:ListenForEvent("percentusedchange",percentchanged)
 
     --print("   sg")
@@ -243,14 +284,58 @@ local function fn()
 
     inst.items=items
     inst.equipfn=EquipItem
+    
+
+
+    inst:SetBrain(brain)    
+
     inst.components.fueled:StartConsuming()
     --print("   brain")
 
-    local brain = require "brains/fizzlepetbrain"
-    inst:SetBrain(brain)    
 
     --print("chester - create_chester END")
     return inst
 end
 
-return Prefab( "common/fizzlepet", fn, assets, prefabs) 
+
+local function itemfn(Sim)
+    local inst = CreateEntity()
+   
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+    MakeInventoryPhysics(inst)
+    
+    inst.AnimState:SetBank("gears")
+    inst.AnimState:SetBuild("gears")
+    inst.AnimState:PlayAnimation("idle")
+
+    inst:AddComponent("inspectable")
+    inst:AddComponent("inventoryitem")
+    inst.components.inventoryitem.imagename="gears"
+    
+
+    --Tag to make proper sound effects play on hit.
+    inst:AddTag("largecreature")
+
+    inst:AddComponent("deployable")
+    inst.components.deployable.ondeploy = ondeploy
+    inst.components.deployable.test = function(inst,pt,deployer) 
+        if(deployer and deployer.components.leader)then
+            local leader=deployer.components.leader
+            for k,v in pairs(leader.followers) do
+                if k.prefab=="fizzlepet" then
+                    return false
+                end
+            end
+        end
+        return true 
+    end
+    inst.components.deployable.min_spacing = 0
+    inst.components.deployable.placer = "fizzlepet_placer"
+    
+    return inst
+end
+
+return Prefab( "common/fizzlepet", fn, assets, prefabs),
+Prefab("common/fizzlepet_box", itemfn, assets, prefabs),
+MakePlacer("common/fizzlepet_placer", "wilson", "wx78", "idle")

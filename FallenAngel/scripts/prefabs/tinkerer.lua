@@ -53,13 +53,16 @@ STRINGS.NAMES.RJK1100 = "RJK-1100 prototype rabbit station"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.RJK1100 = "Fizzlegear's Class RJK-1100 prototype rabbit station"
 STRINGS.RECIPE_DESC.RJK1100 = "Fizzlegear's Class RJK-1100 prototype rabbit station"
 
-STRINGS.NAMES.RJK1100_ITEM = "Fizzlegear's Class RJK-1100 prototype rabbit station"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.RJK1100_ITEM = "Fizzlegear's Class RJK-1100 prototype rabbit station"
-STRINGS.RECIPE_DESC.RJK1100_ITEM = "Fizzlegear's Class RJK-1100 prototype rabbit station"
+STRINGS.NAMES.RJK1100 = "Fizzlegear's Class RJK-1100 prototype rabbit station"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.RJK1100 = "Fizzlegear's Class RJK-1100 prototype rabbit station"
+STRINGS.RECIPE_DESC.RJK1100 = "Fizzlegear's Class RJK-1100 prototype rabbit station"
 
 STRINGS.NAMES.FIZZLEPET = "Fizzlegear's Wonderous Automation Model XXI"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.FIZZLEPET = "It's Alive! Kinda..."
-STRINGS.RECIPE_DESC.FIZZLEPET = "It's Alive! Kinda..."
+
+STRINGS.NAMES.FIZZLEPET_BOX = "Fizzlegear's Wonderous Automation Model XXI"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.FIZZLEPET_BOX = "It's Alive! Kinda..."
+STRINGS.RECIPE_DESC.FIZZLEPET_BOX = "It's Alive! Kinda..."
 
 local fn = function(inst)
 	
@@ -83,9 +86,9 @@ RECIPETABS["TINKERING"] = {str = "TINKERING", sort=999, icon = "trap_teeth.tex",
 --    inst.components.builder:AddRecipeTab(booktab)
     local r=Recipe("fizzlemanipulator", {Ingredient("gears", 5), Ingredient("boards", 4),Ingredient("rocks", 4)}, booktab,{SCIENCE = 1},"fizzlemanipulator_placer")
     r.image="book_brimstone.tex"
-    r=Recipe("rjk1100_item", {Ingredient("houndstooth", 5), Ingredient("boards", 2), Ingredient("rocks", 2)}, booktab, {SCIENCE = 2})
+    r=Recipe("rjk1100", {Ingredient("houndstooth", 5), Ingredient("boards", 2), Ingredient("rocks", 2)}, booktab, {SCIENCE = 2},"rjk1100_placer")
     r.image="trap_teeth.tex"
-    r=Recipe("fizzlepet", {Ingredient("gears", 15),Ingredient("rope", 5), Ingredient("purplegem", 1), Ingredient("redgem", 1), Ingredient("bluegem", 1)}, booktab, {SCIENCE = 2})
+    r=Recipe("fizzlepet_box", {Ingredient("gears", 15),Ingredient("rope", 5), Ingredient("purplegem", 1), Ingredient("redgem", 1), Ingredient("bluegem", 1)}, booktab, {SCIENCE = 2})
     r.image="trap_teeth.tex"
 
 end

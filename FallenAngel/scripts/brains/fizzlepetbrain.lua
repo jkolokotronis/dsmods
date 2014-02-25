@@ -69,6 +69,10 @@ end
 function FizzlePetBrain:OnStart()
     local root = PriorityNode(
     {
+        IfNode(function() return self.inst.components.fueled and self.inst.components.fueled.currentfuel and self.inst.components.fueled.currentfuel==0 end, 
+            "shut down", 
+            DoAction(self.inst,function() self:Stop() end)),
+
         ChaseAndAttack(self.inst, 5),
                   
         WhileNode(function() return StartWorkingCondition(self.inst, {"chopping", "prechop"}) and 
