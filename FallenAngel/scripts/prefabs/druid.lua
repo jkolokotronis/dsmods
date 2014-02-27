@@ -42,7 +42,8 @@ local prefabs = {
     "spell_earthquake",
     "spell_lightning",
    "spell_grow",
-   "spell_heal"
+   "spell_heal",
+   "spell_guardian"
 }
 
 STRINGS.TABS.SPELLS = "Spells"
@@ -62,6 +63,11 @@ STRINGS.RECIPE_DESC.SPELL_GROW = "Grow"
 STRINGS.NAMES.SPELL_HEAL = "Heal"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_HEAL = "Heal"
 STRINGS.RECIPE_DESC.SPELL_HEAL = "Heal"
+
+STRINGS.NAMES.SPELL_GUARDIAN = "Summon Tree Guardian"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_GUARDIAN = "Summon Tree Guardian"
+STRINGS.RECIPE_DESC.SPELL_GUARDIAN = "Summon Tree Guardian"
+
 
 local CHOP_SANITY_DELTA=-5
 local DIG_SANITY_DELTA=-5
@@ -244,13 +250,15 @@ local fn = function(inst)
 RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon_atlas = "images/inventoryimages/herotab.xml"}
     local booktab=RECIPETABS.SPELLS
 --    inst.components.builder:AddRecipeTab(booktab)
-    local r=Recipe("spell_lightning", {Ingredient("papyrus", 2), Ingredient("nightmarefuel", 2)}, booktab, {SCIENCE = 0, MAGIC = 0, ANCIENT = 0})
+    local r=Recipe("spell_lightning", {Ingredient("fling", 20), Ingredient("bluegem", 4),Ingredient("papyrus", 5)}, booktab, {SCIENCE = 0, MAGIC = 0, ANCIENT = 0})
     r.image="book_brimstone.tex"
-    r=Recipe("spell_earthquake", {Ingredient("papyrus", 2), Ingredient("nightmarefuel", 2)}, booktab,{MAGIC = 2})
+    r=Recipe("spell_earthquake", {Ingredient("rocks", 20), Ingredient("redgem", 5),Ingredient("papyrus", 5)}, booktab,{MAGIC = 2})
     r.image="book_brimstone.tex"
-    r=Recipe("spell_grow", {Ingredient("papyrus", 2), Ingredient("seeds", 1), Ingredient("poop", 1)}, booktab, {MAGIC = 2})
+    r=Recipe("spell_grow", {Ingredient("papyrus", 2), Ingredient("seeds", 10), Ingredient("poop", 10)}, booktab, {MAGIC = 2})
     r.image="book_gardening.tex"
-    r=Recipe("spell_heal", {Ingredient("papyrus", 2), Ingredient("redgem", 1)}, booktab, {MAGIC = 3})
+    r=Recipe("spell_heal", {Ingredient("papyrus", 5), Ingredient("honey", 5),Ingredient("spidergland",10)}, booktab, {MAGIC = 3})
+    r.image="book_gardening.tex"
+    r=Recipe("spell_guardian", {Ingredient("papyrus", 5), Ingredient("pinecone", 20),Ingredient("livinglog",10)}, booktab, {MAGIC = 3})
     r.image="book_gardening.tex"
 
 

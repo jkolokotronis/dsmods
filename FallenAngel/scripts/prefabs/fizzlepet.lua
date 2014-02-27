@@ -101,8 +101,6 @@ end
 
 local onloadfn = function(inst, data)
     inst.currentfuel=data.currentfuel
-    print("currentfuel",inst.components.fueled.currentfuel)
-    print("onload",data.currentfuel)
     if(data.currentfuel and data.currentfuel<=0)then
         inst:StopBrain()
     end

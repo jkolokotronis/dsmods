@@ -13,6 +13,9 @@ local prefabs =
     "eyeturret_base",
 }
 
+local RJK_HEALTH=800
+local RJK_DAMAGE=50
+
 local slotpos = {   Vector3(0,64+32+8+4,0), 
                     Vector3(0,32+4,0),
                     Vector3(0,-(32+4),0), 
@@ -203,12 +206,12 @@ local function fn(Sim)
     inst.syncanim("idle_loop")
 
     inst:AddComponent("health")
-    inst.components.health:SetMaxHealth(TUNING.EYETURRET_HEALTH) 
-    inst.components.health:StartRegen(TUNING.EYETURRET_REGEN, 1)
+    inst.components.health:SetMaxHealth(RJK_HEALTH) 
+    inst.components.health:StartRegen(5, 5)
     
     inst:AddComponent("combat")
     inst.components.combat:SetRange(TUNING.EYETURRET_RANGE)
-    inst.components.combat:SetDefaultDamage(TUNING.EYETURRET_DAMAGE)
+    inst.components.combat:SetDefaultDamage(RJK_DAMAGE)
     inst.components.combat:SetAttackPeriod(TUNING.EYETURRET_ATTACK_PERIOD)
     inst.components.combat:SetRetargetFunction(1, retargetfn)
     inst.components.combat:SetKeepTargetFunction(shouldKeepTarget)

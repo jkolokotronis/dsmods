@@ -24,7 +24,10 @@ local ImageButton = require "widgets/imagebutton"
 --local xx=require "prefabs/spells"
 
 PrefabFiles = {
+    "fizzleboomstick",
+    "fizzlearmor",
     "poopbricks",
+    "treeguardian",
     "fizzlepet",
     "fizzlemanipulator",
     "rjk1100",
@@ -311,6 +314,12 @@ end
 
 AddPrefabPostInit("flower", function(inst) inst.components.pickable.onpickedfn=newFlowerPicked end)
 AddPrefabPostInit("flower_evil", function(inst) inst.components.pickable.onpickedfn=newFlowerPicked end)
+
+AddPrefabPostInit("gunpowder", function(inst) 
+    inst:AddComponent("reloading") 
+    inst.components.reloading.ammotype="gunpowder"
+    inst.components.reloading.returnuses=1
+end)
 
 
 AddComponentPostInit("dapperness", function(component,inst) 

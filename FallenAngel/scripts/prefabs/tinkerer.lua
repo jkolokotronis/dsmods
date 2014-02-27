@@ -1,5 +1,6 @@
 
 local MakePlayerCharacter = require "prefabs/player_common"
+local Combat=require "components/combat"
 
 
 local assets = {
@@ -37,7 +38,9 @@ local assets = {
 local prefabs = {
     "rjk1100",
     "fizzlemanipulator",
-    "fizzlepet"
+    "fizzlepet",
+    "fizzleboomstick",
+    "fizzlearmor"
 }
 
 local DAMAGE_MULT=0.5
@@ -64,6 +67,14 @@ STRINGS.CHARACTERS.GENERIC.DESCRIBE.FIZZLEPET = "It's Alive! Kinda..."
 STRINGS.NAMES.FIZZLEPET_BOX = "Fizzlegear's Wonderous Automation Model XXI"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.FIZZLEPET_BOX = "It's Alive! Kinda..."
 STRINGS.RECIPE_DESC.FIZZLEPET_BOX = "It's Alive! Kinda..."
+
+STRINGS.NAMES.FIZZLEBOOMSTICK = "Fizzlegear's patented golden boomstick version 1.0"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.FIZZLEBOOMSTICK = "Fizzlegear's patented golden boomstick version 1.0"
+STRINGS.RECIPE_DESC.FIZZLEBOOMSTICK = "Fizzlegear's patented golden boomstick version 1.0"
+
+STRINGS.NAMES.FIZZLEARMOR = "Fizzlegear's electroshock whiskers disguise, tag number 121"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.FIZZLEARMOR = "Fizzlegear's electroshock whiskers disguise, tag number 121"
+STRINGS.RECIPE_DESC.FIZZLEARMOR = "Fizzlegear's electroshock whiskers disguise, tag number 121"
 
 local fn = function(inst)
 	
@@ -103,6 +114,10 @@ RECIPETABS["TINKERING"] = {str = "TINKERING", sort=999, icon = "trap_teeth.tex",
     r=Recipe("rjk1100", {Ingredient("houndstooth", 5), Ingredient("boards", 2), Ingredient("rocks", 2)}, booktab, {SCIENCE = 2},"rjk1100_placer")
     r.image="trap_teeth.tex"
     r=Recipe("fizzlepet_box", {Ingredient("gears", 15),Ingredient("rope", 5), Ingredient("purplegem", 1), Ingredient("redgem", 1), Ingredient("bluegem", 1)}, booktab, {SCIENCE = 2})
+    r.image="trap_teeth.tex"
+    r=Recipe("fizzleboomstick", {Ingredient("gunpowder", 1),Ingredient("goldnugget", 5), Ingredient("gears", 4)}, booktab, {SCIENCE = 2})
+    r.image="trap_teeth.tex"
+    r=Recipe("fizzlearmor", {Ingredient("gears", 5),Ingredient("goldnugget", 5), Ingredient("beardhair", 5)}, booktab, {SCIENCE = 2})
     r.image="trap_teeth.tex"
 
 end

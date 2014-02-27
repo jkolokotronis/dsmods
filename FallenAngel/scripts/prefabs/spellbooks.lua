@@ -8,6 +8,7 @@ local prefabs =
 {
     "tentacle",
     "splash_ocean",
+    "treeguardian",
     "book_fx"
 }    
 
@@ -35,6 +36,7 @@ local SPELL_HEAL_AMOUNT=150
 local EARTHQUAKE_MINING_EFFICIENCY=6
 local EARTHQUAKE_DAMAGE=100
 local CALL_DIETY_DAMAGE=100
+local LIGHTNING_DAMAGE=40
 local BUFF_LENGTH=100
 local BB_LENGTH=12
 
@@ -120,7 +122,7 @@ function firefn(inst, reader)
                     end
 
                     if(v.components.combat) then
-                        v.components.combat:GetAttacked(reader, 40, nil)
+                        v.components.combat:GetAttacked(reader, LIGHTNING_DAMAGE, nil)
                     end
                 end
             end
@@ -289,6 +291,19 @@ function earthquakefn(inst,reader)
     return true
 end
 
+function treeguardianfn(inst,reader)
+
+    local spawn_point= Vector3(reader.Transform:GetWorldPosition())
+    local tree = SpawnPrefab("treeguardian") 
+    local pt = Vector3(spawn_point.x, 0, spawn_point.z)
+        tree.Physics:SetCollides(false)
+        tree.Physics:Teleport(pt.x, pt.y, pt.z) 
+        tree.Physics:SetCollides(true)
+        tree.SoundEmitter:PlaySound("dontstarve/common/place_structure_stone")
+        reader.components.leader:AddFollower(tree)
+        tree.sg:GoToState("spawn")
+end
+
 function onfinished(inst)
     inst:Remove()
 end
@@ -337,11 +352,12 @@ function MakeSpell(name, usefn, bookuses )
 end
 
 
-return MakeSpell("spell_lightning", firefn, 5),
-       MakeSpell("spell_earthquake", earthquakefn, 5),
-       MakeSpell("spell_grow", growfn, 5),
-       MakeSpell("spell_heal", healfn, 5),
-       MakeSpell("spell_divinemight", divinemightfn, 5),
-       MakeSpell("spell_calldiety", calldietyfn, 5),
-       MakeSpell("spell_light", lightfn, 5),
-       MakeSpell("spell_bladebarrier", bladebarrierfn, 5)
+return MakeSpell("spell_lightning", firefn, 10),
+       MakeSpell("spell_earthquake", earthquakefn, 12),
+       MakeSpell("spell_grow", growfn, 15),
+       MakeSpell("spell_heal", healfn, 10),
+       MakeSpell("spell_divinemight", divinemightfn, 15),
+       MakeSpell("spell_calldiety", calldietyfn, 10),
+       MakeSpell("spell_light", lightfn, 12),
+       MakeSpell("spell_bladebarrier", bladebarrierfn, 5),
+       MakeSpell("spell_guardian", treeguardianfn, 7)
