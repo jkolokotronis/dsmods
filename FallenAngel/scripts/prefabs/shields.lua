@@ -9,8 +9,8 @@ local assets=
 }
 
 local function onequip(inst, owner) 
-    owner.AnimState:OverrideSymbol("swap_body", "swap_wdshield", "backpack")
-    owner.AnimState:OverrideSymbol("swap_body", "swap_wdshield", "swap_body")
+    owner.AnimState:OverrideSymbol("swap_body", "swap_shield", "backpack")
+    owner.AnimState:OverrideSymbol("swap_body", "swap_shield", "swap_body")
 --    owner.components.inventory.overflow = inst
 end
 

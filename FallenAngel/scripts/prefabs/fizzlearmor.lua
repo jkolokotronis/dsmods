@@ -1,27 +1,34 @@
 local assets=
 {
-	Asset("ANIM", "anim/armor_wood.zip"),
+  Asset("ANIM", "anim/shield.zip"),
+  Asset("ANIM", "anim/swap_shield.zip"),
+  Asset("ATLAS", "images/inventoryimages/shield.xml"),
 }
 local REFLECT_DAMAGE=60
+local ARMOR_ABSO=0
+local ARMOR_DURABILITY=100
 
-local function OnBlocked(owner,data) 
+local function OnBlocked(inst,owner,data) 
     owner.SoundEmitter:PlaySound("dontstarve/wilson/hit_armour") 
     if(data and data.attacker and data.attacker.components.combat)then
         print("reflecting to",data.attacker)
         data.attacker.components.combat:GetAttacked(owner, REFLECT_DAMAGE, nil)
+        inst.components.armor:SetPercent(inst.components.armor:GetPercent()-3)
     end
 end
 
 local function onequip(inst, owner) 
-    owner.AnimState:OverrideSymbol("swap_body", "armor_wood", "swap_body")
-    inst:ListenForEvent("attacked", OnBlocked, owner)
-    inst:ListenForEvent("blocked", OnBlocked, owner)
+
+    owner.AnimState:OverrideSymbol("swap_body", "swap_shield", "backpack")
+    owner.AnimState:OverrideSymbol("swap_body", "swap_shield", "swap_body")
+    inst:ListenForEvent("attacked", function(owner,data) OnBlocked(inst,owner,data) end,owner)
+    inst:ListenForEvent("blocked",function(owner,data) OnBlocked(inst,owner,data) end, owner)
 end
 
 local function onunequip(inst, owner) 
     owner.AnimState:ClearOverrideSymbol("swap_body")
     inst:RemoveEventCallback("blocked", OnBlocked, owner)
-    inst:ListenForEvent("attacked", OnBlocked, owner)
+    inst:RemoveEventCallback("attacked", OnBlocked, owner)
 end
 
 local function fn(Sim)
@@ -31,26 +38,29 @@ local function fn(Sim)
 	inst.entity:AddAnimState()
     MakeInventoryPhysics(inst)
     
-    inst.AnimState:SetBank("armor_wood")
-    inst.AnimState:SetBuild("armor_wood")
+ inst.AnimState:SetBank("backpack1")
+    inst.AnimState:SetBuild("swap_shield")
     inst.AnimState:PlayAnimation("anim")
     
-    inst:AddTag("wood")
     
     inst:AddComponent("inspectable")
     
     inst:AddComponent("inventoryitem")
-    inst.components.inventoryitem.foleysound = "dontstarve/movement/foley/logarmour"
-    inst.components.inventoryitem.imagename="logarmour"
+     inst.components.inventoryitem.atlasname = "images/inventoryimages/shield.xml"
+    inst.components.inventoryitem.imagename="shield"
 
-    inst:AddComponent("fuel")
-    inst.components.fuel.fuelvalue = TUNING.LARGE_FUEL
+    inst:AddComponent("equippable")
+  if EQUIPSLOTS["BACK"] then
+      inst.components.equippable.equipslot = EQUIPSLOTS.BACK
+  elseif EQUIPSLOTS["PACK"] then
+      inst.components.equippable.equipslot = EQUIPSLOTS.PACK
+  else
+      inst.components.equippable.equipslot = EQUIPSLOTS.BODY
+  end
     
     inst:AddComponent("armor")
-    inst.components.armor:InitCondition(TUNING.ARMORWOOD, TUNING.ARMORWOOD_ABSORPTION)
+    inst.components.armor:InitCondition(ARMOR_DURABILITY, ARMOR_ABSO)
     
-    inst:AddComponent("equippable")
-    inst.components.equippable.equipslot = EQUIPSLOTS.BODY
     
     inst.components.equippable:SetOnEquip( onequip )
     inst.components.equippable:SetOnUnequip( onunequip )
