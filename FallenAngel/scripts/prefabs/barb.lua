@@ -33,7 +33,7 @@ local assets = {
         Asset( "ANIM", "anim/beard.zip" ),
 
 		-- Don't forget to include your character's custom assets!
-        Asset( "ANIM", "anim/barb.zip" ),
+        Asset( "ANIM", "anim/barbarian.zip" ),
 }
 local prefabs = {}
 
@@ -110,6 +110,13 @@ local fn = function(inst)
 	inst.components.hunger:SetMax(250)
 	inst.components.sanity:SetMax(150)
 	inst.components.locomotor.runspeed=BASE_MS
+
+
+        inst.AnimState:SetBank("wilson")
+        inst.AnimState:SetBuild("barbarian")
+        inst.AnimState:PlayAnimation("idle")
+        inst.AnimState:Hide("hat_hair")
+
 
 	inst.newControlsInit = function (class)
         class.rage = class:AddChild(RageBuff(class.owner))

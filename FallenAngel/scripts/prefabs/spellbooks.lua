@@ -302,6 +302,10 @@ function treeguardianfn(inst,reader)
         tree.SoundEmitter:PlaySound("dontstarve/common/place_structure_stone")
         reader.components.leader:AddFollower(tree)
         tree.sg:GoToState("spawn")
+    tree:ListenForEvent("stopfollowing",function(f)
+        f.components.health:Kill()
+    end)
+
 end
 
 function onfinished(inst)

@@ -16,7 +16,7 @@ local GetPlayer = GLOBAL.GetPlayer
 local GetClock=GLOBAL.GetClock
 local GetWorld=GLOBAL.GetWorld
 local GetSeasonManager=GLOBAL.GetSeasonManager
-
+local SpawnPrefab=GLOBAL.SpawnPrefab
 
 local StatusDisplays = require "widgets/statusdisplays"
 local ImageButton = require "widgets/imagebutton"
@@ -24,6 +24,7 @@ local ImageButton = require "widgets/imagebutton"
 --local xx=require "prefabs/spells"
 
 PrefabFiles = {
+    "skeletonspawn",
     "fizzleboomstick",
     "fizzlearmor",
     "poopbricks",
@@ -319,6 +320,43 @@ AddPrefabPostInit("gunpowder", function(inst)
     inst:AddComponent("reloading") 
     inst.components.reloading.ammotype="gunpowder"
     inst.components.reloading.returnuses=1
+end)
+
+
+local doSkeletonSpawn=function(inst)
+    local skel=SpawnPrefab("skeletonspawn")
+    skel:AddComponent("homeseeker")
+    skel.components.homeseeker:SetHome(inst)
+    skel.Transform:SetPosition(inst.Transform:GetWorldPosition())
+    return skel
+end
+
+local startSkeletonSpawnTask=function(inst)
+     local rng=math.random()*480*5
+         inst:DoTaskInTime(rng, function() 
+            inst:AddTag("hasSpawnedSkeleton")
+            local skel=doSkeletonSpawn(inst)
+            skel:ListenForEvent("death",function(skel) 
+                inst:RemoveTag("hasSpawnedSkeleton") 
+                startSkeletonSpawnTask(inst)
+            end)
+        end)
+end
+
+AddPrefabPostInit("spoiled_food",function(inst)
+    local rng=math.random()
+    if(rng>0.5)then
+        doSkeletonSpawn(inst)            
+    end
+end)
+
+
+
+AddPrefabPostInit("mound",function(inst)
+    if(not inst.components.workable and not inst:HasTag("hasSpawnedSkeleton"))then
+        --dug up already, spawn a skel somewhere during next x days
+        startSkeletonSpawnTask(inst)
+    end
 end)
 
 

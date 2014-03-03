@@ -18,15 +18,6 @@ local items =
 }
 local PET_HEALTH=300
 
-local function onnear(inst)
- end
-
-local function onfar(inst)
-end
---[[
-local function ShouldKeepTarget(inst, target)
-    return false 
-end]]--
     
 local function EquipItem(inst, item)
     if item then
@@ -110,11 +101,6 @@ local function fn(Sim)
     inst.Physics:ClearCollisionMask()
     inst.Physics:CollidesWith(COLLISION.WORLD)
     
-    
-
---    anim:SetBank("skeleterror")
---    anim:SetBuild("Skeleterror")
-
     anim:SetBank("wilson")
     anim:SetBuild("waxwell_shadow_mod")
 
@@ -130,8 +116,6 @@ local function fn(Sim)
     EquipItem(inst)
 
     anim:PlayAnimation("idle")
-
---    inst.AnimState:SetRayTestOnBB(true);
 
 
     inst:AddComponent("locomotor") -- locomotor must be constructed before the stategraph

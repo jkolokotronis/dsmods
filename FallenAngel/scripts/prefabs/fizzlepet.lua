@@ -147,6 +147,10 @@ local function ondeploy(inst, pt, deployer)
 --        turret.syncanimpush("idle_loop", true)
         turret.SoundEmitter:PlaySound("dontstarve/common/place_structure_stone")
         deployer.components.leader:AddFollower(turret)
+        turret:ListenForEvent("stopfollowing",function(f)
+        f.components.health:Kill()
+        end)
+
         inst:Remove()
     end         
 end
@@ -263,7 +267,7 @@ local function fn()
 
         inst:AddComponent("inventory")
 --        inst.components.inventory.starting_inventory = starting_inventory
-        inst.components.inventory.dropondeath = false
+        inst.components.inventory.dropondeath = true
 
     inst:AddComponent("fueled")
     inst.components.fueled.fueltype = "BURNABLE"
@@ -276,6 +280,10 @@ local function fn()
     inst:ListenForEvent("itemget",fueltest)
     inst:ListenForEvent("percentusedchange",percentchanged)
 
+
+    inst:AddComponent("lootdropper")
+    inst.components.lootdropper:SetLoot({"gears",  "gears","gears",  "gears","gears",  "gears","purplegem"})
+
     --print("   sg")
     inst:SetStateGraph("SGfizzlepet")
     inst.sg:GoToState("idle")
@@ -283,7 +291,9 @@ local function fn()
     inst.items=items
     inst.equipfn=EquipItem
     
-
+    inst:ListenForEvent("stopfollowing",function(f)
+        f.components.health:Kill()
+    end)
 
     inst:SetBrain(brain)    
 
@@ -330,7 +340,7 @@ local function itemfn(Sim)
     end
     inst.components.deployable.min_spacing = 0
     inst.components.deployable.placer = "fizzlepet_placer"
-    
+
     return inst
 end
 
