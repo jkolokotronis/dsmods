@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b5">
-    <folder id="0">
-        <file id="0" name="swap_evilsword.png" width="1200" height="680" pivot_x="0" pivot_y="1"/>
+    <folder id="0" name="swap_evilsword">
+        <file id="0" name="swap_evilsword/swap_evilsword.png" width="1200" height="680" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="swap_evilsword">
         <animation id="0" name="BUILD" length="1000">
