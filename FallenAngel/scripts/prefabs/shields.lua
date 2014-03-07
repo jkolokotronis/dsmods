@@ -1,32 +1,42 @@
 local assets=
 {
-  Asset("ANIM", "anim/wdshield.zip"),
-  Asset("ANIM", "anim/swap_wdshield.zip"),
-  Asset("ANIM", "anim/shield.zip"),
-  Asset("ANIM", "anim/swap_shield.zip"),
+  Asset("ANIM", "anim/swap_boneshield.zip"),
+  Asset("ANIM", "anim/swap_marbleshield.zip"),
+  Asset("ANIM", "anim/swap_rockshield.zip"),
   Asset("ANIM", "anim/swap_woodshield.zip"),
-  Asset("ATLAS", "images/inventoryimages/wdshield.xml"),
-  Asset("ATLAS", "images/inventoryimages/shield.xml"),
+  Asset("ATLAS", "images/inventoryimages/boneshield.xml"),
+  Asset("ATLAS", "images/inventoryimages/rockshield.xml"),
   Asset("ATLAS", "images/inventoryimages/woodshield.xml"),
-    Asset("IMAGE", "images/inventoryimages/woodshield.tex"),
+  Asset("ATLAS", "images/inventoryimages/marbleshield.xml"),
+  Asset("IMAGE", "images/inventoryimages/boneshield.tex"),
+  Asset("IMAGE", "images/inventoryimages/rockshield.tex"),
+  Asset("IMAGE", "images/inventoryimages/woodshield.tex"),
+  Asset("IMAGE", "images/inventoryimages/marbleshield.tex"),
+
+
 }
 
-local function onequip(inst, owner) 
-    owner.AnimState:OverrideSymbol("swap_body", "swap_shield", "backpack")
-    owner.AnimState:OverrideSymbol("swap_body", "swap_shield", "swap_body")
---    owner.components.inventory.overflow = inst
+local function boneonequip(inst, owner) 
+    owner.AnimState:OverrideSymbol("swap_body", "swap_boneshield", "backpack")
+    owner.AnimState:OverrideSymbol("swap_body", "swap_boneshield", "swap_body")
+end
+local function marbleonequip(inst, owner) 
+    owner.AnimState:OverrideSymbol("swap_body", "swap_marbleshield", "backpack")
+    owner.AnimState:OverrideSymbol("swap_body", "swap_marbleshield", "swap_body")
+end
+local function rockonequip(inst, owner) 
+    owner.AnimState:OverrideSymbol("swap_body", "swap_rockshield", "backpack")
+    owner.AnimState:OverrideSymbol("swap_body", "swap_rockshield", "swap_body")
 end
 
 local function wdonequip(inst, owner) 
     owner.AnimState:OverrideSymbol("swap_body", "swap_woodshield", "backpack")
     owner.AnimState:OverrideSymbol("swap_body", "swap_woodshield", "swap_body")
---    owner.components.inventory.overflow = inst
 end
 
 local function onunequip(inst, owner) 
     owner.AnimState:ClearOverrideSymbol("swap_body")
     owner.AnimState:ClearOverrideSymbol("backpack")
---    owner.components.inventory.overflow = nil
 end
 
 local WOOD_SHIELD_ABSO=0.10
@@ -100,44 +110,44 @@ end
 local function MakeRockShield()
     local inst=fn()
  inst.AnimState:SetBank("backpack1")
-    inst.AnimState:SetBuild("swap_shield")
+    inst.AnimState:SetBuild("swap_rockshield")
     inst.AnimState:PlayAnimation("anim")
 
-     inst.components.inventoryitem.atlasname = "images/inventoryimages/shield.xml"
-    inst.components.inventoryitem.imagename="shield"
+     inst.components.inventoryitem.atlasname = "images/inventoryimages/rockshield.xml"
+    inst.components.inventoryitem.imagename="rockshield"
     inst.components.inventoryitem.foleysound = "dontstarve/movement/foley/backpack"
     inst.components.armor:InitCondition(ROCK_SHIELD_ABSO, ROCK_SHIELD_ABSO )
-    inst.components.equippable:SetOnEquip( onequip )
+    inst.components.equippable:SetOnEquip( rockonequip )
     return inst
 end
 
 local function MakeMarbleShield()
     local inst=fn()
  inst.AnimState:SetBank("backpack1")
-    inst.AnimState:SetBuild("swap_shield")
+    inst.AnimState:SetBuild("swap_marbleshield")
     inst.AnimState:PlayAnimation("anim")
 
     
-     inst.components.inventoryitem.atlasname = "images/inventoryimages/shield.xml"
-    inst.components.inventoryitem.imagename="shield"
+     inst.components.inventoryitem.atlasname = "images/inventoryimages/marbleshield.xml"
+    inst.components.inventoryitem.imagename="marbleshield"
     inst.components.inventoryitem.foleysound = "dontstarve/movement/foley/backpack"
     inst.components.armor:InitCondition(MARBLE_SHIELD_DURA, MARBLE_SHIELD_ABSO )
-    inst.components.equippable:SetOnEquip( onequip )
+    inst.components.equippable:SetOnEquip( marbleonequip )
     return inst
 end
 
 local function MakeBoneShield()
     local inst=fn()
  inst.AnimState:SetBank("backpack1")
-    inst.AnimState:SetBuild("swap_shield")
+    inst.AnimState:SetBuild("swap_boneshield")
     inst.AnimState:PlayAnimation("anim")
 
     
-     inst.components.inventoryitem.atlasname = "images/inventoryimages/shield.xml"
-    inst.components.inventoryitem.imagename="shield"
+     inst.components.inventoryitem.atlasname = "images/inventoryimages/boneshield.xml"
+    inst.components.inventoryitem.imagename="boneshield"
     inst.components.inventoryitem.foleysound = "dontstarve/movement/foley/backpack"
     inst.components.armor:InitCondition(BONE_SHIELD_DURA, BONE_SHIELD_ABSO )
-    inst.components.equippable:SetOnEquip( onequip )
+    inst.components.equippable:SetOnEquip( boneonequip )
     return inst
 end
 
