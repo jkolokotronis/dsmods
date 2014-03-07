@@ -3,11 +3,13 @@ local assets=
     Asset("ANIM", "anim/staffs.zip"),
     Asset("ANIM", "anim/swap_staffs.zip"), 
     Asset("ANIM", "anim/explode.zip"),
+    Asset("ANIM", "anim/smoke_right.zip"),
 }
 
 local prefabs = 
 {
     "ice_projectile",
+    "boomstickprojectile",
     "fire_projectile",
     "staffcastfx",
     "stafflight",
@@ -123,7 +125,7 @@ local function red()
     inst.components.weapon:SetDamage(BOOM_DAMAGE)
     inst.components.weapon:SetRange(BOOM_RANGE-2, BOOM_RANGE)
     inst.components.weapon:SetOnAttack(onattack_red)
-    inst.components.weapon:SetProjectile("fire_projectile")
+    inst.components.weapon:SetProjectile("boomstickprojectile")
 
     inst.components.finiteuses:SetMaxUses(BOOM_USES)
     inst.components.finiteuses:SetUses(BOOM_USES)

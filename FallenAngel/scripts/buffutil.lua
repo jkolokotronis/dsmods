@@ -62,6 +62,7 @@ local function apply_bb_damage(reader)
 	if(reader.buff_timers["bladebarrier"].cooldowntimer<=0)then
 		reader.bladeBarrierTimer:Cancel()
 		reader.bladeBarrierTimer=nil
+        reader.bladeBarrierAnim:Remove()
 	else
 		local pos=Vector3(reader.Transform:GetWorldPosition())
 		local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 20)
@@ -78,4 +79,36 @@ function BladeBarrierSpellStart(inst,reader,timer)
         reader.bladeBarrierTimer:Cancel()
     end
     reader.bladeBarrierTimer=reader:DoPeriodicTask(2, function() apply_bb_damage(reader) end)
+
+    local boom = CreateEntity()
+    boom.entity:AddTransform()
+    local anim=boom.entity:AddAnimState()
+    boom.Transform:SetTwoFaced()
+    boom.entity:AddDynamicShadow()
+--    boom.DynamicShadow:SetSize( .8, .5 )
+    boom.Transform:SetScale(5, 5, 1)
+
+    anim:SetBank("bladebarrier")
+    anim:SetBuild("bladebarrier")
+    anim:PlayAnimation("rotate",true)
+--[[
+    anim:SetBank("smoke_right")
+    anim:SetBuild("smoke_right")
+    anim:PlayAnimation("idle",true)
+]]
+    local pos =reader:GetPosition()
+    boom.Transform:SetPosition(pos.x, pos.y, pos.z)
+    reader.bladeBarrierAnim=boom
+    boom:AddComponent("follower")
+    reader.components.leader:AddFollower(boom)
+
+--    local r,g,b,a = anim:GetMultColour()
+--    anim:SetMultColour(r,g,b,1)
+--[[
+    boom:DoPeriodicTask(0.2, function() 
+        local pos =reader:GetPosition()
+        boom.Transform:SetPosition(pos.x, pos.y, pos.z)
+    end )
+]]
+        
 end

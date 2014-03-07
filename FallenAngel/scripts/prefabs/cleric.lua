@@ -34,6 +34,7 @@ local assets = {
 
 		-- Don't forget to include your character's custom assets!
         Asset( "ANIM", "anim/cleric.zip" ),
+        Asset( "ANIM", "anim/bladebarrier.zip" ),
 }
 local prefabs = {}
 

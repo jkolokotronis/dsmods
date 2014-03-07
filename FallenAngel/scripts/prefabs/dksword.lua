@@ -2,7 +2,13 @@ local assets=
 {
 	Asset("ANIM", "anim/nightmaresword.zip"),
 	Asset("ANIM", "anim/swap_nightmaresword.zip"),
+    Asset("ANIM", "anim/evilsword.zip"),
+    Asset("ANIM", "anim/holysword.zip"),
+    Asset("ANIM", "anim/swap_evilsword.zip"),
+    Asset("ANIM", "anim/swap_holysword.zip"),
     
+    Asset("ATLAS", "images/inventoryimages/evilsword.xml"),
+    Asset("IMAGE", "images/inventoryimages/evilsword.tex"),
 }
 
 local DK_SWORD_LEECH=5
@@ -15,7 +21,7 @@ local function onattack(inst, attacker, target)
 end
 
 local function onequip(inst, owner)
-    owner.AnimState:OverrideSymbol("swap_object", "swap_nightmaresword", "swap_nightmaresword")
+    owner.AnimState:OverrideSymbol("swap_object", "swap_evilsword", "swap_evilsword")
     owner.AnimState:Show("ARM_carry") 
     owner.AnimState:Hide("ARM_normal") 
 end
@@ -36,9 +42,11 @@ local function fn(Sim)
     local minimap = inst.entity:AddMiniMapEntity()
     minimap:SetIcon( "lucy_axe.png" )
 
-    inst.AnimState:SetBank("nightmaresword")
-    inst.AnimState:SetBuild("nightmaresword")
+    inst.AnimState:SetBank("evilsword")
+    inst.AnimState:SetBuild("evilsword")
     inst.AnimState:PlayAnimation("idle")
+
+    inst.Transform:SetScale(2, 2, 1)
     inst.AnimState:SetMultColour(1, 1, 1, 0.6)
     
     inst:AddTag("shadow")
@@ -51,7 +59,8 @@ local function fn(Sim)
     inst:AddComponent("inspectable")
     
     inst:AddComponent("inventoryitem")
-    inst.components.inventoryitem.imagename="nightsword"
+    inst.components.inventoryitem.imagename="evilsword"
+    inst.components.inventoryitem.atlasname="images/inventoryimages/evilsword.xml"
 --    inst:AddComponent("dapperness")
 --    inst.components.dapperness.dapperness = TUNING.CRAZINESS_MED,
     

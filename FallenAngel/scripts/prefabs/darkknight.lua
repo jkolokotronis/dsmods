@@ -37,6 +37,7 @@ local assets = {
 
 		-- Don't forget to include your character's custom assets!
         Asset( "ANIM", "anim/darkknight.zip" ),
+        Asset("ANIM","anim/bloodcircle.zip")
 }
 local prefabs = {
     "dksword"
@@ -116,6 +117,26 @@ local onleechblast=function(inst)
     if(leechamount>0)then
         GetPlayer().components.hunger:DoDelta(BLAST_HUNGER)
         GetPlayer().components.health:DoDelta(leechamount)
+
+
+    local boom = CreateEntity()
+    
+    boom.entity:AddTransform()
+    local anim=boom.entity:AddAnimState()
+    boom.Transform:SetTwoFaced()
+    boom.entity:AddDynamicShadow()
+    boom.DynamicShadow:SetSize( .8, .5 )
+    boom.Transform:SetScale(50, 50, 50)
+    
+        anim:SetBank("bloodcircle")
+        anim:SetBuild("bloodcircle")
+        anim:PlayAnimation("light")
+        local pos = GetPlayer():GetPosition()
+        boom.Transform:SetPosition(pos.x, pos.y, pos.z)
+        GetPlayer().SoundEmitter:PlaySound("dontstarve/common/blackpowder_explo")
+        boom:DoTaskInTime(1, function() boom:Remove() end )
+
+        
         return true
     else
         return false

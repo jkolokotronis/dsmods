@@ -25,6 +25,7 @@ local ImageButton = require "widgets/imagebutton"
 
 PrefabFiles = {
     "skeletonspawn",
+    "boomstickprojectile",
     "fizzleboomstick",
     "fizzlearmor",
     "poopbricks",
