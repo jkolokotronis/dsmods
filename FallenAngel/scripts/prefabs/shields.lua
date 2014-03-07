@@ -4,8 +4,11 @@ local assets=
   Asset("ANIM", "anim/swap_wdshield.zip"),
   Asset("ANIM", "anim/shield.zip"),
   Asset("ANIM", "anim/swap_shield.zip"),
+  Asset("ANIM", "anim/swap_woodshield.zip"),
   Asset("ATLAS", "images/inventoryimages/wdshield.xml"),
   Asset("ATLAS", "images/inventoryimages/shield.xml"),
+  Asset("ATLAS", "images/inventoryimages/woodshield.xml"),
+    Asset("IMAGE", "images/inventoryimages/woodshield.tex"),
 }
 
 local function onequip(inst, owner) 
@@ -15,8 +18,8 @@ local function onequip(inst, owner)
 end
 
 local function wdonequip(inst, owner) 
-    owner.AnimState:OverrideSymbol("swap_body", "swap_wdshield", "backpack")
-    owner.AnimState:OverrideSymbol("swap_body", "swap_wdshield", "swap_body")
+    owner.AnimState:OverrideSymbol("swap_body", "swap_woodshield", "backpack")
+    owner.AnimState:OverrideSymbol("swap_body", "swap_woodshield", "swap_body")
 --    owner.components.inventory.overflow = inst
 end
 
@@ -71,11 +74,11 @@ end
 local function MakeWoodenShield()
     local inst=fn()
     inst.AnimState:SetBank("backpack1")
-    inst.AnimState:SetBuild("swap_wdshield")
+    inst.AnimState:SetBuild("swap_woodshield")
     inst.AnimState:PlayAnimation("anim")
 
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/wdshield.xml"
-    inst.components.inventoryitem.imagename="wdshield"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/woodshield.xml"
+    inst.components.inventoryitem.imagename="woodshield"
     inst.components.inventoryitem.foleysound = "dontstarve/movement/foley/backpack"
 
     inst:AddComponent("fuel")

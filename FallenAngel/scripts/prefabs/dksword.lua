@@ -1,11 +1,7 @@
 local assets=
 {
-	Asset("ANIM", "anim/nightmaresword.zip"),
-	Asset("ANIM", "anim/swap_nightmaresword.zip"),
     Asset("ANIM", "anim/evilsword.zip"),
-    Asset("ANIM", "anim/holysword.zip"),
     Asset("ANIM", "anim/swap_evilsword.zip"),
-    Asset("ANIM", "anim/swap_holysword.zip"),
     
     Asset("ATLAS", "images/inventoryimages/evilsword.xml"),
     Asset("IMAGE", "images/inventoryimages/evilsword.tex"),
