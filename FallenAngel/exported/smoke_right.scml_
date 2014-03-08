@@ -16,7 +16,7 @@
         <animation id="0" name="idle" length="1000">
             <mainline>
                 <key id="0">
-                    <object_ref id="0" name="smoke_right_0001" folder="0" file="0" abs_x="0" abs_y="290" abs_pivot_x="-0.01397" abs_pivot_y="0.498051" abs_angle="270" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="0" name="smoke_right_0001" folder="0" file="0" abs_x="0" abs_y="290" abs_pivot_x="-0.01397" abs_pivot_y="0.498051" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="0"/>
                 </key>
                 <key id="1" time="100">
                     <object_ref id="0" timeline="0" key="1" z_index="0"/>
@@ -48,34 +48,34 @@
             </mainline>
             <timeline id="0" name="smoke_right_0001">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" y="290" pivot_x="-0.01397" pivot_y="0.498051" angle="270" scale_x="1"/>
+                    <object folder="0" file="0" y="290" pivot_x="-0.01397" pivot_y="0.498051" angle="0" scale_x="1"/>
                 </key>
                 <key id="1" time="100" spin="0">
-                    <object folder="0" file="2" x="3.083333" y="290" angle="270" scale_x="1"/>
+                    <object folder="0" file="2" x="3.083333" y="290" angle="0" scale_x="1"/>
                 </key>
                 <key id="2" time="200" spin="0">
-                    <object folder="0" file="3" x="3.083333" y="290" angle="270" scale_x="1"/>
+                    <object folder="0" file="3" x="3.083333" y="290" angle="0" scale_x="1"/>
                 </key>
                 <key id="3" time="300" spin="0">
-                    <object folder="0" file="4" x="3.083333" y="290" angle="270" scale_x="1"/>
+                    <object folder="0" file="4" x="3.083333" y="290" angle="0" scale_x="1"/>
                 </key>
                 <key id="4" time="400" spin="0">
-                    <object folder="0" file="5" x="3.083333" y="290" angle="270" scale_x="1"/>
+                    <object folder="0" file="5" x="3.083333" y="290" angle="0" scale_x="1"/>
                 </key>
                 <key id="5" time="500" spin="0">
-                    <object folder="0" file="9" x="3.083333" y="290" angle="270" scale_x="1"/>
+                    <object folder="0" file="9" x="3.083333" y="290" angle="0" scale_x="1"/>
                 </key>
                 <key id="6" time="600" spin="0">
-                    <object folder="0" file="8" x="3.083333" y="290" angle="270" scale_x="1"/>
+                    <object folder="0" file="8" x="3.083333" y="290" angle="0" scale_x="1"/>
                 </key>
                 <key id="7" time="700" spin="0">
-                    <object folder="0" file="7" x="3.083333" y="290" angle="270" scale_x="1"/>
+                    <object folder="0" file="7" x="3.083333" y="290" angle="0" scale_x="1"/>
                 </key>
                 <key id="8" time="800" spin="0">
-                    <object folder="0" file="6" x="3.083333" y="290" angle="270" scale_x="1"/>
+                    <object folder="0" file="6" x="3.083333" y="290" angle="0" scale_x="1"/>
                 </key>
                 <key id="9" time="900" spin="0">
-                    <object folder="0" file="6" x="3.083333" y="290" angle="270" scale_x="1"/>
+                    <object folder="0" file="6" x="3.083333" y="290" angle="0" scale_x="1"/>
                 </key>
             </timeline>
         </animation>
