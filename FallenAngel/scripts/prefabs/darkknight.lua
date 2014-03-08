@@ -125,7 +125,6 @@ local onleechblast=function(inst)
                 anim:SetOrientation( ANIM_ORIENTATION.OnGround )
                 boom.Transform:SetRotation(angle)
                 anim:PlayAnimation("idle",false)
-print("angle",angle)
                 boom:FacePoint(pos)
 
                 local pos1 =v:GetPosition()
