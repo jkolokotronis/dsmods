@@ -1,6 +1,7 @@
 local assets=
 {
     Asset("ANIM", "anim/smoke_right.zip"),
+        Asset("ANIM","anim/blood_drop.zip"),
 }
 
 local function OnHit(inst, owner, target)
@@ -14,10 +15,11 @@ local function common()
     MakeInventoryPhysics(inst)
     RemovePhysicsColliders(inst)
     
-    anim:SetBank("smoke_right")
-    anim:SetBuild("smoke_right")
+    anim:SetBank("blood_drop")
+    anim:SetBuild("blood_drop")
     
     inst:AddTag("projectile")
+                inst.Transform:SetScale(1, 1, 1)
     
     inst:AddComponent("projectile")
     inst.components.projectile:SetSpeed(50)
@@ -31,9 +33,6 @@ end
 local function fire()
     local inst = common()
     inst.AnimState:PlayAnimation("idle", true)
---	inst.AnimState:SetBloomEffectHandle( "shaders/anim.ksh" )
-    --colour projectile
-    --inst.AnimState:SetMultColour(0, 0, 0, 1)
     return inst
 end
 

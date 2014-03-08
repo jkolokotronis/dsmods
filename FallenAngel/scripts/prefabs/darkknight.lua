@@ -37,7 +37,10 @@ local assets = {
 
 		-- Don't forget to include your character's custom assets!
         Asset( "ANIM", "anim/darkknight.zip" ),
-        Asset("ANIM","anim/bloodcircle.zip")
+        Asset("ANIM","anim/blood_splash.zip"),
+        Asset("ANIM","anim/blood_down.zip"),
+        Asset("ANIM","anim/blood_drop.zip"),
+        Asset("ANIM","anim/bloodcircle.zip"),
 }
 local prefabs = {
     "dksword"
@@ -109,8 +112,54 @@ local onleechblast=function(inst)
     for k,v in pairs(ents) do
         if not v:IsInLimbo() then
             if( not v:HasTag("player") and not v:HasTag("pet") and v.components.combat) then
+
+                local current = Vector3(v.Transform:GetWorldPosition() )
+                local direction = (pos - current):GetNormalized()
+                local angle = math.acos(direction:Dot(Vector3(1, 0, 0) ) ) / DEGREES
+
+                local boom = CreateEntity()
+                boom.entity:AddTransform()
+                local anim=boom.entity:AddAnimState()
+                anim:SetBank("blood_down")
+                anim:SetBuild("blood_down")
+                boom.Transform:SetRotation(angle)
+                anim:PlayAnimation("idle",false)
+print("angle",angle)
+                boom:FacePoint(pos)
+
+                local pos1 =v:GetPosition()
+                boom.Transform:SetPosition(pos1.x, pos1.y, pos1.z)
+                boom:ListenForEvent("animover", function()  boom:Remove() end)
+
+
+                local proj = CreateEntity()
+                local trans = proj.entity:AddTransform()
+                local anim = proj.entity:AddAnimState()
+                proj.Transform:SetScale(2, 2, 2)
+                MakeInventoryPhysics(proj)
+--                RemovePhysicsColliders(proj)    
+                anim:SetBank("blood_drop")
+                anim:SetBuild("blood_drop")    
+                anim:PlayAnimation("idle")    
+                proj:AddTag("projectile")    
+                proj:AddComponent("projectile")
+                proj.components.projectile:SetSpeed(20)
+--                proj.components.projectile:SetOnHitFn(function() proj:Remove() end)
+                proj.components.projectile:SetOnMissFn(function() proj:Remove() end)
+--              we dont want to hit ourselves                
+                proj.Transform:SetPosition(pos1.x, pos1.y, pos1.z)
+                function proj.components.projectile:Hit(target)
+                    self:Stop()
+                    self.inst.Physics:Stop()
+                    self.inst:Remove() 
+                end
+
+                proj.components.projectile:Throw(v, GetPlayer(), GetPlayer())
+                proj.Transform:SetRotation(angle)
+
                 v.components.combat:GetAttacked(GetPlayer(), BLAST_DMG, nil)
                 leechamount=leechamount+BLAST_LEECH
+
             end
         end
     end
@@ -119,22 +168,8 @@ local onleechblast=function(inst)
         GetPlayer().components.health:DoDelta(leechamount)
 
 
-    local boom = CreateEntity()
-    
-    boom.entity:AddTransform()
-    local anim=boom.entity:AddAnimState()
-    boom.Transform:SetTwoFaced()
-    boom.entity:AddDynamicShadow()
-    boom.DynamicShadow:SetSize( .8, .5 )
-    boom.Transform:SetScale(50, 50, 50)
-    
-        anim:SetBank("bloodcircle")
-        anim:SetBuild("bloodcircle")
-        anim:PlayAnimation("light")
-        local pos = GetPlayer():GetPosition()
-        boom.Transform:SetPosition(pos.x, pos.y, pos.z)
         GetPlayer().SoundEmitter:PlaySound("dontstarve/common/blackpowder_explo")
-        boom:DoTaskInTime(1, function() boom:Remove() end )
+--        boom:DoTaskInTime(1, function() boom:Remove() end )
 
         
         return true
@@ -151,6 +186,19 @@ local onharmtouch=function(inst)
         if not v:IsInLimbo() then
             if( not v:HasTag("player") and not v:HasTag("pet") and v.components.combat) then
                 v.components.combat:GetAttacked(GetPlayer(), HT_DAMAGE, nil)
+
+                local boom = CreateEntity()
+                boom.entity:AddTransform()
+                local anim=boom.entity:AddAnimState()
+                boom.Transform:SetScale(1, 1, 1)
+                anim:SetBank("blood_splash")
+                anim:SetBuild("blood_splash")
+                anim:PlayAnimation("idle",false)
+
+                local pos =v:GetPosition()
+                boom.Transform:SetPosition(pos.x, pos.y, pos.z)
+                boom:ListenForEvent("animover", function()  boom:Remove() end)
+
                 return true
             end
         end

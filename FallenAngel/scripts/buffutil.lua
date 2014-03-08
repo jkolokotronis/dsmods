@@ -90,7 +90,7 @@ function BladeBarrierSpellStart(inst,reader,timer)
 
     anim:SetBank("bladebarrier")
     anim:SetBuild("bladebarrier")
-    anim:PlayAnimation("rotate",true)
+    anim:PlayAnimation("idle",true)
 --[[
     anim:SetBank("smoke_right")
     anim:SetBuild("smoke_right")

@@ -4,6 +4,9 @@ local assets=
 	Asset("ANIM", "anim/trap_teeth_maxwell.zip"),
 	Asset("ANIM", "anim/gunpowder.zip"),
     Asset("ANIM", "anim/explode.zip"),
+    Asset("ANIM", "anim/firebomb.zip"),
+    Asset("ANIM", "anim/icebomb.zip"),
+    Asset("ANIM", "anim/fuse.zip"),
 }
 
 local TRAP_FREEZE_TIME=60
@@ -31,6 +34,20 @@ end
 local function OnToothExplode(inst, target)
     inst.AnimState:PlayAnimation("trap")
     if target then
+
+    	
+    local boom = CreateEntity()
+    boom.entity:AddTransform()
+    local anim=boom.entity:AddAnimState()
+    boom.Transform:SetScale(1, 1, 1)
+    anim:SetBank("fuse")
+    anim:SetBuild("fuse")
+    anim:PlayAnimation("idle",false)
+
+    local pos =inst:GetPosition()
+    boom.Transform:SetPosition(pos.x, pos.y, pos.z)
+    boom:ListenForEvent("animover", function() print("cleanup") boom:Remove() end)
+
         inst.SoundEmitter:PlaySound("dontstarve/common/trap_teeth_trigger")
 	    target.components.combat:GetAttacked(inst, TUNING.TRAP_TEETH_DAMAGE*2)
         if METRICS_ENABLED then
@@ -43,6 +60,20 @@ local function OnToothExplode(inst, target)
 end
 
 local function OnIceExplode(inst, target)
+
+
+    local boom = CreateEntity()
+    boom.entity:AddTransform()
+    local anim=boom.entity:AddAnimState()
+    boom.Transform:SetScale(1, 1, 1)
+    anim:SetBank("icebomb")
+    anim:SetBuild("icebomb")
+    anim:PlayAnimation("idle",false)
+
+    local pos =inst:GetPosition()
+    boom.Transform:SetPosition(pos.x, pos.y, pos.z)
+    boom:ListenForEvent("animover", function() print("cleanup") boom:Remove() end)
+
     inst.AnimState:PlayAnimation("trap")
     if target then
     	if(target.components.freezable)then
@@ -61,6 +92,19 @@ local function OnFireExplode(inst, target)
     inst.SoundEmitter:KillSound("hiss")
     inst.SoundEmitter:PlaySound("dontstarve/common/blackpowder_explo")
 
+    local boom = CreateEntity()
+    boom.entity:AddTransform()
+    local anim=boom.entity:AddAnimState()
+    boom.Transform:SetScale(1, 1, 1)
+    anim:SetBank("firebomb")
+    anim:SetBuild("firebomb")
+    anim:PlayAnimation("idle",false)
+
+    local pos =inst:GetPosition()
+    boom.Transform:SetPosition(pos.x, pos.y, pos.z)
+    boom:ListenForEvent("animover", function() print("cleanup") boom:Remove() end)
+
+--[[
     local explode = SpawnPrefab("explode_small")
     local pos = inst:GetPosition()
     explode.Transform:SetPosition(pos.x, pos.y, pos.z)
@@ -68,8 +112,9 @@ local function OnFireExplode(inst, target)
     --local explode = PlayFX(pos,"explode", "explode", "small")
     explode.AnimState:SetBloomEffectHandle( "shaders/anim.ksh" )
     explode.AnimState:SetLightOverride(1)
-    
+
     GetClock():DoLightningLighting()
+]]
     
     GetPlayer().components.playercontroller:ShakeCamera(inst, "FULL", 0.7, 0.02, .5, 40)
 
@@ -100,8 +145,6 @@ local function OnFireExplode(inst, target)
    
     --self.inst:PushEvent("explosion")
 
-
-
     inst.AnimState:PlayAnimation("trap")
     if inst.components.finiteuses then
 	    inst.components.finiteuses:Use(1)
@@ -111,11 +154,21 @@ end
 local function OnTentacleExplode(inst,target)
 	local pt = Vector3(inst.Transform:GetWorldPosition())
 
-    local numtentacles = 1
+    local numtentacles = 3
 
-    reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
+    local boom = CreateEntity()
+    boom.entity:AddTransform()
+    local anim=boom.entity:AddAnimState()
+    boom.Transform:SetScale(1, 1, 1)
+    anim:SetBank("fuse")
+    anim:SetBuild("fuse")
+    anim:PlayAnimation("idle",false)
 
-    reader:StartThread(function()
+    local pos =inst:GetPosition()
+    boom.Transform:SetPosition(pos.x, pos.y, pos.z)
+    boom:ListenForEvent("animover", function() print("cleanup") boom:Remove() end)
+
+    inst:StartThread(function()
         for k = 1, numtentacles do
         
             local theta = math.random() * 2 * PI

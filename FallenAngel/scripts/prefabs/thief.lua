@@ -34,6 +34,7 @@ local assets = {
 
 		-- Don't forget to include your character's custom assets!
         Asset( "ANIM", "anim/thief.zip" ),
+        Asset( "ANIM", "anim/smoke_up.zip" ),
 }
 local prefabs = {
     "trap_doubleteeth",
@@ -70,6 +71,19 @@ local sneakBuff
 local enterstealth=function(inst)
     inst.components.hunger:SetRate(SNEAK_HUNGER_MULT*TUNING.WILSON_HUNGER_RATE)
     inst:AddTag("notarget")
+
+    local boom = CreateEntity()
+    boom.entity:AddTransform()
+    local anim=boom.entity:AddAnimState()
+    boom.Transform:SetScale(1, 1, 1)
+    anim:SetBank("smoke_up")
+    anim:SetBuild("smoke_up")
+    anim:PlayAnimation("idle",false)
+
+    local pos =inst:GetPosition()
+    boom.Transform:SetPosition(pos.x, pos.y, pos.z)
+    
+    boom:ListenForEvent("animover", function() print("cleanup") boom:Remove() end)
 end
 
 local leavestealth=function(inst)
