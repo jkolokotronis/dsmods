@@ -1,4 +1,4 @@
-local BB_RADIUS=10
+local BB_RADIUS=8
 local BB_DAMAGE=30
 local DM_DAMAGE_MULT=2.0
 local DM_HP_BOOST=100
@@ -65,9 +65,28 @@ local function apply_bb_damage(reader)
         reader.bladeBarrierAnim:Remove()
 	else
 		local pos=Vector3(reader.Transform:GetWorldPosition())
-		local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 20)
+		local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, BB_RADIUS)
     	for k,v in pairs(ents) do
         	if (not v:HasTag("player") and not v:HasTag("pet") and v.components.combat and not v:IsInLimbo()) then
+
+                local current = Vector3(v.Transform:GetWorldPosition() )
+                local direction = (pos - current):GetNormalized()
+                local angle = math.acos(direction:Dot(Vector3(1, 0, 0) ) ) / DEGREES
+
+                local boom = CreateEntity()
+                boom.entity:AddTransform()
+                local anim=boom.entity:AddAnimState()
+                anim:SetBank("flash_b")
+                anim:SetBuild("flash_b")
+                anim:SetOrientation( ANIM_ORIENTATION.OnGround )
+                boom.Transform:SetRotation(angle)
+                anim:PlayAnimation("idle",false)
+                boom:FacePoint(pos)
+
+                local pos1 =v:GetPosition()
+                boom.Transform:SetPosition(pos1.x, pos1.y, pos1.z)
+                boom:ListenForEvent("animover", function()  boom:Remove() end)
+
             	v.components.combat:GetAttacked(reader, BB_DAMAGE, nil)
         	end
     	end
@@ -78,7 +97,7 @@ function BladeBarrierSpellStart(inst,reader,timer)
 	if(reader.bladeBarrierTimer) then
         reader.bladeBarrierTimer:Cancel()
     end
-    reader.bladeBarrierTimer=reader:DoPeriodicTask(2, function() apply_bb_damage(reader) end)
+    reader.bladeBarrierTimer=reader:DoPeriodicTask(1, function() apply_bb_damage(reader) end)
 
     local boom = CreateEntity()
     boom.entity:AddTransform()
@@ -86,7 +105,7 @@ function BladeBarrierSpellStart(inst,reader,timer)
     boom.Transform:SetTwoFaced()
     boom.entity:AddDynamicShadow()
 --    boom.DynamicShadow:SetSize( .8, .5 )
-    boom.Transform:SetScale(4, 4, 1)
+    boom.Transform:SetScale(5, 5, 1)
 
     anim:SetBank("betterbarrier")
     anim:SetBuild("betterbarrier")
