@@ -86,21 +86,28 @@ function BladeBarrierSpellStart(inst,reader,timer)
     boom.Transform:SetTwoFaced()
     boom.entity:AddDynamicShadow()
 --    boom.DynamicShadow:SetSize( .8, .5 )
-    boom.Transform:SetScale(5, 5, 1)
+    boom.Transform:SetScale(4, 4, 1)
 
-    anim:SetBank("bladebarrier")
-    anim:SetBuild("bladebarrier")
+    anim:SetBank("betterbarrier")
+    anim:SetBuild("betterbarrier")
     anim:PlayAnimation("idle",true)
 --[[
     anim:SetBank("smoke_right")
     anim:SetBuild("smoke_right")
     anim:PlayAnimation("idle",true)
 ]]
+
+
     local pos =reader:GetPosition()
     boom.Transform:SetPosition(pos.x, pos.y, pos.z)
     reader.bladeBarrierAnim=boom
-    boom:AddComponent("follower")
-    reader.components.leader:AddFollower(boom)
+
+
+                    local follower = boom.entity:AddFollower()
+                    follower:FollowSymbol( reader.GUID, "swap_object", 0.1, 0.1, -0.0001 )
+
+--    boom:AddComponent("follower")
+--    reader.components.leader:AddFollower(boom)
 
 --    local r,g,b,a = anim:GetMultColour()
 --    anim:SetMultColour(r,g,b,1)

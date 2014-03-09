@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b5">
     <folder id="0">
-        <file id="0" name="bloodcircle_dark.png" width="64" height="64" pivot_x="0.5" pivot_y="0.5"/>s
+        <file id="0" name="bloodcircle_dark.png" width="64" height="64" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="1" name="blade.png" width="66" height="62" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="2" name="blade1.png" width="66" height="62" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <entity id="0" name="betterbarrier">
         <animation id="0" name="idle" length="500">
@@ -9,7 +11,7 @@
                 <key id="0">
                     <bone_ref id="0" timeline="0" key="0"/>
                     <bone_ref id="1" parent="0" timeline="2" key="0"/>
-                    <object_ref id="0" parent="1" name="bloodcircle_dark" folder="0" file="0" abs_x="191.99957" abs_y="-1.369864" abs_pivot_x="0.5" abs_pivot_y="0.5" abs_angle="0" abs_scale_x="1.423481" abs_scale_y="0.566896" abs_a="1" timeline="1" key="0" z_index="0"/>
+                    <object_ref id="0" parent="1" name="bloodcircle_dark" folder="0" file="1" abs_x="191.99957" abs_y="-1.369864" abs_pivot_x="0.5" abs_pivot_y="0.5" abs_angle="0" abs_scale_x="1.423481" abs_scale_y="0.566896" abs_a="1" timeline="1" key="0" z_index="0"/>
                 </key>
                 <key id="1" time="75">
                     <bone_ref id="0" timeline="0" key="1"/>
@@ -26,7 +28,7 @@
                     <bone_ref id="1" parent="0" timeline="2" key="3"/>
                     <object_ref id="0" parent="1" timeline="1" key="3" z_index="0"/>
                 </key>
-                <key id="4" time="194">
+                <key id="4" time="200">
                     <bone_ref id="0" timeline="0" key="3"/>
                     <bone_ref id="1" parent="0" timeline="2" key="3"/>
                     <object_ref id="0" parent="1" timeline="1" key="3" z_index="0"/>
@@ -87,26 +89,26 @@
                 </key>
             </timeline>
             <timeline id="1" name="bloodcircle_dark">
-                <key id="0" spin="0">
-                    <object folder="0" file="0" x="-28.374243" y="0.180522" angle="0" scale_x="7.117406" scale_y="0.566896"/>
+                <key id="0">
+                    <object folder="0" file="1" x="-28.374243" y="0.180522" angle="0" scale_x="7.117406" scale_y="0.566896"/>
                 </key>
-                <key id="1" time="75" spin="0">
-                    <object folder="0" file="0" x="-28.374243" y="0.180522" angle="0" scale_x="7.117406" scale_y="0.566896"/>
+                <key id="1" time="75">
+                    <object folder="0" file="2" x="-28.374243" y="0.180522" scale_x="7.117406" scale_y="0.566896"/>
                 </key>
                 <key id="2" time="125" spin="0">
-                    <object folder="0" file="0" x="-28.374243" y="0.180522" angle="0" scale_x="7.117406" scale_y="0.566896"/>
+                    <object folder="0" file="1" x="-28.374243" y="0.180522" angle="0" scale_x="7.117406" scale_y="0.566896"/>
                 </key>
                 <key id="3" time="175" spin="0">
-                    <object folder="0" file="0" x="-28.374243" y="0.180522" angle="0" scale_x="7.117406" scale_y="0.566896"/>
+                    <object folder="0" file="1" x="-28.374243" y="0.180522" angle="0" scale_x="7.117406" scale_y="0.566896"/>
                 </key>
-                <key id="4" time="250" spin="0">
-                    <object folder="0" file="0" x="-28.374243" y="0.180522" angle="0" scale_x="7.117406" scale_y="0.566896"/>
+                <key id="4" time="250">
+                    <object folder="0" file="1" x="-28.374243" y="0.180522" angle="0" scale_x="7.117406" scale_y="0.566896"/>
                 </key>
-                <key id="5" time="325" spin="0">
-                    <object folder="0" file="0" x="-28.374243" y="0.180522" angle="0" scale_x="7.117406" scale_y="0.566896"/>
+                <key id="5" time="325">
+                    <object folder="0" file="1" x="-28.374243" y="0.180522" scale_x="7.117406" scale_y="0.566896"/>
                 </key>
                 <key id="6" time="375" spin="0">
-                    <object folder="0" file="0" x="-28.374243" y="0.180522" angle="0" scale_x="7.117406" scale_y="0.566896"/>
+                    <object folder="0" file="1" x="-28.374243" y="0.180522" angle="0" scale_x="7.117406" scale_y="0.566896"/>
                 </key>
             </timeline>
             <timeline id="2" name="Spriter_is_being_a_bitch_bone" object_type="bone">
