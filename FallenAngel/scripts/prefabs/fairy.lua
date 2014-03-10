@@ -1,8 +1,8 @@
 local assets=
 {
-    Asset("ANIM", "anim/ghost.zip"),
-    Asset("ANIM", "anim/ghost_wendy_build.zip"),
-    Asset("SOUND", "sound/ghost.fsb"),
+    Asset("ANIM", "anim/hound_basic.zip"),
+    Asset("ANIM", "anim/hound.zip"),
+    Asset("SOUND", "sound/hound.fsb"),
 }
 
 local PET_HEALTH=300
@@ -17,6 +17,28 @@ local function ShouldKeepTarget(inst, target)
     return false 
 end]]--
     
+
+local WAKE_TO_FOLLOW_DISTANCE = 8
+local SLEEP_NEAR_HOME_DISTANCE = 10
+local SHARE_TARGET_DIST = 30
+local HOME_TELEPORT_DIST = 30
+
+local function ShouldWakeUp(inst)
+    return DefaultWakeTest(inst) or (inst.components.follower and inst.components.follower.leader and not inst.components.follower:IsNearLeader(WAKE_TO_FOLLOW_DISTANCE))
+end
+
+local function ShouldSleep(inst)
+    return not GetClock():IsDay()
+    and not (inst.components.combat and inst.components.combat.target)
+    and not (inst.components.burnable and inst.components.burnable:IsBurning() )
+end
+
+local function OnNewTarget(inst, data)
+    if inst.components.sleeper:IsAsleep() then
+        inst.components.sleeper:WakeUp()
+    end
+end
+
 
 local function Retarget(inst)
 
@@ -62,11 +84,12 @@ local function fn(Sim)
     inst.entity:AddTransform()
     local anim=inst.entity:AddAnimState()
     inst.entity:AddSoundEmitter()
-    inst.Transform:SetTwoFaced()
     inst.entity:AddDynamicShadow()
-    inst.DynamicShadow:SetSize( .8, .5 )
-    inst.AnimState:SetBloomEffectHandle( "shaders/anim.ksh" )
+--    inst.DynamicShadow:SetSize( .8, .5 )
+--    inst.AnimState:SetBloomEffectHandle( "shaders/anim.ksh" )
     
+    inst.DynamicShadow:SetSize( 2.5, 1.5 )
+    inst.Transform:SetFourFaced()
     inst.entity:AddPhysics()
  
 --
@@ -83,20 +106,24 @@ local function fn(Sim)
     inst:AddTag("character")
     inst:AddTag("scarytoprey")
    
+    MakeCharacterPhysics(inst, 10, .5)
+
+--[[
     MakeCharacterPhysics(inst, 1, .25)
     inst.Physics:SetCollisionGroup(COLLISION.FLYERS)
     inst.Physics:ClearCollisionMask()
     inst.Physics:CollidesWith(COLLISION.WORLD)
-    
+    ]]
     
     inst.AnimState:PlayAnimation("idle")
     inst.AnimState:SetRayTestOnBB(true);
 
 
-    anim:SetBank("ghost")
-    anim:SetBuild("ghost_wendy_build")
---    anim:SetBank("fairy")
---    anim:SetBuild("butterfly")
+--    anim:SetBank("ghost")
+--    anim:SetBuild("ghost_wendy_build")
+
+    anim:SetBank("hound")
+    anim:SetBuild("hound")
     
     inst:AddComponent("locomotor") -- locomotor must be constructed before the stategraph
     inst.components.locomotor:EnableGroundSpeedMultiplier(false)
@@ -121,24 +148,33 @@ local function fn(Sim)
     inst.components.locomotor.runspeed = TUNING.WILSON_RUN_SPEED*2
     inst.components.locomotor:SetTriggersCreep(false)
 
-    inst:SetStateGraph("SGghost")
---    inst:SetStateGraph("SGfairy")
+--    inst:SetStateGraph("SGghost")
+    inst:SetStateGraph("SGhound")
     
     inst:AddComponent("inspectable")
         
     inst:AddComponent("follower")
 
     ---------------------       
-    inst:AddTag("FX")
+--    inst:AddTag("FX")
     inst:AddTag("companion")
     inst:AddTag("notraptrigger")
-    inst:AddTag("light")
+--    inst:AddTag("light")
     ------------------
+
+
+    inst:AddComponent("sleeper")
+    inst.components.sleeper:SetResistance(3)
+    inst.components.sleeper.testperiod = GetRandomWithVariance(6, 2)
+    inst.components.sleeper:SetSleepTest(ShouldSleep)
+    inst.components.sleeper:SetWakeTest(ShouldWakeUp)
+
     inst:AddComponent("combat")
+    inst.components.combat:SetAttackPeriod(TUNING.HOUND_ATTACK_PERIOD)
     inst.components.combat.defaultdamage = TUNING.ABIGAIL_DAMAGE_PER_SECOND
     inst.components.combat.playerdamagepercent = TUNING.ABIGAIL_DMG_PLAYER_PERCENT
     inst.components.combat:SetRetargetFunction(3, Retarget)
-    inst.components.combat.areahitdamagepercent=0.3
+    inst.components.combat.areahitdamagepercent=0.5
 --[[
 	inst:AddComponent("combat")
 	inst.components.combat:SetKeepTargetFunction(ShouldKeepTarget)
