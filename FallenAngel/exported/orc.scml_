@@ -14,7 +14,7 @@
         <file id="10" name="orc/attack_down_3.png" width="400" height="400" pivot_x="0" pivot_y="1"/>
         <file id="11" name="orc/attack_down_4.png" width="400" height="400" pivot_x="0" pivot_y="1"/>
         <file id="12" name="orc/attack_down_6.png" width="400" height="400" pivot_x="0" pivot_y="1"/>
-        <file id="13" name="orc/attack_down_7.png" width="400" height="400" pivot_x="0" pivot_y="1"/>
+        <file id="13" name="orc/hit.png" width="240" height="266" pivot_x="0" pivot_y="1"/>
         <file id="14" name="orc/attack_up_1.png" width="400" height="400" pivot_x="0" pivot_y="1"/>
         <file id="15" name="orc/attack_up_2.png" width="400" height="400" pivot_x="0" pivot_y="1"/>
         <file id="16" name="orc/attack_up_3.png" width="400" height="400" pivot_x="0" pivot_y="1"/>
@@ -30,8 +30,8 @@
         <file id="26" name="orc/death_3.png" width="400" height="320" pivot_x="0" pivot_y="1"/>
         <file id="27" name="orc/death_4.png" width="400" height="320" pivot_x="0" pivot_y="1"/>
         <file id="28" name="orc/death_5.png" width="400" height="320" pivot_x="0" pivot_y="1"/>
-        <file id="29" name="orc/death_6.png" width="400" height="320" pivot_x="0" pivot_y="1"/>
-        <file id="30" name="orc/death_7.png" width="400" height="320" pivot_x="0" pivot_y="1"/>
+        <file id="29" name="orc/hit_up.png" width="268" height="262" pivot_x="0" pivot_y="1"/>
+        <file id="30" name="orc/hit_down.png" width="278" height="276" pivot_x="0" pivot_y="1"/>
         <file id="31" name="orc/walk_down_1.png" width="240" height="300" pivot_x="0" pivot_y="1"/>
         <file id="32" name="orc/walk_down_3.png" width="240" height="300" pivot_x="0" pivot_y="1"/>
         <file id="33" name="orc/walk_down_4.png" width="240" height="300" pivot_x="0" pivot_y="1"/>
@@ -302,6 +302,42 @@
             <timeline id="0" name="walk_down_2_000">
                 <key id="0" spin="0">
                     <object folder="0" file="23" x="-101.923077" y="273.076923" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="10" name="hit" length="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" name="hit" folder="0" file="13" abs_x="-103" abs_y="248" abs_pivot_x="0" abs_pivot_y="1" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="hit">
+                <key id="0" spin="0">
+                    <object folder="0" file="13" x="-103" y="248"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="11" name="hit_up" length="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" name="hit_up" folder="0" file="29" abs_x="-84" abs_y="251" abs_pivot_x="0" abs_pivot_y="1" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="hit_up">
+                <key id="0" spin="0">
+                    <object folder="0" file="29" x="-84" y="251"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="12" name="hit_down" length="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" name="hit_down" folder="0" file="30" abs_x="-160" abs_y="256" abs_pivot_x="0" abs_pivot_y="1" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="hit_down">
+                <key id="0" spin="0">
+                    <object folder="0" file="30" x="-160" y="256"/>
                 </key>
             </timeline>
         </animation>

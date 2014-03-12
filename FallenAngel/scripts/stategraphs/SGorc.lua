@@ -134,13 +134,14 @@ local states=
 
         onenter = function(inst, cb)
             inst.Physics:Stop()
+            inst.AnimState:PlayAnimation("hit")
             inst.SoundEmitter:PlaySound("dontstarve/characters/wilton/hurt")
-            inst.sg:GoToState("idle") 
+ --           inst.sg:GoToState("idle") 
         end,
 
         events=
         {
-	--		EventHandler("animover", function(inst) inst.sg:GoToState("idle") end),
+			EventHandler("animover", function(inst) inst.sg:GoToState("idle") end),
         },
     },
 
