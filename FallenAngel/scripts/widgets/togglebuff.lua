@@ -2,14 +2,6 @@ local Widget = require "widgets/widget"
 local Text = require "widgets/text"
 require "constants"
 
---[[
-MOUSEBUTTON_LEFT = 1000
-MOUSEBUTTON_RIGHT = 1001
-MOUSEBUTTON_MIDDLE = 1002
-MOUSEBUTTON_SCROLLUP = 1003
-MOUSEBUTTON_SCROLLDOWN = 1004
-]]--
-
 local ToggleBuff = Class(Widget, function(self, data)
     Widget._ctor(self, "TOGGLE")
     self.image = self:AddChild(Image())
@@ -17,8 +9,6 @@ local ToggleBuff = Class(Widget, function(self, data)
     self.image:MoveToBack()
 
     self.text = self:AddChild(Text(DEFAULTFONT, 30))
---    self.text:Hide()
-    
     self.state = data.state or "off"
 	self.states = data.states or {"on", "off", "optional"}
 	
@@ -41,9 +31,6 @@ local ToggleBuff = Class(Widget, function(self, data)
     self.image:SetTexture(self.normaltex[self.state].atlas,self.normaltex[self.state].tex)
     self.image:SetMouseOverTexture(self.normaltex["on"].atlas,self.normaltex["on"].tex)
     self.image:SetDisabledTexture(self.disabledtex.atlas,self.disabledtex.tex)
-   
-
-
 
 end)
 

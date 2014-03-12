@@ -3,15 +3,6 @@ local Text = require "widgets/text"
 local Image = require "widgets/image"
 require "constants"
 
---[[
-MOUSEBUTTON_LEFT = 1000
-MOUSEBUTTON_RIGHT = 1001
-MOUSEBUTTON_MIDDLE = 1002
-MOUSEBUTTON_SCROLLUP = 1003
-MOUSEBUTTON_SCROLLDOWN = 1004
-]]--
-
-
 local CooldownButton = Class(Widget, function(self, data)
 
     local init=data or {}
@@ -45,10 +36,6 @@ local CooldownButton = Class(Widget, function(self, data)
     self.image:SetMouseOverTexture(self.overtex.atlas,self.overtex.tex)
     self.image:SetDisabledTexture(self.disabledtex.atlas,self.disabledtex.tex)
    
---[[    self.image:SetTexture("images/ui.xml","button_small.tex")
-    self.image:SetMouseOverTexture("images/ui.xml","button_small_over.tex")
-    self.image:SetDisabledTexture("images/ui.xml","button_small_disabled.tex")
-]]
     self.cooldown=init.cooldown or 60
     self.cooldowntimer=0
     self.cooldowntask=nil

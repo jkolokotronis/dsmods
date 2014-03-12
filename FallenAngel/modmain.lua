@@ -24,6 +24,7 @@ local ImageButton = require "widgets/imagebutton"
 --local xx=require "prefabs/spells"
 
 PrefabFiles = {
+    "natureshealing",
     "skeletonspawn",
     "boomstickprojectile",
     "fizzleboomstick",
@@ -40,6 +41,9 @@ PrefabFiles = {
     "bow",
     "spellbooks",
     "shields",
+    "dryad",
+    "satyr",
+    "unicorn",
 	"thief",
 	"barb",
 	"cleric",
@@ -53,6 +57,9 @@ PrefabFiles = {
     "wizard",
     "tinkerer",
     "paladin",
+    "bard",
+    "ranger",
+    "orc"
 }
 
 Assets = {
@@ -76,6 +83,10 @@ Assets = {
     Asset( "ATLAS", "images/saveslot_portraits/tinkerer.xml" ),
     Asset( "IMAGE", "images/saveslot_portraits/paladin.tex" ),
     Asset( "ATLAS", "images/saveslot_portraits/paladin.xml" ),
+    Asset( "IMAGE", "images/saveslot_portraits/ranger.tex" ),
+    Asset( "ATLAS", "images/saveslot_portraits/ranger.xml" ),
+    Asset( "IMAGE", "images/saveslot_portraits/bard.tex" ),
+    Asset( "ATLAS", "images/saveslot_portraits/bard.xml" ),
 
     Asset( "IMAGE", "images/selectscreen_portraits/thief.tex" ),
     Asset( "ATLAS", "images/selectscreen_portraits/thief.xml" ),
@@ -97,6 +108,10 @@ Assets = {
     Asset( "ATLAS", "images/selectscreen_portraits/tinkerer.xml" ),
     Asset( "IMAGE", "images/selectscreen_portraits/paladin.tex" ),
     Asset( "ATLAS", "images/selectscreen_portraits/paladin.xml" ),
+    Asset( "IMAGE", "images/selectscreen_portraits/ranger.tex" ),
+    Asset( "ATLAS", "images/selectscreen_portraits/ranger.xml" ),
+    Asset( "IMAGE", "images/selectscreen_portraits/bard.tex" ),
+    Asset( "ATLAS", "images/selectscreen_portraits/bard.xml" ),
 
     Asset( "IMAGE", "images/selectscreen_portraits/wod_silho.tex" ),
     Asset( "ATLAS", "images/selectscreen_portraits/wod_silho.xml" ),
@@ -119,6 +134,10 @@ Assets = {
     Asset( "ATLAS", "bigportraits/tinkerer.xml" ),
     Asset( "IMAGE", "bigportraits/paladin.tex" ),
     Asset( "ATLAS", "bigportraits/paladin.xml" ),
+    Asset( "IMAGE", "bigportraits/ranger.tex" ),
+    Asset( "ATLAS", "bigportraits/ranger.xml" ),
+    Asset( "IMAGE", "bigportraits/bard.tex" ),
+    Asset( "ATLAS", "bigportraits/bard.xml" ),
 
 }
 
@@ -344,14 +363,30 @@ local startSkeletonSpawnTask=function(inst)
         end)
 end
 
-AddPrefabPostInit("spoiled_food",function(inst)
-    local rng=math.random()
-    if(rng>0.5)then
-        doSkeletonSpawn(inst)            
+local spoiledSkeletonSpawn=function(inst)
+    if(math.random()>0.5)then
+        doSkeletonSpawn(inst)
     end
+end
+
+AddPrefabPostInit("common/inventory/meat",function(inst)
+    inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
 end)
-
-
+AddPrefabPostInit("common/inventory/cookedmeat",function(inst)
+    inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
+end)
+AddPrefabPostInit("common/inventory/meat_dried",function(inst)
+    inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
+end)
+AddPrefabPostInit("common/inventory/monstermeat",function(inst)
+    inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
+end)
+AddPrefabPostInit("common/inventory/cookedmonstermeat",function(inst)
+    inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
+end)
+AddPrefabPostInit("common/inventory/monstermeat_dried",function(inst)
+    inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
+end)
 
 AddPrefabPostInit("mound",function(inst)
     if(not inst.components.workable and not inst:HasTag("hasSpawnedSkeleton"))then
@@ -446,15 +481,17 @@ AddSimPostInit(function(inst)
         if inst:HasTag("player") and (inst.prefab=="darkknight" or inst.prefab=="cleric" or inst.prefab=="paladin") then
             --add shields
             local r=Recipe("woodenshield", {Ingredient("log", 20),Ingredient("rope", 5) }, RECIPETABS.WAR,  GLOBAL.TECH.SCIENCE_ONE)
-            r.image="wdshield.tex"
-            r.atlas = "images/inventoryimages/wdshield.xml"
+            r.image="woodshield.tex"
+            r.atlas = "images/inventoryimages/woodshield.xml"
             local r=Recipe("rockshield", {Ingredient("rocks", 20),Ingredient("rope", 5)}, RECIPETABS.WAR,  GLOBAL.TECH.SCIENCE_TWO)    
-            r.image="shield.tex"
-            r.atlas = "images/inventoryimages/shield.xml"
+            r.image="rockshield.tex"
+            r.atlas = "images/inventoryimages/rockshield.xml"
             local r=Recipe("marbleshield", {Ingredient("marble", 20),Ingredient("rope", 5) }, RECIPETABS.WAR,  GLOBAL.TECH.SCIENCE_TWO)
-            r.image="shield.tex"
-            r.atlas = "images/inventoryimages/shield.xml"
---            Recipe("boneshield", {Ingredient("bone", 1),Ingredient("rope", 5) }, RECIPETABS.WAR,  TECH.SCIENCE_TWO)
+            r.image="marbleshield.tex"
+            r.atlas = "images/inventoryimages/marbleshield.xml"
+            local r=Recipe("boneshield", {Ingredient("houndstooth", 10),Ingredient("rope", 5) }, RECIPETABS.WAR,  GLOBAL.TECH.SCIENCE_ONE)
+            r.image="boneshield.tex"
+            r.atlas = "images/inventoryimages/boneshield.xml"
         end
 end)
 --\
@@ -479,4 +516,4 @@ AddModCharacter("necromancer")
 AddModCharacter("wizard")
 AddModCharacter("tinkerer")
 AddModCharacter("paladin")
-
+AddModCharacter("ranger")

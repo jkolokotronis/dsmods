@@ -125,6 +125,8 @@ local function fn(Sim)
     anim:SetBank("hound")
     anim:SetBuild("hound")
     
+
+    inst:AddComponent("lootdropper")
     inst:AddComponent("locomotor") -- locomotor must be constructed before the stategraph
     inst.components.locomotor:EnableGroundSpeedMultiplier(false)
 --  inst.components.locomotor.groundspeedmultiplier = 10
