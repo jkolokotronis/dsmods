@@ -63,7 +63,7 @@ local function fn()
 	local shadow = inst.entity:AddDynamicShadow()
 	shadow:SetSize( 3, 2 )
     inst.Transform:SetFourFaced()
-    inst.Transform:SetScale(1.5,1.5, 1.5)
+    inst.Transform:SetScale(2,2, 2)
 	
 	inst:AddTag("scarytoprey")
     inst:AddTag("monster")
