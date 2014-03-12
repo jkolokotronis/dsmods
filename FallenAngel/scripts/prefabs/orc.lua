@@ -102,7 +102,7 @@ local function fn()
     inst.components.combat:SetKeepTargetFunction(KeepTargetFn)
 
     inst:AddComponent("lootdropper")
-    inst:AddComponent("inspectable")
+--    inst:AddComponent("inspectable")
     
     inst:ListenForEvent("attacked", OnAttacked)
 
