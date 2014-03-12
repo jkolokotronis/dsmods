@@ -193,7 +193,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="5" name="attack_down" length="600">
+        <animation id="5" name="attack_down" length="500">
             <mainline>
                 <key id="0">
                     <object_ref id="0" name="attack_down_1" folder="0" file="8" abs_x="-224.613108" abs_y="341.112756" abs_pivot_x="0" abs_pivot_y="1" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="0"/>
@@ -209,9 +209,6 @@
                 </key>
                 <key id="4" time="400">
                     <object_ref id="0" timeline="0" key="4" z_index="0"/>
-                </key>
-                <key id="5" time="500">
-                    <object_ref id="0" timeline="0" key="5" z_index="0"/>
                 </key>
             </mainline>
             <timeline id="0" name="attack_down_1">
@@ -229,9 +226,6 @@
                 </key>
                 <key id="4" time="400" spin="0">
                     <object folder="0" file="12" x="-224.613108" y="341.112756" angle="0"/>
-                </key>
-                <key id="5" time="500" spin="0">
-                    <object folder="0" file="13" x="-224.613108" y="341.112756" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -251,7 +245,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="7" name="death" length="1000">
+        <animation id="7" name="death" length="750">
             <mainline>
                 <key id="0">
                     <object_ref id="0" name="death_1" folder="0" file="24" abs_x="-206.067653" abs_y="254.672304" abs_pivot_x="0" abs_pivot_y="1" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="0"/>
@@ -267,12 +261,6 @@
                 </key>
                 <key id="4" time="600">
                     <object_ref id="0" timeline="0" key="4" z_index="0"/>
-                </key>
-                <key id="5" time="750">
-                    <object_ref id="0" timeline="0" key="5" z_index="0"/>
-                </key>
-                <key id="6" time="900">
-                    <object_ref id="0" timeline="0" key="6" z_index="0"/>
                 </key>
             </mainline>
             <timeline id="0" name="death_1">
@@ -291,35 +279,29 @@
                 <key id="4" time="600" spin="0">
                     <object folder="0" file="28" x="-206.067653" y="254.672304" angle="0"/>
                 </key>
-                <key id="5" time="750" spin="0">
-                    <object folder="0" file="29" x="-206.067653" y="254.672304" angle="0"/>
-                </key>
-                <key id="6" time="900" spin="0">
-                    <object folder="0" file="30" x="-206.067653" y="254.672304" angle="0"/>
-                </key>
             </timeline>
         </animation>
-        <animation id="8" name="idle_up" length="1000">
+        <animation id="8" name="idle_up" length="50">
             <mainline>
                 <key id="0">
-                    <object_ref id="0" name="walk_up_2" folder="0" file="1" abs_x="-130.769231" abs_y="278.846154" abs_pivot_x="0" abs_pivot_y="1" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="0" name="walk_up_2" folder="0" file="1" abs_x="-130.769231" abs_y="278.846154" abs_pivot_x="0" abs_pivot_y="1" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="0"/>
                 </key>
             </mainline>
             <timeline id="0" name="walk_up_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-130.769231" y="278.846154"/>
+                    <object folder="0" file="1" x="-130.769231" y="278.846154" angle="0"/>
                 </key>
             </timeline>
         </animation>
-        <animation id="9" name="idle_down" length="1000">
+        <animation id="9" name="idle_down" length="50">
             <mainline>
                 <key id="0">
-                    <object_ref id="0" name="walk_down_2_000" folder="0" file="23" abs_x="-101.923077" abs_y="273.076923" abs_pivot_x="0" abs_pivot_y="1" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="0" name="walk_down_2_000" folder="0" file="23" abs_x="-101.923077" abs_y="273.076923" abs_pivot_x="0" abs_pivot_y="1" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="0"/>
                 </key>
             </mainline>
             <timeline id="0" name="walk_down_2_000">
                 <key id="0" spin="0">
-                    <object folder="0" file="23" x="-101.923077" y="273.076923"/>
+                    <object folder="0" file="23" x="-101.923077" y="273.076923" angle="0"/>
                 </key>
             </timeline>
         </animation>
