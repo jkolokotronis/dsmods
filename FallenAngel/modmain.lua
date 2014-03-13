@@ -44,6 +44,9 @@ PrefabFiles = {
     "dryad",
     "satyr",
     "unicorn",
+    "orc",
+    "ogre",
+    "troll",
 	"thief",
 	"barb",
 	"cleric",
@@ -59,7 +62,6 @@ PrefabFiles = {
     "paladin",
     "bard",
     "ranger",
-    "orc"
 }
 
 Assets = {

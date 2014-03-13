@@ -31,7 +31,7 @@ function OrcBrain:OnStart()
     local root = PriorityNode(
     {
         WhileNode( function() return self.inst.components.health.takingfiredamage end, "OnFire", Panic(self.inst)),
-          ChaseAndAttack(self.inst, 5),
+          ChaseAndAttack(self.inst, MAX_CHASE_TIME,MAX_CHASE_DIST),
         Wander(self.inst, function() 
             if(self.inst.components.homeseeker and self.inst.components.homeseeker.home)then
                 return self.inst.components.homeseeker:GetHomePos()
