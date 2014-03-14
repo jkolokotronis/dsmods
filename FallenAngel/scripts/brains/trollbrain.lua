@@ -5,7 +5,7 @@ require "behaviours/faceentity"
 require "behaviours/chaseandattack"
 require "behaviours/panic"
 
-local SEE_FOOD_DIST = 10
+local SEE_FOOD_DIST = 15
 local SEE_PLAYER_DIST = 15
 local MAX_WANDER_DIST = 15
 local MAX_CHASE_TIME = 15

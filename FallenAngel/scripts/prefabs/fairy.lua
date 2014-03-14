@@ -143,8 +143,6 @@ local function fn(Sim)
     inst.components.playerprox:SetOnPlayerNear(onnear)
     inst.components.playerprox:SetOnPlayerFar(onfar)
     
---    inst.components.locomotor.walkspeed = GetPlayer().components.locomotor.groundspeedmultiplier*GetPlayer().components.locomotor.walkspeed*GetPlayer().components.locomotor.fastmultiplier
---    inst.components.locomotor.runspeed = GetPlayer().components.locomotor.groundspeedmultiplier*GetPlayer().components.locomotor.walkspeed*GetPlayer().components.locomotor.fastmultiplier+4
 --  inst.components.locomotor.isrunning = true
     inst.components.locomotor.walkspeed = TUNING.WILSON_RUN_SPEED
     inst.components.locomotor.runspeed = TUNING.WILSON_RUN_SPEED*2

@@ -67,6 +67,9 @@ local function fn(Sim)
     inst.components.health:SetMaxHealth(PET_HEALTH)
     inst.components.health:SetInvincible(false)
 
+     MakeMediumFreezableCharacter(inst, "dryad")
+     MakeMediumBurnableCharacter(inst, "dryad")
+
     inst.SoundEmitter:PlaySound("dontstarve/ghost/ghost_howl_LP", "howl")
     inst:SetStateGraph("SGpig")
 

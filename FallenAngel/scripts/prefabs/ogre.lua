@@ -90,8 +90,8 @@ local function fn()
     inst:ListenForEvent("attacked", OnAttacked)
 
 
---     MakeMediumFreezableCharacter(inst, "pig_torso")
---    MakeMediumBurnableCharacter(inst, "pig_torso")
+    MakeLargeBurnableCharacter(inst, "ogre")
+    MakeLargeFreezableCharacter(inst, "ogre")
 
     return inst
 end

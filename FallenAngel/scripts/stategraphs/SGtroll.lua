@@ -166,6 +166,7 @@ local states=
         onenter = function(inst)
             inst.AnimState:PlayAnimation("Death")
             inst.Physics:Stop()
+            print("diaf")
             RemovePhysicsColliders(inst)            
             inst.components.lootdropper:DropLoot(Vector3(inst.Transform:GetWorldPosition()))            
         end,
@@ -190,6 +191,20 @@ local states=
         {
             EventHandler("animover", function(inst) inst.sg:GoToState("idle") end ),
         },        
+    },
+    State{
+        name="regen",
+        tags={"busy"},
+
+        onenter = function(inst)
+            inst.Physics:Stop() 
+            print("got into regen sg")           
+            inst.AnimState:PlayAnimation("Death")
+        end,
+        timeline=
+        {
+            TimeEvent(10, function(inst)  print("regen sg complete") inst.sg:GoToState("idle") end),
+        },
     },
 }
 

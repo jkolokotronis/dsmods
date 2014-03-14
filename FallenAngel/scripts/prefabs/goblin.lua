@@ -10,8 +10,9 @@ local prefabs =
 
 }
 
-local ORC_HEALTH=300
-local ORC_DAMAGE=20
+local GOBLIN_HEALTH=300
+local GOBLIN_DAMAGE=20
+local GOBLIN_ATTACK_PERIOD=1
 
 local MAX_TARGET_SHARES = 5
 local SHARE_TARGET_DIST = 40
@@ -23,7 +24,7 @@ local function RetargetFn(inst)
         defenseTarget = home
     end
     local invader = FindEntity(defenseTarget or inst, TUNING.MERM_TARGET_DIST, function(guy)
-        return guy:HasTag("character") and not guy:HasTag("orc")
+        return guy:HasTag("character") and not guy:HasTag("goblin")
     end)
     return invader
 end
@@ -63,16 +64,16 @@ local function fn()
     local physics = inst.entity:AddPhysics()
 	local sound = inst.entity:AddSoundEmitter()
 	local shadow = inst.entity:AddDynamicShadow()
-	shadow:SetSize( 3, 2 )
+	shadow:SetSize( 2, 1 )
     inst.Transform:SetFourFaced()
-    inst.Transform:SetScale(2,2, 2)
+    inst.Transform:SetScale(1,1, 1)
 	
 	inst:AddTag("scarytoprey")
     inst:AddTag("monster")
-    inst:AddTag("orc")
+    inst:AddTag("goblin")
     inst:AddTag("hostile")
 	
-    MakeCharacterPhysics(inst, 20, 0.5)
+    MakeCharacterPhysics(inst, 10, 0.5)
      
     anim:SetBank("orc")
     anim:SetBuild("orc") 
@@ -87,15 +88,15 @@ local function fn()
     inst:SetBrain(brain)
     
     inst:AddComponent("health")
-    inst.components.health:SetMaxHealth(ORC_HEALTH)
+    inst.components.health:SetMaxHealth(GOBLIN_HEALTH)
     
     inst:AddComponent("sanityaura")
     inst.components.sanityaura.aura = -TUNING.SANITYAURA_MED
     
     
     inst:AddComponent("combat")
-    inst.components.combat:SetDefaultDamage(ORC_DAMAGE)
-    inst.components.combat:SetAttackPeriod(0.75)
+    inst.components.combat:SetDefaultDamage(GOBLIN_DAMAGE)
+    inst.components.combat:SetAttackPeriod(GOBLIN_ATTACK_PERIOD)
     inst.components.combat:SetRange(3)
 --    inst.components.combat.hiteffectsymbol = "pig_torso"
     inst.components.combat:SetRetargetFunction(1, RetargetFn)
@@ -107,11 +108,10 @@ local function fn()
     
     inst:ListenForEvent("attacked", OnAttacked)
 
-
      MakeMediumFreezableCharacter(inst, "orc")
      MakeMediumBurnableCharacter(inst, "orc")
 
     return inst
 end
 
-return Prefab( "common/orc", fn, assets)
+return Prefab( "common/goblin", fn, assets)
