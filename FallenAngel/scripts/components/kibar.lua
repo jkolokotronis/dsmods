@@ -14,6 +14,7 @@ end)
 
 
 function KiBar:OnRespawn()
+    self:SetPercent(0)
 	end
 
 function KiBar:OnSave()
@@ -63,10 +64,6 @@ function KiBar:DoDelta(delta, overtime, ignore_invincible)
         return
     end
 
-    if not ignore_invincible and self.inst.components.health.invincible == true or self.inst.is_teleporting == true then
-        return
-    end
-
     local old = self.current
     self.current = self.current + delta
     if self.current < 0 then 
@@ -93,7 +90,7 @@ end
 
 
 function KiBar:SetRate(rate)
-    self.kirate = rate
+    self.decrate = rate
 end
 
 

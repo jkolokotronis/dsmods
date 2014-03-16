@@ -4,14 +4,17 @@ local assets=
   Asset("ANIM", "anim/swap_marbleshield.zip"),
   Asset("ANIM", "anim/swap_rockshield.zip"),
   Asset("ANIM", "anim/swap_woodshield.zip"),
+  Asset("ANIM", "anim/swap_reflectshield.zip"),
   Asset("ATLAS", "images/inventoryimages/boneshield.xml"),
   Asset("ATLAS", "images/inventoryimages/rockshield.xml"),
   Asset("ATLAS", "images/inventoryimages/woodshield.xml"),
   Asset("ATLAS", "images/inventoryimages/marbleshield.xml"),
+  Asset("ATLAS", "images/inventoryimages/reflectshield.xml"),
   Asset("IMAGE", "images/inventoryimages/boneshield.tex"),
   Asset("IMAGE", "images/inventoryimages/rockshield.tex"),
   Asset("IMAGE", "images/inventoryimages/woodshield.tex"),
   Asset("IMAGE", "images/inventoryimages/marbleshield.tex"),
+  Asset("IMAGE", "images/inventoryimages/reflectshield.tex"),
 
 
 }
@@ -34,6 +37,11 @@ local function wdonequip(inst, owner)
     owner.AnimState:OverrideSymbol("swap_body", "swap_woodshield", "swap_body")
 end
 
+local function reflectonequip(inst, owner) 
+    owner.AnimState:OverrideSymbol("swap_body", "swap_woodshield", "backpack")
+    owner.AnimState:OverrideSymbol("swap_body", "swap_woodshield", "swap_body")
+end
+
 local function onunequip(inst, owner) 
     owner.AnimState:ClearOverrideSymbol("swap_body")
     owner.AnimState:ClearOverrideSymbol("backpack")
@@ -50,6 +58,9 @@ local MARBLE_SHIELD_DURA=400
 
 local BONE_SHIELD_ABSO=0.20
 local BONE_SHIELD_DURA=200
+
+local REFLECT_SHIELD_ABSO=0.20
+local REFLECT_SHIELD_DURA=200
 
 local function fn()
   local inst = CreateEntity()
@@ -151,8 +162,23 @@ local function MakeBoneShield()
     return inst
 end
 
+local function MakeReflectShield()
+    local inst=fn()
+ inst.AnimState:SetBank("backpack1")
+    inst.AnimState:SetBuild("swap_reflectshield")
+    inst.AnimState:PlayAnimation("anim")
+
+    
+     inst.components.inventoryitem.atlasname = "images/inventoryimages/reflectshield.xml"
+    inst.components.inventoryitem.imagename="reflectshield"
+    inst.components.inventoryitem.foleysound = "dontstarve/movement/foley/backpack"
+    inst.components.armor:InitCondition(REFLECT_SHIELD_DURA, REFLECT_SHIELD_ABSO )
+    inst.components.equippable:SetOnEquip( reflectonequip )
+    return inst
+end
 
 return Prefab( "common/inventory/woodenshield", MakeWoodenShield, assets), 
         Prefab( "common/inventory/rockshield", MakeRockShield, assets), 
         Prefab( "common/inventory/marbleshield", MakeMarbleShield, assets), 
-        Prefab( "common/inventory/boneshield", MakeBoneShield, assets)
+        Prefab( "common/inventory/boneshield", MakeBoneShield, assets),
+        Prefab( "common/inventory/reflectshield", MakeBoneShield, assets)

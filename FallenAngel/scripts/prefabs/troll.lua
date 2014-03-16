@@ -10,7 +10,7 @@ local prefabs =
 
 }
 
-local TROLL_HEALTH=300
+local TROLL_HEALTH=3000
 local TROLL_DAMAGE=100
 local TROLL_ATTACK_PERIOD=1.5
 local TROLL_TARGET_RANGE=10

@@ -41,6 +41,13 @@ PrefabFiles = {
     "bow",
     "spellbooks",
     "shields",
+    "armor_fire",
+    "armor_frost",
+    "dagger",
+    "flamingsword",
+    "frostsword",
+    "undeadbanesword",
+    "vorpalaxe",
     "dryad",
     "satyr",
     "unicorn",
@@ -201,6 +208,16 @@ GLOBAL.STRINGS.CHARACTER_TITLES.paladin = "paladin"
 GLOBAL.STRINGS.CHARACTER_NAMES.paladin = "paladin"
 GLOBAL.STRINGS.CHARACTER_DESCRIPTIONS.paladin = "* An example of how to create a mod character."
 GLOBAL.STRINGS.CHARACTER_QUOTES.paladin = "\"I am a blank slate.\""
+
+GLOBAL.STRINGS.CHARACTER_TITLES.ranger = "ranger"
+GLOBAL.STRINGS.CHARACTER_NAMES.ranger = "paladin"
+GLOBAL.STRINGS.CHARACTER_DESCRIPTIONS.ranger = "* An example of how to create a mod character."
+GLOBAL.STRINGS.CHARACTER_QUOTES.ranger = "\"I am a blank slate.\""
+
+GLOBAL.STRINGS.CHARACTER_TITLES.bard = "bard"
+GLOBAL.STRINGS.CHARACTER_NAMES.bard = "bard"
+GLOBAL.STRINGS.CHARACTER_DESCRIPTIONS.bard = "* An example of how to create a mod character."
+GLOBAL.STRINGS.CHARACTER_QUOTES.bard = "\"I am a blank slate.\""
 -- You can also add any kind of custom dialogue that you would like. Don't forget to make
 -- categores that don't exist yet using = {}
 -- note: these are UPPER-CASE charcacter name
@@ -226,6 +243,18 @@ GLOBAL.STRINGS.RECIPE_DESC.MARBLESHIELD = "Marble Shield"
 GLOBAL.STRINGS.NAMES.BONESHIELD = "Bone Shield"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.BONESHIELD = "Bone Shield"
 GLOBAL.STRINGS.RECIPE_DESC.BONESHIELD = "Bone Shield"
+GLOBAL.STRINGS.NAMES.REFLECTSHIELD = "Reflection Shield"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.REFLECTSHIELD = "Reflection Shield"
+GLOBAL.STRINGS.NAMES.UNDEADBANESWORD = "Sword of Undead Bane"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.UNDEADBANESWORD = "Sword of Undead Bane"
+GLOBAL.STRINGS.NAMES.VORPALAXE = "Vorpal Axe"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.VORPALAXE = "Vorpal Axe"
+GLOBAL.STRINGS.NAMES.FLAMINGSWORD = "Flaming Sword"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FLAMINGSWORD = "Flaming Sword"
+GLOBAL.STRINGS.NAMES.DAGGER = "Dagger"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.DAGGER = "Dagger"
+GLOBAL.STRINGS.NAMES.FROSTSWORD = "Frost Sword"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FROSTSWORD = "Frost Sword"
 
 
 GLOBAL.STRINGS.ACTIONS.RELOAD="Reload"

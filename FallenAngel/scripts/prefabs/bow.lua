@@ -3,9 +3,10 @@ local assets=
 	Asset("ANIM", "anim/blow_dart.zip"),
 	Asset("ANIM", "anim/swap_blowdart.zip"),
 	Asset("ANIM", "anim/swap_blowdart_pipe.zip"),
-
-    Asset("ANIM", "anim/staffs.zip"),
-    Asset("ANIM", "anim/swap_staffs.zip"), 
+    Asset("ANIM", "anim/woodbow.zip"),
+    Asset("ANIM", "anim/swap_woodbow.zip"),
+    Asset("ATLAS", "images/inventoryimages/woodbow.xml"),
+    Asset("IMAGE", "images/inventoryimages/woodbow.tex"),
 }
 
 local prefabs = 
@@ -93,7 +94,7 @@ end
 local function commonfn(colour)
 
     local onequip = function(inst, owner) 
-        owner.AnimState:OverrideSymbol("swap_object", "swap_staffs", colour.."staff")
+        owner.AnimState:OverrideSymbol("swap_object", "swap_woodbow", "swap_woodbow")
         owner.AnimState:Show("ARM_carry") 
         owner.AnimState:Hide("ARM_normal") 
     end
@@ -109,9 +110,9 @@ local function commonfn(colour)
     local sound = inst.entity:AddSoundEmitter()
     MakeInventoryPhysics(inst)
     
-    anim:SetBank("staffs")
-    anim:SetBuild("staffs")
-    anim:PlayAnimation(colour.."staff")
+    anim:SetBank("woodbow")
+    anim:SetBuild("woodbow")
+    anim:PlayAnimation("idle")
     -------   
     inst:AddComponent("finiteuses")
     inst.components.finiteuses:SetOnFinished( onfinished )
@@ -119,6 +120,8 @@ local function commonfn(colour)
     inst:AddComponent("inspectable")
     
     inst:AddComponent("inventoryitem")
+    inst.components.inventoryitem.imagename="woodbow"
+    inst.components.inventoryitem.atlasname="images/inventoryimages/woodbow.xml"
     
     inst:AddComponent("equippable")
     inst.components.equippable:SetOnEquip( onequip )
@@ -149,28 +152,9 @@ local function red()
     inst:AddComponent("reloadable")
     inst.components.reloadable.ammotype="arrows"
 
-    inst:AddComponent("inventoryitem")
-    inst.components.inventoryitem.imagename="nightsword"
-
     return inst
 end
 
-local function blue()
-    local inst = commonfn("blue")
-    
-    inst:AddTag("icestaff")
-
-    inst:AddComponent("weapon")
-    inst.components.weapon:SetDamage(0)
-    inst.components.weapon:SetRange(BOW_RANGE-2, BOW_RANGE)
-    inst.components.weapon:SetOnAttack(onattack_blue)
-    inst.components.weapon:SetProjectile("ice_projectile")
-
-    inst.components.finiteuses:SetMaxUses(TUNING.ICESTAFF_USES)
-    inst.components.finiteuses:SetUses(TUNING.ICESTAFF_USES)
-    
-    return inst
-end
 
 
 return Prefab("common/inventory/bow", red, assets, prefabs)
