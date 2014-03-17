@@ -38,8 +38,8 @@ local function wdonequip(inst, owner)
 end
 
 local function reflectonequip(inst, owner) 
-    owner.AnimState:OverrideSymbol("swap_body", "swap_woodshield", "backpack")
-    owner.AnimState:OverrideSymbol("swap_body", "swap_woodshield", "swap_body")
+    owner.AnimState:OverrideSymbol("swap_body", "swap_reflectshield", "backpack")
+    owner.AnimState:OverrideSymbol("swap_body", "swap_reflectshield", "swap_body")
 end
 
 local function onunequip(inst, owner) 
@@ -68,21 +68,17 @@ local function fn()
   inst.entity:AddTransform()
   inst.entity:AddAnimState()
   inst.entity:AddSoundEmitter()
-    MakeInventoryPhysics(inst)
+  MakeInventoryPhysics(inst)
 
-  local minimap = inst.entity:AddMiniMapEntity()
-  minimap:SetIcon("backpack.png")
-    
-     inst:AddComponent("inventoryitem")
-    inst:AddComponent("equippable")
+  inst:AddComponent("inventoryitem")
+  inst:AddComponent("equippable")
   if EQUIPSLOTS["BACK"] then
       inst.components.equippable.equipslot = EQUIPSLOTS.BACK
   elseif EQUIPSLOTS["PACK"] then
       inst.components.equippable.equipslot = EQUIPSLOTS.PACK
   else
       inst.components.equippable.equipslot = EQUIPSLOTS.BODY
-  end
-    
+  end    
     
     inst.components.equippable:SetOnUnequip( onunequip )
     inst:AddComponent("armor")
@@ -94,6 +90,8 @@ end
 
 local function MakeWoodenShield()
     local inst=fn()
+    local minimap = inst.entity:AddMiniMapEntity()
+    minimap:SetIcon( "woodshield.tex" )
     inst.AnimState:SetBank("backpack1")
     inst.AnimState:SetBuild("swap_woodshield")
     inst.AnimState:PlayAnimation("anim")
@@ -120,11 +118,13 @@ end
 
 local function MakeRockShield()
     local inst=fn()
- inst.AnimState:SetBank("backpack1")
+    local minimap = inst.entity:AddMiniMapEntity()
+    minimap:SetIcon( "rockshield.tex" )
+    inst.AnimState:SetBank("backpack1")
     inst.AnimState:SetBuild("swap_rockshield")
     inst.AnimState:PlayAnimation("anim")
 
-     inst.components.inventoryitem.atlasname = "images/inventoryimages/rockshield.xml"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/rockshield.xml"
     inst.components.inventoryitem.imagename="rockshield"
     inst.components.inventoryitem.foleysound = "dontstarve/movement/foley/backpack"
     inst.components.armor:InitCondition(ROCK_SHIELD_ABSO, ROCK_SHIELD_ABSO )
@@ -134,12 +134,13 @@ end
 
 local function MakeMarbleShield()
     local inst=fn()
- inst.AnimState:SetBank("backpack1")
+    local minimap = inst.entity:AddMiniMapEntity()
+    minimap:SetIcon( "marbleshield.tex" )
+    inst.AnimState:SetBank("backpack1")
     inst.AnimState:SetBuild("swap_marbleshield")
     inst.AnimState:PlayAnimation("anim")
-
     
-     inst.components.inventoryitem.atlasname = "images/inventoryimages/marbleshield.xml"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/marbleshield.xml"
     inst.components.inventoryitem.imagename="marbleshield"
     inst.components.inventoryitem.foleysound = "dontstarve/movement/foley/backpack"
     inst.components.armor:InitCondition(MARBLE_SHIELD_DURA, MARBLE_SHIELD_ABSO )
@@ -149,12 +150,13 @@ end
 
 local function MakeBoneShield()
     local inst=fn()
- inst.AnimState:SetBank("backpack1")
+    local minimap = inst.entity:AddMiniMapEntity()
+    minimap:SetIcon( "boneshield.tex" )
+    inst.AnimState:SetBank("backpack1")
     inst.AnimState:SetBuild("swap_boneshield")
     inst.AnimState:PlayAnimation("anim")
 
-    
-     inst.components.inventoryitem.atlasname = "images/inventoryimages/boneshield.xml"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/boneshield.xml"
     inst.components.inventoryitem.imagename="boneshield"
     inst.components.inventoryitem.foleysound = "dontstarve/movement/foley/backpack"
     inst.components.armor:InitCondition(BONE_SHIELD_DURA, BONE_SHIELD_ABSO )
@@ -164,12 +166,14 @@ end
 
 local function MakeReflectShield()
     local inst=fn()
- inst.AnimState:SetBank("backpack1")
+    local minimap = inst.entity:AddMiniMapEntity()
+    minimap:SetIcon( "reflectshield.tex" )
+    inst.AnimState:SetBank("backpack1")
     inst.AnimState:SetBuild("swap_reflectshield")
     inst.AnimState:PlayAnimation("anim")
 
     
-     inst.components.inventoryitem.atlasname = "images/inventoryimages/reflectshield.xml"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/reflectshield.xml"
     inst.components.inventoryitem.imagename="reflectshield"
     inst.components.inventoryitem.foleysound = "dontstarve/movement/foley/backpack"
     inst.components.armor:InitCondition(REFLECT_SHIELD_DURA, REFLECT_SHIELD_ABSO )
@@ -181,4 +185,4 @@ return Prefab( "common/inventory/woodenshield", MakeWoodenShield, assets),
         Prefab( "common/inventory/rockshield", MakeRockShield, assets), 
         Prefab( "common/inventory/marbleshield", MakeMarbleShield, assets), 
         Prefab( "common/inventory/boneshield", MakeBoneShield, assets),
-        Prefab( "common/inventory/reflectshield", MakeBoneShield, assets)
+        Prefab( "common/inventory/reflectshield", MakeReflectShield, assets)

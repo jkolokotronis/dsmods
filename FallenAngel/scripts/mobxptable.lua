@@ -58,4 +58,8 @@ MOBXP_TABLE={
 	deerclops={default=500},
 	minotaur={default=700},
 	spiderqueen={default=200},
+	beehive={default=50},
+	spiderden={default=50},
+	spiderden_2={default=100},
+	spiderden_3={default=150}
 }

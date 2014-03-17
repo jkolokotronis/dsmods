@@ -162,6 +162,35 @@ Assets = {
     Asset( "ATLAS", "images/xp_background.xml" ),
     Asset( "IMAGE", "images/xp_fill.tex" ),
     Asset( "ATLAS", "images/xp_fill.xml" ),
+
+    Asset( "IMAGE", "minimap/boneshield.tex" ),
+    Asset( "ATLAS", "minimap/boneshield.xml" ),
+    Asset( "IMAGE", "minimap/dagger.tex" ),
+    Asset( "ATLAS", "minimap/dagger.xml" ),
+    Asset( "IMAGE", "minimap/evilsword.tex" ),
+    Asset( "ATLAS", "minimap/evilsword.xml" ),
+    Asset( "IMAGE", "minimap/firearmor.tex" ),
+    Asset( "ATLAS", "minimap/firearmor.xml" ),
+    Asset( "IMAGE", "minimap/flamingsword.tex" ),
+    Asset( "ATLAS", "minimap/flamingsword.xml" ),
+    Asset( "IMAGE", "minimap/frostarmor.tex" ),
+    Asset( "ATLAS", "minimap/frostarmor.xml" ),
+    Asset( "IMAGE", "minimap/holysword.tex" ),
+    Asset( "ATLAS", "minimap/holysword.xml" ),
+    Asset( "IMAGE", "minimap/marbleshield.tex" ),
+    Asset( "ATLAS", "minimap/marbleshield.xml" ),
+    Asset( "IMAGE", "minimap/reflectshield.tex" ),
+    Asset( "ATLAS", "minimap/reflectshield.xml" ),
+    Asset( "IMAGE", "minimap/rockshield.tex" ),
+    Asset( "ATLAS", "minimap/rockshield.xml" ),
+    Asset( "IMAGE", "minimap/undeadbanesword.tex" ),
+    Asset( "ATLAS", "minimap/undeadbanesword.xml" ),
+    Asset( "IMAGE", "minimap/vorpalaxe.tex" ),
+    Asset( "ATLAS", "minimap/vorpalaxe.xml" ),
+    Asset( "IMAGE", "minimap/woodbow.tex" ),
+    Asset( "ATLAS", "minimap/woodbow.xml" ),
+    Asset( "IMAGE", "minimap/woodshield.tex" ),
+    Asset( "ATLAS", "minimap/woodshield.xml" ),   
 }
 
 
@@ -265,11 +294,40 @@ GLOBAL.STRINGS.NAMES.DAGGER = "Dagger"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.DAGGER = "Dagger"
 GLOBAL.STRINGS.NAMES.FROSTSWORD = "Frost Sword"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FROSTSWORD = "Frost Sword"
+GLOBAL.STRINGS.NAMES.ARMORFIRE = "Armor of Fire"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARMORFIRE = "Armor of Fire"
+GLOBAL.STRINGS.NAMES.ARMORFROST = "Armor of Frost"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARMORFROST = "Armor of Frost"
+GLOBAL.STRINGS.NAMES.DKSWORD = "Evil Sword"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.DKSWORD = "Evil Sword"
+GLOBAL.STRINGS.NAMES.HOLYSWORD = "Holy Sword"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.HOLYSWORD = "Holy Sword"
+
+GLOBAL.STRINGS.NAMES.FAIRY = "Wolf"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARMORFROST = "Wolf"
+GLOBAL.STRINGS.NAMES.FAIRY_L20 = "Wolf"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARMORFROST = "Wolf"
+GLOBAL.STRINGS.NAMES.DARKKNIGHTPET = "Shadow Pet"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKKNIGHTPET = "Shadow Pet"
 
 
 GLOBAL.STRINGS.ACTIONS.RELOAD="Reload"
 
-
+AddMinimapAtlas("minimap/boneshield.xml")
+AddMinimapAtlas("minimap/dagger.xml")
+AddMinimapAtlas("minimap/evilsword.xml")
+AddMinimapAtlas("minimap/firearmor.xml")
+AddMinimapAtlas("minimap/flamingsword.xml")
+AddMinimapAtlas("minimap/frostarmor.xml")
+AddMinimapAtlas("minimap/frostsword.xml")
+AddMinimapAtlas("minimap/holysword.xml")
+AddMinimapAtlas("minimap/marbleshield.xml")
+AddMinimapAtlas("minimap/reflectshield.xml")
+AddMinimapAtlas("minimap/rockshield.xml")
+AddMinimapAtlas("minimap/undeadbanesword.xml")
+AddMinimapAtlas("minimap/vorpalaxe.xml")
+AddMinimapAtlas("minimap/woodbow.xml")
+AddMinimapAtlas("minimap/woodshield.xml")
 
 local EVIL_SANITY_AURA_OVERRIDE={
     robin=-TUNING.SANITYAURA_MED,

@@ -43,53 +43,12 @@ local function onattack_red(inst, attacker, target)
     ]]
 end
 
-local function onlight(inst, target)
-    if inst.components.finiteuses then
-        inst.components.finiteuses:Use(1)
-    end
-end
-
-
----------PURPLE STAFF---------
-
-local function getrandomposition(inst)
-    local ground = GetWorld()
-    local centers = {}
-    for i,node in ipairs(ground.topology.nodes) do
-        local tile = GetWorld().Map:GetTileAtPoint(node.x, 0, node.y)
-        if tile and tile ~= GROUND.IMPASSABLE then
-            table.insert(centers, {x = node.x, z = node.y})
-        end
-    end
-    if #centers > 0 then
-        local pos = centers[math.random(#centers)]
-        return Point(pos.x, 0, pos.z)
-    else
-        return GetPlayer():GetPosition()
-    end
-end
-
-
-
-
----------COMMON FUNCTIONS---------
 
 local function onfinished(inst)
     inst.SoundEmitter:PlaySound("dontstarve/common/gem_shatter")
 --    inst:Remove()
 end
 
-local function unimplementeditem(inst)
-    local player = GetPlayer()
-    player.components.talker:Say(GetString(player.prefab, "ANNOUNCE_UNIMPLEMENTED"))
-    if player.components.health.currenthealth > 1 then
-        player.components.health:DoDelta(-player.components.health.currenthealth * 0.5)
-    end
-
-    if inst.components.useableitem then
-        inst.components.useableitem:StopUsingItem()
-    end
-end
 
 local function commonfn(colour)
 
@@ -109,6 +68,9 @@ local function commonfn(colour)
     local anim = inst.entity:AddAnimState()
     local sound = inst.entity:AddSoundEmitter()
     MakeInventoryPhysics(inst)
+
+    local minimap = inst.entity:AddMiniMapEntity()
+    minimap:SetIcon( "woodbow.tex" )
     
     anim:SetBank("woodbow")
     anim:SetBuild("woodbow")

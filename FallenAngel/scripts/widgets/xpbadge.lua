@@ -27,7 +27,7 @@ local XPBadge = Class(Widget, function(self, anim, owner)
 
     self.level = self:AddChild(Text(NUMBERFONT, 28))
 --    self.level:SetHAlign(ANCHOR_LEFT)
-    self.level:SetPosition(-520,0,0)
+    self.level:SetPosition(-560,0,0)
 	self.level:SetScale(1.5,1.5,1)
     
 
@@ -50,7 +50,7 @@ function XPBadge:OnLoseFocus()
 end
 
 function XPBadge:SetLevel(level)
-	self.level:SetString(tostring(level))
+	self.level:SetString("Level "..tostring(level))
     self.lv = level
 end
 

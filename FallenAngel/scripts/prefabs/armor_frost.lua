@@ -25,6 +25,8 @@ local function fn()
 	inst.entity:AddTransform()
 	inst.entity:AddAnimState()
     MakeInventoryPhysics(inst)
+    local minimap = inst.entity:AddMiniMapEntity()
+    minimap:SetIcon( "frostarmor.tex" )
     
     inst.AnimState:SetBank("armor_marble")
     inst.AnimState:SetBuild("armor_frost")
@@ -43,7 +45,7 @@ local function fn()
     
     inst:AddComponent("equippable")
     inst.components.equippable.equipslot = EQUIPSLOTS.BODY
-    inst.components.equippable.walkspeedmult = TUNING.ARMORMARBLE_SLOW
+--    inst.components.equippable.walkspeedmult = TUNING.ARMORMARBLE_SLOW
     
     inst.components.equippable:SetOnEquip( onequip )
     inst.components.equippable:SetOnUnequip( onunequip )

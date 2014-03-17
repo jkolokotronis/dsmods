@@ -30,6 +30,8 @@ local function fn(Sim)
 	local anim = inst.entity:AddAnimState()
     MakeInventoryPhysics(inst)
   
+    local minimap = inst.entity:AddMiniMapEntity()
+    minimap:SetIcon( "frostsword.tex" )
 
     inst.AnimState:SetBank("frostsword")
     inst.AnimState:SetBuild("frostsword")

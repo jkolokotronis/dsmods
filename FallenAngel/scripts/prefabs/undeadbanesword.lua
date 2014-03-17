@@ -29,9 +29,8 @@ local function fn(Sim)
 	local anim = inst.entity:AddAnimState()
     MakeInventoryPhysics(inst)
   
-    inst:AddTag("irreplaceable")
     local minimap = inst.entity:AddMiniMapEntity()
-    minimap:SetIcon( "lucy_axe.png" )
+    minimap:SetIcon( "undeadbanesword.tex" )
 
     inst.AnimState:SetBank("undeadbanesword")
     inst.AnimState:SetBuild("undeadbanesword")

@@ -41,6 +41,9 @@ local function fn(Sim)
  inst.AnimState:SetBank("backpack1")
     inst.AnimState:SetBuild("swap_shield")
     inst.AnimState:PlayAnimation("anim")
+
+    local minimap = inst.entity:AddMiniMapEntity()
+    minimap:SetIcon( "evilsword.tex" )
     
     
     inst:AddComponent("inspectable")

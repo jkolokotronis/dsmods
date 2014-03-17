@@ -34,6 +34,9 @@ local function fn(Sim)
     inst.AnimState:SetBuild("dagger")
     inst.AnimState:PlayAnimation("idle")
 
+    local minimap = inst.entity:AddMiniMapEntity()
+    minimap:SetIcon( "dagger.tex" )
+
     inst.Transform:SetScale(2, 2, 1)
     
     inst:AddTag("sharp")

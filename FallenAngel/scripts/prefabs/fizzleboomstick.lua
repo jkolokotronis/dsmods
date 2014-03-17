@@ -119,6 +119,10 @@ end
 local function red()
     local inst = commonfn("red")
 
+    
+    local minimap = inst.entity:AddMiniMapEntity()
+    minimap:SetIcon( "evilsword.tex" )
+
     inst:AddTag("rangedfireweapon")
 
     inst:AddComponent("weapon")

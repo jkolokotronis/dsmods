@@ -38,7 +38,7 @@ local function fn(Sim)
   
     inst:AddTag("irreplaceable")
     local minimap = inst.entity:AddMiniMapEntity()
-    minimap:SetIcon( "lucy_axe.png" )
+    minimap:SetIcon( "holysword.tex" )
 
     inst.AnimState:SetBank("holysword")
     inst.AnimState:SetBuild("holysword")

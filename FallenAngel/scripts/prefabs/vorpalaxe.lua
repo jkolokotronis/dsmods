@@ -29,6 +29,8 @@ local function fn(Sim)
 	local anim = inst.entity:AddAnimState()
     MakeInventoryPhysics(inst)
   
+    local minimap = inst.entity:AddMiniMapEntity()
+    minimap:SetIcon( "vorpalaxe.tex" )
 
     inst.AnimState:SetBank("vorpalaxe")
     inst.AnimState:SetBuild("vorpalaxe")
