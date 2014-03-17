@@ -11,6 +11,8 @@ local assets=
 
 local TRAP_FREEZE_TIME=60
 local TRAP_EXPLOSION_RANGE=5
+local CIRCLE_OF_DEATH_TRAP_RADIUS=5
+local INSTADEATH_TRESHOLD=0.5
 
 local function onfinished_normal(inst)
     inst:RemoveComponent("inventoryitem")
@@ -19,16 +21,6 @@ local function onfinished_normal(inst)
     inst.AnimState:PushAnimation("used", false)
     inst.SoundEmitter:PlaySound("dontstarve/common/destroy_wood")
     inst:DoTaskInTime(3, function() inst:Remove() end )
-end
-
-local function onfinished_maxwell(inst)
-    inst:RemoveComponent("mine")
-    inst.persists = false
-	inst:DoTaskInTime(1.25, function()
-		inst.AnimState:PlayAnimation("used", false)
-		inst.SoundEmitter:PlaySound("dontstarve/common/destroy_wood")
-		inst:DoTaskInTime(3, function() inst:Remove() end )
-	end)
 end
 
 local function OnToothExplode(inst, target)
@@ -201,6 +193,30 @@ local function OnTentacleExplode(inst,target)
     return true    
 end
 
+local function OnCODExplode(inst,target)
+    local pos =inst:GetPosition()
+    GetPlayer().components.playercontroller:ShakeCamera(inst, "FULL", 0.7, 0.02, .5, 40)
+
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, TRAP_EXPLOSION_RANGE)
+
+       for k,v in pairs(ents) do
+        local inpocket = v.components.inventoryitem and v.components.inventoryitem:IsHeld()
+
+        if not inpocket then
+
+           if not v:HasTag("player") and not v:HasTag("pet") and not v:IsInLimbo() and v.components.combat and v.components.health and  v ~= inst then
+                local rng=math.random()
+                if(rng>INSTADEATH_TRESHOLD)then
+                    v.components.health:Kill()
+                end
+           end
+           
+        end
+    end
+
+
+end
+
 local function OnReset(inst)
     inst.SoundEmitter:PlaySound("dontstarve/common/trap_teeth_reset")
 	inst.AnimState:PlayAnimation("reset")
@@ -306,33 +322,22 @@ local function MakeTentacleTrap()
 	return inst
 end
 
-local function MakeTeethTrapMaxwell()
-	local inst = MakeTeethTrapNormal()
 
-	inst.AnimState:SetBank("trap_teeth_maxwell")
-	inst.AnimState:SetBuild("trap_teeth_maxwell")
-
-	inst:RemoveComponent("inventoryitem")
-
-	inst.components.mine:SetAlignment("nobody")
-	inst.components.mine:SetOnResetFn(OnResetMax)
-	inst.components.finiteuses:SetMaxUses(1)
-	inst.components.finiteuses:SetUses(1)
-	inst.components.finiteuses:SetOnFinished( onfinished_maxwell )
-	
-	inst.components.mine:Reset()
-	inst.AnimState:PlayAnimation("idle")
-
-	return inst
+local function MakeCircleOfDeath()
+    local inst=MakeDefaultTrap()
+    inst.components.mine:SetRadius(CIRCLE_OF_DEATH_TRAP_RADIUS)
+    inst.components.mine:SetOnExplodeFn(OnCODExplode)
+    return inst
 end
 
 return Prefab( "common/inventory/trap_doubleteeth", MakeDoubleTeethTrap, assets),
 Prefab( "common/inventory/trap_ice", MakeIceTrap, assets),
 Prefab( "common/inventory/trap_fire", MakeFireTrap, assets),
 Prefab( "common/inventory/trap_tentacle", MakeTentacleTrap, assets),
+Prefab( "common/inventory/trap_circleofdeath", MakeCircleOfDeath, assets),
 		MakePlacer("common/trap_doubleteeth_placer", "trap_teeth", "trap_teeth", "idle"),
 		MakePlacer("common/trap_ice_placer", "trap_teeth", "trap_teeth", "idle"),
 		MakePlacer("common/trap_fire_placer", "trap_teeth", "trap_teeth", "idle"),
-		MakePlacer("common/trap_tentacle_placer", "trap_teeth", "trap_teeth", "idle")
---	   Prefab( "common/inventory/trap_teeth_maxwell", MakeTeethTrapMaxwell, assets) 
+		MakePlacer("common/trap_tentacle_placer", "trap_teeth", "trap_teeth", "idle"),
+        MakePlacer("common/trap_circleofdeath_placer", "trap_teeth", "trap_teeth", "idle")
 

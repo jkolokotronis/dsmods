@@ -2,10 +2,12 @@ local require = GLOBAL.require
 require "class"
 
 local Widget = require "widgets/widget"
+local XPBadge= require "widgets/XPBadge"
 require "widgets/text"
 require "stategraph"
 require "constants"
 require "buffutil"
+require "mobxptable"
 --
 local Ingredient = GLOBAL.Ingredient
 local RECIPETABS = GLOBAL.RECIPETABS
@@ -48,6 +50,7 @@ PrefabFiles = {
     "frostsword",
     "undeadbanesword",
     "vorpalaxe",
+    "wands",
     "dryad",
     "satyr",
     "unicorn",
@@ -152,6 +155,13 @@ Assets = {
     Asset( "IMAGE", "bigportraits/bard.tex" ),
     Asset( "ATLAS", "bigportraits/bard.xml" ),
 
+    Asset("SOUNDPACKAGE", "sound/fa.fev"),
+    Asset("SOUND", "sound/fallenangel.fsb"),
+
+    Asset( "IMAGE", "images/xp_background.tex" ),
+    Asset( "ATLAS", "images/xp_background.xml" ),
+    Asset( "IMAGE", "images/xp_fill.tex" ),
+    Asset( "ATLAS", "images/xp_fill.xml" ),
 }
 
 
@@ -309,6 +319,8 @@ table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "necromancer")
 table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "wizard")
 table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "tinkerer")
 table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "paladin")
+table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "ranger")
+table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "bard")
 
 local PetBuff = require "widgets/petbuff"
 
@@ -330,7 +342,7 @@ local function newControlsInit(class)
     local under_root=class;
     if GetPlayer() and GetPlayer().newControlsInit then
         local xabilitybar = under_root:AddChild(Widget("abilitybar"))
-        xabilitybar:SetPosition(0,-30,0)
+        xabilitybar:SetPosition(0,-65,0)
         xabilitybar:SetScaleMode(GLOBAL.SCALEMODE_PROPORTIONAL)
         xabilitybar:SetMaxPropUpscale(1.25)
         xabilitybar:SetHAnchor(GLOBAL.ANCHOR_MIDDLE)
@@ -339,6 +351,43 @@ local function newControlsInit(class)
     end
     if GetPlayer() and GetPlayer().newStatusDisplaysInit then
         GetPlayer().newStatusDisplaysInit(class)
+    end
+    if GetPlayer() and GetPlayer().components and GetPlayer().components.xplevel then
+--       GetPlayer():ListenForEvent("healthdelta", onhpchange)
+        local xpbar = under_root:AddChild(XPBadge(class.owner))
+        xpbar:SetPosition(0,-20,0)
+        xpbar:SetHAnchor(GLOBAL.ANCHOR_MIDDLE)
+        xpbar:SetVAnchor(GLOBAL.ANCHOR_TOP)
+        xpbar:SetLevel(GetPlayer().components.xplevel.level)
+        xpbar:SetValue(GetPlayer().components.xplevel.currentxp,GetPlayer().components.xplevel.max)
+        GetPlayer():ListenForEvent("xpleveldelta", function(inst,data)
+            xpbar:SetLevel(data.level)
+            xpbar:SetValue(data.new,data.max)
+        end,class.owner)
+
+        GetPlayer():ListenForEvent("xplevelup", function(inst,data)
+            inst.SoundEmitter:PlaySound("fa/levelup/levelup")
+        end,class.owner)
+
+        GetPlayer():ListenForEvent("killed", function(inst,data)
+            local victim=data.victim
+            local xp=GLOBAL.MOBXP_TABLE[victim.prefab]
+            print("xp for",victim, xp)
+            if(xp)then
+                local default=xp.default
+                if(xp.tagged)then
+                    for k,v in pairs(xp.tagged) do
+                        if(victim:HasTag(k))then
+                            default=v
+                            break
+                        end
+                    end
+
+                end
+                inst.components.xplevel:DoDelta(default)
+            end
+        end)
+        
     end
 end
 
@@ -535,7 +584,7 @@ end)
 function makestackablePrefabPostInit(inst)
     if(not inst.components.stackable)then
     inst:AddComponent("stackable")
-        inst.components.stackable.maxsize = 40
+        inst.components.stackable.maxsize = 99
     end
 end
 

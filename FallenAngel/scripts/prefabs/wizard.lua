@@ -52,7 +52,12 @@ local fn = function(inst)
 	inst.components.sanity:SetMax(300)
 	inst.components.hunger:SetMax(125)
 
+--[[self.rain = SpawnPrefab( "rain" )
+        self.rain.entity:SetParent( GetPlayer().entity )
+        self.rain.particles_per_tick = 0
+        self.rain.splashes_per_tick = 0]]
     
+    inst:AddComponent("xplevel")
     inst:AddComponent("reader")
 end
 

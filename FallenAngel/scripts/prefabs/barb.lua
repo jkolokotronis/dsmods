@@ -38,8 +38,9 @@ local assets = {
 local prefabs = {}
 
 local BASE_MS=1.25*TUNING.WILSON_RUN_SPEED
-local RAGE_MS=1.75*TUNING.WILSON_RUN_SPEED
-local RAGE_FIREDMG=0.5
+local RAGE_MS_DELTA=0.5*TUNING.WILSON_RUN_SPEED
+local RAGE_FIREDMG=0.75
+local RAGE_FIREDMG2=0.5
 local BASE_FIREDMG
 local BASE_FREEZING
 local DAMAGE_MULT=1.5
@@ -51,6 +52,31 @@ local RAGE_PERIOD=2
 local def_attack_period
 local ref
 
+local function onlevelup(inst,data)
+    local level=data.level
+    inst.components.health.maxhealth= inst.components.health.maxhealth+5
+    inst.components.hunger.max=inst.components.hunger.max+1
+    if(level==3)then
+        inst.components.eater.strongstomach = true 
+    elseif level==5 then
+        inst.components.locomotor.runspeed=inst.components.locomotor.runspeed+0.05*TUNING.WILSON_RUN_SPEED
+    elseif level==6 then
+
+    elseif level==9 then
+        inst.rageBuff:Show()
+    elseif level==10 then
+         inst.components.locomotor.runspeed=inst.components.locomotor.runspeed+0.1*TUNING.WILSON_RUN_SPEED
+    elseif level==15 then
+         inst.components.locomotor.runspeed=inst.components.locomotor.runspeed+0.1*TUNING.WILSON_RUN_SPEED
+    elseif level==18 then
+
+    elseif level==19 then
+         inst.components.locomotor.runspeed=inst.components.locomotor.runspeed+0.05*TUNING.WILSON_RUN_SPEED
+    elseif level==20 then
+
+    end
+
+end
 
 local function onhpchange(inst, data)
 
@@ -72,16 +98,22 @@ local function rageProc(inst)
 end
 
 local function rageStart(inst)
-	
-	inst.components.locomotor.runspeed=RAGE_MS
-	inst.components.temperature.hurtrate=BASE_FREEZING/2.0
-	inst.components.health.fire_damage_scale = RAGE_FIREDMG
-	inst.components.combat.min_attack_period=def_attack_period/2.0
-	inst.task = inst:DoPeriodicTask(RAGE_PERIOD, function() rageProc(inst) end)
+	if(inst.components.xplevel.level<20)then
+        inst.components.locomotor.runspeed=RAGE_MS_DELTA+inst.components.locomotor.runspeed
+       inst.components.temperature.hurtrate=BASE_FREEZING/1.5
+       inst.components.health.fire_damage_scale = RAGE_FIREDMG
+       inst.components.combat.min_attack_period=def_attack_period/1.5       
+    else
+	   inst.components.locomotor.runspeed=RAGE_MS_DELTA+inst.components.locomotor.runspeed
+	   inst.components.temperature.hurtrate=BASE_FREEZING/2.0
+	   inst.components.health.fire_damage_scale = RAGE_FIREDMG2
+	   inst.components.combat.min_attack_period=def_attack_period/2.0	    
+    end
+        inst.task = inst:DoPeriodicTask(RAGE_PERIOD, function() rageProc(inst) end)
 end
 
 local function rageEnd(inst)
-	inst.components.locomotor.runspeed=BASE_MS
+	inst.components.locomotor.runspeed=inst.components.locomotor.runspeed-RAGE_MS_DELTA
 	inst.components.health.fire_damage_scale=BASE_FIREDMG
 	inst.components.temperature.hurtrate=BASE_FREEZING
 	inst.components.combat.min_attack_period=def_attack_period
@@ -117,9 +149,12 @@ local fn = function(inst)
         inst.AnimState:PlayAnimation("idle")
         inst.AnimState:Hide("hat_hair")
 
+    inst:AddComponent("xplevel")
+
 
 	inst.newControlsInit = function (class)
-        class.rage = class:AddChild(RageBuff(class.owner))
+        inst.rageBuff=RageBuff(class.owner)
+        class.rage = class:AddChild(inst.rageBuff)
         class.rage:SetPosition(0,0,0)
         class.rage:SetOnClick(function(state) 
         	print("onclick",state) 
@@ -129,17 +164,21 @@ local fn = function(inst)
         		rageEnd(inst)
         	end
         end)
+         if(inst.components.xplevel.level<9)then
+            inst.rageBuff:Hide()
+        end
     end
 
 	
 	inst:ListenForEvent("healthdelta", onhpchange)
+    inst:ListenForEvent("xplevelup", onlevelup)
 --	inst:ListenForEvent("statusDisplaysInit",BarbStatusDisplay)
 
 	local old_mine=ACTIONS.MINE.fn
 	local old_chop=ACTIONS.CHOP.fn
 
 	ACTIONS.MINE.fn = function(act)
-		if(act.doer:HasTag("player")) then
+		if(act.doer:HasTag("player") and act.doer.components.xplevel and act.doer.components.xplevel.level>=6) then
 			if act.target.components.workable and act.target.components.workable.action == ACTIONS.MINE then
     	    	local numworks = 1
     	    	if act.invobject and act.invobject.components.tool then
@@ -155,7 +194,7 @@ local fn = function(inst)
 	end
 
 	ACTIONS.CHOP.fn = function(act)
-		if(act.doer:HasTag("player")) then
+		if(act.doer:HasTag("player") and act.doer.components.xplevel and act.doer.components.xplevel.level>=6) then
     		if act.target.components.workable and act.target.components.workable.action == ACTIONS.CHOP then
         		local numworks = 1
 		        if act.invobject and act.invobject.components.tool then
@@ -172,29 +211,33 @@ local fn = function(inst)
 	end
 	
 	local base_eater=inst.components.eater
-	
-	inst.components.eater.Eat=function(inst, food)
-	
-		if base_eater:CanEat(food) then
-		local hpdelta=food.components.edible:GetHealth(base_eater.inst)
-		print(inst, food.components.edible.foodtype)
+    local old_eat=inst.components.eater.Eat
+	function base_eater:Eat ( food)
+        print(self, food)
+	    if(self.inst.components.xplevel.level<3 or food.components.edible.foodtype~="MEAT") then
+            return old_eat(self,food)
+        else
+
+		
+        if self:CanEat(food) then
+		local hpdelta=food.components.edible:GetHealth(self.inst)
 			if (hpdelta>0 or not (food.components.edible.foodtype=="MEAT")) then
-				base_eater.inst.components.health:DoDelta(hpdelta, nil, food.prefab)
+				self.inst.components.health:DoDelta(hpdelta, nil, food.prefab)
 			end
 
-    	    base_eater.inst.components.hunger:DoDelta(food.components.edible:GetHunger(base_eater.inst))
+    	    self.inst.components.hunger:DoDelta(food.components.edible:GetHunger(self.inst))
         
-        	local sanity_delta=food.components.edible:GetSanity(base_eater.inst)
+        	local sanity_delta=food.components.edible:GetSanity(self.inst)
         	if(sanity_delta>0 or not (food.components.edible.foodtype=="MEAT")) then
-				base_eater.inst.components.sanity:DoDelta(sanity_delta)
+				self.inst.components.sanity:DoDelta(sanity_delta)
         	end
-	        base_eater.inst:PushEvent("oneat", {food = food})
-    	    if base_eater.oneatfn then
-        	    base_eater.oneatfn(base_eater.inst, food)
+	        self.inst:PushEvent("oneat", {food = food})
+    	    if self.oneatfn then
+        	    self.oneatfn(self.inst, food)
        		end
         
        		if food.components.edible then
-            	food.components.edible:OnEaten(base_eater.inst)
+            	food.components.edible:OnEaten(self.inst)
         	end
         
         	if food.components.stackable and food.components.stackable.stacksize > 1 then
@@ -203,27 +246,14 @@ local fn = function(inst)
             	food:Remove()
         	end
         
-        	base_eater.lasteattime = GetTime()
+        	self.lasteattime = GetTime()
         
-       		base_eater.inst:PushEvent("oneatsomething", {food = food})
+       		self.inst:PushEvent("oneatsomething", {food = food})
         
        		return true
     	end	
-    
+        end
     end
---	StatusDisplaysInit(StatusDisplays)
---[[
-	StatusDisplays.rage = StatusDisplays:AddChild(RageBuff(StatusDisplays.owner))
-        StatusDisplays.rage:SetPosition(0,-100,0)
-        StatusDisplays.rage:SetOnClick(function(state) 
-        	print(state) 
-        	if(state and state=="on") then
-        		rageStart(ref)
-        	else
-        		rageEnd(ref)
-        	end
-        end)  
-]]--
 end
 
 

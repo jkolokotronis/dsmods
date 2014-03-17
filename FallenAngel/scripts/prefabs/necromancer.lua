@@ -75,6 +75,7 @@ local fn = function(inst)
 
     inst:AddTag("evil")
     
+    inst:AddComponent("xplevel")
     inst:AddComponent("reader")
     
 RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon_atlas = "images/inventoryimages/herotab.xml"}

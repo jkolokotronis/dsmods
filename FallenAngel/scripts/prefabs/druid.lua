@@ -39,6 +39,7 @@ local assets = {
 }
 local prefabs = {
     "fairy",
+    "fairy_l20",
     "spell_earthquake",
     "spell_lightning",
    "spell_grow",
@@ -78,6 +79,81 @@ local MURDER_SANITY_DELTA=-5
 local ref
 
 
+local function enableL1spells()
+    local r=Recipe("spell_lightning", {Ingredient("flint", 20), Ingredient("bluegem", 4),Ingredient("papyrus", 5)}, RECIPETABS.SPELLS, {SCIENCE = 0, MAGIC = 0, ANCIENT = 0})
+    r.image="book_brimstone.tex"
+end
+local function enableL2spells()
+    local r=Recipe("spell_earthquake", {Ingredient("rocks", 20), Ingredient("redgem", 5),Ingredient("papyrus", 5)},  RECIPETABS.SPELLS,{MAGIC = 2})
+    r.image="book_brimstone.tex"
+end
+local function enableL3spells()
+    local r=Recipe("spell_grow", {Ingredient("papyrus", 2), Ingredient("seeds", 10), Ingredient("poop", 10)}, RECIPETABS.SPELLS, {MAGIC = 2})
+    r.image="book_gardening.tex"
+end
+local function enableL4spells()
+    local r=Recipe("spell_heal", {Ingredient("papyrus", 5), Ingredient("honey", 5),Ingredient("spidergland",10)}, RECIPETABS.SPELLS, {MAGIC = 3})
+    r.image="book_gardening.tex"
+end
+local function enableL5spells()
+    local r=Recipe("spell_guardian", {Ingredient("papyrus", 5), Ingredient("pinecone", 20),Ingredient("livinglog",10)}, RECIPETABS.SPELLS, {MAGIC = 3})
+    r.image="book_gardening.tex"
+end
+
+local function onxploaded(inst)
+    local level=inst.components.xplevel.level
+    if(level>=3)then
+        enableL1spells()
+    end
+    if(level>=6)then
+        enableL2spells()
+    end
+    if(level>=8)then
+        enableL3spells()
+    end
+    if(level>=10)then
+        enableL4spells()
+    end
+    if(level>=12)then
+        enableL5spells()
+    end
+end
+
+local function onlevelup(inst,data)
+    local level=data.level
+
+    inst.components.health.maxhealth= inst.components.health.maxhealth+1
+    inst.components.sanity.max=inst.components.sanity.max+5
+
+    if(level==3)then
+        enableL1spells()
+    elseif(level==5)then
+         inst.petBuff:Show()
+    elseif(level==6)then
+        enableL2spells()
+    elseif(level==8)then
+        enableL3spells()
+    elseif(level==10)then
+        enableL4spells()
+    elseif(level==12)then
+        enableL5spells()
+    elseif(level==20)then
+
+    end
+end
+
+local function oneat(inst,data)
+    local food=data.food
+    if(food.components.edible.foodtype == "VEGGIE")then
+        -- it already did it once... there's prob a better way
+        if food.components.edible.healthvalue > 0 or not self.strongstomach then
+            inst.components.health:DoDelta(food.components.edible:GetHealth(inst), nil, food.prefab)
+        end
+        inst.components.hunger:DoDelta(food.components.edible:GetHunger(inst))
+        inst.components.sanity:DoDelta(food.components.edible:GetSanity(inst))
+    end
+
+end
 
 local function onmurder(inst,data)
     local victim=data.victim
@@ -96,7 +172,11 @@ local function spawnFairy(inst)
     if(inst.pet and not inst.pet.components.health:IsDead())then
         return
     end
-    inst.pet = SpawnPrefab("fairy")
+    if(inst.components.xplevel.level<20)then
+        inst.pet = SpawnPrefab("fairy")
+    else
+        inst.pet=SpawnPrefab("fairy_l20")
+    end
     inst.pet.Transform:SetPosition(inst.Transform:GetWorldPosition())
     inst.SoundEmitter:PlaySound("dontstarve/common/ghost_spawn")
     inst.components.leader:AddFollower(inst.pet)
@@ -130,7 +210,6 @@ end
 
 local fn = function(inst)
 
-        local ref=inst
 
         
     inst.OnLoad = onloadfn
@@ -211,6 +290,8 @@ local fn = function(inst)
 	inst.components.sanity:SetMax(250)
 	inst.components.hunger:SetMax(150)
 
+    inst:AddComponent("xplevel")
+
     inst.newControlsInit = function (cnt)
     
         local pet=nil
@@ -241,14 +322,21 @@ local fn = function(inst)
                 inst.pet:ListenForEvent("death",onPetDeath)
             end
         end
+        if(inst.components.xplevel.level<5)then
+            inst.petBuff:Hide()
+        end
     end
 
+    inst:ListenForEvent("xplevelup", onlevelup)
     inst:ListenForEvent("killed", onmurder)
+    inst:ListenForEvent("oneat", oneat)
+    inst:ListenForEvent("xplevel_loaded",onxploaded)
 
     inst:AddComponent("reader")
 
 RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon_atlas = "images/inventoryimages/herotab.xml"}
-    local booktab=RECIPETABS.SPELLS
+  --[[    local booktab=RECIPETABS.SPELLS
+
 --    inst.components.builder:AddRecipeTab(booktab)
     local r=Recipe("spell_lightning", {Ingredient("flint", 20), Ingredient("bluegem", 4),Ingredient("papyrus", 5)}, booktab, {SCIENCE = 0, MAGIC = 0, ANCIENT = 0})
     r.image="book_brimstone.tex"
@@ -260,10 +348,7 @@ RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon
     r.image="book_gardening.tex"
     r=Recipe("spell_guardian", {Ingredient("papyrus", 5), Ingredient("pinecone", 20),Ingredient("livinglog",10)}, booktab, {MAGIC = 3})
     r.image="book_gardening.tex"
-
-
-    local ground = GetWorld()
---    if(not ground.components.quaker)then     ground:AddComponent("quaker")
+]]
 
 end
 

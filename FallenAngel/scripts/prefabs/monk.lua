@@ -82,6 +82,8 @@ local fn = function(inst)
 	inst.components.hunger:SetMax(150)
     inst.components.combat:SetDefaultDamage(UNARMED_DAMAGE)
 
+    inst:AddComponent("xplevel")
+
     inst:AddComponent("kibar")
     inst.components.kibar.max=MAX_KI
     inst.components.kibar.current=0

@@ -222,6 +222,7 @@ local fn = function(inst)
 	inst.components.hunger:SetMax(150)
     inst.components.sanity.night_drain_mult = 0
 
+    inst:AddComponent("xplevel")
 
     inst.OnLoad = onloadfn
     inst.OnSave = onsavefn

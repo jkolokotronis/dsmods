@@ -123,6 +123,8 @@ local fn = function(inst)
 	inst.components.sanity:SetMax(200)
 	inst.components.hunger:SetMax(175)
         
+    inst:AddComponent("xplevel")
+
     local combatmod=inst.components.combat
 
     function combatmod:CalcDamage (target, weapon, multiplier)

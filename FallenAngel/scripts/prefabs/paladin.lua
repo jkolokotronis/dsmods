@@ -72,6 +72,8 @@ local fn = function(inst)
     inst.components.sanity:SetMax(200)
     inst.components.hunger:SetMax(150)
 
+    inst:AddComponent("xplevel")
+    
     inst.OnLoad = onloadfn
     inst.OnSave = onsavefn
 

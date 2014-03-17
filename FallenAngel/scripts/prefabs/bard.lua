@@ -52,7 +52,7 @@ local fn = function(inst)
 	inst.components.sanity:SetMax(300)
 	inst.components.hunger:SetMax(125)
 
-    
+    inst:AddComponent("xplevel")
 end
 
 return MakePlayerCharacter("bard", prefabs, assets, fn)

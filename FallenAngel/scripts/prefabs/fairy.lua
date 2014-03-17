@@ -6,6 +6,7 @@ local assets=
 }
 
 local PET_HEALTH=300
+local PET_DAMAGE= TUNING.ABIGAIL_DAMAGE_PER_SECOND
 
 local function onnear(inst)
  end
@@ -171,7 +172,7 @@ local function fn(Sim)
 
     inst:AddComponent("combat")
     inst.components.combat:SetAttackPeriod(TUNING.HOUND_ATTACK_PERIOD)
-    inst.components.combat.defaultdamage = TUNING.ABIGAIL_DAMAGE_PER_SECOND
+    inst.components.combat.defaultdamage = PET_DAMAGE
     inst.components.combat.playerdamagepercent = TUNING.ABIGAIL_DMG_PLAYER_PERCENT
     inst.components.combat:SetRetargetFunction(3, Retarget)
     inst.components.combat.areahitdamagepercent=0.5
@@ -197,4 +198,12 @@ local function fn(Sim)
     return inst
 end
 
-return Prefab( "common/fairy", fn, assets)
+local function fn_l20()
+    local inst=fn()
+    inst.components.combat.defaultdamage = PET_DAMAGE*1.5
+    inst.components.health:SetMaxHealth(PET_HEALTH*1.5)
+    inst.components.health:StartRegen(10,5)
+end
+
+return Prefab( "common/fairy", fn, assets),
+    Prefab("common/fairy_l20",fn_l20,assets)

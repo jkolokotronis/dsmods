@@ -109,6 +109,7 @@ local fn = function(inst)
 	inst.components.sanity:SetMax(150)
 	inst.components.hunger:SetMax(200)
 
+    inst:AddComponent("xplevel")
     inst:ListenForEvent("killed", onmurder)
    
     local r=Recipe("arrows", {Ingredient("twigs", 5), Ingredient("houndstooth", 1)},  RECIPETABS.WAR,  {SCIENCE = 1})

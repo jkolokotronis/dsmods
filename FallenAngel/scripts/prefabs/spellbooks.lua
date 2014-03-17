@@ -146,6 +146,18 @@ function divinemightfn(inst, reader)
     return true
 end
 
+function invisibilityfn(inst,reader)
+
+end
+
+function hastefn(inst,reader)
+
+end
+
+function summonfeastfn(inst,reader)
+
+end
+
 function lightfn(inst, reader)
     reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
     reader.buff_timers["light"]:ForceCooldown(BUFF_LENGTH)
@@ -364,4 +376,7 @@ return MakeSpell("spell_lightning", firefn, 10),
        MakeSpell("spell_calldiety", calldietyfn, 10),
        MakeSpell("spell_light", lightfn, 12),
        MakeSpell("spell_bladebarrier", bladebarrierfn, 5),
-       MakeSpell("spell_guardian", treeguardianfn, 7)
+       MakeSpell("spell_guardian", treeguardianfn, 7),
+       MakeSpell("spell_invisibility", invisibilityfn,10),
+       MakeSpell("spell_haste", hastefn, 5),
+       MakeSpell("spell_summonfeast", summonfeastfn, 20)

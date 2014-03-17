@@ -106,6 +106,7 @@ local fn = function(inst)
 	inst.components.hunger:SetMax(125)
 
     inst:AddComponent("reader")
+    inst:AddComponent("xplevel")
 
     inst.buff_timers={}
 --    inst.buff_timers["light"]={}
