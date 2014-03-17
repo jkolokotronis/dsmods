@@ -2,7 +2,7 @@ local require = GLOBAL.require
 require "class"
 
 local Widget = require "widgets/widget"
-local XPBadge= require "widgets/XPBadge"
+local XPBadge= require "widgets/xpbadge"
 require "widgets/text"
 require "stategraph"
 require "constants"
