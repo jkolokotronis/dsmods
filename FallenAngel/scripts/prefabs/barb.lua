@@ -49,13 +49,24 @@ local RAGE_SANITY_DELTA=-5
 local RAGE_HUNGER_DELTA=-10
 local RAGE_PERIOD=2
 
+local HEALTH_PER_LEVEL=5
+local HUNGER_PER_LEVEL=1
+
 local def_attack_period
 local ref
 
+local function onxploaded(inst)
+    local level=inst.components.xplevel.level
+    if(level>1)then
+        inst.components.health.maxhealth= inst.components.health.maxhealth+HEALTH_PER_LEVEL*(level-1)
+        inst.components.hunger.max=inst.components.hunger.max+HUNGER_PER_LEVEL*(level-1)
+    end
+end
+
 local function onlevelup(inst,data)
     local level=data.level
-    inst.components.health.maxhealth= inst.components.health.maxhealth+5
-    inst.components.hunger.max=inst.components.hunger.max+1
+    inst.components.health.maxhealth= inst.components.health.maxhealth+HEALTH_PER_LEVEL
+    inst.components.hunger.max=inst.components.hunger.max+HUNGER_PER_LEVEL
     if(level==3)then
         inst.components.eater.strongstomach = true 
     elseif level==5 then
@@ -171,6 +182,7 @@ local fn = function(inst)
 
 	
 	inst:ListenForEvent("healthdelta", onhpchange)
+    inst:ListenForEvent("xplevel_loaded",onxploaded)
     inst:ListenForEvent("xplevelup", onlevelup)
 --	inst:ListenForEvent("statusDisplaysInit",BarbStatusDisplay)
 

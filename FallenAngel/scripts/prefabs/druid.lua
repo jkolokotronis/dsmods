@@ -76,6 +76,9 @@ local PICK_SANITY_DELTA=-2
 local PLANT_SANITY_DELTA=10
 local MURDER_SANITY_DELTA=-5
 
+local HEALTH_PER_LEVEL=1
+local SANITY_PER_LEVEL=5
+
 local ref
 
 
@@ -117,13 +120,17 @@ local function onxploaded(inst)
     if(level>=12)then
         enableL5spells()
     end
+    if(level>1)then
+        inst.components.health.maxhealth= inst.components.health.maxhealth+HEALTH_PER_LEVEL*(level-1)
+        inst.components.sanity.max=inst.components.sanity.max+SANITY_PER_LEVEL*(level-1)
+    end
 end
 
 local function onlevelup(inst,data)
     local level=data.level
 
-    inst.components.health.maxhealth= inst.components.health.maxhealth+1
-    inst.components.sanity.max=inst.components.sanity.max+5
+    inst.components.health.maxhealth= inst.components.health.maxhealth+HEALTH_PER_LEVEL
+    inst.components.sanity.max=inst.components.sanity.max+SANITY_PER_LEVEL
 
     if(level==3)then
         enableL1spells()
