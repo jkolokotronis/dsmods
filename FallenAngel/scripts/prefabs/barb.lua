@@ -34,6 +34,7 @@ local assets = {
 
 		-- Don't forget to include your character's custom assets!
         Asset( "ANIM", "anim/barbarian.zip" ),
+        Asset( "ANIM", "anim/barbarian_rage.zip" ),
 }
 local prefabs = {}
 
@@ -121,6 +122,7 @@ local function rageStart(inst)
 	   inst.components.combat.min_attack_period=def_attack_period/1.5	    
     end
         inst.task = inst:DoPeriodicTask(RAGE_PERIOD, function() rageProc(inst) end)
+        inst.AnimState:SetBuild("barbarian_rage")
 end
 
 local function rageEnd(inst)
@@ -128,6 +130,7 @@ local function rageEnd(inst)
 	inst.components.health.fire_damage_scale=BASE_FIREDMG
 	inst.components.temperature.hurtrate=BASE_FREEZING
 	inst.components.combat.min_attack_period=def_attack_period
+    inst.AnimState:SetBuild("barbarian")
 	if inst.task then inst.task:Cancel() inst.task = nil end
 end
 
