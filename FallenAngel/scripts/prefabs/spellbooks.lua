@@ -38,6 +38,8 @@ local EARTHQUAKE_DAMAGE=100
 local CALL_DIETY_DAMAGE=100
 local LIGHTNING_DAMAGE=40
 local BUFF_LENGTH=100
+local HASTE_LENGTH=60
+local INVISIBILITY_LENGTH=120
 local BB_LENGTH=12
 
 function tentaclesfn(inst, reader)
@@ -142,16 +144,22 @@ end
 function divinemightfn(inst, reader)
     reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
     reader.buff_timers["divinemight"]:ForceCooldown(BUFF_LENGTH)
-    DivineMightSpellStart(inst, reader,BUFF_LENGTH)
+    DivineMightSpellStart( reader,BUFF_LENGTH)
     return true
 end
 
 function invisibilityfn(inst,reader)
-
+    --reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
+    reader.buff_timers["invisibility"]:ForceCooldown(INVISIBILITY_LENGTH)
+    InvisibilitySpellStart( reader,INVISIBILITY_LENGTH)
+    return true
 end
 
 function hastefn(inst,reader)
-
+    --reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
+    reader.buff_timers["haste"]:ForceCooldown(HASTE_LENGTH)
+    HasteSpellStart( reader,HASTE_LENGTH)
+    return true
 end
 
 function summonfeastfn(inst,reader)
@@ -161,14 +169,14 @@ end
 function lightfn(inst, reader)
     reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
     reader.buff_timers["light"]:ForceCooldown(BUFF_LENGTH)
-    LightSpellStart(inst, reader,BUFF_LENGTH)
+    LightSpellStart( reader,BUFF_LENGTH)
     return true
 end
 
 function bladebarrierfn(inst,reader)
     reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
     reader.buff_timers["bladebarrier"]:ForceCooldown(BB_LENGTH)
-    BladeBarrierSpellStart(inst, reader,BB_LENGTH)
+    BladeBarrierSpellStart( reader,BB_LENGTH)
     return true
 end
 

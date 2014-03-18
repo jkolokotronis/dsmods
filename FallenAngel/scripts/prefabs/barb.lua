@@ -113,12 +113,12 @@ local function rageStart(inst)
         inst.components.locomotor.runspeed=RAGE_MS_DELTA+inst.components.locomotor.runspeed
        inst.components.temperature.hurtrate=BASE_FREEZING/1.5
        inst.components.health.fire_damage_scale = RAGE_FIREDMG
-       inst.components.combat.min_attack_period=def_attack_period/1.5       
+       inst.components.combat.min_attack_period=def_attack_period/1.3       
     else
 	   inst.components.locomotor.runspeed=RAGE_MS_DELTA+inst.components.locomotor.runspeed
 	   inst.components.temperature.hurtrate=BASE_FREEZING/2.0
 	   inst.components.health.fire_damage_scale = RAGE_FIREDMG2
-	   inst.components.combat.min_attack_period=def_attack_period/2.0	    
+	   inst.components.combat.min_attack_period=def_attack_period/1.5	    
     end
         inst.task = inst:DoPeriodicTask(RAGE_PERIOD, function() rageProc(inst) end)
 end

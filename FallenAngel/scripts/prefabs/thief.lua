@@ -94,7 +94,6 @@ local leavestealth=function(inst)
 end
 
 local onattacked=function(inst,data)
-    local attacker=data.attacker
     local damage=data.damage
     local weapon=data.weapon
     if(damage and damage>0 and inst:HasTag("notarget"))then
@@ -180,7 +179,7 @@ local fn = function(inst)
         
     }
 
---theres gotta be a better way...
+--TODO there's gotta be a better way and move this out of here 
 
     local action_old=ACTIONS.FORCEATTACK.fn
     ACTIONS.FORCEATTACK.fn = function(act)
@@ -322,7 +321,8 @@ RECIPETABS["SUBTERFUGE"] = {str = "SUBTERFUGE", sort=999, icon = "trap_teeth.tex
     local r=Recipe("arrows", {Ingredient("twigs", 5), Ingredient("houndstooth", 1)}, booktab, {SCIENCE = 1})
     r.image="book_brimstone.tex"
     r=Recipe("bow", {Ingredient("twigs", 2), Ingredient("rope", 1),Ingredient("pigskin", 1)}, booktab,{SCIENCE = 1})
-    r.image="book_brimstone.tex"
+    r.image="woodbow.tex"
+    r.atlas = "images/inventoryimages/woodbow.xml"
     r=Recipe("trap_doubleteeth", {Ingredient("houndstooth", 5), Ingredient("boards", 2), Ingredient("rocks", 2)}, booktab, {SCIENCE = 2})
     r.image="trap_teeth.tex"
     r=Recipe("trap_fire", {Ingredient("gunpowder", 4),Ingredient("boards", 2), Ingredient("rocks", 2)}, booktab, {SCIENCE = 2})

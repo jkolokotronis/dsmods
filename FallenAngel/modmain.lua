@@ -23,9 +23,12 @@ local SpawnPrefab=GLOBAL.SpawnPrefab
 local StatusDisplays = require "widgets/statusdisplays"
 local ImageButton = require "widgets/imagebutton"
 
---local xx=require "prefabs/spells"
+require "repairabledescriptionfix"
 
 PrefabFiles = {
+    "poisonspider",
+    "poisonspiderden",
+    "spellprojectiles",
     "natureshealing",
     "skeletonspawn",
     "boomstickprojectile",

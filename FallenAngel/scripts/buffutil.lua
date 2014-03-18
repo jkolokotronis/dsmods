@@ -1,13 +1,30 @@
+local CooldownButton = require "widgets/cooldownbutton"
+
 local BB_RADIUS=8
 local BB_DAMAGE=30
 local DM_DAMAGE_MULT=2.0
 local DM_HP_BOOST=100
 local DM_MS_BOOST=1.25
 
---    inst.buff_timers["light"]={}
---    inst.buff_timers["divinemight"]={}
---    inst.buff_timers["bladebarrier"]={}
-function DivineMightSpellStart(inst, reader,timer)
+
+function InitBuffBar(inst,buff,timer,class,name)
+        inst.buff_timers[buff]=CooldownButton(class.owner)
+        inst.buff_timers[buff]:SetText(name)
+        --override clicks to never work
+        inst.buff_timers[buff]:SetOnClick(function() return false end)
+        inst.buff_timers[buff]:SetOnCountdownOver(function() inst.buff_timers[buff]:Hide() end)
+        if(timer and timer>0)then
+             inst.buff_timers[buff]:ForceCooldown(timer)
+        else
+            inst.buff_timers[buff]:Hide()
+        end
+        local btn=class:AddChild(inst.buff_timers[buff])
+        return btn
+end
+
+function DivineMightSpellStart( reader,timer)
+    if(timer==nil or timer<=0)then return false end
+    
     
     reader.origDamageMultiplier=reader.origDamageMultiplier or reader.components.combat.damagemultiplier
     reader.origMaxHealth=reader.origMaxHealth or reader.components.health.maxhealth
@@ -26,14 +43,16 @@ function DivineMightSpellStart(inst, reader,timer)
         reader.divineMightTimer=nil 
         print(reader.origMaxHealth)
         reader.components.combat.damagemultiplier=reader.origDamageMultiplier
-        reader.components.health.maxhealth=reader.origMaxHealth
+        reader.components.health.maxhealth=reader.components.health.maxhealth-DM_HP_BOOST
         reader.components.health:DoDelta(0)
 		reader.components.locomotor.runspeed=TUNING.WILSON_RUN_SPEED
 		end)
     return true
 end
 
-function LightSpellStart(inst, reader,timer)
+function LightSpellStart(reader,timer)
+    if(timer==nil or timer<=0)then return false end
+    
 
     --it WILL crash and burn if applied to wx
     if(not reader.Light) then
@@ -93,7 +112,9 @@ local function apply_bb_damage(reader)
 	end
 end
 
-function BladeBarrierSpellStart(inst,reader,timer)
+function BladeBarrierSpellStart(reader,timer)
+    if(timer==nil or timer<=0)then return false end
+    
 	if(reader.bladeBarrierTimer) then
         reader.bladeBarrierTimer:Cancel()
     end
@@ -124,17 +145,50 @@ function BladeBarrierSpellStart(inst,reader,timer)
 
                     local follower = boom.entity:AddFollower()
                     follower:FollowSymbol( reader.GUID, "swap_object", 0.1, 0.1, -0.0001 )
+end
 
---    boom:AddComponent("follower")
---    reader.components.leader:AddFollower(boom)
+function HasteSpellStart( reader,timer)
+    if(timer==nil or timer<=0)then return false end
+    
+     if(reader.hasteTimer) then
+        reader.hasteTimer:Cancel()
+    else
+        reader.components.locomotor.runspeed=reader.components.locomotor.runspeed+TUNING.WILSON_RUN_SPEED
+        reader.components.combat.min_attack_period=reader.components.combat.min_attack_period/1.5
+    end
+    reader.hasteTimer=reader:DoTaskInTime(timer, function() 
+        reader.hasteTimer=nil 
+        reader.components.locomotor.runspeed=reader.components.locomotor.runspeed-TUNING.WILSON_RUN_SPEED
+        reader.components.combat.min_attack_period=reader.components.combat.min_attack_period*1.5
+        end)
+    return true
+end
 
---    local r,g,b,a = anim:GetMultColour()
---    anim:SetMultColour(r,g,b,1)
---[[
-    boom:DoPeriodicTask(0.2, function() 
-        local pos =reader:GetPosition()
-        boom.Transform:SetPosition(pos.x, pos.y, pos.z)
-    end )
-]]
-        
+function InvisibilitySpellStart( reader,timer)
+    if(timer==nil or timer<=0)then return false end
+    
+    if(reader.invisibilityTimer) then
+        reader.invisibilityTimer:Cancel()
+    end
+    reader:AddTag("notarget")
+    local boom = CreateEntity()
+    boom.entity:AddTransform()
+    local anim=boom.entity:AddAnimState()
+    boom.Transform:SetScale(1, 1, 1)
+    anim:SetBank("smoke_up")
+    anim:SetBuild("smoke_up")
+    anim:PlayAnimation("idle",false)
+
+    local pos =reader:GetPosition()
+    boom.Transform:SetPosition(pos.x, pos.y, pos.z)
+    
+    boom:ListenForEvent("animover", function() boom:Remove() end)
+
+    reader.invisibilityTimer=reader:DoTaskInTime(timer, function() 
+        reader.invisibilityTimer=nil 
+        if(reader:HasTag("notarget"))then
+            reader:RemoveTag("notarget")
+        end
+    end)
+    return true
 end

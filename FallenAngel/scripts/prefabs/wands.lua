@@ -8,6 +8,8 @@ local prefabs =
 {
     "ice_projectile",
     "fire_projectile",
+    "acidarrowprojectile",
+    "fireballprojectile",
     "staffcastfx",
     "stafflight",
      "impact",
@@ -78,9 +80,9 @@ local function onattackfireball(inst, attacker, target)
                     end
                 end
             end
-    local explode = SpawnPrefab("explode_small")
-    local pos = inst:GetPosition()
-    explode.Transform:SetPosition(pos.x, pos.y, pos.z)
+--    local explode = SpawnPrefab("explode_small")
+--    local pos = inst:GetPosition()
+--    explode.Transform:SetPosition(pos.x, pos.y, pos.z)
 
     --local explode = PlayFX(pos,"explode", "explode", "small")
     explode.AnimState:SetBloomEffectHandle( "shaders/anim.ksh" )
@@ -161,12 +163,13 @@ end
 
 
 local function magicmissile()
-    local inst = commonfn("red")
+    local inst = commonfn("blue")
     inst:AddComponent("weapon")
     inst.components.weapon:SetDamage(MAGICMISSLE_DAMAGE)
     inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
 --    inst.components.weapon:SetOnAttack(onattack_red)
-    inst.components.weapon:SetProjectile("fire_projectile")
+    inst.components.weapon:SetProjectile("ice_projectile")
+    inst.components.inventoryitem.imagename="icestaff"
 
     inst.components.finiteuses:SetMaxUses(MAGICMISSLE_USES)
     inst.components.finiteuses:SetUses(MAGICMISSLE_USES)
@@ -175,12 +178,14 @@ local function magicmissile()
 end
 
 local function acidarrow()
-    local inst = commonfn("red")
+    local inst = commonfn("green")
     inst:AddComponent("weapon")
     inst.components.weapon:SetDamage(ACIDARROW_DOT)
     inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
     inst.components.weapon:SetOnAttack(onattackacidarrow)
-    inst.components.weapon:SetProjectile("fire_projectile")
+    inst.components.inventoryitem.imagename="greenstaff"
+--    inst.AnimState:SetMultColour(0,1,0,1)
+    inst.components.weapon:SetProjectile("acidarrowprojectile")
 
     inst.components.finiteuses:SetMaxUses(ACIDARROW_USES)
     inst.components.finiteuses:SetUses(ACIDARROW_USES)
@@ -194,7 +199,7 @@ local function fireball()
     inst.components.weapon:SetDamage(FIREBALL_DAMAGE)
     inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
     inst.components.weapon:SetOnAttack(onattackfireball)
-    inst.components.weapon:SetProjectile("fire_projectile")
+    inst.components.weapon:SetProjectile("fireballprojectile")
 
     inst.components.finiteuses:SetMaxUses(FIREBALL_USES)
     inst.components.finiteuses:SetUses(FIREBALL_USES)

@@ -61,22 +61,6 @@ STRINGS.NAMES.SPELL_BLADEBARRIER = "Blade Barrier"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_BLADEBARRIER = "Blade Barrier"
 STRINGS.RECIPE_DESC.SPELL_BLADEBARRIER = "Blade Barrier"
 
-local initBuffBar=function(inst,buff,timer,class,name)
-        inst.buff_timers[buff]=CooldownButton(class.owner)
-        inst.buff_timers[buff]:SetText(name)
-        --override clicks to never work
-        inst.buff_timers[buff]:SetOnClick(function() return false end)
-        inst.buff_timers[buff]:SetOnCountdownOver(function() inst.buff_timers[buff]:Hide() end)
-        if(timer and timer>0)then
-             inst.buff_timers[buff]:ForceCooldown(timer)
-        else
-            inst.buff_timers[buff]:Hide()
-        end
-        local btn=class:AddChild(inst.buff_timers[buff])
-        return btn
-end
-
-
 local onloadfn = function(inst, data)
     inst.lightBuffUp=data.lightBuffUp
     inst.dmBuffUp=data.dmBuffUp
@@ -131,12 +115,15 @@ RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon
     r.image="book_gardening.tex"
 
     inst.newControlsInit = function (class)
-        local btn=initBuffBar(inst,"light",inst.lightBuffUp,class,"light")
+        local btn=InitBuffBar(inst,"light",inst.lightBuffUp,class,"light")
         btn:SetPosition(-100,0,0)
-        local btn=initBuffBar(inst,"divinemight",inst.dmBuffUp,class,"DM")
+        LightSpellStart(inst,inst.lightBuffUp )
+        local btn=InitBuffBar(inst,"divinemight",inst.dmBuffUp,class,"DM")
         btn:SetPosition(0,0,0)
-        local btn=initBuffBar(inst,"bladebarrier",inst.bbBuffUp,class,"BB")
+        DivineMightSpellStart(inst,inst.dmBuffUp )
+        local btn=InitBuffBar(inst,"bladebarrier",inst.bbBuffUp,class,"BB")
         btn:SetPosition(100,0,0)
+        BladeBarrierSpellStart(inst,inst.bbBuffUp )
     end
 
 end
