@@ -82,8 +82,8 @@ local function t1()
     local inst =fn()
     inst:AddTag("tier1")
     inst.procRate=ARMORFROST_PROC_T1
-    inst.components.armor:InitCondition(ARMORFIRE_DURABILITY_T1, ARMORFIRE_ABSORPTION_T1)
-    inst.components.equippable.walkspeedmult = ARMORFIRE_SLOW_T1
+    inst.components.armor:InitCondition(ARMORFROST_DURABILITY_T1, ARMORFROST_ABSORPTION_T1)
+    inst.components.equippable.walkspeedmult = ARMORFROST_SLOW_T1
     return inst
 end
 
@@ -91,8 +91,8 @@ local function t2()
     local inst =fn()
     inst:AddTag("tier2")
     inst.procRate=ARMORFROST_PROC_T2
-    inst.components.armor:InitCondition(ARMORFIRE_DURABILITY_T2, ARMORFIRE_ABSORPTION_T2)
-    inst.components.equippable.walkspeedmult =  ARMORFIRE_SLOW_T2
+    inst.components.armor:InitCondition(ARMORFROST_DURABILITY_T2, ARMORFROST_ABSORPTION_T2)
+    inst.components.equippable.walkspeedmult =  ARMORFROST_SLOW_T2
     return inst
 end
 
@@ -100,8 +100,8 @@ local function t3()
     local inst =fn()
     inst:AddTag("tier3")
     inst.procRate=ARMORFROST_PROC_T3
-    inst.components.armor:InitCondition(ARMORFIRE_DURABILITY_T3, ARMORFIRE_ABSORPTION_T3)
-    inst.components.equippable.walkspeedmult =  ARMORFIRE_SLOW_T3
+    inst.components.armor:InitCondition(ARMORFROST_DURABILITY_T3, ARMORFROST_ABSORPTION_T3)
+    inst.components.equippable.walkspeedmult =  ARMORFROST_SLOW_T3
     return inst
 end
 
