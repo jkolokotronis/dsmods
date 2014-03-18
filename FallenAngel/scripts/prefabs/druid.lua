@@ -153,7 +153,7 @@ local function oneat(inst,data)
     local food=data.food
     if(food.components.edible.foodtype == "VEGGIE")then
         -- it already did it once... there's prob a better way
-        if food.components.edible.healthvalue > 0 or not self.strongstomach then
+        if food.components.edible.healthvalue > 0 or not inst.components.eater.strongstomach then
             inst.components.health:DoDelta(food.components.edible:GetHealth(inst), nil, food.prefab)
         end
         inst.components.hunger:DoDelta(food.components.edible:GetHunger(inst))
