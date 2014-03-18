@@ -394,28 +394,13 @@ TUNING.ARMORSLURPER = 300
 TUNING.ARMOR_SANITY = 750
 TUNING.ARMOR_SANITY_ABSORPTION = .8
 TUNING.ARMOR_SANITY_DMG_AS_SANITY = 0.10
---[[
-        ARMOR_FOOTBALLHAT = wilson_health*3,
-        ARMOR_FOOTBALLHAT_ABSORPTION = .8,
-
-        ARMOR_RUINSHAT = wilson_health*8,
-        ARMOR_RUINSHAT_ABSORPTION = 0.9,
-        ARMOR_RUINSHAT_PROC_CHANCE = 0.33,
-        ARMOR_RUINSHAT_COOLDOWN = 5,
-        ARMOR_RUINSHAT_DURATION = 4,
-        ARMOR_RUINSHAT_DMG_AS_SANITY = 0.05,
-
-        ARMOR_SLURTLEHAT = wilson_health*5,
-        ARMOR_SLURTLEHAT_ABSORPTION = 0.9,
-        ARMOR_BEEHAT = wilson_health*5,
-        ARMOR_BEEHAT_ABSORPTION = .8,]]
 
 -- Let the game know Wod is a male, for proper pronouns during the end-game sequence.
 -- Possible genders here are MALE, FEMALE, or ROBOT
 table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "thief")
 table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "barb")
 table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "cleric")
-table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "druid")
+table.insert(GLOBAL.CHARACTER_GENDERS.FEMALE, "druid")
 table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "darkknight")
 table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "monk")
 table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "necromancer")
