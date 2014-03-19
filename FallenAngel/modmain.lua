@@ -10,6 +10,7 @@ require "stategraph"
 require "constants"
 require "buffutil"
 require "mobxptable"
+require "levelxptable"
 --
 local Ingredient = GLOBAL.Ingredient
 local RECIPETABS = GLOBAL.RECIPETABS

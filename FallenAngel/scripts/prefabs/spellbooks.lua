@@ -325,6 +325,7 @@ function treeguardianfn(inst,reader)
     tree:ListenForEvent("stopfollowing",function(f)
         f.components.health:Kill()
     end)
+     return true
 
 end
 

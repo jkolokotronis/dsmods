@@ -1,5 +1,4 @@
-require "mobxptable"
-require "levelxptable"
+
 
 local XPLevel = Class(function(self, inst)
     self.level=1
