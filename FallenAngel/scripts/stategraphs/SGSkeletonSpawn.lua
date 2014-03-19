@@ -1521,7 +1521,7 @@ local states=
             else
 				inst.sg.statemem.slow = true
                 inst.AnimState:PlayAnimation("punch")
-                inst.SoundEmitter:PlaySound("dontstarve/wilson/attack_whoosh")
+                inst.SoundEmitter:PlaySound("fa/skeleton/skel_atk")
             end
             
             if inst.components.combat.target then
