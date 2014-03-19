@@ -22,7 +22,11 @@ end
 function XPLevel:OnLoad(data)
     self.level=data.level or self.level
     self.currentxp=data.currentxp or self.currentxp  
-    self.max=LEVELXP_TABLE[self.level].max
+    local index=self.level
+    if(index==LEVEL_CAP)then
+        index=LEVEL_CAP-1
+    end
+    self.max=LEVELXP_TABLE[index].max
     self:DoDelta(0)
     self.inst:PushEvent("xplevel_loaded")
 end
