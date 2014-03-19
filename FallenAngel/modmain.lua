@@ -619,10 +619,27 @@ AddPrefabPostInit("common/inventory/monstermeat_dried",function(inst)
     inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
 end)
 
+
+
 AddPrefabPostInit("mound",function(inst)
-    if(not inst.components.workable and not inst:HasTag("hasSpawnedSkeleton"))then
-        --dug up already, spawn a skel somewhere during next x days
-        startSkeletonSpawnTask(inst)
+    inst:AddComponent("childspawner")
+    inst.components.childspawner.childname = "skeletonspawn"
+    inst.components.childspawner:SetRegenPeriod(480)
+    inst.components.childspawner:SetSpawnPeriod(480*math.random()*5)
+    inst.components.childspawner.spawnoffscreen=true
+    inst.components.childspawner:SetMaxChildren(1)
+    if(not inst.components.workable )then
+            inst.components.childspawner:StartSpawning()
+            inst.components.childspawner:StartRegen()
+    else
+        inst.components.childspawner:StopSpawning()
+        inst.components.childspawner:StopRegen()
+        local onfinishcallback=inst.components.workable.onfinish
+        inst.components.workable:SetOnFinishCallback(function(inst,worker)
+            onfinishcallback(inst,worker)
+            inst.components.childspawner:StartSpawning()
+            inst.components.childspawner:StartRegen()
+        end)      
     end
 end)
 
