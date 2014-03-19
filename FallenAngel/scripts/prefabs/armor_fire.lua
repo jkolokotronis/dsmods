@@ -13,7 +13,7 @@ local ARMORFIRE_DURABILITY_T2=1500
 local ARMORFIRE_DURABILITY_T3=2000
 local ARMORFIRE_SLOW_T1 = 0.9
 local ARMORFIRE_SLOW_T2 = 0.93
-local ARMORFIRE_SLOW_T3 = 0.05
+local ARMORFIRE_SLOW_T3 = 0.95
 local ARMORFIRE_PROC_T1=0.1
 local ARMORFIRE_PROC_T2=0.2
 local ARMORFIRE_PROC_T3=0.3
@@ -37,6 +37,7 @@ end
 local function onunequip(inst, owner) 
     owner.AnimState:ClearOverrideSymbol("swap_body")
     inst:RemoveEventCallback("blocked", OnBlocked, owner)
+    inst:RemoveEventCallback("attacked", OnBlocked, owner)
 end
 
 local function fn()

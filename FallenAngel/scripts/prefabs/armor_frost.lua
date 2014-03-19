@@ -13,11 +13,11 @@ local ARMORFROST_DURABILITY_T2=1500
 local ARMORFROST_DURABILITY_T3=2000
 local ARMORFROST_SLOW_T1 = 0.9
 local ARMORFROST_SLOW_T2 = 0.93
-local ARMORFROST_SLOW_T3 = 0.05
+local ARMORFROST_SLOW_T3 = 0.95
 local ARMORFROST_PROC_T1=0.1
 local ARMORFROST_PROC_T2=0.2
 local ARMORFROST_PROC_T3=0.3
-local ARMORFROST_COLDNESS=4
+local ARMORFROST_COLDNESS=1
 
 local function OnBlocked(inst,owner,data) 
     owner.SoundEmitter:PlaySound("dontstarve/wilson/hit_armour")
@@ -42,6 +42,7 @@ end
 local function onunequip(inst, owner) 
     owner.AnimState:ClearOverrideSymbol("swap_body")
     inst:RemoveEventCallback("blocked", OnBlocked, owner)
+    inst:RemoveEventCallback("attacked", OnBlocked, owner)
 end
 
 local function fn()
@@ -105,6 +106,6 @@ local function t3()
     return inst
 end
 
-return Prefab( "common/inventory/armorfire", t1, assets), 
-Prefab( "common/inventory/armorfire2", t2, assets),
-Prefab( "common/inventory/armorfire3", t3, assets)
+return Prefab( "common/inventory/armorfrost", t1, assets), 
+Prefab( "common/inventory/armorfrost2", t2, assets),
+Prefab( "common/inventory/armorfrost3", t3, assets)

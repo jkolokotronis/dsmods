@@ -6,9 +6,27 @@ local assets=
     Asset("IMAGE", "images/inventoryimages/vorpalaxe.tex"),
 }
 
-local DK_SWORD_DAMAGE=30
+local VORPALAXE_DAMAGE_T1=60
+local VORPALAXE_DAMAGE_T2=70
+local VORPALAXE_DAMAGE_T3=85
+local VORPALAXE_PROC_T1=0.03
+local VORPALAXE_PROC_T2=0.07
+local VORPALAXE_PROC_T3=0.12
+local VORPALAXE_USES_T1=50
+local VORPALAXE_USES_T2=100
+local VORPALAXE_USES_T3=150
+
+local function onfinished(inst)
+    inst.SoundEmitter:PlaySound("dontstarve/common/gem_shatter")
+    inst:Remove()
+end
 
 local function onattack(inst, attacker, target)
+    local rng=math.random()
+    print("rng ",rng,inst.procRate)
+    if(target and target.components.health and target.components.combat  and math.random()<=inst.procRate) then
+          target.components.health:Kill()
+     end
 end
 
 local function onequip(inst, owner)
@@ -41,9 +59,11 @@ local function fn(Sim)
     inst:AddTag("sharp")
     
     inst:AddComponent("weapon")
-    inst.components.weapon:SetDamage(DK_SWORD_DAMAGE)
     inst.components.weapon:SetOnAttack(onattack)
     
+    inst:AddComponent("finiteuses")
+    inst.components.finiteuses:SetOnFinished( onfinished )
+
     inst:AddComponent("inspectable")
     
     inst:AddComponent("inventoryitem")
@@ -59,4 +79,35 @@ local function fn(Sim)
     return inst
 end
 
-return Prefab( "common/inventory/vorpalaxe", fn, assets) 
+local function t1()
+    local inst =fn()
+    inst:AddTag("tier1")
+    inst.procRate=VORPALAXE_PROC_T1
+    inst.components.weapon:SetDamage(VORPALAXE_DAMAGE_T1)
+    inst.components.finiteuses:SetMaxUses(VORPALAXE_USES_T1)
+    inst.components.finiteuses:SetUses(VORPALAXE_USES_T1)
+    return inst
+end
+
+local function t2()
+    local inst =fn()
+    inst:AddTag("tier2")
+    inst.procRate=VORPALAXE_PROC_T2
+    inst.components.weapon:SetDamage(VORPALAXE_DAMAGE_T2)
+    inst.components.finiteuses:SetMaxUses(VORPALAXE_USES_T2)
+    inst.components.finiteuses:SetUses(VORPALAXE_USES_T2)
+    return inst
+end
+
+local function t3()
+    local inst =fn()
+    inst:AddTag("tier3")
+    inst.procRate=VORPALAXE_PROC_T3
+    inst.components.weapon:SetDamage(VORPALAXE_DAMAGE_T3)
+    inst.components.finiteuses:SetMaxUses(VORPALAXE_USES_T3)
+    inst.components.finiteuses:SetUses(VORPALAXE_USES_T3)
+    return inst
+end
+return Prefab( "common/inventory/vorpalaxe", t1, assets),
+    Prefab( "common/inventory/vorpalaxe2", t2, assets),
+    Prefab( "common/inventory/vorpalaxe3", t3, assets)

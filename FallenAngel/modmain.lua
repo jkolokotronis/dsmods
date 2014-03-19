@@ -1,6 +1,8 @@
 local require = GLOBAL.require
 require "class"
+require "util"
 
+local MergeMaps=GLOBAL.MergeMaps
 local Widget = require "widgets/widget"
 local XPBadge= require "widgets/xpbadge"
 require "widgets/text"
@@ -287,37 +289,49 @@ GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.BONESHIELD = "Bone Shield"
 GLOBAL.STRINGS.RECIPE_DESC.BONESHIELD = "Bone Shield"
 GLOBAL.STRINGS.NAMES.REFLECTSHIELD = "Reflection Shield"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.REFLECTSHIELD = "Reflection Shield"
-GLOBAL.STRINGS.NAMES.UNDEADBANESWORD = "Sword of Undead Bane"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.UNDEADBANESWORD = "Sword of Undead Bane"
-GLOBAL.STRINGS.NAMES.VORPALAXE = "Vorpal Axe"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.VORPALAXE = "Vorpal Axe"
+GLOBAL.STRINGS.NAMES.UNDEADBANESWORD = "Sword of Lesser Undead Bane"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.UNDEADBANESWORD = "Sword of Lesser Undead Bane"
+GLOBAL.STRINGS.NAMES.UNDEADBANESWORD2 = "Sword of Undead Bane"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.UNDEADBANESWORD2 = "Sword of Undead Bane"
+GLOBAL.STRINGS.NAMES.UNDEADBANESWORD3 = "Sword of Greater Undead Bane"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.UNDEADBANESWORD3 = "Sword of Greater Undead Bane"
+GLOBAL.STRINGS.NAMES.VORPALAXE = "Lesser Vorpal Axe"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.VORPALAXE = "Lesser Vorpal Axe"
+GLOBAL.STRINGS.NAMES.VORPALAXE2 = "Vorpal Axe"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.VORPALAXE2 = "Vorpal Axe"
+GLOBAL.STRINGS.NAMES.VORPALAXE3 = "Greater Vorpal Axe"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.VORPALAXE3 = "Greater Vorpal Axe"
 GLOBAL.STRINGS.NAMES.FLAMINGSWORD = "Flaming Sword"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FLAMINGSWORD = "Flaming Sword"
-GLOBAL.STRINGS.NAMES.DAGGER = "Dagger"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.DAGGER = "Dagger"
+GLOBAL.STRINGS.NAMES.DAGGER = "Dagger of Lesser Slaying"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.DAGGER = "Dagger of Lesser Slaying"
+GLOBAL.STRINGS.NAMES.DAGGER2 = "Dagger of Slaying"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.DAGGER2 = "Dagger of Slaying"
+GLOBAL.STRINGS.NAMES.DAGGER3 = "Dagger of Greater Slaying"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.DAGGER3 = "Dagger of Greater Slaying"
 GLOBAL.STRINGS.NAMES.FROSTSWORD = "Frost Sword"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FROSTSWORD = "Frost Sword"
-GLOBAL.STRINGS.NAMES.ARMORFIRE = "Armor of Fire"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARMORFIRE = "Armor of Fire"
-GLOBAL.STRINGS.NAMES.ARMORFIRE2 =  "Armor of Fire Tier 2"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARMORFIRE2 = "Armor of Fire Tier 2"
-GLOBAL.STRINGS.NAMES.ARMORFIRE3 =  "Armor of Fire Tier 3"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARMORFIRE3 = "Armor of Fire Tier 3"
-GLOBAL.STRINGS.NAMES.ARMORFROST = "Armor of Frost"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARMORFROST = "Armor of Frost"
-GLOBAL.STRINGS.NAMES.ARMORFROST2 =  "Armor of Frost Tier 2"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARMORFROST2 = "Armor of Frost Tier 2"
-GLOBAL.STRINGS.NAMES.ARMORFROST3 =  "Armor of Frost Tier 3"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARMORFROST3 = "Armor of Frost Tier 3"
+GLOBAL.STRINGS.NAMES.ARMORFIRE = "Armor of Lesser Fire"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARMORFIRE = "Armor of Lesser Fire"
+GLOBAL.STRINGS.NAMES.ARMORFIRE2 =  "Armor of Fire"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARMORFIRE2 = "Armor of Fire"
+GLOBAL.STRINGS.NAMES.ARMORFIRE3 =  "Armor of Greater Fire"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARMORFIRE3 = "Armor of Greater Fire"
+GLOBAL.STRINGS.NAMES.ARMORFROST = "Armor of Lesser Frost"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARMORFROST = "Armor of Lesser Frost"
+GLOBAL.STRINGS.NAMES.ARMORFROST2 =  "Armor of Frost"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARMORFROST2 = "Armor of Frost"
+GLOBAL.STRINGS.NAMES.ARMORFROST3 =  "Armor of Greater Frost"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARMORFROST3 = "Armor of Greater Frost"
 GLOBAL.STRINGS.NAMES.DKSWORD = "Evil Sword"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.DKSWORD = "Evil Sword"
 GLOBAL.STRINGS.NAMES.HOLYSWORD = "Holy Sword"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.HOLYSWORD = "Holy Sword"
 
 GLOBAL.STRINGS.NAMES.FAIRY = "Wolf"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARMORFROST = "Wolf"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FAIRY = "Wolf"
 GLOBAL.STRINGS.NAMES.FAIRY_L20 = "Wolf"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARMORFROST = "Wolf"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FAIRY_L20 = "Wolf"
 GLOBAL.STRINGS.NAMES.DARKKNIGHTPET = "Shadow Pet"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKKNIGHTPET = "Shadow Pet"
 
@@ -374,6 +388,42 @@ local EVIL_SANITY_AURA_OVERRIDE={
     penguin=-TUNING.SANITYAURA_MED,
     flower=-TUNING.SANITYAURA_MED
 }
+
+FALLENLOOTTABLE={
+    tier1={ armorfire=50,
+            armorfrost=50,
+            dagger=50,
+            flamingsword=50,
+            frostsword=50,
+            undeadbanesword=50,
+            vorpalaxe=50
+        
+    },
+    tier2={
+            armorfire2=35,
+            armorfrost2=35,
+            dagger2=35,
+            flamingsword2=35,
+            frostsword2=35,
+            undeadbanesword2=35,
+            vorpalaxe2=35
+        
+    },
+    tier3={
+            armorfire3=15,
+            armorfrost3=15,
+            dagger3=15,
+            flamingsword3=15,
+            frostsword3=15,
+            undeadbanesword3=15,
+            vorpalaxe3=15
+        
+    },
+    TABLE_WEIGHT=700,
+    TABLE_TIER1_WEIGHT=350
+}
+FALLENLOOTTABLEMERGED=MergeMaps(FALLENLOOTTABLE["tier1"],FALLENLOOTTABLE["tier2"],FALLENLOOTTABLE["tier3"])
+
 local SANITY_DAY_LOSS=-100.0/(300*10)
 local PROTOTYPE_XP=50
 
@@ -459,6 +509,7 @@ local function newControlsInit(class)
 
         GetPlayer():ListenForEvent("killed", function(inst,data)
             local victim=data.victim
+            print("victim",victim.prefab)
             local xp=GLOBAL.MOBXP_TABLE[victim.prefab]
             print("xp for",victim, xp)
             if(xp)then
@@ -670,7 +721,36 @@ AddSimPostInit(function(inst)
         end
 end)
 --\
+function lootdropperPostInit(component)
+    local old_generateloot=component.GenerateLoot
+    function component:AddFallenLootTable(lt,weight,chance)
+        self.fallenLootTable=lt
+        self.fallenLootTableTotalWeight=weight
+        self.fallenLootTableChance=chance
+    end
+    function component:GenerateLoot()
+        local loots=old_generateloot(self)
+        local chance=math.random()
+        if(self.fallenLootTable and chance<=self.fallenLootTableChance)then
+            local newloot=nil
+            --pick one of...
+            local rnd = math.random()*self.fallenLootTableTotalWeight
+            print("rnd",rnd)
+            for k,v in pairs(self.fallenLootTable) do
+                rnd = rnd - v
+                if rnd <= 0 then
+                    newloot=k
+                    break
+                end
+            end
+            table.insert(loots, newloot)
+        end
+        return loots
+    end
+end
 
+
+AddComponentPostInit("lootdropper",lootdropperPostInit)
 
 function makestackablePrefabPostInit(inst)
     if(not inst.components.stackable)then
@@ -680,6 +760,41 @@ function makestackablePrefabPostInit(inst)
 end
 
 AddPrefabPostInit("rabbit", makestackablePrefabPostInit)
+
+function addT1LootPrefabPostInit(inst,chance)
+    if(not inst.components.lootdropper)then
+        inst:AddComponent("lootdropper")
+    end
+    inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLE.tier1,FALLENLOOTTABLE.TABLE_TIER1_WEIGHT,chance)
+end
+
+function addFullLootPrefabPostInit(inst,chance)
+    if(not inst.components.lootdropper)then
+        inst:AddComponent("lootdropper")
+    end
+    inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLEMERGED,FALLENLOOTTABLE.TABLE_WEIGHT,chance)
+end
+
+AddPrefabPostInit("rabbithole", function(inst) addT1LootPrefabPostInit(inst,0.05) end)
+
+AddPrefabPostInit("merm", function(inst) addFullLootPrefabPostInit(inst,0.1) end)
+AddPrefabPostInit("pigman", function(inst) addFullLootPrefabPostInit(inst,0.1) end)
+AddPrefabPostInit("pigguard", function(inst) addFullLootPrefabPostInit(inst,0.1) end)
+AddPrefabPostInit("bunnyman", function(inst) addFullLootPrefabPostInit(inst,0.1) end)
+AddPrefabPostInit("orc", function(inst) addFullLootPrefabPostInit(inst,0.1) end)
+AddPrefabPostInit("goblin", function(inst) addFullLootPrefabPostInit(inst,0.1) end)
+
+AddPrefabPostInit("mermhouse", function(inst) addFullLootPrefabPostInit(inst,0.2) end)
+AddPrefabPostInit("pighouse", function(inst) addFullLootPrefabPostInit(inst,0.2) end)
+AddPrefabPostInit("rabbithouse", function(inst) addFullLootPrefabPostInit(inst,0.2) end)
+AddPrefabPostInit("goblinhut", function(inst) addFullLootPrefabPostInit(inst,0.2) end)
+
+AddPrefabPostInit("spiderden", function(inst) addFullLootPrefabPostInit(inst,0.15) end)
+AddPrefabPostInit("poisonspiderden", function(inst) addFullLootPrefabPostInit(inst,0.15) end)
+AddPrefabPostInit("spiderden_2", function(inst) addFullLootPrefabPostInit(inst,0.30) end)
+AddPrefabPostInit("poisonspiderden_2", function(inst) addFullLootPrefabPostInit(inst,0.30) end)
+AddPrefabPostInit("spiderden_3", function(inst) addFullLootPrefabPostInit(inst,0.45) end)
+AddPrefabPostInit("poisonspiderden_3", function(inst) addFullLootPrefabPostInit(inst,0.45) end)
 
 AddModCharacter("thief")
 AddModCharacter("barb")

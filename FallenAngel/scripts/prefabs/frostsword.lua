@@ -7,9 +7,36 @@ local assets=
     Asset("IMAGE", "images/inventoryimages/frostsword.tex"),
 }
 
-local DK_SWORD_DAMAGE=40
+
+local FROZENSWORD_DAMAGE_T1=55
+local FROZENSWORD_DAMAGE_T2=65
+local FROZENSWORD_DAMAGE_T3=80
+local FROZENSWORD_PROC_T1=0.05
+local FROZENSWORD_PROC_T2=0.15
+local FROZENSWORD_PROC_T3=0.30
+local FROZENSWORD_ICE_PROC=50
+local FROZENSWORD_USES_T1=50
+local FROZENSWORD_USES_T2=100
+local FROZENSWORD_USES_T3=150
+local FROZENSWORD_COLDNESS=1
+
+local function onfinished(inst)
+    inst.SoundEmitter:PlaySound("dontstarve/common/gem_shatter")
+    inst:Remove()
+end
 
 local function onattack(inst, attacker, target)
+    if(target and math.random()<=inst.procRate)then
+        print("reflecting to",data.attacker)
+        if  target.components.burnable and  target.components.burnable:IsBurning() then
+            target.components.burnable:Extinguish()
+        end
+        if target.components.freezable then
+            target.components.freezable:AddColdness(FROZENSWORD_COLDNESS)
+            target.components.freezable:SpawnShatterFX()
+            target.components.combat:GetAttacked(attacker, FROZENSWORD_ICE_PROC, nil)
+        end
+    end
 end
 
 local function onequip(inst, owner)
@@ -42,11 +69,13 @@ local function fn(Sim)
     inst:AddTag("sharp")
     
     inst:AddComponent("weapon")
-    inst.components.weapon:SetDamage(DK_SWORD_DAMAGE)
     inst.components.weapon:SetOnAttack(onattack)
     
     inst:AddComponent("inspectable")
     
+    inst:AddComponent("finiteuses")
+    inst.components.finiteuses:SetOnFinished( onfinished )
+
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem.imagename="frostsword"
     inst.components.inventoryitem.atlasname="images/inventoryimages/frostsword.xml"
@@ -60,4 +89,37 @@ local function fn(Sim)
     return inst
 end
 
-return Prefab( "common/inventory/frostsword", fn, assets) 
+
+local function t1()
+    local inst =fn()
+    inst:AddTag("tier1")
+    inst.procRate=FROZENSWORD_PROC_T1
+    inst.components.weapon:SetDamage(FROZENSWORD_DAMAGE_T1)
+    inst.components.finiteuses:SetMaxUses(FROZENSWORD_USES_T1)
+    inst.components.finiteuses:SetUses(FROZENSWORD_USES_T1)
+    return inst
+end
+
+local function t2()
+    local inst =fn()
+    inst:AddTag("tier2")
+    inst.procRate=FROZENSWORD_PROC_T2
+    inst.components.weapon:SetDamage(FROZENSWORD_DAMAGE_T2)
+    inst.components.finiteuses:SetMaxUses(FROZENSWORD_USES_T2)
+    inst.components.finiteuses:SetUses(FROZENSWORD_USES_T2)
+    return inst
+end
+
+local function t3()
+    local inst =fn()
+    inst:AddTag("tier3")
+    inst.procRate=FROZENSWORD_PROC_T3
+    inst.components.weapon:SetDamage(FROZENSWORD_DAMAGE_T3)
+    inst.components.finiteuses:SetMaxUses(FROZENSWORD_USES_T3)
+    inst.components.finiteuses:SetUses(FROZENSWORD_USES_T3)
+    return inst
+end
+
+return Prefab( "common/inventory/frostsword", t1, assets),
+    Prefab( "common/inventory/frostsword2", t1, assets),
+    Prefab( "common/inventory/frostsword3", t1, assets) 
