@@ -32,9 +32,9 @@ local function onattack(inst, attacker, target)
             target.components.burnable:Extinguish()
         end
         if target.components.freezable then
+            target.components.combat:GetAttacked(attacker, FROZENSWORD_ICE_PROC, nil)
             target.components.freezable:AddColdness(FROZENSWORD_COLDNESS)
             target.components.freezable:SpawnShatterFX()
-            target.components.combat:GetAttacked(attacker, FROZENSWORD_ICE_PROC, nil)
         end
     end
 end
