@@ -27,7 +27,6 @@ end
 
 local function onattack(inst, attacker, target)
     if(target and math.random()<=inst.procRate)then
-        print("reflecting to",data.attacker)
         if  target.components.burnable and  target.components.burnable:IsBurning() then
             target.components.burnable:Extinguish()
         end

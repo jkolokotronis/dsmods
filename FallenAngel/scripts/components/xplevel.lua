@@ -23,6 +23,7 @@ end
 function XPLevel:OnLoad(data)
     self.level=data.level or self.level
     self.currentxp=data.currentxp or self.currentxp  
+    self.max=LEVELXP_TABLE[self.level].max
     self:DoDelta(0)
     self.inst:PushEvent("xplevel_loaded")
 end
@@ -39,7 +40,7 @@ function XPLevel:DoDelta(delta)
 
     local old = self.currentxp
     local oldlevel = self.level
-    if(delta and delta~=0 and self.level~=LEVEL_CAP)then
+    if(self.level~=LEVEL_CAP)then
 
         self.currentxp = self.currentxp + delta
         if self.currentxp >= self.max then
