@@ -203,6 +203,7 @@ local function fn_l20()
     inst.components.combat.defaultdamage = PET_DAMAGE*1.5
     inst.components.health:SetMaxHealth(PET_HEALTH*1.5)
     inst.components.health:StartRegen(10,5)
+    return inst
 end
 
 return Prefab( "common/fairy", fn, assets),
