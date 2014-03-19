@@ -127,7 +127,7 @@ inst:AddComponent("eater")
     inst.components.health:SetInvincible(false)
 
     inst.SoundEmitter:PlaySound("dontstarve/ghost/ghost_howl_LP", "howl")
-    inst:SetStateGraph("SGpig")
+    inst:SetStateGraph("SGskeletonspawn")
 
     local brain = require "brains/skeletonspawnbrain"
     inst:SetBrain(brain)
