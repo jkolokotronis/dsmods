@@ -42,10 +42,9 @@ local DAMAGE_MULT=0.5
 
 
 STRINGS.TABS.SPELLS = "Spells"
-
-STRINGS.NAMES.MAGICMISSLEWAND = "Magic Missile"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.MAGICMISSLEWAND = "Magic Missile"
-STRINGS.RECIPE_DESC.MAGICMISSLEWAND = "Magic Missile"
+STRINGS.NAMES.MAGICMISSILEWAND = "Magic Missile"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.MAGICMISSILEWAND = "Magic Missile"
+STRINGS.RECIPE_DESC.MAGICMISSILEWAND = "Magic Missile"
 
 STRINGS.NAMES.ACIDARROWWAND = "Acid Arrow"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.ACIDARROWWAND = "Acid Arrow"
@@ -82,6 +81,11 @@ STRINGS.RECIPE_DESC.PRISMATICWAND =  "Summon feast"
 STRINGS.NAMES.PRISMATICWAND = "Prismatic Wall"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.PRISMATICWAND =  "Prismatic Wall"
 STRINGS.RECIPE_DESC.PRISMATICWAND = "Prismatic Wall"
+
+
+STRINGS.NAMES.TRAP_CIRCLEOFDEATH = "Circle of Death"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.TRAP_CIRCLEOFDEATH = "Circle of Death"
+STRINGS.RECIPE_DESC.TRAP_CIRCLEOFDEATH = "Circle of Death"
 
 
 local leavestealth=function(inst)
@@ -286,27 +290,27 @@ local fn = function(inst)
 RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon_atlas = "images/inventoryimages/herotab.xml"}
     local booktab=RECIPETABS.SPELLS
 --    inst.components.builder:AddRecipeTab(booktab)
-    local r=Recipe("magicmissilewand", {Ingredient("meat", 5), Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, booktab, {SCIENCE = 0, MAGIC = 0, ANCIENT = 0})
+    local r=Recipe("magicmissilewand", {Ingredient("meat", 1), Ingredient("cutgrass", 1), Ingredient("rocks", 1)}, booktab, {SCIENCE = 0, MAGIC = 0, ANCIENT = 0})
     r.image="icestaff.tex"
-    r=Recipe("acidarrowwand", {Ingredient("redgem", 4), Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, booktab,{MAGIC = 2})
+    r=Recipe("acidarrowwand", {Ingredient("redgem",1), Ingredient("cutgrass", 1), Ingredient("rocks", 1)}, booktab,{MAGIC = 2})
     r.image="greenstaff.tex"
-    r=Recipe("fireballwand", {Ingredient("fireflies", 2),Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, booktab, {MAGIC = 2})
+    r=Recipe("fireballwand", {Ingredient("meat", 2),Ingredient("cutgrass", 1), Ingredient("rocks", 1)}, booktab, {MAGIC = 2})
     r.image="firestaff.tex"
-    r=Recipe("icestormwand", {Ingredient("spidergland",5),Ingredient("cutgrass", 5), Ingredient("rocks", 15)}, booktab, {MAGIC = 3})
+    r=Recipe("icestormwand", {Ingredient("spidergland",1),Ingredient("cutgrass",1), Ingredient("rocks", 1)}, booktab, {MAGIC = 3})
     r.image="icestaff.tex"
     r=Recipe("firewallwand", {Ingredient("papyrus", 2), Ingredient("redgem", 1)}, booktab, {MAGIC = 3})
     r.image="firestaff.tex"
-    r=Recipe("sunburstewand", {Ingredient("papyrus", 2), Ingredient("redgem", 1)}, booktab, {MAGIC = 3})
+    r=Recipe("sunburstwand", {Ingredient("papyrus", 2), Ingredient("redgem", 1)}, booktab, {MAGIC = 3})
     r.image="firestaff.tex"
     r=Recipe("prismaticwand", {Ingredient("papyrus", 2), Ingredient("redgem", 1)}, booktab, {MAGIC = 3})
     r.image="firestaff.tex"
 
 
-    r=Recipe("spell_invisibility", {Ingredient("redgem", 4), Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, booktab,{MAGIC = 2})
+    r=Recipe("spell_invisibility", {Ingredient("redgem", 4), Ingredient("cutgrass",1), Ingredient("rocks", 1)}, booktab,{MAGIC = 2})
     r.image="book_brimstone.tex"
-    r=Recipe("spell_haste", {Ingredient("fireflies", 2),Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, booktab, {MAGIC = 2})
+    r=Recipe("spell_haste", {Ingredient("meat", 2),Ingredient("cutgrass", 1), Ingredient("rocks", 1)}, booktab, {MAGIC = 2})
     r.image="book_gardening.tex"
-    r=Recipe("spell_summonfeast", {Ingredient("spidergland",5),Ingredient("cutgrass", 5), Ingredient("rocks", 15)}, booktab, {MAGIC = 3})
+    r=Recipe("spell_summonfeast", {Ingredient("spidergland",1),Ingredient("cutgrass", 1), Ingredient("rocks", 1)}, booktab, {MAGIC = 3})
     r.image="book_gardening.tex"
 
      r=Recipe("trap_circleofdeath", {Ingredient("tentaclespots", 2),Ingredient("boards", 2), Ingredient("nightmarefuel", 2)}, booktab, {MAGIC = 2})

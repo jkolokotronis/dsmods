@@ -85,8 +85,8 @@ local function onattackfireball(inst, attacker, target)
 --    explode.Transform:SetPosition(pos.x, pos.y, pos.z)
 
     --local explode = PlayFX(pos,"explode", "explode", "small")
-    explode.AnimState:SetBloomEffectHandle( "shaders/anim.ksh" )
-    explode.AnimState:SetLightOverride(1)
+   -- explode.AnimState:SetBloomEffectHandle( "shaders/anim.ksh" )
+    --explode.AnimState:SetLightOverride(1)
 
     attacker.SoundEmitter:PlaySound("dontstarve/wilson/fireball_explo")
 end
@@ -217,6 +217,7 @@ local function icestorm()
 
     inst.components.finiteuses:SetMaxUses(ICESTORM_USES)
     inst.components.finiteuses:SetUses(ICESTORM_USES)
+    return inst
 end
 
 local function sunburst()
@@ -256,5 +257,5 @@ return Prefab("common/inventory/magicmissilewand", magicmissile, assets, prefabs
     Prefab("common/inventory/fireballwand", fireball, assets, prefabs),
     Prefab("common/inventory/icestormwand", icestorm, assets, prefabs),
     Prefab("common/inventory/firewallwand", firewall, assets, prefabs),
-    Prefab("common/inventory/sunburstewand", sunburst, assets, prefabs),
+    Prefab("common/inventory/sunburstwand", sunburst, assets, prefabs),
     Prefab("common/inventory/prismaticwand", prismaticwall, assets, prefabs)

@@ -625,20 +625,23 @@ AddPrefabPostInit("mound",function(inst)
     inst:AddComponent("childspawner")
     inst.components.childspawner.childname = "skeletonspawn"
     inst.components.childspawner:SetRegenPeriod(480)
-    inst.components.childspawner:SetSpawnPeriod(480*math.random()*5)
+    inst.components.childspawner.timetonextregen=480*math.random()*5
+    inst.components.childspawner.regenvariance=480
+    inst.components.childspawner:SetSpawnPeriod(5)
     inst.components.childspawner.spawnoffscreen=true
     inst.components.childspawner:SetMaxChildren(1)
+    inst.components.childspawner.childreninside = 0
     if(not inst.components.workable )then
-            inst.components.childspawner:StartSpawning()
             inst.components.childspawner:StartRegen()
+            inst.components.childspawner:StartSpawning()
     else
-        inst.components.childspawner:StopSpawning()
         inst.components.childspawner:StopRegen()
+        inst.components.childspawner:StopSpawning()
         local onfinishcallback=inst.components.workable.onfinish
         inst.components.workable:SetOnFinishCallback(function(inst,worker)
             onfinishcallback(inst,worker)
-            inst.components.childspawner:StartSpawning()
             inst.components.childspawner:StartRegen()
+            inst.components.childspawner:StartSpawning()
         end)      
     end
 end)
