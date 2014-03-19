@@ -39,7 +39,7 @@ function XPLevel:DoDelta(delta)
 
     local old = self.currentxp
     local oldlevel = self.level
-    if(self.level~=LEVEL_CAP)then
+    if(delta and delta~=0 and self.level~=LEVEL_CAP)then
 
         self.currentxp = self.currentxp + delta
         if self.currentxp >= self.max then
