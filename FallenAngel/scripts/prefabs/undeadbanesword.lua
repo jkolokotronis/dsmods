@@ -50,6 +50,7 @@ local function fn(Sim)
 	local inst = CreateEntity()
 	local trans = inst.entity:AddTransform()
 	local anim = inst.entity:AddAnimState()
+    local sound = inst.entity:AddSoundEmitter()
     MakeInventoryPhysics(inst)
   
     local minimap = inst.entity:AddMiniMapEntity()

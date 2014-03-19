@@ -34,6 +34,7 @@ local function fn(Sim)
 	local inst = CreateEntity()
 	local trans = inst.entity:AddTransform()
 	local anim = inst.entity:AddAnimState()
+    local sound = inst.entity:AddSoundEmitter()
     MakeInventoryPhysics(inst)
   
     inst:AddTag("irreplaceable")
