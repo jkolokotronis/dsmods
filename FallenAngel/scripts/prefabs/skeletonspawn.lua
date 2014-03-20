@@ -11,6 +11,11 @@ local PET_HEALTH=300
 
 
 local function GetInventory(inst)
+    --inv doesnt reload fully on load, have to prevent double spawning
+    inst:DoTaskInTime(0,function()
+        if(inst.loadedSpawn)then
+            return
+        end
     local rng = math.random()
     local item=nil
     if(rng<0.5)then
@@ -28,9 +33,14 @@ local function GetInventory(inst)
     if(item)then
         inst.components.inventory:Equip(item)
     end
+
+    end)
 end
     
 
+local onloadfn = function(inst, data)
+    inst.loadedSpawn=true
+end
 
 local function OnEat(inst, food)
     
@@ -62,7 +72,8 @@ local function fn(Sim)
 inst.Transform:SetFourFaced()
     inst.Transform:SetScale(0.75, 0.75, 0.75)
 
-    
+    inst.OnLoad = onloadfn
+
     inst.entity:AddPhysics()
  
 --

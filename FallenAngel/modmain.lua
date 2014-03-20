@@ -315,8 +315,12 @@ GLOBAL.STRINGS.NAMES.DAGGER2 = "Dagger of Slaying"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.DAGGER2 = "Dagger of Slaying"
 GLOBAL.STRINGS.NAMES.DAGGER3 = "Dagger of Greater Slaying"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.DAGGER3 = "Dagger of Greater Slaying"
-GLOBAL.STRINGS.NAMES.FROSTSWORD = "Frost Sword"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FROSTSWORD = "Frost Sword"
+GLOBAL.STRINGS.NAMES.FROSTSWORD = "Lesser Frost Sword"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FROSTSWORD = "Lesser Frost Sword"
+GLOBAL.STRINGS.NAMES.FROSTSWORD2 = "Frost Sword"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FROSTSWORD2 = "Frost Sword"
+GLOBAL.STRINGS.NAMES.FROSTSWORD3 = "Greater Frost Sword"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FROSTSWORD3 = "Greater Frost Sword"
 GLOBAL.STRINGS.NAMES.ARMORFIRE = "Armor of Lesser Fire"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARMORFIRE = "Armor of Lesser Fire"
 GLOBAL.STRINGS.NAMES.ARMORFIRE2 =  "Armor of Fire"
@@ -627,14 +631,14 @@ AddPrefabPostInit("mound",function(inst)
         inst:AddComponent("childspawner")
         inst.components.childspawner.childname = "skeletonspawn"
         inst.components.childspawner:SetRegenPeriod(480)
-        inst.components.childspawner.timetonextregen=480*math.random()*5
         inst.components.childspawner.regenvariance=480
         inst.components.childspawner:SetSpawnPeriod(5)
-        inst.components.childspawner.spawnoffscreen=false
+        inst.components.childspawner.spawnoffscreen=true
         inst.components.childspawner:SetMaxChildren(1)
         if(not inst.components.workable )then
             inst.components.childspawner:StartRegen()
             inst.components.childspawner:StartSpawning()
+            inst.components.childspawner.timetonextregen=480*math.random()*5
             inst.components.childspawner.childreninside = 0
         else
             inst.components.childspawner:StopRegen()
@@ -644,6 +648,7 @@ AddPrefabPostInit("mound",function(inst)
                 onfinishcallback(inst,worker)
                 inst.components.childspawner:StartRegen()
                 inst.components.childspawner:StartSpawning()
+                inst.components.childspawner.timetonextregen=480*math.random()*5
                 inst.components.childspawner.childreninside = 0
             end)      
         end
