@@ -179,17 +179,9 @@ local events=
         local should_run = inst.components.locomotor:WantsToRun()
         
         if is_moving and not should_move then
-            if is_running then
                 inst.sg:GoToState("run_stop")
-            else
-                inst.sg:GoToState("walk_stop")
-            end
         elseif (not is_moving and should_move) or (is_moving and should_move and is_running ~= should_run) then
-            if should_run then
                 inst.sg:GoToState("run_start")
-            else
-                inst.sg:GoToState("walk_start")
-            end
         end 
     end),
     
@@ -405,10 +397,9 @@ local states=
         name = "rebirth",
         
         onenter = function(inst)
-            inst.components.playercontroller:Enable(false)
             inst.AnimState:PlayAnimation("rebirth")
             
-            inst.components.hunger:Pause()
+--            inst.components.hunger:Pause()
             for k,v in pairs(statue_symbols) do
                 inst.AnimState:OverrideSymbol(v, "wilsonstatue", v)
             end
@@ -428,12 +419,11 @@ local states=
         },
         
         onexit = function(inst)
-            inst.components.hunger:Resume()
+--            inst.components.hunger:Resume()
             for k,v in pairs(statue_symbols) do
                 inst.AnimState:ClearOverrideSymbol(v)
             end
         
-            inst.components.playercontroller:Enable(true)
         end,
         
         
@@ -938,7 +928,7 @@ local states=
             end
             
             inst.AnimState:PlayAnimation("eat")
-            inst.components.hunger:Pause()
+--            inst.components.hunger:Pause()
         end,
 
         timeline=
@@ -964,7 +954,7 @@ local states=
         
         onexit= function(inst)
             inst.SoundEmitter:KillSound("eating")    
-            inst.components.hunger:Resume()
+--            inst.components.hunger:Resume()
         end,
     },    
     
@@ -978,7 +968,7 @@ local states=
                 inst.SoundEmitter:PlaySound("dontstarve/wilson/eat", "eating")    
             end
             inst.AnimState:PlayAnimation("quick_eat")
-            inst.components.hunger:Pause()
+--            inst.components.hunger:Pause()
         end,
 
         timeline=
@@ -996,7 +986,7 @@ local states=
         
         onexit= function(inst)
             inst.SoundEmitter:KillSound("eating")    
-            inst.components.hunger:Resume()
+--            inst.components.hunger:Resume()
         end,
     },    
         
@@ -1728,11 +1718,8 @@ local states=
 			end
 
 			-- you can still sleep if your hunger will bottom out, but not absolutely
-			if inst.components.hunger.current < TUNING.CALORIES_MED then
-				inst.sg:GoToState("idle")
-				inst.components.talker:Say(GetString(inst.prefab, "ANNOUNCE_NOHUNGERSLEEP"))
-				return
-			end
+			
+
             
             inst.AnimState:PlayAnimation("bedroll")
              

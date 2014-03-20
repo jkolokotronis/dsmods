@@ -5,6 +5,7 @@ require "util"
 local MergeMaps=GLOBAL.MergeMaps
 local Widget = require "widgets/widget"
 local XPBadge= require "widgets/xpbadge"
+local TextEdit=require "widgets/textedit"
 require "widgets/text"
 require "stategraph"
 require "constants"
@@ -622,27 +623,30 @@ end)
 
 
 AddPrefabPostInit("mound",function(inst)
-    inst:AddComponent("childspawner")
-    inst.components.childspawner.childname = "skeletonspawn"
-    inst.components.childspawner:SetRegenPeriod(480)
-    inst.components.childspawner.timetonextregen=480*math.random()*5
-    inst.components.childspawner.regenvariance=480
-    inst.components.childspawner:SetSpawnPeriod(5)
-    inst.components.childspawner.spawnoffscreen=true
-    inst.components.childspawner:SetMaxChildren(1)
-    inst.components.childspawner.childreninside = 0
-    if(not inst.components.workable )then
+    if(not inst.components.childspawner)then
+        inst:AddComponent("childspawner")
+        inst.components.childspawner.childname = "skeletonspawn"
+        inst.components.childspawner:SetRegenPeriod(480)
+        inst.components.childspawner.timetonextregen=480*math.random()*5
+        inst.components.childspawner.regenvariance=480
+        inst.components.childspawner:SetSpawnPeriod(5)
+        inst.components.childspawner.spawnoffscreen=false
+        inst.components.childspawner:SetMaxChildren(1)
+        if(not inst.components.workable )then
             inst.components.childspawner:StartRegen()
             inst.components.childspawner:StartSpawning()
-    else
-        inst.components.childspawner:StopRegen()
-        inst.components.childspawner:StopSpawning()
-        local onfinishcallback=inst.components.workable.onfinish
-        inst.components.workable:SetOnFinishCallback(function(inst,worker)
-            onfinishcallback(inst,worker)
-            inst.components.childspawner:StartRegen()
-            inst.components.childspawner:StartSpawning()
-        end)      
+            inst.components.childspawner.childreninside = 0
+        else
+            inst.components.childspawner:StopRegen()
+            inst.components.childspawner:StopSpawning()
+            local onfinishcallback=inst.components.workable.onfinish
+            inst.components.workable:SetOnFinishCallback(function(inst,worker)
+                onfinishcallback(inst,worker)
+                inst.components.childspawner:StartRegen()
+                inst.components.childspawner:StartSpawning()
+                inst.components.childspawner.childreninside = 0
+            end)      
+        end
     end
 end)
 
@@ -820,6 +824,21 @@ AddPrefabPostInit("spiderden_2", function(inst) addFullLootPrefabPostInit(inst,0
 AddPrefabPostInit("poisonspiderden_2", function(inst) addFullLootPrefabPostInit(inst,0.30) end)
 AddPrefabPostInit("spiderden_3", function(inst) addFullLootPrefabPostInit(inst,0.45) end)
 AddPrefabPostInit("poisonspiderden_3", function(inst) addFullLootPrefabPostInit(inst,0.45) end)
+
+--[[
+AddClassPostConstruct("screens/characterselectscreen", function(screen)
+    screen.charactername = screen.fixed_root:AddChild(TextEdit( GLOBAL.TITLEFONT, 60, "" ))
+    screen.charactername:SetHAlign(GLOBAL.ANCHOR_MIDDLE)
+    screen.charactername:SetPosition(820 , GLOBAL.RESOLUTION_Y - 400+30,0)
+    screen.charactername:SetRegionSize( 500, 70 )
+    local callback=screen.cb
+    screen.cb=function(char)
+        if(callback)then
+            local chardata={character=character,customname=screen.charactername:GetString()}
+            callback(chardata)
+        end
+    end
+end)]]
 
 AddModCharacter("thief")
 AddModCharacter("barb")
