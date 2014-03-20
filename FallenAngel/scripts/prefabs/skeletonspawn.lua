@@ -58,7 +58,8 @@ local function fn(Sim)
     local sound = inst.entity:AddSoundEmitter()
     local shadow = inst.entity:AddDynamicShadow()
     shadow:SetSize( 2.5, 1.5 )
-    inst.Transform:SetTwoFaced()
+--    inst.Transform:SetTwoFaced()
+inst.Transform:SetFourFaced()
     inst.Transform:SetScale(0.75, 0.75, 0.75)
 
     
