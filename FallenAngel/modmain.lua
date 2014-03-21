@@ -436,6 +436,7 @@ FALLENLOOTTABLEMERGED=MergeMaps(FALLENLOOTTABLE["tier1"],FALLENLOOTTABLE["tier2"
 
 local SANITY_DAY_LOSS=-100.0/(300*10)
 local PROTOTYPE_XP=50
+local SKELETONSPAWNDELAY=480
 
 TUNING.ARMORGRASS = 220
 TUNING.ARMORGRASS_ABSORPTION = .2
@@ -631,21 +632,24 @@ end)
 AddPrefabPostInit("mound",function(inst)
 inst:AddComponent( "spawner" )
 inst.components.spawner.spawnoffscreen=false
+inst.components.spawner.childname="skeletonspawn"
+inst.components.spawner.delay=SKELETONSPAWNDELAY
+--i dont know if it's dug or not until after load... configure is starting the process... so i have to type same thing 3 times
 inst:DoTaskInTime(0,function()
 
     if(inst.components.spawner and inst.components.spawner.nextspawntime)then
         print("spawner active: ",inst.components.spawner.nextspawntime)
-        return
+--        return
     end
 
     if(inst.components.workable )then
             local onfinishcallback=inst.components.workable.onfinish
             inst.components.workable:SetOnFinishCallback(function(inst,worker)
                 onfinishcallback(inst,worker)
-                inst.components.spawner:Configure( "skeletonspawn",480*math.random(),280*math.random())
+                inst.components.spawner:Configure( "skeletonspawn",SKELETONSPAWNDELAY,SKELETONSPAWNDELAY*math.random())
             end)      
         else
-            inst.components.spawner:Configure( "skeletonspawn",480*math.random(),480*math.random())
+            inst.components.spawner:Configure( "skeletonspawn",SKELETONSPAWNDELAY,SKELETONSPAWNDELAY*math.random())
         end
 end)
 
