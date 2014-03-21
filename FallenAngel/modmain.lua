@@ -633,7 +633,7 @@ inst:AddComponent( "spawner" )
 inst.components.spawner.spawnoffscreen=false
 inst:DoTaskInTime(0,function()
 
-    if(inst.components.spawner and components.spawner.nextspawntime)then
+    if(inst.components.spawner and inst.components.spawner.nextspawntime)then
         print("spawner active: ",inst.components.spawner.nextspawntime)
         return
     end
@@ -642,11 +642,9 @@ inst:DoTaskInTime(0,function()
             local onfinishcallback=inst.components.workable.onfinish
             inst.components.workable:SetOnFinishCallback(function(inst,worker)
                 onfinishcallback(inst,worker)
---                inst:AddComponent( "spawner" )
                 inst.components.spawner:Configure( "skeletonspawn",480*math.random(),280*math.random())
             end)      
         else
---            inst:AddComponent( "spawner" )
             inst.components.spawner:Configure( "skeletonspawn",480*math.random(),480*math.random())
         end
 end)
