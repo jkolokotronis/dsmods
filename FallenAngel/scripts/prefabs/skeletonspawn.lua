@@ -13,6 +13,7 @@ local PET_HEALTH=300
 local function GetInventory(inst)
     --inv doesnt reload fully on load, have to prevent double spawning
     inst:DoTaskInTime(0,function()
+
         if(inst.loadedSpawn)then
             return
         end

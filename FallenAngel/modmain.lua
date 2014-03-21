@@ -605,54 +605,53 @@ local spoiledSkeletonSpawn=function(inst)
     end
 end
 
-AddPrefabPostInit("common/inventory/meat",function(inst)
+AddPrefabPostInit("meat",function(inst)
     inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
 end)
-AddPrefabPostInit("common/inventory/cookedmeat",function(inst)
+AddPrefabPostInit("cookedmeat",function(inst)
     inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
 end)
-AddPrefabPostInit("common/inventory/meat_dried",function(inst)
+AddPrefabPostInit("meat_dried",function(inst)
     inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
 end)
-AddPrefabPostInit("common/inventory/monstermeat",function(inst)
+AddPrefabPostInit("monstermeat",function(inst)
     inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
 end)
-AddPrefabPostInit("common/inventory/cookedmonstermeat",function(inst)
+AddPrefabPostInit("cookedmonstermeat",function(inst)
     inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
 end)
-AddPrefabPostInit("common/inventory/monstermeat_dried",function(inst)
+AddPrefabPostInit("monstermeat_dried",function(inst)
     inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
 end)
-
+AddPrefabPostInit("hambat",function(inst)
+    inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
+end)
 
 
 AddPrefabPostInit("mound",function(inst)
-    if(not inst.components.childspawner)then
-        inst:AddComponent("childspawner")
-        inst.components.childspawner.childname = "skeletonspawn"
-        inst.components.childspawner:SetRegenPeriod(480)
-        inst.components.childspawner.regenvariance=480
-        inst.components.childspawner:SetSpawnPeriod(5)
-        inst.components.childspawner.spawnoffscreen=true
-        inst.components.childspawner:SetMaxChildren(1)
-        if(not inst.components.workable )then
-            inst.components.childspawner:StartRegen()
-            inst.components.childspawner:StartSpawning()
-            inst.components.childspawner.timetonextregen=480*math.random()*5
-            inst.components.childspawner.childreninside = 0
+
+--inst:DoTaskInTime(0,function()
+
+    if(inst.components.spawner)then
+        print("spawner active: ",inst.components.spawner,inst.components.spawner.nextspawntime)
+        return
+    end
+
+    if(not inst.components.workable )then
+            inst:AddComponent( "spawner" )
+            inst.components.spawner.spawnoffscreen=false
+            inst.components.spawner:Configure( "skeletonspawn",480*math.random()*2)
         else
-            inst.components.childspawner:StopRegen()
-            inst.components.childspawner:StopSpawning()
             local onfinishcallback=inst.components.workable.onfinish
             inst.components.workable:SetOnFinishCallback(function(inst,worker)
                 onfinishcallback(inst,worker)
-                inst.components.childspawner:StartRegen()
-                inst.components.childspawner:StartSpawning()
-                inst.components.childspawner.timetonextregen=480*math.random()*5
-                inst.components.childspawner.childreninside = 0
+                inst:AddComponent( "spawner" )
+                inst.components.spawner.spawnoffscreen=false
+                inst.components.spawner:Configure( "skeletonspawn",480*math.random()*2,480*math.random())
             end)      
         end
-    end
+--end)
+
 end)
 
 

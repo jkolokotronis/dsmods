@@ -113,7 +113,7 @@ local function fn(Sim)
     inst.components.childspawner.childname = "goblin"
     inst.components.childspawner:SetRegenPeriod(TUNING.SPIDERDEN_REGEN_TIME)
     inst.components.childspawner:SetSpawnPeriod(TUNING.SPIDERDEN_RELEASE_TIME)
-    inst.components.childspawner.spawnoffscreen=true
+--    inst.components.childspawner.spawnoffscreen=true
     inst.components.childspawner:SetMaxChildren(3)
     inst.components.childspawner:StartSpawning()
 --        inst.components.childspawner:SetSpawnedFn(onspawnspider)
