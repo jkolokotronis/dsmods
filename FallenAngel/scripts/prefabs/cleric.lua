@@ -65,12 +65,14 @@ local onloadfn = function(inst, data)
     inst.lightBuffUp=data.lightBuffUp
     inst.dmBuffUp=data.dmBuffUp
     inst.bbBuffUp=data.bbBuffUp
+    inst.fa_playername=data.fa_playername
 end
 
 local onsavefn = function(inst, data)
     data.lightBuffUp=inst.buff_timers["light"].cooldowntimer
     data.dmBuffUp=inst.buff_timers["divinemight"].cooldowntimer
     data.bbBuffUp=inst.buff_timers["bladebarrier"].cooldowntimer
+    data.fa_playername=inst.fa_playername
 end
 
 

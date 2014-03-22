@@ -38,6 +38,14 @@ local prefabs = {}
 
 local DAMAGE_MULT=0.5
 
+local onloadfn = function(inst, data)
+    inst.fa_playername=data.fa_playername
+end
+
+local onsavefn = function(inst, data)
+    data.fa_playername=inst.fa_playername
+end
+
 local fn = function(inst)
 	
   	-- choose which sounds this character will play
@@ -53,6 +61,9 @@ local fn = function(inst)
 	inst.components.hunger:SetMax(125)
 
     inst:AddComponent("xplevel")
+
+    inst.OnLoad = onloadfn
+    inst.OnSave = onsavefn
 end
 
 return MakePlayerCharacter("bard", prefabs, assets, fn)

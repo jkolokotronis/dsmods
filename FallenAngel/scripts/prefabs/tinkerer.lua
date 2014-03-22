@@ -76,6 +76,15 @@ STRINGS.NAMES.FIZZLEARMOR = "Fizzlegear's electroshock whiskers disguise, tag nu
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.FIZZLEARMOR = "Fizzlegear's electroshock whiskers disguise, tag number 121"
 STRINGS.RECIPE_DESC.FIZZLEARMOR = "Fizzlegear's electroshock whiskers disguise, tag number 121"
 
+
+local onloadfn = function(inst, data)
+    inst.fa_playername=data.fa_playername
+end
+
+local onsavefn = function(inst, data)
+    data.fa_playername=inst.fa_playername
+end
+
 local fn = function(inst)
 	
   	-- choose which sounds this character will play
@@ -93,6 +102,9 @@ local fn = function(inst)
 	inst.components.hunger:SetMax(150)
 
     inst:AddComponent("xplevel")
+
+    inst.OnLoad = onloadfn
+    inst.OnSave = onsavefn
 
     local combatmod=inst.components.combat
 

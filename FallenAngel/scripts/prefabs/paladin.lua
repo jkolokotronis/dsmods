@@ -49,11 +49,13 @@ local DIVINE_DEFENDER_DURATION=15
 local onloadfn = function(inst, data)
     inst.lohcooldowntimer=data.lohcooldowntimer
     inst.ddcooldowntimer=data.ddcooldowntimer
+    inst.fa_playername=data.fa_playername
 end
 
 local onsavefn = function(inst, data)
     data.lohcooldowntimer=inst.lohCooldownButton.cooldowntimer
     data.ddcooldowntimer=inst.divinedefenderCooldownButton.cooldowntimer
+    data.fa_playername=inst.fa_playername
 end
 
 

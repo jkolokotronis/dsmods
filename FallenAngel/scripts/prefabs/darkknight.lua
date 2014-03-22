@@ -93,6 +93,7 @@ local onloadfn = function(inst, data)
     inst.hasPet=data.hasPet
     inst.htcooldowntimer=data.htcooldowntimer
     inst.leechcooldowntimer=data.leechcooldowntimer
+    inst.fa_playername=data.fa_playername
 end
 
 local onsavefn = function(inst, data)
@@ -103,6 +104,7 @@ local onsavefn = function(inst, data)
     end
     data.htcooldowntimer=inst.htCooldownButton.cooldowntimer
     data.leechcooldowntimer=inst.leechCooldownButton.cooldowntimer
+    data.fa_playername=inst.fa_playername
 end
 
 local onleechblast=function(inst)

@@ -1,6 +1,7 @@
 local assets =
 {
-	Asset("ANIM", "anim/spell_books.zip"),
+--	Asset("ANIM", "anim/spell_books.zip"),
+    Asset("ANIM", "anim/books.zip"),
 	--Asset("SOUND", "sound/common.fsb"),
 }
  
@@ -341,8 +342,8 @@ function MakeSpell(name, usefn, bookuses )
     	local trans = inst.entity:AddTransform()
     	local anim = inst.entity:AddAnimState()
         local sound = inst.entity:AddSoundEmitter()
-        anim:SetBank("spell_books")
-        anim:SetBuild("spell_books")
+        anim:SetBank("books")
+        anim:SetBuild("books")
 
         anim:PlayAnimation("book_birds")
 

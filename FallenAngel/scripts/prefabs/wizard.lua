@@ -97,11 +97,13 @@ end
 local onloadfn = function(inst, data)
     inst.invisBuffUp=data.invisBuffUp
     inst.hasteBuffUp=data.hasteBuffUp
+    inst.fa_playername=data.fa_playername
 end
 
 local onsavefn = function(inst, data)
     data.invisBuffUp=inst.buff_timers["invisibility"].cooldowntimer
     data.hasteBuffUp=inst.buff_timers["haste"].cooldowntimer
+    data.fa_playername=inst.fa_playername
 end
 
 

@@ -67,6 +67,15 @@ local onhitother=function(inst,data)
     end
 end
 
+
+local onloadfn = function(inst, data)
+    inst.fa_playername=data.fa_playername
+end
+
+local onsavefn = function(inst, data)
+    data.fa_playername=inst.fa_playername
+end
+
 local fn = function(inst)
 	
   	-- choose which sounds this character will play
@@ -90,6 +99,9 @@ local fn = function(inst)
 
     inst:ListenForEvent("onhitother", onhitother)
 
+
+    inst.OnLoad = onloadfn
+    inst.OnSave = onsavefn
 
     inst.newStatusDisplaysInit= function(class)
 

@@ -204,6 +204,7 @@ end
 
 local onloadfn = function(inst, data)
     inst.hasPet=data.hasPet
+    inst.fa_playername=data.fa_playername
 end
 
 local onsavefn = function(inst, data)
@@ -212,6 +213,7 @@ local onsavefn = function(inst, data)
     else
         data.hasPet=false
     end
+    data.fa_playername=inst.fa_playername
 end
 
 

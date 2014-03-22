@@ -68,6 +68,15 @@ STRINGS.RECIPE_DESC.TRAP_TENTACLE = "Tentacle Trap"
 
 local sneakBuff
 
+
+local onloadfn = function(inst, data)
+    inst.fa_playername=data.fa_playername
+end
+
+local onsavefn = function(inst, data)
+    data.fa_playername=inst.fa_playername
+end
+
 local enterstealth=function(inst)
     inst.components.hunger:SetRate(SNEAK_HUNGER_MULT*TUNING.WILSON_HUNGER_RATE)
     inst:AddTag("notarget")
@@ -123,6 +132,9 @@ local fn = function(inst)
 	inst.components.hunger:SetMax(175)
         
     inst:AddComponent("xplevel")
+    
+    inst.OnLoad = onloadfn
+    inst.OnSave = onsavefn
 
     local combatmod=inst.components.combat
 

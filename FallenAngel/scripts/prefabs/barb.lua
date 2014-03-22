@@ -56,6 +56,16 @@ local HUNGER_PER_LEVEL=1
 local def_attack_period
 local ref
 
+
+local onloadfn = function(inst, data)
+    inst.fa_playername=data.fa_playername
+end
+
+local onsavefn = function(inst, data)
+    data.fa_playername=inst.fa_playername
+end
+
+
 local function onxploaded(inst)
     local level=inst.components.xplevel.level
     if(level>1)then
@@ -166,6 +176,9 @@ local fn = function(inst)
     inst:AddComponent("xplevel")
 
 
+    inst.OnLoad = onloadfn
+    inst.OnSave = onsavefn
+
 	inst.newControlsInit = function (class)
         inst.rageBuff=RageBuff(class.owner)
         class.rage = class:AddChild(inst.rageBuff)
@@ -187,7 +200,6 @@ local fn = function(inst)
 	inst:ListenForEvent("healthdelta", onhpchange)
     inst:ListenForEvent("xplevel_loaded",onxploaded)
     inst:ListenForEvent("xplevelup", onlevelup)
---	inst:ListenForEvent("statusDisplaysInit",BarbStatusDisplay)
 
 	local old_mine=ACTIONS.MINE.fn
 	local old_chop=ACTIONS.CHOP.fn

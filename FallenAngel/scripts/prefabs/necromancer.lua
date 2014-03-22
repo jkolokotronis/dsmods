@@ -58,6 +58,15 @@ STRINGS.RECIPE_DESC.SPELL_HEAL = "Heal"
 
 local DAMAGE_MULT=0.5
 
+
+local onloadfn = function(inst, data)
+    inst.fa_playername=data.fa_playername
+end
+
+local onsavefn = function(inst, data)
+    data.fa_playername=inst.fa_playername
+end
+
 local fn = function(inst)
 	
   	-- choose which sounds this character will play
@@ -77,6 +86,9 @@ local fn = function(inst)
     
     inst:AddComponent("xplevel")
     inst:AddComponent("reader")
+
+    inst.OnLoad = onloadfn
+    inst.OnSave = onsavefn
     
 RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon_atlas = "images/inventoryimages/herotab.xml"}
 end

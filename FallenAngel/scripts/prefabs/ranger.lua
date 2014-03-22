@@ -88,11 +88,13 @@ end
 local onloadfn = function(inst, data)
     inst.foragecooldowntimer=data.foragecooldowntimer
     inst.flurrycooldowntimer=data.flurrycooldowntimer
+    inst.fa_playername=data.fa_playername
 end
 
 local onsavefn = function(inst, data)
     data.foragecooldowntimer=inst.forageCooldownButton.cooldowntimer
     data.flurrycooldowntimer=inst.flurryCooldownButton.cooldowntimer
+    data.fa_playername=inst.fa_playername
 end
 
 local fn = function(inst)

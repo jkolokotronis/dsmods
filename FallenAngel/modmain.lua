@@ -12,6 +12,7 @@ require "constants"
 require "buffutil"
 require "mobxptable"
 require "levelxptable"
+local FA_CharRenameScreen=require "screens/fa_charrenamescreen"
 --
 local Ingredient = GLOBAL.Ingredient
 local RECIPETABS = GLOBAL.RECIPETABS
@@ -509,6 +510,10 @@ local function newControlsInit(class)
         xpbar:SetVAnchor(GLOBAL.ANCHOR_TOP)
         xpbar:SetLevel(GetPlayer().components.xplevel.level)
         xpbar:SetValue(GetPlayer().components.xplevel.currentxp,GetPlayer().components.xplevel.max)
+        xpbar:SetPlayername(GetPlayer().fa_playername or GLOBAL.STRINGS.CHARACTER_TITLES[GetPlayer().prefab])
+        GetPlayer():ListenForEvent("fa_playernamechanged", function(inst,data)
+            xpbar:SetPlayername(data.playername)
+        end,class.owner)
         GetPlayer():ListenForEvent("xpleveldelta", function(inst,data)
             xpbar:SetLevel(data.level)
             xpbar:SetValue(data.new,data.max)
@@ -520,9 +525,8 @@ local function newControlsInit(class)
 
         GetPlayer():ListenForEvent("killed", function(inst,data)
             local victim=data.victim
-            print("victim",victim.prefab)
             local xp=GLOBAL.MOBXP_TABLE[victim.prefab]
-            print("xp for",victim, xp)
+--            print("xp for",victim, xp)
             if(xp)then
                 local default=xp.default
                 if(xp.tagged)then
@@ -540,7 +544,14 @@ local function newControlsInit(class)
          GetPlayer():ListenForEvent("unlockrecipe", function(inst,data)
             inst.components.xplevel:DoDelta(PROTOTYPE_XP)
         end,class.owner)
-        
+
+
+
+        if(GetPlayer().fa_playername==nil or GetPlayer().fa_playername=="")then
+        GetPlayer():DoTaskInTime(0,function()
+            GLOBAL.TheFrontEnd:PushScreen(FA_CharRenameScreen(GetPlayer().fa_playername))
+        end)
+        end
     end
 end
 
