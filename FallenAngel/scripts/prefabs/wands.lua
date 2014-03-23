@@ -31,12 +31,12 @@ local FIREWALL_DEPTH=5
 local PRISMATIC_WIDTH=15
 local PRISMATIC_DEPTH=5
 
-local MAGICMISSLE_DAMAGE=10
-local ACIDARROW_DOT=5
+local MAGICMISSLE_DAMAGE=15
+local ACIDARROW_DOT=10
 local ACIDARROW_LENGTH=24
 local FIREBALL_DAMAGE=100
 local ICESTORM_LENGTH=120
-local ICESTORM_DAMAGE=3
+local ICESTORM_DAMAGE=5
 local SUNBURST_DAMAGE=100
 
 
@@ -80,14 +80,6 @@ local function onattackfireball(inst, attacker, target)
                     end
                 end
             end
---    local explode = SpawnPrefab("explode_small")
---    local pos = inst:GetPosition()
---    explode.Transform:SetPosition(pos.x, pos.y, pos.z)
-
-    --local explode = PlayFX(pos,"explode", "explode", "small")
-   -- explode.AnimState:SetBloomEffectHandle( "shaders/anim.ksh" )
-    --explode.AnimState:SetLightOverride(1)
-
     attacker.SoundEmitter:PlaySound("dontstarve/wilson/fireball_explo")
 end
 
@@ -100,6 +92,9 @@ local pos=Vector3(target.Transform:GetWorldPosition())
                 if not v:HasTag("player") and not v:IsInLimbo()  and not v:HasTag("pet") and v.components.combat and not v==target then
                     if(v:HasTag("undead"))then
                        v.components.combat:GetAttacked(attacker, SUNBURST_DAMAGE, nil)
+                    else
+                        --that would interrupt but not stun... what is a stun? if brain:stop is mez, freeze would be mez too, locomotor.stop? brain would restart it etc
+                       v.components.combat:GetAttacked(attacker, 1, nil)
                     end
                 end
             end
@@ -114,7 +109,67 @@ local pos=Vector3(target.Transform:GetWorldPosition())
     attacker.SoundEmitter:PlaySound("dontstarve/wilson/fireball_explo")
 end
 
+local function createFireDelta(pos)
+local inst = CreateEntity()
+    local trans = inst.entity:AddTransform()
+    local anim = inst.entity:AddAnimState()
+    inst:AddComponent("health")
+    inst.components.health:SetMaxHealth(300)
+    inst:AddTag("noauradamage")
+    inst:AddTag("NOCLICK")
+    inst:AddTag("FX")
+    MakeLargeBurnable(inst)
+    MakeLargePropagator(inst)
+    inst.components.burnable.flammability = .5
+    inst.Transform:SetPosition(pos.x, pos.y, pos.z)
+     inst.components.burnable:Ignite()
+     return inst
+end
 
+
+local function onattackfirewall(staff, target, pos)
+    local orig_pos=pos --would it actually do deep copy?
+    for i=0,4 do
+        createFireDelta(pos)
+        pos.z=pos.z+2
+    end
+    staff.components.finiteuses:Use(1)
+end
+
+local function doicestorm(inst,target)
+    local pos=Vector3(inst.Transform:GetWorldPosition())
+    print("wtf is target?",target)
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, ICESTORM_RADIUS)
+    for k,v in pairs(ents) do
+        if not v:HasTag("player") and not v:IsInLimbo()  and not v:HasTag("pet") and v.components.combat then
+            --i dont know caster here?
+            v.components.combat:GetAttacked(inst.fa_icestorm_caster, ICESTORM_DAMAGE, nil)
+        end
+    end
+end
+
+local function onattackicestorm(staff, target, pos)
+    local inst = CreateEntity()
+    local caster = staff.components.inventoryitem.owner
+    local trans = inst.entity:AddTransform()
+    inst:AddTag("FX")
+    inst:AddTag("NOCLICK")
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "icestorm"
+    inst.components.spell.duration = ICESTORM_LENGTH
+--    inst.components.spell.ontargetfn = light_ontarget
+--    inst.components.spell.onstartfn = light_start
+--    inst.components.spell.onfinishfn = light_onfinish
+    inst.components.spell.fn = doicestorm
+    inst.components.spell.period=2
+--    inst.components.spell.resumefn = light_resume
+    inst.components.spell.removeonfinish = true
+    inst.components.spell:SetTarget(inst)
+    inst.fa_icestorm_caster=caster
+    inst.Transform:SetPosition(pos.x, pos.y, pos.z)
+    inst.components.spell:StartSpell()
+    staff.components.finiteuses:Use(1)
+end
 ---------COMMON FUNCTIONS---------
 local function onfinished(inst)
     inst.SoundEmitter:PlaySound("dontstarve/common/gem_shatter")
@@ -174,6 +229,7 @@ local function magicmissile()
     inst.components.finiteuses:SetMaxUses(MAGICMISSLE_USES)
     inst.components.finiteuses:SetUses(MAGICMISSLE_USES)
 
+    inst:AddTag("nopunch")
     return inst
 end
 
@@ -190,6 +246,7 @@ local function acidarrow()
     inst.components.finiteuses:SetMaxUses(ACIDARROW_USES)
     inst.components.finiteuses:SetUses(ACIDARROW_USES)
 
+    inst:AddTag("nopunch")
     return inst
 end
 
@@ -204,19 +261,22 @@ local function fireball()
     inst.components.finiteuses:SetMaxUses(FIREBALL_USES)
     inst.components.finiteuses:SetUses(FIREBALL_USES)
 
+    inst:AddTag("nopunch")
     return inst
 end
 
 local function icestorm()
-    local inst = commonfn("red")
-    inst:AddComponent("weapon")
-    inst.components.weapon:SetDamage(BOW_DAMAGE)
-    inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
---    inst.components.weapon:SetOnAttack(onattack_red)
-    inst.components.weapon:SetProjectile("fire_projectile")
+    local inst = commonfn("blue")
 
+    inst.components.inventoryitem.imagename="icestaff"
+    inst:AddComponent("spellcaster")
+    inst.components.spellcaster:SetSpellFn(onattackicestorm)
+    inst.components.spellcaster.canuseontargets = true
+    inst.components.spellcaster.canuseonpoint = true
+    inst.components.spellcaster.canusefrominventory = false
     inst.components.finiteuses:SetMaxUses(ICESTORM_USES)
     inst.components.finiteuses:SetUses(ICESTORM_USES)
+    inst:AddTag("nopunch")
     return inst
 end
 
@@ -231,15 +291,21 @@ local function sunburst()
     inst.components.finiteuses:SetMaxUses(SUNBURST_USES)
     inst.components.finiteuses:SetUses(SUNBURST_USES)
 
+    inst:AddTag("nopunch")
     return inst
 end
 
 local function firewall()
     local inst = commonfn("red")
-
+    inst:AddComponent("spellcaster")
+    inst.components.spellcaster:SetSpellFn(onattackfirewall)
+    inst.components.spellcaster.canuseontargets = true
+    inst.components.spellcaster.canuseonpoint = true
+    inst.components.spellcaster.canusefrominventory = false
     inst.components.finiteuses:SetMaxUses(FIREWALL_USES)
     inst.components.finiteuses:SetUses(FIREWALL_USES)
 
+    inst:AddTag("nopunch")
     return inst
 end
 

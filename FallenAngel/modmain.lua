@@ -549,7 +549,7 @@ local function newControlsInit(class)
 
         if(GetPlayer().fa_playername==nil or GetPlayer().fa_playername=="")then
         GetPlayer():DoTaskInTime(0,function()
-            GLOBAL.TheFrontEnd:PushScreen(FA_CharRenameScreen(GetPlayer().fa_playername))
+            GLOBAL.TheFrontEnd:PushScreen(FA_CharRenameScreen(GLOBAL.STRINGS.CHARACTER_TITLES[GetPlayer().prefab]))
         end)
         end
     end

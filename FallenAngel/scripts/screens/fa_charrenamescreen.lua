@@ -32,6 +32,17 @@ function FA_CharRenameScreen:Run()
 	end
 end
 
+function FA_CharRenameScreen:OnBecomeActive()
+	FA_CharRenameScreen._base.OnBecomeActive(self)
+	--TheFrontEnd:ShowConsoleLog()
+
+	self.console_edit:SetEditing(true)
+end
+
+function FA_CharRenameScreen:OnRawKey( key, down)
+	if FA_CharRenameScreen._base.OnRawKey(self, key, down) then return true end
+end
+
 function FA_CharRenameScreen:Close()
 	SetPause(false)
 	TheFrontEnd:PopScreen()
@@ -44,6 +55,7 @@ end
 
 function FA_CharRenameScreen:DoInit(old)
 	SetPause(true,"console")
+	TheFrontEnd:LockFocus(true)
 --darken everything behind the dialog
     self.black = self:AddChild(Image("images/global.xml", "square.tex"))
     self.black:SetVRegPoint(ANCHOR_MIDDLE)
@@ -118,6 +130,7 @@ function FA_CharRenameScreen:DoInit(old)
 	self.console_edit.validrawkeys[KEY_TAB] = false
 	self.console_edit.validrawkeys[KEY_UP] = false
 	self.console_edit.validrawkeys[KEY_DOWN] = false
+	self.console_edit:SetEditing(true)
 --[[
 	 local spacing = 200
 
@@ -126,6 +139,7 @@ function FA_CharRenameScreen:DoInit(old)
 	self.buttons = buttons
 ]]	
 	self.default_focus = self.console_edit
+	self.focus_forward = self.console_edit
 
 end
 
