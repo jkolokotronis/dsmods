@@ -879,6 +879,7 @@ end)]]
 AddModCharacter("barb")
 AddModCharacter("druid")
 
+
 AddModCharacter("thief")
 AddModCharacter("cleric")
 AddModCharacter("darkknight")
@@ -887,4 +888,4 @@ AddModCharacter("necromancer")
 AddModCharacter("wizard")
 AddModCharacter("tinkerer")
 AddModCharacter("paladin")
-AddModCharacter("ranger")]]
+AddModCharacter("ranger")
