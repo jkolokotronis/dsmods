@@ -10,7 +10,7 @@ version = "0.01 Alpha"
 -- http://forums.kleientertainment.com/index.php?/files/file/202-sample-mods/
 -- becomes
 -- /files/file/202-sample-mods/
-forumthread = "/files/file/202-sample-mods/"
+forumthread = "/files/file/518-mod-hero-in-the-dark/"
 icon_atlas = "modicon.xml"
 icon = "modicon.tex"
 -- This lets other players know if your mod is out of date, update it to match the current version in the game
