@@ -61,6 +61,9 @@ STRINGS.NAMES.SPELL_BLADEBARRIER = "Blade Barrier"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_BLADEBARRIER = "Blade Barrier"
 STRINGS.RECIPE_DESC.SPELL_BLADEBARRIER = "Blade Barrier"
 
+local HEALTH_PER_LEVEL=3
+local SANITY_PER_LEVEL=4
+
 local onloadfn = function(inst, data)
     inst.lightBuffUp=data.lightBuffUp
     inst.dmBuffUp=data.dmBuffUp
@@ -75,6 +78,76 @@ local onsavefn = function(inst, data)
     data.fa_playername=inst.fa_playername
 end
 
+
+local function enableL1spells()
+    local r=Recipe("spell_divinemight", {Ingredient("meat", 5), Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, RECIPETABS.SPELLS, {SCIENCE = 0, MAGIC = 0, ANCIENT = 0})
+    r.image="book_brimstone.tex"
+end
+local function enableL2spells()
+    local r=Recipe("spell_light", {Ingredient("fireflies", 2),Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, RECIPETABS.SPELLS, {MAGIC = 2})
+    r.image="book_gardening.tex" 
+end
+local function enableL3spells()
+    local r=Recipe("spell_heal", {Ingredient("spidergland",5),Ingredient("cutgrass", 5), Ingredient("rocks", 15)}, RECIPETABS.SPELLS, {MAGIC = 3})
+    r.image="book_gardening.tex"
+end
+local function enableL4spells()
+    local  r=Recipe("spell_calldiety", {Ingredient("redgem", 4), Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, RECIPETABS.SPELLS,{MAGIC = 2})
+    r.image="book_brimstone.tex"
+end
+local function enableL5spells()
+    local r=Recipe("spell_bladebarrier", {Ingredient("papyrus", 2), Ingredient("redgem", 1)}, RECIPETABS.SPELLS, {MAGIC = 3})
+    r.image="book_gardening.tex"
+end
+
+   
+    
+    
+
+
+local function onxploaded(inst)
+    local level=inst.components.xplevel.level
+    if(level>=4)then
+        enableL1spells()
+    end
+    if(level>=7)then
+        enableL2spells()
+    end
+    if(level>=9)then
+        enableL3spells()
+    end
+    if(level>=11)then
+        enableL4spells()
+    end
+    if(level>=14)then
+        enableL5spells()
+    end
+    if(level>1)then
+        inst.components.health.maxhealth= inst.components.health.maxhealth+HEALTH_PER_LEVEL*(level-1)
+        inst.components.sanity.max=inst.components.sanity.max+SANITY_PER_LEVEL*(level-1)
+    end
+end
+
+local function onlevelup(inst,data)
+    local level=data.level
+
+    inst.components.health.maxhealth= inst.components.health.maxhealth+HEALTH_PER_LEVEL
+    inst.components.sanity.max=inst.components.sanity.max+SANITY_PER_LEVEL
+
+    if(level==4)then
+        enableL1spells()
+    elseif(level==7)then
+        enableL2spells()
+    elseif(level==9)then
+        enableL3spells()
+    elseif(level==11)then
+        enableL4spells()
+    elseif(level==14)then
+        enableL5spells()
+    elseif(level==20)then
+
+    end
+end
 
 
 local fn = function(inst)
@@ -105,16 +178,7 @@ local fn = function(inst)
 RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon_atlas = "images/inventoryimages/herotab.xml"}
     local booktab=RECIPETABS.SPELLS
 --    inst.components.builder:AddRecipeTab(booktab)
-    local r=Recipe("spell_divinemight", {Ingredient("meat", 5), Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, booktab, {SCIENCE = 0, MAGIC = 0, ANCIENT = 0})
-    r.image="book_brimstone.tex"
-    r=Recipe("spell_calldiety", {Ingredient("redgem", 4), Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, booktab,{MAGIC = 2})
-    r.image="book_brimstone.tex"
-    r=Recipe("spell_light", {Ingredient("fireflies", 2),Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, booktab, {MAGIC = 2})
-    r.image="book_gardening.tex"
-    r=Recipe("spell_heal", {Ingredient("spidergland",5),Ingredient("cutgrass", 5), Ingredient("rocks", 15)}, booktab, {MAGIC = 3})
-    r.image="book_gardening.tex"
-    r=Recipe("spell_bladebarrier", {Ingredient("papyrus", 2), Ingredient("redgem", 1)}, booktab, {MAGIC = 3})
-    r.image="book_gardening.tex"
+    
 
     inst.newControlsInit = function (class)
         local btn=InitBuffBar(inst,"light",inst.lightBuffUp,class,"light")

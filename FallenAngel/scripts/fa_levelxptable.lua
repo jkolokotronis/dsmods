@@ -1,4 +1,4 @@
-LEVELXP_TABLE={
+FA_LEVELXP_TABLE={
 	{max=500},
 	{max=500},
 	{max=500},

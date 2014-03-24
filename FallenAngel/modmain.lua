@@ -10,8 +10,9 @@ require "widgets/text"
 require "stategraph"
 require "constants"
 require "buffutil"
-require "mobxptable"
-require "levelxptable"
+require "fa_mobxptable"
+require "fa_levelxptable"
+require "fa_stealthdetectiontable"
 local FA_CharRenameScreen=require "screens/fa_charrenamescreen"
 --
 local Ingredient = GLOBAL.Ingredient
@@ -170,6 +171,8 @@ Assets = {
     Asset( "ATLAS", "images/xp_background.xml" ),
     Asset( "IMAGE", "images/xp_fill.tex" ),
     Asset( "ATLAS", "images/xp_fill.xml" ),
+    Asset( "IMAGE", "images/transparent.tex" ),
+    Asset( "ATLAS", "images/transparent.xml" ),
 
     Asset( "IMAGE", "minimap/boneshield.tex" ),
     Asset( "ATLAS", "minimap/boneshield.xml" ),
@@ -211,10 +214,10 @@ GLOBAL.STRINGS.CHARACTER_NAMES.thief = "Pete"
 GLOBAL.STRINGS.CHARACTER_DESCRIPTIONS.thief = "* Stabby"
 GLOBAL.STRINGS.CHARACTER_QUOTES.thief = "\"Never saw me coming.\""
 
-GLOBAL.STRINGS.CHARACTER_TITLES.barb = "The Barangrian"
-GLOBAL.STRINGS.CHARACTER_NAMES.barb = "Lars"
-GLOBAL.STRINGS.CHARACTER_DESCRIPTIONS.barb = "* An example of how to create a mod character."
-GLOBAL.STRINGS.CHARACTER_QUOTES.barb = "\"I am a blank slate.\""
+GLOBAL.STRINGS.CHARACTER_TITLES.barb = "The Barbarian"
+GLOBAL.STRINGS.CHARACTER_NAMES.barb = "Brute strength and raw fury!"
+GLOBAL.STRINGS.CHARACTER_DESCRIPTIONS.barb = "1.  The Lower his life the stronger his attacks\n2.  Chops / mines 50% faster, is more hungry\n3.  Can eat raw meats with no neg effects\n5.  RAGE!"
+GLOBAL.STRINGS.CHARACTER_QUOTES.barb = "\"Don't ge me angry!\""
 
 GLOBAL.STRINGS.CHARACTER_TITLES.cleric = "The Cleric"
 GLOBAL.STRINGS.CHARACTER_NAMES.cleric = "cleric"
@@ -222,9 +225,9 @@ GLOBAL.STRINGS.CHARACTER_DESCRIPTIONS.cleric = "* An example of how to create a 
 GLOBAL.STRINGS.CHARACTER_QUOTES.cleric = "\"I am a blank slate.\""
 
 GLOBAL.STRINGS.CHARACTER_TITLES.druid = "The Druid"
-GLOBAL.STRINGS.CHARACTER_NAMES.druid = "druid"
-GLOBAL.STRINGS.CHARACTER_DESCRIPTIONS.druid = "* An example of how to create a mod character."
-GLOBAL.STRINGS.CHARACTER_QUOTES.druid = "\"I am a blank slate.\""
+GLOBAL.STRINGS.CHARACTER_NAMES.druid = "Nature's protector"
+GLOBAL.STRINGS.CHARACTER_DESCRIPTIONS.druid = "1.  Animal companion\n2.  Druid spells\n3.  Loses sanity from destroying trees, grass and saplings\n4.  Loses sanity for killing an innocents"
+GLOBAL.STRINGS.CHARACTER_QUOTES.druid = "\"When nature has work to be done, she creates a genius.\""
 
 GLOBAL.STRINGS.CHARACTER_TITLES.darkknight = "The Shadow"
 GLOBAL.STRINGS.CHARACTER_NAMES.darkknight = "darkknight"
@@ -431,7 +434,9 @@ FALLENLOOTTABLE={
         
     },
     TABLE_WEIGHT=700,
-    TABLE_TIER1_WEIGHT=350
+    TABLE_TIER1_WEIGHT=350,
+    TABLE_TIER2_WEIGHT=245,
+    TABLE_TIER3_WEIGHT=105
 }
 FALLENLOOTTABLEMERGED=MergeMaps(FALLENLOOTTABLE["tier1"],FALLENLOOTTABLE["tier2"],FALLENLOOTTABLE["tier3"])
 
@@ -525,7 +530,7 @@ local function newControlsInit(class)
 
         GetPlayer():ListenForEvent("killed", function(inst,data)
             local victim=data.victim
-            local xp=GLOBAL.MOBXP_TABLE[victim.prefab]
+            local xp=GLOBAL.FA_MOBXP_TABLE[victim.prefab]
 --            print("xp for",victim, xp)
             if(xp)then
                 local default=xp.default
@@ -639,6 +644,12 @@ AddPrefabPostInit("hambat",function(inst)
     inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
 end)
 
+AddPrefabPostInit("merm",function(inst) inst:AddTag("pickpocketable") end)
+AddPrefabPostInit("orc",function(inst) inst:AddTag("pickpocketable") end)
+AddPrefabPostInit("pigman",function(inst) inst:AddTag("pickpocketable") end)
+AddPrefabPostInit("pigguard",function(inst) inst:AddTag("pickpocketable") end)
+AddPrefabPostInit("bunnyman",function(inst) inst:AddTag("pickpocketable") end)
+AddPrefabPostInit("goblin",function(inst) inst:AddTag("pickpocketable") end)
 
 AddPrefabPostInit("mound",function(inst)
 inst:AddComponent( "spawner" )
@@ -660,7 +671,8 @@ inst:DoTaskInTime(0,function()
                 inst.components.spawner:Configure( "skeletonspawn",SKELETONSPAWNDELAY,SKELETONSPAWNDELAY*math.random())
             end)      
         else
-            inst.components.spawner:Configure( "skeletonspawn",SKELETONSPAWNDELAY,SKELETONSPAWNDELAY*math.random())
+            local nexttime=inst.components.spawner.nextspawntime or SKELETONSPAWNDELAY*math.random()
+            inst.components.spawner:Configure( "skeletonspawn",SKELETONSPAWNDELAY,nexttime)
         end
 end)
 
@@ -813,6 +825,14 @@ function addT1LootPrefabPostInit(inst,chance)
     inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLE.tier1,FALLENLOOTTABLE.TABLE_TIER1_WEIGHT,chance)
 end
 
+
+function addT1T2LootPrefabPostInit(inst,chance)
+    if(not inst.components.lootdropper)then
+        inst:AddComponent("lootdropper")
+    end
+    inst.components.lootdropper:AddFallenLootTable(MergeMaps(FALLENLOOTTABLE["tier1"],FALLENLOOTTABLE["tier2"]),FALLENLOOTTABLE.TABLE_TIER1_WEIGHT+FALLENLOOTTABLE.TABLE_TIER2_WEIGHT,chance)
+end
+
 function addFullLootPrefabPostInit(inst,chance)
     if(not inst.components.lootdropper)then
         inst:AddComponent("lootdropper")
@@ -834,12 +854,12 @@ AddPrefabPostInit("pighouse", function(inst) addFullLootPrefabPostInit(inst,0.2)
 AddPrefabPostInit("rabbithouse", function(inst) addFullLootPrefabPostInit(inst,0.2) end)
 AddPrefabPostInit("goblinhut", function(inst) addFullLootPrefabPostInit(inst,0.2) end)
 
-AddPrefabPostInit("spiderden", function(inst) addFullLootPrefabPostInit(inst,0.15) end)
-AddPrefabPostInit("poisonspiderden", function(inst) addFullLootPrefabPostInit(inst,0.15) end)
-AddPrefabPostInit("spiderden_2", function(inst) addFullLootPrefabPostInit(inst,0.30) end)
-AddPrefabPostInit("poisonspiderden_2", function(inst) addFullLootPrefabPostInit(inst,0.30) end)
-AddPrefabPostInit("spiderden_3", function(inst) addFullLootPrefabPostInit(inst,0.45) end)
-AddPrefabPostInit("poisonspiderden_3", function(inst) addFullLootPrefabPostInit(inst,0.45) end)
+AddPrefabPostInit("spiderden", function(inst) addT1LootPrefabPostInit(inst,0.15) end)
+AddPrefabPostInit("poisonspiderden", function(inst) addT1LootPrefabPostInit(inst,0.15) end)
+AddPrefabPostInit("spiderden_2", function(inst) addT1T2LootPrefabPostInit(inst,0.15) end)
+AddPrefabPostInit("poisonspiderden_2", function(inst) addT1T2LootPrefabPostInit(inst,0.15) end)
+AddPrefabPostInit("spiderden_3", function(inst) addFullLootPrefabPostInit(inst,0.15) end)
+AddPrefabPostInit("poisonspiderden_3", function(inst) addFullLootPrefabPostInit(inst,0.15) end)
 
 --[[
 AddClassPostConstruct("screens/characterselectscreen", function(screen)
@@ -856,14 +876,15 @@ AddClassPostConstruct("screens/characterselectscreen", function(screen)
     end
 end)]]
 
-AddModCharacter("thief")
 AddModCharacter("barb")
-AddModCharacter("cleric")
 AddModCharacter("druid")
+
+AddModCharacter("thief")
+AddModCharacter("cleric")
 AddModCharacter("darkknight")
 AddModCharacter("monk")
 AddModCharacter("necromancer")
 AddModCharacter("wizard")
 AddModCharacter("tinkerer")
 AddModCharacter("paladin")
-AddModCharacter("ranger")
+AddModCharacter("ranger")]]

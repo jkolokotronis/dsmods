@@ -58,7 +58,8 @@ local function fn(Sim)
     inst.Transform:SetScale(2, 2, 1)
     
     inst:AddTag("sharp")
-    
+    inst:AddTag("dagger")
+
     inst:AddComponent("weapon")
     inst.components.weapon:SetOnAttack(onattack)
     

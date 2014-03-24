@@ -1,8 +1,9 @@
 -- This information tells other players more about the mod
 name = "Hero in the Dark"
-description = "wah wah"
-author = ""
-version = "1.0"
+description = "This mod will incorporate traditional fantasy elements and lore while retaining the artistic style and the survive or die elements of Don\'t Starve. A large focus of the lore and design of the mod will be from D&D and other games/books within the genre."
+author = "kraken121 / DeathDisciple"
+version = "0.01 Alpha"
+
 
 -- This is the URL name of the mod's thread on the forum; the part after the index.php? and before the first & in the URL
 -- Example:

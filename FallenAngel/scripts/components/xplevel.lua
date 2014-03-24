@@ -3,7 +3,7 @@
 local XPLevel = Class(function(self, inst)
     self.level=1
     self.inst = inst
-    self.max = LEVELXP_TABLE[1].max
+    self.max = FA_LEVELXP_TABLE[1].max
     self.currentxp = 0
 	
 end)
@@ -26,7 +26,7 @@ function XPLevel:OnLoad(data)
     if(index==LEVEL_CAP)then
         index=LEVEL_CAP-1
     end
-    self.max=LEVELXP_TABLE[index].max
+    self.max=FA_LEVELXP_TABLE[index].max
     self:DoDelta(0)
     self.inst:PushEvent("xplevel_loaded")
 end
@@ -50,7 +50,7 @@ function XPLevel:DoDelta(delta)
             self.level=self.level+1
             if(self.level~=LEVEL_CAP)then
                 self.currentxp=self.currentxp-self.max
-                self.max=LEVELXP_TABLE[self.level].max
+                self.max=FA_LEVELXP_TABLE[self.level].max
             else
                 self.currentxp=0
             end

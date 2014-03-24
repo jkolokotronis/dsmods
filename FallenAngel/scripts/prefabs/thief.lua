@@ -2,6 +2,7 @@
 local MakePlayerCharacter = require "prefabs/player_common"
 local Combat=require "components/combat"
 local SneakBuff = require "widgets/sneakbuff"
+local CooldownButton = require "widgets/cooldownbutton"
 
 local assets = {
 
@@ -44,9 +45,23 @@ local prefabs = {
 }
 
 local BACKSTAB_MULTIPLIER=3
+local BACKSTAB_MULTIPLIER_MK2=3.5
 local RANGE_MULTIPLIER=1.5
 local ASSASSINATION_MULTIPLIER=5
 local SNEAK_HUNGER_MULT=2.0
+
+local HEALTH_PER_LEVEL=3
+local SANITY_PER_LEVEL=3
+local HUNGER_PER_LEVEL=3
+
+local POINT_BLANK_STEALTH_DETECTION=0.6
+local POINT_BLANK_STEALTH_DETECTION_MK2=0.3
+local STEALTH_DETECTION_RANGE=10
+local PICKPOCKET_RANGE=5
+local PICKPOCKET_CHANCE=0.3
+local PICKPOCKET_CHANCE_MK2=0.6
+local PICKPOCKET_COOLDOWN=6*60
+local PICKPOCKET_COOLDOWN_MK2=4*60
 
 STRINGS.TABS.SUBTERFUGE = "Subterfuge"
 
@@ -66,15 +81,120 @@ STRINGS.NAMES.TRAP_TENTACLE = "Tentacle Trap"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.TRAP_TENTACLE = "Tentacle Trap"
 STRINGS.RECIPE_DESC.TRAP_TENTACLE = "Tentacle Trap"
 
-local sneakBuff
 
+local function enabletraps()
 
-local onloadfn = function(inst, data)
-    inst.fa_playername=data.fa_playername
+    local r=Recipe("arrows", {Ingredient("twigs", 5), Ingredient("houndstooth", 1)}, RECIPETABS.SUBTERFUGE, {SCIENCE = 1})
+    r.image="book_brimstone.tex"
+    r=Recipe("bow", {Ingredient("twigs", 2), Ingredient("rope", 1),Ingredient("pigskin", 1)}, RECIPETABS.SUBTERFUGE,{SCIENCE = 1})
+    r.image="woodbow.tex"
+    r.atlas = "images/inventoryimages/woodbow.xml"
+    r=Recipe("trap_doubleteeth", {Ingredient("houndstooth", 5), Ingredient("boards", 2), Ingredient("rocks", 2)}, RECIPETABS.SUBTERFUGE, {SCIENCE = 2})
+    r.image="trap_teeth.tex"
+    r=Recipe("trap_fire", {Ingredient("gunpowder", 4),Ingredient("boards", 2), Ingredient("rocks", 2)}, RECIPETABS.SUBTERFUGE, {SCIENCE = 2})
+    r.image="trap_teeth.tex"
+    r=Recipe("trap_ice", {Ingredient("feather_robin_winter", 2), Ingredient("boards", 2), Ingredient("rocks", 2)}, RECIPETABS.SUBTERFUGE, {SCIENCE = 2})
+    r.image="trap_teeth.tex"
+    r=Recipe("trap_tentacle", {Ingredient("tentaclespots", 2),Ingredient("boards", 2), Ingredient("nightmarefuel", 2)}, RECIPETABS.SUBTERFUGE, {MAGIC = 2})
+    r.image="trap_teeth.tex"
 end
 
-local onsavefn = function(inst, data)
-    data.fa_playername=inst.fa_playername
+local leavestealth=function(inst)
+    inst:RemoveTag("notarget")
+    inst.sneakBuff:ForceState("off")
+    inst.components.hunger:SetRate(TUNING.WILSON_HUNGER_RATE)
+    if(inst.fa_stealthdetecttask)then
+        inst.fa_stealthdetecttask:Cancel()
+    end
+
+end
+
+local onpickpocket=function(inst)
+    if(not inst:HasTag("notarget"))then
+        return false
+    end
+    
+    local chance=PICKPOCKET_CHANCE
+    if(inst.xplevel.level>=12)then
+        chance=PICKPOCKET_CHANCE_MK2
+    end
+
+    local hit=false
+    local pos=Vector3(inst.Transform:GetWorldPosition())
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, PICKPOCKET_RANGE)
+    for k,v in pairs(ents) do
+        if not v:IsInLimbo() then
+            if( not v:HasTag("player") and not v:HasTag("pet") and v:HasTag("pickpocketable") and not(target.components.combat and target.components.combat.target==inst)) then
+
+                if(math.random()<=chance)then
+                    local newloot=nil
+            --pick one of...
+                    local rnd = math.random()*FALLENLOOTTABLE.TABLE_TIER1_WEIGHT
+                    for k,v in pairs(FALLENLOOTTABLE.tier1) do
+                        rnd = rnd - v
+                        if rnd <= 0 then
+                            newloot=k
+                            break
+                        end
+                    end
+                    if(newloot)then
+                        local loot=SpawnPrefab(newloot)
+--                        loot.Transform:SetPosition(pos.x, pos.y+5, pos.z)
+                        inst.components.inventory:GiveItem(loot, nil, pos)
+                    end
+                    return true
+                else
+                    leavestealth(inst)
+                    if(v.components.combat)then
+                        v.components.combat:SetTarget(inst)
+                    end
+                    --go on timer on fail? sounds fail
+                    return false
+                end
+
+            end
+        end
+    end
+    return hit
+end
+
+
+local function sneakdetectionfn(inst)
+    local pos=Vector3(inst.Transform:GetWorldPosition())
+    local detectionchance=POINT_BLANK_STEALTH_DETECTION
+    if(inst.xplevel.level>=20)then
+        detectionchance=POINT_BLANK_STEALTH_DETECTION_MK2
+    end
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, STEALTH_DETECTION_RANGE)
+    for k,v in pairs(ents) do
+        if not v:HasTag("player") and not v:HasTag("pet") and not v:IsInLimbo() then
+            local entry=FA_STEALTHDETECTION_TABLE[v.prefab]
+            if(entry)then
+                local default=entry.default
+                if(entry.tagged)then
+                    for k,v in pairs(entry.tagged) do
+                        if(victim:HasTag(k))then
+                            default=v
+                            break
+                        end
+                    end
+                end
+                if(default<0)then
+                    leavestealth(inst)
+                    return true
+                elseif(default>0)then
+                    local detectchanceat=detectionchance*(1-inst:GetDistanceSqToInst(v)/STEALTH_DETECTION_RANGE)*default
+                    if(math.random()<detectchanceat)then
+                        leavestealth(inst)
+                        return true
+                    else
+                        --stealth passed, i gotta grab an image/effect/something
+                    end
+                end
+            end
+        end
+    end
+    return false
 end
 
 local enterstealth=function(inst)
@@ -93,14 +213,81 @@ local enterstealth=function(inst)
     boom.Transform:SetPosition(pos.x, pos.y, pos.z)
     
     boom:ListenForEvent("animover", function() print("cleanup") boom:Remove() end)
+
+    if(inst.fa_stealthdetecttask)then
+        inst.fa_stealthdetecttask:Cancel()
+    end
+    inst.fa_stealthdetecttask=inst:DoPeriodicTask(2,function() sneakdetectionfn(inst) end)
 end
 
-local leavestealth=function(inst)
-    inst:RemoveTag("notarget")
-    inst.sneakBuff:ForceState("off")
-    inst.components.hunger:SetRate(TUNING.WILSON_HUNGER_RATE)
-
+local function onxploaded(inst)
+    local level=inst.components.xplevel.level
+    if(level>=4)then
+        inst.components.locomotor.runspeed=inst.components.locomotor.runspeed+0.05*TUNING.WILSON_RUN_SPEED
+    end
+    if(level>=5)then
+        inst.pickCooldownButton:Show()
+    end
+    if(level>=6)then
+        enabletraps()
+    end
+    if(level>=7)then
+--        enablelocks()
+    end
+    if(level>=9)then
+        inst.components.locomotor.runspeed=inst.components.locomotor.runspeed+0.1*TUNING.WILSON_RUN_SPEED
+    end
+    if(level>=10)then
+        inst.sneakBuff:Show()
+    end
+    if(level>=14)then
+        inst.components.locomotor.runspeed=inst.components.locomotor.runspeed+0.1*TUNING.WILSON_RUN_SPEED
+    end
+    if(level>1)then
+        inst.components.health.maxhealth= inst.components.health.maxhealth+HEALTH_PER_LEVEL*(level-1)
+        inst.components.sanity.max=inst.components.sanity.max+SANITY_PER_LEVEL*(level-1)
+        inst.components.hunger.max=inst.components.hunger.max+HUNGER_PER_LEVEL*(level-1)
+    end
 end
+
+local function onlevelup(inst,data)
+    local level=data.level
+
+    inst.components.health.maxhealth= inst.components.health.maxhealth+HEALTH_PER_LEVEL
+    inst.components.sanity.max=inst.components.sanity.max+SANITY_PER_LEVEL
+    inst.components.hunger.max=inst.components.hunger.max+HUNGER_PER_LEVEL
+
+    if(level==4)then
+        inst.components.locomotor.runspeed=inst.components.locomotor.runspeed+0.05*TUNING.WILSON_RUN_SPEED
+    elseif(level==5)then
+        inst.pickCooldownButton:Show()
+    elseif(level==6)then
+        enabletraps()
+    elseif(level==7)then
+--      enablelocks()
+    elseif(level==9)then
+        inst.components.locomotor.runspeed=inst.components.locomotor.runspeed+0.1*TUNING.WILSON_RUN_SPEED
+    elseif(level==10)then
+        inst.sneakBuff:Show()
+    elseif(level==12)then
+        inst.pickCooldownButton:SetCooldown(PICKPOCKET_COOLDOWN_MK2)
+    elseif(level==14)then
+        inst.components.locomotor.runspeed=inst.components.locomotor.runspeed+0.1*TUNING.WILSON_RUN_SPEED
+    elseif(level==20)then
+
+    end
+end
+
+local onloadfn = function(inst, data)
+    inst.fa_playername=data.fa_playername
+    inst.pickcooldowntimer=data.pickcooldowntimer
+end
+
+local onsavefn = function(inst, data)
+    data.fa_playername=inst.fa_playername
+    data.pickcooldowntimer=inst.pickCooldownButton.cooldowntimer
+end
+
 
 local onattacked=function(inst,data)
     local damage=data.damage
@@ -140,7 +327,16 @@ local fn = function(inst)
 
     function combatmod:CalcDamage (target, weapon, multiplier)
         local sneaking=inst:HasTag("notarget")
+        local backstab=BACKSTAB_MULTIPLIER
+        if(inst.xplevel.level>=19)then
+            backstab=BACKSTAB_MULTIPLIER_MK2
+        end
         local old=Combat.CalcDamage(self,target,weapon,multiplier)
+        if(weapon and weapon.inst:HasTag("dagger") and inst.xplevel.level>=20)then
+            --does it actually give equippable weapon object ref or a component ref?
+            print("dagger ",weapon)
+            old=old*1.5
+        end
         if(weapon and weapon.attackrange and weapon.attackrage>5)then
             return old*RANGE_MULTIPLIER
         end
@@ -150,7 +346,7 @@ local fn = function(inst)
         if(target and target.components.combat and target.components.combat.target==GetPlayer())then
                 return old
         else
-            return old*BACKSTAB_MULTIPLIER
+            return old*backstab
        end
     end
 
@@ -328,27 +524,14 @@ local fn = function(inst)
     end
 
 RECIPETABS["SUBTERFUGE"] = {str = "SUBTERFUGE", sort=999, icon = "trap_teeth.tex", icon_atlas = "images/inventoryimages.xml"}
-    local booktab=RECIPETABS.SUBTERFUGE
+
 --    inst.components.builder:AddRecipeTab(booktab)
-    local r=Recipe("arrows", {Ingredient("twigs", 5), Ingredient("houndstooth", 1)}, booktab, {SCIENCE = 1})
-    r.image="book_brimstone.tex"
-    r=Recipe("bow", {Ingredient("twigs", 2), Ingredient("rope", 1),Ingredient("pigskin", 1)}, booktab,{SCIENCE = 1})
-    r.image="woodbow.tex"
-    r.atlas = "images/inventoryimages/woodbow.xml"
-    r=Recipe("trap_doubleteeth", {Ingredient("houndstooth", 5), Ingredient("boards", 2), Ingredient("rocks", 2)}, booktab, {SCIENCE = 2})
-    r.image="trap_teeth.tex"
-    r=Recipe("trap_fire", {Ingredient("gunpowder", 4),Ingredient("boards", 2), Ingredient("rocks", 2)}, booktab, {SCIENCE = 2})
-    r.image="trap_teeth.tex"
-    r=Recipe("trap_ice", {Ingredient("feather_robin_winter", 2), Ingredient("boards", 2), Ingredient("rocks", 2)}, booktab, {SCIENCE = 2})
-    r.image="trap_teeth.tex"
-    r=Recipe("trap_tentacle", {Ingredient("tentaclespots", 2),Ingredient("boards", 2), Ingredient("nightmarefuel", 2)}, booktab, {MAGIC = 2})
-    r.image="trap_teeth.tex"
 
     inst.newControlsInit = function (class)
-                inst.sneakBuff=SneakBuff(class.owner)
-                class.rage = class:AddChild(inst.sneakBuff)
-                class.rage:SetPosition(0,0,0)
-                class.rage:SetOnClick(function(state) 
+        inst.sneakBuff=SneakBuff(class.owner)
+        class.rage = class:AddChild(inst.sneakBuff)
+        class.rage:SetPosition(0,0,0)
+        class.rage:SetOnClick(function(state) 
                      print("onclick",state) 
                         if(state and state=="on") then
 --                                inst.sg:GoToState("hide")
@@ -358,10 +541,28 @@ RECIPETABS["SUBTERFUGE"] = {str = "SUBTERFUGE", sort=999, icon = "trap_teeth.tex
                             inst.sg:GoToState("idle")
                         end
                 end)
+        inst.sneakBuff:Hide()
+
+        inst.pickCooldownButton=CooldownButton(class.owner)
+        inst.pickCooldownButton:SetText("Steal")
+        inst.pickCooldownButton:SetOnClick(onpickpocket)
+        if(inst.xplevel.level>=12)then
+            inst.pickCooldownButton:SetCooldown(PICKPOCKET_COOLDOWN_MK2)
+        else
+            inst.pickCooldownButton:SetCooldown(PICKPOCKET_COOLDOWN)
+        end
+        if(inst.pickcooldowntimer and inst.pickcooldowntimer>0)then
+             inst.pickCooldownButton:ForceCooldown(inst.pickcooldowntimer)
+        end
+        local htbtn=class:AddChild(inst.pickCooldownButton)
+        htbtn:SetPosition(-100,0,0)
+
     end
 
     inst:ListenForEvent("attacked", onattacked)
     inst:ListenForEvent("onhitother", onhitother)
+    inst:ListenForEvent("xplevelup", onlevelup)
+    inst:ListenForEvent("xplevel_loaded",onxploaded)
 end
 
 
