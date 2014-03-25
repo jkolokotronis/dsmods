@@ -50,30 +50,71 @@ function DivineMightSpellStart( reader,timer)
     return true
 end
 
+local lightfn=function(inst, target, variables)
+    if target then
+        inst.Transform:SetPosition(target:GetPosition():Get())
+    end
+end
+
+local function light_start(inst)
+    local spell = inst.components.spell
+    inst.Light:Enable(true)
+
+end
+local function create_light(timer)
+    local inst = CreateEntity()
+    inst.entity:AddTransform()
+    inst.entity:AddLight()
+
+    inst.Light:SetRadius(6)
+    inst.Light:SetFalloff(0.5)
+    inst.Light:SetIntensity(0.8)
+    inst.Light:SetColour(155/255,155/255,255/255)
+
+    inst:AddTag("FX")
+    inst:AddTag("NOCLICK")
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_banishdarkness"
+--    inst.components.spell:SetVariables(light_variables)
+    inst.components.spell.duration = timer
+    inst.components.spell.ontargetfn = function(inst,target)
+        target.fa_banishdarkness = inst
+        target:AddTag(inst.components.spell.spellname)
+        target.AnimState:SetBloomEffectHandle("shaders/anim.ksh")
+    end
+    inst.components.spell.onstartfn = light_start
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+        inst.components.spell.target.fa_banishdarkness = nil
+        inst.components.spell.target.AnimState:ClearBloomEffectHandle()
+    end
+    inst.components.spell.fn = lightfn
+    --the load/save on spells... can be done through char's own control but 
+    --I can either let old entity die and recast, or use the provided resumes, supposedly
+    inst.components.spell.resumefn = light_start
+    inst.components.spell.removeonfinish = true
+
+    return inst
+
+end
+
 function LightSpellStart(reader,timer)
     if(timer==nil or timer<=0)then return false end
-    
 
-    --it WILL crash and burn if applied to wx
-    if(not reader.Light) then
-        reader.entity:AddLight()
+    if reader.fa_banishdarkness then
+        reader.fa_banishdarkness.components.spell.lifetime = 0
+        reader.fa_banishdarkness.components.spell:ResumeSpell()
+    else
+        local light = create_light(timer)
+        light.components.spell:SetTarget(reader)
+        if not light.components.spell.target then
+            light:Remove()
+        end
+        light.components.spell:StartSpell()
     end
 
-    if(reader.lightTimer) then
-        reader.lightTimer:Cancel()
-    end
-    reader.Light:SetRadius(3)
-    reader.Light:SetFalloff(0.75)
-    reader.Light:SetIntensity(0.9)
-    reader.Light:SetColour(235/255,121/255,12/255)
-
-    reader.Light:Enable(true)
-    
-    reader.lightTimer=reader:DoTaskInTime(timer, function() 
-        reader.lightTimer=nil
-        reader.Light:Enable(false)
-    end)
---    reader.buff_timers["light"]
     return true
 end
 --would it simply be easier to write a timed-aoe-dmg myself? likely..
