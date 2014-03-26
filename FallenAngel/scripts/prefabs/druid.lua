@@ -69,6 +69,10 @@ STRINGS.NAMES.SPELL_GUARDIAN = "Summon Tree Guardian"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_GUARDIAN = "Summon Tree Guardian"
 STRINGS.RECIPE_DESC.SPELL_GUARDIAN = "Summon Tree Guardian"
 
+STRINGS.NAMES.SPELL_SUMMONGOODBERRIES = "Summon Goodberries"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_SUMMONGOODBERRIES = "Summon Goodberries"
+STRINGS.RECIPE_DESC.SPELL_SUMMONGOODBERRIES = "Summon Goodberries"
+
 
 local CHOP_SANITY_DELTA=-5
 local DIG_SANITY_DELTA=-5
@@ -85,17 +89,21 @@ local ref
 local function enableL1spells()
     local r=Recipe("spell_grow", {Ingredient("papyrus", 2), Ingredient("seeds", 10), Ingredient("poop", 10)}, RECIPETABS.SPELLS, {MAGIC = 2})
     r.image="book_gardening.tex"
+    local r=Recipe("spell_summongoodberries", {Ingredient("berries", 5), Ingredient("twigs", 10), Ingredient("charcoal", 5)}, RECIPETABS.SPELLS, {SCIENCE = 0, MAGIC = 0, ANCIENT = 0})
+    r.image="book_gardening.tex"
 end
 local function enableL2spells()
     local r=Recipe("spell_guardian", {Ingredient("papyrus", 5), Ingredient("pinecone", 20),Ingredient("livinglog",10)}, RECIPETABS.SPELLS, {MAGIC = 3})
     r.image="book_gardening.tex"    
 end
 local function enableL3spells()
-    local r=Recipe("spell_lightning", {Ingredient("flint", 20), Ingredient("bluegem", 4),Ingredient("papyrus", 5)}, RECIPETABS.SPELLS, {SCIENCE = 0, MAGIC = 0, ANCIENT = 0})
+    local r=Recipe("spell_lightning", {Ingredient("flint", 20), Ingredient("bluegem", 4),Ingredient("papyrus", 5)}, RECIPETABS.SPELLS, {MAGIC = 2})
     r.image="book_brimstone.tex"   
 end
 local function enableL4spells()
     local r=Recipe("spell_earthquake", {Ingredient("rocks", 20), Ingredient("redgem", 5),Ingredient("papyrus", 5)},  RECIPETABS.SPELLS,{MAGIC = 2})
+    r.image="book_brimstone.tex"
+    local r=Recipe("spell_", {Ingredient("rocks", 20), Ingredient("redgem", 5),Ingredient("papyrus", 5)},  RECIPETABS.SPELLS,{MAGIC = 2})
     r.image="book_brimstone.tex"
 end
 local function enableL5spells()

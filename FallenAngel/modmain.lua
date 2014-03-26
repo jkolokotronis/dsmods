@@ -32,6 +32,7 @@ local ImageButton = require "widgets/imagebutton"
 require "repairabledescriptionfix"
 
 PrefabFiles = {
+    "cheats",
     "poisonspider",
     "poisonspiderden",
     "spellprojectiles",
@@ -50,6 +51,7 @@ PrefabFiles = {
     "thieftraps",
     "arrows",
     "bow",
+    "fa_goodberries",
     "spellbooks",
     "shields",
     "armor_fire",
@@ -202,6 +204,7 @@ Assets = {
     Asset( "ATLAS", "minimap/woodbow.xml" ),
     Asset( "IMAGE", "minimap/woodshield.tex" ),
     Asset( "ATLAS", "minimap/woodshield.xml" ),   
+    Asset( "ANIM", "anim/question.zip" ),
 }
 
 
@@ -342,6 +345,9 @@ GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.DKSWORD = "Evil Sword"
 GLOBAL.STRINGS.NAMES.HOLYSWORD = "Holy Sword"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.HOLYSWORD = "Holy Sword"
 
+GLOBAL.STRINGS.NAMES.FA_GOODBERRIES = "Goodberries"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_GOODBERRIES = "Goodberries"
+
 GLOBAL.STRINGS.NAMES.FAIRY = "Wolf"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FAIRY = "Wolf"
 GLOBAL.STRINGS.NAMES.FAIRY_L20 = "Wolf"
@@ -403,7 +409,7 @@ local EVIL_SANITY_AURA_OVERRIDE={
     flower=-TUNING.SANITYAURA_MED
 }
 
-FALLENLOOTTABLE={
+GLOBAL.FALLENLOOTTABLE={
     tier1={ armorfire=50,
             armorfrost=50,
             dagger=50,
@@ -438,7 +444,10 @@ FALLENLOOTTABLE={
     TABLE_TIER2_WEIGHT=245,
     TABLE_TIER3_WEIGHT=105
 }
-FALLENLOOTTABLEMERGED=MergeMaps(FALLENLOOTTABLE["tier1"],FALLENLOOTTABLE["tier2"],FALLENLOOTTABLE["tier3"])
+GLOBAL.FALLENLOOTTABLEMERGED=MergeMaps(GLOBAL.FALLENLOOTTABLE["tier1"],GLOBAL.FALLENLOOTTABLE["tier2"],GLOBAL.FALLENLOOTTABLE["tier3"])
+
+local FALLENLOOTTABLE=GLOBAL.FALLENLOOTTABLE
+local FALLENLOOTTABLEMERGED=GLOBAL.FALLENLOOTTABLEMERGED
 
 local SANITY_DAY_LOSS=-100.0/(300*10)
 local PROTOTYPE_XP=50
@@ -478,6 +487,17 @@ table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "ranger")
 table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "bard")
 
 local PetBuff = require "widgets/petbuff"
+
+FA_DLCACCESS=false
+GLOBAL.xpcall(function()
+                    FA_DLCACCESS= GLOBAL.IsDLCEnabled and GLOBAL.REIGN_OF_GIANTS and GLOBAL.IsDLCEnabled(GLOBAL.REIGN_OF_GIANTS)
+                end,
+                function()
+                    --if the calls crashed im assuming outdated code and dlc is off by default
+                    print("dlc crash")
+                end
+            )
+print("dlc status",FA_DLCACCESS)
 
 local RELOAD = Action(1, true)
 RELOAD.id = "RELOAD"

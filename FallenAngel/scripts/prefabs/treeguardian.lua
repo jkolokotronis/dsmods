@@ -114,7 +114,7 @@ local function fn(Sim)
     ------------------------------------------
 
     inst:AddComponent("locomotor") -- locomotor must be constructed before the stategraph
-    inst.components.locomotor.walkspeed = 1.5    
+    inst.components.locomotor.walkspeed = 1.0*TUNING.WILSON_RUN_SPEED    
     
     ------------------------------------------
     inst:SetStateGraph("SGLeif")

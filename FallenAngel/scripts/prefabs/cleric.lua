@@ -61,6 +61,10 @@ STRINGS.NAMES.SPELL_BLADEBARRIER = "Blade Barrier"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_BLADEBARRIER = "Blade Barrier"
 STRINGS.RECIPE_DESC.SPELL_BLADEBARRIER = "Blade Barrier"
 
+STRINGS.NAMES.SPELL_SUMMONFEAST = "Summon feast"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_SUMMONFEAST =  "Summon feast"
+STRINGS.RECIPE_DESC.SPELL_SUMMONFEAST =  "Summon feast"
+
 local HEALTH_PER_LEVEL=3
 local SANITY_PER_LEVEL=4
 local TURN_UNDEAD_COOLDOWN=480
@@ -103,6 +107,8 @@ end
 local function enableL4spells()
     local  r=Recipe("spell_calldiety", {Ingredient("redgem", 4), Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, RECIPETABS.SPELLS,{MAGIC = 2})
     r.image="book_brimstone.tex"
+    local  r=Recipe("spell_summonfeast", {Ingredient("redgem", 1), Ingredient("cutgrass", 10), Ingredient("meat", 1)}, RECIPETABS.SPELLS,{MAGIC = 2})
+    r.image="book_brimstone.tex"
 end
 local function enableL5spells()
     local r=Recipe("spell_bladebarrier", {Ingredient("papyrus", 2), Ingredient("redgem", 1)}, RECIPETABS.SPELLS, {MAGIC = 3})
@@ -116,6 +122,7 @@ local function onturnundead(clr)
             if (not v:HasTag("player") and not v:HasTag("pet") and v.components.combat and not v:IsInLimbo() and v:HasTag("undead")) then
 
                 local rng=math.random()
+                print("turn undead rng",rng)
                 if(rng<TURN_UNDEAD_INSTA_CHANCE)then
                     --i need instakill but i also need to get this thing to recognize the killer... 2^31-1 or 2^63-1? if he's invuln he wont die but w/e
                     v.components.combat:GetAttacked(clr,999999)
@@ -126,7 +133,7 @@ local function onturnundead(clr)
 
                 local spell = inst:AddComponent("spell")
     inst.components.spell.spellname = "fa_turnundead"
-    inst.components.spell.duration = timer
+    inst.components.spell.duration = TURN_UNDEAD_DURATION
     inst.components.spell.ontargetfn = function(inst,target)
         target.fa_turnundead = inst
         target:AddTag(inst.components.spell.spellname)
@@ -152,23 +159,26 @@ local function onturnundead(clr)
 end
     
 local function addLightAura(inst)
-     if(not inst.Light) then
-        inst.entity:AddLight()
+--    local inst=GetPlayer()
+    print("adding aura",inst)
+    local light=inst.Light
+     if(light==nil) then
+        light=inst.entity:AddLight()
     end
 
-    inst.Light:SetRadius(2)
-    inst.Light:SetFalloff(0.75)
-    inst.Light:SetIntensity(0.9)
-    inst.Light:SetColour(235/255,121/255,12/255)
+    light:SetRadius(2)
+    light:SetFalloff(0.75)
+    light:SetIntensity(0.9)
+    light:SetColour(235/255,121/255,12/255)
 
-    inst.Light:Enable(true)
+    light:Enable(true)
     
 end
 
 local function onxploaded(inst)
     local level=inst.components.xplevel.level
     if(level>=3)then
-        inst.turnCooldownButton:Show()
+--        inst.turnCooldownButton:Show()
     end
     if(level>=4)then
         enableL1spells()
@@ -247,6 +257,8 @@ RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon
     local booktab=RECIPETABS.SPELLS
 --    inst.components.builder:AddRecipeTab(booktab)
     
+    inst:ListenForEvent("xplevel_loaded",onxploaded)
+    inst:ListenForEvent("xplevelup", onlevelup)
 
     inst.newControlsInit = function (class)
         local btn=InitBuffBar(inst,"light",inst.lightBuffUp,class,"light")

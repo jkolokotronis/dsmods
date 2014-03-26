@@ -115,7 +115,7 @@ local onpickpocket=function(inst)
     end
     
     local chance=PICKPOCKET_CHANCE
-    if(inst.xplevel.level>=12)then
+    if(inst.components.xplevel.level>=12)then
         chance=PICKPOCKET_CHANCE_MK2
     end
 
@@ -124,22 +124,23 @@ local onpickpocket=function(inst)
     local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, PICKPOCKET_RANGE)
     for k,v in pairs(ents) do
         if not v:IsInLimbo() then
-            if( not v:HasTag("player") and not v:HasTag("pet") and v:HasTag("pickpocketable") and not(target.components.combat and target.components.combat.target==inst)) then
+            if( not v:HasTag("player") and not v:HasTag("pet") and v:HasTag("pickpocketable") and not(v.components.combat and v.components.combat.target==inst)) then
 
                 if(math.random()<=chance)then
                     local newloot=nil
             --pick one of...
                     local rnd = math.random()*FALLENLOOTTABLE.TABLE_TIER1_WEIGHT
-                    for k,v in pairs(FALLENLOOTTABLE.tier1) do
-                        rnd = rnd - v
+                    for k1,v1 in pairs(FALLENLOOTTABLE.tier1) do
+                        rnd = rnd - v1
                         if rnd <= 0 then
-                            newloot=k
+                            newloot=k1
                             break
                         end
                     end
                     if(newloot)then
+                        print("newloot",newloot)
                         local loot=SpawnPrefab(newloot)
---                        loot.Transform:SetPosition(pos.x, pos.y+5, pos.z)
+                        --loot.Transform:SetPosition(pos.x, pos.y+5, pos.z)
                         inst.components.inventory:GiveItem(loot, nil, pos)
                     end
                     return true
@@ -162,7 +163,7 @@ end
 local function sneakdetectionfn(inst)
     local pos=Vector3(inst.Transform:GetWorldPosition())
     local detectionchance=POINT_BLANK_STEALTH_DETECTION
-    if(inst.xplevel.level>=20)then
+    if(inst.components.xplevel.level>=20)then
         detectionchance=POINT_BLANK_STEALTH_DETECTION_MK2
     end
     local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, STEALTH_DETECTION_RANGE)
@@ -172,8 +173,8 @@ local function sneakdetectionfn(inst)
             if(entry)then
                 local default=entry.default
                 if(entry.tagged)then
-                    for k,v in pairs(entry.tagged) do
-                        if(victim:HasTag(k))then
+                    for k1,v1 in pairs(entry.tagged) do
+                        if(v:HasTag(k1))then
                             default=v
                             break
                         end
@@ -185,9 +186,24 @@ local function sneakdetectionfn(inst)
                 elseif(default>0)then
                     local detectchanceat=detectionchance*(1-inst:GetDistanceSqToInst(v)/STEALTH_DETECTION_RANGE)*default
                     if(math.random()<detectchanceat)then
+                        print("detected!")
                         leavestealth(inst)
                         return true
                     else
+                        print("stealth suceeded")
+                        local q = CreateEntity()
+                        q.entity:AddTransform()
+                        local anim=q.entity:AddAnimState()
+                        anim:SetBank("question")
+                        anim:SetBuild("question")
+                        anim:PlayAnimation("idle",true)
+                        if(v.components.locomotor)then
+                            v.components.locomotor:Stop()
+                        end
+                        local pos1 =v:GetPosition()
+                        q.Transform:SetPosition(pos1.x, pos1.y+4, pos1.z)
+                        q:DoTaskInTime(2,function() q:Remove() end)
+                        v:FacePoint(pos)
                         --stealth passed, i gotta grab an image/effect/something
                     end
                 end
@@ -226,7 +242,7 @@ local function onxploaded(inst)
         inst.components.locomotor.runspeed=inst.components.locomotor.runspeed+0.05*TUNING.WILSON_RUN_SPEED
     end
     if(level>=5)then
-        inst.pickCooldownButton:Show()
+--        inst.pickCooldownButton:Show()
     end
     if(level>=6)then
         enabletraps()
@@ -238,7 +254,7 @@ local function onxploaded(inst)
         inst.components.locomotor.runspeed=inst.components.locomotor.runspeed+0.1*TUNING.WILSON_RUN_SPEED
     end
     if(level>=10)then
-        inst.sneakBuff:Show()
+--        inst.sneakBuff:Show()
     end
     if(level>=14)then
         inst.components.locomotor.runspeed=inst.components.locomotor.runspeed+0.1*TUNING.WILSON_RUN_SPEED
@@ -328,11 +344,12 @@ local fn = function(inst)
     function combatmod:CalcDamage (target, weapon, multiplier)
         local sneaking=inst:HasTag("notarget")
         local backstab=BACKSTAB_MULTIPLIER
-        if(inst.xplevel.level>=19)then
+        if(inst.components.xplevel.level>=19)then
             backstab=BACKSTAB_MULTIPLIER_MK2
         end
         local old=Combat.CalcDamage(self,target,weapon,multiplier)
-        if(weapon and weapon.inst:HasTag("dagger") and inst.xplevel.level>=20)then
+        print("weapon",weapon)
+        if(weapon and weapon:HasTag("dagger") and inst.components.xplevel.level>=20)then
             --does it actually give equippable weapon object ref or a component ref?
             print("dagger ",weapon)
             old=old*1.5
@@ -341,11 +358,13 @@ local fn = function(inst)
             return old*RANGE_MULTIPLIER
         end
         if(sneaking and not(target.components.combat and target.components.combat.target==GetPlayer()))then
+            print("assassin")
             return old*ASSASSINATION_MULTIPLIER
         end
         if(target and target.components.combat and target.components.combat.target==GetPlayer())then
                 return old
         else
+            print("backstab",backstab)
             return old*backstab
        end
     end
@@ -541,12 +560,16 @@ RECIPETABS["SUBTERFUGE"] = {str = "SUBTERFUGE", sort=999, icon = "trap_teeth.tex
                             inst.sg:GoToState("idle")
                         end
                 end)
-        inst.sneakBuff:Hide()
+        if(inst.components.xplevel.level>=10)then
+            inst.sneakBuff:Show()
+        else
+            inst.sneakBuff:Hide()
+        end
 
         inst.pickCooldownButton=CooldownButton(class.owner)
         inst.pickCooldownButton:SetText("Steal")
-        inst.pickCooldownButton:SetOnClick(onpickpocket)
-        if(inst.xplevel.level>=12)then
+        inst.pickCooldownButton:SetOnClick(function() return onpickpocket(inst) end)
+        if(inst.components.xplevel.level>=12)then
             inst.pickCooldownButton:SetCooldown(PICKPOCKET_COOLDOWN_MK2)
         else
             inst.pickCooldownButton:SetCooldown(PICKPOCKET_COOLDOWN)
@@ -556,6 +579,11 @@ RECIPETABS["SUBTERFUGE"] = {str = "SUBTERFUGE", sort=999, icon = "trap_teeth.tex
         end
         local htbtn=class:AddChild(inst.pickCooldownButton)
         htbtn:SetPosition(-100,0,0)
+        if(inst.components.xplevel.level>=5)then
+            inst.pickCooldownButton:Show()
+        else
+             inst.pickCooldownButton:Hide()
+        end
 
     end
 

@@ -67,16 +67,16 @@ STRINGS.CHARACTERS.GENERIC.DESCRIBE.SUNBURSTWAND ="Sunburst"
 STRINGS.RECIPE_DESC.SUNBURSTWAND ="Sunburst"
 
 STRINGS.NAMES.SPELL_INVISIBILITY = "Invisibility"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.PRISMATICWAND =  "Invisibility"
-STRINGS.RECIPE_DESC.PRISMATICWAND = "Invisibility"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_INVISIBILITY =  "Invisibility"
+STRINGS.RECIPE_DESC.SPELL_INVISIBILITY = "Invisibility"
 
 STRINGS.NAMES.SPELL_HASTE = "Haste"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.PRISMATICWAND =  "Haste"
-STRINGS.RECIPE_DESC.PRISMATICWAND = "Haste"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_HASTE =  "Haste"
+STRINGS.RECIPE_DESC.SPELL_HASTE = "Haste"
 
 STRINGS.NAMES.SPELL_SUMMONFEAST = "Summon feast"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.PRISMATICWAND =  "Summon feast"
-STRINGS.RECIPE_DESC.PRISMATICWAND =  "Summon feast"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_SUMMONFEAST =  "Summon feast"
+STRINGS.RECIPE_DESC.SPELL_SUMMONFEAST =  "Summon feast"
 
 STRINGS.NAMES.PRISMATICWAND = "Prismatic Wall"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.PRISMATICWAND =  "Prismatic Wall"
@@ -312,7 +312,7 @@ RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon
     r.image="book_brimstone.tex"
     r=Recipe("spell_haste", {Ingredient("meat", 2),Ingredient("cutgrass", 1), Ingredient("rocks", 1)}, booktab, {MAGIC = 2})
     r.image="book_gardening.tex"
-    r=Recipe("spell_summonfeast", {Ingredient("spidergland",1),Ingredient("cutgrass", 1), Ingredient("rocks", 1)}, booktab, {MAGIC = 3})
+    r=Recipe("spell_summonfeast",{Ingredient("redgem", 1), Ingredient("cutgrass", 10), Ingredient("meat", 1)}, RECIPETABS.SPELLS,{MAGIC = 2})
     r.image="book_gardening.tex"
 
      r=Recipe("trap_circleofdeath", {Ingredient("tentaclespots", 2),Ingredient("boards", 2), Ingredient("nightmarefuel", 2)}, booktab, {MAGIC = 2})

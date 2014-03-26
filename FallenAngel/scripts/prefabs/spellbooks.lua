@@ -2,6 +2,7 @@ local assets =
 {
 --	Asset("ANIM", "anim/spell_books.zip"),
     Asset("ANIM", "anim/books.zip"),
+    Asset("ANIM", "anim/goodberries.zip"),
 	--Asset("SOUND", "sound/common.fsb"),
 }
  
@@ -10,6 +11,7 @@ local prefabs =
     "tentacle",
     "splash_ocean",
     "treeguardian",
+    "fa_goodberries",
     "book_fx"
 }    
 
@@ -163,8 +165,37 @@ function hastefn(inst,reader)
     return true
 end
 
-function summonfeastfn(inst,reader)
+local feast_table={"baconeggs","dragonpie","fishtacos","fishsticks","honeynuggets","honeyham","meatballs","bonestew"}
 
+function summonfeastfn(inst,reader)
+    local spawn_point= Vector3(reader.Transform:GetWorldPosition())
+    local pt = Vector3(spawn_point.x, 0, spawn_point.z)
+    local count=1
+    if(reader.prefab=="cleric")then
+        count=5
+    end
+    for i=1,count do
+        local drop = SpawnPrefab(feast_table[1+math.floor(math.random()*#feast_table)]) 
+        drop.Physics:SetCollides(false)
+        drop.Physics:Teleport(pt.x+(math.random()-0.5)*5, pt.y, pt.z+(math.random()-0.5)*5) 
+        drop.Physics:SetCollides(true)
+        reader.SoundEmitter:PlaySound("dontstarve/common/stone_drop")
+    end
+    return true
+end
+
+function summongoodberriesfn(inst,reader)
+    local spawn_point= Vector3(reader.Transform:GetWorldPosition())
+    local pt = Vector3(spawn_point.x, 0, spawn_point.z)
+    local count=5
+    for i=1,count do
+        local drop = SpawnPrefab("fa_goodberries") 
+        drop.Physics:SetCollides(false)
+        drop.Physics:Teleport(pt.x+(math.random()-0.5)*5, pt.y, pt.z+(math.random()-0.5)*5) 
+        drop.Physics:SetCollides(true)
+        reader.SoundEmitter:PlaySound("dontstarve/common/stone_drop")
+    end
+    return true
 end
 
 function lightfn(inst, reader)
@@ -389,4 +420,5 @@ return MakeSpell("spell_lightning", firefn, 10),
        MakeSpell("spell_guardian", treeguardianfn, 7),
        MakeSpell("spell_invisibility", invisibilityfn,10),
        MakeSpell("spell_haste", hastefn, 5),
-       MakeSpell("spell_summonfeast", summonfeastfn, 20)
+       MakeSpell("spell_summonfeast", summonfeastfn, 5),
+       MakeSpell("spell_summongoodberries", summongoodberriesfn, 10)
