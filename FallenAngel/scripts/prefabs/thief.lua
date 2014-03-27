@@ -585,6 +585,7 @@ RECIPETABS["SUBTERFUGE"] = {str = "SUBTERFUGE", sort=999, icon = "trap_teeth.tex
              inst.pickCooldownButton:Hide()
         end
 
+
     end
 
     inst:ListenForEvent("attacked", onattacked)

@@ -52,6 +52,7 @@ PrefabFiles = {
     "arrows",
     "bow",
     "fa_goodberries",
+    "fa_potions",
     "spellbooks",
     "shields",
     "armor_fire",
@@ -347,6 +348,14 @@ GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.HOLYSWORD = "Holy Sword"
 
 GLOBAL.STRINGS.NAMES.FA_GOODBERRIES = "Goodberries"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_GOODBERRIES = "Goodberries"
+GLOBAL.STRINGS.NAMES.FA_BOTTLE_R = "Health Potion"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_BOTTLE_R =  "Health Potion"
+GLOBAL.STRINGS.NAMES.FA_BOTTLE_Y = "Hunger Potion"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_BOTTLE_Y ="Hunger Potion"
+GLOBAL.STRINGS.NAMES.FA_BOTTLE_G = "Sanity Potion"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_BOTTLE_G = "Sanity Potion"
+GLOBAL.STRINGS.NAMES.FA_BOTTLE_B = "Wonder Potion"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_BOTTLE_B = "Wonder Potion"
 
 GLOBAL.STRINGS.NAMES.FAIRY = "Wolf"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FAIRY = "Wolf"
@@ -410,13 +419,19 @@ local EVIL_SANITY_AURA_OVERRIDE={
 }
 
 GLOBAL.FALLENLOOTTABLE={
-    tier1={ armorfire=50,
+    tier1={ 
+
+            armorfire=50,
             armorfrost=50,
             dagger=50,
             flamingsword=50,
             frostsword=50,
             undeadbanesword=50,
-            vorpalaxe=50
+            vorpalaxe=50,
+            fa_bottle_r=50,
+            fa_bottle_y=50,
+            fa_bottle_g=50,
+            fa_bottle_b=50
         
     },
     tier2={
@@ -439,8 +454,8 @@ GLOBAL.FALLENLOOTTABLE={
             vorpalaxe3=15
         
     },
-    TABLE_WEIGHT=700,
-    TABLE_TIER1_WEIGHT=350,
+    TABLE_WEIGHT=900,
+    TABLE_TIER1_WEIGHT=550,
     TABLE_TIER2_WEIGHT=245,
     TABLE_TIER3_WEIGHT=105
 }
@@ -717,6 +732,9 @@ end)
 
 
 AddSimPostInit(function(inst)
+        if(inst:HasTag("player"))then
+             table.insert( inst.components.eater.foodprefs, "FA_POTION" )
+        end
         if inst:HasTag("player") and inst:HasTag("evil") then
 
                 local sanitymod=inst.components.sanity
@@ -895,6 +913,7 @@ AddClassPostConstruct("screens/characterselectscreen", function(screen)
         end
     end
 end)]]
+
 
 AddModCharacter("barb")
 AddModCharacter("druid")

@@ -127,8 +127,13 @@ local inst = CreateEntity()
 end
 
 
-local function onattackfirewall(staff, target, pos)
-    local orig_pos=pos --would it actually do deep copy?
+local function onattackfirewall(staff, target, orpos)
+    local pos=orpos
+    if(pos==nil and target~=nil)then
+        pos=Vector3(target.Transform:GetWorldPosition())
+    end
+
+--    local orig_pos=pos --would it actually do deep copy?
     for i=0,4 do
         createFireDelta(pos)
         pos.z=pos.z+2

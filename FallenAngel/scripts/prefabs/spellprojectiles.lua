@@ -3,6 +3,7 @@ local assets=
     Asset("ANIM", "anim/fireball.zip"),
         Asset("ANIM","anim/fireball_hit.zip"),
     Asset("ANIM", "anim/swap_blowdart.zip"),
+    Asset("ANIM", "anim/blow_dart.zip"),
 }
 
 local function OnHitFb(inst, owner, target)
@@ -69,4 +70,4 @@ end
 
 return  
        Prefab("common/inventory/fireballprojectile", fire, assets),
-       Prefab("common/inventory/acidarrowprojectile", fire, assets)
+       Prefab("common/inventory/acidarrowprojectile", acid, assets)

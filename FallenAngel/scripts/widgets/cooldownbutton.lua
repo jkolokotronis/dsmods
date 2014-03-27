@@ -43,7 +43,7 @@ end)
 
 function CooldownButton:countdownfn()
     self.cooldowntimer=self.cooldowntimer-1
-    if(self.cooldowntimer<=0)then
+    if(self.cooldowntimer<=0 and  self.cooldowntask)then
         self.cooldowntask:Cancel()
         self.cooldowntask=nil
         self:Enable()

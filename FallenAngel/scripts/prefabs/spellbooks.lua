@@ -131,7 +131,6 @@ function firefn(inst, reader)
                     end
                 end
             end
-           Sleep(math.random( .3, .5))-- 
         end
     end)
     return true
@@ -177,7 +176,7 @@ function summonfeastfn(inst,reader)
     for i=1,count do
         local drop = SpawnPrefab(feast_table[1+math.floor(math.random()*#feast_table)]) 
         drop.Physics:SetCollides(false)
-        drop.Physics:Teleport(pt.x+(math.random()-0.5)*5, pt.y, pt.z+(math.random()-0.5)*5) 
+        drop.Physics:Teleport(pt.x+(math.random()-0.5)*5, pt.y+3, pt.z+(math.random()-0.5)*5) 
         drop.Physics:SetCollides(true)
         reader.SoundEmitter:PlaySound("dontstarve/common/stone_drop")
     end

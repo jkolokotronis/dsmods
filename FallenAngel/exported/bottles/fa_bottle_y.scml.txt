@@ -1,0 +1,1 @@
+Building 'C:\games\Don't Starve Mod Tools\mod_tools\..\..\dont_starve\mods\FallenAngel/exported\bottles\fa_bottle_y.scml'.
