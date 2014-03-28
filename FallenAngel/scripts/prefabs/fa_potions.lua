@@ -16,6 +16,8 @@ local Assets =
 	Asset("ANIM", "anim/frog.zip"),
 	Asset("SOUND", "sound/frog.fsb"),
 	Asset( "ANIM", "anim/smoke_up.zip" ),
+    Asset("SOUNDPACKAGE", "sound/fa.fev"),
+    Asset("SOUND", "sound/fallenangel.fsb"),
 }
 
 local prefabs = {
@@ -27,6 +29,7 @@ local blueprints={"tools_blueprint","magic_blueprint","town_blueprint","dress_bl
 local WONDER_EFFECTS={
 	{
 		fn=function(eater)
+--		    eater.SoundEmitter:SetParameter("frogger_theme", "intensity", 1)
 --			print("polymorph self")
 			eater.components.locomotor:Stop()
 			eater.components.playercontroller:Enable(true)
@@ -44,7 +47,7 @@ local WONDER_EFFECTS={
 			frog:AddComponent("follower")
 			frog.components.locomotor.runspeed=2*eater.components.locomotor.runspeed
 			eater.components.leader:AddFollower(frog)
-			frog:AddComponent("playercontroller")
+			
 
 		local boom = CreateEntity()
 	    boom.entity:AddTransform()
@@ -58,6 +61,7 @@ local WONDER_EFFECTS={
     
     	boom:ListenForEvent("animover", function() 
     		frog.Transform:SetPosition(pos.x, pos.y, pos.z) 
+    		frog.SoundEmitter:PlaySound("fa/music/frogger","frogger_theme")
     		boom:Remove() 
     	end)
 
@@ -80,28 +84,23 @@ local WONDER_EFFECTS={
     if eater.DynamicShadow then
         eater.DynamicShadow:Enable(false)
     end
-    if eater.AnimState then
-        eater.AnimState:Pause()
-    end
-
+--    if eater.AnimState then
+ --       eater.AnimState:Pause()
+  --  end
+		eater:ListenForEvent("animover", function() 
+    		eater.AnimState:Pause()
+    	end)
+	
     eater.entity:Hide()
 			GetPlayer().HUD:Hide()
 
 	eater:DoTaskInTime(60,function()
 				eater:ReturnToScene()
+				frog.SoundEmitter:KillSound("frogger_theme")
 				eater.components.playercontroller:Enable(true)
-				frog:Remove()
+				frog:Remove()    		
 				eater.Physics:SetCollides(true)
-			GetPlayer().HUD:Show()
-   if eater.Light then
-        eater.Light:Enable(true)
-    end
-    if eater.AnimState then
-        eater.AnimState:Resume()
-    end
-    if eater.DynamicShadow then
-        eater.DynamicShadow:Enable(true)
-    end
+				GetPlayer().HUD:Show()
 			end)
 		end
 	},
@@ -285,7 +284,7 @@ local function eatwonder(inst,data)
 	local eater=data.eater
 	if(eater and eater:HasTag("player"))then
 		local index=math.floor(1+(math.random() * #WONDER_EFFECTS))
---		index=1
+		index=1
 		local effect=WONDER_EFFECTS[index]
 		if(effect)then
 			effect.fn(eater)

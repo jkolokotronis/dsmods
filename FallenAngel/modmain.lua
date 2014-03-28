@@ -514,6 +514,8 @@ GLOBAL.xpcall(function()
             )
 print("dlc status",FA_DLCACCESS)
 
+--RemapSoundEvent("dontstarve/music/music_FE","fa/music/fires")
+
 local RELOAD = Action(1, true)
 RELOAD.id = "RELOAD"
 RELOAD.str = "Reload"

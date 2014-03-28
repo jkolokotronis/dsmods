@@ -25,7 +25,7 @@ function FrogHaxBrain:OnStart()
 
     local root = PriorityNode(
     {
-		Follow(self.inst, function() return self.inst.components.follower.leader end, 0.3, 2, 4, true),
+		Follow(self.inst, function() return self.inst.components.follower.leader end, 0.6, 2, 4, true),
 		
     }, .5)
         
