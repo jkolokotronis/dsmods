@@ -1689,7 +1689,6 @@ local states=
 		--tags = {"busy"},
 
         onenter = function(inst)
-            inst.components.playercontroller:Enable(false)
             inst.components.locomotor:Stop()
             inst.components.health:SetInvincible(true)
 			if GetClock():IsDay() then
@@ -1727,7 +1726,6 @@ local states=
         
         onexit = function(inst)
             inst.components.health:SetInvincible(false)
-            inst.components.playercontroller:Enable(true)
         	inst.AnimState:ClearOverrideSymbol("bedroll")          
         end,
         
