@@ -265,6 +265,7 @@ local WONDER_EFFECTS={
 	{
 		fn=function(eater)
 			print("gems!")
+			local pt= Vector3(eater.Transform:GetWorldPosition())
 			for k,v in pairs({"redgem","bluegem","purplegem"}) do
 				local drop = SpawnPrefab(v) 
     		    drop.Physics:SetCollides(false)
@@ -298,6 +299,7 @@ local function common(Sim)
 	local inst = CreateEntity()
 	inst.entity:AddTransform()
 	inst.entity:AddAnimState()
+    inst.Transform:SetScale(3,3, 3)
 
     MakeInventoryPhysics(inst)
         
