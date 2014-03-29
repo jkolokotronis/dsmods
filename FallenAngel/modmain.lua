@@ -495,6 +495,7 @@ TUNING.RUINSWALL_HEALTH=TUNING.RUINSWALL_HEALTH*3
 
 TUNING.GHOST_SPEED = 5
 TUNING.GHOST_HEALTH = 300
+TUNING.GHOST_DAMAGE=30
 
 -- Let the game know Wod is a male, for proper pronouns during the end-game sequence.
 -- Possible genders here are MALE, FEMALE, or ROBOT

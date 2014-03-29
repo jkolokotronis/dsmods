@@ -32,7 +32,7 @@ local WONDER_EFFECTS={
 --		    eater.SoundEmitter:SetParameter("frogger_theme", "intensity", 1)
 --			print("polymorph self")
 			eater.components.locomotor:Stop()
-			eater.components.playercontroller:Enable(true)
+--			eater.components.playercontroller:Enable(true)
 --			eater:AddTag("notarget")
 			local pos =eater:GetPosition()
 --			eater:RemoveFromScene()
@@ -84,23 +84,34 @@ local WONDER_EFFECTS={
     if eater.DynamicShadow then
         eater.DynamicShadow:Enable(false)
     end
+--[[
 --    if eater.AnimState then
  --       eater.AnimState:Pause()
   --  end
+
 		eater:ListenForEvent("animover", function() 
     		eater.AnimState:Pause()
     	end)
-	
+	]]
     eater.entity:Hide()
 			GetPlayer().HUD:Hide()
 
 	eater:DoTaskInTime(60,function()
 				eater:ReturnToScene()
 				frog.SoundEmitter:KillSound("frogger_theme")
-				eater.components.playercontroller:Enable(true)
+--				eater.components.playercontroller:Enable(true)
 				frog:Remove()    		
-				eater.Physics:SetCollides(true)
+--				eater.Physics:SetCollides(true)
 				GetPlayer().HUD:Show()
+
+				if eater.Light then
+    			    eater.Light:Enable(true)
+    			end
+    			if eater.DynamicShadow then
+        			eater.DynamicShadow:Enable(true)
+    			end
+    			eater.entity:Show()
+--    			eater.AnimState:Resume()
 			end)
 		end
 	},

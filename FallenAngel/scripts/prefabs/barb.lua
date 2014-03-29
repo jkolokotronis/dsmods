@@ -45,7 +45,7 @@ local RAGE_FIREDMG=0.75
 local RAGE_FIREDMG2=0.5
 local BASE_FIREDMG
 local BASE_FREEZING
-local DAMAGE_MULT=1.5
+local DAMAGE_MULT=1.0
 local EFFECTIVENESS_MULT=1.5
 local RAGE_SANITY_DELTA=-5
 local RAGE_HUNGER_DELTA=-10
@@ -72,6 +72,37 @@ local function onxploaded(inst)
     if(level>1)then
         inst.components.health.maxhealth= inst.components.health.maxhealth+HEALTH_PER_LEVEL*(level-1)
         inst.components.hunger.max=inst.components.hunger.max+HUNGER_PER_LEVEL*(level-1)
+        if(level>=2)then
+        inst.components.combat.fa_basedamagemultiplier=inst.components.combat.fa_basedamagemultiplier+0.1
+        end
+        if(level>=3)then
+        inst.components.eater.strongstomach = true 
+        end
+        if level>=5 then
+        inst.components.locomotor.runspeed=inst.components.locomotor.runspeed+0.05*TUNING.WILSON_RUN_SPEED
+        end
+        if level>=7 then
+        inst.components.combat.fa_basedamagemultiplier=inst.components.combat.fa_basedamagemultiplier+0.1
+        end
+        if level>=10 then
+         inst.components.locomotor.runspeed=inst.components.locomotor.runspeed+0.1*TUNING.WILSON_RUN_SPEED
+        end
+        if level>=11 then
+        inst.components.combat.fa_basedamagemultiplier=inst.components.combat.fa_basedamagemultiplier+0.1
+        end
+        if level>=14 then
+        inst.components.combat.fa_basedamagemultiplier=inst.components.combat.fa_basedamagemultiplier+0.1        
+        end
+        if level>=15 then
+         inst.components.locomotor.runspeed=inst.components.locomotor.runspeed+0.1*TUNING.WILSON_RUN_SPEED
+        end
+        if level>=17 then
+        inst.components.combat.fa_basedamagemultiplier=inst.components.combat.fa_basedamagemultiplier+0.1
+        end
+        if level>=19 then
+         inst.components.locomotor.runspeed=inst.components.locomotor.runspeed+0.05*TUNING.WILSON_RUN_SPEED
+        end
+        inst.components.health:DoDelta(0)
     end
 end
 
@@ -79,26 +110,35 @@ local function onlevelup(inst,data)
     local level=data.level
     inst.components.health.maxhealth= inst.components.health.maxhealth+HEALTH_PER_LEVEL
     inst.components.hunger.max=inst.components.hunger.max+HUNGER_PER_LEVEL
-    if(level==3)then
+    if(level==2)then
+        inst.components.combat.fa_basedamagemultiplier=inst.components.combat.fa_basedamagemultiplier+0.1
+    elseif(level==3)then
         inst.components.eater.strongstomach = true 
     elseif level==5 then
         inst.components.locomotor.runspeed=inst.components.locomotor.runspeed+0.05*TUNING.WILSON_RUN_SPEED
-    elseif level==6 then
-
+    elseif level==7 then
+        inst.components.combat.fa_basedamagemultiplier=inst.components.combat.fa_basedamagemultiplier+0.1
     elseif level==9 then
         inst.rageBuff:Show()
     elseif level==10 then
          inst.components.locomotor.runspeed=inst.components.locomotor.runspeed+0.1*TUNING.WILSON_RUN_SPEED
+    elseif level==11 then
+        inst.components.combat.fa_basedamagemultiplier=inst.components.combat.fa_basedamagemultiplier+0.1
+    elseif level==14 then
+        inst.components.combat.fa_basedamagemultiplier=inst.components.combat.fa_basedamagemultiplier+0.1        
     elseif level==15 then
          inst.components.locomotor.runspeed=inst.components.locomotor.runspeed+0.1*TUNING.WILSON_RUN_SPEED
+    elseif level==17 then
+        inst.components.combat.fa_basedamagemultiplier=inst.components.combat.fa_basedamagemultiplier+0.1
     elseif level==18 then
-
+    
     elseif level==19 then
          inst.components.locomotor.runspeed=inst.components.locomotor.runspeed+0.05*TUNING.WILSON_RUN_SPEED
     elseif level==20 then
 
     end
-
+    --force refresh of ui/combat mult recalc
+    inst.components.health:DoDelta(0)
 end
 
 local function onhpchange(inst, data)
@@ -108,7 +148,7 @@ local function onhpchange(inst, data)
 	if(current<100) then
 		mult=0.01
 	end
-	inst.components.combat.damagemultiplier=DAMAGE_MULT+mult*(inst.components.health.maxhealth-current)
+	inst.components.combat.damagemultiplier=inst.components.combat.fa_basedamagemultiplier+mult*(inst.components.health.maxhealth-current)
 	
 end
 
@@ -162,6 +202,7 @@ local fn = function(inst)
 	
 	
 	inst.components.combat.damagemultiplier=DAMAGE_MULT
+    inst.components.combat.fa_basedamagemultiplier=DAMAGE_MULT
 	inst.components.health:SetMaxHealth(300)
 	inst.components.hunger:SetRate(2.0*TUNING.WILSON_HUNGER_RATE)
 	inst.components.hunger:SetMax(250)
