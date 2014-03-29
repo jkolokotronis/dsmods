@@ -467,6 +467,8 @@ local FALLENLOOTTABLEMERGED=GLOBAL.FALLENLOOTTABLEMERGED
 local SANITY_DAY_LOSS=-100.0/(300*10)
 local PROTOTYPE_XP=50
 local SKELETONSPAWNDELAY=480
+local GHOST_MOUND_SPAWN_CHANCE=0.5
+local MOUND_RESET_PERIOD=20*480
 
 TUNING.ARMORGRASS = 220
 TUNING.ARMORGRASS_ABSORPTION = .2
@@ -485,6 +487,14 @@ TUNING.ARMORSLURPER = 300
 TUNING.ARMOR_SANITY = 750
 TUNING.ARMOR_SANITY_ABSORPTION = .8
 TUNING.ARMOR_SANITY_DMG_AS_SANITY = 0.10
+
+TUNING.STONEWALL_HEALTH=TUNING.STONEWALL_HEALTH*3
+TUNING.WOODWALL_HEALTH=TUNING.WOODWALL_HEALTH*3
+TUNING.HAYWALL_HEALTH=TUNING.HAYWALL_HEALTH*3
+TUNING.RUINSWALL_HEALTH=TUNING.RUINSWALL_HEALTH*3
+
+TUNING.GHOST_SPEED = 5
+TUNING.GHOST_HEALTH = 300
 
 -- Let the game know Wod is a male, for proper pronouns during the end-game sequence.
 -- Possible genders here are MALE, FEMALE, or ROBOT
@@ -688,33 +698,124 @@ AddPrefabPostInit("pigguard",function(inst) inst:AddTag("pickpocketable") end)
 AddPrefabPostInit("bunnyman",function(inst) inst:AddTag("pickpocketable") end)
 AddPrefabPostInit("goblin",function(inst) inst:AddTag("pickpocketable") end)
 
-AddPrefabPostInit("mound",function(inst)
-inst:AddComponent( "spawner" )
-inst.components.spawner.spawnoffscreen=false
-inst.components.spawner.childname="skeletonspawn"
-inst.components.spawner.delay=SKELETONSPAWNDELAY
---i dont know if it's dug or not until after load... configure is starting the process... so i have to type same thing 3 times
-inst:DoTaskInTime(0,function()
-
-    if(inst.components.spawner and inst.components.spawner.nextspawntime)then
-        print("spawner active: ",inst.components.spawner.nextspawntime)
---        return
+local mound_digcallback
+local mound_reset=function(inst)
+    print("in mound reset")
+    if(inst.components.spawner)then
+        inst.components.spawner:CancelSpawning()
     end
+    inst:AddComponent("workable")
+    inst.components.workable:SetWorkAction(ACTIONS.DIG)
+    inst.components.workable:SetWorkLeft(1)
+    inst.AnimState:PlayAnimation("gravedirt")
+    inst.fa_digtime=nil
+    inst.components.workable:SetOnFinishCallback(mound_digcallback)
+end
 
-    if(inst.components.workable )then
-            local onfinishcallback=inst.components.workable.onfinish
-            inst.components.workable:SetOnFinishCallback(function(inst,worker)
-                onfinishcallback(inst,worker)
+mound_digcallback=function(inst,worker)
+    --                  who thought hardcoding stuff is great idea.... brute force override
+--                onfinishcallback(inst,worker)
+                
+    inst.AnimState:PlayAnimation("dug")
+    inst:RemoveComponent("workable")
+
+    if worker then
+        if worker.components.sanity then
+            worker.components.sanity:DoDelta(-TUNING.SANITY_SMALL)
+        end     
+        if math.random() < GHOST_MOUND_SPAWN_CHANCE then
+                local ghost = SpawnPrefab("ghost")
+                local pos = Point(inst.Transform:GetWorldPosition())
+                pos.x = pos.x -.3
+                pos.z = pos.z -.3
+                if ghost then
+                    ghost.Transform:SetPosition(pos.x, pos.y, pos.z)
+                end
+                elseif worker.components.inventory then
+                    local item = nil
+                    if math.random() < .5 then
+                    local loots = 
+                    {
+                        nightmarefuel = 1,
+                        amulet = 1,
+                        gears = 1,
+                        redgem = 5,
+                        bluegem = 5,
+                    }
+                    item = GLOBAL.weighted_random_choice(loots)
+                else
+                    item = "trinket_"..tostring(math.random(GLOBAL.NUM_TRINKETS))
+                end
+
+                if item then
+                    inst.components.lootdropper:SpawnLootPrefab(item)
+                end
+        end
+    end
+                inst.fa_digtime=GLOBAL.GetTime()
+                inst.fa_digresettask=inst:DoTaskInTime(MOUND_RESET_PERIOD,function() print("should reset mound") mound_reset(inst) end)
                 inst.components.spawner:Configure( "skeletonspawn",SKELETONSPAWNDELAY,SKELETONSPAWNDELAY*math.random())
-            end)      
+end
+
+AddPrefabPostInit("mound",function(inst)
+    inst:AddComponent( "spawner" )
+    inst.components.spawner.spawnoffscreen=false
+    inst.components.spawner.childname="skeletonspawn"
+    inst.components.spawner.delay=SKELETONSPAWNDELAY
+
+    local oldsave=inst.OnSave
+    inst.OnSave = function(inst, data)
+        if(oldsave)then
+            oldsave(inst,data)
+        end
+        if not inst.components.workable and inst.fa_digtime then
+            data.fa_digtime=inst.fa_digtime
+        end
+    end        
+    local oldload=inst.OnLoad
+    inst.OnLoad = function(inst, data)
+    print("mound onload")
+        if(oldload)then
+            oldload(inst,data)
+        end
+        if data and data.dug or not inst.components.workable then
+        print("digtime", data.fa_digtime)
+            if(data.fa_digtime)then
+                inst.fa_digtime=data.fa_digtime
+                inst.fa_digresettask=inst:DoTaskInTime(MOUND_RESET_PERIOD-GLOBAL.GetTime()+inst.fa_digtime,function() mound_reset(inst) end)
+            else
+                inst.fa_digtime=GLOBAL.GetTime()
+                inst.fa_digresettask=inst:DoTaskInTime(MOUND_RESET_PERIOD,function() mound_reset(inst) end)
+            end
+        end
+    end    
+
+--i dont know if it's dug or not until after load... configure is starting the process... so i have to type same thing 3 times
+    inst:DoTaskInTime(0,function()
+
+        if(inst.components.spawner and inst.components.spawner.nextspawntime)then
+            print("spawner active: ",inst.components.spawner.nextspawntime)
+--        return
+        end
+
+        if(inst.components.workable )then
+            local onfinishcallback=inst.components.workable.onfinish
+            inst.components.workable:SetOnFinishCallback(mound_digcallback)      
         else
             local nexttime=inst.components.spawner.nextspawntime or SKELETONSPAWNDELAY*math.random()
             inst.components.spawner:Configure( "skeletonspawn",SKELETONSPAWNDELAY,nexttime)
         end
-end)
+    end)
 
 end)
 
+AddPrefabPostInit("ghost",function(inst)
+    if(not inst.components.lootdropper)then
+        inst:AddComponent("lootdropper")
+    end
+    inst.components.lootdropper:AddChanceLoot("nightmarefuel",0.75)
+    inst.components.lootdropper:AddChanceLoot("nightmarefuel",0.18) 
+end)
 
 AddComponentPostInit("dapperness", function(component,inst) 
     function component:GetDapperness(owner)
@@ -900,6 +1001,8 @@ AddPrefabPostInit("spiderden_2", function(inst) addT1T2LootPrefabPostInit(inst,0
 AddPrefabPostInit("poisonspiderden_2", function(inst) addT1T2LootPrefabPostInit(inst,0.15) end)
 AddPrefabPostInit("spiderden_3", function(inst) addFullLootPrefabPostInit(inst,0.15) end)
 AddPrefabPostInit("poisonspiderden_3", function(inst) addFullLootPrefabPostInit(inst,0.15) end)
+
+
 
 --[[
 AddClassPostConstruct("screens/characterselectscreen", function(screen)
