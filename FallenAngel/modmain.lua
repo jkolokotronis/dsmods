@@ -13,6 +13,7 @@ require "buffutil"
 require "fa_mobxptable"
 require "fa_levelxptable"
 require "fa_stealthdetectiontable"
+require "behaviours/panic"
 local FA_CharRenameScreen=require "screens/fa_charrenamescreen"
 --
 local Ingredient = GLOBAL.Ingredient
@@ -794,12 +795,12 @@ AddPrefabPostInit("mound",function(inst)
 
 --i dont know if it's dug or not until after load... configure is starting the process... so i have to type same thing 3 times
     inst:DoTaskInTime(0,function()
-
+--[[
         if(inst.components.spawner and inst.components.spawner.nextspawntime)then
 --            print("spawner active: ",inst.components.spawner.nextspawntime)
 --        return
         end
-
+]]
         if(inst.components.workable )then
             local onfinishcallback=inst.components.workable.onfinish
             inst.components.workable:SetOnFinishCallback(mound_digcallback)      
@@ -817,6 +818,25 @@ AddPrefabPostInit("ghost",function(inst)
     end
     inst.components.lootdropper:AddChanceLoot("nightmarefuel",0.75)
     inst.components.lootdropper:AddChanceLoot("nightmarefuel",0.18) 
+    inst:AddTag("undead")
+end)
+
+AddClassPostConstruct("brains/ghostbrain",function(class)
+    print("ghostbrainpostinit")
+    local old_onstart=class.OnStart
+    function class:OnStart()
+        print("onstart")
+        old_onstart(class)
+        local newnodes={GLOBAL.WhileNode( function() print("turning?",self.inst.fa_turnundead) return self.inst.fa_turnundead~=nil end, "Turning", GLOBAL.Panic(self.inst))}
+        local root=self.bt.root
+        newnodes[1].parent=self.bt.root
+        local newtable={}
+        table.insert(newtable,newnodes[1])
+        for k,v in ipairs(self.bt.root.children) do
+            table.insert(newtable,v)
+        end
+        self.bt.root.children=newtable
+    end
 end)
 
 AddComponentPostInit("dapperness", function(component,inst) 
