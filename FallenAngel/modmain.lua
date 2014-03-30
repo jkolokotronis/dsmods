@@ -469,6 +469,7 @@ local PROTOTYPE_XP=50
 local SKELETONSPAWNDELAY=480
 local GHOST_MOUND_SPAWN_CHANCE=0.5
 local MOUND_RESET_PERIOD=20*480
+local FISHING_MERM_SPAWN_CHANCE=0.3
 
 TUNING.ARMORGRASS = 220
 TUNING.ARMORGRASS_ABSORPTION = .2
@@ -514,16 +515,16 @@ table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "bard")
 
 local PetBuff = require "widgets/petbuff"
 
-FA_DLCACCESS=false
+GLOBAL.FA_DLCACCESS=false
 GLOBAL.xpcall(function()
-                    FA_DLCACCESS= GLOBAL.IsDLCEnabled and GLOBAL.REIGN_OF_GIANTS and GLOBAL.IsDLCEnabled(GLOBAL.REIGN_OF_GIANTS)
+                    GLOBAL.FA_DLCACCESS= GLOBAL.IsDLCEnabled and GLOBAL.REIGN_OF_GIANTS and GLOBAL.IsDLCEnabled(GLOBAL.REIGN_OF_GIANTS)
                 end,
                 function()
                     --if the calls crashed im assuming outdated code and dlc is off by default
                     print("dlc crash")
                 end
             )
-print("dlc status",FA_DLCACCESS)
+print("dlc status",GLOBAL.FA_DLCACCESS)
 
 --RemapSoundEvent("dontstarve/music/music_FE","fa/music/fires")
 
@@ -775,12 +776,12 @@ AddPrefabPostInit("mound",function(inst)
     end        
     local oldload=inst.OnLoad
     inst.OnLoad = function(inst, data)
-    print("mound onload")
+--    print("mound onload")
         if(oldload)then
             oldload(inst,data)
         end
         if data and data.dug or not inst.components.workable then
-        print("digtime", data.fa_digtime)
+--        print("digtime", data.fa_digtime)
             if(data.fa_digtime)then
                 inst.fa_digtime=data.fa_digtime
                 inst.fa_digresettask=inst:DoTaskInTime(MOUND_RESET_PERIOD-GLOBAL.GetTime()+inst.fa_digtime,function() mound_reset(inst) end)
@@ -795,7 +796,7 @@ AddPrefabPostInit("mound",function(inst)
     inst:DoTaskInTime(0,function()
 
         if(inst.components.spawner and inst.components.spawner.nextspawntime)then
-            print("spawner active: ",inst.components.spawner.nextspawntime)
+--            print("spawner active: ",inst.components.spawner.nextspawntime)
 --        return
         end
 
@@ -832,14 +833,18 @@ AddComponentPostInit("dapperness", function(component,inst)
     end
 end)
 
---AddClassPostConstruct("dapperness",function(class) )
-
+local function onFishingCollect(inst,data)
+    if(math.random()<=FISHING_MERM_SPAWN_CHANCE)then
+        local merm=SpawnPrefab("merm")
+        local spawnPos = GLOBAL.Vector3(inst.Transform:GetWorldPosition() )
+        merm.Transform:SetPosition(spawnPos:Get() )
+    end
+end
 
 AddSimPostInit(function(inst)
-        if(inst:HasTag("player"))then
-             table.insert( inst.components.eater.foodprefs, "FA_POTION" )
-        end
-        if inst:HasTag("player") and inst:HasTag("evil") then
+    if(inst:HasTag("player"))then
+        table.insert( inst.components.eater.foodprefs, "FA_POTION" )
+        if inst:HasTag("evil") then
 
                 local sanitymod=inst.components.sanity
                 function sanitymod:Recalc(dt)
@@ -903,7 +908,7 @@ AddSimPostInit(function(inst)
 
 
         end
-        if inst:HasTag("player") and (inst.prefab=="darkknight" or inst.prefab=="cleric" or inst.prefab=="paladin") then
+        if (inst.prefab=="darkknight" or inst.prefab=="cleric" or inst.prefab=="paladin") then
             --add shields
             local r=Recipe("woodenshield", {Ingredient("log", 20),Ingredient("rope", 5) }, RECIPETABS.WAR,  GLOBAL.TECH.SCIENCE_ONE)
             r.image="woodshield.tex"
@@ -918,6 +923,8 @@ AddSimPostInit(function(inst)
             r.image="boneshield.tex"
             r.atlas = "images/inventoryimages/boneshield.xml"
         end
+        inst:ListenForEvent("fishingcollect",onFishingCollect)
+    end
 end)
 --\
 function lootdropperPostInit(component)
@@ -934,7 +941,6 @@ function lootdropperPostInit(component)
             local newloot=nil
             --pick one of...
             local rnd = math.random()*self.fallenLootTableTotalWeight
-            print("rnd",rnd)
             for k,v in pairs(self.fallenLootTable) do
                 rnd = rnd - v
                 if rnd <= 0 then

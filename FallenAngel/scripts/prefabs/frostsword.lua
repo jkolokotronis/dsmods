@@ -19,6 +19,7 @@ local FROZENSWORD_USES_T1=50
 local FROZENSWORD_USES_T2=100
 local FROZENSWORD_USES_T3=150
 local FROZENSWORD_COLDNESS=1
+local FROZEN_DEBUFF_LENGTH=10
 
 local function onfinished(inst)
     inst.SoundEmitter:PlaySound("dontstarve/common/gem_shatter")
@@ -27,6 +28,7 @@ end
 
 local function onattack(inst, attacker, target)
     if(target and math.random()<=inst.procRate)then
+        print("proc eff")
         if  target.components.burnable and  target.components.burnable:IsBurning() then
             target.components.burnable:Extinguish()
         end
@@ -34,6 +36,7 @@ local function onattack(inst, attacker, target)
             target.components.combat:GetAttacked(attacker, FROZENSWORD_ICE_PROC, nil)
             target.components.freezable:AddColdness(FROZENSWORD_COLDNESS)
             target.components.freezable:SpawnShatterFX()
+            frozenSlowDebuff(target,FROZEN_DEBUFF_LENGTH)
         end
     end
 end
@@ -121,5 +124,5 @@ local function t3()
 end
 
 return Prefab( "common/inventory/frostsword", t1, assets),
-    Prefab( "common/inventory/frostsword2", t1, assets),
-    Prefab( "common/inventory/frostsword3", t1, assets) 
+    Prefab( "common/inventory/frostsword2", t2, assets),
+    Prefab( "common/inventory/frostsword3", t3, assets) 

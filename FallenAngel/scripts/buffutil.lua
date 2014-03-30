@@ -100,6 +100,47 @@ local function create_light(timer)
 
 end
 
+function frozenSlowDebuff(target,timer)
+    local inst = CreateEntity()
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_frozenslow"
+--    inst.components.spell:SetVariables(light_variables)
+    inst.components.spell.duration = timer
+    inst.components.spell.ontargetfn = function(inst,target)
+        target.fa_frozenslow = inst
+        target:AddTag(inst.components.spell.spellname)
+        if(target.components.combat)then
+            print("slowing down")
+            target.components.combat.min_attack_period=target.components.combat.min_attack_period*2
+        end
+        if(target.components.locomotor)then
+            print("snare")
+            target.components.locomotor.runspeed=target.components.locomotor.runspeed/2
+        end
+    end
+    inst.components.spell.onstartfn = function(inst)    end
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+        inst.components.spell.target.fa_frozenslow = nil
+        if(target.components.combat)then
+            print("speeding up")
+            target.components.combat.min_attack_period=target.components.combat.min_attack_period/2
+        end
+        if(target.components.locomotor)then
+            print("unsnare")
+            target.components.locomotor.runspeed=target.components.locomotor.runspeed*2
+        end
+    end
+--    inst.components.spell.fn = lightfn
+    inst.components.spell.resumefn = function(inst,timeleft)   end 
+    inst.components.spell.removeonfinish = true
+    inst.components.spell:SetTarget(target)
+    inst.components.spell:StartSpell()
+    return inst
+end
+
 function LightSpellStart(reader,timer)
     if(timer==nil or timer<=0)then return false end
 

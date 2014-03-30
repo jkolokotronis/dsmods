@@ -18,6 +18,7 @@ local ARMORFROST_PROC_T1=0.1
 local ARMORFROST_PROC_T2=0.2
 local ARMORFROST_PROC_T3=0.3
 local ARMORFROST_COLDNESS=1
+local FROZEN_DEBUFF_LENGTH=10
 
 local function OnBlocked(inst,owner,data) 
     owner.SoundEmitter:PlaySound("dontstarve/wilson/hit_armour")
@@ -29,6 +30,7 @@ local function OnBlocked(inst,owner,data)
         if data.attacker.components.freezable then
             data.attacker.components.freezable:AddColdness(ARMORFROST_COLDNESS)
             data.attacker.components.freezable:SpawnShatterFX()
+            frozenSlowDebuff(data.attacker,FROZEN_DEBUFF_LENGTH)
         end
     end
 end
