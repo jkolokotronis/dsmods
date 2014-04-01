@@ -53,6 +53,8 @@ PrefabFiles = {
     "thieftraps",
     "arrows",
     "bow",
+    "fa_fireaxe",
+    "fa_iceaxe",
     "fa_goodberries",
     "fa_potions",
     "spellbooks",
