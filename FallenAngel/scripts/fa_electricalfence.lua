@@ -17,7 +17,8 @@ local makepuffanimation=function(v)
             anim:PlayAnimation("idle",true)
             v.fa_puffanim=boom
             local follower = boom.entity:AddFollower()
-            follower:FollowSymbol( v.GUID, "fa_bluetotem", 0.1, 0.1, -0.0001 )
+            follower:FollowSymbol( v.GUID, "fa_bluetotem", 0.5, 0.1, -0.0001 )
+--            boom.entity:SetParent( v.entity )
 end
 
 local makebeameffect=function(node,v)
@@ -41,8 +42,11 @@ local makebeameffect=function(node,v)
         boom.Transform:SetRotation(angle)
         anim:PlayAnimation("idle",true)
         boom.Transform:SetScale(scale,1,scale)
---        boom:FacePoint(current)
 
+        local follower = boom.entity:AddFollower()
+            follower:FollowSymbol( node.GUID, "fa_bluetotem", 0.1, 0.3, -0.0001 )
+--        boom:FacePoint(current)        
+--        boom.entity:SetParent( node.entity )
         boom:AddTag("FX")
 
         node.fa_effectlist[v.GUID]=boom

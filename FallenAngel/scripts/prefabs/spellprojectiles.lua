@@ -55,6 +55,7 @@ end
 local function fire()
     local inst = common()
     inst.components.projectile:SetOnHitFn(OnHitFb)
+    inst.components.projectile:SetSpeed(20)
     inst.components.projectile:SetOnMissFn(OnHitFb)
     return inst
 end

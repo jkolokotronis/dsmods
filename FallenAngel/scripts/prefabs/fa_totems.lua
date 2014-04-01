@@ -156,6 +156,7 @@ local function redtotem_itemfn(Sim)
 	inst.AnimState:SetBank("fa_redtotem")
     inst.AnimState:SetBuild("fa_redtotem")
     inst.AnimState:PlayAnimation("idle")
+    inst.Transform:SetScale(1.5, 1.5, 1.5)
 
     inst.components.deployable.ondeploy = ondeployred
     inst.components.deployable.placer = "fa_redtotem_placer"
@@ -169,6 +170,7 @@ local function bluetotem_itemfn(Sim)
 	inst.AnimState:SetBank("fa_bluetotem")
     inst.AnimState:SetBuild("fa_bluetotem")
     inst.AnimState:PlayAnimation("idle")
+    inst.Transform:SetScale(1.5, 1.5, 1.5)
 
     inst.components.deployable.ondeploy = ondeployblue
     inst.components.deployable.placer = "fa_bluetotem_placer"
@@ -244,8 +246,11 @@ local function redfn(Sim)
 
 local function pickup(inst)
         inst.components.machine.ison = true
+        if(inst.fa_puffanim)then
+            inst.fa_puffanim:Remove()
+        end
         inst:Remove()
-        local item=SpawnPrefab("fa_bluetotem_item")
+        local item=SpawnPrefab("fa_redtotem_item")
         GetPlayer().components.inventory:GiveItem(item)
     end
     inst.components.machine.turnofffn  = pickup
@@ -268,7 +273,7 @@ local function pickup(inst)
     inst.fa_puffanim=boom
     local follower = boom.entity:AddFollower()
     follower:FollowSymbol( inst.GUID, "fa_redtotem", 0.5, 0.1, -0.0001 )
-
+--    boom.entity:SetParent( inst.entity )
 
     inst:SetStateGraph("SGredtotem")
     local brain = require "brains/eyeturretbrain"
