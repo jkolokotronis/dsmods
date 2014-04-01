@@ -68,14 +68,14 @@ end
 local function onattackfireball(inst, attacker, target)
     --since i cant set weapon to aoe...
     local pos=Vector3(target.Transform:GetWorldPosition())
-    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, FIREBALL_RADIUS)
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, FIREBALL_RADIUS,nil,{"INLIMBO"})
             for k,v in pairs(ents) do
                 if  not v:IsInLimbo() then
                     if v.components.burnable and not v.components.fueled then
                      v.components.burnable:Ignite()
                     end
 
-                    if(v.components.combat and not v==target) then
+                    if(v.components.combat and not v==target and not (v.components.health and v.components.health:IsDead())) then
                         v.components.combat:GetAttacked(attacker, FIREBALL_DAMAGE, nil)
                     end
                 end
@@ -87,9 +87,9 @@ local function onattacksunburst(inst,attacker,target)
 local pos=Vector3(target.Transform:GetWorldPosition())
     local lightning = SpawnPrefab("lightning")
     lightning.Transform:SetPosition(pos:Get())
-    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, SUNBURST_RADIUS)
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, SUNBURST_RADIUS,nil,{"player","pet","companion","INLIMBO"})
             for k,v in pairs(ents) do
-                if not v:HasTag("player") and not v:IsInLimbo()  and not v:HasTag("pet") and v.components.combat and not v==target then
+                if v.components.combat and not v==target and not (v.components.health and v.components.health:IsDead()) then
                     if(v:HasTag("undead"))then
                        v.components.combat:GetAttacked(attacker, SUNBURST_DAMAGE, nil)
                     else
@@ -144,9 +144,9 @@ end
 local function doicestorm(inst,target)
     local pos=Vector3(inst.Transform:GetWorldPosition())
     print("wtf is target?",target)
-    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, ICESTORM_RADIUS)
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, ICESTORM_RADIUS,nil,{"player","pet","companion","INLIMBO"})
     for k,v in pairs(ents) do
-        if not v:HasTag("player") and not v:IsInLimbo()  and not v:HasTag("pet") and v.components.combat then
+        if v.components.combat and not (v.components.health and v.components.health:IsDead()) then
             --i dont know caster here?
             v.components.combat:GetAttacked(inst.fa_icestorm_caster, ICESTORM_DAMAGE, nil)
         end

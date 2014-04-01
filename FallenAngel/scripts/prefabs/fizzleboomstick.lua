@@ -39,17 +39,15 @@ local function onattack_red(inst, attacker, target)
     local pos=Vector3(target.Transform:GetWorldPosition())
     local lightning = SpawnPrefab("lightning")
     lightning.Transform:SetPosition(pos:Get())
-    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, BOOM_AOE)
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, BOOM_AOE,nil,{"pet","player","companion","INLIMBO"})
             for k,v in pairs(ents) do
-                if not v:HasTag("player") and not v:IsInLimbo()  and not v:HasTag("pet")  then
                     if v.components.burnable and not v.components.fueled then
                      v.components.burnable:Ignite()
                     end
 
-                    if(v.components.combat and not v==target) then
+                    if(v.components.combat and not v==target and not (v.components.health and v.components.health:IsDead())) then
                         v.components.combat:GetAttacked(attacker, BOOM_DAMAGE, nil)
                     end
-                end
             end
     local explode = SpawnPrefab("explode_small")
     local pos = inst:GetPosition()

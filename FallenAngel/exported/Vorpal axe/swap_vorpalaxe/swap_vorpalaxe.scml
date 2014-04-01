@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b5">
     <folder id="0" name="swap_vorpalaxe">
-        <file id="0" name="swap_vorpalaxe/W_Axe007.png" width="64" height="128" pivot_x="0.27439" pivot_y="0.341463"/>
+        <file id="0" name="swap_vorpalaxe/W_Axe007.png" width="98" height="196" pivot_x="0.47" pivot_y="0.343434"/>
     </folder>
     <entity id="0" name="swap_vorpalaxe">
         <animation id="0" name="BUILD" length="1000">

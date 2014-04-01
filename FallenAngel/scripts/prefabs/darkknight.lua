@@ -110,10 +110,9 @@ end
 local onleechblast=function(inst)
     local leechamount=0
     local pos=Vector3(GetPlayer().Transform:GetWorldPosition())
-    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, BLAST_RANGE)
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, BLAST_RANGE,nil,{"player","pet","companion","INLIMBO"})
     for k,v in pairs(ents) do
-        if not v:IsInLimbo() then
-            if( not v:HasTag("player") and not v:HasTag("pet") and v.components.combat) then
+            if( v.components.combat and not (v.components.health and v.components.health:IsDead())) then
 
                 local current = Vector3(v.Transform:GetWorldPosition() )
                 local direction = (pos - current):GetNormalized()
@@ -165,7 +164,6 @@ local onleechblast=function(inst)
                 leechamount=leechamount+BLAST_LEECH
 
             end
-        end
     end
     if(leechamount>0)then
         GetPlayer().components.hunger:DoDelta(BLAST_HUNGER)
@@ -185,10 +183,9 @@ end
 local onharmtouch=function(inst)
     local hit=false
     local pos=Vector3(GetPlayer().Transform:GetWorldPosition())
-    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, HT_RANGE)
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, HT_RANGE,nil,{"player","pet","companion","INLIMBO"})
     for k,v in pairs(ents) do
-        if not v:IsInLimbo() then
-            if( not v:HasTag("player") and not v:HasTag("pet") and v.components.combat) then
+            if(v.components.combat and not (v.components.health and v.components.health:IsDead())) then
                 v.components.combat:GetAttacked(GetPlayer(), HT_DAMAGE, nil)
 
                 local boom = CreateEntity()
@@ -205,7 +202,6 @@ local onharmtouch=function(inst)
 
                 return true
             end
-        end
     end
     return hit
 end

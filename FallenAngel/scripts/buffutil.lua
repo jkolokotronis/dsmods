@@ -166,9 +166,9 @@ local function apply_bb_damage(reader)
         reader.bladeBarrierAnim:Remove()
 	else
 		local pos=Vector3(reader.Transform:GetWorldPosition())
-		local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, BB_RADIUS)
+		local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, BB_RADIUS,nil,{"pet","player","INLIMBO","companion"})
     	for k,v in pairs(ents) do
-        	if (not v:HasTag("player") and not v:HasTag("pet") and v.components.combat and not v:IsInLimbo()) then
+        	if ( v.components.combat and not (v.components.health and v.components.health:IsDead())) then
 
                 local current = Vector3(v.Transform:GetWorldPosition() )
                 local direction = (pos - current):GetNormalized()

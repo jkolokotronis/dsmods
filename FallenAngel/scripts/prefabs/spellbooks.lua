@@ -126,7 +126,7 @@ function firefn(inst, reader)
                      v.components.burnable:Ignite()
                     end
 
-                    if(v.components.combat) then
+                    if(v.components.combat and not (v.components.health and v.components.health:IsDead())) then
                         v.components.combat:GetAttacked(reader, LIGHTNING_DAMAGE, nil)
                     end
                 end
@@ -262,15 +262,14 @@ local function quake(inst,reader)
     local pt=  Point(attacker.Transform:GetWorldPosition())
     local pos=Vector3(reader.Transform:GetWorldPosition())
 
-        local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 20,nil, {'smashable'})
-        for k,v in pairs(ents) do
-            if v  and (not v:HasTag("player") and not v:HasTag("pet"))then  -- quakes shouldn't break the set dressing
-
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 20,nil, {'smashable',"pet","companion","player","INLIMBO"})
+    for k,v in pairs(ents) do
+ -- quakes shouldn't break the set dressing
                 if v.components.workable and v.components.workable.action == ACTIONS.MINE then
                     local numworks=EARTHQUAKE_MINING_EFFICIENCY
                      v.components.workable:WorkedBy(reader, numworks)
 
-                elseif(v.components.combat and not v:IsInLimbo())then
+                elseif(v.components.combat and not v:IsInLimbo() and not (v.components.health and v.components.health:IsDead()))then
                     v.components.combat:GetAttacked(attacker, EARTHQUAKE_DAMAGE, nil)
                
 
@@ -299,7 +298,6 @@ local function quake(inst,reader)
                 end
 
                 end
-            end
         end
 end
 
@@ -311,15 +309,12 @@ function calldietyfn(inst,reader)
     local attacker=reader
     local pos=Vector3(reader.Transform:GetWorldPosition())
 
-        local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 20,nil, {'smashable'})
+        local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 20,nil, {'smashable',"player","pet","companion","INLIMBO"})
         for k,v in pairs(ents) do
-            if v  and (not v:HasTag("player") and not v:HasTag("pet"))then  -- quakes shouldn't break the set dressing
-
-
-                if(v.components.combat and not v:IsInLimbo())then
+             -- quakes shouldn't break the set dressing
+                if(v.components.combat and not v:IsInLimbo() and not (v.components.health and v.components.health:IsDead()))then
                     v.components.combat:GetAttacked(attacker, CALL_DIETY_DAMAGE, nil)
                 end
-            end
         end
      inst:DoTaskInTime(3, function() inst.SoundEmitter:KillSound("earthquake") end)
     return true

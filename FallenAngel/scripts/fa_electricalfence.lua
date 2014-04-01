@@ -166,7 +166,7 @@ FA_ElectricalFence.StartTask=function()
                 local angle=node:GetAngleToPoint(v:GetPosition())
                 local ents = TheSim:FindEntities(middle.x, middle.y, middle.z, r,nil, {"FX", "DECOR","INLIMBO","pet","companion","player"})
                 for i,caught in pairs(ents) do
-                    if(caught and caught.components.combat)then
+                    if(caught and caught.components.combat and not (caught.components.health and caught.components.health:IsDead()))then
                         local caughtangle=node:GetAngleToPoint(caught:GetPosition())-angle
                         local dh=math.sqrt(node:GetDistanceSqToInst(caught))*math.sin(caughtangle)
                         --phew

@@ -23,6 +23,7 @@ local REDTOTEM_DAMAGE=100
 local REDTOTEM_ATTACKPERIOD=1.5
 local TOTEM_HEALTH=1000
 local BLUETOTEM_DURATION=1000
+local FIREBALL_RADIUS=5
 
 local function onhammered(inst, worker)
 		
@@ -107,6 +108,24 @@ local function onfinishedred( inst )
     inst:Remove()
 end
 
+local function onattackfireball(inst, attacker, target)
+    --since i cant set weapon to aoe...
+    local pos=Vector3(target.Transform:GetWorldPosition())
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, FIREBALL_RADIUS,nil,{"INLIMBO"})
+            for k,v in pairs(ents) do
+                if  not v:IsInLimbo() then
+                    if v.components.burnable and not v.components.fueled then
+                     v.components.burnable:Ignite()
+                    end
+
+                    if(v.components.combat and not v==target and not (v.components.health and v.components.health:IsDead())) then
+                        v.components.combat:GetAttacked(attacker, REDTOTEM_DAMAGE, nil)
+                    end
+                end
+            end
+    attacker.SoundEmitter:PlaySound("dontstarve/wilson/fireball_explo")
+end
+
 local function EquipWeaponRed(inst)
     if inst.components.inventory and not inst.components.inventory:GetEquippedItem(EQUIPSLOTS.HANDS) then
         local weapon = CreateEntity()
@@ -118,6 +137,7 @@ local function EquipWeaponRed(inst)
         weapon:AddComponent("inventoryitem")
         weapon.persists = false
         weapon.components.inventoryitem:SetOnDroppedFn(WeaponDropped)
+        weapon:SetOnAttack(onattackfireball)
         weapon:AddComponent("equippable")
     weapon:AddComponent("finiteuses")
     weapon.components.finiteuses:SetMaxUses(REDTOTEM_USES)
