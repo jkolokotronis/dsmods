@@ -269,10 +269,11 @@ local function pickup(inst)
     anim:SetBank("firebomb")
     anim:SetBuild("firebomb")
     boom:AddTag("FX")
+        boom:AddTag("NOCLICK")
     anim:PlayAnimation("idle",true)
     inst.fa_puffanim=boom
     local follower = boom.entity:AddFollower()
-    follower:FollowSymbol( inst.GUID, "fa_redtotem", 0.5, 0.1, -0.0001 )
+    follower:FollowSymbol( inst.GUID, "fa_redtotem", 0.5, -60, -0.0001 )
 --    boom.entity:SetParent( inst.entity )
 
     inst:SetStateGraph("SGredtotem")

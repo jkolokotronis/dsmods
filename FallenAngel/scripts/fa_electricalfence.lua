@@ -1,6 +1,6 @@
 local BLUETOTEM_RANGE=8
 local BLUETOTEM_DAMAGE=100
-local WALL_WIDTH=1.5
+local WALL_WIDTH=1.0
 
 FA_ElectricalFence = {}
 FA_ElectricalFence.nodetable={}
@@ -11,13 +11,14 @@ local makepuffanimation=function(v)
             local anim=boom.entity:AddAnimState()
             boom.Transform:SetTwoFaced()
 --    boom.Transform:SetScale(5, 5, 1)
+        boom:AddTag("NOCLICK")
             boom:AddTag("FX")
             anim:SetBank("fa_shieldpuff")
             anim:SetBuild("fa_shieldpuff")
             anim:PlayAnimation("idle",true)
             v.fa_puffanim=boom
             local follower = boom.entity:AddFollower()
-            follower:FollowSymbol( v.GUID, "fa_bluetotem", 0.5, 0.1, -0.0001 )
+            follower:FollowSymbol( v.GUID, "fa_bluetotem", 0.1,-80, -0.0001 )
 --            boom.entity:SetParent( v.entity )
 end
 
@@ -33,6 +34,7 @@ local makebeameffect=function(node,v)
         local angle = node:GetAngleToPoint(v:GetPosition())
         local boom = CreateEntity()
         boom:AddTag("FX")
+        boom:AddTag("NOCLICK")
         boom.entity:AddTransform()
         local anim=boom.entity:AddAnimState()
         anim:SetBank("bolt_tesla")
@@ -44,7 +46,7 @@ local makebeameffect=function(node,v)
         boom.Transform:SetScale(scale,1,scale)
 
         local follower = boom.entity:AddFollower()
-            follower:FollowSymbol( node.GUID, "fa_bluetotem", 0.1, 0.3, -0.0001 )
+            follower:FollowSymbol( node.GUID, "fa_bluetotem", 0.1, -50, -0.0001 )
 --        boom:FacePoint(current)        
 --        boom.entity:SetParent( node.entity )
         boom:AddTag("FX")
