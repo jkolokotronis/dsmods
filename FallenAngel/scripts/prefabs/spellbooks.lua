@@ -360,6 +360,18 @@ function treeguardianfn(inst,reader)
 
 end
 
+function souldrainfn(inst,reader)
+
+end
+
+function blightfn(inst,reader)
+
+end
+
+function transferlifefn(inst,reader)
+
+end
+
 function onfinished(inst)
     inst:Remove()
 end

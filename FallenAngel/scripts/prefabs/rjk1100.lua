@@ -236,7 +236,6 @@ local function fn(Sim)
 --    inst.components.container.onclosefn = OnClose
     
 
-    inst:AddComponent("container")
     inst.components.container.itemtestfn = itemtest
     inst.components.container:SetNumSlots(4)
     inst.components.container.widgetslotpos = slotpos

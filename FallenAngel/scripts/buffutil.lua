@@ -213,20 +213,11 @@ function BladeBarrierSpellStart(reader,timer)
     anim:SetBank("betterbarrier")
     anim:SetBuild("betterbarrier")
     anim:PlayAnimation("idle",true)
---[[
-    anim:SetBank("smoke_right")
-    anim:SetBuild("smoke_right")
-    anim:PlayAnimation("idle",true)
-]]
-
-
     local pos =reader:GetPosition()
     boom.Transform:SetPosition(pos.x, pos.y, pos.z)
     reader.bladeBarrierAnim=boom
-
-
-                    local follower = boom.entity:AddFollower()
-                    follower:FollowSymbol( reader.GUID, "swap_object", 0.1, 0.1, -0.0001 )
+    local follower = boom.entity:AddFollower()
+    follower:FollowSymbol( reader.GUID, "swap_object", 0.1, 0.1, -0.0001 )
 end
 
 function HasteSpellStart( reader,timer)
@@ -274,3 +265,16 @@ function InvisibilitySpellStart( reader,timer)
     end)
     return true
 end
+
+function LichSpellStart(reader,timer)
+
+end
+
+function UnholyStrengthSpellStart(reader,timer)
+
+end
+--spellcaster?
+function LifeDrainSpellStart(reader,timer)
+
+end
+

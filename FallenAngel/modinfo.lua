@@ -14,4 +14,4 @@ forumthread = "/files/file/518-mod-hero-in-the-dark/"
 icon_atlas = "modicon.xml"
 icon = "modicon.tex"
 -- This lets other players know if your mod is out of date, update it to match the current version in the game
-api_version = 4
+api_version = 5

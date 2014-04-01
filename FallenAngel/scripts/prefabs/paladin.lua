@@ -34,6 +34,7 @@ local assets = {
 
 		-- Don't forget to include your character's custom assets!
         Asset( "ANIM", "anim/paladin.zip" ),
+        Asset( "ANIM", "anim/fa_shieldpuff.zip" )
 }
 local prefabs = {
     "holysword"
@@ -99,6 +100,19 @@ local fn = function(inst)
         inst.divinedefenderCooldownButton:SetText("Defense")
         inst.divinedefenderCooldownButton:SetOnClick(function()
             inst.components.health.invincible=true
+
+            local boom = CreateEntity()
+            boom.entity:AddTransform()
+            local anim=boom.entity:AddAnimState()
+            boom:AddTag("NOCLICK")
+            boom:AddTag("FX")
+            anim:SetBank("fa_shieldpuff")
+            anim:SetBuild("fa_shieldpuff")
+            anim:PlayAnimation("idle",false)
+            local pos1 =inst:GetPosition()
+            boom.Transform:SetPosition(pos1.x, pos1.y, pos1.z)
+            boom:ListenForEvent("animover", function()  boom:Remove() end)
+
             inst:DoTaskInTime(DIVINE_DEFENDER_DURATION, function() inst.components.health.invincible=false end)
             return true
         end)

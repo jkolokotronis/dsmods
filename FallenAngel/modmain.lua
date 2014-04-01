@@ -11,6 +11,7 @@ require "stategraph"
 require "constants"
 require "buffutil"
 require "fa_mobxptable"
+require "fa_electricalfence"
 require "fa_levelxptable"
 require "fa_stealthdetectiontable"
 require "behaviours/panic"
@@ -58,7 +59,9 @@ PrefabFiles = {
     "shields",
     "armor_fire",
     "armor_frost",
+    "fa_totems",
     "dagger",
+    "fa_lightningsword",
     "flamingsword",
     "frostsword",
     "undeadbanesword",
@@ -346,6 +349,13 @@ GLOBAL.STRINGS.NAMES.DKSWORD = "Evil Sword"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.DKSWORD = "Evil Sword"
 GLOBAL.STRINGS.NAMES.HOLYSWORD = "Holy Sword"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.HOLYSWORD = "Holy Sword"
+GLOBAL.STRINGS.NAMES.FA_LIGHTNINGSWORD = "Lesser Lightning Sword"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_LIGHTNINGSWORD = "Lesser Lightning Sword"
+GLOBAL.STRINGS.NAMES.FA_LIGHTNINGSWORD2 = "Lightning Sword"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_LIGHTNINGSWORD2 = "Lightning Sword"
+GLOBAL.STRINGS.NAMES.FA_LIGHTNINGSWORD3 = "Greater Lightning Sword"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_LIGHTNINGSWORD3 = "Greater Lightning Sword"
+
 
 GLOBAL.STRINGS.NAMES.FA_GOODBERRIES = "Goodberries"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_GOODBERRIES = "Goodberries"
@@ -357,6 +367,15 @@ GLOBAL.STRINGS.NAMES.FA_BOTTLE_G = "Sanity Potion"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_BOTTLE_G = "Sanity Potion"
 GLOBAL.STRINGS.NAMES.FA_BOTTLE_B = "Wonder Potion"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_BOTTLE_B = "Wonder Potion"
+
+GLOBAL.STRINGS.NAMES.FA_BLUETOTEM_ITEM = "Lightning Staff"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_BLUETOTEM_ITEM = "Lightning Staff"
+GLOBAL.STRINGS.NAMES.FA_BLUETOTEM = "Lightning Staff"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_BLUETOTEM = "Lightning Staff"
+GLOBAL.STRINGS.NAMES.FA_REDTOTEM_ITEM = "Fire Staff"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_REDTOTEM_ITEM = "Fire Staff"
+GLOBAL.STRINGS.NAMES.FA_REDTOTEM = "Fire Staff"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_REDTOTEM = "Fire Staff"
 
 GLOBAL.STRINGS.NAMES.FAIRY = "Wolf"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FAIRY = "Wolf"
@@ -609,7 +628,6 @@ local function newControlsInit(class)
         end
     end
 end
-
 --AddClassPostConstruct("screens/playerhud",newControlsInit)
 AddClassPostConstruct("widgets/statusdisplays", newControlsInit)
 
@@ -944,6 +962,12 @@ AddSimPostInit(function(inst)
             r.atlas = "images/inventoryimages/boneshield.xml"
         end
         inst:ListenForEvent("fishingcollect",onFishingCollect)
+
+        GetPlayer():DoTaskInTime(0,function()
+            GLOBAL.FA_ElectricalFence.MakeGrid()
+            GLOBAL.FA_ElectricalFence.StartTask()
+        end)
+
     end
 end)
 --\

@@ -128,6 +128,7 @@ local onleechblast=function(inst)
                 boom.Transform:SetRotation(angle)
                 anim:PlayAnimation("idle",false)
                 boom:FacePoint(pos)
+--                boom:addTag("FX")
 
                 local pos1 =v:GetPosition()
                 boom.Transform:SetPosition(pos1.x, pos1.y, pos1.z)
