@@ -25,6 +25,19 @@ local TOTEM_HEALTH=1000
 local BLUETOTEM_DURATION=1000
 local FIREBALL_RADIUS=5
 
+local function onsaveblue(inst,data)
+
+    if self.currentfuel ~= self.maxfuel then
+        return {fuel = self.currentfuel}
+    end
+end
+
+local function onloadblue(inst,data)
+    if data.fuel then
+        self:InitializeFuelLevel(data.fuel)
+    end
+end
+
 local function onhammered(inst, worker)
 		
 		SpawnPrefab("collapse_small").Transform:SetPosition(inst.Transform:GetWorldPosition())
@@ -80,6 +93,9 @@ local function ondeployred(inst, pt, deployer)
         turret.Physics:Teleport(pt.x, pt.y, pt.z) 
         turret.Physics:SetCollides(true)
         turret.SoundEmitter:PlaySound("dontstarve/common/place_structure_wood")
+        if(inst.components.finiteuses)then
+            turret.fa_currentuses=inst.components.finiteuses.current
+        end
         inst:Remove()
     end         
 end
@@ -92,7 +108,12 @@ local function ondeployblue(inst, pt, deployer)
         turret.Physics:Teleport(pt.x, pt.y, pt.z) 
         turret.Physics:SetCollides(true)
         turret.SoundEmitter:PlaySound("dontstarve/common/place_structure_wood")
-            FA_ElectricalFence.AddNode(turret)
+
+        if(inst.components.fueled) then
+            turret.components.fueled:InitializeFuelLevel(inst.components.fueled.currentfuel)
+        end
+        
+        FA_ElectricalFence.AddNode(turret)
         
         inst:Remove()
     end         
@@ -137,7 +158,7 @@ local function EquipWeaponRed(inst)
         weapon:AddComponent("inventoryitem")
         weapon.persists = false
         weapon.components.inventoryitem:SetOnDroppedFn(WeaponDropped)
-        weapon:SetOnAttack(onattackfireball)
+        weapon.components.weapon:SetOnAttack(onattackfireball)
         weapon:AddComponent("equippable")
     weapon:AddComponent("finiteuses")
     weapon.components.finiteuses:SetMaxUses(REDTOTEM_USES)
@@ -182,6 +203,11 @@ local function redtotem_itemfn(Sim)
     inst.components.deployable.placer = "fa_redtotem_placer"
     inst.components.inventoryitem.imagename="fa_redtotem"
     inst.components.inventoryitem.atlasname="images/inventoryimages/fa_redtotem.xml"
+
+    inst:AddComponent("finiteuses")
+    inst.components.finiteuses:SetMaxUses(REDTOTEM_USES)
+    inst.components.finiteuses:SetUses(REDTOTEM_USES)
+
     return inst
 end
 
@@ -196,6 +222,14 @@ local function bluetotem_itemfn(Sim)
     inst.components.deployable.placer = "fa_bluetotem_placer"
     inst.components.inventoryitem.imagename="fa_bluetotem"
     inst.components.inventoryitem.atlasname="images/inventoryimages/fa_bluetotem.xml"
+
+    inst:AddComponent("fueled")
+    inst.components.fueled.fueltype = "BURNABLE"
+    inst.components.fueled:InitializeFuelLevel(BLUETOTEM_DURATION)
+--    inst.components.fueled:SetDepletedFn(outoffuel)
+--    inst.components.fueled.ontakefuelfn = refuel
+    inst.components.fueled.accepting = false
+
     return inst
 end
 
@@ -246,7 +280,7 @@ local function redfn(Sim)
 	local inst=fn(Sim)
     inst:AddComponent("lighttweener")
     local light = inst.entity:AddLight()
-    inst.components.lighttweener:StartTween(light, 0, .65, .7, {251/255, 234/255, 234/255}, 0, 
+    inst.components.lighttweener:StartTween(light, 0, .65, .7, {251/255, 134/255, 134/255}, 0, 
         function(inst, light) if light then light:Enable(false) end end)
 
     inst.dotweenin = dotweenin
@@ -254,6 +288,7 @@ local function redfn(Sim)
     inst.AnimState:SetBank("fa_redtotem")
     inst.AnimState:SetBuild("fa_redtotem")
 	inst.AnimState:PlayAnimation("idle")
+    inst.AnimState:SetBloomEffectHandle( "shaders/anim.ksh" )
 --    MakeMediumFreezableCharacter(inst)
 
     inst.components.lootdropper:SetLoot({"redgem",  "boards"})
@@ -264,13 +299,18 @@ local function redfn(Sim)
     inst:AddComponent("inventory")
     inst:DoTaskInTime(0.1, EquipWeaponRed)
 
-local function pickup(inst)
+    local function pickup(inst)
         inst.components.machine.ison = true
         if(inst.fa_puffanim)then
             inst.fa_puffanim:Remove()
         end
-        inst:Remove()
         local item=SpawnPrefab("fa_redtotem_item")
+        local weapon=inst.components.inventory:GetEquippedItem(EQUIPSLOTS.HANDS)
+
+        if(weapon)then
+            item.components.finiteuses:SetUses(weapon.components.finiteuses.current)
+        end
+        inst:Remove()
         GetPlayer().components.inventory:GiveItem(item)
     end
     inst.components.machine.turnofffn  = pickup
@@ -317,10 +357,19 @@ local function bluefn(Sim)
 --    inst.Transform:SetScale(2, 2, 1)
     
     inst.components.lootdropper:SetLoot({"bluegem",  "boards"})
+    inst.AnimState:SetBloomEffectHandle( "shaders/anim.ksh" )
+    local light = inst.entity:AddLight()
+    
+    light:SetIntensity(.6)
+    light:SetRadius(.7)
+    light:SetFalloff(.6)
+    light:Enable(true)
+    light:SetColour(180/255, 195/255, 255/255)
 
     local function pickup(inst)
-        inst:Remove()
         local item=SpawnPrefab("fa_bluetotem_item")
+        item.components.fueled:InitializeFuelLevel(inst.components.fueled.currentfuel)
+        inst:Remove()
         GetPlayer().components.inventory:GiveItem(item)
     end
     inst.components.machine.turnofffn  = pickup

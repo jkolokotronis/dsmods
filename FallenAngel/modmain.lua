@@ -53,6 +53,9 @@ PrefabFiles = {
     "thieftraps",
     "arrows",
     "bow",
+    "fa_key",
+    "fa_boots",
+    "fa_rings",
     "fa_fireaxe",
     "fa_iceaxe",
     "fa_goodberries",
@@ -358,6 +361,28 @@ GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_LIGHTNINGSWORD2 = "Lightning Sword
 GLOBAL.STRINGS.NAMES.FA_LIGHTNINGSWORD3 = "Greater Lightning Sword"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_LIGHTNINGSWORD3 = "Greater Lightning Sword"
 
+GLOBAL.STRINGS.NAMES.FA_FIREAXE = "Lesser Fire Axe"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_FIREAXE = "Lesser Fire Axe"
+GLOBAL.STRINGS.NAMES.FA_FIREAXE2 = "Fire Axe"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_FIREAXE2 =  "Fire Axe"
+GLOBAL.STRINGS.NAMES.FA_FIREAXE3 = "Greater Fire Axe"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_FIREAXE3 = "Greater Fire Axe"
+GLOBAL.STRINGS.NAMES.FA_ICEAXE = "Lesser Ice Axe"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_ICEAXE = "Lesser Ice Axe"
+GLOBAL.STRINGS.NAMES.FA_ICEAXE2 = "Ice Axe"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_ICEAXE2 = "Ice Axe"
+GLOBAL.STRINGS.NAMES.FA_ICEAXE3 = "Greater Ice Axe"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_ICEAXE3 = "Greater Ice Axe"
+
+GLOBAL.STRINGS.NAMES.FA_WOODARROWS = "Wood Arrows"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_WOODARROWS =  "Wood Arrows"
+GLOBAL.STRINGS.NAMES.FA_ICEARROWS = "Ice Arrows"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_ICEARROWS = "Ice Arrows"
+GLOBAL.STRINGS.NAMES.FA_POISONARROWS = "Poison Arrows"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_POISONARROWS = "Poison Arrows"
+GLOBAL.STRINGS.NAMES.FA_FIREARROWS = "Fire Arrows"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_FIREARROWS = "Fire Arrows"
+
 
 GLOBAL.STRINGS.NAMES.FA_GOODBERRIES = "Goodberries"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_GOODBERRIES = "Goodberries"
@@ -453,7 +478,9 @@ GLOBAL.FALLENLOOTTABLE={
             fa_bottle_r=50,
             fa_bottle_y=50,
             fa_bottle_g=50,
-            fa_bottle_b=50
+            fa_bottle_b=50,
+            fa_fireaxe=50,
+            fa_iceaxe=50
         
     },
     tier2={
@@ -463,8 +490,9 @@ GLOBAL.FALLENLOOTTABLE={
             flamingsword2=35,
             frostsword2=35,
             undeadbanesword2=35,
-            vorpalaxe2=35
-        
+            vorpalaxe2=35,
+            fa_fireaxe2=35,
+            fa_iceaxe2=35
     },
     tier3={
             armorfire3=15,
@@ -473,13 +501,14 @@ GLOBAL.FALLENLOOTTABLE={
             flamingsword3=15,
             frostsword3=15,
             undeadbanesword3=15,
-            vorpalaxe3=15
-        
+            vorpalaxe3=15,
+            fa_fireaxe3=15,
+            fa_iceaxe3=15
     },
-    TABLE_WEIGHT=900,
-    TABLE_TIER1_WEIGHT=550,
-    TABLE_TIER2_WEIGHT=245,
-    TABLE_TIER3_WEIGHT=105
+    TABLE_WEIGHT=1130,
+    TABLE_TIER1_WEIGHT=650,
+    TABLE_TIER2_WEIGHT=315,
+    TABLE_TIER3_WEIGHT=135
 }
 GLOBAL.FALLENLOOTTABLEMERGED=MergeMaps(GLOBAL.FALLENLOOTTABLE["tier1"],GLOBAL.FALLENLOOTTABLE["tier2"],GLOBAL.FALLENLOOTTABLE["tier3"])
 

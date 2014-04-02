@@ -49,7 +49,6 @@ local makebeameffect=function(node,v)
             follower:FollowSymbol( node.GUID, "fa_bluetotem", 0.1, -50, -0.0001 )
 --        boom:FacePoint(current)        
 --        boom.entity:SetParent( node.entity )
-        boom:AddTag("FX")
 
         node.fa_effectlist[v.GUID]=boom
 
@@ -62,8 +61,8 @@ FA_ElectricalFence.AddNode=function(node)
     local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, BLUETOTEM_RANGE,{'lightningfence'}, {"FX", "DECOR","INLIMBO"})
     for k,v in pairs(ents) do
         
-      if(v~=node)then
-print("k",k,"v",v)
+      if(v~=node and not node.fa_nodelist[v.GUID])then
+        print("k",k,"v",v)
     	if(not v.components.fueled.consuming)then
             print("starting consumer",v)
     		v.components.fueled:StartConsuming()
