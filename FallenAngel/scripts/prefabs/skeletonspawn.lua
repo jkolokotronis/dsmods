@@ -94,7 +94,7 @@ inst.Transform:SetFourFaced()
     MakeCharacterPhysics(inst, 20, .5)
  
 inst:AddComponent("eater")
---    inst.components.eater:SetOmnivore()
+    inst.components.eater:SetCarnivore()
     inst.components.eater:SetCanEatHorrible()
     inst.components.eater.strongstomach = true -- can eat monster meat!
     inst.components.eater:SetOnEatFn(OnEat)
@@ -118,7 +118,7 @@ inst:AddComponent("eater")
     inst:AddComponent("locomotor") -- locomotor must be constructed before the stategraph
     inst.components.locomotor:EnableGroundSpeedMultiplier(false)
     inst.components.locomotor.walkspeed = TUNING.WILSON_RUN_SPEED
-    inst.components.locomotor.runspeed = TUNING.WILSON_RUN_SPEED*3
+    inst.components.locomotor.runspeed = TUNING.WILSON_RUN_SPEED*2
 
     inst:AddComponent("follower")
     

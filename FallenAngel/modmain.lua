@@ -6,6 +6,7 @@ local MergeMaps=GLOBAL.MergeMaps
 local Widget = require "widgets/widget"
 local XPBadge= require "widgets/xpbadge"
 local TextEdit=require "widgets/textedit"
+local ItemTile = require "widgets/itemtile"
 require "widgets/text"
 require "stategraph"
 require "constants"
@@ -503,12 +504,14 @@ GLOBAL.FALLENLOOTTABLE={
             undeadbanesword3=15,
             vorpalaxe3=15,
             fa_fireaxe3=15,
-            fa_iceaxe3=15
+            fa_iceaxe3=15,
+            fa_redtotem_item=15,
+            fa_bluetotem_item=15
     },
-    TABLE_WEIGHT=1130,
+    TABLE_WEIGHT=1160,
     TABLE_TIER1_WEIGHT=650,
     TABLE_TIER2_WEIGHT=315,
-    TABLE_TIER3_WEIGHT=135
+    TABLE_TIER3_WEIGHT=165
 }
 GLOBAL.FALLENLOOTTABLEMERGED=MergeMaps(GLOBAL.FALLENLOOTTABLE["tier1"],GLOBAL.FALLENLOOTTABLE["tier2"],GLOBAL.FALLENLOOTTABLE["tier3"])
 
@@ -577,7 +580,56 @@ GLOBAL.xpcall(function()
             )
 print("dlc status",GLOBAL.FA_DLCACCESS)
 
---RemapSoundEvent("dontstarve/music/music_FE","fa/music/fires")
+local isrpghudenabled=false
+ for _, moddir in ipairs( GLOBAL.KnownModIndex:GetModsToLoad() ) do
+        local its_modinfo = GLOBAL.KnownModIndex:GetModInfo(moddir)
+        print("mod",its_modinfo.name,its_modinfo.priority)
+        if(its_modinfo.name=="RPG HUD")then
+            isrpghudenabled=true
+            print("hud version",its_modinfo.description)
+        end
+    end
+--if(isrpghudenabled)then
+--HUD
+--[[
+table.insert(GLOBAL.EQUIPSLOTS, "PACK")
+GLOBAL.EQUIPSLOTS.PACK = "pack"
+local function inventorypostinit(component,inst)
+    inst.components.inventory.maxslots = 55
+    inst.components.inventory.numequipslots = 5
+end
+AddComponentPostInit("inventory", inventorypostinit)
+table.insert(GLOBAL.EQUIPSLOTS, "NECK")
+GLOBAL.EQUIPSLOTS.NECK = "neck"
+
+    --default equip slots
+    self:AddEquipSlot(EQUIPSLOTS.HANDS, "images/equipslots.xml", "equip_slot_hand.tex") --MOD
+    self:AddEquipSlot(EQUIPSLOTS.BODY, "images/equipslots.xml", "equip_slot_body.tex")  --MOD
+    self:AddEquipSlot(EQUIPSLOTS.HEAD, "images/equipslots.xml", "equip_slot_head.tex")  --MOD
+    self:AddEquipSlot(EQUIPSLOTS.NECK, "images/equipslots.xml", "equip_slot_neck.tex")  --MOD
+    self:AddEquipSlot(EQUIPSLOTS.PACK, "images/equipslots.xml", "equip_slot_pack.tex")  --MOD
+function Inv:AddEquipSlot(slot, atlas, image, sortkey)
+    sortkey = sortkey or #self.equipslotinfo
+    table.insert(self.equipslotinfo, {slot = slot, atlas = atlas, image = image, sortkey = sortkey})
+    table.sort(self.equipslotinfo, function(a,b) return a.sortkey < b.sortkey end)
+    self.rebuild_pending = true
+end
+
+    for k, v in ipairs(self.equipslotinfo) do
+        local slot = EquipSlot(v.slot, v.atlas, v.image, self.owner)
+        self.equip[v.slot] = self.toprow:AddChild(slot)
+        local x = -total_w/2 + (num_slots)*(W)+num_intersep*(INTERSEP - SEP) + (num_slots-1)*SEP + INTERSEP + W*(k-1) + SEP*(k-1)
+        slot:SetPosition(x,0,0)
+        table.insert(eslot_order, slot)
+        
+        local item = self.owner.components.inventory:GetEquippedItem(v.slot)
+        if item then
+            slot:SetTile(ItemTile(item))
+        end
+
+    end    
+
+--RemapSoundEvent("dontstarve/music/music_FE","fa/music/fires")]]
 
 local RELOAD = Action(1, true)
 RELOAD.id = "RELOAD"
@@ -751,6 +803,7 @@ AddPrefabPostInit("bunnyman",function(inst) inst:AddTag("pickpocketable") end)
 AddPrefabPostInit("goblin",function(inst) inst:AddTag("pickpocketable") end)
 
 local mound_digcallback
+-- could use new dlc code but that wouldnt work in non dlc version
 local mound_reset=function(inst)
     print("in mound reset")
     if(inst.components.spawner)then
@@ -761,6 +814,9 @@ local mound_reset=function(inst)
     inst.components.workable:SetWorkLeft(1)
     inst.AnimState:PlayAnimation("gravedirt")
     inst.fa_digtime=nil
+    if(GLOBAL.FA_DLCACCESS)then
+        inst.components.hole.canbury = false
+    end
     inst.components.workable:SetOnFinishCallback(mound_digcallback)
 end
 
@@ -770,7 +826,9 @@ mound_digcallback=function(inst,worker)
                 
     inst.AnimState:PlayAnimation("dug")
     inst:RemoveComponent("workable")
-
+    if(GLOBAL.FA_DLCACCESS)then
+        inst.components.hole.canbury = true
+    end
     if worker then
         if worker.components.sanity then
             worker.components.sanity:DoDelta(-TUNING.SANITY_SMALL)

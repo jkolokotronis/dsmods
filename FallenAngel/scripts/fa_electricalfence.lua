@@ -109,9 +109,7 @@ FA_ElectricalFence.RemoveNode=function(node)
             v.fa_effectlist[node.GUID]:Remove()
             v.fa_effectlist[node.GUID]=nil
 		end
---yeah, no, it has no length, really?
-        local tablecount=0
-        for xx,yy in pairs(v.fa_nodelist) do tablecount=tablecount+1 end
+        local tablecount=GetTableSize(v.fa_nodelist)
 
         print("nodelist",tablecount)
 	
