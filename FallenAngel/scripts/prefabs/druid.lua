@@ -103,8 +103,6 @@ end
 local function enableL4spells()
     local r=Recipe("spell_earthquake", {Ingredient("rocks", 20), Ingredient("redgem", 5),Ingredient("papyrus", 5)},  RECIPETABS.SPELLS,{MAGIC = 2})
     r.image="book_brimstone.tex"
-    local r=Recipe("spell_", {Ingredient("rocks", 20), Ingredient("redgem", 5),Ingredient("papyrus", 5)},  RECIPETABS.SPELLS,{MAGIC = 2})
-    r.image="book_brimstone.tex"
 end
 local function enableL5spells()
     local r=Recipe("spell_heal", {Ingredient("papyrus", 5), Ingredient("honey", 5),Ingredient("spidergland",10)}, RECIPETABS.SPELLS, {MAGIC = 3})
