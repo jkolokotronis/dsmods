@@ -360,7 +360,7 @@ local function eatwonder(inst,data)
 	local eater=data.eater
 	if(eater and eater:HasTag("player"))then
 		local index=math.floor(1+(math.random() * #WONDER_EFFECTS))
-		index=2
+--		index=2
 		local effect=WONDER_EFFECTS[index]
 		if(effect)then
 			effect.fn(eater)
