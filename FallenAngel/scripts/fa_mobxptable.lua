@@ -3,6 +3,7 @@ FA_MOBXP_TABLE={
 	killerbee={default=5},
 	mosquito={default=5},
 	spider={default=7},
+	poisonspider={default=7},
 	spider_warrior={default=10},
 	frog={default=5},
 	merm={default=15},
