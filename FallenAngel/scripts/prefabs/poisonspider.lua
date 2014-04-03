@@ -34,21 +34,21 @@ local function NormalRetarget(inst)
         function(guy) 
             if inst.components.combat:CanTarget(guy)
                and not (inst.components.follower and inst.components.follower.leader == guy) then
-                return guy:HasTag("character")
+                return guy:HasTag("character") and not guy.prefab=="webber"
             end
     end)
 end
 
 local function WarriorRetarget(inst)
     return FindEntity(inst, TUNING.SPIDER_WARRIOR_TARGET_DIST, function(guy)
-		return (guy:HasTag("character") or guy:HasTag("pig"))
+		return ((guy:HasTag("character") and not guy.prefab=="webber") or guy:HasTag("pig"))
                and inst.components.combat:CanTarget(guy)
                and not (inst.components.follower and inst.components.follower.leader == guy)
 	end)
 end
 
 local function FindWarriorTargets(guy)
-	return (guy:HasTag("character") or guy:HasTag("pig"))
+	return ((guy:HasTag("character") and not guy.prefab=="webber") or guy:HasTag("pig"))
                and inst.components.combat:CanTarget(guy)
                and not (inst.components.follower and inst.components.follower.leader == guy)
 end

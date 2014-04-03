@@ -10,8 +10,9 @@ for k,name in pairs({"SpiderfieldEasy","Spiderfield","SinkholeRoom","SunkenMarsh
 			local origspider=room.contents.distributeprefabs.spiderden
 			print("orig ",room.contents.distributeprefabs.spiderden)
 			if(origspider and type(origspider)=="number")then
-				room.contents.distributeprefabs.spiderden=origspider/2
-				room.contents.distributeprefabs.poisonspiderden=origspider/2
+				print("making a spider choice",origspider/2.0)
+				room.contents.distributeprefabs.spiderden=origspider/2.0
+				room.contents.distributeprefabs.poisonspiderden=origspider/2.0
 			end
 		end
 	end)

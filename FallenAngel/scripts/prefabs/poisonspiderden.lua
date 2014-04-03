@@ -4,7 +4,7 @@ local prefabs =
     "poisonspider",
     "spider_warrior",
     "silk",
-    "spidereggsack",
+    "poisonspidereggsack",
     "spiderqueen",
 }
 
@@ -86,7 +86,7 @@ local function SetLarge(inst)
         thaw="frozen_loop_pst_large",
     }
     SetStage(inst, 3)
-    inst.components.lootdropper:SetLoot({ "silk","silk","silk","silk","silk","silk", "spidereggsack"})
+    inst.components.lootdropper:SetLoot({ "silk","silk","silk","silk","silk","silk", "poisonspidereggsack"})
 
     if inst.components.burnable then
         inst.components.burnable:SetFXLevel(4)
@@ -399,7 +399,7 @@ local function MakeSpiderDenFn(den_level)
         
         MakeSnowCovered(inst)
 
-        inst:SetPrefabName("spiderden")
+        inst:SetPrefabName("poisonspiderden")
         inst.OnEntitySleep = OnEntitySleep
         inst.OnEntityWake = OnEntityWake
         return inst

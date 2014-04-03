@@ -61,5 +61,8 @@ FA_MOBXP_TABLE={
 	beehive={default=50},
 	spiderden={default=50},
 	spiderden_2={default=100},
-	spiderden_3={default=150}
+	spiderden_3={default=150},
+	poisonspiderden={default=50},
+	poisonspiderden_2={default=100},
+	poisonspiderden_3={default=150}
 }
