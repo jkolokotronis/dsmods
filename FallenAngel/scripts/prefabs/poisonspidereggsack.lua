@@ -1,8 +1,10 @@
 require "prefabutil"
 local assets =
 {
-	Asset("ANIM", "anim/spider_egg_sac.zip"),
+    Asset("ANIM", "anim/poisonspider_egg_sac.zip"),
     Asset("SOUND", "sound/spider.fsb"),
+    Asset("ATLAS", "images/inventoryimages/poisonspider_egg_sac.xml"),
+    Asset("IMAGE", "images/inventoryimages/poisonspider_egg_sac.tex"),
 }
 
 local function ondeploy(inst, pt) 
@@ -22,7 +24,7 @@ local function fn(Sim)
     MakeInventoryPhysics(inst)
 
     inst.AnimState:SetBank("spider_egg_sac")
-    inst.AnimState:SetBuild("spider_egg_sac")
+    inst.AnimState:SetBuild("poisonspider_egg_sac")
     inst.AnimState:PlayAnimation("idle")
     
     inst:AddComponent("stackable")
@@ -36,6 +38,8 @@ local function fn(Sim)
     MakeSmallPropagator(inst)
     
     inst:AddComponent("inventoryitem")
+    inst.components.inventoryitem.imagename="poisonspider_egg_sac"
+    inst.components.inventoryitem.atlasname="images/inventoryimages/poisonspider_egg_sac.xml"
     
     inst.components.inventoryitem:SetOnPickupFn(function() inst.SoundEmitter:PlaySound("dontstarve/creatures/spider/spider_egg_sack") end)
     

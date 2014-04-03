@@ -1,7 +1,9 @@
 GLOBAL.require("map/tasks")
 GLOBAL.require("constants")
 
-print("in mod world gen")
+local TRANSLATE_TO_PREFABS = GLOBAL.require("map/forest_map").TRANSLATE_TO_PREFABS
+table.insert(TRANSLATE_TO_PREFABS["spiders"],"poisonspiderden")
+
 for k,name in pairs({"SpiderfieldEasy","Spiderfield","SinkholeRoom","SunkenMarsh","ChessForest","SpiderCity","SpiderVillage","SpiderVillageSwamp","TallbirdNests","BGCrappyForest"
 	,"BGForest","BGDeepForest","CrappyDeepForest","SpiderForest","BGGrassBurnt","BGGrass","BGMarsh","Marsh","SpiderMarsh","BGNoise","BGSavanna","BGSinkholeRoom"}) do
 	AddRoomPreInit(name, function(room)

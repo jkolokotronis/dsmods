@@ -26,6 +26,11 @@ local prefabs = {
 
 local blueprints={"tools_blueprint","magic_blueprint","town_blueprint","dress_blueprint","survival_blueprint","refine_blueprint","war_blueprint","ancient_blueprint","light_blueprint","farm_blueprint"}
 
+
+local POISON_LENGTH=10
+local POISON_DAMAGE=5
+local POISON_PERIOD=2
+
 local WONDER_EFFECTS={
 	{
 		fn=function(eater)
@@ -117,7 +122,54 @@ local WONDER_EFFECTS={
 	},
 	{
 		fn=function(eater)
+--		print("hounded")
+		 local hounded = GetWorld().components.hounded
+			if(hounded)then
+				--go through full warn phase?
+				local talk=GetString(eater.prefab, "FA_WONDER_HOUNDED")
+				print("talk",talk)
+				if(talk and eater.components.talker) then eater.components.talker:Say(talk) end
+				hounded.timetoattack=hounded.warnduration+2
+			end
+		end
+	},
+	{
+		fn=function(eater)
+			local talk=GetString(eater.prefab, "FA_WONDER_POISON")
+			if(talk and eater.components.talker) then eater.components.talker:Say(talk) end
+			local function dopoison(inst,target)
+    if(target and not target.components.health:IsDead())then
+        target.components.health:DoDelta(-POISON_DAMAGE)
+    end
+			end
+			eater.components.hunger:DoDelta(-50)
+			local inst = CreateEntity()
+      		local trans = inst.entity:AddTransform()
 
+    		local spell = inst:AddComponent("spell")
+    		inst.components.spell.spellname = "fa_poison"
+    		inst.components.spell.duration = POISON_LENGTH
+    		inst.components.spell.fn = dopoison
+    		inst.components.spell.period=POISON_PERIOD
+    		inst.components.spell.removeonfinish = true
+    		inst.components.spell.ontargetfn = function(inst,target)
+        		target.fa_poison = inst
+        		target:AddTag(inst.components.spell.spellname)
+    		end
+    		inst.components.spell.onfinishfn = function(inst)
+        		if not inst.components.spell.target then
+            		return
+        		end
+		        inst.components.spell.target.fa_poison = nil
+    		end
+    		inst.components.spell:SetTarget(eater)
+    		inst.components.spell:StartSpell()
+		end
+	},
+	{
+		fn=function(eater)
+			local talk=GetString(eater.prefab, "FA_WONDER_SPEEDBOOST")
+			if(talk and eater.components.talker) then eater.components.talker:Say(talk) end
 --			print("haste")
 			eater.components.locomotor.runspeed=eater.components.locomotor.runspeed+TUNING.WILSON_RUN_SPEED
 			eater:DoTaskInTime(240,function() eater.components.locomotor.runspeed=eater.components.locomotor.runspeed-TUNING.WILSON_RUN_SPEED end)
@@ -125,6 +177,8 @@ local WONDER_EFFECTS={
 	},
 	{
 		fn=function(eater)
+			local talk=GetString(eater.prefab, "FA_WONDER_SPEEDNERF")
+			if(talk and eater.components.talker) then eater.components.talker:Say(talk) end
 --		print("slow")
 			eater.components.locomotor.runspeed=eater.components.locomotor.runspeed-TUNING.WILSON_RUN_SPEED/2
 			eater:DoTaskInTime(240,function() eater.components.locomotor.runspeed=eater.components.locomotor.runspeed+TUNING.WILSON_RUN_SPEED/2 end)
@@ -132,23 +186,23 @@ local WONDER_EFFECTS={
 	},
 	{
 		fn=function(eater)
+			local talk=GetString(eater.prefab, "FA_WONDER_HPRESTORE")
+			if(talk and eater.components.talker) then eater.components.talker:Say(talk) end
 			eater.components.health:DoDelta(200)
 		end
 	},
 	{
 		fn=function(eater)
+			local talk=GetString(eater.prefab, "FA_WONDER_HPDAMAGE")
+			if(talk and eater.components.talker) then eater.components.talker:Say(talk) end
 			eater.components.health:DoDelta(-50)
 		end
 	},
 	{
 		fn=function(eater)
+			local talk=GetString(eater.prefab, "FA_WONDER_SLEEP")
+			if(talk and eater.components.talker) then eater.components.talker:Say(talk) end
 			eater.components.hunger:DoDelta(-50)
-		end
-	},
-	{
-		fn=function(eater)
---		print("sleep")
-
 			eater.components.locomotor:Stop()
 			eater.sg:GoToState("sleep")
 			eater.components.health:SetInvincible(true)
@@ -170,7 +224,8 @@ local WONDER_EFFECTS={
 	},
 	{
 		fn=function(eater)
---			print("gold")
+			local talk=GetString(eater.prefab, "FA_WONDER_GOLD")
+			if(talk and eater.components.talker) then eater.components.talker:Say(talk) end
 			local pt= Vector3(eater.Transform:GetWorldPosition())
 		    for i=1,10 do
 	        local drop = SpawnPrefab("goldnugget") 
@@ -184,6 +239,8 @@ local WONDER_EFFECTS={
 	},
 	{
 		fn=function(eater)
+			local talk=GetString(eater.prefab, "FA_WONDER_LS")
+			if(talk and eater.components.talker) then eater.components.talker:Say(talk) end
 			local pos=Vector3(eater.Transform:GetWorldPosition())
 			GetSeasonManager():DoLightningStrike(pos)			
 --			local lightning = SpawnPrefab("lightning")
@@ -192,27 +249,29 @@ local WONDER_EFFECTS={
 	},
 	{
 		fn=function(eater)
+			local talk=GetString(eater.prefab, "FA_WONDER_SANITYRESTORE")
+			if(talk and eater.components.talker) then eater.components.talker:Say(talk) end
 			eater.components.sanity:DoDelta(200)
 		end
 	},
 	{
 		fn=function(eater)
+			local talk=GetString(eater.prefab, "FA_WONDER_INSANITY")
+			if(talk and eater.components.talker) then eater.components.talker:Say(talk) end
 			eater.components.sanity:SetPercent(0.05)
 		end
 	},
 	{
 		fn=function(eater)
+			local talk=GetString(eater.prefab, "FA_WONDER_HUNGERRESTORE")
+			if(talk and eater.components.talker) then eater.components.talker:Say(talk) end
 			eater.components.hunger:DoDelta(200)
 		end
 	},
 	{
 		fn=function(eater)
-			eater.components.hunger:DoDelta(200)
-		end
-	},
-	{
-		fn=function(eater)
---			print("nightmare")
+			local talk=GetString(eater.prefab, "FA_WONDER_NIGHTMAREFUEL")
+			if(talk and eater.components.talker) then eater.components.talker:Say(talk) end
 			local pt= Vector3(eater.Transform:GetWorldPosition())
 		    for i=1,10 do
 	        local drop = SpawnPrefab("nightmarefuel") 
@@ -226,12 +285,15 @@ local WONDER_EFFECTS={
 	},
 	{
 		fn=function(eater)
+			local talk=GetString(eater.prefab, "FA_WONDER_NAUGHTINESS")
+			if(talk and eater.components.talker) then eater.components.talker:Say(talk) end
 			eater.components.kramped:OnNaughtyAction(30)
 		end
 	},
 	{
 		fn=function(eater)
---			print("break")
+			local talk=GetString(eater.prefab, "FA_WONDER_ITEMDAMAGE")
+			if(talk and eater.components.talker) then eater.components.talker:Say(talk) end
 			--yawn... can i merge them without breaking anything?
 			local merged=MergeMaps(eater.components.inventory.itemslots,eater.components.inventory.equipslots)
     		for k,v in pairs(merged) do
@@ -247,7 +309,8 @@ local WONDER_EFFECTS={
 	},
 	{
 		fn=function(eater)
---			print("repair")
+			local talk=GetString(eater.prefab, "FA_WONDER_ITEMREPAIR")
+			if(talk and eater.components.talker) then eater.components.talker:Say(talk) end
 			local merged=MergeMaps(eater.components.inventory.itemslots,eater.components.inventory.equipslots)
     		for k,v in pairs(merged) do
 		        if v.components.fueled then
@@ -262,7 +325,8 @@ local WONDER_EFFECTS={
 	},
 	{
 		fn=function(eater)
-			print("blueprints")
+			local talk=GetString(eater.prefab, "FA_WONDER_BLUEPRINT")
+			if(talk and eater.components.talker) then eater.components.talker:Say(talk) end
 			local bptodrop=blueprints[1+math.floor(math.random()*#blueprints)]
 			print("bp",bptodrop)
 			if(bptodrop)then
@@ -274,7 +338,8 @@ local WONDER_EFFECTS={
 	},
 	{
 		fn=function(eater)
-			print("gems!")
+			local talk=GetString(eater.prefab, "FA_WONDER_GEMS")
+			if(talk and eater.components.talker) then eater.components.talker:Say(talk) end
 			local pt= Vector3(eater.Transform:GetWorldPosition())
 			for k,v in pairs({"redgem","bluegem","purplegem"}) do
 				local drop = SpawnPrefab(v) 
@@ -295,7 +360,7 @@ local function eatwonder(inst,data)
 	local eater=data.eater
 	if(eater and eater:HasTag("player"))then
 		local index=math.floor(1+(math.random() * #WONDER_EFFECTS))
---		index=1
+		index=2
 		local effect=WONDER_EFFECTS[index]
 		if(effect)then
 			effect.fn(eater)

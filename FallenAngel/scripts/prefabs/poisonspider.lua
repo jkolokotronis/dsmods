@@ -25,6 +25,10 @@ local prefabs =
     "silk",
 }
 
+local POISON_LENGTH=10
+local POISON_DAMAGE=5
+local POISON_PERIOD=2
+
 local function NormalRetarget(inst)
     local targetDist = TUNING.SPIDER_TARGET_DIST
     if inst.components.knownlocations:GetLocation("investigate") then
@@ -34,21 +38,21 @@ local function NormalRetarget(inst)
         function(guy) 
             if inst.components.combat:CanTarget(guy)
                and not (inst.components.follower and inst.components.follower.leader == guy) then
-                return guy:HasTag("character") and not guy.prefab=="webber"
+                return guy:HasTag("character") and  guy.prefab~="webber"
             end
     end)
 end
 
 local function WarriorRetarget(inst)
     return FindEntity(inst, TUNING.SPIDER_WARRIOR_TARGET_DIST, function(guy)
-		return ((guy:HasTag("character") and not guy.prefab=="webber") or guy:HasTag("pig"))
+		return ((guy:HasTag("character") and  guy.prefab~="webber") or guy:HasTag("pig"))
                and inst.components.combat:CanTarget(guy)
                and not (inst.components.follower and inst.components.follower.leader == guy)
 	end)
 end
 
 local function FindWarriorTargets(guy)
-	return ((guy:HasTag("character") and not guy.prefab=="webber") or guy:HasTag("pig"))
+	return ((guy:HasTag("character") and  guy.prefab~="webber") or guy:HasTag("pig"))
                and inst.components.combat:CanTarget(guy)
                and not (inst.components.follower and inst.components.follower.leader == guy)
 end
@@ -90,6 +94,46 @@ local function StartDay(inst)
 	end
 end
 
+
+local function dopoison(inst,target)
+    if(target and not target.components.health:IsDead())then
+        --bypassing armor - but this also bypasses potential retarget
+        print("poison from",inst.caster)
+        target.components.health:DoDelta(-POISON_DAMAGE)
+--            v.components.combat:GetAttacked(inst.fa_icestorm_caster, ICESTORM_DAMAGE, nil)
+       
+    end
+end
+
+
+local function OnAttackOther(spider, data)
+  local target=data.target
+  if(target and target.components.health and target.components.combat and not target.components.health:IsDead())then
+      local inst = CreateEntity()
+      local caster=spider
+      local trans = inst.entity:AddTransform()
+
+    local spell = inst:AddComponent("spell")
+    inst.caster=caster
+    inst.components.spell.spellname = "fa_poison"
+    inst.components.spell.duration = POISON_LENGTH
+    inst.components.spell.fn = dopoison
+    inst.components.spell.period=POISON_PERIOD
+    inst.components.spell.removeonfinish = true
+    inst.components.spell.ontargetfn = function(inst,target)
+        target.fa_poison = inst
+        target:AddTag(inst.components.spell.spellname)
+    end
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+        inst.components.spell.target.fa_poison = nil
+    end
+    inst.components.spell:SetTarget(target)
+    inst.components.spell:StartSpell()
+  end
+end
 
 local function OnEntitySleep(inst)
 	if GetClock():IsDay() then
@@ -230,6 +274,9 @@ local function create_spider(Sim)
 
     inst.components.locomotor.walkspeed = TUNING.SPIDER_WALK_SPEED
     inst.components.locomotor.runspeed = TUNING.SPIDER_RUN_SPEED
+
+
+    inst:ListenForEvent("onattackother", OnAttackOther)
 
     return inst
 end
