@@ -249,9 +249,9 @@ local WONDER_EFFECTS={
 	},
 	{
 		fn=function(eater)
+			eater.components.sanity:DoDelta(200)
 			local talk=GetString(eater.prefab, "FA_WONDER_SANITYRESTORE")
 			if(talk and eater.components.talker) then eater.components.talker:Say(talk) end
-			eater.components.sanity:DoDelta(200)
 		end
 	},
 	{
@@ -263,9 +263,9 @@ local WONDER_EFFECTS={
 	},
 	{
 		fn=function(eater)
+			eater.components.hunger:DoDelta(200)
 			local talk=GetString(eater.prefab, "FA_WONDER_HUNGERRESTORE")
 			if(talk and eater.components.talker) then eater.components.talker:Say(talk) end
-			eater.components.hunger:DoDelta(200)
 		end
 	},
 	{
