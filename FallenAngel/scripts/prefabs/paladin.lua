@@ -45,21 +45,73 @@ local LAY_ON_HANDS_HP=250
 local LAY_ON_HANDS_COOLDOWN=960
 local DIVINE_DEFENDER_COOLDOWN=480*4
 local DIVINE_DEFENDER_DURATION=15
+local TURN_UNDEAD_COOLDOWN=480
+local TURN_UNDEAD_COOLDOWN_MK2=360
+local TURN_UNDEAD_COOLDOWN_MK3=300
+local TURN_UNDEAD_INSTA_CHANCE=0.2
+local TURN_UNDEAD_RUN_CHANCE=0.7
+local TURN_UNDEAD_DURATION=60
+local TURN_UNDEAD_RANGE=15
 
 
 local onloadfn = function(inst, data)
     inst.lohcooldowntimer=data.lohcooldowntimer
     inst.ddcooldowntimer=data.ddcooldowntimer
     inst.fa_playername=data.fa_playername
+    inst.turncooldowntimer=data.turncooldowntimer
 end
 
 local onsavefn = function(inst, data)
     data.lohcooldowntimer=inst.lohCooldownButton.cooldowntimer
     data.ddcooldowntimer=inst.divinedefenderCooldownButton.cooldowntimer
     data.fa_playername=inst.fa_playername
+    data.turncooldowntimer=inst.turnCooldownButton.cooldowntimer
 end
 
 
+local function onturnundead(clr)
+    local pos=Vector3(clr.Transform:GetWorldPosition())
+        local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, TURN_UNDEAD_RANGE)
+        for k,v in pairs(ents) do
+            if (not v:HasTag("player") and not v:HasTag("pet") and v.components.combat and not v:IsInLimbo() and v:HasTag("undead")) then
+
+                local rng=math.random()
+                print("turn undead rng",rng)
+                if(rng<TURN_UNDEAD_INSTA_CHANCE)then
+                    --i need instakill but i also need to get this thing to recognize the killer... 2^31-1 or 2^63-1? if he's invuln he wont die but w/e
+                    v.components.combat:GetAttacked(clr,999999)
+                elseif(rng<TURN_UNDEAD_RUN_CHANCE)then
+
+                local inst = CreateEntity()
+                inst.entity:AddTransform()
+
+                local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_turnundead"
+    inst.components.spell.duration = TURN_UNDEAD_DURATION
+    inst.components.spell.ontargetfn = function(inst,target)
+        target.fa_turnundead = inst
+        target:AddTag(inst.components.spell.spellname)
+    end
+    inst.components.spell.onstartfn = function() end
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+        inst.components.spell.target.fa_turnundead = nil
+    end
+    inst.components.spell.fn = function(inst, target, variables) end
+    inst.components.spell.resumefn = function() end
+    inst.components.spell.removeonfinish = true
+
+                inst.components.spell:SetTarget(v)
+                inst.components.spell:StartSpell()
+
+                end
+            end
+        end
+        return true
+end
+    
 
 local fn = function(inst)
     
@@ -123,6 +175,24 @@ local fn = function(inst)
         end
         local htbtn=cnt:AddChild(inst.divinedefenderCooldownButton)
         htbtn:SetPosition(0,0,0)
+
+
+        inst.turnCooldownButton=CooldownButton(class.owner)
+        inst.turnCooldownButton:SetText("Turn")
+        inst.turnCooldownButton:SetOnClick(function() return onturnundead(inst) end)
+        local turncooldown=TURN_UNDEAD_COOLDOWN
+        if(inst.components.xplevel.level>=18)then
+            turncooldown=TURN_UNDEAD_COOLDOWN_MK3
+        elseif(inst.components.xplevel.level>=9)then
+            turncooldown=TURN_UNDEAD_COOLDOWN_MK2
+        end
+        inst.turnCooldownButton:SetCooldown(turncooldown)
+        if(inst.turncooldowntimer and inst.turncooldowntimer>0)then
+             inst.turnCooldownButton:ForceCooldown(inst.turncooldowntimer)
+        end
+        local htbtn=class:AddChild(inst.turnCooldownButton)
+        htbtn:SetPosition(100,0,0)
+        htbtn:Show()        
 
     end
     local prefabs1 = {
