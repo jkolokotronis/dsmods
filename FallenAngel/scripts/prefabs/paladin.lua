@@ -104,6 +104,12 @@ local function onxploaded(inst)
     if(level>=3)then
         inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+0.1
     end
+    if(level>=4)then
+        inst.fa_undeadcombatmultiplier=inst.fa_undeadcombatmultiplier+0.1
+    end
+    if(level>=7)then
+        inst.fa_undeadcombatmultiplier=inst.fa_undeadcombatmultiplier+0.1
+    end
     if(level>=8)then
          inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+0.1
     end
@@ -113,17 +119,26 @@ local function onxploaded(inst)
     if(level>=12)then
         inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+0.1
     end
+    if(level>=13)then
+        inst.fa_undeadcombatmultiplier=inst.fa_undeadcombatmultiplier+0.1
+    end
     if(level>=14)then
         enableL2spells()
     end
     if(level>=15)then
          inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+0.1
     end
+    if(level>=16)then
+        inst.fa_undeadcombatmultiplier=inst.fa_undeadcombatmultiplier+0.1
+    end
     if(level>=18)then
         enableL3spells()
     end
     if(level>=19)then
          inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+0.1
+    end
+    if(level>=20)then
+        inst.fa_undeadcombatmultiplier=inst.fa_undeadcombatmultiplier+0.1
     end
     if(level>1)then
         inst.components.health.maxhealth= inst.components.health.maxhealth+HEALTH_PER_LEVEL*(level-1)
@@ -139,6 +154,10 @@ local function onlevelup(inst,data)
 
     if(level==3)then
         inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+0.1
+    elseif(level==4)then
+        inst.fa_undeadcombatmultiplier=inst.fa_undeadcombatmultiplier+0.1
+    elseif(level==7)then
+        inst.fa_undeadcombatmultiplier=inst.fa_undeadcombatmultiplier+0.1
     elseif(level==5)then
         inst.lohCooldownButton:Show()
     elseif(level==8)then
@@ -149,14 +168,19 @@ local function onlevelup(inst,data)
         enableL1spells()
     elseif(level==12)then
          inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+0.1
+    elseif(level==13)then
+        inst.fa_undeadcombatmultiplier=inst.fa_undeadcombatmultiplier+0.1
     elseif(level==14)then
         enableL2spells()
     elseif(level==15)then
          inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+0.1
+    elseif(level==16)then
+        inst.fa_undeadcombatmultiplier=inst.fa_undeadcombatmultiplier+0.1
     elseif(level==19)then
         enableL3spells()
     elseif(level==20)then
         inst.divinedefenderCooldownButton:Show()
+        inst.fa_undeadcombatmultiplier=inst.fa_undeadcombatmultiplier+0.1
     end
 end
 
@@ -214,6 +238,7 @@ local fn = function(inst)
 
     -- todo: Add an example special power here.
     inst.components.combat.damagemultiplier=1
+    inst.fa_undeadcombatmultiplier=1
     inst.components.health:SetMaxHealth(250)
     inst.components.sanity:SetMax(200)
     inst.components.hunger:SetMax(150)
@@ -229,6 +254,19 @@ local fn = function(inst)
     inst:AddComponent("reader")
     inst.buff_timers={}
     RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}
+
+    local combatmod=inst.components.combat
+    local calcdamage_old=inst.components.combat.CalcDamage
+
+    function combatmod:CalcDamage (target, weapon, multiplier)
+        local old=calcdamage_old(self,target,weapon,multiplier)
+        if(weapon and not weapon.components.weapon:CanRangedAttack() and target and target:HasTag("undead"))then
+--        if(target and target:HasTag("undead"))then
+            old=old*inst.fa_undeadcombatmultiplier
+            print("undead multiplier",old)
+        end
+        return old
+    end
 
     inst.newControlsInit = function (cnt)
 
