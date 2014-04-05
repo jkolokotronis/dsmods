@@ -2,9 +2,9 @@ local CooldownButton = require "widgets/cooldownbutton"
 
 local BB_RADIUS=8
 local BB_DAMAGE=30
-local DM_DAMAGE_MULT=2.0
+local DM_DAMAGE_MULT_BOOST=1.0
 local DM_HP_BOOST=100
-local DM_MS_BOOST=1.25
+local DM_MS_BOOST=0.25*TUNING.WILSON_RUN_SPEED
 
 
 function InitBuffBar(inst,buff,timer,class,name)
@@ -24,28 +24,23 @@ end
 
 function DivineMightSpellStart( reader,timer)
     if(timer==nil or timer<=0)then return false end
-    
-    
-    reader.origDamageMultiplier=reader.origDamageMultiplier or reader.components.combat.damagemultiplier
-    reader.origMaxHealth=reader.origMaxHealth or reader.components.health.maxhealth
-    print(reader.origMaxHealth+DM_HP_BOOST)
-    reader.components.health.maxhealth=reader.origMaxHealth+DM_HP_BOOST
-    reader.components.health.currenthealth=reader.components.health.currenthealth+DM_HP_BOOST
-    reader.components.health:DoDelta(0)
-	reader.components.health:SetMaxHealth(reader.origMaxHealth+DM_HP_BOOST)
-	reader.components.locomotor.runspeed=TUNING.WILSON_RUN_SPEED*DM_MS_BOOST
-    reader.components.combat.damagemultiplier=DM_DAMAGE_MULT
---    inst.components.health:SetMaxHealth(300)
     if(reader.divineMightTimer) then
         reader.divineMightTimer:Cancel()
     end
+    
+    reader.components.health.maxhealth=reader.components.health.maxhealth+DM_HP_BOOST
+    reader.components.health.currenthealth=reader.components.health.currenthealth+DM_HP_BOOST
+    reader.components.health:DoDelta(0)
+--	reader.components.health:SetMaxHealth(reader.origMaxHealth+DM_HP_BOOST)
+	reader.components.locomotor.runspeed=reader.components.locomotor.runspeed+DM_MS_BOOST
+    reader.components.combat.damagemultiplier=DM_DAMAGE_MULT_BOOST+reader.components.combat.damagemultiplier
+    
     reader.divineMightTimer=reader:DoTaskInTime(timer, function() 
         reader.divineMightTimer=nil 
-        print(reader.origMaxHealth)
-        reader.components.combat.damagemultiplier=reader.origDamageMultiplier
+        reader.components.combat.damagemultiplier=reader.components.combat.damagemultiplier-DM_DAMAGE_MULT_BOOST
         reader.components.health.maxhealth=reader.components.health.maxhealth-DM_HP_BOOST
         reader.components.health:DoDelta(0)
-		reader.components.locomotor.runspeed=TUNING.WILSON_RUN_SPEED
+		reader.components.locomotor.runspeed=reader.components.locomotor.runspeed-DM_MS_BOOST
 		end)
     return true
 end

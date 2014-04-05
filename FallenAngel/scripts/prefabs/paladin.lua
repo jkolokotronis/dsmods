@@ -46,19 +46,34 @@ local LAY_ON_HANDS_COOLDOWN=960
 local DIVINE_DEFENDER_COOLDOWN=480*4
 local DIVINE_DEFENDER_DURATION=15
 local TURN_UNDEAD_COOLDOWN=480
-local TURN_UNDEAD_COOLDOWN_MK2=360
-local TURN_UNDEAD_COOLDOWN_MK3=300
 local TURN_UNDEAD_INSTA_CHANCE=0.2
 local TURN_UNDEAD_RUN_CHANCE=0.7
 local TURN_UNDEAD_DURATION=60
 local TURN_UNDEAD_RANGE=15
+local HEALTH_PER_LEVEL=5
+local SANITY_PER_LEVEL=1
 
+
+
+STRINGS.NAMES.SPELL_LIGHT = "Banish Darkness"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_LIGHT = "Banish Darkness"
+STRINGS.RECIPE_DESC.SPELL_LIGHT = "Banish Darkness"
+
+STRINGS.NAMES.SPELL_HEAL = "Heal"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_HEAL = "Heal"
+STRINGS.RECIPE_DESC.SPELL_HEAL = "Heal"
+
+STRINGS.NAMES.SPELL_DIVINEMIGHT = "Divine Might"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_DIVINEMIGHT = "Divine Might"
+STRINGS.RECIPE_DESC.SPELL_DIVINEMIGHT = "Divine Might"
 
 local onloadfn = function(inst, data)
     inst.lohcooldowntimer=data.lohcooldowntimer
     inst.ddcooldowntimer=data.ddcooldowntimer
     inst.fa_playername=data.fa_playername
     inst.turncooldowntimer=data.turncooldowntimer
+    inst.lightBuffUp=data.lightBuffUp
+    inst.dmBuffUp=data.dmBuffUp
 end
 
 local onsavefn = function(inst, data)
@@ -66,8 +81,84 @@ local onsavefn = function(inst, data)
     data.ddcooldowntimer=inst.divinedefenderCooldownButton.cooldowntimer
     data.fa_playername=inst.fa_playername
     data.turncooldowntimer=inst.turnCooldownButton.cooldowntimer
+    data.lightBuffUp=inst.buff_timers["light"].cooldowntimer
+    data.dmBuffUp=inst.buff_timers["divinemight"].cooldowntimer
 end
 
+local function enableL1spells()
+    local r=Recipe("spell_divinemight", {Ingredient("meat", 5), Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, RECIPETABS.SPELLS, {SCIENCE = 0, MAGIC = 0, ANCIENT = 0})
+    r.image="book_brimstone.tex"
+end
+local function enableL2spells()
+    local r=Recipe("spell_light", {Ingredient("fireflies", 2),Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, RECIPETABS.SPELLS, {MAGIC = 2})
+    r.image="book_gardening.tex" 
+end
+local function enableL3spells()
+    local r=Recipe("spell_heal", {Ingredient("spidergland",5),Ingredient("cutgrass", 5), Ingredient("rocks", 15)}, RECIPETABS.SPELLS, {MAGIC = 3})
+    r.image="book_gardening.tex"
+end
+
+
+local function onxploaded(inst)
+    local level=inst.components.xplevel.level
+    if(level>=3)then
+        inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+0.1
+    end
+    if(level>=8)then
+         inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+0.1
+    end
+    if(level>=11)then
+        enableL1spells()
+    end
+    if(level>=12)then
+        inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+0.1
+    end
+    if(level>=14)then
+        enableL2spells()
+    end
+    if(level>=15)then
+         inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+0.1
+    end
+    if(level>=18)then
+        enableL3spells()
+    end
+    if(level>=19)then
+         inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+0.1
+    end
+    if(level>1)then
+        inst.components.health.maxhealth= inst.components.health.maxhealth+HEALTH_PER_LEVEL*(level-1)
+        inst.components.sanity.max=inst.components.sanity.max+SANITY_PER_LEVEL*(level-1)
+    end
+end
+
+local function onlevelup(inst,data)
+    local level=data.level
+
+    inst.components.health.maxhealth= inst.components.health.maxhealth+HEALTH_PER_LEVEL
+    inst.components.sanity.max=inst.components.sanity.max+SANITY_PER_LEVEL
+
+    if(level==3)then
+        inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+0.1
+    elseif(level==5)then
+        inst.lohCooldownButton:Show()
+    elseif(level==8)then
+        inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+0.1
+    elseif(level==9)then
+        inst.turnCooldownButton:Show()
+    elseif(level==11)then
+        enableL1spells()
+    elseif(level==12)then
+         inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+0.1
+    elseif(level==14)then
+        enableL2spells()
+    elseif(level==15)then
+         inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+0.1
+    elseif(level==19)then
+        enableL3spells()
+    elseif(level==20)then
+        inst.divinedefenderCooldownButton:Show()
+    end
+end
 
 local function onturnundead(clr)
     local pos=Vector3(clr.Transform:GetWorldPosition())
@@ -122,7 +213,7 @@ local fn = function(inst)
     inst.MiniMapEntity:SetIcon( "wilson.png" )
 
     -- todo: Add an example special power here.
-    inst.components.combat.damagemultiplier=1.5
+    inst.components.combat.damagemultiplier=1
     inst.components.health:SetMaxHealth(250)
     inst.components.sanity:SetMax(200)
     inst.components.hunger:SetMax(150)
@@ -132,6 +223,12 @@ local fn = function(inst)
     inst.OnLoad = onloadfn
     inst.OnSave = onsavefn
 
+    inst:ListenForEvent("xplevel_loaded",onxploaded)
+    inst:ListenForEvent("xplevelup", onlevelup)
+
+    inst:AddComponent("reader")
+    inst.buff_timers={}
+    RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}
 
     inst.newControlsInit = function (cnt)
 
@@ -147,6 +244,10 @@ local fn = function(inst)
         end
         local htbtn=cnt:AddChild(inst.lohCooldownButton)
         htbtn:SetPosition(-100,0,0)
+        htbtn:Show()         
+        if(inst.components.xplevel.level<5)then
+            inst.lohCooldownButton:Hide()
+        end
 
         inst.divinedefenderCooldownButton=CooldownButton(cnt.owner)
         inst.divinedefenderCooldownButton:SetText("Defense")
@@ -174,26 +275,35 @@ local fn = function(inst)
              inst.components.health.invincible=false
         end
         local htbtn=cnt:AddChild(inst.divinedefenderCooldownButton)
-        htbtn:SetPosition(0,0,0)
+        htbtn:SetPosition(0,0,0) 
+        htbtn:Show()         
+        if(inst.components.xplevel.level<20)then
+            inst.divinedefenderCooldownButton:Hide()
+        end
 
 
-        inst.turnCooldownButton=CooldownButton(class.owner)
+        inst.turnCooldownButton=CooldownButton(cnt.owner)
         inst.turnCooldownButton:SetText("Turn")
         inst.turnCooldownButton:SetOnClick(function() return onturnundead(inst) end)
         local turncooldown=TURN_UNDEAD_COOLDOWN
-        if(inst.components.xplevel.level>=18)then
-            turncooldown=TURN_UNDEAD_COOLDOWN_MK3
-        elseif(inst.components.xplevel.level>=9)then
-            turncooldown=TURN_UNDEAD_COOLDOWN_MK2
-        end
         inst.turnCooldownButton:SetCooldown(turncooldown)
         if(inst.turncooldowntimer and inst.turncooldowntimer>0)then
              inst.turnCooldownButton:ForceCooldown(inst.turncooldowntimer)
         end
-        local htbtn=class:AddChild(inst.turnCooldownButton)
+        local htbtn=cnt:AddChild(inst.turnCooldownButton)
         htbtn:SetPosition(100,0,0)
-        htbtn:Show()        
+        htbtn:Show()         
+        if(inst.components.xplevel.level<9)then
+            inst.turnCooldownButton:Hide()
+        end
 
+        local btn=InitBuffBar(inst,"light",inst.lightBuffUp,cnt,"light")
+        btn:SetPosition(200,0,0)
+        LightSpellStart(inst,inst.lightBuffUp )
+        local btn=InitBuffBar(inst,"divinemight",inst.dmBuffUp,cnt,"DM")
+        btn:SetPosition(300,0,0)
+        DivineMightSpellStart(inst,inst.dmBuffUp )
+        
     end
     local prefabs1 = {
         "holysword",
