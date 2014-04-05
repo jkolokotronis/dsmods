@@ -218,10 +218,13 @@ local function onlevelup(inst,data)
         enableL2spells()
     elseif(level==9)then
         enableL3spells()
+        inst.turnCooldownButton:SetCooldown(TURN_UNDEAD_COOLDOWN_MK2)
     elseif(level==11)then
         enableL4spells()
     elseif(level==14)then
         enableL5spells()
+    elseif(level==18)then
+        inst.turnCooldownButton:SetCooldown(TURN_UNDEAD_COOLDOWN_MK3)
     elseif(level==20)then
         addLightAura(inst)
     end

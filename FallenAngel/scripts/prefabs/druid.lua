@@ -157,7 +157,7 @@ end
 
 local function oneat(inst,data)
     local food=data.food
-    if(food.components.edible.foodtype == "VEGGIE")then
+    if(inst.components.xplevel.level>=18 and food.components.edible.foodtype == "VEGGIE")then
         -- it already did it once... there's prob a better way
         if food.components.edible.healthvalue > 0 or not inst.components.eater.strongstomach then
             inst.components.health:DoDelta(food.components.edible:GetHealth(inst), nil, food.prefab)

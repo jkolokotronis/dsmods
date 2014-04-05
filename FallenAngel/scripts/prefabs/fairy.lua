@@ -29,7 +29,7 @@ local function ShouldWakeUp(inst)
 end
 
 local function ShouldSleep(inst)
-    return not GetClock():IsDay()
+    return not GetClock():IsDay() and not GetClock():IsDusk()
     and not (inst.components.combat and inst.components.combat.target)
     and not (inst.components.burnable and inst.components.burnable:IsBurning() )
 end
