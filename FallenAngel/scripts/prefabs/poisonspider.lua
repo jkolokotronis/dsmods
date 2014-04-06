@@ -100,7 +100,7 @@ local function dopoison(inst,target)
         --bypassing armor - but this also bypasses potential retarget
         print("poison from",inst.caster)
 --        target.components.health:DoDelta(-POISON_DAMAGE)
-            v.components.combat:GetAttacked(inst, POISON_DAMAGE, nil,FA_DAMAGETYPE.POISON)
+            target.components.combat:GetAttacked(inst, POISON_DAMAGE, nil,FA_DAMAGETYPE.POISON)
        
     end
 end

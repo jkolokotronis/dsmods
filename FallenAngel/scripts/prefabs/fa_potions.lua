@@ -140,7 +140,7 @@ local WONDER_EFFECTS={
 			local function dopoison(inst,target)
     if(target and not target.components.health:IsDead())then
 --        target.components.health:DoDelta(-POISON_DAMAGE)
-		 	v.components.combat:GetAttacked(eater, POISON_DAMAGE, nil,FA_DAMAGETYPE.POISON)
+		 	target.components.combat:GetAttacked(eater, POISON_DAMAGE, nil,FA_DAMAGETYPE.POISON)
     end
 			end
 			eater.components.hunger:DoDelta(-50)

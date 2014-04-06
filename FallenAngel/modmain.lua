@@ -1039,6 +1039,36 @@ local dapperness_getdapperness_def=Dapperness.GetDapperness
         return d
     end
 --end)
+local Inventory=require "components/inventory"
+local inventory_applydamage_def=Inventory.ApplyDamage
+function Inventory:ApplyDamage(damage, attacker, weapon,type)
+--check resistance
+    for k,v in pairs(self.equipslots) do
+        if v.components.resistance and v.components.resistance:HasResistance(attacker, weapon) then
+            return 0
+        end
+    end
+    --check specialised armor
+    for k,v in pairs(self.equipslots) do
+        if v.components.armor and v.components.armor.tags then
+            damage = v.components.armor:TakeDamage(damage, attacker, weapon,type)
+            if damage == 0 then
+                return 0
+            end
+        end
+    end
+    --check general armor
+    for k,v in pairs(self.equipslots) do
+        if v.components.armor then
+            damage = v.components.armor:TakeDamage(damage, attacker, weapon,type)
+            if damage == 0 then
+                return 0
+            end
+        end
+    end
+    
+    return damage
+end
 
 local Armor=require "components/armor"
 local armor_takedamage_def=Armor.TakeDamage
@@ -1109,8 +1139,8 @@ function Combat:GetAttacked(attacker, damage, weapon,element)
         end
         if METRICS_ENABLED and GetPlayer() == self.inst then
             local prefab = (attacker and (attacker.prefab or attacker.inst.prefab)) or "NIL"
-            ProfileStatsAdd("hitsby_"..prefab,math.floor(damage))
-            FightStat_AttackedBy(attacker,damage,init_damage-damage)
+            GLOBAL.ProfileStatsAdd("hitsby_"..prefab,math.floor(damage))
+            GLOBAL.FightStat_AttackedBy(attacker,damage,init_damage-damage)
         end
         if(damagetype)then
             local res=self.inst.components.health.fa_resistances[damagetype]
@@ -1128,16 +1158,16 @@ function Combat:GetAttacked(attacker, damage, weapon,element)
                 end
 
                 if METRICS_ENABLED and attacker and attacker == GetPlayer() then
-                    ProfileStatsAdd("kill_"..self.inst.prefab)
-                    FightStat_AddKill(self.inst,damage,weapon)
+                    GLOBAL.ProfileStatsAdd("kill_"..self.inst.prefab)
+                    GLOBAL.FightStat_AddKill(self.inst,damage,weapon)
                 end
                 if METRICS_ENABLED and attacker and attacker.components.follower and attacker.components.follower.leader == GetPlayer() then
-                    ProfileStatsAdd("kill_by_minion"..self.inst.prefab)
-                    FightStat_AddKillByFollower(self.inst,damage,weapon)
+                    GLOBAL.ProfileStatsAdd("kill_by_minion"..self.inst.prefab)
+                    GLOBAL.FightStat_AddKillByFollower(self.inst,damage,weapon)
                 end
                 if METRICS_ENABLED and attacker and attacker.components.mine then
-                    ProfileStatsAdd("kill_by_trap_"..self.inst.prefab)
-                    FightStat_AddKillByMine(self.inst,damage)
+                    GLOBAL.ProfileStatsAdd("kill_by_trap_"..self.inst.prefab)
+                    GLOBAL.FightStat_AddKillByMine(self.inst,damage)
                 end
                 
                 if self.onkilledbyother then
@@ -1181,6 +1211,37 @@ function Combat:GetAttacked(attacker, damage, weapon,element)
     end
     
     return not blocked
+end
+
+local FIRE_TIMESTART = 1.0
+local Health=require "components/health"
+
+function Health:DoFireDamage(amount1, doer)
+    if not self.invincible  then
+        if not self.takingfiredamage then
+            self.takingfiredamage = true
+            self.takingfiredamagestarttime = GLOBAL.GetTime()
+            self.inst:StartUpdatingComponent(self)
+            self.inst:PushEvent("startfiredamage")
+            GLOBAL.ProfileStatsAdd("onfire")
+        end
+        
+        local time = GLOBAL.GetTime()
+        self.lastfiredamagetime = time
+        local amount=amount1
+
+        if(self.fa_resistances[GLOBAL.FA_DAMAGETYPE.FIRE])then
+            self.fire_damage_scale=self.fa_resistances[GLOBAL.FA_DAMAGETYPE.FIRE]
+        end
+        if(self.inst and self.inst.components and self.inst.components.inventory)then
+            amount = self.inst.components.inventory:ApplyDamage(amount, doer,nil,GLOBAL.FA_DAMAGETYPE.FIRE)
+        end
+        
+        if time - self.takingfiredamagestarttime > FIRE_TIMESTART and amount ~= 0 then
+            self:DoDelta(-amount*self.fire_damage_scale, false, "fire")
+            self.inst:PushEvent("firedamage")       
+        end
+    end
 end
 
 local function onFishingCollect(inst,data)
