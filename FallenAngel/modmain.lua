@@ -1059,7 +1059,7 @@ function Armor:TakeDamage(damage_amount, attacker, weapon,element)
                 local leftover = damage_amount - absorbed
                 --note: absorb % can be negative, in which case you are taking more damage - which is fine, but it shouldnt repair your gear
                 --TODO should absorbing elemental damage damage the equipment?
-                if(absorbed>0)then
+                if(leftover>0)then
                     self:SetCondition(self.condition - absorbed)
                     if self.ontakedamage then
                         self.ontakedamage(self.inst, damage_amount, absorbed, leftover)
