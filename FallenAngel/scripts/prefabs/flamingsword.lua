@@ -27,7 +27,7 @@ end
 local function onattack(inst, attacker, target)
     if(target.components.health:IsInvincible() == false and target.components.burnable and not target.components.fueled and math.random()<=inst.procRate)then
         target.components.burnable:Ignite()
-        target.components.combat:GetAttacked(attacker, FLAMINGSWORD_FIRE_PROC, nil)
+        target.components.combat:GetAttacked(attacker, FLAMINGSWORD_FIRE_PROC, nil,FA_DAMAGETYPE.FIRE)
     end
 end
 

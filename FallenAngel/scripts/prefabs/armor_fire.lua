@@ -62,6 +62,11 @@ local function fn()
     inst.components.inventoryitem.imagename="firearmor"
     
     inst:AddComponent("armor")
+    inst.components.armor.fa_resistances={}
+    inst.components.armor.fa_resistances[FA_DAMAGETYPE.FIRE]=0.8
+
+    inst:AddComponent("heater")
+    inst.components.heater.equippedheat = 10
     
     inst:AddComponent("equippable")
     inst.components.equippable.equipslot = EQUIPSLOTS.BODY

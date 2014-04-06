@@ -99,8 +99,8 @@ local function dopoison(inst,target)
     if(target and not target.components.health:IsDead())then
         --bypassing armor - but this also bypasses potential retarget
         print("poison from",inst.caster)
-        target.components.health:DoDelta(-POISON_DAMAGE)
---            v.components.combat:GetAttacked(inst.fa_icestorm_caster, ICESTORM_DAMAGE, nil)
+--        target.components.health:DoDelta(-POISON_DAMAGE)
+            v.components.combat:GetAttacked(inst, POISON_DAMAGE, nil,FA_DAMAGETYPE.POISON)
        
     end
 end
@@ -217,7 +217,8 @@ local function create_common(Sim)
     
     ------------------
     inst:AddComponent("health")
-
+    inst.components.health.fa_resistances={}
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.9
     ------------------
     
     inst:AddComponent("combat")

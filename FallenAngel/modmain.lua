@@ -16,6 +16,7 @@ require "fa_electricalfence"
 require "fa_levelxptable"
 require "fa_stealthdetectiontable"
 require "behaviours/panic"
+require "fa_constants"
 local FA_CharRenameScreen=require "screens/fa_charrenamescreen"
 --
 local Ingredient = GLOBAL.Ingredient
@@ -1010,10 +1011,9 @@ AddPrefabPostInit("ghost",function(inst)
 end)
 
 AddClassPostConstruct("brains/ghostbrain",function(class)
-    print("ghostbrainpostinit")
+    
     local old_onstart=class.OnStart
     function class:OnStart()
-        print("onstart")
         old_onstart(class)
         local newnodes={GLOBAL.WhileNode( function() print("turning?",self.inst.fa_turnundead) return self.inst.fa_turnundead~=nil end, "Turning", GLOBAL.Panic(self.inst))}
         local root=self.bt.root
@@ -1027,19 +1027,161 @@ AddClassPostConstruct("brains/ghostbrain",function(class)
     end
 end)
 
-AddComponentPostInit("dapperness", function(component,inst) 
-    function component:GetDapperness(owner)
-         local d=self.dapperness or 0
-        if self.dapperfn then
-            d=self.dapperfn(self.inst,owner)
-        end
+local Dapperness=require "components/dapperness"
+local dapperness_getdapperness_def=Dapperness.GetDapperness
+--AddComponentPostInit("dapperness", function(component,inst) 
+    function Dapperness:GetDapperness(owner)
+        local d=dapperness_getdapperness_def(self,owner)
         if(owner and owner:HasTag("player") and owner.prefab=="cleric" and d<0)then
           --  print("got in dapperness nerf")
             d=d*2
         end
         return d
     end
+--end)
+
+local Armor=require "components/armor"
+local armor_takedamage_def=Armor.TakeDamage
+function Armor:TakeDamage(damage_amount, attacker, weapon,element)
+        --dealing with elemental damage ONLY, as of now can't have both phys and ele damage at once, since damage_amount is just one
+        local damagetype=element
+        if(not damagetype and weapon and weapon.components.weapon and weapon.components.weapon.fa_damagetype) then
+            damagetype=weapon.components.weapon.fa_damagetype
+        elseif(attacker and attacker.fa_damagetype)then
+            damagetype=attacker.fa_damagetype
+        end
+        print("take damage from",damagetype)
+        if(damagetype)then
+            --ele dmg, ignore default behavior altogether
+            if(self.fa_resistances and self.fa_resistances[damagetype] and self.fa_resistances[damagetype]~=0)then
+                local absorbed = damage_amount * self.fa_resistances[damagetype];
+                absorbed = math.floor(math.min(absorbed, self.condition))
+                local leftover = damage_amount - absorbed
+                --note: absorb % can be negative, in which case you are taking more damage - which is fine, but it shouldnt repair your gear
+                --TODO should absorbing elemental damage damage the equipment?
+                if(absorbed>0)then
+                    self:SetCondition(self.condition - absorbed)
+                    if self.ontakedamage then
+                        self.ontakedamage(self.inst, damage_amount, absorbed, leftover)
+                    end
+                end
+                -- yes >1 will heal you now, it is fully intentional, fire elemental is getting healed by fire etc
+                return leftover
+            else
+                return damage_amount
+            end
+        else
+            --physical damage, goes through as it wouldve been
+            return armor_takedamage_def(self,damage_amount,attacker,weapon)
+        end
+   
+    end
+
+--AddComponentPostInit("armor",function(component,inst)
+AddClassPostConstruct("components/armor",function(component)
+    component.fa_resistances=component.fa_resistances or {}
 end)
+AddClassPostConstruct("components/health",function(component)
+    component.fa_resistances=component.fa_resistances or {}
+end)
+
+--TODO there's gotta be a better way... but not everything reads inventory/has armor, dodelta has no info on attack type or even a reason... 
+local Combat=require "components/combat"
+local combat_getattacked_def=Combat.GetAttacked
+function Combat:GetAttacked(attacker, damage, weapon,element)
+    --print ("ATTACKED", self.inst, attacker, damage)
+    local blocked = false
+    local player = GetPlayer()
+    local init_damage = damage
+
+    self.lastattacker = attacker
+    if self.inst.components.health and damage then   
+
+            local damagetype=element
+            if(not damagetype and weapon and weapon.components.weapon and weapon.components.weapon.fa_damagetype) then
+                damagetype=weapon.components.weapon.fa_damagetype
+            elseif(attacker and attacker.fa_damagetype)then
+                damagetype=attacker.fa_damagetype
+            end
+
+        if self.inst.components.inventory then
+            damage = self.inst.components.inventory:ApplyDamage(damage, attacker,damagetype)
+        end
+        if METRICS_ENABLED and GetPlayer() == self.inst then
+            local prefab = (attacker and (attacker.prefab or attacker.inst.prefab)) or "NIL"
+            ProfileStatsAdd("hitsby_"..prefab,math.floor(damage))
+            FightStat_AttackedBy(attacker,damage,init_damage-damage)
+        end
+        if(damagetype)then
+            local res=self.inst.components.health.fa_resistances[damagetype]
+            if(res) then damage=damage*(1-res) end
+            --now i need to deal with health mods
+        end
+            print("damage",damage)
+        --why are you so inclined to prevent healing by damage, silly klei?
+        if damage~=0 and self.inst.components.health:IsInvincible() == false then
+
+            self.inst.components.health:DoDelta(-damage, nil, attacker and attacker.prefab or "NIL")
+            if self.inst.components.health:GetPercent() <= 0 then
+                if attacker then
+                    attacker:PushEvent("killed", {victim = self.inst})
+                end
+
+                if METRICS_ENABLED and attacker and attacker == GetPlayer() then
+                    ProfileStatsAdd("kill_"..self.inst.prefab)
+                    FightStat_AddKill(self.inst,damage,weapon)
+                end
+                if METRICS_ENABLED and attacker and attacker.components.follower and attacker.components.follower.leader == GetPlayer() then
+                    ProfileStatsAdd("kill_by_minion"..self.inst.prefab)
+                    FightStat_AddKillByFollower(self.inst,damage,weapon)
+                end
+                if METRICS_ENABLED and attacker and attacker.components.mine then
+                    ProfileStatsAdd("kill_by_trap_"..self.inst.prefab)
+                    FightStat_AddKillByMine(self.inst,damage)
+                end
+                
+                if self.onkilledbyother then
+                    self.onkilledbyother(self.inst, attacker)
+                end
+            end
+        else
+            blocked = true
+        end
+    end
+    
+
+    if self.inst.SoundEmitter then
+        local hitsound = self:GetImpactSound(self.inst, weapon)
+        if hitsound then
+            self.inst.SoundEmitter:PlaySound(hitsound)
+            --print (hitsound)
+        end
+
+        if self.hurtsound then
+            self.inst.SoundEmitter:PlaySound(self.hurtsound)
+        end
+
+    end
+    
+    if not blocked then
+        self.inst:PushEvent("attacked", {attacker = attacker, damage = damage, weapon = weapon})
+    
+        if self.onhitfn then
+            self.onhitfn(self.inst, attacker, damage)
+        end
+        
+        if attacker then
+            attacker:PushEvent("onhitother", {target = self.inst, damage = damage})
+            if attacker.components.combat and attacker.components.combat.onhitotherfn then
+                attacker.components.combat.onhitotherfn(attacker, self.inst, damage)
+            end
+        end
+    else
+        self.inst:PushEvent("blocked", {attacker = attacker})
+    end
+    
+    return not blocked
+end
 
 local function onFishingCollect(inst,data)
     if(math.random()<=FISHING_MERM_SPAWN_CHANCE)then

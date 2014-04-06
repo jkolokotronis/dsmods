@@ -127,7 +127,7 @@ function firefn(inst, reader)
                     end
 
                     if(v.components.combat and not (v.components.health and v.components.health:IsDead())) then
-                        v.components.combat:GetAttacked(reader, LIGHTNING_DAMAGE, nil)
+                        v.components.combat:GetAttacked(reader, LIGHTNING_DAMAGE, nil,FA_DAMAGETYPE.ELECTRIC)
                     end
                 end
             end
@@ -313,7 +313,7 @@ function calldietyfn(inst,reader)
         for k,v in pairs(ents) do
              -- quakes shouldn't break the set dressing
                 if(v.components.combat and not v:IsInLimbo() and not (v.components.health and v.components.health:IsDead()))then
-                    v.components.combat:GetAttacked(attacker, CALL_DIETY_DAMAGE, nil)
+                    v.components.combat:GetAttacked(attacker, CALL_DIETY_DAMAGE, nil,FA_DAMAGETYPE.HOLY)
                 end
         end
      inst:DoTaskInTime(3, function() inst.SoundEmitter:KillSound("earthquake") end)

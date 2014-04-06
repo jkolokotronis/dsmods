@@ -59,6 +59,12 @@ local function fn(Sim)
     inst:AddComponent("health")
     inst.components.health:SetMaxHealth(999999) 
     inst.components.health:StartRegen(5, 5)
+
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.4
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.5
     
     inst:AddComponent("combat")
     inst.components.combat:SetRange(TUNING.EYETURRET_RANGE)

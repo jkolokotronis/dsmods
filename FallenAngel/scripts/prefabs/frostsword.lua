@@ -33,7 +33,7 @@ local function onattack(inst, attacker, target)
             target.components.burnable:Extinguish()
         end
         if target.components.freezable then
-            target.components.combat:GetAttacked(attacker, FROZENSWORD_ICE_PROC, nil)
+            target.components.combat:GetAttacked(attacker, FROZENSWORD_ICE_PROC, nil,FA_DAMAGETYPE.COLD)
             target.components.freezable:AddColdness(FROZENSWORD_COLDNESS)
             target.components.freezable:SpawnShatterFX()
             frozenSlowDebuff(target,FROZEN_DEBUFF_LENGTH)

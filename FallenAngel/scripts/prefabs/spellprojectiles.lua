@@ -12,6 +12,8 @@ local function OnHitFb(inst, owner, target)
     boom.entity:AddTransform()
     local anim=boom.entity:AddAnimState()
     anim:SetBank("fireball_hit")
+    boom:AddTag("FX")
+    boom:AddTag("NOCLICK")
     anim:SetBuild("fireball_hit")
      local pos = inst:GetPosition()
     boom.Transform:SetPosition(pos.x, pos.y, pos.z)
@@ -25,7 +27,6 @@ local function OnHit(inst, owner, target)
 end
 
 local function onthrown(inst, data)
-    inst.AnimState:SetOrientation( ANIM_ORIENTATION.OnGround )
 end
 local function common()
 	local inst = CreateEntity()
@@ -47,6 +48,7 @@ local function common()
     inst.components.projectile:SetSpeed(50)
     inst.components.projectile:SetOnHitFn(OnHit)
     inst.components.projectile:SetOnMissFn(OnHit)
+    inst.AnimState:SetOrientation( ANIM_ORIENTATION.OnGround )
     
     return inst
 end

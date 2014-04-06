@@ -69,11 +69,18 @@ local function fn()
     inst.components.inventoryitem.imagename="frostarmor"
     
     inst:AddComponent("armor")
-    inst.components.armor:InitCondition(TUNING.ARMORMARBLE, TUNING.ARMORMARBLE_ABSORPTION)
-    
+    inst.components.armor.fa_resistances={}
+    inst.components.armor.fa_resistances[FA_DAMAGETYPE.COLD]=0.8
+
     inst:AddComponent("equippable")
     inst.components.equippable.equipslot = EQUIPSLOTS.BODY
 --    inst.components.equippable.walkspeedmult = TUNING.ARMORMARBLE_SLOW
+
+--    inst:AddComponent("insulator")
+--    inst.components.insulator.insulation = TUNING.INSULATION_MED
+        inst:AddComponent("heater")
+        inst.components.heater.iscooler = true
+        inst.components.heater.equippedheat = -10
     
     inst.components.equippable:SetOnEquip( onequip )
     inst.components.equippable:SetOnUnequip( onunequip )

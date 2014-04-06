@@ -139,7 +139,8 @@ local WONDER_EFFECTS={
 			if(talk and eater.components.talker) then eater.components.talker:Say(talk) end
 			local function dopoison(inst,target)
     if(target and not target.components.health:IsDead())then
-        target.components.health:DoDelta(-POISON_DAMAGE)
+--        target.components.health:DoDelta(-POISON_DAMAGE)
+		 	v.components.combat:GetAttacked(eater, POISON_DAMAGE, nil,FA_DAMAGETYPE.POISON)
     end
 			end
 			eater.components.hunger:DoDelta(-50)

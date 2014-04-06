@@ -170,7 +170,7 @@ FA_ElectricalFence.StartTask=function()
                         local dh=math.sqrt(node:GetDistanceSqToInst(caught))*math.sin(caughtangle)
                         --phew
                         if(dh<=WALL_WIDTH)then
-                            caught.components.combat:GetAttacked(FA_ElectricalFence.caster,BLUETOTEM_DAMAGE/2, nil)
+                            caught.components.combat:GetAttacked(FA_ElectricalFence.caster,BLUETOTEM_DAMAGE/2, nil,FA_DAMAGETYPE.ELECTRIC)
                         end
                     end
                 end

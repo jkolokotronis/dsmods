@@ -54,7 +54,7 @@ local function onattackacidarrow(inst,attacker,target)
     end
     target.acidarrowcounter=ACIDARROW_LENGTH
     target.acidarrowtask=target:DoPeriodicTask(2, function(inst)
-        inst.components.combat:GetAttacked(attacker,ACIDARROW_DOT)
+        inst.components.combat:GetAttacked(attacker,ACIDARROW_DOT,nil,FA_DAMAGETYPE.ACID)
         if(inst and inst.acidarrowcounter and inst.acidarrowcounter>2)then
             inst.acidarrowcounter=inst.acidarrowcounter-2
         else
@@ -76,7 +76,7 @@ local function onattackfireball(inst, attacker, target)
                     end
 
                     if(v.components.combat and not v==target and not (v.components.health and v.components.health:IsDead())) then
-                        v.components.combat:GetAttacked(attacker, FIREBALL_DAMAGE, nil)
+                        v.components.combat:GetAttacked(attacker, FIREBALL_DAMAGE, nil,FA_DAMAGETYPE.FIRE)
                     end
                 end
             end
@@ -91,7 +91,7 @@ local pos=Vector3(target.Transform:GetWorldPosition())
             for k,v in pairs(ents) do
                 if v.components.combat and not v==target and not (v.components.health and v.components.health:IsDead()) then
                     if(v:HasTag("undead"))then
-                       v.components.combat:GetAttacked(attacker, SUNBURST_DAMAGE, nil)
+                       v.components.combat:GetAttacked(attacker, SUNBURST_DAMAGE, nil,FA_DAMAGETYPE.HOLY)
                     else
                         --that would interrupt but not stun... what is a stun? if brain:stop is mez, freeze would be mez too, locomotor.stop? brain would restart it etc
                        v.components.combat:GetAttacked(attacker, 1, nil)
@@ -147,8 +147,8 @@ local function doicestorm(inst,target)
     local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, ICESTORM_RADIUS,nil,{"player","pet","companion","INLIMBO"})
     for k,v in pairs(ents) do
         if v.components.combat and not (v.components.health and v.components.health:IsDead()) then
-            --i dont know caster here?
-            v.components.combat:GetAttacked(inst.fa_icestorm_caster, ICESTORM_DAMAGE, nil)
+            --it should have blunt component, do i want to do this twice?
+            v.components.combat:GetAttacked(inst.fa_icestorm_caster, ICESTORM_DAMAGE, nil,FA_DAMAGETYPE.COLD)
         end
     end
 end
@@ -229,6 +229,7 @@ local function magicmissile()
     inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
 --    inst.components.weapon:SetOnAttack(onattack_red)
     inst.components.weapon:SetProjectile("ice_projectile")
+    inst.components.weapon.fa_damagetype=FA_DAMAGETYPE.FORCE
     inst.components.inventoryitem.imagename="icestaff"
 
     inst.components.finiteuses:SetMaxUses(MAGICMISSLE_USES)
@@ -242,6 +243,7 @@ local function acidarrow()
     local inst = commonfn("green")
     inst:AddComponent("weapon")
     inst.components.weapon:SetDamage(ACIDARROW_DOT)
+    inst.components.weapon.fa_damagetype=FA_DAMAGETYPE.ACID
     inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
     inst.components.weapon:SetOnAttack(onattackacidarrow)
     inst.components.inventoryitem.imagename="greenstaff"
@@ -262,7 +264,7 @@ local function fireball()
     inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
     inst.components.weapon:SetOnAttack(onattackfireball)
     inst.components.weapon:SetProjectile("fireballprojectile")
-
+inst.components.weapon.fa_damagetype=FA_DAMAGETYPE.FIRE
     inst.components.finiteuses:SetMaxUses(FIREBALL_USES)
     inst.components.finiteuses:SetUses(FIREBALL_USES)
 

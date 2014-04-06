@@ -27,7 +27,7 @@ end
 
 local function onattack(inst, attacker, target)
     if(target:HasTag("undead") and target.components.combat ) then
-          target.components.combat:GetAttacked(attacker, UBSWORD_UNDEAD_DAMAGE_T1, nil)
+          target.components.combat:GetAttacked(attacker, UBSWORD_UNDEAD_DAMAGE_T1, nil,FA_DAMAGETYPE.HOLY)
           if( math.random()<=inst.procRate)then
             target.components.health:Kill()
           end

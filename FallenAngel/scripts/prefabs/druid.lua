@@ -126,6 +126,9 @@ local function onxploaded(inst)
     if(level>=12)then
         enableL5spells()
     end
+    if(level>=15)then
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.5
+    end
     if(level>1)then
         inst.components.health.maxhealth= inst.components.health.maxhealth+HEALTH_PER_LEVEL*(level-1)
         inst.components.sanity.max=inst.components.sanity.max+SANITY_PER_LEVEL*(level-1)
@@ -150,6 +153,8 @@ local function onlevelup(inst,data)
         enableL4spells()
     elseif(level==12)then
         enableL5spells()
+    elseif(level==15)then
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.5
     elseif(level==20)then
 
     end

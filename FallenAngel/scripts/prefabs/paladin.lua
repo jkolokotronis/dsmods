@@ -102,7 +102,7 @@ end
 local function onxploaded(inst)
     local level=inst.components.xplevel.level
     if(level>=3)then
-        inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+0.1
+        inst.fa_meleedamagemultiplier=inst.fa_meleedamagemultiplier+0.1
     end
     if(level>=4)then
         inst.fa_undeadcombatmultiplier=inst.fa_undeadcombatmultiplier+0.1
@@ -111,13 +111,13 @@ local function onxploaded(inst)
         inst.fa_undeadcombatmultiplier=inst.fa_undeadcombatmultiplier+0.1
     end
     if(level>=8)then
-         inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+0.1
+         inst.fa_meleedamagemultiplier=inst.fa_meleedamagemultiplier+0.1
     end
     if(level>=11)then
         enableL1spells()
     end
     if(level>=12)then
-        inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+0.1
+        inst.fa_meleedamagemultiplier=inst.fa_meleedamagemultiplier+0.1
     end
     if(level>=13)then
         inst.fa_undeadcombatmultiplier=inst.fa_undeadcombatmultiplier+0.1
@@ -126,7 +126,7 @@ local function onxploaded(inst)
         enableL2spells()
     end
     if(level>=15)then
-         inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+0.1
+         inst.fa_meleedamagemultiplier=inst.fa_meleedamagemultiplier+0.1
     end
     if(level>=16)then
         inst.fa_undeadcombatmultiplier=inst.fa_undeadcombatmultiplier+0.1
@@ -135,7 +135,7 @@ local function onxploaded(inst)
         enableL3spells()
     end
     if(level>=19)then
-         inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+0.1
+         inst.fa_meleedamagemultiplier=inst.fa_meleedamagemultiplier+0.1
     end
     if(level>=20)then
         inst.fa_undeadcombatmultiplier=inst.fa_undeadcombatmultiplier+0.1
@@ -153,7 +153,7 @@ local function onlevelup(inst,data)
     inst.components.sanity.max=inst.components.sanity.max+SANITY_PER_LEVEL
 
     if(level==3)then
-        inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+0.1
+        inst.fa_meleedamagemultiplier=inst.fa_meleedamagemultiplier+0.1
     elseif(level==4)then
         inst.fa_undeadcombatmultiplier=inst.fa_undeadcombatmultiplier+0.1
     elseif(level==7)then
@@ -161,19 +161,19 @@ local function onlevelup(inst,data)
     elseif(level==5)then
         inst.lohCooldownButton:Show()
     elseif(level==8)then
-        inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+0.1
+        inst.fa_meleedamagemultiplier=inst.fa_meleedamagemultiplier+0.1
     elseif(level==9)then
         inst.turnCooldownButton:Show()
     elseif(level==11)then
         enableL1spells()
     elseif(level==12)then
-         inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+0.1
+         inst.fa_meleedamagemultiplier=inst.fa_meleedamagemultiplier+0.1
     elseif(level==13)then
         inst.fa_undeadcombatmultiplier=inst.fa_undeadcombatmultiplier+0.1
     elseif(level==14)then
         enableL2spells()
     elseif(level==15)then
-         inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+0.1
+         inst.fa_meleedamagemultiplier=inst.fa_meleedamagemultiplier+0.1
     elseif(level==16)then
         inst.fa_undeadcombatmultiplier=inst.fa_undeadcombatmultiplier+0.1
     elseif(level==19)then
@@ -238,6 +238,7 @@ local fn = function(inst)
 
     -- todo: Add an example special power here.
     inst.components.combat.damagemultiplier=1
+    inst.fa_meleedamagemultiplier=1
     inst.fa_undeadcombatmultiplier=1
     inst.components.health:SetMaxHealth(250)
     inst.components.sanity:SetMax(200)
@@ -260,10 +261,13 @@ local fn = function(inst)
 
     function combatmod:CalcDamage (target, weapon, multiplier)
         local old=calcdamage_old(self,target,weapon,multiplier)
+
         if(weapon and not weapon.components.weapon:CanRangedAttack() and target and target:HasTag("undead"))then
 --        if(target and target:HasTag("undead"))then
-            old=old*inst.fa_undeadcombatmultiplier
+            old=old*inst.fa_undeadcombatmultiplier*inst.fa_meleedamagemultiplier
             print("undead multiplier",old)
+        elseif(weapon and not weapon.components.weapon:CanRangedAttack())then
+            old=old*inst.fa_meleedamagemultiplier
         end
         return old
     end
