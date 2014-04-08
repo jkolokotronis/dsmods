@@ -382,3 +382,15 @@ AddRoom("FA_GoblinEntrance", {
 									
 					            }
 					})
+
+AddRoom("FA_GoblinRoom_1",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.UNDERROCK,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FAGoblinRoom_1"] = 4,
+									}, 
+					            }
+	})

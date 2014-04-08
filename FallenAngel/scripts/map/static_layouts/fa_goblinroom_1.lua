@@ -1,0 +1,402 @@
+return {
+  version = "1.1",
+  luaversion = "5.1",
+  orientation = "orthogonal",
+  width = 10,
+  height = 10,
+  tilewidth = 64,
+  tileheight = 64,
+  properties = {},
+  tilesets = {
+    {
+      name = "ground",
+      firstgid = 1,
+      filename = "../ground.tsx",
+      tilewidth = 64,
+      tileheight = 64,
+      spacing = 0,
+      margin = 0,
+      image = "../tiles.png",
+      imagewidth = 512,
+      imageheight = 128,
+      properties = {},
+      tiles = {}
+    }
+  },
+  layers = {
+    {
+      type = "tilelayer",
+      name = "BG_TILES",
+      x = 0,
+      y = 0,
+      width = 10,
+      height = 10,
+      visible = true,
+      opacity = 1,
+      properties = {},
+      encoding = "lua",
+      data = {
+        2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+        2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+        2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+        2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+        2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+        2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+        2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+        2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+        2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+        2, 2, 2, 2, 2, 2, 2, 2, 2, 2
+      }
+    },
+    {
+      type = "objectgroup",
+      name = "FG_OBJECTS",
+      visible = true,
+      opacity = 1,
+      properties = {},
+      objects = {
+        {
+          name = "",
+          type = "armorfire",
+          shape = "rectangle",
+          x = 238,
+          y = 264,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "wall_stone",
+          shape = "rectangle",
+          x = 17,
+          y = 14,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "wall_stone",
+          shape = "rectangle",
+          x = 141,
+          y = 13,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 5,
+          y = 6,
+          width = 0,
+          height = 2,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "wall_stone",
+          shape = "rectangle",
+          x = 118,
+          y = 14,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "wall_stone",
+          shape = "rectangle",
+          x = 247,
+          y = 14,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "wall_stone",
+          shape = "rectangle",
+          x = 99,
+          y = 14,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "wall_stone",
+          shape = "rectangle",
+          x = 224,
+          y = 13,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "wall_stone",
+          shape = "rectangle",
+          x = 334,
+          y = 13,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "wall_stone",
+          shape = "rectangle",
+          x = 202,
+          y = 13,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 182,
+          y = 14,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 161,
+          y = 14,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 76,
+          y = 15,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "wall_stone",
+          shape = "rectangle",
+          x = 422,
+          y = 12,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "wall_stone",
+          shape = "rectangle",
+          x = 312,
+          y = 13,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "wall_stone",
+          shape = "rectangle",
+          x = 400,
+          y = 12,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "wall_stone",
+          shape = "rectangle",
+          x = 289,
+          y = 13,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "wall_stone",
+          shape = "rectangle",
+          x = 380,
+          y = 13,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "wall_stone",
+          shape = "rectangle",
+          x = 267,
+          y = 13,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "wall_stone",
+          shape = "rectangle",
+          x = 357,
+          y = 13,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "wall_stone",
+          shape = "rectangle",
+          x = 59,
+          y = 15,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "wall_stone",
+          shape = "rectangle",
+          x = 38,
+          y = 15,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "wall_stone",
+          shape = "rectangle",
+          x = 623,
+          y = 13,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "wall_stone",
+          shape = "rectangle",
+          x = 600,
+          y = 12,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "wall_stone",
+          shape = "rectangle",
+          x = 577,
+          y = 12,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "wall_stone",
+          shape = "rectangle",
+          x = 555,
+          y = 12,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "wall_stone",
+          shape = "rectangle",
+          x = 535,
+          y = 12,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "wall_stone",
+          shape = "rectangle",
+          x = 512,
+          y = 13,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "wall_stone",
+          shape = "rectangle",
+          x = 488,
+          y = 14,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "wall_stone",
+          shape = "rectangle",
+          x = 467,
+          y = 13,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "wall_stone",
+          shape = "rectangle",
+          x = 445,
+          y = 12,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    }
+  }
+}
