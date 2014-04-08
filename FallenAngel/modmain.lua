@@ -36,6 +36,8 @@ local ImageButton = require "widgets/imagebutton"
 require "repairabledescriptionfix"
 
 PrefabFiles = {
+    "fa_dungeon_entrance",
+    "fa_dungeon_exit",
     "cheats",
     "poisonspider",
     "poisonspiderden",
@@ -1080,7 +1082,7 @@ function Armor:TakeDamage(damage_amount, attacker, weapon,element)
         elseif(attacker and attacker.fa_damagetype)then
             damagetype=attacker.fa_damagetype
         end
-        print("take damage from",damagetype)
+--        print("take damage from",damagetype)
         if(damagetype)then
             --ele dmg, ignore default behavior altogether
             if(self.fa_resistances and self.fa_resistances[damagetype] and self.fa_resistances[damagetype]~=0)then
@@ -1147,7 +1149,7 @@ function Combat:GetAttacked(attacker, damage, weapon,element)
             if(res) then damage=damage*(1-res) end
             --now i need to deal with health mods
         end
-            print("damage",damage)
+--            print("damage",damage)
         --why are you so inclined to prevent healing by damage, silly klei?
         if damage~=0 and self.inst.components.health:IsInvincible() == false then
 
@@ -1252,8 +1254,46 @@ local function onFishingCollect(inst,data)
     end
 end
 
+AddPrefabPostInit("world", function(inst)
+    GLOBAL.assert( GLOBAL.GetPlayer() == nil )
+    local player_prefab = GLOBAL.SaveGameIndex:GetSlotCharacter()
+ 
+    -- Unfortunately, we can't add new postinits by now. So we have to do
+    -- it the hard way...
+ 
+    GLOBAL.TheSim:LoadPrefabs( {player_prefab} )
+    local oldfn = GLOBAL.Prefabs[player_prefab].fn
+    GLOBAL.Prefabs[player_prefab].fn = function()
+        local inst = oldfn()
+ 
+        local oldsavefn=inst.OnSave
+        local oldloadfn=inst.OnLoad
+
+        local onloadfn = function(inst, data)
+            if(oldloadfn)then
+                oldloadfn(inst,data)
+            end
+            inst.fa_prevcavelevel=data.fa_prevcavelevel
+            print("prevcavelevel",inst.fa_prevcavelevel)
+        end
+
+        local onsavefn = function(inst, data)
+            if(oldsavefn)then
+                oldsavefn(inst,data)
+            end
+            data.fa_prevcavelevel=inst.fa_prevcavelevel
+        end
+        inst.OnLoad = onloadfn
+        inst.OnSave = onsavefn
+        inst.fa_prevcavelevel=0--should really default to current topology or so but meh
+ 
+        return inst
+    end
+end)
+
 AddSimPostInit(function(inst)
     if(inst:HasTag("player"))then
+
         table.insert( inst.components.eater.foodprefs, "FA_POTION" )
         if inst:HasTag("evil") then
 

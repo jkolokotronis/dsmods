@@ -8,3 +8,6 @@ FA_DAMAGETYPE={
 	HOLY=7,
 	FORCE=8
 }
+
+--this shouldnt be here
+FA_LEVELS={}
