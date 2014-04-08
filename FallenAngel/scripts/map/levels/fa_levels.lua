@@ -73,6 +73,9 @@ FA_LEVELDATA["GOBLIN_CAVE"]={
 			"MoreAltars",
 			"SacredDanger"
 		},
+		required_prefabs = {
+		"fa_dungeon_exit",
+		},
 
 	}
 

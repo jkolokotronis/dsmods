@@ -4,11 +4,23 @@ local assets=
     Asset("SOUND", "sound/hound.fsb"),
     Asset("SOUND", "sound/ghost.fsb"),
     Asset("ANIM", "anim/wilton.zip"),
+    Asset("ANIM", "anim/drybones.zip"),
     Asset("ANIM", "anim/swap_nightmaresword.zip"),
 }
 
 local PET_HEALTH=300
 
+local function GetFireDart(inst)
+ inst:DoTaskInTime(0,function()
+
+        if(inst.loadedSpawn)then
+            return
+        end
+            local dart=SpawnPrefab("blowdart_fire")
+            dart.components.stackable:SetStackSize(20)
+            inst.components.inventory:Equip(dart)
+    end)
+end
 
 local function GetInventory(inst)
     --inv doesnt reload fully on load, have to prevent double spawning
@@ -99,19 +111,13 @@ inst:AddComponent("eater")
     inst.components.eater.strongstomach = true -- can eat monster meat!
     inst.components.eater:SetOnEatFn(OnEat)
 
-    anim:SetBank("wilson")
-    anim:SetBuild("wilton")
-
-    anim:Hide("ARM_carry")
-    anim:Hide("hat")
-    anim:Hide("hat_hair")
+    
     inst:AddComponent("lootdropper")
     inst:AddComponent("inventory")
 --    inst:AddComponent("sanity")
-    inst.components.inventory.dropondeath = true
+    
 --    inst.components.inventory.starting_inventory = inventoryrng
 
-    GetInventory(inst)
 
     anim:PlayAnimation("idle")
 
@@ -148,4 +154,42 @@ inst:AddComponent("eater")
     return inst
 end
 
-return Prefab( "common/skeletonspawn", fn, assets)
+local function spawn(Sim)
+    local inst=fn(Sim)
+    local anim=inst.AnimState
+    anim:SetBank("wilson")
+    anim:SetBuild("wilton")
+
+    anim:Hide("ARM_carry")
+    anim:Hide("hat")
+    anim:Hide("hat_hair")
+    inst.components.inventory.dropondeath = true
+    GetInventory(inst)
+    return inst
+end
+
+local function drybones(Sim)
+    local inst=fn(Sim)
+    local anim=inst.AnimState
+    anim:SetBank("wilson")
+    anim:SetBuild("drybones")
+
+    anim:Hide("ARM_carry")
+    anim:Hide("hat")
+    anim:Hide("hat_hair")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=1
+    return inst
+end
+
+local function firedartspawn(Sim)
+     local inst=drybones(Sim)
+    local anim=inst.AnimState
+    inst.components.inventory.dropondeath = true
+    GetFireDart(inst)
+    return inst
+end
+
+
+return Prefab( "common/skeletonspawn", spawn, assets),
+     Prefab( "common/fa_drybones", drybones, assets),
+     Prefab("common/fa_dartdrybones", firedartspawn, assets)

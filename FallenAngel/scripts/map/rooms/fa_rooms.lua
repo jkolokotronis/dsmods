@@ -369,11 +369,11 @@ AddRoom("FA_GoblinEntrance", {
 					value = GROUND.MARSH,
 					contents =  {
 									countprefabs={
-										pighead=function() return math.random(6) end,
+										pighead=function() return math.random(5) end,
 										goblinhut = function () return 1 + math.random(2) end,
 					                    fa_dungeon_entrance = function () return 1 end,
 					                    gravestone = function () return 1 + math.random(2) end,
-					                    mound = function () return 1 + math.random(2) end
+					                    mound = function () return 1 + math.random(1) end
 									},
 									prefabdata = {
 										fa_dungeon_entrance = function() return {fa_cavename="GOBLIN_CAVE"}
