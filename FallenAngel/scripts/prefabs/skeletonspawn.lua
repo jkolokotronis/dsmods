@@ -83,7 +83,6 @@ local function fn(Sim)
     shadow:SetSize( 2.5, 1.5 )
 --    inst.Transform:SetTwoFaced()
 inst.Transform:SetFourFaced()
-    inst.Transform:SetScale(0.75, 0.75, 0.75)
 
     inst.OnLoad = onloadfn
 
@@ -96,7 +95,15 @@ inst.Transform:SetFourFaced()
     light:SetRadius(0.7)
     light:SetColour(155/255, 225/255, 250/255)
     light:Enable(true)
+
+
+    anim:SetBank("wilson")
+    anim:SetBuild("wilton")
+    anim:PlayAnimation("idle")
     
+    anim:Hide("ARM_carry")
+    anim:Hide("hat")
+    anim:Hide("hat_hair")
     inst:AddTag("skeleton")
     inst:AddTag("undead")
     inst:AddTag("scarytoprey")
@@ -119,11 +126,9 @@ inst:AddComponent("eater")
 --    inst.components.inventory.starting_inventory = inventoryrng
 
 
-    anim:PlayAnimation("idle")
 
     inst:AddComponent("locomotor") -- locomotor must be constructed before the stategraph
-    inst.components.locomotor:EnableGroundSpeedMultiplier(false)
-    inst.components.locomotor.walkspeed = TUNING.WILSON_RUN_SPEED
+--    inst.components.locomotor:EnableGroundSpeedMultiplier(false)
     inst.components.locomotor.runspeed = TUNING.WILSON_RUN_SPEED*2
 
     inst:AddComponent("follower")
@@ -157,12 +162,7 @@ end
 local function spawn(Sim)
     local inst=fn(Sim)
     local anim=inst.AnimState
-    anim:SetBank("wilson")
-    anim:SetBuild("wilton")
 
-    anim:Hide("ARM_carry")
-    anim:Hide("hat")
-    anim:Hide("hat_hair")
     inst.components.inventory.dropondeath = true
     GetInventory(inst)
     return inst
@@ -171,12 +171,11 @@ end
 local function drybones(Sim)
     local inst=fn(Sim)
     local anim=inst.AnimState
+    inst.Transform:SetScale(2, 2, 2)
     anim:SetBank("wilson")
     anim:SetBuild("drybones")
+    anim:PlayAnimation("idle")
 
-    anim:Hide("ARM_carry")
-    anim:Hide("hat")
-    anim:Hide("hat_hair")
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=1
     return inst
 end

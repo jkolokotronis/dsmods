@@ -53,6 +53,21 @@ AddTask("FADungeonStart", {
 		background_room="BGWilds",
 		colour={r=1,g=0,b=0.6,a=1},
 		})
+
+AddTask("Residential", {
+		locks = {LOCKS.RUINS},
+		keys_given = {KEYS.LABYRINTH, KEYS.RUINS},
+		entrance_room = "RuinedCityEntrance",
+		room_choices =
+		{
+			["Vacant"] = math.random(SIZE_VARIATION),
+			["BGMonkeyWilds"] = 4 + math.random(SIZE_VARIATION),
+		},
+		room_bg = GROUND.TILES,
+		maze_tiles = {rooms = {"room_residential", "room_residential_two", "hallway_residential", "hallway_residential_two"}, bosses = {"room_residential"}},
+		background_room="BGMonkeyWilds",
+		colour={r=1,g=0,b=0.6,a=1},
+	})
 --[[
 AddTask("TheLabyrinth", {
 		locks={LOCKS.LABYRINTH},

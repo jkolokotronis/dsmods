@@ -1,4 +1,4 @@
-
+require("stategraphs/commonstates")
 local trace = function() end
 
 local function DoFoleySounds(inst)
@@ -168,7 +168,8 @@ local actionhandlers =
    
 local events=
 {
-
+ CommonHandlers.OnLocomote(true, false),
+ --[[
     EventHandler("locomote", function(inst)
         local is_attacking = inst.sg:HasStateTag("attack")
         local is_busy = inst.sg:HasStateTag("busy")
@@ -184,7 +185,7 @@ local events=
                 inst.sg:GoToState("run_start")
         end 
     end),
-    
+    ]]
 
     EventHandler("blocked", function(inst, data)
         if not inst.components.health:IsDead() then
@@ -1619,6 +1620,16 @@ local states=
         
         
     },
+
+    State{
+        name = "walk",
+        tags = {"walk", "canrotate"},
+        onenter = function(inst, playanim)
+            inst.AnimState:PlayAnimation('run_loop', true)
+            inst.components.locomotor:RunForward()
+            
+        end,
+    },    
     
     State{
     
