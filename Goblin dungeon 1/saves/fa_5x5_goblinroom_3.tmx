@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="20" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="tiles" tilewidth="64" tileheight="64">
+  <image source="../../tiles.png" width="512" height="128"/>
+ </tileset>
+ <layer name="BG_TILES" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBhZgInK/JEGRsOPMjAafpSB0fCjDFA7/ACMoAAz
+  </data>
+ </layer>
+ <objectgroup name="FG_OBJECTS" width="20" height="20">
+  <object type="wall_stone" x="289" y="306"/>
+  <object type="wall_stone" x="308" y="216"/>
+  <object type="wall_stone" x="311" y="306"/>
+  <object type="wall_stone" x="266" y="306"/>
+  <object type="wall_stone" x="242" y="306"/>
+  <object type="wall_stone" x="219" y="306"/>
+  <object type="wall_stone" x="196" y="306"/>
+  <object type="wall_stone" x="174" y="306"/>
+  <object type="wall_stone" x="150" y="307"/>
+  <object type="wall_stone" x="127" y="307"/>
+  <object type="wall_stone" x="105" y="308"/>
+  <object type="wall_stone" x="82" y="307"/>
+  <object type="wall_stone" x="59" y="307"/>
+  <object type="wall_stone" x="37" y="306"/>
+  <object type="wall_stone" x="12" y="310"/>
+  <object type="wall_stone" x="13" y="288"/>
+  <object type="wall_stone" x="13" y="265"/>
+  <object type="wall_stone" x="12" y="241"/>
+  <object type="wall_stone" x="12" y="218"/>
+  <object type="wall_stone" x="12" y="195"/>
+  <object type="wall_stone" x="12" y="171"/>
+  <object type="wall_stone" x="13" y="147"/>
+  <object type="wall_stone" x="12" y="123"/>
+  <object type="wall_stone" x="12" y="101"/>
+  <object type="wall_stone" x="11" y="78"/>
+  <object type="wall_stone" x="11" y="54"/>
+  <object type="wall_stone" x="11" y="31"/>
+  <object type="wall_stone" x="283" y="11"/>
+  <object type="wall_stone" x="307" y="11"/>
+  <object type="wall_stone" x="307" y="34"/>
+  <object type="wall_stone" x="307" y="56"/>
+  <object type="wall_stone" x="308" y="79"/>
+  <object type="wall_stone" x="308" y="101"/>
+  <object type="wall_stone" x="308" y="124"/>
+  <object type="wall_stone" x="309" y="147"/>
+  <object type="wall_stone" x="308" y="170"/>
+  <object type="wall_stone" x="309" y="193"/>
+  <object type="wall_stone" x="98" y="12"/>
+  <object type="wall_stone" x="121" y="12"/>
+  <object type="wall_stone" x="145" y="12"/>
+  <object type="wall_stone" x="168" y="11"/>
+  <object type="wall_stone" x="191" y="12"/>
+  <object type="wall_stone" x="214" y="12"/>
+  <object type="wall_stone" x="237" y="12"/>
+  <object type="wall_stone" x="261" y="12"/>
+  <object type="wall_stone" x="12" y="9"/>
+  <object type="pigtorch" x="80" y="78"/>
+  <object type="pigtorch" x="78" y="241"/>
+  <object type="pigtorch" x="240" y="240"/>
+  <object type="pigtorch" x="242" y="79"/>
+  <object type="cookpot" x="162" y="153"/>
+ </objectgroup>
+</map>
