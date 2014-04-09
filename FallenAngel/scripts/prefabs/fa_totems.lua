@@ -66,6 +66,15 @@ local function retargetfn(inst)
     return newtarget
 end
 
+local function retargetfnkos(inst)
+    local newtarget = FindEntity(inst, 20, function(guy)
+            return   guy:HasTag("character") and guy.components.combat and 
+                    inst.components.combat:CanTarget(guy) 
+    end)
+
+    return newtarget
+end
+
 local function shouldKeepTarget(inst, target)
     if target and target:IsValid() and
         (target.components.health and not target.components.health:IsDead()) then
@@ -147,7 +156,7 @@ local function onattackfireball(inst, attacker, target)
     attacker.SoundEmitter:PlaySound("dontstarve/wilson/fireball_explo")
 end
 
-local function EquipWeaponRed(inst)
+local function EquipWeaponRedKos(inst)
     if inst.components.inventory and not inst.components.inventory:GetEquippedItem(EQUIPSLOTS.HANDS) then
         local weapon = CreateEntity()
         weapon.entity:AddTransform()
@@ -160,15 +169,22 @@ local function EquipWeaponRed(inst)
         weapon.components.inventoryitem:SetOnDroppedFn(WeaponDropped)
         weapon.components.weapon:SetOnAttack(onattackfireball)
         weapon:AddComponent("equippable")
-    weapon:AddComponent("finiteuses")
-    weapon.components.finiteuses:SetMaxUses(REDTOTEM_USES)
-    weapon.components.finiteuses:SetUses(REDTOTEM_USES)
-    weapon.components.finiteuses:SetOnFinished( onfinishedred )
         
         inst.components.inventory:Equip(weapon)
+        return weapon
     end
 end
 
+local function EquipWeaponRed(inst)
+    if inst.components.inventory and not inst.components.inventory:GetEquippedItem(EQUIPSLOTS.HANDS) then
+        local weapon = EquipWeaponRedKos(inst)
+        weapon:AddComponent("finiteuses")
+        weapon.components.finiteuses:SetMaxUses(REDTOTEM_USES)
+        weapon.components.finiteuses:SetUses(REDTOTEM_USES)
+        weapon.components.finiteuses:SetOnFinished( onfinishedred )
+        return weapon
+    end
+end
 
 local function itemfn(Sim)
     local inst = CreateEntity()
@@ -276,7 +292,8 @@ local function fn(Sim)
     return inst
 end
 
-local function redfn(Sim)
+
+local function redfnbase(Sim)
 	local inst=fn(Sim)
     inst:AddComponent("lighttweener")
     local light = inst.entity:AddLight()
@@ -297,28 +314,10 @@ local function redfn(Sim)
     inst:ListenForEvent("onhitother",onhitother)
 
     inst:AddComponent("inventory")
-    inst:DoTaskInTime(0.1, EquipWeaponRed)
-
-    local function pickup(inst)
-        inst.components.machine.ison = true
-        if(inst.fa_puffanim)then
-            inst.fa_puffanim:Remove()
-        end
-        local item=SpawnPrefab("fa_redtotem_item")
-        local weapon=inst.components.inventory:GetEquippedItem(EQUIPSLOTS.HANDS)
-
-        if(weapon)then
-            item.components.finiteuses:SetUses(weapon.components.finiteuses.current)
-        end
-        inst:Remove()
-        GetPlayer().components.inventory:GiveItem(item)
-    end
-    inst.components.machine.turnofffn  = pickup
 
     inst.components.combat:SetRange(REDTOTEM_RANGE)
     inst.components.combat:SetDefaultDamage(REDTOTEM_DAMAGE)
     inst.components.combat:SetAttackPeriod(REDTOTEM_ATTACKPERIOD)
-    inst.components.combat:SetRetargetFunction(1, retargetfn)
     inst.components.combat:SetKeepTargetFunction(shouldKeepTarget)
 
      local boom = CreateEntity()
@@ -339,6 +338,39 @@ local function redfn(Sim)
     inst:SetStateGraph("SGredtotem")
     local brain = require "brains/eyeturretbrain"
     inst:SetBrain(brain)
+
+
+    return inst
+end
+
+local function redfnkos(Sim)
+    local inst=redfnbase(Sim)
+
+    inst.components.combat:SetRetargetFunction(1, retargetfnkos)
+    inst:DoTaskInTime(0.1, EquipWeaponRedKos)
+    return inst
+end
+
+local function redfn(Sim)
+    local inst=redfnbase(Sim)
+    local function pickup(inst)
+        inst.components.machine.ison = true
+        if(inst.fa_puffanim)then
+            inst.fa_puffanim:Remove()
+        end
+        local item=SpawnPrefab("fa_redtotem_item")
+        local weapon=inst.components.inventory:GetEquippedItem(EQUIPSLOTS.HANDS)
+
+        if(weapon)then
+            item.components.finiteuses:SetUses(weapon.components.finiteuses.current)
+        end
+        inst:Remove()
+        GetPlayer().components.inventory:GiveItem(item)
+    end
+    inst.components.machine.turnofffn  = pickup
+
+    inst.components.combat:SetRetargetFunction(1, retargetfn)
+    inst:DoTaskInTime(0.1, EquipWeaponRed)
     return inst
 end
 
@@ -394,6 +426,7 @@ local function bluefn(Sim)
 end
 
 return Prefab( "common/fa_redtotem", redfn, assets, prefabs),
+Prefab( "common/fa_redtotem_kos", redfnkos, assets, prefabs),
 Prefab("common/fa_redtotem_item", redtotem_itemfn, assets, prefabs),
 MakePlacer("common/fa_redtotem_placer", "fa_redtotem", "fa_redtotem", "idle"),
 Prefab( "common/fa_bluetotem", bluefn, assets, prefabs),

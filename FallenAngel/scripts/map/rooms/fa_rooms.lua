@@ -364,6 +364,21 @@ AddRoom("Vacant", {
 					                }
 					            }
 					})]]
+
+
+function MakeSetpieceRoom(blocker_name)
+	return	{
+				colour={r=0.2,g=0.0,b=0.2,a=0.3},
+				value = GROUND.MUD,
+--				tags = {"ForceConnected","RoadPoison"},
+				contents =  {
+								countstaticlayouts= {
+									[blocker_name]=1,
+								}, 
+							}
+			}
+end
+
 AddRoom("FA_GoblinEntrance", {
 					colour={r=0.5,g=.18,b=.35,a=.50},
 					value = GROUND.MARSH,
@@ -386,11 +401,140 @@ AddRoom("FA_GoblinEntrance", {
 AddRoom("FA_GoblinRoom_1",{
 		colour={r=0.2,g=0.0,b=0.2,a=0.3},
 					value = GROUND.UNDERROCK,	
+					
 					contents =  {
 
 									countstaticlayouts = 
 									{
-										["FAGoblinRoom_1"] = 4,
+										["FAGoblinRoom_1"] = 1,
 									}, 
 					            }
 	})
+AddRoom("FA_GoblinRoomEntry",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.UNDERROCK,	
+--					tags ={"ForceConnected",	"MazeEntrance"},
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FA5x5GoblinRoom_1"] = 1,
+									}, 
+					            }
+	})
+AddRoom("FA_GoblinRoom1",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.UNDERROCK,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FA5x5GoblinRoom_1"] = 1,
+										["FA5x5GoblinRoom_2"] = 1,
+										["FA5x5GoblinRoom_3"] = 1,
+										["FA5x5GoblinRoom_4"] = 1,
+									}, 
+					            }
+	})
+AddRoom("FA_GoblinRoom2",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.UNDERROCK,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FA5x5GoblinRoom_6"] = 1,
+										["FA5x5GoblinRoom_7"] = 1,
+										["FA5x5GoblinRoom_8"] = 1,
+										["FA5x5GoblinRoom_5"] = 1,
+									}, 
+					            }
+	})
+AddRoom("FA_GoblinRoom3",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.UNDERROCK,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FA10x10GoblinRoom_1"] = 1,
+										["FA10x10GoblinRoom_2"] = 1,
+										["FA5x5GoblinRoom_9"] = 1,
+										["FA5x5GoblinRoom_10"] = 1,
+									}, 
+					            }
+	})
+AddRoom("FA_GoblinRoom4",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.UNDERROCK,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FA10x10GoblinRoom_3"] = 1,
+										["FA10x10GoblinRoom_4"] = 1,
+										["FA10x10GoblinRoom_5"] = 1,
+										["FA10x10GoblinRoom_6"] = 1,
+									}, 
+					            }
+	})
+AddRoom("FA_GoblinRoom5",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.UNDERROCK,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FA10x10GoblinRoom_7"] = 1,
+										["FA10x10GoblinRoom_8"] = 1,
+										["FA10x10GoblinRoom_9"] = 1,
+										["FA10x10GoblinRoom_10"] = 1,
+									}, 
+					            }
+	})
+AddRoom("FA_GoblinRoom6",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.UNDERROCK,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FA7x7GoblinRoom1_goblintrap_2"] = 1,
+										["FA7x7GoblinRoom1_goblintrap_3"] = 1,
+										["FA7x7GoblinRoom1_goblintrap_4"] = 1,
+										["FA7x7GoblinRoom1_goblintrap_5"] = 1,
+									}, 
+					            }
+	})
+AddRoom("FA_GoblinRoom7",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.UNDERROCK,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FA7x7GoblinRoom1_houndtrap_4"] = 1,
+										["FA7x7GoblinRoom1_houndtrap_5"] = 1,
+									}, 
+					            }
+	})
+
+AddRoom("FA_5x5GoblinRoom_1", MakeSetpieceRoom("FA5x5GoblinRoom_1"))
+AddRoom("FA_5x5GoblinRoom_2", MakeSetpieceRoom("FA5x5GoblinRoom_2"))
+AddRoom("FA_5x5GoblinRoom_3", MakeSetpieceRoom("FA5x5GoblinRoom_3"))
+AddRoom("FA_5x5GoblinRoom_4", MakeSetpieceRoom("FA5x5GoblinRoom_4"))
+AddRoom("FA_5x5GoblinRoom_5", MakeSetpieceRoom("FA5x5GoblinRoom_5"))
+
+AddRoom("FA_BGGoblin",  {	
+					colour={r=0.3,g=0.2,b=0.1,a=0.3},
+					value =GROUND.MUD, 
+					
+					contents =  {
+									distributepercent = 0.01,
+					                distributeprefabs= 
+					                {
+					                	dropperweb = 1,
+					                    rock_flintless = 0.66,
+					                }
+					            }
+					})

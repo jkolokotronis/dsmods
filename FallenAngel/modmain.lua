@@ -36,6 +36,8 @@ local ImageButton = require "widgets/imagebutton"
 require "repairabledescriptionfix"
 
 PrefabFiles = {
+    "fa_animatedarmor",
+    "fa_bonfire",
     "fa_dungeon_entrance",
     "fa_dungeon_exit",
     "cheats",

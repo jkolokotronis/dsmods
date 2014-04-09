@@ -28,7 +28,7 @@ for k,name in pairs({"SpiderfieldEasy","Spiderfield","SunkenMarsh","SpiderCity",
 			local origspider=room.contents.distributeprefabs.spiderden
 			if(origspider and type(origspider)=="number")then
 --				room.contents.distributeprefabs.spiderden=origspider/2.0
-				room.contents.distributeprefabs.poisonspiderden=origspider
+				room.contents.distributeprefabs.poisonspiderden=origspider/50.0
 				
 			end
 		end
@@ -42,7 +42,7 @@ local function AddGoblinEntrancePreInit(task)
 	-- Insert the custom room we created above into the task.
 	-- We could modify the task here as well.
 	task.room_choices["FA_GoblinEntrance"] = 2
-	task.room_choices["FA_GoblinRoom_1"] = 1
+	task.room_choices["FA_GoblinRoom_1"] = 2
 	
 end
 AddTaskPreInit("Make a pick", AddGoblinEntrancePreInit)

@@ -11,7 +11,7 @@ FA_LEVELDATA["DUNGEON_LEVEL_1"]={
 		id="DUNGEON_LEVEL_1",
 		name="DUNGEON_LEVEL_1",
 		overrides={
-			{"world_size", 		"tiny"},
+			{"world_size", 		"medium"},
 			-- {"day", 			"onlynight"}, 
 			{"waves", 			"off"},
 			{"location",		"cave"},
@@ -49,8 +49,11 @@ FA_LEVELDATA["GOBLIN_CAVE"]={
 		id="GOBLIN_CAVE",
 		name="GOBLIN_CAVE",
 		overrides={
-			{"world_size", 		"tiny"},
+			{"world_size", 		"medium"},
 			-- {"day", 			"onlynight"}, 
+			{"branching",		"never"},
+			{"islands", 		"never"},	
+			{"loop",			"always"},
 			{"waves", 			"off"},
 			{"location",		"cave"},
 			{"boons", 			"never"},
@@ -58,21 +61,26 @@ FA_LEVELDATA["GOBLIN_CAVE"]={
 			{"traps", 			"never"},
 			{"protected", 		"never"},
 			{"start_setpeice", 	"FADungeonStart"},
-			{"start_node",		"BGWilds"},
+			{"start_node",		"FA_GoblinRoom_1"},
 		},
 		tasks={
 			
-			"FADungeonStart",
-			"TheLabyrinth",
+			"FAGoblinDungeon1",
+			"FAGoblinDungeon2",
+			"FAGoblinDungeon3",
+			"FAGoblinDungeon4",
+			"FAGoblinDungeon5",
+--			"TheLabyrinth",
 --			"Residential",
 --			"Military"
-			"Sacred"
+--			"Sacred"
 		},
+		--[[
 		numoptionaltasks = math.random(1,2),
 		optionaltasks = {
 			"MoreAltars",
 			"SacredDanger"
-		},
+		},]]
 		required_prefabs = {
 		"fa_dungeon_exit",
 		},

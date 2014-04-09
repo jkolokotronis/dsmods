@@ -2,6 +2,7 @@
 local assets=
 {
 	Asset("ANIM", "anim/orc.zip"),
+    Asset("ANIM", "anim/goblin.zip"),
 	Asset("SOUND", "sound/hound.fsb"),
 }
 
@@ -75,13 +76,17 @@ local function fn()
 	
     MakeCharacterPhysics(inst, 10, 0.5)
      
-    anim:SetBank("orc")
-    anim:SetBuild("orc") 
+        inst.AnimState:SetBank("wilson")
+        inst.AnimState:SetBuild("goblin")
+        inst.AnimState:PlayAnimation("idle")
+        inst.AnimState:Hide("hat_hair")
+         inst.AnimState:Hide("ARM_carry")
+         inst.AnimState:Hide("hat")
 
-    inst.AnimState:PlayAnimation('idle',true)
+     inst.AnimState:PlayAnimation("idle")
     inst:AddComponent("locomotor") -- locomotor must be constructed before the stategraph
     inst.components.locomotor.runspeed = 2
-    inst:SetStateGraph("SGorc")
+    inst:SetStateGraph("SGskeletonspawn")
 
 
     local brain = require "brains/orcbrain"
@@ -90,6 +95,7 @@ local function fn()
     inst:AddComponent("health")
     inst.components.health:SetMaxHealth(GOBLIN_HEALTH)
     
+    inst:AddComponent("inventory")
     inst:AddComponent("sanityaura")
     inst.components.sanityaura.aura = -TUNING.SANITYAURA_MED
     
