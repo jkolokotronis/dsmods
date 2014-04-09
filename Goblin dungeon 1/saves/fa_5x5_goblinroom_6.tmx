@@ -58,13 +58,13 @@
   <object type="wall_stone" x="54" y="11"/>
   <object type="wall_stone" x="33" y="10"/>
   <object type="wall_stone" x="12" y="9"/>
-  <object type="backpack" x="60" y="270"/>
-  <object type="blowdart_sleep" x="101" y="227"/>
-  <object type="boomerang" x="128" y="268"/>
-  <object type="footballhat" x="140" y="184"/>
-  <object type="nightsword" x="184" y="278"/>
-  <object type="redgem" x="240" y="264"/>
-  <object type="multitool_axe_pickaxe" x="188" y="224"/>
-  <object type="blowdart" x="266" y="174"/>
+  <object type="ruins_chair" x="74" y="109"/>
+  <object type="ruins_table" x="73" y="138"/>
+  <object type="ruins_chair" x="227" y="181"/>
+  <object type="ruins_chair" x="108" y="231"/>
+  <object type="ruins_chair" x="219" y="114"/>
+  <object type="ruins_table" x="107" y="255"/>
+  <object type="ruins_table" x="226" y="206"/>
+  <object type="ruins_table" x="219" y="140"/>
  </objectgroup>
 </map>

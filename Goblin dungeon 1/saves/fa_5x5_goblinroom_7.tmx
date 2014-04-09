@@ -33,9 +33,6 @@
   <object type="wall_stone" x="12" y="241"/>
   <object type="wall_stone" x="12" y="218"/>
   <object type="wall_stone" x="12" y="195"/>
-  <object type="wall_stone" x="12" y="171"/>
-  <object type="wall_stone" x="13" y="147"/>
-  <object type="wall_stone" x="12" y="123"/>
   <object type="wall_stone" x="12" y="101"/>
   <object type="wall_stone" x="11" y="78"/>
   <object type="wall_stone" x="11" y="54"/>
@@ -46,25 +43,45 @@
   <object type="wall_stone" x="307" y="56"/>
   <object type="wall_stone" x="308" y="79"/>
   <object type="wall_stone" x="308" y="101"/>
-  <object type="wall_stone" x="308" y="124"/>
-  <object type="wall_stone" x="309" y="147"/>
-  <object type="wall_stone" x="308" y="170"/>
   <object type="wall_stone" x="309" y="193"/>
   <object type="wall_stone" x="98" y="12"/>
   <object type="wall_stone" x="121" y="12"/>
+  <object type="wall_stone" x="145" y="12"/>
+  <object type="wall_stone" x="168" y="11"/>
+  <object type="wall_stone" x="191" y="12"/>
   <object type="wall_stone" x="214" y="12"/>
   <object type="wall_stone" x="237" y="12"/>
   <object type="wall_stone" x="261" y="12"/>
   <object type="wall_stone" x="54" y="11"/>
   <object type="wall_stone" x="33" y="10"/>
   <object type="wall_stone" x="12" y="9"/>
-  <object type="backpack" x="60" y="270"/>
-  <object type="blowdart_sleep" x="101" y="227"/>
-  <object type="boomerang" x="128" y="268"/>
-  <object type="footballhat" x="140" y="184"/>
-  <object type="nightsword" x="184" y="278"/>
-  <object type="redgem" x="240" y="264"/>
-  <object type="multitool_axe_pickaxe" x="188" y="224"/>
-  <object type="blowdart" x="266" y="174"/>
+  <object type="cave_fern" x="96" y="279"/>
+  <object type="cave_fern" x="95" y="242"/>
+  <object type="cave_fern" x="63" y="241"/>
+  <object type="cave_fern" x="63" y="78"/>
+  <object type="cave_fern" x="132" y="79"/>
+  <object type="cave_fern" x="164" y="81"/>
+  <object type="cave_fern" x="198" y="82"/>
+  <object type="cave_fern" x="229" y="82"/>
+  <object type="cave_fern" x="266" y="81"/>
+  <object type="cave_fern" x="266" y="45"/>
+  <object type="cave_fern" x="232" y="45"/>
+  <object type="cave_fern" x="133" y="40"/>
+  <object type="cave_fern" x="200" y="43"/>
+  <object type="cave_fern" x="168" y="43"/>
+  <object type="cave_fern" x="100" y="39"/>
+  <object type="cave_fern" x="64" y="280"/>
+  <object type="cave_fern" x="97" y="78"/>
+  <object type="cave_fern" x="221" y="281"/>
+  <object type="cave_fern" x="191" y="244"/>
+  <object type="cave_fern" x="190" y="281"/>
+  <object type="cave_fern" x="159" y="243"/>
+  <object type="cave_fern" x="158" y="281"/>
+  <object type="cave_fern" x="127" y="279"/>
+  <object type="cave_fern" x="128" y="242"/>
+  <object type="cave_fern" x="64" y="43"/>
+  <object type="cave_fern" x="267" y="281"/>
+  <object type="cave_fern" x="268" y="242"/>
+  <object type="cave_fern" x="226" y="242"/>
  </objectgroup>
 </map>

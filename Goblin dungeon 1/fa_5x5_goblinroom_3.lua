@@ -572,50 +572,6 @@ return {
         },
         {
           name = "",
-          type = "pigtorch",
-          shape = "rectangle",
-          x = 80,
-          y = 78,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "pigtorch",
-          shape = "rectangle",
-          x = 78,
-          y = 241,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "pigtorch",
-          shape = "rectangle",
-          x = 240,
-          y = 240,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "pigtorch",
-          shape = "rectangle",
-          x = 242,
-          y = 79,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
           type = "cookpot",
           shape = "rectangle",
           x = 162,

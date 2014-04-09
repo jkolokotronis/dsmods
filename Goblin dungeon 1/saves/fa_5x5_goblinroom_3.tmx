@@ -55,10 +55,6 @@
   <object type="wall_stone" x="237" y="12"/>
   <object type="wall_stone" x="261" y="12"/>
   <object type="wall_stone" x="12" y="9"/>
-  <object type="pigtorch" x="80" y="78"/>
-  <object type="pigtorch" x="78" y="241"/>
-  <object type="pigtorch" x="240" y="240"/>
-  <object type="pigtorch" x="242" y="79"/>
   <object type="cookpot" x="162" y="153"/>
  </objectgroup>
 </map>

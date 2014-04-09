@@ -10,14 +10,11 @@
  </layer>
  <objectgroup name="FG_OBJECTS" width="20" height="20">
   <object type="wall_stone" x="75" y="11"/>
-  <object type="wall_stone" x="289" y="306"/>
   <object type="wall_stone" x="308" y="216"/>
   <object type="wall_stone" x="308" y="238"/>
   <object type="wall_stone" x="309" y="262"/>
   <object type="wall_stone" x="308" y="284"/>
   <object type="wall_stone" x="311" y="306"/>
-  <object type="wall_stone" x="266" y="306"/>
-  <object type="wall_stone" x="242" y="306"/>
   <object type="wall_stone" x="219" y="306"/>
   <object type="wall_stone" x="196" y="306"/>
   <object type="wall_stone" x="174" y="306"/>
@@ -32,9 +29,6 @@
   <object type="wall_stone" x="13" y="265"/>
   <object type="wall_stone" x="12" y="241"/>
   <object type="wall_stone" x="12" y="218"/>
-  <object type="wall_stone" x="12" y="195"/>
-  <object type="wall_stone" x="12" y="171"/>
-  <object type="wall_stone" x="13" y="147"/>
   <object type="wall_stone" x="12" y="123"/>
   <object type="wall_stone" x="12" y="101"/>
   <object type="wall_stone" x="11" y="78"/>
@@ -52,19 +46,21 @@
   <object type="wall_stone" x="309" y="193"/>
   <object type="wall_stone" x="98" y="12"/>
   <object type="wall_stone" x="121" y="12"/>
+  <object type="wall_stone" x="145" y="12"/>
+  <object type="wall_stone" x="168" y="11"/>
+  <object type="wall_stone" x="191" y="12"/>
   <object type="wall_stone" x="214" y="12"/>
   <object type="wall_stone" x="237" y="12"/>
   <object type="wall_stone" x="261" y="12"/>
   <object type="wall_stone" x="54" y="11"/>
   <object type="wall_stone" x="33" y="10"/>
   <object type="wall_stone" x="12" y="9"/>
-  <object type="backpack" x="60" y="270"/>
-  <object type="blowdart_sleep" x="101" y="227"/>
-  <object type="boomerang" x="128" y="268"/>
-  <object type="footballhat" x="140" y="184"/>
-  <object type="nightsword" x="184" y="278"/>
-  <object type="redgem" x="240" y="264"/>
-  <object type="multitool_axe_pickaxe" x="188" y="224"/>
-  <object type="blowdart" x="266" y="174"/>
+  <object type="ruins_vase" x="64" y="54"/>
+  <object type="ruins_vase" x="248" y="112"/>
+  <object type="ruins_vase" x="252" y="174"/>
+  <object type="ruins_vase" x="245" y="59"/>
+  <object type="ruins_vase" x="160" y="58"/>
+  <object type="ruins_vase" x="98" y="101"/>
+  <object type="ruins_vase" x="177" y="126"/>
  </objectgroup>
 </map>
