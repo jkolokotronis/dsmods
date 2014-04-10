@@ -51,17 +51,18 @@ FA_LEVELDATA["GOBLIN_CAVE"]={
 		overrides={
 			{"world_size", 		"medium"},
 			-- {"day", 			"onlynight"}, 
-			{"branching",		"never"},
-			{"islands", 		"never"},	
-			{"loop",			"always"},
+			{"branching",		"most"},
+--			{"islands", 		"always"},	
+--			{"loop",			"always"},
 			{"waves", 			"off"},
 			{"location",		"cave"},
 			{"boons", 			"never"},
 			{"poi", 			"never"},
 			{"traps", 			"never"},
 			{"protected", 		"never"},
-			{"start_setpeice", 	"FADungeonStart"},
-			{"start_node",		"FA_GoblinRoom_1"},
+--			{"start_setpeice", 	"FADungeonStart"},
+			{"start_setpeice", 	"FAGoblinRoom_1"},
+			{"start_node",		"FA_GoblinRoomEntry"},
 		},
 		tasks={
 			
@@ -70,6 +71,10 @@ FA_LEVELDATA["GOBLIN_CAVE"]={
 			"FAGoblinDungeon3",
 			"FAGoblinDungeon4",
 			"FAGoblinDungeon5",
+			"FAGoblinDungeon6",
+			"FAGoblinDungeon7",
+			"FAGoblinDungeon8",
+			"FAGoblinDungeonMaze1"
 --			"TheLabyrinth",
 --			"Residential",
 --			"Military"

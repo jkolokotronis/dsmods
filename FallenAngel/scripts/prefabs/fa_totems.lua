@@ -163,7 +163,7 @@ local function EquipWeaponRedKos(inst)
         weapon:AddComponent("weapon")
         weapon.components.weapon:SetDamage(inst.components.combat.defaultdamage)
         weapon.components.weapon:SetRange(inst.components.combat.attackrange, inst.components.combat.attackrange+4)
-        weapon.components.weapon:SetProjectile("fireballprojectile")
+        weapon.components.weapon:SetProjectile("fireballprojectilekos")
         weapon:AddComponent("inventoryitem")
         weapon.persists = false
         weapon.components.inventoryitem:SetOnDroppedFn(WeaponDropped)
@@ -178,6 +178,7 @@ end
 local function EquipWeaponRed(inst)
     if inst.components.inventory and not inst.components.inventory:GetEquippedItem(EQUIPSLOTS.HANDS) then
         local weapon = EquipWeaponRedKos(inst)
+        weapon.components.weapon:SetProjectile("fireballprojectile")
         weapon:AddComponent("finiteuses")
         weapon.components.finiteuses:SetMaxUses(REDTOTEM_USES)
         weapon.components.finiteuses:SetUses(REDTOTEM_USES)

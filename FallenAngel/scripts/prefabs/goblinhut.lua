@@ -3,7 +3,8 @@ require "recipes"
 
 local assets =
 {
-	Asset("ANIM", "anim/pig_house.zip"),
+    Asset("ANIM", "anim/pig_house.zip"),
+	Asset("ANIM", "anim/goblinhut.zip"),
     Asset("SOUND", "sound/pig.fsb"),
 }
 
@@ -12,19 +13,6 @@ local prefabs =
 	"goblin",
 }
 
-local function LightsOn(inst)
-    inst.Light:Enable(true)
-    inst.AnimState:PlayAnimation("lit", true)
-    inst.SoundEmitter:PlaySound("dontstarve/pig/pighut_lighton")
-    inst.lightson = true
-end
-
-local function LightsOff(inst)
-    inst.Light:Enable(false)
-    inst.AnimState:PlayAnimation("idle", true)
-    inst.SoundEmitter:PlaySound("dontstarve/pig/pighut_lightoff")
-    inst.lightson = false
-end
 
 local function onfar(inst) 
     if inst.components.spawner:IsOccupied() then
@@ -64,7 +52,7 @@ local function onhammered(inst, worker)
 end
 
 local function onhit(inst, worker)
-	inst.AnimState:PlayAnimation("hit")
+--	inst.AnimState:PlayAnimation("hit")
 	inst.AnimState:PushAnimation("idle")
 end
 
@@ -97,9 +85,9 @@ local function fn(Sim)
     
     MakeObstaclePhysics(inst, 1)
 
-    anim:SetBank("pig_house")
-    anim:SetBuild("pig_house")
-    anim:PlayAnimation("idle", true)
+    anim:SetBank("goblinhut")
+    anim:SetBuild("goblinhut")
+    anim:PlayAnimation("idle")
 
     inst:AddTag("structure")
     inst:AddComponent("lootdropper")
@@ -118,12 +106,7 @@ local function fn(Sim)
     inst.components.childspawner:StartSpawning()
 --        inst.components.childspawner:SetSpawnedFn(onspawnspider)
 
---[[    
-	inst:AddComponent( "playerprox" )
-    inst.components.playerprox:SetDist(10,13)
-    inst.components.playerprox:SetOnPlayerNear(onnear)
-    inst.components.playerprox:SetOnPlayerFar(onfar)
-    ]]
+
     inst:AddComponent("inspectable")
     
 	MakeSnowCovered(inst, .01)

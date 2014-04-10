@@ -33,6 +33,7 @@ local assets = {
         Asset( "ANIM", "anim/beard.zip" ),
 
 		-- Don't forget to include your character's custom assets!
+        Asset( "ANIM", "anim/goblin.zip" ),
         Asset( "ANIM", "anim/wizard.zip" ),
         Asset( "ANIM", "anim/smoke_up.zip" ),
 }
@@ -144,6 +145,13 @@ local fn = function(inst)
     inst:AddComponent("xplevel")
     inst:AddComponent("reader")
 
+
+        inst.AnimState:SetBank("wilson")
+        inst.AnimState:SetBuild("goblin")
+        inst.AnimState:PlayAnimation("idle")
+        inst.AnimState:Hide("hat_hair")
+         inst.AnimState:Hide("ARM_carry")
+         inst.AnimState:Hide("hat")
 
     inst.buff_timers={}
 --    inst.buff_timers["light"]={}
