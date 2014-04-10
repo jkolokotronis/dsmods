@@ -142,5 +142,7 @@
   <object type="flower_cave_triple" x="403" y="466"/>
   <object type="flower_cave_triple" x="436" y="139"/>
   <object type="flower_cave_triple" x="215" y="335"/>
+  <object type="goblinhut" x="306" y="239"/>
+  <object type="goblinhut" x="354" y="373"/>
  </objectgroup>
 </map>

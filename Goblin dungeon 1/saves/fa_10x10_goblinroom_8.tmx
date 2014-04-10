@@ -143,5 +143,10 @@
   <object type="ruins_bowl" x="190" y="482"/>
   <object type="ruins_bowl" x="497" y="134"/>
   <object type="ruins_bowl" x="74" y="134"/>
+  <object type="goblinhut" x="318" y="216"/>
+  <object type="goblinhut" x="384" y="434"/>
+  <object type="goblinhut" x="237" y="554"/>
+  <object type="goblinhut" x="382" y="109"/>
+  <object type="goblinhut" x="141" y="257"/>
  </objectgroup>
 </map>

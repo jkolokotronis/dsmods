@@ -53,8 +53,6 @@
   <object type="wall_stone" x="627" y="60"/>
   <object type="wall_stone" x="627" y="36"/>
   <object type="wall_stone" x="626" y="12"/>
-  <object type="wall_stone" x="350" y="627"/>
-  <object type="wall_stone" x="373" y="627"/>
   <object type="wall_stone" x="395" y="627"/>
   <object type="wall_stone" x="419" y="627"/>
   <object type="wall_stone" x="442" y="626"/>
@@ -77,9 +75,6 @@
   <object type="wall_stone" x="212" y="626"/>
   <object type="wall_stone" x="236" y="626"/>
   <object type="wall_stone" x="258" y="626"/>
-  <object type="wall_stone" x="281" y="626"/>
-  <object type="wall_stone" x="303" y="626"/>
-  <object type="wall_stone" x="326" y="627"/>
   <object type="wall_stone" x="12" y="444"/>
   <object type="wall_stone" x="12" y="468"/>
   <object type="wall_stone" x="12" y="492"/>
@@ -185,44 +180,53 @@
   <object type="wall_stone" x="395" y="559"/>
   <object type="wall_stone" x="396" y="582"/>
   <object type="wall_stone" x="247" y="513"/>
-  <object type="ruins_table" x="102" y="53"/>
-  <object type="ruins_table" x="572" y="564"/>
-  <object type="ruins_table" x="91" y="453"/>
-  <object type="ruins_table" x="507" y="225"/>
-  <object type="ruins_table" x="539" y="147"/>
-  <object type="ruins_table" x="57" y="306"/>
-  <object type="bedroll_furry" x="170" y="144"/>
-  <object type="bedroll_furry" x="534" y="446"/>
-  <object type="bedroll_furry" x="56" y="414"/>
-  <object type="bedroll_furry" x="579" y="238"/>
-  <object type="bedroll_furry" x="58" y="235"/>
-  <object type="bedroll_furry" x="570" y="76"/>
-  <object type="poop" x="455" y="433"/>
-  <object type="poop" x="165" y="524"/>
-  <object type="poop" x="143" y="444"/>
-  <object type="poop" x="77" y="525"/>
-  <object type="poop" x="475" y="308"/>
-  <object type="poop" x="558" y="319"/>
-  <object type="poop" x="457" y="229"/>
-  <object type="poop" x="162" y="312"/>
-  <object type="poop" x="116" y="228"/>
-  <object type="poop" x="453" y="126"/>
-  <object type="poop" x="519" y="58"/>
-  <object type="poop" x="586" y="141"/>
-  <object type="poop" x="461" y="61"/>
-  <object type="poop" x="201" y="59"/>
-  <object type="poop" x="80" y="122"/>
-  <object type="poop" x="61" y="54"/>
-  <object type="poop" x="588" y="409"/>
-  <object type="poop" x="576" y="481"/>
-  <object type="poop" x="451" y="506"/>
-  <object type="poop" x="520" y="555"/>
-  <object type="poop" x="433" y="583"/>
-  <object type="goblinhut" x="133" y="285"/>
-  <object type="goblinhut" x="523" y="502"/>
-  <object type="goblinhut" x="131" y="498"/>
-  <object type="goblinhut" x="530" y="281"/>
-  <object type="goblinhut" x="523" y="104"/>
-  <object type="goblinhut" x="133" y="104"/>
+  <object type="wall_ruins" x="390" y="155"/>
+  <object type="wall_ruins" x="391" y="130"/>
+  <object type="wall_ruins" x="246" y="153"/>
+  <object type="wall_ruins" x="247" y="129"/>
+  <object type="wall_ruins" x="396" y="308"/>
+  <object type="wall_ruins" x="395" y="286"/>
+  <object type="wall_ruins" x="247" y="308"/>
+  <object type="wall_ruins" x="247" y="288"/>
+  <object type="wall_ruins" x="395" y="267"/>
+  <object type="wall_ruins" x="248" y="267"/>
+  <object type="wall_ruins" x="397" y="492"/>
+  <object type="wall_ruins" x="398" y="469"/>
+  <object type="wall_ruins" x="248" y="493"/>
+  <object type="wall_ruins" x="248" y="469"/>
+  <object type="poop" x="183" y="89"/>
+  <object type="poop" x="579" y="309"/>
+  <object type="poop" x="496" y="326"/>
+  <object type="poop" x="471" y="231"/>
+  <object type="poop" x="111" y="534"/>
+  <object type="poop" x="185" y="493"/>
+  <object type="poop" x="68" y="138"/>
+  <object type="poop" x="163" y="296"/>
+  <object type="poop" x="64" y="330"/>
+  <object type="poop" x="168" y="231"/>
+  <object type="poop" x="183" y="421"/>
+  <object type="poop" x="55" y="429"/>
+  <object type="poop" x="65" y="238"/>
+  <object type="poop" x="601" y="140"/>
+  <object type="poop" x="190" y="340"/>
+  <object type="poop" x="568" y="225"/>
+  <object type="poop" x="577" y="59"/>
+  <object type="poop" x="535" y="133"/>
+  <object type="poop" x="450" y="123"/>
+  <object type="poop" x="457" y="59"/>
+  <object type="poop" x="182" y="147"/>
+  <object type="poop" x="69" y="53"/>
+  <object type="poop" x="500" y="500"/>
+  <object type="poop" x="588" y="543"/>
+  <object type="poop" x="489" y="558"/>
+  <object type="poop" x="551" y="419"/>
+  <object type="poop" x="452" y="461"/>
+  <object type="poop" x="169" y="547"/>
+  <object type="koalefant" x="124" y="102"/>
+  <object type="koalefant" x="554" y="513"/>
+  <object type="koalefant" x="116" y="467"/>
+  <object type="koalefant" x="517" y="274"/>
+  <object type="koalefant" x="115" y="277"/>
+  <object type="koalefant" x="516" y="90"/>
  </objectgroup>
 </map>

@@ -126,7 +126,7 @@
   <object type="wall_stone" x="386" y="207"/>
   <object type="wall_stone" x="363" y="207"/>
   <object type="wall_stone" x="433" y="207"/>
-  <object type="campfire" x="338" y="273"/>
+  <object type="campfire" x="316" y="243"/>
   <object type="flower_cave" x="128" y="93"/>
   <object type="flower_cave" x="241" y="506"/>
   <object type="flower_cave" x="96" y="568"/>
@@ -152,5 +152,6 @@
   <object type="flower_cave_triple" x="85" y="39"/>
   <object type="flower_cave_triple" x="479" y="186"/>
   <object type="flower_cave_triple" x="75" y="425"/>
+  <object type="goblinhut" x="350" y="289"/>
  </objectgroup>
 </map>

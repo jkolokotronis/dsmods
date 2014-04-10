@@ -1557,6 +1557,61 @@ return {
           height = 0,
           visible = true,
           properties = {}
+        },
+        {
+          name = "",
+          type = "goblinhut",
+          shape = "rectangle",
+          x = 318,
+          y = 216,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "goblinhut",
+          shape = "rectangle",
+          x = 384,
+          y = 434,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "goblinhut",
+          shape = "rectangle",
+          x = 237,
+          y = 554,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "goblinhut",
+          shape = "rectangle",
+          x = 382,
+          y = 109,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "goblinhut",
+          shape = "rectangle",
+          x = 141,
+          y = 257,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
         }
       }
     }

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="28" height="28" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="tiles" tilewidth="64" tileheight="64">
+  <image source="../../tiles.png" width="512" height="128"/>
+ </tileset>
+ <layer name="BG_TILES" width="28" height="28">
+  <data encoding="base64" compression="zlib">
+   eJzt0cEJAAAMg8DQ/YfuEiEgeD/fJmq6cavLf2z+Y/Mfm//Y/Me2/vcnXgBj
+  </data>
+ </layer>
+ <objectgroup name="FG_OBJECTS" width="28" height="28">
+  <object type="wall_stone" x="8" y="10"/>
+  <object type="wall_stone" x="155" y="12"/>
+  <object type="wall_stone" x="181" y="435"/>
+  <object type="wall_stone" x="156" y="435"/>
+  <object type="wall_stone" x="132" y="435"/>
+  <object type="wall_stone" x="109" y="435"/>
+  <object type="wall_stone" x="12" y="435"/>
+  <object type="wall_stone" x="12" y="410"/>
+  <object type="wall_stone" x="12" y="386"/>
+  <object type="wall_stone" x="12" y="362"/>
+  <object type="wall_stone" x="13" y="337"/>
+  <object type="wall_stone" x="13" y="312"/>
+  <object type="wall_stone" x="12" y="287"/>
+  <object type="wall_stone" x="13" y="263"/>
+  <object type="wall_stone" x="13" y="241"/>
+  <object type="wall_stone" x="13" y="218"/>
+  <object type="wall_stone" x="12" y="195"/>
+  <object type="wall_stone" x="13" y="171"/>
+  <object type="wall_stone" x="13" y="148"/>
+  <object type="wall_stone" x="12" y="125"/>
+  <object type="wall_stone" x="11" y="102"/>
+  <object type="wall_stone" x="10" y="79"/>
+  <object type="wall_stone" x="10" y="56"/>
+  <object type="wall_stone" x="10" y="34"/>
+  <object type="wall_stone" x="435" y="58"/>
+  <object type="wall_stone" x="435" y="80"/>
+  <object type="wall_stone" x="436" y="104"/>
+  <object type="wall_stone" x="436" y="126"/>
+  <object type="wall_stone" x="436" y="147"/>
+  <object type="wall_stone" x="436" y="169"/>
+  <object type="wall_stone" x="436" y="192"/>
+  <object type="wall_stone" x="435" y="217"/>
+  <object type="wall_stone" x="435" y="241"/>
+  <object type="wall_stone" x="436" y="265"/>
+  <object type="wall_stone" x="435" y="290"/>
+  <object type="wall_stone" x="435" y="315"/>
+  <object type="wall_stone" x="436" y="364"/>
+  <object type="wall_stone" x="276" y="435"/>
+  <object type="wall_stone" x="436" y="339"/>
+  <object type="wall_stone" x="229" y="436"/>
+  <object type="wall_stone" x="205" y="435"/>
+  <object type="wall_stone" x="296" y="12"/>
+  <object type="wall_stone" x="319" y="12"/>
+  <object type="wall_stone" x="342" y="11"/>
+  <object type="wall_stone" x="365" y="11"/>
+  <object type="wall_stone" x="389" y="11"/>
+  <object type="wall_stone" x="412" y="12"/>
+  <object type="wall_stone" x="435" y="12"/>
+  <object type="wall_stone" x="435" y="34"/>
+  <object type="wall_stone" x="179" y="11"/>
+  <object type="wall_stone" x="202" y="11"/>
+  <object type="wall_stone" x="225" y="11"/>
+  <object type="wall_stone" x="248" y="11"/>
+  <object type="wall_stone" x="272" y="11"/>
+  <object type="wall_stone" x="105" y="11"/>
+  <object type="wall_stone" x="130" y="11"/>
+  <object type="wall_stone" x="253" y="436"/>
+  <object type="wall_stone" x="437" y="436"/>
+  <object type="wall_stone" x="436" y="414"/>
+  <object type="wall_stone" x="436" y="389"/>
+  <object type="wall_stone" x="349" y="435"/>
+  <object type="wall_stone" x="326" y="435"/>
+  <object type="wall_stone" x="301" y="436"/>
+  <object type="wall_stone" x="394" y="435"/>
+  <object type="wall_stone" x="414" y="435"/>
+  <object type="wall_stone" x="372" y="435"/>
+  <object type="fa_bottle_r" x="98" y="96"/>
+  <object type="fa_bottle_r" x="352" y="340"/>
+  <object type="fa_bottle_r" x="94" y="244"/>
+  <object type="fa_bottle_y" x="157" y="73"/>
+  <object type="fa_bottle_g" x="247" y="376"/>
+  <object type="fa_bottle_b" x="299" y="98"/>
+  <object type="ruins_plate" x="340" y="212"/>
+  <object type="flower_cave_triple" x="317" y="361"/>
+  <object type="flower_cave_double" x="321" y="280"/>
+  <object type="fa_bottle_y" x="249" y="252"/>
+  <object type="fa_bottle_y" x="148" y="373"/>
+  <object type="fa_bottle_y" x="388" y="42"/>
+  <object type="fa_bottle_g" x="382" y="139"/>
+  <object type="fa_bottle_g" x="264" y="60"/>
+  <object type="fa_bottle_g" x="177" y="166"/>
+  <object type="fa_bottle_b" x="365" y="71"/>
+  <object type="fa_bottle_b" x="187" y="277"/>
+  <object type="fa_bottle_b" x="263" y="134"/>
+  <object type="ruins_plate" x="355" y="113"/>
+  <object type="ruins_plate" x="181" y="118"/>
+  <object type="ruins_plate" x="131" y="91"/>
+  <object type="ruins_plate" x="99" y="377"/>
+  <object type="ruins_plate" x="198" y="346"/>
+  <object type="ruins_plate" x="135" y="278"/>
+  <object type="flower_cave_triple" x="315" y="53"/>
+  <object type="flower_cave_triple" x="202" y="77"/>
+  <object type="flower_cave_triple" x="156" y="213"/>
+  <object type="flower_cave_triple" x="79" y="158"/>
+  <object type="flower_cave_triple" x="222" y="111"/>
+  <object type="flower_cave_double" x="57" y="81"/>
+  <object type="flower_cave_double" x="251" y="204"/>
+  <object type="flower_cave_double" x="134" y="122"/>
+  <object type="flower_cave_double" x="304" y="165"/>
+  <object type="flower_cave_double" x="377" y="246"/>
+  <object type="flower_cave_double" x="379" y="365"/>
+  <object type="flower_cave_double" x="244" y="308"/>
+  <object type="flower_cave_double" x="88" y="335"/>
+ </objectgroup>
+</map>
