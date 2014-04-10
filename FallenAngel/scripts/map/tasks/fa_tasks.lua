@@ -145,8 +145,8 @@ AddTask("FAGoblinDungeon8", {
 		colour={r=1,g=0,b=0.6,a=1},
 		})
 AddTask("FAGoblinDungeonMaze1", {
-		locks={LOCKS.TIER2},
-		keys_given= {KEYS.TIER3},
+		locks={LOCKS.NONE},
+		keys_given= {KEYS.TIER1},
 		room_choices={
 			["FA_GoblinMaze1"] = 1,
 		},

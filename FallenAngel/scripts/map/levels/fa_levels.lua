@@ -60,8 +60,8 @@ FA_LEVELDATA["GOBLIN_CAVE"]={
 			{"poi", 			"never"},
 			{"traps", 			"never"},
 			{"protected", 		"never"},
---			{"start_setpeice", 	"FADungeonStart"},
-			{"start_setpeice", 	"FAGoblinRoom_1"},
+			{"start_setpeice", 	"FADungeonStart"},
+--			{"start_setpeice", 	"FAGoblinRoom_1"},
 			{"start_node",		"FA_GoblinRoomEntry"},
 		},
 		tasks={

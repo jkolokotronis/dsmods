@@ -36,6 +36,7 @@ local ImageButton = require "widgets/imagebutton"
 require "repairabledescriptionfix"
 
 PrefabFiles = {
+    "fa_dungeon_walls",
     "goblinsignpost",
     "fa_animatedarmor",
     "fa_bonfire",

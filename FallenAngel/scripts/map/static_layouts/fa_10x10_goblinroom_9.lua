@@ -86,7 +86,7 @@ return {
       objects = {
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 179,
           y = 12,
@@ -97,7 +97,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 201,
           y = 12,
@@ -108,7 +108,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 225,
           y = 12,
@@ -119,7 +119,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 250,
           y = 10,
@@ -130,7 +130,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 273,
           y = 11,
@@ -141,7 +141,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 369,
           y = 13,
@@ -152,7 +152,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 391,
           y = 12,
@@ -163,7 +163,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 415,
           y = 12,
@@ -174,7 +174,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 437,
           y = 13,
@@ -185,7 +185,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 460,
           y = 12,
@@ -196,7 +196,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 483,
           y = 13,
@@ -207,7 +207,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 508,
           y = 13,
@@ -218,7 +218,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 531,
           y = 14,
@@ -229,7 +229,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 555,
           y = 14,
@@ -240,7 +240,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 578,
           y = 13,
@@ -251,7 +251,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 629,
           y = 541,
@@ -262,7 +262,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 628,
           y = 519,
@@ -273,7 +273,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 628,
           y = 497,
@@ -284,7 +284,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 628,
           y = 475,
@@ -295,7 +295,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 628,
           y = 453,
@@ -306,7 +306,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 628,
           y = 431,
@@ -317,7 +317,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 627,
           y = 408,
@@ -328,7 +328,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 628,
           y = 385,
@@ -339,7 +339,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 627,
           y = 294,
@@ -350,7 +350,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 628,
           y = 270,
@@ -361,7 +361,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 628,
           y = 248,
@@ -372,7 +372,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 627,
           y = 224,
@@ -383,7 +383,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 627,
           y = 200,
@@ -394,7 +394,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 627,
           y = 176,
@@ -405,7 +405,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 627,
           y = 153,
@@ -416,7 +416,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 627,
           y = 129,
@@ -427,7 +427,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 602,
           y = 13,
@@ -438,7 +438,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 627,
           y = 106,
@@ -449,7 +449,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 627,
           y = 84,
@@ -460,7 +460,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 627,
           y = 60,
@@ -471,7 +471,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 627,
           y = 36,
@@ -482,7 +482,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 626,
           y = 12,
@@ -493,7 +493,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 350,
           y = 627,
@@ -504,7 +504,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 373,
           y = 627,
@@ -515,7 +515,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 395,
           y = 627,
@@ -526,7 +526,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 419,
           y = 627,
@@ -537,7 +537,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 442,
           y = 626,
@@ -548,7 +548,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 466,
           y = 627,
@@ -559,7 +559,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 490,
           y = 627,
@@ -570,7 +570,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 514,
           y = 627,
@@ -581,7 +581,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 537,
           y = 627,
@@ -592,7 +592,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 560,
           y = 626,
@@ -603,7 +603,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 583,
           y = 626,
@@ -614,7 +614,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 606,
           y = 627,
@@ -625,7 +625,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 629,
           y = 627,
@@ -636,7 +636,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 629,
           y = 586,
@@ -647,7 +647,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 629,
           y = 564,
@@ -658,7 +658,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 76,
           y = 626,
@@ -669,7 +669,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 99,
           y = 626,
@@ -680,7 +680,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 122,
           y = 624,
@@ -691,7 +691,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 145,
           y = 625,
@@ -702,7 +702,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 167,
           y = 625,
@@ -713,7 +713,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 190,
           y = 625,
@@ -724,7 +724,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 212,
           y = 626,
@@ -735,7 +735,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 236,
           y = 626,
@@ -746,7 +746,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 258,
           y = 626,
@@ -757,7 +757,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 12,
           y = 444,
@@ -768,7 +768,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 12,
           y = 468,
@@ -779,7 +779,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 12,
           y = 492,
@@ -790,7 +790,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 12,
           y = 514,
@@ -801,7 +801,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 13,
           y = 537,
@@ -812,7 +812,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 12,
           y = 559,
@@ -823,7 +823,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 12,
           y = 581,
@@ -834,7 +834,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 11,
           y = 604,
@@ -845,7 +845,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 10,
           y = 626,
@@ -856,7 +856,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 29,
           y = 626,
@@ -867,7 +867,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 53,
           y = 626,
@@ -878,7 +878,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 13,
           y = 235,
@@ -889,7 +889,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 13,
           y = 259,
@@ -900,7 +900,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 12,
           y = 283,
@@ -911,7 +911,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 12,
           y = 376,
@@ -922,7 +922,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 12,
           y = 399,
@@ -933,7 +933,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 11,
           y = 421,
@@ -944,7 +944,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 13,
           y = 53,
@@ -955,7 +955,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 12,
           y = 75,
@@ -966,7 +966,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 12,
           y = 96,
@@ -977,7 +977,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 11,
           y = 120,
@@ -988,7 +988,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 11,
           y = 142,
@@ -999,7 +999,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 11,
           y = 165,
@@ -1010,7 +1010,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 12,
           y = 188,
@@ -1021,7 +1021,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 13,
           y = 212,
@@ -1032,7 +1032,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 107,
           y = 12,
@@ -1043,7 +1043,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 82,
           y = 12,
@@ -1054,7 +1054,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 58,
           y = 12,
@@ -1065,7 +1065,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 34,
           y = 12,
@@ -1076,7 +1076,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 12,
           y = 9,
@@ -1087,7 +1087,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 12,
           y = 31,
@@ -1098,7 +1098,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 155,
           y = 13,
@@ -1109,7 +1109,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 131,
           y = 12,
@@ -1120,7 +1120,7 @@ return {
         },
         {
           name = "",
-          type = "wall_stone",
+          type = "fa_dungeon_wall",
           shape = "rectangle",
           x = 628,
           y = 606,

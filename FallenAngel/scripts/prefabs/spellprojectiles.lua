@@ -83,5 +83,5 @@ end
 
 return  
        Prefab("common/inventory/fireballprojectile", fire, assets),
-       Prefab("common/inventory/fireballprojectilekos", fire, assets),
+       Prefab("common/inventory/fireballprojectilekos", firekos, assets),
        Prefab("common/inventory/acidarrowprojectile", acid, assets)
