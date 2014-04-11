@@ -33,7 +33,7 @@ local assets = {
         Asset( "ANIM", "anim/beard.zip" ),
 
 		-- Don't forget to include your character's custom assets!
-        Asset( "ANIM", "anim/goblin.zip" ),
+        Asset( "ANIM", "anim/bluegoblin.zip" ),
         Asset( "ANIM", "anim/wizard.zip" ),
         Asset( "ANIM", "anim/smoke_up.zip" ),
 }
@@ -147,7 +147,7 @@ local fn = function(inst)
 
 
         inst.AnimState:SetBank("wilson")
-        inst.AnimState:SetBuild("goblin")
+        inst.AnimState:SetBuild("bluegoblin")
         inst.AnimState:PlayAnimation("idle")
         inst.AnimState:Hide("hat_hair")
          inst.AnimState:Hide("ARM_carry")

@@ -1,7 +1,11 @@
     
 local assets =
 {
-	Asset("ANIM", "anim/sign_home.zip"),
+	Asset("ANIM", "anim/goblinsign_1.zip"),
+	Asset("ANIM", "anim/goblinsign_2.zip"),
+	Asset("ANIM", "anim/goblinsign_3.zip"),
+	Asset("ANIM", "anim/goblinsign_4.zip"),
+	Asset("ANIM", "anim/goblinsign_5.zip"),
 }
 
 local function onhammered(inst, worker)
@@ -40,8 +44,6 @@ local function fn(Sim)
 	minimap:SetIcon( "sign.png" )
     
     anim:SetBank("sign_home")
-    anim:SetBuild("sign_home")
-    anim:PlayAnimation("idle")
     
     inst:AddComponent("inspectable")
     inst:AddComponent("lootdropper") 
@@ -60,7 +62,40 @@ local function fn(Sim)
     return inst
 end
 
-return Prefab( "common/objects/goblinsign_1", fn, assets),
-Prefab( "common/objects/goblinsign_2", fn, assets),
-Prefab( "common/objects/goblinsign_3", fn, assets)
+function fn1(Sim)
+	local inst=fn(Sim)
+    inst.AnimState:SetBuild("goblinsign_1")
+    inst.AnimState:PlayAnimation("idle")
+	return inst
+end
+
+function fn2(Sim)
+	local inst=fn(Sim)
+    inst.AnimState:SetBuild("goblinsign_2")
+    inst.AnimState:PlayAnimation("idle")
+	return inst
+end
+function fn3(Sim)
+	local inst=fn(Sim)
+    inst.AnimState:SetBuild("goblinsign_3")
+    inst.AnimState:PlayAnimation("idle")
+	return inst
+end
+function fn4(Sim)
+	local inst=fn(Sim)
+    inst.AnimState:SetBuild("goblinsign_4")
+    inst.AnimState:PlayAnimation("idle")
+	return inst
+end
+function fn5(Sim)
+	local inst=fn(Sim)
+    inst.AnimState:SetBuild("goblinsign_5")
+    inst.AnimState:PlayAnimation("idle")
+	return inst
+end
+return Prefab( "common/objects/goblinsign_1", fn1, assets),
+Prefab( "common/objects/goblinsign_2", fn2, assets),
+Prefab( "common/objects/goblinsign_3", fn3, assets),
+Prefab( "common/objects/goblinsign_4", fn4, assets),
+Prefab( "common/objects/goblinsign_5", fn5, assets)
 --		MakePlacer( "common/homesign_placer", "sign_home", "sign_home", "idle" ) 
