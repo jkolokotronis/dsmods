@@ -5,6 +5,7 @@ local assets=
     Asset("SOUND", "sound/ghost.fsb"),
     Asset("ANIM", "anim/wilton.zip"),
     Asset("ANIM", "anim/drybones.zip"),
+    Asset("ANIM", "anim/fa_skull.zip"),
     Asset("ANIM", "anim/swap_nightmaresword.zip"),
 }
 
@@ -180,6 +181,17 @@ local function drybones(Sim)
     return inst
 end
 
+local function skull(Sim)
+    local inst=fn(Sim)
+    local anim=inst.AnimState
+--    inst.Transform:SetScale(2, 2, 2)
+    anim:SetBank("wilson")
+    anim:SetBuild("fa_skull")
+    anim:PlayAnimation("idle")
+
+    return inst
+end
+
 local function firedartspawn(Sim)
      local inst=drybones(Sim)
     local anim=inst.AnimState
@@ -191,4 +203,5 @@ end
 
 return Prefab( "common/skeletonspawn", spawn, assets),
      Prefab( "common/fa_drybones", drybones, assets),
-     Prefab("common/fa_dartdrybones", firedartspawn, assets)
+     Prefab("common/fa_dartdrybones", firedartspawn, assets),
+     Prefab("common/fa_skull", skull, assets)
