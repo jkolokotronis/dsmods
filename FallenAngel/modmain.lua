@@ -36,6 +36,8 @@ local ImageButton = require "widgets/imagebutton"
 require "repairabledescriptionfix"
 
 PrefabFiles = {
+    "fa_dungeon_walls",
+    "goblinsignpost",
     "fa_animatedarmor",
     "fa_bonfire",
     "fa_dungeon_entrance",
@@ -222,8 +224,19 @@ Assets = {
     Asset( "IMAGE", "minimap/woodshield.tex" ),
     Asset( "ATLAS", "minimap/woodshield.xml" ),   
     Asset( "ANIM", "anim/question.zip" ),
-}
 
+
+
+    Asset( "IMAGE", "colour_cubes/identity_colourcube.tex" ),
+
+}
+--[[
+AddSimPostInit(function()
+    GLOBAL.GetWorld().components.colourcubemanager:SetOverrideColourCube(
+        GLOBAL.resolvefilepath "colour_cubes/identity_colourcube.tex"
+    )
+end)
+]]
 
 -- strings! Any "WOD" below would have to be replaced by the prefab name of your character.
 
@@ -436,6 +449,18 @@ GLOBAL.STRINGS.NAMES.FAIRY_L20 = "Wolf"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FAIRY_L20 = "Wolf"
 GLOBAL.STRINGS.NAMES.DARKKNIGHTPET = "Shadow Pet"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKKNIGHTPET = "Shadow Pet"
+
+
+GLOBAL.STRINGS.NAMES.GOBLINSIGN_1 = "Goblin Sign Post"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.GOBLINSIGN_1 = "It says 'Greenz noze's only'."
+GLOBAL.STRINGS.NAMES.GOBLINSIGN_2 = "Goblin Sign Post"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.GOBLINSIGN_2 = "It says 'No heroz com herez, go away!'."
+GLOBAL.STRINGS.NAMES.GOBLINSIGN_3 = "Goblin Sign Post"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.GOBLINSIGN_3 = "It says 'Danger!'."
+GLOBAL.STRINGS.NAMES.GOBLINSIGN_4 = "Goblin Sign Post"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.GOBLINSIGN_4 = "It says 'Only prutty facez be herez'."
+GLOBAL.STRINGS.NAMES.GOBLINSIGN_5 = "Goblin Sign Post"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.GOBLINSIGN_5 = "It says 'Go bak now!'."
 --[[
 GLOBAL.STRINGS.CHARACTERS.GENERIC.FA_WONDER_SPEEDBOOST
 GLOBAL.STRINGS.CHARACTERS.GENERIC.FA_WONDER_SPEEDNERF

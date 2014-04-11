@@ -58,10 +58,20 @@ local function fire()
     local inst = common()
     inst.components.projectile:SetOnHitFn(OnHitFb)
     inst.components.projectile:SetSpeed(20)
+    inst.components.projectile:SetRange(40)
     inst.components.projectile:SetOnMissFn(OnHitFb)
     return inst
 end
 
+local function firekos()
+    local inst = common()
+    inst.components.projectile:SetOnHitFn(OnHitFb)
+    inst.components.projectile:SetSpeed(20)
+    inst.components.projectile:SetRange(40)
+    inst.components.projectile:SetHoming(false)
+    inst.components.projectile:SetOnMissFn(OnHitFb)
+    return inst
+end
 local function acid()
     local inst = common()
     inst.AnimState:SetBank("blow_dart")
@@ -73,4 +83,5 @@ end
 
 return  
        Prefab("common/inventory/fireballprojectile", fire, assets),
+       Prefab("common/inventory/fireballprojectilekos", firekos, assets),
        Prefab("common/inventory/acidarrowprojectile", acid, assets)

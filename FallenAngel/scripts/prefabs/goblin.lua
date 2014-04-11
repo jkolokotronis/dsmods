@@ -27,6 +27,9 @@ local function RetargetFn(inst)
     local invader = FindEntity(defenseTarget or inst, TUNING.MERM_TARGET_DIST, function(guy)
         return guy:HasTag("character") and not guy:HasTag("goblin")
     end)
+    if(invader)then
+        inst.SoundEmitter:PlaySound("fa/goblin/goblin_die")
+    end
     return invader
 end
 local function KeepTargetFn(inst, target)
@@ -86,7 +89,7 @@ local function fn()
      inst.AnimState:PlayAnimation("idle")
     inst:AddComponent("locomotor") -- locomotor must be constructed before the stategraph
     inst.components.locomotor.runspeed = 2
-    inst:SetStateGraph("SGskeletonspawn")
+    inst:SetStateGraph("SGgoblin")
 
 
     local brain = require "brains/orcbrain"

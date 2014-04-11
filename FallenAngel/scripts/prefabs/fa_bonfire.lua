@@ -122,8 +122,8 @@ local function fn(Sim)
     inst:AddTag("bonfire")
     anim:SetBank("bonfire")
     anim:SetBuild("bonfire")
-	anim:PlayAnimation("off")
-
+--	anim:PlayAnimation("off")
+	anim:PlayAnimation("on")
 --	inst:ListenForEvent( "daytime", function(inst, data) StartDay( local_inst ) end, GetWorld())
 --	inst:ListenForEvent( "nighttime", function(inst, data) end, GetWorld())
 
