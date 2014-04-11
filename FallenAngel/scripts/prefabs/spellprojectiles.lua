@@ -7,6 +7,7 @@ local assets=
 }
 
 local function OnHitFb(inst, owner, target)
+    print("fbhit")
     local pos =inst:GetPosition()
     local boom = CreateEntity()
     boom.entity:AddTransform()
@@ -27,13 +28,39 @@ local function OnHit(inst, owner, target)
 end
 
 local function onthrown(inst, data)
+
+end
+
+local function oncollide(inst, other)
+    print("collision with ",other)
+    if(inst.components.projectile.target and inst.components.projectile.target==other)then
+        print("hit the target, ignore, should never happen")
+    else
+        if(other)then
+            inst.components.projectile:Hit(other)
+        else
+            inst.components.projectile:Miss()--the hell does target mean here?
+        end
+    end
+    --[[
+    local v1 = Vector3(inst.Physics:GetVelocity())
+    local v2 = Vector3(other.Physics:GetVelocity()) 
+    if v1:LengthSq() > .1 or v2:LengthSq() > .1 then
+
+    end
+    ]]
 end
 local function common()
 	local inst = CreateEntity()
 	local trans = inst.entity:AddTransform()
 	local anim = inst.entity:AddAnimState()
+
+--regular projectiles pass through walls, i want this to actually HIT whatever is on its path and stop in its tracks
     MakeInventoryPhysics(inst)
+--    MakeCharacterPhysics(inst, 10, .25)
 --    RemovePhysicsColliders(inst)
+    local oldcb=
+    inst.Physics:SetCollisionCallback(oncollide)
     
     anim:SetBank("fireball")
     anim:SetBuild("fireball")
@@ -42,13 +69,23 @@ local function common()
     
     inst:AddTag("projectile")
     inst.Transform:SetScale(1, 1, 1)
+
     
     inst:AddComponent("projectile")
     inst:ListenForEvent("onthrown", onthrown)
     inst.components.projectile:SetSpeed(50)
     inst.components.projectile:SetOnHitFn(OnHit)
+    inst.components.projectile:SetRange(30)
     inst.components.projectile:SetOnMissFn(OnHit)
     inst.AnimState:SetOrientation( ANIM_ORIENTATION.OnGround )
+--[[
+function Projectile:Miss(target)
+    local owner = self.owner
+    self:Stop()
+    if self.onmiss then
+        self.onmiss(self.inst, owner, target)
+    end
+end]]
     
     return inst
 end
@@ -58,7 +95,6 @@ local function fire()
     local inst = common()
     inst.components.projectile:SetOnHitFn(OnHitFb)
     inst.components.projectile:SetSpeed(20)
-    inst.components.projectile:SetRange(40)
     inst.components.projectile:SetOnMissFn(OnHitFb)
     return inst
 end
@@ -67,7 +103,6 @@ local function firekos()
     local inst = common()
     inst.components.projectile:SetOnHitFn(OnHitFb)
     inst.components.projectile:SetSpeed(20)
-    inst.components.projectile:SetRange(40)
     inst.components.projectile:SetHoming(false)
     inst.components.projectile:SetOnMissFn(OnHitFb)
     return inst

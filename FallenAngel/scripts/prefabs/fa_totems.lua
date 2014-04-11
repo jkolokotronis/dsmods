@@ -17,7 +17,7 @@ local prefabs =
 {
     "fireballprojectile"
 }
-local REDTOTEM_RANGE=12
+local REDTOTEM_RANGE=10
 local REDTOTEM_USES=20
 local REDTOTEM_DAMAGE=100
 local REDTOTEM_ATTACKPERIOD=1.5
@@ -162,7 +162,7 @@ local function EquipWeaponRedKos(inst)
         weapon.entity:AddTransform()
         weapon:AddComponent("weapon")
         weapon.components.weapon:SetDamage(inst.components.combat.defaultdamage)
-        weapon.components.weapon:SetRange(inst.components.combat.attackrange, inst.components.combat.attackrange+4)
+        weapon.components.weapon:SetRange(REDTOTEM_RANGE, REDTOTEM_RANGE+4)
         weapon.components.weapon:SetProjectile("fireballprojectilekos")
         weapon:AddComponent("inventoryitem")
         weapon.persists = false

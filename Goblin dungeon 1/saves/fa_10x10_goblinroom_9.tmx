@@ -122,7 +122,7 @@
   <object type="trap_teeth_maxwell" x="374" y="209"/>
   <object type="trap_teeth_maxwell" x="63" y="333"/>
   <object type="trap_teeth_maxwell" x="309" y="572"/>
-  <object type="bonfire" x="322" y="318"/>
+  <object type="fa_bonfire" x="322" y="318"/>
   <object type="flower_cave" x="449" y="256"/>
   <object type="flower_cave" x="541" y="484"/>
   <object type="flower_cave" x="422" y="401"/>

@@ -1329,7 +1329,7 @@ return {
         },
         {
           name = "",
-          type = "bonfire",
+          type = "fa_bonfire",
           shape = "rectangle",
           x = 322,
           y = 318,

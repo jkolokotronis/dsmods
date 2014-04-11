@@ -27,8 +27,8 @@ local function RetargetFn(inst)
     local invader = FindEntity(defenseTarget or inst, TUNING.MERM_TARGET_DIST, function(guy)
         return guy:HasTag("character") and not guy:HasTag("goblin")
     end)
-    if(invader)then
-        inst.SoundEmitter:PlaySound("fa/goblin/goblin_die")
+    if(invader and not invader==inst.components.combat.target)then
+        inst.SoundEmitter:PlaySound("fa/goblin/goblin_yell")
     end
     return invader
 end

@@ -75,6 +75,10 @@
   <object type="fa_dungeon_wall" x="394" y="435"/>
   <object type="fa_dungeon_wall" x="414" y="435"/>
   <object type="fa_dungeon_wall" x="372" y="435"/>
-  <object type="fa_fireaxe3" x="221" y="238"/>
+  <object type="fa_fireaxe3" x="221" y="238">
+   <properties>
+    <property name="scenario" value="fa_pickup_item_houndtrap"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

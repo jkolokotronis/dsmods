@@ -201,7 +201,7 @@
   <object type="fa_bottle_b" x="47" y="131"/>
   <object type="fa_bottle_b" x="89" y="117"/>
   <object type="fa_bottle_b" x="51" y="83"/>
-  <object type="skullchest " x="579" y="574"/>
+  <object type="skullchest" x="579" y="574"/>
   <object type="treasurechest" x="593" y="226"/>
   <object type="fa_bottle_y" x="43" y="421"/>
   <object type="fa_bottle_y" x="44" y="588"/>

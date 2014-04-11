@@ -1,11 +1,11 @@
 function FA_GenerateLoot(loottable,weight,chance)
         local loots={}
         local chance=math.random()
-        if(self.fallenLootTable and chance<=self.fallenLootTableChance)then
+        if(loottable and chance<=chance)then
             local newloot=nil
             --pick one of...
-            local rnd = math.random()*self.fallenLootTableTotalWeight
-            for k,v in pairs(self.fallenLootTable) do
+            local rnd = math.random()*weight
+            for k,v in pairs(loottable) do
                 rnd = rnd - v
                 if rnd <= 0 then
                     newloot=k
@@ -15,7 +15,7 @@ function FA_GenerateLoot(loottable,weight,chance)
             table.insert(loots, newloot)
         end
         return loots
-    end
+    
 end
 
 function FA_SpawnPrefabInProx(inst,prefab,count)

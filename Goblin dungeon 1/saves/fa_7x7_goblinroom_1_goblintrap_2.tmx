@@ -75,6 +75,10 @@
   <object type="fa_dungeon_wall" x="394" y="435"/>
   <object type="fa_dungeon_wall" x="414" y="435"/>
   <object type="fa_dungeon_wall" x="372" y="435"/>
-  <object type="treasurechest" x="224" y="227"/>
+  <object type="treasurechest" x="224" y="227">
+   <properties>
+    <property name="scenario" value="fa_chest_goblintrap"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

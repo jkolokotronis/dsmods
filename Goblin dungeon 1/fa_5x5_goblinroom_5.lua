@@ -682,7 +682,7 @@ return {
         },
         {
           name = "",
-          type = "blowdart",
+          type = "blowdart_pipe",
           shape = "rectangle",
           x = 266,
           y = 174,

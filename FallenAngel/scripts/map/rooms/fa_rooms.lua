@@ -561,6 +561,28 @@ AddRoom("FA_GoblinMaze1",{
 									}, 
 					            }
 	})
+AddRoom("FA_GoblinMaze2",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.UNDERROCK,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FA25x25GoblinMaze2"] = 1,
+									}, 
+					            }
+	})
+AddRoom("FA_GoblinMaze3",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.UNDERROCK,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FA25x25GoblinMaze3"] = 1,
+									}, 
+					            }
+	})
 
 AddRoom("FA_5x5GoblinRoom_1", MakeSetpieceRoom("FA5x5GoblinRoom_1"))
 AddRoom("FA_5x5GoblinRoom_2", MakeSetpieceRoom("FA5x5GoblinRoom_2"))

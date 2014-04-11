@@ -43,3 +43,5 @@ Layouts["FA7x7GoblinRoom_5"] = StaticLayout.Get("map/static_layouts/fa_7x7_gobli
 Layouts["FA7x7GoblinRoom_6"] = StaticLayout.Get("map/static_layouts/fa_7x7_goblinroom_6")
 Layouts["FA7x7GoblinRoom_7"] = StaticLayout.Get("map/static_layouts/fa_7x7_goblinroom_7")
 Layouts["FA25x25GoblinMaze1"]=StaticLayout.Get("map/static_layouts/fa_25x25_goblinroom_1")
+Layouts["FA25x25GoblinMaze2"]=StaticLayout.Get("map/static_layouts/fa_25x25_goblinroom_2")
+Layouts["FA25x25GoblinMaze3"]=StaticLayout.Get("map/static_layouts/fa_25x25_goblinroom_3")

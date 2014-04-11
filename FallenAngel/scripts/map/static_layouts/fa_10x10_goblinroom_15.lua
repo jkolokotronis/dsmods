@@ -2429,7 +2429,7 @@ return {
         },
         {
           name = "",
-          type = "koalefant",
+          type = "koalefant_summer",
           shape = "rectangle",
           x = 124,
           y = 102,
@@ -2440,7 +2440,7 @@ return {
         },
         {
           name = "",
-          type = "koalefant",
+          type = "koalefant_summer",
           shape = "rectangle",
           x = 554,
           y = 513,
@@ -2451,7 +2451,7 @@ return {
         },
         {
           name = "",
-          type = "koalefant",
+          type = "koalefant_summer",
           shape = "rectangle",
           x = 116,
           y = 467,
@@ -2462,7 +2462,7 @@ return {
         },
         {
           name = "",
-          type = "koalefant",
+          type = "koalefant_summer",
           shape = "rectangle",
           x = 517,
           y = 274,
@@ -2473,7 +2473,7 @@ return {
         },
         {
           name = "",
-          type = "koalefant",
+          type = "koalefant_summer",
           shape = "rectangle",
           x = 115,
           y = 277,
@@ -2484,7 +2484,7 @@ return {
         },
         {
           name = "",
-          type = "koalefant",
+          type = "koalefant_summer",
           shape = "rectangle",
           x = 516,
           y = 90,

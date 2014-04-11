@@ -75,7 +75,11 @@
   <object type="fa_dungeon_wall" x="394" y="435"/>
   <object type="fa_dungeon_wall" x="414" y="435"/>
   <object type="fa_dungeon_wall" x="372" y="435"/>
-  <object type="armorfire3" x="215" y="221"/>
+  <object type="armorfire3" x="215" y="221">
+   <properties>
+    <property name="scenario" value="fa_pickup_item_goblintrap"/>
+   </properties>
+  </object>
   <object type="skeleton" x="136" y="160"/>
   <object type="skeleton" x="89" y="265"/>
   <object type="skeleton" x="314" y="318"/>

@@ -807,7 +807,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["scenario"] = "fa_pickup_item_houndtrap"
+          }
         }
       }
     }

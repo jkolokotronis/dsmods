@@ -800,14 +800,16 @@ return {
         },
         {
           name = "",
-          type = "fa_lightningsword3\n",
+          type = "fa_lightningsword3",
           shape = "rectangle",
           x = 220,
           y = 236,
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["scenario"] = "fa_pickup_item_houndtrap"
+          }
         },
         {
           name = "",

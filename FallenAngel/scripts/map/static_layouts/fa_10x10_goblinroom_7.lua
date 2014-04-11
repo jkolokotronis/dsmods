@@ -2198,7 +2198,7 @@ return {
         },
         {
           name = "",
-          type = "skullchest ",
+          type = "skullchest",
           shape = "rectangle",
           x = 579,
           y = 574,
