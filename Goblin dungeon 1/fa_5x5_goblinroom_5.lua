@@ -616,7 +616,7 @@ return {
         },
         {
           name = "",
-          type = "blowdart_sleep",
+          type = "blowdart_pipe",
           shape = "rectangle",
           x = 101,
           y = 227,

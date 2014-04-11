@@ -59,7 +59,7 @@
   <object type="fa_dungeon_wall" x="33" y="10"/>
   <object type="fa_dungeon_wall" x="12" y="9"/>
   <object type="backpack" x="60" y="270"/>
-  <object type="blowdart_sleep" x="101" y="227"/>
+  <object type="blowdart_pipe" x="101" y="227"/>
   <object type="boomerang" x="128" y="268"/>
   <object type="footballhat" x="140" y="184"/>
   <object type="nightsword" x="184" y="278"/>
