@@ -433,6 +433,8 @@ GLOBAL.STRINGS.NAMES.FA_BLUETOTEM = "Lightning Staff"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_BLUETOTEM = "Lightning Staff"
 GLOBAL.STRINGS.NAMES.FA_REDTOTEM_ITEM = "Fire Staff"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_REDTOTEM_ITEM = "Fire Staff"
+GLOBAL.STRINGS.NAMES.FA_REDTOTEM_KOS = "Fire Staff"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_REDTOTEM_KOS = "Fire Staff"
 GLOBAL.STRINGS.NAMES.FA_REDTOTEM = "Fire Staff"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_REDTOTEM = "Fire Staff"
 
@@ -443,8 +445,12 @@ GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.POISONSPIDERDEN =  "Poison Spider Den
 GLOBAL.STRINGS.NAMES.POISONSPIDEREGGSACK = "Poison Spider Egg Sack"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.POISONSPIDEREGGSACK =  "Poison Spider Egg Sack"
 
-GLOBAL.STRINGS.NAMES.FAIRY = "Wolf"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FAIRY = "Wolf"
+GLOBAL.STRINGS.NAMES.FA_DUNGEON_ENTRANCE = "Dungeon"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_DUNGEON_ENTRANCE = "Dungeon"
+GLOBAL.STRINGS.NAMES.GOBLIN = "Goblin"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.GOBLIN = "Goblin"
+GLOBAL.STRINGS.NAMES.GOBLINHUT = "Goblin Hut"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.GOBLINHUT = "Goblin Hut"
 GLOBAL.STRINGS.NAMES.FAIRY_L20 = "Wolf"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FAIRY_L20 = "Wolf"
 GLOBAL.STRINGS.NAMES.DARKKNIGHTPET = "Shadow Pet"
@@ -691,6 +697,8 @@ GLOBAL.xpcall(function()
             )
 print("dlc status",GLOBAL.FA_DLCACCESS)
 
+
+
 local isrpghudenabled=false
  for _, moddir in ipairs( GLOBAL.KnownModIndex:GetModsToLoad() ) do
         local its_modinfo = GLOBAL.KnownModIndex:GetModInfo(moddir)
@@ -741,6 +749,11 @@ end
     end    
 
 --RemapSoundEvent("dontstarve/music/music_FE","fa/music/fires")]]
+
+
+--SaveGameIndex:GetCurrentCaveLevel()
+
+
 
 local RELOAD = Action(1, true)
 RELOAD.id = "RELOAD"
@@ -1282,7 +1295,7 @@ local function onFishingCollect(inst,data)
 end
 
 AddPrefabPostInit("world", function(inst)
-    GLOBAL.assert( GLOBAL.GetPlayer() == nil )
+--    GLOBAL.assert( GLOBAL.GetPlayer() == nil )
     local player_prefab = GLOBAL.SaveGameIndex:GetSlotCharacter()
  
     -- Unfortunately, we can't add new postinits by now. So we have to do
@@ -1315,6 +1328,15 @@ AddPrefabPostInit("world", function(inst)
         inst.fa_prevcavelevel=0--should really default to current topology or so but meh
  
         return inst
+    end
+end)
+
+
+AddPrefabPostInit("cave", function(inst)
+    local level=GLOBAL.SaveGameIndex:GetCurrentCaveLevel()
+    print("in cave postinit",level)
+    if(level>3)then
+        inst:RemoveComponent("periodicthreat")
     end
 end)
 

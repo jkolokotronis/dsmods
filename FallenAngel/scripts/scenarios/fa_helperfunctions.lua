@@ -1,5 +1,5 @@
-function FA_GenerateLoot(loottable,weight,chance)
-        local loots={}
+function FA_GenerateLoot(loottable,weight,chance,loots)
+        local loots=loots or {}
         local chance=math.random()
         if(loottable and chance<=chance)then
             local newloot=nil

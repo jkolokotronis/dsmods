@@ -204,7 +204,11 @@
   <object type="wall_ruins" x="346" y="557"/>
   <object type="wall_ruins" x="321" y="557"/>
   <object type="wall_ruins" x="295" y="558"/>
-  <object type="treasurechest" x="317" y="593"/>
+  <object type="treasurechest" x="317" y="593">
+   <properties>
+    <property name="scenario" value="fa_goblintreasurechest"/>
+   </properties>
+  </object>
   <object type="pigman" x="98" y="496"/>
   <object type="pigman" x="527" y="85"/>
   <object type="pigman" x="122" y="140"/>

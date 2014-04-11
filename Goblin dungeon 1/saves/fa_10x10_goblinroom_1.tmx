@@ -142,6 +142,10 @@
   <object type="gravestone" x="399" y="334"/>
   <object type="gravestone" x="401" y="273"/>
   <object type="ruins_statue_mage" x="303" y="525"/>
-  <object type="treasurechest" x="307" y="589"/>
+  <object type="treasurechest" x="307" y="589">
+   <properties>
+    <property name="scenario" value="fa_goblintreasurechest"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

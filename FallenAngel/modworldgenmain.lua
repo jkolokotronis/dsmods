@@ -42,7 +42,7 @@ local function AddGoblinEntrancePreInit(task)
 	-- Insert the custom room we created above into the task.
 	-- We could modify the task here as well.
 	task.room_choices["FA_GoblinEntrance"] = 2
-	task.room_choices["FA_GoblinRoom_1"] = 2
+--	task.room_choices["FA_GoblinRoom_1"] = 2
 	
 end
 AddTaskPreInit("Make a pick", AddGoblinEntrancePreInit)

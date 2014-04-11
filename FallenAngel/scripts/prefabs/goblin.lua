@@ -117,8 +117,8 @@ local function fn()
     
     inst:ListenForEvent("attacked", OnAttacked)
 
-     MakeMediumFreezableCharacter(inst, "orc")
-     MakeMediumBurnableCharacter(inst, "orc")
+     MakeMediumFreezableCharacter(inst, "goblin")
+     MakeMediumBurnableCharacter(inst, "goblin")
 
     return inst
 end

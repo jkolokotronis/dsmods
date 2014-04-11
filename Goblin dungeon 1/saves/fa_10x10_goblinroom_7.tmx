@@ -193,7 +193,11 @@
   <object type="fa_redtotem_kos" x="346" y="591"/>
   <object type="fa_redtotem_kos" x="292" y="592"/>
   <object type="fa_redtotem_kos" x="132" y="503"/>
-  <object type="treasurechest" x="53" y="352"/>
+  <object type="treasurechest" x="53" y="352">
+   <properties>
+    <property name="scenario" value="fa_goblintreasurechest"/>
+   </properties>
+  </object>
   <object type="poop" x="576" y="140"/>
   <object type="fa_bottle_b" x="50" y="47"/>
   <object type="fa_bottle_b" x="92" y="48"/>
@@ -201,8 +205,16 @@
   <object type="fa_bottle_b" x="47" y="131"/>
   <object type="fa_bottle_b" x="89" y="117"/>
   <object type="fa_bottle_b" x="51" y="83"/>
-  <object type="skullchest" x="579" y="574"/>
-  <object type="treasurechest" x="593" y="226"/>
+  <object type="skullchest" x="579" y="574">
+   <properties>
+    <property name="scenario" value="fa_goblinskullchest"/>
+   </properties>
+  </object>
+  <object type="treasurechest" x="593" y="226">
+   <properties>
+    <property name="scenario" value="fa_goblintreasurechest"/>
+   </properties>
+  </object>
   <object type="fa_bottle_y" x="43" y="421"/>
   <object type="fa_bottle_y" x="44" y="588"/>
   <object type="fa_bottle_y" x="80" y="563"/>

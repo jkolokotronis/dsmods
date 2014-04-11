@@ -232,6 +232,10 @@
   <object type="skeleton" x="281" y="163"/>
   <object type="skeleton" x="180" y="189"/>
   <object type="fa_redtotem_kos" x="224" y="216"/>
-  <object type="pandoraschest" x="276" y="262"/>
+  <object type="pandoraschest" x="276" y="262">
+   <properties>
+    <property name="scenario" value="fa_goblinpandorachest"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

@@ -162,7 +162,11 @@
   <object type="fa_dungeon_wall" x="98" y="316"/>
   <object type="fa_dungeon_wall" x="120" y="317"/>
   <object type="fa_redtotem_kos" x="167" y="480"/>
-  <object type="pandoraschest" x="214" y="482"/>
+  <object type="pandoraschest" x="214" y="482">
+   <properties>
+    <property name="scenario" value="fa_goblinpandorachest"/>
+   </properties>
+  </object>
   <object type="ruins_rubble_vase" x="144" y="92"/>
   <object type="ruins_rubble_vase" x="563" y="570"/>
   <object type="ruins_rubble_vase" x="337" y="559"/>

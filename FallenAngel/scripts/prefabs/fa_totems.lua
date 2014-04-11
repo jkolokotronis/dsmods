@@ -267,13 +267,9 @@ local function fn(Sim)
     minimap:SetIcon("eyeball_turret.png")
 
     inst:AddTag("totem")
-    inst:AddTag("companion")
-    inst:AddTag("pet")
 	inst:AddComponent("lootdropper")
     inst:AddComponent("inspectable")
 
-    inst:AddComponent("machine")
-    inst.components.machine.ison = true
 
     inst:AddComponent("health")
     inst.components.health:SetMaxHealth(TOTEM_HEALTH) 
@@ -354,6 +350,10 @@ end
 
 local function redfn(Sim)
     local inst=redfnbase(Sim)
+    inst:AddTag("companion")
+    inst:AddTag("pet")
+    inst:AddComponent("machine")
+    inst.components.machine.ison = true
     local function pickup(inst)
         inst.components.machine.ison = true
         if(inst.fa_puffanim)then
@@ -383,6 +383,8 @@ end
 local function bluefn(Sim)
 	local inst=fn(Sim)
 	inst:AddTag("lightningfence") 
+    inst:AddTag("companion")
+    inst:AddTag("pet")
 
     inst.AnimState:SetBank("fa_bluetotem")
     inst.AnimState:SetBuild("fa_bluetotem")
@@ -399,6 +401,8 @@ local function bluefn(Sim)
     light:Enable(true)
     light:SetColour(180/255, 195/255, 255/255)
 
+    inst:AddComponent("machine")
+    inst.components.machine.ison = true
     local function pickup(inst)
         local item=SpawnPrefab("fa_bluetotem_item")
         item.components.fueled:InitializeFuelLevel(inst.components.fueled.currentfuel)

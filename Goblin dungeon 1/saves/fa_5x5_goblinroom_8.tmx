@@ -55,7 +55,11 @@
   <object type="fa_dungeon_wall" x="54" y="11"/>
   <object type="fa_dungeon_wall" x="33" y="10"/>
   <object type="fa_dungeon_wall" x="12" y="9"/>
-  <object type="treasurechest" x="255" y="267"/>
+  <object type="treasurechest" x="255" y="267">
+   <properties>
+    <property name="scenario" value="fa_goblintreasurechest"/>
+   </properties>
+  </object>
   <object type="trap_teeth_maxwell" x="270" y="229"/>
   <object type="trap_teeth_maxwell" x="170" y="278"/>
   <object type="trap_teeth_maxwell" x="176" y="244"/>

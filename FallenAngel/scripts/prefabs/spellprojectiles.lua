@@ -7,7 +7,7 @@ local assets=
 }
 
 local function OnHitFb(inst, owner, target)
-    print("fbhit")
+--    print("fbhit")
     local pos =inst:GetPosition()
     local boom = CreateEntity()
     boom.entity:AddTransform()
@@ -32,7 +32,7 @@ local function onthrown(inst, data)
 end
 
 local function oncollide(inst, other)
-    print("collision with ",other)
+--    print("collision with ",other)
     if(inst.components.projectile.target and inst.components.projectile.target==other)then
         print("hit the target, ignore, should never happen")
     else

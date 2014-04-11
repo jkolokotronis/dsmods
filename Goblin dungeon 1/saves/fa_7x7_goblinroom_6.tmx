@@ -230,6 +230,10 @@
   <object type="trap_teeth_maxwell" x="319" y="393"/>
   <object type="trap_teeth_maxwell" x="318" y="366"/>
   <object type="skeleton" x="228" y="196"/>
-  <object type="treasurechest" x="232" y="238"/>
+  <object type="treasurechest" x="232" y="238">
+   <properties>
+    <property name="scenario" value="fa_goblintreasurechest"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

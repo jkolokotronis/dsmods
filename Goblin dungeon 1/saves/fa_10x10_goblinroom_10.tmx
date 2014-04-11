@@ -209,6 +209,10 @@
   <object type="fa_redtotem_kos" x="65" y="190"/>
   <object type="fa_redtotem_kos" x="65" y="574"/>
   <object type="fa_redtotem_kos" x="447" y="572"/>
-  <object type="skullchest" x="572" y="576"/>
+  <object type="skullchest" x="572" y="576">
+   <properties>
+    <property name="scenario" value="fa_goblinskullchest"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

@@ -2,7 +2,7 @@ require("constants")
 
 local StaticLayout = require("map/static_layout")
 local Layouts=require("map/layouts").Layouts
-Layouts["FADungeonStart"] = StaticLayout.Get("map/static_layouts/fa_dungeon_start")
+Layouts["FADungeonStart"] = StaticLayout.Get("map/static_layouts/fa_entrance")
 Layouts["FAGoblinRoom_1"] = StaticLayout.Get("map/static_layouts/fa_goblinroom_1")
 Layouts["FA5x5GoblinRoom_1"] = StaticLayout.Get("map/static_layouts/fa_5x5_goblinroom_1")
 Layouts["FA5x5GoblinRoom_2"] = StaticLayout.Get("map/static_layouts/fa_5x5_goblinroom_2")

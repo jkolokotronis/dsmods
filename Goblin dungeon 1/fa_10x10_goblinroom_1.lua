@@ -1556,7 +1556,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["scenario"] = "fa_goblintreasurechest"
+          }
         }
       }
     }
