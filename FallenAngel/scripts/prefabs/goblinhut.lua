@@ -93,7 +93,7 @@ local function fn(Sim)
     inst:AddComponent("lootdropper")
     inst:AddComponent("workable")
     inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
-    inst.components.workable:SetWorkLeft(4)
+    inst.components.workable:SetWorkLeft(8)
 	inst.components.workable:SetOnFinishCallback(onhammered)
 	inst.components.workable:SetOnWorkCallback(onhit)
 	

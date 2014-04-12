@@ -34,7 +34,7 @@ local function fn(Sim)
     
     inst:AddComponent("burnable")
     inst:AddComponent("inspectable")
-    inst.components.burnable:AddBurnFX("campfirefire", Vector3(0,15,0) )
+    inst.components.burnable:AddBurnFX("campfirefire", Vector3(0,1.5,0) )
     inst:ListenForEvent("onextinguish", onextinguish)
     inst:ListenForEvent("onignite", onignite)
     inst.components.burnable:SetFXLevel(3, 1)

@@ -12,18 +12,18 @@ local RUN_AWAY_DIST = 5
 local STOP_RUN_AWAY_DIST = 8
 
 
-local Skeletonspawnbrain = Class(Brain, function(self, inst)
+local Goblinbrain = Class(Brain, function(self, inst)
     Brain._ctor(self, inst)
 end)
 
 local function EatFoodAction(inst)
+    if(inst.components.combat.target)then return end
     local target = nil
     if inst.components.inventory and inst.components.eater then
         target = inst.components.inventory:FindItem(function(item) return inst.components.eater:CanEat(item) end)
     end
     if not target then
         target = FindEntity(inst, SEE_FOOD_DIST, function(item) return inst.components.eater:CanEat(item) end)
-        
     end
     if target then
         local act = BufferedAction(inst, target, ACTIONS.EAT)
@@ -32,19 +32,11 @@ local function EatFoodAction(inst)
     end
 end
 
-local function GetFaceTargetFn(inst)
-    return GetClosestInstWithTag("player", inst, SEE_PLAYER_DIST)
-end
-
-local function KeepFaceTargetFn(inst, target)
-    return inst:GetDistanceSqToInst(target) <= SEE_PLAYER_DIST*SEE_PLAYER_DIST
-end
 
 
-function Skeletonspawnbrain:OnStart()
+function Goblinbrain:OnStart()
     local root = PriorityNode(
     {
-        WhileNode( function() return self.inst.fa_turnundead~=nil end, "Turning", Panic(self.inst)),
         WhileNode( function() return self.inst.components.health.takingfiredamage end, "OnFire", Panic(self.inst)),
         WhileNode( function() return self.inst.components.combat.target == nil or not self.inst.components.combat:InCooldown() end, "AttackMomentarily",
             ChaseAndAttack(self.inst, MAX_CHASE_TIME, MAX_CHASE_DIST) ),
@@ -65,4 +57,4 @@ function Skeletonspawnbrain:OnStart()
 
 end
 
-return Skeletonspawnbrain
+return Goblinbrain

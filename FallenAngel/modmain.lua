@@ -32,6 +32,7 @@ local SpawnPrefab=GLOBAL.SpawnPrefab
 
 local StatusDisplays = require "widgets/statusdisplays"
 local ImageButton = require "widgets/imagebutton"
+local Levels=require("map/levels")
 
 require "repairabledescriptionfix"
 
@@ -1345,6 +1346,12 @@ AddPrefabPostInit("cave", function(inst)
     print("in cave postinit",level)
     if(level>3)then
         inst:RemoveComponent("periodicthreat")
+        local data=Levels.cave_levels[level]
+        if(data and data.id=="GOBLIN_CAVE")then
+            inst:AddComponent("periodicthreat")
+            local threats = require("fa_periodicthreats")
+            inst.components.periodicthreat:AddThreat("DUNGEON_GOBLINS", threats["DUNGEON_GOBLINS"])
+        end
     end
 end)
 
@@ -1443,31 +1450,86 @@ end)
 --\
 function lootdropperPostInit(component)
     local old_generateloot=component.GenerateLoot
+    if(not component.fallenLootTables)then
+            component.fallenLootTables={}
+    end
     function component:AddFallenLootTable(lt,weight,chance)
-        self.fallenLootTable=lt
-        self.fallenLootTableTotalWeight=weight
-        self.fallenLootTableChance=chance
+        table.insert(self.fallenLootTables,{loottable=lt,weight=weight,chance=chance})
     end
     function component:GenerateLoot()
         local loots=old_generateloot(self)
-        local chance=math.random()
-        if(self.fallenLootTable and chance<=self.fallenLootTableChance)then
-            local newloot=nil
-            --pick one of...
-            local rnd = math.random()*self.fallenLootTableTotalWeight
-            for k,v in pairs(self.fallenLootTable) do
-                rnd = rnd - v
-                if rnd <= 0 then
-                    newloot=k
-                    break
+        for ind,tabledata in pairs(self.fallenLootTables) do
+            local chance=math.random()
+            if(chance<=tabledata.chance)then
+                local newloot=nil
+                --pick one of...
+                local rnd = math.random()*tabledata.weight
+                for k,v in pairs(tabledata.loottable) do
+                    rnd = rnd - v
+                    if rnd <= 0 then
+                        newloot=k
+                        break
+                    end
                 end
+                table.insert(loots, newloot)
             end
-            table.insert(loots, newloot)
         end
         return loots
     end
 end
 
+local Hounded=require("components/hounded")
+Hounded.attack_delays["rare"]=function() return TUNING.TOTAL_DAY_TIME * 9 + math.random() * TUNING.TOTAL_DAY_TIME * 3 end
+Hounded.attack_delays["occasional"]=function() return TUNING.TOTAL_DAY_TIME * 9 + math.random() * TUNING.TOTAL_DAY_TIME * 3 end
+Hounded.attack_delays["frequent"]=function() return TUNING.TOTAL_DAY_TIME * 9 + math.random() * TUNING.TOTAL_DAY_TIME * 3 end
+
+Hounded.attack_levels=
+{
+    intro={warnduration= function() return 120 end, numhounds = function() return 2 end},
+    light={warnduration= function() return 60 end, numhounds = function() return 2 + math.random(2) end},
+    med={warnduration= function() return 60 end, numhounds = function() return 3 + math.random(3) end},
+    heavy={warnduration= function() return 60 end, numhounds = function() return 4 + math.random(3) end},
+    crazy={warnduration= function() return 60 end, numhounds = function() return 6 + math.random(4) end},
+}
+
+--AddComponentPostInit("hounded",function(component)
+function Hounded:ReleaseHound(dt)
+    local pt = Vector3(GetPlayer().Transform:GetWorldPosition())
+        
+    local spawn_pt = self:GetSpawnPoint(pt)
+    
+    if spawn_pt then
+        self.houndstorelease = self.houndstorelease - 1
+        if(self.houndstorelease<2)then
+            local prefab = "hound"
+            local day = GetClock().numcycles
+            local special_hound_chance = self:GetSpecialHoundChance()
+
+            if math.random() < special_hound_chance then
+                if GetSeasonManager():IsWinter() then
+                    prefab = "icehound"
+                else
+                    prefab = "firehound"
+                end
+            end
+        
+            local hound = SpawnPrefab(prefab)
+            if hound then
+                hound.Physics:Teleport(spawn_pt:Get())
+                hound:FacePoint(pt)
+                hound.components.combat:SuggestTarget(GetPlayer())
+            end
+        else
+            local hound = SpawnPrefab("goblin")
+            if hound then
+                hound.Physics:Teleport(spawn_pt:Get())
+                hound:FacePoint(pt)
+                hound.components.combat:SuggestTarget(GetPlayer())
+            end
+        end
+    end
+    
+end    
 
 AddComponentPostInit("lootdropper",lootdropperPostInit)
 

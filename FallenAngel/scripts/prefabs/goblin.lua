@@ -11,12 +11,28 @@ local prefabs =
 
 }
 
-local GOBLIN_HEALTH=300
-local GOBLIN_DAMAGE=20
+local GOBLIN_HEALTH=400
+local GOBLIN_DAMAGE=30
 local GOBLIN_ATTACK_PERIOD=1
+local GOBLIN_RUN_SPEED=6
+local GOBLIN_WALK_SPEED=3
 
 local MAX_TARGET_SHARES = 5
 local SHARE_TARGET_DIST = 40
+
+
+    local LOOTTABLE={
+        nightmarefuel = 1,
+        amulet = 1,
+        gears = 1,
+        redgem = 1,
+        bluegem = 1
+    }
+    local WEIGHT=5+NUM_TRINKETS
+    for i=1,NUM_TRINKETS do
+        LOOTTABLE["trinket_"..i]=1
+    end
+
 
 local function RetargetFn(inst)
     local defenseTarget = inst
@@ -27,7 +43,7 @@ local function RetargetFn(inst)
     local invader = FindEntity(defenseTarget or inst, TUNING.MERM_TARGET_DIST, function(guy)
         return guy:HasTag("character") and not guy:HasTag("goblin")
     end)
-    if(invader and not invader==inst.components.combat.target)then
+    if(invader and invader~=inst.components.combat.target)then
         inst.SoundEmitter:PlaySound("fa/goblin/goblin_yell")
     end
     return invader
@@ -61,6 +77,15 @@ local function OnAttacked(inst, data)
     end
 end
 
+local function OnEat(inst, food)
+    
+    if food.components.edible and food.components.edible.foodtype == "MEAT" then
+        local poo = SpawnPrefab("poop")
+        poo.Transform:SetPosition(inst.Transform:GetWorldPosition())        
+    end
+
+end    
+
 local function fn()
 	local inst = CreateEntity()
 	local trans = inst.entity:AddTransform()
@@ -85,14 +110,23 @@ local function fn()
         inst.AnimState:Hide("hat_hair")
          inst.AnimState:Hide("ARM_carry")
          inst.AnimState:Hide("hat")
-
      inst.AnimState:PlayAnimation("idle")
+
+
+    inst:AddComponent("eater")
+--wah screw this     inst.components.eater:SetVegetarian()
+    inst.components.eater.foodprefs = { "MEAT", "VEGGIE"}
+    inst.components.eater.strongstomach = true -- can eat monster meat!
+    inst.components.eater:SetOnEatFn(OnEat)
+
+
     inst:AddComponent("locomotor") -- locomotor must be constructed before the stategraph
-    inst.components.locomotor.runspeed = 2
+    inst.components.locomotor.walkspeed=GOBLIN_WALK_SPEED
+    inst.components.locomotor.runspeed = GOBLIN_RUN_SPEED
     inst:SetStateGraph("SGgoblin")
 
 
-    local brain = require "brains/orcbrain"
+    local brain = require "brains/goblinbrain"
     inst:SetBrain(brain)
     
     inst:AddComponent("health")
@@ -112,9 +146,10 @@ local function fn()
     inst.components.combat:SetKeepTargetFunction(KeepTargetFn)
 
     inst:AddComponent("lootdropper")
-    inst.components.lootdropper:SetLoot({ "monstermeat"})
---    inst:AddComponent("inspectable")
-    
+    inst.components.lootdropper:AddChanceLoot( "monstermeat",0.5)
+    inst.components.lootdropper:AddFallenLootTable(LOOTTABLE,WEIGHT,0.1)
+
+    inst:AddComponent("inspectable")
     inst:ListenForEvent("attacked", OnAttacked)
 
      MakeMediumFreezableCharacter(inst, "goblin")
