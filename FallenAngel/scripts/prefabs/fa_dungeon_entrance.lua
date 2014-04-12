@@ -4,6 +4,7 @@ require "map/levels/fa_levels"
 local assets=
 {
 	Asset("ANIM", "anim/cave_entrance.zip"),
+	Asset("ANIM", "anim/fa_dungeon_entrance.zip"),
 	Asset("ANIM", "anim/ruins_entrance.zip"),
 
 }
@@ -94,8 +95,8 @@ local function OnActivate(inst)
 end
 
 local function MakeRuins(inst)
-	inst.AnimState:SetBank("ruins_entrance")
-	inst.AnimState:SetBuild("ruins_entrance")
+--	inst.AnimState:SetBank("ruins_entrance")
+--	inst.AnimState:SetBuild("ruins_entrance")
 
 	if inst.components.lootdropper then
 		inst.components.lootdropper:SetLoot({"thulecite", "thulecite_pieces", "thulecite_pieces"})
@@ -227,8 +228,8 @@ local function fn(Sim)
     MakeObstaclePhysics(inst, 1)
     local minimap = inst.entity:AddMiniMapEntity()
 	minimap:SetIcon("cave_closed.png")
-    anim:SetBank("cave_entrance")
-    anim:SetBuild("cave_entrance")
+    anim:SetBank("fa_dungeon_entrance")
+    anim:SetBuild("fa_dungeon_entrance")
 
     inst:AddComponent("inspectable")
 	inst.components.inspectable:RecordViews()
@@ -239,8 +240,8 @@ local function fn(Sim)
 	inst.components.childspawner:SetSpawnPeriod(.1)
 	inst.components.childspawner:SetMaxChildren(6)
 	inst.components.childspawner.childname = "bat"
-
-    Close(inst)
+	Open(inst)
+--    Close(inst)
 	inst.OnSave = onsave
 	inst.OnLoad = onload
 	

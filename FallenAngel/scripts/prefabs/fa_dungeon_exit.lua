@@ -4,7 +4,7 @@ require "map/levels/fa_levels"
 
 local assets=
 {
-	Asset("ANIM", "anim/cave_exit_rope.zip"),
+	Asset("ANIM", "anim/fa_dungeon_exit.zip"),
 }
 
 
@@ -12,16 +12,6 @@ local function GetVerb(inst)
 	return STRINGS.ACTIONS.ACTIVATE.CLIMB
 end
 
-local function onnear(inst)
-	inst.AnimState:PlayAnimation("down")
-    inst.AnimState:PushAnimation("idle_loop", true)
-    inst.SoundEmitter:PlaySound("dontstarve/cave/rope_down")
-end
-
-local function onfar(inst)
-    inst.AnimState:PlayAnimation("up")
-    inst.SoundEmitter:PlaySound("dontstarve/cave/rope_up")
-end
 
 
 local function onsave(inst, data)
@@ -83,13 +73,11 @@ local function fn(Sim)
     local minimap = inst.entity:AddMiniMapEntity()
     minimap:SetIcon( "cave_open2.png" )
     
-    anim:SetBank("exitrope")
-    anim:SetBuild("cave_exit_rope")
+    anim:SetBank("fa_dungeon_exit")
+    anim:SetBuild("fa_dungeon_exit")
+	inst.AnimState:PlayAnimation("idle",true)
+    inst.Transform:SetScale(2, 2, 2)
 
-    inst:AddComponent("playerprox")
-    inst.components.playerprox:SetDist(5,7)
-    inst.components.playerprox:SetOnPlayerFar(onfar)
-    inst.components.playerprox:SetOnPlayerNear(onnear)
 
     inst:AddComponent("inspectable")
 

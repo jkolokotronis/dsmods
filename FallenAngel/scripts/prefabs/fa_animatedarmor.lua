@@ -4,7 +4,7 @@ local assets=
     Asset("ANIM", "anim/fa_invisible.zip"),
 }
 
-local PET_HEALTH=100
+local THULECITE_HP=100
 
 
 local function GetInventory(inst)
@@ -105,7 +105,7 @@ local function fn(Sim)
     inst.components.combat.areahitdamagepercent=0.0
 
     inst:AddComponent("health")
-    inst.components.health:SetMaxHealth(PET_HEALTH)
+    inst.components.health:SetMaxHealth(THULECITE_HP)
     inst.components.health:SetInvincible(false)
 
     inst.SoundEmitter:PlaySound("dontstarve/ghost/ghost_howl_LP", "howl")
