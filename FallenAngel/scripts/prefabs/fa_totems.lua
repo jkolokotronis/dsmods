@@ -149,7 +149,7 @@ local function onattackfireball(inst, attacker, target)
                     end
 
                     if(v.components.combat and not v==target and not (v.components.health and v.components.health:IsDead())) then
-                        v.components.combat:GetAttacked(attacker, REDTOTEM_DAMAGE, nil)
+                        v.components.combat:GetAttacked(attacker, REDTOTEM_DAMAGE, nil,FA_DAMAGETYPE.FIRE)
                     end
                 end
             end
@@ -168,6 +168,7 @@ local function EquipWeaponRedKos(inst)
         weapon.persists = false
         weapon.components.inventoryitem:SetOnDroppedFn(WeaponDropped)
         weapon.components.weapon:SetOnAttack(onattackfireball)
+        weapon.components.weapon.fa_damagetype=FA_DAMAGETYPE.FIRE
         weapon:AddComponent("equippable")
         
         inst.components.inventory:Equip(weapon)
