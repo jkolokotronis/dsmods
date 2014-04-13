@@ -13,6 +13,9 @@ FA_LEVELDATA["DUNGEON_LEVEL_1"]={
 		overrides={
 			{"world_size", 		"medium"},
 			-- {"day", 			"onlynight"}, 
+			{"season", 			"autumn"}, 
+			{"season_start", 	"autumn"},
+			{"weather", 	"never"},
 			{"waves", 			"off"},
 			{"location",		"cave"},
 			{"boons", 			"never"},
@@ -54,13 +57,16 @@ FA_LEVELDATA["GOBLIN_CAVE"]={
 			{"branching",		"most"},
 --			{"islands", 		"always"},	
 --			{"loop",			"always"},
+			{"season", 			"autumn"}, 
+--			{"season_start", 	"summer"},
+			{"weather", 	"never"},
 			{"waves", 			"off"},
 			{"location",		"cave"},
 			{"boons", 			"never"},
 			{"poi", 			"never"},
 			{"traps", 			"never"},
 			{"protected", 		"never"},
-			{"start_setpeice", 	"FADungeonStart"},
+			{"start_setpeice", 	"FAGoblinDungeonStart"},
 --			{"start_setpeice", 	"FAGoblinRoom_1"},
 			{"start_node",		"FA_GoblinRoomEntry"},
 		},
@@ -88,6 +94,128 @@ FA_LEVELDATA["GOBLIN_CAVE"]={
 		},]]
 		required_prefabs = {
 		"fa_dungeon_exit",
+		"fa_dungeon_entrance",
+		},
+
+	}
+
+FA_LEVELDATA["GOBLIN_CAVE_2"]={
+		id="GOBLIN_CAVE_2",
+		name="GOBLIN_CAVE_2",
+		overrides={
+			{"world_size", 		"medium"},
+			-- {"day", 			"onlynight"}, 
+			{"branching",		"most"},
+--			{"islands", 		"always"},	
+--			{"loop",			"always"},
+			{"season", 			"autumn"}, 
+--			{"season_start", 	"summer"},
+			{"weather", 	"never"},
+			{"waves", 			"off"},
+			{"location",		"cave"},
+			{"boons", 			"never"},
+			{"poi", 			"never"},
+			{"traps", 			"never"},
+			{"protected", 		"never"},
+			{"start_setpeice", 	"FAGoblinDungeonStart2"},
+--			{"start_setpeice", 	"FAGoblinRoom_1"},
+			{"start_node",		"FA_GoblinRoomEntry"},
+		},
+		tasks={
+			
+			"FAGoblinDungeon1",
+			"FAGoblinDungeon2",
+			"FAGoblinDungeon3",
+			"FAGoblinDungeon4",
+			"FAGoblinDungeon5",
+			"FAGoblinDungeon6",
+			"FAGoblinDungeon7",
+			"FAGoblinDungeon8",
+			"FAGoblinDungeonMaze2"
+		},
+		required_prefabs = {
+		"fa_dungeon_exit",
+		"fa_dungeon_entrance",
+		},
+
+	}
+
+FA_LEVELDATA["GOBLIN_CAVE_3"]={
+		id="GOBLIN_CAVE_3",
+		name="GOBLIN_CAVE_3",
+		overrides={
+			{"world_size", 		"medium"},
+			-- {"day", 			"onlynight"}, 
+			{"branching",		"most"},
+--			{"islands", 		"always"},	
+--			{"loop",			"always"},
+			{"season", 			"autumn"}, 
+--			{"season_start", 	"summer"},
+			{"weather", 	"never"},
+			{"waves", 			"off"},
+			{"location",		"cave"},
+			{"boons", 			"never"},
+			{"poi", 			"never"},
+			{"traps", 			"never"},
+			{"protected", 		"never"},
+			{"start_setpeice", 	"FAGoblinDungeonStart3"},
+--			{"start_setpeice", 	"FAGoblinRoom_1"},
+			{"start_node",		"FA_GoblinRoomEntry"},
+		},
+		tasks={
+			
+			"FAGoblinDungeon1",
+			"FAGoblinDungeon2",
+			"FAGoblinDungeon3",
+			"FAGoblinDungeon4",
+			"FAGoblinDungeon5",
+			"FAGoblinDungeon6",
+			"FAGoblinDungeon7",
+			"FAGoblinDungeon8",
+			"FAGoblinDungeonMaze3"
+		},
+		required_prefabs = {
+		"fa_dungeon_exit",
+		"fa_dungeon_entrance",
+		},
+
+	}
+
+FA_LEVELDATA["GOBLIN_CAVE_BOSSLEVEL"]={
+		id="GOBLIN_CAVE_BOSSLEVEL",
+		name="GOBLIN_CAVE_BOSSLEVEL",
+		overrides={
+			{"world_size", 		"medium"},
+			-- {"day", 			"onlynight"}, 
+			{"branching",		"most"},
+--			{"islands", 		"always"},	
+--			{"loop",			"always"},
+			{"season", 			"autumn"}, 
+--			{"season_start", 	"summer"},
+			{"weather", 	"never"},
+			{"waves", 			"off"},
+			{"location",		"cave"},
+			{"boons", 			"never"},
+			{"poi", 			"never"},
+			{"traps", 			"never"},
+			{"protected", 		"never"},
+			{"start_setpeice", 	"FADungeonStart"},
+--			{"start_setpeice", 	"FAGoblinRoom_1"},
+			{"start_node",		"FA_GoblinRoomEntry"},
+		},
+		tasks={
+			
+			"FAGoblinDungeon1",
+			"FAGoblinDungeon2",
+			"FAGoblinDungeon3",
+			"FAGoblinDungeon4",
+			"FAGoblinDungeon5",
+			"FAGoblinDungeon6",
+			"FAGoblinDungeon7",
+			"FAGoblinDungeon8"
+		},
+		required_prefabs = {
+		"fa_dungeon_exit",
 		},
 
 	}
@@ -98,6 +226,9 @@ FA_LEVELDATA["ORC_STRONGHOLD"]={
 		overrides={
 			{"world_size", 		"tiny"},
 --			{"day", 			"onlynight"}, 
+			{"season", 			"autumn"}, 
+			{"season_start", 	"autumn"},
+			{"weather", 	"never"},
 			{"waves", 			"off"},
 			{"location",		"cave"},
 			{"boons", 			"never"},
@@ -133,6 +264,9 @@ FA_LEVELDATA["CRYPT_LEVEL_1"]={
 		overrides={
 			{"world_size", 		"tiny"},
 --			{"day", 			"onlynight"}, 
+			{"season", 			"autumn"}, 
+			{"season_start", 	"autumn"},
+			{"weather", 	"never"},
 			{"waves", 			"off"},
 			{"location",		"cave"},
 			{"boons", 			"never"},
@@ -169,10 +303,14 @@ function AddNewCaveLevel(cavename)
 	local existing_levels=FA_LEVELS[cavename]
 	--the above should be using 'default' array mode so # should hopefully work
 	local lvl=nil
+	local index=3 --we know first 3 are in use
 	if(#existing_levels>0)then
 		--just use old handle, they should all be same anyway? DO NOT destroy elements after created (there should never be a reason to anyway)
-		--dont care which one
-		lvl=existing_levels[1]
+		--apparently not working... 
+--		lvl=existing_levels[1]
+		index=index+(#existing_levels)
+		AddLevel(LEVELTYPE.CAVE, data)
+		lvl=table.remove(Levels.cave_levels)
 	else
 		AddLevel(LEVELTYPE.CAVE, data)
 		--is there a saner way of doing this? table.insert returns nil so does addlevel
@@ -180,7 +318,6 @@ function AddNewCaveLevel(cavename)
 	end
 	--ok, now, if someone fucks up ordering?
 	--local index=#Levels.cave_levels
-	local index=3 --we know first 3 are in use
 	while Levels.cave_levels[index] do
 		index=index+1
 	end
@@ -191,5 +328,8 @@ end
 
 AddNewCaveLevel("DUNGEON_LEVEL_1")
 AddNewCaveLevel("GOBLIN_CAVE")
+AddNewCaveLevel("GOBLIN_CAVE_2")
+AddNewCaveLevel("GOBLIN_CAVE_3")
+AddNewCaveLevel("GOBLIN_CAVE_BOSSLEVEL")
 AddNewCaveLevel("ORC_STRONGHOLD")
 AddNewCaveLevel("CRYPT_LEVEL_1")

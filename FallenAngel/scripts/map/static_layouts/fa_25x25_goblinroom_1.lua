@@ -10736,6 +10736,309 @@ return {
           height = 0,
           visible = true,
           properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dungeon_entrance",
+          shape = "rectangle",
+          x = 736,
+          y = 737,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.fa_cavename"] = "GOBLIN_CAVE_2"
+          }
+        },
+        {
+          name = "",
+          type = "armorruins",
+          shape = "rectangle",
+          x = 830,
+          y = 837,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_pickup_thulecitearmor"
+          }
+        },
+        {
+          name = "",
+          type = "treasurechest",
+          shape = "rectangle",
+          x = 635,
+          y = 1301,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_goblintreasurechest"
+          }
+        },
+        {
+          name = "",
+          type = "goblinhut",
+          shape = "rectangle",
+          x = 588,
+          y = 1165,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "goblinhut",
+          shape = "rectangle",
+          x = 375,
+          y = 1261,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "goldnugget",
+          shape = "rectangle",
+          x = 100,
+          y = 174,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1042,
+          y = 43,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1132,
+          y = 106,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1107,
+          y = 81,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1098,
+          y = 41,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1072,
+          y = 63,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1092,
+          y = 112,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1053,
+          y = 98,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1027,
+          y = 73,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1135,
+          y = 56,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "poop",
+          shape = "rectangle",
+          x = 1410,
+          y = 766,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bottle_r",
+          shape = "rectangle",
+          x = 1278,
+          y = 1409,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "poop",
+          shape = "rectangle",
+          x = 718,
+          y = 444,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "flower_cave",
+          shape = "rectangle",
+          x = 547,
+          y = 203,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "flower_cave",
+          shape = "rectangle",
+          x = 1523,
+          y = 1517,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "flower_cave",
+          shape = "rectangle",
+          x = 172,
+          y = 1521,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "flower_cave",
+          shape = "rectangle",
+          x = 1021,
+          y = 1398,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "flower_cave",
+          shape = "rectangle",
+          x = 567,
+          y = 969,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "flower_cave",
+          shape = "rectangle",
+          x = 1163,
+          y = 466,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "flower_cave",
+          shape = "rectangle",
+          x = 336,
+          y = 594,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "flower_cave",
+          shape = "rectangle",
+          x = 192,
+          y = 387,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "firepit",
+          shape = "rectangle",
+          x = 1414,
+          y = 1476,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
         }
       }
     }

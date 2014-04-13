@@ -388,7 +388,7 @@ AddRoom("FA_GoblinEntrance", {
 										goblinhut = function () return 1 + math.random(2) end,
 					                    fa_dungeon_entrance = function () return 1 end,
 					                    gravestone = function () return 1 + math.random(2) end,
-					                    mound = function () return 1 + math.random(1) end
+					                    --mound = function () return 1 + math.random(1) end
 									},
 									prefabdata = {
 										fa_dungeon_entrance = function() return {fa_cavename="GOBLIN_CAVE"}
@@ -557,7 +557,7 @@ AddRoom("FA_GoblinMaze1",{
 
 									countstaticlayouts = 
 									{
-										["FA25x25GoblinMaze1"] = 1,
+										["FA25x25GoblinMaze_1"] = 1,
 									}, 
 					            }
 	})
@@ -568,7 +568,7 @@ AddRoom("FA_GoblinMaze2",{
 
 									countstaticlayouts = 
 									{
-										["FA25x25GoblinMaze2"] = 1,
+										["FA25x25GoblinMaze_2"] = 1,
 									}, 
 					            }
 	})
@@ -579,7 +579,7 @@ AddRoom("FA_GoblinMaze3",{
 
 									countstaticlayouts = 
 									{
-										["FA25x25GoblinMaze3"] = 1,
+										["FA25x25GoblinMaze_3"] = 1,
 									}, 
 					            }
 	})

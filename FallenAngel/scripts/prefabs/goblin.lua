@@ -18,6 +18,7 @@ local GOBLIN_RUN_SPEED=6
 local GOBLIN_WALK_SPEED=3
 
 local MAX_TARGET_SHARES = 5
+local TARGET_DISTANCE = 15
 local SHARE_TARGET_DIST = 40
 
 
@@ -36,13 +37,18 @@ local SHARE_TARGET_DIST = 40
 
 local function RetargetFn(inst)
     local defenseTarget = inst
+    local invader=nil
     local home = inst.components.homeseeker and inst.components.homeseeker.home
     if home and inst:GetDistanceSqToInst(home) < TUNING.MERM_DEFEND_DIST*TUNING.MERM_DEFEND_DIST then
-        defenseTarget = home
-    end
-    local invader = FindEntity(defenseTarget or inst, TUNING.MERM_TARGET_DIST, function(guy)
+       invader = FindEntity(home, TARGET_DISTANCE, function(guy)
         return guy:HasTag("character") and not guy:HasTag("goblin")
     end)
+    end
+    if not invader then
+        invader = FindEntity(inst, TARGET_DISTANCE, function(guy)
+        return guy:HasTag("character") and not guy:HasTag("goblin")
+        end)
+    end
     if(invader and invader~=inst.components.combat.target)then
         inst.SoundEmitter:PlaySound("fa/goblin/goblin_yell")
     end

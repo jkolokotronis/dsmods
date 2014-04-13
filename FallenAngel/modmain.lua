@@ -1186,7 +1186,7 @@ function Combat:GetAttacked(attacker, damage, weapon,element)
             end
 
         if self.inst.components.inventory then
-            damage = self.inst.components.inventory:ApplyDamage(damage, attacker,damagetype)
+            damage = self.inst.components.inventory:ApplyDamage(damage, attacker,weapon,damagetype)
         end
         if METRICS_ENABLED and GetPlayer() == self.inst then
             local prefab = (attacker and (attacker.prefab or attacker.inst.prefab)) or "NIL"

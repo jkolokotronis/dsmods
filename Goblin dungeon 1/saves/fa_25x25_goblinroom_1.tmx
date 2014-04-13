@@ -10973,15 +10973,19 @@
   <object type="fa_dungeon_wall" x="245" y="1168"/>
   <object type="fa_dungeon_entrance" x="736" y="737">
    <properties>
-    <property name="fa_cavename" value="GOBLIN_CAVE_2"/>
+    <property name="data.fa_cavename" value="GOBLIN_CAVE_2"/>
    </properties>
   </object>
   <object type="armorruins" x="830" y="837">
    <properties>
-    <property name="scenario" value="a_pickup_thulecitearmor"/>
+    <property name="scenario" value="fa_pickup_thulecitearmor"/>
    </properties>
   </object>
-  <object type="treasurechest" x="635" y="1301"/>
+  <object type="treasurechest" x="635" y="1301">
+   <properties>
+    <property name="scenario" value="fa_goblintreasurechest"/>
+   </properties>
+  </object>
   <object type="goblinhut" x="588" y="1165"/>
   <object type="goblinhut" x="375" y="1261"/>
   <object type="goldnugget" x="100" y="174"/>

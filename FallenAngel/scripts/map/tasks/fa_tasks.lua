@@ -148,6 +148,28 @@ AddTask("FAGoblinDungeonMaze1", {
 		locks={LOCKS.NONE},
 		keys_given= {KEYS.TIER1},
 		room_choices={
+			["FA_GoblinMaze1"] = 1,
+		},
+		room_bg=GROUND.MUD,
+		background_room="FA_BGGoblin",
+		colour={r=1,g=0,b=0.6,a=1},
+		})
+
+AddTask("FAGoblinDungeonMaze2", {
+		locks={LOCKS.NONE},
+		keys_given= {KEYS.TIER1},
+		room_choices={
+			["FA_GoblinMaze2"] = 1,
+		},
+		room_bg=GROUND.MUD,
+		background_room="FA_BGGoblin",
+		colour={r=1,g=0,b=0.6,a=1},
+		})
+
+AddTask("FAGoblinDungeonMaze3", {
+		locks={LOCKS.NONE},
+		keys_given= {KEYS.TIER1},
+		room_choices={
 			["FA_GoblinMaze3"] = 1,
 		},
 		room_bg=GROUND.MUD,

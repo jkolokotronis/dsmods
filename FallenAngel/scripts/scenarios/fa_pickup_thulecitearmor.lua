@@ -1,9 +1,9 @@
 
 require("scenarios/fa_helperfunctions")
 local function OnLoad(inst, scenariorunner)
-	inst.moundlist = FindGraves(inst)
 	inst.scene_pickupfn = function()
-		local pt = Vector3(inst.Transform:GetWorldPosition())
+    local player = GetPlayer()
+		local pt = Vector3(player.Transform:GetWorldPosition())
 		local particle = SpawnPrefab("poopcloud")
             particle.Transform:SetPosition( pt.x, pt.y, pt.z )
 
@@ -13,13 +13,14 @@ local function OnLoad(inst, scenariorunner)
                 spider.components.combat:SuggestTarget(player)
             end
 		scenariorunner:ClearScenario()
+        inst:Remove()
 	end
-	inst:ListenForEvent("onpickup", inst.scene_pickupfn)
+	inst:ListenForEvent("onputininventory", inst.scene_pickupfn)
 end
 
 local function OnDestory(inst)
 	if inst.scene_pickupfn then
-		inst:RemoveEventCallback("onpickup", inst.scene_pickupfn)
+		inst:RemoveEventCallback("onputininventory", inst.scene_pickupfn)
 		inst.scene_pickupfn = nil
 	end
 end	

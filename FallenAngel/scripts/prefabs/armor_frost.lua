@@ -78,9 +78,9 @@ local function fn()
 
 --    inst:AddComponent("insulator")
 --    inst.components.insulator.insulation = TUNING.INSULATION_MED
-        inst:AddComponent("heater")
-        inst.components.heater.iscooler = true
-        inst.components.heater.equippedheat = -10
+--        inst:AddComponent("heater")
+--        inst.components.heater.iscooler = true
+--        inst.components.heater.equippedheat = -10
     
     inst.components.equippable:SetOnEquip( onequip )
     inst.components.equippable:SetOnUnequip( onunequip )

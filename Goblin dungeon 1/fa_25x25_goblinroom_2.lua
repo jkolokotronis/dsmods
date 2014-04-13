@@ -10075,7 +10075,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["scenario"] = "fa_goblintreasurechest"
+          }
         },
         {
           name = "",
@@ -10296,7 +10298,7 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_cavename"] = "GOBLIN_CAVE_2"
+            ["data.fa_cavename"] = "GOBLIN_CAVE_3"
           }
         },
         {

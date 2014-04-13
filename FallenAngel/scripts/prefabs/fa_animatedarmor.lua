@@ -78,7 +78,11 @@ local function fn(Sim)
  
     inst:AddComponent("eater")    
     inst:AddComponent("lootdropper")
+    inst.components.lootdropper:AddChanceLoot( "ruinshat",0.1)
+    inst.components.lootdropper:AddChanceLoot( "armorruins",0.1)
+    inst.components.lootdropper:AddChanceLoot( "ruins_bat",0.1)
     inst:AddComponent("inventory")
+    inst.components.inventory.dropondeath = false
 --    inst:AddComponent("sanity")
     
 --    inst.components.inventory.starting_inventory = inventoryrng

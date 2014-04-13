@@ -10220,6 +10220,6 @@
   <object type="flower_cave_triple" x="487" y="313"/>
   <object type="flower_cave_triple" x="794" y="962"/>
   <object type="flower_cave_triple" x="762" y="759"/>
-  <object type="fa_dungeon_entrance" x="762" y="835"/>
+  <object type="fa_dungeon_exit" x="762" y="835"/>
  </objectgroup>
 </map>

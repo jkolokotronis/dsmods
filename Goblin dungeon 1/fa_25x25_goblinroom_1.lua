@@ -10747,7 +10747,7 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_cavename"] = "GOBLIN_CAVE_2"
+            ["data.fa_cavename"] = "GOBLIN_CAVE_2"
           }
         },
         {
@@ -10760,7 +10760,7 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["scenario"] = "a_pickup_thulecitearmor"
+            ["scenario"] = "fa_pickup_thulecitearmor"
           }
         },
         {
@@ -10772,7 +10772,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["scenario"] = "fa_goblintreasurechest"
+          }
         },
         {
           name = "",
