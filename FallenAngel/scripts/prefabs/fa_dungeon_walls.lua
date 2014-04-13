@@ -91,8 +91,5 @@ require "prefabutil"
 	return inst
 end
 
-return Prefab("forest/objects/marblepillar", fn, assets, prefabs) 
-
-
 return Prefab( "common/fa_dungeon_wall", fn, assets),
 Prefab( "common/fa_dungeon_marblepillar", pillarfn, assets)
