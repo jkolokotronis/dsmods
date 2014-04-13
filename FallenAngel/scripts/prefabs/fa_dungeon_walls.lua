@@ -3,6 +3,7 @@ require "prefabutil"
 	{
 		Asset("ANIM", "anim/wall.zip"),
 		Asset("ANIM", "anim/wall_stone.zip"),
+	Asset("ANIM", "anim/marble_pillar.zip"),
 	}
 
 	local function makeobstacle(inst)
@@ -23,19 +24,6 @@ require "prefabutil"
 	    end
 	end
 
-	local function clearobstacle(inst)
-		-- Alia: 
-		-- Since we are removing the wall anytway we may as well not bother setting the physics    
-	    -- We had better wait for the callback to complete before trying to remove ourselves
-	    inst:DoTaskInTime(2*FRAMES, function() inst.Physics:SetActive(false) end)
-
-	    local ground = GetWorld()
-	    if ground then
-	    	local pt = Point(inst.Transform:GetWorldPosition())
-	    	ground.Pathfinder:RemoveWall(pt.x, pt.y, pt.z)
-	    end
-	end
-
 	local function resolveanimtoplay(percent)
 		local anim_to_play = nil
 		if percent <= 0 then
@@ -52,13 +40,6 @@ require "prefabutil"
 		return anim_to_play
 	end
 
-	local function onload(inst, data)
-		--print("walls - onload")
-		makeobstacle(inst)
-		if inst.components.health:GetPercent() <= 0 then
-			clearobstacle(inst)
-		end
-	end
 	local function onhealthchange(inst, old_percent, new_percent)
 		
 		if old_percent <= 0 and new_percent > 0 then makeobstacle(inst) end
@@ -84,15 +65,34 @@ require "prefabutil"
 		anim:SetBank("wall")
 		anim:SetBuild("wall_stone")
 	    anim:PlayAnimation("3_4", false)
-	    
---		inst:AddComponent("inspectable")
-		inst:AddComponent("lootdropper")
-		
---	    inst.OnLoad = onload
---	    inst.OnRemoveEntity = onremoveentity
 		
 		MakeSnowCovered(inst)
 		
 		return inst
 	end
-return Prefab( "common/fa_dungeon_wall", fn, assets)
+
+	local function pillarfn()
+	local inst = CreateEntity()
+	local trans = inst.entity:AddTransform()
+	local anim = inst.entity:AddAnimState()
+	inst.entity:AddSoundEmitter()
+
+	MakeObstaclePhysics(inst, 1)
+
+	anim:SetBank("marble_pillar")
+	anim:SetBuild("marble_pillar")
+	anim:PlayAnimation("full")
+--[[
+	                inst.AnimState:PlayAnimation("low")
+	                inst.AnimState:PlayAnimation("med")
+	                inst.AnimState:PlayAnimation("full")
+]]
+	MakeSnowCovered(inst, 0.1)
+	return inst
+end
+
+return Prefab("forest/objects/marblepillar", fn, assets, prefabs) 
+
+
+return Prefab( "common/fa_dungeon_wall", fn, assets),
+Prefab( "common/fa_dungeon_marblepillar", pillarfn, assets)
