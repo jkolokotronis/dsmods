@@ -67,7 +67,6 @@
   <object type="fa_dungeon_wall" x="606" y="627"/>
   <object type="fa_dungeon_wall" x="629" y="627"/>
   <object type="fa_dungeon_wall" x="319" y="346"/>
-  <object type="fa_dungeon_wall" x="434" y="255"/>
   <object type="fa_dungeon_wall" x="76" y="626"/>
   <object type="fa_dungeon_wall" x="99" y="626"/>
   <object type="fa_dungeon_wall" x="122" y="624"/>
@@ -117,7 +116,6 @@
   <object type="fa_dungeon_wall" x="155" y="13"/>
   <object type="fa_dungeon_wall" x="131" y="12"/>
   <object type="fa_dungeon_wall" x="389" y="347"/>
-  <object type="fa_dungeon_wall" x="411" y="254"/>
   <object type="fa_dungeon_wall" x="412" y="277"/>
   <object type="fa_dungeon_wall" x="412" y="300"/>
   <object type="fa_dungeon_wall" x="411" y="323"/>
@@ -125,7 +123,6 @@
   <object type="fa_dungeon_wall" x="409" y="207"/>
   <object type="fa_dungeon_wall" x="386" y="207"/>
   <object type="fa_dungeon_wall" x="363" y="207"/>
-  <object type="fa_dungeon_wall" x="433" y="207"/>
   <object type="campfire" x="316" y="243"/>
   <object type="flower_cave" x="128" y="93"/>
   <object type="flower_cave" x="241" y="506"/>

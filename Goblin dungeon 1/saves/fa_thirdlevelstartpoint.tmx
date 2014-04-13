@@ -10008,50 +10008,26 @@
   </data>
  </layer>
  <objectgroup name="FG_OBJECTS" width="100" height="100">
-  <object type="fa_dungeon_wall" x="455" y="130"/>
   <object type="fa_dungeon_wall" x="546" y="11"/>
   <object type="fa_dungeon_wall" x="523" y="12"/>
   <object type="fa_dungeon_wall" x="500" y="12"/>
   <object type="fa_dungeon_wall" x="476" y="12"/>
   <object type="fa_dungeon_wall" x="452" y="12"/>
-  <object type="fa_dungeon_wall" x="429" y="12"/>
-  <object type="fa_dungeon_wall" x="405" y="12"/>
-  <object type="fa_dungeon_wall" x="382" y="12"/>
-  <object type="fa_dungeon_wall" x="359" y="12"/>
-  <object type="fa_dungeon_wall" x="336" y="12"/>
-  <object type="fa_dungeon_wall" x="312" y="12"/>
   <object type="fa_dungeon_wall" x="289" y="12"/>
   <object type="fa_dungeon_wall" x="266" y="12"/>
   <object type="fa_dungeon_wall" x="243" y="12"/>
   <object type="fa_dungeon_wall" x="220" y="12"/>
   <object type="fa_dungeon_wall" x="196" y="12"/>
-  <object type="fa_dungeon_wall" x="173" y="12"/>
-  <object type="fa_dungeon_wall" x="150" y="12"/>
-  <object type="fa_dungeon_wall" x="126" y="11"/>
-  <object type="fa_dungeon_wall" x="103" y="12"/>
-  <object type="fa_dungeon_wall" x="80" y="12"/>
   <object type="fa_dungeon_wall" x="58" y="12"/>
   <object type="fa_dungeon_wall" x="35" y="12"/>
   <object type="fa_dungeon_wall" x="11" y="12"/>
-  <object type="fa_dungeon_wall" x="639" y="12"/>
-  <object type="fa_dungeon_wall" x="615" y="12"/>
-  <object type="fa_dungeon_wall" x="593" y="12"/>
   <object type="fa_dungeon_wall" x="569" y="12"/>
   <object type="fa_dungeon_wall" x="799" y="12"/>
   <object type="fa_dungeon_wall" x="777" y="11"/>
   <object type="fa_dungeon_wall" x="753" y="12"/>
   <object type="fa_dungeon_wall" x="730" y="12"/>
   <object type="fa_dungeon_wall" x="708" y="12"/>
-  <object type="fa_dungeon_wall" x="685" y="12"/>
-  <object type="fa_dungeon_wall" x="662" y="12"/>
-  <object type="fa_dungeon_wall" x="938" y="11"/>
-  <object type="fa_dungeon_wall" x="915" y="11"/>
-  <object type="fa_dungeon_wall" x="892" y="12"/>
-  <object type="fa_dungeon_wall" x="869" y="12"/>
-  <object type="fa_dungeon_wall" x="845" y="11"/>
   <object type="fa_dungeon_wall" x="822" y="11"/>
-  <object type="fa_dungeon_wall" x="1100" y="12"/>
-  <object type="fa_dungeon_wall" x="1077" y="11"/>
   <object type="fa_dungeon_wall" x="1054" y="12"/>
   <object type="fa_dungeon_wall" x="1031" y="12"/>
   <object type="fa_dungeon_wall" x="1008" y="12"/>
@@ -10059,18 +10035,10 @@
   <object type="fa_dungeon_wall" x="962" y="12"/>
   <object type="fa_dungeon_wall" x="1240" y="11"/>
   <object type="fa_dungeon_wall" x="1217" y="12"/>
-  <object type="fa_dungeon_wall" x="1194" y="12"/>
-  <object type="fa_dungeon_wall" x="1171" y="11"/>
-  <object type="fa_dungeon_wall" x="1147" y="12"/>
-  <object type="fa_dungeon_wall" x="1124" y="12"/>
-  <object type="fa_dungeon_wall" x="1380" y="11"/>
-  <object type="fa_dungeon_wall" x="1356" y="12"/>
   <object type="fa_dungeon_wall" x="1333" y="11"/>
   <object type="fa_dungeon_wall" x="1310" y="12"/>
   <object type="fa_dungeon_wall" x="1287" y="11"/>
   <object type="fa_dungeon_wall" x="1263" y="11"/>
-  <object type="fa_dungeon_wall" x="1587" y="103"/>
-  <object type="fa_dungeon_wall" x="1588" y="80"/>
   <object type="fa_dungeon_wall" x="1589" y="58"/>
   <object type="fa_dungeon_wall" x="1588" y="35"/>
   <object type="fa_dungeon_wall" x="1588" y="12"/>
@@ -10078,47 +10046,23 @@
   <object type="fa_dungeon_wall" x="1544" y="12"/>
   <object type="fa_dungeon_wall" x="1521" y="11"/>
   <object type="fa_dungeon_wall" x="1497" y="12"/>
-  <object type="fa_dungeon_wall" x="1474" y="12"/>
-  <object type="fa_dungeon_wall" x="1451" y="11"/>
-  <object type="fa_dungeon_wall" x="1427" y="12"/>
-  <object type="fa_dungeon_wall" x="1404" y="11"/>
   <object type="fa_dungeon_wall" x="1588" y="310"/>
   <object type="fa_dungeon_wall" x="1588" y="287"/>
   <object type="fa_dungeon_wall" x="1588" y="264"/>
   <object type="fa_dungeon_wall" x="1588" y="242"/>
   <object type="fa_dungeon_wall" x="1588" y="218"/>
   <object type="fa_dungeon_wall" x="1588" y="195"/>
-  <object type="fa_dungeon_wall" x="1588" y="172"/>
-  <object type="fa_dungeon_wall" x="1588" y="149"/>
-  <object type="fa_dungeon_wall" x="1588" y="126"/>
   <object type="fa_dungeon_wall" x="1588" y="474"/>
   <object type="fa_dungeon_wall" x="1588" y="451"/>
-  <object type="fa_dungeon_wall" x="1587" y="427"/>
-  <object type="fa_dungeon_wall" x="1588" y="404"/>
-  <object type="fa_dungeon_wall" x="1587" y="380"/>
-  <object type="fa_dungeon_wall" x="1588" y="357"/>
-  <object type="fa_dungeon_wall" x="1588" y="333"/>
-  <object type="fa_dungeon_wall" x="1588" y="682"/>
-  <object type="fa_dungeon_wall" x="1588" y="659"/>
-  <object type="fa_dungeon_wall" x="1588" y="636"/>
-  <object type="fa_dungeon_wall" x="1588" y="614"/>
-  <object type="fa_dungeon_wall" x="1588" y="592"/>
   <object type="fa_dungeon_wall" x="1588" y="569"/>
   <object type="fa_dungeon_wall" x="1588" y="545"/>
   <object type="fa_dungeon_wall" x="1589" y="521"/>
   <object type="fa_dungeon_wall" x="1588" y="498"/>
-  <object type="fa_dungeon_wall" x="1588" y="935"/>
-  <object type="fa_dungeon_wall" x="1587" y="911"/>
-  <object type="fa_dungeon_wall" x="1587" y="888"/>
-  <object type="fa_dungeon_wall" x="1587" y="865"/>
-  <object type="fa_dungeon_wall" x="1588" y="842"/>
   <object type="fa_dungeon_wall" x="1587" y="820"/>
   <object type="fa_dungeon_wall" x="1588" y="797"/>
   <object type="fa_dungeon_wall" x="1588" y="774"/>
   <object type="fa_dungeon_wall" x="1588" y="751"/>
   <object type="fa_dungeon_wall" x="1588" y="727"/>
-  <object type="fa_dungeon_wall" x="1588" y="704"/>
-  <object type="fa_dungeon_wall" x="1588" y="1098"/>
   <object type="fa_dungeon_wall" x="1588" y="1075"/>
   <object type="fa_dungeon_wall" x="1588" y="1052"/>
   <object type="fa_dungeon_wall" x="1587" y="1029"/>
@@ -10129,42 +10073,18 @@
   <object type="fa_dungeon_wall" x="1588" y="1282"/>
   <object type="fa_dungeon_wall" x="1587" y="1259"/>
   <object type="fa_dungeon_wall" x="1587" y="1236"/>
-  <object type="fa_dungeon_wall" x="1587" y="1213"/>
-  <object type="fa_dungeon_wall" x="1587" y="1190"/>
-  <object type="fa_dungeon_wall" x="1587" y="1167"/>
-  <object type="fa_dungeon_wall" x="1588" y="1144"/>
-  <object type="fa_dungeon_wall" x="1588" y="1121"/>
-  <object type="fa_dungeon_wall" x="1588" y="1443"/>
-  <object type="fa_dungeon_wall" x="1587" y="1421"/>
-  <object type="fa_dungeon_wall" x="1588" y="1399"/>
-  <object type="fa_dungeon_wall" x="1588" y="1375"/>
-  <object type="fa_dungeon_wall" x="1587" y="1351"/>
   <object type="fa_dungeon_wall" x="1588" y="1329"/>
   <object type="fa_dungeon_wall" x="1406" y="1588"/>
   <object type="fa_dungeon_wall" x="1429" y="1589"/>
   <object type="fa_dungeon_wall" x="1452" y="1589"/>
   <object type="fa_dungeon_wall" x="1474" y="1589"/>
-  <object type="fa_dungeon_wall" x="1497" y="1589"/>
-  <object type="fa_dungeon_wall" x="1519" y="1589"/>
-  <object type="fa_dungeon_wall" x="1542" y="1588"/>
-  <object type="fa_dungeon_wall" x="1565" y="1588"/>
   <object type="fa_dungeon_wall" x="1588" y="1588"/>
   <object type="fa_dungeon_wall" x="1588" y="1564"/>
   <object type="fa_dungeon_wall" x="1587" y="1539"/>
   <object type="fa_dungeon_wall" x="1587" y="1514"/>
   <object type="fa_dungeon_wall" x="1588" y="1491"/>
-  <object type="fa_dungeon_wall" x="1588" y="1467"/>
   <object type="fa_dungeon_wall" x="1222" y="1588"/>
-  <object type="fa_dungeon_wall" x="1245" y="1588"/>
-  <object type="fa_dungeon_wall" x="1269" y="1588"/>
-  <object type="fa_dungeon_wall" x="1291" y="1588"/>
-  <object type="fa_dungeon_wall" x="1314" y="1588"/>
-  <object type="fa_dungeon_wall" x="1337" y="1588"/>
-  <object type="fa_dungeon_wall" x="1359" y="1588"/>
   <object type="fa_dungeon_wall" x="1383" y="1588"/>
-  <object type="fa_dungeon_wall" x="1037" y="1588"/>
-  <object type="fa_dungeon_wall" x="1060" y="1587"/>
-  <object type="fa_dungeon_wall" x="1084" y="1587"/>
   <object type="fa_dungeon_wall" x="1106" y="1588"/>
   <object type="fa_dungeon_wall" x="1130" y="1588"/>
   <object type="fa_dungeon_wall" x="1154" y="1588"/>
@@ -10173,13 +10093,6 @@
   <object type="fa_dungeon_wall" x="901" y="1588"/>
   <object type="fa_dungeon_wall" x="923" y="1588"/>
   <object type="fa_dungeon_wall" x="946" y="1587"/>
-  <object type="fa_dungeon_wall" x="968" y="1587"/>
-  <object type="fa_dungeon_wall" x="991" y="1588"/>
-  <object type="fa_dungeon_wall" x="1014" y="1587"/>
-  <object type="fa_dungeon_wall" x="717" y="1588"/>
-  <object type="fa_dungeon_wall" x="741" y="1587"/>
-  <object type="fa_dungeon_wall" x="764" y="1587"/>
-  <object type="fa_dungeon_wall" x="787" y="1587"/>
   <object type="fa_dungeon_wall" x="810" y="1588"/>
   <object type="fa_dungeon_wall" x="832" y="1588"/>
   <object type="fa_dungeon_wall" x="855" y="1587"/>
@@ -10188,39 +10101,18 @@
   <object type="fa_dungeon_wall" x="603" y="1588"/>
   <object type="fa_dungeon_wall" x="625" y="1588"/>
   <object type="fa_dungeon_wall" x="648" y="1588"/>
-  <object type="fa_dungeon_wall" x="671" y="1588"/>
-  <object type="fa_dungeon_wall" x="694" y="1587"/>
   <object type="fa_dungeon_wall" x="370" y="1588"/>
-  <object type="fa_dungeon_wall" x="393" y="1588"/>
-  <object type="fa_dungeon_wall" x="416" y="1587"/>
-  <object type="fa_dungeon_wall" x="439" y="1588"/>
-  <object type="fa_dungeon_wall" x="462" y="1587"/>
-  <object type="fa_dungeon_wall" x="485" y="1587"/>
-  <object type="fa_dungeon_wall" x="509" y="1587"/>
   <object type="fa_dungeon_wall" x="531" y="1588"/>
   <object type="fa_dungeon_wall" x="555" y="1588"/>
-  <object type="fa_dungeon_wall" x="205" y="1587"/>
-  <object type="fa_dungeon_wall" x="229" y="1587"/>
-  <object type="fa_dungeon_wall" x="253" y="1588"/>
   <object type="fa_dungeon_wall" x="276" y="1588"/>
   <object type="fa_dungeon_wall" x="299" y="1588"/>
   <object type="fa_dungeon_wall" x="323" y="1588"/>
   <object type="fa_dungeon_wall" x="346" y="1588"/>
-  <object type="fa_dungeon_wall" x="12" y="1472"/>
-  <object type="fa_dungeon_wall" x="11" y="1495"/>
-  <object type="fa_dungeon_wall" x="11" y="1518"/>
-  <object type="fa_dungeon_wall" x="11" y="1541"/>
-  <object type="fa_dungeon_wall" x="12" y="1565"/>
   <object type="fa_dungeon_wall" x="11" y="1588"/>
   <object type="fa_dungeon_wall" x="36" y="1588"/>
   <object type="fa_dungeon_wall" x="61" y="1588"/>
   <object type="fa_dungeon_wall" x="86" y="1588"/>
   <object type="fa_dungeon_wall" x="111" y="1588"/>
-  <object type="fa_dungeon_wall" x="135" y="1588"/>
-  <object type="fa_dungeon_wall" x="160" y="1587"/>
-  <object type="fa_dungeon_wall" x="182" y="1587"/>
-  <object type="fa_dungeon_wall" x="12" y="1312"/>
-  <object type="fa_dungeon_wall" x="12" y="1335"/>
   <object type="fa_dungeon_wall" x="11" y="1357"/>
   <object type="fa_dungeon_wall" x="11" y="1379"/>
   <object type="fa_dungeon_wall" x="11" y="1402"/>
@@ -10229,10 +10121,6 @@
   <object type="fa_dungeon_wall" x="12" y="1152"/>
   <object type="fa_dungeon_wall" x="12" y="1174"/>
   <object type="fa_dungeon_wall" x="12" y="1197"/>
-  <object type="fa_dungeon_wall" x="12" y="1220"/>
-  <object type="fa_dungeon_wall" x="12" y="1243"/>
-  <object type="fa_dungeon_wall" x="12" y="1266"/>
-  <object type="fa_dungeon_wall" x="12" y="1289"/>
   <object type="fa_dungeon_wall" x="12" y="948"/>
   <object type="fa_dungeon_wall" x="12" y="971"/>
   <object type="fa_dungeon_wall" x="11" y="993"/>
@@ -10242,12 +10130,6 @@
   <object type="fa_dungeon_wall" x="11" y="1083"/>
   <object type="fa_dungeon_wall" x="11" y="1106"/>
   <object type="fa_dungeon_wall" x="12" y="1129"/>
-  <object type="fa_dungeon_wall" x="12" y="789"/>
-  <object type="fa_dungeon_wall" x="12" y="812"/>
-  <object type="fa_dungeon_wall" x="12" y="834"/>
-  <object type="fa_dungeon_wall" x="12" y="857"/>
-  <object type="fa_dungeon_wall" x="11" y="879"/>
-  <object type="fa_dungeon_wall" x="11" y="902"/>
   <object type="fa_dungeon_wall" x="12" y="925"/>
   <object type="fa_dungeon_wall" x="12" y="606"/>
   <object type="fa_dungeon_wall" x="12" y="629"/>
@@ -10256,8 +10138,6 @@
   <object type="fa_dungeon_wall" x="12" y="697"/>
   <object type="fa_dungeon_wall" x="12" y="720"/>
   <object type="fa_dungeon_wall" x="11" y="743"/>
-  <object type="fa_dungeon_wall" x="12" y="765"/>
-  <object type="fa_dungeon_wall" x="12" y="446"/>
   <object type="fa_dungeon_wall" x="12" y="470"/>
   <object type="fa_dungeon_wall" x="12" y="493"/>
   <object type="fa_dungeon_wall" x="11" y="516"/>
@@ -10266,745 +10146,85 @@
   <object type="fa_dungeon_wall" x="13" y="583"/>
   <object type="fa_dungeon_wall" x="12" y="267"/>
   <object type="fa_dungeon_wall" x="12" y="290"/>
-  <object type="fa_dungeon_wall" x="11" y="312"/>
-  <object type="fa_dungeon_wall" x="11" y="335"/>
-  <object type="fa_dungeon_wall" x="12" y="357"/>
-  <object type="fa_dungeon_wall" x="12" y="379"/>
-  <object type="fa_dungeon_wall" x="11" y="401"/>
-  <object type="fa_dungeon_wall" x="12" y="424"/>
   <object type="fa_dungeon_wall" x="12" y="130"/>
   <object type="fa_dungeon_wall" x="12" y="153"/>
   <object type="fa_dungeon_wall" x="11" y="176"/>
   <object type="fa_dungeon_wall" x="12" y="198"/>
   <object type="fa_dungeon_wall" x="12" y="221"/>
   <object type="fa_dungeon_wall" x="12" y="243"/>
-  <object type="fa_dungeon_wall" x="104" y="113"/>
-  <object type="fa_dungeon_wall" x="81" y="112"/>
-  <object type="fa_dungeon_wall" x="58" y="113"/>
-  <object type="fa_dungeon_wall" x="13" y="107"/>
-  <object type="fa_dungeon_wall" x="269" y="174"/>
-  <object type="fa_dungeon_wall" x="269" y="152"/>
-  <object type="fa_dungeon_wall" x="269" y="128"/>
-  <object type="fa_dungeon_wall" x="269" y="105"/>
-  <object type="fa_dungeon_wall" x="270" y="82"/>
-  <object type="fa_dungeon_wall" x="270" y="57"/>
-  <object type="fa_dungeon_wall" x="271" y="34"/>
-  <object type="fa_dungeon_wall" x="175" y="112"/>
-  <object type="fa_dungeon_wall" x="151" y="112"/>
-  <object type="fa_dungeon_wall" x="128" y="113"/>
-  <object type="fa_dungeon_wall" x="34" y="113"/>
-  <object type="fa_dungeon_wall" x="183" y="245"/>
-  <object type="fa_dungeon_wall" x="159" y="243"/>
-  <object type="fa_dungeon_wall" x="136" y="246"/>
-  <object type="fa_dungeon_wall" x="114" y="266"/>
-  <object type="fa_dungeon_wall" x="116" y="245"/>
-  <object type="fa_dungeon_wall" x="270" y="198"/>
-  <object type="fa_dungeon_wall" x="265" y="310"/>
-  <object type="fa_dungeon_wall" x="266" y="332"/>
-  <object type="fa_dungeon_wall" x="181" y="223"/>
-  <object type="fa_dungeon_wall" x="181" y="203"/>
-  <object type="fa_dungeon_wall" x="180" y="135"/>
-  <object type="fa_dungeon_wall" x="180" y="159"/>
-  <object type="fa_dungeon_wall" x="181" y="182"/>
-  <object type="fa_dungeon_wall" x="361" y="312"/>
-  <object type="fa_dungeon_wall" x="338" y="312"/>
-  <object type="fa_dungeon_wall" x="314" y="311"/>
-  <object type="fa_dungeon_wall" x="289" y="310"/>
-  <object type="fa_dungeon_wall" x="119" y="358"/>
-  <object type="fa_dungeon_wall" x="119" y="334"/>
-  <object type="fa_dungeon_wall" x="118" y="310"/>
-  <object type="fa_dungeon_wall" x="118" y="288"/>
-  <object type="fa_dungeon_wall" x="382" y="221"/>
-  <object type="fa_dungeon_wall" x="383" y="242"/>
-  <object type="fa_dungeon_wall" x="384" y="265"/>
-  <object type="fa_dungeon_wall" x="383" y="289"/>
-  <object type="fa_dungeon_wall" x="384" y="311"/>
-  <object type="fa_dungeon_wall" x="951" y="950"/>
-  <object type="fa_dungeon_wall" x="947" y="649"/>
-  <object type="fa_dungeon_wall" x="648" y="945"/>
-  <object type="fa_dungeon_wall" x="647" y="650"/>
-  <object type="fa_dungeon_wall" x="853" y="651"/>
-  <object type="fa_dungeon_wall" x="830" y="651"/>
-  <object type="fa_dungeon_wall" x="806" y="651"/>
-  <object type="fa_dungeon_wall" x="783" y="652"/>
-  <object type="fa_dungeon_wall" x="761" y="653"/>
-  <object type="fa_dungeon_wall" x="647" y="446"/>
-  <object type="fa_dungeon_wall" x="647" y="673"/>
-  <object type="fa_dungeon_wall" x="738" y="652"/>
-  <object type="fa_dungeon_wall" x="716" y="651"/>
-  <object type="fa_dungeon_wall" x="693" y="651"/>
-  <object type="fa_dungeon_wall" x="669" y="650"/>
-  <object type="fa_dungeon_wall" x="647" y="836"/>
-  <object type="fa_dungeon_wall" x="649" y="812"/>
-  <object type="fa_dungeon_wall" x="649" y="789"/>
-  <object type="fa_dungeon_wall" x="648" y="766"/>
-  <object type="fa_dungeon_wall" x="648" y="743"/>
-  <object type="fa_dungeon_wall" x="648" y="719"/>
-  <object type="fa_dungeon_wall" x="647" y="696"/>
-  <object type="fa_dungeon_wall" x="922" y="651"/>
-  <object type="fa_dungeon_wall" x="898" y="651"/>
-  <object type="fa_dungeon_wall" x="875" y="651"/>
-  <object type="fa_dungeon_wall" x="950" y="719"/>
-  <object type="fa_dungeon_wall" x="949" y="696"/>
-  <object type="fa_dungeon_wall" x="948" y="672"/>
-  <object type="fa_dungeon_wall" x="650" y="924"/>
-  <object type="fa_dungeon_wall" x="649" y="903"/>
-  <object type="fa_dungeon_wall" x="649" y="882"/>
-  <object type="fa_dungeon_wall" x="649" y="859"/>
-  <object type="fa_dungeon_wall" x="741" y="946"/>
-  <object type="fa_dungeon_wall" x="719" y="946"/>
-  <object type="fa_dungeon_wall" x="695" y="947"/>
-  <object type="fa_dungeon_wall" x="671" y="946"/>
-  <object type="fa_dungeon_wall" x="949" y="927"/>
-  <object type="fa_dungeon_wall" x="950" y="905"/>
-  <object type="fa_dungeon_wall" x="949" y="883"/>
-  <object type="fa_dungeon_wall" x="950" y="860"/>
-  <object type="fa_dungeon_wall" x="950" y="836"/>
-  <object type="fa_dungeon_wall" x="950" y="812"/>
-  <object type="fa_dungeon_wall" x="950" y="788"/>
-  <object type="fa_dungeon_wall" x="950" y="765"/>
-  <object type="fa_dungeon_wall" x="950" y="742"/>
-  <object type="fa_dungeon_wall" x="648" y="470"/>
-  <object type="fa_dungeon_wall" x="1218" y="373"/>
-  <object type="fa_dungeon_wall" x="833" y="1041"/>
-  <object type="fa_dungeon_wall" x="832" y="1018"/>
-  <object type="fa_dungeon_wall" x="835" y="972"/>
-  <object type="fa_dungeon_wall" x="832" y="995"/>
-  <object type="fa_dungeon_wall" x="835" y="948"/>
-  <object type="fa_dungeon_wall" x="812" y="948"/>
-  <object type="fa_dungeon_wall" x="789" y="948"/>
-  <object type="fa_dungeon_wall" x="765" y="947"/>
-  <object type="fa_dungeon_wall" x="709" y="374"/>
-  <object type="fa_dungeon_wall" x="641" y="179"/>
-  <object type="fa_dungeon_wall" x="640" y="155"/>
-  <object type="fa_dungeon_wall" x="641" y="132"/>
-  <object type="fa_dungeon_wall" x="546" y="131"/>
-  <object type="fa_dungeon_wall" x="523" y="130"/>
-  <object type="fa_dungeon_wall" x="500" y="130"/>
-  <object type="fa_dungeon_wall" x="617" y="131"/>
-  <object type="fa_dungeon_wall" x="571" y="131"/>
-  <object type="fa_dungeon_wall" x="594" y="131"/>
-  <object type="fa_dungeon_wall" x="477" y="130"/>
-  <object type="fa_dungeon_wall" x="268" y="355"/>
-  <object type="fa_dungeon_wall" x="432" y="130"/>
-  <object type="fa_dungeon_wall" x="407" y="131"/>
-  <object type="fa_dungeon_wall" x="383" y="131"/>
-  <object type="fa_dungeon_wall" x="384" y="152"/>
-  <object type="fa_dungeon_wall" x="383" y="174"/>
-  <object type="fa_dungeon_wall" x="383" y="198"/>
-  <object type="fa_dungeon_wall" x="505" y="296"/>
-  <object type="fa_dungeon_wall" x="503" y="274"/>
-  <object type="fa_dungeon_wall" x="502" y="250"/>
-  <object type="fa_dungeon_wall" x="525" y="251"/>
-  <object type="fa_dungeon_wall" x="548" y="251"/>
-  <object type="fa_dungeon_wall" x="571" y="250"/>
-  <object type="fa_dungeon_wall" x="594" y="251"/>
-  <object type="fa_dungeon_wall" x="618" y="251"/>
-  <object type="fa_dungeon_wall" x="640" y="250"/>
-  <object type="fa_dungeon_wall" x="640" y="226"/>
-  <object type="fa_dungeon_wall" x="640" y="203"/>
-  <object type="fa_dungeon_wall" x="733" y="374"/>
-  <object type="fa_dungeon_wall" x="756" y="374"/>
-  <object type="fa_dungeon_wall" x="779" y="369"/>
-  <object type="fa_dungeon_wall" x="543" y="377"/>
-  <object type="fa_dungeon_wall" x="779" y="347"/>
-  <object type="fa_dungeon_wall" x="779" y="323"/>
-  <object type="fa_dungeon_wall" x="779" y="300"/>
-  <object type="fa_dungeon_wall" x="780" y="278"/>
-  <object type="fa_dungeon_wall" x="780" y="255"/>
-  <object type="fa_dungeon_wall" x="779" y="233"/>
-  <object type="fa_dungeon_wall" x="779" y="209"/>
-  <object type="fa_dungeon_wall" x="780" y="186"/>
-  <object type="fa_dungeon_wall" x="780" y="163"/>
-  <object type="fa_dungeon_wall" x="779" y="140"/>
-  <object type="fa_dungeon_wall" x="646" y="422"/>
-  <object type="fa_dungeon_wall" x="566" y="376"/>
-  <object type="fa_dungeon_wall" x="589" y="376"/>
-  <object type="fa_dungeon_wall" x="614" y="375"/>
-  <object type="fa_dungeon_wall" x="638" y="374"/>
-  <object type="fa_dungeon_wall" x="661" y="374"/>
-  <object type="fa_dungeon_wall" x="685" y="375"/>
-  <object type="fa_dungeon_wall" x="269" y="402"/>
-  <object type="fa_dungeon_wall" x="267" y="379"/>
-  <object type="fa_dungeon_wall" x="400" y="377"/>
-  <object type="fa_dungeon_wall" x="424" y="377"/>
-  <object type="fa_dungeon_wall" x="449" y="375"/>
-  <object type="fa_dungeon_wall" x="472" y="375"/>
-  <object type="fa_dungeon_wall" x="495" y="376"/>
-  <object type="fa_dungeon_wall" x="519" y="376"/>
-  <object type="fa_dungeon_wall" x="337" y="516"/>
-  <object type="fa_dungeon_wall" x="314" y="517"/>
-  <object type="fa_dungeon_wall" x="290" y="515"/>
-  <object type="fa_dungeon_wall" x="267" y="517"/>
-  <object type="fa_dungeon_wall" x="266" y="494"/>
-  <object type="fa_dungeon_wall" x="267" y="471"/>
-  <object type="fa_dungeon_wall" x="268" y="448"/>
-  <object type="fa_dungeon_wall" x="269" y="425"/>
-  <object type="fa_dungeon_wall" x="126" y="658"/>
-  <object type="fa_dungeon_wall" x="126" y="634"/>
-  <object type="fa_dungeon_wall" x="126" y="611"/>
-  <object type="fa_dungeon_wall" x="125" y="588"/>
-  <object type="fa_dungeon_wall" x="125" y="565"/>
-  <object type="fa_dungeon_wall" x="123" y="542"/>
-  <object type="fa_dungeon_wall" x="123" y="519"/>
-  <object type="fa_dungeon_wall" x="122" y="497"/>
-  <object type="fa_dungeon_wall" x="123" y="474"/>
-  <object type="fa_dungeon_wall" x="122" y="451"/>
-  <object type="fa_dungeon_wall" x="121" y="428"/>
-  <object type="fa_dungeon_wall" x="119" y="406"/>
-  <object type="fa_dungeon_wall" x="119" y="382"/>
-  <object type="fa_dungeon_wall" x="646" y="399"/>
-  <object type="fa_dungeon_wall" x="499" y="514"/>
-  <object type="fa_dungeon_wall" x="478" y="514"/>
-  <object type="fa_dungeon_wall" x="455" y="515"/>
-  <object type="fa_dungeon_wall" x="432" y="515"/>
-  <object type="fa_dungeon_wall" x="408" y="515"/>
-  <object type="fa_dungeon_wall" x="384" y="515"/>
-  <object type="fa_dungeon_wall" x="361" y="515"/>
-  <object type="fa_dungeon_wall" x="719" y="514"/>
-  <object type="fa_dungeon_wall" x="696" y="515"/>
-  <object type="fa_dungeon_wall" x="672" y="515"/>
-  <object type="fa_dungeon_wall" x="602" y="650"/>
-  <object type="fa_dungeon_wall" x="624" y="650"/>
-  <object type="fa_dungeon_wall" x="650" y="515"/>
-  <object type="fa_dungeon_wall" x="648" y="492"/>
-  <object type="fa_dungeon_wall" x="460" y="647"/>
-  <object type="fa_dungeon_wall" x="484" y="647"/>
-  <object type="fa_dungeon_wall" x="507" y="647"/>
-  <object type="fa_dungeon_wall" x="532" y="648"/>
-  <object type="fa_dungeon_wall" x="555" y="649"/>
-  <object type="fa_dungeon_wall" x="578" y="648"/>
-  <object type="fa_dungeon_wall" x="267" y="608"/>
-  <object type="fa_dungeon_wall" x="267" y="585"/>
-  <object type="fa_dungeon_wall" x="267" y="561"/>
-  <object type="fa_dungeon_wall" x="268" y="539"/>
-  <object type="fa_dungeon_wall" x="389" y="644"/>
-  <object type="fa_dungeon_wall" x="412" y="645"/>
-  <object type="fa_dungeon_wall" x="436" y="647"/>
-  <object type="fa_dungeon_wall" x="266" y="723"/>
-  <object type="fa_dungeon_wall" x="266" y="701"/>
-  <object type="fa_dungeon_wall" x="267" y="677"/>
-  <object type="fa_dungeon_wall" x="268" y="653"/>
-  <object type="fa_dungeon_wall" x="268" y="631"/>
-  <object type="fa_dungeon_wall" x="403" y="770"/>
-  <object type="fa_dungeon_wall" x="380" y="770"/>
-  <object type="fa_dungeon_wall" x="358" y="770"/>
-  <object type="fa_dungeon_wall" x="334" y="770"/>
-  <object type="fa_dungeon_wall" x="310" y="770"/>
-  <object type="fa_dungeon_wall" x="288" y="770"/>
-  <object type="fa_dungeon_wall" x="265" y="770"/>
-  <object type="fa_dungeon_wall" x="266" y="747"/>
-  <object type="fa_dungeon_wall" x="577" y="901"/>
-  <object type="fa_dungeon_wall" x="601" y="901"/>
-  <object type="fa_dungeon_wall" x="623" y="901"/>
-  <object type="fa_dungeon_wall" x="499" y="768"/>
-  <object type="fa_dungeon_wall" x="475" y="769"/>
-  <object type="fa_dungeon_wall" x="451" y="769"/>
-  <object type="fa_dungeon_wall" x="428" y="769"/>
-  <object type="fa_dungeon_wall" x="391" y="902"/>
-  <object type="fa_dungeon_wall" x="414" y="903"/>
-  <object type="fa_dungeon_wall" x="438" y="903"/>
-  <object type="fa_dungeon_wall" x="461" y="904"/>
-  <object type="fa_dungeon_wall" x="484" y="905"/>
-  <object type="fa_dungeon_wall" x="507" y="903"/>
-  <object type="fa_dungeon_wall" x="531" y="902"/>
-  <object type="fa_dungeon_wall" x="555" y="902"/>
-  <object type="fa_dungeon_wall" x="128" y="776"/>
-  <object type="fa_dungeon_wall" x="129" y="753"/>
-  <object type="fa_dungeon_wall" x="128" y="730"/>
-  <object type="fa_dungeon_wall" x="127" y="706"/>
-  <object type="fa_dungeon_wall" x="126" y="682"/>
-  <object type="fa_dungeon_wall" x="254" y="899"/>
-  <object type="fa_dungeon_wall" x="276" y="900"/>
-  <object type="fa_dungeon_wall" x="298" y="900"/>
-  <object type="fa_dungeon_wall" x="322" y="901"/>
-  <object type="fa_dungeon_wall" x="345" y="902"/>
-  <object type="fa_dungeon_wall" x="367" y="902"/>
-  <object type="fa_dungeon_wall" x="165" y="899"/>
-  <object type="fa_dungeon_wall" x="123" y="910"/>
-  <object type="fa_dungeon_wall" x="124" y="889"/>
-  <object type="fa_dungeon_wall" x="125" y="866"/>
-  <object type="fa_dungeon_wall" x="124" y="843"/>
-  <object type="fa_dungeon_wall" x="127" y="821"/>
-  <object type="fa_dungeon_wall" x="127" y="798"/>
-  <object type="fa_dungeon_wall" x="231" y="899"/>
-  <object type="fa_dungeon_wall" x="210" y="900"/>
-  <object type="fa_dungeon_wall" x="188" y="899"/>
-  <object type="fa_dungeon_wall" x="142" y="899"/>
-  <object type="fa_dungeon_wall" x="963" y="515"/>
-  <object type="fa_dungeon_wall" x="939" y="515"/>
-  <object type="fa_dungeon_wall" x="915" y="515"/>
-  <object type="fa_dungeon_wall" x="892" y="516"/>
-  <object type="fa_dungeon_wall" x="868" y="515"/>
-  <object type="fa_dungeon_wall" x="844" y="515"/>
-  <object type="fa_dungeon_wall" x="819" y="516"/>
-  <object type="fa_dungeon_wall" x="794" y="515"/>
-  <object type="fa_dungeon_wall" x="767" y="514"/>
-  <object type="fa_dungeon_wall" x="743" y="514"/>
-  <object type="fa_dungeon_wall" x="1099" y="562"/>
-  <object type="fa_dungeon_wall" x="1098" y="540"/>
-  <object type="fa_dungeon_wall" x="1101" y="517"/>
-  <object type="fa_dungeon_wall" x="1078" y="516"/>
-  <object type="fa_dungeon_wall" x="1056" y="514"/>
-  <object type="fa_dungeon_wall" x="1032" y="515"/>
-  <object type="fa_dungeon_wall" x="1009" y="515"/>
-  <object type="fa_dungeon_wall" x="986" y="515"/>
-  <object type="fa_dungeon_wall" x="1219" y="814"/>
-  <object type="fa_dungeon_wall" x="1219" y="791"/>
-  <object type="fa_dungeon_wall" x="1101" y="892"/>
-  <object type="fa_dungeon_wall" x="1101" y="867"/>
-  <object type="fa_dungeon_wall" x="1101" y="843"/>
-  <object type="fa_dungeon_wall" x="1101" y="820"/>
-  <object type="fa_dungeon_wall" x="1102" y="797"/>
-  <object type="fa_dungeon_wall" x="1100" y="774"/>
-  <object type="fa_dungeon_wall" x="1100" y="751"/>
-  <object type="fa_dungeon_wall" x="1099" y="727"/>
-  <object type="fa_dungeon_wall" x="1099" y="703"/>
-  <object type="fa_dungeon_wall" x="1100" y="679"/>
-  <object type="fa_dungeon_wall" x="1101" y="655"/>
-  <object type="fa_dungeon_wall" x="1099" y="632"/>
-  <object type="fa_dungeon_wall" x="1099" y="608"/>
-  <object type="fa_dungeon_wall" x="1099" y="585"/>
-  <object type="fa_dungeon_wall" x="952" y="973"/>
-  <object type="fa_dungeon_wall" x="1099" y="1032"/>
-  <object type="fa_dungeon_wall" x="1099" y="1008"/>
-  <object type="fa_dungeon_wall" x="1100" y="985"/>
-  <object type="fa_dungeon_wall" x="1098" y="962"/>
-  <object type="fa_dungeon_wall" x="1098" y="939"/>
-  <object type="fa_dungeon_wall" x="1100" y="915"/>
-  <object type="fa_dungeon_wall" x="1101" y="1149"/>
-  <object type="fa_dungeon_wall" x="1101" y="1126"/>
-  <object type="fa_dungeon_wall" x="1100" y="1102"/>
-  <object type="fa_dungeon_wall" x="1097" y="1079"/>
-  <object type="fa_dungeon_wall" x="1099" y="1055"/>
-  <object type="fa_dungeon_wall" x="953" y="1138"/>
-  <object type="fa_dungeon_wall" x="954" y="1115"/>
-  <object type="fa_dungeon_wall" x="954" y="1091"/>
-  <object type="fa_dungeon_wall" x="953" y="1067"/>
-  <object type="fa_dungeon_wall" x="953" y="1044"/>
-  <object type="fa_dungeon_wall" x="953" y="1020"/>
-  <object type="fa_dungeon_wall" x="952" y="996"/>
-  <object type="fa_dungeon_wall" x="952" y="1251"/>
-  <object type="fa_dungeon_wall" x="1099" y="1216"/>
-  <object type="fa_dungeon_wall" x="951" y="1228"/>
-  <object type="fa_dungeon_wall" x="952" y="1206"/>
-  <object type="fa_dungeon_wall" x="1099" y="1194"/>
-  <object type="fa_dungeon_wall" x="953" y="1183"/>
-  <object type="fa_dungeon_wall" x="1101" y="1172"/>
-  <object type="fa_dungeon_wall" x="953" y="1160"/>
-  <object type="fa_dungeon_wall" x="1099" y="1262"/>
-  <object type="fa_dungeon_wall" x="1099" y="1240"/>
-  <object type="fa_dungeon_wall" x="957" y="1392"/>
-  <object type="fa_dungeon_wall" x="955" y="1369"/>
-  <object type="fa_dungeon_wall" x="954" y="1345"/>
-  <object type="fa_dungeon_wall" x="954" y="1323"/>
-  <object type="fa_dungeon_wall" x="953" y="1299"/>
-  <object type="fa_dungeon_wall" x="952" y="1276"/>
-  <object type="fa_dungeon_wall" x="1141" y="1459"/>
-  <object type="fa_dungeon_wall" x="1118" y="1460"/>
-  <object type="fa_dungeon_wall" x="979" y="1460"/>
-  <object type="fa_dungeon_wall" x="1003" y="1461"/>
-  <object type="fa_dungeon_wall" x="1026" y="1460"/>
-  <object type="fa_dungeon_wall" x="954" y="1461"/>
-  <object type="fa_dungeon_wall" x="955" y="1438"/>
-  <object type="fa_dungeon_wall" x="955" y="1415"/>
-  <object type="fa_dungeon_wall" x="1049" y="1461"/>
-  <object type="fa_dungeon_wall" x="1073" y="1460"/>
-  <object type="fa_dungeon_wall" x="1096" y="1461"/>
-  <object type="fa_dungeon_wall" x="1099" y="1332"/>
-  <object type="fa_dungeon_wall" x="1100" y="1308"/>
-  <object type="fa_dungeon_wall" x="1100" y="1285"/>
-  <object type="fa_dungeon_wall" x="1212" y="1299"/>
-  <object type="fa_dungeon_wall" x="1213" y="1320"/>
-  <object type="fa_dungeon_wall" x="1212" y="1344"/>
-  <object type="fa_dungeon_wall" x="1213" y="1368"/>
-  <object type="fa_dungeon_wall" x="1212" y="1392"/>
-  <object type="fa_dungeon_wall" x="1212" y="1416"/>
-  <object type="fa_dungeon_wall" x="1211" y="1438"/>
-  <object type="fa_dungeon_wall" x="1212" y="1461"/>
-  <object type="fa_dungeon_wall" x="1187" y="1460"/>
-  <object type="fa_dungeon_wall" x="1165" y="1460"/>
-  <object type="fa_dungeon_wall" x="1214" y="1137"/>
-  <object type="fa_dungeon_wall" x="1213" y="1160"/>
-  <object type="fa_dungeon_wall" x="1213" y="1183"/>
-  <object type="fa_dungeon_wall" x="1214" y="1206"/>
-  <object type="fa_dungeon_wall" x="1212" y="1229"/>
-  <object type="fa_dungeon_wall" x="1214" y="1252"/>
-  <object type="fa_dungeon_wall" x="1212" y="1275"/>
-  <object type="fa_dungeon_wall" x="1215" y="1002"/>
-  <object type="fa_dungeon_wall" x="1215" y="1025"/>
-  <object type="fa_dungeon_wall" x="1214" y="1047"/>
-  <object type="fa_dungeon_wall" x="1215" y="1071"/>
-  <object type="fa_dungeon_wall" x="1215" y="1092"/>
-  <object type="fa_dungeon_wall" x="1216" y="1115"/>
-  <object type="fa_dungeon_wall" x="1219" y="838"/>
-  <object type="fa_dungeon_wall" x="1219" y="861"/>
-  <object type="fa_dungeon_wall" x="1218" y="884"/>
-  <object type="fa_dungeon_wall" x="1218" y="907"/>
-  <object type="fa_dungeon_wall" x="1217" y="931"/>
-  <object type="fa_dungeon_wall" x="1217" y="955"/>
-  <object type="fa_dungeon_wall" x="1215" y="978"/>
-  <object type="fa_dungeon_wall" x="1217" y="606"/>
-  <object type="fa_dungeon_wall" x="1217" y="629"/>
-  <object type="fa_dungeon_wall" x="1218" y="652"/>
-  <object type="fa_dungeon_wall" x="1218" y="675"/>
-  <object type="fa_dungeon_wall" x="1219" y="698"/>
-  <object type="fa_dungeon_wall" x="1218" y="721"/>
-  <object type="fa_dungeon_wall" x="1218" y="744"/>
-  <object type="fa_dungeon_wall" x="1219" y="767"/>
-  <object type="fa_dungeon_wall" x="1217" y="441"/>
-  <object type="fa_dungeon_wall" x="1217" y="464"/>
-  <object type="fa_dungeon_wall" x="1217" y="487"/>
-  <object type="fa_dungeon_wall" x="1216" y="511"/>
-  <object type="fa_dungeon_wall" x="1216" y="534"/>
-  <object type="fa_dungeon_wall" x="1216" y="558"/>
-  <object type="fa_dungeon_wall" x="1215" y="582"/>
-  <object type="fa_dungeon_wall" x="905" y="328"/>
-  <object type="fa_dungeon_wall" x="904" y="351"/>
-  <object type="fa_dungeon_wall" x="903" y="374"/>
-  <object type="fa_dungeon_wall" x="904" y="397"/>
-  <object type="fa_dungeon_wall" x="905" y="420"/>
-  <object type="fa_dungeon_wall" x="906" y="443"/>
-  <object type="fa_dungeon_wall" x="905" y="467"/>
-  <object type="fa_dungeon_wall" x="904" y="491"/>
-  <object type="fa_dungeon_wall" x="909" y="170"/>
-  <object type="fa_dungeon_wall" x="909" y="193"/>
-  <object type="fa_dungeon_wall" x="910" y="216"/>
-  <object type="fa_dungeon_wall" x="908" y="238"/>
-  <object type="fa_dungeon_wall" x="907" y="260"/>
-  <object type="fa_dungeon_wall" x="906" y="283"/>
-  <object type="fa_dungeon_wall" x="906" y="306"/>
-  <object type="fa_dungeon_wall" x="1217" y="396"/>
-  <object type="fa_dungeon_wall" x="1217" y="419"/>
-  <object type="fa_dungeon_wall" x="933" y="247"/>
-  <object type="fa_dungeon_wall" x="908" y="145"/>
-  <object type="fa_dungeon_wall" x="1480" y="1414"/>
-  <object type="fa_dungeon_wall" x="1029" y="373"/>
-  <object type="fa_dungeon_wall" x="1051" y="373"/>
-  <object type="fa_dungeon_wall" x="1074" y="373"/>
-  <object type="fa_dungeon_wall" x="1097" y="372"/>
-  <object type="fa_dungeon_wall" x="1121" y="373"/>
-  <object type="fa_dungeon_wall" x="1145" y="373"/>
-  <object type="fa_dungeon_wall" x="1170" y="374"/>
-  <object type="fa_dungeon_wall" x="1194" y="374"/>
-  <object type="fa_dungeon_wall" x="1212" y="164"/>
-  <object type="fa_dungeon_wall" x="1213" y="189"/>
-  <object type="fa_dungeon_wall" x="1214" y="212"/>
-  <object type="fa_dungeon_wall" x="1215" y="235"/>
-  <object type="fa_dungeon_wall" x="1217" y="257"/>
-  <object type="fa_dungeon_wall" x="1217" y="280"/>
-  <object type="fa_dungeon_wall" x="1216" y="303"/>
-  <object type="fa_dungeon_wall" x="1217" y="326"/>
-  <object type="fa_dungeon_wall" x="1218" y="350"/>
-  <object type="fa_dungeon_wall" x="1072" y="245"/>
-  <object type="fa_dungeon_wall" x="1047" y="245"/>
-  <object type="fa_dungeon_wall" x="1024" y="245"/>
-  <object type="fa_dungeon_wall" x="1000" y="247"/>
-  <object type="fa_dungeon_wall" x="977" y="248"/>
-  <object type="fa_dungeon_wall" x="957" y="248"/>
-  <object type="fa_dungeon_wall" x="1075" y="136"/>
-  <object type="fa_dungeon_wall" x="1098" y="138"/>
-  <object type="fa_dungeon_wall" x="1122" y="138"/>
-  <object type="fa_dungeon_wall" x="1145" y="138"/>
-  <object type="fa_dungeon_wall" x="1168" y="138"/>
-  <object type="fa_dungeon_wall" x="1191" y="138"/>
-  <object type="fa_dungeon_wall" x="1213" y="140"/>
-  <object type="fa_dungeon_wall" x="1344" y="184"/>
-  <object type="fa_dungeon_wall" x="1344" y="163"/>
-  <object type="fa_dungeon_wall" x="1344" y="140"/>
-  <object type="fa_dungeon_wall" x="1472" y="135"/>
-  <object type="fa_dungeon_wall" x="1028" y="136"/>
-  <object type="fa_dungeon_wall" x="1051" y="137"/>
-  <object type="fa_dungeon_wall" x="1344" y="345"/>
-  <object type="fa_dungeon_wall" x="1344" y="322"/>
-  <object type="fa_dungeon_wall" x="1344" y="299"/>
-  <object type="fa_dungeon_wall" x="1344" y="276"/>
-  <object type="fa_dungeon_wall" x="1343" y="253"/>
-  <object type="fa_dungeon_wall" x="1344" y="231"/>
-  <object type="fa_dungeon_wall" x="1344" y="207"/>
-  <object type="fa_dungeon_wall" x="1472" y="248"/>
-  <object type="fa_dungeon_wall" x="1472" y="225"/>
-  <object type="fa_dungeon_wall" x="1472" y="203"/>
-  <object type="fa_dungeon_wall" x="1472" y="181"/>
-  <object type="fa_dungeon_wall" x="1472" y="159"/>
-  <object type="fa_dungeon_wall" x="1345" y="411"/>
-  <object type="fa_dungeon_wall" x="1344" y="390"/>
-  <object type="fa_dungeon_wall" x="1472" y="404"/>
-  <object type="fa_dungeon_wall" x="1343" y="368"/>
-  <object type="fa_dungeon_wall" x="1472" y="380"/>
-  <object type="fa_dungeon_wall" x="1472" y="358"/>
-  <object type="fa_dungeon_wall" x="1472" y="337"/>
-  <object type="fa_dungeon_wall" x="1472" y="314"/>
-  <object type="fa_dungeon_wall" x="1472" y="293"/>
-  <object type="fa_dungeon_wall" x="1472" y="271"/>
-  <object type="fa_dungeon_wall" x="1471" y="473"/>
-  <object type="fa_dungeon_wall" x="1344" y="481"/>
-  <object type="fa_dungeon_wall" x="1472" y="450"/>
-  <object type="fa_dungeon_wall" x="1344" y="457"/>
-  <object type="fa_dungeon_wall" x="1472" y="427"/>
-  <object type="fa_dungeon_wall" x="1344" y="434"/>
-  <object type="fa_dungeon_wall" x="1472" y="563"/>
-  <object type="fa_dungeon_wall" x="1344" y="551"/>
-  <object type="fa_dungeon_wall" x="1472" y="541"/>
-  <object type="fa_dungeon_wall" x="1344" y="527"/>
-  <object type="fa_dungeon_wall" x="1472" y="518"/>
-  <object type="fa_dungeon_wall" x="1473" y="496"/>
-  <object type="fa_dungeon_wall" x="1343" y="503"/>
-  <object type="fa_dungeon_wall" x="1474" y="658"/>
-  <object type="fa_dungeon_wall" x="1344" y="643"/>
-  <object type="fa_dungeon_wall" x="1473" y="634"/>
-  <object type="fa_dungeon_wall" x="1344" y="620"/>
-  <object type="fa_dungeon_wall" x="1472" y="611"/>
-  <object type="fa_dungeon_wall" x="1473" y="587"/>
-  <object type="fa_dungeon_wall" x="1343" y="597"/>
-  <object type="fa_dungeon_wall" x="1343" y="574"/>
-  <object type="fa_dungeon_wall" x="1472" y="747"/>
-  <object type="fa_dungeon_wall" x="1344" y="734"/>
-  <object type="fa_dungeon_wall" x="1472" y="725"/>
-  <object type="fa_dungeon_wall" x="1345" y="711"/>
-  <object type="fa_dungeon_wall" x="1473" y="702"/>
-  <object type="fa_dungeon_wall" x="1344" y="689"/>
-  <object type="fa_dungeon_wall" x="1472" y="680"/>
-  <object type="fa_dungeon_wall" x="1345" y="667"/>
-  <object type="fa_dungeon_wall" x="1472" y="794"/>
-  <object type="fa_dungeon_wall" x="1345" y="781"/>
-  <object type="fa_dungeon_wall" x="1472" y="771"/>
-  <object type="fa_dungeon_wall" x="1345" y="757"/>
-  <object type="fa_dungeon_wall" x="1341" y="851"/>
-  <object type="fa_dungeon_wall" x="1362" y="818"/>
-  <object type="fa_dungeon_wall" x="1340" y="827"/>
-  <object type="fa_dungeon_wall" x="1341" y="805"/>
-  <object type="fa_dungeon_wall" x="1386" y="818"/>
-  <object type="fa_dungeon_wall" x="1407" y="818"/>
-  <object type="fa_dungeon_wall" x="1429" y="818"/>
-  <object type="fa_dungeon_wall" x="1451" y="818"/>
-  <object type="fa_dungeon_wall" x="1472" y="818"/>
-  <object type="fa_dungeon_wall" x="1451" y="967"/>
-  <object type="fa_dungeon_wall" x="1472" y="967"/>
-  <object type="fa_dungeon_wall" x="1496" y="966"/>
-  <object type="fa_dungeon_wall" x="1518" y="966"/>
-  <object type="fa_dungeon_wall" x="1542" y="966"/>
-  <object type="fa_dungeon_wall" x="1564" y="967"/>
-  <object type="fa_dungeon_wall" x="1344" y="964"/>
-  <object type="fa_dungeon_wall" x="1344" y="942"/>
-  <object type="fa_dungeon_wall" x="1344" y="920"/>
-  <object type="fa_dungeon_wall" x="1343" y="898"/>
-  <object type="fa_dungeon_wall" x="1342" y="874"/>
-  <object type="fa_dungeon_wall" x="1344" y="1129"/>
-  <object type="fa_dungeon_wall" x="1345" y="1107"/>
-  <object type="fa_dungeon_wall" x="1345" y="1084"/>
-  <object type="fa_dungeon_wall" x="1344" y="1060"/>
-  <object type="fa_dungeon_wall" x="1344" y="1037"/>
-  <object type="fa_dungeon_wall" x="1345" y="1012"/>
-  <object type="fa_dungeon_wall" x="1345" y="989"/>
-  <object type="fa_dungeon_wall" x="1344" y="1284"/>
-  <object type="fa_dungeon_wall" x="1344" y="1262"/>
-  <object type="fa_dungeon_wall" x="1344" y="1240"/>
-  <object type="fa_dungeon_wall" x="1344" y="1218"/>
-  <object type="fa_dungeon_wall" x="1345" y="1196"/>
-  <object type="fa_dungeon_wall" x="1345" y="1174"/>
-  <object type="fa_dungeon_wall" x="1487" y="1151"/>
-  <object type="fa_dungeon_wall" x="1463" y="1152"/>
-  <object type="fa_dungeon_wall" x="1438" y="1151"/>
-  <object type="fa_dungeon_wall" x="1414" y="1152"/>
-  <object type="fa_dungeon_wall" x="1392" y="1152"/>
-  <object type="fa_dungeon_wall" x="1368" y="1151"/>
-  <object type="fa_dungeon_wall" x="1345" y="1152"/>
-  <object type="fa_dungeon_wall" x="1344" y="1331"/>
-  <object type="fa_dungeon_wall" x="1344" y="1307"/>
-  <object type="fa_dungeon_wall" x="1448" y="1283"/>
-  <object type="fa_dungeon_wall" x="1470" y="1283"/>
-  <object type="fa_dungeon_wall" x="1494" y="1283"/>
-  <object type="fa_dungeon_wall" x="1517" y="1282"/>
-  <object type="fa_dungeon_wall" x="1541" y="1282"/>
-  <object type="fa_dungeon_wall" x="1565" y="1283"/>
-  <object type="fa_dungeon_wall" x="1345" y="1438"/>
-  <object type="fa_dungeon_wall" x="1344" y="1460"/>
-  <object type="fa_dungeon_wall" x="1321" y="1459"/>
-  <object type="fa_dungeon_wall" x="1300" y="1460"/>
-  <object type="fa_dungeon_wall" x="1278" y="1460"/>
-  <object type="fa_dungeon_wall" x="1255" y="1461"/>
-  <object type="fa_dungeon_wall" x="1232" y="1461"/>
-  <object type="fa_dungeon_wall" x="1344" y="1353"/>
-  <object type="fa_dungeon_wall" x="1457" y="1415"/>
-  <object type="fa_dungeon_wall" x="1434" y="1415"/>
-  <object type="fa_dungeon_wall" x="1412" y="1415"/>
-  <object type="fa_dungeon_wall" x="583" y="1079"/>
-  <object type="fa_dungeon_wall" x="1389" y="1415"/>
-  <object type="fa_dungeon_wall" x="1367" y="1416"/>
-  <object type="fa_dungeon_wall" x="1344" y="1374"/>
-  <object type="fa_dungeon_wall" x="1345" y="1395"/>
-  <object type="fa_dungeon_wall" x="1344" y="1416"/>
-  <object type="fa_dungeon_wall" x="747" y="1461"/>
-  <object type="fa_dungeon_wall" x="770" y="1461"/>
-  <object type="fa_dungeon_wall" x="791" y="1462"/>
-  <object type="fa_dungeon_wall" x="814" y="1461"/>
-  <object type="fa_dungeon_wall" x="837" y="1461"/>
-  <object type="fa_dungeon_wall" x="861" y="1461"/>
-  <object type="fa_dungeon_wall" x="884" y="1459"/>
-  <object type="fa_dungeon_wall" x="908" y="1460"/>
-  <object type="fa_dungeon_wall" x="932" y="1461"/>
-  <object type="fa_dungeon_wall" x="831" y="1178"/>
-  <object type="fa_dungeon_wall" x="831" y="1155"/>
-  <object type="fa_dungeon_wall" x="831" y="1133"/>
-  <object type="fa_dungeon_wall" x="832" y="1109"/>
-  <object type="fa_dungeon_wall" x="832" y="1086"/>
-  <object type="fa_dungeon_wall" x="832" y="1063"/>
-  <object type="fa_dungeon_wall" x="702" y="1461"/>
-  <object type="fa_dungeon_wall" x="724" y="1461"/>
-  <object type="fa_dungeon_wall" x="702" y="1328"/>
-  <object type="fa_dungeon_wall" x="701" y="1348"/>
-  <object type="fa_dungeon_wall" x="703" y="1371"/>
-  <object type="fa_dungeon_wall" x="702" y="1394"/>
-  <object type="fa_dungeon_wall" x="702" y="1417"/>
-  <object type="fa_dungeon_wall" x="703" y="1439"/>
-  <object type="fa_dungeon_wall" x="564" y="1466"/>
-  <object type="fa_dungeon_wall" x="832" y="1336"/>
-  <object type="fa_dungeon_wall" x="833" y="1314"/>
-  <object type="fa_dungeon_wall" x="833" y="1291"/>
-  <object type="fa_dungeon_wall" x="833" y="1269"/>
-  <object type="fa_dungeon_wall" x="832" y="1248"/>
-  <object type="fa_dungeon_wall" x="832" y="1225"/>
-  <object type="fa_dungeon_wall" x="832" y="1201"/>
-  <object type="fa_dungeon_wall" x="700" y="1146"/>
-  <object type="fa_dungeon_wall" x="700" y="1169"/>
-  <object type="fa_dungeon_wall" x="700" y="1190"/>
-  <object type="fa_dungeon_wall" x="700" y="1213"/>
-  <object type="fa_dungeon_wall" x="701" y="1236"/>
-  <object type="fa_dungeon_wall" x="701" y="1260"/>
-  <object type="fa_dungeon_wall" x="701" y="1283"/>
-  <object type="fa_dungeon_wall" x="702" y="1306"/>
-  <object type="fa_dungeon_wall" x="350" y="1031"/>
-  <object type="fa_dungeon_wall" x="606" y="1079"/>
-  <object type="fa_dungeon_wall" x="629" y="1079"/>
-  <object type="fa_dungeon_wall" x="652" y="1080"/>
-  <object type="fa_dungeon_wall" x="676" y="1079"/>
-  <object type="fa_dungeon_wall" x="700" y="1077"/>
-  <object type="fa_dungeon_wall" x="700" y="1099"/>
-  <object type="fa_dungeon_wall" x="700" y="1122"/>
-  <object type="fa_dungeon_wall" x="310" y="1123"/>
-  <object type="fa_dungeon_wall" x="136" y="1146"/>
-  <object type="fa_dungeon_wall" x="136" y="1122"/>
-  <object type="fa_dungeon_wall" x="135" y="1100"/>
-  <object type="fa_dungeon_wall" x="134" y="1077"/>
-  <object type="fa_dungeon_wall" x="135" y="1055"/>
-  <object type="fa_dungeon_wall" x="326" y="1031"/>
-  <object type="fa_dungeon_wall" x="300" y="1032"/>
-  <object type="fa_dungeon_wall" x="278" y="1031"/>
-  <object type="fa_dungeon_wall" x="254" y="1031"/>
-  <object type="fa_dungeon_wall" x="230" y="1032"/>
-  <object type="fa_dungeon_wall" x="206" y="1032"/>
-  <object type="fa_dungeon_wall" x="183" y="1032"/>
-  <object type="fa_dungeon_wall" x="159" y="1032"/>
-  <object type="fa_dungeon_wall" x="135" y="1033"/>
-  <object type="fa_dungeon_wall" x="374" y="1031"/>
-  <object type="fa_dungeon_wall" x="396" y="1031"/>
-  <object type="fa_dungeon_wall" x="419" y="1031"/>
-  <object type="fa_dungeon_wall" x="443" y="1031"/>
-  <object type="fa_dungeon_wall" x="466" y="1032"/>
-  <object type="fa_dungeon_wall" x="489" y="1033"/>
-  <object type="fa_dungeon_wall" x="513" y="1056"/>
-  <object type="fa_dungeon_wall" x="512" y="1033"/>
-  <object type="fa_dungeon_wall" x="514" y="1079"/>
-  <object type="fa_dungeon_wall" x="536" y="1079"/>
-  <object type="fa_dungeon_wall" x="560" y="1079"/>
-  <object type="fa_dungeon_wall" x="232" y="1468"/>
-  <object type="fa_dungeon_wall" x="208" y="1469"/>
-  <object type="fa_dungeon_wall" x="185" y="1469"/>
-  <object type="fa_dungeon_wall" x="161" y="1468"/>
-  <object type="fa_dungeon_wall" x="138" y="1467"/>
-  <object type="fa_dungeon_wall" x="137" y="1446"/>
-  <object type="fa_dungeon_wall" x="137" y="1424"/>
-  <object type="fa_dungeon_wall" x="138" y="1401"/>
-  <object type="fa_dungeon_wall" x="138" y="1379"/>
-  <object type="fa_dungeon_wall" x="137" y="1356"/>
-  <object type="fa_dungeon_wall" x="136" y="1331"/>
-  <object type="fa_dungeon_wall" x="137" y="1308"/>
-  <object type="fa_dungeon_wall" x="137" y="1285"/>
-  <object type="fa_dungeon_wall" x="136" y="1262"/>
-  <object type="fa_dungeon_wall" x="136" y="1239"/>
-  <object type="fa_dungeon_wall" x="137" y="1217"/>
-  <object type="fa_dungeon_wall" x="137" y="1193"/>
-  <object type="fa_dungeon_wall" x="136" y="1170"/>
-  <object type="fa_dungeon_wall" x="420" y="1467"/>
-  <object type="fa_dungeon_wall" x="397" y="1468"/>
-  <object type="fa_dungeon_wall" x="372" y="1468"/>
-  <object type="fa_dungeon_wall" x="349" y="1468"/>
-  <object type="fa_dungeon_wall" x="326" y="1468"/>
-  <object type="fa_dungeon_wall" x="303" y="1468"/>
-  <object type="fa_dungeon_wall" x="278" y="1468"/>
-  <object type="fa_dungeon_wall" x="255" y="1468"/>
-  <object type="fa_dungeon_wall" x="654" y="1351"/>
-  <object type="fa_dungeon_wall" x="678" y="1350"/>
-  <object type="fa_dungeon_wall" x="537" y="1466"/>
-  <object type="fa_dungeon_wall" x="512" y="1467"/>
-  <object type="fa_dungeon_wall" x="490" y="1467"/>
-  <object type="fa_dungeon_wall" x="467" y="1466"/>
-  <object type="fa_dungeon_wall" x="444" y="1467"/>
-  <object type="fa_dungeon_wall" x="333" y="1349"/>
-  <object type="fa_dungeon_wall" x="356" y="1347"/>
-  <object type="fa_dungeon_wall" x="379" y="1348"/>
-  <object type="fa_dungeon_wall" x="401" y="1348"/>
-  <object type="fa_dungeon_wall" x="424" y="1347"/>
-  <object type="fa_dungeon_wall" x="446" y="1349"/>
-  <object type="fa_dungeon_wall" x="469" y="1348"/>
-  <object type="fa_dungeon_wall" x="492" y="1348"/>
-  <object type="fa_dungeon_wall" x="515" y="1349"/>
-  <object type="fa_dungeon_wall" x="538" y="1349"/>
-  <object type="fa_dungeon_wall" x="561" y="1349"/>
-  <object type="fa_dungeon_wall" x="584" y="1348"/>
-  <object type="fa_dungeon_wall" x="607" y="1349"/>
-  <object type="fa_dungeon_wall" x="630" y="1349"/>
-  <object type="fa_dungeon_wall" x="246" y="1191"/>
-  <object type="fa_dungeon_wall" x="246" y="1213"/>
-  <object type="fa_dungeon_wall" x="245" y="1235"/>
-  <object type="fa_dungeon_wall" x="246" y="1257"/>
-  <object type="fa_dungeon_wall" x="244" y="1279"/>
-  <object type="fa_dungeon_wall" x="243" y="1303"/>
-  <object type="fa_dungeon_wall" x="242" y="1325"/>
-  <object type="fa_dungeon_wall" x="241" y="1349"/>
-  <object type="fa_dungeon_wall" x="264" y="1349"/>
-  <object type="fa_dungeon_wall" x="288" y="1348"/>
-  <object type="fa_dungeon_wall" x="312" y="1348"/>
-  <object type="fa_dungeon_wall" x="290" y="1123"/>
-  <object type="fa_dungeon_wall" x="268" y="1123"/>
-  <object type="fa_dungeon_wall" x="245" y="1122"/>
-  <object type="fa_dungeon_wall" x="245" y="1145"/>
-  <object type="fa_dungeon_wall" x="245" y="1168"/>
-  <object type="fa_dungeon_entrance" x="736" y="737">
-   <properties>
-    <property name="fa_cavename" value="GOBLIN_CAVE_2"/>
-   </properties>
-  </object>
-  <object type="armorruins" x="830" y="837">
-   <properties>
-    <property name="scenario" value="a_pickup_thulecitearmor"/>
-   </properties>
-  </object>
-  <object type="treasurechest" x="635" y="1301"/>
-  <object type="goblinhut" x="588" y="1165"/>
-  <object type="goblinhut" x="375" y="1261"/>
-  <object type="goldnugget" x="100" y="174"/>
-  <object type="trap_teeth_maxwell" x="1042" y="43"/>
-  <object type="trap_teeth_maxwell" x="1132" y="106"/>
-  <object type="trap_teeth_maxwell" x="1107" y="81"/>
-  <object type="trap_teeth_maxwell" x="1098" y="41"/>
-  <object type="trap_teeth_maxwell" x="1072" y="63"/>
-  <object type="trap_teeth_maxwell" x="1092" y="112"/>
-  <object type="trap_teeth_maxwell" x="1053" y="98"/>
-  <object type="trap_teeth_maxwell" x="1027" y="73"/>
-  <object type="trap_teeth_maxwell" x="1135" y="56"/>
-  <object type="poop" x="1410" y="766"/>
-  <object type="fa_bottle_r" x="1278" y="1409"/>
-  <object type="poop" x="718" y="444"/>
-  <object type="flower_cave" x="547" y="203"/>
-  <object type="flower_cave" x="1523" y="1517"/>
-  <object type="flower_cave" x="172" y="1521"/>
-  <object type="flower_cave" x="1021" y="1398"/>
-  <object type="flower_cave" x="567" y="969"/>
-  <object type="flower_cave" x="1163" y="466"/>
-  <object type="flower_cave" x="336" y="594"/>
-  <object type="flower_cave" x="192" y="387"/>
-  <object type="firepit" x="1414" y="1476"/>
+  <object type="spawnpoint" x="840" y="861"/>
+  <object type="goblinhut" x="185" y="1393"/>
+  <object type="pillar_ruins" x="1152" y="1023"/>
+  <object type="pillar_ruins" x="449" y="1021"/>
+  <object type="pillar_ruins" x="1150" y="512"/>
+  <object type="pillar_ruins" x="448" y="514"/>
+  <object type="ruins_vase" x="475" y="1126"/>
+  <object type="ruins_chair" x="49" y="1069"/>
+  <object type="ruins_chair" x="230" y="127"/>
+  <object type="ruins_chair" x="1437" y="1483"/>
+  <object type="ruins_chair" x="1335" y="625"/>
+  <object type="ruins_chair" x="597" y="695"/>
+  <object type="ruins_chair" x="179" y="942"/>
+  <object type="ruins_chair" x="432" y="1383"/>
+  <object type="ruins_chair" x="818" y="1374"/>
+  <object type="ruins_chair" x="787" y="1073"/>
+  <object type="ruins_vase" x="1175" y="791"/>
+  <object type="ruins_vase" x="75" y="353"/>
+  <object type="ruins_vase" x="777" y="318"/>
+  <object type="ruins_vase" x="1297" y="335"/>
+  <object type="ruins_vase" x="1403" y="1111"/>
+  <object type="ruins_vase" x="805" y="207"/>
+  <object type="ruins_vase" x="132" y="1492"/>
+  <object type="goblinhut" x="1380" y="1340"/>
+  <object type="goblinhut" x="751" y="155"/>
+  <object type="goblinhut" x="620" y="1411"/>
+  <object type="goblinhut" x="213" y="841"/>
+  <object type="goblinsign_1" x="115" y="1281"/>
+  <object type="goblinsign_2" x="605" y="149"/>
+  <object type="goblinsign_4" x="87" y="819"/>
+  <object type="goblinsign_5" x="926" y="322"/>
+  <object type="goblinsign_1" x="133" y="358"/>
+  <object type="goblinsign_1" x="1520" y="123"/>
+  <object type="goblinsign_1" x="1517" y="1143"/>
+  <object type="goblinsign_2" x="1123" y="103"/>
+  <object type="goblinsign_2" x="1509" y="505"/>
+  <object type="goblinsign_2" x="147" y="77"/>
+  <object type="goblinsign_2" x="1140" y="1495"/>
+  <object type="goblinsign_3" x="1495" y="1403"/>
+  <object type="goblinsign_3" x="357" y="732"/>
+  <object type="goblinsign_3" x="481" y="1187"/>
+  <object type="goblinsign_4" x="1521" y="890"/>
+  <object type="goblinsign_4" x="727" y="1513"/>
+  <object type="goblinsign_5" x="193" y="1517"/>
+  <object type="flower_cave" x="422" y="139"/>
+  <object type="flower_cave_double" x="323" y="362"/>
+  <object type="flower_cave_triple" x="864" y="593"/>
+  <object type="flower_cave" x="1385" y="128"/>
+  <object type="flower_cave" x="1303" y="522"/>
+  <object type="flower_cave" x="954" y="1375"/>
+  <object type="flower_cave" x="282" y="1211"/>
+  <object type="flower_cave" x="1214" y="208"/>
+  <object type="flower_cave" x="673" y="886"/>
+  <object type="flower_cave" x="968" y="915"/>
+  <object type="flower_cave" x="97" y="620"/>
+  <object type="flower_cave_double" x="1171" y="161"/>
+  <object type="flower_cave_double" x="1118" y="679"/>
+  <object type="flower_cave_double" x="743" y="1229"/>
+  <object type="flower_cave_double" x="224" y="1012"/>
+  <object type="flower_cave_double" x="288" y="209"/>
+  <object type="flower_cave_double" x="1013" y="788"/>
+  <object type="flower_cave_triple" x="1102" y="337"/>
+  <object type="flower_cave_triple" x="1351" y="978"/>
+  <object type="flower_cave_triple" x="1271" y="1219"/>
+  <object type="flower_cave_triple" x="368" y="860"/>
+  <object type="flower_cave_triple" x="487" y="313"/>
+  <object type="flower_cave_triple" x="794" y="962"/>
+  <object type="flower_cave_triple" x="762" y="759"/>
+  <object type="fa_dungeon_entrance" x="762" y="835"/>
+  <object type="goblinhut" x="1438" y="680"/>
+  <object type="goblinhut" x="1402" y="192"/>
+  <object type="goblinhut" x="1459" y="1003"/>
+  <object type="goblinhut" x="132" y="203"/>
+  <object type="goblinhut" x="205" y="506"/>
  </objectgroup>
 </map>

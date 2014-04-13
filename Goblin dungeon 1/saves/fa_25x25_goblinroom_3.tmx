@@ -10967,5 +10967,75 @@
   <object type="fa_dungeon_wall" x="393" y="774"/>
   <object type="fa_dungeon_wall" x="392" y="752"/>
   <object type="fa_dungeon_wall" x="393" y="843"/>
+  <object type="fa_bottle_g" x="1415" y="1424"/>
+  <object type="fa_bottle_y" x="1340" y="1531"/>
+  <object type="fa_bottle_y" x="323" y="1517"/>
+  <object type="fa_bottle_y" x="1365" y="1392"/>
+  <object type="fa_bottle_g" x="714" y="1530"/>
+  <object type="poop" x="67" y="83"/>
+  <object type="treasurechest" x="697" y="1419"/>
+  <object type="goldnugget" x="1513" y="727"/>
+  <object type="goldnugget" x="1549" y="342"/>
+  <object type="goldnugget" x="1509" y="425"/>
+  <object type="goldnugget" x="1544" y="486"/>
+  <object type="goldnugget" x="1503" y="578"/>
+  <object type="goldnugget" x="1542" y="653"/>
+  <object type="trap_teeth_maxwell" x="1461" y="786"/>
+  <object type="trap_teeth_maxwell" x="1432" y="816"/>
+  <object type="trap_teeth_maxwell" x="1400" y="793"/>
+  <object type="trap_teeth_maxwell" x="1380" y="750"/>
+  <object type="trap_teeth_maxwell" x="1425" y="758"/>
+  <object type="trap_teeth_maxwell" x="1476" y="815"/>
+  <object type="trap_teeth_maxwell" x="1420" y="910"/>
+  <object type="trap_teeth_maxwell" x="1386" y="874"/>
+  <object type="trap_teeth_maxwell" x="1426" y="860"/>
+  <object type="trap_teeth_maxwell" x="1389" y="829"/>
+  <object type="trap_teeth_maxwell" x="1381" y="1009"/>
+  <object type="trap_teeth_maxwell" x="1419" y="971"/>
+  <object type="trap_teeth_maxwell" x="1377" y="932"/>
+  <object type="fa_redtotem_kos" x="332" y="204"/>
+  <object type="fa_redtotem_kos" x="345" y="463"/>
+  <object type="fa_redtotem_kos" x="1259" y="334"/>
+  <object type="fa_redtotem_kos" x="1275" y="581"/>
+  <object type="poop" x="1081" y="708"/>
+  <object type="poop" x="1140" y="863"/>
+  <object type="poop" x="1081" y="786"/>
+  <object type="poop" x="1161" y="733"/>
+  <object type="fa_bottle_y" x="713" y="1294"/>
+  <object type="goblinhut" x="1098" y="1022"/>
+  <object type="goblinhut" x="514" y="1349"/>
+  <object type="fa_lightningsword2" x="334" y="1155"/>
+  <object type="flower_cave_triple" x="215" y="83"/>
+  <object type="flower_cave_triple" x="1282" y="58"/>
+  <object type="flower_cave_triple" x="610" y="101"/>
+  <object type="flower_cave_triple" x="183" y="624"/>
+  <object type="flower_cave_triple" x="62" y="999"/>
+  <object type="flower_cave_triple" x="97" y="657"/>
+  <object type="flower_cave_triple" x="82" y="342"/>
+  <object type="flower_cave_triple" x="888" y="94"/>
+  <object type="flower_cave_triple" x="1486" y="93"/>
+  <object type="flower_cave_triple" x="1407" y="254"/>
+  <object type="flower_cave_triple" x="1172" y="437"/>
+  <object type="flower_cave_triple" x="623" y="590"/>
+  <object type="flower_cave_triple" x="456" y="895"/>
+  <object type="flower_cave_triple" x="505" y="1019"/>
+  <object type="flower_cave_triple" x="330" y="1029"/>
+  <object type="flower_cave_triple" x="450" y="696"/>
+  <object type="flower_cave_triple" x="909" y="1542"/>
+  <object type="flower_cave_triple" x="699" y="1156"/>
+  <object type="flower_cave_triple" x="1391" y="1241"/>
+  <object type="flower_cave_triple" x="1211" y="1041"/>
+  <object type="flower_cave_triple" x="1527" y="1268"/>
+  <object type="bedroll_furry" x="583" y="1393"/>
+  <object type="fa_dungeon_entrance" x="658" y="729">
+   <properties>
+    <property name="fa_cavename" value="GOBLIN_CAVE_BOSSLEVEL"/>
+   </properties>
+  </object>
+  <object type="armorruins" x="752" y="825">
+   <properties>
+    <property name="scenario" value="fa_pickup_thulecitearmor"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

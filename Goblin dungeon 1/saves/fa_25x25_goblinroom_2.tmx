@@ -10892,5 +10892,79 @@
   <object type="fa_dungeon_wall" x="766" y="526"/>
   <object type="fa_dungeon_wall" x="504" y="527"/>
   <object type="fa_dungeon_wall" x="388" y="528"/>
+  <object type="goldnugget" x="79" y="918"/>
+  <object type="goldnugget" x="61" y="1348"/>
+  <object type="goldnugget" x="95" y="1269"/>
+  <object type="goldnugget" x="77" y="1186"/>
+  <object type="goldnugget" x="102" y="1111"/>
+  <object type="goldnugget" x="55" y="1022"/>
+  <object type="goldnugget" x="265" y="1532"/>
+  <object type="goldnugget" x="157" y="1487"/>
+  <object type="goldnugget" x="106" y="1424"/>
+  <object type="goldnugget" x="690" y="1110"/>
+  <object type="goldnugget" x="675" y="1417"/>
+  <object type="goldnugget" x="452" y="1520"/>
+  <object type="goldnugget" x="1143" y="1021"/>
+  <object type="goldnugget" x="836" y="1503"/>
+  <object type="goblinhut" x="1350" y="1319"/>
+  <object type="fa_redtotem_kos" x="1295" y="446"/>
+  <object type="fa_redtotem_kos" x="1408" y="448"/>
+  <object type="fa_redtotem_kos" x="1354" y="287"/>
+  <object type="treasurechest" x="1407" y="857"/>
+  <object type="poop" x="89" y="593"/>
+  <object type="trap_teeth_maxwell" x="243" y="626"/>
+  <object type="trap_teeth_maxwell" x="243" y="626"/>
+  <object type="trap_teeth_maxwell" x="294" y="539"/>
+  <object type="trap_teeth_maxwell" x="236" y="542"/>
+  <object type="trap_teeth_maxwell" x="267" y="583"/>
+  <object type="trap_teeth_maxwell" x="290" y="626"/>
+  <object type="trap_teeth_maxwell" x="236" y="450"/>
+  <object type="trap_teeth_maxwell" x="298" y="449"/>
+  <object type="trap_teeth_maxwell" x="269" y="499"/>
+  <object type="trap_teeth_maxwell" x="238" y="377"/>
+  <object type="trap_teeth_maxwell" x="298" y="375"/>
+  <object type="trap_teeth_maxwell" x="264" y="419"/>
+  <object type="trap_teeth_maxwell" x="239" y="275"/>
+  <object type="trap_teeth_maxwell" x="292" y="290"/>
+  <object type="trap_teeth_maxwell" x="265" y="326"/>
+  <object type="fa_redtotem_kos" x="1020" y="197"/>
+  <object type="fa_redtotem_kos" x="405" y="335"/>
+  <object type="fa_redtotem_kos" x="1037" y="456"/>
+  <object type="fa_dungeon_entrance" x="664" y="732">
+   <properties>
+    <property name="fa_cavename" value="GOBLIN_CAVE_2"/>
+   </properties>
+  </object>
+  <object type="armorruins" x="763" y="862">
+   <properties>
+    <property name="scenario" value="fa_pickup_thulecitearmor"/>
+   </properties>
+  </object>
+  <object type="poop" x="208" y="1334"/>
+  <object type="bedroll_furry" x="1419" y="1406"/>
+  <object type="flower_cave_double" x="261" y="816"/>
+  <object type="flower_cave_double" x="453" y="1349"/>
+  <object type="flower_cave_double" x="409" y="594"/>
+  <object type="flower_cave_double" x="370" y="1519"/>
+  <object type="flower_cave_double" x="57" y="1245"/>
+  <object type="flower_cave_double" x="660" y="893"/>
+  <object type="flower_cave_double" x="1294" y="1414"/>
+  <object type="flower_cave_double" x="977" y="1242"/>
+  <object type="flower_cave_double" x="778" y="1027"/>
+  <object type="flower_cave_double" x="454" y="712"/>
+  <object type="flower_cave_double" x="467" y="616"/>
+  <object type="flower_cave_double" x="511" y="673"/>
+  <object type="flower_cave_double" x="418" y="659"/>
+  <object type="flower_cave_double" x="542" y="726"/>
+  <object type="flower_cave_double" x="386" y="714"/>
+  <object type="flower_cave_double" x="509" y="570"/>
+  <object type="flower_cave_double" x="110" y="435"/>
+  <object type="flower_cave_double" x="826" y="77"/>
+  <object type="flower_cave_double" x="180" y="75"/>
+  <object type="flower_cave_double" x="1417" y="225"/>
+  <object type="flower_cave_double" x="1282" y="204"/>
+  <object type="flower_cave_double" x="1290" y="99"/>
+  <object type="flower_cave_double" x="1501" y="1028"/>
+  <object type="flower_cave_double" x="1244" y="1521"/>
  </objectgroup>
 </map>
