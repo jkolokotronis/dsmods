@@ -37,6 +37,8 @@ local Levels=require("map/levels")
 require "repairabledescriptionfix"
 
 PrefabFiles = {
+    "fa_hats",
+    "fa_stickheads",
     "fa_dungeon_walls",
     "goblinsignpost",
     "fa_animatedarmor",
@@ -1303,6 +1305,56 @@ local function onFishingCollect(inst,data)
     end
 end
 
+AddClassPostConstruct("screens/loadgamescreen", function(self)
+    self.MakeSaveTile = (function()
+        local MakeSaveTile = self.MakeSaveTile
+ 
+        return function(self, slotnum, ...)
+            local tile = MakeSaveTile(self, slotnum, ...)
+
+            local cavelevel=GLOBAL.SaveGameIndex:GetCurrentCaveLevel(slotnum)
+            local mode = GLOBAL.SaveGameIndex:GetCurrentMode(slotnum)
+
+            if(mode == "cave")then
+                print("cavelevel",cavelevel)
+                local data=Levels.cave_levels[cavelevel]
+                --second check just to exclude other mods or default caves etc..
+                if(data and GLOBAL.FA_LEVELS[data.id])then
+                    local day = GLOBAL.SaveGameIndex:GetSlotDay(slotnum)
+--                    tile.text:SetString(("%s-%d"):format(data.name, day))
+                    tile.text:SetString(("%s"):format(data.name))
+                end
+            end    
+ 
+            return tile
+        end
+    end)()
+end)
+ 
+AddClassPostConstruct("screens/slotdetailsscreen", function(self)
+    self.BuildMenu = (function()
+        local BuildMenu = self.BuildMenu
+ 
+        return function(self, ...)
+            BuildMenu(self, ...)
+
+            local cavelevel=GLOBAL.SaveGameIndex:GetCurrentCaveLevel(self.saveslot)
+            local mode = GLOBAL.SaveGameIndex:GetCurrentMode(self.saveslot)
+
+            if(mode == "cave")then
+                print("cavelevel",cavelevel)
+                local data=Levels.cave_levels[cavelevel]
+                --second check just to exclude other mods or default caves etc..
+                if(data and GLOBAL.FA_LEVELS[data.id])then
+                    local day = GLOBAL.SaveGameIndex:GetSlotDay(slotnum)
+                    self.text:SetString(("%s"):format(data.name))
+                end
+            end    
+
+        end
+    end)()
+end)
+
 AddPrefabPostInit("world", function(inst)
 --    GLOBAL.assert( GLOBAL.GetPlayer() == nil )
     local player_prefab = GLOBAL.SaveGameIndex:GetSlotCharacter()
@@ -1347,10 +1399,17 @@ AddPrefabPostInit("cave", function(inst)
     if(level>3)then
         inst:RemoveComponent("periodicthreat")
         local data=Levels.cave_levels[level]
-        if(data and data.id=="GOBLIN_CAVE")then
-            inst:AddComponent("periodicthreat")
-            local threats = require("fa_periodicthreats")
-            inst.components.periodicthreat:AddThreat("DUNGEON_GOBLINS", threats["DUNGEON_GOBLINS"])
+        if(data and GLOBAL.FA_LEVELS[data.id])then
+            local threats=GLOBAL.FA_LEVEL_THREATS[data.id]
+            local threatlist = require("fa_periodicthreats")
+            if(threads)then
+            for k,v in pairs(threats) do
+                if(not inst.components.periodicthreat)then
+                    inst:AddComponent("periodicthreat")
+                end
+                inst.components.periodicthreat:AddThreat(v,threatlist[v])
+            end
+            end
         end
     end
 end)

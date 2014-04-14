@@ -50,12 +50,12 @@ FA_LEVELDATA["DUNGEON_LEVEL_1"]={
 
 FA_LEVELDATA["GOBLIN_CAVE"]={
 		id="GOBLIN_CAVE",
-		name="GOBLIN_CAVE",
+		name="Goblins lv1",
 		overrides={
 			{"world_size", 		"medium"},
 			-- {"day", 			"onlynight"}, 
 			{"branching",		"most"},
---			{"islands", 		"always"},	
+--			{"islands", 		"never"},	
 --			{"loop",			"always"},
 			{"season", 			"autumn"}, 
 --			{"season_start", 	"summer"},
@@ -67,11 +67,9 @@ FA_LEVELDATA["GOBLIN_CAVE"]={
 			{"traps", 			"never"},
 			{"protected", 		"never"},
 			{"start_setpeice", 	"FAGoblinDungeonStart"},
---			{"start_setpeice", 	"FAGoblinRoom_1"},
 			{"start_node",		"FA_GoblinRoomEntry"},
 		},
 		tasks={
-			
 			"FAGoblinDungeon1",
 			"FAGoblinDungeon2",
 			"FAGoblinDungeon3",
@@ -101,7 +99,7 @@ FA_LEVELDATA["GOBLIN_CAVE"]={
 
 FA_LEVELDATA["GOBLIN_CAVE_2"]={
 		id="GOBLIN_CAVE_2",
-		name="GOBLIN_CAVE_2",
+		name="Goblins lv2",
 		overrides={
 			{"world_size", 		"medium"},
 			-- {"day", 			"onlynight"}, 
@@ -142,7 +140,7 @@ FA_LEVELDATA["GOBLIN_CAVE_2"]={
 
 FA_LEVELDATA["GOBLIN_CAVE_3"]={
 		id="GOBLIN_CAVE_3",
-		name="GOBLIN_CAVE_3",
+		name="Goblins lv3",
 		overrides={
 			{"world_size", 		"medium"},
 			-- {"day", 			"onlynight"}, 
@@ -183,42 +181,37 @@ FA_LEVELDATA["GOBLIN_CAVE_3"]={
 
 FA_LEVELDATA["GOBLIN_CAVE_BOSSLEVEL"]={
 		id="GOBLIN_CAVE_BOSSLEVEL",
-		name="GOBLIN_CAVE_BOSSLEVEL",
+		name="Goblins boss",
 		overrides={
-			{"world_size", 		"medium"},
+			{"world_size", 		"huge"},
 			-- {"day", 			"onlynight"}, 
-			{"branching",		"most"},
+--			{"branching",		"most"},
 --			{"islands", 		"always"},	
 --			{"loop",			"always"},
 			{"season", 			"autumn"}, 
 --			{"season_start", 	"summer"},
 			{"weather", 	"never"},
 			{"waves", 			"off"},
-			{"location",		"cave"},
+--			{"location",		"cave"},
 			{"boons", 			"never"},
 			{"poi", 			"never"},
 			{"traps", 			"never"},
-			{"protected", 		"never"},
-			{"start_setpeice", 	"FADungeonStart"},
+--			{"start_setpeice", 	"FAGoblinBossroom"},
 --			{"start_setpeice", 	"FAGoblinRoom_1"},
-			{"start_node",		"FA_GoblinRoomEntry"},
+--			{"start_node",		"FA_GoblinRoomEntry"},
 		},
 		tasks={
-			
-			"FAGoblinDungeon1",
-			"FAGoblinDungeon2",
-			"FAGoblinDungeon3",
-			"FAGoblinDungeon4",
-			"FAGoblinDungeon5",
-			"FAGoblinDungeon6",
-			"FAGoblinDungeon7",
-			"FAGoblinDungeon8"
+--			"FAEmpty"
+			"FAGoblinBossroom"
+--			"MaxHome"
 		},
 		required_prefabs = {
 		"fa_dungeon_exit",
 		},
 
 	}
+
+
 
 FA_LEVELDATA["ORC_STRONGHOLD"]={
 		id="ORC_STRONGHOLD",

@@ -203,7 +203,7 @@ local events=
                     -- avoid stunlock when attacked by bees/mosquitos
                     -- don't go to full hit state, just play sounds
 
-                    inst.SoundEmitter:PlaySound("fa/skeleton/skel_hit")        
+                    inst.SoundEmitter:PlaySound("fa/thulearmor/armor_hit")        
                   
                     return
                 end
@@ -471,7 +471,7 @@ local states=
             inst.components.locomotor:Stop()
             inst.AnimState:Hide("swap_arm_carry")
             inst.AnimState:PlayAnimation("death")
-            inst.SoundEmitter:PlaySound("fa/skeleton/skel_die")
+            inst.SoundEmitter:PlaySound("fa/thulearmor/armor_die")
         end,
     },
 
@@ -1504,15 +1504,15 @@ local states=
                 elseif weapon:HasTag("firestaff") then
                     inst.SoundEmitter:PlaySound("dontstarve/wilson/attack_firestaff")
                 else
-                    inst.SoundEmitter:PlaySound("fa/skeleton/skel_atk")
+                    inst.SoundEmitter:PlaySound("fa/thulearmor/armor_atk")
                 end
             elseif otherequipped and (otherequipped:HasTag("light") or otherequipped:HasTag("nopunch")) then
                 inst.AnimState:PlayAnimation("atk")
-                inst.SoundEmitter:PlaySound("fa/skeleton/skel_atk")
+                inst.SoundEmitter:PlaySound("fa/thulearmor/armor_atk")
             else
 				inst.sg.statemem.slow = true
                 inst.AnimState:PlayAnimation("punch")
-                inst.SoundEmitter:PlaySound("fa/skeleton/skel_atk")
+                inst.SoundEmitter:PlaySound("fa/thulearmor/armor_atk")
             end
             
             if inst.components.combat.target then
@@ -1775,7 +1775,7 @@ local states=
         tags = {"busy"},
         
         onenter = function(inst)
-            inst.SoundEmitter:PlaySound("fa/skeleton/skel_hit")        
+            inst.SoundEmitter:PlaySound("fa/thulearmor/armor_hit")        
             inst.AnimState:PlayAnimation("hit")
             inst:ClearBufferedAction()
             

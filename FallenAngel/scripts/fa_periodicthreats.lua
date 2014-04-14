@@ -97,7 +97,7 @@ local DUNGEON_GOBLINS = {
 	eventtime = worm_eventtime,
 	eventtimer = worm_eventtimer,
 
-	warnsound = "dontstarve/creatures/worm/distant",
+	warnsound = "fa/goblin/goblin_yell",
 	onspawnfn = goblin_onspawnfn, 
 	numtospawnfn = goblin_numtospawn,
 	trackspawns = true,

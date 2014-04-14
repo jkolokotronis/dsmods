@@ -133,7 +133,6 @@ local function onattackfirewall(staff, target, orpos)
         pos=Vector3(target.Transform:GetWorldPosition())
     end
 
---    local orig_pos=pos --would it actually do deep copy?
     for i=0,4 do
         createFireDelta(pos)
         pos.z=pos.z+2

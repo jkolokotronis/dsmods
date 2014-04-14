@@ -176,6 +176,18 @@ AddTask("FAGoblinDungeonMaze3", {
 		background_room="FA_BGGoblin",
 		colour={r=1,g=0,b=0.6,a=1},
 		})
+
+AddTask("FAGoblinBossroom", {
+		locks={LOCKS.NONE},
+		keys_given= {KEYS.NONE},
+		room_choices={
+			["FA_GoblinBossroom"] = 1,
+		},
+		room_bg=GROUND.IMPASSABLE,
+		background_room="BGImpassable",
+		colour={r=1,g=0,b=0.6,a=1},
+		})
+
 AddTask("Residential", {
 		locks = {LOCKS.RUINS},
 		keys_given = {KEYS.LABYRINTH, KEYS.RUINS},

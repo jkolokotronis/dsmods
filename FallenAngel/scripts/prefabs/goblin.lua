@@ -4,6 +4,7 @@ local assets=
 	Asset("ANIM", "anim/orc.zip"),
     Asset("ANIM", "anim/goblin.zip"),
 	Asset("SOUND", "sound/hound.fsb"),
+        Asset( "ANIM", "anim/bluegoblin.zip" ),
 }
 
 local prefabs =
@@ -13,13 +14,13 @@ local prefabs =
 
 local GOBLIN_HEALTH=400
 local GOBLIN_DAMAGE=30
-local GOBLIN_ATTACK_PERIOD=1
+local GOBLIN_ATTACK_PERIOD=2
 local GOBLIN_RUN_SPEED=6
 local GOBLIN_WALK_SPEED=3
 
 local MAX_TARGET_SHARES = 5
 local TARGET_DISTANCE = 15
-local SHARE_TARGET_DIST = 40
+local SHARE_TARGET_DIST = 30
 
 
     local LOOTTABLE={
@@ -34,6 +35,79 @@ local SHARE_TARGET_DIST = 40
         LOOTTABLE["trinket_"..i]=1
     end
 
+    
+
+
+local onloadfn = function(inst, data)
+    inst.loadedSpawn=true
+end
+
+
+local function GetInventoryGuard1(inst)
+    inst:DoTaskInTime(0,function()
+        if(inst.loadedSpawn)then
+            return
+        end
+        local item=SpawnPrefab("armorwood")
+        inst.components.inventory:Equip(item)
+        item=SpawnPrefab("footballhat")
+        inst.components.inventory:Equip(item)
+    end)
+end
+   
+local function GetInventoryGuard2(inst)
+    inst:DoTaskInTime(0,function()
+        if(inst.loadedSpawn)then
+            return
+        end
+        local item=SpawnPrefab("armormarble")
+        inst.components.inventory:Equip(item)
+        item=SpawnPrefab("slurtlehat")
+        inst.components.inventory:Equip(item)
+    end)
+end
+
+local function GetInventoryGuard3(inst)
+    inst:DoTaskInTime(0,function()
+        if(inst.loadedSpawn)then
+            return
+        end
+        local item=SpawnPrefab("armor_sanity")
+        inst.components.inventory:Equip(item)
+        item=SpawnPrefab("nightsword")
+        inst.components.inventory:Equip(item)
+        item=SpawnPrefab("slurtlehat")
+        inst.components.inventory:Equip(item)
+    end)
+end
+
+local function GetInventoryWizard(inst)
+    inst:DoTaskInTime(0,function()
+        if(inst.loadedSpawn)then
+            return
+        end
+        local item=SpawnPrefab("armorgrass")
+        inst.components.inventory:Equip(item)
+        item=SpawnPrefab("firewallwand")
+        inst.components.inventory:Equip(item)
+        item=SpawnPrefab("magicmissilewand")
+        inst.components.inventory:Equip(item)
+    end)
+end
+
+local function GetInventoryKing(inst)
+    inst:DoTaskInTime(0,function()
+        if(inst.loadedSpawn)then
+            return
+        end
+         local item=SpawnPrefab("ruinshat")
+        inst.components.inventory:Equip(item)
+        item=SpawnPrefab("armorruins")
+        inst.components.inventory:Equip(item)
+        item=SpawnPrefab("ruins_bat")
+        inst.components.inventory:Equip(item)
+    end)
+end
 
 local function RetargetFn(inst)
     local defenseTarget = inst
@@ -118,6 +192,7 @@ local function fn()
          inst.AnimState:Hide("hat")
      inst.AnimState:PlayAnimation("idle")
 
+    inst.OnLoad = onloadfn
 
     inst:AddComponent("eater")
 --wah screw this     inst.components.eater:SetVegetarian()
@@ -164,4 +239,47 @@ local function fn()
     return inst
 end
 
-return Prefab( "common/goblin", fn, assets)
+local function fnguard1()
+    local inst=fn()
+    GetInventoryGuard1(inst)
+    return fn
+end
+
+local function fnguard2()
+    local inst=fn()
+    GetInventoryGuard2(inst)
+    return fn
+end
+
+local function fnguard3()
+    local inst=fn()
+    GetInventoryGuard3(inst)
+    return fn
+end
+
+local function fnwiz()
+    local inst=fn()
+    GetInventoryWizard(inst)
+    inst.components.locomotor.runspeed = 7
+    inst.components.combat:SetAttackPeriod(7)
+    return fn
+end
+
+local function fnking()
+    local inst=fn()
+        inst.AnimState:SetBank("wilson")
+        inst.AnimState:SetBuild("bluegoblin")
+        inst.AnimState:PlayAnimation("idle")
+    inst.components.combat:SetAttackPeriod(4)
+    inst.components.locomotor.walkspeed=4
+    inst.components.locomotor.runspeed = 4
+    inst.components.health:SetMaxHealth(1200)
+    GetInventoryKing(inst)
+    return fn
+end
+return Prefab( "common/goblin", fn, assets),
+Prefab( "common/fa_goblin_guard_1", fnguard1, assets),
+Prefab( "common/fa_goblin_guard_2", fnguard2, assets),
+Prefab( "common/fa_goblin_guard_3", fnguard3, assets),
+Prefab( "common/fa_goblin_wizard", fnwiz, assets),
+Prefab( "common/fa_goblin_king", fnking, assets)

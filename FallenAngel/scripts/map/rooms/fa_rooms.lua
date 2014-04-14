@@ -385,13 +385,13 @@ AddRoom("FA_GoblinEntrance", {
 					contents =  {
 									countprefabs={
 										pighead=function() return math.random(5) end,
-										goblinhut = function () return 1 + math.random(2) end,
+										goblinhut = function () return 1 + math.random(5) end,
 					                    fa_dungeon_entrance = function () return 1 end,
 					                    gravestone = function () return 1 + math.random(2) end,
 					                    --mound = function () return 1 + math.random(1) end
 									},
 									prefabdata = {
-										fa_dungeon_entrance = function() return {fa_cavename="GOBLIN_CAVE"}
+										fa_dungeon_entrance = function() return {fa_cavename="GOBLIN_CAVE"}-- {fa_cavename=}"GOBLIN_CAVE_BOSSLEVEL"}
 															end,
 									},
 									
@@ -420,10 +420,6 @@ AddRoom("FA_GoblinRoomEntry",{
 										pighead=function() return math.random(8) end,
 										fa_bonfire=1
 									},
-									countstaticlayouts = 
-									{
-										["FA5x5GoblinRoom_1"] = 1,
-									}, 
 									distributepercent = 0.01,
 					                distributeprefabs= 
 					                {
@@ -584,6 +580,19 @@ AddRoom("FA_GoblinMaze3",{
 					            }
 	})
 
+AddRoom("FA_GoblinBossroom",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.UNDERROCK,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FAGoblinBossroom"] = 1,
+--										["MaxwellHome"] = 1,
+									}, 
+					            }
+	})
+
 AddRoom("FA_5x5GoblinRoom_1", MakeSetpieceRoom("FA5x5GoblinRoom_1"))
 AddRoom("FA_5x5GoblinRoom_2", MakeSetpieceRoom("FA5x5GoblinRoom_2"))
 AddRoom("FA_5x5GoblinRoom_3", MakeSetpieceRoom("FA5x5GoblinRoom_3"))
@@ -595,6 +604,7 @@ AddRoom("FA_BGGoblin",  {
 					value =GROUND.IMPASSABLE, 
 					
 					contents =  {
+					
 									distributepercent = 0.01,
 					                distributeprefabs= 
 					                {

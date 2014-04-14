@@ -154,6 +154,7 @@ function LightSpellStart(reader,timer)
     return true
 end
 --would it simply be easier to write a timed-aoe-dmg myself? likely..
+
 local function apply_bb_damage(reader)
 	if(reader.buff_timers["bladebarrier"].cooldowntimer<=0)then
 		reader.bladeBarrierTimer:Cancel()
@@ -205,6 +206,8 @@ function BladeBarrierSpellStart(reader,timer)
 --    boom.DynamicShadow:SetSize( .8, .5 )
     boom.Transform:SetScale(5, 5, 1)
 
+    inst:AddTag("FX")
+    inst:AddTag("NOCLICK")
     anim:SetBank("betterbarrier")
     anim:SetBuild("betterbarrier")
     anim:PlayAnimation("idle",true)
@@ -214,6 +217,88 @@ function BladeBarrierSpellStart(reader,timer)
     local follower = boom.entity:AddFollower()
     follower:FollowSymbol( reader.GUID, "swap_object", 0.1, 0.1, -0.0001 )
 end
+--[[
+local function apply_bb_damage(inst,target)
+    local pos=Vector3(inst.Transform:GetWorldPosition())
+    print("wtf is target?",target)
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, ICESTORM_RADIUS,nil,{"player","pet","companion","INLIMBO"})
+    for k,v in pairs(ents) do
+        if v.components.combat and not (v.components.health and v.components.health:IsDead()) then
+            --it should have blunt component, do i want to do this twice?
+             local current = Vector3(v.Transform:GetWorldPosition() )
+                local direction = (pos - current):GetNormalized()
+                local angle = math.acos(direction:Dot(Vector3(1, 0, 0) ) ) / DEGREES
+
+                local boom = CreateEntity()
+                boom.entity:AddTransform()
+                local anim=boom.entity:AddAnimState()
+                anim:SetBank("flash_b")
+                anim:SetBuild("flash_b")
+                anim:SetOrientation( ANIM_ORIENTATION.OnGround )
+                boom.Transform:SetRotation(angle)
+                anim:PlayAnimation("idle",false)
+                boom:FacePoint(pos)
+
+                local pos1 =v:GetPosition()
+                boom.Transform:SetPosition(pos1.x, pos1.y, pos1.z)
+                boom:ListenForEvent("animover", function()  boom:Remove() end)
+
+                v.components.combat:GetAttacked(reader, BB_DAMAGE, nil)
+            v.components.combat:GetAttacked(inst.fa_icestorm_caster, ICESTORM_DAMAGE, nil,FA_DAMAGETYPE.COLD)
+        end
+    end
+end
+
+function BladeBarrierSpellStart(reader,timer)
+    if(timer==nil or timer<=0)then return false end
+    local inst = CreateEntity()
+    local caster = staff.components.inventoryitem.owner
+    local trans = inst.entity:AddTransform()
+    inst:AddTag("FX")
+    inst:AddTag("NOCLICK")
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_bladebarrier"
+    inst.components.spell.duration = timer
+--    inst.components.spell.ontargetfn = light_ontarget
+--    inst.components.spell.onstartfn = light_start
+--    inst.components.spell.onfinishfn = light_onfinish
+    inst.components.spell.fn = doicestorm
+    inst.components.spell.period=2
+--    inst.components.spell.resumefn = light_resume
+    inst.components.spell.removeonfinish = true
+    inst.components.spell:SetTarget(reader)
+--    inst.fa_icestorm_caster=caster
+    inst.Transform:SetPosition(pos.x, pos.y, pos.z)
+
+
+    inst.components.spell.ontargetfn = function(inst,target)
+        target.fa_banishdarkness = inst
+        target:AddTag(inst.components.spell.spellname)
+        target.AnimState:SetBloomEffectHandle("shaders/anim.ksh")
+    end
+    inst.components.spell.onstartfn = light_start
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+        inst.components.spell.target.fa_banishdarkness = nil
+        inst.components.spell.target.AnimState:ClearBloomEffectHandle()
+    end
+    inst.components.spell.fn = lightfn
+    --the load/save on spells... can be done through char's own control but 
+    --I can either let old entity die and recast, or use the provided resumes, supposedly
+    inst.components.spell.resumefn = light_start
+    inst.components.spell.removeonfinish = true
+
+
+
+
+
+    inst.components.spell:StartSpell()
+    staff.components.finiteuses:Use(1)
+end
+]]
+
 
 function HasteSpellStart( reader,timer)
     if(timer==nil or timer<=0)then return false end
