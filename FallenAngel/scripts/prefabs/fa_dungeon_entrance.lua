@@ -30,8 +30,6 @@ end
 
 local function OnActivate(inst)
 
-	if not IsGamePurchased() then return end
-
     ProfileStatsSet("cave_entrance_used", true)
 
 	SetPause(true)
@@ -138,14 +136,11 @@ local function Open(inst)
 
     --inst:AddTag("NOCLICK")
     inst:DoTaskInTime(2, function() 
-
-		if IsGamePurchased() then
 			inst:AddComponent("activatable")
 		    inst.components.activatable.OnActivate = OnActivate
 		    inst.components.activatable.inactive = true
 		    inst.components.activatable.getverb = GetVerb
 			inst.components.activatable.quickaction = true
-		end
 
 	end)
 

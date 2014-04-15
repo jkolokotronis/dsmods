@@ -183,8 +183,8 @@ AddTask("FAGoblinBossroom", {
 		room_choices={
 			["FA_GoblinBossroom"] = 1,
 		},
-		room_bg=GROUND.IMPASSABLE,
-		background_room="BGImpassable",
+		room_bg=GROUND.MUD,
+		background_room="FA_BGGoblin",
 		colour={r=1,g=0,b=0.6,a=1},
 		})
 

@@ -192,21 +192,23 @@ FA_LEVELDATA["GOBLIN_CAVE_BOSSLEVEL"]={
 --			{"season_start", 	"summer"},
 			{"weather", 	"never"},
 			{"waves", 			"off"},
---			{"location",		"cave"},
+			{"location",		"cave"},
 			{"boons", 			"never"},
 			{"poi", 			"never"},
 			{"traps", 			"never"},
 --			{"start_setpeice", 	"FAGoblinBossroom"},
---			{"start_setpeice", 	"FAGoblinRoom_1"},
---			{"start_node",		"FA_GoblinRoomEntry"},
+			{"start_setpeice", 	"FAGoblinDungeonStart3"},
+			{"start_node",		"FA_GoblinRoomEntry"},
 		},
 		tasks={
 --			"FAEmpty"
-			"FAGoblinBossroom"
+			"FAGoblinDungeon1",
+			"FAGoblinBossroom",
 --			"MaxHome"
 		},
 		required_prefabs = {
 		"fa_dungeon_exit",
+--		"fa_dungeon_marblepillar",
 		},
 
 	}
