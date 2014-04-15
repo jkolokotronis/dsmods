@@ -91,6 +91,7 @@ local function fn(Sim)
 
     inst:AddTag("structure")
     inst:AddComponent("lootdropper")
+    inst.components.lootdropper:SetLoot({ "rocks", "rocks","cutgrass","cutgrass","cutgrass","cutgrass","boards","boards","boards","boards"})
     inst:AddComponent("workable")
     inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
     inst.components.workable:SetWorkLeft(8)

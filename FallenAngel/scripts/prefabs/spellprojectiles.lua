@@ -38,6 +38,7 @@ local function oncollide(inst, other)
         print("hit the target, ignore, should never happen")
     else
         if(other)then
+            print("target",inst.components.projectile.target,"other",other)
             inst.components.projectile:Hit(other)
         else
             inst.components.projectile:Miss()--the hell does target mean here?
@@ -107,6 +108,7 @@ local function firex()
     inst.AnimState:SetBank("projectile")
     inst.AnimState:SetBuild("staff_projectile")
     inst.AnimState:PlayAnimation("fire_spin_loop", true)
+    inst.components.projectile:SetSpeed(20)
     inst.AnimState:SetBloomEffectHandle( "shaders/anim.ksh" )
     inst.components.projectile:SetOnMissFn(OnHit)
     inst.components.projectile:SetOnHitFn(OnHit)

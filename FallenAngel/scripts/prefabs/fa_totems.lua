@@ -332,7 +332,11 @@ local function redfnbase(Sim)
     local follower = boom.entity:AddFollower()
     follower:FollowSymbol( inst.GUID, "fa_redtotem", 0.5, -60, -0.0001 )
 --    boom.entity:SetParent( inst.entity )
-
+    inst.OnRemoveEntity = function(inst)
+       if(inst.fa_puffanim)then
+            inst.fa_puffanim:Remove()
+        end
+    end
     inst:SetStateGraph("SGredtotem")
     local brain = require "brains/eyeturretbrain"
     inst:SetBrain(brain)
@@ -357,9 +361,7 @@ local function redfn(Sim)
     inst.components.machine.ison = true
     local function pickup(inst)
         inst.components.machine.ison = true
-        if(inst.fa_puffanim)then
-            inst.fa_puffanim:Remove()
-        end
+        
         local item=SpawnPrefab("fa_redtotem_item")
         local weapon=inst.components.inventory:GetEquippedItem(EQUIPSLOTS.HANDS)
 

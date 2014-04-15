@@ -212,7 +212,7 @@ FA_LEVELDATA["GOBLIN_CAVE_BOSSLEVEL"]={
 		},
 		required_prefabs = {
 		"fa_dungeon_exit",
---		"fa_dungeon_marblepillar",
+		"fa_goblin_king_1",
 		},
 
 	}

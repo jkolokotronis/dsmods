@@ -315,6 +315,30 @@ local function firewall()
     return inst
 end
 
+
+local function onattackfirewallinsta(staff, attacker, target)
+    local pos=Vector3(target.Transform:GetWorldPosition())
+    
+    for i=0,4 do
+        createFireDelta(pos)
+        pos.z=pos.z+2
+    end
+end
+
+local function firewall_insta()
+    local inst = commonfn("red")
+    inst:AddComponent("weapon")
+    inst.components.weapon:SetDamage(0)
+    inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
+    inst.components.weapon:SetOnAttack(onattackfirewallinsta)
+    inst.components.weapon:SetProjectile("fireballprojectile")
+    inst.components.weapon.fa_damagetype=FA_DAMAGETYPE.FIRE
+    inst.components.finiteuses:SetMaxUses(FIREWALL_USES)
+    inst.components.finiteuses:SetUses(FIREWALL_USES)
+
+    inst:AddTag("nopunch")
+    return inst
+end
 local function prismaticwall()
     local inst = commonfn("red")
 
@@ -329,5 +353,6 @@ return Prefab("common/inventory/magicmissilewand", magicmissile, assets, prefabs
     Prefab("common/inventory/fireballwand", fireball, assets, prefabs),
     Prefab("common/inventory/icestormwand", icestorm, assets, prefabs),
     Prefab("common/inventory/firewallwand", firewall, assets, prefabs),
+    Prefab("common/inventory/firewallwand_insta", firewall_insta, assets, prefabs),
     Prefab("common/inventory/sunburstwand", sunburst, assets, prefabs),
     Prefab("common/inventory/prismaticwand", prismaticwall, assets, prefabs)

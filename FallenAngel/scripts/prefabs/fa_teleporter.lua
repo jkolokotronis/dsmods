@@ -12,8 +12,9 @@ local function GetVerb(inst)
 end
 
 local function OnActivate(inst,doer)
-		inst.SoundEmitter:PlaySound("fa/teleporter/activate", "teleportato_activate")
-	inst.AnimState:PushAnimation("idle_on", true)
+		inst.SoundEmitter:PlaySound("fa/teleporter/activate")
+	--inst.AnimState:PushAnimation("idle_on", true)
+--				inst.components.activatable.inactive = true
 	local dest=TheSim:FindFirstEntityWithTag(inst.targettag)
 	if(dest)then
 			doer.components.locomotor:Stop()
@@ -21,14 +22,13 @@ local function OnActivate(inst,doer)
 			doer.components.playercontroller:Enable(false)
 			GetPlayer().HUD:Hide()
 			TheFrontEnd:Fade(false,1)
-			doer:DoTaskInTime(1.2, function() 
+			doer:DoTaskInTime(2, function() 
 				local loc=dest:GetPosition()
 				doer.Transform:SetPosition(loc.x, 0, loc.z)
 				GetPlayer().HUD:Show()
 				TheFrontEnd:Fade(true,1) 
 				doer.components.health:SetInvincible(false)
 				doer.components.playercontroller:Enable(true)
-				inst.components.activatable.inactive = true
 			end)
 
 	end

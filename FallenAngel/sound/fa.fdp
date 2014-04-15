@@ -2602,7 +2602,7 @@
 <maxplaybacks>1</maxplaybacks>
 <maxplaybacks_behavior>Steal_oldest</maxplaybacks_behavior>
 <stealpriority>10000</stealpriority>
-<mode>x_3d</mode>
+<mode>x_2d</mode>
 <ignoregeometry>No</ignoregeometry>
 <rolloff>Linear</rolloff>
 <mindistance>3</mindistance>

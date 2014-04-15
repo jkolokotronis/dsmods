@@ -91,7 +91,7 @@ local function onequip(inst, owner, build)
         inst.AnimState:PlayAnimation("idle")
         inst.components.equippable:SetOnEquip(function(inst,owner) onequip(inst,owner,"hat_pot_swap") end )
     	inst.components.inventoryitem.imagename = "hat_pot"
-    	inst.components.inventoryitem.atlasname = "images/inventoryimages/hat_pot.xml"inst:AddComponent("armor")
+    	inst.components.inventoryitem.atlasname = "images/inventoryimages/hat_pot.xml"
         inst:AddComponent("armor")
         inst.components.armor:InitCondition(400, 0.3)
         inst.components.armor.fa_resistances[FA_DAMAGETYPE.ACID]=0.2

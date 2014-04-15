@@ -70,6 +70,8 @@ local function GetInventoryGuard1(inst)
         end
         local item=SpawnPrefab("armorwood")
         inst.components.inventory:Equip(item)
+        item=SpawnPrefab("spear")
+        inst.components.inventory:Equip(item)
         item=SpawnPrefab("footballhat")
         inst.components.inventory:Equip(item)
          inst.loadedSpawn=true
@@ -82,6 +84,8 @@ local function GetInventoryGuard2(inst)
             return
         end
         local item=SpawnPrefab("armormarble")
+        inst.components.inventory:Equip(item)
+        item=SpawnPrefab("spear")
         inst.components.inventory:Equip(item)
         item=SpawnPrefab("slurtlehat")
         inst.components.inventory:Equip(item)
@@ -111,7 +115,7 @@ local function GetInventoryWizard(inst)
         end
         local item=SpawnPrefab("armorgrass")
         inst.components.inventory:Equip(item)
-        item=SpawnPrefab("firewallwand")
+        item=SpawnPrefab("firewallwand_insta")
         inst.components.inventory:Equip(item)
   --  item.components.finiteuses:SetMaxUses(9999)
   --  item.components.finiteuses:SetUses(9999)
@@ -299,8 +303,28 @@ local onhitother=function(inst,data)
         leavestealth(inst)
     end
 end
-local function wizattack(inst,data)
 
+local function wizattack(inst,data)
+    print("onattack?",data.weapon, data.projectile)
+    --stupid thing is sending 2 things
+    if(not data.projectile)then
+    inst:DoTaskInTime(2,function()
+    local inv=inst.components.inventory
+    local current=inv:GetEquippedItem( EQUIPSLOTS.HANDS)
+    local newitem=nil
+    if(current and current.prefab=="firewallwand_insta")then
+        newitem=inv:FindItem(function(item) return item and item.prefab=="magicmissilewand" end)
+    else
+        newitem=inv:FindItem(function(item) return item and item.prefab=="firewallwand_insta" end)
+    end
+    if(newitem)then
+        if(current)then
+            inv:Unequip(current)
+        end
+        inv:Equip(newitem)
+    end
+    end)
+    end   
 end
 
 local function fnwiz()
@@ -325,6 +349,7 @@ local function fnking()
     inst.components.locomotor.runspeed = 4
     inst.components.health:SetMaxHealth(1200)
     GetInventoryKing(inst)
+    inst.components.lootdropper:AddChanceLoot( "goblinkinghead_item",1)
     return inst
 end
 return Prefab( "common/goblin", normal, assets),
