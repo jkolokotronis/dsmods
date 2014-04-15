@@ -41,6 +41,7 @@ function Goblinbrain:OnStart()
         WhileNode( function() return self.inst.components.combat.target == nil or not self.inst.components.combat:InCooldown() end, "AttackMomentarily",
             ChaseAndAttack(self.inst, MAX_CHASE_TIME, MAX_CHASE_DIST) ),
         WhileNode( function() return self.inst.components.combat.target and self.inst.components.combat:InCooldown() end, "Dodge",
+            RunAway(self.inst, function() return self.inst.components.combat.target end, RUN_AWAY_DIST, STOP_RUN_AWAY_DIST) ),
         Wander(self.inst, function() 
             if(self.inst.components.homeseeker and self.inst.components.homeseeker.home)then
                 return self.inst.components.homeseeker:GetHomePos()
