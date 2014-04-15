@@ -37,7 +37,7 @@ local Levels=require("map/levels")
 require "repairabledescriptionfix"
 
 PrefabFiles = {
-    "fa_teleport",
+    "fa_teleporter",
     "fa_hats",
     "fa_stickheads",
     "fa_dungeon_walls",
@@ -485,8 +485,8 @@ GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.GOBLINSIGN_4 = "It says 'Only prutty 
 GLOBAL.STRINGS.NAMES.GOBLINSIGN_5 = "Goblin Sign Post"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.GOBLINSIGN_5 = "It says 'Go bak now!'."
 
-GLOBAL.STRINGS.NAMES.FA_TELEPORT="Teleport"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_TELEPORT="Teleport"
+GLOBAL.STRINGS.NAMES.FA_TELEPORTER="Teleporter"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_TELEPORTER="Teleporter"
 
 --[[
 GLOBAL.STRINGS.CHARACTERS.GENERIC.FA_WONDER_SPEEDBOOST
