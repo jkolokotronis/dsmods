@@ -5092,7 +5092,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["scenario"] = "fa_goblintreasurechest"
+          }
         },
         {
           name = "",
@@ -5103,7 +5105,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["scenario"] = "fa_goblintreasurechest"
+          }
         },
         {
           name = "",
@@ -5228,7 +5232,7 @@ return {
         },
         {
           name = "",
-          type = "fa_dungeon_exit object",
+          type = "fa_dungeon_exit",
           shape = "rectangle",
           x = 1215,
           y = 1471,
@@ -5239,7 +5243,7 @@ return {
         },
         {
           name = "",
-          type = "fa_teleporter ",
+          type = "fa_teleporter",
           shape = "rectangle",
           x = 1410,
           y = 384,

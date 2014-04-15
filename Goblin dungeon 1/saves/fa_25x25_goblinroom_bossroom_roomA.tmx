@@ -10457,8 +10457,16 @@
   <object type="fa_goblin_guard_2" x="381" y="125"/>
   <object type="fa_goblin_guard_2" x="1219" y="379"/>
   <object type="fa_goblin_guard_2" x="1473" y="188"/>
-  <object type="treasurechest" x="85" y="72"/>
-  <object type="treasurechest" x="78" y="1525"/>
+  <object type="treasurechest" x="85" y="72">
+   <properties>
+    <property name="scenario" value="fa_goblintreasurechest"/>
+   </properties>
+  </object>
+  <object type="treasurechest" x="78" y="1525">
+   <properties>
+    <property name="scenario" value="fa_goblintreasurechest"/>
+   </properties>
+  </object>
   <object type="marblepillar" x="574" y="641"/>
   <object type="marblepillar" x="445" y="768"/>
   <object type="marblepillar" x="575" y="897"/>
@@ -10470,8 +10478,8 @@
   <object type="marblepillar" x="832" y="509"/>
   <object type="marblepillar" x="704" y="509"/>
   <object type="spawnpoint" x="1471" y="1471"/>
-  <object type="fa_dungeon_exit object" x="1215" y="1471"/>
-  <object type="fa_teleporter " x="1410" y="384">
+  <object type="fa_dungeon_exit" x="1215" y="1471"/>
+  <object type="fa_teleporter" x="1410" y="384">
    <properties>
     <property name="data.sourcetag" value="roomA"/>
     <property name="data.targettag" value="roomB"/>
