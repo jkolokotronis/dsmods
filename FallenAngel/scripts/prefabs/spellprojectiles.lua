@@ -4,6 +4,7 @@ local assets=
         Asset("ANIM","anim/fireball_hit.zip"),
     Asset("ANIM", "anim/swap_blowdart.zip"),
     Asset("ANIM", "anim/blow_dart.zip"),
+    Asset("ANIM", "anim/staff_projectile.zip"),
 }
 
 local function OnHitFb(inst, owner, target)
@@ -91,6 +92,29 @@ end]]
 end
 
 
+local function icex()
+    local inst = common()
+    inst.AnimState:SetBank("projectile")
+    inst.AnimState:SetBuild("staff_projectile")
+    inst.AnimState:PlayAnimation("ice_spin_loop", true)
+    inst.components.projectile:SetOnMissFn(OnHit)
+    inst.components.projectile:SetOnHitFn(OnHit)
+    return inst
+end
+
+local function firex()
+    local inst = common()
+    inst.AnimState:SetBank("projectile")
+    inst.AnimState:SetBuild("staff_projectile")
+    inst.AnimState:PlayAnimation("fire_spin_loop", true)
+    inst.AnimState:SetBloomEffectHandle( "shaders/anim.ksh" )
+    inst.components.projectile:SetOnMissFn(OnHit)
+    inst.components.projectile:SetOnHitFn(OnHit)
+    --colour projectile
+    --inst.AnimState:SetMultColour(0, 0, 0, 1)
+    return inst
+end
+
 local function fire()
     local inst = common()
     inst.components.projectile:SetOnHitFn(OnHitFb)
@@ -119,4 +143,6 @@ end
 return  
        Prefab("common/inventory/fireballprojectile", fire, assets),
        Prefab("common/inventory/fireballprojectilekos", firekos, assets),
-       Prefab("common/inventory/acidarrowprojectile", acid, assets)
+       Prefab("common/inventory/acidarrowprojectile", acid, assets),
+       Prefab( "common/inventory/ice_projectilex", icex, assets), 
+       Prefab("common/inventory/fire_projectilex", firex, assets) 

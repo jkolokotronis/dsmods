@@ -227,7 +227,7 @@ local function magicmissile()
     inst.components.weapon:SetDamage(MAGICMISSLE_DAMAGE)
     inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
 --    inst.components.weapon:SetOnAttack(onattack_red)
-    inst.components.weapon:SetProjectile("ice_projectile")
+    inst.components.weapon:SetProjectile("ice_projectilex")
     inst.components.weapon.fa_damagetype=FA_DAMAGETYPE.FORCE
     inst.components.inventoryitem.imagename="icestaff"
 
@@ -292,7 +292,7 @@ local function sunburst()
     inst.components.weapon:SetDamage(BOW_DAMAGE)
     inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
     inst.components.weapon:SetOnAttack(onattacksunburst)
-    inst.components.weapon:SetProjectile("fire_projectile")
+    inst.components.weapon:SetProjectile("fire_projectilex")
 
     inst.components.finiteuses:SetMaxUses(SUNBURST_USES)
     inst.components.finiteuses:SetUses(SUNBURST_USES)

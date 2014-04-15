@@ -9,7 +9,10 @@ local assets=
 
 local prefabs =
 {
-
+"hat_goblinking",
+"hat_pot",
+"firewallwand",
+"magicmissilewand"
 }
 
 local GOBLIN_HEALTH=400
@@ -39,9 +42,26 @@ local SHARE_TARGET_DIST = 30
 
 
 local onloadfn = function(inst, data)
-    inst.loadedSpawn=true
+    if(data)then
+        inst.loadedSpawn=data.loadedSpawn
+    end
 end
 
+local onsavefn = function(inst, data)
+    data.loadedSpawn=inst.loadedSpawn
+end
+local function GetInventoryNormal(inst)
+ inst:DoTaskInTime(0,function()
+        if(inst.loadedSpawn)then
+            return
+        end
+        if(math.random()<=0.3)then
+            local item=SpawnPrefab("hat_pot")
+            inst.components.inventory:Equip(item)
+        end
+         inst.loadedSpawn=true
+    end)
+end
 
 local function GetInventoryGuard1(inst)
     inst:DoTaskInTime(0,function()
@@ -52,6 +72,7 @@ local function GetInventoryGuard1(inst)
         inst.components.inventory:Equip(item)
         item=SpawnPrefab("footballhat")
         inst.components.inventory:Equip(item)
+         inst.loadedSpawn=true
     end)
 end
    
@@ -64,6 +85,7 @@ local function GetInventoryGuard2(inst)
         inst.components.inventory:Equip(item)
         item=SpawnPrefab("slurtlehat")
         inst.components.inventory:Equip(item)
+         inst.loadedSpawn=true
     end)
 end
 
@@ -78,6 +100,7 @@ local function GetInventoryGuard3(inst)
         inst.components.inventory:Equip(item)
         item=SpawnPrefab("slurtlehat")
         inst.components.inventory:Equip(item)
+         inst.loadedSpawn=true
     end)
 end
 
@@ -90,8 +113,13 @@ local function GetInventoryWizard(inst)
         inst.components.inventory:Equip(item)
         item=SpawnPrefab("firewallwand")
         inst.components.inventory:Equip(item)
+  --  item.components.finiteuses:SetMaxUses(9999)
+  --  item.components.finiteuses:SetUses(9999)
         item=SpawnPrefab("magicmissilewand")
         inst.components.inventory:Equip(item)
+  --  item.components.finiteuses:SetMaxUses(9999)
+  --  item.components.finiteuses:SetUses(9999)
+         inst.loadedSpawn=true
     end)
 end
 
@@ -100,12 +128,13 @@ local function GetInventoryKing(inst)
         if(inst.loadedSpawn)then
             return
         end
-         local item=SpawnPrefab("ruinshat")
+         local item=SpawnPrefab("hat_goblinking")
         inst.components.inventory:Equip(item)
         item=SpawnPrefab("armorruins")
         inst.components.inventory:Equip(item)
         item=SpawnPrefab("ruins_bat")
         inst.components.inventory:Equip(item)
+         inst.loadedSpawn=true
     end)
 end
 
@@ -166,7 +195,7 @@ local function OnEat(inst, food)
 
 end    
 
-local function fn()
+local function common()
 	local inst = CreateEntity()
 	local trans = inst.entity:AddTransform()
 	local anim = inst.entity:AddAnimState()
@@ -193,6 +222,7 @@ local function fn()
      inst.AnimState:PlayAnimation("idle")
 
     inst.OnLoad = onloadfn
+    inst.OnSave = onsavefn
 
     inst:AddComponent("eater")
 --wah screw this     inst.components.eater:SetVegetarian()
@@ -239,34 +269,54 @@ local function fn()
     return inst
 end
 
+local function normal()
+local inst=common()
+    GetInventoryNormal(inst)
+    return inst
+end
+
 local function fnguard1()
-    local inst=fn()
+    local inst=common()
     GetInventoryGuard1(inst)
-    return fn
+    return inst
 end
 
 local function fnguard2()
-    local inst=fn()
+    local inst=common()
     GetInventoryGuard2(inst)
-    return fn
+    return inst
 end
 
 local function fnguard3()
-    local inst=fn()
+    local inst=common()
     GetInventoryGuard3(inst)
-    return fn
+    return inst
+end
+
+local onhitother=function(inst,data)
+    local damage=data.damage
+    if(damage and damage>0 and inst:HasTag("notarget"))then
+        leavestealth(inst)
+    end
+end
+local function wizattack(inst,data)
+
 end
 
 local function fnwiz()
-    local inst=fn()
+    local inst=common()
     GetInventoryWizard(inst)
     inst.components.locomotor.runspeed = 7
     inst.components.combat:SetAttackPeriod(7)
-    return fn
+    inst:ListenForEvent("onattackother", wizattack)
+--    inst:ListenForEvent("onmissother", self.onattackfn)
+    local brain = require "brains/goblinwizardbrain"
+    inst:SetBrain(brain)
+    return inst
 end
 
 local function fnking()
-    local inst=fn()
+    local inst=common()
         inst.AnimState:SetBank("wilson")
         inst.AnimState:SetBuild("bluegoblin")
         inst.AnimState:PlayAnimation("idle")
@@ -275,11 +325,11 @@ local function fnking()
     inst.components.locomotor.runspeed = 4
     inst.components.health:SetMaxHealth(1200)
     GetInventoryKing(inst)
-    return fn
+    return inst
 end
-return Prefab( "common/goblin", fn, assets),
+return Prefab( "common/goblin", normal, assets),
 Prefab( "common/fa_goblin_guard_1", fnguard1, assets),
 Prefab( "common/fa_goblin_guard_2", fnguard2, assets),
 Prefab( "common/fa_goblin_guard_3", fnguard3, assets),
-Prefab( "common/fa_goblin_wizard", fnwiz, assets),
-Prefab( "common/fa_goblin_king", fnking, assets)
+Prefab( "common/fa_goblin_wiz_1", fnwiz, assets),
+Prefab( "common/fa_goblin_king_1", fnking, assets)

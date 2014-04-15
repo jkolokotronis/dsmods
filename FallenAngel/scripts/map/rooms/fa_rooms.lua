@@ -580,19 +580,33 @@ AddRoom("FA_GoblinMaze3",{
 					            }
 	})
 
-AddRoom("FA_GoblinBossroom",{
+
+AddRoom("FA_GoblinBossroom2",{
 		colour={r=0.2,g=0.0,b=0.2,a=0.3},
 					value = GROUND.UNDERROCK,	
+--					tags = {"ForceConnected","RoadPoison"},
 					contents =  {
 
 									countstaticlayouts = 
 									{
-										["FAGoblinBossroom"] = 1,
+										["FAGoblinBossroom2"] = 1,
 --										["MaxwellHome"] = 1,
 									}, 
 					            }
 	})
+AddRoom("FA_GoblinBossroom3",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.UNDERROCK,	
+--					tags = {"ForceConnected","RoadPoison"},
+					contents =  {
 
+									countstaticlayouts = 
+									{
+										["FAGoblinBossroom3"] = 1,
+--										["MaxwellHome"] = 1,
+									}, 
+					            }
+	})
 AddRoom("FA_5x5GoblinRoom_1", MakeSetpieceRoom("FA5x5GoblinRoom_1"))
 AddRoom("FA_5x5GoblinRoom_2", MakeSetpieceRoom("FA5x5GoblinRoom_2"))
 AddRoom("FA_5x5GoblinRoom_3", MakeSetpieceRoom("FA5x5GoblinRoom_3"))
@@ -606,6 +620,21 @@ AddRoom("FA_BGGoblin",  {
 					contents =  {
 					
 									distributepercent = 0.01,
+					                distributeprefabs= 
+					                {
+					                	dropperweb = 1,
+					                    rock_flintless = 0.66,
+					                }
+					            }
+					})
+
+AddRoom("FA_BGEmpty",  {	
+					colour={r=0.3,g=0.2,b=0.1,a=0.3},
+					value =GROUND.UNDERROCK, 
+					
+					contents =  {
+					
+									distributepercent = 0.05,
 					                distributeprefabs= 
 					                {
 					                	dropperweb = 1,

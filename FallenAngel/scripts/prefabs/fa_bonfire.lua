@@ -37,7 +37,7 @@ local function fn(Sim)
     inst.components.burnable:AddBurnFX("campfirefire", Vector3(0,1.5,0) )
     inst:ListenForEvent("onextinguish", onextinguish)
     inst:ListenForEvent("onignite", onignite)
-    inst.components.burnable:SetFXLevel(3, 1)
+    inst.components.burnable:SetFXLevel(4, 1)
     inst.components.burnable:Ignite()
 
 --    inst:AddTag("bonfire")

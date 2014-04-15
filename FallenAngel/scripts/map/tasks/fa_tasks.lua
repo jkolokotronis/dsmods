@@ -179,15 +179,66 @@ AddTask("FAGoblinDungeonMaze3", {
 
 AddTask("FAGoblinBossroom", {
 		locks={LOCKS.NONE},
-		keys_given= {KEYS.NONE},
+		keys_given= {KEYS.TIER1},
 		room_choices={
-			["FA_GoblinBossroom"] = 1,
+			["FA_GoblinBossroom1"] = 1,
 		},
 		room_bg=GROUND.MUD,
 		background_room="FA_BGGoblin",
 		colour={r=1,g=0,b=0.6,a=1},
 		})
 
+AddTask("FAGoblinBossroom2", {
+		locks={LOCKS.TIER1},
+		keys_given= {KEYS.TIER1},
+		room_choices={
+			["FA_GoblinBossroom2"] = 1,
+		},
+		room_bg=GROUND.MUD,
+		background_room="FA_BGGoblin",
+		colour={r=1,g=0,b=0.6,a=1},
+		})
+
+AddTask("FAGoblinBossroom3", {
+		locks={LOCKS.TIER1},
+		keys_given= {KEYS.TIER2},
+		room_choices={
+			["FA_GoblinBossroom3"] = 1,
+		},
+		room_bg=GROUND.MUD,
+		background_room="FA_BGGoblin",
+		colour={r=1,g=0,b=0.6,a=1},
+		})
+AddTask("FAEmpty", {
+		locks={LOCKS.NONE},
+		keys_given= {KEYS.TIER1},
+		room_choices={
+			["FA_BGEmpty"] = 1,
+		},
+		room_bg=GROUND.MUD,
+		background_room="FA_BGGoblin",
+		colour={r=1,g=0,b=0.6,a=1},
+		})
+AddTask("FAEmpty1", {
+		locks={LOCKS.NONE},
+		keys_given= {KEYS.NONE},
+		room_choices={
+			["FA_BGEmpty"] =1,
+		},
+		room_bg=GROUND.MUD,
+		background_room="FA_BGGoblin",
+		colour={r=1,g=0,b=0.6,a=1},
+		})
+AddTask("FAEmpty2", {
+		locks={LOCKS.NONE},
+		keys_given= {KEYS.NONE},
+		room_choices={
+			["FA_BGEmpty"] =1,
+		},
+		room_bg=GROUND.MUD,
+		background_room="FA_BGGoblin",
+		colour={r=1,g=0,b=0.6,a=1},
+		})
 AddTask("Residential", {
 		locks = {LOCKS.RUINS},
 		keys_given = {KEYS.LABYRINTH, KEYS.RUINS},

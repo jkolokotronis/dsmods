@@ -28,6 +28,7 @@ local function OnActivate(inst,doer)
 				TheFrontEnd:Fade(true,1) 
 				doer.components.health:SetInvincible(false)
 				doer.components.playercontroller:Enable(true)
+				inst.components.activatable.inactive = true
 			end)
 
 	end
