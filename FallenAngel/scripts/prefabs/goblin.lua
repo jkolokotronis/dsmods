@@ -349,7 +349,7 @@ local function fnking()
     inst.components.locomotor.runspeed = 4
     inst.components.health:SetMaxHealth(1200)
     GetInventoryKing(inst)
-    inst.components.lootdropper:AddChanceLoot( "goblinkinghead_item",1)
+    inst.components.lootdropper:SetLoot({ "goblinkinghead_item"})
     return inst
 end
 return Prefab( "common/goblin", normal, assets),

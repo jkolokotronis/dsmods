@@ -226,7 +226,9 @@ Assets = {
     Asset( "IMAGE", "minimap/woodbow.tex" ),
     Asset( "ATLAS", "minimap/woodbow.xml" ),
     Asset( "IMAGE", "minimap/woodshield.tex" ),
-    Asset( "ATLAS", "minimap/woodshield.xml" ),   
+    Asset( "ATLAS", "minimap/woodshield.xml" ), 
+    Asset( "IMAGE", "minimap/goblin.tex" ),
+    Asset( "ATLAS", "minimap/goblin.xml" ),  
     Asset( "ANIM", "anim/question.zip" ),
 
 
@@ -473,6 +475,10 @@ GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FAIRY_L20 = "Wolf"
 GLOBAL.STRINGS.NAMES.DARKKNIGHTPET = "Shadow Pet"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKKNIGHTPET = "Shadow Pet"
 
+GLOBAL.STRINGS.NAMES.GOBLINKINGHEAD_ITEM = "Head of a goblin king"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.GOBLINKINGHEAD_ITEM = "Head of a goblin king"
+GLOBAL.STRINGS.NAMES.GOBLINKINGHEAD = "Head of a goblin king"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.GOBLINKINGHEAD = "Head of a goblin king"
 
 GLOBAL.STRINGS.NAMES.GOBLINSIGN_1 = "Goblin Sign Post"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.GOBLINSIGN_1 = "It says 'Greenz noze's only'."

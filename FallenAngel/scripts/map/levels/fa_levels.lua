@@ -210,6 +210,11 @@ FA_LEVELDATA["GOBLIN_CAVE_BOSSLEVEL"]={
 --			"FAGoblinBossroom",
 --			"MaxHome"
 		},
+		ordered_story_setpieces = {
+			"FAGoblinBossroom1",
+			"FAGoblinBossroom2",
+			"FAGoblinBossroom3",
+		},
 		required_prefabs = {
 		"fa_dungeon_exit",
 		"fa_goblin_king_1",

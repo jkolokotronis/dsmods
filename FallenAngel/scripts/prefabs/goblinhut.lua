@@ -76,7 +76,7 @@ local function fn(Sim)
     inst.entity:AddSoundEmitter()
 
 	local minimap = inst.entity:AddMiniMapEntity()
-	minimap:SetIcon( "pighouse.png" )
+	minimap:SetIcon( "goblin.png" )
     light:SetFalloff(1)
     light:SetIntensity(.5)
     light:SetRadius(1)

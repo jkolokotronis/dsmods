@@ -1,6 +1,8 @@
 local goblin_assets =
 {
-	Asset("ANIM", "anim/goblinking_head.zip")
+	Asset("ANIM", "anim/goblinking_head.zip"),
+    Asset("ATLAS", "images/inventoryimages/goblinking_head.xml"),
+    Asset("IMAGE", "images/inventoryimages/goblinking_head.tex"),
 }
 local goblin_prefabs=
 {
@@ -11,64 +13,61 @@ local goblin_prefabs=
 
 
 
-local function create_common(inst)
-	inst.entity:AddSoundEmitter()
-
-	inst.AnimState:PlayAnimation("idle_asleep")
-
-	inst:AddComponent("lootdropper")
-
-	inst:AddComponent("inspectable")
-
-	inst.flies = inst:SpawnChild("flies")
-
-	return inst
-end
-
 
 local function create_goblinhead()
 	local inst = CreateEntity()
 	inst.entity:AddTransform()
 	inst.entity:AddAnimState()
+        MakeInventoryPhysics(inst)
 
 	inst.AnimState:SetBank("merm_head")
 	inst.AnimState:SetBuild("goblinking_head")
 
-	create_common(inst)
+	
+    inst.entity:AddSoundEmitter()
+
+    inst.AnimState:PlayAnimation("idle_asleep")
+
+    inst:AddComponent("lootdropper")
+
+    inst:AddComponent("inspectable")
+
+    inst.flies = inst:SpawnChild("flies")
 
 
 	return inst
 end
 
-local function ondeployred(inst, pt, deployer)
-    local turret = SpawnPrefab("fa_redtotem") 
+local function ondeploy(inst, pt, deployer)
+    local turret = SpawnPrefab("goblinkinghead") 
     if turret then 
         pt = Vector3(pt.x, 0, pt.z)
         turret.Physics:SetCollides(false)
         turret.Physics:Teleport(pt.x, pt.y, pt.z) 
         turret.Physics:SetCollides(true)
         turret.SoundEmitter:PlaySound("dontstarve/common/place_structure_wood")
-        if(inst.components.finiteuses)then
-            turret.fa_currentuses=inst.components.finiteuses.current
-        end
+       
         inst:Remove()
     end         
 end
 
 local function goblinhead_itemfn(Sim)
-    local inst=itemfn(Sim)
+    local inst = CreateEntity()
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+    inst.entity:AddSoundEmitter()
+        MakeInventoryPhysics(inst)
 	inst.AnimState:SetBank("merm_head")
     inst.AnimState:SetBuild("goblinking_head")
     inst.AnimState:PlayAnimation("idle_asleep")
 
+    inst:AddComponent("deployable")
+    inst:AddComponent("inventoryitem")
     inst.components.deployable.ondeploy = ondeploy
     inst.components.deployable.placer = "goblinkinghead_placer"
     inst.components.inventoryitem.imagename="goblinking_head"
     inst.components.inventoryitem.atlasname="images/inventoryimages/goblinking_head.xml"
 
-    inst:AddComponent("finiteuses")
-    inst.components.finiteuses:SetMaxUses(REDTOTEM_USES)
-    inst.components.finiteuses:SetUses(REDTOTEM_USES)
 
     return inst
 end

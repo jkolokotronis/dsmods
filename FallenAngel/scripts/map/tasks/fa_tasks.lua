@@ -195,7 +195,7 @@ AddTask("FAGoblinBossroom2", {
 			["FA_GoblinBossroom2"] = 1,
 		},
 		room_bg=GROUND.MUD,
-		background_room="FA_BGGoblin",
+		background_room="FA_BGBlocker",
 		colour={r=1,g=0,b=0.6,a=1},
 		})
 
@@ -206,7 +206,7 @@ AddTask("FAGoblinBossroom3", {
 			["FA_GoblinBossroom3"] = 1,
 		},
 		room_bg=GROUND.MUD,
-		background_room="FA_BGGoblin",
+		background_room="FA_BGBlocker",
 		colour={r=1,g=0,b=0.6,a=1},
 		})
 AddTask("FAEmpty", {
@@ -216,7 +216,7 @@ AddTask("FAEmpty", {
 			["FA_BGEmpty"] = 1,
 		},
 		room_bg=GROUND.MUD,
-		background_room="FA_BGGoblin",
+		background_room="FA_BGBlocker",
 		colour={r=1,g=0,b=0.6,a=1},
 		})
 AddTask("FAEmpty1", {
