@@ -234,8 +234,14 @@ Assets = {
 
 
     Asset( "ANIM", "anim/generating_goblin_cave.zip" ),
+    Asset( "IMAGE", "images/lava3.tex" ),
+    Asset( "IMAGE", "images/lava2.tex" ),
+    Asset( "IMAGE", "images/lava1.tex" ),
     Asset( "IMAGE", "images/lava.tex" ),
+    Asset( "IMAGE", "colour_cubes/lavacube.tex" ),
     Asset( "IMAGE", "colour_cubes/identity_colourcube.tex" ),
+    Asset( "IMAGE", "colour_cubes/summer_dusk_cc.tex" ),
+
 
 }
 --[[
@@ -1376,6 +1382,9 @@ AddClassPostConstruct("screens/slotdetailsscreen", function(self)
 end)
 
 AddPrefabPostInit("world", function(inst)
+
+
+
 --    GLOBAL.assert( GLOBAL.GetPlayer() == nil )
     local player_prefab = GLOBAL.SaveGameIndex:GetSlotCharacter()
  
@@ -1445,6 +1454,8 @@ end
 AddClassPostConstruct("screens/worldgenscreen", UpdateWorldGenScreen)
 
 AddPrefabPostInit("cave", function(inst)
+
+
     local level=GLOBAL.SaveGameIndex:GetCurrentCaveLevel()
     print("in cave postinit",level)
     if(level>3)then
@@ -1453,13 +1464,18 @@ AddPrefabPostInit("cave", function(inst)
         if(data and GLOBAL.FA_LEVELS[data.id])then
 
             if(data.id=="ORC_STRONGHOLD")then
-    --add waves
+ --add waves
                 local waves = inst.entity:AddWaveComponent()
                 waves:SetRegionSize( 40, 20 )
                 waves:SetRegionNumWaves( 8 )
-                waves:SetWaveTexture( "images/lava.tex" )--GLOBAL.resolvefilepath("images/lava.tex")
+                waves:SetWaveTexture(GLOBAL.resolvefilepath("images/lava2.tex"))--GLOBAL.resolvefilepath("images/lava.tex")
                 waves:SetWaveEffect( "shaders/waves.ksh" ) -- texture.ksh
                 waves:SetWaveSize( 2048, 512 )
+
+              
+  GLOBAL.GetWorld().components.colourcubemanager:SetOverrideColourCube(
+                    GLOBAL.resolvefilepath "colour_cubes/lavacube.tex"
+                )
             end
 
             local threats=GLOBAL.FA_LEVEL_THREATS[data.id]
@@ -1477,6 +1493,7 @@ AddPrefabPostInit("cave", function(inst)
 end)
 
 AddSimPostInit(function(inst)
+
     if(inst:HasTag("player"))then
 
         table.insert( inst.components.eater.foodprefs, "FA_POTION" )

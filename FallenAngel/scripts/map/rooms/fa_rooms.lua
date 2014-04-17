@@ -737,7 +737,7 @@ AddRoom("FA_5x5GoblinRoom_5", MakeSetpieceRoom("FA5x5GoblinRoom_5"))
 AddRoom("FA_BGGoblin",  {	
 					colour={r=0.3,g=0.2,b=0.1,a=0.3},
 --					value =GROUND.IMPASSABLE, 
-					value =GROUND.UNDERROCK, 
+					value =GROUND.IMPASSABLE, 
 					contents =  {
 									countprefabs={
 										goblinhut = function () return 2 + math.random(3) end,
