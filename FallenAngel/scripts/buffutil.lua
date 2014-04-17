@@ -249,7 +249,7 @@ local function apply_bb_damage(inst,target)
     end
 end
 
-function BladeBarrierSpellStart(reader,timer)
+function BladeBarrierSpellStartCaster(reader,timer)
     if(timer==nil or timer<=0)then return false end
     local inst = CreateEntity()
     local caster = staff.components.inventoryitem.owner

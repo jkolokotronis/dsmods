@@ -233,6 +233,8 @@ Assets = {
 
 
 
+    Asset( "ANIM", "anim/generating_goblin_cave.zip" ),
+    Asset( "IMAGE", "images/lava.tex" ),
     Asset( "IMAGE", "colour_cubes/identity_colourcube.tex" ),
 
 }
@@ -555,9 +557,11 @@ GLOBAL.STRINGS.CHARACTERS.BARB.FA_WONDER_BLUEPRINT="Hmm... paper to make stuff."
 GLOBAL.STRINGS.CHARACTERS.BARB.FA_WONDER_GEMS="Shiny!"
 GLOBAL.STRINGS.CHARACTERS.BARB.FA_WONDER_HOUNDED="Something coming?"
 
-
-
 GLOBAL.STRINGS.ACTIONS.RELOAD="Reload"
+
+GLOBAL.STRINGS.UI.WORLDGEN.GOBLIN={}
+GLOBAL.STRINGS.UI.WORLDGEN.GOBLIN.VERBS={"Wrangling","Generating","Herding","Embiggening","Iterating upon","Insinuating","Reticulating","Inserting","Framing"}
+GLOBAL.STRINGS.UI.WORLDGEN.GOBLIN.NOUNS={"Pot Helms","GOBLINS!","Poop","Walls","Monsters","a keen sense of despair","Goblin huts","Treasure and other loots","Goblin plans for world domination!","The Kings stronghold"}
 
 AddMinimapAtlas("minimap/boneshield.xml")
 AddMinimapAtlas("minimap/dagger.xml")
@@ -1408,6 +1412,37 @@ AddPrefabPostInit("world", function(inst)
     end
 end)
 
+local function UpdateWorldGenScreen(self, profile, cb, world_gen_options)
+        print("level",world_gen_options.level_world)
+        local data=Levels.cave_levels[world_gen_options.level_world]
+        if(data and GLOBAL.FA_LEVELS[data.id])then
+             GLOBAL.TheSim:LoadPrefabs {"MOD_"..modname}
+            --TODO this crap should really be done differently
+            if(data.id=="GOBLIN_CAVE" or data.id=="GOBLIN_CAVE_2" or data.id=="GOBLIN_CAVE_3" or data.id=="GOBLIN_CAVE_BOSSLEVEL")then
+                self.bg:SetTint(GLOBAL.BGCOLOURS.RED[1],GLOBAL.BGCOLOURS.RED[2],GLOBAL.BGCOLOURS.RED[3], 1)
+                self.worldanim:GetAnimState():SetBank("generating_goblin_cave")
+                self.worldanim:GetAnimState():SetBuild("generating_goblin_cave")
+                self.worldanim:GetAnimState():PlayAnimation("idle", true)
+
+                self.verbs = GLOBAL.shuffleArray(GLOBAL.STRINGS.UI.WORLDGEN.GOBLIN.VERBS)
+                self.nouns = GLOBAL.shuffleArray(GLOBAL.STRINGS.UI.WORLDGEN.GOBLIN.NOUNS)
+
+--separate thread... cant do anything about it atm
+--                self:ChangeFlavourText()
+    
+            elseif(data.id=="ORC_STRONGHOLD")then
+                self.bg:SetTint(GLOBAL.BGCOLOURS.RED[1],GLOBAL.BGCOLOURS.RED[2],GLOBAL.BGCOLOURS.RED[3], 1)
+                self.worldanim:GetAnimState():SetBank("generating_goblin_cave")
+                self.worldanim:GetAnimState():SetBuild("generating_goblin_cave")
+                self.worldanim:GetAnimState():PlayAnimation("idle", true)
+            end
+        end
+       
+
+        
+end
+
+AddClassPostConstruct("screens/worldgenscreen", UpdateWorldGenScreen)
 
 AddPrefabPostInit("cave", function(inst)
     local level=GLOBAL.SaveGameIndex:GetCurrentCaveLevel()
@@ -1416,6 +1451,17 @@ AddPrefabPostInit("cave", function(inst)
         inst:RemoveComponent("periodicthreat")
         local data=Levels.cave_levels[level]
         if(data and GLOBAL.FA_LEVELS[data.id])then
+
+            if(data.id=="ORC_STRONGHOLD")then
+    --add waves
+                local waves = inst.entity:AddWaveComponent()
+                waves:SetRegionSize( 40, 20 )
+                waves:SetRegionNumWaves( 8 )
+                waves:SetWaveTexture( "images/lava.tex" )--GLOBAL.resolvefilepath("images/lava.tex")
+                waves:SetWaveEffect( "shaders/waves.ksh" ) -- texture.ksh
+                waves:SetWaveSize( 2048, 512 )
+            end
+
             local threats=GLOBAL.FA_LEVEL_THREATS[data.id]
             local threatlist = require("fa_periodicthreats")
             if(threads)then
