@@ -771,7 +771,7 @@ AddRoom("FA_BGBlocker",  {
 					            }
 					})
 
-AddRoom("FA_BGEmpty1",  {	
+AddRoom("FA_BGEmpty",  {	
 					colour={r=0.3,g=0.2,b=0.1,a=0.3},
 					value =GROUND.UNDERROCK, 
 					
