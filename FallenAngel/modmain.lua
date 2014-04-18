@@ -1495,8 +1495,12 @@ end)
 AddSimPostInit(function(inst)
 
     if(inst:HasTag("player"))then
-
+        --why the hell did they even add this...
+        if(inst.components.eater.ablefoods)then
+            table.insert( inst.components.eater.ablefoods, "FA_POTION" )
+        end
         table.insert( inst.components.eater.foodprefs, "FA_POTION" )
+
         if inst:HasTag("evil") then
 
                 local sanitymod=inst.components.sanity
