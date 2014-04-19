@@ -441,7 +441,7 @@ AddRoom("FA_GoblinRoom1",{
 										["FA10x10GoblinRoom_1"] = 1,
 										["FA10x10GoblinRoom_12"] = 1,
 									}, 
-									distributepercent = 0.02,
+									distributepercent = 0.05,
 					                distributeprefabs= 
 					                {
 										stalagmite = .25,
@@ -467,7 +467,7 @@ AddRoom("FA_GoblinRoom2",{
 										["FA7x7GoblinRoom1_goblintrap_2"] = 1,
 										["FA10x10GoblinRoom_5"] = 1,
 									},
-									distributepercent = 0.02,
+									distributepercent = 0.05,
 					                distributeprefabs= 
 					                {
 										stalagmite = .25,
@@ -492,7 +492,7 @@ AddRoom("FA_GoblinRoom3",{
 										["FA10x10GoblinRoom_4"] = 1,
 										["FA5x5GoblinRoom_5"] = math.random(2),
 									}, 
-									distributepercent = 0.02,
+									distributepercent = 0.05,
 					                distributeprefabs= 
 					                {
 										stalagmite = .25,
@@ -517,7 +517,7 @@ AddRoom("FA_GoblinRoom4",{
 										["FA7x7GoblinRoom_5"] = 1,
 										["FA5x5GoblinRoom_10"] = 1,
 									}, 
-									distributepercent = 0.02,
+									distributepercent = 0.05,
 					                distributeprefabs= 
 					                {
 										stalagmite = .25,
@@ -542,7 +542,7 @@ AddRoom("FA_GoblinRoom5",{
 										["FA7x7GoblinRoom_7"] = 1,
 										["FA5x5GoblinRoom_4"] =1,
 									}, 
-									distributepercent = 0.02,
+									distributepercent = 0.05,
 					                distributeprefabs= 
 					                {
 										stalagmite = .25,
@@ -569,7 +569,7 @@ AddRoom("FA_GoblinRoom6",{
 										["FA5x5GoblinRoom_9"] = 1,
 										["FA10x10GoblinRoom_16"] = 1,
 									}, 
-									distributepercent = 0.02,
+									distributepercent = 0.05,
 					                distributeprefabs= 
 					                {
 										stalagmite = .25,
@@ -594,7 +594,7 @@ AddRoom("FA_GoblinRoom7",{
 										["FA5x5GoblinRoom_8"] = 1,
 										["FA7x7GoblinRoom1_houndtrap_5"] = 1,
 									},
-									distributepercent = 0.02,
+									distributepercent = 0.05,
 					                distributeprefabs= 
 					                {
 										stalagmite = .25,
@@ -621,7 +621,7 @@ AddRoom("FA_GoblinRoom8",{
 										["FA10x10GoblinRoom_8"] = 1,
 										["FA10x10GoblinRoom_11"] = 1,
 									}, 
-									distributepercent = 0.02,
+									distributepercent = 0.05,
 					                distributeprefabs= 
 					                {
 										stalagmite = .25,
@@ -643,7 +643,7 @@ AddRoom("FA_GoblinMaze1",{
 									{
 										["FA25x25GoblinMaze_1"] = 1,
 									}, 
-									distributepercent = 0.02,
+									distributepercent = 0.05,
 					                distributeprefabs= 
 					                {
 										stalagmite = .25,
@@ -665,7 +665,7 @@ AddRoom("FA_GoblinMaze2",{
 									{
 										["FA25x25GoblinMaze_2"] = 1,
 									},
-									distributepercent = 0.02,
+									distributepercent = 0.05,
 					                distributeprefabs= 
 					                {
 										stalagmite = .25,
@@ -687,7 +687,7 @@ AddRoom("FA_GoblinMaze3",{
 									{
 										["FA25x25GoblinMaze_3"] = 1,
 									}, 
-									distributepercent = 0.02,
+									distributepercent = 0.05,
 					                distributeprefabs= 
 					                {
 										stalagmite = .25,
