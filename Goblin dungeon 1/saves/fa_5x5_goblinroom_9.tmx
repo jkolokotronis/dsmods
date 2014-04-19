@@ -62,5 +62,6 @@
   <object type="ruins_vase" x="160" y="58"/>
   <object type="ruins_vase" x="98" y="101"/>
   <object type="ruins_vase" x="177" y="126"/>
+  <object type="goblinhut" x="88" y="253"/>
  </objectgroup>
 </map>

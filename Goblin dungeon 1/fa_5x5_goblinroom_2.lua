@@ -932,6 +932,28 @@ return {
           height = 0,
           visible = true,
           properties = {}
+        },
+        {
+          name = "",
+          type = "treasurechest",
+          shape = "rectangle",
+          x = 150,
+          y = 160,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_goblin_guard_1",
+          shape = "rectangle",
+          x = 142,
+          y = 91,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
         }
       }
     }

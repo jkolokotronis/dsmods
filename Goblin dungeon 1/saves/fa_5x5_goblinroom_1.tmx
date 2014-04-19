@@ -59,5 +59,6 @@
   <object type="skeleton" x="98" y="60"/>
   <object type="firepit" x="97" y="94"/>
   <object type="poop" x="60" y="97"/>
+  <object type="fa_goblin_guard_1" x="166" y="203"/>
  </objectgroup>
 </map>
