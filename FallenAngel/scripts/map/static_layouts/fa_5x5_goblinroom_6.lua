@@ -690,6 +690,39 @@ return {
           height = 0,
           visible = true,
           properties = {}
+        },
+        {
+          name = "",
+          type = "goblinhut",
+          shape = "rectangle",
+          x = 121,
+          y = 70,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_goblin_guard_1",
+          shape = "rectangle",
+          x = 160,
+          y = 190,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_goblin_guard_1",
+          shape = "rectangle",
+          x = 240,
+          y = 262,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
         }
       }
     }

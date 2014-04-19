@@ -877,6 +877,28 @@ return {
           height = 0,
           visible = true,
           properties = {}
+        },
+        {
+          name = "",
+          type = "goblinhut",
+          shape = "rectangle",
+          x = 79,
+          y = 156,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "goblinhut",
+          shape = "rectangle",
+          x = 227,
+          y = 158,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
         }
       }
     }

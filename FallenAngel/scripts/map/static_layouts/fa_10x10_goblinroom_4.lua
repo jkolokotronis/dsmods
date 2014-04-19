@@ -1535,6 +1535,28 @@ return {
           height = 0,
           visible = true,
           properties = {}
+        },
+        {
+          name = "",
+          type = "fa_goblin_guard_1",
+          shape = "rectangle",
+          x = 374,
+          y = 263,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_goblin_guard_1",
+          shape = "rectangle",
+          x = 220,
+          y = 414,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
         }
       }
     }
