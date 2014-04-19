@@ -217,15 +217,23 @@ function BladeBarrierSpellStart(reader,timer)
     local follower = boom.entity:AddFollower()
     follower:FollowSymbol( reader.GUID, "swap_object", 0.1, 0.1, -0.0001 )
 end
---[[
-local function apply_bb_damage(inst,target)
+
+local function casterbbdamage(inst, target)
+    local tags={}
+    local blocktags={}
+    local variables=inst.components.spell.variables
+    if(variables and variables.tags)then
+        tags=variables.tags
+    end
+    if(variables and variables.blocktags)then
+        blocktags=variables.blocktags
+    end
     local pos=Vector3(inst.Transform:GetWorldPosition())
-    print("wtf is target?",target)
-    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, ICESTORM_RADIUS,nil,{"player","pet","companion","INLIMBO"})
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, BB_RADIUS,tags,blocktags)
     for k,v in pairs(ents) do
-        if v.components.combat and not (v.components.health and v.components.health:IsDead()) then
-            --it should have blunt component, do i want to do this twice?
-             local current = Vector3(v.Transform:GetWorldPosition() )
+        if ( v.components.combat and not (v.components.health and v.components.health:IsDead())) then
+
+                local current = Vector3(v.Transform:GetWorldPosition() )
                 local direction = (pos - current):GetNormalized()
                 local angle = math.acos(direction:Dot(Vector3(1, 0, 0) ) ) / DEGREES
 
@@ -243,61 +251,59 @@ local function apply_bb_damage(inst,target)
                 boom.Transform:SetPosition(pos1.x, pos1.y, pos1.z)
                 boom:ListenForEvent("animover", function()  boom:Remove() end)
 
-                v.components.combat:GetAttacked(reader, BB_DAMAGE, nil)
-            v.components.combat:GetAttacked(inst.fa_icestorm_caster, ICESTORM_DAMAGE, nil,FA_DAMAGETYPE.COLD)
+                v.components.combat:GetAttacked(target, BB_DAMAGE, nil)
         end
     end
 end
 
-function BladeBarrierSpellStartCaster(reader,timer)
+function BladeBarrierSpellStartCaster(reader,timer,variables)
     if(timer==nil or timer<=0)then return false end
     local inst = CreateEntity()
-    local caster = staff.components.inventoryitem.owner
+    local caster = reader
     local trans = inst.entity:AddTransform()
+    inst.Transform:SetTwoFaced()
+    inst.entity:AddDynamicShadow()
     inst:AddTag("FX")
     inst:AddTag("NOCLICK")
+    local anim=inst.entity:AddAnimState()
+    inst.Transform:SetScale(5, 5, 1)
+    anim:SetBank("betterbarrier")
+    anim:SetBuild("betterbarrier")
+    anim:PlayAnimation("idle",true)
     local spell = inst:AddComponent("spell")
     inst.components.spell.spellname = "fa_bladebarrier"
     inst.components.spell.duration = timer
---    inst.components.spell.ontargetfn = light_ontarget
---    inst.components.spell.onstartfn = light_start
---    inst.components.spell.onfinishfn = light_onfinish
-    inst.components.spell.fn = doicestorm
+    if(variables)then
+        inst.components.spell:SetVariables(variables)
+    end
+    inst.components.spell.ontargetfn = function(inst,target)
+        target.fa_bladebarrier = inst
+        target:AddTag(inst.components.spell.spellname)
+        local pos =target:GetPosition()
+        inst.Transform:SetPosition(pos.x, pos.y, pos.z)
+--        target.bladeBarrierAnim=boom
+        local follower = inst.entity:AddFollower()
+        follower:FollowSymbol( target.GUID, "swap_object", 0.1, 0.1, -0.0001 )
+    end
+
+    inst.components.spell.onstartfn = function(inst)
+    end
+    inst.components.spell.fn = casterbbdamage
     inst.components.spell.period=2
 --    inst.components.spell.resumefn = light_resume
-    inst.components.spell.removeonfinish = true
-    inst.components.spell:SetTarget(reader)
---    inst.fa_icestorm_caster=caster
-    inst.Transform:SetPosition(pos.x, pos.y, pos.z)
-
-
-    inst.components.spell.ontargetfn = function(inst,target)
-        target.fa_banishdarkness = inst
-        target:AddTag(inst.components.spell.spellname)
-        target.AnimState:SetBloomEffectHandle("shaders/anim.ksh")
-    end
-    inst.components.spell.onstartfn = light_start
     inst.components.spell.onfinishfn = function(inst)
         if not inst.components.spell.target then
             return
         end
-        inst.components.spell.target.fa_banishdarkness = nil
-        inst.components.spell.target.AnimState:ClearBloomEffectHandle()
+        inst.components.spell.target.fa_bladebarrier = nil
+--        inst.components.spell.target.fa_bbanim:Remove()
     end
-    inst.components.spell.fn = lightfn
-    --the load/save on spells... can be done through char's own control but 
-    --I can either let old entity die and recast, or use the provided resumes, supposedly
-    inst.components.spell.resumefn = light_start
     inst.components.spell.removeonfinish = true
-
-
-
-
-
+    inst.components.spell:SetTarget(reader)
     inst.components.spell:StartSpell()
-    staff.components.finiteuses:Use(1)
+--    inst.fa_icestorm_caster=caster
 end
-]]
+
 
 
 function HasteSpellStart( reader,timer)

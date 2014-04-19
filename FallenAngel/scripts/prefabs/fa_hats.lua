@@ -108,7 +108,7 @@ local function onequip(inst, owner, build)
     	inst.components.inventoryitem.imagename = "hat_goblinking"
     	inst.components.inventoryitem.atlasname = "images/inventoryimages/hat_goblinking.xml"
         inst:AddComponent("armor")
-        inst.components.armor:InitCondition(400, 0.3)
+        inst.components.armor:InitCondition(20000, 0.3)
     	return inst
     end
 

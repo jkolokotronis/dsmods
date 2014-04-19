@@ -5,6 +5,7 @@ local assets=
     Asset("ANIM", "anim/goblin.zip"),
 	Asset("SOUND", "sound/hound.fsb"),
         Asset( "ANIM", "anim/bluegoblin.zip" ),
+        Asset("ANIM","anim/betterbarrier.zip")
 }
 
 local prefabs =
@@ -20,6 +21,9 @@ local GOBLIN_DAMAGE=30
 local GOBLIN_ATTACK_PERIOD=2
 local GOBLIN_RUN_SPEED=6
 local GOBLIN_WALK_SPEED=3
+
+local BB_TIMER=15
+local BB_COOLDOWN=60
 
 local MAX_TARGET_SHARES = 5
 local TARGET_DISTANCE = 15
@@ -44,11 +48,13 @@ local SHARE_TARGET_DIST = 30
 local onloadfn = function(inst, data)
     if(data)then
         inst.loadedSpawn=data.loadedSpawn
+        inst.fa_bladebarrier_cooldown=data.fa_bladebarrier_cooldown
     end
 end
 
 local onsavefn = function(inst, data)
     data.loadedSpawn=inst.loadedSpawn
+    data.fa_bladebarrier_cooldown=inst.fa_bladebarrier_cooldown
 end
 local function GetInventoryNormal(inst)
  inst:DoTaskInTime(0,function()
@@ -161,6 +167,20 @@ local function RetargetFn(inst)
     end
     return invader
 end
+
+local function KingRetargetFn(inst)
+    local target=RetargetFn(inst)
+    if(target and (target:HasTag("player") or target:HasTag("pet") or target:HasTag("companion")) and not inst.fa_bladebarrier and not (inst.fa_bladebarrier_cooldown and inst.fa_bladebarrier_cooldown>GetTime()))then
+        local variables={}
+        variables.tags={}
+        variables.blocktags={"goblin","INLIMBO"}
+        BladeBarrierSpellStartCaster(inst,BB_TIMER,variables)
+        inst.fa_bladebarrier_cooldown=BB_COOLDOWN+GetTime()
+        inst.fa_bbtask=inst:DoTaskInTime(BB_COOLDOWN,KingRetargetFn)
+    end
+    return target
+end
+
 local function KeepTargetFn(inst, target)
     local home = inst.components.homeseeker and inst.components.homeseeker.home
     if home then
@@ -219,7 +239,6 @@ local function common()
      
         inst.AnimState:SetBank("wilson")
         inst.AnimState:SetBuild("goblin")
-        inst.AnimState:PlayAnimation("idle")
         inst.AnimState:Hide("hat_hair")
          inst.AnimState:Hide("ARM_carry")
          inst.AnimState:Hide("hat")
@@ -227,6 +246,13 @@ local function common()
 
     inst.OnLoad = onloadfn
     inst.OnSave = onsavefn
+
+    inst:AddComponent("talker")
+--    inst.components.talker.ontalk = ontalk
+    inst.components.talker.fontsize = 35
+    inst.components.talker.font = TALKINGFONT
+    --inst.components.talker.colour = Vector3(133/255, 140/255, 167/255)
+    inst.components.talker.offset = Vector3(0,-400,0)
 
     inst:AddComponent("eater")
 --wah screw this     inst.components.eater:SetVegetarian()
@@ -341,14 +367,15 @@ end
 
 local function fnking()
     local inst=common()
-        inst.AnimState:SetBank("wilson")
-        inst.AnimState:SetBuild("bluegoblin")
-        inst.AnimState:PlayAnimation("idle")
-    inst.components.combat:SetAttackPeriod(4)
-    inst.components.locomotor.walkspeed=4
-    inst.components.locomotor.runspeed = 4
-    inst.components.health:SetMaxHealth(1200)
+    inst.AnimState:SetBank("wilson")
+    inst.AnimState:SetBuild("bluegoblin")
+    inst.AnimState:PlayAnimation("idle")
+    inst.components.combat:SetAttackPeriod(2)
+    inst.components.locomotor.walkspeed=6
+    inst.components.locomotor.runspeed = 6
+    inst.components.health:SetMaxHealth(1600)
     GetInventoryKing(inst)
+    inst.components.combat:SetRetargetFunction(1, KingRetargetFn)
     inst.components.lootdropper:SetLoot({ "goblinkinghead_item"})
     return inst
 end

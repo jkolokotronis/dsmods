@@ -37,6 +37,7 @@ end
 function Goblinbrain:OnStart()
     local root = PriorityNode(
     {
+        WhileNode( function() return self.inst.fa_fear~=nil end, "Fear", Panic(self.inst)),
         WhileNode( function() return self.inst.components.health.takingfiredamage end, "OnFire", Panic(self.inst)),
         WhileNode( function() return self.inst.components.combat.target == nil or not self.inst.components.combat:InCooldown() end, "AttackMomentarily",
             ChaseAndAttack(self.inst, MAX_CHASE_TIME, MAX_CHASE_DIST) ),

@@ -20,16 +20,21 @@ local function GetInventory(inst)
         inst.components.inventory:Equip(item)
         item=SpawnPrefab("ruins_bat")
         inst.components.inventory:Equip(item)
+         inst.loadedSpawn=true
 
     end)
 end
     
 
 local onloadfn = function(inst, data)
-    inst.loadedSpawn=true
+     if(data)then
+        inst.loadedSpawn=data.loadedSpawn
+    end
 end
 
-
+local onsavefn = function(inst, data)
+    data.loadedSpawn=inst.loadedSpawn
+end
 
 local function RetargetFn(inst)
     local invader = FindEntity(inst, TUNING.MERM_TARGET_DIST, function(guy)
@@ -51,6 +56,7 @@ local function fn(Sim)
     inst.Transform:SetFourFaced()
 
     inst.OnLoad = onloadfn
+    inst.OnSave = onsavefn
 
     inst.entity:AddPhysics()
  

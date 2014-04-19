@@ -47,14 +47,23 @@ local function GetInventory(inst)
     if(item)then
         inst.components.inventory:Equip(item)
     end
+         inst.loadedSpawn=true
 
     end)
 end
     
 
+
 local onloadfn = function(inst, data)
-    inst.loadedSpawn=true
+     if(data)then
+        inst.loadedSpawn=data.loadedSpawn
+    end
 end
+
+local onsavefn = function(inst, data)
+    data.loadedSpawn=inst.loadedSpawn
+end
+
 
 local function OnEat(inst, food)
     
@@ -86,6 +95,7 @@ local function fn(Sim)
 inst.Transform:SetFourFaced()
 
     inst.OnLoad = onloadfn
+    inst.OnSave = onsavefn
 
     inst.entity:AddPhysics()
  

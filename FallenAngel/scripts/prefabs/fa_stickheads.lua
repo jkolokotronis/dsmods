@@ -10,9 +10,61 @@ local goblin_prefabs=
 	"twigs",
 }
 
+local FEAR_RANGE=15
+local FEAR_DURATION=10
+
+local function OnActivate(inst)
+        local item=SpawnPrefab("goblinkinghead_item")
+        inst:Remove()
+        GetPlayer().components.inventory:GiveItem(item)
+end
 
 
+local function GetVerb(inst)
+--    return STRINGS.ACTIONS.PICKUP
+    return "Pick up"
+end
 
+local function castfear(inst)
+
+        local pos=Vector3(inst.Transform:GetWorldPosition())
+        local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, FEAR_RANGE,{"goblin"},{"pet","player","INLIMBO","companion"})
+        for k,v in pairs(ents) do
+           
+                local inst = CreateEntity()
+                inst.entity:AddTransform()
+
+                local spell = inst:AddComponent("spell")
+                inst.components.spell.spellname = "fa_fear"
+                inst.components.spell.duration = FEAR_DURATION
+                inst.components.spell.ontargetfn = function(inst,target)
+                    target.fa_fear = inst
+                    target:AddTag(inst.components.spell.spellname)
+
+                    local talk=GetString(target.prefab, "FA_FEAR_DEADKING")
+                    print("talk",talk)
+                    if(talk and target.components.talker) then target.components.talker:Say(talk) end
+
+                end
+                --inst.components.spell.onstartfn = function() end
+                inst.components.spell.onfinishfn = function(inst)
+                    if not inst.components.spell.target then
+                    return
+                    end
+                    inst.components.spell.target.fa_fear = nil
+                end
+                --inst.components.spell.fn = function(inst, target, variables) end
+                inst.components.spell.resumefn = function() end
+                inst.components.spell.removeonfinish = true
+
+                inst.components.spell:SetTarget(v)
+                inst.components.spell:StartSpell()
+
+                
+        end
+        return true
+
+end
 
 local function create_goblinhead()
 	local inst = CreateEntity()
@@ -30,10 +82,17 @@ local function create_goblinhead()
 
     inst:AddComponent("lootdropper")
 
-    inst:AddComponent("inspectable")
+--    inst:AddComponent("inspectable")
 
     inst.flies = inst:SpawnChild("flies")
 
+            inst:AddComponent("activatable")
+            inst.components.activatable.OnActivate = OnActivate
+            inst.components.activatable.inactive = true
+            inst.components.activatable.getverb = GetVerb
+            inst.components.activatable.quickaction = true
+
+    inst:DoPeriodicTask(2, castfear)
 
 	return inst
 end
