@@ -8,6 +8,7 @@ local prefabs =
 {
     "ice_projectile",
     "fire_projectile",
+    "lightningboltprojectile",
     "acidarrowprojectile",
     "fireballprojectile",
     "staffcastfx",
@@ -38,6 +39,7 @@ local FIREBALL_DAMAGE=100
 local ICESTORM_LENGTH=120
 local ICESTORM_DAMAGE=5
 local SUNBURST_DAMAGE=100
+local LIGHTNINGBOLT_DAMAGE=100
 
 
 local WAND_RANGE=15
@@ -271,6 +273,22 @@ inst.components.weapon.fa_damagetype=FA_DAMAGETYPE.FIRE
     return inst
 end
 
+local function lightningbolt()
+local inst = commonfn("blue")
+    inst:AddComponent("weapon")
+    inst.components.weapon:SetDamage(LIGHTNINGBOLT_DAMAGE)
+    inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
+--    inst.components.weapon:SetOnAttack(onattacklightningbolt)
+    inst.components.weapon:SetProjectile("lightningboltprojectile")
+inst.components.weapon.fa_damagetype=FA_DAMAGETYPE.ELECTRIC
+    inst.components.finiteuses:SetMaxUses(FIREBALL_USES)
+    inst.components.finiteuses:SetUses(FIREBALL_USES)
+
+    inst:AddTag("nopunch")
+    return inst
+end
+
+
 local function icestorm()
     local inst = commonfn("blue")
 
@@ -351,6 +369,7 @@ end
 return Prefab("common/inventory/magicmissilewand", magicmissile, assets, prefabs),
     Prefab("common/inventory/acidarrowwand", acidarrow, assets, prefabs),
     Prefab("common/inventory/fireballwand", fireball, assets, prefabs),
+    Prefab("common/inventory/lightningboltwand", lightningbolt, assets, prefabs),
     Prefab("common/inventory/icestormwand", icestorm, assets, prefabs),
     Prefab("common/inventory/firewallwand", firewall, assets, prefabs),
     Prefab("common/inventory/firewallwand_insta", firewall_insta, assets, prefabs),

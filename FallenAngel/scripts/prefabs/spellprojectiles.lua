@@ -5,6 +5,7 @@ local assets=
     Asset("ANIM", "anim/swap_blowdart.zip"),
     Asset("ANIM", "anim/blow_dart.zip"),
     Asset("ANIM", "anim/staff_projectile.zip"),
+    Asset("ANIM", "anim/bolt_strike.zip"),
 }
 
 local function OnHitFb(inst, owner, target)
@@ -93,6 +94,19 @@ end]]
 end
 
 
+local function lightningbolt()
+    local inst = common()
+    inst.AnimState:SetBank("bolt_strike")
+    inst.AnimState:SetBuild("bolt_strike")
+    inst.components.projectile:SetSpeed(15)
+    inst.Transform:SetScale(1.2, 1.2, 1.2)
+
+    inst.AnimState:PlayAnimation("idle", true)
+    inst.components.projectile:SetOnMissFn(OnHit)
+    inst.components.projectile:SetOnHitFn(OnHit)
+    return inst
+end
+
 local function icex()
     local inst = common()
     inst.AnimState:SetBank("projectile")
@@ -146,5 +160,6 @@ return
        Prefab("common/inventory/fireballprojectile", fire, assets),
        Prefab("common/inventory/fireballprojectilekos", firekos, assets),
        Prefab("common/inventory/acidarrowprojectile", acid, assets),
+       Prefab("common/inventory/lightningboltprojectile",lightningbolt,assets),
        Prefab( "common/inventory/ice_projectilex", icex, assets), 
        Prefab("common/inventory/fire_projectilex", firex, assets) 
