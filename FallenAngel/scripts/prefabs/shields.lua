@@ -127,7 +127,7 @@ local function MakeRockShield()
     inst.components.inventoryitem.atlasname = "images/inventoryimages/rockshield.xml"
     inst.components.inventoryitem.imagename="rockshield"
     inst.components.inventoryitem.foleysound = "dontstarve/movement/foley/backpack"
-    inst.components.armor:InitCondition(ROCK_SHIELD_ABSO, ROCK_SHIELD_ABSO )
+    inst.components.armor:InitCondition(ROCK_SHIELD_DURA, ROCK_SHIELD_ABSO )
     inst.components.equippable:SetOnEquip( rockonequip )
     return inst
 end
