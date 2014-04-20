@@ -635,6 +635,17 @@ return {
           height = 0,
           visible = true,
           properties = {}
+        },
+        {
+          name = "",
+          type = "goblinhut",
+          shape = "rectangle",
+          x = 80,
+          y = 70,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
         }
       }
     }

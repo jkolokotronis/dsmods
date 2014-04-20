@@ -52,5 +52,7 @@
   <object type="meatrack" x="160" y="96"/>
   <object type="meatrack" x="161" y="223"/>
   <object type="meatrack" x="161" y="158"/>
+  <object type="goblinhut" x="245" y="57"/>
+  <object type="goblinhut" x="87" y="240"/>
  </objectgroup>
 </map>

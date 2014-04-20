@@ -141,5 +141,7 @@
   <object type="goblinhut" x="153" y="370"/>
   <object type="goblinhut" x="427" y="494"/>
   <object type="goblinhut" x="486" y="268"/>
+  <object type="fa_goblin_guard_1" x="374" y="263"/>
+  <object type="fa_goblin_guard_1" x="220" y="414"/>
  </objectgroup>
 </map>

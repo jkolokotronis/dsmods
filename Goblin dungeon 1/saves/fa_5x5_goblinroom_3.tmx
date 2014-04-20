@@ -56,5 +56,7 @@
   <object type="fa_dungeon_wall" x="261" y="12"/>
   <object type="fa_dungeon_wall" x="12" y="9"/>
   <object type="cookpot" x="162" y="153"/>
+  <object type="goblinhut" x="237" y="66"/>
+  <object type="goblinhut" x="87" y="241"/>
  </objectgroup>
 </map>

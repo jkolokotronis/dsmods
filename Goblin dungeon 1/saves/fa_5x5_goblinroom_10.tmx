@@ -61,5 +61,6 @@
   <object type="bedroll_furry" x="173" y="200"/>
   <object type="bedroll_furry" x="260" y="198"/>
   <object type="bedroll_furry" x="262" y="272"/>
+  <object type="goblinhut" x="80" y="70"/>
  </objectgroup>
 </map>

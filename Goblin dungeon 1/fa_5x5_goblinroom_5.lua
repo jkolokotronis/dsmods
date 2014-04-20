@@ -690,6 +690,28 @@ return {
           height = 0,
           visible = true,
           properties = {}
+        },
+        {
+          name = "",
+          type = "fa_goblin_guard_1",
+          shape = "rectangle",
+          x = 187,
+          y = 177,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_goblin_guard_1",
+          shape = "rectangle",
+          x = 78,
+          y = 121,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
         }
       }
     }

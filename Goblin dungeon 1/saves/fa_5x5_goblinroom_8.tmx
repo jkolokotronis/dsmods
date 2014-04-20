@@ -68,5 +68,6 @@
   <object type="trap_teeth_maxwell" x="246" y="194"/>
   <object type="trap_teeth_maxwell" x="219" y="228"/>
   <object type="trap_teeth_maxwell" x="210" y="274"/>
+  <object type="goblinhut" x="80" y="67"/>
  </objectgroup>
 </map>

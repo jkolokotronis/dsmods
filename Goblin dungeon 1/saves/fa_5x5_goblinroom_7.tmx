@@ -83,5 +83,7 @@
   <object type="cave_fern" x="267" y="281"/>
   <object type="cave_fern" x="268" y="242"/>
   <object type="cave_fern" x="226" y="242"/>
+  <object type="goblinhut" x="79" y="156"/>
+  <object type="goblinhut" x="227" y="158"/>
  </objectgroup>
 </map>

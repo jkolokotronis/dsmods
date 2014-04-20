@@ -613,6 +613,17 @@ return {
           height = 0,
           visible = true,
           properties = {}
+        },
+        {
+          name = "",
+          type = "fa_goblin_guard_1",
+          shape = "rectangle",
+          x = 166,
+          y = 203,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
         }
       }
     }

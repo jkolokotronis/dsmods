@@ -66,5 +66,8 @@
   <object type="ruins_table" x="107" y="255"/>
   <object type="ruins_table" x="226" y="206"/>
   <object type="ruins_table" x="219" y="140"/>
+  <object type="goblinhut" x="121" y="70"/>
+  <object type="fa_goblin_guard_1" x="160" y="190"/>
+  <object type="fa_goblin_guard_1" x="240" y="262"/>
  </objectgroup>
 </map>
