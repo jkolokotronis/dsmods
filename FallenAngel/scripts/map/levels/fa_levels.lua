@@ -224,9 +224,36 @@ FA_LEVELDATA["GOBLIN_CAVE_BOSSLEVEL"]={
 
 
 
-FA_LEVELDATA["ORC_STRONGHOLD"]={
-		id="ORC_STRONGHOLD",
-		name="ORC_STRONGHOLD",
+FA_LEVELDATA["ORC_MINES"]={
+		id="ORC_MINES",
+		name="Orc Mines",
+		overrides={
+			{"world_size", 		"tiny"},
+			{"day", 			"onlydusk"}, 
+			{"season", 			"onlysummer"}, 
+			{"season_start", 	"summer"},
+			{"weather", 	"never"},
+			{"waves", 			"on"},
+--			{"location",		"cave"},
+			{"boons", 			"never"},
+			{"poi", 			"never"},
+			{"traps", 			"never"},
+			{"protected", 		"never"},
+			{"start_setpeice", 	"FADungeonStart"},
+			{"start_node",		"FA_BGEmpty"},
+		},
+		tasks={
+			"RuinsStart",
+			"FA_GreaterPlains",
+			"DFEntrance",
+			"ORCFEntrance"
+		},
+
+	}
+
+FA_LEVELDATA["DWARF_FORTRESS"]={
+		id="DWARF_FORTRESS",
+		name="Dwarf Fortress",
 		overrides={
 			{"world_size", 		"tiny"},
 			{"day", 			"onlydusk"}, 
@@ -239,7 +266,7 @@ FA_LEVELDATA["ORC_STRONGHOLD"]={
 			{"poi", 			"never"},
 			{"traps", 			"never"},
 			{"protected", 		"never"},
-			{"start_setpeice", 	"RuinsStart"},
+			{"start_setpeice", 	"FADungeonStart"},
 			{"start_node",		"BGWilds"},
 		},
 		tasks={
@@ -262,6 +289,43 @@ FA_LEVELDATA["ORC_STRONGHOLD"]={
 
 	}
 
+FA_LEVELDATA["ORC_FORTRESS"]={
+		id="ORC_FORTRESS",
+		name="Orc Fortress",
+		overrides={
+			{"world_size", 		"tiny"},
+			{"day", 			"onlydusk"}, 
+			{"season", 			"onlysummer"}, 
+			{"season_start", 	"summer"},
+			{"weather", 	"never"},
+			{"waves", 			"on"},
+			{"location",		"cave"},
+			{"boons", 			"never"},
+			{"poi", 			"never"},
+			{"traps", 			"never"},
+			{"protected", 		"never"},
+			{"start_setpeice", 	"FADungeonStart"},
+			{"start_node",		"BGWilds"},
+		},
+		tasks={
+			"RuinsStart",
+			"TheLabyrinth",
+			"Residential",
+			"Military",
+			"Sacred",
+		},
+		numoptionaltasks = math.random(1,2),
+		optionaltasks = {
+			"MoreAltars",
+			"SacredDanger",
+			"FailedCamp",
+			"Residential2",
+			"Residential3",
+			"Military2",
+			"Sacred2",
+		},
+
+	}
 FA_LEVELDATA["CRYPT_LEVEL_1"]={
 		id="CRYPT_LEVEL_1",
 		name="CRYPT_LEVEL_1",
@@ -335,5 +399,7 @@ AddNewCaveLevel("GOBLIN_CAVE")
 AddNewCaveLevel("GOBLIN_CAVE_2")
 AddNewCaveLevel("GOBLIN_CAVE_3")
 AddNewCaveLevel("GOBLIN_CAVE_BOSSLEVEL")
-AddNewCaveLevel("ORC_STRONGHOLD")
+AddNewCaveLevel("ORC_MINES")
+AddNewCaveLevel("DWARF_FORTRESS")
+AddNewCaveLevel("ORC_FORTRESS")
 AddNewCaveLevel("CRYPT_LEVEL_1")

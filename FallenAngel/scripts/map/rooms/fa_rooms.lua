@@ -379,6 +379,60 @@ function MakeSetpieceRoom(blocker_name)
 			}
 end
 
+AddRoom("FA_dungeonexit",{
+	colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.DIRT,
+					contents =  {
+						countprefabs = {
+						}
+					}
+	})
+
+AddRoom("FA_MineEntrance", {
+					colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.DIRT,
+					contents =  {
+									countprefabs = {
+										houndmound=1,
+										fa_dungeon_entrance=1
+									},
+					                prefabdata = {
+										fa_dungeon_entrance = function() return {fa_cavename="ORC_MINES"}
+															end,
+									},
+					            }
+					})
+
+AddRoom("FA_OrcEntrance", {
+					colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.DIRT,
+					contents =  {
+									countprefabs = {
+										houndmound=1,
+										fa_dungeon_entrance=1
+									},
+					                prefabdata = {
+										fa_dungeon_entrance = function() return {fa_cavename="ORC_FORTRESS"}
+															end,
+									},
+					            }
+					})
+
+AddRoom("FA_DwarfEntrance", {
+					colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.DIRT,
+					contents =  {
+									countprefabs = {
+										houndmound=1, 
+										fa_dungeon_entrance=1
+									},
+					                prefabdata = {
+										fa_dungeon_entrance = function() return {fa_cavename="DWARF_FORTRESS"}
+															end,
+									},
+					            }
+					})
+
 AddRoom("FA_GoblinEntrance", {
 					colour={r=0.5,g=.18,b=.35,a=.50},
 					value = GROUND.MARSH,

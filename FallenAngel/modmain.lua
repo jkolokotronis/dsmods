@@ -1531,6 +1531,16 @@ end
 
 AddClassPostConstruct("screens/worldgenscreen", UpdateWorldGenScreen)
 
+local function setTopologyType(inst,type)
+    local oldLoadPostPass = inst.LoadPostPass
+    function inst:LoadPostPass(...)
+        self.topology.level_type = type
+        if oldLoadPostPass then
+            return oldLoadPostPass(self, ...)
+        end
+    end
+end
+
 AddPrefabPostInit("cave", function(inst)
 
 
@@ -1541,7 +1551,7 @@ AddPrefabPostInit("cave", function(inst)
         local data=Levels.cave_levels[level]
         if(data and GLOBAL.FA_LEVELS[data.id])then
 
-            if(data.id=="ORC_STRONGHOLD")then
+            if(data.id=="ORC_MINES" or data.id=="DWARF_FORTRESS" or data.id=="ORC_FORTRESS")then
  --add waves
                 local waves = inst.entity:AddWaveComponent()
                 waves:SetRegionSize( 40, 20 )
@@ -1550,10 +1560,20 @@ AddPrefabPostInit("cave", function(inst)
                 waves:SetWaveEffect( "shaders/waves.ksh" ) -- texture.ksh
                 waves:SetWaveSize( 2048, 512 )
 
-              
-  GLOBAL.GetWorld().components.colourcubemanager:SetOverrideColourCube(
+                GLOBAL.GetWorld().components.colourcubemanager:SetOverrideColourCube(
                     GLOBAL.resolvefilepath "colour_cubes/lavacube.tex"
                 )
+--                setTopologyType(inst,"mines")        
+
+                inst.IsCave=function() return false end
+
+                if(not inst.components.seasonmanager)then
+                    inst:AddComponent("SeasonManager")
+                end
+                inst.components.seasonmanager:AlwaysDry()
+                inst.components.seasonmanager.current_season = GLOBAL.SEASONS.SUMMER
+                inst.components.seasonmanager:AlwaysSummer()
+
             end
 
             local threats=GLOBAL.FA_LEVEL_THREATS[data.id]

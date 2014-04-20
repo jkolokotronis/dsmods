@@ -219,26 +219,42 @@ AddTask("FAEmpty", {
 		background_room="FA_BGBlocker",
 		colour={r=1,g=0,b=0.6,a=1},
 		})
-AddTask("FAEmpty1", {
+AddTask("DFEntrance", {
 		locks={LOCKS.NONE},
 		keys_given= {KEYS.NONE},
 		room_choices={
-			["FA_BGEmpty"] =1,
+			["BeefalowPlain"] = 3 + math.random(SIZE_VARIATION), 
+			["FA_DwarfEntrance"] =1,
 		},
-		room_bg=GROUND.MUD,
+		room_bg=GROUND.DIRT,
 		background_room="FA_BGGoblin",
 		colour={r=1,g=0,b=0.6,a=1},
 		})
-AddTask("FAEmpty2", {
+AddTask("ORCFEntrance", {
 		locks={LOCKS.NONE},
 		keys_given= {KEYS.NONE},
 		room_choices={
-			["FA_BGEmpty"] =1,
+			["BeefalowPlain"] = 3 + math.random(SIZE_VARIATION), 
+			["FA_OrcEntrance"] =1,
 		},
-		room_bg=GROUND.MUD,
+		room_bg=GROUND.DIRT,
 		background_room="FA_BGGoblin",
 		colour={r=1,g=0,b=0.6,a=1},
 		})
+AddTask("FA_GreaterPlains", {
+		locks={LOCKS.ADVANCED_COMBAT,LOCKS.TIER4},
+		keys_given={KEYS.MEAT,KEYS.WOOL,KEYS.POOP,KEYS.HOUNDS,KEYS.WALRUS,KEYS.TIER4},
+		entrance_room="Moundfield",
+		room_choices={
+			["BeefalowPlain"] = 3 + math.random(SIZE_VARIATION), 		
+			--["Wormhole_Plains"] = 1,
+			["WalrusHut_Plains"] = 1,
+			["Plain"] = 1 + math.random(SIZE_VARIATION), 
+		}, 
+		room_bg=GROUND.DIRT,
+		background_room="BGSavanna",
+		colour={r=0,g=1,b=1,a=1}
+	}) 
 AddTask("Residential", {
 		locks = {LOCKS.RUINS},
 		keys_given = {KEYS.LABYRINTH, KEYS.RUINS},
