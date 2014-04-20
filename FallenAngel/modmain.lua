@@ -1805,8 +1805,9 @@ end)]]
 
 AddModCharacter("barb")
 AddModCharacter("druid")
+AddModCharacter("paladin")
 
-
+--[[
 AddModCharacter("thief")
 AddModCharacter("cleric")
 AddModCharacter("darkknight")
@@ -1814,5 +1815,5 @@ AddModCharacter("monk")
 AddModCharacter("necromancer")
 AddModCharacter("wizard")
 AddModCharacter("tinkerer")
-AddModCharacter("paladin")
 AddModCharacter("ranger")
+]]

@@ -28,7 +28,7 @@ for k,name in pairs({"SpiderfieldEasy","Spiderfield","SunkenMarsh","SpiderCity",
 			local origspider=room.contents.distributeprefabs.spiderden
 			if(origspider and type(origspider)=="number")then
 --				room.contents.distributeprefabs.spiderden=origspider/2.0
-				room.contents.distributeprefabs.poisonspiderden=origspider/50.0
+				room.contents.distributeprefabs.poisonspiderden=origspider/30.0
 				
 			end
 		end

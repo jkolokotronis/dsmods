@@ -2,7 +2,7 @@
 name = "Hero in the Dark"
 description = "This mod will incorporate traditional fantasy elements and lore while retaining the artistic style and the survive or die elements of Don\'t Starve. A large focus of the lore and design of the mod will be from D&D and other games/books within the genre."
 author = "kraken121 / DeathDisciple"
-version = "0.02 Alpha"
+version = "0.03 Alpha"
 
 
 -- This is the URL name of the mod's thread on the forum; the part after the index.php? and before the first & in the URL
