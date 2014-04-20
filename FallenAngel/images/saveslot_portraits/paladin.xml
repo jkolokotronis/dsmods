@@ -1,3 +1,1 @@
-<Atlas><Texture filename="paladin.tex" />
-    <Elements><Element name="paladin.tex" u1="0" u2="1" v1="0" v2="1" />
-</Elements></Atlas>
+<Atlas><Texture filename="paladin.tex" /><Elements><Element name="paladin.tex" u1="0.00390625" u2="0.93359375" v1="0.19140625" v2="0.99609375" /></Elements></Atlas>
