@@ -4,7 +4,7 @@ local goblin_waittime = function(data)
 	--Day 150+ gives the most often.
 	local clock = GetWorld().components.clock
 --	local clock = GetWorld().components.age
-	local days = math.random()*2
+	local days = math.random()
 	--[[
 	if clock then
 		days = Lerp(12, 5, clock:GetNumCycles()/150)
@@ -12,7 +12,7 @@ local goblin_waittime = function(data)
 		days = math.max(days, 3)
 	end]]
 
-	return (TUNING.TOTAL_DAY_TIME * 2) + (days * TUNING.TOTAL_DAY_TIME) 
+	return (TUNING.TOTAL_DAY_TIME * 1) + (days * TUNING.TOTAL_DAY_TIME) 
 end
 local goblin_warntime=60
 
