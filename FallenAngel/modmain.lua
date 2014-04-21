@@ -1555,7 +1555,7 @@ AddPrefabPostInit("cave", function(inst)
  --add waves
                 local waves = inst.entity:AddWaveComponent()
                 waves:SetRegionSize( 50, 50 )
-                waves:SetRegionNumWaves( 20 )
+                waves:SetRegionNumWaves( 25 )
                 waves:SetWaveTexture(GLOBAL.resolvefilepath("images/lava2.tex"))--GLOBAL.resolvefilepath("images/lava.tex")
                 waves:SetWaveEffect( "shaders/waves.ksh" ) -- texture.ksh
                 waves:SetWaveSize( 2048, 512 )
@@ -1721,7 +1721,7 @@ end
 local Hounded=require("components/hounded")
 Hounded.attack_delays["rare"]=function() return TUNING.TOTAL_DAY_TIME * 9 + math.random() * TUNING.TOTAL_DAY_TIME * 3 end
 Hounded.attack_delays["occasional"]=function() return TUNING.TOTAL_DAY_TIME * 9 + math.random() * TUNING.TOTAL_DAY_TIME * 3 end
-Hounded.attack_delays["frequent"]=function() return TUNING.TOTAL_DAY_TIME * 9 + math.random() * TUNING.TOTAL_DAY_TIME * 3 end
+Hounded.attack_delays["frequent"]=function() return TUNING.TOTAL_DAY_TIME * 1 + math.random() * TUNING.TOTAL_DAY_TIME * 1 end
 
 Hounded.attack_levels=
 {
@@ -1734,7 +1734,7 @@ Hounded.attack_levels=
 
 --AddComponentPostInit("hounded",function(component)
 function Hounded:ReleaseHound(dt)
-    local pt = Vector3(GetPlayer().Transform:GetWorldPosition())
+    local pt = GLOBAL.Vector3(GetPlayer().Transform:GetWorldPosition())
         
     local spawn_pt = self:GetSpawnPoint(pt)
     
