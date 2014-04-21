@@ -312,7 +312,7 @@ GLOBAL.STRINGS.CHARACTERS.TINKERER = {}
 
 GLOBAL.STRINGS.CHARACTER_TITLES.paladin = "The Paladin"
 GLOBAL.STRINGS.CHARACTER_NAMES.paladin = "The Paladin"
-GLOBAL.STRINGS.CHARACTER_DESCRIPTIONS.paladin = "1.  Starts with trusty holy sword\n2.  Can use sheilds\n4.      Battles evil\n4.  Divine Defender"
+GLOBAL.STRINGS.CHARACTER_DESCRIPTIONS.paladin = "1.  Starts with trusty holy sword\n2.  Can use sheilds\n3.  Battles evil\n4.  Divine Defender"
 GLOBAL.STRINGS.CHARACTER_QUOTES.paladin = "\"Nothing will stop the the righteous!\""
 GLOBAL.STRINGS.CHARACTERS.PALADIN = {}
 
