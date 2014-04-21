@@ -1554,8 +1554,8 @@ AddPrefabPostInit("cave", function(inst)
             if(data.id=="ORC_MINES" or data.id=="DWARF_FORTRESS" or data.id=="ORC_FORTRESS")then
  --add waves
                 local waves = inst.entity:AddWaveComponent()
-                waves:SetRegionSize( 40, 20 )
-                waves:SetRegionNumWaves( 8 )
+                waves:SetRegionSize( 50, 50 )
+                waves:SetRegionNumWaves( 20 )
                 waves:SetWaveTexture(GLOBAL.resolvefilepath("images/lava2.tex"))--GLOBAL.resolvefilepath("images/lava.tex")
                 waves:SetWaveEffect( "shaders/waves.ksh" ) -- texture.ksh
                 waves:SetWaveSize( 2048, 512 )
