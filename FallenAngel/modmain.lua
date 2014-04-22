@@ -1680,9 +1680,21 @@ AddSimPostInit(function(inst)
         end
         inst:ListenForEvent("fishingcollect",onFishingCollect)
 
+            local leader=inst.components.leader
+            for k,v in pairs(leader.followers) do
+--                print(k,v)
+--why is tag being lost?
+--                if k:HasTag("fa_wonderswap") then
+                    print("removing frog")
+                    k:Remove()
+--                end
+            end
+            
+
         GetPlayer():DoTaskInTime(0,function()
             GLOBAL.FA_ElectricalFence.MakeGrid()
             GLOBAL.FA_ElectricalFence.StartTask()
+
         end)
 
     end
@@ -1781,6 +1793,12 @@ function makestackablePrefabPostInit(inst)
 end
 
 AddPrefabPostInit("rabbit", makestackablePrefabPostInit)
+
+AddPrefabPostInit("frog", function(inst) 
+    if(inst and not inst.components.follower)then
+        inst:AddComponent("follower")
+    end
+end)
 
 function addT1LootPrefabPostInit(inst,chance)
     if(not inst.components.lootdropper)then

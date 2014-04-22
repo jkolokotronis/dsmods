@@ -47,6 +47,7 @@ local WONDER_EFFECTS={
 			frog:SetBrain(require "brains/froghaxbrain")
 			frog:RestartBrain()
 			frog:AddTag("notarget")
+			frog:AddTag("fa_wonderswap")
 			frog.components.health.invincible=true
 --frog.brainfn=nil
 			frog:AddComponent("follower")
@@ -361,7 +362,7 @@ local function eatwonder(inst,data)
 	local eater=data.eater
 	if(eater and eater:HasTag("player"))then
 		local index=math.floor(1+(math.random() * #WONDER_EFFECTS))
---		index=2
+--		index=1
 		local effect=WONDER_EFFECTS[index]
 		if(effect)then
 			effect.fn(eater)
