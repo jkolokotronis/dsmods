@@ -125,7 +125,7 @@ local function OnFireExplode(inst, target)
 
 
             if v.components.combat and v ~= inst then
-                v.components.combat:GetAttacked(inst, TUNING.GUNPOWDER_DAMAGE, nil,FA_DAMAGETYPE.FIRE)
+                v.components.combat:GetAttacked(inst, TUNING.GUNPOWDER_DAMAGE, nil,nil,FA_DAMAGETYPE.FIRE)
             end
 --            v:PushEvent("explosion", {explosive = inst})
 

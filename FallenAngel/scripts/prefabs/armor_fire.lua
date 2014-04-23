@@ -63,7 +63,7 @@ local function fn()
     
     inst:AddComponent("armor")
     inst.components.armor.fa_resistances={}
-    inst.components.armor.fa_resistances[FA_DAMAGETYPE.FIRE]=0.8
+    inst.components.armor.fa_resistances[FA_DAMAGETYPE.FIRE]=0.7
 
 --    inst:AddComponent("heater")
 --    inst.components.heater.equippedheat = 10

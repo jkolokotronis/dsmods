@@ -56,7 +56,7 @@ local function onattackacidarrow(inst,attacker,target)
     end
     target.acidarrowcounter=ACIDARROW_LENGTH
     target.acidarrowtask=target:DoPeriodicTask(2, function(inst)
-        inst.components.combat:GetAttacked(attacker,ACIDARROW_DOT,nil,FA_DAMAGETYPE.ACID)
+        inst.components.combat:GetAttacked(attacker,ACIDARROW_DOT,nil,nil,FA_DAMAGETYPE.ACID)
         if(inst and inst.acidarrowcounter and inst.acidarrowcounter>2)then
             inst.acidarrowcounter=inst.acidarrowcounter-2
         else
@@ -78,7 +78,7 @@ local function onattackfireball(inst, attacker, target)
                     end
 
                     if(v.components.combat and not v==target and not (v.components.health and v.components.health:IsDead())) then
-                        v.components.combat:GetAttacked(attacker, FIREBALL_DAMAGE, nil,FA_DAMAGETYPE.FIRE)
+                        v.components.combat:GetAttacked(attacker, FIREBALL_DAMAGE, nil,nil,FA_DAMAGETYPE.FIRE)
                     end
                 end
             end
@@ -93,7 +93,7 @@ local pos=Vector3(target.Transform:GetWorldPosition())
             for k,v in pairs(ents) do
                 if v.components.combat and not v==target and not (v.components.health and v.components.health:IsDead()) then
                     if(v:HasTag("undead"))then
-                       v.components.combat:GetAttacked(attacker, SUNBURST_DAMAGE, nil,FA_DAMAGETYPE.HOLY)
+                       v.components.combat:GetAttacked(attacker, SUNBURST_DAMAGE, nil,nil,FA_DAMAGETYPE.HOLY)
                     else
                         --that would interrupt but not stun... what is a stun? if brain:stop is mez, freeze would be mez too, locomotor.stop? brain would restart it etc
                        v.components.combat:GetAttacked(attacker, 1, nil)
@@ -149,7 +149,7 @@ local function doicestorm(inst,target)
     for k,v in pairs(ents) do
         if v.components.combat and not (v.components.health and v.components.health:IsDead()) then
             --it should have blunt component, do i want to do this twice?
-            v.components.combat:GetAttacked(inst.fa_icestorm_caster, ICESTORM_DAMAGE, nil,FA_DAMAGETYPE.COLD)
+            v.components.combat:GetAttacked(inst.fa_icestorm_caster, ICESTORM_DAMAGE, nil,nil,FA_DAMAGETYPE.COLD)
         end
     end
 end

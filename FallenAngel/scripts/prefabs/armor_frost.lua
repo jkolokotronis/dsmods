@@ -70,7 +70,7 @@ local function fn()
     
     inst:AddComponent("armor")
     inst.components.armor.fa_resistances={}
-    inst.components.armor.fa_resistances[FA_DAMAGETYPE.COLD]=0.8
+    inst.components.armor.fa_resistances[FA_DAMAGETYPE.COLD]=0.7
 
     inst:AddComponent("equippable")
     inst.components.equippable.equipslot = EQUIPSLOTS.BODY

@@ -160,7 +160,7 @@ local onleechblast=function(inst)
                 proj.components.projectile:Throw(v, GetPlayer(), GetPlayer())
                 proj.Transform:SetRotation(angle)
 
-                v.components.combat:GetAttacked(GetPlayer(), BLAST_DMG, nil)
+                v.components.combat:GetAttacked(GetPlayer(), BLAST_DMG, nil,nil,FA_DAMAGETYPE.DEATH)
                 leechamount=leechamount+BLAST_LEECH
 
             end
@@ -186,7 +186,7 @@ local onharmtouch=function(inst)
     local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, HT_RANGE,nil,{"player","pet","companion","INLIMBO"})
     for k,v in pairs(ents) do
             if(v.components.combat and not (v.components.health and v.components.health:IsDead())) then
-                v.components.combat:GetAttacked(GetPlayer(), HT_DAMAGE, nil)
+                v.components.combat:GetAttacked(GetPlayer(), HT_DAMAGE, nil,nil,FA_DAMAGETYPE.DEATH)
 
                 local boom = CreateEntity()
                 boom.entity:AddTransform()

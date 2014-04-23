@@ -37,6 +37,9 @@ local Levels=require("map/levels")
 require "repairabledescriptionfix"
 
 PrefabFiles = {
+    "fa_fissures",
+    "fa_fissurefx",
+    "fa_fireflies",
     "fa_teleporter",
     "fa_hats",
     "fa_stickheads",
@@ -883,6 +886,40 @@ end
 AddAction(RELOAD)
 GLOBAL.ACTIONS.RELOAD = RELOAD
 
+local action_old=ACTIONS.MURDER.fn
+
+ACTIONS.MURDER.fn = function(act)
+
+    local murdered = act.invobject or act.target
+    if murdered and murdered.components.health then
+                
+        local obj=murdered.components.inventoryitem:RemoveFromOwner(false)
+
+        if murdered.components.health.murdersound then
+            act.doer.SoundEmitter:PlaySound(murdered.components.health.murdersound)
+        end
+
+        local stacksize = 1
+        if murdered.components.stackable then
+            stacksize = murdered.components.stackable.stacksize
+        end
+
+        if murdered.components.lootdropper then
+--            for i = 1, stacksize do
+                local loots = murdered.components.lootdropper:GenerateLoot()
+                for k, v in pairs(loots) do
+                    local loot = SpawnPrefab(v)
+                    act.doer.components.inventory:GiveItem(loot)
+                end      
+--            end
+        end
+
+        act.doer:PushEvent("killed", {victim = obj})
+        obj:Remove()
+
+        return true
+    end
+end
 
 local function newControlsInit(class)
     local under_root=class;
@@ -1275,7 +1312,7 @@ end)
 --TODO there's gotta be a better way... but not everything reads inventory/has armor, dodelta has no info on attack type or even a reason... 
 local Combat=require "components/combat"
 local combat_getattacked_def=Combat.GetAttacked
-function Combat:GetAttacked(attacker, damage, weapon,element)
+function Combat:GetAttacked(attacker, damage, weapon,stimuli,element)
     --print ("ATTACKED", self.inst, attacker, damage)
     local blocked = false
     local player = GetPlayer()
@@ -1290,6 +1327,16 @@ function Combat:GetAttacked(attacker, damage, weapon,element)
             elseif(attacker and attacker.fa_damagetype)then
                 damagetype=attacker.fa_damagetype
             end
+--rog moisture modifiers
+        if(damagetype and self.inst.components.moisture)then
+            local percent=self.inst.components.moisture:GetMoisturePercent()
+            if(percent>0)then
+                local mod=GLOBAL.FA_WETTNESS_DAMAGE_MODIFIER[damagetype]
+                if(mod)then
+                    damage=damage+mod*percent*damage
+                end
+            end           
+        end
 
         if self.inst.components.inventory then
             damage = self.inst.components.inventory:ApplyDamage(damage, attacker,weapon,damagetype)
@@ -1299,10 +1346,10 @@ function Combat:GetAttacked(attacker, damage, weapon,element)
             GLOBAL.ProfileStatsAdd("hitsby_"..prefab,math.floor(damage))
             GLOBAL.FightStat_AttackedBy(attacker,damage,init_damage-damage)
         end
+         --now i need to deal with health mods
         if(damagetype)then
             local res=self.inst.components.health.fa_resistances[damagetype]
             if(res) then damage=damage*(1-res) end
-            --now i need to deal with health mods
         end
 --            print("damage",damage)
         --why are you so inclined to prevent healing by damage, silly klei?
@@ -1351,16 +1398,16 @@ function Combat:GetAttacked(attacker, damage, weapon,element)
     end
     
     if not blocked then
-        self.inst:PushEvent("attacked", {attacker = attacker, damage = damage, weapon = weapon})
+         self.inst:PushEvent("attacked", {attacker = attacker, damage = damage, weapon = weapon, stimuli = stimuli})
     
         if self.onhitfn then
             self.onhitfn(self.inst, attacker, damage)
         end
         
-        if attacker then
-            attacker:PushEvent("onhitother", {target = self.inst, damage = damage})
+       if attacker then
+            attacker:PushEvent("onhitother", {target = self.inst, damage = damage, stimuli = stimuli})
             if attacker.components.combat and attacker.components.combat.onhitotherfn then
-                attacker.components.combat.onhitotherfn(attacker, self.inst, damage)
+                attacker.components.combat.onhitotherfn(attacker, self.inst, damage, stimuli)
             end
         end
     else
@@ -1575,6 +1622,25 @@ AddPrefabPostInit("cave", function(inst)
                 inst.components.seasonmanager:AlwaysSummer()
 
             end
+
+            local quakerlootoverride=GLOBAL.FA_QUAKER_LOOT_OVERRIDE[data.id]
+            if(quakerlootoverride)then
+                local quaker=require("components/quaker")
+
+                function quaker:GetDebris()
+                    local rng = math.random()
+                    local todrop = nil
+                    if rng < 0.75 then
+                        todrop = debris.common[math.random(1, #debris.common)]
+                    elseif rng >= 0.75 and rng < 0.95 then
+                        todrop = debris.rare[math.random(1, #debris.rare)]
+                    else
+                        todrop = debris.veryrare[math.random(1, #debris.veryrare)]
+                    end
+                    return todrop
+                end
+            end
+
 
             local threats=GLOBAL.FA_LEVEL_THREATS[data.id]
             local threatlist = require("fa_periodicthreats")
@@ -1843,23 +1909,19 @@ AddPrefabPostInit("poisonspiderden_2", function(inst) addT1T2LootPrefabPostInit(
 AddPrefabPostInit("spiderden_3", function(inst) addFullLootPrefabPostInit(inst,0.15) end)
 AddPrefabPostInit("poisonspiderden_3", function(inst) addFullLootPrefabPostInit(inst,0.15) end)
 
+--DLC PATCHUP
+if(GLOBAL.FA_DLCACCESS)then
 
-
---[[
-AddClassPostConstruct("screens/characterselectscreen", function(screen)
-    screen.charactername = screen.fixed_root:AddChild(TextEdit( GLOBAL.TITLEFONT, 60, "" ))
-    screen.charactername:SetHAlign(GLOBAL.ANCHOR_MIDDLE)
-    screen.charactername:SetPosition(820 , GLOBAL.RESOLUTION_Y - 400+30,0)
-    screen.charactername:SetRegionSize( 500, 70 )
-    local callback=screen.cb
-    screen.cb=function(char)
-        if(callback)then
-            local chardata={character=character,customname=screen.charactername:GetString()}
-            callback(chardata)
-        end
-    end
-end)]]
-
+    TUNING.NIGHTSTICK_DAMAGE=(0 or TUNING.NIGHTSTICK_DAMAGE)*1.5
+    AddPrefabPostInit("nightstick",function(inst)
+        inst.components.weapon.stimuli=nil
+        inst.components.weapon.fa_damagetype=GLOBAL.FA_DAMAGETYPE.ELECTRIC
+    end)
+    TUNING.ARMORDRAGONFLY_FIRE_RESIST=0
+    AddPrefabPostInit("armordragonfly",function(inst)
+        inst.components.armor.fa_resistances[FA_DAMAGETYPE.FIRE]=0.85
+    end)
+end
 
 AddModCharacter("barb")
 AddModCharacter("druid")

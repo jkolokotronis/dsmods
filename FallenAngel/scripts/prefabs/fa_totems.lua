@@ -149,7 +149,7 @@ local function onattackfireball(inst, attacker, target)
                     end
 
                     if(v.components.combat and not v==target and not (v.components.health and v.components.health:IsDead())) then
-                        v.components.combat:GetAttacked(attacker, REDTOTEM_DAMAGE, nil,FA_DAMAGETYPE.FIRE)
+                        v.components.combat:GetAttacked(attacker, REDTOTEM_DAMAGE, nil,nil,FA_DAMAGETYPE.FIRE)
                     end
                 end
             end
