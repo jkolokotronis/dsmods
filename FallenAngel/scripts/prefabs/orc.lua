@@ -2,6 +2,7 @@
 local assets=
 {
 	Asset("ANIM", "anim/orc.zip"),
+    Asset("ANIM", "anim/fa_orc.zip"),
 	Asset("SOUND", "sound/hound.fsb"),
 }
 
@@ -65,7 +66,7 @@ local function fn()
 	local shadow = inst.entity:AddDynamicShadow()
 	shadow:SetSize( 3, 2 )
     inst.Transform:SetFourFaced()
-    inst.Transform:SetScale(2,2, 2)
+    inst.Transform:SetScale(0.5,0.5, 0.5)
 	
 	inst:AddTag("scarytoprey")
     inst:AddTag("monster")
@@ -74,12 +75,12 @@ local function fn()
 	
     MakeCharacterPhysics(inst, 20, 0.5)
      
-    anim:SetBank("orc")
-    anim:SetBuild("orc") 
+    anim:SetBank("fa_orc")
+    anim:SetBuild("fa_orc") 
 
     inst.AnimState:PlayAnimation('idle',true)
     inst:AddComponent("locomotor") -- locomotor must be constructed before the stategraph
-    inst.components.locomotor.runspeed = 2
+    inst.components.locomotor.runspeed = 6
     inst:SetStateGraph("SGorc")
 
 
@@ -95,7 +96,7 @@ local function fn()
     
     inst:AddComponent("combat")
     inst.components.combat:SetDefaultDamage(ORC_DAMAGE)
-    inst.components.combat:SetAttackPeriod(0.75)
+    inst.components.combat:SetAttackPeriod(1)
     inst.components.combat:SetRange(3)
 --    inst.components.combat.hiteffectsymbol = "pig_torso"
     inst.components.combat:SetRetargetFunction(1, RetargetFn)

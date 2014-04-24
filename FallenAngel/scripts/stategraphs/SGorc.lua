@@ -21,7 +21,7 @@ local states=
         name = "idle",
         tags = {"idle", "canrotate"},
         onenter = function(inst, playanim)
-            inst.AnimState:PlayAnimation('idle', true)
+            inst.AnimState:PlayAnimation('Idle', true)
             inst.Physics:Stop()
         end,
     },
@@ -30,7 +30,7 @@ local states=
         name = "walk",
         tags = {"walk", "canrotate"},
         onenter = function(inst, playanim)
-            inst.AnimState:PlayAnimation('move', true)
+            inst.AnimState:PlayAnimation('Run', true)
             inst.components.locomotor:RunForward()
             
         end,
@@ -42,7 +42,7 @@ local states=
         
         onenter = function(inst)
             inst.components.locomotor:RunForward()
-            inst.AnimState:PlayAnimation("move")
+            inst.AnimState:PlayAnimation("Run")
             inst.sg.mem.foosteps = 0
         end,
 
@@ -70,7 +70,7 @@ local states=
         
         onenter = function(inst) 
             inst.components.locomotor:RunForward()
-            inst.AnimState:PlayAnimation("move",true)
+            inst.AnimState:PlayAnimation("Run",true)
             
         end,
         
@@ -116,7 +116,7 @@ local states=
             inst.sg.statemem.target = target
             inst.Physics:Stop()
             inst.components.combat:StartAttack()
-            inst.AnimState:PlayAnimation("attack")
+            inst.AnimState:PlayAnimation("Attack")
         end,
          timeline =
         {
@@ -134,7 +134,7 @@ local states=
 
         onenter = function(inst, cb)
             inst.Physics:Stop()
-            inst.AnimState:PlayAnimation("hit")
+            inst.AnimState:PlayAnimation("Hurt")
             inst.SoundEmitter:PlaySound("dontstarve/characters/wilton/hurt")
  --           inst.sg:GoToState("idle") 
         end,
@@ -150,7 +150,7 @@ local states=
         tags = {"busy"},
 
         onenter = function(inst)
-            inst.AnimState:PlayAnimation("death")
+            inst.AnimState:PlayAnimation("Hurt")
             inst.Physics:Stop()
             RemovePhysicsColliders(inst)            
             inst.components.lootdropper:DropLoot(Vector3(inst.Transform:GetWorldPosition()))            
