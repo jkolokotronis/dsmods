@@ -150,7 +150,7 @@ local states=
         tags = {"busy"},
 
         onenter = function(inst)
-            inst.AnimState:PlayAnimation("Hurt")
+            inst.AnimState:PlayAnimation("Death")
             inst.Physics:Stop()
             RemovePhysicsColliders(inst)            
             inst.components.lootdropper:DropLoot(Vector3(inst.Transform:GetWorldPosition()))            
