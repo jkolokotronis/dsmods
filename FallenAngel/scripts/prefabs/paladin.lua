@@ -36,7 +36,8 @@ local assets = {
         Asset( "ANIM", "anim/paladin.zip" ),
 }
 local prefabs = {
-    "holysword"
+    "holysword",
+    "fa_forcefieldfx_white"
 }
 
 --        SANITY_NIGHT_MID = -100/(300*20),
@@ -225,7 +226,30 @@ local function onturnundead(clr)
         end
         return true
 end
-    
+
+local function ondivinedefense(inst)
+
+        inst.components.health.invincible=true
+
+        local fx = SpawnPrefab("fa_forcefieldfx_white")
+        fx.entity:SetParent(inst.entity)
+        fx.Transform:SetPosition(0, 0.2, 0)
+        local fx_hitanim = function()
+            fx.AnimState:PlayAnimation("hit")
+            fx.AnimState:PushAnimation("idle_loop")
+        end
+        fx:ListenForEvent("blocked", fx_hitanim, inst)
+        fx:ListenForEvent("attacked",fx_hitanim,inst)
+
+        inst:DoTaskInTime(DIVINE_DEFENDER_DURATION, function() 
+                fx:RemoveEventCallback("blocked", fx_hitanim, inst)
+                fx:RemoveEventCallback("attacked", fx_hitanim, inst)
+                fx.kill_fx(fx)
+                inst.components.health.invincible=false 
+        end)
+        return true
+
+end    
 
 local fn = function(inst)
     
@@ -292,24 +316,8 @@ local fn = function(inst)
 
         inst.divinedefenderCooldownButton=CooldownButton(cnt.owner)
         inst.divinedefenderCooldownButton:SetText("Defense")
-        inst.divinedefenderCooldownButton:SetOnClick(function()
-            inst.components.health.invincible=true
+        inst.divinedefenderCooldownButton:SetOnClick(function() return ondivinedefense(inst) end)
 
-            local boom = CreateEntity()
-            boom.entity:AddTransform()
-            local anim=boom.entity:AddAnimState()
-            boom:AddTag("NOCLICK")
-            boom:AddTag("FX")
-            anim:SetBank("fa_shieldpuff")
-            anim:SetBuild("fa_shieldpuff")
-            anim:PlayAnimation("idle",false)
-            local pos1 =inst:GetPosition()
-            boom.Transform:SetPosition(pos1.x, pos1.y, pos1.z)
-            boom:ListenForEvent("animover", function()  boom:Remove() end)
-
-            inst:DoTaskInTime(DIVINE_DEFENDER_DURATION, function() inst.components.health.invincible=false end)
-            return true
-        end)
         inst.divinedefenderCooldownButton:SetCooldown(DIVINE_DEFENDER_COOLDOWN)
         if(inst.ddcooldowntimer and inst.ddcooldowntimer>0)then
              inst.divinedefenderCooldownButton:ForceCooldown(inst.ddcooldowntimer)

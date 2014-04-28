@@ -37,7 +37,10 @@ local Levels=require("map/levels")
 require "repairabledescriptionfix"
 
 PrefabFiles = {
+    "fa_rocks",
+    "fa_lavarain",
     "fa_fissures",
+    "fa_forcefields",
     "fa_fissurefx",
     "fa_fireflies",
     "fa_teleporter",
@@ -777,10 +780,10 @@ TUNING.ARMOR_SANITY = 750
 TUNING.ARMOR_SANITY_ABSORPTION = .8
 TUNING.ARMOR_SANITY_DMG_AS_SANITY = 0.10
 
-TUNING.STONEWALL_HEALTH=TUNING.STONEWALL_HEALTH*3
-TUNING.WOODWALL_HEALTH=TUNING.WOODWALL_HEALTH*3
-TUNING.HAYWALL_HEALTH=TUNING.HAYWALL_HEALTH*3
-TUNING.RUINSWALL_HEALTH=TUNING.RUINSWALL_HEALTH*3
+TUNING.STONEWALL_HEALTH=TUNING.STONEWALL_HEALTH*2
+TUNING.WOODWALL_HEALTH=TUNING.WOODWALL_HEALTH*2
+TUNING.HAYWALL_HEALTH=TUNING.HAYWALL_HEALTH*2
+TUNING.RUINSWALL_HEALTH=TUNING.RUINSWALL_HEALTH*2
 
 TUNING.GHOST_SPEED = 5
 TUNING.GHOST_HEALTH = 300
@@ -1049,25 +1052,39 @@ local spoiledSkeletonSpawn=function(inst)
 end
 
 AddPrefabPostInit("meat",function(inst)
-    inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
+    if(inst.components.perishable)then
+        inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
+    end
 end)
 AddPrefabPostInit("cookedmeat",function(inst)
-    inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
+    if(inst.components.perishable)then
+        inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
+    end
 end)
 AddPrefabPostInit("meat_dried",function(inst)
-    inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
+    if(inst.components.perishable)then
+        inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
+    end
 end)
 AddPrefabPostInit("monstermeat",function(inst)
-    inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
+    if(inst.components.perishable)then
+        inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
+    end
 end)
 AddPrefabPostInit("cookedmonstermeat",function(inst)
-    inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
+    if(inst.components.perishable)then
+        inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
+    end
 end)
 AddPrefabPostInit("monstermeat_dried",function(inst)
-    inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
+    if(inst.components.perishable)then
+        inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
+    end
 end)
 AddPrefabPostInit("hambat",function(inst)
-    inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
+    if(inst.components.perishable)then
+        inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
+    end
 end)
 
 AddPrefabPostInit("merm",function(inst) inst:AddTag("pickpocketable") end)
@@ -1601,7 +1618,7 @@ AddPrefabPostInit("cave", function(inst)
  --add waves
                 local waves = inst.entity:AddWaveComponent()
                 waves:SetRegionSize( 50, 50 )
-                waves:SetRegionNumWaves( 25 )
+                waves:SetRegionNumWaves( 35 )
                 waves:SetWaveTexture(GLOBAL.resolvefilepath("images/lava2.tex"))--GLOBAL.resolvefilepath("images/lava.tex")
                 waves:SetWaveEffect( "shaders/waves.ksh" ) -- texture.ksh
                 waves:SetWaveSize( 2048, 512 )

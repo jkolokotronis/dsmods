@@ -20,7 +20,9 @@ local ARMORFROST_PROC_T3=0.3
 local ARMORFROST_COLDNESS=1
 local FROZEN_DEBUFF_LENGTH=10
 
-local function OnBlocked(inst,owner,data) 
+local function OnBlocked(owner,data) 
+    local inst = owner.components.inventory:GetEquippedItem(EQUIPSLOTS.BODY)
+    if(not inst) then return end
     owner.SoundEmitter:PlaySound("dontstarve/wilson/hit_armour")
     if(data and data.attacker and math.random()<=inst.procRate)then
         print("reflecting to",data.attacker)
@@ -37,8 +39,8 @@ end
 
 local function onequip(inst, owner) 
 --    owner.AnimState:OverrideSymbol("swap_body", "armor_marble", "swap_body")
-     inst:ListenForEvent("attacked", function(owner,data) OnBlocked(inst,owner,data) end,owner)
-    inst:ListenForEvent("blocked",function(owner,data) OnBlocked(inst,owner,data) end, owner)
+     inst:ListenForEvent("attacked", OnBlocked,owner)
+    inst:ListenForEvent("blocked",OnBlocked,owner)
 end
 
 local function onunequip(inst, owner) 

@@ -18,7 +18,10 @@ local ARMORFIRE_PROC_T1=0.1
 local ARMORFIRE_PROC_T2=0.2
 local ARMORFIRE_PROC_T3=0.3
 
-local function OnBlocked(inst,owner,data) 
+local function OnBlocked(owner,data) 
+    local inst = owner.components.inventory:GetEquippedItem(EQUIPSLOTS.BODY)
+    if(not inst) then return end
+
     owner.SoundEmitter:PlaySound("dontstarve/wilson/hit_armour")
     if(data and data.attacker and  data.attacker.components.burnable and not data.attacker.components.fueled )then
         if(math.random()<=inst.procRate)then
@@ -30,8 +33,8 @@ end
 
 local function onequip(inst, owner) 
 --    owner.AnimState:OverrideSymbol("swap_body", "armor_marble", "swap_body")
-     inst:ListenForEvent("attacked", function(owner,data) OnBlocked(inst,owner,data) end,owner)
-    inst:ListenForEvent("blocked",function(owner,data) OnBlocked(inst,owner,data) end, owner)
+     inst:ListenForEvent("attacked",OnBlocked,owner)
+    inst:ListenForEvent("blocked",OnBlocked, owner)
 end
 
 local function onunequip(inst, owner) 
