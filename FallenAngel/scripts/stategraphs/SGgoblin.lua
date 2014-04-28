@@ -105,19 +105,6 @@ local actionhandlers =
             end
         end),
         
-    ActionHandler(ACTIONS.SLEEPIN, 
-		function(inst, action)
-			if action.invobject then
-                if action.invobject.onuse then
-                    action.invobject.onuse()
-                end
-				return "bedroll"
-			else
-				return "doshortaction"
-			end
-		
-		end),
-
     ActionHandler(ACTIONS.TAKEITEM, "dolongaction" ),
     
     ActionHandler(ACTIONS.BUILD, "dolongaction"),
@@ -168,6 +155,7 @@ local actionhandlers =
    
 local events=
 {
+ CommonHandlers.OnSleep(),
  CommonHandlers.OnLocomote(true, false),
  --[[
     EventHandler("locomote", function(inst)

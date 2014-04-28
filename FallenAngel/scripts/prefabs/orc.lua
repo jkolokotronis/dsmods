@@ -93,6 +93,7 @@ local function fn()
     inst:AddComponent("sanityaura")
     inst.components.sanityaura.aura = -TUNING.SANITYAURA_MED
     
+    inst:AddComponent("sleeper")
     
     inst:AddComponent("combat")
     inst.components.combat:SetDefaultDamage(ORC_DAMAGE)

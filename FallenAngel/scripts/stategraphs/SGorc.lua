@@ -12,6 +12,8 @@ local events=
     CommonHandlers.OnAttacked(),
     CommonHandlers.OnDeath(),
     CommonHandlers.OnAttack(),
+    CommonHandlers.OnSleep(),
+    
 }
 
 local states=
@@ -157,6 +159,34 @@ local states=
         end,
 
     },
+    State{
+        name = "sleep",
+        
+        onenter = function(inst)
+            inst.AnimState:PlayAnimation("Death")
+        end,
+
+
+    },
+
+    State{
+        name = "sleepin",
+        
+        onenter = function(inst)
+            inst.AnimState:PlayAnimation("Death")
+            inst.components.locomotor:Stop()
+            --inst.Controller:Enable(false)
+            --inst.AnimState:Hide()
+            inst:PerformBufferedAction()             
+        end,
+        
+        onexit= function(inst)
+            --inst.Controller:Enable(true)
+            --inst.AnimState:Show()
+        end,
+
+    },
+    
 }
 
 

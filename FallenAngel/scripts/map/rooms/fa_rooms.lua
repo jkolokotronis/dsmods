@@ -498,6 +498,7 @@ AddRoom("FA_GoblinRoom1",{
 									distributepercent = 0.05,
 					                distributeprefabs= 
 					                {
+					                	fireflies = 0.5,
 										stalagmite = .25,
 					                	stalagmite_med = .25,
 					                	stalagmite_low = .25,
@@ -524,6 +525,7 @@ AddRoom("FA_GoblinRoom2",{
 									distributepercent = 0.05,
 					                distributeprefabs= 
 					                {
+					                	fireflies = 0.5,
 										stalagmite = .25,
 					                	stalagmite_med = .25,
 					                	stalagmite_low = .25,
@@ -549,6 +551,7 @@ AddRoom("FA_GoblinRoom3",{
 									distributepercent = 0.05,
 					                distributeprefabs= 
 					                {
+					                	fireflies = 0.5,
 										stalagmite = .25,
 					                	stalagmite_med = .25,
 					                	stalagmite_low = .25,
@@ -574,6 +577,7 @@ AddRoom("FA_GoblinRoom4",{
 									distributepercent = 0.05,
 					                distributeprefabs= 
 					                {
+					                	fireflies = 0.5,
 										stalagmite = .25,
 					                	stalagmite_med = .25,
 					                	stalagmite_low = .25,
@@ -599,6 +603,7 @@ AddRoom("FA_GoblinRoom5",{
 									distributepercent = 0.05,
 					                distributeprefabs= 
 					                {
+					                	fireflies = 0.5,
 										stalagmite = .25,
 					                	stalagmite_med = .25,
 					                	stalagmite_low = .25,
@@ -626,6 +631,7 @@ AddRoom("FA_GoblinRoom6",{
 									distributepercent = 0.05,
 					                distributeprefabs= 
 					                {
+					                	fireflies = 0.5,
 										stalagmite = .25,
 					                	stalagmite_med = .25,
 					                	stalagmite_low = .25,
@@ -651,6 +657,7 @@ AddRoom("FA_GoblinRoom7",{
 									distributepercent = 0.05,
 					                distributeprefabs= 
 					                {
+					                	fireflies = 0.5,
 										stalagmite = .25,
 					                	stalagmite_med = .25,
 					                	stalagmite_low = .25,
@@ -678,6 +685,7 @@ AddRoom("FA_GoblinRoom8",{
 									distributepercent = 0.05,
 					                distributeprefabs= 
 					                {
+					                	fireflies = 0.5,
 										stalagmite = .25,
 					                	stalagmite_med = .25,
 					                	stalagmite_low = .25,
@@ -700,6 +708,7 @@ AddRoom("FA_GoblinMaze1",{
 									distributepercent = 0.05,
 					                distributeprefabs= 
 					                {
+					                	fireflies = 0.5,
 										stalagmite = .25,
 					                	stalagmite_med = .25,
 					                	stalagmite_low = .25,
@@ -722,6 +731,7 @@ AddRoom("FA_GoblinMaze2",{
 									distributepercent = 0.05,
 					                distributeprefabs= 
 					                {
+					                	fireflies = 0.5,
 										stalagmite = .25,
 					                	stalagmite_med = .25,
 					                	stalagmite_low = .25,
@@ -744,6 +754,7 @@ AddRoom("FA_GoblinMaze3",{
 									distributepercent = 0.05,
 					                distributeprefabs= 
 					                {
+					                	fireflies = 0.5,
 										stalagmite = .25,
 					                	stalagmite_med = .25,
 					                	stalagmite_low = .25,

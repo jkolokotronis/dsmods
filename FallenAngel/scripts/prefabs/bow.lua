@@ -72,6 +72,7 @@ local function commonfn(colour)
     local minimap = inst.entity:AddMiniMapEntity()
     minimap:SetIcon( "woodbow.tex" )
     
+    inst:AddTag("bow")
     anim:SetBank("woodbow")
     anim:SetBuild("woodbow")
     anim:PlayAnimation("idle")

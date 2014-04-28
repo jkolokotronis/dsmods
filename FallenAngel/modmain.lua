@@ -233,8 +233,7 @@ Assets = {
     Asset( "IMAGE", "minimap/goblin.tex" ),
     Asset( "ATLAS", "minimap/goblin.xml" ),  
     Asset( "ANIM", "anim/question.zip" ),
-
-
+    Asset( "ANIM", "anim/fa_shieldpuff.zip" ),
 
     Asset( "ANIM", "anim/generating_goblin_cave.zip" ),
     Asset( "IMAGE", "images/lava3.tex" ),
@@ -1664,6 +1663,29 @@ AddSimPostInit(function(inst)
             table.insert( inst.components.eater.ablefoods, "FA_POTION" )
         end
         table.insert( inst.components.eater.foodprefs, "FA_POTION" )
+
+        local sg=inst.sg.sg
+        local old_onexit=sg.states["amulet_rebirth"].onexit
+        sg.states["amulet_rebirth"].onexit=function(inst)
+            old_onexit(inst)
+            inst.components.health.invincible=true
+
+            local boom = GLOBAL.CreateEntity()
+            boom.entity:AddTransform()
+            local anim=boom.entity:AddAnimState()
+            boom:AddTag("NOCLICK")
+            boom:AddTag("FX")
+            boom.persists=false
+            anim:SetBank("fa_shieldpuff")
+            anim:SetBuild("fa_shieldpuff")
+            anim:PlayAnimation("idle",false)
+            local pos1 =inst:GetPosition()
+            boom.Transform:SetPosition(pos1.x, pos1.y, pos1.z)
+            boom:ListenForEvent("animover", function()  boom:Remove() end)
+
+            inst:DoTaskInTime(10, function() inst.components.health.invincible=false end)
+            return true
+        end
 
         if inst:HasTag("evil") then
 

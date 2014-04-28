@@ -34,7 +34,6 @@ local assets = {
 
 		-- Don't forget to include your character's custom assets!
         Asset( "ANIM", "anim/paladin.zip" ),
-        Asset( "ANIM", "anim/fa_shieldpuff.zip" )
 }
 local prefabs = {
     "holysword"

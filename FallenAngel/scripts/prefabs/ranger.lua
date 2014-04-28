@@ -33,6 +33,7 @@ local assets = {
 
 		-- Don't forget to include your character's custom assets!
         Asset( "ANIM", "anim/ranger.zip" ),
+        Asset( "ANIM", "anim/fa_arrowpointers.zip" ),
 }
 local prefabs = {}
 
@@ -46,6 +47,8 @@ local FLURRY_COOLDOWN=480
 local FORAGE_COOLDOWN=480
 local MURDER_SANITY_DELTA=-1
 local EXTERMINATE_SANITY_DELTA=5
+local FLURRY_RANGE=20
+local TRACK_RANGE=100
 
 local forage_table={
     "carrot",
@@ -81,9 +84,57 @@ local onforage=function()
 end
 
 local onflurry=function()
-
+    local weapon=GetPlayer().components.combat:GetWeapon()
+    local pos=Getplayer():GetPosition()
+    if(weapon and weapon:HasTag("bow"))then
+        local targ=nil
+        local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, FLURRY_RANGE,nil,{"player","pet","companion","INLIMBO"})
+        for k,v in pairs(ents) do
+            if( v.components.combat and not (v.components.health and v.components.health:IsDead()) and v.components.combat.target==GetPlayer()) then
+                targ=v
+                break
+            end
+        end
+        
+        inst:DoTaskInTime(0,function()
+            for i=1,3 do
+                weapon.components.weapon:LaunchProjectile(GetPlayer(), targ)
+                Sleep(0.2)
+            end
+        end)
+        
+    end
+    return false
 end
 
+local track=function(tags)
+        local targ=nil
+        local pos=Getplayer():GetPosition()
+        local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, TRACK_RANGE,tags,{"player","pet","companion","INLIMBO"})
+        for k,v in pairs(ents) do
+            if( v.components.combat and not (v.components.health and v.components.health:IsDead()) and v.components.combat.target==GetPlayer()) then
+                targ=v
+                local angle = node:GetAngleToPoint(v:GetPosition())
+                local boom = CreateEntity()
+                boom:AddTag("FX")
+                boom:AddTag("NOCLICK")
+                boom.entity:AddTransform()
+                local anim=boom.entity:AddAnimState()
+                anim:SetBank("fa_arrowpointers")
+                anim:SetBuild("fa_arrowpointers")
+                boom.Transform:SetPosition(pos.x, pos.y, pos.z)
+                anim:SetOrientation( ANIM_ORIENTATION.OnGround )
+                boom.Transform:SetRotation(angle)
+                anim:PlayAnimation("idle",true)
+                boom.persists=false
+
+                local follower = boom.entity:AddFollower()
+                follower:FollowSymbol( GetPlayer().GUID, "swap_object", 0.1, -50, -0.0001 )
+
+                break
+            end
+        end
+end
 
 local onloadfn = function(inst, data)
     inst.foragecooldowntimer=data.foragecooldowntimer

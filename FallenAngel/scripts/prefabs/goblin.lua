@@ -260,6 +260,7 @@ local function common()
     inst.components.eater.strongstomach = true -- can eat monster meat!
     inst.components.eater:SetOnEatFn(OnEat)
 
+    inst:AddComponent("sleeper")
 
     inst:AddComponent("locomotor") -- locomotor must be constructed before the stategraph
     inst.components.locomotor.walkspeed=GOBLIN_WALK_SPEED
@@ -294,6 +295,7 @@ local function common()
     inst:ListenForEvent("attacked", OnAttacked)
 
      MakeMediumFreezableCharacter(inst, "goblin")
+    inst.components.freezable:SetResistance(1)
      MakeMediumBurnableCharacter(inst, "goblin")
 
     return inst
