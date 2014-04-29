@@ -90,8 +90,15 @@ local function rock1_fn(Sim)
 	local inst = baserock_fn(Sim)
 	inst.AnimState:SetBank("fa_lavarock")
 	inst.AnimState:SetBuild(lavatypes[math.random(#lavatypes)])
+    inst.AnimState:SetBloomEffectHandle( "shaders/anim.ksh" )
 	inst.AnimState:PlayAnimation("full")
 
+    inst.entity:AddLight()
+	inst.Light:SetRadius(.8)
+    inst.Light:SetFalloff(.5)
+    inst.Light:SetIntensity(.5)
+    inst.Light:SetColour(150/255,15/255,15/255)
+	inst.Light:Enable(true)
 	inst.components.lootdropper:SetChanceLootTable('fa_lavarock')
 
 	return inst
@@ -127,6 +134,7 @@ local function lavapebblefn(Sim)
     
     inst.AnimState:SetBank("fa_lavapebble")
     inst.AnimState:SetBuild("fa_lavapebble")
+    inst.AnimState:SetBloomEffectHandle( "shaders/anim.ksh" )
     inst.animname = lavapebble_names[math.random(#lavapebble_names)]
     inst.AnimState:PlayAnimation(inst.animname)
 

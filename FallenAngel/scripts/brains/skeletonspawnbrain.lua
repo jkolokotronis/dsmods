@@ -53,7 +53,7 @@ function Skeletonspawnbrain:OnStart()
         Wander(self.inst, function() 
             if(self.inst.components.homeseeker and self.inst.components.homeseeker.home)then
                 return self.inst.components.homeseeker:GetHomePos()
-            elseif(elf.inst.components.knownlocations and self.inst.components.knownlocations:GetLocation("home"))then
+            elseif(self.inst.components.knownlocations and self.inst.components.knownlocations:GetLocation("home"))then
                 return self.inst.components.knownlocations:GetLocation("home")
             else
                 return Vector3(self.inst.Transform:GetWorldPosition())

@@ -162,7 +162,7 @@ local function RetargetFn(inst)
         return guy:HasTag("character") and not guy:HasTag("goblin")
         end)
     end
-    if(invader and invader~=inst.components.combat.target)then
+    if(invader and not inst.components.combat.target)then--invader~=inst.components.combat.target)then
         inst.SoundEmitter:PlaySound("fa/goblin/goblin_yell")
     end
     return invader
