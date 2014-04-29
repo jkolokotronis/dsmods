@@ -195,6 +195,7 @@ local function fncommon()
     inst:AddComponent("lootdropper")
     inst.components.lootdropper:SetChanceLootTable('hound')
     
+    inst:AddComponent("knownlocations")
     inst:AddComponent("inspectable")
     
     inst:AddComponent("sleeper")

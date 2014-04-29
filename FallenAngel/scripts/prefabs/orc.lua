@@ -103,6 +103,7 @@ local function fn()
     inst.components.combat:SetRetargetFunction(1, RetargetFn)
     inst.components.combat:SetKeepTargetFunction(KeepTargetFn)
 
+    inst:AddComponent("knownlocations")
     inst:AddComponent("lootdropper")
     inst.components.lootdropper:SetLoot({ "monstermeat"})
 --    inst:AddComponent("inspectable")

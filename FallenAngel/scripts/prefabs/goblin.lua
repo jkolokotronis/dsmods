@@ -274,6 +274,7 @@ local function common()
     inst:AddComponent("health")
     inst.components.health:SetMaxHealth(GOBLIN_HEALTH)
     
+    inst:AddComponent("knownlocations")
     inst:AddComponent("inventory")
     inst:AddComponent("sanityaura")
     inst.components.sanityaura.aura = -TUNING.SANITYAURA_MED
