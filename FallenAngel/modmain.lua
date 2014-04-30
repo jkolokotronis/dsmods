@@ -1405,12 +1405,13 @@ AddSimPostInit(function(inst)
 
             local leader=inst.components.leader
             for k,v in pairs(leader.followers) do
---                print(k,v)
+                if(k.prefab=="frog")then
 --why is tag being lost?
 --                if k:HasTag("fa_wonderswap") then
+
                     print("removing frog")
                     k:Remove()
---                end
+                end
             end
             
 

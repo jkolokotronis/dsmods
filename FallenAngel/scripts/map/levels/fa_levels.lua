@@ -226,6 +226,7 @@ FA_LEVELDATA["GOBLIN_CAVE_BOSSLEVEL"]={
 
 FA_LEVELDATA["ORC_MINES"]={
 		id="ORC_MINES",
+		nomaxwell=true,
 		name="Orc Mines",
 		overrides={
 			{"world_size", 		"tiny"},
