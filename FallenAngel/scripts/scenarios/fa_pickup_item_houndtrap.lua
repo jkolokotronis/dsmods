@@ -19,14 +19,15 @@ end
 
 local function OnLoad(inst, scenariorunner)
 --Anything that needs to happen every time the game loads.
-    inst:ListenForEvent("onputininventory", function() OnWakeUp(inst, scenariorunner) end)
+	inst.scene_putininventoryfn= function() OnWakeUp(inst, scenariorunner) end
+    inst:ListenForEvent("onputininventory",inst.scene_putininventoryfn)
 end
 
 
 local function OnDestroy(inst)
     --Stop any event listeners here.
-    --if you're destroying the object, why do you care about manually removin handler that would otherwise get killed anyway?
---    inst:RemoveEventCallback("onputininventory")
+    inst:RemoveEventCallback("onputininventory",inst.scene_putininventoryfn)
+    inst.scene_putininventoryfn=nil
 end
 
 return 

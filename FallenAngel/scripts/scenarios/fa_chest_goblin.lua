@@ -44,7 +44,7 @@ local function OnLoad(inst, scenariorunner)
 end
 
 local function OnDestroy(inst)
---    chestfunctions.OnDestroy(inst)
+    chestfunctions.OnDestroy(inst)
 end
 
 
