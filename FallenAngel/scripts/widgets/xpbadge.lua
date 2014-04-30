@@ -86,15 +86,18 @@ function XPBadge:SetValue(val, max)
     self.xp = val
 end
 
-function XPBadge:OnMouseButton(button, down, x, y)
-	if not self.focus then return false end
-    print("onmousedown",button,down,x,y)
-    if(button==MOUSEBUTTON_LEFT and not down) then
+function XPBadge:OnControl(control, down)
+
+    if not self.focus then return false end
+    print("oncontrol", self, control, down, self.focus)
+    if(control==CONTROL_ACCEPT and not down) then
     	TheFrontEnd:PushScreen(FA_CharRenameScreen(self.playername:GetString()))
     end
     for k,v in pairs (self.children) do
-        if v.focus and v:OnMouseButton(button, down, x, y) then return true end
+        if v.focus and v:OnControl(control, down) then return true end
     end 
+
+    return false
 end
 
 function XPBadge:PulseGreen()

@@ -55,7 +55,7 @@ function CooldownButton:countdownfn()
         self.cooldowntext:SetString(""..self.cooldowntimer)
     end    
 end
-
+--[[
 function CooldownButton:OnMouseButton(button, down, x, y)
 	if not self.focus then return false end
     if(button==MOUSEBUTTON_LEFT and not down) then
@@ -65,6 +65,21 @@ function CooldownButton:OnMouseButton(button, down, x, y)
         if v.focus and v:OnMouseButton(button, down, x, y) then return true end
     end 
 
+end
+]]
+
+function CooldownButton:OnControl(control, down)
+
+    if not self.focus then return false end
+    print("oncontrol", self, control, down, self.focus)
+    if(control==CONTROL_ACCEPT and not down) then
+        self:DoClick()
+    end
+    for k,v in pairs (self.children) do
+        if v.focus and v:OnControl(control, down) then return true end
+    end 
+
+    return false
 end
 
 function CooldownButton:SetCooldown(cd)

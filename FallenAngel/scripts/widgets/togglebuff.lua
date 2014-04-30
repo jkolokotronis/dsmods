@@ -34,18 +34,19 @@ local ToggleBuff = Class(Widget, function(self, data)
 
 end)
 
-function ToggleBuff:OnMouseButton(button, down, x, y)
-	if not self.focus then return false end
-    print("onmousedown",button,down,x,y)
-    if(button==MOUSEBUTTON_LEFT and not down) then
-    	self:DoToggle()
+function ToggleBuff:OnControl(control, down)
+
+    if not self.focus then return false end
+    print("oncontrol", self, control, down, self.focus)
+     if(control==CONTROL_ACCEPT and not down) then
+        self:DoToggle()
     end
     for k,v in pairs (self.children) do
-        if v.focus and v:OnMouseButton(button, down, x, y) then return true end
+        if v.focus and v:OnControl(control, down) then return true end
     end 
 
+    return false
 end
-
 
 function ToggleBuff:OnGainFocus()
 	if(self.state=="off") then
