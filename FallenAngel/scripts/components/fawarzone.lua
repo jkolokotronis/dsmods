@@ -13,10 +13,10 @@ local FAWarzone = Class(function(self, inst)
 			onexit=function()
 
 			end,
-		}
+		},
 		{
 			name="war",
-			length=6,
+			length=4,
 			onenter=function()
 
 			end,
@@ -29,6 +29,8 @@ local FAWarzone = Class(function(self, inst)
 
 	self.totalsegs = 16
 	self.segtime = 30
+
+	self.timeLeftInEra=self.phases[self.phase].length*self.segtime
 
 	self.calmColour = Point(0, 0, 0)
 	self.warnColour = Point(0, 0, 0)
@@ -91,7 +93,7 @@ function FAWarzone:NextPhase()
 	self.phase=self:GetNextPhase()
 	self.phases[oldphase].onexit()
 	self.phases[self.phase].onenter()
-	self.timeLeftInEra=self.phases[self.phases].length*self.segtime
+	self.timeLeftInEra=self.phases[self.phase].length*self.segtime
 
 	self.inst:PushEvent("warphasechange", {oldphase = self.phases[oldphase], newphase = self.phases[self.phase]})
 end
@@ -130,7 +132,7 @@ function FAWarzone:OnUpdate(dt)
 end
 
 
-function NightmareClock:LerpAmbientColour(src, dest, time)
+function FAWarzone:LerpAmbientColour(src, dest, time)
 	self.lerptimeleft = time
 	self.totallerptime = time
 
@@ -150,7 +152,7 @@ function NightmareClock:LerpAmbientColour(src, dest, time)
     end
 end
 
-function NightmareClock:LerpFactor()
+function FAWarzone:LerpFactor()
 	if self.totallerptime == 0 then
 		return 1
 	else
@@ -158,7 +160,7 @@ function NightmareClock:LerpFactor()
 	end
 end
 
-function NightmareClock:LongUpdate(dt)
+function FAWarzone:LongUpdate(dt)
 	self:OnUpdate(dt)
 --[[
 	self.lerptimeleft = 0
@@ -177,4 +179,4 @@ function NightmareClock:LongUpdate(dt)
     end]]
 end
 
-return NightmareClock
+return FAWarzone

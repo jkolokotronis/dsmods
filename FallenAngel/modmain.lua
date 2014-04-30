@@ -7,11 +7,13 @@ local Widget = require "widgets/widget"
 local XPBadge= require "widgets/xpbadge"
 local TextEdit=require "widgets/textedit"
 local ItemTile = require "widgets/itemtile"
+local FAWarClock = require "widgets/fawarclock"
 require "widgets/text"
 require "stategraph"
 require "constants"
 require "buffutil"
 require "fa_mobxptable"
+require "fa_strings"
 require "fa_electricalfence"
 require "fa_levelxptable"
 require "fa_stealthdetectiontable"
@@ -257,401 +259,6 @@ AddSimPostInit(function()
 end)
 ]]
 
--- strings! Any "WOD" below would have to be replaced by the prefab name of your character.
-
--- The character select screen lines
--- note: these are lower-case character name
-GLOBAL.STRINGS.CHARACTER_TITLES.thief = "The Sneaky"
-GLOBAL.STRINGS.CHARACTER_NAMES.thief = "Pete"
-GLOBAL.STRINGS.CHARACTER_DESCRIPTIONS.thief = "* Stabby"
-GLOBAL.STRINGS.CHARACTER_QUOTES.thief = "\"Never saw me coming.\""
-GLOBAL.STRINGS.CHARACTERS.THIEF = {}
-
-GLOBAL.STRINGS.CHARACTER_TITLES.barb = "The Barbarian"
-GLOBAL.STRINGS.CHARACTER_NAMES.barb = "Brute strength and raw fury!"
-GLOBAL.STRINGS.CHARACTER_DESCRIPTIONS.barb = "1.  The Lower his life the stronger his attacks\n2.  Chops / mines 50% faster, is more hungry\n3.  Can eat raw meats with no neg effects\n5.  RAGE!"
-GLOBAL.STRINGS.CHARACTER_QUOTES.barb = "\"Don't get me angry!\""
-GLOBAL.STRINGS.CHARACTERS.BARB = {}
-
-GLOBAL.STRINGS.CHARACTER_TITLES.cleric = "The Cleric"
-GLOBAL.STRINGS.CHARACTER_NAMES.cleric = "cleric"
-GLOBAL.STRINGS.CHARACTER_DESCRIPTIONS.cleric = "* An example of how to create a mod character."
-GLOBAL.STRINGS.CHARACTER_QUOTES.cleric = "\"I am a blank slate.\""
-GLOBAL.STRINGS.CHARACTERS.CLERIC = {}
-
-GLOBAL.STRINGS.CHARACTER_TITLES.druid = "The Druid"
-GLOBAL.STRINGS.CHARACTER_NAMES.druid = "Nature's protector"
-GLOBAL.STRINGS.CHARACTER_DESCRIPTIONS.druid = "1.  Animal companion\n2.  Druid spells\n3.  Loses sanity from destroying trees, grass and saplings\n4.  Loses sanity for killing innocents"
-GLOBAL.STRINGS.CHARACTER_QUOTES.druid = "\"When nature has work to be done, she creates a genius.\""
-GLOBAL.STRINGS.CHARACTERS.DRUID = {}
-
-GLOBAL.STRINGS.CHARACTER_TITLES.darkknight = "The Shadow"
-GLOBAL.STRINGS.CHARACTER_NAMES.darkknight = "darkknight"
-GLOBAL.STRINGS.CHARACTER_DESCRIPTIONS.darkknight = "* An example of how to create a mod character."
-GLOBAL.STRINGS.CHARACTER_QUOTES.darkknight = "\"I am a blank slate.\""
-GLOBAL.STRINGS.CHARACTERS.DARKKNIGHT = {}
-
-GLOBAL.STRINGS.CHARACTER_TITLES.monk = "monk"
-GLOBAL.STRINGS.CHARACTER_NAMES.monk = "monk"
-GLOBAL.STRINGS.CHARACTER_DESCRIPTIONS.monk = "* An example of how to create a mod character."
-GLOBAL.STRINGS.CHARACTER_QUOTES.monk = "\"I am a blank slate.\""
-GLOBAL.STRINGS.CHARACTERS.MONK = {}
-
-GLOBAL.STRINGS.CHARACTER_TITLES.necromancer = "necromancer"
-GLOBAL.STRINGS.CHARACTER_NAMES.necromancer = "necromancer"
-GLOBAL.STRINGS.CHARACTER_DESCRIPTIONS.necromancer = "* An example of how to create a mod character."
-GLOBAL.STRINGS.CHARACTER_QUOTES.necromancer = "\"I am a blank slate.\""
-GLOBAL.STRINGS.CHARACTERS.NECROMANCER = {}
-
-GLOBAL.STRINGS.CHARACTER_TITLES.wizard = "wizard"
-GLOBAL.STRINGS.CHARACTER_NAMES.wizard = "wizard"
-GLOBAL.STRINGS.CHARACTER_DESCRIPTIONS.wizard = "* An example of how to create a mod character."
-GLOBAL.STRINGS.CHARACTER_QUOTES.wizard = "\"I am a blank slate.\""
-GLOBAL.STRINGS.CHARACTERS.WIZARD = {}
-
-GLOBAL.STRINGS.CHARACTER_TITLES.tinkerer = "tinkerer"
-GLOBAL.STRINGS.CHARACTER_NAMES.tinkerer = "tinkerer"
-GLOBAL.STRINGS.CHARACTER_DESCRIPTIONS.tinkerer = "* An example of how to create a mod character."
-GLOBAL.STRINGS.CHARACTER_QUOTES.tinkerer = "\"I am a blank slate.\""
-GLOBAL.STRINGS.CHARACTERS.TINKERER = {}
-
-GLOBAL.STRINGS.CHARACTER_TITLES.paladin = "The Paladin"
-GLOBAL.STRINGS.CHARACTER_NAMES.paladin = "The Paladin"
-GLOBAL.STRINGS.CHARACTER_DESCRIPTIONS.paladin = "1.  Starts with trusty holy sword\n2.  Can use sheilds\n3.  Battles evil\n4.  Divine Defender"
-GLOBAL.STRINGS.CHARACTER_QUOTES.paladin = "\"Nothing will stop the the righteous!\""
-GLOBAL.STRINGS.CHARACTERS.PALADIN = {}
-
-GLOBAL.STRINGS.CHARACTER_TITLES.ranger = "ranger"
-GLOBAL.STRINGS.CHARACTER_NAMES.ranger = "paladin"
-GLOBAL.STRINGS.CHARACTER_DESCRIPTIONS.ranger = "* An example of how to create a mod character."
-GLOBAL.STRINGS.CHARACTER_QUOTES.ranger = "\"I am a blank slate.\""
-GLOBAL.STRINGS.CHARACTERS.RANGER = {}
-
-GLOBAL.STRINGS.CHARACTER_TITLES.bard = "bard"
-GLOBAL.STRINGS.CHARACTER_NAMES.bard = "bard"
-GLOBAL.STRINGS.CHARACTER_DESCRIPTIONS.bard = "* An example of how to create a mod character."
-GLOBAL.STRINGS.CHARACTER_QUOTES.bard = "\"I am a blank slate.\""
-GLOBAL.STRINGS.CHARACTERS.BARD = {}
--- You can also add any kind of custom dialogue that you would like. Don't forget to make
--- categores that don't exist yet using = {}
--- note: these are UPPER-CASE charcacter name
-
-GLOBAL.STRINGS.CHARACTERS.THIEF.DESCRIBE = {}
-GLOBAL.STRINGS.CHARACTERS.THIEF.DESCRIBE.EVERGREEN = "A template description of a tree."
-
-GLOBAL.STRINGS.NAMES.BOW = "Bow"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOW = "Bow"
-GLOBAL.STRINGS.RECIPE_DESC.BOW = "Bow"
-GLOBAL.STRINGS.NAMES.ARROWS = "Arrows"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARROWS = "Arrows"
-GLOBAL.STRINGS.RECIPE_DESC.ARROWS = "Arrows"
-GLOBAL.STRINGS.NAMES.WOODENSHIELD = "Wooden Shield"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.WOODENSHIELD = "Wooden Shield"
-GLOBAL.STRINGS.RECIPE_DESC.WOODENSHIELD = "Wooden Shield"
-GLOBAL.STRINGS.NAMES.ROCKSHIELD = "Rock Shield"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ROCKSHIELD = "Rock Shield"
-GLOBAL.STRINGS.RECIPE_DESC.ROCKSHIELD = "Rock Shield"
-GLOBAL.STRINGS.NAMES.MARBLESHIELD = "Marble Shield"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.MARBLESHIELD = "Marble Shield"
-GLOBAL.STRINGS.RECIPE_DESC.MARBLESHIELD = "Marble Shield"
-GLOBAL.STRINGS.NAMES.BONESHIELD = "Bone Shield"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.BONESHIELD = "Bone Shield"
-GLOBAL.STRINGS.RECIPE_DESC.BONESHIELD = "Bone Shield"
-GLOBAL.STRINGS.NAMES.REFLECTSHIELD = "Reflection Shield"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.REFLECTSHIELD = "Reflection Shield"
-GLOBAL.STRINGS.NAMES.UNDEADBANESWORD = "Sword of Lesser Undead Bane"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.UNDEADBANESWORD = "Sword of Lesser Undead Bane"
-GLOBAL.STRINGS.NAMES.UNDEADBANESWORD2 = "Sword of Undead Bane"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.UNDEADBANESWORD2 = "Sword of Undead Bane"
-GLOBAL.STRINGS.NAMES.UNDEADBANESWORD3 = "Sword of Greater Undead Bane"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.UNDEADBANESWORD3 = "Sword of Greater Undead Bane"
-GLOBAL.STRINGS.NAMES.VORPALAXE = "Lesser Vorpal Axe"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.VORPALAXE = "Lesser Vorpal Axe"
-GLOBAL.STRINGS.NAMES.VORPALAXE2 = "Vorpal Axe"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.VORPALAXE2 = "Vorpal Axe"
-GLOBAL.STRINGS.NAMES.VORPALAXE3 = "Greater Vorpal Axe"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.VORPALAXE3 = "Greater Vorpal Axe"
-GLOBAL.STRINGS.NAMES.FLAMINGSWORD = "Lesser Flaming Sword"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FLAMINGSWORD = "Lesser Flaming Sword"
-GLOBAL.STRINGS.NAMES.FLAMINGSWORD2 = "Flaming Sword"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FLAMINGSWORD2 = "Flaming Sword"
-GLOBAL.STRINGS.NAMES.FLAMINGSWORD3 = "Greater Flaming Sword"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FLAMINGSWORD3 = "Greater Flaming Sword"
-GLOBAL.STRINGS.NAMES.DAGGER = "Dagger of Lesser Slaying"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.DAGGER = "Dagger of Lesser Slaying"
-GLOBAL.STRINGS.NAMES.DAGGER2 = "Dagger of Slaying"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.DAGGER2 = "Dagger of Slaying"
-GLOBAL.STRINGS.NAMES.DAGGER3 = "Dagger of Greater Slaying"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.DAGGER3 = "Dagger of Greater Slaying"
-GLOBAL.STRINGS.NAMES.FROSTSWORD = "Lesser Frost Sword"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FROSTSWORD = "Lesser Frost Sword"
-GLOBAL.STRINGS.NAMES.FROSTSWORD2 = "Frost Sword"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FROSTSWORD2 = "Frost Sword"
-GLOBAL.STRINGS.NAMES.FROSTSWORD3 = "Greater Frost Sword"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FROSTSWORD3 = "Greater Frost Sword"
-GLOBAL.STRINGS.NAMES.ARMORFIRE = "Armor of Lesser Fire"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARMORFIRE = "Armor of Lesser Fire"
-GLOBAL.STRINGS.NAMES.ARMORFIRE2 =  "Armor of Fire"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARMORFIRE2 = "Armor of Fire"
-GLOBAL.STRINGS.NAMES.ARMORFIRE3 =  "Armor of Greater Fire"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARMORFIRE3 = "Armor of Greater Fire"
-GLOBAL.STRINGS.NAMES.ARMORFROST = "Armor of Lesser Frost"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARMORFROST = "Armor of Lesser Frost"
-GLOBAL.STRINGS.NAMES.ARMORFROST2 =  "Armor of Frost"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARMORFROST2 = "Armor of Frost"
-GLOBAL.STRINGS.NAMES.ARMORFROST3 =  "Armor of Greater Frost"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.ARMORFROST3 = "Armor of Greater Frost"
-GLOBAL.STRINGS.NAMES.DKSWORD = "Evil Sword"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.DKSWORD = "Evil Sword"
-GLOBAL.STRINGS.NAMES.HOLYSWORD = "Holy Sword"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.HOLYSWORD = "Holy Sword"
-GLOBAL.STRINGS.NAMES.FA_LIGHTNINGSWORD = "Lesser Lightning Sword"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_LIGHTNINGSWORD = "Lesser Lightning Sword"
-GLOBAL.STRINGS.NAMES.FA_LIGHTNINGSWORD2 = "Lightning Sword"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_LIGHTNINGSWORD2 = "Lightning Sword"
-GLOBAL.STRINGS.NAMES.FA_LIGHTNINGSWORD3 = "Greater Lightning Sword"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_LIGHTNINGSWORD3 = "Greater Lightning Sword"
-
-GLOBAL.STRINGS.NAMES.FA_FIREAXE = "Lesser Fire Axe"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_FIREAXE = "Lesser Fire Axe"
-GLOBAL.STRINGS.NAMES.FA_FIREAXE2 = "Fire Axe"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_FIREAXE2 =  "Fire Axe"
-GLOBAL.STRINGS.NAMES.FA_FIREAXE3 = "Greater Fire Axe"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_FIREAXE3 = "Greater Fire Axe"
-GLOBAL.STRINGS.NAMES.FA_ICEAXE = "Lesser Ice Axe"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_ICEAXE = "Lesser Ice Axe"
-GLOBAL.STRINGS.NAMES.FA_ICEAXE2 = "Ice Axe"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_ICEAXE2 = "Ice Axe"
-GLOBAL.STRINGS.NAMES.FA_ICEAXE3 = "Greater Ice Axe"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_ICEAXE3 = "Greater Ice Axe"
-
-GLOBAL.STRINGS.NAMES.FA_WOODARROWS = "Wood Arrows"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_WOODARROWS =  "Wood Arrows"
-GLOBAL.STRINGS.NAMES.FA_ICEARROWS = "Ice Arrows"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_ICEARROWS = "Ice Arrows"
-GLOBAL.STRINGS.NAMES.FA_POISONARROWS = "Poison Arrows"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_POISONARROWS = "Poison Arrows"
-GLOBAL.STRINGS.NAMES.FA_FIREARROWS = "Fire Arrows"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_FIREARROWS = "Fire Arrows"
-
-
-GLOBAL.STRINGS.NAMES.FA_GOODBERRIES = "Goodberries"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_GOODBERRIES = "Goodberries"
-GLOBAL.STRINGS.NAMES.FA_BOTTLE_R = "Health Potion"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_BOTTLE_R =  "Health Potion"
-GLOBAL.STRINGS.NAMES.FA_BOTTLE_Y = "Hunger Potion"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_BOTTLE_Y ="Hunger Potion"
-GLOBAL.STRINGS.NAMES.FA_BOTTLE_G = "Sanity Potion"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_BOTTLE_G = "Sanity Potion"
-GLOBAL.STRINGS.NAMES.FA_BOTTLE_B = "Wonder Potion"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_BOTTLE_B = "Wonder Potion"
-GLOBAL.STRINGS.NAMES.HAT_GOBLINKING = "Goblin King Crown"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.HAT_GOBLINKING = "Goblin King Crown"
-GLOBAL.STRINGS.NAMES.HAT_POT = "Pot Hat"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.HAT_POT = "Pot Hat"
-
-
-GLOBAL.STRINGS.NAMES.FA_BLUETOTEM_ITEM = "Lightning Staff"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_BLUETOTEM_ITEM = "Lightning Staff"
-GLOBAL.STRINGS.NAMES.FA_BLUETOTEM = "Lightning Staff"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_BLUETOTEM = "Lightning Staff"
-GLOBAL.STRINGS.NAMES.FA_REDTOTEM_ITEM = "Fire Staff"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_REDTOTEM_ITEM = "Fire Staff"
-GLOBAL.STRINGS.NAMES.FA_REDTOTEM_KOS = "Fire Staff"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_REDTOTEM_KOS = "Fire Staff"
-GLOBAL.STRINGS.NAMES.FA_REDTOTEM = "Fire Staff"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_REDTOTEM = "Fire Staff"
-GLOBAL.STRINGS.NAMES.FA_ANIMATEDARMOR = "Armor"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_ANIMATEDARMOR = "Armor"
-GLOBAL.STRINGS.NAMES.FA_SKULL = "Skull"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_SKULL = "Skull"
-GLOBAL.STRINGS.NAMES.FA_BONFIRE = "Bonfire"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_BONFIRE = "Bonfire"
-
-GLOBAL.STRINGS.NAMES.POISONSPIDER = "Poison Spider"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.POISONSPIDER =  "Poison Spider"
-GLOBAL.STRINGS.NAMES.POISONSPIDERDEN = "Poison Spider Den"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.POISONSPIDERDEN =  "Poison Spider Den"
-GLOBAL.STRINGS.NAMES.POISONSPIDEREGGSACK = "Poison Spider Egg Sack"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.POISONSPIDEREGGSACK =  "Poison Spider Egg Sack"
-
-GLOBAL.STRINGS.NAMES.FA_DUNGEON_ENTRANCE = "Dungeon Entrance"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_DUNGEON_ENTRANCE = "Dungeon Entrance"
-GLOBAL.STRINGS.NAMES.FA_DUNGEON_EXIT = "Dungeon Exit"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_DUNGEON_EXIT = "Dungeon Exit"
-GLOBAL.STRINGS.NAMES.GOBLIN = "Goblin"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.GOBLIN = "Goblin"
-GLOBAL.STRINGS.NAMES.GOBLINHUT = "Goblin Hut"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.GOBLINHUT = "Goblin Hut"
-GLOBAL.STRINGS.NAMES.FAIRY_L20 = "Wolf"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FAIRY_L20 = "Wolf"
-GLOBAL.STRINGS.NAMES.DARKKNIGHTPET = "Shadow Pet"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKKNIGHTPET = "Shadow Pet"
-
-GLOBAL.STRINGS.NAMES.GOBLINKINGHEAD_ITEM = "Head of a goblin king"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.GOBLINKINGHEAD_ITEM = "Head of a goblin king"
-GLOBAL.STRINGS.NAMES.GOBLINKINGHEAD = "Head of a goblin king"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.GOBLINKINGHEAD = "Head of a goblin king"
-
-GLOBAL.STRINGS.NAMES.GOBLINSIGN_1 = "Goblin Sign Post"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.GOBLINSIGN_1 = "It says 'Greenz noze's only'."
-GLOBAL.STRINGS.NAMES.GOBLINSIGN_2 = "Goblin Sign Post"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.GOBLINSIGN_2 = "It says 'No heroz com herez, go away!'."
-GLOBAL.STRINGS.NAMES.GOBLINSIGN_3 = "Goblin Sign Post"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.GOBLINSIGN_3 = "It says 'Danger!'."
-GLOBAL.STRINGS.NAMES.GOBLINSIGN_4 = "Goblin Sign Post"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.GOBLINSIGN_4 = "It says 'Only prutty facez be herez'."
-GLOBAL.STRINGS.NAMES.GOBLINSIGN_5 = "Goblin Sign Post"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.GOBLINSIGN_5 = "It says 'Go bak now!'."
-
-GLOBAL.STRINGS.NAMES.FA_TELEPORTER="Teleporter"
-GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_TELEPORTER="Teleporter"
-
-STRINGS.NAMES.MAGICMISSILEWAND = "Wand of Magic Missile"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.MAGICMISSILEWAND = "Wand of Magic Missile"
-STRINGS.RECIPE_DESC.MAGICMISSILEWAND = "Wand of Magic Missile"
-
-STRINGS.NAMES.ACIDARROWWAND = "Wand of Acid Arrow"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.ACIDARROWWAND = "Wand of Acid Arrow"
-STRINGS.RECIPE_DESC.ACIDARROWWAND ="Wand of Acid Arrow"
-
-STRINGS.NAMES.FIREBALLWAND = "Wand of Fireball"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.FIREBALLWAND = "Wand of Fireball"
-STRINGS.RECIPE_DESC.FIREBALLWAND =  "Wand of Fireball"
-
-STRINGS.NAMES.ICESTORMWAND = "Wand of IceStorm"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.ICESTORMWAND = "Wand of IceStorm"
-STRINGS.RECIPE_DESC.ICESTORMWAND =  "Wand of IceStorm"
-
-STRINGS.NAMES.FIREWALLWAND = "Wand of FireWall"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.FIREWALLWAND = "Wand of FireWall"
-STRINGS.RECIPE_DESC.FIREWALLWAND =  "Wand of FireWall"
-
-STRINGS.NAMES.FIREWALLWAND_INSTA = "Wand of FireWall"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.FIREWALLWAND_INSTA = "Wand of FireWall"
-STRINGS.RECIPE_DESC.FIREWALLWAND_INSTA =  "Wand of FireWall"
-
-STRINGS.NAMES.SUNBURSTWAND = "Wand of Sunburst"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.SUNBURSTWAND ="Wand of Sunburst"
-STRINGS.RECIPE_DESC.SUNBURSTWAND ="Wand of Sunburst"
-
-STRINGS.NAMES.SPELL_INVISIBILITY = "Invisibility"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_INVISIBILITY =  "Invisibility"
-STRINGS.RECIPE_DESC.SPELL_INVISIBILITY = "Invisibility"
-
-STRINGS.NAMES.SPELL_HASTE = "Haste"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_HASTE =  "Haste"
-STRINGS.RECIPE_DESC.SPELL_HASTE = "Haste"
-
-STRINGS.NAMES.SPELL_SUMMONFEAST = "Summon feast"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_SUMMONFEAST =  "Summon feast"
-STRINGS.RECIPE_DESC.SPELL_SUMMONFEAST =  "Summon feast"
-
-STRINGS.NAMES.PRISMATICWAND = "Prismatic Wall"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.PRISMATICWAND =  "Prismatic Wall"
-STRINGS.RECIPE_DESC.PRISMATICWAND = "Prismatic Wall"
-
-STRINGS.NAMES.LIGHTNINGBOLTWAND = "Wand of Lightning Bolt"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTNINGBOLTWAND =  "Wand of Lightning Bolt"
-STRINGS.RECIPE_DESC.LIGHTNINGBOLTWAND = "Wand of Lightning Bolt"
-
-
-
-
-STRINGS.NAMES.TRAP_CIRCLEOFDEATH = "Circle of Death"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.TRAP_CIRCLEOFDEATH = "Circle of Death"
-STRINGS.RECIPE_DESC.TRAP_CIRCLEOFDEATH = "Circle of Death"
-
-GLOBAL.STRINGS.CHARACTERS.GENERIC.FA_FEAR_DEADKING="My King is DEAD!"
---[[
-GLOBAL.STRINGS.CHARACTERS.GENERIC.FA_WONDER_SPEEDBOOST
-GLOBAL.STRINGS.CHARACTERS.GENERIC.FA_WONDER_SPEEDNERF
-GLOBAL.STRINGS.CHARACTERS.GENERIC.FA_WONDER_HPRESTORE
-GLOBAL.STRINGS.CHARACTERS.GENERIC.FA_WONDER_HPDAMAGE
-GLOBAL.STRINGS.CHARACTERS.GENERIC.FA_WONDER_POISON
-GLOBAL.STRINGS.CHARACTERS.GENERIC.FA_WONDER_SLEEP
-GLOBAL.STRINGS.CHARACTERS.GENERIC.FA_WONDER_GOLD
-GLOBAL.STRINGS.CHARACTERS.GENERIC.FA_WONDER_LS
-GLOBAL.STRINGS.CHARACTERS.GENERIC.FA_WONDER_SANITYRESTORE
-GLOBAL.STRINGS.CHARACTERS.GENERIC.FA_WONDER_INSANITY
-GLOBAL.STRINGS.CHARACTERS.GENERIC.FA_WONDER_HUNGERRESTORE
-GLOBAL.STRINGS.CHARACTERS.GENERIC.FA_WONDER_TELEPORT
-GLOBAL.STRINGS.CHARACTERS.GENERIC.FA_WONDER_NIGHTMAREFUEL
-GLOBAL.STRINGS.CHARACTERS.GENERIC.FA_WONDER_NAUGHTINESS
-GLOBAL.STRINGS.CHARACTERS.GENERIC.FA_WONDER_ITEMDAMAGE
-GLOBAL.STRINGS.CHARACTERS.GENERIC.FA_WONDER_ITEMREPAIR
-GLOBAL.STRINGS.CHARACTERS.GENERIC.FA_WONDER_BLUEPRINT
-GLOBAL.STRINGS.CHARACTERS.GENERIC.FA_WONDER_GEMS
-GLOBAL.STRINGS.CHARACTERS.GENERIC.FA_WONDER_HOUNDED
-]]
-
-
-GLOBAL.STRINGS.CHARACTERS.PALADIN.FA_WONDER_SPEEDBOOST="I have been blessed with speed!"
-GLOBAL.STRINGS.CHARACTERS.PALADIN.FA_WONDER_SPEEDNERF="I have been cursed with a slow spell!"
-GLOBAL.STRINGS.CHARACTERS.PALADIN.FA_WONDER_HPRESTORE="I have been restored!"
-GLOBAL.STRINGS.CHARACTERS.PALADIN.FA_WONDER_HPDAMAGE="That does not feel good."
-GLOBAL.STRINGS.CHARACTERS.PALADIN.FA_WONDER_POISON="I do not feel well."
-GLOBAL.STRINGS.CHARACTERS.PALADIN.FA_WONDER_SLEEP="I feel...."
-GLOBAL.STRINGS.CHARACTERS.PALADIN.FA_WONDER_GOLD="My god has blessed me with wealth!"
-GLOBAL.STRINGS.CHARACTERS.PALADIN.FA_WONDER_LS="My god, what have I done?"
-GLOBAL.STRINGS.CHARACTERS.PALADIN.FA_WONDER_SANITYRESTORE="I am truly enlightened."
-GLOBAL.STRINGS.CHARACTERS.PALADIN.FA_WONDER_INSANITY="Something has corrupted my beliefs!"
-GLOBAL.STRINGS.CHARACTERS.PALADIN.FA_WONDER_HUNGERRESTORE="My god has provided me with a bounty of food."
-GLOBAL.STRINGS.CHARACTERS.PALADIN.FA_WONDER_TELEPORT="This is the most evil of magic!"
-GLOBAL.STRINGS.CHARACTERS.PALADIN.FA_WONDER_NIGHTMAREFUEL="These things are most foul!"
-GLOBAL.STRINGS.CHARACTERS.PALADIN.FA_WONDER_NAUGHTINESS="I must do penance!"
-GLOBAL.STRINGS.CHARACTERS.PALADIN.FA_WONDER_ITEMDAMAGE="My items have been cursed!"
-GLOBAL.STRINGS.CHARACTERS.PALADIN.FA_WONDER_ITEMREPAIR="I feel my items have been blessed!"
-GLOBAL.STRINGS.CHARACTERS.PALADIN.FA_WONDER_BLUEPRINT="No one can design things better than my god!"
-GLOBAL.STRINGS.CHARACTERS.PALADIN.FA_WONDER_GEMS="My god can create the most beautiful of things!"
-GLOBAL.STRINGS.CHARACTERS.PALADIN.FA_WONDER_HOUNDED="My god warns me, something is coming..."
-
-GLOBAL.STRINGS.CHARACTERS.DRUID.FA_WONDER_SPEEDBOOST="I feel as fast as the wind!"
-GLOBAL.STRINGS.CHARACTERS.DRUID.FA_WONDER_SPEEDNERF="I feel as slow as a stream in winter."
-GLOBAL.STRINGS.CHARACTERS.DRUID.FA_WONDER_HPRESTORE="I feel more healthy"
-GLOBAL.STRINGS.CHARACTERS.DRUID.FA_WONDER_HPDAMAGE="Ouch!"
-GLOBAL.STRINGS.CHARACTERS.DRUID.FA_WONDER_POISON="This is unnatural!"
-GLOBAL.STRINGS.CHARACTERS.DRUID.FA_WONDER_SLEEP="Night is coming early..."
-GLOBAL.STRINGS.CHARACTERS.DRUID.FA_WONDER_GOLD="Nature has truly blessed me!"
-GLOBAL.STRINGS.CHARACTERS.DRUID.FA_WONDER_LS="Oh Mother, why have you forsaken me..."
-GLOBAL.STRINGS.CHARACTERS.DRUID.FA_WONDER_SANITYRESTORE="I feel as clear as a still pond"
-GLOBAL.STRINGS.CHARACTERS.DRUID.FA_WONDER_INSANITY="Oh this is not natural!"
-GLOBAL.STRINGS.CHARACTERS.DRUID.FA_WONDER_HUNGERRESTORE="Nature has given me a bounty!"
-GLOBAL.STRINGS.CHARACTERS.DRUID.FA_WONDER_TELEPORT="The winds have blown me off course"
-GLOBAL.STRINGS.CHARACTERS.DRUID.FA_WONDER_NIGHTMAREFUEL="These are not natural"
-GLOBAL.STRINGS.CHARACTERS.DRUID.FA_WONDER_NAUGHTINESS="What have I done?"
-GLOBAL.STRINGS.CHARACTERS.DRUID.FA_WONDER_ITEMDAMAGE="Nature has broken my gear"
-GLOBAL.STRINGS.CHARACTERS.DRUID.FA_WONDER_ITEMREPAIR="Nature has blessed my gear"
-GLOBAL.STRINGS.CHARACTERS.DRUID.FA_WONDER_BLUEPRINT="Nature has better designs"
-GLOBAL.STRINGS.CHARACTERS.DRUID.FA_WONDER_GEMS="Mother has given me a wondrous gift"
-GLOBAL.STRINGS.CHARACTERS.DRUID.FA_WONDER_HOUNDED="I smell something on the wind."
-
-GLOBAL.STRINGS.CHARACTERS.BARB.FA_WONDER_SPEEDBOOST="Me fast!"
-GLOBAL.STRINGS.CHARACTERS.BARB.FA_WONDER_SPEEDNERF="Me slow!"
-GLOBAL.STRINGS.CHARACTERS.BARB.FA_WONDER_HPRESTORE="Yar!!!"
-GLOBAL.STRINGS.CHARACTERS.BARB.FA_WONDER_HPDAMAGE="Grr..."
-GLOBAL.STRINGS.CHARACTERS.BARB.FA_WONDER_POISON="Me no feel so good."
-GLOBAL.STRINGS.CHARACTERS.BARB.FA_WONDER_SLEEP="Me no......."
-GLOBAL.STRINGS.CHARACTERS.BARB.FA_WONDER_GOLD="Nice and shiny!"
-GLOBAL.STRINGS.CHARACTERS.BARB.FA_WONDER_LS="Grrr... bright light hurts"
-GLOBAL.STRINGS.CHARACTERS.BARB.FA_WONDER_SANITYRESTORE="Mmmmmm"
-GLOBAL.STRINGS.CHARACTERS.BARB.FA_WONDER_INSANITY="Kill, must kill!"
-GLOBAL.STRINGS.CHARACTERS.BARB.FA_WONDER_HUNGERRESTORE="Yum, Yum."
-GLOBAL.STRINGS.CHARACTERS.BARB.FA_WONDER_TELEPORT="Where me going..."
-GLOBAL.STRINGS.CHARACTERS.BARB.FA_WONDER_NIGHTMAREFUEL="What this?"
-GLOBAL.STRINGS.CHARACTERS.BARB.FA_WONDER_NAUGHTINESS="Me be bad."
-GLOBAL.STRINGS.CHARACTERS.BARB.FA_WONDER_ITEMDAMAGE="Why my stuffs break!"
-GLOBAL.STRINGS.CHARACTERS.BARB.FA_WONDER_ITEMREPAIR="My stuffs got fixed!"
-GLOBAL.STRINGS.CHARACTERS.BARB.FA_WONDER_BLUEPRINT="Hmm... paper to make stuff."
-GLOBAL.STRINGS.CHARACTERS.BARB.FA_WONDER_GEMS="Shiny!"
-GLOBAL.STRINGS.CHARACTERS.BARB.FA_WONDER_HOUNDED="Something coming?"
-
-GLOBAL.STRINGS.ACTIONS.RELOAD="Reload"
-
-GLOBAL.STRINGS.UI.WORLDGEN.GOBLIN={}
-GLOBAL.STRINGS.UI.WORLDGEN.GOBLIN.VERBS={"Wrangling","Generating","Herding","Embiggening","Iterating upon","Insinuating","Reticulating","Inserting","Framing"}
-GLOBAL.STRINGS.UI.WORLDGEN.GOBLIN.NOUNS={"Pot Helms","GOBLINS!","Poop","Walls","Monsters","a keen sense of despair","Goblin huts","Treasure and other loots","Goblin plans for world domination!","The Kings stronghold"}
-
 AddMinimapAtlas("minimap/boneshield.xml")
 AddMinimapAtlas("minimap/dagger.xml")
 AddMinimapAtlas("minimap/evilsword.xml")
@@ -755,39 +362,7 @@ GLOBAL.FALLENLOOTTABLEMERGED=MergeMaps(GLOBAL.FALLENLOOTTABLE["tier1"],GLOBAL.FA
 local FALLENLOOTTABLE=GLOBAL.FALLENLOOTTABLE
 local FALLENLOOTTABLEMERGED=GLOBAL.FALLENLOOTTABLEMERGED
 
-local SANITY_DAY_LOSS=-100.0/(300*10)
-local PROTOTYPE_XP=50
-local SKELETONSPAWNDELAY=960
-local GHOST_MOUND_SPAWN_CHANCE=0.5
-local MOUND_RESET_PERIOD=20*480
-local FISHING_MERM_SPAWN_CHANCE=0.3
 
-TUNING.ARMORGRASS = 220
-TUNING.ARMORGRASS_ABSORPTION = .2
-TUNING.ARMORWOOD = 450
-TUNING.ARMORWOOD_ABSORPTION = .4
-TUNING.ARMORMARBLE = 1050
-TUNING.ARMORMARBLE_ABSORPTION = .60
-TUNING.ARMORSNURTLESHELL_ABSORPTION = 0.8
-TUNING.ARMORSNURTLESHELL = 1050
-TUNING.ARMORMARBLE_SLOW = 0.7
-TUNING.ARMORRUINS_ABSORPTION = 0.9
-TUNING.ARMORRUINS = 1800
-TUNING.ARMORSLURPER_ABSORPTION = 0.6
-TUNING.ARMORSLURPER_SLOW_HUNGER = 0.6
-TUNING.ARMORSLURPER = 300
-TUNING.ARMOR_SANITY = 750
-TUNING.ARMOR_SANITY_ABSORPTION = .8
-TUNING.ARMOR_SANITY_DMG_AS_SANITY = 0.10
-
-TUNING.STONEWALL_HEALTH=TUNING.STONEWALL_HEALTH*2
-TUNING.WOODWALL_HEALTH=TUNING.WOODWALL_HEALTH*2
-TUNING.HAYWALL_HEALTH=TUNING.HAYWALL_HEALTH*2
-TUNING.RUINSWALL_HEALTH=TUNING.RUINSWALL_HEALTH*2
-
-TUNING.GHOST_SPEED = 5
-TUNING.GHOST_HEALTH = 300
-TUNING.GHOST_DAMAGE=30
 
 -- Let the game know Wod is a male, for proper pronouns during the end-game sequence.
 -- Possible genders here are MALE, FEMALE, or ROBOT
@@ -1524,8 +1099,6 @@ end)
 
 AddPrefabPostInit("world", function(inst)
 
-
-
 --    GLOBAL.assert( GLOBAL.GetPlayer() == nil )
     local player_prefab = GLOBAL.SaveGameIndex:GetSlotCharacter()
  
@@ -1604,28 +1177,18 @@ local function setTopologyType(inst,type)
     end
 end
 
-AddPrefabPostInit("cave", function(inst)
+local function OrcMinesPostInit(inst)
+    local waves = inst.entity:AddWaveComponent()
 
+    waves:SetRegionSize( 40, 16 )
+    waves:SetRegionNumWaves( 8 )
+    waves:SetWaveTexture(GLOBAL.resolvefilepath("images/lava2.tex"))--GLOBAL.resolvefilepath("images/lava.tex")
+    waves:SetWaveEffect( "shaders/waves.ksh" ) -- texture.ksh
+    waves:SetWaveSize( 2048, 512 )
 
-    local level=GLOBAL.SaveGameIndex:GetCurrentCaveLevel()
-    print("in cave postinit",level)
-    if(level>3)then
-        inst:RemoveComponent("periodicthreat")
-        local data=Levels.cave_levels[level]
-        if(data and GLOBAL.FA_LEVELS[data.id])then
-
-            if(data.id=="ORC_MINES" or data.id=="DWARF_FORTRESS" or data.id=="ORC_FORTRESS")then
- --add waves
-                local waves = inst.entity:AddWaveComponent()
-                waves:SetRegionSize( 50, 50 )
-                waves:SetRegionNumWaves( 35 )
-                waves:SetWaveTexture(GLOBAL.resolvefilepath("images/lava2.tex"))--GLOBAL.resolvefilepath("images/lava.tex")
-                waves:SetWaveEffect( "shaders/waves.ksh" ) -- texture.ksh
-                waves:SetWaveSize( 2048, 512 )
-
-                GLOBAL.GetWorld().components.colourcubemanager:SetOverrideColourCube(
-                    GLOBAL.resolvefilepath "colour_cubes/lavacube.tex"
-                )
+    GLOBAL.GetWorld().components.colourcubemanager:SetOverrideColourCube(
+        GLOBAL.resolvefilepath "colour_cubes/lavacube.tex"
+    )
 --                setTopologyType(inst,"mines")        
 
                 inst.IsCave=function() return false end
@@ -1637,21 +1200,76 @@ AddPrefabPostInit("cave", function(inst)
                 inst.components.seasonmanager.current_season = GLOBAL.SEASONS.SUMMER
                 inst.components.seasonmanager:AlwaysSummer()
 
+                local startLavaRain=function()
+                    if(not inst.fa_lavarain)then
+                        inst.fa_lavarain=SpawnPrefab("fa_lavarain")
+                        inst.fa_lavarain.persists=false
+                    end
+                    inst.fa_lavarain.entity:SetParent( GetPlayer().entity )
+                    inst.fa_lavarain.particles_per_tick = 20
+                    inst.fa_lavarain.splashes_per_tick = 10
+                end
+
+                local old_load=inst.OnLoad
+                inst.OnLoad=function(inst,data)
+                    if(old_load)then
+                        old_load(inst,data)
+                    end
+                    if(data and data.fa_lavarain)then
+                        startLavaRain()
+                    end
+                end
+                local old_save=inst.OnSave
+                inst.OnSave=function(inst,data)
+                    if(old_save)then
+                        old_save(inst,data)
+                    end
+                    if(inst.fa_lavarain)then
+                        data.fa_lavarain=true
+                    end
+                end
+                inst:ListenForEvent("startquake",function()
+                    startLavaRain()
+                end)
+                inst:ListenForEvent("endquake",function()
+                    inst.fa_lavarain:Remove()
+                    inst.fa_lavarain=nil
+                end)   
+
+    inst:AddComponent("fawarzone")
+    AddClassPostConstruct("widgets/controls", function(self, owner)
+        self.clock:Kill()
+        self.clock=self.sidepanel:AddChild(FAWarClock(owner))
+    end)
+end
+
+AddPrefabPostInit("cave", function(inst)
+
+    local level=GLOBAL.SaveGameIndex:GetCurrentCaveLevel()
+    print("in cave postinit",level)
+    if(level>3)then
+        inst:RemoveComponent("periodicthreat")
+        local data=Levels.cave_levels[level]
+        if(data and GLOBAL.FA_LEVELS[data.id])then
+
+            if(data.id=="ORC_MINES" or data.id=="DWARF_FORTRESS" or data.id=="ORC_FORTRESS")then
+                OrcMinesPostInit(inst)
             end
 
             local quakerlootoverride=GLOBAL.FA_QUAKER_LOOT_OVERRIDE[data.id]
             if(quakerlootoverride)then
-                local quaker=require("components/quaker")
+--                local quaker=require("components/quaker")
+                local quaker=inst.components.quaker
 
                 function quaker:GetDebris()
                     local rng = math.random()
                     local todrop = nil
                     if rng < 0.75 then
-                        todrop = debris.common[math.random(1, #debris.common)]
+                            todrop = quakerlootoverride.common[math.random(1, #quakerlootoverride.common)]
                     elseif rng >= 0.75 and rng < 0.95 then
-                        todrop = debris.rare[math.random(1, #debris.rare)]
+                            todrop = quakerlootoverride.rare[math.random(1, #quakerlootoverride.rare)]
                     else
-                        todrop = debris.veryrare[math.random(1, #debris.veryrare)]
+                            todrop = quakerlootoverride.veryrare[math.random(1, #quakerlootoverride.veryrare)]
                     end
                     return todrop
                 end
@@ -1927,6 +1545,13 @@ function addFullLootPrefabPostInit(inst,chance)
     inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLEMERGED,FALLENLOOTTABLE.TABLE_WEIGHT,chance)
 end
 
+--this has to be the only non-fx thing that doesn't have one...
+AddPrefabPostInit("thulecite_pieces", function(inst) 
+    if(not inst.SoundEmitter)then
+        inst.entity:AddSoundEmitter() 
+    end
+end)
+
 AddPrefabPostInit("rabbithole", function(inst) addT1LootPrefabPostInit(inst,0.05) end)
 
 AddPrefabPostInit("merm", function(inst) addFullLootPrefabPostInit(inst,0.1) end)
@@ -1966,7 +1591,6 @@ AddModCharacter("barb")
 AddModCharacter("druid")
 AddModCharacter("paladin")
 
---[[
 AddModCharacter("thief")
 AddModCharacter("cleric")
 AddModCharacter("darkknight")
@@ -1975,4 +1599,3 @@ AddModCharacter("necromancer")
 AddModCharacter("wizard")
 AddModCharacter("tinkerer")
 AddModCharacter("ranger")
-]]

@@ -4,13 +4,14 @@ local Text = require "widgets/text"
 local UIAnim = require "widgets/uianim"
 
 
-local WarClock = Class(Widget, function(self)
+local FAWarClock = Class(Widget, function(self,owner)
     Widget._ctor(self, "Clock")
+    self.owner=owner
     --self:SetHAnchor(ANCHOR_RIGHT)
     --self:SetVAnchor(ANCHOR_TOP)
 
     self.colors={
-        peace=Vector3(254/255,212/255,255/255),
+        peace=Vector3(220/255,220/255,220/255),
         war=Vector3(154/255,22/255,0/255)
     }
     self.DARKEN_PERCENT = .75
@@ -99,7 +100,9 @@ local WarClock = Class(Widget, function(self)
 	self.inst:ListenForEvent( "warsegschanged", function(inst, data) 
         self:RecalcSegs(data.phases)
     end, GetWorld())
-    
+       
+    local warsegs=GetWorld().components.fawarzone:GetDaySegs()
+    self:RecalcSegs(warsegs)
     
     self.old_t = 0 
 --    self:RecalcSegs()
@@ -109,12 +112,14 @@ local WarClock = Class(Widget, function(self)
     end]]
 end)
 
-function WarClock:RecalcSegs(phases)
+function FAWarClock:RecalcSegs(phases)
     local i=1
     for k, v in ipairs(phases) do
         local segcount=v.length
         local color=self.colors[v.name]
+        print("segcount",segcount)
         for c=1, segcount do
+            print(i)
             if(color)then
                 self.segs[i]:SetTint(color.x,color.y,color.z,1)
                 self.segs[i]:Show()
@@ -126,26 +131,26 @@ function WarClock:RecalcSegs(phases)
     end    
 end
 
-function WarClock:UpdateDayString()
+function FAWarClock:UpdateDayString()
     local clock_str = STRINGS.UI.HUD.CLOCKDAY.." "..tostring(GetClock().numcycles+1)
     self.text:SetString(clock_str)
 end
 
-function WarClock:OnGainFocus()
-	UIClock._base.OnGainFocus(self)
+function FAWarClock:OnGainFocus()
+	FAWarClock._base.OnGainFocus(self)
 	local clock_str = STRINGS.UI.HUD.WORLD.." ".. tostring(self.world_num or 1)
 	self.text:SetString(clock_str)
 	return true
 end
 
-function WarClock:OnLoseFocus()
-	UIClock._base.OnLoseFocus(self)
+function FAWarClock:OnLoseFocus()
+	FAWarClock._base.OnLoseFocus(self)
 	self:UpdateDayString()
 	return true
 end
 
 
-function WarClock:ShowMoon()
+function FAWarClock:ShowMoon()
     local mp = GetClock():GetMoonPhase()
     local moon_syms = 
     {
@@ -162,7 +167,7 @@ end
 
 
 
-function WarClock:SetTime(t, phase)
+function FAWarClock:SetTime(t, phase)
 --[[
     if phase == "day" then
         local segs = 16
@@ -179,4 +184,4 @@ function WarClock:SetTime(t, phase)
 end
 
 
-return WarClock
+return FAWarClock
