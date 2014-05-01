@@ -5,6 +5,8 @@ require "prefabutil"
 		Asset("ANIM", "anim/wall_stone.zip"),
 		Asset("ANIM", "anim/marble_pillar.zip"),
 		Asset("ANIM", "anim/fa_lavawall.zip")
+	    Asset("ATLAS", "images/inventoryimages/fa_lavawall.xml"),
+    	Asset("IMAGE", "images/inventoryimages/fa_lavawall.tex"),
 	}
 
 local LAVAWALL_HEALTH=2000
@@ -35,7 +37,7 @@ local LAVAWALL_HEALTH=2000
 			anim_to_play = "1_4"
 		elseif percent <= .5 then
 			anim_to_play = "1_2"
-		elseif percent < 1 then
+		elseif percent < 0.95 then
 			anim_to_play = "3_4"
 		else
 			anim_to_play = "1"
@@ -177,15 +179,12 @@ local function clearobstacle(inst)
 		inst.components.stackable.maxsize = TUNING.STACK_SIZE_MEDITEM
 
 		inst:AddComponent("inspectable")
-		inst:AddComponent("inventoryitem")
+    	inst:AddComponent("inventoryitem")
+    	inst.components.inventoryitem.imagename="fa_"..data.name.."wall"
+    	inst.components.inventoryitem.atlasname="images/inventoryimages/fa_"..data.name.."wall"
 		
 		inst:AddComponent("repairer")
-
-        if data.name == "ruins" then
-		    inst.components.repairer.repairmaterial = "thulecite"
-        else
-		    inst.components.repairer.repairmaterial = data.name
-        end
+	    inst.components.repairer.repairmaterial = data.name
 
 		inst.components.repairer.healthrepairvalue = data.maxhealth / 6
 	    
@@ -251,7 +250,7 @@ local function clearobstacle(inst)
 		inst.entity:SetCanSleep(false)
 		anim:SetBank("wall")
 		anim:SetBuild("fa_"..data.name.."wall")
-	    anim:PlayAnimation("3_4", false)
+	    anim:PlayAnimation("1_2", false)
 	    
 		inst:AddComponent("inspectable")
 		inst:AddComponent("lootdropper")
@@ -305,7 +304,9 @@ local function clearobstacle(inst)
 local lavawall_data={name = "lava", tags={"stone"}, loot = "fa_lavapebble", maxloots = 2, maxhealth=LAVAWALL_HEALTH, buildsound="dontstarve/common/place_structure_stone", destroysound="dontstarve/common/destroy_stone"}
 
 local function lavafn()
-	return	normfn(lavawall_data)
+	local inst=normfn(lavawall_data)
+	inst:AddComponent("heater")
+	inst.components.heater.heat=10
 end
 local function lavaitemfn()
 	return itemfn(lavawall_data)

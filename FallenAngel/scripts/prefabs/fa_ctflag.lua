@@ -3,7 +3,7 @@ local assets =
 }
 
 local INVASION_CHANCE=0.5
-local INVASION_SIZE=6
+local INVASION_SIZE=8
 
 local function getSpawnPoint(inst,radius)
     
@@ -29,7 +29,7 @@ local function startMineInvasion(inst,data)
         if(tag=="dorf")then
             prefab="orc"
         end
-        for i=1,INVASION_SIZE do
+        for i=1,math.random(INVASION_SIZE) do
             inst:DoTaskInTime(math.random()*10,function()
                 local mob=SpawnPrefab(prefab)
                 local particle = SpawnPrefab("poopcloud")
@@ -47,13 +47,39 @@ end
 local function onload(inst,data)
     if(data)then
         inst.warstate=data.warstate
+        inst.centered=data.centered
     end
+   
 end
 
 local function onsave(inst,data)
     data.warstate=inst.warstate
+    data.centered=inst.centered
 end
 
+local function moveToCenter(inst)
+    inst:DoTaskInTime(0,function()
+        if(not inst.centered)then
+        
+            local topo = GetWorld().topology
+            local pos = inst:GetPosition()
+            local mynode = nil
+            for i,node in ipairs(topo.nodes) do
+                if TheSim:WorldPointInPoly(pos.x, pos.z, node.poly) then
+                    mynode = node
+                    break
+                end
+            end
+            if(not mynode)then 
+                print("ERROR: not placed in any nodes?",inst)
+                return
+            end
+
+            inst.Transform:SetPosition(mynode.cent[1],0,mynode.cent[2])
+            inst.centered=true
+        end
+    end)
+end
 
 local function fn(Sim)
 	local inst = CreateEntity()
@@ -80,6 +106,8 @@ local function fn(Sim)
 
     inst.OnLoad=onload
     inst.OnSave=onsave
+
+    moveToCenter(inst)
 
     return inst
 end
