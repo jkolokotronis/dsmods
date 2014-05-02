@@ -552,7 +552,7 @@ local function newControlsInit(class)
             end
         end)
          GetPlayer():ListenForEvent("unlockrecipe", function(inst,data)
-            inst.components.xplevel:DoDelta(PROTOTYPE_XP)
+            inst.components.xplevel:DoDelta(GLOBAL.PROTOTYPE_XP)
         end,class.owner)
 
 
@@ -700,7 +700,7 @@ mound_digcallback=function(inst,worker)
         if worker.components.sanity then
             worker.components.sanity:DoDelta(-TUNING.SANITY_SMALL)
         end     
-        if math.random() < GHOST_MOUND_SPAWN_CHANCE then
+        if math.random() < GLOBAL.GHOST_MOUND_SPAWN_CHANCE then
                 local ghost = SpawnPrefab("ghost")
                 local pos = Point(inst.Transform:GetWorldPosition())
                 pos.x = pos.x -.3
@@ -730,15 +730,15 @@ mound_digcallback=function(inst,worker)
         end
     end
                 inst.fa_digtime=GLOBAL.GetTime()
-                inst.fa_digresettask=inst:DoTaskInTime(MOUND_RESET_PERIOD,function() print("should reset mound") mound_reset(inst) end)
-                inst.components.spawner:Configure( "skeletonspawn",SKELETONSPAWNDELAY,SKELETONSPAWNDELAY*math.random())
+                inst.fa_digresettask=inst:DoTaskInTime(GLOBAL.MOUND_RESET_PERIOD,function() print("should reset mound") mound_reset(inst) end)
+                inst.components.spawner:Configure( "skeletonspawn",GLOBAL.SKELETONSPAWNDELAY,GLOBAL.SKELETONSPAWNDELAY*math.random())
 end
 
 AddPrefabPostInit("mound",function(inst)
     inst:AddComponent( "spawner" )
     inst.components.spawner.spawnoffscreen=false
     inst.components.spawner.childname="skeletonspawn"
-    inst.components.spawner.delay=SKELETONSPAWNDELAY
+    inst.components.spawner.delay=GLOBAL.SKELETONSPAWNDELAY
 
     local oldsave=inst.OnSave
     inst.OnSave = function(inst, data)
@@ -759,10 +759,10 @@ AddPrefabPostInit("mound",function(inst)
 --        print("digtime", data.fa_digtime)
             if(data.fa_digtime)then
                 inst.fa_digtime=data.fa_digtime
-                inst.fa_digresettask=inst:DoTaskInTime(MOUND_RESET_PERIOD-GLOBAL.GetTime()+inst.fa_digtime,function() mound_reset(inst) end)
+                inst.fa_digresettask=inst:DoTaskInTime(GLOBAL.MOUND_RESET_PERIOD-GLOBAL.GetTime()+inst.fa_digtime,function() mound_reset(inst) end)
             else
                 inst.fa_digtime=GLOBAL.GetTime()
-                inst.fa_digresettask=inst:DoTaskInTime(MOUND_RESET_PERIOD,function() mound_reset(inst) end)
+                inst.fa_digresettask=inst:DoTaskInTime(GLOBAL.MOUND_RESET_PERIOD,function() mound_reset(inst) end)
             end
         end
     end    
@@ -779,8 +779,8 @@ AddPrefabPostInit("mound",function(inst)
             local onfinishcallback=inst.components.workable.onfinish
             inst.components.workable:SetOnFinishCallback(mound_digcallback)      
         else
-            local nexttime=inst.components.spawner.nextspawntime or SKELETONSPAWNDELAY*math.random()
-            inst.components.spawner:Configure( "skeletonspawn",SKELETONSPAWNDELAY,nexttime)
+            local nexttime=inst.components.spawner.nextspawntime or GLOBAL.SKELETONSPAWNDELAY*math.random()
+            inst.components.spawner:Configure( "skeletonspawn",GLOBAL.SKELETONSPAWNDELAY,nexttime)
         end
     end)
 
@@ -1040,7 +1040,7 @@ function Health:DoFireDamage(amount1, doer)
 end
 
 local function onFishingCollect(inst,data)
-    if(math.random()<=FISHING_MERM_SPAWN_CHANCE)then
+    if(math.random()<=GLOBAL.FISHING_MERM_SPAWN_CHANCE)then
         local merm=SpawnPrefab("merm")
         local spawnPos = GLOBAL.Vector3(inst.Transform:GetWorldPosition() )
         merm.Transform:SetPosition(spawnPos:Get() )
@@ -1343,7 +1343,7 @@ AddSimPostInit(function(inst)
                     local day = GetClock():IsDay() and not GetWorld():IsCave()
                     local light_delta=0
                     if day then 
-                        light_delta = SANITY_DAY_LOSS
+                        light_delta = GLOBAL.SANITY_DAY_LOSS
                     end
     
                     local aura_delta = 0
@@ -1480,6 +1480,15 @@ function Hounded:ReleaseHound(dt)
             local prefab = "hound"
             local day = GetClock().numcycles
             local special_hound_chance = self:GetSpecialHoundChance()
+
+    print("self.attacksizefn",self.attacksizefn)
+    print("houndstorelease",self.houndstorelease)
+
+            if(FA_DLCACCESS)then
+                if GetSeasonManager() and GetSeasonManager():IsSummer() then
+                    special_hound_chance = special_hound_chance * 1.5
+                end
+            end
 
             if math.random() < special_hound_chance then
                 if GetSeasonManager():IsWinter() then
