@@ -4,7 +4,7 @@ require "prefabutil"
 		Asset("ANIM", "anim/wall.zip"),
 		Asset("ANIM", "anim/wall_stone.zip"),
 		Asset("ANIM", "anim/marble_pillar.zip"),
-		Asset("ANIM", "anim/fa_lavawall.zip")
+		Asset("ANIM", "anim/fa_lavawall.zip"),
 	    Asset("ATLAS", "images/inventoryimages/fa_lavawall.xml"),
     	Asset("IMAGE", "images/inventoryimages/fa_lavawall.tex"),
 	}
