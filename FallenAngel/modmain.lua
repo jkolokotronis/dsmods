@@ -582,7 +582,7 @@ local newFlowerPicked=function(inst,picker)
             if(prefab=="flower")then
                 delta=TUNING.SANITY_TINY
             elseif (prefab=="flower_evil")then
-                delta=TUNING.SANITY_TINY
+                delta=-TUNING.SANITY_TINY
             end
         end
         picker.components.sanity:DoDelta(delta)
