@@ -147,6 +147,10 @@ local function fn()
     inst.components.eater.strongstomach = true -- can eat monster meat!
     inst.components.eater:SetOnEatFn(OnEat)
 
+    inst:AddComponent("sleeper")
+    inst.components.sleeper.sleeptestfn = function() return false end
+    inst.components.sleeper.waketestfn = function() return true end
+
     inst:ListenForEvent("attacked", OnAttacked)
 
     inst:SetStateGraph("SGtroll")

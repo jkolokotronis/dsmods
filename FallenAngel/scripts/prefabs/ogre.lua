@@ -89,6 +89,7 @@ local function fn()
     
     inst:ListenForEvent("attacked", OnAttacked)
 
+    inst:AddComponent("sleeper")
 
     MakeLargeBurnableCharacter(inst, "ogre")
     MakeLargeFreezableCharacter(inst, "ogre")

@@ -56,6 +56,8 @@ local function fn(Sim)
 
     inst:AddComponent("inspectable")
     inst:AddComponent("knownlocations")
+
+    inst:AddComponent("sleeper")
         
 
     MakeLargeBurnableCharacter(inst, "beefalo_body")

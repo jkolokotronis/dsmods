@@ -55,6 +55,7 @@ local function fn(Sim)
     inst.components.sanityaura.aura = -TUNING.SANITYAURA_MED
 
     inst:AddComponent("inspectable")
+    inst:AddComponent("sleeper")
         
     inst:AddComponent("combat")
     inst.components.combat.hiteffectsymbol = "torso"

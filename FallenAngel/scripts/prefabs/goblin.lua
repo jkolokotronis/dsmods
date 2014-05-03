@@ -261,6 +261,8 @@ local function common()
     inst.components.eater:SetOnEatFn(OnEat)
 
     inst:AddComponent("sleeper")
+    inst.components.sleeper.sleeptestfn = function() return false end
+    inst.components.sleeper.waketestfn = function() return true end
 
     inst:AddComponent("locomotor") -- locomotor must be constructed before the stategraph
     inst.components.locomotor.walkspeed=GOBLIN_WALK_SPEED
@@ -379,7 +381,9 @@ local function fnking()
     inst.components.health:SetMaxHealth(1600)
     GetInventoryKing(inst)
     inst.components.combat:SetRetargetFunction(1, KingRetargetFn)
-    inst.components.lootdropper:SetLoot({ "goblinkinghead_item"})
+    local brain = require "brains/goblinkingbrain"
+    inst:SetBrain(brain)
+    inst.components.lootdropper:SetLoot({ "goblinkinghead_item","Boards"})
     return inst
 end
 return Prefab( "common/goblin", normal, assets),

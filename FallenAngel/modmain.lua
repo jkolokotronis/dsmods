@@ -700,7 +700,9 @@ mound_digcallback=function(inst,worker)
         if worker.components.sanity then
             worker.components.sanity:DoDelta(-TUNING.SANITY_SMALL)
         end     
-        if math.random() < GLOBAL.GHOST_MOUND_SPAWN_CHANCE then
+        local roll=math.random()
+         print(roll,":",GLOBAL.GHOST_MOUND_SPAWN_CHANCE)
+        if roll < GLOBAL.GHOST_MOUND_SPAWN_CHANCE then
                 local ghost = SpawnPrefab("ghost")
                 local pos = Point(inst.Transform:GetWorldPosition())
                 pos.x = pos.x -.3
@@ -1452,12 +1454,40 @@ function lootdropperPostInit(component)
         end
         return loots
     end
+
+    function component:DropLoot(pt)
+    local prefabs = self:GenerateLoot()
+    local burn=false
+    if not self.inst.components.fueled and self.inst.components.burnable and self.inst.components.burnable:IsBurning() then
+        burn=true
+        for k,v in pairs(prefabs) do
+            local cookedAfter = v.."_cooked"
+            local cookedBefore = "cooked"..v
+            if GLOBAL.PrefabExists(cookedAfter) then
+                prefabs[k] = cookedAfter
+            elseif GLOBAL.PrefabExists(cookedBefore) then
+                prefabs[k] = cookedBefore 
+            else   
+            --this was burning everything in list regardless of wether it can be actually burned        
+--                prefabs[k] = "ash"               
+            end
+        end
+    end
+    for k,v in pairs(prefabs) do
+        local loot=self:SpawnLootPrefab(v, pt)
+        --now i have to check if it should burn instead, is there anything else i should be checking here?
+        if(burn and loot and loot.components.burnable)then
+            loot.components.burnable:Ignite()
+        end
+    end
+    end
+
 end
 
 local Hounded=require("components/hounded")
 Hounded.attack_delays["rare"]=function() return TUNING.TOTAL_DAY_TIME * 9 + math.random() * TUNING.TOTAL_DAY_TIME * 3 end
 Hounded.attack_delays["occasional"]=function() return TUNING.TOTAL_DAY_TIME * 9 + math.random() * TUNING.TOTAL_DAY_TIME * 3 end
-Hounded.attack_delays["frequent"]=function() return TUNING.TOTAL_DAY_TIME * 1 + math.random() * TUNING.TOTAL_DAY_TIME * 1 end
+Hounded.attack_delays["frequent"]=function() return TUNING.TOTAL_DAY_TIME * 9 + math.random() * TUNING.TOTAL_DAY_TIME * 3 end
 
 Hounded.attack_levels=
 {

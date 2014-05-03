@@ -97,6 +97,8 @@ local function fn()
     inst.components.sanityaura.aura = -TUNING.SANITYAURA_MED
     
     inst:AddComponent("sleeper")
+    inst.components.sleeper.sleeptestfn = function() return false end
+    inst.components.sleeper.waketestfn = function() return true end
     
     inst:AddComponent("combat")
     inst.components.combat:SetDefaultDamage(ORC_DAMAGE)
