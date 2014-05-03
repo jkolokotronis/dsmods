@@ -320,6 +320,7 @@ GLOBAL.FALLENLOOTTABLE={
             frostsword=50,
             undeadbanesword=50,
             vorpalaxe=50,
+            fa_lightningsword=50,
             fa_bottle_r=50,
             fa_bottle_y=50,
             fa_bottle_g=50,
@@ -336,6 +337,7 @@ GLOBAL.FALLENLOOTTABLE={
             frostsword2=35,
             undeadbanesword2=35,
             vorpalaxe2=35,
+            fa_lightningsword=35,
             fa_fireaxe2=35,
             fa_iceaxe2=35
     },
@@ -347,15 +349,16 @@ GLOBAL.FALLENLOOTTABLE={
             frostsword3=15,
             undeadbanesword3=15,
             vorpalaxe3=15,
+            fa_lightningsword=15,
             fa_fireaxe3=15,
             fa_iceaxe3=15,
             fa_redtotem_item=15,
             fa_bluetotem_item=15
     },
-    TABLE_WEIGHT=1160,
-    TABLE_TIER1_WEIGHT=650,
-    TABLE_TIER2_WEIGHT=315,
-    TABLE_TIER3_WEIGHT=165
+    TABLE_WEIGHT=1260,
+    TABLE_TIER1_WEIGHT=700,
+    TABLE_TIER2_WEIGHT=350,
+    TABLE_TIER3_WEIGHT=180
 }
 GLOBAL.FALLENLOOTTABLEMERGED=MergeMaps(GLOBAL.FALLENLOOTTABLE["tier1"],GLOBAL.FALLENLOOTTABLE["tier2"],GLOBAL.FALLENLOOTTABLE["tier3"])
 
