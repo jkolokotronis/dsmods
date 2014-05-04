@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b5">
     <folder id="0">
-        <file id="0" name="woodenbowground.png" width="96" height="192" pivot_x="0" pivot_y="1"/>
+        <file id="0" name="woodenbowground.png" width="64" height="128" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="woodbow">
-        <animation id="0" name="idle" length="1000">
+        <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
-                    <object_ref id="0" name="woodenbowground" folder="0" file="0" abs_x="-46.575342" abs_y="95.890411" abs_pivot_x="0" abs_pivot_y="1" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="0" name="woodenbowground" folder="0" file="0" abs_x="-46.575342" abs_y="95.890411" abs_pivot_x="0" abs_pivot_y="1" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
                 </key>
             </mainline>
             <timeline id="0" name="woodenbowground">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-46.575342" y="95.890411"/>
+                    <object folder="0" file="0" x="-46.575342" y="95.890411" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="0" file="0" x="-46.575342" y="95.890411" angle="0"/>
                 </key>
             </timeline>
         </animation>

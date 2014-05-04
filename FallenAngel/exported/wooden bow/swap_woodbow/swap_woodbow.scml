@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b5">
     <folder id="0" name="swap_woodbow">
-        <file id="0" name="swap_woodbow/woodenbow2.png" width="121" height="121" pivot_x="0.504065" pivot_y="0.504065"/>
+        <file id="0" name="swap_woodbow/woodenbow2.png" width="125" height="250" pivot_x="0.504065" pivot_y="0.504065"/>
     </folder>
     <entity id="0" name="swap_woodbow">
-        <animation id="0" name="BUILD" length="1000">
+        <animation id="0" name="BUILD" length="50">
             <mainline>
                 <key id="0">
-                    <object_ref id="0" name="swap_woodbow" folder="0" file="0" abs_x="4.235108" abs_y="29.181054" abs_pivot_x="0.504065" abs_pivot_y="0.504065" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="0" name="swap_woodbow" folder="0" file="0" abs_x="4.235108" abs_y="29.181054" abs_pivot_x="0.504065" abs_pivot_y="0.504065" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
                 </key>
             </mainline>
             <timeline id="0" name="swap_woodbow">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="4.235108" y="29.181054"/>
+                    <object folder="0" file="0" x="4.235108" y="29.181054" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="0" file="0" x="4.235108" y="29.181054" angle="0"/>
                 </key>
             </timeline>
         </animation>

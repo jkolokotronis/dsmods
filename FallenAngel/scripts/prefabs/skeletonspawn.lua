@@ -160,7 +160,7 @@ inst:AddComponent("eater")
 
     inst:AddComponent("health")
     inst.components.health:SetMaxHealth(PET_HEALTH)
-    inst.components.health:SetInvincible(false)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1
 
     inst.SoundEmitter:PlaySound("dontstarve/ghost/ghost_howl_LP", "howl")
     inst:SetStateGraph("SGskeletonspawn")
@@ -176,6 +176,7 @@ local function spawn(Sim)
     local anim=inst.AnimState
 
     inst.components.inventory.dropondeath = true
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.5
     GetInventory(inst)
     return inst
 end

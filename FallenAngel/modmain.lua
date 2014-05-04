@@ -32,6 +32,8 @@ local GetWorld=GLOBAL.GetWorld
 local GetSeasonManager=GLOBAL.GetSeasonManager
 local SpawnPrefab=GLOBAL.SpawnPrefab
 
+local FA_DAMAGETYPE=GLOBAL.FA_DAMAGETYPE
+
 local StatusDisplays = require "widgets/statusdisplays"
 local ImageButton = require "widgets/imagebutton"
 local Levels=require("map/levels")
@@ -685,7 +687,9 @@ local mound_reset=function(inst)
     inst.AnimState:PlayAnimation("gravedirt")
     inst.fa_digtime=nil
     if(GLOBAL.FA_DLCACCESS)then
-        inst.components.hole.canbury = false
+        if(inst.components.hole)then
+            inst.components.hole.canbury = false
+        end
     end
     inst.components.workable:SetOnFinishCallback(mound_digcallback)
 end
@@ -697,7 +701,9 @@ mound_digcallback=function(inst,worker)
     inst.AnimState:PlayAnimation("dug")
     inst:RemoveComponent("workable")
     if(GLOBAL.FA_DLCACCESS)then
-        inst.components.hole.canbury = true
+        if(inst.components.hole)then
+            inst.components.hole.canbury = true
+        end
     end
     if worker then
         if worker.components.sanity then
@@ -795,6 +801,7 @@ AddPrefabPostInit("ghost",function(inst)
     if(not inst.components.lootdropper)then
         inst:AddComponent("lootdropper")
     end
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1
     inst.components.lootdropper:AddChanceLoot("nightmarefuel",0.75)
     inst.components.lootdropper:AddChanceLoot("nightmarefuel",0.18) 
     inst:AddTag("undead")
@@ -1030,11 +1037,11 @@ function Health:DoFireDamage(amount1, doer)
         self.lastfiredamagetime = time
         local amount=amount1
 
-        if(self.fa_resistances[GLOBAL.FA_DAMAGETYPE.FIRE])then
-            self.fire_damage_scale=self.fa_resistances[GLOBAL.FA_DAMAGETYPE.FIRE]
+        if(self.fa_resistances[FA_DAMAGETYPE.FIRE])then
+            self.fire_damage_scale=self.fa_resistances[FA_DAMAGETYPE.FIRE]
         end
         if(self.inst and self.inst.components and self.inst.components.inventory)then
-            amount = self.inst.components.inventory:ApplyDamage(amount, doer,nil,GLOBAL.FA_DAMAGETYPE.FIRE)
+            amount = self.inst.components.inventory:ApplyDamage(amount, doer,nil,FA_DAMAGETYPE.FIRE)
         end
         
         if time - self.takingfiredamagestarttime > FIRE_TIMESTART and amount ~= 0 then
@@ -1616,13 +1623,19 @@ AddPrefabPostInit("poisonspiderden_2", function(inst) addT1T2LootPrefabPostInit(
 AddPrefabPostInit("spiderden_3", function(inst) addFullLootPrefabPostInit(inst,0.15) end)
 AddPrefabPostInit("poisonspiderden_3", function(inst) addFullLootPrefabPostInit(inst,0.15) end)
 
+--mob resists
+AddPrefabPostInit("firehound", function(inst) inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=1 end)
+AddPrefabPostInit("icehound", function(inst) inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=1 end)
+AddPrefabPostInit("deerclops", function(inst) inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=1 end)
+AddPrefabPostInit("lightninggoat", function(inst) inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=1 end)
+
 --DLC PATCHUP
 if(GLOBAL.FA_DLCACCESS)then
 
     TUNING.NIGHTSTICK_DAMAGE=(0 or TUNING.NIGHTSTICK_DAMAGE)*1.5
     AddPrefabPostInit("nightstick",function(inst)
         inst.components.weapon.stimuli=nil
-        inst.components.weapon.fa_damagetype=GLOBAL.FA_DAMAGETYPE.ELECTRIC
+        inst.components.weapon.fa_damagetype=FA_DAMAGETYPE.ELECTRIC
     end)
     TUNING.ARMORDRAGONFLY_FIRE_RESIST=0
     AddPrefabPostInit("armordragonfly",function(inst)

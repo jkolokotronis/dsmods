@@ -55,8 +55,8 @@
                 </key>
                 <key id="9" time="500">
                     <bone_ref id="0" timeline="0" key="8"/>
-                    <bone_ref id="1" parent="0" timeline="2" key="6"/>
-                    <object_ref id="0" parent="1" timeline="1" key="6" z_index="0"/>
+                    <bone_ref id="1" parent="0" timeline="2" key="7"/>
+                    <object_ref id="0" parent="1" timeline="1" key="7" z_index="0"/>
                 </key>
             </mainline>
             <timeline id="0" name="Barrier_rotate_bone" object_type="bone">
@@ -89,11 +89,11 @@
                 </key>
             </timeline>
             <timeline id="1" name="bloodcircle_dark">
-                <key id="0">
+                <key id="0" spin="0">
                     <object folder="0" file="1" x="-28.374243" y="0.180522" angle="0" scale_x="7.117406" scale_y="0.566896"/>
                 </key>
-                <key id="1" time="75">
-                    <object folder="0" file="2" x="-28.374243" y="0.180522" scale_x="7.117406" scale_y="0.566896"/>
+                <key id="1" time="75" spin="0">
+                    <object folder="0" file="2" x="-28.374243" y="0.180522" angle="0" scale_x="7.117406" scale_y="0.566896"/>
                 </key>
                 <key id="2" time="125" spin="0">
                     <object folder="0" file="1" x="-28.374243" y="0.180522" angle="0" scale_x="7.117406" scale_y="0.566896"/>
@@ -101,14 +101,17 @@
                 <key id="3" time="175" spin="0">
                     <object folder="0" file="1" x="-28.374243" y="0.180522" angle="0" scale_x="7.117406" scale_y="0.566896"/>
                 </key>
-                <key id="4" time="250">
+                <key id="4" time="250" spin="0">
                     <object folder="0" file="1" x="-28.374243" y="0.180522" angle="0" scale_x="7.117406" scale_y="0.566896"/>
                 </key>
-                <key id="5" time="325">
+                <key id="5" time="325" spin="0">
+                    <object folder="0" file="1" x="-28.374243" y="0.180522" angle="0" scale_x="7.117406" scale_y="0.566896"/>
+                </key>
+                <key id="6" time="375">
+                    <object folder="0" file="1" x="-28.374243" y="0.180522" angle="0" scale_x="7.117406" scale_y="0.566896"/>
+                </key>
+                <key id="7" time="500">
                     <object folder="0" file="1" x="-28.374243" y="0.180522" scale_x="7.117406" scale_y="0.566896"/>
-                </key>
-                <key id="6" time="375" spin="0">
-                    <object folder="0" file="1" x="-28.374243" y="0.180522" angle="0" scale_x="7.117406" scale_y="0.566896"/>
                 </key>
             </timeline>
             <timeline id="2" name="Spriter_is_being_a_bitch_bone" object_type="bone">
@@ -132,6 +135,9 @@
                 </key>
                 <key id="6" time="375" spin="-1">
                     <bone x="196.674453" y="-0.192564" angle="90.983639" scale_x="0.399107"/>
+                </key>
+                <key id="7" time="500" spin="0">
+                    <bone x="196.674453" y="-0.192564" angle="359.87841" scale_x="0.2"/>
                 </key>
             </timeline>
         </animation>
