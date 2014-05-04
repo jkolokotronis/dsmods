@@ -34,10 +34,11 @@ local assets = {
 
 		-- Don't forget to include your character's custom assets!
         Asset( "ANIM", "anim/cleric.zip" ),
-        Asset( "ANIM", "anim/betterbarrier.zip" ),
-        Asset( "ANIM", "anim/flash_b.zip" ),
 }
-local prefabs = {}
+local prefabs = {
+    "fa_bladebarrier_hitfx",
+    "fa_bladebarrierfx"
+}
 
 STRINGS.TABS.SPELLS = "Spells"
 

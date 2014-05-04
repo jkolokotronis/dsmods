@@ -166,22 +166,14 @@ local function apply_bb_damage(reader)
     	for k,v in pairs(ents) do
         	if ( v.components.combat and not (v.components.health and v.components.health:IsDead())) then
 
+                local boom=SpawnPrefab("fa_bladebarrier_hitfx")
                 local current = Vector3(v.Transform:GetWorldPosition() )
                 local direction = (pos - current):GetNormalized()
                 local angle = math.acos(direction:Dot(Vector3(1, 0, 0) ) ) / DEGREES
-
-                local boom = CreateEntity()
-                boom.entity:AddTransform()
-                local anim=boom.entity:AddAnimState()
-                anim:SetBank("flash_b")
-                anim:SetBuild("flash_b")
-                anim:SetOrientation( ANIM_ORIENTATION.OnGround )
                 boom.Transform:SetRotation(angle)
-                anim:PlayAnimation("idle",false)
-                boom:FacePoint(pos)
-
-                local pos1 =v:GetPosition()
-                boom.Transform:SetPosition(pos1.x, pos1.y, pos1.z)
+                local follower = boom.entity:AddFollower()
+                follower:FollowSymbol(v.GUID, v.components.combat.hiteffectsymbol, 0, 0.1, -0.0001)
+                
                 boom:ListenForEvent("animover", function()  boom:Remove() end)
 
             	v.components.combat:GetAttacked(reader, BB_DAMAGE, nil)
@@ -198,24 +190,16 @@ function BladeBarrierSpellStart(reader,timer)
     end
     reader.bladeBarrierTimer=reader:DoPeriodicTask(1, function() apply_bb_damage(reader) end)
 
-    local boom = CreateEntity()
-    boom.entity:AddTransform()
-    local anim=boom.entity:AddAnimState()
-    boom.Transform:SetTwoFaced()
+    local boom=SpawnPrefab("fa_bladebarrierfx")
     boom.entity:AddDynamicShadow()
+    boom.persists=false
 --    boom.DynamicShadow:SetSize( .8, .5 )
     boom.Transform:SetScale(5, 5, 1)
-
-    inst:AddTag("FX")
-    inst:AddTag("NOCLICK")
-    anim:SetBank("betterbarrier")
-    anim:SetBuild("betterbarrier")
-    anim:PlayAnimation("idle",true)
-    local pos =reader:GetPosition()
-    boom.Transform:SetPosition(pos.x, pos.y, pos.z)
-    reader.bladeBarrierAnim=boom
     local follower = boom.entity:AddFollower()
-    follower:FollowSymbol( reader.GUID, "swap_object", 0.1, 0.1, -0.0001 )
+    follower:FollowSymbol(reader.GUID, reader.components.combat.hiteffectsymbol, 0, 0.1, -0.0001)
+--    boom.entity:SetParent(reader.entity)
+--    boom.Transform:SetPosition(0, 0.2, 0)
+    reader.bladeBarrierAnim=boom
 end
 
 local function casterbbdamage(inst, target)
@@ -236,17 +220,9 @@ local function casterbbdamage(inst, target)
                 local current = Vector3(v.Transform:GetWorldPosition() )
                 local direction = (pos - current):GetNormalized()
                 local angle = math.acos(direction:Dot(Vector3(1, 0, 0) ) ) / DEGREES
-
-                local boom = CreateEntity()
-                boom.entity:AddTransform()
-                local anim=boom.entity:AddAnimState()
-                anim:SetBank("flash_b")
-                anim:SetBuild("flash_b")
-                anim:SetOrientation( ANIM_ORIENTATION.OnGround )
+                local boom=SpawnPrefab("fa_bladebarrier_hitfx")
                 boom.Transform:SetRotation(angle)
-                anim:PlayAnimation("idle",false)
                 boom:FacePoint(pos)
-
                 local pos1 =v:GetPosition()
                 boom.Transform:SetPosition(pos1.x, pos1.y, pos1.z)
                 boom:ListenForEvent("animover", function()  boom:Remove() end)

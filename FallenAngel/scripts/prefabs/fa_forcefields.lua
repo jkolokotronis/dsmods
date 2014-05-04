@@ -43,20 +43,6 @@ local assets_yellow =
    Asset("ANIM", "anim/fa_forcefield_yellow.zip")
 }
 
-local assets = 
-{
-   Asset("ANIM", "anim/fa_forcefield_black.zip"),
-   Asset("ANIM", "anim/fa_forcefield_blue.zip"),
-   Asset("ANIM", "anim/fa_forcefield_green.zip"),
-   Asset("ANIM", "anim/fa_forcefield_grey.zip"),
-   Asset("ANIM", "anim/fa_forcefield_orange.zip"),
-   Asset("ANIM", "anim/fa_forcefield_pink.zip"),
-   Asset("ANIM", "anim/fa_forcefield_purple.zip"),
-   Asset("ANIM", "anim/fa_forcefield_red.zip"),
-   Asset("ANIM", "anim/fa_forcefield_teal.zip"),
-   Asset("ANIM", "anim/fa_forcefield_white.zip"),
-   Asset("ANIM", "anim/fa_forcefield_yellow.zip")
-}
 
 
 local function kill_fx(inst)
@@ -99,5 +85,5 @@ return Prefab( "common/fa_forcefieldfx_black", function()return fn("black") end,
         Prefab( "common/fa_forcefieldfx_purple",function()return fn("purple") end , assets_purple),
         Prefab( "common/fa_forcefieldfx_red",function()return fn("red") end , assets_red),
         Prefab( "common/fa_forcefieldfx_teal",function()return fn("teal") end , assets_teal),
-        Prefab( "common/fa_forcefieldfx_white",function()return fn("white") end , assets),
+        Prefab( "common/fa_forcefieldfx_white",function()return fn("white") end , assets_white),
         Prefab( "common/fa_forcefieldfx_yellow",function()return fn("yellow") end , assets_yellow)

@@ -26,7 +26,7 @@ local BB_TIMER=15
 local BB_COOLDOWN=60
 
 local MAX_TARGET_SHARES = 5
-local TARGET_DISTANCE = 15
+local TARGET_DISTANCE = 20
 local SHARE_TARGET_DIST = 30
 
 
@@ -286,7 +286,7 @@ local function common()
     inst.components.combat:SetDefaultDamage(GOBLIN_DAMAGE)
     inst.components.combat:SetAttackPeriod(GOBLIN_ATTACK_PERIOD)
     inst.components.combat:SetRange(3)
---    inst.components.combat.hiteffectsymbol = "pig_torso"
+    inst.components.combat.hiteffectsymbol = "torso"
     inst.components.combat:SetRetargetFunction(1, RetargetFn)
     inst.components.combat:SetKeepTargetFunction(KeepTargetFn)
 

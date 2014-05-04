@@ -41,6 +41,7 @@ local Levels=require("map/levels")
 require "repairabledescriptionfix"
 
 PrefabFiles = {
+    "fa_fx",
     "fa_rocks",
     "fa_lavarain",
     "fa_fissures",
@@ -1192,7 +1193,7 @@ end
 local function OrcMinesPostInit(inst)
     local waves = inst.entity:AddWaveComponent()
 
-    waves:SetRegionSize( 40, 16 )
+    waves:SetRegionSize( 40, 20 )
     waves:SetRegionNumWaves( 8 )
     waves:SetWaveTexture(GLOBAL.resolvefilepath("images/lava2.tex"))--GLOBAL.resolvefilepath("images/lava.tex")
     waves:SetWaveEffect( "shaders/waves.ksh" ) -- texture.ksh

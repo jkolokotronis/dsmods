@@ -1,4 +1,5 @@
 GLOBAL.require("map/tasks")
+modimport 'tile_adder.lua'
 GLOBAL.require("map/level")
 local levels = GLOBAL.require("map/levels")
 GLOBAL.require("map/terrain")
@@ -56,3 +57,15 @@ AddTaskPreInit("The charcoal forest", AddGoblinEntrancePreInit)
 
 --local task = GLOBAL.tasks.GetTaskByName("Forest hunters", GLOBAL.tasks.sampletasks)
 --task.room_choices["tut08_room"] = 50
+
+-- The parameters passed are, in order:
+-- The key to be used inside GROUND.
+-- The numerical id to be used for the GROUND entry (i.e., the value of the new entry). This MUST be unique and CANNOT conflict with other mods.
+-- The name of the tile (should match the texture and atlas in levels/tiles/).
+-- The tile specification.
+-- The minimap tile specification.
+--
+-- See tile_adder.lua for more details on the tile and minimap tile specifications.
+--
+-- The following will create a new tile type, GROUND.MODTEST.
+--AddTile("MODTEST", 40, "modtest", {noise_texture = "levels/textures/noise_modtest.tex"}, {noise_texture = "levels/textures/mini_noise_modtest.tex"})
