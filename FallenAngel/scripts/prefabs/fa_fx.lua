@@ -4,6 +4,7 @@ local assets = {
         Asset( "ANIM", "anim/blood_down.zip" ),
         Asset( "ANIM", "anim/blood_drop.zip" ),
         Asset( "ANIM", "anim/blood_splash.zip" ),
+        Asset( "ANIM", "anim/fa_poison.zip" ),
 }
 
 local function fn(bank,bld,animname,loop)
@@ -51,9 +52,7 @@ local function blood_splashfx()
 end
 
 local function poisonfx()
-	local inst=fn("blood_down")
-	inst.AnimState:SetMultColour(0.1, 1, 0.1,1)
-	return inst
+	return fn("fa_poison")
 end
 
 return Prefab( "common/fa_bladebarrier_hitfx", bladebarrier_hit_fx, assets),
