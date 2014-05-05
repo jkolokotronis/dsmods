@@ -96,7 +96,7 @@ local LAVAWALL_HEALTH=2000
 	end
 
 local function ondeploywall(inst, pt, deployer,data)
-		local wall = SpawnPrefab("wall_"..data.name) 
+		local wall = SpawnPrefab("fa_"..data.name.."wall") 
 		if wall then 
 			pt = Vector3(math.floor(pt.x)+.5, 0, math.floor(pt.z)+.5)
 			wall.Physics:SetCollides(false)
@@ -181,7 +181,7 @@ local function clearobstacle(inst)
 		inst:AddComponent("inspectable")
     	inst:AddComponent("inventoryitem")
     	inst.components.inventoryitem.imagename="fa_"..data.name.."wall"
-    	inst.components.inventoryitem.atlasname="images/inventoryimages/fa_"..data.name.."wall"
+    	inst.components.inventoryitem.atlasname="images/inventoryimages/fa_"..data.name.."wall.xml"
 		
 		inst:AddComponent("repairer")
 	    inst.components.repairer.repairmaterial = data.name
@@ -286,6 +286,14 @@ local function clearobstacle(inst)
 			inst.SoundEmitter:PlaySound(data.buildsound)		
 		end
 		
+		if(data.heater)then
+			inst:AddComponent("heater")
+			if(data.heater<0)then
+				inst.components.heater.iscooler=true
+			end
+			inst.components.heater.heat=data.heater		
+		end
+
 		inst:AddComponent("workable")
 		inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
 		inst.components.workable:SetWorkLeft(3)
@@ -301,12 +309,11 @@ local function clearobstacle(inst)
 		return inst
 	end
 
-local lavawall_data={name = "lava", tags={"stone"}, loot = "fa_lavapebble", maxloots = 2, maxhealth=LAVAWALL_HEALTH, buildsound="dontstarve/common/place_structure_stone", destroysound="dontstarve/common/destroy_stone"}
+local lavawall_data={name = "lava", tags={"stone"}, heater=20, loot = "fa_lavapebble", maxloots = 2, maxhealth=LAVAWALL_HEALTH, buildsound="dontstarve/common/place_structure_stone", destroysound="dontstarve/common/destroy_stone"}
 
 local function lavafn()
 	local inst=normfn(lavawall_data)
-	inst:AddComponent("heater")
-	inst.components.heater.heat=10
+	return inst
 end
 local function lavaitemfn()
 	return itemfn(lavawall_data)

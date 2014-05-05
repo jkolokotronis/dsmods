@@ -153,7 +153,7 @@ local function lavapebblefn(Sim)
     inst.components.inventoryitem.atlasname="images/inventoryimages/fa_lavapebble.xml"
 
 	inst:AddComponent("repairer")
-	inst.components.repairer.repairmaterial = "stone"
+	inst.components.repairer.repairmaterial = "lava"
 	inst.components.repairer.healthrepairvalue = TUNING.REPAIR_ROCKS_HEALTH
 
     inst.OnSave = lavapebbleonsave 

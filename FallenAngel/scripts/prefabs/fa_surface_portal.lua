@@ -9,7 +9,7 @@ local assets=
 
 
 local function GetVerb(inst)
-	return STRINGS.ACTIONS.ACTIVATE.CLIMB
+	return STRINGS.ACTIONS.ACTIVATE.GENERIC
 end
 
 
