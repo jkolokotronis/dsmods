@@ -58,6 +58,7 @@ PrefabFiles = {
     "fa_bonfire",
     "fa_dungeon_entrance",
     "fa_dungeon_exit",
+    "fa_surface_portal",
     "cheats",
     "poisonspider",
     "poisonspiderden",
