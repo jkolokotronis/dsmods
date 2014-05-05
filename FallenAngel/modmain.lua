@@ -42,6 +42,7 @@ require "repairabledescriptionfix"
 
 PrefabFiles = {
     "fa_fx",
+    "fa_bags",
     "fa_rocks",
     "fa_lavarain",
     "fa_fissures",
