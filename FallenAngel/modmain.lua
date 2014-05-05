@@ -101,6 +101,7 @@ PrefabFiles = {
     "dryad",
     "satyr",
     "unicorn",
+    "orchut",
     "orc",
     "ogre",
     "troll",

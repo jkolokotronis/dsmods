@@ -1,6 +1,7 @@
 local assets =
 {
-	Asset("ANIM", "anim/goblinhut.zip"),
+	Asset("ANIM", "anim/fa_orchut.zip"),
+    Asset("ANIM", "anim/fa_orcflag.zip"),
     Asset("SOUND", "sound/pig.fsb"),
 }
 
@@ -36,20 +37,23 @@ local function fn(Sim)
 	local anim = inst.entity:AddAnimState()
     local light = inst.entity:AddLight()
     inst.entity:AddSoundEmitter()
+    local shadow = inst.entity:AddDynamicShadow()
+    shadow:SetSize( 20, 10 )
+    inst.Transform:SetScale(2,2, 2)
 
 	local minimap = inst.entity:AddMiniMapEntity()
 	minimap:SetIcon( "goblin.png" )
-    light:SetFalloff(1)
+    light:SetFalloff(2)
     light:SetIntensity(.5)
-    light:SetRadius(1)
-    light:Enable(false)
-    light:SetColour(180/255, 195/255, 50/255)
+    light:SetRadius(2)
+    light:Enable(true)
+    light:SetColour(180/255, 35/255, 50/255)
     
     MakeObstaclePhysics(inst, 1)
 
-    anim:SetBank("goblinhut")
-    anim:SetBuild("goblinhut")
-    anim:PlayAnimation("idle")
+    anim:SetBank("fa_orchut")
+    anim:SetBuild("fa_orchut")
+    anim:PlayAnimation("idle",true)
 
     inst:AddTag("structure")
     inst:AddComponent("lootdropper")
@@ -74,6 +78,33 @@ local function fn(Sim)
     
 	MakeSnowCovered(inst, .01)
 
+    if(true)then
+
+local flag = CreateEntity()
+    local trans = flag.entity:AddTransform()
+    local anim = flag.entity:AddAnimState()
+    local sound = flag.entity:AddSoundEmitter()
+    flag.Transform:SetScale(2,2, 2)
+
+    anim:SetBank("fa_orcflag")
+    anim:SetBuild("fa_orcflag")
+    anim:PlayAnimation("Flag_Breeze",true)
+    flag:AddTag("NOCLICK")
+    flag:AddTag("FX")
+
+    flag.fa_rotate=function(dest)
+        anim:SetOrientation( ANIM_ORIENTATION.OnGround )
+        local angle = flag:GetAngleToPoint(dest:GetPosition())
+        flag.Transform:SetRotation(angle)
+    end
+    local follower = flag.entity:AddFollower()
+    follower:FollowSymbol(inst.GUID, "smoke1", 220, -540, 0.1)
+--   flag.entity:SetParent(inst.entity)
+--    flag.Transform:SetPosition(5, 10, 0)
+    --ogre homeEast
+    flag.persists=false
+    inst.fa_flag=flag
+    end
     --[[
     inst:DoTaskInTime(math.random(), function() 
         --print(inst, "spawn check day")

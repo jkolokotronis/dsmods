@@ -74,6 +74,8 @@ local function fn(Sim)
 	local anim = inst.entity:AddAnimState()
     local light = inst.entity:AddLight()
     inst.entity:AddSoundEmitter()
+    local shadow = inst.entity:AddDynamicShadow()
+    shadow:SetSize( 10, 8.5 )
 
 	local minimap = inst.entity:AddMiniMapEntity()
 	minimap:SetIcon( "goblin.png" )
