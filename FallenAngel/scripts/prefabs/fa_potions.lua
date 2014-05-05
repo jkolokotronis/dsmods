@@ -21,7 +21,8 @@ local Assets =
 }
 
 local prefabs = {
-    "blueprint"
+    "blueprint",
+    "fa_blooddownfx"
 }
 
 local blueprints={"tools_blueprint","magic_blueprint","town_blueprint","dress_blueprint","survival_blueprint","refine_blueprint","war_blueprint","ancient_blueprint","light_blueprint","farm_blueprint"}
@@ -142,6 +143,12 @@ local WONDER_EFFECTS={
     if(target and not target.components.health:IsDead())then
 --        target.components.health:DoDelta(-POISON_DAMAGE)
 		 	target.components.combat:GetAttacked(eater, POISON_DAMAGE, nil,nil,FA_DAMAGETYPE.POISON)
+		 		local boom =SpawnPrefab("fa_poisonfx")
+--                boom.AnimState:SetMultColour(0.3, 1, 0.3,1)
+                local follower = boom.entity:AddFollower()
+                follower:FollowSymbol(target.GUID, target.components.combat.hiteffectsymbol, 0, 0.1, -0.0001)
+                boom.persists=false
+                boom:ListenForEvent("animover", function()  boom:Remove() end)
     end
 			end
 			eater.components.hunger:DoDelta(-50)

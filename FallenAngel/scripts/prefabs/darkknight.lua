@@ -43,7 +43,10 @@ local assets = {
         Asset("ANIM","anim/bloodcircle.zip"),
 }
 local prefabs = {
-    "dksword"
+    "dksword",
+    "fa_blooddownfx",
+    "fa_blooddropfx",
+    "fa_bloodsplashfx"
 }
 
 --        SANITY_NIGHT_MID = -100/(300*20),
@@ -114,51 +117,35 @@ local onleechblast=function(inst)
     for k,v in pairs(ents) do
             if( v.components.combat and not (v.components.health and v.components.health:IsDead())) then
 
-                local current = Vector3(v.Transform:GetWorldPosition() )
-                local direction = (pos - current):GetNormalized()
-                local angle = math.acos(direction:Dot(Vector3(1, 0, 0) ) ) / DEGREES
+                local pos1=v:GetPosition()
 
-                local boom = CreateEntity()
-                boom.entity:AddTransform()
-                local anim=boom.entity:AddAnimState()
-                anim:SetBank("blood_down")
-                anim:SetBuild("blood_down")
-                anim:SetOrientation( ANIM_ORIENTATION.OnGround )
-                boom.Transform:SetRotation(angle)
-                anim:PlayAnimation("idle",false)
-                boom:FacePoint(pos)
---                boom:addTag("FX")
-
-                local pos1 =v:GetPosition()
-                boom.Transform:SetPosition(pos1.x, pos1.y, pos1.z)
+                local boom =SpawnPrefab("fa_blooddownfx")
+                local follower = boom.entity:AddFollower()
+                follower:FollowSymbol(v.GUID, v.components.combat.hiteffectsymbol, 0, 0.1, -0.0001)
+                boom.fa_rotate(GetPlayer())
+                boom.persists=false
                 boom:ListenForEvent("animover", function()  boom:Remove() end)
 
 
-                local proj = CreateEntity()
-                local trans = proj.entity:AddTransform()
-                local anim = proj.entity:AddAnimState()
+                local proj =SpawnPrefab("fa_blooddropfx")
                 proj.Transform:SetScale(2, 2, 2)
                 MakeInventoryPhysics(proj)
 --                RemovePhysicsColliders(proj)    
-                anim:SetBank("blood_drop")
-                anim:SetBuild("blood_drop")    
-                anim:PlayAnimation("idle")    
                 proj:AddTag("projectile")    
                 proj:AddComponent("projectile")
-                proj.AnimState:SetOrientation( ANIM_ORIENTATION.OnGround )
+                proj.Transform:SetPosition(pos1.x, pos1.y, pos1.z)
+                proj.fa_rotate(GetPlayer())
                 proj.components.projectile:SetSpeed(20)
 --                proj.components.projectile:SetOnHitFn(function() proj:Remove() end)
                 proj.components.projectile:SetOnMissFn(function() proj:Remove() end)
 --              we dont want to hit ourselves                
-                proj.Transform:SetPosition(pos1.x, pos1.y, pos1.z)
                 function proj.components.projectile:Hit(target)
                     self:Stop()
                     self.inst.Physics:Stop()
                     self.inst:Remove() 
                 end
-
                 proj.components.projectile:Throw(v, GetPlayer(), GetPlayer())
-                proj.Transform:SetRotation(angle)
+--                proj.Transform:SetRotation(angle)
 
                 v.components.combat:GetAttacked(GetPlayer(), BLAST_DMG, nil,nil,FA_DAMAGETYPE.DEATH)
                 leechamount=leechamount+BLAST_LEECH
@@ -188,16 +175,11 @@ local onharmtouch=function(inst)
             if(v.components.combat and not (v.components.health and v.components.health:IsDead())) then
                 v.components.combat:GetAttacked(GetPlayer(), HT_DAMAGE, nil,nil,FA_DAMAGETYPE.DEATH)
 
-                local boom = CreateEntity()
-                boom.entity:AddTransform()
-                local anim=boom.entity:AddAnimState()
-                boom.Transform:SetScale(1, 1, 1)
-                anim:SetBank("blood_splash")
-                anim:SetBuild("blood_splash")
-                anim:PlayAnimation("idle",false)
-
-                local pos =v:GetPosition()
-                boom.Transform:SetPosition(pos.x, pos.y, pos.z)
+                local boom =SpawnPrefab("fa_bloodsplashfx")
+                local follower = boom.entity:AddFollower()
+                follower:FollowSymbol(v.GUID, v.components.combat.hiteffectsymbol, 0, 0.1, -0.0001)
+                boom.fa_rotate(GetPlayer())
+                boom.persists=false
                 boom:ListenForEvent("animover", function()  boom:Remove() end)
 
                 return true

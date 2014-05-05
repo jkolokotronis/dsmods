@@ -1,9 +1,10 @@
 local assets = {
         Asset( "ANIM", "anim/betterbarrier.zip" ),
         Asset( "ANIM", "anim/flash_b.zip" ),
-
+        Asset( "ANIM", "anim/blood_down.zip" ),
+        Asset( "ANIM", "anim/blood_drop.zip" ),
+        Asset( "ANIM", "anim/blood_splash.zip" ),
 }
-
 
 local function fn(bank,bld,animname,loop)
 	local inst = CreateEntity()
@@ -30,14 +31,34 @@ local function fn(bank,bld,animname,loop)
 end
 
 local function bladebarrier_hit_fx()
-	local inst=fn("flash_b")
-	return inst
+	return fn("flash_b")
 end
 
 local function bladebarrier_fx()
-	local inst=fn("betterbarrier","betterbarrier","idle",true)
+	return fn("betterbarrier","betterbarrier","idle",true)
+end
+
+local function blood_downfx()
+	return fn("blood_down","blood_down","idle",false)
+end
+
+local function blood_dropfx()
+	return fn("blood_drop","blood_drop","idle",true)
+end
+
+local function blood_splashfx()
+	return fn("blood_splash")
+end
+
+local function poisonfx()
+	local inst=fn("blood_down")
+	inst.AnimState:SetMultColour(0.1, 1, 0.1,1)
 	return inst
 end
 
 return Prefab( "common/fa_bladebarrier_hitfx", bladebarrier_hit_fx, assets),
-Prefab( "common/fa_bladebarrierfx", bladebarrier_fx, assets)
+Prefab( "common/fa_bladebarrierfx", bladebarrier_fx, assets),
+Prefab( "common/fa_blooddownfx", blood_downfx, assets),
+Prefab( "common/fa_blooddropfx", blood_dropfx, assets),
+Prefab( "common/fa_bloodsplashfx", blood_splashfx, assets),
+Prefab( "common/fa_poisonfx", poisonfx, assets)

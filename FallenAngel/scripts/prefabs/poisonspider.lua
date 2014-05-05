@@ -23,6 +23,7 @@ local prefabs =
 	"spidergland",
     "monstermeat",
     "silk",
+    "fa_poisonfx"
 }
 
 local POISON_LENGTH=10
@@ -100,6 +101,12 @@ local function dopoison(inst,target)
         --bypassing armor - but this also bypasses potential retarget
 --        target.components.health:DoDelta(-POISON_DAMAGE)
             target.components.combat:GetAttacked(inst, POISON_DAMAGE, nil,nil,FA_DAMAGETYPE.POISON)
+
+                local boom =SpawnPrefab("fa_poisonfx")
+                local follower = boom.entity:AddFollower()
+                follower:FollowSymbol(target.GUID, target.components.combat.hiteffectsymbol, 0, 0.1, -0.0001)
+                boom.persists=false
+                boom:ListenForEvent("animover", function()  boom:Remove() end)
        
     end
 end
