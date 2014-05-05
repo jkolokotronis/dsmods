@@ -389,6 +389,7 @@ function MakeSpell(name, usefn, bookuses )
         
         -----------------------------------
         
+        inst:AddTag("book")
         inst:AddComponent("inspectable")
         inst:AddComponent("book")
         inst.components.book.onread = usefn

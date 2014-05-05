@@ -387,6 +387,7 @@ local function common(Sim)
 
     MakeInventoryPhysics(inst)
         
+    inst:AddTag("potion")
     inst:AddComponent("inventoryitem")
 	inst:AddComponent("inspectable")	
 	

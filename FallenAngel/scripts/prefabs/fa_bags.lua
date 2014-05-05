@@ -6,30 +6,41 @@ local assets=
   Asset("IMAGE", "images/inventoryimages/woodshield.tex"),
 }
 
-local function onequip(inst, owner) 
-    owner.AnimState:OverrideSymbol("swap_body", "swap_krampus_sack", "backpack")
-    owner.AnimState:OverrideSymbol("swap_body", "swap_krampus_sack", "swap_body")
-    owner.components.inventory:SetOverflow(inst)
-    inst.components.container:Open(owner)
+
+
+local function tagitemtest(item,tags)
+    local pass=false
+    if(type(tags)==table)then
+        for k,v in pairs(tags) do
+            if(item:HasTag(v))then
+                pass=true
+            end
+        end
+    else
+        pass=item:HasTag(tags)
+    end
+    return pss
 end
 
-local function onunequip(inst, owner) 
-    owner.AnimState:ClearOverrideSymbol("swap_body")
-    owner.AnimState:ClearOverrideSymbol("backpack")
-    owner.components.inventory:SetOverflow(nil)
-    inst.components.container:Close(owner)
+local function krampus_sized(inst)
+
+    local slotpos = {}
+
+    for y = 0, 6 do
+        table.insert(slotpos, Vector3(-162, -y*75 + 240 ,0))
+        table.insert(slotpos, Vector3(-162 +75, -y*75 + 240 ,0))
+    end
+    inst.components.container:SetNumSlots(#slotpos)
+    inst.components.container.widgetslotpos = slotpos
+    inst.components.container.widgetanimbank = "ui_krampusbag_2x8"
+    inst.components.container.widgetanimbuild = "ui_krampusbag_2x8"
+    --inst.components.container.widgetpos = Vector3(645,-85,0)
+    inst.components.container.widgetpos = Vector3(-100,-75,0)
+    inst.components.container.side_widget = true    
 end
 
 
-
-local slotpos = {}
-
-for y = 0, 6 do
-	table.insert(slotpos, Vector3(-162, -y*75 + 240 ,0))
-	table.insert(slotpos, Vector3(-162 +75, -y*75 + 240 ,0))
-end
-
-local function fn(Sim)
+local function fn()
 	local inst = CreateEntity()
     
 	inst.entity:AddTransform()
@@ -59,14 +70,7 @@ local function fn(Sim)
     
     
     inst:AddComponent("container")
-    inst.components.container:SetNumSlots(#slotpos)
-    inst.components.container.widgetslotpos = slotpos
-    inst.components.container.widgetanimbank = "ui_krampusbag_2x8"
-    inst.components.container.widgetanimbuild = "ui_krampusbag_2x8"
-    --inst.components.container.widgetpos = Vector3(645,-85,0)
-    inst.components.container.widgetpos = Vector3(-100,-75,0)
-	inst.components.container.side_widget = true    
-    inst.components.container.type = "pack"
+    
     
 --[[
 function Container:CollectInventoryActions(doer, actions)
@@ -80,4 +84,57 @@ end]]
     return inst
 end
 
-return Prefab( "common/inventory/fa_dorf_bag", fn, assets) 
+local function dorfbag()
+    local inst=fn()
+    krampus_sized(inst)
+    inst.components.container.type = "fa_bag"
+    return inst
+end
+
+local function scrollcase()
+    local inst=fn()
+    krampus_sized(inst)
+
+    inst.components.container.widgetpos = Vector3(100,0,0)
+    inst.components.container.side_align_tip = 100
+    inst.components.container.side_widget = false    
+    inst.components.container.type = "fa_scrollcase"
+    inst.components.container.itemtestfn = function(cnt, item, slot) return tagitemtest(item,{"book","scroll"}) end
+    return inst
+end
+
+local function wandcase()
+    local inst=fn()
+    krampus_sized(inst)
+    inst.components.container.widgetpos = Vector3(200,0,0)
+    inst.components.container.side_align_tip = 100
+    inst.components.container.side_widget = false    
+    inst.components.container.type = "fa_wandcase"
+    inst.components.container.itemtestfn = function(cnt, item, slot) return tagitemtest(item,"wand") end
+    return inst
+end
+
+local function potioncase()
+    local inst=fn()
+    krampus_sized(inst)
+    inst.components.container.type = "fa_potioncase"
+    inst.components.container.itemtestfn = function(cnt, item, slot) return tagitemtest(item,"potion") end
+    return inst
+end
+    
+local function foodbag()
+    local inst=fn()
+    krampus_sized(inst)
+    inst.components.container.widgetpos = Vector3(300,0,0)
+    inst.components.container.side_align_tip = 100
+    inst.components.container.side_widget = false    
+    inst.components.container.type = "fa_foodbag"
+    inst.components.container.itemtestfn = function(cnt, item, slot) return item.components.edible~=nil end
+    return inst
+end
+
+return Prefab( "common/inventory/fa_dorf_bag", dorfbag, assets),
+Prefab( "common/inventory/fa_scrollcase", scrollcase, assets),
+Prefab( "common/inventory/fa_wandcase", wandcase, assets),
+Prefab( "common/inventory/fa_potioncase", potioncase, assets),
+Prefab( "common/inventory/fa_foodbag", foodbag, assets)

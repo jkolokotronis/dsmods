@@ -211,6 +211,8 @@ local function commonfn(colour)
     anim:SetBank("staffs")
     anim:SetBuild("staffs")
     anim:PlayAnimation(colour.."staff")
+    
+    inst:AddTag("wand")
     -------   
     inst:AddComponent("finiteuses")
     inst.components.finiteuses:SetOnFinished( onfinished )
