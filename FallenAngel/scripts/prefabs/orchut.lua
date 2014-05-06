@@ -98,7 +98,7 @@ local flag = CreateEntity()
         flag.Transform:SetRotation(angle)
     end
     local follower = flag.entity:AddFollower()
-    follower:FollowSymbol(inst.GUID, "smoke1", 220, -540, 0.1)
+    follower:FollowSymbol(inst.GUID, "orchut", 220, -540, 0.1)
 --   flag.entity:SetParent(inst.entity)
 --    flag.Transform:SetPosition(5, 10, 0)
     --ogre homeEast
