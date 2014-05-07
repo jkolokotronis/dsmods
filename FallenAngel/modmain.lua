@@ -3,6 +3,19 @@ require "class"
 require "util"
 
 local MergeMaps=GLOBAL.MergeMaps
+
+GLOBAL.FA_DLCACCESS=false
+GLOBAL.xpcall(function()
+                    GLOBAL.FA_DLCACCESS= GLOBAL.IsDLCEnabled and GLOBAL.REIGN_OF_GIANTS and GLOBAL.IsDLCEnabled(GLOBAL.REIGN_OF_GIANTS)
+                end,
+                function()
+                    --if the calls crashed im assuming outdated code and dlc is off by default
+                    print("dlc crash")
+                end
+            )
+print("dlc status",GLOBAL.FA_DLCACCESS)
+
+
 local Widget = require "widgets/widget"
 local XPBadge= require "widgets/xpbadge"
 local TextEdit=require "widgets/textedit"
@@ -19,6 +32,7 @@ require "fa_levelxptable"
 require "fa_stealthdetectiontable"
 require "behaviours/panic"
 require "fa_constants"
+require "fa_inventory_override"
 local FA_CharRenameScreen=require "screens/fa_charrenamescreen"
 --
 local Ingredient = GLOBAL.Ingredient
@@ -101,10 +115,10 @@ PrefabFiles = {
     "dryad",
     "satyr",
     "unicorn",
-    "orchut",
-    "orc",
-    "ogre",
-    "troll",
+    "fa_orchut",
+    "fa_orc",
+    "fa_ogre",
+    "fa_troll",
     "goblin",
     "wolf",
     "goblinhut",
@@ -243,6 +257,8 @@ Assets = {
     Asset( "ATLAS", "minimap/woodshield.xml" ), 
     Asset( "IMAGE", "minimap/goblin.tex" ),
     Asset( "ATLAS", "minimap/goblin.xml" ),  
+    Asset( "IMAGE", "minimap/fa_orc.tex" ),
+    Asset( "ATLAS", "minimap/fa_orc.xml" ),  
     Asset( "ANIM", "anim/question.zip" ),
     Asset( "ANIM", "anim/fa_shieldpuff.zip" ),
 
@@ -280,6 +296,8 @@ AddMinimapAtlas("minimap/undeadbanesword.xml")
 AddMinimapAtlas("minimap/vorpalaxe.xml")
 AddMinimapAtlas("minimap/woodbow.xml")
 AddMinimapAtlas("minimap/woodshield.xml")
+AddMinimapAtlas("minimap/goblin.xml")
+AddMinimapAtlas("minimap/fa_orc.xml")
 
 local EVIL_SANITY_AURA_OVERRIDE={
     robin=-TUNING.SANITYAURA_MED,
@@ -390,16 +408,6 @@ table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "bard")
 
 local PetBuff = require "widgets/petbuff"
 
-GLOBAL.FA_DLCACCESS=false
-GLOBAL.xpcall(function()
-                    GLOBAL.FA_DLCACCESS= GLOBAL.IsDLCEnabled and GLOBAL.REIGN_OF_GIANTS and GLOBAL.IsDLCEnabled(GLOBAL.REIGN_OF_GIANTS)
-                end,
-                function()
-                    --if the calls crashed im assuming outdated code and dlc is off by default
-                    print("dlc crash")
-                end
-            )
-print("dlc status",GLOBAL.FA_DLCACCESS)
 
 
 
@@ -840,36 +848,7 @@ local dapperness_getdapperness_def=Dapperness.GetDapperness
         return d
     end
 --end)
-local Inventory=require "components/inventory"
-local inventory_applydamage_def=Inventory.ApplyDamage
-function Inventory:ApplyDamage(damage, attacker, weapon,type)
---check resistance
-    for k,v in pairs(self.equipslots) do
-        if v.components.resistance and v.components.resistance:HasResistance(attacker, weapon) then
-            return 0
-        end
-    end
-    --check specialised armor
-    for k,v in pairs(self.equipslots) do
-        if v.components.armor and v.components.armor.tags then
-            damage = v.components.armor:TakeDamage(damage, attacker, weapon,type)
-            if damage == 0 then
-                return 0
-            end
-        end
-    end
-    --check general armor
-    for k,v in pairs(self.equipslots) do
-        if v.components.armor then
-            damage = v.components.armor:TakeDamage(damage, attacker, weapon,type)
-            if damage == 0 then
-                return 0
-            end
-        end
-    end
-    
-    return damage
-end
+
 
 local Armor=require "components/armor"
 local armor_takedamage_def=Armor.TakeDamage
