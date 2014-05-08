@@ -1,17 +1,38 @@
-GLOBAL.require("map/tasks")
+local require=GLOBAL.require
+require("constants")
+require("fa_constants")
 modimport 'tile_adder.lua'
-GLOBAL.require("map/level")
-local levels = GLOBAL.require("map/levels")
-GLOBAL.require("map/terrain")
-local rooms=GLOBAL.require("map/rooms")
-local Layouts = GLOBAL.require("map/layouts").Layouts
-local StaticLayout = GLOBAL.require("map/static_layout")
-GLOBAL.require("constants")
 local GROUND = GLOBAL.GROUND
-GLOBAL.require "map/levels/fa_levels"
-GLOBAL.require "map/rooms/fa_rooms"
-GLOBAL.require "map/tasks/fa_tasks"
-GLOBAL.require "map/fa_layouts"
+
+
+-- The parameters passed are, in order:
+-- The key to be used inside GROUND.
+-- The numerical id to be used for the GROUND entry (i.e., the value of the new entry). This MUST be unique and CANNOT conflict with other mods.
+-- The name of the tile (should match the texture and atlas in levels/tiles/).
+-- The tile specification.
+-- The minimap tile specification.
+--
+-- See tile_adder.lua for more details on the tile and minimap tile specifications.
+--
+-- The following will create a new tile type, GROUND.MODTEST.
+AddTile("FA_LAVA_ASH", GLOBAL.FA_TILES_START, "lava_ash")
+AddTile("FA_LAVA_GREEN", GLOBAL.FA_TILES_START+1, "lava_green")
+AddTile("FA_LAVA_SHINY", GLOBAL.FA_TILES_START+2, "lava_shiny")
+AddTile("FA_LAVA_TERRAIN2", GLOBAL.FA_TILES_START+3, "lava_terrain2")
+--print("not a number?",FA_TILES_START)
+--AddTile("MODTEST", GLOBAL.FA_TILES_START, "modtest", {noise_texture = "levels/textures/noise_modtest.tex"}, {noise_texture = "levels/textures/mini_noise_modtest.tex"})
+
+local rooms=require("map/rooms")
+require("map/tasks")
+require("map/level")
+local levels = require("map/levels")
+require("map/terrain")
+local Layouts = require("map/layouts").Layouts
+local StaticLayout = require("map/static_layout")
+require "map/levels/fa_levels"
+require "map/rooms/fa_rooms"
+require "map/tasks/fa_tasks"
+require "map/fa_layouts"
 
 local TRANSLATE_TO_PREFABS = GLOBAL.require("map/forest_map").TRANSLATE_TO_PREFABS
 table.insert(TRANSLATE_TO_PREFABS["spiders"],"poisonspiderden")
@@ -24,7 +45,7 @@ for k,name in pairs({"SpiderfieldEasy","Spiderfield","SunkenMarsh","SpiderCity",
 	local room=rooms[name]
 	if(room)then
 --	AddRoomPreInit(name, function(room)
-		print("in preinit",name)
+--		print("in preinit",name)
 		if room.contents.distributeprefabs and room.contents.distributeprefabs.spiderden then
 			local origspider=room.contents.distributeprefabs.spiderden
 			if(origspider and type(origspider)=="number")then
@@ -57,15 +78,3 @@ AddTaskPreInit("The charcoal forest", AddGoblinEntrancePreInit)
 
 --local task = GLOBAL.tasks.GetTaskByName("Forest hunters", GLOBAL.tasks.sampletasks)
 --task.room_choices["tut08_room"] = 50
-
--- The parameters passed are, in order:
--- The key to be used inside GROUND.
--- The numerical id to be used for the GROUND entry (i.e., the value of the new entry). This MUST be unique and CANNOT conflict with other mods.
--- The name of the tile (should match the texture and atlas in levels/tiles/).
--- The tile specification.
--- The minimap tile specification.
---
--- See tile_adder.lua for more details on the tile and minimap tile specifications.
---
--- The following will create a new tile type, GROUND.MODTEST.
---AddTile("MODTEST", 40, "modtest", {noise_texture = "levels/textures/noise_modtest.tex"}, {noise_texture = "levels/textures/mini_noise_modtest.tex"})

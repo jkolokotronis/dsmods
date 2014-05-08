@@ -15,7 +15,6 @@ GLOBAL.xpcall(function()
             )
 print("dlc status",GLOBAL.FA_DLCACCESS)
 
-
 local Widget = require "widgets/widget"
 local XPBadge= require "widgets/xpbadge"
 local TextEdit=require "widgets/textedit"
@@ -52,6 +51,7 @@ local StatusDisplays = require "widgets/statusdisplays"
 local ImageButton = require "widgets/imagebutton"
 local Levels=require("map/levels")
 
+require "fa_inventorybar_override"
 require "repairabledescriptionfix"
 
 PrefabFiles = {
@@ -272,6 +272,8 @@ Assets = {
     Asset( "IMAGE", "colour_cubes/summer_dusk_cc.tex" ),
 
 
+    Asset( "IMAGE", "images/equipslots.tex" ),
+    Asset( "ATLAS", "images/equipslots.xml" ),  
 }
 --[[
 AddSimPostInit(function()
@@ -410,57 +412,146 @@ local PetBuff = require "widgets/petbuff"
 
 
 
-
-local isrpghudenabled=false
- for _, moddir in ipairs( GLOBAL.KnownModIndex:GetModsToLoad() ) do
-        local its_modinfo = GLOBAL.KnownModIndex:GetModInfo(moddir)
-        print("mod",its_modinfo.name,its_modinfo.priority)
-        if(its_modinfo.name=="RPG HUD")then
-            isrpghudenabled=true
-            print("hud version",its_modinfo.description)
-        end
-    end
---if(isrpghudenabled)then
---HUD
---[[
-table.insert(GLOBAL.EQUIPSLOTS, "PACK")
-GLOBAL.EQUIPSLOTS.PACK = "pack"
 local function inventorypostinit(component,inst)
-    inst.components.inventory.maxslots = 55
-    inst.components.inventory.numequipslots = 5
+    inst.components.inventory.numequipslots = 8
 end
 AddComponentPostInit("inventory", inventorypostinit)
-table.insert(GLOBAL.EQUIPSLOTS, "NECK")
-GLOBAL.EQUIPSLOTS.NECK = "neck"
-
-    --default equip slots
-    self:AddEquipSlot(EQUIPSLOTS.HANDS, "images/equipslots.xml", "equip_slot_hand.tex") --MOD
-    self:AddEquipSlot(EQUIPSLOTS.BODY, "images/equipslots.xml", "equip_slot_body.tex")  --MOD
-    self:AddEquipSlot(EQUIPSLOTS.HEAD, "images/equipslots.xml", "equip_slot_head.tex")  --MOD
-    self:AddEquipSlot(EQUIPSLOTS.NECK, "images/equipslots.xml", "equip_slot_neck.tex")  --MOD
-    self:AddEquipSlot(EQUIPSLOTS.PACK, "images/equipslots.xml", "equip_slot_pack.tex")  --MOD
-function Inv:AddEquipSlot(slot, atlas, image, sortkey)
-    sortkey = sortkey or #self.equipslotinfo
-    table.insert(self.equipslotinfo, {slot = slot, atlas = atlas, image = image, sortkey = sortkey})
-    table.sort(self.equipslotinfo, function(a,b) return a.sortkey < b.sortkey end)
-    self.rebuild_pending = true
+if(GLOBAL.inventorybarpostconstruct)then
+    AddClassPostConstruct("widgets/inventorybar",GLOBAL.inventorybarpostconstruct)
 end
 
-    for k, v in ipairs(self.equipslotinfo) do
-        local slot = EquipSlot(v.slot, v.atlas, v.image, self.owner)
-        self.equip[v.slot] = self.toprow:AddChild(slot)
-        local x = -total_w/2 + (num_slots)*(W)+num_intersep*(INTERSEP - SEP) + (num_slots-1)*SEP + INTERSEP + W*(k-1) + SEP*(k-1)
-        slot:SetPosition(x,0,0)
-        table.insert(eslot_order, slot)
-        
-        local item = self.owner.components.inventory:GetEquippedItem(v.slot)
-        if item then
-            slot:SetTile(ItemTile(item))
+if(not GLOBAL.rpghudmod)then
+
+--need to re-initialize the slots and stuff the same way so it doesn't burn on hud active...
+--TODO theres gotta be a better way 
+local function amuletpostinit(inst)
+    inst.components.equippable.equipslot = GLOBAL.EQUIPSLOTS.NECK
+end
+
+AddPrefabPostInit("amulet", amuletpostinit)
+AddPrefabPostInit("blueamulet", amuletpostinit)
+AddPrefabPostInit("purpleamulet", amuletpostinit)
+AddPrefabPostInit("orangeamulet", amuletpostinit)
+AddPrefabPostInit("greenamulet", amuletpostinit)
+AddPrefabPostInit("yellowamulet", amuletpostinit)
+
+local function changetopack(inst)
+    inst.components.equippable.equipslot = GLOBAL.EQUIPSLOTS.PACK
+end
+
+AddPrefabPostInit("krampus_sack", changetopack)
+AddPrefabPostInit("piggyback", changetopack)
+AddPrefabPostInit("backpack", changetopack)
+AddPrefabPostInit("icepack", changetopack)
+
+local function resurrectableinit(inst)
+
+    inst.FindClosestResurrector = function(self)
+        local res = nil
+        if self.inst.components.inventory then
+            local item = self.inst.components.inventory:GetEquippedItem(GLOBAL.EQUIPSLOTS.NECK)
+            if item and item.prefab == "amulet" then
+                return item
+            end
         end
 
-    end    
+        local Ents = GLOBAL.Ents
+        local closest_dist = 0
+        for k,v in pairs(Ents) do
+            if v.components.resurrector and v.components.resurrector:CanBeUsed() then
+                local dist = v:GetDistanceSqToInst(self.inst)
+                if not res or dist < closest_dist then
+                    res = v
+                    closest_dist = dist
+                end
+            end
+        end
 
---RemapSoundEvent("dontstarve/music/music_FE","fa/music/fires")]]
+        return res
+    end
+
+    inst.CanResurrect = function(self)
+        if self.inst.components.inventory then
+            local item = self.inst.components.inventory:GetEquippedItem(GLOBAL.EQUIPSLOTS.NECK)
+            if item and item.prefab == "amulet" then
+                return true
+            end
+        end
+
+        local SaveGameIndex = GLOBAL.SaveGameIndex
+        local res = false
+
+        if SaveGameIndex:CanUseExternalResurector() then
+            res = SaveGameIndex:GetResurrector() 
+        end
+
+        if res == nil or res == false then
+            res = self:FindClosestResurrector()
+        end
+
+        if res then
+            return true
+        end
+
+        return false
+    end
+
+    inst.DoResurrect = function(self)
+        self.inst:PushEvent("resurrect")
+        if self.inst.components.inventory then
+            local item = self.inst.components.inventory:GetEquippedItem(GLOBAL.EQUIPSLOTS.NECK)
+            if item and item.prefab == "amulet" then
+                self.inst.sg:GoToState("amulet_rebirth")
+                return true
+            end
+        end
+        
+        local res = self:FindClosestResurrector()
+        if res and res.components.resurrector then
+            res.components.resurrector:Resurrect(self.inst)
+            return true
+        end
+
+        return false
+    end
+
+end
+
+AddComponentPostInit("resurrectable", resurrectableinit)
+
+
+local function newOnExit(inst)
+
+    inst.components.hunger:SetPercent(2/3)
+    inst.components.health:Respawn(TUNING.RESURRECT_HEALTH)
+    
+    if inst.components.sanity then
+        inst.components.sanity:SetPercent(.5)
+    end
+    
+    local item = inst.components.inventory:GetEquippedItem(GLOBAL.EQUIPSLOTS.NECK)
+    if item and item.prefab == "amulet" then
+        item = inst.components.inventory:RemoveItem(item)
+        if item then
+            item:Remove()
+            item.persists = false
+        end
+    end
+    --SaveGameIndex:SaveCurrent()
+    inst.HUD:Show()
+    GLOBAL.TheCamera:SetDefault()
+    inst.components.playercontroller:Enable(true)
+    inst.AnimState:ClearOverrideSymbol("FX")
+
+end
+
+local function SGWilsonPostInit(sg)
+    sg.states["amulet_rebirth"].onexit = newOnExit
+end
+
+AddStategraphPostInit("wilson", SGWilsonPostInit)
+
+end
 
 
 --SaveGameIndex:GetCurrentCaveLevel()
@@ -519,7 +610,7 @@ local function newControlsInit(class)
     local under_root=class;
     if GetPlayer() and GetPlayer().newControlsInit then
         local xabilitybar = under_root:AddChild(Widget("abilitybar"))
-        xabilitybar:SetPosition(0,-65,0)
+        xabilitybar:SetPosition(0,-76,0)
         xabilitybar:SetScaleMode(GLOBAL.SCALEMODE_PROPORTIONAL)
         xabilitybar:SetMaxPropUpscale(1.25)
         xabilitybar:SetHAnchor(GLOBAL.ANCHOR_MIDDLE)
@@ -532,7 +623,7 @@ local function newControlsInit(class)
     if GetPlayer() and GetPlayer().components and GetPlayer().components.xplevel then
 --       GetPlayer():ListenForEvent("healthdelta", onhpchange)
         local xpbar = under_root:AddChild(XPBadge(class.owner))
-        xpbar:SetPosition(0,-20,0)
+        xpbar:SetPosition(0,-28,0)
         xpbar:SetHAnchor(GLOBAL.ANCHOR_MIDDLE)
         xpbar:SetVAnchor(GLOBAL.ANCHOR_TOP)
         xpbar:SetLevel(GetPlayer().components.xplevel.level)

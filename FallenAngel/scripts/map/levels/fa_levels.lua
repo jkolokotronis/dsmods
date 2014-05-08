@@ -241,10 +241,10 @@ FA_LEVELDATA["ORC_MINES"]={
 			{"traps", 			"never"},
 			{"protected", 		"never"},
 			{"start_setpeice", 	"FADungeonStart"},
-			{"start_node",		"FA_BGEmpty"},
+			{"start_node",		"FA_BGLava"},
 		},
 		tasks={
-			"RuinsStart",
+			"FA_RuinsStart",
 			"FA_GreaterPlains",
 			"DFEntrance",
 			"ORCFEntrance"

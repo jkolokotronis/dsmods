@@ -54,7 +54,7 @@ STRINGS.CHARACTERS.TINKERER = {}
 
 STRINGS.CHARACTER_TITLES.paladin = "The Paladin"
 STRINGS.CHARACTER_NAMES.paladin = "The Paladin"
-STRINGS.CHARACTER_DESCRIPTIONS.paladin = "1.  Starts with trusty holy sword\n2.  Can use sheilds\n3.  Battles evil\n4.  Divine Defender"
+STRINGS.CHARACTER_DESCRIPTIONS.paladin = "1.  Starts with trusty holy sword\n2.  Can use shields\n3.  Battles evil\n4.  Divine Defender"
 STRINGS.CHARACTER_QUOTES.paladin = "\"Nothing will stop the the righteous!\""
 STRINGS.CHARACTERS.PALADIN = {}
 

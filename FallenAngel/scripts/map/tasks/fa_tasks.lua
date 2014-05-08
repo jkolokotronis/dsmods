@@ -226,7 +226,7 @@ AddTask("DFEntrance", {
 			["BeefalowPlain"] = 3 + math.random(SIZE_VARIATION), 
 			["FA_DwarfEntrance"] =1,
 		},
-		room_bg=GROUND.DIRT,
+		room_bg=GROUND.FA_LAVA_ASH,
 		background_room="FA_BGGoblin",
 		colour={r=1,g=0,b=0.6,a=1},
 		})
@@ -237,12 +237,12 @@ AddTask("ORCFEntrance", {
 			["BeefalowPlain"] = 3 + math.random(SIZE_VARIATION), 
 			["FA_OrcEntrance"] =1,
 		},
-		room_bg=GROUND.DIRT,
+		room_bg=GROUND.FA_LAVA_ASH,
 		background_room="FA_BGGoblin",
 		colour={r=1,g=0,b=0.6,a=1},
 		})
 AddTask("FA_GreaterPlains", {
-		locks={LOCKS.ADVANCED_COMBAT,LOCKS.TIER4},
+		locks={LOCKS.NONE},
 		keys_given={KEYS.MEAT,KEYS.WOOL,KEYS.POOP,KEYS.HOUNDS,KEYS.WALRUS,KEYS.TIER4},
 		entrance_room="Moundfield",
 		room_choices={
@@ -251,10 +251,25 @@ AddTask("FA_GreaterPlains", {
 			["WalrusHut_Plains"] = 1,
 			["Plain"] = 1 + math.random(SIZE_VARIATION), 
 		}, 
-		room_bg=GROUND.DIRT,
-		background_room="BGSavanna",
+		room_bg=GROUND.FA_LAVA_GREEN,
+		background_room="FA_BGLava",
 		colour={r=0,g=1,b=1,a=1}
 	}) 
+
+AddTask("FA_RuinsStart", {
+		locks={LOCKS.NONE},
+		keys_given= {KEYS.LABYRINTH, KEYS.RUINS},
+		room_choices={
+			["FA_BGLava_Ash"] = math.random(1,3),
+			["FA_BGLava_Shiny"] = math.random(1,3),
+			["FA_BGLava_Green"] = math.random(1,2),
+			["LightWilds"] = math.random(1,3),
+		},
+		room_bg=GROUND.FA_LAVA_ASH,
+		background_room="FA_BGLava",
+		colour={r=1,g=0,b=0.6,a=1},
+	})
+
 AddTask("Residential", {
 		locks = {LOCKS.RUINS},
 		keys_given = {KEYS.LABYRINTH, KEYS.RUINS},

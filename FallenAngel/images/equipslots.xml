@@ -1,0 +1,13 @@
+<Atlas><Texture filename="equipslots.tex" />
+<Elements>
+<!--	<Element name="equipslots.tex" u1="0.00048828125" u2="0.53076171875" v1="0.8681640625" v2="0.9990234375" /> -->
+		<Element name="equip_slot_hand.tex" u1="0" u2="0.125" v1="0" v2="1" />
+		<Element name="equip_slot_body.tex" u1="0.125" u2="0.250" v1="0" v2="1" />
+		<Element name="equip_slot_head.tex" u1="0.250" u2="0.375" v1="0" v2="1" />
+		<Element name="equip_slot_neck.tex" u1="0.375" u2="0.5" v1="0" v2="1" />
+		<Element name="equip_slot_pack.tex" u1="0.5" u2="0.625" v1="0" v2="1" />
+		<Element name="equip_slot_ring.tex" u1="0.625" u2="0.750" v1="0" v2="1" />
+		<Element name="equip_slot_boot.tex" u1="0.750" u2="0.875" v1="0" v2="1" />
+		<Element name="equip_slot_quiver.tex" u1="0.875" u2="1" v1="0" v2="1" />
+</Elements>
+</Atlas>

@@ -22,23 +22,23 @@ local XPBadge = Class(Widget, function(self, anim, owner)
 --    self.statusbg:SetPosition(0,15,0)
     
 	self.bg = self:AddChild(Image("images/xp_fill.xml", "xp_fill.tex"))
-	self.bg:SetPosition(-490,0,0)
+	self.bg:SetPosition(-355,0,0)
 --	self.bg:SetPosition(-(150)*scale,.2,0)
 	self.bg:SetHRegPoint(ANCHOR_LEFT)
 	self.bg:SetScale(1,1,0)
 
     self.level = self:AddChild(Text(NUMBERFONT, 28))
 --    self.level:SetHAlign(ANCHOR_LEFT)
-    self.level:SetPosition(-560,0,0)
+    self.level:SetPosition(-430,0,0)
 	self.level:SetScale(1.5,1.5,1)
     
 	self.playerbg=self:AddChild(Image("images/transparent.xml", "transparent.tex"))
-	self.playerbg:SetPosition(-700,-40,0)
+	self.playerbg:SetPosition(-590,-45,0)
 	self.playerbg:SetScale(350,40,1)
     self.playerbg:SetHRegPoint(ANCHOR_RIGHT)
 
     self.playername=self:AddChild(Text(NUMBERFONT, 28))
-    self.playername:SetPosition(-700,-40,0)
+    self.playername:SetPosition(-590,-45,0)
 	self.playername:SetScale(1.2,1.2,1.2)
     self.playername:SetHAlign(ANCHOR_RIGHT)
 	self.playername:SetRegionSize( 350,40 )
@@ -80,7 +80,7 @@ end
 
 function XPBadge:SetValue(val, max)
 
-	local scale = 1000
+	local scale = 710
 	self.bg:SetScale(val/max*scale,1,0)	
 	self.num:SetString(tostring(math.ceil(val)).."/"..tostring(math.ceil(max)))
     self.xp = val
