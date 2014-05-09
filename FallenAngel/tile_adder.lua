@@ -1,4 +1,6 @@
 --[[
+-- Shamelessly stolen, all credits @Simplex
+--
 -- The following tables list what may be present in the tile and minimap
 -- tile specifications passed to AddTile(). The values listed here are the
 -- default ones used when none are specified.

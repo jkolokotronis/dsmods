@@ -551,6 +551,48 @@ end
 
 AddStategraphPostInit("wilson", SGWilsonPostInit)
 
+else
+
+
+local function hud_inventorypostinit_fix(cmp,inst)
+    --assuming postinits happen in order, i should be able to
+    --it would be cleaner to just provide versions...
+    if(inst.components.inventory.maxslots==55)then
+        inst.components.inventory.maxslots=60
+    elseif(inst.components.inventory.maxslots==45)then
+       inst.components.inventory.maxslots=50
+    elseif(inst.components.inventory.maxslots==25 and string.find(GLOBAL.rpghudmod.modinfo.description,"Custom UI"))then
+        inst.components.inventory.maxslots=30
+    end
+end
+--this was breaking display BADLY. one would expect he'd use proper w/h numbers for 2 row calculations instead of reliance on the total....
+--REWRITE THE WHOLE THING? 
+AddComponentPostInit("inventory", hud_inventorypostinit_fix)
+
+if(string.find(GLOBAL.rpghudmod.modinfo.description,"Custom UI"))then
+    local function StatusPostInit(self,owner)
+    self.heart:SetPosition(0,50,0)
+    self.heart.br:SetTint(162/255, 43/255, 37/255, 1)
+    self.heart.topperanim:Hide()
+    if self.heart.sanityarrow then
+        self.heart.sanityarrow:SetPosition(-60,56,0)
+        self.heart.sanityarrow:SetScale(.8,.8,0)
+    end
+    
+    self.brain:SetPosition(220,50,0)
+    self.brain:SetScale(.75,.75,0)
+    self.brain.br:SetTint(202/255, 120/255, 34/255, 1)
+    self.brain.topperanim:Hide()
+
+    self.stomach:SetPosition(-220,50,0)
+    self.stomach:SetScale(.75,.75,0)
+    self.stomach.br:SetTint(85/255, 119/255, 65/255, 1)
+    
+    end
+
+    AddClassPostConstruct("widgets/statusdisplays", StatusPostInit)
+end
+
 end
 
 

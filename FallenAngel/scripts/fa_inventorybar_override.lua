@@ -11,9 +11,10 @@ local ThreeSlice = require "widgets/threeslice"
 
 rpghudmod=nil
 for _, mod in ipairs( ModManager.mods ) do
+            print(mod,mod.modinfo.name,_, mod.modinfo.description)
         if mod.modinfo.name == "RPG HUD" or mod.modinfo.id == "RPG HUD" then
             rpghudmod=mod
-            print("hud version",mod.modinfo.id,mod.modinfo.name, mod.modinfo.description)
+            print("hud version",mod,mod.modinfo.id,mod.modinfo.name, mod.modinfo.description)
         end
     end
 
@@ -45,7 +46,6 @@ if(not rpghudmod)then
 
 inventorybarpostconstruct=function(self, owner)
 
---just kill it off completely again
 --	self.bg = self.root:AddChild(Image(HUD_ATLAS, "inventory_bg.tex"))
 		self.bg:SetScale(0.97,1,1)
 --		self.bgcover = self.root:AddChild(Image(HUD_ATLAS, "inventory_bg_cover.tex"))
@@ -53,7 +53,9 @@ inventorybarpostconstruct=function(self, owner)
 
 		self.bgequip = self.root:AddChild(Image(HUD_ATLAS, "inventory_bg.tex"))
 		self.bgequip:SetScale(0.5,1,1)
+		self.bgequip:MoveToBack()
 
+--just kill it off completely again
 		self.equipslotinfo={}
 
 		self:AddEquipSlot(EQUIPSLOTS.HANDS, "images/equipslots.xml", "equip_slot_hand.tex") 
@@ -180,8 +182,10 @@ function self:Rebuild()
 	end
 
 	--self.bg:Flow(total_w+60, 256, true)
-	--what am i supposed to do here?
+	--what am i supposed to do here? controllers have diff positioning and ive no idea how they look like.
+
 	if do_integrated_backpack then
+		self.bgequip:SetPosition(Vector3(0, 40, 0))
 		self.bg:SetPosition(Vector3(0,-24,0))
 	    self.bgcover:SetPosition(Vector3(0, -135, 0))
 		self.toprow:SetPosition(Vector3(0,W/2 + YSEP/2,0))
@@ -221,37 +225,148 @@ end
 	
 end
 
+
+
 else
 
 
-end
+W = 64			--MOD
+SEP = 7			--MOD
+YSEP = 8
+INTERSEP = 11		--MOD
 
---if(isrpghudenabled)then
---HUD
---[[
+	inventorybarpostconstruct=function(self, owner)
 
 
-    --default equip slots
+		self.bgequip = self.root:AddChild(Image(HUD_ATLAS, "inventory_bg.tex"))
+		self.bgequip:SetScale(0.48,1,1)
+	   	self:AddEquipSlot(EQUIPSLOTS.RING, "images/equipslots.xml", "equip_slot_ring.tex")  
+    	self:AddEquipSlot(EQUIPSLOTS.BOOT, "images/equipslots.xml", "equip_slot_boot.tex")  
+    	self:AddEquipSlot(EQUIPSLOTS.QUIVER, "images/equipslots.xml", "equip_slot_quiver.tex")  
     
-function Inv:AddEquipSlot(slot, atlas, image, sortkey)
-    sortkey = sortkey or #self.equipslotinfo
-    table.insert(self.equipslotinfo, {slot = slot, atlas = atlas, image = image, sortkey = sortkey})
-    table.sort(self.equipslotinfo, function(a,b) return a.sortkey < b.sortkey end)
-    self.rebuild_pending = true
+    	local old_build=self.Rebuild
+    	function self:Rebuild()
+    		old_build(self)
+-- now the point this gets called, is the point when we already have all postinits and stuff executed, so i *should* be able to get the version from the 
+-- player inventory size. If 'something else' pops in between rpg hud and me and changes it... well that something is likely clashing with my code regardless
+-- WTB SWITCH/CASE...
+	local y = self.owner.components.inventory.overflow and (W/2+YSEP/2) or W/2+YSEP/2
+	local num_equip = #self.equipslotinfo
+	local num_slots = self.owner.components.inventory:GetNumSlots()
+	local total_e = num_equip*W + (num_equip - 1)*SEP
+
+	if(GetPlayer().components.inventory.maxslots==60)then
+	
+	self.bgequip:SetPosition(Vector3(0, 90, 0))
+	--being that i have overwritten all that crap up already, i should be able to just...
+	for k, v in ipairs(self.equipslotinfo) do
+--		local slot = EquipSlot(v.slot, v.atlas, v.image, self.owner)
+--		self.equip[v.slot] = self.toprow:AddChild(slot)
+		local slot=self.equip[v.slot] 
+		local x = -total_e/2 + W/2 + (k-1)*W + (k-1)*SEP	
+--		local x = total_w/2 - W/2 - (5-k)*W - (5-k)*SEP	--MOD
+		slot:SetPosition(x,y+151,0)						--MOD
+--		table.insert(eslot_order, slot)	
+	end 
+
+	--AFTER THIS POINT EVERYTHING IS FUCKED UP 
+	for k = 1,55 do
+		local pos=self.inv[k]:GetPosition()
+		self.inv[k]:SetPosition(pos.x+280,pos.y,pos.z)
+	end
+
+	local num_intersep = math.floor(.2*(num_slots - 30))																				--MOD
+	local total_w = (num_slots + num_equip - 30)*(W) + (num_slots + num_equip - 30 - 1 - num_intersep)*(SEP) + (INTERSEP*num_intersep)	--MOD
+
+	for k = 56,60 do
+		local slot = InvSlot(k, HUD_ATLAS, "inv_slot.tex", self.owner, self.owner.components.inventory)
+		self.inv[k] = self.toprow:AddChild(slot)
+		local interseps = math.floor((k-1-30) / 5)
+		local x = -total_w/2 + W/2 + interseps*(INTERSEP - SEP) + (k-1-30)*W + (k-1-30)*SEP
+		slot:SetPosition(x+280,y + 71,0)
+		
+		local item = self.owner.components.inventory:GetItemInSlot(k)
+		if item then
+			slot:SetTile(ItemTile(item, self.owner.components.inventory))
+		end
+		
+	end
+
+			elseif(GetPlayer().components.inventory.maxslots==50)then
+
+				self.bgequip:SetPosition(Vector3(0, 90, 0))
+				for k, v in ipairs(self.equipslotinfo) do
+					local slot=self.equip[v.slot] 
+					local x = -total_e/2 + W/2 + (k-1)*W + (k-1)*SEP	
+					slot:SetPosition(x,y+151,0)						--MOD
+				end 
+				for k = 1,45 do
+					local pos=self.inv[k]:GetPosition()
+					self.inv[k]:SetPosition(pos.x+190,pos.y,pos.z)
+				end
+
+				local num_intersep = num_equip - 1    																	--MOD
+				local total_w = (num_slots-20)*(W) + (num_slots-20 - 1 - num_intersep)*(SEP) + (INTERSEP*num_intersep)	--MOD
+
+				for k=46,50 do
+
+					local slot = InvSlot(k, HUD_ATLAS, "inv_slot.tex", self.owner, self.owner.components.inventory)
+					self.inv[k] = self.toprow:AddChild(slot)
+					local interseps =  math.floor((k-1-35) / 5)
+					local x = -total_w/2 + W/2 + (k-1-35)*W + (k-1-35)*SEP
+--					local x = -total_w/2 + W/2 + interseps*(INTERSEP - SEP) + (k-1-30)*W + (k-1-30)*SEP
+					slot:SetPosition(x+192,y + 71,0)
+		
+					local item = self.owner.components.inventory:GetItemInSlot(k)
+					if item then
+						slot:SetTile(ItemTile(item, self.owner.components.inventory))
+					end
+
+				end
+
+			elseif(GetPlayer().components.inventory.maxslots==30)then
+
+				self.bgequip:SetPosition(Vector3(0, 90, 0))
+				for k, v in ipairs(self.equipslotinfo) do
+					local slot=self.equip[v.slot] 
+					local x = -total_e/2 + W/2 + (k-1)*W + (k-1)*SEP	
+					slot:SetPosition(x,y+151,0)						--MOD
+				end 
+				for k = 1,25 do
+					local pos=self.inv[k]:GetPosition()
+					self.inv[k]:SetPosition(pos.x+185,pos.y,pos.z)
+				end
+
+			
+				local num_intersep = 2																					--MOD
+				local total_w = (num_slots-10)*(W) + (num_slots-10 - 1 - num_intersep)*(SEP) + (INTERSEP*num_intersep)	--MOD
+				for k=26,30 do
+					local slot = InvSlot(k, HUD_ATLAS, "inv_slot.tex", self.owner, self.owner.components.inventory)
+					self.inv[k] = self.toprow:AddChild(slot)
+					local interseps = math.floor((k-1-20) / 5)
+					local x = -total_w/2 + W/2 + interseps*(INTERSEP - SEP) + (k-1-20)*W + (k-1-20)*SEP
+					slot:SetPosition(x+185,y + 71,0)
+			
+					local item = self.owner.components.inventory:GetItemInSlot(k)
+					if item then
+						slot:SetTile(ItemTile(item, self.owner.components.inventory))
+					end
+			
+				end
+
+			elseif(GetPlayer().components.inventory.maxslots==25)then
+
+				self.bgequip:SetPosition(Vector3(0, 30, 0))
+				for k, v in ipairs(self.equipslotinfo) do
+					local slot=self.equip[v.slot] 
+					local x = -total_e/2 + W/2 + (k-1)*W + (k-1)*SEP	
+					slot:SetPosition(x,y+80,0)						--MOD
+				end 
+				for k = 1,25 do
+					local pos=self.inv[k]:GetPosition()
+					self.inv[k]:SetPosition(pos.x+10,pos.y,pos.z)
+				end
+			end
+    	end
+	end
 end
-
-    for k, v in ipairs(self.equipslotinfo) do
-        local slot = EquipSlot(v.slot, v.atlas, v.image, self.owner)
-        self.equip[v.slot] = self.toprow:AddChild(slot)
-        local x = -total_w/2 + (num_slots)*(W)+num_intersep*(INTERSEP - SEP) + (num_slots-1)*SEP + INTERSEP + W*(k-1) + SEP*(k-1)
-        slot:SetPosition(x,0,0)
-        table.insert(eslot_order, slot)
-        
-        local item = self.owner.components.inventory:GetEquippedItem(v.slot)
-        if item then
-            slot:SetTile(ItemTile(item))
-        end
-
-    end    
-
---RemapSoundEvent("dontstarve/music/music_FE","fa/music/fires")]]
