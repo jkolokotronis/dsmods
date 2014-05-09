@@ -93,7 +93,7 @@ PrefabFiles = {
     "thieftraps",
     "arrows",
     "bow",
-    "fa_key",
+    "fa_keys",
     "fa_boots",
     "fa_rings",
     "fa_fireaxe",

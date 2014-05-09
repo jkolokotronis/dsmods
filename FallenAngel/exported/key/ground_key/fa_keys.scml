@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8">
+    <folder id="0">
+        <file id="0" name="keyground.png" width="71" height="66" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="keys_0000_folidrop.png" width="192" height="128" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="keys_0001_jeweldrop.png" width="191" height="140" pivot_x="0" pivot_y="1"/>
+        <file id="3" name="keys_0002_skeledrop.png" width="244" height="142" pivot_x="0" pivot_y="1"/>
+        <file id="4" name="keys_0003_genedrop.png" width="185" height="117" pivot_x="0" pivot_y="1"/>
+        <file id="5" name="keys_0004_swiftdrop.png" width="215" height="170" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="fa_keys">
+        <animation id="0" name="foli" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="key">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-86" y="90"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="0" file="1" x="-86" y="90"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="jewel" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="keys_0001_jeweldrop">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="-74" y="108"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="0" file="2" x="-74" y="108"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="2" name="skeleton" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="keys_0002_skeledrop">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" x="-107" y="101"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="0" file="3" x="-107" y="101"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="3" name="generic" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="keys_0003_genedrop">
+                <key id="0" spin="0">
+                    <object folder="0" file="4" x="-80" y="96"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="0" file="4" x="-80" y="96"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="4" name="swift" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="keys_0004_swiftdrop">
+                <key id="0" spin="0">
+                    <object folder="0" file="5" x="-79" y="137"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="0" file="5" x="-79" y="137"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>
