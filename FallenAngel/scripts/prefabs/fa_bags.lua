@@ -57,18 +57,11 @@ local function fn()
     inst:AddComponent("inspectable")
     
     inst:AddComponent("inventoryitem")
-    inst.components.inventoryitem.cangoincontainer = true
+    inst.components.inventoryitem.cangoincontainer = false
     inst.components.inventoryitem.foleysound = "dontstarve/movement/foley/krampuspack"
     inst.components.inventoryitem.atlasname = "images/inventoryimages.xml"
     inst.components.inventoryitem.imagename="krampus_sack"
 
---    inst:AddComponent("equippable")
- --   inst.components.equippable.equipslot = EQUIPSLOTS.BODY
-    
---    inst.components.equippable:SetOnEquip( onequip )
---    inst.components.equippable:SetOnUnequip( onunequip )
-    
-    
     inst:AddComponent("container")
     
     

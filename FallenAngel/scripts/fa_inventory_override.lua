@@ -30,6 +30,22 @@ function Inventory:ApplyDamage(damage, attacker, weapon,type)
     return damage
 end
 
+
+--why the hell do you have ignoregoincontainer when you're not even using it... 
+--need to prevent autodropping of containers
+function Inventory:SetActiveItem(item)
+    if item and (item.components.inventoryitem.cangoincontainer or self.ignorescangoincontainer) or item == nil then
+        self.activeitem = item
+        self.inst:PushEvent("newactiveitem", {item=item})
+
+        if item and item.components.inventoryitem and item.components.inventoryitem.onactiveitemfn then
+            item.components.inventoryitem.onactiveitemfn(item, self.inst)
+        end
+    else
+        self:DropItem(item, true, true)
+    end
+end
+
 local inventory_finditem_def=Inventory.FindItem
 function Inventory:FindItem(fn)
     local found=inventory_finditem_def(self,fn)
@@ -381,12 +397,12 @@ function Inventory:GiveItem( inst, slot, screen_src_pos )
     
     --can't hold it!    
     if not self.activeitem and not TheInput:ControllerAttached() then
-        --print("not activeitem")
+        print("not activeitem")
         inst.components.inventoryitem:OnPutInInventory(self.inst)
         self:SetActiveItem(inst)
         return true
     else
-        --print("yes activeitem")
+       print("yes activeitem")
         self:DropItem(inst, true, true)
     end
     

@@ -274,6 +274,8 @@ Assets = {
 
     Asset( "IMAGE", "images/equipslots.tex" ),
     Asset( "ATLAS", "images/equipslots.xml" ),  
+    Asset( "IMAGE", "images/fa_equipbar_bg.tex" ),
+    Asset( "ATLAS", "images/fa_equipbar_bg.xml" ),  
 }
 --[[
 AddSimPostInit(function()
@@ -414,6 +416,9 @@ local PetBuff = require "widgets/petbuff"
 
 local function inventorypostinit(component,inst)
     inst.components.inventory.numequipslots = 8
+    if(inst:HasTag("player"))then
+        inst.components.inventory.ignorescangoincontainer=true
+    end
 end
 AddComponentPostInit("inventory", inventorypostinit)
 if(GLOBAL.inventorybarpostconstruct)then
@@ -596,6 +601,28 @@ end
 end
 
 
+ local function OpenBackpack(self) 
+    
+    local oldSetMainCharacter = self.SetMainCharacter
+
+    function self:SetMainCharacter(maincharacter)
+        
+        oldSetMainCharacter(self, maincharacter)
+        
+        local bp = maincharacter.components.inventory:GetEquippedItem(GLOBAL.EQUIPSLOTS.PACK)
+        
+        if bp and bp.components.container then
+            bp.components.container:Close()
+            bp.components.container:Open(maincharacter)
+        end
+
+--nothing but equipment is registered at this point... it seems it just gives items again, 
+--system does not track if a container was open
+    end
+    
+end
+
+AddClassPostConstruct("screens/playerhud", OpenBackpack)
 --SaveGameIndex:GetCurrentCaveLevel()
 
 

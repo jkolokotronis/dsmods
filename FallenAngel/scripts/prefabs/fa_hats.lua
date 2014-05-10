@@ -4,6 +4,7 @@ local assets=
 	Asset("ANIM", "anim/hat_goblinking_swap.zip"),
 	Asset("ANIM", "anim/hat_goblinking.zip"),
 	Asset("ANIM", "anim/hat_pot_swap.zip"),
+    Asset("ANIM", "anim/hat_pot_goblin_swap.zip"),
 	Asset("ANIM", "anim/hat_pot.zip"),
     Asset("ATLAS", "images/inventoryimages/hat_pot.xml"),
     Asset("IMAGE", "images/inventoryimages/hat_pot.tex"),
@@ -89,7 +90,13 @@ local function onequip(inst, owner, build)
     	inst.AnimState:SetBank("hat_pot")
         inst.AnimState:SetBuild("hat_pot")
         inst.AnimState:PlayAnimation("idle")
-        inst.components.equippable:SetOnEquip(function(inst,owner) onequip(inst,owner,"hat_pot_swap") end )
+        inst.components.equippable:SetOnEquip(function(inst,owner)
+            if(owner and owner:HasTag("goblin"))then    
+                onequip(inst,owner,"hat_pot_goblin_swap") 
+            else
+                onequip(inst,owner,"hat_pot_swap") 
+            end
+        end )
     	inst.components.inventoryitem.imagename = "hat_pot"
     	inst.components.inventoryitem.atlasname = "images/inventoryimages/hat_pot.xml"
         inst:AddComponent("armor")

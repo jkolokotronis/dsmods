@@ -117,9 +117,8 @@ function FAWarClock:RecalcSegs(phases)
     for k, v in ipairs(phases) do
         local segcount=v.length
         local color=self.colors[v.name]
-        print("segcount",segcount)
+--        print("segcount",segcount)
         for c=1, segcount do
-            print(i)
             if(color)then
                 self.segs[i]:SetTint(color.x,color.y,color.z,1)
                 self.segs[i]:Show()

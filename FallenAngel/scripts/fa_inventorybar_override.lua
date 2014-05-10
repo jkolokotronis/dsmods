@@ -51,7 +51,7 @@ inventorybarpostconstruct=function(self, owner)
 --		self.bgcover = self.root:AddChild(Image(HUD_ATLAS, "inventory_bg_cover.tex"))
 		self.bgcover:SetScale(0.97,1,1)
 
-		self.bgequip = self.root:AddChild(Image(HUD_ATLAS, "inventory_bg.tex"))
+		self.bgequip = self.root:AddChild(Image("images/fa_equipbar_bg.xml", "fa_equipbar_bg.tex"))
 		self.bgequip:SetScale(0.5,1,1)
 		self.bgequip:MoveToBack()
 
@@ -67,6 +67,7 @@ inventorybarpostconstruct=function(self, owner)
     	self:AddEquipSlot(EQUIPSLOTS.BOOT, "images/equipslots.xml", "equip_slot_boot.tex")  
     	self:AddEquipSlot(EQUIPSLOTS.QUIVER, "images/equipslots.xml", "equip_slot_quiver.tex")  
 
+--TODO this likely does not need to be rewritten
 function self:Rebuild()
 
 	if self.cursor then
@@ -238,7 +239,7 @@ INTERSEP = 11		--MOD
 	inventorybarpostconstruct=function(self, owner)
 
 
-		self.bgequip = self.root:AddChild(Image(HUD_ATLAS, "inventory_bg.tex"))
+		self.bgequip = self.root:AddChild(Image("images/fa_equipbar_bg.xml", "fa_equipbar_bg.tex"))
 		self.bgequip:SetScale(0.48,1,1)
 	   	self:AddEquipSlot(EQUIPSLOTS.RING, "images/equipslots.xml", "equip_slot_ring.tex")  
     	self:AddEquipSlot(EQUIPSLOTS.BOOT, "images/equipslots.xml", "equip_slot_boot.tex")  
@@ -298,7 +299,7 @@ INTERSEP = 11		--MOD
 				for k, v in ipairs(self.equipslotinfo) do
 					local slot=self.equip[v.slot] 
 					local x = -total_e/2 + W/2 + (k-1)*W + (k-1)*SEP	
-					slot:SetPosition(x,y+151,0)						--MOD
+					slot:SetPosition(x,y+146,0)						--MOD
 				end 
 				for k = 1,45 do
 					local pos=self.inv[k]:GetPosition()
