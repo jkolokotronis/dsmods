@@ -390,7 +390,7 @@ AddRoom("FA_dungeonexit",{
 
 AddRoom("FA_MineEntrance", {
 					colour={r=0.2,g=0.0,b=0.2,a=0.3},
-					value = GROUND.FA_LAVA_SHINY,
+					value = GROUND.FA_ASH,
 					contents =  {
 									countprefabs = {
 										houndmound=1,
@@ -833,10 +833,10 @@ AddRoom("FA_BGLava",  {
 									distributepercent = 0.05,
 					                distributeprefabs= 
 					                {
-					                	stalagmite = .25,
 					                	stalagmite_med = .25,
 					                	stalagmite_low = .25,
-					                	dropperweb = 0.5,
+					                	fa_lavarock = .5,
+					                	fa_fissure_white = 0.25,
 					                }
 					            }
 					})
@@ -851,10 +851,10 @@ AddRoom("FA_BGLava_Ash",  {
 									distributepercent = 0.05,
 					                distributeprefabs= 
 					                {
-					                	stalagmite = .25,
 					                	stalagmite_med = .25,
 					                	stalagmite_low = .25,
-					                	dropperweb = 0.5,
+					                	fa_lavarock = .5,
+					                	fa_fissure_white = 0.25,
 					                }
 					            }
 					})
@@ -869,10 +869,10 @@ AddRoom("FA_BGLava_Shiny",  {
 									distributepercent = 0.05,
 					                distributeprefabs= 
 					                {
-					                	stalagmite = .25,
 					                	stalagmite_med = .25,
 					                	stalagmite_low = .25,
-					                	dropperweb = 0.5,
+					                	fa_lavarock = .5,
+					                	fa_fissure_white = 0.25,
 					                }
 					            }
 					})
@@ -887,10 +887,10 @@ AddRoom("FA_BGLava_Green",  {
 									distributepercent = 0.05,
 					                distributeprefabs= 
 					                {
-					                	stalagmite = .25,
 					                	stalagmite_med = .25,
 					                	stalagmite_low = .25,
-					                	dropperweb = 0.5,
+					                	fa_lavarock = .5,
+					                	fa_fissure_white = 0.25,
 					                }
 					            }
 					})
