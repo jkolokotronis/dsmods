@@ -23,14 +23,24 @@ local function onsewn(inst, target, doer)
         doer.SoundEmitter:PlaySound("dontstarve/HUD/repair_clothing")
     end
 end
-local function fn(Sim)
+local function fn(name)
     local inst = CreateEntity()
     inst.entity:AddTransform()
     inst.entity:AddAnimState()
+    inst.AnimState:SetBank("fa_"..name.."arrows")
+    inst.AnimState:SetBuild("fa_"..name.."arrows")
+    inst.AnimState:PlayAnimation("idle")
 
     MakeInventoryPhysics(inst)
     
     inst:AddComponent("inventoryitem")
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_"..name.."arrows.xml"
+    inst.components.inventoryitem.imagename="fa_"..name.."arrows"
+
+
+    inst:AddComponent("equippable")
+    inst.components.equippable.equipslot =EQUIPSLOTS.QUIVER
+
 
     inst:AddComponent("inspectable")
     
@@ -52,43 +62,19 @@ local function fn(Sim)
 end
 
 local function woodfn(Sim)
-    local inst=fn(Sim)
-    inst.AnimState:SetBank("fa_woodarrows")
-    inst.AnimState:SetBuild("fa_woodarrows")
-    inst.AnimState:PlayAnimation("idle")
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_woodarrows.xml"
-    inst.components.inventoryitem.imagename="fa_woodarrows"
-    return inst
+    return fn("wood")
 end
 
 local function icefn(Sim)
-    local inst=fn(Sim)
-    inst.AnimState:SetBank("fa_icearrows")
-    inst.AnimState:SetBuild("fa_icearrows")
-    inst.AnimState:PlayAnimation("idle")
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_icearrows.xml"
-    inst.components.inventoryitem.imagename="fa_icearrows"
-    return inst
+    return fn("ice")
 end
 
 local function firefn(Sim)
-    local inst=fn(Sim)
-    inst.AnimState:SetBank("fa_firearrows")
-    inst.AnimState:SetBuild("fa_firearrows")
-    inst.AnimState:PlayAnimation("idle")
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_firearrows.xml"
-    inst.components.inventoryitem.imagename="fa_firearrows"
-    return inst
+     return fn("fire")
 end
 
 local function poisonfn(Sim)
-    local inst=fn(Sim)
-    inst.AnimState:SetBank("fa_poisonarrows")
-    inst.AnimState:SetBuild("fa_poisonarrows")
-    inst.AnimState:PlayAnimation("idle")
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_poisonarrows.xml"
-    inst.components.inventoryitem.imagename="fa_poisonarrows"
-    return inst
+    return fn("poison")
 end
 
 local function OnHit(inst, owner, target)
@@ -98,12 +84,31 @@ end
 local function onthrown(inst, data)
     inst.AnimState:SetOrientation( ANIM_ORIENTATION.OnGround )
 end
-local function projectile()
+
+local function oncollide(inst, other)
+--    print("collision with ",other)
+    if(inst.components.projectile.target and inst.components.projectile.target==other)then
+        print("hit the target, ignore, should never happen")
+    else
+        if(other)then
+--            print("target",inst.components.projectile.target,"other",other)
+            inst.components.projectile:Hit(other)
+        else
+            inst.components.projectile:Miss()--the hell does target mean here?
+        end
+    end
+end
+
+local function fnprojectile(name)
     local inst = CreateEntity()
     local trans = inst.entity:AddTransform()
     local anim = inst.entity:AddAnimState()
     MakeInventoryPhysics(inst)
+    inst.Physics:SetCollisionCallback(oncollide)
 --    RemovePhysicsColliders(inst)
+    inst.AnimState:SetBank("fa_"..name+"_projectile")
+    inst.AnimState:SetBuild("fa_"..name.."_projectile")
+    inst.AnimState:PlayAnimation("idle", true)
     
     inst:AddTag("projectile")
     inst.Transform:SetScale(1, 1, 1)
@@ -118,39 +123,19 @@ local function projectile()
 end
 
 local function woodprojectile(Sim)
-    local inst = common()
-    inst.AnimState:SetBank("fa_woodarrows_projectile")
-    inst.AnimState:SetBuild("fa_woodarrows_projectile")
-    inst.AnimState:PlayAnimation("idle", true)
-
-    return inst
+    return fnprojectile("woodarrows")
 end
 
 local function iceprojectile(Sim)
-    local inst = common()
-    inst.AnimState:SetBank("fa_icearrows_projectile")
-    inst.AnimState:SetBuild("fa_icearrows_projectile")
-    inst.AnimState:PlayAnimation("idle", true)
-
-    return inst
+    return fnprojectile("icearrows")
 end
 
 local function fireprojectile(Sim)
-    local inst = common()
-    inst.AnimState:SetBank("fa_firearrows_projectile")
-    inst.AnimState:SetBuild("fa_firearrows_projectile")
-    inst.AnimState:PlayAnimation("idle", true)
-
-    return inst
+    return fnprojectile("firearrows")
 end
 
 local function poisonprojectile(Sim)
-    local inst = common()
-    inst.AnimState:SetBank("fa_poisonarrows_projectile")
-    inst.AnimState:SetBuild("fa_poisonarrows_projectile")
-    inst.AnimState:PlayAnimation("idle", true)
-
-    return inst
+    return fnprojectile("poisonarrows")
 end
 
 return Prefab( "common/inventory/fa_woodarrows", woodfn, assets),

@@ -39,7 +39,7 @@ local function oncollide(inst, other)
         print("hit the target, ignore, should never happen")
     else
         if(other)then
-            print("target",inst.components.projectile.target,"other",other)
+--            print("target",inst.components.projectile.target,"other",other)
             inst.components.projectile:Hit(other)
         else
             inst.components.projectile:Miss()--the hell does target mean here?

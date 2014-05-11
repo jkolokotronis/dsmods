@@ -43,13 +43,8 @@ local function fn(Sim)
 --    inst:AddTag("bonfire")
     anim:SetBank("bonfire")
     anim:SetBuild("bonfire")
---	anim:PlayAnimation("off")
 	anim:PlayAnimation("on",true)
---	inst:ListenForEvent( "daytime", function(inst, data) StartDay( local_inst ) end, GetWorld())
---	inst:ListenForEvent( "nighttime", function(inst, data) end, GetWorld())
-	--why it wont turn on proper on reload?
 	inst:DoTaskInTime(0,function()
-
     inst.components.burnable:Ignite()
 	end)
     return inst

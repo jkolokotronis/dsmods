@@ -24,31 +24,24 @@ local BOW_RANGE=15
 
 ---------RED STAFF---------
 
-local function onattack_red(inst, attacker, target)
+local function useammo(inst, attacker, target)
+    if(checkammo(inst,target))then
 
---[[
-    if target.components.sleeper and target.components.sleeper:IsAsleep() then
-        target.components.sleeper:WakeUp()
+    else
+        --not worth crashing the game for
+        print("ERROR: no ammo to use")
     end
-
-    if target.components.combat then
-        target.components.combat:SuggestTarget(attacker)
-        if target.sg and target.sg.sg.states.hit then
-            target.sg:GoToState("hit")
-        end
-    end
-
-
-    attacker.SoundEmitter:PlaySound("dontstarve/wilson/fireball_explo")
-    ]]
 end
 
 
 local function onfinished(inst)
     inst.SoundEmitter:PlaySound("dontstarve/common/gem_shatter")
---    inst:Remove()
+    inst:Remove()
 end
 
+local function checkammo( inst,target )
+    -- body
+end
 
 local function commonfn(colour)
 
@@ -106,14 +99,15 @@ local function red()
     inst:AddComponent("weapon")
     inst.components.weapon:SetDamage(BOW_DAMAGE)
     inst.components.weapon:SetRange(BOW_RANGE-2, BOW_RANGE)
-    inst.components.weapon:SetOnAttack(onattack_red)
+    inst.components.weapon:SetOnAttack(useammo)
     inst.components.weapon:SetProjectile("fire_projectile")
+    inst.components.weapon:setCanAttack(checkammo) 
 
     inst.components.finiteuses:SetMaxUses(BOW_USES)
     inst.components.finiteuses:SetUses(BOW_USES)
 
-    inst:AddComponent("reloadable")
-    inst.components.reloadable.ammotype="arrows"
+--    inst:AddComponent("reloadable")
+--    inst.components.reloadable.ammotype="arrows"
 
     return inst
 end

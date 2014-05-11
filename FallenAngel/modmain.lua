@@ -56,6 +56,8 @@ require "repairabledescriptionfix"
 
 PrefabFiles = {
     "fa_fx",
+    "fa_bars",
+    "fa_smeltingfurnace",
     "fa_bags",
     "fa_rocks",
     "fa_lavarain",
@@ -91,8 +93,8 @@ PrefabFiles = {
     "dksword",
     "holysword",
     "thieftraps",
-    "arrows",
-    "bow",
+    "fa_arrows",
+    "fa_bow",
     "fa_keys",
     "fa_boots",
     "fa_rings",
@@ -1785,6 +1787,16 @@ if(GLOBAL.FA_DLCACCESS)then
         inst.components.armor.fa_resistances[FA_DAMAGETYPE.FIRE]=0.85
     end)
 end
+--[[
+AddClassPostConstruct("screens/characterselectscreen", function(self)
+    self:SelectCharacter "barb"
+end)
+]]
+AddClassPostConstruct("screens/newgamescreen", function(self)
+    self.character = "barb"          
+    local atlas = "images/saveslot_portraits/"..self.character..".xml"
+    self.portrait:SetTexture(atlas, self.character..".tex")
+end)
 
 AddModCharacter("barb")
 AddModCharacter("druid")

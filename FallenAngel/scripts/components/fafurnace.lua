@@ -1,7 +1,5 @@
-local cooking = require("cooking")
 
-
-local FaTrader = Class(function(self, inst)
+local FAFurnace = Class(function(self, inst)
     self.inst = inst
     self.cooking = false
     self.done = false
@@ -10,40 +8,49 @@ local FaTrader = Class(function(self, inst)
     self.matcher = nil
 end)
 
-local function dostew(inst)
-	inst.components.stewer.task = nil
+function FAFurnace:dostew(inst)
+	self.task = nil
 	
-	if inst.components.stewer.ondonecooking then
-		inst.components.stewer.ondonecooking(inst)
+	if self.ondonecooking then
+		self.ondonecooking(inst)
 	end
 	
-	inst.components.stewer.done = true
-	inst.components.stewer.cooking = nil
+	self.done = true
+	self.cooking = nil
 end
 
-function Stewer:GetTimeToCook()
+function FAFurnace:GetTimeToCook()
 	if self.cooking then
 		return self.targettime - GetTime()
 	end
 	return 0
 end
 
-
-function Stewer:CanCook()
-	--[[
-	local num = 0
+function FAFurnace:GetIngreds()
+	local ingreds={}
 	for k,v in pairs (self.inst.components.container.slots) do
-		num = num + 1 
+		local c=1
+		ingreds[v.prefab]=(ingreds[v.prefab] and ingreds[v.prefab]+1) or 1
 	end
-	return num == 4]]
-	return true
+	return ingreds
+end
+
+function FAFurnace:CanCook()
+
+	if(self.matcher)then
+		return self.matcher:TryMatch(self:GetIngreds())
+	else
+		return false
 end
 
 
-function Stewer:StartCooking()
+function FAFurnace:StartCooking()
 	if not self.done and not self.cooking then
 		if self.inst.components.container then
-		
+			
+			local res=self.matcher:Match(self:GetIngreds())
+			self.product=res.product
+			cooktime=res.cooktime 
 			self.done = nil
 			self.cooking = true
 			
@@ -53,11 +60,10 @@ function Stewer:StartCooking()
 		
 			
 			local cooktime = 1
-			self.product, cooktime = cooking.CalculateRecipe(self.inst.prefab, ings)
 			
-			local grow_time = TUNING.BASE_COOK_TIME * cooktime
+			local grow_time = cooktime
 			self.targettime = GetTime() + grow_time
-			self.task = self.inst:DoTaskInTime(grow_time, dostew, "stew")
+			self.task = self.inst:DoTaskInTime(grow_time, function() self:dostew() end)
 
 			self.inst.components.container:Close()
 			self.inst.components.container:DestroyContents()
@@ -67,7 +73,7 @@ function Stewer:StartCooking()
 	end
 end
 
-function Stewer:OnSave()
+function FAFurnace:OnSave()
     
     if self.cooking then
 		local data = {}
@@ -88,7 +94,7 @@ function Stewer:OnSave()
     end
 end
 
-function Stewer:OnLoad(data)
+function FAFurnace:OnLoad(data)
     --self.produce = data.produce
     if data.cooking then
 		self.product = data.product
@@ -98,7 +104,7 @@ function Stewer:OnLoad(data)
 			self.oncontinuecooking(self.inst)
 			self.cooking = true
 			self.targettime = GetTime() + time
-			self.task = self.inst:DoTaskInTime(time, dostew, "stew")
+			self.task = self.inst:DoTaskInTime(time, function() self:dostew() end)
 			
 			if self.inst.components.container then		
 				self.inst.components.container.canbeopened = false
@@ -120,7 +126,7 @@ function Stewer:OnLoad(data)
 end
 
 
-function Stewer:CollectSceneActions(doer, actions, right)
+function FAFurnace:CollectSceneActions(doer, actions, right)
     if self.done then
         table.insert(actions, ACTIONS.HARVEST)
     elseif right and self:CanCook() then
@@ -129,7 +135,7 @@ function Stewer:CollectSceneActions(doer, actions, right)
 end
 
 
-function Stewer:Harvest( harvester )
+function FAFurnace:Harvest( harvester )
 	if self.done then
 		if self.onharvest then
 			self.onharvest(self.inst)
@@ -137,16 +143,22 @@ function Stewer:Harvest( harvester )
 		self.done = nil
 		if self.product then
 			if harvester and harvester.components.inventory then
-				local loot = SpawnPrefab(self.product)
-				
-				
-				if loot then
-				
-					if loot and loot.components.perishable then
-					loot.components.perishable:SetPercent( self.product_spoilage)
+				local loot={}
+				if(type(self.product)=="table")then
+					for k,v in self.product do
+						table.insert(loot, SpawnPrefab(v))
 					end
-					harvester.components.inventory:GiveItem(loot, nil, Vector3(TheSim:GetScreenPos(self.inst.Transform:GetWorldPosition())))
+				else
+					table.insert(loot, SpawnPrefab(self.product))
 				end
+				
+				for k,v in loot do
+					if v and v.components.perishable then
+						loot.components.perishable:SetPercent( self.product_spoilage)
+					end
+					harvester.components.inventory:GiveItem(v, nil, Vector3(TheSim:GetScreenPos(self.inst.Transform:GetWorldPosition())))
+				end
+				
 			end
 			self.product = nil
 		end
@@ -160,4 +172,4 @@ function Stewer:Harvest( harvester )
 end
 
 
-return Stewer
+return FAFurnace
