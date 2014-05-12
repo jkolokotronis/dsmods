@@ -1,8 +1,24 @@
 local assets =
 {
---	Asset("ANIM", "anim/spell_books.zip"),
+	Asset("ANIM", "anim/fa_scrolls.zip"),
     Asset("ANIM", "anim/books.zip"),
     Asset("ANIM", "anim/goodberries.zip"),
+    Asset( "IMAGE", "images/inventoryimages/fa_scroll_conj.tex" ),
+    Asset( "ATLAS", "images/inventoryimages/fa_scroll_conj.xml" ),
+    Asset( "IMAGE", "images/inventoryimages/fa_scroll_divi.tex" ),
+    Asset( "ATLAS", "images/inventoryimages/fa_scroll_divi.xml" ),
+    Asset( "IMAGE", "images/inventoryimages/fa_scroll_evo.tex" ),
+    Asset( "ATLAS", "images/inventoryimages/fa_scroll_evo.xml" ),
+    Asset( "IMAGE", "images/inventoryimages/fa_scroll_ench.tex" ),
+    Asset( "ATLAS", "images/inventoryimages/fa_scroll_ench.xml" ),
+    Asset( "IMAGE", "images/inventoryimages/fa_scroll_illu.tex" ),
+    Asset( "ATLAS", "images/inventoryimages/fa_scroll_illu.xml" ),
+    Asset( "IMAGE", "images/inventoryimages/fa_scroll_necro.tex" ),
+    Asset( "ATLAS", "images/inventoryimages/fa_scroll_necro.xml" ),
+    Asset( "IMAGE", "images/inventoryimages/fa_scroll_trans.tex" ),
+    Asset( "ATLAS", "images/inventoryimages/fa_scroll_trans.xml" ),
+    Asset( "IMAGE", "images/inventoryimages/fa_scroll_abj.tex" ),
+    Asset( "ATLAS", "images/inventoryimages/fa_scroll_abj.xml" ),
 	--Asset("SOUND", "sound/common.fsb"),
 }
  
@@ -371,7 +387,7 @@ function onfinished(inst)
     inst:Remove()
 end
 
-function MakeSpell(name, usefn, bookuses )
+function MakeSpell(name, usefn, bookuses,school )
     
     local function fn(Sim)
         print("make spell",name,usefn,bookuses)
@@ -379,11 +395,16 @@ function MakeSpell(name, usefn, bookuses )
     	local trans = inst.entity:AddTransform()
     	local anim = inst.entity:AddAnimState()
         local sound = inst.entity:AddSoundEmitter()
-        anim:SetBank("books")
-        anim:SetBuild("books")
-
-        anim:PlayAnimation("book_birds")
-
+        --need to go through some lists and set all properly
+        if(school)then
+            anim:SetBank("fa_scrolls")
+            anim:SetBuild("fa_scrolls")
+            anim:PlayAnimation(school)
+        else
+            anim:SetBank("books")
+            anim:SetBuild("books")
+            anim:PlayAnimation("book_birds")
+        end
 --        anim:PlayAnimation(name)
         MakeInventoryPhysics(inst)
         
@@ -394,11 +415,19 @@ function MakeSpell(name, usefn, bookuses )
         inst:AddComponent("book")
         inst.components.book.onread = usefn
 
+        local assetname=nil
 --        inst:AddComponent("characterspecific")
 --        inst.components.characterspecific:SetOwner("druid")
         
         inst:AddComponent("inventoryitem")
-        inst.components.inventoryitem.imagename="book_brimstone"
+        if(school)then
+            assetname="fa_scroll_"..school
+
+            inst.components.inventoryitem.atlasname="images/inventoryimages/"..assetname..".xml"
+            inst.components.inventoryitem.imagename=assetname
+        else
+            inst.components.inventoryitem.imagename="book_brimstone"
+        end
 
         inst:AddComponent("finiteuses")
         inst.components.finiteuses:SetMaxUses( bookuses )
@@ -416,14 +445,14 @@ function MakeSpell(name, usefn, bookuses )
 end
 
 
-return MakeSpell("spell_lightning", firefn, 10),
-       MakeSpell("spell_earthquake", earthquakefn, 12),
-       MakeSpell("spell_grow", growfn, 15),
-       MakeSpell("spell_heal", healfn, 10),
-       MakeSpell("spell_divinemight", divinemightfn, 15),
-       MakeSpell("spell_calldiety", calldietyfn, 10),
-       MakeSpell("spell_light", lightfn, 12),
-       MakeSpell("spell_bladebarrier", bladebarrierfn, 5),
+return MakeSpell("spell_lightning", firefn, 10,"conj"),
+       MakeSpell("spell_earthquake", earthquakefn, 12,"divi"),
+       MakeSpell("spell_grow", growfn, 15,"evo"),
+       MakeSpell("spell_heal", healfn, 10,"ench"),
+       MakeSpell("spell_divinemight", divinemightfn, 15,"illu"),
+       MakeSpell("spell_calldiety", calldietyfn, 10,"necro"),
+       MakeSpell("spell_light", lightfn, 12,"trans"),
+       MakeSpell("spell_bladebarrier", bladebarrierfn, 5,"abj"),
        MakeSpell("spell_guardian", treeguardianfn, 7),
        MakeSpell("spell_invisibility", invisibilityfn,10),
        MakeSpell("spell_haste", hastefn, 5),
