@@ -9,7 +9,7 @@ local prefabs =
 {
 
 }
-
+local YELL_TIMEOUT=30
 local ORC_HEALTH=300
 local ORC_DAMAGE=20
 
@@ -26,7 +26,10 @@ local function RetargetFn(inst)
         return guy:HasTag("character") and not guy:HasTag("orc")
     end)
      if(invader and not inst.components.combat.target)then--invader~=inst.components.combat.target)then
-        inst.SoundEmitter:PlaySound("fa/orc/drums")
+        if not(inst.fa_yelltime and (GetTime()-inst.fa_yelltime)<YELL_TIMEOUT)then
+            inst.fa_yelltime=GetTime()
+            inst.SoundEmitter:PlaySound("fa/orc/drums")
+        end
     end
     return invader
 end

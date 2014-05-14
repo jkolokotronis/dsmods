@@ -92,15 +92,18 @@ local function FASmelterMatcher:Match(itemlist)
 	--failed
 	local product={}
 	for k,v in pairs(itemlist) do
+		if(string.find(k,"pebble"))then
 		for i=1,v do
+
 			table.insert(product,i)
+		end
 		end
 	end
 	return {product=product,cooktime=FAIL_TIMER}
 end
 
 local function FASmelterMatcher:TryMatch(itemlist)
-	if(Match(itemlist)) return true
+	return true
 end
 
 return FASmelterMatcher

@@ -16,6 +16,7 @@ local prefabs =
 "magicmissilewand"
 }
 
+local YELL_TIMEOUT=30
 local GOBLIN_HEALTH=400
 local GOBLIN_DAMAGE=30
 local GOBLIN_ATTACK_PERIOD=2
@@ -163,7 +164,10 @@ local function RetargetFn(inst)
         end)
     end
     if(invader and not inst.components.combat.target)then--invader~=inst.components.combat.target)then
-        inst.SoundEmitter:PlaySound("fa/goblin/goblin_yell")
+        if not(inst.fa_yelltime and (GetTime()-inst.fa_yelltime)<YELL_TIMEOUT)then
+            inst.fa_yelltime=GetTime()
+            inst.SoundEmitter:PlaySound("fa/goblin/goblin_yell")
+        end
     end
     return invader
 end

@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8">
+    <folder id="0">
+        <file id="0" name="bottle_b_ground.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="bottle_e_ground.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="bottle_g_ground.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
+        <file id="3" name="bottle_r_ground.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
+        <file id="4" name="bottle_y_ground.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <folder id="1" name="dark">
+        <file id="0" name="dark/auburn.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="dark/blue.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="dark/brown.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
+        <file id="3" name="dark/cyan.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
+        <file id="4" name="dark/green.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
+        <file id="5" name="dark/lime.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
+        <file id="6" name="dark/orange.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
+        <file id="7" name="dark/purple.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
+        <file id="8" name="dark/red.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
+        <file id="9" name="dark/yellow.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <folder id="2" name="light">
+        <file id="0" name="light/auburn.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="light/blue.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="light/brown.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
+        <file id="3" name="light/cyan.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
+        <file id="4" name="light/green.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
+        <file id="5" name="light/lime.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
+        <file id="6" name="light/orange.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
+        <file id="7" name="light/purple.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
+        <file id="8" name="light/red.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
+        <file id="9" name="light/yellow.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="fa_bottle_b">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-41" y="53" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="0" file="0" x="-41" y="53" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="1" name="fa_bottle_e">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-41" y="53" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="0" file="1" x="-41" y="53" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="2" name="fa_bottle_g">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="-41" y="53" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="0" file="2" x="-41" y="53" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="3" name="fa_bottle_r">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" x="-41" y="53" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="0" file="3" x="-41" y="53" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="4" name="fa_bottle_y">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="0" file="4" x="-41" y="53" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="0" file="4" x="-41" y="53" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="5" name="fa_bottle_dark_auburn">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="1" file="0" x="-41" y="53" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="1" file="0" x="-41" y="53" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="6" name="fa_bottle_dark_blue">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="1" file="1" x="-41" y="53" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="1" file="1" x="-41" y="53" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="7" name="fa_bottle_dark_brown">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="1" file="2" x="-41" y="53" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="1" file="2" x="-41" y="53" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="8" name="fa_bottle_dark_cyan">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="1" file="3" x="-41" y="53" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="1" file="3" x="-41" y="53" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="9" name="fa_bottle_dark_green">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="1" file="4" x="-41" y="53" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="1" file="4" x="-41" y="53" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="10" name="fa_bottle_dark_lime">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="1" file="5" x="-41" y="53" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="1" file="5" x="-41" y="53" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="11" name="fa_bottle_dark_orange">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="1" file="6" x="-41" y="53" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="1" file="6" x="-41" y="53" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="12" name="fa_bottle_dark_purple">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="1" file="7" x="-41" y="53" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="1" file="7" x="-41" y="53" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="13" name="fa_bottle_dark_red">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="1" file="8" x="-41" y="53" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="1" file="8" x="-41" y="53" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="14" name="fa_bottle_dark_yellow">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="1" file="9" x="-41" y="53" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="1" file="9" x="-41" y="53" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="15" name="fa_bottle_light_auburn">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="2" file="0" x="-41" y="53" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="2" file="0" x="-41" y="53" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="16" name="fa_bottle_light_blue">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="2" file="1" x="-41" y="53" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="2" file="1" x="-41" y="53" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="17" name="fa_bottle_light_brown">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="2" file="2" x="-41" y="53" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="2" file="2" x="-41" y="53" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="18" name="fa_bottle_light_cyan">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="2" file="3" x="-41" y="53" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="2" file="3" x="-41" y="53" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="19" name="fa_bottle_light_green">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="2" file="4" x="-41" y="53" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="2" file="4" x="-41" y="53" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="20" name="fa_bottle_light_lime">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="2" file="5" x="-41" y="53" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="2" file="5" x="-41" y="53" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="21" name="fa_bottle_light_orange">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="2" file="6" x="-41" y="53" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="2" file="6" x="-41" y="53" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="22" name="fa_bottle_light_purple">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="2" file="7" x="-41" y="53" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="2" file="7" x="-41" y="53" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="23" name="fa_bottle_light_red">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="2" file="8" x="-41" y="53" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="2" file="8" x="-41" y="53" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="24" name="fa_bottle_light_yellow">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="2" file="9" x="-41" y="53" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="2" file="9" x="-41" y="53" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

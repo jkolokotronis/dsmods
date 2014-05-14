@@ -1,23 +1,12 @@
 require "recipes"
 local Assets =
 {
-	Asset("ANIM", "anim/fa_bottle_r.zip"),
-    Asset("ATLAS", "images/inventoryimages/fa_bottle_r.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_bottle_r.tex" ),
-	Asset("ANIM", "anim/fa_bottle_y.zip"),
-    Asset("ATLAS", "images/inventoryimages/fa_bottle_y.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_bottle_y.tex" ),
-	Asset("ANIM", "anim/fa_bottle_g.zip"),
-    Asset("ATLAS", "images/inventoryimages/fa_bottle_g.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_bottle_g.tex" ),
-	Asset("ANIM", "anim/fa_bottle_b.zip"),
-    Asset("ATLAS", "images/inventoryimages/fa_bottle_b.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_bottle_b.tex" ),
+    Asset("ATLAS", "images/inventoryimages/fa_bottles.xml"),
+    Asset("IMAGE", "images/inventoryimages/fa_bottles.tex" ),
+    Asset("ANIM", "anim/fa_bottles.zip"),
 	Asset("ANIM", "anim/frog.zip"),
 	Asset("SOUND", "sound/frog.fsb"),
 	Asset( "ANIM", "anim/smoke_up.zip" ),
-    Asset("SOUNDPACKAGE", "sound/fa.fev"),
-    Asset("SOUND", "sound/fallenangel.fsb"),
 }
 
 local prefabs = {
@@ -379,16 +368,24 @@ local function eatwonder(inst,data)
 	end
 end
 
-local function common(Sim)
+local function common(name)
 	local inst = CreateEntity()
 	inst.entity:AddTransform()
 	inst.entity:AddAnimState()
     inst.Transform:SetScale(3,3, 3)
 
+
+    inst.AnimState:SetBank("fa_"..name)
+    inst.AnimState:SetBuild("fa_bottles")
+    inst.AnimState:PlayAnimation("idle")
+
     MakeInventoryPhysics(inst)
         
     inst:AddTag("potion")
     inst:AddComponent("inventoryitem")
+	inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_bottles.xml"
+    inst.components.inventoryitem.imagename="fa_"..name
+
 	inst:AddComponent("inspectable")	
 	
     inst:AddComponent("edible")
@@ -407,12 +404,7 @@ end
 
 local function fnr(Sim)
 
-	local inst = common(Sim)
-    inst.AnimState:SetBank("fa_bottle_r")
-    inst.AnimState:SetBuild("fa_bottle_r")
-    inst.AnimState:PlayAnimation("idle")
-	inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_bottle_r.xml"
-    inst.components.inventoryitem.imagename="fa_bottle_r"
+	local inst = common("bottle_r")
     inst.components.edible.healthvalue = 150
     return inst
 
@@ -420,12 +412,7 @@ end
 
 local function fny(Sim)
 
-	local inst = common(Sim)
-    inst.AnimState:SetBank("fa_bottle_y")
-    inst.AnimState:SetBuild("fa_bottle_y")
-    inst.AnimState:PlayAnimation("idle")
-	inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_bottle_y.xml"
-    inst.components.inventoryitem.imagename="fa_bottle_y"
+	local inst = common("bottle_y")
     inst.components.edible.hungervalue = 150
     return inst
 
@@ -433,12 +420,7 @@ end
 
 local function fng(Sim)
 
-	local inst = common(Sim)
-    inst.AnimState:SetBank("fa_bottle_g")
-    inst.AnimState:SetBuild("fa_bottle_g")
-    inst.AnimState:PlayAnimation("idle")
-	inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_bottle_g.xml"
-    inst.components.inventoryitem.imagename="fa_bottle_g"
+	local inst = common("bottle_g")
     inst.components.edible.sanityvalue = 150
     return inst
 
@@ -447,12 +429,7 @@ end
 
 local function fnb(Sim)
 
-	local inst = common(Sim)
-    inst.AnimState:SetBank("fa_bottle_b")
-    inst.AnimState:SetBuild("fa_bottle_b")
-    inst.AnimState:PlayAnimation("idle")
-	inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_bottle_b.xml"
-    inst.components.inventoryitem.imagename="fa_bottle_b"
+	local inst = common("bottle_b")
 
 	inst:ListenForEvent("oneaten",eatwonder)
 
