@@ -1254,6 +1254,23 @@ AddClassPostConstruct("screens/slotdetailsscreen", function(self)
     end)()
 end)
 
+AddClassPostConstruct("components/terraformer",function(self)
+local old_canterraformpoint=self.CanTerraformPoint
+function self:CanTerraformPoint(pt)
+    if(old_canterraformpoint(pt))then
+        -- since it's blocking just hardcoded crap... one day I'll move this
+        local ground = GetWorld()
+        if ground then
+            local tile = ground.Map:GetTileAtPoint(pt.x, pt.y, pt.z)
+            return tile~=GROUND.FA_LAVA_ASH and tile~=GROUND.FA_LAVA_GREEN and tile~=GROUND.FA_LAVA_SHINY and tile~=FA_LAVA_TERRAIN2
+        end
+    else
+        return false
+    end
+end
+
+end)
+
 AddPrefabPostInit("world", function(inst)
 
 --    GLOBAL.assert( GLOBAL.GetPlayer() == nil )
@@ -1810,3 +1827,4 @@ AddModCharacter("necromancer")
 AddModCharacter("wizard")
 AddModCharacter("tinkerer")
 AddModCharacter("ranger")
+AddModCharacter("bard")
