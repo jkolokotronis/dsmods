@@ -103,12 +103,12 @@ local fn = function(inst)
     inst:AddComponent("reader")
 
 
-        inst.AnimState:SetBank("wilson")
-        inst.AnimState:SetBuild("wortox")
-        inst.AnimState:PlayAnimation("idle")
-        inst.AnimState:Hide("hat_hair")
-         inst.AnimState:Hide("ARM_carry")
-         inst.AnimState:Hide("hat")
+--        inst.AnimState:SetBank("wilson")
+--        inst.AnimState:SetBuild("wortox")
+ --       inst.AnimState:PlayAnimation("idle")
+ --       inst.AnimState:Hide("hat_hair")
+ --        inst.AnimState:Hide("ARM_carry")
+ --        inst.AnimState:Hide("hat")
 
     inst.buff_timers={}
 --    inst.buff_timers["light"]={}

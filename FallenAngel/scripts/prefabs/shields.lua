@@ -79,7 +79,8 @@ local function fn()
   else
       inst.components.equippable.equipslot = EQUIPSLOTS.BODY
   end    
-    
+
+  inst:AddTag("shield")    
     inst.components.equippable:SetOnUnequip( onunequip )
     inst:AddComponent("armor")
     inst:AddComponent("inspectable")
