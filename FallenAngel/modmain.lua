@@ -263,6 +263,7 @@ Assets = {
     Asset( "ATLAS", "minimap/fa_orc.xml" ),  
     Asset( "ANIM", "anim/question.zip" ),
     Asset( "ANIM", "anim/fa_shieldpuff.zip" ),
+--    Asset( "ANIM", "anim/player_actions_test1.zip" ),
 
     Asset( "ANIM", "anim/generating_goblin_cave.zip" ),
     Asset( "IMAGE", "images/lava3.tex" ),
@@ -739,9 +740,14 @@ local function newControlsInit(class)
         if(GetPlayer().fa_playername==nil or GetPlayer().fa_playername=="")then
         GetPlayer():DoTaskInTime(0,function()
             GLOBAL.TheFrontEnd:PushScreen(FA_CharRenameScreen(GLOBAL.STRINGS.CHARACTER_TITLES[GetPlayer().prefab]))
+            
         end)
         end
     end
+    --[[
+    GetPlayer():DoPeriodicTask(10, function()
+                 GetPlayer().AnimState:PlayAnimation("test1")
+            end)]]
 end
 --AddClassPostConstruct("screens/playerhud",newControlsInit)
 AddClassPostConstruct("widgets/statusdisplays", newControlsInit)
