@@ -5,6 +5,7 @@ local rock_assets =
 	Asset("ANIM", "anim/fa_lavarock2.zip"),
 	Asset("ANIM", "anim/fa_lavarock3.zip"),
 	Asset("ANIM", "anim/fa_ironrock.zip"),
+	Asset("ANIM", "anim/fa_coalrock.zip"),
 }
 
 local prefabs =
@@ -82,12 +83,13 @@ SetSharedLootTable( 'fa_copperrock',
     {'fa_silverpebble',  0.20},
 })
 
-	local function resolveanimtoplay(percent)
-		local anim_to_play = "full"
-		if percent < 1/3 then
-			anim_to_play="low"
-		elseif percent < 2/3 then
-			anim_to_play="med"
+	local function resolveanimtoplay(percent,stages)
+		local anim_to_play = ""..stages
+		for i=1,stages-1 do
+			if(percent<=(i/stages))then
+				anim_to_play=""..i
+				break
+			end
 		end
 		return anim_to_play
 	end
@@ -110,7 +112,7 @@ local function rockonload(inst, data)
 	    inst.AnimState:SetBuild(inst.animname)
 	    --are comps loaded yet?
 	    if(inst.components.workable and inst.components.workable.workleft>0)then
-	    	inst.AnimState:PlayAnimation(resolveanimtoplay(inst.components.workable.workleft/inst.components.workable.maxwork))
+	    	inst.AnimState:PlayAnimation(resolveanimtoplay(inst.components.workable.workleft/inst.components.workable.maxwork,inst.stages))
 	    end
 	end
 end
@@ -129,11 +131,12 @@ local function baserock_fn(name,animnames,minehits)
     		inst.animname=animnames
     	end
     end
+    inst.stages=3
 -- I'm just gonna force one that I renamed here
 --	inst.AnimState:SetBank("fa_"..name.."rock")
 	inst.AnimState:SetBank(inst.animname)
 	inst.AnimState:SetBuild(inst.animname)
-	inst.AnimState:PlayAnimation("full")
+	inst.AnimState:PlayAnimation("anim")
 
 	MakeObstaclePhysics(inst, 1.)
 	
@@ -141,6 +144,7 @@ local function baserock_fn(name,animnames,minehits)
 	minimap:SetIcon( "rock.png" )
 
 	inst:AddComponent("lootdropper") 
+	inst.components.lootdropper:SetChanceLootTable('fa_'..name..'rock')
 	
 	inst:AddComponent("workable")
 	inst.components.workable:SetWorkAction(ACTIONS.MINE)
@@ -156,7 +160,7 @@ local function baserock_fn(name,animnames,minehits)
 				inst.components.lootdropper:DropLoot(pt)
 				inst:Remove()
 			else
-				inst.AnimState:PlayAnimation(resolveanimtoplay(workleft/inst.components.workable.maxwork))
+				inst.AnimState:PlayAnimation(resolveanimtoplay(workleft/inst.components.workable.maxwork,inst.stages))
 			end
 		end)     
 
@@ -174,7 +178,7 @@ local function baserock_fn(name,animnames,minehits)
 end
 
 local function rock1_fn(Sim)
-	local inst = baserock_fn(name,lavatypes,LAVA_MINE)
+	local inst = baserock_fn("lava",lavatypes,LAVA_MINE)
     inst.AnimState:SetBloomEffectHandle( "shaders/anim.ksh" )
 
     inst.entity:AddLight()
@@ -183,7 +187,6 @@ local function rock1_fn(Sim)
     inst.Light:SetIntensity(.5)
     inst.Light:SetColour(150/255,15/255,15/255)
 	inst.Light:Enable(true)
-	inst.components.lootdropper:SetChanceLootTable('fa_lavarock')
 
 	return inst
 end
@@ -192,7 +195,9 @@ local function ironrock()
 	return baserock_fn("iron",nil,IRON_MINE)
 end
 local function coalrock()
-	return  baserock_fn("coal",nil,COAL_MINE)
+	local inst=baserock_fn("coal",nil,COAL_MINE)
+	inst.stages=4
+	return inst
 end
 local function limestonerock()
 	return  baserock_fn("limestone",nil,LIME_MINE)

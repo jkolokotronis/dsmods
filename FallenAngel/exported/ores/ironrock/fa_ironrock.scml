@@ -30,7 +30,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="1" name="full" length="200">
+        <animation id="1" name="3" length="200">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -78,7 +78,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="2" name="low" length="200">
+        <animation id="2" name="1" length="200">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -126,7 +126,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="3" name="med" length="200">
+        <animation id="3" name="2" length="200">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
