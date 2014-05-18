@@ -44,25 +44,10 @@ local MAX_KI=100
 local KI_ATTACK_INCREASE=5
 
 
-local kidelta=function(status,data)
-    status.ki:SetPercent(data.newpercent, status.owner.components.kibar.max)
-    
-    if not data.overtime then
-        if data.newpercent > data.oldpercent then
-            status.ki:PulseGreen()
-            TheFrontEnd:GetSound():PlaySound("dontstarve/HUD/sanity_up")
-        elseif data.newpercent < data.oldpercent then
-            status.ki:PulseRed()
-            TheFrontEnd:GetSound():PlaySound("dontstarve/HUD/sanity_down")
-        end
-    end
-    
-end
-
 local onhitother=function(inst,data)
     local damage=data.damage
     local weapon=inst.components.combat:GetWeapon()
-    if(damage and damage>0 and (not weapon or weapon:HasTag("unarmed")))then
+    if(damage and damage>0)then --and (not weapon or weapon:HasTag("unarmed")))then
         inst.components.kibar:DoDelta(KI_ATTACK_INCREASE)
     end
 end
@@ -103,15 +88,13 @@ local fn = function(inst)
     inst.OnLoad = onloadfn
     inst.OnSave = onsavefn
 
-    inst.newStatusDisplaysInit= function(class)
-
-        class.brain:SetPosition(-40,-40,0)
+    inst.newControlsInit = function (class)
 
         class.ki = class:AddChild(KiBadge(class.owner))
         class.ki:SetPercent(class.owner.components.kibar:GetPercent(), class.owner.components.kibar.max)
-        class.ki:SetPosition(40,-40,0)
+        class.ki:SetPosition(0,0,0)
 
-        class.inst:ListenForEvent("kidelta", function(inst, data)  kidelta(class,data) end, class.owner)
+        inst:ListenForEvent("kidelta", function(inst, data)  class.ki:DoDelta(data.old,data.new,data.max) end)
     end
 end
 
