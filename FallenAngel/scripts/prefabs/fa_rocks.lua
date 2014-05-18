@@ -5,6 +5,7 @@ local rock_assets =
 	Asset("ANIM", "anim/fa_lavarock2.zip"),
 	Asset("ANIM", "anim/fa_lavarock3.zip"),
 	Asset("ANIM", "anim/fa_ironrock.zip"),
+	Asset("ANIM", "anim/fa_limestonerock.zip"),
 	Asset("ANIM", "anim/fa_coalrock.zip"),
 }
 
@@ -200,7 +201,9 @@ local function coalrock()
 	return inst
 end
 local function limestonerock()
-	return  baserock_fn("limestone",nil,LIME_MINE)
+	local inst=baserock_fn("limestone",nil,LIME_MINE)
+	inst.stages=5
+	return inst
 end
 local function adamantinerock()
 	return baserock_fn("adamantine",nil,ADAMANTINE_MINE)

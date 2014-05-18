@@ -1,10 +1,10 @@
 local KiBar = Class(function(self, inst)
     self.inst = inst
-    self.max = 200
+    self.max = 100
     self.current = self.max
 
-    self.decrate = 10
-    self.period = 60
+    self.decrate = 1
+    self.period = 10
     
 --    self.task = self.inst:DoPeriodicTask(self.period, function() self:DoDec(self.period) end)
 	self.inst:ListenForEvent("respawn", function(inst) self:OnRespawn() end)
@@ -37,7 +37,7 @@ function KiBar:DoDc(dt)
 end
 
 function KiBar:LongUpdate(dt)
---	self:DoDec(dt, true)
+	self:DoDec(dt, true)
 end
 
 function KiBar:Pause()

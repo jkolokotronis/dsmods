@@ -1,5 +1,23 @@
 local Inventory=require "components/inventory"
 
+--make extra equip checks BEFORE thing is being equipped to prevent all forms of race conditi9ons
+
+
+local inventory_equip=Inventory.Equip
+
+function Inventory:Equip(item, old_to_active)
+    print("inv?",old_to_active)
+    if not item or not item.components.equippable or not item:IsValid() then
+        return
+    elseif (item.components.equippable.fa_canequip and not item.components.equippable.fa_canequip(self.inst)) then
+        if(not old_to_active)then
+            self:GiveItem(item)
+        end
+    else
+        return inventory_equip(self,item,old_to_active)
+    end
+end
+
 local inventory_applydamage_def=Inventory.ApplyDamage
 function Inventory:ApplyDamage(damage, attacker, weapon,type)
 --check resistance

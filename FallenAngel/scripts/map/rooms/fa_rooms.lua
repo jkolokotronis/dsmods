@@ -828,7 +828,7 @@ AddRoom("FA_BGLava",  {
 					value =GROUND.FA_LAVA_TERRAIN2, 
 					contents =  {
 									countprefabs={
-										fa_fissure_white=1
+										fa_fissure_red=1
 									},
 									distributepercent = 0.05,
 					                distributeprefabs= 
@@ -836,7 +836,7 @@ AddRoom("FA_BGLava",  {
 					                	stalagmite_med = .25,
 					                	stalagmite_low = .25,
 					                	fa_lavarock = .5,
-					                	fa_fissure_white = 0.25,
+					                	fa_fissure_red = 0.25,
 					                }
 					            }
 					})
@@ -846,7 +846,7 @@ AddRoom("FA_BGLava_Ash",  {
 					value =GROUND.FA_LAVA_ASH, 
 					contents =  {
 									countprefabs={
-										fa_fissure_white=1
+										fa_fissure_red=1
 									},
 									distributepercent = 0.05,
 					                distributeprefabs= 
@@ -854,7 +854,7 @@ AddRoom("FA_BGLava_Ash",  {
 					                	stalagmite_med = .25,
 					                	stalagmite_low = .25,
 					                	fa_lavarock = .5,
-					                	fa_fissure_white = 0.25,
+					                	fa_fissure_red = 0.25,
 					                }
 					            }
 					})
@@ -864,7 +864,7 @@ AddRoom("FA_BGLava_Shiny",  {
 					value =GROUND.FA_LAVA_SHINY, 
 					contents =  {
 									countprefabs={
-										fa_fissure_white=1
+										fa_fissure_red=1
 									},
 									distributepercent = 0.05,
 					                distributeprefabs= 
@@ -872,7 +872,7 @@ AddRoom("FA_BGLava_Shiny",  {
 					                	stalagmite_med = .25,
 					                	stalagmite_low = .25,
 					                	fa_lavarock = .5,
-					                	fa_fissure_white = 0.25,
+					                	fa_fissure_red = 0.25,
 					                }
 					            }
 					})
@@ -882,7 +882,7 @@ AddRoom("FA_BGLava_Green",  {
 					value =GROUND.FA_LAVA_GREEN, 
 					contents =  {
 									countprefabs={
-										fa_fissure_white=1
+										fa_fissure_red=1
 									},
 									distributepercent = 0.05,
 					                distributeprefabs= 
@@ -890,7 +890,7 @@ AddRoom("FA_BGLava_Green",  {
 					                	stalagmite_med = .25,
 					                	stalagmite_low = .25,
 					                	fa_lavarock = .5,
-					                	fa_fissure_white = 0.25,
+					                	fa_fissure_red = 0.25,
 					                }
 					            }
 					})

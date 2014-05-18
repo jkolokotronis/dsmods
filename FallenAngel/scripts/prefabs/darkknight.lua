@@ -209,6 +209,7 @@ local fn = function(inst)
     inst.OnSave = onsavefn
 
     inst:AddTag("evil")
+    inst:AddTag("fa_shielduser")
 
 
 

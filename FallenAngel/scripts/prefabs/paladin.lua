@@ -268,7 +268,8 @@ local fn = function(inst)
     inst.components.hunger:SetMax(150)
 
     inst:AddComponent("xplevel")
-    
+     inst:AddTag("fa_shielduser")
+   
     inst.OnLoad = onloadfn
     inst.OnSave = onsavefn
 

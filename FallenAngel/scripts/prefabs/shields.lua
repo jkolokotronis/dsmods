@@ -72,6 +72,30 @@ local function fn()
 
   inst:AddComponent("inventoryitem")
   inst:AddComponent("equippable")
+  function inst.components.equippable:CollectInventoryActions(doer, actions)
+    if not self.isequipped then
+      if not(doer:HasTag("player")) or (doer:HasTag("fa_shielduser"))then
+        table.insert(actions, ACTIONS.EQUIP)
+      end
+    else
+        table.insert(actions, ACTIONS.UNEQUIP)
+    end
+  end
+
+--[[  
+  check done in inv calls, this was too late
+  local old_equip=inst.components.equippable.Equip
+  function inst.components.equippable:Equip(owner, slot)
+    if not(owner:HasTag("player")) or (owner:HasTag("fa_shielduser"))then
+      old_equip(self,owner,slot)
+    end
+  end
+]]
+
+  inst.components.equippable.fa_canequip=function(owner)
+    return not(owner:HasTag("player")) or (owner:HasTag("fa_shielduser"))
+  end
+  
   if EQUIPSLOTS["BACK"] then
       inst.components.equippable.equipslot = EQUIPSLOTS.BACK
   elseif EQUIPSLOTS["PACK"] then
@@ -101,6 +125,7 @@ local function MakeWoodenShield()
     inst.components.inventoryitem.imagename="woodshield"
     inst.components.inventoryitem.foleysound = "dontstarve/movement/foley/backpack"
 
+    inst:AddTag("wood")
     inst:AddComponent("fuel")
     inst.components.fuel.fuelvalue = TUNING.SMALL_FUEL
 
