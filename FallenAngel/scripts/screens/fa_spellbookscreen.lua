@@ -34,7 +34,7 @@ function FASpellBookScreen:DoInit()
     self.root:SetPosition(0,0,0)
     self.root:SetScaleMode(SCALEMODE_PROPORTIONAL)
 
-    self.bg = self.root:AddChild(Image("images/fa_spellbook.xml", "fa_spellbook.tex"))
+    self.bg = self.root:AddChild(Image("images/fa"..castername.."_bookbackground.xml", "fa_"..castername.."_bookbackground.tex"))
     self.bg:SetVRegPoint(ANCHOR_MIDDLE)
     self.bg:SetHRegPoint(ANCHOR_MIDDLE)
 	self.bg:SetScale(1, 1, 1)
@@ -70,7 +70,7 @@ function FASpellBookScreen:DoInit()
     self.closebutton:SetPosition(100,300,0)
     self.closebutton:SetOnClick(function()
     	TheFrontEnd:PopScreen(self)
-    )
+    end)
 
 
 end
@@ -110,8 +110,8 @@ end
 
 function FASpellBookScreen:OnSelectSpell(spell)
 	self.spell:KillAllChildren()
-	local popup=self.spell:AddChild(RecipePopup(true)
-	popup:SetRecipe( GetRecipe(spell.recname),self:caster)
+	local popup=self.spell:AddChild(RecipePopup(true))
+	popup:SetRecipe( GetRecipe(spell.recname),self.caster)
 	return true
 end
 

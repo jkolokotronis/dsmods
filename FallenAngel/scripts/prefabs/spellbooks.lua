@@ -454,7 +454,8 @@ return MakeSpell("spell_lightning", firefn, 10,"conj"),
        MakeSpell("spell_light", lightfn, 12,"trans"),
        MakeSpell("spell_bladebarrier", bladebarrierfn, 5,"abj"),
        MakeSpell("spell_guardian", treeguardianfn, 7),
-       MakeSpell("spell_invisibility", invisibilityfn,10),
-       MakeSpell("spell_haste", hastefn, 5),
        MakeSpell("spell_summonfeast", summonfeastfn, 5),
-       MakeSpell("spell_summongoodberries", summongoodberriesfn, 10)
+       MakeSpell("spell_summongoodberries", summongoodberriesfn, 10),
+
+       MakeSpell("spell_invisibility", invisibilityfn,10),
+       MakeSpell("spell_haste", hastefn, 5)

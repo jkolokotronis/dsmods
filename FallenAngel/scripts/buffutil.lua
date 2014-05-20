@@ -3,8 +3,11 @@ local CooldownButton = require "widgets/cooldownbutton"
 local BB_RADIUS=8
 local BB_DAMAGE=30
 local DM_DAMAGE_MULT_BOOST=1.0
+local IC_DAMAGE_MULT_BOOST=0.2
 local DM_HP_BOOST=100
 local DM_MS_BOOST=0.25*TUNING.WILSON_RUN_SPEED
+local IA_MS_BOOST=1*TUNING.WILSON_RUN_SPEED
+local IG_HP_BOOST=150
 
 
 function InitBuffBar(inst,buff,timer,class,name)
@@ -22,12 +25,190 @@ function InitBuffBar(inst,buff,timer,class,name)
         return btn
 end
 
-function DivineMightSpellStart( reader,timer)
+local ig_start=function(inst, target, variables)
+    if target then
+        target.components.health.maxhealth=target.components.health.maxhealth+DM_HP_BOOST
+        target.components.health.currenthealth=target.components.health.currenthealth+DM_HP_BOOST
+        target.components.health:DoDelta(0)
+    end
+end
+
+function FA_InspireGreatnessSpellStart( reader,timer)
+
     if(timer==nil or timer<=0)then return false end
-    if(reader.divineMightTimer) then
-        reader.divineMightTimer:Cancel()
+
+    if reader.fa_inspiregreatness then
+        reader.fa_inspiregreatness.components.spell.lifetime = 0
+        reader.fa_inspiregreatness.components.spell:ResumeSpell()
+    else
+
+    local inst=CreateEntity()
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_inspiregreatness"
+    inst.components.spell.duration = timer
+    inst.components.spell.ontargetfn = function(inst,target)
+        target.fa_inspiregreatness = inst
+        target:AddTag(inst.components.spell.spellname)
+    end
+    inst.components.spell.onstartfn = ig_start
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+        reader.components.health.maxhealth=reader.components.health.maxhealth-DM_HP_BOOST
+        reader.components.health:DoDelta(0)
+        inst.components.spell.target.fa_inspiregreatness = nil
+    end
+
+        inst.components.spell.resumefn = ig_start
+        inst.components.spell.removeonfinish = true
+
+        inst.components.spell:SetTarget(reader)
+        if not inst.components.spell.target then
+            inst:Remove()
+        end
+        inst.components.spell:StartSpell()
     end
     
+    return true
+end
+
+local ia_start=function(inst, target, variables)
+    if target then
+        target.components.locomotor.runspeed=target.components.locomotor.runspeed+IA_MS_BOOST
+    end
+end
+
+function FA_InspireAgilitySpellStart( reader,timer)
+
+    if(timer==nil or timer<=0)then return false end
+
+    if reader.fa_inspireagility then
+        reader.fa_inspireagility.components.spell.lifetime = 0
+        reader.fa_inspireagility.components.spell:ResumeSpell()
+    else
+
+    local inst=CreateEntity()
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_inspireagility"
+    inst.components.spell.duration = timer
+    inst.components.spell.ontargetfn = function(inst,target)
+        target.fa_inspireagility = inst
+        target:AddTag(inst.components.spell.spellname)
+    end
+    inst.components.spell.onstartfn = ia_start
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+        reader.components.locomotor.runspeed=reader.components.locomotor.runspeed+IA_MS_BOOST
+        inst.components.spell.target.fa_inspireagility = nil
+    end
+
+        inst.components.spell.resumefn = ia_start
+        inst.components.spell.removeonfinish = true
+
+        inst.components.spell:SetTarget(reader)
+        if not inst.components.spell.target then
+            inst:Remove()
+        end
+        inst.components.spell:StartSpell()
+    end
+end
+
+local ic_start=function(inst, target, variables)
+    if target then
+        target.components.combat.damagemultiplier=IC_DAMAGE_MULT_BOOST+target.components.combat.damagemultiplier
+    end
+end
+
+function FA_InspireCourageSpellStart( reader,timer)
+
+    if(timer==nil or timer<=0)then return false end
+
+    if reader.fa_inspirecourage then
+        reader.fa_inspirecourage.components.spell.lifetime = 0
+        reader.fa_inspirecourage.components.spell:ResumeSpell()
+    else
+
+    local inst=CreateEntity()
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_inspirecourage"
+    inst.components.spell.duration = timer
+    inst.components.spell.ontargetfn = function(inst,target)
+        target.fa_inspirecourage = inst
+        target:AddTag(inst.components.spell.spellname)
+    end
+    inst.components.spell.onstartfn = ic_start
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+        reader.components.combat.damagemultiplier=reader.components.combat.damagemultiplier-IC_DAMAGE_MULT_BOOST
+        inst.components.spell.target.fa_inspirecourage = nil
+    end
+
+        inst.components.spell.resumefn = ic_start
+        inst.components.spell.removeonfinish = true
+
+        inst.components.spell:SetTarget(reader)
+        if not inst.components.spell.target then
+            inst:Remove()
+        end
+        inst.components.spell:StartSpell()
+    end
+end
+
+local dm_start=function(inst, target, variables)
+    if target then
+        target.components.health.maxhealth=target.components.health.maxhealth+DM_HP_BOOST
+        target.components.health.currenthealth=target.components.health.currenthealth+DM_HP_BOOST
+        target.components.health:DoDelta(0)
+        target.components.locomotor.runspeed=target.components.locomotor.runspeed+DM_MS_BOOST
+        target.components.combat.damagemultiplier=DM_DAMAGE_MULT_BOOST+target.components.combat.damagemultiplier
+    end
+end
+
+function DivineMightSpellStart( reader,timer)
+
+    if(timer==nil or timer<=0)then return false end
+
+    if reader.fa_divinemight then
+        reader.fa_divinemight.components.spell.lifetime = 0
+        reader.fa_divinemight.components.spell:ResumeSpell()
+    else
+
+    local inst=CreateEntity()
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_divinemight"
+    inst.components.spell.duration = timer
+    inst.components.spell.ontargetfn = function(inst,target)
+        target.fa_divinemight = inst
+        target:AddTag(inst.components.spell.spellname)
+    end
+    inst.components.spell.onstartfn = dm_start
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+        reader.components.combat.damagemultiplier=reader.components.combat.damagemultiplier-DM_DAMAGE_MULT_BOOST
+        reader.components.health.maxhealth=reader.components.health.maxhealth-DM_HP_BOOST
+        reader.components.health:DoDelta(0)
+        reader.components.locomotor.runspeed=reader.components.locomotor.runspeed-DM_MS_BOOST
+        inst.components.spell.target.fa_divinemight = nil
+    end
+
+        inst.components.spell.resumefn = dm_start
+        inst.components.spell.removeonfinish = true
+
+        inst.components.spell:SetTarget(reader)
+        if not inst.components.spell.target then
+            inst:Remove()
+        end
+        inst.components.spell:StartSpell()
+    end
+    
+    --[[
     reader.components.health.maxhealth=reader.components.health.maxhealth+DM_HP_BOOST
     reader.components.health.currenthealth=reader.components.health.currenthealth+DM_HP_BOOST
     reader.components.health:DoDelta(0)
@@ -41,7 +222,7 @@ function DivineMightSpellStart( reader,timer)
         reader.components.health.maxhealth=reader.components.health.maxhealth-DM_HP_BOOST
         reader.components.health:DoDelta(0)
 		reader.components.locomotor.runspeed=reader.components.locomotor.runspeed-DM_MS_BOOST
-		end)
+		end)]]
     return true
 end
 

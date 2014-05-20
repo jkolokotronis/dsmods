@@ -41,7 +41,7 @@ local prefabs = {}
 local BASE_MS=1.5*TUNING.WILSON_RUN_SPEED
 local UNARMED_DAMAGE=TUNING.UNARMED_DAMAGE*4
 local MAX_KI=100
-local KI_ATTACK_INCREASE=5
+local KI_ATTACK_INCREASE=2
 
 
 local onhitother=function(inst,data)

@@ -33,6 +33,7 @@ require "behaviours/panic"
 require "fa_constants"
 require "fa_inventory_override"
 local FA_CharRenameScreen=require "screens/fa_charrenamescreen"
+local FA_SpellBookScreen=require "screens/fa_spellbookscreen"
 --
 local Ingredient = GLOBAL.Ingredient
 local RECIPETABS = GLOBAL.RECIPETABS
@@ -44,6 +45,7 @@ local GetClock=GLOBAL.GetClock
 local GetWorld=GLOBAL.GetWorld
 local GetSeasonManager=GLOBAL.GetSeasonManager
 local SpawnPrefab=GLOBAL.SpawnPrefab
+local TheFrontEnd=GLOBAL.TheFrontEnd
 
 local FA_DAMAGETYPE=GLOBAL.FA_DAMAGETYPE
 
@@ -270,6 +272,23 @@ Assets = {
     Asset( "IMAGE", "images/lava2.tex" ),
     Asset( "IMAGE", "images/lava1.tex" ),
     Asset( "IMAGE", "images/lava.tex" ),
+
+    Asset( "IMAGE", "images/fa_book_craftbutt.tex" ),
+    Asset( "IMAGE", "images/fa_book_nextbutt.tex" ),
+    Asset( "IMAGE", "images/fa_book_prevbutt.tex" ),
+    Asset( "IMAGE", "images/fa_book_closebutt.tex" ),
+    Asset( "IMAGE", "images/fa_cleric_bookbackground.tex" ),
+    Asset( "IMAGE", "images/fa_druid_bookbackground.tex" ),
+    Asset( "IMAGE", "images/fa_necromancer_bookbackground.tex" ),
+    Asset( "IMAGE", "images/fa_wizard_bookbackground.tex" ),
+    Asset( "ATLAS", "images/fa_book_craftbutt.xml" ),
+    Asset( "ATLAS", "images/fa_book_nextbutt.xml" ),
+    Asset( "ATLAS", "images/fa_book_prevbutt.xml" ),
+    Asset( "ATLAS", "images/fa_book_closebutt.xml" ),
+    Asset( "ATLAS", "images/fa_cleric_bookbackground.xml" ),
+    Asset( "ATLAS", "images/fa_druid_bookbackground.xml" ),
+    Asset( "ATLAS", "images/fa_necromancer_bookbackground.xml" ),
+    Asset( "ATLAS", "images/fa_wizard_bookbackground.xml" ),
     Asset( "IMAGE", "colour_cubes/lavacube.tex" ),
     Asset( "IMAGE", "colour_cubes/identity_colourcube.tex" ),
     Asset( "IMAGE", "colour_cubes/summer_dusk_cc.tex" ),
@@ -454,7 +473,8 @@ AddPrefabPostInit("icepack", changetopack)
 
 local function resurrectableinit(inst)
 
-    inst.FindClosestResurrector = function(self)
+    local old_findclosestres=inst.FindClosestResurrector
+    function inst:FindClosestResurrector ()
         local res = nil
         if self.inst.components.inventory then
             local item = self.inst.components.inventory:GetEquippedItem(GLOBAL.EQUIPSLOTS.NECK)
@@ -463,22 +483,11 @@ local function resurrectableinit(inst)
             end
         end
 
-        local Ents = GLOBAL.Ents
-        local closest_dist = 0
-        for k,v in pairs(Ents) do
-            if v.components.resurrector and v.components.resurrector:CanBeUsed() then
-                local dist = v:GetDistanceSqToInst(self.inst)
-                if not res or dist < closest_dist then
-                    res = v
-                    closest_dist = dist
-                end
-            end
-        end
-
-        return res
+        return old_findclosestres(self)
     end
 
-    inst.CanResurrect = function(self)
+    local old_canresurrect=inst.CanResurrect
+    function inst:CanResurrect()
         if self.inst.components.inventory then
             local item = self.inst.components.inventory:GetEquippedItem(GLOBAL.EQUIPSLOTS.NECK)
             if item and item.prefab == "amulet" then
@@ -486,25 +495,11 @@ local function resurrectableinit(inst)
             end
         end
 
-        local SaveGameIndex = GLOBAL.SaveGameIndex
-        local res = false
-
-        if SaveGameIndex:CanUseExternalResurector() then
-            res = SaveGameIndex:GetResurrector() 
-        end
-
-        if res == nil or res == false then
-            res = self:FindClosestResurrector()
-        end
-
-        if res then
-            return true
-        end
-
-        return false
+        return old_canresurrect(self)
     end
 
-    inst.DoResurrect = function(self)
+    local old_DoResurrect=inst.DoResurrect
+    function inst:DoResurrect()
         self.inst:PushEvent("resurrect")
         if self.inst.components.inventory then
             local item = self.inst.components.inventory:GetEquippedItem(GLOBAL.EQUIPSLOTS.NECK)
@@ -514,13 +509,7 @@ local function resurrectableinit(inst)
             end
         end
         
-        local res = self:FindClosestResurrector()
-        if res and res.components.resurrector then
-            res.components.resurrector:Resurrect(self.inst)
-            return true
-        end
-
-        return false
+        return old_DoResurrect(self)     
     end
 
 end
@@ -752,38 +741,19 @@ end
 --AddClassPostConstruct("screens/playerhud",newControlsInit)
 AddClassPostConstruct("widgets/statusdisplays", newControlsInit)
 
-local newFlowerPicked=function(inst,picker)
-
-    if(picker and picker.components.sanity)then
-        local delta=TUNING.SANITY_TINY
-        local prefab=inst.prefab
-        if(picker:HasTag("evil"))then
-            if(prefab=="flower")then
-                delta=-TUNING.SANITY_TINY
-            elseif (prefab=="flower_evil")then
-                delta=TUNING.SANITY_TINY
-            end
-        else
-            if(prefab=="flower")then
-                delta=TUNING.SANITY_TINY
-            elseif (prefab=="flower_evil")then
-                delta=-TUNING.SANITY_TINY
-            end
+local crafttabsPostConstruct=function(self,owner,top_root)
+    local spelltab=self.tabbyfilter["SPELLS"]
+    if(not spelltab) then
+        print("not a spellcaster?")
+    else
+        spelltab.selectfn = function()
+            TheFrontEnd:PushScreen(FA_SpellBookScreen())
         end
-        picker.components.sanity:DoDelta(delta)
+        --self.deselectfn = deselectfn
     end
-    inst:Remove()
 end
 
-AddPrefabPostInit("flower", function(inst) inst.components.pickable.onpickedfn=newFlowerPicked end)
-AddPrefabPostInit("flower_evil", function(inst) inst.components.pickable.onpickedfn=newFlowerPicked end)
-
-AddPrefabPostInit("gunpowder", function(inst) 
-    inst:AddComponent("reloading") 
-    inst.components.reloading.ammotype="gunpowder"
-    inst.components.reloading.returnuses=1
-end)
-
+AddClassPostConstruct("widgets/crafttabs",crafttabsPostConstruct)
 
 local doSkeletonSpawn=function(inst)
     local skel=SpawnPrefab("skeletonspawn")
@@ -1061,7 +1031,46 @@ AddClassPostConstruct("components/armor",function(component)
 end)
 AddClassPostConstruct("components/health",function(component)
     component.fa_resistances=component.fa_resistances or {}
+    component.fa_protection=component.fa_protection or {}
 end)
+
+local Health=require "components/health"
+--the point of this thing is to allow 'buffers', e.g. temp hp 
+function Health:ApplyDamage(dmg, attacker,weapon,damagetype)
+    local damage=dmg
+    local damagetype=element
+        if(not damagetype and weapon and weapon.components.weapon and weapon.components.weapon.fa_damagetype) then
+            damagetype=weapon.components.weapon.fa_damagetype
+        elseif(attacker and attacker.fa_damagetype)then
+            damagetype=attacker.fa_damagetype
+        end
+
+    if(damagetype)then
+        local res=self.fa_resistances[damagetype]
+        if(res) then damage=damage*(1-res) end
+        if(self.fa_protection[damagetype] and damage>0)then
+            if(self.fa_protection[damagetype]>damage)then
+                self.fa_protection[damagetype]=self.fa_protection[damagetype]-damage
+                damage=0
+            else
+                damage=damage-self.fa_protection[damagetype]
+                self.fa_protection[damagetype]=0
+            end
+        end
+    end
+
+    if(self.temphp and damage>0)then
+        if(self.temphp>damage)then
+                self.temphp=self.temphp-damage
+                damage=0
+            else
+                damage=damage-self.temphp
+                self.temphp=0
+            end
+    end
+
+    return damage
+end
 
 --TODO there's gotta be a better way... but not everything reads inventory/has armor, dodelta has no info on attack type or even a reason... 
 local Combat=require "components/combat"
@@ -1091,6 +1100,8 @@ function Combat:GetAttacked(attacker, damage, weapon,stimuli,element)
                 end
             end           
         end
+         --now i need to deal with health mods - this should really be done in DoDelta
+         damage=self.inst.components.health:ApplyDamage(damage,attacker,weapon,damagetype)
 
         if self.inst.components.inventory then
             damage = self.inst.components.inventory:ApplyDamage(damage, attacker,weapon,damagetype)
@@ -1100,11 +1111,7 @@ function Combat:GetAttacked(attacker, damage, weapon,stimuli,element)
             GLOBAL.ProfileStatsAdd("hitsby_"..prefab,math.floor(damage))
             GLOBAL.FightStat_AttackedBy(attacker,damage,init_damage-damage)
         end
-         --now i need to deal with health mods
-        if(damagetype)then
-            local res=self.inst.components.health.fa_resistances[damagetype]
-            if(res) then damage=damage*(1-res) end
-        end
+      
 --            print("damage",damage)
         --why are you so inclined to prevent healing by damage, silly klei?
         if damage~=0 and self.inst.components.health:IsInvincible() == false then
@@ -1470,6 +1477,76 @@ AddPrefabPostInit("cave", function(inst)
     end
 end)
 
+local function evilSanityMod(inst)
+    local sanitymod=inst.components.sanity
+    function sanitymod:Recalc(dt)
+                
+                    local total_dapperness = self.dapperness or 0
+                    local mitigates_rain = false
+                    for k,v in pairs (self.inst.components.inventory.equipslots) do
+                        --might as well fix the compat PROPERLY while here eh
+                        local dapperness=nil
+                        if(v.components.equippable and v.components.equippable.GetDapperness) then
+                            dapperness= v.components.equippable:GetDapperness(self.inst)
+                        end
+                        if(not dapperness and v.components.dapperness)then
+                            dapperness=v.components.dapperness:GetDapperness(self.inst)
+                            if v.components.dapperness.mitigates_rain then
+                              mitigates_rain = true
+                            end
+                        end
+                        if dapperness then
+                            total_dapperness = total_dapperness + dapperness 
+                        end     
+                    end
+    
+                    local dapper_delta = total_dapperness*TUNING.SANITY_DAPPERNESS
+    
+                    local day = GetClock():IsDay() and not GetWorld():IsCave()
+                    local light_delta=0
+                    if day then 
+                        light_delta = GLOBAL.SANITY_DAY_LOSS
+                    end
+    
+                    local aura_delta = 0
+                    local x,y,z = self.inst.Transform:GetWorldPosition()
+                    local ents = TheSim:FindEntities(x,y,z, TUNING.SANITY_EFFECT_RANGE, nil, {"FX", "NOCLICK", "DECOR","INLIMBO"} )
+                    for k,v in pairs(ents) do 
+
+                        local override=EVIL_SANITY_AURA_OVERRIDE[v.prefab]
+                        local aura_val=0
+                        if(override~=nil)then
+                            aura_val=override
+                        elseif v.components.sanityaura and v ~= self.inst then
+                            aura_val = v.components.sanityaura:GetAura(self.inst)
+                        end
+                        if(aura_val~=0)then
+                            local distsq = self.inst:GetDistanceSqToInst(v)
+                            aura_val = aura_val/math.max(1, distsq)
+                            if aura_val < 0 then
+                                aura_val = aura_val * self.neg_aura_mult
+                            end
+                            aura_delta = aura_delta + aura_val
+                        end
+                    end
+
+                    if(not GLOBAL.FA_DLCACCESS)then
+                    local rain_delta = 0
+                    if GetSeasonManager() and GetSeasonManager():IsRaining() and not mitigates_rain then
+                        rain_delta = -TUNING.DAPPERNESS_MED*1.5* GetSeasonManager():GetPrecipitationRate()
+                    end
+                    end
+
+                    self.rate = (dapper_delta + light_delta + aura_delta + rain_delta)  
+    
+                    if self.custom_rate_fn then
+                        self.rate = self.rate + self.custom_rate_fn(self.inst)
+                    end
+
+                    self:DoDelta(self.rate*dt, true)
+    end
+end
+
 AddSimPostInit(function(inst)
 
     if(inst:HasTag("player"))then
@@ -1504,66 +1581,7 @@ AddSimPostInit(function(inst)
 
         if inst:HasTag("evil") then
 
-                local sanitymod=inst.components.sanity
-                function sanitymod:Recalc(dt)
-                
-                    local total_dapperness = self.dapperness or 0
-                    local mitigates_rain = false
-                    for k,v in pairs (self.inst.components.inventory.equipslots) do
-                        if v.components.dapperness and v.prefab~="nightsword" and v.prefab~="armor_sanity" then
-                            total_dapperness = total_dapperness + v.components.dapperness:GetDapperness(self.inst)
-                            if v.components.dapperness.mitigates_rain then
-                              mitigates_rain = true
-                            end
-                        end     
-                    end
-    
-                    local dapper_delta = total_dapperness*TUNING.SANITY_DAPPERNESS
-    
-                    local day = GetClock():IsDay() and not GetWorld():IsCave()
-                    local light_delta=0
-                    if day then 
-                        light_delta = GLOBAL.SANITY_DAY_LOSS
-                    end
-    
-                    local aura_delta = 0
-                    local x,y,z = self.inst.Transform:GetWorldPosition()
-                    local ents = TheSim:FindEntities(x,y,z, TUNING.SANITY_EFFECT_RANGE, nil, {"FX", "NOCLICK", "DECOR","INLIMBO"} )
-                    for k,v in pairs(ents) do 
-
-                        local override=EVIL_SANITY_AURA_OVERRIDE[v.prefab]
-                        local aura_val=0
-                        if(override~=nil)then
-                            aura_val=override
-                        elseif v.components.sanityaura and v ~= self.inst then
-                            aura_val = v.components.sanityaura:GetAura(self.inst)
-                        end
-                        if(aura_val~=0)then
-                            local distsq = self.inst:GetDistanceSqToInst(v)
-                            aura_val = aura_val/math.max(1, distsq)
-                            if aura_val < 0 then
-                                aura_val = aura_val * self.neg_aura_mult
-                            end
-                            aura_delta = aura_delta + aura_val
-                        end
-                    end
-
-
-                    local rain_delta = 0
-                    if GetSeasonManager() and GetSeasonManager():IsRaining() and not mitigates_rain then
-                        rain_delta = -TUNING.DAPPERNESS_MED*1.5* GetSeasonManager():GetPrecipitationRate()
-                    end
-
-                    self.rate = (dapper_delta + light_delta + aura_delta + rain_delta)  
---    print(self.rate,"light",light_delta)
-    
-                    if self.custom_rate_fn then
-                        self.rate = self.rate + self.custom_rate_fn(self.inst)
-                    end
-
-                    self:DoDelta(self.rate*dt, true)
-                end
-
+            evilSanityMod(inst)
 
         end
         if (inst.prefab=="darkknight" or inst.prefab=="cleric" or inst.prefab=="paladin") then
@@ -1725,6 +1743,61 @@ function Hounded:ReleaseHound(dt)
 end    
 
 AddComponentPostInit("lootdropper",lootdropperPostInit)
+
+local nonEvilDapperFn=function(inst1,owner,dapperness)
+            if(owner and owner:HasTag("evil"))then
+                return 0
+            else
+                return dapperness
+            end
+end
+
+local nonEvilSanityPostinit=function(inst)
+    if(GLOBAL.FA_DLCACCESS)then
+        inst.components.equippable.dapperfn=function(inst1,owner)
+            return nonEvilDapperFn(inst1,owner,inst.components.equippable.dapperness)
+        end
+    else
+        inst.components.dapperness.dapperfn=function(inst1,owner)
+            return nonEvilDapperFn(inst1,owner,inst.components.dapperness.dapperness)
+        end
+    end
+end
+
+AddPrefabPostInit("nightsword",nonEvilSanityPostinit)
+AddPrefabPostInit("armor_sanity",nonEvilSanityPostinit)
+
+local newFlowerPicked=function(inst,picker)
+
+    if(picker and picker.components.sanity)then
+        local delta=TUNING.SANITY_TINY
+        local prefab=inst.prefab
+        if(picker:HasTag("evil"))then
+            if(prefab=="flower")then
+                delta=-TUNING.SANITY_TINY
+            elseif (prefab=="flower_evil")then
+                delta=TUNING.SANITY_TINY
+            end
+        else
+            if(prefab=="flower")then
+                delta=TUNING.SANITY_TINY
+            elseif (prefab=="flower_evil")then
+                delta=-TUNING.SANITY_TINY
+            end
+        end
+        picker.components.sanity:DoDelta(delta)
+    end
+    inst:Remove()
+end
+
+AddPrefabPostInit("flower", function(inst) inst.components.pickable.onpickedfn=newFlowerPicked end)
+AddPrefabPostInit("flower_evil", function(inst) inst.components.pickable.onpickedfn=newFlowerPicked end)
+
+AddPrefabPostInit("gunpowder", function(inst) 
+    inst:AddComponent("reloading") 
+    inst.components.reloading.ammotype="gunpowder"
+    inst.components.reloading.returnuses=1
+end)
 
 function makestackablePrefabPostInit(inst)
     if(not inst.components.stackable)then
