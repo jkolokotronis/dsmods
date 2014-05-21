@@ -73,6 +73,7 @@ AddTaskPreInit("Make a pick", AddMineEntrancePreInit)
 AddTaskPreInit("Make a pick", AddGoblinEntrancePreInit)
 AddTaskPreInit("The Deep Forest", AddGoblinEntrancePreInit)
 AddTaskPreInit("Squeltch", AddGoblinEntrancePreInit)
+AddTaskPreInit("Squeltch", AddMineEntrancePreInit)
 AddTaskPreInit("Swamp start", AddGoblinEntrancePreInit)
 AddTaskPreInit("The charcoal forest", AddGoblinEntrancePreInit)
 

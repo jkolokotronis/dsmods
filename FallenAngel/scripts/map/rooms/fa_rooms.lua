@@ -390,7 +390,7 @@ AddRoom("FA_dungeonexit",{
 
 AddRoom("FA_MineEntrance", {
 					colour={r=0.2,g=0.0,b=0.2,a=0.3},
-					value = GROUND.FA_ASH,
+					value = GROUND.FA_LAVA_ASH,
 					contents =  {
 									countprefabs = {
 										houndmound=1,
