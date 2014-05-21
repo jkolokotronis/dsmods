@@ -161,7 +161,11 @@ local function doicestorm(inst,target)
     end
 end
 
-local function onattackicestorm(staff, target, pos)
+local function onattackicestorm(staff, target, orpos)
+    local pos=orpos
+    if(pos==nil and target~=nil)then
+        pos=Vector3(target.Transform:GetWorldPosition())
+    end
     local inst = CreateEntity()
     local caster = staff.components.inventoryitem.owner
     local trans = inst.entity:AddTransform()
