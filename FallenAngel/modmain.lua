@@ -1032,6 +1032,7 @@ end)
 AddClassPostConstruct("components/health",function(component)
     component.fa_resistances=component.fa_resistances or {}
     component.fa_protection=component.fa_protection or {}
+    component.fa_dodgechance=component.fa_dodgechance or 0
 end)
 
 local Health=require "components/health"
@@ -1059,21 +1060,50 @@ function Health:ApplyDamage(dmg, attacker,weapon,damagetype)
         end
     end
 
-    if(self.temphp and damage>0)then
-        if(self.temphp>damage)then
-                self.temphp=self.temphp-damage
+    if(self.fa_temphp and damage>0)then
+        if(self.fa_temphp>damage)then
+                self.fa_temphp=self.fa_temphp-damage
                 damage=0
             else
-                damage=damage-self.temphp
-                self.temphp=0
+                damage=damage-self.fa_temphp
+                self.fa_temphp=0
             end
     end
 
     return damage
 end
 
---TODO there's gotta be a better way... but not everything reads inventory/has armor, dodelta has no info on attack type or even a reason... 
 local Combat=require "components/combat"
+
+local combat_doattack_def=Combat.DoAttack
+function Combat:DoAttack(target_override, weapon, projectile, stimuli, instancemult)
+    local targ = target_override or self.target
+    local weapon = weapon or self:GetWeapon()
+
+    --basically since the whole thing happens twice on projectile attacks, i'm doing a check only on hit
+    --I don't care to do the whole canattack twice either, wether it's faster or not to do so... I think it is faster like this
+    if((projectile and not projectile:HasTag("spellprojectile")) or not(weapon and (weapon.components.projectile or weapon.components.weapon:CanRangedAttack())))then
+        local dodge=0
+        if(targ and targ.components.inventory)then
+            dodge=targ.components.inventory:GetDodgeChance()
+        end
+        if(targ and targ.components.health and targ.components.health.fa_dodgechance)then
+            dodge=dodge+targ.components.health.fa_dodgechance
+        end
+        if(math.random()<dodge)then
+            self.inst:PushEvent("onmissother", {target = targ, weapon = weapon})
+            --no idea if i should do this or not? if primary target dodges attack, attacker gets unbalanced?
+            --[[
+            if self.areahitrange then
+                local epicentre = projectile or self.inst
+                self:DoAreaAttack(epicentre, self.areahitrange, weapon, nil, stimuli)
+            end]]
+            return
+        end
+    end
+    return combat_doattack_def(self,target_override,weapon,projectile, stimuli, instancemult)
+end
+--TODO there's gotta be a better way... but not everything reads inventory/has armor, dodelta has no info on attack type or even a reason... 
 local combat_getattacked_def=Combat.GetAttacked
 function Combat:GetAttacked(attacker, damage, weapon,stimuli,element)
     --print ("ATTACKED", self.inst, attacker, damage)

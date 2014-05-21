@@ -18,6 +18,17 @@ function Inventory:Equip(item, old_to_active)
     end
 end
 
+--should this thing be additive??
+function Inventory:GetDodgeChance()
+    local dodge=0
+    for k,v in pairs(self.equipslots) do
+        if v.components.armor and v.components.armor.fa_dodgechance then
+            dodge=dodge+ v.components.armor.fa_dodgechance
+        end
+    end
+    return dodge
+end
+
 local inventory_applydamage_def=Inventory.ApplyDamage
 function Inventory:ApplyDamage(damage, attacker, weapon,type)
 --check resistance

@@ -8,6 +8,7 @@ local DM_HP_BOOST=100
 local DM_MS_BOOST=0.25*TUNING.WILSON_RUN_SPEED
 local IA_MS_BOOST=1*TUNING.WILSON_RUN_SPEED
 local IG_HP_BOOST=150
+local IG_DODGE_BOOST=0.25
 
 
 function InitBuffBar(inst,buff,timer,class,name)
@@ -26,10 +27,9 @@ function InitBuffBar(inst,buff,timer,class,name)
 end
 
 local ig_start=function(inst, target, variables)
-    if target then
-        target.components.health.maxhealth=target.components.health.maxhealth+DM_HP_BOOST
-        target.components.health.currenthealth=target.components.health.currenthealth+DM_HP_BOOST
-        target.components.health:DoDelta(0)
+    if target and target.components.health then
+        target.components.health.fa_temphp=IG_HP_BOOST
+        target.components.health.fa_dodgechance=IG_DODGE_BOOST+target.components.health.fa_dodgechance
     end
 end
 
@@ -39,7 +39,8 @@ function FA_InspireGreatnessSpellStart( reader,timer)
 
     if reader.fa_inspiregreatness then
         reader.fa_inspiregreatness.components.spell.lifetime = 0
-        reader.fa_inspiregreatness.components.spell:ResumeSpell()
+        target.components.health.fa_temphp=IG_HP_BOOST
+--        reader.fa_inspiregreatness.components.spell:ResumeSpell()
     else
 
     local inst=CreateEntity()
@@ -55,8 +56,8 @@ function FA_InspireGreatnessSpellStart( reader,timer)
         if not inst.components.spell.target then
             return
         end
-        reader.components.health.maxhealth=reader.components.health.maxhealth-DM_HP_BOOST
         reader.components.health:DoDelta(0)
+        target.components.health.fa_dodgechance=IG_DODGE_BOOST-target.components.health.fa_dodgechance
         inst.components.spell.target.fa_inspiregreatness = nil
     end
 
@@ -85,7 +86,7 @@ function FA_InspireAgilitySpellStart( reader,timer)
 
     if reader.fa_inspireagility then
         reader.fa_inspireagility.components.spell.lifetime = 0
-        reader.fa_inspireagility.components.spell:ResumeSpell()
+--        reader.fa_inspireagility.components.spell:ResumeSpell()
     else
 
     local inst=CreateEntity()
@@ -128,7 +129,7 @@ function FA_InspireCourageSpellStart( reader,timer)
 
     if reader.fa_inspirecourage then
         reader.fa_inspirecourage.components.spell.lifetime = 0
-        reader.fa_inspirecourage.components.spell:ResumeSpell()
+--        reader.fa_inspirecourage.components.spell:ResumeSpell()
     else
 
     local inst=CreateEntity()
@@ -175,7 +176,8 @@ function DivineMightSpellStart( reader,timer)
 
     if reader.fa_divinemight then
         reader.fa_divinemight.components.spell.lifetime = 0
-        reader.fa_divinemight.components.spell:ResumeSpell()
+        target.components.health.currenthealth=math.min(target.components.health.currenthealth+DM_HP_BOOST,target.components.health.maxhealth)
+--        reader.fa_divinemight.components.spell:ResumeSpell()
     else
 
     local inst=CreateEntity()

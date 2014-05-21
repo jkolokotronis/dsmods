@@ -71,6 +71,7 @@ local function common()
 --    inst:AddTag("blowdart")
     
     inst:AddTag("projectile")
+    inst:AddTag("spellprojectile")
     inst.Transform:SetScale(1, 1, 1)
 
     

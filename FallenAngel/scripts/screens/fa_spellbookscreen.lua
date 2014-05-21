@@ -12,7 +12,7 @@ local IngredientUI = require "widgets/recipepopup"
 
 FASpellBookScreen = Class(Screen, function(self,caster,level)
 	Screen._ctor(self, "FASpellBookScreen")
-	self.caster=caster
+	self.caster=caster or GetPlayer()
 	self:DoInit()
 	self:SetLevel(level or 1)
 end)
