@@ -1,9 +1,9 @@
 <Atlas><Texture filename="fa_keys.tex" />
 <Elements>
-		<Element name="fa_key_foli.tex" u1="0" u2="0.2" v1="0" v2="1" />
-		<Element name="fa_key_jewel.tex" u1="0.2" u2="0.4" v1="0" v2="1" />
-		<Element name="fa_key_skeleton.tex" u1="0.4" u2="0.6" v1="0" v2="1" />
-		<Element name="fa_key_generic.tex" u1="0.6" u2="0.8" v1="0" v2="1" />
-		<Element name="fa_key_swift.tex" u1="0.8" u2="1" v1="0" v2="1" />
+		<Element name="fa_key_foli.tex" u1="0" u2="0.125" v1="0" v2="1" />
+		<Element name="fa_key_jewel.tex" u1="0.125" u2="0.250" v1="0" v2="1" />
+		<Element name="fa_key_skeleton.tex" u1="0.250" u2="0.375" v1="0" v2="1" />
+		<Element name="fa_key_generic.tex" u1="0.375" u2="0.5" v1="0" v2="1" />
+		<Element name="fa_key_swift.tex" u1="0.5" u2="0.625" v1="0" v2="1" />
 </Elements>
 </Atlas>
