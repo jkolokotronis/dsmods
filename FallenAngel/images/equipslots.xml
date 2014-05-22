@@ -5,7 +5,7 @@
 		<Element name="equip_slot_head.tex" u1="0.53125" u2="0.796875" v1="0" v2="0.265625" />
 		<Element name="equip_slot_neck.tex" u1="0" u2="0.265625" v1="0.265625" v2="0.53125" />
 		<Element name="equip_slot_pack.tex" u1="0.265625" u2="0.53125" v1="0.265625" v2="0.53125" />
-		<Element name="equip_slot_ring.tex" u1="0.625" u2="0.796875" v1="0.265625" v2="0.53125" />
+		<Element name="equip_slot_ring.tex" u1="0.53125" u2="0.796875" v1="0.265625" v2="0.53125" />
 		<Element name="equip_slot_boot.tex" u1="0" u2="0.265625" v1="0.53125" v2="0.796875" />
 		<Element name="equip_slot_quiver.tex" u1="0.265625" u2="0.53125" v1="0.53125" v2="0.796875" />
 </Elements>
