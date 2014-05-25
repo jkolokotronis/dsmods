@@ -274,20 +274,27 @@ Assets = {
     Asset( "IMAGE", "images/lava1.tex" ),
     Asset( "IMAGE", "images/lava.tex" ),
 
-    Asset( "IMAGE", "images/fa_book_craftbutt.tex" ),
-    Asset( "IMAGE", "images/fa_book_nextbutt.tex" ),
-    Asset( "IMAGE", "images/fa_book_prevbutt.tex" ),
-    Asset( "IMAGE", "images/fa_book_closebutt.tex" ),
+
+    Asset( "IMAGE", "images/fa_druid_bookcraft.tex" ),
+    Asset( "IMAGE", "images/fa_druid_booknext.tex" ),
+    Asset( "IMAGE", "images/fa_druid_bookprev.tex" ),
+    Asset( "IMAGE", "images/fa_druid_bookclose.tex" ),
     Asset( "IMAGE", "images/fa_cleric_bookbackground.tex" ),
     Asset( "IMAGE", "images/fa_druid_bookbackground.tex" ),
+    Asset( "IMAGE", "images/fa_druid_bookframe.tex" ),
     Asset( "IMAGE", "images/fa_necromancer_bookbackground.tex" ),
     Asset( "IMAGE", "images/fa_wizard_bookbackground.tex" ),
-    Asset( "ATLAS", "images/fa_book_craftbutt.xml" ),
-    Asset( "ATLAS", "images/fa_book_nextbutt.xml" ),
-    Asset( "ATLAS", "images/fa_book_prevbutt.xml" ),
-    Asset( "ATLAS", "images/fa_book_closebutt.xml" ),
+    Asset( "ATLAS", "images/fa_druid_bookcraft.xml" ),
+    Asset( "ATLAS", "images/fa_druid_booknext.xml" ),
+    Asset( "ATLAS", "images/fa_druid_bookprev.xml" ),
+    Asset( "ATLAS", "images/fa_druid_bookclose.xml" ),
+--    Asset( "ATLAS", "images/fa_book_craftbutt.xml" ),
+--    Asset( "ATLAS", "images/fa_book_nextbutt.xml" ),
+--    Asset( "ATLAS", "images/fa_book_prevbutt.xml" ),
+--    Asset( "ATLAS", "images/fa_book_closebutt.xml" ),
     Asset( "ATLAS", "images/fa_cleric_bookbackground.xml" ),
     Asset( "ATLAS", "images/fa_druid_bookbackground.xml" ),
+    Asset( "ATLAS", "images/fa_druid_bookframe.xml" ),
     Asset( "ATLAS", "images/fa_necromancer_bookbackground.xml" ),
     Asset( "ATLAS", "images/fa_wizard_bookbackground.xml" ),
     Asset( "IMAGE", "colour_cubes/lavacube.tex" ),
@@ -743,12 +750,19 @@ end
 AddClassPostConstruct("widgets/statusdisplays", newControlsInit)
 
 local crafttabsPostConstruct=function(self,owner,top_root)
-    local spelltab=self.tabbyfilter["SPELLS"]
+    local spelltab=nil
+    for k,v in pairs(self.tabbyfilter) do
+        if(v.filter.str=="SPELLS")then
+            spelltab=v
+            break
+        end
+    end
+
     if(not spelltab) then
         print("not a spellcaster?")
     else
         spelltab.selectfn = function()
-            TheFrontEnd:PushScreen(FA_SpellBookScreen())
+           GLOBAL.TheFrontEnd:PushScreen(FA_SpellBookScreen())
         end
         --self.deselectfn = deselectfn
     end

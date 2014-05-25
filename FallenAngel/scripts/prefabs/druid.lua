@@ -64,24 +64,52 @@ local ref
 
 
 local function enableL1spells()
+    GetPlayer().fa_spellcraft.spells[1]={
+        {
+            recname="spell_grow"
+        },
+        {
+            recname="spell_summongoodberries"
+        }
+    }
     local r=Recipe("spell_grow", {Ingredient("papyrus", 2), Ingredient("seeds", 10), Ingredient("poop", 10)}, RECIPETABS.SPELLS, {MAGIC = 2})
     r.image="book_gardening.tex"
     local r=Recipe("spell_summongoodberries", {Ingredient("berries", 5), Ingredient("twigs", 10), Ingredient("charcoal", 5)}, RECIPETABS.SPELLS, {SCIENCE = 0, MAGIC = 0, ANCIENT = 0})
     r.image="book_gardening.tex"
 end
 local function enableL2spells()
+    GetPlayer().fa_spellcraft.spells[2]={
+        {
+            recname="spell_guardian"
+        },
+    }
     local r=Recipe("spell_guardian", {Ingredient("papyrus", 5), Ingredient("pinecone", 20),Ingredient("livinglog",10)}, RECIPETABS.SPELLS, {MAGIC = 3})
     r.image="book_gardening.tex"    
 end
 local function enableL3spells()
+    GetPlayer().fa_spellcraft.spells[3]={
+        {
+            recname="spell_lightning"
+        },
+    }
     local r=Recipe("spell_lightning", {Ingredient("flint", 20), Ingredient("bluegem", 4),Ingredient("papyrus", 5)}, RECIPETABS.SPELLS, {MAGIC = 2})
     r.image="book_brimstone.tex"   
 end
 local function enableL4spells()
+    GetPlayer().fa_spellcraft.spells[4]={
+        {
+            recname="spell_earthquake"
+        },
+    }
     local r=Recipe("spell_earthquake", {Ingredient("rocks", 20), Ingredient("redgem", 5),Ingredient("papyrus", 5)},  RECIPETABS.SPELLS,{MAGIC = 2})
     r.image="book_brimstone.tex"
 end
 local function enableL5spells()
+    GetPlayer().fa_spellcraft.spells[5]={
+        {
+            recname="spell_heal"
+        },
+    }
     local r=Recipe("spell_heal", {Ingredient("papyrus", 5), Ingredient("honey", 5),Ingredient("spidergland",10)}, RECIPETABS.SPELLS, {MAGIC = 3})
     r.image="book_gardening.tex"
 end
@@ -287,6 +315,8 @@ local fn = function(inst)
 	inst.components.sanity:SetMax(250)
 	inst.components.hunger:SetMax(150)
 
+    inst.fa_spellcraft={}
+    inst.fa_spellcraft.spells={}
     inst:AddComponent("xplevel")
 
     inst.newControlsInit = function (cnt)
@@ -333,18 +363,6 @@ local fn = function(inst)
 
 RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon_atlas = "images/inventoryimages/herotab.xml"}
   --[[    local booktab=RECIPETABS.SPELLS
-
---    inst.components.builder:AddRecipeTab(booktab)
-    local r=Recipe("spell_lightning", {Ingredient("flint", 20), Ingredient("bluegem", 4),Ingredient("papyrus", 5)}, booktab, {SCIENCE = 0, MAGIC = 0, ANCIENT = 0})
-    r.image="book_brimstone.tex"
-    r=Recipe("spell_earthquake", {Ingredient("rocks", 20), Ingredient("redgem", 5),Ingredient("papyrus", 5)}, booktab,{MAGIC = 2})
-    r.image="book_brimstone.tex"
-    r=Recipe("spell_grow", {Ingredient("papyrus", 2), Ingredient("seeds", 10), Ingredient("poop", 10)}, booktab, {MAGIC = 2})
-    r.image="book_gardening.tex"
-    r=Recipe("spell_heal", {Ingredient("papyrus", 5), Ingredient("honey", 5),Ingredient("spidergland",10)}, booktab, {MAGIC = 3})
-    r.image="book_gardening.tex"
-    r=Recipe("spell_guardian", {Ingredient("papyrus", 5), Ingredient("pinecone", 20),Ingredient("livinglog",10)}, booktab, {MAGIC = 3})
-    r.image="book_gardening.tex"
 ]]
 
 end
