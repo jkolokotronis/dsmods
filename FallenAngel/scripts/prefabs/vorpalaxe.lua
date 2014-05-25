@@ -23,7 +23,7 @@ end
 
 local function onattack(inst, attacker, target)
     local rng=math.random()
-    if(target and (not target:HasTag("epic") and target.components.health and target.components.combat  and math.random()<=inst.procRate) then
+    if(target and (not target:HasTag("epic")) and target.components.health and target.components.combat  and math.random()<=inst.procRate) then
           target.components.health:Kill()
      end
 end
