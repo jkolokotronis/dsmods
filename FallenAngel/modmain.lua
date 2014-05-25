@@ -1029,6 +1029,10 @@ function Armor:TakeDamage(damage_amount, attacker, weapon,element)
 AddClassPostConstruct("components/armor",function(component)
     component.fa_resistances=component.fa_resistances or {}
 end)
+--why the heck doesnt it have a default?
+AddClassPostConstruct("components/combat",function(component)
+    component.damagemultiplier=1
+end)
 AddClassPostConstruct("components/health",function(component)
     component.fa_resistances=component.fa_resistances or {}
     component.fa_protection=component.fa_protection or {}
@@ -1580,6 +1584,7 @@ end
 AddSimPostInit(function(inst)
 
     if(inst:HasTag("player"))then
+--        GLOBAL.trace_flow()
         --why the hell did they even add this...
         if(inst.components.eater.ablefoods)then
             table.insert( inst.components.eater.ablefoods, "FA_POTION" )

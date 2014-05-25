@@ -154,13 +154,13 @@ end
 
 function healfn(inst, reader)
 
-    reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
+--    reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
     reader.components.health:DoDelta(SPELL_HEAL_AMOUNT)
     return true
 end
 
 function divinemightfn(inst, reader)
-    reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
+--    reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
     reader.buff_timers["divinemight"]:ForceCooldown(BUFF_LENGTH)
     DivineMightSpellStart( reader,BUFF_LENGTH)
     return true
