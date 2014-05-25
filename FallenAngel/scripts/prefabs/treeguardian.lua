@@ -96,7 +96,6 @@ local function fn(Sim)
 	
 	MakeCharacterPhysics(inst, 1000, .5)
 
-    inst:AddTag("pet")
     inst:AddTag("leif")
     inst:AddTag("tree")
     inst:AddTag("largecreature")

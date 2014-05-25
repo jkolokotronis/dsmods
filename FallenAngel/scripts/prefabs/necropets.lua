@@ -61,7 +61,7 @@ local function fn()
     inst:AddTag("scarytoprey")
 --    inst:AddTag("chester")
     inst:AddTag("notraptrigger")
-    inst:AddTag("pet")
+    inst:AddTag("companion")
 
 
     inst.OnLoad=onloadfn

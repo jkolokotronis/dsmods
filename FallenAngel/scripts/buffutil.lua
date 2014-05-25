@@ -1,6 +1,6 @@
 local CooldownButton = require "widgets/cooldownbutton"
 
-local BB_RADIUS=8
+local BB_RADIUS=9
 local BB_DAMAGE=30
 local DM_DAMAGE_MULT_BOOST=1.0
 local IC_DAMAGE_MULT_BOOST=0.2
@@ -353,10 +353,9 @@ local function apply_bb_damage(reader)
         reader.bladeBarrierAnim:Remove()
 	else
 		local pos=Vector3(reader.Transform:GetWorldPosition())
-		local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, BB_RADIUS,nil,{"pet","player","INLIMBO","companion"})
+		local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, BB_RADIUS,nil,{"player","INLIMBO","companion"})
     	for k,v in pairs(ents) do
         	if ( v.components.combat and not (v.components.health and v.components.health:IsDead())) then
-
                 local boom=SpawnPrefab("fa_bladebarrier_hitfx")
                 local current = Vector3(v.Transform:GetWorldPosition() )
                 local direction = (pos - current):GetNormalized()

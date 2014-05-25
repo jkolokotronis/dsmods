@@ -57,6 +57,7 @@ require "fa_inventorybar_override"
 require "repairabledescriptionfix"
 
 PrefabFiles = {
+    "fa_bbq",
     "fa_fx",
     "fa_bars",
     "fa_smeltingfurnace",

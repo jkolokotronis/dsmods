@@ -221,7 +221,7 @@ function lightfn(inst, reader)
 end
 
 function bladebarrierfn(inst,reader)
-    reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
+--    reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
     reader.buff_timers["bladebarrier"]:ForceCooldown(BB_LENGTH)
     BladeBarrierSpellStart( reader,BB_LENGTH)
     return true
@@ -278,7 +278,7 @@ local function quake(inst,reader)
     local pt=  Point(attacker.Transform:GetWorldPosition())
     local pos=Vector3(reader.Transform:GetWorldPosition())
 
-    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 20,nil, {'smashable',"pet","companion","player","INLIMBO"})
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 20,nil, {'smashable',"companion","player","INLIMBO"})
     for k,v in pairs(ents) do
  -- quakes shouldn't break the set dressing
                 if v.components.workable and v.components.workable.action == ACTIONS.MINE then
@@ -325,7 +325,7 @@ function calldietyfn(inst,reader)
     local attacker=reader
     local pos=Vector3(reader.Transform:GetWorldPosition())
 
-        local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 20,nil, {'smashable',"player","pet","companion","INLIMBO"})
+        local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 20,nil, {'smashable',"player","companion","INLIMBO"})
         for k,v in pairs(ents) do
              -- quakes shouldn't break the set dressing
                 if(v.components.combat and not v:IsInLimbo() and not (v.components.health and v.components.health:IsDead()))then

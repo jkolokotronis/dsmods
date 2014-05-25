@@ -161,7 +161,7 @@ local function fn()
     local inst = CreateEntity()
     
     inst:AddTag("companion")
- --   inst:AddTag("character")
+    inst:AddTag("character")
     inst:AddTag("scarytoprey")
 --    inst:AddTag("chester")
     inst:AddTag("notraptrigger")

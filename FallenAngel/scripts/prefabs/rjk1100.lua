@@ -195,7 +195,6 @@ local function fn(Sim)
 
     inst:AddTag("rjk1100")
     inst:AddTag("companion")
-    inst:AddTag("pet")
 
     inst.syncanim = function(name, loop) syncanim(inst, name, loop) end
     inst.syncanimpush = function(name, loop) syncanimpush(inst, name, loop) end

@@ -356,7 +356,7 @@ end
 local function redfn(Sim)
     local inst=redfnbase(Sim)
     inst:AddTag("companion")
-    inst:AddTag("pet")
+--    inst:AddTag("pet")
     inst:AddComponent("machine")
     inst.components.machine.ison = true
     local function pickup(inst)
@@ -387,7 +387,7 @@ local function bluefn(Sim)
 	local inst=fn(Sim)
 	inst:AddTag("lightningfence") 
     inst:AddTag("companion")
-    inst:AddTag("pet")
+--    inst:AddTag("pet")
 
     inst.AnimState:SetBank("fa_bluetotem")
     inst.AnimState:SetBuild("fa_bluetotem")

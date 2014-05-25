@@ -90,7 +90,7 @@ local function fn(Sim)
     
     inst:AddTag("skeleton")
     inst:AddTag("undead")
-    inst:AddTag("pet")
+    inst:AddTag("companion")
     inst:AddTag("character")
     inst:AddTag("scarytoprey")
 
