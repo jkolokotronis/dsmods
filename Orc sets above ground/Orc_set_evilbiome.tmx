@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="32" height="32" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" source="../ground.tsx"/>
+ <layer name="BG_TILES" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJzt0SEBAAAMhMCX6594MRBwDs0W0sEdVv/d+u/Wf7f+u/Xfrf9u9P8HoNICAQ==
+  </data>
+ </layer>
+ <objectgroup name="BG_OBJECTS" width="32" height="32">
+  <object type="fa_orchut" x="139" y="107"/>
+  <object type="fa_orchut" x="412" y="277"/>
+  <object type="fa_orchut" x="251" y="425"/>
+  <object type="fa_orchut" x="85" y="330"/>
+  <object type="fa_orchut" x="432" y="64"/>
+  <object type="fa_bbq" x="253" y="233"/>
+  <object type="skeleton" x="305" y="336"/>
+  <object type="skeleton" x="293" y="98"/>
+  <object type="skeleton" x="154" y="220"/>
+  <object type="skeleton" x="86" y="448"/>
+ </objectgroup>
+</map>

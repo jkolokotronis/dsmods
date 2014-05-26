@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="32" height="32" tilewidth="16" tileheight="16">
+ <layer name="BG_TILES" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20PBxQAAADwbhAAAAE=
+  </data>
+ </layer>
+ <objectgroup name="BG_OBJECTS" width="32" height="32">
+  <object type="fa_orchut" x="140" y="76"/>
+  <object type="fa_orchut" x="69" y="273"/>
+  <object type="fa_orchut" x="250" y="441"/>
+  <object type="fa_orchut" x="418" y="124"/>
+  <object type="fa_bbq" x="258" y="246"/>
+  <object type="skeleton" x="76" y="458"/>
+  <object type="skeleton" x="413" y="226"/>
+  <object type="skeleton" x="410" y="350"/>
+  <object type="skeleton" x="305" y="66"/>
+ </objectgroup>
+</map>
