@@ -1,11 +1,11 @@
 
-local FAFurnace = Class(function(self, inst)
+local FAFurnace = Class(function(self, inst,matcher)
     self.inst = inst
     self.cooking = false
     self.done = false
     
     self.product = nil
-    self.matcher = nil
+    self.matcher = matcher
 end)
 
 function FAFurnace:dostew(inst)

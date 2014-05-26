@@ -403,6 +403,64 @@ AddRoom("FA_MineEntrance", {
 					            }
 					})
 
+AddRoom("FA_MineEntranceEvil", {
+					colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.FA_LAVA_ASH,
+					contents =  {
+									countstaticlayouts = 
+									{
+										["FAOrcSetEvil"] = 1,
+									}, 
+									countprefabs = {
+										houndmound=1,
+										fa_dungeon_entrance=1
+									},
+					                prefabdata = {
+										fa_dungeon_entrance = function() return {fa_cavename="ORC_MINES"}
+															end,
+									},
+					            }
+					})
+
+AddRoom("FA_MineEntranceHound", {
+					colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.FA_LAVA_ASH,
+					contents =  {
+									countstaticlayouts = 
+									{
+										["FAOrcSetHound"] = 1,
+									}, 
+									countprefabs = {
+										houndmound=1,
+										fa_dungeon_entrance=1
+									},
+					                prefabdata = {
+										fa_dungeon_entrance = function() return {fa_cavename="ORC_MINES"}
+															end,
+									},
+					            }
+					})
+
+AddRoom("FA_MineEntranceRocky", {
+					colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.FA_LAVA_ASH,
+					contents =  {
+									countstaticlayouts = 
+									{
+										["FAOrcSetRocky"] = 1,
+									}, 
+									countprefabs = {
+										houndmound=1,
+										fa_dungeon_entrance=1
+									},
+					                prefabdata = {
+										fa_dungeon_entrance = function() return {fa_cavename="ORC_MINES"}
+															end,
+									},
+					            }
+					})
+
+
 AddRoom("FA_OrcEntrance", {
 					colour={r=0.2,g=0.0,b=0.2,a=0.3},
 					value = GROUND.FA_LAVA_GREEN,

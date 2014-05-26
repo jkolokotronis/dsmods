@@ -296,8 +296,10 @@ local fn = function(inst)
                 local ret=old_deploy(act)
 --                print(act.invobject:GetPrefabName())
                 if(ret and act.doer:HasTag("player")) then
-                        if(act.invobject and (act.invobject.name=="Grass Tuft" or act.invobject.name=="Sapling" or act.invobject.name=="Pine Cone")) then
-                                inst.components.sanity:DoDelta(PLANT_SANITY_DELTA)
+                        if(act.invobject)then print("deplay",act.invobject.prefab) end
+                        if(act.invobject and (act.invobject.prefab=="acorn" or act.invobject.prefab=="dug_grass" or act.invobject.prefab=="dug_sapling" or 
+                            act.invobject.prefab=="dug_berrybush" or act.invobject.prefab=="pinecone")) then                                
+                            inst.components.sanity:DoDelta(PLANT_SANITY_DELTA)
                         end
                        -- print("deploy",act.invobject)
                 end

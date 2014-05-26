@@ -71,10 +71,17 @@ function FASpellBookScreen:DoInit()
 
     self.prevbutton = self.root:AddChild(ImageButton("images/fa_"..self.caster.prefab.."_bookprev.xml", "fa_"..self.caster.prefab.."_bookprev.tex"))--, focus, disabled))
     self.prevbutton:SetPosition(-380,-150,0)
+    self.prevbutton:SetOnClick(function()
+    		self:SetLevel(self.level-1 )
+    	end)
     self.nextbutton = self.root:AddChild(ImageButton("images/fa_"..self.caster.prefab.."_booknext.xml", "fa_"..self.caster.prefab.."_booknext.tex"))
     self.nextbutton:SetPosition(280,-150,0)
+    self.prevbutton:SetOnClick(function()
+    	self:SetLevel(self.level+1 )
+    	end)
     self.craftbutton = self.root:AddChild(ImageButton("images/fa_"..self.caster.prefab.."_bookcraft.xml", "fa_"..self.caster.prefab.."_bookcraft.tex"))
     self.craftbutton:SetPosition(130,-130,0)
+    self.craftbutton:SetOnClick(function() self:CraftSpell(self.selected) end)
     self.closebutton = self.root:AddChild(ImageButton("images/fa_"..self.caster.prefab.."_bookclose.xml", "fa_"..self.caster.prefab.."_bookclose.tex"))
     self.closebutton:SetPosition(390,300,0)
     self.closebutton:SetOnClick(function()
@@ -86,6 +93,7 @@ function FASpellBookScreen:DoInit()
 end
 
 function FASpellBookScreen:SetLevel(level)
+	self.level=level
 	
 	if(not self.caster.fa_spellcraft.spells[level+1])then
 		self.nextbutton:Hide()
@@ -126,6 +134,7 @@ function FASpellBookScreen:SetLevel(level)
 end
 
 function FASpellBookScreen:OnSelectSpell(spell)
+	self.selected=spell
 	self.spell:KillAllChildren()
 	local popup=self.spell:AddChild(RecipePopup(true))
 	popup:SetRecipe( GetRecipe(spell.recname),self.caster)

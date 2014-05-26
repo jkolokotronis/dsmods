@@ -69,13 +69,22 @@ end
 local function AddMineEntrancePreInit(task)
 	task.room_choices["FA_MineEntrance"] = 1
 end
-AddTaskPreInit("Make a pick", AddMineEntrancePreInit)
+--AddTaskPreInit("Make a pick", AddMineEntrancePreInit)
 AddTaskPreInit("Make a pick", AddGoblinEntrancePreInit)
 AddTaskPreInit("The Deep Forest", AddGoblinEntrancePreInit)
 AddTaskPreInit("Squeltch", AddGoblinEntrancePreInit)
-AddTaskPreInit("Squeltch", AddMineEntrancePreInit)
 AddTaskPreInit("Swamp start", AddGoblinEntrancePreInit)
 AddTaskPreInit("The charcoal forest", AddGoblinEntrancePreInit)
+
+AddLevelPreInit("SURVIVAL_DEFAULT", function(level)
+	level.set_pieces["FAOrcSetEvil"]= { count=1, tasks={"Squeltch"} }
+	level.set_pieces["FAOrcSetHound"]= { count=1, tasks={"Badlands","Oasis"} }
+	level.set_pieces["FAOrcSetRocky"]= { count=1, tasks={"Kill the spiders","Mole Colony Rocks", "Dig that rock"} }
+end)
+
+-- Squeltch
+--badlands and oasis 
+--"Kill the spiders"  "Mole Colony Rocks" "Dig that rock" ??
 
 --local task = GLOBAL.tasks.GetTaskByName("Forest hunters", GLOBAL.tasks.sampletasks)
 --task.room_choices["tut08_room"] = 50
