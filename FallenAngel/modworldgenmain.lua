@@ -73,15 +73,26 @@ end
 AddTaskPreInit("Make a pick", AddGoblinEntrancePreInit)
 AddTaskPreInit("The Deep Forest", AddGoblinEntrancePreInit)
 AddTaskPreInit("Squeltch", AddGoblinEntrancePreInit)
+AddTaskPreInit("Squeltch", function(task)
+		task.room_choices["FA_MineEntranceEvil"] = 1
+	end)
+AddTaskPreInit("Badlands", function(task)
+		task.room_choices["FA_MineEntranceHound"] = 1
+	end)
+AddTaskPreInit("Dig that rock", function(task)
+		task.room_choices["FA_MineEntranceRocky"] = 1
+	end)
 AddTaskPreInit("Swamp start", AddGoblinEntrancePreInit)
 AddTaskPreInit("The charcoal forest", AddGoblinEntrancePreInit)
 
-AddLevelPreInit("SURVIVAL_DEFAULT", function(level)
-	level.set_pieces["FAOrcSetEvil"]= { count=1, tasks={"Squeltch"} }
-	level.set_pieces["FAOrcSetHound"]= { count=1, tasks={"Badlands","Oasis"} }
-	level.set_pieces["FAOrcSetRocky"]= { count=1, tasks={"Kill the spiders","Mole Colony Rocks", "Dig that rock"} }
-end)
+local function AddOrcPieces(level)
+	level.set_pieces["FAOrcSetRocky"]= { count=5, tasks={"Kill the spiders","Mole Colony Rocks", "Dig that rock"} }
+	level.set_pieces["FAOrcSetEvil"]= { count=5, tasks={"Squeltch"} }
+	level.set_pieces["FAOrcSetHound"]= { count=5, tasks={"Badlands","Oasis"} }
+end
 
+--AddLevelPreInit("SURVIVAL_DEFAULT", AddOrcPieces)
+--AddLevelPreInit("SURVIVAL_DEFAULT_PLUS", AddOrcPieces)
 -- Squeltch
 --badlands and oasis 
 --"Kill the spiders"  "Mole Colony Rocks" "Dig that rock" ??

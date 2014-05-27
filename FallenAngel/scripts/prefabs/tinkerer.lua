@@ -91,7 +91,7 @@ local fn = function(inst)
 	inst.soundsname = "wolfgang"
 
 	-- a minimap icon must be specified
-	inst.MiniMapEntity:SetIcon( "wilson.png" )
+	inst.MiniMapEntity:SetIcon( "tinkerer.tex" )
 
 	-- todo: Add an example special power here.
 

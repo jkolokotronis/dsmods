@@ -7,7 +7,22 @@ return {
   tilewidth = 16,
   tileheight = 16,
   properties = {},
-  tilesets = {},
+  tilesets = {
+    {
+      name = "ground",
+      firstgid = 1,
+      filename = "../../ground.tsx",
+      tilewidth = 64,
+      tileheight = 64,
+      spacing = 0,
+      margin = 0,
+      image = "../../tiles.png",
+      imagewidth = 512,
+      imageheight = 128,
+      properties = {},
+      tiles = {}
+    }
+  },
   layers = {
     {
       type = "tilelayer",

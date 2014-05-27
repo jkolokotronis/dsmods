@@ -216,7 +216,7 @@ local fn = function(inst)
 	inst.soundsname = "wolfgang"
 
 	-- a minimap icon must be specified
-	inst.MiniMapEntity:SetIcon( "wilson.png" )
+	inst.MiniMapEntity:SetIcon( "cleric.tex" )
 
 	-- todo: Add an example special power here.
 	inst.components.sanity.night_drain_mult=1.25

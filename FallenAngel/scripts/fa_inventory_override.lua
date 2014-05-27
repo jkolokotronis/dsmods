@@ -6,7 +6,6 @@ local Inventory=require "components/inventory"
 local inventory_equip=Inventory.Equip
 
 function Inventory:Equip(item, old_to_active)
-    print("inv?",old_to_active)
     if not item or not item.components.equippable or not item:IsValid() then
         return
     elseif (item.components.equippable.fa_canequip and not item.components.equippable.fa_canequip(self.inst)) then
@@ -128,7 +127,6 @@ function Inventory:GetNextAvailableSlot(item)
         end
     end
     empty,cont=inventory_getnextavailable_def(self,item)
-    print("empty slot?",empty,cont.prefab)
     if(not empty)then
         --now find an empty slot in one of the bags
         for k,v in pairs(self.itemslots) do
@@ -311,7 +309,7 @@ end
 -- sigh... I have to overwrite 300 lines because of 3
 local inventory_giveitem_def=Inventory.GiveItem
 function Inventory:GiveItem( inst, slot, screen_src_pos )
-    print("Inventory:GiveItem", inst, slot, screen_src_pos)
+--    print("Inventory:GiveItem", inst, slot, screen_src_pos)
     
     if not inst.components.inventoryitem or not inst:IsValid() then
         return

@@ -264,6 +264,16 @@ Assets = {
     Asset( "ATLAS", "minimap/goblin.xml" ),  
     Asset( "IMAGE", "minimap/fa_orc.tex" ),
     Asset( "ATLAS", "minimap/fa_orc.xml" ),  
+    Asset( "IMAGE", "minimap/cleric.tex" ),
+    Asset( "ATLAS", "minimap/cleric.xml" ),  
+    Asset( "IMAGE", "minimap/bard.tex" ),
+    Asset( "ATLAS", "minimap/bard.xml" ),  
+    Asset( "IMAGE", "minimap/wizard.tex" ),
+    Asset( "ATLAS", "minimap/wizard.xml" ),  
+    Asset( "IMAGE", "minimap/necromancer.tex" ),
+    Asset( "ATLAS", "minimap/necromancer.xml" ),  
+    Asset( "IMAGE", "minimap/tinkerer.tex" ),
+    Asset( "ATLAS", "minimap/tinkerer.xml" ),  
     Asset( "ANIM", "anim/question.zip" ),
     Asset( "ANIM", "anim/fa_shieldpuff.zip" ),
 --    Asset( "ANIM", "anim/player_actions_test1.zip" ),
@@ -332,6 +342,11 @@ AddMinimapAtlas("minimap/woodbow.xml")
 AddMinimapAtlas("minimap/woodshield.xml")
 AddMinimapAtlas("minimap/goblin.xml")
 AddMinimapAtlas("minimap/fa_orc.xml")
+AddMinimapAtlas("minimap/cleric.xml")
+AddMinimapAtlas("minimap/bard.xml")
+AddMinimapAtlas("minimap/wizard.xml")
+AddMinimapAtlas("minimap/necromancer.xml")
+AddMinimapAtlas("minimap/tinkerer.xml")
 
 local EVIL_SANITY_AURA_OVERRIDE={
     robin=-TUNING.SANITYAURA_MED,
@@ -1579,8 +1594,8 @@ local function evilSanityMod(inst)
                         end
                     end
 
-                    if(not GLOBAL.FA_DLCACCESS)then
                     local rain_delta = 0
+                    if(not GLOBAL.FA_DLCACCESS)then
                     if GetSeasonManager() and GetSeasonManager():IsRaining() and not mitigates_rain then
                         rain_delta = -TUNING.DAPPERNESS_MED*1.5* GetSeasonManager():GetPrecipitationRate()
                     end
