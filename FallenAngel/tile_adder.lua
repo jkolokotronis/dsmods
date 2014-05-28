@@ -104,7 +104,6 @@ end
 -- (it's not just an arbitrary name, it defines the texture used)
 --]]
 function AddTile(id, numerical_id, name, specs, minispecs)
-	print(id, numerical_id,name,specs)
 	assert( type(id) == "string" )
 	assert( type(numerical_id) == "number" )
 	assert( type(name) == "string" )

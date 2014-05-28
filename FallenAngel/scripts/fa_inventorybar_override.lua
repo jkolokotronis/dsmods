@@ -11,10 +11,9 @@ local ThreeSlice = require "widgets/threeslice"
 
 rpghudmod=nil
 for _, mod in ipairs( ModManager.mods ) do
-            print(mod,mod.modinfo.name,_, mod.modinfo.description)
         if mod.modinfo.name == "RPG HUD" or mod.modinfo.id == "RPG HUD" then
             rpghudmod=mod
-            print("hud version",mod,mod.modinfo.id,mod.modinfo.name, mod.modinfo.description)
+--            print("hud version",mod,mod.modinfo.id,mod.modinfo.name, mod.modinfo.description)
         end
     end
 
