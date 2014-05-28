@@ -309,10 +309,6 @@ Assets = {
     Asset( "ATLAS", "images/fa_wizard_booknext.xml" ),
     Asset( "ATLAS", "images/fa_wizard_bookprev.xml" ),
     Asset( "ATLAS", "images/fa_wizard_bookclose.xml" ),
---    Asset( "ATLAS", "images/fa_book_craftbutt.xml" ),
---    Asset( "ATLAS", "images/fa_book_nextbutt.xml" ),
---    Asset( "ATLAS", "images/fa_book_prevbutt.xml" ),
---    Asset( "ATLAS", "images/fa_book_closebutt.xml" ),
 --    Asset( "ATLAS", "images/fa_cleric_bookbackground.xml" ),
     Asset( "ATLAS", "images/fa_druid_bookbackground.xml" ),
     Asset( "ATLAS", "images/fa_druid_bookframe.xml" ),
@@ -320,7 +316,7 @@ Assets = {
     Asset( "IMAGE", "images/fa_wizard_bookframe.tex" ),
     Asset( "ATLAS", "images/fa_wizard_bookbackground.xml" ),
     Asset( "ATLAS", "images/fa_wizard_bookframe.xml" ),
-    Asset( "ATLAS", "images/fa_necromancer_bookbackground.xml" ),
+--    Asset( "ATLAS", "images/fa_necromancer_bookbackground.xml" ),
     Asset( "ATLAS", "images/fa_wizard_bookbackground.xml" ),
     Asset( "IMAGE", "colour_cubes/lavacube.tex" ),
     Asset( "IMAGE", "colour_cubes/identity_colourcube.tex" ),
@@ -801,7 +797,7 @@ local crafttabsPostConstruct=function(self,owner,top_root)
     end
 end
 
-AddClassPostConstruct("widgets/crafttabs",crafttabsPostConstruct)
+--AddClassPostConstruct("widgets/crafttabs",crafttabsPostConstruct)
 
 local doSkeletonSpawn=function(inst)
     local skel=SpawnPrefab("skeletonspawn")
@@ -2040,13 +2036,13 @@ end)
 AddModCharacter("barb")
 AddModCharacter("druid")
 AddModCharacter("paladin")
-
-AddModCharacter("thief")
 AddModCharacter("cleric")
-AddModCharacter("darkknight")
-AddModCharacter("monk")
-AddModCharacter("necromancer")
-AddModCharacter("wizard")
-AddModCharacter("tinkerer")
-AddModCharacter("ranger")
-AddModCharacter("bard")
+
+--AddModCharacter("thief")
+--AddModCharacter("darkknight")
+--AddModCharacter("monk")
+--AddModCharacter("necromancer")
+--AddModCharacter("wizard")
+--AddModCharacter("tinkerer")
+--AddModCharacter("ranger")
+--AddModCharacter("bard")
