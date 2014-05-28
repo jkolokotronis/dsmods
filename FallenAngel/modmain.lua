@@ -274,6 +274,12 @@ Assets = {
     Asset( "ATLAS", "minimap/necromancer.xml" ),  
     Asset( "IMAGE", "minimap/tinkerer.tex" ),
     Asset( "ATLAS", "minimap/tinkerer.xml" ),  
+    Asset( "IMAGE", "minimap/barb.tex" ),
+    Asset( "ATLAS", "minimap/barb.xml" ),  
+    Asset( "IMAGE", "minimap/druid.tex" ),
+    Asset( "ATLAS", "minimap/druid.xml" ),  
+    Asset( "IMAGE", "minimap/paladin.tex" ),
+    Asset( "ATLAS", "minimap/paladin.xml" ),  
     Asset( "ANIM", "anim/question.zip" ),
     Asset( "ANIM", "anim/fa_shieldpuff.zip" ),
 --    Asset( "ANIM", "anim/player_actions_test1.zip" ),
@@ -289,11 +295,11 @@ Assets = {
     Asset( "IMAGE", "images/fa_druid_booknext.tex" ),
     Asset( "IMAGE", "images/fa_druid_bookprev.tex" ),
     Asset( "IMAGE", "images/fa_druid_bookclose.tex" ),
-    Asset( "IMAGE", "images/fa_cleric_bookbackground.tex" ),
+--    Asset( "IMAGE", "images/fa_cleric_bookbackground.tex" ),
     Asset( "IMAGE", "images/fa_druid_bookbackground.tex" ),
     Asset( "IMAGE", "images/fa_druid_bookframe.tex" ),
-    Asset( "IMAGE", "images/fa_necromancer_bookbackground.tex" ),
-    Asset( "IMAGE", "images/fa_wizard_bookbackground.tex" ),
+--    Asset( "IMAGE", "images/fa_necromancer_bookbackground.tex" ),
+--    Asset( "IMAGE", "images/fa_wizard_bookbackground.tex" ),
     Asset( "ATLAS", "images/fa_druid_bookcraft.xml" ),
     Asset( "ATLAS", "images/fa_druid_booknext.xml" ),
     Asset( "ATLAS", "images/fa_druid_bookprev.xml" ),
@@ -347,6 +353,9 @@ AddMinimapAtlas("minimap/bard.xml")
 AddMinimapAtlas("minimap/wizard.xml")
 AddMinimapAtlas("minimap/necromancer.xml")
 AddMinimapAtlas("minimap/tinkerer.xml")
+AddMinimapAtlas("minimap/barb.xml")
+AddMinimapAtlas("minimap/druid.xml")
+AddMinimapAtlas("minimap/paladin.xml")
 
 local EVIL_SANITY_AURA_OVERRIDE={
     robin=-TUNING.SANITYAURA_MED,
