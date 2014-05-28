@@ -1767,7 +1767,7 @@ Hounded.attack_levels=
     heavy={warnduration= function() return 60 end, numhounds = function() return 4 + math.random(3) end},
     crazy={warnduration= function() return 60 end, numhounds = function() 
 
-        return 6 + math.random(4) + math.max(math.floor(GetClock().numcycles/50),4)
+        return 4 + math.random(4) + math.max(math.floor(GetClock().numcycles/50),4)
 
     end},
 }
@@ -1787,7 +1787,7 @@ function Hounded:PlanNextHoundAttack()
         gob=math.min(math.floor((day-100)/10),self.houndstorelease-2)
         hound=self.houndstorelease-gob
         if(day>150)then
-            orc=math.min(math.floor((day-150)/10),gob-2)
+            orc=math.min(math.floor((day-200)/10),gob-2)
             gob=gob-orc
         end
 
