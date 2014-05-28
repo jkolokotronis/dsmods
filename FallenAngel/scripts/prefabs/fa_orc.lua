@@ -10,28 +10,39 @@ local prefabs =
 
 }
 local YELL_TIMEOUT=30
-local ORC_HEALTH=300
-local ORC_DAMAGE=20
+local ORC_HEALTH=500
+local ORC_DAMAGE=40
+local ORC_ATTACK_PERIOD=2
+local ORC_RUN_SPEED=5
+local ORC_WALK_SPEED=3
 
-local MAX_TARGET_SHARES = 5
+local MAX_TARGET_SHARES = 6
+local TARGET_DISTANCE = 30
 local SHARE_TARGET_DIST = 40
 
 local function RetargetFn(inst)
+
     local defenseTarget = inst
+    local invader=nil
     local home = inst.components.homeseeker and inst.components.homeseeker.home
     if home and inst:GetDistanceSqToInst(home) < TUNING.MERM_DEFEND_DIST*TUNING.MERM_DEFEND_DIST then
-        defenseTarget = home
-    end
-    local invader = FindEntity(defenseTarget or inst, TUNING.MERM_TARGET_DIST, function(guy)
+       invader = FindEntity(home, TARGET_DISTANCE, function(guy)
         return guy:HasTag("character") and not guy:HasTag("orc")
     end)
-     if(invader and not inst.components.combat.target)then--invader~=inst.components.combat.target)then
+    end
+    if not invader then
+        invader = FindEntity(inst, TARGET_DISTANCE, function(guy)
+        return guy:HasTag("character") and not guy:HasTag("orc")
+        end)
+    end
+    if(invader and not inst.components.combat.target)then--invader~=inst.components.combat.target)then
         if not(inst.fa_yelltime and (GetTime()-inst.fa_yelltime)<YELL_TIMEOUT)then
             inst.fa_yelltime=GetTime()
             inst.SoundEmitter:PlaySound("fa/orc/drums")
         end
     end
     return invader
+
 end
 local function KeepTargetFn(inst, target)
     local home = inst.components.homeseeker and inst.components.homeseeker.home
@@ -78,14 +89,14 @@ local function fn()
     inst:AddTag("orc")
     inst:AddTag("hostile")
 	
-    MakeCharacterPhysics(inst, 20, 0.5)
+    MakeCharacterPhysics(inst, 10, 0.5)
      
     anim:SetBank("fa_orc")
     anim:SetBuild("fa_orc") 
 
     inst.AnimState:PlayAnimation('idle',true)
     inst:AddComponent("locomotor") -- locomotor must be constructed before the stategraph
-    inst.components.locomotor.runspeed = 6
+    inst.components.locomotor.runspeed = ORC_RUN_SPEED
     inst:SetStateGraph("SGorc")
 
 
@@ -104,7 +115,7 @@ local function fn()
     
     inst:AddComponent("combat")
     inst.components.combat:SetDefaultDamage(ORC_DAMAGE)
-    inst.components.combat:SetAttackPeriod(1)
+    inst.components.combat:SetAttackPeriod(ORC_ATTACK_PERIOD)
     inst.components.combat:SetRange(3)
 --    inst.components.combat.hiteffectsymbol = "pig_torso"
     inst.components.combat.hiteffectsymbol = "torso"
@@ -114,7 +125,7 @@ local function fn()
     inst:AddComponent("knownlocations")
     inst:AddComponent("lootdropper")
     inst.components.lootdropper:SetLoot({ "monstermeat"})
---    inst:AddComponent("inspectable")
+    inst:AddComponent("inspectable")
     
     inst:ListenForEvent("attacked", OnAttacked)
 
