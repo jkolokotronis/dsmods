@@ -196,8 +196,6 @@ Assets = {
     Asset( "IMAGE", "images/selectscreen_portraits/bard.tex" ),
     Asset( "ATLAS", "images/selectscreen_portraits/bard.xml" ),
 
-    Asset( "IMAGE", "images/selectscreen_portraits/wod_silho.tex" ),
-    Asset( "ATLAS", "images/selectscreen_portraits/wod_silho.xml" ),
 
     Asset( "IMAGE", "bigportraits/thief.tex" ),
     Asset( "ATLAS", "bigportraits/thief.xml" ),
@@ -295,22 +293,33 @@ Assets = {
     Asset( "IMAGE", "images/fa_druid_booknext.tex" ),
     Asset( "IMAGE", "images/fa_druid_bookprev.tex" ),
     Asset( "IMAGE", "images/fa_druid_bookclose.tex" ),
+    Asset( "IMAGE", "images/fa_wizard_bookcraft.tex" ),
+    Asset( "IMAGE", "images/fa_wizard_booknext.tex" ),
+    Asset( "IMAGE", "images/fa_wizard_bookprev.tex" ),
+    Asset( "IMAGE", "images/fa_wizard_bookclose.tex" ),
 --    Asset( "IMAGE", "images/fa_cleric_bookbackground.tex" ),
     Asset( "IMAGE", "images/fa_druid_bookbackground.tex" ),
     Asset( "IMAGE", "images/fa_druid_bookframe.tex" ),
 --    Asset( "IMAGE", "images/fa_necromancer_bookbackground.tex" ),
---    Asset( "IMAGE", "images/fa_wizard_bookbackground.tex" ),
     Asset( "ATLAS", "images/fa_druid_bookcraft.xml" ),
     Asset( "ATLAS", "images/fa_druid_booknext.xml" ),
     Asset( "ATLAS", "images/fa_druid_bookprev.xml" ),
     Asset( "ATLAS", "images/fa_druid_bookclose.xml" ),
+    Asset( "ATLAS", "images/fa_wizard_bookcraft.xml" ),
+    Asset( "ATLAS", "images/fa_wizard_booknext.xml" ),
+    Asset( "ATLAS", "images/fa_wizard_bookprev.xml" ),
+    Asset( "ATLAS", "images/fa_wizard_bookclose.xml" ),
 --    Asset( "ATLAS", "images/fa_book_craftbutt.xml" ),
 --    Asset( "ATLAS", "images/fa_book_nextbutt.xml" ),
 --    Asset( "ATLAS", "images/fa_book_prevbutt.xml" ),
 --    Asset( "ATLAS", "images/fa_book_closebutt.xml" ),
-    Asset( "ATLAS", "images/fa_cleric_bookbackground.xml" ),
+--    Asset( "ATLAS", "images/fa_cleric_bookbackground.xml" ),
     Asset( "ATLAS", "images/fa_druid_bookbackground.xml" ),
     Asset( "ATLAS", "images/fa_druid_bookframe.xml" ),
+    Asset( "IMAGE", "images/fa_wizard_bookbackground.tex" ),
+    Asset( "IMAGE", "images/fa_wizard_bookframe.tex" ),
+    Asset( "ATLAS", "images/fa_wizard_bookbackground.xml" ),
+    Asset( "ATLAS", "images/fa_wizard_bookframe.xml" ),
     Asset( "ATLAS", "images/fa_necromancer_bookbackground.xml" ),
     Asset( "ATLAS", "images/fa_wizard_bookbackground.xml" ),
     Asset( "IMAGE", "colour_cubes/lavacube.tex" ),
@@ -792,7 +801,7 @@ local crafttabsPostConstruct=function(self,owner,top_root)
     end
 end
 
---AddClassPostConstruct("widgets/crafttabs",crafttabsPostConstruct)
+AddClassPostConstruct("widgets/crafttabs",crafttabsPostConstruct)
 
 local doSkeletonSpawn=function(inst)
     local skel=SpawnPrefab("skeletonspawn")

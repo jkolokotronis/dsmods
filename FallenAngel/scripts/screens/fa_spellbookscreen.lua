@@ -15,12 +15,33 @@ local RecipePopup = require "widgets/recipepopup"
 	local HW=64
 	local HH=64
 
+--TODO write a proper factory 
 FASpellBookScreen = Class(Screen, function(self,caster,level)
 	Screen._ctor(self, "FASpellBookScreen")
 	self.caster=caster or GetPlayer()
 	self:DoInit()
 	self:SetLevel(level or 1)
 end)
+
+function FASpellBookScreen:InitClass()
+	if(self.caster.prefab=="druid")then
+		self.bgframe:SetPosition(-35, 84, 0)
+		self.spell:SetPosition(-200, -70, 0)
+		self.spell_list:SetPosition(0, -30, 0)
+	    self.prevbutton:SetPosition(-380,-150,0)
+    	self.nextbutton:SetPosition(280,-150,0)
+		self.craftbutton:SetPosition(130,-130,0)
+    	self.closebutton:SetPosition(390,300,0)
+    elseif(self.caster.prefab=="wizard")then
+		self.bgframe:SetPosition(20, 80, 0)
+		self.spell:SetPosition(-200, -70, 0)
+		self.spell_list:SetPosition(70, -30, 0)
+	    self.prevbutton:SetPosition(-280,-170,0)
+    	self.nextbutton:SetPosition(320,-170,0)
+		self.craftbutton:SetPosition(200,-120,0)
+    	self.closebutton:SetPosition(450,295,0)
+	end
+end
 
 function FASpellBookScreen:DoInit()
 	SetPause(true,"fa_spellcraft")
@@ -46,7 +67,7 @@ function FASpellBookScreen:DoInit()
 --    self.bg:SetScaleMode(SCALEMODE_FIXEDSCREEN_NONDYNAMIC)
 
 	self.bgframe=self.root:AddChild(Image("images/fa_"..self.caster.prefab.."_bookframe.xml", "fa_"..self.caster.prefab.."_bookframe.tex"))
-    self.bgframe:SetPosition(-35, 84, 0)
+    
 		
     self.title = self.root:AddChild(Text(TITLEFONT, 50))
     self.title:SetPosition(-180, 200, 0)
@@ -58,42 +79,31 @@ function FASpellBookScreen:DoInit()
     self.quote:SetRegionSize(250, 200)
 
     self.spell = self.root:AddChild(Widget("SPELL"))
---    self.spell:SetHAlign(ANCHOR_LEFT)
---    self.spell:SetVAlign(ANCHOR_TOP)
-    self.spell:SetPosition(-200, -70, 0)
---    self.spell:SetRegionSize(350, 400)
 
     self.spell_list= self.root:AddChild(Widget("SPELLLIST"))
---    self.spell:SetHAlign(ANCHOR_LEFT)
---    self.spell:SetVAlign(ANCHOR_TOP)
-    self.spell_list:SetPosition(0, -30, 0)
- --   self.spell_list:SetRegionSize(350, 400)
 
     self.prevbutton = self.root:AddChild(ImageButton("images/fa_"..self.caster.prefab.."_bookprev.xml", "fa_"..self.caster.prefab.."_bookprev.tex"))--, focus, disabled))
-    self.prevbutton:SetPosition(-380,-150,0)
     self.prevbutton:SetOnClick(function()
-    		self:SetLevel(self.level-1 )
+    		return self:SetLevel(self.level-1 )
     	end)
     self.nextbutton = self.root:AddChild(ImageButton("images/fa_"..self.caster.prefab.."_booknext.xml", "fa_"..self.caster.prefab.."_booknext.tex"))
-    self.nextbutton:SetPosition(280,-150,0)
-    self.prevbutton:SetOnClick(function()
-    	self:SetLevel(self.level+1 )
+    self.nextbutton:SetOnClick(function()
+    	return self:SetLevel(self.level+1 )
     	end)
     self.craftbutton = self.root:AddChild(ImageButton("images/fa_"..self.caster.prefab.."_bookcraft.xml", "fa_"..self.caster.prefab.."_bookcraft.tex"))
-    self.craftbutton:SetPosition(130,-130,0)
-    self.craftbutton:SetOnClick(function() self:CraftSpell(self.selected) end)
+    self.craftbutton:SetOnClick(function() return self:CraftSpell(self.selected) end)
     self.closebutton = self.root:AddChild(ImageButton("images/fa_"..self.caster.prefab.."_bookclose.xml", "fa_"..self.caster.prefab.."_bookclose.tex"))
-    self.closebutton:SetPosition(390,300,0)
     self.closebutton:SetOnClick(function()
     	SetPause(false)
     	TheFrontEnd:PopScreen(self)
     end)
 
-
+    self:InitClass()
 end
 
 function FASpellBookScreen:SetLevel(level)
 	self.level=level
+	print("level",level)
 	
 	if(not self.caster.fa_spellcraft.spells[level+1])then
 		self.nextbutton:Hide()

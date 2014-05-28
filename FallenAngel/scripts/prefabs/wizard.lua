@@ -283,6 +283,33 @@ RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon
      r=Recipe("trap_circleofdeath", {Ingredient("tentaclespots", 2),Ingredient("boards", 2), Ingredient("nightmarefuel", 2)}, booktab, {MAGIC = 2})
     r.image="trap_teeth.tex"
     
+    inst.fa_spellcraft={}
+    inst.fa_spellcraft.spells={}
+    inst.fa_spellcraft.spells[1]={
+        {
+            recname="magicmissilewand"
+        },
+    }
+    inst.fa_spellcraft.spells[2]={
+        {
+            recname="acidarrowwand"
+        },
+    }
+    inst.fa_spellcraft.spells[3]={
+        {
+            recname="fireballwand"
+        },
+    }
+    inst.fa_spellcraft.spells[4]={
+        {
+            recname="firewallwand"
+        },
+    }
+    inst.fa_spellcraft.spells[5]={
+        {
+            recname="spell_summonfeast"
+        },
+    }
 
     inst.newControlsInit = function (class)
         local btn=InitBuffBar(inst,"invisibility",inst.invisBuffUp,class,"Invis")
