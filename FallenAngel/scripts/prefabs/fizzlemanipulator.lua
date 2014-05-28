@@ -4,8 +4,7 @@ local cooking = require("cooking")
 
 local assets=
 {
-	Asset("ANIM", "anim/cook_pot.zip"),
-	Asset("ANIM", "anim/cook_pot_food.zip"),
+	Asset("ANIM", "anim/manuremachine.zip"),
 }
 
 local prefabs={
@@ -67,7 +66,8 @@ end
 --anim and sound callbacks
 
 local function startcookfn(inst)
-	inst.AnimState:PlayAnimation("cooking_loop", true)
+	inst.AnimState:PlayAnimation("player feeds poop")
+	inst.AnimState:PushAnimation("cooking", true)
 	--play a looping sound
 	inst.SoundEmitter:KillSound("snd")
 	inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
@@ -76,29 +76,29 @@ end
 
 
 local function onopen(inst)
-	inst.AnimState:PlayAnimation("cooking_pre_loop", true)
+--	inst.AnimState:PlayAnimation("player_feeds_poop", true)
 	inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_open", "open")
 	inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot", "snd")
 end
 
 local function onclose(inst)
 	if not inst.cooldowntask then
-		inst.AnimState:PlayAnimation("idle_empty")
+--		inst.AnimState:PlayAnimation("idle player close empty",true)
 		inst.SoundEmitter:KillSound("snd")
 	else
-		inst.AnimState:PlayAnimation("cooking_loop", true)
+--		inst.AnimState:PlayAnimation("cooking", true)
 	end
 	inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close", "close")
 end
 
 
 local function continuedonefn(inst)
-	inst.AnimState:PlayAnimation("idle_full")
-	inst.AnimState:OverrideSymbol("swap_cooked", "cook_pot_food", inst.components.stewer.product)
+	inst.AnimState:PlayAnimation("idle player close empty",true)
+--	inst.AnimState:OverrideSymbol("swap_cooked", "cook_pot_food", inst.components.stewer.product)
 end
 
 local function continuecookfn(inst)
-	inst.AnimState:PlayAnimation("cooking_loop", true)
+	inst.AnimState:PlayAnimation("cooking", true)
 	--play a looping sound
 	inst.Light:Enable(true)
 
@@ -169,8 +169,8 @@ end
 
 
 local donecookfn=function(inst)
-	inst.AnimState:PlayAnimation("cooking_pst")
-	inst.AnimState:PushAnimation("idle_full")
+	inst.AnimState:PlayAnimation("brick is made")
+--	inst.AnimState:PushAnimation("idle player close empty",true)
 --	inst.AnimState:OverrideSymbol("swap_cooked", "cook_pot_food", inst.components.stewer.product)
 	
 	
@@ -190,7 +190,7 @@ local donecookfn=function(inst)
 		pt = pt + Vector3(math.cos(angle), 0, math.sin(angle))*((loot.Physics:GetRadius() or 1) )
 		loot.Transform:SetPosition(pt.x,pt.y,pt.z)
 	end
-	inst.AnimState:PlayAnimation("idle_empty")
+--	inst.AnimState:PlayAnimation("idle_empty")
 	inst.cooldowntask:Cancel()
 	inst.cooldowntask=nil
 	fueltest(inst)
@@ -213,7 +213,7 @@ end
 
 local function onbuilt(inst)
 	inst.AnimState:PlayAnimation("place")
-	inst.AnimState:PushAnimation("idle_empty")
+	inst.AnimState:PushAnimation("idle player close empty",true)
 end
 
 local function fn(Sim)
@@ -236,9 +236,9 @@ local function fn(Sim)
     inst:AddTag("structure")
     MakeObstaclePhysics(inst, .5)
     
-    inst.AnimState:SetBank("cook_pot")
-    inst.AnimState:SetBuild("cook_pot")
-    inst.AnimState:PlayAnimation("idle_empty")
+    inst.AnimState:SetBank("manuremachine")
+    inst.AnimState:SetBuild("manuremachine")
+    inst.AnimState:PlayAnimation("idle player close empty",true)
 
     inst.buildCooldown=0
     inst.building=false
@@ -283,4 +283,4 @@ end
 
 
 return Prefab( "common/fizzlemanipulator", fn, assets, prefabs),
-		MakePlacer( "common/fizzlemanipulator_placer", "cook_pot", "cook_pot", "idle_empty" ) 
+		MakePlacer( "common/fizzlemanipulator_placer", "manuremachine", "manuremachine", "idle player far empty" ) 

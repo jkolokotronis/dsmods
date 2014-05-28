@@ -13,6 +13,24 @@ version = "0.03 Alpha"
 forumthread = "/files/file/518-mod-hero-in-the-dark/"
 icon_atlas = "modicon.xml"
 icon = "modicon.tex"
+
+dont_starve_compatible = true
+reign_of_giants_compatible = true
+
+configuration_options =
+{
+    {
+        name = "damageindicators",
+        label = "Damage Indicators",
+        options =
+        {
+            {description = "On", data = "on"},
+            {description = "Off", data = "off"}
+        },
+        default = "off",
+    },
+}
+
 -- This lets other players know if your mod is out of date, update it to match the current version in the game
-api_version = 5
+api_version = 6
 priority=-1

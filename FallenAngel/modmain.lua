@@ -1767,13 +1767,14 @@ function Hounded:ReleaseHound(dt)
     
     if spawn_pt then
         self.houndstorelease = self.houndstorelease - 1
+    print("self.attacksizefn",self.attacksizefn)
+    print("houndstorelease",self.houndstorelease)
+
         if(self.houndstorelease<2)then
             local prefab = "hound"
             local day = GetClock().numcycles
             local special_hound_chance = self:GetSpecialHoundChance()
 
-    print("self.attacksizefn",self.attacksizefn)
-    print("houndstorelease",self.houndstorelease)
 
             if(FA_DLCACCESS)then
                 if GetSeasonManager() and GetSeasonManager():IsSummer() then
@@ -1782,7 +1783,7 @@ function Hounded:ReleaseHound(dt)
             end
 
             if math.random() < special_hound_chance then
-                if GetSeasonManager():IsWinter() then
+                if GetSeasonManager():IsWinter() or GetSeasonManager():IsSpring() then
                     prefab = "icehound"
                 else
                     prefab = "firehound"

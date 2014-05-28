@@ -13,6 +13,13 @@ local prefabs =
 	"meat_dried",
 }
 
+
+local function onextinguish(inst)
+end
+
+local function onignite(inst)
+end
+
 local function onhammered(inst, worker)
 	inst.components.lootdropper:DropLoot()
 	SpawnPrefab("collapse_small").Transform:SetPosition(inst.Transform:GetWorldPosition())
@@ -34,11 +41,13 @@ end
 local function onstartdrying(inst, dryable)
 --    inst.AnimState:PlayAnimation("drying_pre")
 	inst.AnimState:PlayAnimation("idle", true)
+    inst.components.burnable:Ignite()
 --    inst.AnimState:OverrideSymbol("swap_dried", "meat_rack_food", dryable)
 end
 
 local function setdone(inst, product)
     inst.AnimState:PlayAnimation("idle",true)
+    inst.components.burnable:Extinguish()
 --    inst.AnimState:OverrideSymbol("swap_dried", "meat_rack_food", product)
 end
 
@@ -58,7 +67,7 @@ local function fn(Sim)
 	local anim = inst.entity:AddAnimState()
  
  	local minimap = inst.entity:AddMiniMapEntity()
-	minimap:SetIcon( "meatrack.png" )
+	minimap:SetIcon( "village.png" )
 	
     inst.entity:AddSoundEmitter()
     inst:AddTag("structure")
@@ -109,6 +118,21 @@ end
 	end
 	end
 
+	local old_harvest=inst.components.dryer.Harvest
+	function inst.components.dryer:Harvest( harvester )
+	if self:IsDone() then
+		local loot = SpawnPrefab(self.product)
+				if loot then
+					if loot and loot.components.perishable then
+					    loot.components.perishable:SetPercent(1) --always full perishable
+					end
+					harvester.components.inventory:GiveItem(loot, nil, Vector3(TheSim:GetScreenPos(self.inst.Transform:GetWorldPosition())))
+				end
+	end
+	return old_harvest(self,harvester)
+end
+
+
 	inst.components.dryer:SetStartDryingFn(onstartdrying)
 	inst.components.dryer:SetDoneDryingFn(setdone)
 	inst.components.dryer:SetContinueDryingFn(onstartdrying)
@@ -116,6 +140,14 @@ end
 	inst.components.dryer:SetOnHarvestFn(onharvested)
     
     inst:AddComponent("inspectable")
+
+
+    inst:AddComponent("burnable")
+    inst:AddComponent("inspectable")
+    inst.components.burnable:AddBurnFX("campfirefire", Vector3(0,1,0) )
+    inst:ListenForEvent("onextinguish", onextinguish)
+    inst:ListenForEvent("onignite", onignite)
+    inst.components.burnable:SetFXLevel(1, 1)
     
     inst.components.inspectable.getstatus = getstatus
 	MakeSnowCovered(inst, .01)	
