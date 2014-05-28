@@ -783,7 +783,7 @@ local crafttabsPostConstruct=function(self,owner,top_root)
     end
 end
 
-AddClassPostConstruct("widgets/crafttabs",crafttabsPostConstruct)
+--AddClassPostConstruct("widgets/crafttabs",crafttabsPostConstruct)
 
 local doSkeletonSpawn=function(inst)
     local skel=SpawnPrefab("skeletonspawn")
@@ -1828,7 +1828,7 @@ function Hounded:ReleaseHound(dt)
                 end
             end
 
-            for k,v in self.prefabspec do
+            for k,v in pairs(self.prefabspec) do
                 --WTB continue
                 if(v>0)then
                     if(k=="hound")then
