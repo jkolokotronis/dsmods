@@ -797,7 +797,7 @@ local crafttabsPostConstruct=function(self,owner,top_root)
     end
 end
 
---AddClassPostConstruct("widgets/crafttabs",crafttabsPostConstruct)
+AddClassPostConstruct("widgets/crafttabs",crafttabsPostConstruct)
 
 local doSkeletonSpawn=function(inst)
     local skel=SpawnPrefab("skeletonspawn")
@@ -2038,11 +2038,11 @@ AddModCharacter("druid")
 AddModCharacter("paladin")
 AddModCharacter("cleric")
 
---AddModCharacter("thief")
---AddModCharacter("darkknight")
---AddModCharacter("monk")
---AddModCharacter("necromancer")
---AddModCharacter("wizard")
---AddModCharacter("tinkerer")
---AddModCharacter("ranger")
---AddModCharacter("bard")
+AddModCharacter("thief")
+AddModCharacter("darkknight")
+AddModCharacter("monk")
+AddModCharacter("necromancer")
+AddModCharacter("wizard")
+AddModCharacter("tinkerer")
+AddModCharacter("ranger")
+AddModCharacter("bard")

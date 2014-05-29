@@ -16,7 +16,7 @@ icon = "modicon.tex"
 
 dont_starve_compatible = true
 reign_of_giants_compatible = true
---[[
+
 configuration_options =
 {
     {
@@ -30,7 +30,6 @@ configuration_options =
         default = "off",
     },
 }
-]]
 
 -- This lets other players know if your mod is out of date, update it to match the current version in the game
 api_version = 6

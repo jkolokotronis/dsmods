@@ -23,6 +23,9 @@ local function onhammered(inst, worker)
 	inst.components.lootdropper:DropLoot()
 	SpawnPrefab("collapse_big").Transform:SetPosition(inst.Transform:GetWorldPosition())
 	inst.SoundEmitter:PlaySound("dontstarve/common/destroy_wood")
+    if(inst.fa_flag)then
+        inst.fa_flag:Remove()
+    end
 	inst:Remove()
 end
 

@@ -214,7 +214,6 @@ function summongoodberriesfn(inst,reader)
 end
 
 function lightfn(inst, reader)
-    reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
     reader.buff_timers["light"]:ForceCooldown(BUFF_LENGTH)
     LightSpellStart( reader,BUFF_LENGTH)
     return true
