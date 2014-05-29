@@ -36,6 +36,28 @@ inventorybarpostconstruct=nil
 	table.insert(EQUIPSLOTS, "QUIVER")
 	EQUIPSLOTS.QUIVER = "quiver"
 
+
+local function BackpackGet(inst, data)
+	local owner = inst.components.inventoryitem and inst.components.inventoryitem.owner
+	
+	if owner then
+		local inv = owner.HUD.controls.inv
+		if inv then
+			inv:OnItemGet(data.item, inv.backpackinv[data.slot], data.src_pos)
+		end
+	end		
+end
+
+local function BackpackLose(inst, data)
+	local owner = inst.components.inventoryitem and inst.components.inventoryitem.owner
+	if owner then
+		local inv = owner.HUD.controls.inv
+		if inv then
+			inv:OnItemLose(inv.backpackinv[data.slot])
+		end
+	end		
+end
+
 if(not rpghudmod)then
 	table.insert(EQUIPSLOTS, "PACK")
 	EQUIPSLOTS.PACK = "pack"
@@ -67,6 +89,9 @@ inventorybarpostconstruct=function(self, owner)
     	self:AddEquipSlot(EQUIPSLOTS.QUIVER, "images/equipslots.xml", "equip_slot_quiver.tex")  
 
 --TODO this likely does not need to be rewritten
+
+
+
 function self:Rebuild()
 
 	if self.cursor then

@@ -1777,7 +1777,6 @@ Hounded.attack_levels=
     end},
 }
 
---AddComponentPostInit("hounded",function(component)
 
 local old_planhoundattack=Hounded.PlanNextHoundAttack
 function Hounded:PlanNextHoundAttack()
@@ -1809,7 +1808,9 @@ function Hounded:OnSave()
     local ret=old_houndedsave(self)
     if(ret)then
         print("prefabspec",self.prefabspec and self.prefabspec["hound"])
-        ret["prefabspec"]=self.prefabspec
+        if(self.prefabspec)then
+            ret["prefabspec"]=self.prefabspec
+        end
     end
     return ret
 end
@@ -1817,9 +1818,16 @@ end
 local old_houndedload=Hounded.OnLoad
 function Hounded:OnLoad(data)
     old_houndedload(self,data)
-    self.prefabspec=data.prefabspec
+    if(data and data.prefabspec)then
+        self.prefabspec=data.prefabspec
+    end
     print("prefabspec",self.prefabspec and self.prefabspec["hound"])
 end
+
+
+AddComponentPostInit("hounded",function(component)
+    component.prefabspec={}
+end)
 
 --TODO this needs to be fixed in a more flexibile way, but klei hacks and laziness got the best of me
 function Hounded:ReleaseHound(dt)
@@ -1860,6 +1868,11 @@ function Hounded:ReleaseHound(dt)
 
                     self.prefabspec[k]=v-1
         
+
+                    break
+                end
+            end
+
                     local hound = SpawnPrefab(prefab)
                     if hound then
                         hound.Physics:Teleport(spawn_pt:Get())
@@ -1867,16 +1880,6 @@ function Hounded:ReleaseHound(dt)
                         hound.components.combat:SuggestTarget(GetPlayer())
                     end
 
-                    break
-                end
-            end
---[[
-            local hound = SpawnPrefab("goblin")
-            if hound then
-                hound.Physics:Teleport(spawn_pt:Get())
-                hound:FacePoint(pt)
-                hound.components.combat:SuggestTarget(GetPlayer())
-            end]]
     end
     
 end    
