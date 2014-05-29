@@ -6,14 +6,14 @@ STRINGS.CHARACTERS.THIEF = {}
 
 STRINGS.CHARACTER_TITLES.barb = "The Barbarian"
 STRINGS.CHARACTER_NAMES.barb = "Brute strength and raw fury!"
-STRINGS.CHARACTER_DESCRIPTIONS.barb = "1.  The Lower his life the stronger his attacks\n2.  Chops / mines 50% faster, is more hungry\n3.  Can eat raw meats with no neg effects\n5.  RAGE!"
+STRINGS.CHARACTER_DESCRIPTIONS.barb = "1.  The Lower his life the stronger his attacks\n2.  Chops / mines 50% faster, is more hungry\n3.  Can eat raw meats with no neg effects\n4.  RAGE!"
 STRINGS.CHARACTER_QUOTES.barb = "\"Don't get me angry!\""
 STRINGS.CHARACTERS.BARB = {}
 
 STRINGS.CHARACTER_TITLES.cleric = "The Cleric"
-STRINGS.CHARACTER_NAMES.cleric = "cleric"
-STRINGS.CHARACTER_DESCRIPTIONS.cleric = "* An example of how to create a mod character."
-STRINGS.CHARACTER_QUOTES.cleric = "\"I am a blank slate.\""
+STRINGS.CHARACTER_NAMES.cleric = "The Cleric"
+STRINGS.CHARACTER_DESCRIPTIONS.cleric = "1.  Strong against the undead.\n2.  Can use Cleric spells.\n3.  Can use shields.\n4.  Does not like darkness."
+STRINGS.CHARACTER_QUOTES.cleric = "\"The Dark cannot claim what Light does not surrender.\""
 STRINGS.CHARACTERS.CLERIC = {}
 
 STRINGS.CHARACTER_TITLES.druid = "The Druid"
