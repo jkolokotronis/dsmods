@@ -41,6 +41,8 @@ local assets = {
         Asset("ANIM","anim/blood_down.zip"),
         Asset("ANIM","anim/blood_drop.zip"),
         Asset("ANIM","anim/bloodcircle.zip"),
+        Asset("ANIM","anim/fa_skhorns.zip"),
+        Asset("ANIM","anim/fa_dorf.zip"),
 }
 local prefabs = {
     "dksword",
@@ -211,6 +213,22 @@ local fn = function(inst)
     inst:AddTag("evil")
     inst:AddTag("fa_shielduser")
 
+
+        inst.AnimState:SetBuild("fa_dorf")
+
+    inst.skhorns = CreateEntity()
+    inst.skhorns.entity:AddTransform()
+    local fxanim=inst.skhorns.entity:AddAnimState()
+    inst.skhorns.Transform:SetFourFaced()
+    fxanim:SetBank("fa_skhorns")
+    fxanim:SetBuild("fa_skhorns")
+    
+--    fxanim:PlayAnimation("horns1",true)
+    inst.skhorns:AddTag("NOCLICK")
+    inst.skhorns:AddTag("FX")
+    fxanim:SetOrientation( ANIM_ORIENTATION.OnGround )
+    local follower = inst.skhorns.entity:AddFollower()
+    follower:FollowSymbol(inst.GUID, "swap_hat", 0, 30, -0.0001)
 
 
     inst.newControlsInit = function (cnt)

@@ -36,6 +36,7 @@ local assets = {
 		-- Don't forget to include your character's custom assets!
         Asset( "ANIM", "anim/thief.zip" ),
         Asset( "ANIM", "anim/smoke_up.zip" ),
+        Asset( "ANIM", "anim/question.zip" ),
 }
 local prefabs = {
     "trap_doubleteeth",

@@ -36,6 +36,21 @@ local assets = {
         Asset( "ANIM", "anim/wortox.zip" ),
         Asset( "ANIM", "anim/wizard.zip" ),
         Asset( "ANIM", "anim/smoke_up.zip" ),
+
+        
+    Asset( "IMAGE", "images/fa_wizard_bookcraft.tex" ),
+    Asset( "IMAGE", "images/fa_wizard_booknext.tex" ),
+    Asset( "IMAGE", "images/fa_wizard_bookprev.tex" ),
+    Asset( "IMAGE", "images/fa_wizard_bookclose.tex" ),
+    Asset( "ATLAS", "images/fa_wizard_bookcraft.xml" ),
+    Asset( "ATLAS", "images/fa_wizard_booknext.xml" ),
+    Asset( "ATLAS", "images/fa_wizard_bookprev.xml" ),
+    Asset( "ATLAS", "images/fa_wizard_bookclose.xml" ),
+    Asset( "IMAGE", "images/fa_wizard_bookbackground.tex" ),
+    Asset( "IMAGE", "images/fa_wizard_bookframe.tex" ),
+    Asset( "ATLAS", "images/fa_wizard_bookbackground.xml" ),
+    Asset( "ATLAS", "images/fa_wizard_bookframe.xml" ),
+    Asset( "ATLAS", "images/fa_wizard_bookbackground.xml" ),
 }
 local prefabs = {}
 

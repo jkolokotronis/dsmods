@@ -13,6 +13,26 @@ GLOBAL.xpcall(function()
                     print("dlc crash")
                 end
             )
+
+
+GLOBAL.rpghudmod=nil
+local memspikefixmod=nil
+for _, mod in ipairs( GLOBAL.ModManager.mods ) do
+        if mod.modinfo.name == "RPG HUD" or mod.modinfo.id == "RPG HUD" then
+            GLOBAL.rpghudmod=mod
+--            print("hud version",mod,mod.modinfo.id,mod.modinfo.name, mod.modinfo.description)
+        elseif mod.modinfo.name == "memspikefix" or mod.modinfo.id == "memspikefix"  then
+            memspikefixmod=mod
+        end
+    end
+
+if(not memspikefixmod)then
+    print("patching memory abuse")
+  modimport "memspikefix.lua"
+else
+    print("memfix already in place")
+end
+
 print("dlc status",GLOBAL.FA_DLCACCESS)
 
 local Widget = require "widgets/widget"
@@ -20,6 +40,7 @@ local XPBadge= require "widgets/xpbadge"
 local TextEdit=require "widgets/textedit"
 local ItemTile = require "widgets/itemtile"
 local FAWarClock = require "widgets/fawarclock"
+require "fa_constants"
 require "widgets/text"
 require "stategraph"
 require "constants"
@@ -30,8 +51,8 @@ require "fa_electricalfence"
 require "fa_levelxptable"
 require "fa_stealthdetectiontable"
 require "behaviours/panic"
-require "fa_constants"
 require "fa_inventory_override"
+require "fa_inventorybar_override"
 local FA_CharRenameScreen=require "screens/fa_charrenamescreen"
 local FA_SpellBookScreen=require "screens/fa_spellbookscreen"
 --
@@ -53,7 +74,6 @@ local StatusDisplays = require "widgets/statusdisplays"
 local ImageButton = require "widgets/imagebutton"
 local Levels=require("map/levels")
 
-require "fa_inventorybar_override"
 require "repairabledescriptionfix"
 
 PrefabFiles = {
@@ -278,7 +298,6 @@ Assets = {
     Asset( "ATLAS", "minimap/druid.xml" ),  
     Asset( "IMAGE", "minimap/paladin.tex" ),
     Asset( "ATLAS", "minimap/paladin.xml" ),  
-    Asset( "ANIM", "anim/question.zip" ),
     Asset( "ANIM", "anim/fa_shieldpuff.zip" ),
 --    Asset( "ANIM", "anim/player_actions_test1.zip" ),
 
@@ -288,36 +307,6 @@ Assets = {
     Asset( "IMAGE", "images/lava1.tex" ),
     Asset( "IMAGE", "images/lava.tex" ),
 
-
-    Asset( "IMAGE", "images/fa_druid_bookcraft.tex" ),
-    Asset( "IMAGE", "images/fa_druid_booknext.tex" ),
-    Asset( "IMAGE", "images/fa_druid_bookprev.tex" ),
-    Asset( "IMAGE", "images/fa_druid_bookclose.tex" ),
-    Asset( "IMAGE", "images/fa_wizard_bookcraft.tex" ),
-    Asset( "IMAGE", "images/fa_wizard_booknext.tex" ),
-    Asset( "IMAGE", "images/fa_wizard_bookprev.tex" ),
-    Asset( "IMAGE", "images/fa_wizard_bookclose.tex" ),
---    Asset( "IMAGE", "images/fa_cleric_bookbackground.tex" ),
-    Asset( "IMAGE", "images/fa_druid_bookbackground.tex" ),
-    Asset( "IMAGE", "images/fa_druid_bookframe.tex" ),
---    Asset( "IMAGE", "images/fa_necromancer_bookbackground.tex" ),
-    Asset( "ATLAS", "images/fa_druid_bookcraft.xml" ),
-    Asset( "ATLAS", "images/fa_druid_booknext.xml" ),
-    Asset( "ATLAS", "images/fa_druid_bookprev.xml" ),
-    Asset( "ATLAS", "images/fa_druid_bookclose.xml" ),
-    Asset( "ATLAS", "images/fa_wizard_bookcraft.xml" ),
-    Asset( "ATLAS", "images/fa_wizard_booknext.xml" ),
-    Asset( "ATLAS", "images/fa_wizard_bookprev.xml" ),
-    Asset( "ATLAS", "images/fa_wizard_bookclose.xml" ),
---    Asset( "ATLAS", "images/fa_cleric_bookbackground.xml" ),
-    Asset( "ATLAS", "images/fa_druid_bookbackground.xml" ),
-    Asset( "ATLAS", "images/fa_druid_bookframe.xml" ),
-    Asset( "IMAGE", "images/fa_wizard_bookbackground.tex" ),
-    Asset( "IMAGE", "images/fa_wizard_bookframe.tex" ),
-    Asset( "ATLAS", "images/fa_wizard_bookbackground.xml" ),
-    Asset( "ATLAS", "images/fa_wizard_bookframe.xml" ),
---    Asset( "ATLAS", "images/fa_necromancer_bookbackground.xml" ),
-    Asset( "ATLAS", "images/fa_wizard_bookbackground.xml" ),
     Asset( "IMAGE", "colour_cubes/lavacube.tex" ),
     Asset( "IMAGE", "colour_cubes/identity_colourcube.tex" ),
     Asset( "IMAGE", "colour_cubes/summer_dusk_cc.tex" ),

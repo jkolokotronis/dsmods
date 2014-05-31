@@ -9,13 +9,6 @@ local Text = require "widgets/text"
 local ThreeSlice = require "widgets/threeslice"
 
 
-rpghudmod=nil
-for _, mod in ipairs( ModManager.mods ) do
-        if mod.modinfo.name == "RPG HUD" or mod.modinfo.id == "RPG HUD" then
-            rpghudmod=mod
---            print("hud version",mod,mod.modinfo.id,mod.modinfo.name, mod.modinfo.description)
-        end
-    end
 
 
 local HUD_ATLAS = "images/hud.xml"

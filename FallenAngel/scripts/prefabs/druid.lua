@@ -32,10 +32,20 @@ local assets = {
         Asset( "ANIM", "anim/shadow_hands.zip" ),
         Asset( "SOUND", "sound/sfx.fsb" ),
         Asset( "SOUND", "sound/wilson.fsb" ),
-        Asset( "ANIM", "anim/beard.zip" ),
 
-		-- Don't forget to include your character's custom assets!
-        Asset( "ANIM", "anim/druid.zip" ),
+    Asset( "ANIM", "anim/druid.zip" ),
+    Asset( "IMAGE", "images/fa_druid_bookcraft.tex" ),
+    Asset( "IMAGE", "images/fa_druid_booknext.tex" ),
+    Asset( "IMAGE", "images/fa_druid_bookprev.tex" ),
+    Asset( "IMAGE", "images/fa_druid_bookclose.tex" ),
+    Asset( "IMAGE", "images/fa_druid_bookbackground.tex" ),
+    Asset( "IMAGE", "images/fa_druid_bookframe.tex" ),
+    Asset( "ATLAS", "images/fa_druid_bookcraft.xml" ),
+    Asset( "ATLAS", "images/fa_druid_booknext.xml" ),
+    Asset( "ATLAS", "images/fa_druid_bookprev.xml" ),
+    Asset( "ATLAS", "images/fa_druid_bookclose.xml" ),
+    Asset( "ATLAS", "images/fa_druid_bookbackground.xml" ),
+    Asset( "ATLAS", "images/fa_druid_bookframe.xml" ),
 }
 local prefabs = {
     "fairy",
