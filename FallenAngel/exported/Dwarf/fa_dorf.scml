@@ -18,13 +18,13 @@
     </folder>
     <folder id="1" name="headbase">
         <file id="0" name="headbase/headbase-0.png" width="172" height="188" pivot_x="0.536334" pivot_y="0.400721"/>
-        <file id="1" name="headbase/headbase-1.png" width="136" height="188" pivot_x="0.436567" pivot_y="0.333912"/>
+        <file id="1" name="headbase/headbase-1.png" width="136" height="188" pivot_x="0.474567" pivot_y="0.333912"/>
         <file id="2" name="headbase/headbase-2.png" width="172" height="188" pivot_x="0.536334" pivot_y="0.400721"/>
     </folder>
-    <folder id="2" name="hair">
-        <file id="0" name="hair/hair-0.png" width="236" height="204" pivot_x="0.531883" pivot_y="0.173409"/>
-        <file id="1" name="hair/hair-1.png" width="212" height="220" pivot_x="0.609314" pivot_y="0.22682"/>
-        <file id="2" name="hair/hair-2.png" width="248" height="248" pivot_x="0.510986" pivot_y="0.308571"/>
+    <folder id="2" name="hair"><!--258 121--> 
+        <file id="0" name="hair/hair-0.png" width="236" height="204" pivot_x="0.521883" pivot_y="0.323409"/>
+        <file id="1" name="hair/hair-1.png" width="212" height="220" pivot_x="0.529314" pivot_y="0.42682"/>
+        <file id="2" name="hair/hair-2.png" width="248" height="248" pivot_x="0.530986" pivot_y="0.348571"/>
     </folder>
     <folder id="3" name="torso">
         <file id="0" name="torso/torso-0.png" width="72" height="92" pivot_x="0.499993" pivot_y="0.150277"/>
@@ -89,12 +89,12 @@
     </folder>
     <folder id="10" name="hair_hat">
         <file id="0" name="hair_hat/hair_hat-0.png" width="236" height="204" pivot_x="0.516787" pivot_y="0.313844"/>
-        <file id="1" name="hair_hat/hair_hat-1.png" width="212" height="220" pivot_x="0.436567" pivot_y="0.394762"/>
-        <file id="2" name="hair_hat/hair_hat-2.png" width="248" height="248" pivot_x="0.535965" pivot_y="0.435656"/>
+        <file id="1" name="hair_hat/hair_hat-1.png" width="212" height="220" pivot_x="0.536567" pivot_y="0.424762"/>
+        <file id="2" name="hair_hat/hair_hat-2.png" width="248" height="248" pivot_x="0.535965" pivot_y="0.335656"/>
     </folder>
     <folder id="11" name="headbase_hat">
         <file id="0" name="headbase_hat/headbase_hat-0.png" width="172" height="188" pivot_x="0.536334" pivot_y="0.402316"/>
-        <file id="1" name="headbase_hat/headbase_hat-1.png" width="136" height="188" pivot_x="0.509629" pivot_y="0.333912"/>
+        <file id="1" name="headbase_hat/headbase_hat-1.png" width="136" height="188" pivot_x="0.485629" pivot_y="0.333912"/>
         <file id="2" name="headbase_hat/headbase_hat-2.png" width="172" height="188" pivot_x="0.536334" pivot_y="0.401386"/>
     </folder>
     <entity id="0" name="fa_dorf">
