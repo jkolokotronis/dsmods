@@ -140,6 +140,8 @@ PrefabFiles = {
     "dryad",
     "satyr",
     "unicorn",
+    "fa_dorfs",
+    "fa_dorfhut",
     "fa_orchut",
     "fa_orc",
     "fa_ogre",
@@ -282,6 +284,8 @@ Assets = {
     Asset( "ATLAS", "minimap/goblin.xml" ),  
     Asset( "IMAGE", "minimap/fa_orc.tex" ),
     Asset( "ATLAS", "minimap/fa_orc.xml" ),  
+    Asset( "IMAGE", "minimap/fa_dorf.tex" ),
+    Asset( "ATLAS", "minimap/fa_dorf.xml" ),  
     Asset( "IMAGE", "minimap/cleric.tex" ),
     Asset( "ATLAS", "minimap/cleric.xml" ),  
     Asset( "IMAGE", "minimap/bard.tex" ),
@@ -298,6 +302,8 @@ Assets = {
     Asset( "ATLAS", "minimap/druid.xml" ),  
     Asset( "IMAGE", "minimap/paladin.tex" ),
     Asset( "ATLAS", "minimap/paladin.xml" ),  
+    Asset( "IMAGE", "minimap/darkknight.tex" ),
+    Asset( "ATLAS", "minimap/darkknight.xml" ), 
     Asset( "ANIM", "anim/fa_shieldpuff.zip" ),
 --    Asset( "ANIM", "anim/player_actions_test1.zip" ),
 
@@ -342,6 +348,7 @@ AddMinimapAtlas("minimap/woodbow.xml")
 AddMinimapAtlas("minimap/woodshield.xml")
 AddMinimapAtlas("minimap/goblin.xml")
 AddMinimapAtlas("minimap/fa_orc.xml")
+AddMinimapAtlas("minimap/fa_dorf.xml")
 AddMinimapAtlas("minimap/cleric.xml")
 AddMinimapAtlas("minimap/bard.xml")
 AddMinimapAtlas("minimap/wizard.xml")
@@ -350,6 +357,7 @@ AddMinimapAtlas("minimap/tinkerer.xml")
 AddMinimapAtlas("minimap/barb.xml")
 AddMinimapAtlas("minimap/druid.xml")
 AddMinimapAtlas("minimap/paladin.xml")
+AddMinimapAtlas("minimap/darkknight.xml")
 
 local EVIL_SANITY_AURA_OVERRIDE={
     robin=-TUNING.SANITYAURA_MED,

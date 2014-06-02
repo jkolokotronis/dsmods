@@ -424,12 +424,10 @@ function Inventory:GiveItem( inst, slot, screen_src_pos )
     
     --can't hold it!    
     if not self.activeitem and not TheInput:ControllerAttached() then
-        print("not activeitem")
         inst.components.inventoryitem:OnPutInInventory(self.inst)
         self:SetActiveItem(inst)
         return true
     else
-       print("yes activeitem")
         self:DropItem(inst, true, true)
     end
     

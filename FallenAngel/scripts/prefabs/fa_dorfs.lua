@@ -1,17 +1,10 @@
 local assets =
 {
-	Asset("ANIM", "anim/ds_pig_basic.zip"),
-	Asset("ANIM", "anim/ds_pig_actions.zip"),
-	Asset("ANIM", "anim/ds_pig_attacks.zip"),
-	Asset("ANIM", "anim/pig_build.zip"),
-	Asset("ANIM", "anim/pigspotted_build.zip"),
-	Asset("SOUND", "sound/pig.fsb"),
+        Asset("ANIM","anim/fa_dorf.zip"),
 }
 
 local prefabs =
 {
-    "meat",
-    "fa_dorftrader_chest"
 }
 
 local MAX_TARGET_SHARES = 5
@@ -36,91 +29,12 @@ local function CalcSanityAura(inst, observer)
 end
 
 
-local function ShouldAcceptItem(inst, item)
-    if inst.components.sleeper:IsAsleep() then
-        return false
-    end
-
-    if item.components.equippable and item.components.equippable.equipslot == EQUIPSLOTS.HEAD then
-        return true
-    end
-    if item.components.edible then
-        
-        if (item.components.edible.foodtype == "MEAT" or item.components.edible.foodtype == "HORRIBLE")
-           and inst.components.follower.leader
-           and inst.components.follower:GetLoyaltyPercent() > 0.9 then
-            return false
-        end
-        
-        if item.components.edible.foodtype == "VEGGIE" then
-			local last_eat_time = inst.components.eater:TimeSinceLastEating()
-			if last_eat_time and last_eat_time < TUNING.PIG_MIN_POOP_PERIOD then        
-				return false
-			end
-
-            if inst.components.inventory:Has(item.prefab, 1) then
-                return false
-            end
-		end
-		
-        return true
-    end
+local onloadfn = function(inst, data)
+    
 end
 
-local function OnGetItemFromPlayer(inst, giver, item)
-    
-    --I eat food
-    if item.components.edible then
-        --meat makes us friends (unless I'm a guard)
-        if item.components.edible.foodtype == "MEAT" or item.components.edible.foodtype == "HORRIBLE" then
-            if inst.components.combat.target and inst.components.combat.target == giver then
-                inst.components.combat:SetTarget(nil)
-            elseif giver.components.leader and not inst:HasTag("guard") then
-				inst.SoundEmitter:PlaySound("dontstarve/common/makeFriend")
-				giver.components.leader:AddFollower(inst)
-                inst.components.follower:AddLoyaltyTime(item.components.edible:GetHunger() * TUNING.PIG_LOYALTY_PER_HUNGER)
-            end
-        end
-        if inst.components.sleeper:IsAsleep() then
-            inst.components.sleeper:WakeUp()
-        end
-    end
+local onsavefn = function(inst, data)
 
-    
-    --I wear hats
-    if item.components.equippable and item.components.equippable.equipslot == EQUIPSLOTS.HEAD then
-        local current = inst.components.inventory:GetEquippedItem(EQUIPSLOTS.HEAD)
-        if current then
-            inst.components.inventory:DropItem(current)
-        end
-        
-        inst.components.inventory:Equip(item)
-        inst.AnimState:Show("hat")
-    end
-end
-
-local function OnRefuseItem(inst, item)
-    inst.sg:GoToState("refuse")
-    if inst.components.sleeper:IsAsleep() then
-        inst.components.sleeper:WakeUp()
-    end
-end
-
-local function OnEat(inst, food)
-    if food.components.edible
-       and food.components.edible.foodtype == "MEAT"
-       and inst.components.werebeast
-       and not inst.components.werebeast:IsInWereState() then
-        if food.components.edible:GetHealth() < 0 then
-            inst.components.werebeast:TriggerDelta(1)
-        end
-    end
-    
-    if food.components.edible and food.components.edible.foodtype == "VEGGIE" then
-		local poo = SpawnPrefab("poop")
-		poo.Transform:SetPosition(inst.Transform:GetWorldPosition())		
-	end
-    
 end
 
 local function OnAttacked(inst, data)
@@ -129,25 +43,10 @@ local function OnAttacked(inst, data)
 
     inst.components.combat:SetTarget(attacker)
 
-    if inst:HasTag("werepig") then
-        inst.components.combat:ShareTarget(attacker, SHARE_TARGET_DIST, function(dude) return dude:HasTag("werepig") end, MAX_TARGET_SHARES)
-    elseif inst:HasTag("guard") then
-            inst.components.combat:ShareTarget(attacker, SHARE_TARGET_DIST, function(dude) return dude:HasTag("pig") and (dude:HasTag("guard") or not attacker:HasTag("pig")) end, MAX_TARGET_SHARES)
-    else
-        if not (attacker:HasTag("pig") and attacker:HasTag("guard") ) then
-            inst.components.combat:ShareTarget(attacker, SHARE_TARGET_DIST, function(dude) return dude:HasTag("pig") and not dude:HasTag("werepig") end, MAX_TARGET_SHARES)
+        if not (attacker:HasTag("dorf") ) then
+            inst.components.combat:ShareTarget(attacker, SHARE_TARGET_DIST, function(dude) return dude:HasTag("dorf")  end, MAX_TARGET_SHARES)
         end
-    end
 end
-
-local function OnNewTarget(inst, data)
-    if inst:HasTag("werepig") then
-        --print(inst, "OnNewTarget", data.target)
-        inst.components.combat:ShareTarget(data.target, SHARE_TARGET_DIST, function(dude) return dude:HasTag("werepig") end, MAX_TARGET_SHARES)
-    end
-end
-
-
 
 local function NormalRetargetFn(inst)
     return FindEntity(inst, TUNING.PIG_TARGET_DIST,
@@ -158,12 +57,14 @@ local function NormalRetargetFn(inst)
             end
         end)
 end
+
 local function NormalKeepTargetFn(inst, target)
     --give up on dead guys, or guys in the dark, or werepigs
     return inst.components.combat:CanTarget(target)
            and (not target.LightWatcher or target.LightWatcher:IsInLight())
            and not (target.sg and target.sg:HasStateTag("transform") )
 end
+
 local function NormalShouldSleep(inst)
     if inst.components.follower and inst.components.follower.leader then
         local fire = FindEntity(inst, 6, function(ent)
@@ -176,8 +77,6 @@ local function NormalShouldSleep(inst)
     end
 end
 
- function(inst, data)
-    end        
 
 local function common()
 	local inst = CreateEntity()
@@ -197,8 +96,6 @@ local function common()
     --inst.components.talker.colour = Vector3(133/255, 140/255, 167/255)
     inst.components.talker.offset = Vector3(0,-400,0)
 
-
-
     MakeCharacterPhysics(inst, 50, .5)
     
     inst:AddComponent("locomotor") -- locomotor must be constructed before the stategraph
@@ -206,22 +103,19 @@ local function common()
     inst.components.locomotor.walkspeed = TUNING.PIG_WALK_SPEED --3
 
     inst:AddTag("character")
-    inst:AddTag("pig")
+    inst:AddTag("dorf")
     inst:AddTag("scarytoprey")
-    anim:SetBank("pigman")
-    inst.AnimState:SetBuild("pig_build")
-    anim:PlayAnimation("idle_loop")
-    anim:Hide("hat")
+
+    inst.AnimState:SetBank("wilson")
+    inst.AnimState:SetBuild("fa_dorf")
+    inst.AnimState:Hide("hat_hair")
+    inst.AnimState:Hide("hat")
+    inst.AnimState:Hide("ARM_carry")
+    inst.AnimState:PlayAnimation("idle")    
 
     ------------------------------------------
-    inst:AddComponent("eater")
-    inst.components.eater:SetOmnivore()
-	inst.components.eater:SetCanEatHorrible()
-    inst.components.eater.strongstomach = true -- can eat monster meat!
-    inst.components.eater:SetOnEatFn(OnEat)
-    ------------------------------------------
     inst:AddComponent("combat")
-    inst.components.combat.hiteffectsymbol = "pig_torso"
+    inst.components.combat.hiteffectsymbol = "torso"
     inst.components.combat:SetDefaultDamage(TUNING.PIG_DAMAGE)
     inst.components.combat:SetAttackPeriod(TUNING.PIG_ATTACK_PERIOD)
     inst.components.combat:SetKeepTargetFunction(NormalKeepTargetFn)
@@ -229,11 +123,11 @@ local function common()
  
 
     inst:AddComponent("named")
-    inst.components.named.possiblenames = STRINGS.PIGNAMES
+    inst.components.named.possiblenames = STRINGS.DORFNAMES
     inst.components.named:PickNewName()
     
     inst:AddComponent("follower")
-    inst.components.follower.maxfollowtime = TUNING.PIG_LOYALTY_MAXTIME
+--    inst.components.follower.maxfollowtime = TUNING.PIG_LOYALTY_MAXTIME
     ------------------------------------------
     inst:AddComponent("health")
     inst.components.health:SetMaxHealth(TUNING.PIG_HEALTH)
@@ -245,39 +139,25 @@ local function common()
     ------------------------------------------
 
     inst:AddComponent("lootdropper")    
-    inst.components.lootdropper:SetLoot({})
-    inst.components.lootdropper:AddRandomLoot("meat",3)
-    inst.components.lootdropper:AddRandomLoot("pigskin",1)
-    inst.components.lootdropper.numrandomloot = 1
 
     ------------------------------------------
 
     inst:AddComponent("knownlocations")
     
-
     ------------------------------------------
 
-    inst:AddComponent("trader")
-    inst.components.trader:SetAcceptTest(ShouldAcceptItem)
-    inst.components.trader.onaccept = OnGetItemFromPlayer
-    inst.components.trader.onrefuse = OnRefuseItem
-    
-    ------------------------------------------
-
-    MakeMediumBurnableCharacter(inst, "pig_torso")
-    MakeMediumFreezableCharacter(inst, "pig_torso")
+    MakeMediumBurnableCharacter(inst,"torso")
+    MakeMediumFreezableCharacter(inst)
     
     ------------------------------------------
 
 
     inst:AddComponent("inspectable")
     
-    local brain = require "brains/pigbrain"
+    local brain = require "brains/dorfbrain"
     inst:SetBrain(brain)
-    inst:SetStateGraph("SGpig")
+    inst:SetStateGraph("SGdorf")
     
-    inst.components.trader:Enable()
-    inst.components.talker:StopIgnoringAll()
 
     inst.OnSave = onsave
     inst.OnLoad = onload    

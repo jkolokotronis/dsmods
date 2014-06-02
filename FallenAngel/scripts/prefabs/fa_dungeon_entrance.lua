@@ -134,15 +134,11 @@ local function Open(inst)
 
 	inst.MiniMapEntity:SetIcon("cave_open.png")
 
-    --inst:AddTag("NOCLICK")
-    inst:DoTaskInTime(2, function() 
 			inst:AddComponent("activatable")
 		    inst.components.activatable.OnActivate = OnActivate
 		    inst.components.activatable.inactive = true
 		    inst.components.activatable.getverb = GetVerb
 			inst.components.activatable.quickaction = true
-
-	end)
 
 end      
 
@@ -193,7 +189,7 @@ end
 local function onsave(inst, data)
 	data.cavenum = inst.cavenum
 	data.fa_cavename=inst.fa_cavename
-	data.open = inst.open
+--	data.open = inst.open
 end           
 
 local function onload(inst, data)
@@ -205,7 +201,7 @@ local function onload(inst, data)
 	end
 
 	if data and data.open then
-		Open(inst)
+--		Open(inst)
 	end
 end
 

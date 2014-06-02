@@ -42,7 +42,6 @@ local assets = {
         Asset("ANIM","anim/blood_drop.zip"),
         Asset("ANIM","anim/bloodcircle.zip"),
         Asset("ANIM","anim/fa_skhorns.zip"),
-        Asset("ANIM","anim/fa_dorf.zip"),
 }
 local prefabs = {
     "dksword",
@@ -196,7 +195,7 @@ local fn = function(inst)
 	inst.soundsname = "wolfgang"
 
 	-- a minimap icon must be specified
-	inst.MiniMapEntity:SetIcon( "wilson.png" )
+	inst.MiniMapEntity:SetIcon( "darkknight.tex" )
 
 	-- todo: Add an example special power here.
 	inst.components.combat.damagemultiplier=1.5
@@ -213,23 +212,49 @@ local fn = function(inst)
     inst:AddTag("evil")
     inst:AddTag("fa_shielduser")
 
+ inst.AnimState:OverrideSymbol("headbase_hat", "fa_skhorns", "horns4")
+inst:ListenForEvent("equip",function(inst,data)
+    local slot=data.eslot
+    if(EQUIPSLOTS.HEAD==slot)then
+        inst.AnimState:OverrideSymbol("headbase_hat", "shadowknight", "headbase_hat")
+--        inst.AnimState:Show("HAIR")
+--        inst.AnimState:Show("HAIR_NOHAT")
+--        inst.AnimState:Show("HEAD")
+--    inst.AnimState:OverrideSymbol("face", "fa_skhorns", "horns4")
+--    inst.AnimState:OverrideSymbol("hat", "fa_skhorns", "horns4")
+--    inst.AnimState:OverrideSymbol("hair", "fa_skhorns", "horns4")
+--    inst.AnimState:OverrideSymbol("swap_hat", "fa_skhorns", "horns4")
+    end
+end)
 
-        inst.AnimState:SetBuild("fa_dorf")
+inst:ListenForEvent("unequip",function(inst,data)
+    print("unequip")
+    if(EQUIPSLOTS.HEAD==data.eslot)then
+         inst.AnimState:OverrideSymbol("headbase_hat", "fa_skhorns", "horns4")
+    end
+end)
+
+
+
+--[[
+
+
 
     inst.skhorns = CreateEntity()
     inst.skhorns.entity:AddTransform()
     local fxanim=inst.skhorns.entity:AddAnimState()
-    inst.skhorns.Transform:SetFourFaced()
+--    inst.skhorns.Transform:SetFourFaced()
     fxanim:SetBank("fa_skhorns")
     fxanim:SetBuild("fa_skhorns")
     
---    fxanim:PlayAnimation("horns1",true)
+    fxanim:PlayAnimation("horns4",true)
     inst.skhorns:AddTag("NOCLICK")
     inst.skhorns:AddTag("FX")
-    fxanim:SetOrientation( ANIM_ORIENTATION.OnGround )
+    inst.skhorns.entity:SetParent( inst.entity )
+--    fxanim:SetOrientation( ANIM_ORIENTATION.OnGround )
     local follower = inst.skhorns.entity:AddFollower()
-    follower:FollowSymbol(inst.GUID, "swap_hat", 0, 30, -0.0001)
-
+    follower:FollowSymbol(inst.GUID, "hair",0,0,0)
+]]
 
     inst.newControlsInit = function (cnt)
         local pet=nil

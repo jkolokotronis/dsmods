@@ -1,44 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_1">
     <folder id="0" name="horns1">
-        <file id="0" name="horns1/horns1_down.png" width="190" height="260" pivot_x="0" pivot_y="1"/>
-        <file id="1" name="horns1/horns1_up.png" width="190" height="260" pivot_x="0" pivot_y="1"/>
-        <file id="2" name="horns1/horns1_side.png" width="136" height="260" pivot_x="0" pivot_y="1"/>
+        <file id="0" name="horns1/horns1-0.png" width="190" height="260" pivot_x="0.55" pivot_y="0.1"/>
+        <file id="1" name="horns1/horns1-2.png" width="190" height="260" pivot_x="0.593478" pivot_y="0.109924"/>
+        <file id="2" name="horns1/horns1-1.png" width="136" height="260" pivot_x="55" pivot_y="0.1"/>
     </folder>
+    <folder id="1" name="horns2">
+        <file id="0" name="horns2/horns2-0.png" width="190" height="260" pivot_x="0.55" pivot_y="0.1"/>
+        <file id="1" name="horns2/horns2-2.png" width="190" height="260" pivot_x="0.593478" pivot_y="0.109924"/>
+        <file id="2" name="horns2/horns2-1.png" width="136" height="260" pivot_x="55" pivot_y="0.1"/>
+    </folder>
+    <folder id="2" name="horns3">
+        <file id="0" name="horns3/horns3-0.png" width="190" height="260" pivot_x="0.55" pivot_y="0.1"/>
+        <file id="1" name="horns3/horns3-2.png" width="190" height="260" pivot_x="0.593478" pivot_y="0.109924"/>
+        <file id="2" name="horns3/horns3-1.png" width="136" height="260" pivot_x="0.55" pivot_y="0.1"/>
+    </folder>
+    <folder id="3" name="horns4">
+        <file id="0" name="horns4/horns4-0.png" width="190" height="260" pivot_x="0.55" pivot_y="0.10"/>
+        <file id="1" name="horns4/horns4-2.png" width="136" height="260" pivot_x="0.593478" pivot_y="0.109924"/>
+        <file id="2" name="horns4/horns4-1.png" width="190" height="260" pivot_x="0.55" pivot_y="0.10"/>
+    </folder>
+    <folder id="3" name="horns4">
+        <file id="0" name="horns4/horns4-0.png" width="190" height="260" pivot_x="0.55" pivot_y="0.10"/>
+        <file id="1" name="horns4/horns4-2.png" width="136" height="260" pivot_x="0.593478" pivot_y="0.109924"/>
+        <file id="2" name="horns4/horns4-1.png" width="190" height="260" pivot_x="0.55" pivot_y="0.10"/>
+    </folder>
+    <!--
+    <folder id="4" name="headbase_hat">
+        <file id="0" name="horns4/headbase_hat-0.png" width="190" height="260" pivot_x="0.55" pivot_y="0.10"/>
+        <file id="1" name="horns4/headbase_hat-2.png" width="136" height="260" pivot_x="0.593478" pivot_y="0.109924"/>
+        <file id="2" name="horns4/headbase_hat-1.png" width="190" height="260" pivot_x="0.55" pivot_y="0.10"/>
+    </folder> -->
     <entity id="0" name="fa_skhorns">
-        <animation id="0" name="horns1_down" length="50">
+        <animation id="0" name="BUILD_PLAYER" length="1000">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
                 </key>
-            </mainline>
-            <timeline id="0" name="horns1_down">
-                <key id="0" spin="0">
-                    <object folder="0" file="0" x="-96" y="156"/>
-                </key>
-            </timeline>
-        </animation>
-        <animation id="1" name="horns1_up" length="50">
-            <mainline>
-                <key id="0">
-                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                <key id="1" time="1000">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
                 </key>
             </mainline>
-            <timeline id="0" name="horns1_down">
+            <timeline id="0" name="headbase_hat_0_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-96" y="156"/>
+                    <object folder="3" file="0" x="-71.732084" y="0.975309" pivot_x="0.55" pivot_y="0.10" angle="0" scale_x="0.762711" scale_y="0.762695"/>
                 </key>
-            </timeline>
-        </animation>
-        <animation id="2" name="horns1_side" length="50">
-            <mainline>
-                <key id="0">
-                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
-                </key>
-            </mainline>
-            <timeline id="0" name="horns1_down">
-                <key id="0" spin="0">
-                    <object folder="0" file="2" x="-96" y="156"/>
+                <key id="1" time="1000" spin="0">
+                    <object folder="3" file="0" x="-0.127146" pivot_x="0.55" pivot_y="0.10" angle="0" scale_x="0.762711" scale_y="0.762695"/>
                 </key>
             </timeline>
         </animation>
