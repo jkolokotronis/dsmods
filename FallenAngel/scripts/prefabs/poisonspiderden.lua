@@ -331,7 +331,7 @@ local function MakeSpiderDenFn(den_level)
         local minimap = inst.entity:AddMiniMapEntity()
         minimap:SetIcon( "spiderden.png" )
 
-        anim:SetBank("spider_cocoon")
+        anim:SetBank("poisonspider_cocoon")
         anim:SetBuild("poisonspider_cocoon")
         anim:PlayAnimation("cocoon_small", true)
 

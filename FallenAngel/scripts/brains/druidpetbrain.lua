@@ -2,7 +2,7 @@ require "behaviours/follow"
 require "behaviours/wander"
 
 
-local FairyBrain = Class(Brain, function(self, inst)
+local DruidPetBrain = Class(Brain, function(self, inst)
     Brain._ctor(self, inst)
 end)
 
@@ -21,7 +21,7 @@ local function KeepFaceTargetFn(inst, target)
     return inst.components.follower.leader == target
 end
 
-function FairyBrain:OnStart()
+function DruidPetBrain:OnStart()
 
     local root = PriorityNode(
     {
@@ -36,4 +36,4 @@ function FairyBrain:OnStart()
 end
 
 
-return FairyBrain
+return DruidPetBrain

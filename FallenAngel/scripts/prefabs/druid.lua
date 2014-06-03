@@ -48,8 +48,6 @@ local assets = {
     Asset( "ATLAS", "images/fa_druid_bookframe.xml" ),
 }
 local prefabs = {
-    "fairy",
-    "fairy_l20",
     "spell_earthquake",
     "spell_lightning",
    "spell_grow",
@@ -206,9 +204,9 @@ local function spawnFairy(inst)
         return
     end
     if(inst.components.xplevel.level<20)then
-        inst.pet = SpawnPrefab("fairy")
+        inst.pet = SpawnPrefab("fa_druidpet")
     else
-        inst.pet=SpawnPrefab("fairy_l20")
+        inst.pet=SpawnPrefab("fa_druidpet_l20")
     end
     inst.pet.Transform:SetPosition(inst.Transform:GetWorldPosition())
     inst.SoundEmitter:PlaySound("dontstarve/common/ghost_spawn")

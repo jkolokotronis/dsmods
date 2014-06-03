@@ -17,15 +17,17 @@ GLOBAL.xpcall(function()
 
 GLOBAL.rpghudmod=nil
 local memspikefixmod=nil
+local alwaysonmod=nil
 for _, mod in ipairs( GLOBAL.ModManager.mods ) do
         if mod.modinfo.name == "RPG HUD" or mod.modinfo.id == "RPG HUD" then
             GLOBAL.rpghudmod=mod
 --            print("hud version",mod,mod.modinfo.id,mod.modinfo.name, mod.modinfo.description)
         elseif mod.modinfo.name == "memspikefix" or mod.modinfo.id == "memspikefix"  then
             memspikefixmod=mod
+        elseif mod.modinfo.name=="Always On Status" or mod.modinfo.id=="Always On Status" then
+            alwaysonmod=mod
         end
     end
-
 if(not memspikefixmod)then
     print("patching memory abuse")
   modimport "memspikefix.lua"
@@ -154,7 +156,7 @@ PrefabFiles = {
 	"thief",
 	"barb",
 	"cleric",
-    "fairy",
+    "fa_druidpet",
 	"druid",
 	"darkknight",
     "darkknightpet",
@@ -1362,7 +1364,7 @@ end)
 AddClassPostConstruct("components/terraformer",function(self)
 local old_canterraformpoint=self.CanTerraformPoint
 function self:CanTerraformPoint(pt)
-    if(old_canterraformpoint(pt))then
+    if(old_canterraformpoint(self,pt))then
         -- since it's blocking just hardcoded crap... one day I'll move this
         local ground = GetWorld()
         if ground then
@@ -1388,6 +1390,18 @@ AddPrefabPostInit("world", function(inst)
     local oldfn = GLOBAL.Prefabs[player_prefab].fn
     GLOBAL.Prefabs[player_prefab].fn = function()
         local inst = oldfn()
+
+        if(alwaysonmod)then
+            print("alwayson", alwaysonmod.version)
+            --cba to care about failures, if it fails oh well i did what i could
+            if(not inst.components.switch)then
+                GLOBAL.pcall(function()
+                    inst:AddComponent("switch")
+                    print("alwayson failsafe")
+                end)
+
+            end
+        end
  
         local oldsavefn=inst.OnSave
         local oldloadfn=inst.OnLoad

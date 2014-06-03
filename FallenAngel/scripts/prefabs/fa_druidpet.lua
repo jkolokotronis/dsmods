@@ -101,9 +101,8 @@ local function fn(Sim)
     light:SetColour(155/255, 225/255, 250/255)
     light:Enable(true)
     
-    inst:AddTag("fairy")
+    inst:AddTag("companion")
     inst:AddTag("pet")
-    inst:AddTag("smallcreature")
     inst:AddTag("character")
     inst:AddTag("scarytoprey")
    
@@ -191,7 +190,7 @@ local function fn(Sim)
     inst.components.health:StartRegen(5,5)
     inst.components.health:SetInvincible(false)
 
-    local brain = require "brains/fairybrain"
+    local brain = require "brains/druidpetbrain"
     inst:SetBrain(brain)
 
     
@@ -206,5 +205,5 @@ local function fn_l20()
     return inst
 end
 
-return Prefab( "common/fairy", fn, assets),
-    Prefab("common/fairy_l20",fn_l20,assets)
+return Prefab( "common/fa_druidpet", fn, assets),
+    Prefab("common/fa_druidpet_l20",fn_l20,assets)

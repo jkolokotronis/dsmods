@@ -23,7 +23,7 @@ local function fn(Sim)
 	inst.entity:AddSoundEmitter()
     MakeInventoryPhysics(inst)
 
-    inst.AnimState:SetBank("spider_egg_sac")
+    inst.AnimState:SetBank("poisonspider_egg_sac")
     inst.AnimState:SetBuild("poisonspider_egg_sac")
     inst.AnimState:PlayAnimation("idle")
     
