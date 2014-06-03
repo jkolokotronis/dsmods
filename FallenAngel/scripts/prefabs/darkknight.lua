@@ -52,7 +52,7 @@ local HT_RANGE=5
 local HT_DAMAGE=500
 local HT_DAMAGE_MK2=1000
 local HT_LEECH=250
-local HT_COOLDOWN=1920
+local HT_COOLDOWN=50--1920
 
 local FIRE_RES_BOOST=0.02
 local POISON_RES_BOOST=0.05
@@ -64,7 +64,7 @@ local BLAST_DMG_MK2=50
 local BLAST_LEECH=25
 local BLAST_HUNGER=-30
 local BLAST_RANGE=15
-local BLAST_COOLDOWN=960
+local BLAST_COOLDOWN=50--960
 
 local HEALTH_PER_LEVEL=4
 local SANITY_PER_LEVEL=1
@@ -99,7 +99,6 @@ local function onxploaded(inst)
          inst.fa_meleedamagemultiplier=inst.fa_meleedamagemultiplier+0.1
     end
     if(level>=11)then
-        enableL1spells()
     end
     if(level>=12)then
         inst.fa_meleedamagemultiplier=inst.fa_meleedamagemultiplier+0.1
@@ -107,7 +106,6 @@ local function onxploaded(inst)
     if(level>=13)then
     end
     if(level>=14)then
-        enableL2spells()
     end
     if(level>=15)then
          inst.fa_meleedamagemultiplier=inst.fa_meleedamagemultiplier+0.1
@@ -238,7 +236,7 @@ local onleechblast=function(inst)
         leechdmg=BLAST_DMG_MK2
     end
     local pos=Vector3(GetPlayer().Transform:GetWorldPosition())
-    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, BLAST_RANGE,nil,{"player","pet","companion","INLIMBO"})
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, BLAST_RANGE,nil,{"player","companion","INLIMBO"})
     for k,v in pairs(ents) do
             if( v.components.combat and not (v.components.health and v.components.health:IsDead())) then
 
@@ -300,7 +298,7 @@ local onharmtouch=function(inst)
 
     local hit=false
     local pos=Vector3(GetPlayer().Transform:GetWorldPosition())
-    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, HT_RANGE,nil,{"player","pet","companion","INLIMBO"})
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, HT_RANGE,nil,{"player","companion","INLIMBO"})
     for k,v in pairs(ents) do
             if(v.components.combat and not (v.components.health and v.components.health:IsDead())) then
                 v.components.combat:GetAttacked(GetPlayer(), damage, nil,nil,FA_DAMAGETYPE.DEATH)
@@ -328,7 +326,7 @@ local fn = function(inst)
 	inst.MiniMapEntity:SetIcon( "darkknight.tex" )
 
 	-- todo: Add an example special power here.
-	inst.components.combat.damagemultiplier=10
+	inst.components.combat.damagemultiplier=1
     inst.fa_meleedamagemultiplier=1
 	inst.components.health:SetMaxHealth(250)
 	inst.components.sanity:SetMax(200)
@@ -345,6 +343,7 @@ local fn = function(inst)
 
     inst.OnLoad = onloadfn
     inst.OnSave = onsavefn
+    inst.LoadPostPass=loadpostpass
 
     inst:ListenForEvent("xplevel_loaded",onxploaded)
     inst:ListenForEvent("xplevelup", onlevelup)
@@ -365,8 +364,9 @@ local fn = function(inst)
 
 inst:ListenForEvent("equip",function(inst,data)
     local slot=data.eslot
+    print("equip",slot)
     if(EQUIPSLOTS.HEAD==slot)then
-        inst.AnimState:OverrideSymbol("headbase_hat", "shadowknight", "headbase_hat")
+        inst.AnimState:OverrideSymbol("headbase_hat", "darkknight", "headbase_hat")
     end
 end)
 
