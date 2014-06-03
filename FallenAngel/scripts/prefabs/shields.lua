@@ -5,16 +5,6 @@ local assets=
   Asset("ANIM", "anim/swap_rockshield.zip"),
   Asset("ANIM", "anim/swap_woodshield.zip"),
   Asset("ANIM", "anim/swap_reflectshield.zip"),
-  Asset("ATLAS", "images/inventoryimages/boneshield.xml"),
-  Asset("ATLAS", "images/inventoryimages/rockshield.xml"),
-  Asset("ATLAS", "images/inventoryimages/woodshield.xml"),
-  Asset("ATLAS", "images/inventoryimages/marbleshield.xml"),
-  Asset("ATLAS", "images/inventoryimages/reflectshield.xml"),
-  Asset("IMAGE", "images/inventoryimages/boneshield.tex"),
-  Asset("IMAGE", "images/inventoryimages/rockshield.tex"),
-  Asset("IMAGE", "images/inventoryimages/woodshield.tex"),
-  Asset("IMAGE", "images/inventoryimages/marbleshield.tex"),
-  Asset("IMAGE", "images/inventoryimages/reflectshield.tex"),
 
 
 }

@@ -280,6 +280,20 @@ Assets = {
     Asset( "ATLAS", "minimap/woodbow.xml" ),
     Asset( "IMAGE", "minimap/woodshield.tex" ),
     Asset( "ATLAS", "minimap/woodshield.xml" ), 
+
+
+
+  Asset("ATLAS", "images/inventoryimages/boneshield.xml"),
+  Asset("ATLAS", "images/inventoryimages/rockshield.xml"),
+  Asset("ATLAS", "images/inventoryimages/woodshield.xml"),
+  Asset("ATLAS", "images/inventoryimages/marbleshield.xml"),
+  Asset("ATLAS", "images/inventoryimages/reflectshield.xml"),
+  Asset("IMAGE", "images/inventoryimages/boneshield.tex"),
+  Asset("IMAGE", "images/inventoryimages/rockshield.tex"),
+  Asset("IMAGE", "images/inventoryimages/woodshield.tex"),
+  Asset("IMAGE", "images/inventoryimages/marbleshield.tex"),
+  Asset("IMAGE", "images/inventoryimages/reflectshield.tex"),
+    
     Asset( "IMAGE", "minimap/goblin.tex" ),
     Asset( "ATLAS", "minimap/goblin.xml" ),  
     Asset( "IMAGE", "minimap/fa_orc.tex" ),
