@@ -5,12 +5,6 @@ local assets =
 
 local prefabs =
 {
-	"smallmeat",
-	"smallmeat_dried",
-	"monstermeat",
-	"monstermeat_dried",
-	"meat",
-	"meat_dried",
 }
 
 
@@ -143,7 +137,6 @@ end
 
 
     inst:AddComponent("burnable")
-    inst:AddComponent("inspectable")
     inst.components.burnable:AddBurnFX("campfirefire", Vector3(0,1,0) )
     inst:ListenForEvent("onextinguish", onextinguish)
     inst:ListenForEvent("onignite", onignite)

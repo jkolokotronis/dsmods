@@ -4,11 +4,12 @@ require "prefabutil"
 		Asset("ANIM", "anim/wall.zip"),
 		Asset("ANIM", "anim/wall_stone.zip"),
 		Asset("ANIM", "anim/marble_pillar.zip"),
+	}
+local lava_assets={
 		Asset("ANIM", "anim/fa_lavawall.zip"),
 	    Asset("ATLAS", "images/inventoryimages/fa_lavawall.xml"),
-    	Asset("IMAGE", "images/inventoryimages/fa_lavawall.tex"),
-	}
-
+    	Asset("IMAGE", "images/inventoryimages/fa_lavawall.tex"),	
+}
 local LAVAWALL_HEALTH=2000
 
 	local function makeobstacle(inst)
@@ -322,7 +323,7 @@ end
 
 return Prefab( "common/fa_dungeon_wall", stonewallfn, assets),
 	Prefab( "common/fa_dungeon_marblepillar", pillarfn, assets),
-	Prefab( "common/fa_lavawall",lavafn , assets),
-	Prefab( "common/fa_lavawall_item", lavaitemfn, assets, {"fa_lavawall", "fa_lavawall_placer"}),
+	Prefab( "common/fa_lavawall",lavafn , lava_assets),
+	Prefab( "common/fa_lavawall_item", lavaitemfn, lava_assets, {"fa_lavawall", "fa_lavawall_placer"}),
 	MakePlacer("common/fa_lavawall_placer", "wall", "fa_lavawall", "1_2", false, false, true) 
 	

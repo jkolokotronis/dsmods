@@ -1,20 +1,29 @@
-local assets=
+local assets_wood=
 {
     Asset("ANIM", "anim/fa_woodarrows.zip"),
-    Asset("ANIM", "anim/fa_icearrows.zip"),
-    Asset("ANIM", "anim/fa_poisonarrows.zip"),
-    Asset("ANIM", "anim/fa_firearrows.zip"),
     Asset("ANIM", "anim/fa_woodarrows_projectile.zip"),
-    Asset("ANIM", "anim/fa_icearrows_projectile.zip"),
-    Asset("ANIM", "anim/fa_poisonarrows_projectile.zip"),
-    Asset("ANIM", "anim/fa_firearrows_projectile.zip"),
     Asset("ATLAS", "images/inventoryimages/fa_woodarrows.xml"),
-    Asset("ATLAS", "images/inventoryimages/fa_icearrows.xml"),
-    Asset("ATLAS", "images/inventoryimages/fa_poisonarrows.xml"),
-    Asset("ATLAS", "images/inventoryimages/fa_firearrows.xml"),
     Asset("IMAGE", "images/inventoryimages/fa_woodarrows.tex"),
+}
+local assets_ice=
+{
+    Asset("ANIM", "anim/fa_icearrows.zip"),
+    Asset("ANIM", "anim/fa_icearrows_projectile.zip"),
+    Asset("ATLAS", "images/inventoryimages/fa_icearrows.xml"),
     Asset("IMAGE", "images/inventoryimages/fa_icearrows.tex"),
+}
+local assets_poison=
+{
+    Asset("ANIM", "anim/fa_poisonarrows.zip"),
+    Asset("ANIM", "anim/fa_poisonarrows_projectile.zip"),
+    Asset("ATLAS", "images/inventoryimages/fa_poisonarrows.xml"),
     Asset("IMAGE", "images/inventoryimages/fa_poisonarrows.tex"),
+}
+local assets_fire=
+{
+    Asset("ANIM", "anim/fa_firearrows.zip"),
+    Asset("ANIM", "anim/fa_firearrows_projectile.zip"),
+    Asset("ATLAS", "images/inventoryimages/fa_firearrows.xml"),
     Asset("IMAGE", "images/inventoryimages/fa_firearrows.tex"),
 }
 
@@ -138,13 +147,13 @@ local function poisonprojectile(Sim)
     return fnprojectile("poisonarrows")
 end
 
-return Prefab( "common/inventory/fa_woodarrows", woodfn, assets),
- Prefab( "common/inventory/fa_woodarrowsprojectile", woodprojectile, assets),
-  Prefab( "common/inventory/fa_icearrows", icefn, assets),
-   Prefab( "common/inventory/fa_icearrowsprojectile", iceprojectile, assets),
-    Prefab( "common/inventory/fa_poisonarrows", poisonfn, assets),
-    Prefab( "common/inventory/fa_poisonarrowsprojectile", poisonprojectile, assets),
-    Prefab( "common/inventory/fa_firearrows", firefn, assets),
-    Prefab( "common/inventory/fa_firearrowsprojectile", fireprojectile, assets)
+return Prefab( "common/inventory/fa_woodarrows", woodfn, assets_wood),
+ Prefab( "common/inventory/fa_woodarrowsprojectile", woodprojectile, assets_wood),
+  Prefab( "common/inventory/fa_icearrows", icefn, assets_ice),
+   Prefab( "common/inventory/fa_icearrowsprojectile", iceprojectile, assets_ice),
+    Prefab( "common/inventory/fa_poisonarrows", poisonfn, assets_poison),
+    Prefab( "common/inventory/fa_poisonarrowsprojectile", poisonprojectile, assets_poison),
+    Prefab( "common/inventory/fa_firearrows", firefn, assets_fire),
+    Prefab( "common/inventory/fa_firearrowsprojectile", fireprojectile, assets_fire)
 
 

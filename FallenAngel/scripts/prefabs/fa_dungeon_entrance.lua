@@ -3,9 +3,7 @@ require "fa_constants"
 require "map/levels/fa_levels"
 local assets=
 {
-	Asset("ANIM", "anim/cave_entrance.zip"),
 	Asset("ANIM", "anim/fa_dungeon_entrance.zip"),
-	Asset("ANIM", "anim/ruins_entrance.zip"),
 
 }
 

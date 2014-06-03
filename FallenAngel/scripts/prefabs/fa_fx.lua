@@ -1,10 +1,21 @@
-local assets = {
-        Asset( "ANIM", "anim/betterbarrier.zip" ),
-        Asset( "ANIM", "anim/flash_b.zip" ),
+
+local bladebarrier_hit_fx_assets={
+    Asset( "ANIM", "anim/flash_b.zip" ),
+}
+local bladebarrier_fx_assets={
+     Asset( "ANIM", "anim/betterbarrier.zip" ),
+}
+local fa_blooddownfx_assets={
         Asset( "ANIM", "anim/blood_down.zip" ),
-        Asset( "ANIM", "anim/blood_drop.zip" ),
-        Asset( "ANIM", "anim/blood_splash.zip" ),
-        Asset( "ANIM", "anim/fa_poison.zip" ),
+}
+local blood_dropfx_assets={
+        Asset( "ANIM", "anim/blood_drop.zip" ),    
+}
+local blood_splashfx_assets={
+        Asset( "ANIM", "anim/blood_splash.zip" ),    
+}
+local poisonfx_assets={
+    Asset( "ANIM", "anim/fa_poison.zip" ),
 }
 
 local function fn(bank,bld,animname,loop)
@@ -55,9 +66,9 @@ local function poisonfx()
 	return fn("fa_poison")
 end
 
-return Prefab( "common/fa_bladebarrier_hitfx", bladebarrier_hit_fx, assets),
-Prefab( "common/fa_bladebarrierfx", bladebarrier_fx, assets),
-Prefab( "common/fa_blooddownfx", blood_downfx, assets),
-Prefab( "common/fa_blooddropfx", blood_dropfx, assets),
-Prefab( "common/fa_bloodsplashfx", blood_splashfx, assets),
-Prefab( "common/fa_poisonfx", poisonfx, assets)
+return Prefab( "common/fa_bladebarrier_hitfx", bladebarrier_hit_fx, bladebarrier_hit_fx_assets),
+Prefab( "common/fa_bladebarrierfx", bladebarrier_fx, bladebarrier_fx_assets),
+Prefab( "common/fa_blooddownfx", blood_downfx, fa_blooddownfx_assets),
+Prefab( "common/fa_blooddropfx", blood_dropfx, blood_dropfx_assets),
+Prefab( "common/fa_bloodsplashfx", blood_splashfx, blood_splashfx_assets),
+Prefab( "common/fa_poisonfx", poisonfx, poisonfx_assets)

@@ -82,6 +82,7 @@ PrefabFiles = {
     "fa_bars",
     "fa_smeltingfurnace",
     "fa_bags",
+    "fa_pebbles",
     "fa_rocks",
     "fa_lavarain",
     "fa_fissures",
@@ -231,6 +232,8 @@ Assets = {
     Asset( "ATLAS", "bigportraits/monk.xml" ),
     Asset( "IMAGE", "bigportraits/necromancer.tex" ),
     Asset( "ATLAS", "bigportraits/necromancer.xml" ),
+    Asset( "IMAGE", "bigportraits/darkknight.tex" ),
+    Asset( "ATLAS", "bigportraits/darkknight.xml" ),
     Asset( "IMAGE", "bigportraits/wizard.tex" ),
     Asset( "ATLAS", "bigportraits/wizard.xml" ),
     Asset( "IMAGE", "bigportraits/tinkerer.tex" ),
@@ -293,7 +296,7 @@ Assets = {
   Asset("IMAGE", "images/inventoryimages/woodshield.tex"),
   Asset("IMAGE", "images/inventoryimages/marbleshield.tex"),
   Asset("IMAGE", "images/inventoryimages/reflectshield.tex"),
-    
+
     Asset( "IMAGE", "minimap/goblin.tex" ),
     Asset( "ATLAS", "minimap/goblin.xml" ),  
     Asset( "IMAGE", "minimap/fa_orc.tex" ),

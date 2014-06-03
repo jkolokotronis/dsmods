@@ -1,9 +1,10 @@
 
 local assets=
 {
-	Asset("ANIM", "anim/orc.zip"),
     Asset("ANIM", "anim/goblin.zip"),
-	Asset("SOUND", "sound/hound.fsb"),
+}
+
+local assets_king={
         Asset( "ANIM", "anim/bluegoblin.zip" ),
         Asset("ANIM","anim/betterbarrier.zip")
 }
@@ -395,4 +396,4 @@ Prefab( "common/fa_goblin_guard_1", fnguard1, assets),
 Prefab( "common/fa_goblin_guard_2", fnguard2, assets),
 Prefab( "common/fa_goblin_guard_3", fnguard3, assets),
 Prefab( "common/fa_goblin_wiz_1", fnwiz, assets),
-Prefab( "common/fa_goblin_king_1", fnking, assets)
+Prefab( "common/fa_goblin_king_1", fnking, assets_king)

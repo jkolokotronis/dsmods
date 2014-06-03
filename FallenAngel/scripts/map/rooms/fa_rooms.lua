@@ -97,7 +97,7 @@ AddRoom("FA_OrcEntrance", {
 					value = GROUND.FA_LAVA_GREEN,
 					contents =  {
 									countprefabs = {
-										fa_orchut=1,
+--										fa_orchut=1,
 										fa_dungeon_entrance=1
 									},
 					                prefabdata = {
@@ -112,7 +112,7 @@ AddRoom("FA_DwarfEntrance", {
 					value = GROUND.FA_LAVA_GREEN,
 					contents =  {
 									countprefabs = {
-										houndmound=1, 
+--										houndmound=1, 
 										fa_dungeon_entrance=1
 									},
 					                prefabdata = {

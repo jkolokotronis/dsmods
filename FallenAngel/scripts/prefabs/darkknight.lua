@@ -37,9 +37,6 @@ local assets = {
 
 		-- Don't forget to include your character's custom assets!
         Asset( "ANIM", "anim/darkknight.zip" ),
-        Asset("ANIM","anim/blood_splash.zip"),
-        Asset("ANIM","anim/blood_down.zip"),
-        Asset("ANIM","anim/blood_drop.zip"),
         Asset("ANIM","anim/bloodcircle.zip"),
         Asset("ANIM","anim/fa_skhorns.zip"),
 }
@@ -333,10 +330,17 @@ local fn = function(inst)
 
 	-- todo: Add an example special power here.
 	inst.components.combat.damagemultiplier=10
+    inst.fa_meleedamagemultiplier=1
 	inst.components.health:SetMaxHealth(250)
 	inst.components.sanity:SetMax(200)
 	inst.components.hunger:SetMax(150)
     inst.components.sanity.night_drain_mult = 0
+
+
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=0
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=0
 
     inst:AddComponent("xplevel")
 
@@ -414,7 +418,7 @@ end)
 
         inst.htCooldownButton=CooldownButton(cnt.owner)
         inst.htCooldownButton:SetText("HT")
-        inst.htCooldownButton:SetOnClick(onharmtouch)
+        inst.htCooldownButton:SetOnClick(function() return onharmtouch(inst) end)
         inst.htCooldownButton:SetCooldown(HT_COOLDOWN)
         if(inst.htcooldowntimer and inst.htcooldowntimer>0)then
              inst.htCooldownButton:ForceCooldown(inst.htcooldowntimer)
@@ -428,7 +432,7 @@ end)
         inst.leechCooldownButton=CooldownButton(cnt.owner)
         inst.leechCooldownButton:SetText("Blast")
         inst.leechCooldownButton:SetCooldown(BLAST_COOLDOWN)
-        inst.leechCooldownButton:SetOnClick(onleechblast)
+        inst.leechCooldownButton:SetOnClick(function() return onleechblast(inst) end)
         if(inst.leechcooldowntimer and inst.leechcooldowntimer>0)then
              inst.leechCooldownButton:ForceCooldown(inst.leechcooldowntimer)
         end

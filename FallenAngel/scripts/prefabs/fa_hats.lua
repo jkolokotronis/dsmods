@@ -1,15 +1,17 @@
 
-local assets=
-{
-	Asset("ANIM", "anim/hat_goblinking_swap.zip"),
-	Asset("ANIM", "anim/hat_goblinking.zip"),
-	Asset("ANIM", "anim/hat_pot_swap.zip"),
-    Asset("ANIM", "anim/hat_pot_goblin_swap.zip"),
-	Asset("ANIM", "anim/hat_pot.zip"),
-    Asset("ATLAS", "images/inventoryimages/hat_pot.xml"),
-    Asset("IMAGE", "images/inventoryimages/hat_pot.tex"),
+local assets_goblinking={
+    Asset("ANIM", "anim/hat_goblinking_swap.zip"),
+    Asset("ANIM", "anim/hat_goblinking.zip"),
     Asset("ATLAS", "images/inventoryimages/hat_goblinking.xml"),
     Asset("IMAGE", "images/inventoryimages/hat_goblinking.tex"),
+    
+}
+local assets_pot={
+    Asset("ANIM", "anim/hat_pot_swap.zip"),
+    Asset("ANIM", "anim/hat_pot_goblin_swap.zip"),
+    Asset("ANIM", "anim/hat_pot.zip"),
+    Asset("ATLAS", "images/inventoryimages/hat_pot.xml"),
+    Asset("IMAGE", "images/inventoryimages/hat_pot.tex"),    
 }
 
 local prefabs ={}
@@ -119,5 +121,5 @@ local function onequip(inst, owner, build)
     	return inst
     end
 
-return Prefab( "common/inventory/hat_goblinking", fnking, assets, prefabs),
-Prefab( "common/inventory/hat_pot", fnpot, assets, prefabs)
+return Prefab( "common/inventory/hat_goblinking", fnking, assets_goblinking, prefabs),
+Prefab( "common/inventory/hat_pot", fnpot, assets_pot, prefabs)

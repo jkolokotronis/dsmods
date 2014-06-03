@@ -1,7 +1,6 @@
 local assets =
 {
 	Asset("ANIM", "anim/bonfire.zip"),
-	Asset("SOUND", "sound/common.fsb"),
 }
 
  local function onignite(inst)
