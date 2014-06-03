@@ -53,14 +53,132 @@ local prefabs = {
 --        SANITY_NIGHT_MID = -100/(300*20),
 local HT_RANGE=5
 local HT_DAMAGE=500
+local HT_DAMAGE_MK2=1000
 local HT_LEECH=250
 local HT_COOLDOWN=1920
 
-local BLAST_DMG=30
-local BLAST_LEECH=30
+local FIRE_RES_BOOST=0.02
+local POISON_RES_BOOST=0.05
+local ELECTRIC_RES_BOOST=0.05
+local HOLY_RES_BOOST=-0.05
+
+local BLAST_DMG=25
+local BLAST_DMG_MK2=50
+local BLAST_LEECH=25
 local BLAST_HUNGER=-30
 local BLAST_RANGE=15
 local BLAST_COOLDOWN=960
+
+local HEALTH_PER_LEVEL=4
+local SANITY_PER_LEVEL=1
+
+
+local function overridehat(inst)
+    local level=inst.components.xplevel.level
+    if(level>3)then
+        inst.AnimState:OverrideSymbol("headbase_hat", "fa_skhorns", "horns"..(math.min(math.floor(level/4),4)))
+    end
+end
+
+local function setresboosts(inst,count)
+    local level=inst.components.xplevel.level
+    local c=count or math.min(math.floor(level/4),4)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]+c*FIRE_RES_BOOST
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]+c*POISON_RES_BOOST
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]+c*ELECTRIC_RES_BOOST
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]+c*HOLY_RES_BOOST
+end
+
+local function onxploaded(inst)
+    local level=inst.components.xplevel.level
+    if(level>=3)then
+        inst.fa_meleedamagemultiplier=inst.fa_meleedamagemultiplier+0.1
+    end
+    if(level>=4)then
+    end
+    if(level>=7)then
+    end
+    if(level>=8)then
+         inst.fa_meleedamagemultiplier=inst.fa_meleedamagemultiplier+0.1
+    end
+    if(level>=11)then
+        enableL1spells()
+    end
+    if(level>=12)then
+        inst.fa_meleedamagemultiplier=inst.fa_meleedamagemultiplier+0.1
+    end
+    if(level>=13)then
+    end
+    if(level>=14)then
+        enableL2spells()
+    end
+    if(level>=15)then
+         inst.fa_meleedamagemultiplier=inst.fa_meleedamagemultiplier+0.1
+    end
+    if(level>=16)then
+    end
+    if(level>=18)then
+    end
+    if(level>=19)then
+         inst.fa_meleedamagemultiplier=inst.fa_meleedamagemultiplier+0.1
+    end
+    if(level>=20)then
+    end
+    if(level>1)then
+        inst.components.health.maxhealth= inst.components.health.maxhealth+HEALTH_PER_LEVEL*(level-1)
+        inst.components.sanity.max=inst.components.sanity.max+SANITY_PER_LEVEL*(level-1)
+    end
+    if(level>3)then
+        setresboosts(inst)
+    end
+end
+
+local function onlevelup(inst,data)
+    local level=data.level
+
+    inst.components.health.maxhealth= inst.components.health.maxhealth+HEALTH_PER_LEVEL
+    inst.components.sanity.max=inst.components.sanity.max+SANITY_PER_LEVEL
+
+    if(level==3)then
+        inst.fa_meleedamagemultiplier=inst.fa_meleedamagemultiplier+0.1
+    elseif(level==4)then
+        if(not inst.components.inventory:GetEquippedItem(EQUIPSLOTS.HEAD))then
+            overridehat(inst)
+        end
+        setresboosts(inst,1)
+    elseif(level==5)then
+        inst.htCooldownButton:Show()
+    elseif(level==8)then
+        if(not inst.components.inventory:GetEquippedItem(EQUIPSLOTS.HEAD))then
+            overridehat(inst)
+        end
+        setresboosts(inst,1)
+        inst.fa_meleedamagemultiplier=inst.fa_meleedamagemultiplier+0.1
+    elseif(level==9)then
+        inst.petBuff:Show()
+    elseif(level==11)then
+    elseif(level==12)then
+        if(not inst.components.inventory:GetEquippedItem(EQUIPSLOTS.HEAD))then
+            overridehat(inst)
+        end
+        setresboosts(inst,1)
+         inst.fa_meleedamagemultiplier=inst.fa_meleedamagemultiplier+0.1
+    elseif(level==13)then
+        inst.leechCooldownButton:Show()
+    elseif(level==14)then
+    elseif(level==15)then
+        inst.fa_meleedamagemultiplier=inst.fa_meleedamagemultiplier+0.1
+    elseif(level==16)then
+        if(not inst.components.inventory:GetEquippedItem(EQUIPSLOTS.HEAD))then
+            overridehat(inst)
+        end
+        setresboosts(inst,1)
+    elseif(level==19)then
+    elseif(level==20)then
+        inst.divinedefenderCooldownButton:Show()
+        inst.fa_undeadcombatmultiplier=inst.fa_undeadcombatmultiplier+0.1
+    end
+end
 
 
 local function spawnPet(inst)
@@ -111,8 +229,18 @@ local onsavefn = function(inst, data)
     data.fa_playername=inst.fa_playername
 end
 
+local loadpostpass=function(inst,data)
+    if(not inst.components.inventory:GetEquippedItem(EQUIPSLOTS.HEAD))then
+        overridehat(inst)
+    end
+end
+
 local onleechblast=function(inst)
     local leechamount=0
+    local leechdmg=BLAST_DMG
+    if(inst.components.xplevel.level>=20)then
+        leechdmg=BLAST_DMG_MK2
+    end
     local pos=Vector3(GetPlayer().Transform:GetWorldPosition())
     local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, BLAST_RANGE,nil,{"player","pet","companion","INLIMBO"})
     for k,v in pairs(ents) do
@@ -131,7 +259,6 @@ local onleechblast=function(inst)
                 local proj =SpawnPrefab("fa_blooddropfx")
                 proj.Transform:SetScale(2, 2, 2)
                 MakeInventoryPhysics(proj)
---                RemovePhysicsColliders(proj)    
                 proj:AddTag("projectile")    
                 proj:AddComponent("projectile")
                 proj.Transform:SetPosition(pos1.x, pos1.y, pos1.z)
@@ -148,7 +275,7 @@ local onleechblast=function(inst)
                 proj.components.projectile:Throw(v, GetPlayer(), GetPlayer())
 --                proj.Transform:SetRotation(angle)
 
-                v.components.combat:GetAttacked(GetPlayer(), BLAST_DMG, nil,nil,FA_DAMAGETYPE.DEATH)
+                v.components.combat:GetAttacked(GetPlayer(), leechdmg, nil,nil,FA_DAMAGETYPE.DEATH)
                 leechamount=leechamount+BLAST_LEECH
 
             end
@@ -169,12 +296,18 @@ local onleechblast=function(inst)
 end
 
 local onharmtouch=function(inst)
+
+    local damage=HT_DAMAGE
+    if(inst.components.xplevel.level>=20)then
+        damage=HT_DAMAGE_MK2
+    end
+
     local hit=false
     local pos=Vector3(GetPlayer().Transform:GetWorldPosition())
     local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, HT_RANGE,nil,{"player","pet","companion","INLIMBO"})
     for k,v in pairs(ents) do
             if(v.components.combat and not (v.components.health and v.components.health:IsDead())) then
-                v.components.combat:GetAttacked(GetPlayer(), HT_DAMAGE, nil,nil,FA_DAMAGETYPE.DEATH)
+                v.components.combat:GetAttacked(GetPlayer(), damage, nil,nil,FA_DAMAGETYPE.DEATH)
 
                 local boom =SpawnPrefab("fa_bloodsplashfx")
                 local follower = boom.entity:AddFollower()
@@ -189,6 +322,7 @@ local onharmtouch=function(inst)
     return hit
 end
 
+
 local fn = function(inst)
 	
 	-- choose which sounds this character will play
@@ -198,7 +332,7 @@ local fn = function(inst)
 	inst.MiniMapEntity:SetIcon( "darkknight.tex" )
 
 	-- todo: Add an example special power here.
-	inst.components.combat.damagemultiplier=1.5
+	inst.components.combat.damagemultiplier=10
 	inst.components.health:SetMaxHealth(250)
 	inst.components.sanity:SetMax(200)
 	inst.components.hunger:SetMax(150)
@@ -209,52 +343,38 @@ local fn = function(inst)
     inst.OnLoad = onloadfn
     inst.OnSave = onsavefn
 
+    inst:ListenForEvent("xplevel_loaded",onxploaded)
+    inst:ListenForEvent("xplevelup", onlevelup)
+
     inst:AddTag("evil")
     inst:AddTag("fa_shielduser")
 
- inst.AnimState:OverrideSymbol("headbase_hat", "fa_skhorns", "horns4")
+    local calcdamage_old=inst.components.combat.CalcDamage
+
+    function inst.components.combat:CalcDamage (target, weapon, multiplier)
+        local old=calcdamage_old(self,target,weapon,multiplier)
+
+        if(weapon and not weapon.components.weapon:CanRangedAttack())then
+            old=old*inst.fa_meleedamagemultiplier
+        end
+        return old
+    end
+
 inst:ListenForEvent("equip",function(inst,data)
     local slot=data.eslot
     if(EQUIPSLOTS.HEAD==slot)then
         inst.AnimState:OverrideSymbol("headbase_hat", "shadowknight", "headbase_hat")
---        inst.AnimState:Show("HAIR")
---        inst.AnimState:Show("HAIR_NOHAT")
---        inst.AnimState:Show("HEAD")
---    inst.AnimState:OverrideSymbol("face", "fa_skhorns", "horns4")
---    inst.AnimState:OverrideSymbol("hat", "fa_skhorns", "horns4")
---    inst.AnimState:OverrideSymbol("hair", "fa_skhorns", "horns4")
---    inst.AnimState:OverrideSymbol("swap_hat", "fa_skhorns", "horns4")
     end
 end)
 
 inst:ListenForEvent("unequip",function(inst,data)
     print("unequip")
     if(EQUIPSLOTS.HEAD==data.eslot)then
-         inst.AnimState:OverrideSymbol("headbase_hat", "fa_skhorns", "horns4")
+         overridehat(inst)
     end
 end)
 
 
-
---[[
-
-
-
-    inst.skhorns = CreateEntity()
-    inst.skhorns.entity:AddTransform()
-    local fxanim=inst.skhorns.entity:AddAnimState()
---    inst.skhorns.Transform:SetFourFaced()
-    fxanim:SetBank("fa_skhorns")
-    fxanim:SetBuild("fa_skhorns")
-    
-    fxanim:PlayAnimation("horns4",true)
-    inst.skhorns:AddTag("NOCLICK")
-    inst.skhorns:AddTag("FX")
-    inst.skhorns.entity:SetParent( inst.entity )
---    fxanim:SetOrientation( ANIM_ORIENTATION.OnGround )
-    local follower = inst.skhorns.entity:AddFollower()
-    follower:FollowSymbol(inst.GUID, "hair",0,0,0)
-]]
 
     inst.newControlsInit = function (cnt)
         local pet=nil
@@ -288,6 +408,9 @@ end)
                 end)
             end
         end
+        if(inst.components.xplevel.level<9)then
+            inst.petBuff:Hide()
+        end
 
         inst.htCooldownButton=CooldownButton(cnt.owner)
         inst.htCooldownButton:SetText("HT")
@@ -298,6 +421,9 @@ end)
         end
         local htbtn=cnt:AddChild(inst.htCooldownButton)
         htbtn:SetPosition(-100,0,0)
+        if(inst.components.xplevel.level<5)then
+            inst.htCooldownButton:Hide()
+        end
 
         inst.leechCooldownButton=CooldownButton(cnt.owner)
         inst.leechCooldownButton:SetText("Blast")
@@ -308,6 +434,9 @@ end)
         end
         local leechbtn=cnt:AddChild(inst.leechCooldownButton)
         leechbtn:SetPosition(100,0,0)
+        if(inst.components.xplevel.level<13)then
+            inst.leechCooldownButton:Hide()
+        end
     end
 local prefabs1 = {
     "dksword",
