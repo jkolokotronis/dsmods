@@ -171,9 +171,8 @@ local function onlevelup(inst,data)
         end
         setresboosts(inst,1)
     elseif(level==19)then
+         inst.fa_meleedamagemultiplier=inst.fa_meleedamagemultiplier+0.1
     elseif(level==20)then
-        inst.divinedefenderCooldownButton:Show()
-        inst.fa_undeadcombatmultiplier=inst.fa_undeadcombatmultiplier+0.1
     end
 end
 

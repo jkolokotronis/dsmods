@@ -22,10 +22,10 @@ STRINGS.CHARACTER_DESCRIPTIONS.druid = "1.  Animal companion\n2.  Druid spells\n
 STRINGS.CHARACTER_QUOTES.druid = "\"When nature has work to be done, she creates a genius.\""
 STRINGS.CHARACTERS.DRUID = {}
 
-STRINGS.CHARACTER_TITLES.darkknight = "The Shadow"
-STRINGS.CHARACTER_NAMES.darkknight = "darkknight"
-STRINGS.CHARACTER_DESCRIPTIONS.darkknight = "* An example of how to create a mod character."
-STRINGS.CHARACTER_QUOTES.darkknight = "\"I am a blank slate.\""
+STRINGS.CHARACTER_TITLES.darkknight = "The Shadow Knight"
+STRINGS.CHARACTER_NAMES.darkknight = "The Shadow Knight"
+STRINGS.CHARACTER_DESCRIPTIONS.darkknight = "1.  Hates good things.\n2.  Is not afraid of evil things.\n3.  Can use shields.\n4.  Has evil powers and a dark sword."
+STRINGS.CHARACTER_QUOTES.darkknight = "\"When you gaze long into an abyss, the abyss also gazes into you.\""
 STRINGS.CHARACTERS.DARKKNIGHT = {}
 
 STRINGS.CHARACTER_TITLES.monk = "monk"
