@@ -879,11 +879,12 @@ AddPrefabPostInit("monstermeat_dried",function(inst)
         inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
     end
 end)
+--[[
 AddPrefabPostInit("hambat",function(inst)
     if(inst.components.perishable)then
         inst.components.perishable:SetOnPerishFn(spoiledSkeletonSpawn)
     end
-end)
+end)]]
 
 AddPrefabPostInit("merm",function(inst) inst:AddTag("pickpocketable") end)
 AddPrefabPostInit("orc",function(inst) inst:AddTag("pickpocketable") end)
@@ -1948,7 +1949,7 @@ end
 
 AddPrefabPostInit("nightsword",nonEvilSanityPostinit)
 AddPrefabPostInit("armor_sanity",nonEvilSanityPostinit)
-AddPrefabPostInit("spider",nonEvilSanityPostinit)
+AddPrefabPostInit("spiderhat",nonEvilSanityPostinit)
 
 local newFlowerPicked=function(inst,picker)
 
