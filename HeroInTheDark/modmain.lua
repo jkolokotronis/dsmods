@@ -378,6 +378,7 @@ AddMinimapAtlas("minimap/druid.xml")
 AddMinimapAtlas("minimap/paladin.xml")
 AddMinimapAtlas("minimap/darkknight.xml")
 
+
 local EVIL_SANITY_AURA_OVERRIDE={
     robin=-TUNING.SANITYAURA_MED,
     pigman=-TUNING.SANITYAURA_MED,
@@ -391,6 +392,11 @@ local EVIL_SANITY_AURA_OVERRIDE={
     spider_dropper=0,
     flower_evil=TUNING.SANITYAURA_MED,
     ghost=TUNING.SANITYAURA_MED,
+    skeletonspawn=TUNING.SANITYAURA_MED,
+    fa_drybones=TUNING.SANITYAURA_MED,
+    fa_dartdrybones=TUNING.SANITYAURA_MED,
+    fa_skull=TUNING.SANITYAURA_MED,
+    mound=TUNING.SANITYAURA_MED,
     hound=0,
     icehound=0,
     firehound=0,
@@ -403,6 +409,8 @@ local EVIL_SANITY_AURA_OVERRIDE={
     shadowwaxwell=0,
     slurper=0,
     spider=0,
+    poisonspider=0,
+    spiderqueen=-TUNING.SANITYAURA_MED,
     spider_warrior=0,
     tentacle=0,
     tentacle_pillar_arm=0,
@@ -917,7 +925,11 @@ mound_digcallback=function(inst,worker)
     end
     if worker then
         if worker.components.sanity then
-            worker.components.sanity:DoDelta(-TUNING.SANITY_SMALL)
+           if(worker:HasTag("evil"))then
+---------------------
+            else
+                worker.components.sanity:DoDelta(-TUNING.SANITY_SMALL)
+            end
         end     
         local roll=math.random()
          print(roll,":",GLOBAL.GHOST_MOUND_SPAWN_CHANCE)
@@ -1936,6 +1948,7 @@ end
 
 AddPrefabPostInit("nightsword",nonEvilSanityPostinit)
 AddPrefabPostInit("armor_sanity",nonEvilSanityPostinit)
+AddPrefabPostInit("spider",nonEvilSanityPostinit)
 
 local newFlowerPicked=function(inst,picker)
 
