@@ -20,11 +20,6 @@
         <file id="1" name="horns4/horns4-2.png" width="136" height="260" pivot_x="0.593478" pivot_y="0.109924"/>
         <file id="2" name="horns4/horns4-1.png" width="190" height="260" pivot_x="0.55" pivot_y="0.10"/>
     </folder>
-    <folder id="3" name="horns4">
-        <file id="0" name="horns4/horns4-0.png" width="190" height="260" pivot_x="0.55" pivot_y="0.10"/>
-        <file id="1" name="horns4/horns4-2.png" width="136" height="260" pivot_x="0.593478" pivot_y="0.109924"/>
-        <file id="2" name="horns4/horns4-1.png" width="190" height="260" pivot_x="0.55" pivot_y="0.10"/>
-    </folder>
     <!--
     <folder id="4" name="headbase_hat">
         <file id="0" name="horns4/headbase_hat-0.png" width="190" height="260" pivot_x="0.55" pivot_y="0.10"/>

@@ -89,9 +89,9 @@
         <file id="1" name="cheeks/cheeks-1.png" width="64" height="60" pivot_x="0.461711" pivot_y="0.482092"/>
     </folder>
     <folder id="10" name="hair_hat">
-        <file id="0" name="hair_hat/hair_hat-0.png" width="204" height="112" pivot_x="0.516787" pivot_y="0.943844"/>
-        <file id="1" name="hair_hat/hair_hat-1.png" width="183" height="124" pivot_x="0.416567" pivot_y="0.944762"/>
-        <file id="2" name="hair_hat/hair_hat-2.png" width="212" height="176" pivot_x="0.525965" pivot_y="0.755656"/>
+        <file id="0" name="hair_hat/hair_hat-0.png" width="204" height="250" pivot_x="0.516787" pivot_y="0.743844"/>
+        <file id="1" name="hair_hat/hair_hat-1.png" width="183" height="200" pivot_x="0.426567" pivot_y="0.774762"/>
+        <file id="2" name="hair_hat/hair_hat-2.png" width="212" height="200" pivot_x="0.525965" pivot_y="0.655656"/>
     </folder>
     <folder id="11" name="headbase_hat">
         <file id="0" name="headbase_hat/headbase_hat-0.png" width="172" height="188" pivot_x="0.536334" pivot_y="0.182316"/>
@@ -246,7 +246,7 @@
             </timeline>
             <timeline id="3" name="hair_hat_0_3">
                 <key id="0" spin="0">
-                    <object folder="10" file="0" x="-250.999" y="203.449" angle="0"/>
+                    <object folder="10" file="0" x="-251.999" y="154.449" angle="0"/>
                 </key>
                 <key id="1" time="1000" spin="0">
                     <object folder="10" file="0" x="-250.999" y="203.449" angle="0"/>
