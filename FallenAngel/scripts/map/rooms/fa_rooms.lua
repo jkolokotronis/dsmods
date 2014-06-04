@@ -46,7 +46,7 @@ AddRoom("FA_MineEntranceEvil", {
 										["FAOrcSetEvil"] = 1,
 									}, 
 									countprefabs = {
-										fa_dungeon_entrance=1
+--										fa_dungeon_entrance=1
 									},
 					                prefabdata = {
 										fa_dungeon_entrance = function() return {fa_cavename="ORC_MINES"}
@@ -64,7 +64,7 @@ AddRoom("FA_MineEntranceHound", {
 										["FAOrcSetHound"] = 1,
 									}, 
 									countprefabs = {
-										fa_dungeon_entrance=1
+--										fa_dungeon_entrance=1
 									},
 					                prefabdata = {
 										fa_dungeon_entrance = function() return {fa_cavename="ORC_MINES"}
@@ -82,7 +82,7 @@ AddRoom("FA_MineEntranceRocky", {
 										["FAOrcSetRocky"] = 1,
 									}, 
 									countprefabs = {
-										fa_dungeon_entrance=1
+--										fa_dungeon_entrance=1
 									},
 					                prefabdata = {
 										fa_dungeon_entrance = function() return {fa_cavename="ORC_MINES"}

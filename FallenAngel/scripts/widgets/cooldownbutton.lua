@@ -3,10 +3,11 @@ local Text = require "widgets/text"
 local Image = require "widgets/image"
 require "constants"
 
-local CooldownButton = Class(Widget, function(self, data)
+local CooldownButton = Class(Widget, function(self,owner, data)
 
     local init=data or {}
-    Widget._ctor(self, "COOLDOWNBUTTON")
+    Widget._ctor(self, "COOLDOWNBUTTON",owner)
+    self.owner=owner or GetPlayer()
     self.image = self:AddChild(Image())
     self.image:MoveToBack()
 
@@ -38,11 +39,24 @@ local CooldownButton = Class(Widget, function(self, data)
    
     self.cooldown=init.cooldown or 60
     self.cooldowntimer=0
+    self.cooldowntimerstart=0
     self.cooldowntask=nil
+
+--  sigh, hax, are widgets the only things ihat don't have longupdate
+    local old_onupdate=self.owner.OnLongUpdate
+    self.owner.OnLongUpdate=function(inst, dt) 
+        if(old_onupdate)then
+            old_onupdate(inst,dt)
+        end
+        if(self.cooldowntimer>0 and  self.cooldowntask)then
+            self:DoDelta(dt)
+        end        
+    end
 end)
 
-function CooldownButton:countdownfn()
-    self.cooldowntimer=self.cooldowntimer-1
+function CooldownButton:DoDelta(dt)
+    self.cooldowntimer=self.cooldowntimer-dt
+    self.cooldowntimerstart=GetTime()
     if(self.cooldowntimer<=0 and  self.cooldowntask)then
         self.cooldowntask:Cancel()
         self.cooldowntask=nil
@@ -52,26 +66,19 @@ function CooldownButton:countdownfn()
             self.OnCountdownOver()
         end
     else
-        self.cooldowntext:SetString(""..self.cooldowntimer)
+        self.cooldowntext:SetString(""..math.floor(self.cooldowntimer))
     end    
 end
---[[
-function CooldownButton:OnMouseButton(button, down, x, y)
-	if not self.focus then return false end
-    if(button==MOUSEBUTTON_LEFT and not down) then
-    	self:DoClick()
-    end
-    for k,v in pairs (self.children) do
-        if v.focus and v:OnMouseButton(button, down, x, y) then return true end
-    end 
 
+function CooldownButton:countdownfn()
+--    print("time",TheSim:GetTick(),GetTime(),self.cooldowntimerstart)
+    local dt=GetTime()-self.cooldowntimerstart
+    self:DoDelta(dt)
 end
-]]
 
 function CooldownButton:OnControl(control, down)
 
     if not self.focus then return false end
-    print("oncontrol", self, control, down, self.focus)
     if(control==CONTROL_ACCEPT and not down) then
         self:DoClick()
     end
@@ -136,8 +143,9 @@ function CooldownButton:DoClick()
     if(success)then
         self:Disable()
         self.cooldowntimer=self.cooldown
+        self.cooldowntimerstart=GetTime()
         self.cooldowntext:Show()
-        self.cooldowntext:SetString(""..self.cooldown)
+        self.cooldowntext:SetString(""..math.floor(self.cooldown))
         --why self:DoPeriodicTask not working?
         self.cooldowntask=GetPlayer():DoPeriodicTask(1, function() self:countdownfn() end)
     end
@@ -146,11 +154,13 @@ end
 
 function CooldownButton:ForceCooldown(state)
     self.cooldowntimer=state
+    self.cooldowntimerstart=GetTime()
+
     if(state>0)then
         self:Disable()
         self:Show()
         self.cooldowntext:Show()
-        self.cooldowntext:SetString(""..self.cooldown)
+        self.cooldowntext:SetString(""..math.floor(self.cooldown))
         self.cooldowntask=GetPlayer():DoPeriodicTask(1, function() self:countdownfn() end)
     else
         self:Enable()

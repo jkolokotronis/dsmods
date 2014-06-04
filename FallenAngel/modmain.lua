@@ -2040,6 +2040,18 @@ AddPrefabPostInit("icehound", function(inst) inst.components.health.fa_resistanc
 AddPrefabPostInit("deerclops", function(inst) inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=1 end)
 AddPrefabPostInit("lightninggoat", function(inst) inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=1 end)
 
+--why would spells ignore longupdate? This will collide with any other postconstructs i assume, but it's not exactly something where i can stack calls
+local Spell=require "components/spell"
+local old_spelllongupdate=Spell.LongUpdate
+if(old_spelllongupdate)then
+        print("WARNING: found old spell.longupdate, bypassing override")
+else
+    function Spell:LongUpdate(dt)
+--TODO periodic tics should fire appropriate amount of times, not just once, fix onupdate bug
+        self:OnUpdate(dt)
+    end
+end
+
 --DLC PATCHUP
 if(GLOBAL.FA_DLCACCESS)then
 
