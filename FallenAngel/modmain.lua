@@ -2055,7 +2055,7 @@ end
 --DLC PATCHUP
 if(GLOBAL.FA_DLCACCESS)then
 
-    TUNING.NIGHTSTICK_DAMAGE=(0 or TUNING.NIGHTSTICK_DAMAGE)*1.5
+    TUNING.NIGHTSTICK_DAMAGE=(TUNING.NIGHTSTICK_DAMAGE or 0)*1.5
     AddPrefabPostInit("nightstick",function(inst)
         inst.components.weapon.stimuli=nil
         inst.components.weapon.fa_damagetype=FA_DAMAGETYPE.ELECTRIC
