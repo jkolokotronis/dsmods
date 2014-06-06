@@ -1020,6 +1020,55 @@ AddPrefabPostInit("mound",function(inst)
 
 end)
 
+AddPrefabPostInit("gravestone",function(inst)
+    --[[ nah I so ain't doing this
+    local old_loadpostpass=inst.OnLoadPostPass
+
+    inst.OnLoadPostPass=function(inst,newents, data)
+    --WARN i should probably return here... if they ever fix the mess they made... this will end up with double inits
+        if(old_loadpostpass)then old_loadpostpass(inst,newents,data) end
+        if data then
+            if inst.mound and data.mounddata then
+                inst.mound:LoadPostPass(data.mounddata.data, newents)
+            end
+        end
+    end
+]]
+    if(inst.mound)then
+--        inst:RemoveChild(inst.mound)
+        inst.mound:Remove()
+        inst.mound=nil
+    end
+
+    inst:DoTaskInTime(0,function()
+
+        if(not inst.fa_mounded)then
+            local mound=SpawnPrefab("mound")
+            local pos=inst:GetPosition()+(GLOBAL.TheCamera:GetDownVec()*.5)
+            mound.Transform:SetPosition(pos:Get())
+            inst.fa_mounded=true
+        end
+    end)
+
+    local old_onsave=inst.OnSave
+    inst.OnSave= function (inst, data)
+        if(old_onsave) then old_onsave(inst,data) end
+        if data and data.mounddata then
+            --kill off manual saving
+            data.mounddata=nil
+        end
+        data.fa_mounded=inst.fa_mounded
+    end
+
+    local old_onload=inst.OnLoad
+    inst.OnLoad= function (inst, data)
+        if(old_onload) then old_onload(inst,data) end
+        if(data)then
+            inst.fa_mounded=data.fa_mounded
+        end
+    end
+end)
+
 AddPrefabPostInit("ghost",function(inst)
     if(not inst.components.lootdropper)then
         inst:AddComponent("lootdropper")
@@ -1035,7 +1084,7 @@ AddClassPostConstruct("brains/ghostbrain",function(class)
     local old_onstart=class.OnStart
     function class:OnStart()
         old_onstart(class)
-        local newnodes={GLOBAL.WhileNode( function() print("turning?",self.inst.fa_turnundead) return self.inst.fa_turnundead~=nil end, "Turning", GLOBAL.Panic(self.inst))}
+        local newnodes={GLOBAL.WhileNode( function()  return self.inst.fa_turnundead~=nil end, "Turning", GLOBAL.Panic(self.inst))}
         local root=self.bt.root
         newnodes[1].parent=self.bt.root
         local newtable={}
@@ -1976,6 +2025,18 @@ end
 
 AddPrefabPostInit("flower", function(inst) inst.components.pickable.onpickedfn=newFlowerPicked end)
 AddPrefabPostInit("flower_evil", function(inst) inst.components.pickable.onpickedfn=newFlowerPicked end)
+AddPrefabPostInit("petals_evil", function(inst) 
+    local old_oneaten=inst.components.edible.oneaten
+    inst.components.edible:SetOnEatenFn(function(inst,eater)
+        if(eater and eater:HasTag("evil"))then
+            if eater.components.sanity then
+                eater.components.sanity:DoDelta(TUNING.SANITY_SMALL)
+            end
+        elseif(old_oneaten)then
+            old_oneaten(inst,eater)
+        end
+    end)
+end)
 
 AddPrefabPostInit("gunpowder", function(inst) 
     inst:AddComponent("reloading") 
