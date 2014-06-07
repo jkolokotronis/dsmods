@@ -34,6 +34,9 @@ local function OnActivate(inst)
 
 	local function go_spelunking()
 		SaveGameIndex:GetSaveFollowers(GetPlayer())
+		if(FA_DLCACCESS)then
+			SaveGameIndex:SetSaveSeasonData(GetPlayer())
+		end
 
 		local function onsaved()
 		    SetPause(false)
