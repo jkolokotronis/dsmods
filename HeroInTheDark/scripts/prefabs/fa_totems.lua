@@ -148,7 +148,7 @@ local function onattackfireball(inst, attacker, target)
                      v.components.burnable:Ignite()
                     end
 
-                    if(v.components.combat and not v==target and not (v.components.health and v.components.health:IsDead())) then
+                    if(v.components.combat and not (v.components.health and v.components.health:IsDead())) then
                         v.components.combat:GetAttacked(attacker, REDTOTEM_DAMAGE, nil,nil,FA_DAMAGETYPE.FIRE)
                     end
                 end
@@ -161,7 +161,7 @@ local function EquipWeaponRedKos(inst)
         local weapon = CreateEntity()
         weapon.entity:AddTransform()
         weapon:AddComponent("weapon")
-        weapon.components.weapon:SetDamage(inst.components.combat.defaultdamage)
+        weapon.components.weapon:SetDamage(0)
         weapon.components.weapon:SetRange(REDTOTEM_RANGE, REDTOTEM_RANGE+4)
         weapon.components.weapon:SetProjectile("fireballprojectilekos")
         weapon:AddComponent("inventoryitem")
