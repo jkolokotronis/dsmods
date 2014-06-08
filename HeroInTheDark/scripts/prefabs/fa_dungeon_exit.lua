@@ -46,6 +46,7 @@ local function OnActivate(inst)
 
 		local function onsaved()
 		    SetPause(false)
+		    print("onsaved")
 		    StartNextInstance({reset_action=RESET_ACTION.LOAD_SLOT, save_slot = SaveGameIndex:GetCurrentSaveSlot()}, true)
 		end
 

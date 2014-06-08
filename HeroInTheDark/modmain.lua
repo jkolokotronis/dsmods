@@ -30,7 +30,7 @@ for _, mod in ipairs( GLOBAL.ModManager.mods ) do
     end
 if(not memspikefixmod)then
     print("patching memory abuse")
-  modimport "memspikefix.lua"
+--  modimport "memspikefix.lua"
 else
     print("memfix already in place")
 end

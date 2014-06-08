@@ -64,7 +64,7 @@ local BLAST_DMG_MK2=50
 local BLAST_LEECH=25
 local BLAST_HUNGER=-30
 local BLAST_RANGE=15
-local BLAST_COOLDOWN=960
+local BLAST_COOLDOWN=5--960
 
 local HEALTH_PER_LEVEL=4
 local SANITY_PER_LEVEL=1
@@ -250,14 +250,15 @@ local onleechblast=function(inst)
                 boom:ListenForEvent("animover", function()  boom:Remove() end)
 
 
-                local proj =SpawnPrefab("fa_blooddropfx")
-                proj.Transform:SetScale(2, 2, 2)
+--                local proj =SpawnPrefab("fa_blooddropfx")
+                local proj =SpawnPrefab("fa_absorbredfx")
+                proj.Transform:SetScale(1, 1, 1)
                 MakeInventoryPhysics(proj)
                 proj:AddTag("projectile")    
                 proj:AddComponent("projectile")
                 proj.Transform:SetPosition(pos1.x, pos1.y, pos1.z)
                 proj.fa_rotate(GetPlayer())
-                proj.components.projectile:SetSpeed(20)
+                proj.components.projectile:SetSpeed(3)
 --                proj.components.projectile:SetOnHitFn(function() proj:Remove() end)
                 proj.components.projectile:SetOnMissFn(function() proj:Remove() end)
 --              we dont want to hit ourselves                

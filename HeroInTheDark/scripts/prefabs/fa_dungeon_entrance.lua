@@ -1,5 +1,6 @@
 local PopupDialogScreen = require "screens/popupdialog"
 require "fa_constants"
+local Levels=require("map/levels")
 require "map/levels/fa_levels"
 local assets=
 {
@@ -40,6 +41,7 @@ local function OnActivate(inst)
 
 		local function onsaved()
 		    SetPause(false)
+		    print("onsaved")
 		    StartNextInstance({reset_action=RESET_ACTION.LOAD_SLOT, save_slot = SaveGameIndex:GetCurrentSaveSlot()}, true)
 		end
 
@@ -69,6 +71,7 @@ local function OnActivate(inst)
 				level_to_go=AddNewCaveLevel(inst.fa_cavename)
 			end
 			print("actually descending into",level_to_go,"from",GetWorld().topology.level_number)
+			print("level", Levels.cave_levels[level_to_go].name)
 			SaveGameIndex:SaveCurrent(function() SaveGameIndex:EnterCave(onsaved,nil, inst.cavenum, level_to_go) end, "descend", inst.cavenum)
 		end
 

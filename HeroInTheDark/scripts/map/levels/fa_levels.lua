@@ -2,6 +2,7 @@ require("map/level")
 local Levels=require("map/levels")
 require("fa_constants")
 FA_LEVELDATA={}
+FA_LEVELS={}
 
 -- Cave levels
 ----------------------------------
@@ -374,14 +375,15 @@ function AddNewCaveLevel(cavename)
 	local lvl=nil
 	local index=3 --we know first 3 are in use
 	if(#existing_levels>0)then
-		--just use old handle, they should all be same anyway? DO NOT destroy elements after created (there should never be a reason to anyway)
-		--apparently not working... 
 --		lvl=existing_levels[1]
 		index=index+(#existing_levels)
-		AddLevel(LEVELTYPE.CAVE, data)
+		--sooo for some weird reason i cant have 2 of the same ids in different depths now?
+		local copy=deepcopy(data)
+		copy.id=copy.id..#existing_levels
+		AddLevel(LEVELTYPE.CAVE,copy)
 		lvl=table.remove(Levels.cave_levels)
 	else
-		AddLevel(LEVELTYPE.CAVE, data)
+		AddLevel(LEVELTYPE.CAVE, deepcopy(data))
 		--is there a saner way of doing this? table.insert returns nil so does addlevel
 		lvl=table.remove(Levels.cave_levels)
 	end

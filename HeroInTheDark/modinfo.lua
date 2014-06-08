@@ -23,6 +23,16 @@ configuration_options =
         },
         default = "off",
     },
+    {
+        name = "detailedexamine",
+        label = "Detailed Examine",
+        options =
+        {
+            {description = "On", data = "on"},
+            {description = "Off", data = "off"}
+        },
+        default = "off",
+    },
 }
 
 api_version = 6
