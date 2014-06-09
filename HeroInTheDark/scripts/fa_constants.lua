@@ -35,6 +35,7 @@ FISHING_MERM_SPAWN_CHANCE=0.3
 FA_TILES_START=40
 
 FA_DAMAGETYPE={
+	PHYSICAL=0,--shouldn't be used unless for specific purposes
 	POISON=1,
 	FIRE=2,
 	ACID=3,

@@ -21,6 +21,7 @@ local REDTOTEM_RANGE=10
 local REDTOTEM_USES=20
 local REDTOTEM_DAMAGE=100
 local REDTOTEM_ATTACKPERIOD=1.5
+local KOS_TOTEM_HEALTH=300
 local TOTEM_HEALTH=1000
 local BLUETOTEM_DURATION=1000
 local FIREBALL_RADIUS=5
@@ -348,6 +349,7 @@ end
 local function redfnkos(Sim)
     local inst=redfnbase(Sim)
 
+    inst.components.health:SetMaxHealth(KOS_TOTEM_HEALTH) 
     inst.components.combat:SetRetargetFunction(1, retargetfnkos)
     inst:DoTaskInTime(0.1, EquipWeaponRedKos)
     return inst
