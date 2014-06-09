@@ -30,7 +30,7 @@ for _, mod in ipairs( GLOBAL.ModManager.mods ) do
     end
 if(not memspikefixmod)then
     print("patching memory abuse")
---  modimport "memspikefix.lua"
+  modimport "memspikefix.lua"
 else
     print("memfix already in place")
 end
@@ -63,6 +63,7 @@ local Ingredient = GLOBAL.Ingredient
 local RECIPETABS = GLOBAL.RECIPETABS
 local STRINGS = GLOBAL.STRINGS
 local ACTIONS = GLOBAL.ACTIONS
+local GROUND=GLOBAL.GROUND
 local Action = GLOBAL.Action
 local GetPlayer = GLOBAL.GetPlayer
 local GetClock=GLOBAL.GetClock
