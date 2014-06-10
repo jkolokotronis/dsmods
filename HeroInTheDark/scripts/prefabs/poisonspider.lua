@@ -100,7 +100,7 @@ local function dopoison(inst,target)
     if(target and not target.components.health:IsDead())then
         --bypassing armor - but this also bypasses potential retarget
 --        target.components.health:DoDelta(-POISON_DAMAGE)
-            target.components.combat:GetAttacked(inst, POISON_DAMAGE, nil,nil,FA_DAMAGETYPE.POISON)
+            target.components.combat:GetAttacked(inst.caster, POISON_DAMAGE, nil,nil,FA_DAMAGETYPE.POISON)
 
                 local boom =SpawnPrefab("fa_poisonfx")
                 local follower = boom.entity:AddFollower()
