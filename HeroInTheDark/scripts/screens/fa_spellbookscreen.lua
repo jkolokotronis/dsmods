@@ -8,7 +8,7 @@ local Image = require "widgets/image"
 local Widget = require "widgets/widget"
 local NumericSpinner = require "widgets/numericspinner"
 local IngredientUI = require "widgets/ingredientui"
-local RecipePopup = require "widgets/recipepopup"
+local FA_SpellPopup = require "widgets/fa_spellpopup"
 
 	local HSEP=16
 	local YSEP=14
@@ -102,6 +102,7 @@ function FASpellBookScreen:DoInit()
 end
 
 function FASpellBookScreen:SetLevel(level)
+	self.craftbutton:Hide()
 	self.level=level
 	print("level",level)
 	
@@ -146,9 +147,17 @@ end
 function FASpellBookScreen:OnSelectSpell(spell)
 	self.selected=spell
 	self.spell:KillAllChildren()
-	local popup=self.spell:AddChild(RecipePopup(true))
-	popup:SetRecipe( GetRecipe(spell.recname),self.caster)
+	local popup=self.spell:AddChild(FA_SpellPopup(true))
+--	popup:SetRecipe( GetRecipe(spell.recname),self.caster)
+	popup:SetSpell(spell,self.caster)
+    local can_build = owner.components.builder:CanBuild(spell.recname)
 	popup:SetPosition(-280,120,0)
+	if(can_build)then
+		self.craftbutton:Show()
+	else
+		self.craftbutton:Hide()
+	end
+
 	return true
 end
 

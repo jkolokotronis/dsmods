@@ -70,11 +70,11 @@ local smelt_recipes={
 		},
 }
 
-local FASmelterMatcher=Class(function(self, craftlists)
+local FA_SmelterMatcher=Class(function(self, craftlists)
 	self.craftlists=craftlists
 end)
 
-local function FASmelterMatcher:Match(itemlist)
+local function FA_SmelterMatcher:Match(itemlist)
 	local matched=false
 	for k,v in pairs(smelt_recipes) do
 		test=true
@@ -102,8 +102,8 @@ local function FASmelterMatcher:Match(itemlist)
 	return {product=product,cooktime=FAIL_TIMER}
 end
 
-local function FASmelterMatcher:TryMatch(itemlist)
+local function FA_SmelterMatcher:TryMatch(itemlist)
 	return true
 end
 
-return FASmelterMatcher
+return FA_SmelterMatcher

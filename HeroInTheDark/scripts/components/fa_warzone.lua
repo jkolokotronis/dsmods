@@ -1,6 +1,6 @@
 
 
-local FAWarzone = Class(function(self, inst)
+local FA_Warzone = Class(function(self, inst)
 	self.inst = inst
 	self.task = nil
 	self.phases={
@@ -47,23 +47,23 @@ local FAWarzone = Class(function(self, inst)
     self.inst:StartUpdatingComponent(self)
 end)
 
-function FAWarzone:GetDaySegs()
+function FA_Warzone:GetDaySegs()
 	--eventually they may/will be different, for now...
 	return self.phases
 end
 
-function FAWarzone:GetTimeLeftInEra()
+function FA_Warzone:GetTimeLeftInEra()
 	return self.timeLeftInEra
 end
 
-function FAWarzone:OnSave()
+function FA_Warzone:OnSave()
 	return {
 	phase = self.phase,
 	timeLeftInEra = self.timeLeftInEra
 	}
 end
 
-function FAWarzone:OnLoad(data)
+function FA_Warzone:OnLoad(data)
 	if(data and data.phase)then
 		self.phase=data.phase
 	end
@@ -75,20 +75,20 @@ function FAWarzone:OnLoad(data)
 end
 
 
-function FAWarzone:GetDebugString()
+function FA_Warzone:GetDebugString()
     return string.format("%s: %2.2f ", self.phase, self:GetTimeLeftInEra())
 end
 
 
-function FAWarzone:GetPhase()
+function FA_Warzone:GetPhase()
 	return self.phase
 end
 
-function FAWarzone:GetNextPhase()
+function FA_Warzone:GetNextPhase()
 	return self.phase % #self.phases +1
 end
 
-function FAWarzone:NextPhase()
+function FA_Warzone:NextPhase()
 	local oldphase = self.phase
 	self.phase=self:GetNextPhase()
 	self.phases[oldphase].onexit()
@@ -98,7 +98,7 @@ function FAWarzone:NextPhase()
 	self.inst:PushEvent("warphasechange", {oldphase = self.phases[oldphase], newphase = self.phases[self.phase]})
 end
 
-function FAWarzone:OnUpdate(dt)
+function FA_Warzone:OnUpdate(dt)
 	self.timeLeftInEra = self.timeLeftInEra - dt
 
 	if self.override_timeLeftInEra ~= nil then
@@ -132,7 +132,7 @@ function FAWarzone:OnUpdate(dt)
 end
 
 
-function FAWarzone:LerpAmbientColour(src, dest, time)
+function FA_Warzone:LerpAmbientColour(src, dest, time)
 	self.lerptimeleft = time
 	self.totallerptime = time
 
@@ -152,7 +152,7 @@ function FAWarzone:LerpAmbientColour(src, dest, time)
     end
 end
 
-function FAWarzone:LerpFactor()
+function FA_Warzone:LerpFactor()
 	if self.totallerptime == 0 then
 		return 1
 	else
@@ -160,7 +160,7 @@ function FAWarzone:LerpFactor()
 	end
 end
 
-function FAWarzone:LongUpdate(dt)
+function FA_Warzone:LongUpdate(dt)
 	self:OnUpdate(dt)
 --[[
 	self.lerptimeleft = 0
@@ -179,4 +179,4 @@ function FAWarzone:LongUpdate(dt)
     end]]
 end
 
-return FAWarzone
+return FA_Warzone

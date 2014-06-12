@@ -41,7 +41,7 @@ local Widget = require "widgets/widget"
 local XPBadge= require "widgets/xpbadge"
 local TextEdit=require "widgets/textedit"
 local ItemTile = require "widgets/itemtile"
-local FAWarClock = require "widgets/fawarclock"
+local FA_WarClock = require "widgets/fa_warclock"
 require "fa_constants"
 require "widgets/text"
 require "stategraph"
@@ -1354,7 +1354,7 @@ local function OrcMinesPostInit(inst)
                     inst.fa_lavarain=nil
                 end)   
 
-    inst:AddComponent("fawarzone")
+    inst:AddComponent("fa_warzone")
     AddClassPostConstruct("widgets/controls", function(self, owner)
         self.clock:Kill()
         self.clock=self.sidepanel:AddChild(FAWarClock(owner))

@@ -1,5 +1,5 @@
 
-local FAFurnace = Class(function(self, inst,matcher)
+local FA_Furnace = Class(function(self, inst,matcher)
     self.inst = inst
     self.cooking = false
     self.done = false
@@ -8,7 +8,7 @@ local FAFurnace = Class(function(self, inst,matcher)
     self.matcher = matcher
 end)
 
-function FAFurnace:dostew(inst)
+function FA_Furnace:dostew(inst)
 	self.task = nil
 	
 	if self.ondonecooking then
@@ -19,14 +19,14 @@ function FAFurnace:dostew(inst)
 	self.cooking = nil
 end
 
-function FAFurnace:GetTimeToCook()
+function FA_Furnace:GetTimeToCook()
 	if self.cooking then
 		return self.targettime - GetTime()
 	end
 	return 0
 end
 
-function FAFurnace:GetIngreds()
+function FA_Furnace:GetIngreds()
 	local ingreds={}
 	for k,v in pairs (self.inst.components.container.slots) do
 		local c=1
@@ -35,7 +35,7 @@ function FAFurnace:GetIngreds()
 	return ingreds
 end
 
-function FAFurnace:CanCook()
+function FA_Furnace:CanCook()
 
 	if(self.matcher)then
 		return self.matcher:TryMatch(self:GetIngreds())
@@ -44,7 +44,7 @@ function FAFurnace:CanCook()
 end
 
 
-function FAFurnace:StartCooking()
+function FA_Furnace:StartCooking()
 	if not self.done and not self.cooking then
 		if self.inst.components.container then
 			
@@ -73,7 +73,7 @@ function FAFurnace:StartCooking()
 	end
 end
 
-function FAFurnace:OnSave()
+function FA_Furnace:OnSave()
     
     if self.cooking then
 		local data = {}
@@ -94,7 +94,7 @@ function FAFurnace:OnSave()
     end
 end
 
-function FAFurnace:OnLoad(data)
+function FA_Furnace:OnLoad(data)
     --self.produce = data.produce
     if data.cooking then
 		self.product = data.product
@@ -126,7 +126,7 @@ function FAFurnace:OnLoad(data)
 end
 
 
-function FAFurnace:CollectSceneActions(doer, actions, right)
+function FA_Furnace:CollectSceneActions(doer, actions, right)
     if self.done then
         table.insert(actions, ACTIONS.HARVEST)
     elseif right and self:CanCook() then
@@ -135,7 +135,7 @@ function FAFurnace:CollectSceneActions(doer, actions, right)
 end
 
 
-function FAFurnace:Harvest( harvester )
+function FA_Furnace:Harvest( harvester )
 	if self.done then
 		if self.onharvest then
 			self.onharvest(self.inst)
@@ -172,4 +172,4 @@ function FAFurnace:Harvest( harvester )
 end
 
 
-return FAFurnace
+return FA_Furnace

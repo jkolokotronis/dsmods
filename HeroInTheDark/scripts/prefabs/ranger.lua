@@ -1,6 +1,6 @@
 
 local MakePlayerCharacter = require "prefabs/player_common"
-
+local CooldownButton=require "widgets/cooldownbutton"
 
 local assets = {
 
@@ -154,7 +154,7 @@ local fn = function(inst)
 	inst.soundsname = "wolfgang"
 
 	-- a minimap icon must be specified
-	inst.MiniMapEntity:SetIcon( "wilson.png" )
+	inst.MiniMapEntity:SetIcon( "ranger.tex" )
 
 	-- todo: Add an example special power here.
     inst.components.combat.damagemultiplier=DAMAGE_MULT
@@ -172,7 +172,7 @@ local fn = function(inst)
     r=Recipe("natureshealing", {Ingredient("berries", 2), Ingredient("honey", 1),Ingredient("papyrus", 2)},  RECIPETABS.SURVIVAL,{SCIENCE = 1})
     r.image="book_brimstone.tex"
 
-    inst.newControlsInit = function (class)
+    inst.newControlsInit = function (cnt)
 
         inst.forageCooldownButton=CooldownButton(cnt.owner)
         inst.forageCooldownButton:SetText("Forage")

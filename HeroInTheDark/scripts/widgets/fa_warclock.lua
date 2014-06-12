@@ -4,7 +4,7 @@ local Text = require "widgets/text"
 local UIAnim = require "widgets/uianim"
 
 
-local FAWarClock = Class(Widget, function(self,owner)
+local FA_WarClock = Class(Widget, function(self,owner)
     Widget._ctor(self, "Clock")
     self.owner=owner
     --self:SetHAnchor(ANCHOR_RIGHT)
@@ -101,7 +101,7 @@ local FAWarClock = Class(Widget, function(self,owner)
         self:RecalcSegs(data.phases)
     end, GetWorld())
        
-    local warsegs=GetWorld().components.fawarzone:GetDaySegs()
+    local warsegs=GetWorld().components.fa_warzone:GetDaySegs()
     self:RecalcSegs(warsegs)
     
     self.old_t = 0 
@@ -112,7 +112,7 @@ local FAWarClock = Class(Widget, function(self,owner)
     end]]
 end)
 
-function FAWarClock:RecalcSegs(phases)
+function FA_WarClock:RecalcSegs(phases)
     local i=1
     for k, v in ipairs(phases) do
         local segcount=v.length
@@ -130,26 +130,26 @@ function FAWarClock:RecalcSegs(phases)
     end    
 end
 
-function FAWarClock:UpdateDayString()
+function FA_WarClock:UpdateDayString()
     local clock_str = STRINGS.UI.HUD.CLOCKDAY.." "..tostring(GetClock().numcycles+1)
     self.text:SetString(clock_str)
 end
 
-function FAWarClock:OnGainFocus()
-	FAWarClock._base.OnGainFocus(self)
+function FA_WarClock:OnGainFocus()
+	FA_WarClock._base.OnGainFocus(self)
 	local clock_str = STRINGS.UI.HUD.WORLD.." ".. tostring(self.world_num or 1)
 	self.text:SetString(clock_str)
 	return true
 end
 
-function FAWarClock:OnLoseFocus()
-	FAWarClock._base.OnLoseFocus(self)
+function FA_WarClock:OnLoseFocus()
+	FA_WarClock._base.OnLoseFocus(self)
 	self:UpdateDayString()
 	return true
 end
 
 
-function FAWarClock:ShowMoon()
+function FA_WarClock:ShowMoon()
     local mp = GetClock():GetMoonPhase()
     local moon_syms = 
     {
@@ -166,7 +166,7 @@ end
 
 
 
-function FAWarClock:SetTime(t, phase)
+function FA_WarClock:SetTime(t, phase)
 --[[
     if phase == "day" then
         local segs = 16
@@ -183,4 +183,4 @@ function FAWarClock:SetTime(t, phase)
 end
 
 
-return FAWarClock
+return FA_WarClock

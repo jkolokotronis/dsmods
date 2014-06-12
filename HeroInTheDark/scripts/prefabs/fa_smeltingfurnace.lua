@@ -13,18 +13,18 @@ local widgetbuttoninfo = {
 	text = "Smelt",
 	position = Vector3(0, -165, 0),
 	fn = function(inst)
-		inst.components.fafurnace:StartCooking()	
+		inst.components.fa_furnace:StartCooking()	
 	end,
 	
 	validfn = function(inst)
-		return inst.components.fafurnace:CanCook()
+		return inst.components.fa_furnace:CanCook()
 	end,
 }
 
 
 local function onhammered(inst, worker)
-	if inst.components.fafurnace.product and inst.components.fafurnace.done then
-		inst.components.lootdropper:AddChanceLoot(inst.components.fafurnace.product, 1)
+	if inst.components.fa_furnace.product and inst.components.fa_furnace.done then
+		inst.components.lootdropper:AddChanceLoot(inst.components.fa_furnace.product, 1)
 	end
 	inst.components.lootdropper:DropLoot()
 	SpawnPrefab("collapse_small").Transform:SetPosition(inst.Transform:GetWorldPosition())
@@ -36,9 +36,9 @@ local function onhit(inst, worker)
 	
 	inst.AnimState:PlayAnimation("hit_empty")
 	
-	if inst.components.fafurnace.cooking then
+	if inst.components.fa_furnace.cooking then
 		inst.AnimState:PushAnimation("cooking_loop")
-	elseif inst.components.fafurnace.done then
+	elseif inst.components.fa_furnace.done then
 		inst.AnimState:PushAnimation("idle_full")
 	else
 		inst.AnimState:PushAnimation("idle_empty")
@@ -81,7 +81,7 @@ end
 local function donecookfn(inst)
 	inst.AnimState:PlayAnimation("cooking_pst")
 	inst.AnimState:PushAnimation("idle_full")
-	inst.AnimState:OverrideSymbol("swap_cooked", "cook_pot_food", inst.components.fafurnace.product)
+	inst.AnimState:OverrideSymbol("swap_cooked", "cook_pot_food", inst.components.fa_furnace.product)
 	
 	inst.SoundEmitter:KillSound("snd")
 	inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish", "snd")
@@ -91,7 +91,7 @@ end
 
 local function continuedonefn(inst)
 	inst.AnimState:PlayAnimation("idle_full")
-	inst.AnimState:OverrideSymbol("swap_cooked", "cook_pot_food", inst.components.fafurnace.product)
+	inst.AnimState:OverrideSymbol("swap_cooked", "cook_pot_food", inst.components.fa_furnace.product)
 end
 
 local function continuecookfn(inst)
@@ -107,11 +107,11 @@ local function harvestfn(inst)
 end
 
 local function getstatus(inst)
-	if inst.components.fafurnace.cooking and inst.components.fafurnace:GetTimeToCook() > 15 then
+	if inst.components.fa_furnace.cooking and inst.components.fa_furnace:GetTimeToCook() > 15 then
 		return "COOKING_LONG"
-	elseif inst.components.fafurnace.cooking then
+	elseif inst.components.fa_furnace.cooking then
 		return "COOKING_SHORT"
-	elseif inst.components.fafurnace.done then
+	elseif inst.components.fa_furnace.done then
 		return "DONE"
 	else
 		return "EMPTY"
@@ -151,12 +151,13 @@ local function fn(Sim)
     inst.AnimState:SetBuild("cook_pot")
     inst.AnimState:PlayAnimation("idle_empty")
 
-    inst:AddComponent("FAFurnace")
-    inst.components.fafurnace.onstartcooking = startcookfn
-    inst.components.fafurnace.oncontinuecooking = continuecookfn
-    inst.components.fafurnace.oncontinuedone = continuedonefn
-    inst.components.fafurnace.ondonecooking = donecookfn
-    inst.components.fafurnace.onharvest = harvestfn
+    inst:AddComponent("fa_furnace")
+    inst.components.fa_furnace.onstartcooking = startcookfn
+    inst.components.fa_furnace.oncontinuecooking = continuecookfn
+    inst.components.fa_furnace.oncontinuedone = continuedonefn
+    inst.components.fa_furnace.ondonecooking = donecookfn
+    inst.components.fa_furnace.onharvest = harvestfn
+    inst.components.fa_furnace.mather = require "fa_smelter_matcher"
     
     
     
