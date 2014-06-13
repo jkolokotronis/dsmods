@@ -30,7 +30,7 @@ for _, mod in ipairs( GLOBAL.ModManager.mods ) do
     end
 if(not memspikefixmod)then
     print("patching memory abuse")
-  modimport "memspikefix.lua"
+--  modimport "memspikefix.lua"
 else
     print("memfix already in place")
 end
@@ -482,9 +482,9 @@ local FALLENLOOTTABLEMERGED=GLOBAL.FALLENLOOTTABLEMERGED
 
 -- Let the game know Wod is a male, for proper pronouns during the end-game sequence.
 -- Possible genders here are MALE, FEMALE, or ROBOT
-table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "thief")
+table.insert(GLOBAL.CHARACTER_GENDERS.FEMALE, "thief")
 table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "barb")
-table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "cleric")
+table.insert(GLOBAL.CHARACTER_GENDERS.FEMALE, "cleric")
 table.insert(GLOBAL.CHARACTER_GENDERS.FEMALE, "druid")
 table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "darkknight")
 table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "monk")
@@ -1918,12 +1918,12 @@ AddModCharacter("barb")
 AddModCharacter("druid")
 AddModCharacter("paladin")
 AddModCharacter("cleric")
+AddModCharacter("darkknight")
+AddModCharacter("ranger")
+AddModCharacter("wizard")
 
 AddModCharacter("thief")
-AddModCharacter("darkknight")
 AddModCharacter("monk")
 AddModCharacter("necromancer")
-AddModCharacter("wizard")
 AddModCharacter("tinkerer")
-AddModCharacter("ranger")
 AddModCharacter("bard")

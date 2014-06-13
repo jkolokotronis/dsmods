@@ -99,7 +99,7 @@ function FA_SpellPopup:Refresh()
     local tech_level = owner.components.builder.accessible_tech_trees
 
     local equippedBody = owner.components.inventory:GetEquippedItem(EQUIPSLOTS.BODY)
-
+--this should be amu but do i care about it?
     local showamulet = equippedBody and equippedBody.prefab == "greenamulet"
     
 	if not showamulet then
@@ -138,6 +138,9 @@ function FA_SpellPopup:Refresh()
         self.ing[k] = ing
         i=i+1
     end
+
+    self.teaser:SetString(self.spell.school or "")
+    self.teaser:Show()
 end
 
 
