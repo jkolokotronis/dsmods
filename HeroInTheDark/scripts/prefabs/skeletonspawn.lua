@@ -82,6 +82,23 @@ local function RetargetFn(inst)
     return invader
 end
 
+
+local function KeepTargetFn(inst, target)
+    local home = inst.components.homeseeker and inst.components.homeseeker.home
+    if home then
+        return home:GetDistanceSqToInst(target) < TUNING.MERM_DEFEND_DIST*TUNING.MERM_DEFEND_DIST
+               and home:GetDistanceSqToInst(inst) < TUNING.MERM_DEFEND_DIST*TUNING.MERM_DEFEND_DIST
+    end
+    return inst.components.combat:CanTarget(target)     
+end
+
+local function OnAttacked(inst, data)
+    local attacker = data and data.attacker
+    if attacker and inst.components.combat:CanTarget(attacker) then
+        inst.components.combat:SetTarget(attacker)
+    end
+end
+
 local function fn(Sim)
     local inst = CreateEntity()
     
@@ -168,6 +185,8 @@ inst:AddComponent("eater")
     local brain = require "brains/skeletonspawnbrain"
     inst:SetBrain(brain)
 
+    inst:ListenForEvent("attacked", OnAttacked)
+    
     return inst
 end
 
