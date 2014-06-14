@@ -1255,6 +1255,7 @@ end)
 local function UpdateWorldGenScreen(self, profile, cb, world_gen_options)
         print("level",world_gen_options.level_world)
         local data=Levels.cave_levels[world_gen_options.level_world]
+        if(world_gen_options.level_type and world_gen_options.level_type=="adventure")then return end
         if(data and GLOBAL.FA_LEVELS[data.id])then
              GLOBAL.TheSim:LoadPrefabs {"MOD_"..modname}
             --TODO this crap should really be done differently
