@@ -36,7 +36,7 @@ end
 
 local function OnActivate(inst)
 
-	SetPause(true)
+--	SetPause(true)
 	local level = GetWorld().topology.level_number or 1
 	local function head_upwards()
 		SaveGameIndex:GetSaveFollowers(GetPlayer())
@@ -45,7 +45,7 @@ local function OnActivate(inst)
 		end
 
 		local function onsaved()
-		    SetPause(false)
+--		    SetPause(false)
 		    print("onsaved")
 		    StartNextInstance({reset_action=RESET_ACTION.LOAD_SLOT, save_slot = SaveGameIndex:GetCurrentSaveSlot()}, true)
 		end

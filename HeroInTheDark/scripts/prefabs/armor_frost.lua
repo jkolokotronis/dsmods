@@ -58,7 +58,7 @@ local function fn()
     local minimap = inst.entity:AddMiniMapEntity()
     minimap:SetIcon( "frostarmor.tex" )
     
-    inst.AnimState:SetBank("armor_marble")
+    inst.AnimState:SetBank("armor_frost")
     inst.AnimState:SetBuild("armor_frost")
     inst.AnimState:PlayAnimation("anim")
     

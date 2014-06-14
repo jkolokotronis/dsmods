@@ -57,7 +57,7 @@ local function fn(Sim)
     
     inst.AnimState:SetBloomEffectHandle( "shaders/anim.ksh" )
     
-    inst.AnimState:SetBank("fireflies")
+    inst.AnimState:SetBank("fa_lavaflies")
     inst.AnimState:SetBuild("fa_lavaflies")
 
     inst.AnimState:SetRayTestOnBB(true);

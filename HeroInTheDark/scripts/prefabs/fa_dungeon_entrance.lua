@@ -31,7 +31,7 @@ local function OnActivate(inst)
 
     ProfileStatsSet("cave_entrance_used", true)
 
-	SetPause(true)
+--	SetPause(true)
 
 	local function go_spelunking()
 		SaveGameIndex:GetSaveFollowers(GetPlayer())
@@ -40,7 +40,7 @@ local function OnActivate(inst)
 		end
 
 		local function onsaved()
-		    SetPause(false)
+--		    SetPause(false)
 		    print("onsaved")
 		    StartNextInstance({reset_action=RESET_ACTION.LOAD_SLOT, save_slot = SaveGameIndex:GetCurrentSaveSlot()}, true)
 		end
@@ -61,7 +61,7 @@ local function OnActivate(inst)
 --			level above is not +1 to index but +2, because level=1 for outdoors where it should be 0, cave indices start at 1=cave not 1=outdoors! 
 --			local level_index=level-1
 			local level_to_go=nil
-			for k,v in pairs(fa_levels) do
+			for k,v in ipairs(fa_levels) do
 				if(v>=level) then
 					level_to_go=v
 					break

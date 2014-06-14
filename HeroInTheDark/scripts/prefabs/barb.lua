@@ -33,7 +33,7 @@ local assets = {
         Asset( "ANIM", "anim/beard.zip" ),
 
 		-- Don't forget to include your character's custom assets!
-        Asset( "ANIM", "anim/barbarian.zip" ),
+        Asset( "ANIM", "anim/barb.zip" ),
         Asset( "ANIM", "anim/barbarian_rage.zip" ),
 }
 local prefabs = {}
@@ -181,7 +181,7 @@ local function rageEnd(inst)
 	inst.components.health.fire_damage_scale=BASE_FIREDMG
 	inst.components.temperature.hurtrate=BASE_FREEZING
 	inst.components.combat.min_attack_period=def_attack_period
-    inst.AnimState:SetBuild("barbarian")
+    inst.AnimState:SetBuild("barb")
 	if inst.task then inst.task:Cancel() inst.task = nil end
 end
 
@@ -209,12 +209,12 @@ local fn = function(inst)
 	inst.components.sanity:SetMax(150)
 	inst.components.locomotor.runspeed=BASE_MS
 
-
+--[[
         inst.AnimState:SetBank("wilson")
         inst.AnimState:SetBuild("barbarian")
         inst.AnimState:PlayAnimation("idle")
         inst.AnimState:Hide("hat_hair")
-
+]]
     inst:AddComponent("xplevel")
 
 

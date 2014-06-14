@@ -1,7 +1,6 @@
 local assets=
 {
-  Asset("ANIM", "anim/shield.zip"),
-  Asset("ANIM", "anim/swap_shield.zip"),
+  Asset("ANIM", "anim/swap_reflectshield.zip"),
   Asset("ATLAS", "images/inventoryimages/shield.xml"),
 }
 local REFLECT_DAMAGE=60
@@ -21,8 +20,8 @@ end
 
 local function onequip(inst, owner) 
 
-    owner.AnimState:OverrideSymbol("swap_body", "swap_shield", "backpack")
-    owner.AnimState:OverrideSymbol("swap_body", "swap_shield", "swap_body")
+    owner.AnimState:OverrideSymbol("swap_body", "swap_reflectshield", "backpack")
+    owner.AnimState:OverrideSymbol("swap_body", "swap_reflectshield", "swap_body")
     inst:ListenForEvent("attacked", OnBlocked,owner)
     inst:ListenForEvent("blocked",OnBlocked, owner)
 end
@@ -41,7 +40,7 @@ local function fn(Sim)
     MakeInventoryPhysics(inst)
     
  inst.AnimState:SetBank("backpack1")
-    inst.AnimState:SetBuild("swap_shield")
+    inst.AnimState:SetBuild("swap_reflectshield")
     inst.AnimState:PlayAnimation("anim")
 
     local minimap = inst.entity:AddMiniMapEntity()
