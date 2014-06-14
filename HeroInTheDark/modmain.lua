@@ -336,7 +336,6 @@ Assets = {
 
     Asset( "IMAGE", "colour_cubes/lavacube.tex" ),
     Asset( "IMAGE", "colour_cubes/identity_colourcube.tex" ),
-    Asset( "IMAGE", "colour_cubes/summer_dusk_cc.tex" ),
 
 
     Asset( "IMAGE", "images/equipslots.tex" ),

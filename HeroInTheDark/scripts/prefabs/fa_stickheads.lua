@@ -133,4 +133,4 @@ end
 
 return Prefab("forest/objects/goblinkinghead", create_goblinhead, goblin_assets, goblin_prefabs),
 	   Prefab("forest/objects/goblinkinghead_item", goblinhead_itemfn, goblin_assets, goblin_prefabs),
-		MakePlacer("common/objects/goblinkinghead_placer", "merm_head", "goblinking_head", "idle_asleep")
+		MakePlacer("common/objects/goblinkinghead_placer", "goblinking_head", "goblinking_head", "idle_asleep")
