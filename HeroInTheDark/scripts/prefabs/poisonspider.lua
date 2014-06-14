@@ -194,7 +194,7 @@ local function create_common(Sim)
 
     
     inst:AddTag("spider")
-    inst.AnimState:SetBank("spider")
+    inst.AnimState:SetBank("poisonspider")
     inst.AnimState:PlayAnimation("idle")
     
     -- locomotor must be constructed before the stategraph!

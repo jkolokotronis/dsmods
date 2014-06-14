@@ -43,7 +43,7 @@ local function fn(Sim)
 	local minimap = inst.entity:AddMiniMapEntity()
 	minimap:SetIcon( "sign.png" )
     
-    anim:SetBank("sign_home")
+--    anim:SetBank("sign_home")
     
     inst:AddComponent("inspectable")
     inst:AddComponent("lootdropper") 
@@ -64,6 +64,7 @@ end
 
 function fn1(Sim)
 	local inst=fn(Sim)
+    inst.AnimState:SetBank("goblinsign_1")
     inst.AnimState:SetBuild("goblinsign_1")
     inst.AnimState:PlayAnimation("idle")
 	return inst
@@ -71,24 +72,28 @@ end
 
 function fn2(Sim)
 	local inst=fn(Sim)
+    inst.AnimState:SetBank("goblinsign_2")
     inst.AnimState:SetBuild("goblinsign_2")
     inst.AnimState:PlayAnimation("idle")
 	return inst
 end
 function fn3(Sim)
 	local inst=fn(Sim)
+    inst.AnimState:SetBank("goblinsign_3")
     inst.AnimState:SetBuild("goblinsign_3")
     inst.AnimState:PlayAnimation("idle")
 	return inst
 end
 function fn4(Sim)
 	local inst=fn(Sim)
+    inst.AnimState:SetBank("goblinsign_4")
     inst.AnimState:SetBuild("goblinsign_4")
     inst.AnimState:PlayAnimation("idle")
 	return inst
 end
 function fn5(Sim)
 	local inst=fn(Sim)
+    inst.AnimState:SetBank("goblinsign_5")
     inst.AnimState:SetBuild("goblinsign_5")
     inst.AnimState:PlayAnimation("idle")
 	return inst

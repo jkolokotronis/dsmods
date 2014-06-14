@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8">
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_1">
     <folder id="0" name="face">
         <file id="0" name="face/face-0.png" width="160" height="229" pivot_x="0.494528" pivot_y="0.792892"/>
         <file id="1" name="face/face-1.png" width="160" height="229" pivot_x="0.494528" pivot_y="0.792892"/>
@@ -87,7 +87,7 @@
         <file id="1" name="headbase_hat/headbase_hat-1.png" width="212" height="236" pivot_x="0.533651" pivot_y="0.169008"/>
         <file id="2" name="headbase_hat/headbase_hat-2.png" width="192" height="232" pivot_x="0.519789" pivot_y="0.122659"/>
     </folder>
-    <entity id="0" name="template">
+    <entity id="0" name="necromancer">
         <animation id="0" name="BUILD_PLAYER" length="1000">
             <mainline>
                 <key id="0">
@@ -270,7 +270,7 @@
                 </key>
             </timeline>
             <timeline id="9" name="arm_upper_0_9">
-                <key id="0">
+                <key id="0" spin="0">
                     <object folder="6" file="0" x="-269.999" y="110.649" angle="338.945296" scale_x="0.997732" scale_y="0.997732"/>
                 </key>
                 <key id="1" time="1000" spin="0">
@@ -278,7 +278,7 @@
                 </key>
             </timeline>
             <timeline id="10" name="arm_lower_0_10">
-                <key id="0">
+                <key id="0" spin="0">
                     <object folder="8" file="0" x="-282.499" y="81.749" angle="347.992187" scale_x="0.995054" scale_y="0.995054"/>
                 </key>
                 <key id="1" time="1000" spin="0">
@@ -286,7 +286,7 @@
                 </key>
             </timeline>
             <timeline id="11" name="hand_0_11">
-                <key id="0">
+                <key id="0" spin="0">
                     <object folder="7" file="0" x="-210.4" y="53.299" angle="358.190093" scale_x="-0.99427" scale_y="0.99427"/>
                 </key>
                 <key id="1" time="1000" spin="0">
@@ -310,7 +310,7 @@
                 </key>
             </timeline>
             <timeline id="14" name="hand_1_14">
-                <key id="0">
+                <key id="0" spin="0">
                     <object folder="7" file="1" x="-157.25" y="104.599" angle="279.433899" scale_x="-0.993478" scale_y="-0.993478"/>
                 </key>
                 <key id="1" time="1000" spin="0">
@@ -326,7 +326,7 @@
                 </key>
             </timeline>
             <timeline id="16" name="arm_lower_1_16">
-                <key id="0">
+                <key id="0" spin="0">
                     <object folder="8" file="1" x="-196.35" y="89.899" angle="288.584025" scale_x="-0.993629" scale_y="-0.993629"/>
                 </key>
                 <key id="1" time="1000" spin="0">
@@ -398,7 +398,7 @@
                 </key>
             </timeline>
             <timeline id="25" name="hand_5_25">
-                <key id="0">
+                <key id="0" spin="0">
                     <object folder="7" file="5" x="43.75" y="54.399" angle="349.967145" scale_x="-0.991836" scale_y="0.991836"/>
                 </key>
                 <key id="1" time="1000" spin="0">
@@ -430,7 +430,7 @@
                 </key>
             </timeline>
             <timeline id="29" name="arm_upper_0_29">
-                <key id="0">
+                <key id="0" spin="0">
                     <object folder="6" file="0" x="-17.699" y="108.199" angle="335.144894" scale_x="0.997517" scale_y="0.997517"/>
                 </key>
                 <key id="1" time="1000" spin="0">
@@ -438,7 +438,7 @@
                 </key>
             </timeline>
             <timeline id="30" name="arm_lower_0_30">
-                <key id="0">
+                <key id="0" spin="0">
                     <object folder="8" file="0" x="-32.099" y="80.199" angle="344.190756" scale_x="0.994829" scale_y="0.994829"/>
                 </key>
                 <key id="1" time="1000" spin="0">
@@ -454,7 +454,7 @@
                 </key>
             </timeline>
             <timeline id="32" name="arm_upper_1_32">
-                <key id="0">
+                <key id="0" spin="0">
                     <object folder="6" file="1" x="-18.099" y="105.449" angle="299.964617" scale_x="-0.996606" scale_y="1.033147"/>
                 </key>
                 <key id="1" time="1000" spin="0">
@@ -494,7 +494,7 @@
                 </key>
             </timeline>
             <timeline id="37" name="hand_2_37">
-                <key id="0">
+                <key id="0" spin="0">
                     <object folder="7" file="2" x="220.501" y="51.199" angle="358.220274" scale_x="0.991713" scale_y="1.021443"/>
                 </key>
                 <key id="1" time="1000" spin="0">
@@ -502,7 +502,7 @@
                 </key>
             </timeline>
             <timeline id="38" name="arm_upper_2_38">
-                <key id="0">
+                <key id="0" spin="0">
                     <object folder="6" file="2" x="236.701" y="120.849" angle="340.628905" scale_x="1.016978" scale_y="1.140022"/>
                 </key>
                 <key id="1" time="1000" spin="0">
@@ -510,7 +510,7 @@
                 </key>
             </timeline>
             <timeline id="39" name="arm_lower_0_39">
-                <key id="0">
+                <key id="0" spin="0">
                     <object folder="8" file="0" x="224.251" y="85.699" angle="354.040313" scale_x="0.99488" scale_y="1.153205"/>
                 </key>
                 <key id="1" time="1000" spin="0">
@@ -582,7 +582,7 @@
                 </key>
             </timeline>
             <timeline id="48" name="hand_1_48">
-                <key id="0">
+                <key id="0" spin="0">
                     <object folder="7" file="1" x="331.2" y="102.599" angle="276.509438" scale_x="-0.993312" scale_y="-0.993312"/>
                 </key>
                 <key id="1" time="1000" spin="0">
@@ -598,7 +598,7 @@
                 </key>
             </timeline>
             <timeline id="50" name="arm_lower_1_50">
-                <key id="0">
+                <key id="0" spin="0">
                     <object folder="8" file="1" x="290.9" y="92.049" angle="282.826984" scale_x="-0.993294" scale_y="-0.993294"/>
                 </key>
                 <key id="1" time="1000" spin="0">

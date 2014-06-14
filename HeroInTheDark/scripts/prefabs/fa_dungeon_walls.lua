@@ -172,7 +172,7 @@ local function clearobstacle(inst)
 		inst.entity:AddAnimState()
 		MakeInventoryPhysics(inst)
 	    
-		inst.AnimState:SetBank("wall")
+		inst.AnimState:SetBank("fa_"..data.name.."wall")
 		inst.AnimState:SetBuild("fa_"..data.name.."wall")
 		inst.AnimState:PlayAnimation("idle")
 
@@ -249,7 +249,7 @@ local function clearobstacle(inst)
 		inst:AddTag("wall")
 		MakeObstaclePhysics(inst, .5)    
 		inst.entity:SetCanSleep(false)
-		anim:SetBank("wall")
+		anim:SetBank("fa_"..data.name.."wall")
 		anim:SetBuild("fa_"..data.name.."wall")
 	    anim:PlayAnimation("1_2", false)
 	    
@@ -325,5 +325,5 @@ return Prefab( "common/fa_dungeon_wall", stonewallfn, assets),
 	Prefab( "common/fa_dungeon_marblepillar", pillarfn, assets),
 	Prefab( "common/fa_lavawall",lavafn , lava_assets),
 	Prefab( "common/fa_lavawall_item", lavaitemfn, lava_assets, {"fa_lavawall", "fa_lavawall_placer"}),
-	MakePlacer("common/fa_lavawall_placer", "wall", "fa_lavawall", "1_2", false, false, true) 
+	MakePlacer("common/fa_lavawall_placer", "fa_lavawall", "fa_lavawall", "1_2", false, false, true) 
 	
