@@ -72,7 +72,7 @@ local function create_goblinhead()
 	inst.entity:AddAnimState()
         MakeInventoryPhysics(inst)
 
-	inst.AnimState:SetBank("merm_head")
+	inst.AnimState:SetBank("goblinking_head")
 	inst.AnimState:SetBuild("goblinking_head")
 
 	
@@ -116,7 +116,7 @@ local function goblinhead_itemfn(Sim)
     inst.entity:AddAnimState()
     inst.entity:AddSoundEmitter()
         MakeInventoryPhysics(inst)
-	inst.AnimState:SetBank("merm_head")
+	inst.AnimState:SetBank("goblinking_head")
     inst.AnimState:SetBuild("goblinking_head")
     inst.AnimState:PlayAnimation("idle_asleep")
 
