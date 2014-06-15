@@ -35,6 +35,7 @@ local assets = {
 
 		-- Don't forget to include your character's custom assets!
         Asset( "ANIM", "anim/monk.zip" ),
+--        Asset("ANIM","anim/fa_dorf.zip")
 }
 local prefabs = {}
 
@@ -49,6 +50,8 @@ local KIBUFF_GREATEREVASION=0.6
 local KIBUFF_STRIKE=3
 local KIBUFF_IMPROVEDSTRIKE=5
 local KIBUFF_ABSORB=50
+local KIBUFF_REGEN=2
+local KIBUFF_SANITY=2
 
 
 local onhitother=function(inst,data)
@@ -98,6 +101,12 @@ local fn = function(inst)
 	-- todo: Add an example special power here.
     inst.components.locomotor.runspeed=BASE_MS
 	inst.components.health:SetMaxHealth(150)
+    --just so i dont have to run extra tests
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=0
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0
 	inst.components.sanity:SetMax(200)
 	inst.components.hunger:SetMax(150)
     inst.components.combat:SetDefaultDamage(UNARMED_DAMAGE)
@@ -191,19 +200,21 @@ local fn = function(inst)
         },
         [90]={
             onenter=function()
-                if not inst.components.health.regen.task then
-                    inst.components.health:StartRegen(1, 1)
+                if not inst.components.health.regen or not inst.components.health.regen.task then
+                    inst.components.health:StartRegen(KIBUFF_REGEN, 1)
                 else
                     --patching up potential collisions 
-                    local amount = (inst.components.health.regen.amount/inst.components.health.regen.period)+1
+                    local amount = (inst.components.health.regen.amount/inst.components.health.regen.period)+KIBUFF_REGEN
                      inst.components.health:StartRegen(amount, 1)
                 end
-                inst.components.sanity.dapperness=inst.components.sanity.dapperness+1
+                inst.components.sanity.dapperness=(inst.components.sanity.dapperness or 0)+KIBUFF_SANITY
             end,
             onexit=function()
-                inst.components.health.regen.amount=inst.components.health.regen.amount-1
---                inst.components.health:StopRegen()
-                inst.components.sanity.dapperness=inst.components.sanity.dapperness-1
+                inst.components.health.regen.amount=inst.components.health.regen.amount-KIBUFF_REGEN
+                if(inst.components.health.regen.amount<=0)then
+                    inst.components.health:StopRegen()
+                end
+                inst.components.sanity.dapperness=inst.components.sanity.dapperness-KIBUFF_SANITY
             end,
             active=false
         },
@@ -228,7 +239,7 @@ local fn = function(inst)
     inst.newControlsInit = function (class)
 
         class.ki = class:AddChild(KiBadge(class.owner))
-        class.ki:SetPercent(class.owner.components.kibar:GetPercent(), class.owner.components.kibar.max)
+        class.ki:SetPercent(inst.components.kibar:GetPercent(), inst.components.kibar.max)
         class.ki:SetPosition(0,0,0)
 
         inst:ListenForEvent("kidelta", function(inst, data)  class.ki:DoDelta(data.old,data.new,data.max) end)

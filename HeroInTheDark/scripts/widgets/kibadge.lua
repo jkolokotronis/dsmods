@@ -1,5 +1,6 @@
 local Badge = require "widgets/badge"
 local UIAnim = require "widgets/uianim"
+local Text=require "widgets/text"
 
 local KiBadge = Class(Badge, function(self, owner)
 	Badge._ctor(self, "ki", owner)
@@ -28,12 +29,12 @@ local KiBadge = Class(Badge, function(self, owner)
 ]]
 
 self.bg = self:AddChild(Image("images/xp_fill.xml", "xp_fill.tex"))
-	self.bg:SetPosition(-355,0,0)
+	self.bg:SetPosition(-200,0,0)
 --	self.bg:SetPosition(-(150)*scale,.2,0)
 	self.bg:SetHRegPoint(ANCHOR_LEFT)
 	self.bg:SetScale(1,1,0)
 	self.num = self:AddChild(Text(NUMBERFONT, 28))
-    self.level:SetHAlign(ANCHOR_MIDDLE)
+    self.num:SetHAlign(ANCHOR_MIDDLE)
 	self.num:SetPosition(6,0,0)
 	self.num:SetScale(1.5,1.2,0)
 --	self:StartUpdating()

@@ -1,12 +1,36 @@
 local assets=
 {
 
+
+        Asset( "ANIM", "anim/player_basic.zip" ),
+        Asset( "ANIM", "anim/player_idles_shiver.zip" ),
+        Asset( "ANIM", "anim/player_actions.zip" ),
+        Asset( "ANIM", "anim/player_actions_axe.zip" ),
+        Asset( "ANIM", "anim/player_actions_pickaxe.zip" ),
+        Asset( "ANIM", "anim/player_actions_shovel.zip" ),
+        Asset( "ANIM", "anim/player_actions_blowdart.zip" ),
+        Asset( "ANIM", "anim/player_actions_eat.zip" ),
+        Asset( "ANIM", "anim/player_actions_item.zip" ),
+        Asset( "ANIM", "anim/player_actions_uniqueitem.zip" ),
+        Asset( "ANIM", "anim/player_actions_bugnet.zip" ),
+        Asset( "ANIM", "anim/player_actions_fishing.zip" ),
+        Asset( "ANIM", "anim/player_actions_boomerang.zip" ),
+        Asset( "ANIM", "anim/player_bush_hat.zip" ),
+        Asset( "ANIM", "anim/player_attacks.zip" ),
+        Asset( "ANIM", "anim/player_idles.zip" ),
+        Asset( "ANIM", "anim/player_rebirth.zip" ),
+        Asset( "ANIM", "anim/player_jump.zip" ),
+        Asset( "ANIM", "anim/player_amulet_resurrect.zip" ),
+        Asset( "ANIM", "anim/player_teleport.zip" ),
+        Asset( "ANIM", "anim/wilson_fx.zip" ),
+        Asset( "ANIM", "anim/player_one_man_band.zip" ),
+
     Asset("SOUND", "sound/hound.fsb"),
     Asset("SOUND", "sound/ghost.fsb"),
     Asset("ANIM", "anim/wilton.zip"),
     Asset("ANIM", "anim/drybones.zip"),
     Asset("ANIM", "anim/fa_skull.zip"),
-    Asset("ANIM", "anim/swap_nightmaresword.zip"),
+    Asset("ANIM", "anim/swap_nightmaresword.zip")
 }
 
 local PET_HEALTH=300
