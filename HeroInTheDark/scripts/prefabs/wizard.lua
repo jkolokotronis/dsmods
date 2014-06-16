@@ -114,6 +114,7 @@ local fn = function(inst)
         self.rain.particles_per_tick = 0
         self.rain.splashes_per_tick = 0]]
     
+    inst:AddTag("fa_spellcaster")
     inst:AddComponent("xplevel")
     inst:AddComponent("reader")
 

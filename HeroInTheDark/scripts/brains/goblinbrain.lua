@@ -2,6 +2,8 @@ require "behaviours/wander"
 require "behaviours/runaway"
 require "behaviours/doaction"
 require "behaviours/panic"
+require "behaviours/standandattack"
+require "behaviours/standstill"
 
 local SEE_PLAYER_DIST = 5
 local SEE_FOOD_DIST = 10
@@ -37,6 +39,8 @@ end
 function Goblinbrain:OnStart()
     local root = PriorityNode(
     {
+        WhileNode( function() return self.inst.fa_stun~=nil end, "Stun", Panic(self.inst)),
+        WhileNode( function() return self.inst.fa_root~=nil end, "RootAttack", StandAndAttack(self.inst) ),
         WhileNode( function() return self.inst.fa_fear~=nil end, "Fear", Panic(self.inst)),
         WhileNode( function() return self.inst.components.health.takingfiredamage end, "OnFire", Panic(self.inst)),
         WhileNode( function() return self.inst.components.combat.target == nil or not self.inst.components.combat:InCooldown() end, "AttackMomentarily",

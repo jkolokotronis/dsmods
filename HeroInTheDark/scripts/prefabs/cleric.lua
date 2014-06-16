@@ -227,6 +227,7 @@ local fn = function(inst)
     inst:AddComponent("reader")
     inst:AddComponent("xplevel")
 
+    inst:AddTag("fa_spellcaster")
     inst:AddTag("fa_shielduser")
 
     inst.buff_timers={}

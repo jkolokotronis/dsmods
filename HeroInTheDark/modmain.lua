@@ -56,6 +56,7 @@ require "behaviours/panic"
 require "fa_inventory_override"
 require "fa_inventorybar_override"
 require "fa_combat_override"
+require "fa_behavior_override"
 require "fa_hounded_override"
 local FA_CharRenameScreen=require "screens/fa_charrenamescreen"
 local FA_SpellBookScreen=require "screens/fa_spellbookscreen"
@@ -1081,22 +1082,6 @@ AddPrefabPostInit("ghost",function(inst)
     inst:AddTag("undead")
 end)
 
-AddClassPostConstruct("brains/ghostbrain",function(class)
-    
-    local old_onstart=class.OnStart
-    function class:OnStart()
-        old_onstart(class)
-        local newnodes={GLOBAL.WhileNode( function()  return self.inst.fa_turnundead~=nil end, "Turning", GLOBAL.Panic(self.inst))}
-        local root=self.bt.root
-        newnodes[1].parent=self.bt.root
-        local newtable={}
-        table.insert(newtable,newnodes[1])
-        for k,v in ipairs(self.bt.root.children) do
-            table.insert(newtable,v)
-        end
-        self.bt.root.children=newtable
-    end
-end)
 
 local Dapperness=require "components/dapperness"
 local dapperness_getdapperness_def=Dapperness.GetDapperness

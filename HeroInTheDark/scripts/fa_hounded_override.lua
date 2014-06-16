@@ -70,7 +70,7 @@ end
 
 --TODO this needs to be fixed in a more flexibile way, but klei hacks and laziness got the best of me
 function Hounded:ReleaseHound(dt)
-    local pt = GLOBAL.Vector3(GetPlayer().Transform:GetWorldPosition())
+    local pt = Vector3(GetPlayer().Transform:GetWorldPosition())
         
     local spawn_pt = self:GetSpawnPoint(pt)
     

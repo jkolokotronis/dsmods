@@ -69,7 +69,8 @@ local fn = function(inst)
     inst.components.sanity.night_drain_mult = 0
 
     inst:AddTag("evil")
-    
+    inst:AddTag("fa_spellcaster")
+
     inst:AddComponent("xplevel")
     inst:AddComponent("reader")
 

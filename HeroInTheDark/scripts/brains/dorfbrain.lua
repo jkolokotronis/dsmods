@@ -30,6 +30,9 @@ end
 function DorfBrain:OnStart()
     local root = PriorityNode(
     {
+        WhileNode( function() return self.inst.fa_stun~=nil end, "Stun", Panic(self.inst)),
+        WhileNode( function() return self.inst.fa_root~=nil end, "RootAttack", StandAndAttack(self.inst) ),
+        WhileNode( function() return self.inst.fa_fear~=nil end, "Fear", Panic(self.inst)),
         WhileNode( function() return self.inst.components.health.takingfiredamage end, "OnFire", Panic(self.inst)),
           ChaseAndAttack(self.inst, MAX_CHASE_TIME,MAX_CHASE_DIST),
         Wander(self.inst, function() 
