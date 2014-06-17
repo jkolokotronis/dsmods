@@ -27,7 +27,7 @@ end
 local GhostBrain=require "brains/ghostbrain"
 local old_ghostonstart=GhostBrain.OnStart
 function GhostBrain:OnStart()
-        old_onstart(self)
+        old_ghostonstart(self)
         appendNode(self.bt.root,fearnode(inst),1)
         appendNode(self.bt.root,stunNode(inst),1)
 end
