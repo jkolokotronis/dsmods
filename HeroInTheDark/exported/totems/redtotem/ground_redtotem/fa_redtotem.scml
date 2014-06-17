@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_1">
-    <folder id="0">
-        <file id="0" name="firestaffground.png" width="128" height="256" pivot_x="0" pivot_y="1"/>
+    <folder id="0" name="fa_redtotem">
+        <file id="0" name="fa_redtotem/firestaffground.png" width="128" height="255" pivot_x="0.530769" pivot_y="0.782101"/>
     </folder>
     <entity id="0" name="fa_redtotem">
         <animation id="0" name="idle" length="50">
@@ -15,10 +15,10 @@
             </mainline>
             <timeline id="0" name="fa_redtotem">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-67.964912" y="179.22807" angle="0"/>
+                    <object folder="0" file="0" x="-0.02648" y="123.663825" angle="0"/>
                 </key>
                 <key id="1" time="50" spin="0">
-                    <object folder="0" file="0" x="-70.964912" y="172.22807" angle="0"/>
+                    <object folder="0" file="0" x="-0.02648" y="123.663825" angle="0"/>
                 </key>
             </timeline>
         </animation>

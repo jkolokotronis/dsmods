@@ -347,9 +347,9 @@ local function redfnbase(Sim)
      local boom = SpawnPrefab("fa_firebombfx")
      boom.persists=false
 
---    inst.fa_puffanim=boom
+    inst.fa_puffanim=boom
     local follower = boom.entity:AddFollower()
-    follower:FollowSymbol( inst.GUID, "fa_redtotem", 0.5, -60, -0.0001 )
+    follower:FollowSymbol( inst.GUID, "fa_redtotem", 0, 50, -0.0001 )
 --    boom.entity:SetParent( inst.entity )
 --    follower:FollowSymbol( inst.GUID, "fa_redtotem", 0, 0, -0.0001 )
 
@@ -459,13 +459,11 @@ local function bluefn(Sim)
     return inst
 end
 
-return --Prefab( "common/fa_redtotem", redfn, red_assets, prefabs),
+return Prefab( "common/fa_redtotem", redfn, red_assets, prefabs),
 Prefab( "common/fa_redtotem_kos", redfnkos, red_assets, prefabskos)
---,Prefab("common/fa_redtotem_item", redtotem_itemfn, red_assets, prefabs),
---MakePlacer("common/fa_redtotem_placer", "fa_redtotem", "fa_redtotem", "idle")
---[[
+,Prefab("common/fa_redtotem_item", redtotem_itemfn, red_assets, prefabs),
+MakePlacer("common/fa_redtotem_placer", "fa_redtotem", "fa_redtotem", "idle")
 ,
 Prefab( "common/fa_bluetotem", bluefn, blue_assets, prefabs),
 Prefab("common/fa_bluetotem_item", bluetotem_itemfn, blue_assets, prefabs),
 MakePlacer("common/fa_bluetotem_placer", "fa_bluetotem", "fa_bluetotem", "idle")
-]]
