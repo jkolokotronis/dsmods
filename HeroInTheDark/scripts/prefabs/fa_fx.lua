@@ -20,6 +20,9 @@ local poisonfx_assets={
 local fa_absorbredfx_assets={
         Asset( "ANIM", "anim/fa_absorb_red.zip" ),
 }
+local fa_firebombfx_assets={
+        Asset( "ANIM", "anim/firebomb.zip" ),
+}
 
 local function fn(bank,bld,animname,loop)
 	local inst = CreateEntity()
@@ -69,6 +72,9 @@ local function poisonfx()
 	return fn("fa_poison")
 end
 
+local function firebombfx()
+    return fn("firebomb","firebomb","idle",true)
+end
 
 local function absorbredfx()
     return fn("fa_absorb_red","fa_absorb_red","idle",false)
@@ -80,4 +86,5 @@ Prefab( "common/fa_blooddownfx", blood_downfx, fa_blooddownfx_assets),
 Prefab( "common/fa_blooddropfx", blood_dropfx, blood_dropfx_assets),
 Prefab( "common/fa_bloodsplashfx", blood_splashfx, blood_splashfx_assets),
 Prefab( "common/fa_poisonfx", poisonfx, poisonfx_assets),
-Prefab( "common/fa_absorbredfx", absorbredfx, fa_absorbredfx_assets)
+Prefab( "common/fa_absorbredfx", absorbredfx, fa_absorbredfx_assets),
+Prefab( "common/fa_firebombfx", firebombfx, fa_firebombfx_assets)

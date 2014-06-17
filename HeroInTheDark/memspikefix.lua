@@ -13,6 +13,7 @@ local function MakeLazyLoader(prefab)
 	local current_fn
 
 	local function new_fn(...)
+		_G.TheSim:UnloadPrefabs {prefab.name}
 		_G.TheSim:LoadPrefabs {prefab.name}
 
 		-- Ensures this only runs once, for efficiency.
@@ -89,13 +90,21 @@ ModWrangler.RegisterPrefabs = (function()
 			for _, prefab in ipairs{...} do
 				local moddir = prefab.name:match("^MOD_(.+)$")
 				if moddir and memfix_modfilter(ModWrangler_self, moddir) then
-					print("MEMFIXING "..moddir)
-					for _, name in ipairs(prefab.deps) do
-						table.insert(mod_prefabnames, name)
-					end
+					local mod = ModWrangler_self:GetMod(moddir)
 
-					prefab.deps = {}
-					--print("Purged deps from "..prefab.name)
+					if mod then
+						if mod.modinfo then
+							mod.modinfo.memfixed = true
+						end
+
+						print("MEMFIXING "..moddir)
+						for _, name in ipairs(prefab.deps) do
+							table.insert(mod_prefabnames, name)
+						end
+
+						prefab.deps = {}
+						--print("Purged deps from "..prefab.name)
+					end
 				end
 			end
 			return MainRegisterPrefabs(...)

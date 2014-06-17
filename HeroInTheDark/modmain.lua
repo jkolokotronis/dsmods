@@ -42,10 +42,10 @@ local XPBadge= require "widgets/xpbadge"
 local TextEdit=require "widgets/textedit"
 local ItemTile = require "widgets/itemtile"
 local FA_WarClock = require "widgets/fa_warclock"
+require "constants"
 require "fa_constants"
 require "widgets/text"
 require "stategraph"
-require "constants"
 require "buffutil"
 require "fa_mobxptable"
 require "fa_strings"
@@ -111,6 +111,7 @@ PrefabFiles = {
     "poisonspidereggsack",
     "spellprojectiles",
     "natureshealing",
+
     "skeletonspawn",
     "boomstickprojectile",
     "fizzleboomstick",
@@ -120,6 +121,8 @@ PrefabFiles = {
     "fizzlepet",
     "fizzlemanipulator",
     "rjk1100",
+
+
     "dksword",
     "holysword",
     "thieftraps",
@@ -132,11 +135,15 @@ PrefabFiles = {
     "fa_iceaxe",
     "fa_goodberries",
     "fa_potions",
+
     "spellbooks",
     "shields",
     "armor_fire",
     "armor_frost",
+
+
     "fa_totems",
+
     "dagger",
     "fa_lightningsword",
     "flamingsword",
@@ -764,6 +771,8 @@ local function newControlsInit(class)
 
         GetPlayer():ListenForEvent("xplevelup", function(inst,data)
             inst.SoundEmitter:PlaySound("fa/levelup/levelup")
+            --it could be just when necesary but I doubt this will incurr any serious performance issue to bother
+            GetPlayer().HUD.controls.crafttabs:UpdateRecipes()
         end,class.owner)
 
         GetPlayer():ListenForEvent("killed", function(inst,data)

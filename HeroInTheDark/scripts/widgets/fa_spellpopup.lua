@@ -93,9 +93,9 @@ function FA_SpellPopup:Refresh()
 		return false
 	end
 	
-    local knows = owner.components.builder:KnowsRecipe(recipe.name)
-    local buffered = owner.components.builder:IsBuildBuffered(recipe.name)
-    local can_build = owner.components.builder:CanBuild(recipe.name) or buffered
+    local knows = owner.components.builder:KnowsRecipe(self.spell.recname)
+    local buffered = owner.components.builder:IsBuildBuffered(self.spell.recname)
+    local can_build = owner.components.builder:CanBuild(self.spell.recname) or buffered
     local tech_level = owner.components.builder.accessible_tech_trees
 
     local equippedBody = owner.components.inventory:GetEquippedItem(EQUIPSLOTS.BODY)
@@ -108,8 +108,8 @@ function FA_SpellPopup:Refresh()
         self.amulet:Show()
     end
 
-    self.name:SetString(STRINGS.NAMES[string.upper(self.recipe.name)])
-    self.desc:SetString(STRINGS.RECIPE_DESC[string.upper(self.recipe.name)])
+    self.name:SetString(STRINGS.NAMES[string.upper(self.spell.recname)])
+    self.desc:SetString(STRINGS.RECIPE_DESC[string.upper(self.spell.recname)])
     
     for k,v in pairs(self.ing) do
         v:Kill()
@@ -145,7 +145,7 @@ end
 
 
 function FA_SpellPopup:SetSpell(spell, owner)
-    self.recipe = spell.recname
+    self.recipe = GetRecipe(spell.recname)
     self.spell=spell
     self.owner = owner
     self:Refresh()

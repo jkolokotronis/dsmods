@@ -1,21 +1,33 @@
-local assets =
+local red_assets =
 {
     Asset("ANIM", "anim/fa_redtotem.zip"),
-    Asset("ANIM", "anim/fa_bluetotem.zip"),
     Asset("ANIM", "anim/swap_fa_redtotem.zip"),
-    Asset("ANIM", "anim/swap_fa_bluetotem.zip"),
     Asset("ANIM", "anim/fa_shieldpuff.zip"),
-    Asset("ANIM", "anim/firebomb.zip"),
     Asset("ANIM", "anim/bolt_tesla.zip"),
     Asset("ATLAS", "images/inventoryimages/fa_redtotem.xml"),
     Asset("IMAGE", "images/inventoryimages/fa_redtotem.tex"),
+}
+
+local blue_assets =
+{
+    Asset("ANIM", "anim/fa_bluetotem.zip"),
+    Asset("ANIM", "anim/swap_fa_bluetotem.zip"),
+    Asset("ANIM", "anim/fa_shieldpuff.zip"),
+    Asset("ANIM", "anim/bolt_tesla.zip"),
     Asset("ATLAS", "images/inventoryimages/fa_bluetotem.xml"),
     Asset("IMAGE", "images/inventoryimages/fa_bluetotem.tex"),
 }
 
 local prefabs = 
 {
-    "fireballprojectile"
+    "fireballprojectile",
+    "fa_firebombfx"
+}
+
+local prefabskos = 
+{
+    "fa_firebombfx",
+    "fireballprojectilekos"
 }
 local REDTOTEM_RANGE=10
 local REDTOTEM_USES=20
@@ -179,12 +191,25 @@ end
 
 local function EquipWeaponRed(inst)
     if inst.components.inventory and not inst.components.inventory:GetEquippedItem(EQUIPSLOTS.HANDS) then
-        local weapon = EquipWeaponRedKos(inst)
+--        local weapon = EquipWeaponRedKos(inst)
+        local weapon = CreateEntity()
+        weapon.entity:AddTransform()
+        weapon:AddComponent("weapon")
+        weapon.components.weapon:SetDamage(0)
+        weapon.components.weapon:SetRange(REDTOTEM_RANGE, REDTOTEM_RANGE+4)
+        weapon:AddComponent("inventoryitem")
+        weapon.persists = false
+        weapon.components.inventoryitem:SetOnDroppedFn(WeaponDropped)
+        weapon.components.weapon:SetOnAttack(onattackfireball)
+        weapon.components.weapon.fa_damagetype=FA_DAMAGETYPE.FIRE
+        weapon:AddComponent("equippable")
+
         weapon.components.weapon:SetProjectile("fireballprojectile")
         weapon:AddComponent("finiteuses")
         weapon.components.finiteuses:SetMaxUses(REDTOTEM_USES)
         weapon.components.finiteuses:SetUses(REDTOTEM_USES)
         weapon.components.finiteuses:SetOnFinished( onfinishedred )
+        inst.components.inventory:Equip(weapon)
         return weapon
     end
 end
@@ -319,25 +344,21 @@ local function redfnbase(Sim)
     inst.components.combat:SetAttackPeriod(REDTOTEM_ATTACKPERIOD)
     inst.components.combat:SetKeepTargetFunction(shouldKeepTarget)
 
-     local boom = CreateEntity()
-    boom.entity:AddTransform()
-    local anim=boom.entity:AddAnimState()
-    boom.Transform:SetTwoFaced()
---    boom.Transform:SetScale(5, 5, 1)
-    anim:SetBank("firebomb")
-    anim:SetBuild("firebomb")
-    boom:AddTag("FX")
-        boom:AddTag("NOCLICK")
-    anim:PlayAnimation("idle",true)
-    inst.fa_puffanim=boom
+     local boom = SpawnPrefab("fa_firebombfx")
+     boom.persists=false
+
+--    inst.fa_puffanim=boom
     local follower = boom.entity:AddFollower()
     follower:FollowSymbol( inst.GUID, "fa_redtotem", 0.5, -60, -0.0001 )
 --    boom.entity:SetParent( inst.entity )
-    inst.OnRemoveEntity = function(inst)
-       if(inst.fa_puffanim)then
+--    follower:FollowSymbol( inst.GUID, "fa_redtotem", 0, 0, -0.0001 )
+
+   inst:ListenForEvent("death",function(inst)
+        if(inst.fa_puffanim)then
             inst.fa_puffanim:Remove()
         end
-    end
+    end)
+
     inst:SetStateGraph("SGredtotem")
     local brain = require "brains/eyeturretbrain"
     inst:SetBrain(brain)
@@ -351,7 +372,7 @@ local function redfnkos(Sim)
 
     inst.components.health:SetMaxHealth(KOS_TOTEM_HEALTH) 
     inst.components.combat:SetRetargetFunction(1, retargetfnkos)
-    inst:DoTaskInTime(0.1, EquipWeaponRedKos)
+    inst:DoTaskInTime(1, EquipWeaponRedKos)
     return inst
 end
 
@@ -369,6 +390,9 @@ local function redfn(Sim)
 
         if(weapon)then
             item.components.finiteuses:SetUses(weapon.components.finiteuses.current)
+        end
+        if(inst.fa_puffanim)then
+            inst.fa_puffanim:Remove()
         end
         inst:Remove()
         GetPlayer().components.inventory:GiveItem(item)
@@ -435,10 +459,13 @@ local function bluefn(Sim)
     return inst
 end
 
-return Prefab( "common/fa_redtotem", redfn, assets, prefabs),
-Prefab( "common/fa_redtotem_kos", redfnkos, assets, prefabs),
-Prefab("common/fa_redtotem_item", redtotem_itemfn, assets, prefabs),
-MakePlacer("common/fa_redtotem_placer", "fa_redtotem", "fa_redtotem", "idle"),
-Prefab( "common/fa_bluetotem", bluefn, assets, prefabs),
-Prefab("common/fa_bluetotem_item", bluetotem_itemfn, assets, prefabs),
+return --Prefab( "common/fa_redtotem", redfn, red_assets, prefabs),
+Prefab( "common/fa_redtotem_kos", redfnkos, red_assets, prefabskos)
+--,Prefab("common/fa_redtotem_item", redtotem_itemfn, red_assets, prefabs),
+--MakePlacer("common/fa_redtotem_placer", "fa_redtotem", "fa_redtotem", "idle")
+--[[
+,
+Prefab( "common/fa_bluetotem", bluefn, blue_assets, prefabs),
+Prefab("common/fa_bluetotem_item", bluetotem_itemfn, blue_assets, prefabs),
 MakePlacer("common/fa_bluetotem_placer", "fa_bluetotem", "fa_bluetotem", "idle")
+]]
