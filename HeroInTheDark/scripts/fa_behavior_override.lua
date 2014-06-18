@@ -6,15 +6,15 @@ require "behaviours/standandattack"
 require "behaviours/standstill"
 
 
-local function fearnode(inst)
-	return WhileNode( function() return inst.fa_fear~=nil end, "Fear", Panic(inst))
+local function fearnode(self)
+	return WhileNode( function() return self.inst.fa_fear~=nil end, "Fear", Panic(self.inst))
 end
 
-local function stunNode(inst)
+local function stunNode(self)
 	return WhileNode( function() return self.inst.fa_stun~=nil end, "Stun", Panic(self.inst))
 end
 
-local function rootAttackNode(inst)
+local function rootAttackNode(self)
 	return WhileNode( function() return self.inst.fa_root~=nil end, "RootAttack", StandAndAttack(self.inst) )
 end
 
@@ -28,6 +28,6 @@ local GhostBrain=require "brains/ghostbrain"
 local old_ghostonstart=GhostBrain.OnStart
 function GhostBrain:OnStart()
         old_ghostonstart(self)
-        appendNode(self.bt.root,fearnode(inst),1)
-        appendNode(self.bt.root,stunNode(inst),1)
+        appendNode(self.bt.root,fearnode(self),1)
+        appendNode(self.bt.root,stunNode(self),1)
 end

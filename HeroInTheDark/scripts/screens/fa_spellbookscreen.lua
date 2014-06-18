@@ -40,6 +40,14 @@ function FASpellBookScreen:InitClass()
     	self.nextbutton:SetPosition(320,-170,0)
 		self.craftbutton:SetPosition(200,-120,0)
     	self.closebutton:SetPosition(450,295,0)
+	elseif(self.caster.prefab=="cleric")then
+		self.bgframe:SetPosition(82, 80, 0)
+		self.spell:SetPosition(-60, -70, 0)
+		self.spell_list:SetPosition(135, -30, 0)
+	    self.prevbutton:SetPosition(-175,-167,0)
+    	self.nextbutton:SetPosition(325,-167,0)
+		self.craftbutton:SetPosition(250,-110,0)
+    	self.closebutton:SetPosition(450,295,0)
 	end
 end
 
@@ -102,7 +110,7 @@ function FASpellBookScreen:DoInit()
 end
 
 function FASpellBookScreen:SetLevel(level)
-	self.craftbutton:Hide()
+--	self.craftbutton:Hide()
 	self.level=level
 	print("level",level)
 	
@@ -150,7 +158,8 @@ function FASpellBookScreen:OnSelectSpell(spell)
 	local popup=self.spell:AddChild(FA_SpellPopup(true))
 --	popup:SetRecipe( GetRecipe(spell.recname),self.caster)
 	popup:SetSpell(spell,self.caster)
-    local can_build = owner.components.builder:CanBuild(spell.recname)
+--    local can_build = self.caster.components.builder:CanBuild(spell.recname)
+	local can_build=true
 	popup:SetPosition(-280,120,0)
 	if(can_build)then
 		self.craftbutton:Show()

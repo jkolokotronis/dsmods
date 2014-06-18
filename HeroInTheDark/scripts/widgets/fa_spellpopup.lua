@@ -145,6 +145,7 @@ end
 
 
 function FA_SpellPopup:SetSpell(spell, owner)
+    print("spell",spell, spell.recname,owner)
     self.recipe = GetRecipe(spell.recname)
     self.spell=spell
     self.owner = owner

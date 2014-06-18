@@ -34,6 +34,18 @@ local assets = {
 
 		-- Don't forget to include your character's custom assets!
         Asset( "ANIM", "anim/cleric.zip" ),
+    Asset( "IMAGE", "images/fa_cleric_bookcraft.tex" ),
+    Asset( "IMAGE", "images/fa_cleric_booknext.tex" ),
+    Asset( "IMAGE", "images/fa_cleric_bookprev.tex" ),
+    Asset( "IMAGE", "images/fa_cleric_bookclose.tex" ),
+    Asset( "IMAGE", "images/fa_cleric_bookbackground.tex" ),
+    Asset( "IMAGE", "images/fa_cleric_bookframe.tex" ),
+    Asset( "ATLAS", "images/fa_cleric_bookcraft.xml" ),
+    Asset( "ATLAS", "images/fa_cleric_booknext.xml" ),
+    Asset( "ATLAS", "images/fa_cleric_bookprev.xml" ),
+    Asset( "ATLAS", "images/fa_cleric_bookclose.xml" ),
+    Asset( "ATLAS", "images/fa_cleric_bookbackground.xml" ),
+    Asset( "ATLAS", "images/fa_cleric_bookframe.xml" ),
 }
 local prefabs = {
     "fa_bladebarrier_hitfx",
@@ -72,18 +84,42 @@ end
 
 
 local function enableL1spells()
+    GetPlayer().fa_spellcraft.spells[1]={
+        {
+            recname="spell_divinemight",
+            school="conjuration",
+        },
+    }
     local r=Recipe("spell_divinemight", {Ingredient("meat", 5), Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, RECIPETABS.SPELLS, {SCIENCE = 0, MAGIC = 0, ANCIENT = 0})
     r.image="book_brimstone.tex"
 end
 local function enableL2spells()
+    GetPlayer().fa_spellcraft.spells[2]={
+        {
+            recname="spell_light",
+            school="conjuration",
+        },
+    }
     local r=Recipe("spell_light", {Ingredient("fireflies", 2),Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, RECIPETABS.SPELLS, {MAGIC = 2})
     r.image="book_gardening.tex" 
 end
 local function enableL3spells()
+    GetPlayer().fa_spellcraft.spells[3]={
+        {
+            recname="spell_heal",
+            school="conjuration",
+        },
+    }
     local r=Recipe("spell_heal", {Ingredient("spidergland",5),Ingredient("cutgrass", 5), Ingredient("rocks", 15)}, RECIPETABS.SPELLS, {MAGIC = 3})
     r.image="book_gardening.tex"
 end
 local function enableL4spells()
+    GetPlayer().fa_spellcraft.spells[4]={
+        {
+            recname="spell_calldiety",
+            school="conjuration",
+        },
+    }
     local  r=Recipe("spell_calldiety", {Ingredient("redgem", 4), Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, RECIPETABS.SPELLS,{MAGIC = 2})
     r.image="book_brimstone.tex"
     local  r=Recipe("spell_summonfeast", {Ingredient("redgem", 1), Ingredient("cutgrass", 10), Ingredient("meat", 1)}, RECIPETABS.SPELLS,{MAGIC = 2})
@@ -228,6 +264,9 @@ local fn = function(inst)
     inst:AddComponent("xplevel")
 
     inst:AddTag("fa_spellcaster")
+    inst.fa_spellcraft={}
+    inst.fa_spellcraft.spells={}
+
     inst:AddTag("fa_shielduser")
 
     inst.buff_timers={}
