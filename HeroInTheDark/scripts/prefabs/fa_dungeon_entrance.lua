@@ -31,7 +31,7 @@ local function OnActivate(inst)
 
     ProfileStatsSet("cave_entrance_used", true)
 
---	SetPause(true)
+	SetPause(true)
 
 	local function go_spelunking()
 		SaveGameIndex:GetSaveFollowers(GetPlayer())
@@ -40,7 +40,7 @@ local function OnActivate(inst)
 		end
 
 		local function onsaved()
---		    SetPause(false)
+		    SetPause(false)
 		    print("onsaved")
 		    StartNextInstance({reset_action=RESET_ACTION.LOAD_SLOT, save_slot = SaveGameIndex:GetCurrentSaveSlot()}, true)
 		end
@@ -72,7 +72,8 @@ local function OnActivate(inst)
 			end
 			print("actually descending into",level_to_go,"from",GetWorld().topology.level_number)
 			print("level", Levels.cave_levels[level_to_go].name)
-			SaveGameIndex:SaveCurrent(function() SaveGameIndex:EnterCave(onsaved,nil, inst.cavenum, level_to_go) end, "descend", inst.cavenum)
+			SaveGameIndex:SaveCurrent(function() SaveGameIndex:EnterCave(onsaved,nil, inst.cavenum, level_to_go) 
+			Sleep(1) end, "descend", inst.cavenum)
 		end
 
 		if not inst.cavenum then

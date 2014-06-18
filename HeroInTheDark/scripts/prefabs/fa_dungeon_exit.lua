@@ -45,7 +45,7 @@ local function OnActivate(inst)
 		end
 
 		local function onsaved()
---		    SetPause(false)
+		    SetPause(false)
 		    print("onsaved")
 		    StartNextInstance({reset_action=RESET_ACTION.LOAD_SLOT, save_slot = SaveGameIndex:GetCurrentSaveSlot()}, true)
 		end
@@ -53,12 +53,13 @@ local function OnActivate(inst)
 		local cave_num =  SaveGameIndex:GetCurrentCaveNum()
 		---
 		if inst.fa_level_up==0 then
-			SaveGameIndex:SaveCurrent(function() SaveGameIndex:LeaveCave(onsaved) end, "ascend", cave_num)
+			SaveGameIndex:SaveCurrent(function() SaveGameIndex:LeaveCave(onsaved) 
+			Sleep(1) end, "ascend", cave_num)
 		else
 			-- Ascend
 --			local level = level - 1
 			
-			SaveGameIndex:SaveCurrent(function() SaveGameIndex:EnterCave(onsaved,nil, cave_num, inst.fa_level_up) end, "ascend", cave_num)
+			SaveGameIndex:SaveCurrent(function() SaveGameIndex:EnterCave(onsaved,nil, cave_num, inst.fa_level_up) Sleep(1) end, "ascend", cave_num)
 		end
 	end
 	GetPlayer().HUD:Hide()
