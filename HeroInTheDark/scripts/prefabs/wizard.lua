@@ -303,29 +303,318 @@ RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon
     inst.fa_spellcraft.spells={}
     inst.fa_spellcraft.spells[1]={
         {
-            recname="magicmissilewand"
+            recname="fa_spell_resistance",
+            school="abjuration",
+        },
+        {
+            recname="fa_spell_acidsplash",
+            school="conjuration",
+        },
+        {
+            recname="fa_spell_dazehuman",
+            school="enchantment",
+        },
+        {
+            recname="fa_spell_dancinglight",
+            school="evocation",
+        },
+        {
+            recname="fa_spell_light",
+            school="evocation",
+        },
+        {
+            recname="fa_spell_frostray",
+            school="evocation",
+        },
+        {
+            recname="fa_spell_disruptundead",
+            school="necromancy",
+        },
+        {
+            recname="fa_spell_mending",
+            school="transmutation",
+        },
+        {
+            recname="fa_spell_summonmonster1",
+            school="conjuration",
+        },
+        {
+            recname="fa_spell_shield",
+            school="abjuration",
+        },
+        {
+            recname="fa_spell_magearmor",
+            school="conjuration",
+        },
+        {
+            recname="fa_spell_charmperson",
+            school="enchantment",
+        },
+        {
+            recname="fa_spell_sleep",
+            school="enchantment",
+        },
+        {
+            recname="fa_spell_magicmissile",
+            school="evocation",
+        },
+        {
+            recname="fa_spell_fear",
+            school="necromancy",
+        },
+        {
+            recname="fa_spell_rayofenfeeblement",
+            school="necromancy",
+        },
+        {
+            recname="fa_spell_enlargehumanoid",
+            school="transmutation",
+        },
+        {
+            recname="fa_spell_reducehumanoid",
+            school="transmutation",
+        },
+        {
+            recname="fa_spell_expretreat",
+            school="transmutation",
         },
     }
+
+    local r=Recipe("fa_spell_resistance", {Ingredient("pigskin", 2), Ingredient("beefalowool", 6), Ingredient("cutgrass", 8)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_acidsplash", {Ingredient("stinger",10), Ingredient("rot", 5), Ingredient("twigs", 10)},RECIPETABS.SPELLS,TECH.NONE)
+    r.image="greenstaff.tex"
+    r=Recipe("fa_spell_dazehuman", {Ingredient("meat",2), Ingredient("twigs", 10), Ingredient("goldnugget", 4)},RECIPETABS.SPELLS,TECH.NONE)
+    r.image="greenstaff.tex"
+    r=Recipe("fa_spell_dancinglight", {Ingredient("poisongland",2), Ingredient("fireflies", 4)},RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_light", {Ingredient("fireflies", 1),Ingredient("lightbulb", 4), Ingredient("papyrus", 4)}, RECIPETABS.SPELLS, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex" 
+    r=Recipe("fa_spell_frostray", {Ingredient("ice",5), Ingredient("twigs", 10), Ingredient("bluegem", 1)},RECIPETABS.SPELLS,TECH.NONE)
+    r.image="bluestaff.tex"
+    r=Recipe("fa_spell_disruptundead", {Ingredient("boneshard", 4),Ingredient("ash", 10), Ingredient("nightmarefuel", 4)}, RECIPETABS.SPELLS, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex" 
+    r=Recipe("fa_spell_mending", {Ingredient("sewingkit", 1), Ingredient("nightmarefuel", 6), Ingredient("honey", 10)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_summonmonster1", {Ingredient("papyrus", 4), Ingredient("silk", 2), Ingredient("spidereggsack", 2)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_shield", {Ingredient("ash", 10), Ingredient("rocks", 10), Ingredient("nightmarefuel", 4)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_magearmor", {Ingredient("armorgrass", 1), Ingredient("armorwood", 1), Ingredient("nightmarefuel", 4)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_charmperson", {Ingredient("meat", 4), Ingredient("twigs", 10), Ingredient("goldnugget", 8)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_sleep", {Ingredient("blowdart_sleep", 1), Ingredient("twigs", 10), Ingredient("poop", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_magicmissile", {Ingredient("charcoal", 10), Ingredient("twigs", 10), Ingredient("nightmarefuel", 4)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="icestaff.tex"
+    r=Recipe("fa_spell_fear", {Ingredient("nightmarefuel", 6), Ingredient("twigs", 6), Ingredient("petals_evil", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_rayofenfeeblement", {Ingredient("nightmarefuel", 6), Ingredient("twigs", 6), Ingredient("monstermeat", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_enlargehumanoid", {Ingredient("meat", 4), Ingredient("smallmeat", 4), Ingredient("honey", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_reducehumanoid", {Ingredient("meat", 4), Ingredient("smallmeat", 4), Ingredient("honey", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_expretreat", {Ingredient("rabbit", 2), Ingredient("papyrus", 4), Ingredient("batwing", 1)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+
     inst.fa_spellcraft.spells[2]={
         {
-            recname="acidarrowwand"
+            recname="fa_spell_acidarrow",
+            school="conjuration",
+        },
+        {
+            recname="fa_spell_summonmonster2",
+            school="conjuration",
+        },
+        {
+            recname="fa_spell_summonswarm",
+            school="conjuration",
+        },
+        {
+            recname="fa_spell_web",
+            school="conjuration",
+        },
+        {
+            recname="fa_spell_gustofwind",
+            school="evocation",
+        },
+        {
+            recname="fa_spell_mirrorimage",
+            school="illusion",
+        },
+        {
+            recname="fa_spell_commandundead",
+            school="necromancy",
+        },
+        {
+            recname="fa_spell_falselife",
+            school="necromancy",
+        },
+        {
+            recname="fa_spell_darkvision",
+            school="transmutation",
         },
     }
+
+    local r=Recipe("fa_spell_acidarrow", {Ingredient("stinger",20), Ingredient("rot", 5), Ingredient("twigs", 20)},RECIPETABS.SPELLS,TECH.NONE)
+    r.image="greenstaff.tex"
+    r=Recipe("fa_spell_summonmonster2", {Ingredient("pigskin", 2), Ingredient("poop", 6), Ingredient("papyrus", 5)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_summonswarm", {Ingredient("spidergland", 5), Ingredient("silk", 5), Ingredient("monstermeat", 5)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_web", {Ingredient("twigs", 10), Ingredient("silk", 8), Ingredient("spidergland", 4)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_gustofwind", {Ingredient("feather_crow", 4), Ingredient("feather_robin", 4), Ingredient("feater_robin_winter", 4)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_mirrorimage", {Ingredient("meat", 4), Ingredient("beardhair", 4), Ingredient("monstermeat", 4)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_commandundead", {Ingredient("boneshard", 6), Ingredient("nightmarefuel", 6), Ingredient("petals_evil", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_falselife", {Ingredient("nightmarefuel", 4), Ingredient("mosquitosack", 2), Ingredient("spidergland", 2)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_darkvision", {Ingredient("lightbulb", 12), Ingredient("fireflies", 2), Ingredient("papyrus", 4)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+
     inst.fa_spellcraft.spells[3]={
         {
-            recname="fireballwand"
+            recname="fa_spell_summonmonster3",
+            school="conjuration",
+        },
+        {
+            recname="fa_spell_deepslumber",
+            school="enchantment",
+        },
+        {
+            recname="fa_spell_holdperson",
+            school="enchantment",
+        },
+        {
+            recname="fa_spell_rage",
+            school="enchantment",
+        },
+        {
+            recname="fa_spell_daylight",
+            school="evocation",
+        },
+        {
+            recname="fa_spell_fireball",
+            school="evocation",
+        },
+        {
+            recname="fa_spell_tinyhut",
+            school="conjuration",
+        },
+        {
+            recname="fa_spell_haltundead",
+            school="evocation",
+        },
+        {
+            recname="fa_spell_haste",
+            school="transmutation",
+        },
+        {
+            recname="fa_spell_slow",
+            school="transmutation",
         },
     }
+
+
+    local r=Recipe("fa_spell_summonmonster3", {Ingredient("fish", 4), Ingredient("froglegs", 4), Ingredient("papyrus", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_deepslumber", {Ingredient("blowdart_sleep", 2), Ingredient("twigs", 15), Ingredient("poop", 8)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_holdperson", {Ingredient("meat", 2), Ingredient("silk", 6), Ingredient("honey", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_rage", {Ingredient("meat", 4), Ingredient("monstermeat", 6), Ingredient("papyrus", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_daylight", {Ingredient("lightbulb", 12), Ingredient("boneshard", 2), Ingredient("papyrus", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_fireball", {Ingredient("charcoal", 10), Ingredient("ash", 10), Ingredient("twigs", 10)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="firestaff.tex"
+    r=Recipe("fa_spell_tinyhut", {Ingredient("log", 20), Ingredient("bedroll_furry", 1), Ingredient("twigs", 20)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_haltundead", {Ingredient("nightmarefuel", 8), Ingredient("boneshard", 4), Ingredient("petals_evil", 8)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_haste", {Ingredient("rabbit", 2), Ingredient("batwing", 3), Ingredient("papyrus", 8)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_slow", {Ingredient("silk", 5), Ingredient("honey", 10), Ingredient("twigs", 10)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+
     inst.fa_spellcraft.spells[4]={
         {
-            recname="firewallwand"
+            recname="fa_spell_stoneskin",--wasnt this conjuration?
+            school="abjuration",
+        },
+        {
+            recname="fa_spell_secureshelter",
+            school="conjuration",
+        },
+        {
+            recname="fa_spell_summonmonster4",
+            school="conjuration",
+        },
+        {
+            recname="fa_spell_charmmonster",
+            school="enchantment",
+        },
+        {
+            recname="fa_spell_firewall",
+            school="evocation",
+        },
+        {
+            recname="fa_spell_shadowconjuration",
+            school="illusion",
+        },
+        {
+            recname="fa_spell_animatedead",
+            school="necromancy",
         },
     }
+
+    r=Recipe("fa_spell_stoneskin", {Ingredient("rocks", 20), Ingredient("flint", 10), Ingredient("papyrus", 8)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_tinyhut", {Ingredient("log", 40), Ingredient("bedroll_furry", 1), Ingredient("twigs", 40)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_summonmonster4", {Ingredient("bluegem", 1), Ingredient("houndstooth", 4), Ingredient("papyrus", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_charmmonster", {Ingredient("monstermeat", 6), Ingredient("goldnugget", 8), Ingredient("twigs", 10)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_firewall", {Ingredient("redgem", 4), Ingredient("rocks", 10), Ingredient("twigs", 10)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="firestaff.tex"
+    r=Recipe("fa_spell_shadowconjuration", {Ingredient("nightmarefuel", 10), Ingredient("petals_evil", 10), Ingredient("papyrus", 10)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_animatedead", {Ingredient("nightmarefuel", 6), Ingredient("monstermeat", 6), Ingredient("twigs", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+
     inst.fa_spellcraft.spells[5]={
         {
-            recname="spell_summonfeast"
+            recname="fa_spell_magehound",
+            school="conjuration",
+        },
+        {
+            recname="fa_spell_wallofstone",
+            school="conjuration",
+        },
+        {
+            recname="fa_spell_dominateperson",
+            school="enchantment",
+        },
+        {
+            recname="fa_spell_holdmonster",
+            school="enchantment",
         },
     }
+
+    r=Recipe("fa_spell_magehound", {Ingredient("beardhair", 4), Ingredient("monstermeat", 8), Ingredient("papyrus", 8)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_wallofstone", {Ingredient("rocks", 20), Ingredient("twigs", 10), Ingredient("flint", 10)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_dominateperson", {Ingredient("meat", 8), Ingredient("twigs", 15), Ingredient("goldnugget", 16)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    r=Recipe("fa_spell_holdmonster", {Ingredient("monstermeat", 6), Ingredient("silk", 8), Ingredient("honey", 12)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
 
     inst.newControlsInit = function (class)
         local btn=InitBuffBar(inst,"invisibility",inst.invisBuffUp,class,"Invis")

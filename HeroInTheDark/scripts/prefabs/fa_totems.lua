@@ -348,6 +348,13 @@ local function redfnbase(Sim)
      boom.persists=false
 
     inst.fa_puffanim=boom
+    --[[
+    inst:DoTaskInTime(0,function()
+        if(boom)then
+            local x,y,z=inst:GetPosition():Get()
+            boom.Transform:SetPosition(x, y+1, z)
+        end
+    end)]]
     local follower = boom.entity:AddFollower()
     follower:FollowSymbol( inst.GUID, "fa_redtotem", 0, 50, -0.0001 )
 --    boom.entity:SetParent( inst.entity )
@@ -372,7 +379,7 @@ local function redfnkos(Sim)
 
     inst.components.health:SetMaxHealth(KOS_TOTEM_HEALTH) 
     inst.components.combat:SetRetargetFunction(1, retargetfnkos)
-    inst:DoTaskInTime(1, EquipWeaponRedKos)
+    inst:DoTaskInTime(0.1, EquipWeaponRedKos)
     return inst
 end
 

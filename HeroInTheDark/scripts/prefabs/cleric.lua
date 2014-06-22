@@ -86,46 +86,209 @@ end
 local function enableL1spells()
     GetPlayer().fa_spellcraft.spells[1]={
         {
-            recname="spell_divinemight",
+            recname="fa_spell_curelightwounds",
             school="conjuration",
         },
+        {
+            recname="fa_spell_mending",
+            school="transmutation",
+        },
+        {
+            recname="fa_spell_inflictlightwounds",
+            school="necromancy",
+        },
+        {
+            recname="fa_spell_resistance",
+            school="abjuration",
+        },
+        {
+            recname="fa_spell_fear",
+            school="necromancy",
+        },
+        {
+            recname="fa_spell_summonmonster1",
+            school="conjuration",
+        },
+        {
+            recname="fa_spell_protevil",
+            school="abjuration",
+        },
     }
+    local r=Recipe("fa_spell_curelightwounds", {Ingredient("red_cap", 6), Ingredient("ash", 6), Ingredient("petals", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_mending", {Ingredient("sewingkit", 1), Ingredient("nightmarefuel", 6), Ingredient("honey", 10)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_inflictlightwounds", {Ingredient("charcoal", 6), Ingredient("nightmarefuel", 4), Ingredient("monstermeat", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_resistance", {Ingredient("pigskin", 2), Ingredient("beefalowool", 6), Ingredient("cutgrass", 8)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_fear", {Ingredient("nightmarefuel", 6), Ingredient("twigs", 6), Ingredient("petals_evil", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_summonmonster1", {Ingredient("papyrus", 4), Ingredient("silk", 2), Ingredient("spidereggsack", 2)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_protevil", {Ingredient("houndstooth", 2), Ingredient("goldnugget", 6), Ingredient("healingsalve", 2)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+
     local r=Recipe("spell_divinemight", {Ingredient("meat", 5), Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, RECIPETABS.SPELLS, {SCIENCE = 0, MAGIC = 0, ANCIENT = 0})
     r.image="book_brimstone.tex"
 end
 local function enableL2spells()
     GetPlayer().fa_spellcraft.spells[2]={
         {
-            recname="spell_light",
+            recname="fa_spell_aid",
+            school="enchantment",
+        },
+        {
+            recname="fa_spell_curemoderatewounds",
+            school="conjuration",
+        },
+        {
+            recname="fa_spell_inflictmoderatewounds",
+            school="necromancy",
+        },
+        {
+            recname="fa_spell_holdperson",
+            school="enchantment",
+        },
+        {
+            recname="fa_spell_summonmonster2",
             school="conjuration",
         },
     }
+    local r=Recipe("fa_spell_aid", {Ingredient("bird_egg", 1), Ingredient("meat", 2), Ingredient("nightmarefuel", 2)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_curemoderatewounds", {Ingredient("green_cap", 6), Ingredient("ash", 6), Ingredient("petals", 15)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_inflictmoderatewounds", {Ingredient("nightmarefuel", 6), Ingredient("monstermeat", 8), Ingredient("charcoal", 8)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_holdperson", {Ingredient("meat", 2), Ingredient("silk", 6), Ingredient("honey", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_summonmonster2", {Ingredient("pigskin", 2), Ingredient("poop", 6), Ingredient("papyrus", 5)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+
+
+
     local r=Recipe("spell_light", {Ingredient("fireflies", 2),Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, RECIPETABS.SPELLS, {MAGIC = 2})
     r.image="book_gardening.tex" 
 end
 local function enableL3spells()
     GetPlayer().fa_spellcraft.spells[3]={
         {
-            recname="spell_heal",
+            recname="fa_spell_animatedead",
+            school="necromancy",
+        },
+        {
+            recname="fa_spell_causedisease",
+            school="necromancy",
+        },
+        {
+            recname="fa_spell_createfood",
+            school="conjuration",
+        },
+        {
+            recname="fa_spell_continualflame",
+            school="evocation",
+        },
+        {
+            recname="fa_spell_cureseriouswounds",
+            school="conjuration",
+        },
+        {
+            recname="fa_spell_inflictseriouswounds",
+            school="necromancy",
+        },
+        {
+            recname="fa_spell_summonmonster3",
             school="conjuration",
         },
     }
+
+    local r=Recipe("fa_spell_animatedead", {Ingredient("nightmarefuel", 6), Ingredient("monstermeat", 6), Ingredient("twigs", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_causedisease", {Ingredient("nightmarefuel", 9), Ingredient("spidergland", 5), Ingredient("monstermeat", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_createfood", {Ingredient("seeds", 2), Ingredient("poop", 4), Ingredient("paper", 2)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_continualflame", {Ingredient("lantern", 1), Ingredient("nightmarefuel", 8), Ingredient("fireflies", 2)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_cureseriouswounds", {Ingredient("blue_cap", 6), Ingredient("ash", 8), Ingredient("petals", 15)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_inflictseriouswounds", {Ingredient("nightmarefuel", 8), Ingredient("monstermeat", 10), Ingredient("charcoal", 10)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_summonmonster3", {Ingredient("fish", 4), Ingredient("froglegs", 4), Ingredient("papyrus", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+
     local r=Recipe("spell_heal", {Ingredient("spidergland",5),Ingredient("cutgrass", 5), Ingredient("rocks", 15)}, RECIPETABS.SPELLS, {MAGIC = 3})
     r.image="book_gardening.tex"
 end
 local function enableL4spells()
     GetPlayer().fa_spellcraft.spells[4]={
         {
-            recname="spell_calldiety",
+            recname="fa_spell_curecriticalwounds",
+            school="conjuration",
+        },
+        {
+            recname="fa_spell_inflictcriticalwounds",
+            school="necromancy",
+        },
+        {
+            recname="fa_spell_curepoison",
+            school="conjuration",
+        },
+        {
+            recname="fa_spell_poison",
+            school="necromancy",
+        },
+        {
+            recname="fa_spell_summonmonster4",
             school="conjuration",
         },
     }
+
+    local r=Recipe("fa_spell_curecriticalwounds", {Ingredient("blue_cap", 12), Ingredient("ash", 8), Ingredient("petals", 15)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_inflictcriticalwounds", {Ingredient("nightmarefuel", 10), Ingredient("monstermeat", 12), Ingredient("charcoal", 12)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_curepoison", {Ingredient("mosquitosack", 2), Ingredient("silk", 12), Ingredient("honey", 12)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_poison", {Ingredient("spidergland", 6), Ingredient("mosquitosack", 4), Ingredient("twigs", 10)}, RECIPETABS.SPELLS, TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_summonmonster4", {Ingredient("bluegem", 1), Ingredient("houndstooth", 4), Ingredient("papyrus", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+
     local  r=Recipe("spell_calldiety", {Ingredient("redgem", 4), Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, RECIPETABS.SPELLS,{MAGIC = 2})
     r.image="book_brimstone.tex"
     local  r=Recipe("spell_summonfeast", {Ingredient("redgem", 1), Ingredient("cutgrass", 10), Ingredient("meat", 1)}, RECIPETABS.SPELLS,{MAGIC = 2})
     r.image="book_brimstone.tex"
 end
 local function enableL5spells()
+    GetPlayer().fa_spellcraft.spells[4]={
+        {
+            recname="fa_spell_atonement",
+            school="abjuration",
+        },
+        {
+            recname="fa_spell_curelightwoundsmass",
+            school="conjuration",
+        },
+        {
+            recname="fa_spell_inflictlightwoundsmass",
+            school="necromancy",
+        },
+        {
+            recname="fa_spell_flamestrike",
+            school="evocation",
+        },
+    }
+    local r=Recipe("fa_spell_atonement", {Ingredient("charcoal", 10), Ingredient("butterfly", 4), Ingredient("monstermeat", 4)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_curelightwoundsmass", {Ingredient("red_cap", 12), Ingredient("ash", 12), Ingredient("petals", 12)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_inflictlightwoundsmass", {Ingredient("charcoal", 12), Ingredient("nightmarefuel", 8), Ingredient("monstermeat", 12)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_flamestrike", {Ingredient("redgem", 2), Ingredient("ash", 10), Ingredient("gunpowder", 5)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+
     local r=Recipe("spell_bladebarrier", {Ingredient("papyrus", 2), Ingredient("redgem", 1)}, RECIPETABS.SPELLS, {MAGIC = 3})
     r.image="book_gardening.tex"
 end

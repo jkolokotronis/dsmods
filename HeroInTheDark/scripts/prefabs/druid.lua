@@ -3,7 +3,7 @@ local MakePlayerCharacter = require "prefabs/player_common"
 
 local PetBuff = require "widgets/petbuff"
 local Widget = require "widgets/widget"
-
+require "constants"
 
 local assets = {
 
@@ -74,50 +74,190 @@ local ref
 local function enableL1spells()
     GetPlayer().fa_spellcraft.spells[1]={
         {
-            recname="spell_grow"
+            recname="fa_spell_curelightwounds",
+            school="conjuration",
         },
         {
-            recname="spell_summongoodberries"
-        }
+            recname="fa_spell_faeriefire",
+            school="evocation",
+        },
+        {
+            recname="fa_spell_longstrider",
+            school="transmutation",
+        },
+        {
+            recname="fa_spell_faeriefire",
+            school="evocation",
+        },
+        {
+            recname="fa_spell_naturesally",
+            school="conjuration",
+        },
+       
     }
-    local r=Recipe("spell_grow", {Ingredient("papyrus", 2), Ingredient("seeds", 10), Ingredient("poop", 10)}, RECIPETABS.SPELLS, {MAGIC = 2})
+    local r=Recipe("fa_spell_curelightwounds", {Ingredient("red_cap", 6), Ingredient("ash", 6), Ingredient("petals", 6)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
-    local r=Recipe("spell_summongoodberries", {Ingredient("berries", 5), Ingredient("twigs", 10), Ingredient("charcoal", 5)}, RECIPETABS.SPELLS, {SCIENCE = 0, MAGIC = 0, ANCIENT = 0})
+     local r=Recipe("fa_spell_faeriefire", {Ingredient("fireflies", 2), Ingredient("torch", 1), Ingredient("redgem", 1)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+     local r=Recipe("fa_spell_longstrider", {Ingredient("houndstooth", 2), Ingredient("batwing", 2), Ingredient("papyrus", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+     local r=Recipe("fa_spell_naturesally", {Ingredient("silk", 2), Ingredient("spidereggsack", 2), Ingredient("papyrus", 4)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+
+    local r=Recipe("spell_summongoodberries", {Ingredient("berries", 5), Ingredient("twigs", 10), Ingredient("charcoal", 5)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
 end
 local function enableL2spells()
     GetPlayer().fa_spellcraft.spells[2]={
         {
-            recname="spell_guardian"
+            recname="fa_spell_animaltrance",
+            school="enchantment",
+        },
+        {
+            recname="fa_spell_gustofwind",
+            school="evocation",
+        },
+        {
+            recname="fa_spell_holdanimal",
+            school="enchantment",
+        },
+
+        {
+            recname="fa_spell_naturesally2",
+            school="conjuration",
+        },
+        {
+            recname="fa_spell_summonswarm",
+            school="conjuration",
         },
     }
+
+    local r=Recipe("fa_spell_animaltrance", {Ingredient("berries", 10), Ingredient("silk", 6), Ingredient("honey", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_gustofwind", {Ingredient("feather_crow", 6), Ingredient("twigs", 10), Ingredient("rope", 5)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_holdanimal", {Ingredient("berries", 10), Ingredient("silk", 6), Ingredient("honey", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_naturesally2", {Ingredient("livinglog", 5), Ingredient("pinecone", 20), Ingredient("papyrus", 5)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_summonswarm", {Ingredient("silk", 5), Ingredient("spidereggsack", 1), Ingredient("papyrus", 8)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+
     local r=Recipe("spell_guardian", {Ingredient("papyrus", 5), Ingredient("pinecone", 20),Ingredient("livinglog",10)}, RECIPETABS.SPELLS, {MAGIC = 3})
     r.image="book_gardening.tex"    
 end
 local function enableL3spells()
     GetPlayer().fa_spellcraft.spells[3]={
+       {
+            recname="fa_spell_calllightning",
+            school="evocation",
+        },
         {
-            recname="spell_lightning"
+            recname="fa_spell_curemoderatewounds",
+            school="conjuration",
+        },
+        {
+            recname="fa_spell_daylight",
+            school="evocation",
+        },
+        {
+            recname="fa_spell_dominateanimal",
+            school="enchantment",
+        },
+        {
+            recname="fa_spell_curepoison",
+            school="conjuration",
+        },
+        {
+            recname="fa_spell_grow",
+            school="transmutation",
+        },
+        {
+            recname="fa_spell_poison",
+            school="necromancy",
+        },
+        {
+            recname="fa_spell_snare",
+            school="transmutation",
         },
     }
+
+    local r=Recipe("fa_spell_calllightning", {Ingredient("flint", 20), Ingredient("bluegem", 1), Ingredient("twigs", 10)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_curemoderatewounds", {Ingredient("green_cap", 6), Ingredient("ash", 6), Ingredient("petals", 15)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_daylight", {Ingredient("fireflies", 2), Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_dominateanimal", {Ingredient("berries", 15), Ingredient("silk", 12), Ingredient("honey", 12)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_curepoison", {Ingredient("mosquitosack", 2), Ingredient("silk", 12), Ingredient("honey", 12)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_grow", {Ingredient("papyrus", 2), Ingredient("seeds", 10), Ingredient("poop", 10)}, RECIPETABS.SPELLS, TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_poison", {Ingredient("spidergland", 6), Ingredient("mosquitosack", 4), Ingredient("twigs", 10)}, RECIPETABS.SPELLS, TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_snare", {Ingredient("twigs", 10), Ingredient("guano", 4), Ingredient("poop", 5)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+
+
     local r=Recipe("spell_lightning", {Ingredient("flint", 20), Ingredient("bluegem", 4),Ingredient("papyrus", 5)}, RECIPETABS.SPELLS, {MAGIC = 2})
     r.image="book_brimstone.tex"   
 end
 local function enableL4spells()
     GetPlayer().fa_spellcraft.spells[4]={
+       {
+            recname="fa_spell_commandplant",
+            school="transmutation",
+        },
         {
-            recname="spell_earthquake"
+            recname="fa_spell_cureseriouswounds",
+            school="conjuration",
+        },
+        {
+            recname="fa_spell_flamestrike",
+            school="evocation",
         },
     }
+    local r=Recipe("fa_spell_calllightning", {Ingredient("logs", 20), Ingredient("purplegem", 1), Ingredient("livinglog", 5)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_cureseriouswounds", {Ingredient("blue_cap", 6), Ingredient("ash", 8), Ingredient("petals", 15)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_flamestrike", {Ingredient("redgem", 2), Ingredient("ash", 10), Ingredient("gunpowder", 10)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    
+
     local r=Recipe("spell_earthquake", {Ingredient("rocks", 20), Ingredient("redgem", 5),Ingredient("papyrus", 5)},  RECIPETABS.SPELLS,{MAGIC = 2})
     r.image="book_brimstone.tex"
 end
 local function enableL5spells()
     GetPlayer().fa_spellcraft.spells[5]={
         {
-            recname="spell_heal"
+            recname="fa_spell_atonement",
+            school="abjuration",
+        },
+        {
+            recname="fa_spell_lightningstorm",
+            school="evocation",
+        },
+        {
+            recname="fa_spell_curecriticalwounds",
+            school="conjuration",
+        },
+        {
+            recname="fa_spell_firewall",
+            school="evocation",
         },
     }
+
+    local r=Recipe("fa_spell_atonement", {Ingredient("charcoal", 10), Ingredient("butterfly", 4), Ingredient("monstermeat", 4)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_lightningstorm", {Ingredient("flint", 20), Ingredient("bluegem", 4), Ingredient("papyrus", 5)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_curecriticalwounds", {Ingredient("blue_cap", 12), Ingredient("ash", 8), Ingredient("petals", 15)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_firewall", {Ingredient("redgem", 4), Ingredient("rocks", 10), Ingredient("twigs", 10)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+
     local r=Recipe("spell_heal", {Ingredient("papyrus", 5), Ingredient("honey", 5),Ingredient("spidergland",10)}, RECIPETABS.SPELLS, {MAGIC = 3})
     r.image="book_gardening.tex"
 end
@@ -325,6 +465,7 @@ local fn = function(inst)
 	inst.components.sanity:SetMax(250)
 	inst.components.hunger:SetMax(150)
 
+    inst:AddTag("fa_spellcaster")
     inst.fa_spellcraft={}
     inst.fa_spellcraft.spells={}
     inst:AddComponent("xplevel")
