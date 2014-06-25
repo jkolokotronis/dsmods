@@ -30,7 +30,7 @@ for _, mod in ipairs( GLOBAL.ModManager.mods ) do
     end
 if(not memspikefixmod)then
     print("patching memory abuse")
---  modimport "memspikefix.lua"
+      modimport "memspikefix.lua"
 else
     print("memfix already in place")
 end
@@ -42,6 +42,7 @@ local XPBadge= require "widgets/xpbadge"
 local TextEdit=require "widgets/textedit"
 local ItemTile = require "widgets/itemtile"
 local FA_WarClock = require "widgets/fa_warclock"
+
 require "constants"
 require "fa_constants"
 require "widgets/text"
@@ -80,7 +81,8 @@ local StatusDisplays = require "widgets/statusdisplays"
 local ImageButton = require "widgets/imagebutton"
 local Levels=require("map/levels")
 
-require "repairabledescriptionfix"
+--it should be fixed now
+--require "repairabledescriptionfix"
 
 PrefabFiles = {
     "fa_bbq",
@@ -126,6 +128,7 @@ PrefabFiles = {
     "dksword",
     "holysword",
     "thieftraps",
+    "fa_menders",
     "fa_arrows",
     "fa_bow",
     "fa_keys",
@@ -135,12 +138,10 @@ PrefabFiles = {
     "fa_iceaxe",
     "fa_goodberries",
     "fa_potions",
-
     "spellbooks",
     "shields",
     "armor_fire",
     "armor_frost",
-
 
     "fa_totems",
 
@@ -180,6 +181,7 @@ PrefabFiles = {
     "bard",
     "ranger",
 }
+
 
 Assets = {
     Asset( "IMAGE", "images/saveslot_portraits/thief.tex" ),
@@ -310,6 +312,23 @@ Assets = {
   Asset("IMAGE", "images/inventoryimages/marbleshield.tex"),
   Asset("IMAGE", "images/inventoryimages/reflectshield.tex"),
 
+    Asset( "IMAGE", "images/inventoryimages/fa_scroll_conjuration.tex" ),
+    Asset( "ATLAS", "images/inventoryimages/fa_scroll_conjuration.xml" ),
+    Asset( "IMAGE", "images/inventoryimages/fa_scroll_divination.tex" ),
+    Asset( "ATLAS", "images/inventoryimages/fa_scroll_divination.xml" ),
+    Asset( "IMAGE", "images/inventoryimages/fa_scroll_evocation.tex" ),
+    Asset( "ATLAS", "images/inventoryimages/fa_scroll_evocation.xml" ),
+    Asset( "IMAGE", "images/inventoryimages/fa_scroll_enchantment.tex" ),
+    Asset( "ATLAS", "images/inventoryimages/fa_scroll_enchantment.xml" ),
+    Asset( "IMAGE", "images/inventoryimages/fa_scroll_illusion.tex" ),
+    Asset( "ATLAS", "images/inventoryimages/fa_scroll_illusion.xml" ),
+    Asset( "IMAGE", "images/inventoryimages/fa_scroll_necromancy.tex" ),
+    Asset( "ATLAS", "images/inventoryimages/fa_scroll_necromancy.xml" ),
+    Asset( "IMAGE", "images/inventoryimages/fa_scroll_transmutation.tex" ),
+    Asset( "ATLAS", "images/inventoryimages/fa_scroll_transmutation.xml" ),
+    Asset( "IMAGE", "images/inventoryimages/fa_scroll_abjuration.tex" ),
+    Asset( "ATLAS", "images/inventoryimages/fa_scroll_abjuration.xml" ),
+
     Asset( "IMAGE", "minimap/goblin.tex" ),
     Asset( "ATLAS", "minimap/goblin.xml" ),  
     Asset( "IMAGE", "minimap/fa_orc.tex" ),
@@ -352,13 +371,27 @@ Assets = {
     Asset( "IMAGE", "images/fa_equipbar_bg.tex" ),
     Asset( "ATLAS", "images/fa_equipbar_bg.xml" ),  
 }
+
+
+if(not GLOBAL.FA_DLCACCESS)then
+--not gonna rewrite 100 things for one prefab
+    table.insert(PrefabFiles,"fa_boneshard_compat")
+    table.insert(Assets,Asset("ATLAS", "images/inventoryimages/bone_shards_compat.xml"))
+    table.insert(Assets,Asset("IMAGE", "images/inventoryimages/bone_shards_compat.tex"))
+
 --[[
-AddSimPostInit(function()
-    GLOBAL.GetWorld().components.colourcubemanager:SetOverrideColourCube(
-        GLOBAL.resolvefilepath "colour_cubes/identity_colourcube.tex"
-    )
-end)
-]]
+--is the table set before mods are loaded or on the first spawn?
+GLOBAL.SetSharedLootTable( 'hound_mound',
+{
+    {'houndstooth', 1.00},
+    {'houndstooth', 1.00},
+    {'houndstooth', 1.00},
+    {'boneshard',   1.00},
+    {'boneshard',   1.00},
+    {'redgem',      0.01},
+    {'bluegem',     0.01},
+})]]
+end
 
 AddMinimapAtlas("minimap/boneshield.xml")
 AddMinimapAtlas("minimap/dagger.xml")
@@ -689,7 +722,17 @@ end
 AddClassPostConstruct("screens/playerhud", OpenBackpack)
 --SaveGameIndex:GetCurrentCaveLevel()
 
+local FA_MEND=Action()
+FA_MEND.id="FA_MEND"
+FA_MEND.str="Mend"
+FA_MEND.fn=function(act)
+    if(act.target and act.invobject and act.invobject.components.fa_mender)then
+        return act.invobject.components.fa_mender:DoMending(act.target, act.doer)
+    end
+end
 
+AddAction(FA_MEND) 
+ACTIONS.FA_MEND=FA_MEND
 
 local RELOAD = Action(1, true)
 RELOAD.id = "RELOAD"
@@ -700,7 +743,7 @@ RELOAD.fn = function(act)
     end
 
 end
- 
+
 AddAction(RELOAD)
 GLOBAL.ACTIONS.RELOAD = RELOAD
 

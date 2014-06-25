@@ -27,7 +27,7 @@ function FASpellBookScreen:InitClass()
 	if(self.caster.prefab=="druid")then
 		self.bgframe:SetPosition(-35, 84, 0)
 		self.spell:SetPosition(-200, -70, 0)
-		self.spell_list:SetPosition(0, -30, 0)
+		self.spell_list:SetPosition(0, 200, 0)
 	    self.prevbutton:SetPosition(-380,-150,0)
     	self.nextbutton:SetPosition(280,-150,0)
 		self.craftbutton:SetPosition(130,-130,0)
@@ -35,7 +35,7 @@ function FASpellBookScreen:InitClass()
     elseif(self.caster.prefab=="wizard")then
 		self.bgframe:SetPosition(20, 80, 0)
 		self.spell:SetPosition(-200, -70, 0)
-		self.spell_list:SetPosition(70, -30, 0)
+		self.spell_list:SetPosition(70, 200, 0)
 	    self.prevbutton:SetPosition(-280,-170,0)
     	self.nextbutton:SetPosition(320,-170,0)
 		self.craftbutton:SetPosition(200,-120,0)
@@ -43,7 +43,7 @@ function FASpellBookScreen:InitClass()
 	elseif(self.caster.prefab=="cleric")then
 		self.bgframe:SetPosition(82, 80, 0)
 		self.spell:SetPosition(-60, -70, 0)
-		self.spell_list:SetPosition(135, -30, 0)
+		self.spell_list:SetPosition(135, 200, 0)
 	    self.prevbutton:SetPosition(-175,-167,0)
     	self.nextbutton:SetPosition(325,-167,0)
 		self.craftbutton:SetPosition(250,-110,0)
@@ -127,13 +127,18 @@ function FASpellBookScreen:SetLevel(level)
 
 	self.spell_list:KillAllChildren()
 	local list=self.caster.fa_spellcraft.spells[level]
-	for i=3,0,-1 do
+	for i=0,3,1 do
 		for j=0,3 do
 			local spell=list[i*4+j+1]
-			local button=self.spell_list:AddChild(TextButton())
 			if(spell)then
+			local button=self.spell_list:AddChild(ImageButton(
+				"images/inventoryimages/fa_scroll_"..spell.school..".xml",
+				"fa_scroll_"..spell.school..".tex",
+				"fa_scroll_"..spell.school..".tex",
+				"fa_scroll_"..spell.school..".tex"
+				))
 				
-				button:SetText(""..(i*4+j+1))
+--				button:SetText(""..(i*4+j+1))
 				if(self.caster.components.builder:KnowsRecipe(spell.recname))then
 					button:SetOnClick(function()
 						return self:OnSelectSpell(spell)
@@ -141,11 +146,11 @@ function FASpellBookScreen:SetLevel(level)
 				else
 --					button:Disable()
 				end
+				button:SetPosition(j*HSEP+j*HW,-i*YSEP-i*HH,0)
 			else
-				button:SetText("N/A")
+--				button:SetText("N/A")
 --				button:Disable()
 			end
-			button:SetPosition(j*HSEP+j*HW,i*YSEP+i*HH,0)
 		end
 	end
 

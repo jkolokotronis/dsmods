@@ -172,6 +172,8 @@ inst:AddComponent("eater")
 
     
     inst:AddComponent("lootdropper")
+    inst.components.lootdropper:SetLoot({ "boneshard","boneshard"})
+
     inst:AddComponent("inventory")
 --    inst:AddComponent("sanity")
     

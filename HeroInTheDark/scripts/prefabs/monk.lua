@@ -35,7 +35,7 @@ local assets = {
 
 		-- Don't forget to include your character's custom assets!
         Asset( "ANIM", "anim/monk.zip" ),
---        Asset("ANIM","anim/fa_dorf.zip")
+        Asset("ANIM","anim/fa_dorf.zip")
 }
 local prefabs = {}
 
@@ -97,6 +97,8 @@ local fn = function(inst)
 
 	-- a minimap icon must be specified
 	inst.MiniMapEntity:SetIcon( "wilson.png" )
+
+    inst.AnimState:SetBuild("fa_dorf")
 
 	-- todo: Add an example special power here.
     inst.components.locomotor.runspeed=BASE_MS

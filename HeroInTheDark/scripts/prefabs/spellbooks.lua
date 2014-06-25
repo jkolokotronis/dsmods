@@ -3,22 +3,6 @@ local assets =
 	Asset("ANIM", "anim/fa_scrolls.zip"),
     Asset("ANIM", "anim/books.zip"),
     Asset("ANIM", "anim/goodberries.zip"),
-    Asset( "IMAGE", "images/inventoryimages/fa_scroll_conj.tex" ),
-    Asset( "ATLAS", "images/inventoryimages/fa_scroll_conj.xml" ),
-    Asset( "IMAGE", "images/inventoryimages/fa_scroll_divi.tex" ),
-    Asset( "ATLAS", "images/inventoryimages/fa_scroll_divi.xml" ),
-    Asset( "IMAGE", "images/inventoryimages/fa_scroll_evo.tex" ),
-    Asset( "ATLAS", "images/inventoryimages/fa_scroll_evo.xml" ),
-    Asset( "IMAGE", "images/inventoryimages/fa_scroll_ench.tex" ),
-    Asset( "ATLAS", "images/inventoryimages/fa_scroll_ench.xml" ),
-    Asset( "IMAGE", "images/inventoryimages/fa_scroll_illu.tex" ),
-    Asset( "ATLAS", "images/inventoryimages/fa_scroll_illu.xml" ),
-    Asset( "IMAGE", "images/inventoryimages/fa_scroll_necro.tex" ),
-    Asset( "ATLAS", "images/inventoryimages/fa_scroll_necro.xml" ),
-    Asset( "IMAGE", "images/inventoryimages/fa_scroll_trans.tex" ),
-    Asset( "ATLAS", "images/inventoryimages/fa_scroll_trans.xml" ),
-    Asset( "IMAGE", "images/inventoryimages/fa_scroll_abj.tex" ),
-    Asset( "ATLAS", "images/inventoryimages/fa_scroll_abj.xml" ),
 	--Asset("SOUND", "sound/common.fsb"),
 }
  
@@ -149,6 +133,13 @@ function firefn(inst, reader)
             end
         end
     end)
+    return true
+end
+
+function healfn(inst, reader)
+
+--    reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
+    reader.components.health:DoDelta(SPELL_HEAL_AMOUNT)
     return true
 end
 
@@ -370,18 +361,6 @@ function treeguardianfn(inst,reader)
 
 end
 
-function souldrainfn(inst,reader)
-
-end
-
-function blightfn(inst,reader)
-
-end
-
-function transferlifefn(inst,reader)
-
-end
-
 function onfinished(inst)
     inst:Remove()
 end
@@ -444,14 +423,16 @@ function MakeSpell(name, usefn, bookuses,school )
 end
 
 
-return MakeSpell("spell_lightning", firefn, 10,"conj"),
-       MakeSpell("spell_earthquake", earthquakefn, 12,"divi"),
-       MakeSpell("spell_grow", growfn, 15,"evo"),
-       MakeSpell("spell_heal", healfn, 10,"ench"),
-       MakeSpell("spell_divinemight", divinemightfn, 15,"illu"),
-       MakeSpell("spell_calldiety", calldietyfn, 10,"necro"),
-       MakeSpell("spell_light", lightfn, 12,"trans"),
-       MakeSpell("spell_bladebarrier", bladebarrierfn, 5,"abj"),
+return 
+
+        MakeSpell("spell_lightning", firefn, 10,"conjuration"),
+       MakeSpell("spell_earthquake", earthquakefn, 12,"divinantion"),
+       MakeSpell("spell_grow", growfn, 15,"evocation"),
+       MakeSpell("spell_heal", healfn, 10,"enchantment"),
+       MakeSpell("spell_divinemight", divinemightfn, 15,"illusion"),
+       MakeSpell("spell_calldiety", calldietyfn, 10,"necromancy"),
+       MakeSpell("spell_light", lightfn, 12,"transmutation"),
+       MakeSpell("spell_bladebarrier", bladebarrierfn, 5,"abjuration"),
        MakeSpell("spell_guardian", treeguardianfn, 7),
        MakeSpell("spell_summonfeast", summonfeastfn, 5),
        MakeSpell("spell_summongoodberries", summongoodberriesfn, 10),

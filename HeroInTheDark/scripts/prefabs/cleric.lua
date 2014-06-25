@@ -163,7 +163,7 @@ local function enableL2spells()
     r.image="book_gardening.tex"
     local r=Recipe("fa_spell_holdperson", {Ingredient("meat", 2), Ingredient("silk", 6), Ingredient("honey", 6)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
-    local r=Recipe("fa_spell_summonmonster2", {Ingredient("pigskin", 2), Ingredient("poop", 6), Ingredient("papyrus", 5)}, RECIPETABS.SPELLS,TECH.NONE)
+    local r=Recipe("fa_spell_summonmonster2",  {Ingredient("fish", 4), Ingredient("froglegs", 4), Ingredient("papyrus", 6)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
 
 
@@ -203,7 +203,7 @@ local function enableL3spells()
         },
     }
 
-    local r=Recipe("fa_spell_animatedead", {Ingredient("nightmarefuel", 6), Ingredient("monstermeat", 6), Ingredient("twigs", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+    local r=Recipe("fa_spell_animatedead", {Ingredient("nightmarefuel", 10), Ingredient("boneshard", 5), Ingredient("papyrus", 10)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
     local r=Recipe("fa_spell_causedisease", {Ingredient("nightmarefuel", 9), Ingredient("spidergland", 5), Ingredient("monstermeat", 6)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
@@ -215,7 +215,7 @@ local function enableL3spells()
     r.image="book_gardening.tex"
     local r=Recipe("fa_spell_inflictseriouswounds", {Ingredient("nightmarefuel", 8), Ingredient("monstermeat", 10), Ingredient("charcoal", 10)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
-    local r=Recipe("fa_spell_summonmonster3", {Ingredient("fish", 4), Ingredient("froglegs", 4), Ingredient("papyrus", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+    local r=Recipe("fa_spell_summonmonster3", {Ingredient("pigskin", 2), Ingredient("poop", 6), Ingredient("papyrus", 5)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
 
     local r=Recipe("spell_heal", {Ingredient("spidergland",5),Ingredient("cutgrass", 5), Ingredient("rocks", 15)}, RECIPETABS.SPELLS, {MAGIC = 3})
@@ -355,6 +355,7 @@ end
 
 local function onxploaded(inst)
     local level=inst.components.xplevel.level
+    inst.components.fa_spellcaster.casterlevel=level
     if(level>=3)then
 --        inst.turnCooldownButton:Show()
     end
@@ -384,7 +385,7 @@ end
 
 local function onlevelup(inst,data)
     local level=data.level
-
+    inst.components.fa_spellcaster.casterlevel=level
     inst.components.health.maxhealth= inst.components.health.maxhealth+HEALTH_PER_LEVEL
     inst.components.sanity.max=inst.components.sanity.max+SANITY_PER_LEVEL
 
@@ -424,9 +425,10 @@ local fn = function(inst)
 	inst.components.hunger:SetMax(125)
 
     inst:AddComponent("reader")
+    inst:AddComponent("fa_spellcaster")
     inst:AddComponent("xplevel")
 
-    inst:AddTag("fa_spellcaster")
+--    inst:AddTag("fa_spellcaster")
     inst.fa_spellcraft={}
     inst.fa_spellcraft.spells={}
 

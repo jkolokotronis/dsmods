@@ -264,6 +264,7 @@ end
 
 local function onxploaded(inst)
     local level=inst.components.xplevel.level
+    inst.components.fa_spellcaster.casterlevel=level
     if(level>=3)then
         enableL1spells()
     end
@@ -290,6 +291,7 @@ end
 
 local function onlevelup(inst,data)
     local level=data.level
+    inst.components.fa_spellcaster.casterlevel=level
 
     inst.components.health.maxhealth= inst.components.health.maxhealth+HEALTH_PER_LEVEL
     inst.components.sanity.max=inst.components.sanity.max+SANITY_PER_LEVEL
@@ -469,6 +471,7 @@ local fn = function(inst)
     inst.fa_spellcraft={}
     inst.fa_spellcraft.spells={}
     inst:AddComponent("xplevel")
+    inst:AddComponent("fa_spellcaster")
 
     inst.newControlsInit = function (cnt)
     
@@ -513,8 +516,6 @@ local fn = function(inst)
     inst:AddComponent("reader")
 
 RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon_atlas = "images/inventoryimages/herotab.xml"}
-  --[[    local booktab=RECIPETABS.SPELLS
-]]
 
 end
 
