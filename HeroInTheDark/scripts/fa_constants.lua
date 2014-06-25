@@ -92,6 +92,16 @@ FA_QUAKER_LOOT_OVERRIDE["ORC_MINES"]={
 		"marble",
 	},
 }
+-- shouldn't be using strings, too lazy to rename files etc
+FA_SPELL_SCHOOLS={
+	EVOCATION="evocation",
+	TRANSMUTATION="transmutation",
+	CONJURATION="conjuration",
+	ENCHANTMENT="enchantment",
+	NECROMANCY="necromancy",
+	ABJURATION="abjuration",
+}
+
 --just in case
 FA_QUAKER_LOOT_OVERRIDE["ORC_FORTRESS"]=FA_QUAKER_LOOT_OVERRIDE["ORC_MINES"]
 FA_QUAKER_LOOT_OVERRIDE["GOBLIN_CAVE_2"]=deepcopy(FA_QUAKER_LOOT_OVERRIDE["GOBLIN_CAVE"])
