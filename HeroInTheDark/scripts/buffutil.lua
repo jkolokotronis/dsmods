@@ -218,21 +218,6 @@ function DivineMightSpellStart( reader,timer)
         inst.components.spell:StartSpell()
     end
     
-    --[[
-    reader.components.health.maxhealth=reader.components.health.maxhealth+DM_HP_BOOST
-    reader.components.health.currenthealth=reader.components.health.currenthealth+DM_HP_BOOST
-    reader.components.health:DoDelta(0)
---	reader.components.health:SetMaxHealth(reader.origMaxHealth+DM_HP_BOOST)
-	reader.components.locomotor.runspeed=reader.components.locomotor.runspeed+DM_MS_BOOST
-    reader.components.combat.damagemultiplier=DM_DAMAGE_MULT_BOOST+reader.components.combat.damagemultiplier
-    
-    reader.divineMightTimer=reader:DoTaskInTime(timer, function() 
-        reader.divineMightTimer=nil 
-        reader.components.combat.damagemultiplier=reader.components.combat.damagemultiplier-DM_DAMAGE_MULT_BOOST
-        reader.components.health.maxhealth=reader.components.health.maxhealth-DM_HP_BOOST
-        reader.components.health:DoDelta(0)
-		reader.components.locomotor.runspeed=reader.components.locomotor.runspeed-DM_MS_BOOST
-		end)]]
     return true
 end
 
@@ -288,6 +273,7 @@ end
 
 function frozenSlowDebuff(target,timer)
     local inst = CreateEntity()
+    inst.persists=false
     local spell = inst:AddComponent("spell")
     inst.components.spell.spellname = "fa_frozenslow"
 --    inst.components.spell:SetVariables(light_variables)
@@ -471,6 +457,50 @@ function BladeBarrierSpellStartCaster(reader,timer,variables)
 end
 
 
+local longstrider_start=function(inst, target, variables)
+    local target=inst.components.spell.target
+    if target then
+        target.components.locomotor.runspeed=target.components.locomotor.runspeed+IA_MS_BOOST
+    end
+end
+
+function FA_LongstriderSpellStart( reader,timer)
+
+    if(timer==nil or timer<=0)then return false end
+
+    if reader.fa_longstrider then
+        reader.fa_longstrider.components.spell.lifetime = 0
+--        reader.fa_inspireagility.components.spell:ResumeSpell()
+        return true
+    else
+
+    local inst=CreateEntity()
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_longstrider"
+    inst.components.spell.duration = timer
+    inst.components.spell.ontargetfn = function(inst,target)
+        target.fa_longstrider = inst
+        target:AddTag(inst.components.spell.spellname)
+    end
+    inst.components.spell.onstartfn = longstrider_start
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+        reader.components.locomotor.runspeed=reader.components.locomotor.runspeed-IA_MS_BOOST
+        inst.components.spell.target.fa_longstrider = nil
+    end
+
+        inst.components.spell.resumefn = longstrider_start
+        inst.components.spell.removeonfinish = true
+
+        inst.components.spell:SetTarget(reader)
+        if not inst.components.spell.target then
+            inst:Remove()
+        end
+        inst.components.spell:StartSpell()
+    end
+end
 
 function HasteSpellStart( reader,timer)
     if(timer==nil or timer<=0)then return false end

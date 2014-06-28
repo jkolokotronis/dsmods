@@ -113,7 +113,7 @@ PrefabFiles = {
     "poisonspidereggsack",
     "spellprojectiles",
     "natureshealing",
-
+    "fa_lights",
     "skeletonspawn",
     "boomstickprojectile",
     "fizzleboomstick",

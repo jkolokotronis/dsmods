@@ -33,13 +33,20 @@ local PRISMATIC_WIDTH=15
 local PRISMATIC_DEPTH=5
 
 -- 5,10,20,30,40 dmg at lvs, 1,5,10,15,20 
-
+local ANIMALTRANCE_USES=5
+local ANIMALTRANCE_DURATION=2*60
+local GUSTOFWIND_USES=10
+local HOLDANIMAL_USES=5
+local HOLDANIMAL_DURATION=20
+local CALLLIGHTNING_DAMAGE=100
+local CALLLIGHTNING_USES=12
+local POISON_LENGTH=20
+local POISON_DAMAGE=7
+local POISON_USES=7
+local SNARE_SPEED=0.5
+local SNARE_DURATION=2*60
 
 local MAGICMISSLE_DAMAGE=15
-local MAGICMISSLE_DAMAGE_2=20
-local MAGICMISSLE_DAMAGE_3=30
-local MAGICMISSLE_DAMAGE_4=40
-local MAGICMISSLE_DAMAGE_5=50
 local ACIDARROW_DOT=10
 local ACIDARROW_LENGTH=24
 local FIREBALL_DAMAGE=100
@@ -47,6 +54,7 @@ local ICESTORM_LENGTH=120
 local ICESTORM_DAMAGE=5
 local SUNBURST_DAMAGE=100
 local LIGHTNINGBOLT_DAMAGE=100
+
 
 
 local WAND_RANGE=15
@@ -231,6 +239,7 @@ local function commonfn(colour)
     inst.components.equippable:SetOnUnequip( onunequip )
 
 
+    inst:AddTag("nopunch")
     
     return inst
 end
@@ -249,7 +258,6 @@ local function magicmissile()
     inst.components.finiteuses:SetMaxUses(MAGICMISSLE_USES)
     inst.components.finiteuses:SetUses(MAGICMISSLE_USES)
 
-    inst:AddTag("nopunch")
     return inst
 end
 
@@ -267,7 +275,6 @@ local function acidarrow()
     inst.components.finiteuses:SetMaxUses(ACIDARROW_USES)
     inst.components.finiteuses:SetUses(ACIDARROW_USES)
 
-    inst:AddTag("nopunch")
     return inst
 end
 
@@ -282,7 +289,6 @@ inst.components.weapon.fa_damagetype=FA_DAMAGETYPE.FIRE
     inst.components.finiteuses:SetMaxUses(FIREBALL_USES)
     inst.components.finiteuses:SetUses(FIREBALL_USES)
 
-    inst:AddTag("nopunch")
     return inst
 end
 
@@ -297,14 +303,12 @@ inst.components.weapon.fa_damagetype=FA_DAMAGETYPE.ELECTRIC
     inst.components.finiteuses:SetMaxUses(FIREBALL_USES)
     inst.components.finiteuses:SetUses(FIREBALL_USES)
 
-    inst:AddTag("nopunch")
     return inst
 end
 
 
 local function icestorm()
     local inst = commonfn("blue")
-
     inst.components.inventoryitem.imagename="icestaff"
     inst:AddComponent("spellcaster")
     inst.components.spellcaster:SetSpellFn(onattackicestorm)
@@ -313,7 +317,6 @@ local function icestorm()
     inst.components.spellcaster.canusefrominventory = false
     inst.components.finiteuses:SetMaxUses(ICESTORM_USES)
     inst.components.finiteuses:SetUses(ICESTORM_USES)
-    inst:AddTag("nopunch")
     return inst
 end
 
@@ -328,7 +331,6 @@ local function sunburst()
     inst.components.finiteuses:SetMaxUses(SUNBURST_USES)
     inst.components.finiteuses:SetUses(SUNBURST_USES)
 
-    inst:AddTag("nopunch")
     return inst
 end
 
@@ -342,7 +344,6 @@ local function firewall()
     inst.components.finiteuses:SetMaxUses(FIREWALL_USES)
     inst.components.finiteuses:SetUses(FIREWALL_USES)
 
-    inst:AddTag("nopunch")
     return inst
 end
 
@@ -367,7 +368,6 @@ local function firewall_insta()
     inst.components.finiteuses:SetMaxUses(FIREWALL_USES)
     inst.components.finiteuses:SetUses(FIREWALL_USES)
 
-    inst:AddTag("nopunch")
     return inst
 end
 local function prismaticwall()
@@ -379,12 +379,311 @@ local function prismaticwall()
     return inst
 end 
 
-return Prefab("common/inventory/magicmissilewand", magicmissile, assets, prefabs),
+local ondazedattacked=nil
+ondazedattacked=function(inst,data)
+    if(data.damage and data.damage>0 and inst and inst.fa_daze)then
+        inst.fa_daze.components.spell:OnFinish()
+    end    
+end
+
+--TODO get rid of consts - way too bored
+
+local function onattackanimaltrance(inst,attacker,target)
+    if(not target:HasTag("fa_animal")) then return false end
+    local cl=1
+    if(reader.components.fa_spellcaster)then
+        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.ENCHANTMENT)
+    end
+    local treshold=(1+3*math.floor(cl/5))*100
+    if target.components.health and target.components.health.maxhealth<=treshold then
+        if(target.fa_daze)then target.fa_daze.components.spell:OnFinish() end
+
+        local spell = inst:AddComponent("spell")
+        inst.components.spell.spellname = "fa_animaltranse"
+        inst.components.spell.duration = ANIMALTRANCE_DURATION
+        inst.components.spell.ontargetfn = function(inst,target)
+
+            local fx=SpawnPrefab("fa_musicnotesfx")
+            fx.persists=false
+            local follower = fx.entity:AddFollower()
+            follower:FollowSymbol( inst.GUID, target.components.combat.hiteffectsymbol, 0, 0, -0.0001 )
+            target.fa_daze_fx=fx
+            target.fa_daze = inst
+            target:ListenForEvent("attacked", ondazedattacked)
+        end
+               --inst.components.spell.onstartfn = function() end
+        inst.components.spell.onfinishfn = function(inst)
+            if not inst.components.spell.target then return end
+            inst.components.spell.target.fa_daze = nil
+            if(inst.components.spell.target.fa_daze_fx) then inst.components.spell.target.fa_daze_fx:Remove() end
+            inst.components.spell.target:RemoveEventListener("attacked",ondazedattacked)
+        end
+                --inst.components.spell.fn = function(inst, target, variables) end
+                inst.components.spell.resumefn = function() end
+                inst.components.spell.removeonfinish = true
+
+        inst.components.spell:SetTarget(v)
+        inst.components.spell:StartSpell()
+    end
+end
+
+local function onattackgustofwind(inst,attacker,target)
+        local v1=target.Physics:GetVelocity()
+        local vhit=inst.Physics:GetVelocity()--will this end up being 0 due to it hitting the target or the actual velocity before the hit?
+        local coef=1
+        target.Physics:SetVelocity((v1+vhit*coef):Get())
+end
+
+local function onattackholdanimal(inst,attacker,target)
+    if(not target:HasTag("fa_animal")) then return false end
+    local cl=1
+    if(reader.components.fa_spellcaster)then
+        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.ENCHANTMENT)
+    end
+    local treshold=(1+3*math.floor(cl/5))*100
+    if target.components.health and target.components.health.maxhealth<=treshold then
+        if(target.fa_stun)then target.fa_stun.components.spell:OnFinish() end
+        
+        local spell = inst:AddComponent("spell")
+        inst.components.spell.spellname = "fa_holdanimal"
+        inst.components.spell.duration = HOLDANIMAL_DURATION
+        inst.components.spell.ontargetfn = function(inst,target)
+
+            local fx=SpawnPrefab("fa_spinningstarsfx")
+            fx.persists=false
+            local follower = fx.entity:AddFollower()
+            follower:FollowSymbol( inst.GUID, target.components.combat.hiteffectsymbol, 0, 0, -0.0001 )
+            target.fa_daze_fx=fx
+            target.fa_daze = inst
+        end
+               --inst.components.spell.onstartfn = function() end
+        inst.components.spell.onfinishfn = function(inst)
+            if not inst.components.spell.target then return end
+            inst.components.spell.target.fa_daze = nil
+            if(inst.components.spell.target.fa_daze_fx) then inst.components.spell.target.fa_daze_fx:Remove() end
+        end
+        inst.components.spell.resumefn = function() end
+        inst.components.spell.removeonfinish = true
+
+        inst.components.spell:SetTarget(target)
+        inst.components.spell:StartSpell()
+    end
+end
+
+local function animaltrance()
+    local inst = commonfn("blue")
+    inst.components.inventoryitem.imagename="icestaff"
+    inst:AddComponent("weapon")
+    inst.components.weapon:SetDamage(0)
+    inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
+    inst.components.weapon:SetOnAttack(onattackanimaltrance)
+    inst.components.weapon:SetProjectile("ice_projectilex")
+    inst.components.finiteuses:SetMaxUses(ANIMALTRANCE_USES)
+    inst.components.finiteuses:SetUses(ANIMALTRANCE_USES)
+
+    return inst
+end
+
+local function gustofwind()
+    local inst = commonfn("blue")
+    inst.components.inventoryitem.imagename="icestaff"
+    inst:AddComponent("weapon")
+    inst.components.weapon:SetDamage(0)
+    inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
+    inst.components.weapon:SetOnAttack(onattackgustofwind)
+    inst.components.weapon:SetProjectile("ice_projectilex")
+    inst.components.finiteuses:SetMaxUses(GUSTOFWIND_USES)
+    inst.components.finiteuses:SetUses(GUSTOFWIND_USES)
+
+    return inst
+end
+
+local function holdanimal()
+    local inst = commonfn("blue")
+    inst.components.inventoryitem.imagename="icestaff"
+    inst:AddComponent("weapon")
+    inst.components.weapon:SetDamage(0)
+    inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
+    inst.components.weapon:SetOnAttack(onattackholdanimal)
+    inst.components.weapon:SetProjectile("ice_projectilex")
+    inst.components.finiteuses:SetMaxUses(HOLDANIMAL_USES)
+    inst.components.finiteuses:SetUses(HOLDANIMAL_USES)
+
+    return inst
+end
+
+
+local function dopoison(inst,target)
+    if(target and not target.components.health:IsDead())then
+        --bypassing armor - but this also bypasses potential retarget
+--        target.components.health:DoDelta(-POISON_DAMAGE)
+            target.components.combat:GetAttacked(inst.caster, POISON_DAMAGE, nil,nil,FA_DAMAGETYPE.POISON)
+
+                local boom =SpawnPrefab("fa_poisonfx")
+                local follower = boom.entity:AddFollower()
+                follower:FollowSymbol(target.GUID, target.components.combat.hiteffectsymbol, 0, 0.1, -0.0001)
+                boom.persists=false
+                boom:ListenForEvent("animover", function()  boom:Remove() end)
+       
+    end
+end
+
+local function castpoison(inst,attacker,target)
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_poison"
+    inst.components.spell.duration = POISON_LENGTH
+    inst.components.spell.fn = dopoison
+    inst.components.spell.period=POISON_PERIOD
+    inst.components.spell.removeonfinish = true
+    inst.components.spell.ontargetfn = function(inst,target)
+        inst.caster=caster
+        target.fa_poison = inst
+        target:AddTag(inst.components.spell.spellname)
+    end
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+        inst.components.spell.target.fa_poison = nil
+    end
+    inst.components.spell:SetTarget(target)
+    inst.components.spell:StartSpell()
+end
+
+
+local function poisonwand()
+    local inst = commonfn("green")
+    inst.components.inventoryitem.imagename="greenstaff"
+    inst:AddComponent("weapon")
+    inst.components.weapon:SetDamage(0)
+    inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
+    inst.components.weapon:SetOnAttack(castpoison)
+    inst.components.weapon:SetProjectile("acidarrowprojectile")
+    inst.components.finiteuses:SetMaxUses(POISON_USES)
+    inst.components.finiteuses:SetUses(POISON_USES)
+
+    return inst
+end
+
+
+local function onattackdominateanimal(inst,attacker,target)
+    if(not target:HasTag("fa_animal")) then return false end
+    local cl=1
+    if(reader.components.fa_spellcaster)then
+        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.ENCHANTMENT)
+    end
+    local treshold=(1+3*math.floor(cl/4))*100
+    if target.components.follower and target.components.health and target.components.health.maxhealth<=treshold then
+        reader.components.leader:AddFollower(target)
+    end
+end
+
+local function dominateanimal()
+    local inst = commonfn("blue")
+    inst.components.inventoryitem.imagename="icestaff"
+    inst:AddComponent("weapon")
+    inst.components.weapon:SetDamage(0)
+    inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
+    inst.components.weapon:SetOnAttack(onattackdominateanimal)
+    inst.components.weapon:SetProjectile("ice_projectilex")
+    inst.components.finiteuses:SetMaxUses(HOLDANIMAL_USES)
+    inst.components.finiteuses:SetUses(HOLDANIMAL_USES)
+
+    return inst
+end
+
+
+function snaredebuff(inst,attacker,target)
+    local inst = CreateEntity()
+    inst.persists=false
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_snare"
+    inst.components.spell.duration = SNARE_DURATION
+    inst.components.spell.ontargetfn = function(inst,target)
+        target.fa_snare = inst
+        target:AddTag(inst.components.spell.spellname)
+        if(target.components.locomotor)then
+            target.components.locomotor.runspeed=target.components.locomotor.runspeed*SNARE_SPEED
+        end
+    end
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+        inst.components.spell.target.fa_snare = nil
+        if(target.components.locomotor)then
+            target.components.locomotor.runspeed=target.components.locomotor.runspeed/SNARE_SPEED
+        end
+    end
+    inst.components.spell.resumefn = function(inst,timeleft)   end 
+    inst.components.spell.removeonfinish = true
+    inst.components.spell:SetTarget(target)
+    inst.components.spell:StartSpell()
+    return true
+end
+
+local function snarefn()
+    local inst = commonfn("blue")
+    inst.components.inventoryitem.imagename="icestaff"
+    inst:AddComponent("weapon")
+    inst.components.weapon:SetDamage(0)
+    inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
+    inst.components.weapon:SetOnAttack(snaredebuff)
+    inst.components.weapon:SetProjectile("ice_projectilex")
+    inst.components.finiteuses:SetMaxUses(HOLDANIMAL_USES)
+    inst.components.finiteuses:SetUses(HOLDANIMAL_USES)
+
+    return inst
+end
+
+local function onattackcalllightning(staff, target, orpos)
+    local pos=orpos
+    if(pos==nil and target~=nil)then
+        pos=Vector3(target.Transform:GetWorldPosition())
+    end
+    local caster = staff.components.inventoryitem.owner
+    local lightning = SpawnPrefab("lightning")
+    lightning.Transform:SetPosition(pos:Get())
+    if target.components.burnable and not target.components.fueled then
+        target.components.burnable:Ignite()
+    end
+    if(target.components.combat and not (target.components.health and target.components.health:IsDead())) then
+        target.components.combat:GetAttacked(caster, CALLLIGHTNING_DAMAGE, nil,nil,FA_DAMAGETYPE.ELECTRIC)
+    end
+    staff.components.finiteuses:Use(1)
+end
+
+local function calllightning()
+local inst = commonfn("blue")
+
+    inst:AddComponent("spellcaster")
+    inst.components.spellcaster:SetSpellFn(onattackcalllightning)
+    inst.components.spellcaster.canuseontargets = true
+    inst.components.spellcaster.canuseonpoint = false
+    inst.components.spellcaster.canusefrominventory = false
+    inst.components.finiteuses:SetMaxUses(CALLLIGHTNING_USES)
+    inst.components.finiteuses:SetUses(CALLLIGHTNING_USES)
+
+    return inst
+end
+
+return 
+
+
+Prefab("common/inventory/fa_spell_animaltrance", onattackanimaltrance, assets, prefabs),
+Prefab("common/inventory/fa_spell_gustofwind", gustofwind, assets, prefabs),
+Prefab("common/inventory/fa_spell_holdanimal", holdanimal, assets, prefabs),
+Prefab("common/inventory/fa_spell_calllightning", calllightning, assets, prefabs),
+Prefab("common/inventory/fa_spell_dominateanimal", dominateanimal, assets, prefabs),
+Prefab("common/inventory/fa_spell_poison", poisonwand, assets, prefabs),
+Prefab("common/inventory/fa_spell_snare", snarefn, assets, prefabs),
+Prefab("common/inventory/fa_spell_firewall", firewall, assets, prefabs),
+
+Prefab("common/inventory/magicmissilewand", magicmissile, assets, prefabs),
     Prefab("common/inventory/acidarrowwand", acidarrow, assets, prefabs),
     Prefab("common/inventory/fireballwand", fireball, assets, prefabs),
     Prefab("common/inventory/lightningboltwand", lightningbolt, assets, prefabs),
     Prefab("common/inventory/icestormwand", icestorm, assets, prefabs),
-    Prefab("common/inventory/firewallwand", firewall, assets, prefabs),
     Prefab("common/inventory/firewallwand_insta", firewall_insta, assets, prefabs),
     Prefab("common/inventory/sunburstwand", sunburst, assets, prefabs),
     Prefab("common/inventory/prismaticwand", prismaticwall, assets, prefabs)

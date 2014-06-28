@@ -86,10 +86,6 @@ local function enableL1spells()
             school="transmutation",
         },
         {
-            recname="fa_spell_faeriefire",
-            school="evocation",
-        },
-        {
             recname="fa_spell_naturesally",
             school="conjuration",
         },

@@ -11,7 +11,11 @@ local function fearnode(self)
 end
 
 local function stunNode(self)
-	return WhileNode( function() return self.inst.fa_stun~=nil end, "Stun", Panic(self.inst))
+	return WhileNode( function() return self.inst.fa_stun~=nil end, "Stun", StandStill(self.inst))
+end
+
+local function dazeNode(self)
+	return WhileNode( function() return self.inst.fa_daze~=nil end, "Daze", StandStill(self.inst))
 end
 
 local function rootAttackNode(self)

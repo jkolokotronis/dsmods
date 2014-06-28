@@ -53,7 +53,7 @@ local function fn(Sim)
     light:SetIntensity(INTENSITY)
     light:SetRadius(1)
     light:SetColour(255/255, 200/255, 200/255)
-    light:Enable(false)
+    light:Enable(true)
     
     inst.AnimState:SetBloomEffectHandle( "shaders/anim.ksh" )
     
@@ -61,14 +61,13 @@ local function fn(Sim)
     inst.AnimState:SetBuild("fa_lavaflies")
 
     inst.AnimState:SetRayTestOnBB(true);
-    
-    
-    inst:AddComponent("fader")
-    
 
-    fadein(inst)
+    inst:AddComponent("heater")
+    inst.components.heater.heat=50    
+ 
+--    inst:AddComponent("fader")  
+--    fadein(inst)
      inst.lighton = true
-
     
     return inst
 end

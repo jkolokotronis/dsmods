@@ -55,8 +55,8 @@
         <file id="15" name="32-48/heal0047.png" width="640" height="480" pivot_x="0.5" pivot_y="0"/>
         <file id="16" name="32-48/heal0048.png" width="640" height="480" pivot_x="0.5" pivot_y="0"/>
     </folder>
-    <entity id="0" name="entity_000">
-        <animation id="0" name="NewAnimation" length="2000">
+    <entity id="0" name="fa_heal_yellow_fx">
+        <animation id="0" name="idle" length="2000">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -211,158 +211,158 @@
             </mainline>
             <timeline id="0" name="heal0000">
                 <key id="0" spin="0">
-                    <object folder="0" file="0"/>
+                    <object folder="0" file="0" angle="0"/>
                 </key>
                 <key id="1" time="40" spin="0">
-                    <object folder="0" file="1"/>
+                    <object folder="0" file="1" angle="0"/>
                 </key>
                 <key id="2" time="82" spin="0">
-                    <object folder="0" file="2"/>
+                    <object folder="0" file="2" angle="0"/>
                 </key>
                 <key id="3" time="124" spin="0">
-                    <object folder="0" file="3"/>
+                    <object folder="0" file="3" angle="0"/>
                 </key>
                 <key id="4" time="165" spin="0">
-                    <object folder="0" file="3"/>
+                    <object folder="0" file="3" angle="0"/>
                 </key>
                 <key id="5" time="166" spin="0">
-                    <object folder="0" file="4"/>
+                    <object folder="0" file="4" angle="0"/>
                 </key>
                 <key id="6" time="208" spin="0">
-                    <object folder="0" file="5"/>
+                    <object folder="0" file="5" angle="0"/>
                 </key>
                 <key id="7" time="250" spin="0">
-                    <object folder="0" file="6"/>
+                    <object folder="0" file="6" angle="0"/>
                 </key>
                 <key id="8" time="290" spin="0">
-                    <object folder="0" file="7"/>
+                    <object folder="0" file="7" angle="0"/>
                 </key>
                 <key id="9" time="332" spin="0">
-                    <object folder="0" file="8"/>
+                    <object folder="0" file="8" angle="0"/>
                 </key>
                 <key id="10" time="374" spin="0">
-                    <object folder="0" file="9"/>
+                    <object folder="0" file="9" angle="0"/>
                 </key>
                 <key id="11" time="416" spin="0">
-                    <object folder="0" file="10"/>
+                    <object folder="0" file="10" angle="0"/>
                 </key>
                 <key id="12" time="458" spin="0">
-                    <object folder="0" file="11"/>
+                    <object folder="0" file="11" angle="0"/>
                 </key>
                 <key id="13" time="500" spin="0">
-                    <object folder="0" file="12"/>
+                    <object folder="0" file="12" angle="0"/>
                 </key>
                 <key id="14" time="540" spin="0">
-                    <object folder="0" file="13"/>
+                    <object folder="0" file="13" angle="0"/>
                 </key>
                 <key id="15" time="582" spin="0">
-                    <object folder="0" file="14"/>
+                    <object folder="0" file="14" angle="0"/>
                 </key>
                 <key id="16" time="624" spin="0">
-                    <object folder="0" file="15"/>
+                    <object folder="0" file="15" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="heal0016">
                 <key id="0" time="666" spin="0">
-                    <object folder="1" file="0"/>
+                    <object folder="1" file="0" angle="0"/>
                 </key>
                 <key id="1" time="708" spin="0">
-                    <object folder="1" file="1"/>
+                    <object folder="1" file="1" angle="0"/>
                 </key>
                 <key id="2" time="750" spin="0">
-                    <object folder="1" file="2"/>
+                    <object folder="1" file="2" angle="0"/>
                 </key>
                 <key id="3" time="790" spin="0">
-                    <object folder="1" file="3"/>
+                    <object folder="1" file="3" angle="0"/>
                 </key>
                 <key id="4" time="832" spin="0">
-                    <object folder="1" file="4"/>
+                    <object folder="1" file="4" angle="0"/>
                 </key>
                 <key id="5" time="874" spin="0">
-                    <object folder="1" file="5"/>
+                    <object folder="1" file="5" angle="0"/>
                 </key>
                 <key id="6" time="916" spin="0">
-                    <object folder="1" file="6"/>
+                    <object folder="1" file="6" angle="0"/>
                 </key>
                 <key id="7" time="958" spin="0">
-                    <object folder="1" file="7"/>
+                    <object folder="1" file="7" angle="0"/>
                 </key>
                 <key id="8" time="1000" spin="0">
-                    <object folder="1" file="8"/>
+                    <object folder="1" file="8" angle="0"/>
                 </key>
                 <key id="9" time="1040" spin="0">
-                    <object folder="1" file="9"/>
+                    <object folder="1" file="9" angle="0"/>
                 </key>
                 <key id="10" time="1082" spin="0">
-                    <object folder="1" file="10"/>
+                    <object folder="1" file="10" angle="0"/>
                 </key>
                 <key id="11" time="1124" spin="0">
-                    <object folder="1" file="11"/>
+                    <object folder="1" file="11" angle="0"/>
                 </key>
                 <key id="12" time="1166" spin="0">
-                    <object folder="1" file="12"/>
+                    <object folder="1" file="12" angle="0"/>
                 </key>
                 <key id="13" time="1208" spin="0">
-                    <object folder="1" file="13"/>
+                    <object folder="1" file="13" angle="0"/>
                 </key>
                 <key id="14" time="1250" spin="0">
-                    <object folder="1" file="14"/>
+                    <object folder="1" file="14" angle="0"/>
                 </key>
                 <key id="15" time="1290" spin="0">
-                    <object folder="1" file="15"/>
+                    <object folder="1" file="15" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" name="heal0032">
                 <key id="0" time="1332" spin="0">
-                    <object folder="2" file="0"/>
+                    <object folder="2" file="0" angle="0"/>
                 </key>
                 <key id="1" time="1374" spin="0">
-                    <object folder="2" file="1"/>
+                    <object folder="2" file="1" angle="0"/>
                 </key>
                 <key id="2" time="1416" spin="0">
-                    <object folder="2" file="2"/>
+                    <object folder="2" file="2" angle="0"/>
                 </key>
                 <key id="3" time="1458" spin="0">
-                    <object folder="2" file="3"/>
+                    <object folder="2" file="3" angle="0"/>
                 </key>
                 <key id="4" time="1500" spin="0">
-                    <object folder="2" file="4"/>
+                    <object folder="2" file="4" angle="0"/>
                 </key>
                 <key id="5" time="1540" spin="0">
-                    <object folder="2" file="5"/>
+                    <object folder="2" file="5" angle="0"/>
                 </key>
                 <key id="6" time="1582" spin="0">
-                    <object folder="2" file="6"/>
+                    <object folder="2" file="6" angle="0"/>
                 </key>
                 <key id="7" time="1624" spin="0">
-                    <object folder="2" file="7"/>
+                    <object folder="2" file="7" angle="0"/>
                 </key>
                 <key id="8" time="1666" spin="0">
-                    <object folder="2" file="8"/>
+                    <object folder="2" file="8" angle="0"/>
                 </key>
                 <key id="9" time="1708" spin="0">
-                    <object folder="2" file="9"/>
+                    <object folder="2" file="9" angle="0"/>
                 </key>
                 <key id="10" time="1750" spin="0">
-                    <object folder="2" file="10"/>
+                    <object folder="2" file="10" angle="0"/>
                 </key>
                 <key id="11" time="1790" spin="0">
-                    <object folder="2" file="11"/>
+                    <object folder="2" file="11" angle="0"/>
                 </key>
                 <key id="12" time="1832" spin="0">
-                    <object folder="2" file="13"/>
+                    <object folder="2" file="13" angle="0"/>
                 </key>
                 <key id="13" time="1875" spin="0">
-                    <object folder="2" file="14"/>
+                    <object folder="2" file="14" angle="0"/>
                 </key>
                 <key id="14" time="1916" spin="0">
-                    <object folder="2" file="15"/>
+                    <object folder="2" file="15" angle="0"/>
                 </key>
                 <key id="15" time="1958" spin="0">
-                    <object folder="2" file="16"/>
+                    <object folder="2" file="16" angle="0"/>
                 </key>
                 <key id="16" time="2000" spin="0">
-                    <object folder="2" file="16"/>
+                    <object folder="2" file="16" angle="0"/>
                 </key>
             </timeline>
         </animation>

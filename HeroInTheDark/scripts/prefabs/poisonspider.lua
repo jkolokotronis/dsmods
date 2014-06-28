@@ -116,17 +116,18 @@ local function OnAttackOther(spider, data)
   local target=data.target
   if(target and target.components.health and target.components.combat and not target.components.health:IsDead())then
       local inst = CreateEntity()
+      inst.persists=false
       local caster=spider
       local trans = inst.entity:AddTransform()
 
     local spell = inst:AddComponent("spell")
-    inst.caster=caster
     inst.components.spell.spellname = "fa_poison"
     inst.components.spell.duration = POISON_LENGTH
     inst.components.spell.fn = dopoison
     inst.components.spell.period=POISON_PERIOD
     inst.components.spell.removeonfinish = true
     inst.components.spell.ontargetfn = function(inst,target)
+        inst.caster=caster
         target.fa_poison = inst
         target:AddTag(inst.components.spell.spellname)
     end

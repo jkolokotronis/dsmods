@@ -39,11 +39,79 @@ local SPELL_HEAL_AMOUNT=150
 local EARTHQUAKE_MINING_EFFICIENCY=6
 local EARTHQUAKE_DAMAGE=100
 local CALL_DIETY_DAMAGE=100
-local LIGHTNING_DAMAGE=40
+local LIGHTNING_DAMAGE=100
+local FLAMESTRIKE_DAMAGE=10
 local BUFF_LENGTH=100
 local HASTE_LENGTH=60
+local LONGSTRIDER_LENGTH=120
 local INVISIBILITY_LENGTH=120
 local BB_LENGTH=12
+
+local NATURESALLY_SUMMON_TIME=8*60
+local  NATURESPAWN_SUMMON_TIME=60
+
+local CURE_LIGHT=10
+local CURE_MOD=15
+local CURE_SER=20
+local CURE_CRIT=25
+
+
+function curelightfn(inst, reader)
+    local cl=1
+    if(reader.components.fa_spellcaster)then
+        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.CONJURATION)
+    end
+    local boom =SpawnPrefab("fa_heal_greenfx")
+    local follower = boom.entity:AddFollower()
+    follower:FollowSymbol(reader.GUID,reader.components.combat.hiteffectsymbol, 0, 0.1, -0.0001)
+    boom.persists=false
+    boom:ListenForEvent("animover", function()  boom:Remove() end)
+
+    reader.components.health:DoDelta(CURE_LIGHT*(1+math.floor(cl/4)))
+    return true
+end
+
+function curemodfn(inst, reader)
+    local cl=1
+    if(reader.components.fa_spellcaster)then
+        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.CONJURATION)
+    end
+    local boom =SpawnPrefab("fa_heal_greenfx")
+    local follower = boom.entity:AddFollower()
+    follower:FollowSymbol(reader.GUID,reader.components.combat.hiteffectsymbol, 0, 0.1, -0.0001)
+    boom.persists=false
+    boom:ListenForEvent("animover", function()  boom:Remove() end)
+    reader.components.health:DoDelta(CURE_MOD*(1+math.floor(cl/4)))
+    return true
+end
+
+function cureserfn(inst, reader)
+    local cl=1
+    if(reader.components.fa_spellcaster)then
+        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.CONJURATION)
+    end
+    local boom =SpawnPrefab("fa_heal_greenfx")
+    local follower = boom.entity:AddFollower()
+    follower:FollowSymbol(reader.GUID,reader.components.combat.hiteffectsymbol, 0, 0.1, -0.0001)
+    boom.persists=false
+    boom:ListenForEvent("animover", function()  boom:Remove() end)
+    reader.components.health:DoDelta(CURE_SER*(1+math.floor(cl/4)))
+    return true
+end
+
+function  curecritfn(inst, reader)
+    local cl=1
+    if(reader.components.fa_spellcaster)then
+        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.CONJURATION)
+    end
+    local boom =SpawnPrefab("fa_heal_greenfx")
+    local follower = boom.entity:AddFollower()
+    follower:FollowSymbol(reader.GUID,reader.components.combat.hiteffectsymbol, 0, 0.1, -0.0001)
+    boom.persists=false
+    boom:ListenForEvent("animover", function()  boom:Remove() end)
+    reader.components.health:DoDelta(CURE_CRIT*(1+math.floor(cl/4)))
+    return true
+end
 
 function tentaclesfn(inst, reader)
     local pt = Vector3(reader.Transform:GetWorldPosition())
@@ -109,11 +177,31 @@ function growfn(inst, reader)
 end
 
 
+function flamestrikefn(inst, reader)
+    local cl=1
+    if(reader.components.fa_spellcaster)then
+        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.EVOCATION)
+    end
+    local damage=cl*FLAMESTRIKE_DAMAGE
+    local pos=Vector3(reader.Transform:GetWorldPosition())
+            local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 20)
+            for k,v in pairs(ents) do
+                if not v:HasTag("player") and not v:HasTag("companion") and not v:IsInLimbo() then
+                    if v.components.burnable and not v.components.fueled then
+                     v.components.burnable:Ignite()
+                    end
+
+                    if(v.components.combat and not (v.components.health and v.components.health:IsDead())) then
+                        v.components.combat:GetAttacked(reader, damage, nil,nil,FA_DAMAGETYPE.FIRE)
+                    end
+                end
+            end
+    return true
+end
 
 function firefn(inst, reader)
 
     local num_lightnings =  1
-    reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
     local pos=Vector3(reader.Transform:GetWorldPosition())
     reader:StartThread(function()
         for k = 0, num_lightnings do
@@ -121,7 +209,7 @@ function firefn(inst, reader)
             lightning.Transform:SetPosition(pos:Get())
             local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 20)
             for k,v in pairs(ents) do
-                if not v:HasTag("player") and not v:HasTag("pet") and not v:IsInLimbo() then
+                if not v:HasTag("player") and not v:HasTag("companion") and not v:IsInLimbo() then
                     if v.components.burnable and not v.components.fueled then
                      v.components.burnable:Ignite()
                     end
@@ -133,13 +221,6 @@ function firefn(inst, reader)
             end
         end
     end)
-    return true
-end
-
-function healfn(inst, reader)
-
---    reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
-    reader.components.health:DoDelta(SPELL_HEAL_AMOUNT)
     return true
 end
 
@@ -165,11 +246,21 @@ function invisibilityfn(inst,reader)
 end
 
 function hastefn(inst,reader)
-    --reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
-    reader.buff_timers["haste"]:ForceCooldown(HASTE_LENGTH)
+    if(reader.buff_timers["haste"])then
+        reader.buff_timers["haste"]:ForceCooldown(HASTE_LENGTH)
+    end
     HasteSpellStart( reader,HASTE_LENGTH)
     return true
 end
+
+function longstriderfn(inst,reader)
+    if(reader.buff_timers["longstrider"])then
+        reader.buff_timers["longstrider"]:ForceCooldown(LONGSTRIDER_LENGTH)
+    end
+    FA_LongstriderSpellStart( reader,LONGSTRIDER_LENGTH)
+    return true
+end
+
 
 local feast_table={"baconeggs","dragonpie","fishtacos","fishsticks","honeynuggets","honeyham","meatballs","bonestew"}
 
@@ -361,6 +452,90 @@ function treeguardianfn(inst,reader)
 
 end
 
+function blackspiderspawn(inst,reader)
+    local spawn_point= Vector3(reader.Transform:GetWorldPosition())
+    local tree = SpawnPrefab("spider") 
+    local pt = Vector3(spawn_point.x, 0, spawn_point.z)
+        tree.Physics:SetCollides(false)
+        tree.Physics:Teleport(pt.x, pt.y, pt.z) 
+        tree.Physics:SetCollides(true)
+        reader.components.leader:AddFollower(tree)
+        tree.sg:GoToState("spawn")
+        tree:ListenForEvent("stopfollowing",function(f)
+            f.components.health:Kill()
+        end)
+        --those things have messed up targetting, they'd eat all other followers if not controlled
+        tree.components.combat:SetRetargetFunction(1, function(inst)
+            return FindEntity(inst, 20, function(guy)
+            return  guy.components.combat and 
+                    inst.components.combat:CanTarget(guy) and
+                    (guy.components.combat.target == reader or reader.components.combat.target == guy)
+            end)
+            end 
+            )
+
+    return tree
+end
+
+function naturesallyfn(inst,reader)
+
+    local spider=blackspiderspawn(inst,reader)
+    spider.maxfollowtime=NATURESALLY_SUMMON_TIME
+    spider.components.follower:AddLoyaltyTime(NATURESALLY_SUMMON_TIME)
+
+     return true
+
+end
+
+function naturespawnfn(inst,reader)
+
+    local spider=blackspiderspawn(inst,reader)
+    spider.maxfollowtime=NATURESPAWN_SUMMON_TIME
+    spider.components.follower:AddLoyaltyTime(NATURESPAWN_SUMMON_TIME)
+    local spider=blackspiderspawn(inst,reader)
+    spider.maxfollowtime=NATURESPAWN_SUMMON_TIME
+    spider.components.follower:AddLoyaltyTime(NATURESPAWN_SUMMON_TIME)
+
+     return true
+
+end
+
+function faeriefirefn(inst,reader)
+
+    local spawn_point= Vector3(reader.Transform:GetWorldPosition())
+    local tree = SpawnPrefab("fa_lavaflies") 
+    local pt = Vector3(spawn_point.x, 0, spawn_point.z)
+        tree.Physics:SetCollides(false)
+        tree.Physics:Teleport(pt.x, pt.y, pt.z) 
+        tree.Physics:SetCollides(true)
+     return true
+
+end
+
+function daylightfn(inst,reader)
+    local spawn_point= Vector3(reader.Transform:GetWorldPosition())
+    local fx=SpawnPrefab("fa_daylightfx")
+    fx.Transform:SetPosition(spawn_point.x, 0, spawn_point.z)
+    return true
+end
+
+function curepoisonfn(inst,reader)
+    if(reader and reader.fa_poison) then
+        reader.fa_poison.components.spell:OnFinished()
+        return true
+    else
+        return false
+    end
+end
+
+function atonementfn(inst,reader)
+    if(reader.components.kramped) then
+        reader.components.kramped.actions=0
+        return true
+    end 
+    return false
+end
+
 function onfinished(inst)
     inst:Remove()
 end
@@ -424,6 +599,27 @@ end
 
 
 return 
+
+
+--    local r=Recipe("fa_spell_flamestrike", {Ingredient("redgem", 2), Ingredient("ash", 10), Ingredient("gunpowder", 10)}, RECIPETABS.SPELLS,TECH.NONE)
+
+
+    MakeSpell("fa_spell_curelightwounds",curelightfn,10,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_curemoderatewounds",curemodfn,8,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_cureseriouswounds",cureserfn,7,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_curecriticalwounds",curecritfn,6,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_longstrider", longstriderfn,10,FA_SPELL_SCHOOLS.TRANSMUTATION),
+    MakeSpell("fa_spell_faeriefire",faeriefirefn,7,FA_SPELL_SCHOOLS.EVOCATION),
+    MakeSpell("fa_spell_naturesally",naturesallyfn,10,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_summonswarm",naturespawnfn,5,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_naturesally2",treeguardianfn,7,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_daylight",daylightfn,12,FA_SPELL_SCHOOLS.EVOCATION),
+    MakeSpell("fa_spell_curepoison",curepoisonfn,10,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_grow",growfn,15,FA_SPELL_SCHOOLS.TRANSMUTATION),
+    MakeSpell("fa_spell_grow",atonementfn,3,FA_SPELL_SCHOOLS.ABJURATION),
+    MakeSpell("fa_spell_lightningstorm",firefn,6,FA_SPELL_SCHOOLS.EVOCATION),
+    MakeSpell("fa_spell_flamestrike",flamestrikefn,5,FA_SPELL_SCHOOLS.EVOCATION),
+
 
         MakeSpell("spell_lightning", firefn, 10,"conjuration"),
        MakeSpell("spell_earthquake", earthquakefn, 12,"divinantion"),
