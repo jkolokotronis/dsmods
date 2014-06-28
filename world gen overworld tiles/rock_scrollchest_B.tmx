@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="16" height="16" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" source="../ground.tsx"/>
+ <layer name="BG_TILES" width="16" height="16">
+  <data encoding="base64" compression="zlib">
+   eJxjYBjagIVC/lAHo/6njD/UAaX+BwBuAABB
+  </data>
+ </layer>
+ <objectgroup name="FG_OBJECTS" width="16" height="16">
+  <object type="fa_scrollchest_1" x="125" y="124"/>
+  <object type="wall_stone" x="65" y="65"/>
+  <object type="wall_stone" x="156" y="179"/>
+  <object type="wall_stone" x="132" y="179"/>
+  <object type="wall_stone" x="110" y="179"/>
+  <object type="wall_stone" x="88" y="178"/>
+  <object type="wall_stone" x="66" y="178"/>
+  <object type="wall_stone" x="65" y="155"/>
+  <object type="wall_stone" x="64" y="133"/>
+  <object type="wall_stone" x="64" y="110"/>
+  <object type="wall_stone" x="64" y="87"/>
+  <object type="wall_stone" x="110" y="64"/>
+  <object type="wall_stone" x="178" y="64"/>
+  <object type="wall_stone" x="178" y="86"/>
+  <object type="wall_stone" x="178" y="109"/>
+  <object type="wall_stone" x="178" y="132"/>
+  <object type="wall_stone" x="178" y="155"/>
+  <object type="wall_stone" x="178" y="179"/>
+  <object type="wall_stone" x="88" y="65"/>
+  <object type="wall_stone" x="133" y="63"/>
+  <object type="wall_stone" x="156" y="63"/>
+ </objectgroup>
+</map>

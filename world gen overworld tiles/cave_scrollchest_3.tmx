@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="16" height="16" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" source="../ground.tsx"/>
+ <layer name="BG_TILES" width="16" height="16">
+  <data encoding="base64" compression="zlib">
+   eJxjYBjagINC/lAHo/6njD/UAaX+BwDYAACB
+  </data>
+ </layer>
+ <objectgroup name="FG_OBJECTS" width="16" height="16">
+  <object type="fa_scrollchest_3" x="129" y="125"/>
+  <object type="skeleton" x="192" y="61"/>
+  <object type="tentacle" x="58" y="83"/>
+  <object type="tentacle" x="220" y="133"/>
+  <object type="tentacle" x="92" y="188"/>
+ </objectgroup>
+</map>
