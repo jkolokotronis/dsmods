@@ -195,7 +195,7 @@ local function enableL1spells()
     r.image="bluestaff.tex"
     r=Recipe("fa_spell_disruptundead", {Ingredient("boneshard", 4),Ingredient("ash", 10), Ingredient("nightmarefuel", 4)}, RECIPETABS.SPELLS, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex" 
-    r=Recipe("fa_spell_mending", {Ingredient("sewingkit", 1), Ingredient("nightmarefuel", 6), Ingredient("honey", 10)}, RECIPETABS.SPELLS,TECH.NONE)
+    r=Recipe("fa_spell_mending", {Ingredient("sewing_kit", 1), Ingredient("nightmarefuel", 6), Ingredient("honey", 10)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
     r=Recipe("fa_spell_summonmonster1", {Ingredient("papyrus", 4), Ingredient("silk", 2), Ingredient("spidereggsack", 2)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"

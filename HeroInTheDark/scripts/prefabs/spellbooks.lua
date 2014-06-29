@@ -35,6 +35,7 @@ local debris =
     },]]--
 }
 
+local AOE_RANGE=20
 local SPELL_HEAL_AMOUNT=150
 local EARTHQUAKE_MINING_EFFICIENCY=6
 local EARTHQUAKE_DAMAGE=100
@@ -44,8 +45,11 @@ local FLAMESTRIKE_DAMAGE=10
 local BUFF_LENGTH=100
 local HASTE_LENGTH=60
 local LONGSTRIDER_LENGTH=120
+local INFLICTLIGHT_DAMAGE=20
 local INVISIBILITY_LENGTH=120
 local BB_LENGTH=12
+local PROTEVIL_DURATION=8*60
+local AID_HP=50
 
 local NATURESALLY_SUMMON_TIME=8*60
 local  NATURESPAWN_SUMMON_TIME=60
@@ -55,6 +59,33 @@ local CURE_MOD=15
 local CURE_SER=20
 local CURE_CRIT=25
 
+function inflictlightmass(inst, reader)
+    local cl=1
+    if(reader.components.fa_spellcaster)then
+        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.CONJURATION)
+    end
+    local damage=INFLICTLIGHT_DAMAGE*(1+math.floor(cl/4))
+
+    local pos=Vector3(reader.Transform:GetWorldPosition())
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, AOE_RANGE)
+            for k,v in pairs(ents) do
+                if not(v:HasTag("player") or v:HasTag("companion") or (v.components.follower and v.components.follower.leader and v.components.follower.leader:HasTag("player")))
+                    and not v:IsInLimbo() then
+                    
+                    if(v.components.combat and not(v.components.health and v.components.health:IsDead())) then
+                        local boom =SpawnPrefab("fa_heal_redfx")
+                        local follower = boom.entity:AddFollower()
+                        follower:FollowSymbol(v.GUID,reader.components.combat.hiteffectsymbol, 0, 0.1, -0.0001)
+                        boom.persists=false
+                        boom:ListenForEvent("animover", function()  boom:Remove() end)
+                        
+                        v.components.combat:GetAttacked(reader, damage, nil,nil,FA_DAMAGETYPE.HOLY)
+                    end
+                end
+            end
+
+    return true
+end
 
 function curelightfn(inst, reader)
     local cl=1
@@ -68,6 +99,32 @@ function curelightfn(inst, reader)
     boom:ListenForEvent("animover", function()  boom:Remove() end)
 
     reader.components.health:DoDelta(CURE_LIGHT*(1+math.floor(cl/4)))
+    return true
+end
+function curelighmassfn(inst, reader)
+    local cl=1
+    if(reader.components.fa_spellcaster)then
+        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.CONJURATION)
+    end
+    local damage=CURE_LIGHT*(1+math.floor(cl/4))
+
+    local pos=Vector3(reader.Transform:GetWorldPosition())
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, AOE_RANGE)
+            for k,v in pairs(ents) do
+                if (v:HasTag("player") or v:HasTag("companion") or (v.components.follower and v.components.follower.leader and v.components.follower.leader:HasTag("player")))
+                    and not v:IsInLimbo() then
+                    
+                    if(v.components.health and not v.components.health:IsDead()) then
+                        local boom =SpawnPrefab("fa_heal_greenfx")
+                        local follower = boom.entity:AddFollower()
+                        follower:FollowSymbol(v.GUID,reader.components.combat.hiteffectsymbol, 0, 0.1, -0.0001)
+                        boom.persists=false
+                        boom:ListenForEvent("animover", function()  boom:Remove() end)
+                        v.components.health:DoDelta(damage)
+                    end
+                end
+            end
+
     return true
 end
 
@@ -184,7 +241,7 @@ function flamestrikefn(inst, reader)
     end
     local damage=cl*FLAMESTRIKE_DAMAGE
     local pos=Vector3(reader.Transform:GetWorldPosition())
-            local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 20)
+            local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, AOE_RANGE)
             for k,v in pairs(ents) do
                 if not v:HasTag("player") and not v:HasTag("companion") and not v:IsInLimbo() then
                     if v.components.burnable and not v.components.fueled then
@@ -207,7 +264,7 @@ function firefn(inst, reader)
         for k = 0, num_lightnings do
            local lightning = SpawnPrefab("lightning")
             lightning.Transform:SetPosition(pos:Get())
-            local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 20)
+            local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, AOE_RANGE)
             for k,v in pairs(ents) do
                 if not v:HasTag("player") and not v:HasTag("companion") and not v:IsInLimbo() then
                     if v.components.burnable and not v.components.fueled then
@@ -261,6 +318,13 @@ function longstriderfn(inst,reader)
     return true
 end
 
+function protevilfn(inst,reader)
+    if(reader.buff_timers["protevil"])then
+        reader.buff_timers["protevil"]:ForceCooldown(PROTEVIL_DURATION)
+    end
+    FA_ProtEvilSpellStart( reader,PROTEVIL_DURATION)
+    return true
+end
 
 local feast_table={"baconeggs","dragonpie","fishtacos","fishsticks","honeynuggets","honeyham","meatballs","bonestew"}
 
@@ -359,7 +423,7 @@ local function quake(inst,reader)
     local pt=  Point(attacker.Transform:GetWorldPosition())
     local pos=Vector3(reader.Transform:GetWorldPosition())
 
-    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 20,nil, {'smashable',"companion","player","INLIMBO"})
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, AOE_RANGE,nil, {'smashable',"companion","player","INLIMBO"})
     for k,v in pairs(ents) do
  -- quakes shouldn't break the set dressing
                 if v.components.workable and v.components.workable.action == ACTIONS.MINE then
@@ -406,7 +470,7 @@ function calldietyfn(inst,reader)
     local attacker=reader
     local pos=Vector3(reader.Transform:GetWorldPosition())
 
-        local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 20,nil, {'smashable',"player","companion","INLIMBO"})
+        local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, AOE_RANGE,nil, {'smashable',"player","companion","INLIMBO"})
         for k,v in pairs(ents) do
              -- quakes shouldn't break the set dressing
                 if(v.components.combat and not v:IsInLimbo() and not (v.components.health and v.components.health:IsDead()))then
@@ -460,7 +524,7 @@ function blackspiderspawn(inst,reader)
         tree.Physics:Teleport(pt.x, pt.y, pt.z) 
         tree.Physics:SetCollides(true)
         reader.components.leader:AddFollower(tree)
-        tree.sg:GoToState("spawn")
+--        tree.sg:GoToState("spawn")
         tree:ListenForEvent("stopfollowing",function(f)
             f.components.health:Kill()
         end)
@@ -476,6 +540,18 @@ function blackspiderspawn(inst,reader)
 
     return tree
 end
+
+--the hell is it even called differently? meh
+function summon1fn(inst,reader)
+
+    local spider=blackspiderspawn(inst,reader)
+    spider.maxfollowtime=NATURESALLY_SUMMON_TIME
+    spider.components.follower:AddLoyaltyTime(NATURESALLY_SUMMON_TIME)
+
+     return true
+
+end
+
 
 function naturesallyfn(inst,reader)
 
@@ -534,6 +610,20 @@ function atonementfn(inst,reader)
         return true
     end 
     return false
+end
+
+function atonementfn(inst,reader)
+    if(reader.components.kramped) then
+        reader.components.kramped.actions=0
+        return true
+    end 
+    return false
+end
+
+function aidfn(inst,reader)
+    --not sure if i want to let it accumulate
+    reader.components.health.fa_temphp=math.max(reader.components.health.fa_temphp,50)
+    return true
 end
 
 function onfinished(inst)
@@ -603,7 +693,6 @@ return
 
 --    local r=Recipe("fa_spell_flamestrike", {Ingredient("redgem", 2), Ingredient("ash", 10), Ingredient("gunpowder", 10)}, RECIPETABS.SPELLS,TECH.NONE)
 
-
     MakeSpell("fa_spell_curelightwounds",curelightfn,10,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_curemoderatewounds",curemodfn,8,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_cureseriouswounds",cureserfn,7,FA_SPELL_SCHOOLS.CONJURATION),
@@ -619,7 +708,16 @@ return
     MakeSpell("fa_spell_grow",atonementfn,3,FA_SPELL_SCHOOLS.ABJURATION),
     MakeSpell("fa_spell_lightningstorm",firefn,6,FA_SPELL_SCHOOLS.EVOCATION),
     MakeSpell("fa_spell_flamestrike",flamestrikefn,5,FA_SPELL_SCHOOLS.EVOCATION),
-
+    MakeSpell("fa_spell_protevil",protevilfn,10,FA_SPELL_SCHOOLS.ABJURATION),
+    MakeSpell("fa_spell_aid",protevilfn,10,FA_SPELL_SCHOOLS.ENCHANTMENT),
+    MakeSpell("fa_spell_summonmonster1",summon1fn,10,FA_SPELL_SCHOOLS.CONJURATION),
+--    MakeSpell("fa_spell_summonmonster2",summon2fn,10,FA_SPELL_SCHOOLS.CONJURATION),
+--    MakeSpell("fa_spell_summonmonster3",summon3fn,10,FA_SPELL_SCHOOLS.CONJURATION),
+--    MakeSpell("fa_spell_summonmonster4",summon4fn,10,FA_SPELL_SCHOOLS.CONJURATION),
+--    MakeSpell("fa_spell_summonmonster5",summon5fn,10,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_inflictlightwoundsmass",inflictlightmass,7,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_curelightwoundsmass",curelighmassfn,5,FA_SPELL_SCHOOLS.CONJURATION),
+ 
 
         MakeSpell("spell_lightning", firefn, 10,"conjuration"),
        MakeSpell("spell_earthquake", earthquakefn, 12,"divinantion"),

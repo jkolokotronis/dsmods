@@ -51,7 +51,7 @@ local function BackpackLose(inst, data)
 	end		
 end
 
-if(not rpghudmod)then
+if(not FA_ModCompat.rpghudmod)then
 	table.insert(EQUIPSLOTS, "PACK")
 	EQUIPSLOTS.PACK = "pack"
 	table.insert(EQUIPSLOTS, "NECK")

@@ -87,6 +87,8 @@ local function fn()
     inst:AddTag("monster")
     inst:AddTag("orc")
     inst:AddTag("hostile")
+    inst:AddTag("fa_evil")
+    inst:AddTag("fa_humanoid")
 	
     MakeCharacterPhysics(inst, 10, 0.5)
      

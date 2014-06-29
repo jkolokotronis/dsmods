@@ -97,10 +97,11 @@ local function enableL1spells()
             recname="fa_spell_inflictlightwounds",
             school="necromancy",
         },
+        --[[
         {
             recname="fa_spell_resistance",
             school="abjuration",
-        },
+        },]]
         {
             recname="fa_spell_fear",
             school="necromancy",
@@ -116,12 +117,12 @@ local function enableL1spells()
     }
     local r=Recipe("fa_spell_curelightwounds", {Ingredient("red_cap", 6), Ingredient("ash", 6), Ingredient("petals", 6)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
-    local r=Recipe("fa_spell_mending", {Ingredient("sewingkit", 1), Ingredient("nightmarefuel", 6), Ingredient("honey", 10)}, RECIPETABS.SPELLS,TECH.NONE)
+    local r=Recipe("fa_spell_mending", {Ingredient("sewing_kit", 1), Ingredient("nightmarefuel", 6), Ingredient("honey", 10)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
     local r=Recipe("fa_spell_inflictlightwounds", {Ingredient("charcoal", 6), Ingredient("nightmarefuel", 4), Ingredient("monstermeat", 6)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
-    local r=Recipe("fa_spell_resistance", {Ingredient("pigskin", 2), Ingredient("beefalowool", 6), Ingredient("cutgrass", 8)}, RECIPETABS.SPELLS,TECH.NONE)
-    r.image="book_gardening.tex"
+--    local r=Recipe("fa_spell_resistance", {Ingredient("pigskin", 2), Ingredient("beefalowool", 6), Ingredient("cutgrass", 8)}, RECIPETABS.SPELLS,TECH.NONE)
+--    r.image="book_gardening.tex"
     local r=Recipe("fa_spell_fear", {Ingredient("nightmarefuel", 6), Ingredient("twigs", 6), Ingredient("petals_evil", 6)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
     local r=Recipe("fa_spell_summonmonster1", {Ingredient("papyrus", 4), Ingredient("silk", 2), Ingredient("spidereggsack", 2)}, RECIPETABS.SPELLS,TECH.NONE)
@@ -313,7 +314,7 @@ local function onturnundead(clr)
     inst.components.spell.spellname = "fa_turnundead"
     inst.components.spell.duration = TURN_UNDEAD_DURATION
     inst.components.spell.ontargetfn = function(inst,target)
-        target.fa_turnundead = inst
+        target.fa_fear = inst
         target:AddTag(inst.components.spell.spellname)
     end
     inst.components.spell.onstartfn = function() end
@@ -321,7 +322,7 @@ local function onturnundead(clr)
         if not inst.components.spell.target then
             return
         end
-        inst.components.spell.target.fa_turnundead = nil
+        inst.components.spell.target.fa_fear = nil
     end
     inst.components.spell.fn = function(inst, target, variables) end
     inst.components.spell.resumefn = function() end

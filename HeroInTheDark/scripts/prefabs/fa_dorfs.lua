@@ -129,6 +129,8 @@ local function common()
     inst:AddTag("character")
     inst:AddTag("dorf")
     inst:AddTag("scarytoprey")
+    inst:AddTag("fa_good")
+    inst:AddTag("fa_humanoid")
 
     inst.AnimState:SetBank("wilson")
     inst.AnimState:SetBuild("fa_dorf")

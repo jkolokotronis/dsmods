@@ -287,6 +287,8 @@ local function common()
     inst:AddTag("monster")
     inst:AddTag("goblin")
     inst:AddTag("hostile")
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_evil")
 	
     MakeCharacterPhysics(inst, 10, 0.5)
      

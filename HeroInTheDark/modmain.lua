@@ -1,7 +1,6 @@
 local require = GLOBAL.require
 require "class"
 require "util"
-
 local MergeMaps=GLOBAL.MergeMaps
 
 GLOBAL.FA_DLCACCESS=false
@@ -14,26 +13,32 @@ GLOBAL.xpcall(function()
                 end
             )
 
+GLOBAL.FA_ModCompat={}
+GLOBAL.FA_ModCompat.memspikefix_delay=1
+--push out the env functions without namespace pollution
+GLOBAL.FA_ModUtil={}
+GLOBAL.FA_ModUtil.AddPrefabPostInit=AddPrefabPostInit
 
-GLOBAL.rpghudmod=nil
 local memspikefixmod=nil
-local alwaysonmod=nil
 for _, mod in ipairs( GLOBAL.ModManager.mods ) do
         if mod.modinfo.name == "RPG HUD" or mod.modinfo.id == "RPG HUD" then
-            GLOBAL.rpghudmod=mod
+            GLOBAL.FA_ModCompat.rpghudmod=mod
 --            print("hud version",mod,mod.modinfo.id,mod.modinfo.name, mod.modinfo.description)
         elseif mod.modinfo.name == "memspikefix" or mod.modinfo.id == "memspikefix"  then
             memspikefixmod=mod
+            GLOBAL.FA_ModCompat.memspikefixed=true
         elseif mod.modinfo.name=="Always On Status" or mod.modinfo.id=="Always On Status" then
-            alwaysonmod=mod
+            GLOBAL.FA_ModCompat.alwaysonmod=mod
         end
     end
-if(not memspikefixmod)then
+if(not memspikefixmod and GetModConfigData("memspikefix"))then
     print("patching memory abuse")
-      modimport "memspikefix.lua"
+    modimport "memspikefix.lua"
+    GLOBAL.FA_ModCompat.memspikefixed=true
 else
-    print("memfix already in place")
+    print("bypassing memspikefix")
 end
+
 
 print("dlc status",GLOBAL.FA_DLCACCESS)
 
@@ -53,12 +58,14 @@ require "fa_strings"
 require "fa_electricalfence"
 require "fa_levelxptable"
 require "fa_stealthdetectiontable"
-require "behaviours/panic"
 require "fa_inventory_override"
 require "fa_inventorybar_override"
 require "fa_combat_override"
-require "fa_behavior_override"
 require "fa_hounded_override"
+require "fa_behavior_override"
+
+--modimport "spelleffects.lua"
+
 local FA_CharRenameScreen=require "screens/fa_charrenamescreen"
 local FA_SpellBookScreen=require "screens/fa_spellbookscreen"
 --
@@ -552,7 +559,7 @@ if(GLOBAL.inventorybarpostconstruct)then
     AddClassPostConstruct("widgets/inventorybar",GLOBAL.inventorybarpostconstruct)
 end
 
-if(not GLOBAL.rpghudmod)then
+if(not GLOBAL.FA_ModCompat.rpghudmod)then
 
 --need to re-initialize the slots and stuff the same way so it doesn't burn on hud active...
 --TODO theres gotta be a better way 
@@ -663,7 +670,7 @@ local function hud_inventorypostinit_fix(cmp,inst)
         inst.components.inventory.maxslots=60
     elseif(inst.components.inventory.maxslots==45)then
        inst.components.inventory.maxslots=50
-    elseif(inst.components.inventory.maxslots==25 and string.find(GLOBAL.rpghudmod.modinfo.description,"Custom UI"))then
+    elseif(inst.components.inventory.maxslots==25 and string.find(GLOBAL.FA_ModCompat.rpghudmod.modinfo.description,"Custom UI"))then
         inst.components.inventory.maxslots=30
     end
 end
@@ -671,7 +678,7 @@ end
 --REWRITE THE WHOLE THING? 
 AddComponentPostInit("inventory", hud_inventorypostinit_fix)
 
-if(string.find(GLOBAL.rpghudmod.modinfo.description,"Custom UI"))then
+if(string.find(GLOBAL.FA_ModCompat.rpghudmod.modinfo.description,"Custom UI"))then
     local function StatusPostInit(self,owner)
     self.heart:SetPosition(0,50,0)
     self.heart.br:SetTint(162/255, 43/255, 37/255, 1)
@@ -877,7 +884,9 @@ local crafttabsPostConstruct=function(self,owner,top_root)
     end
 end
 
-AddClassPostConstruct("widgets/crafttabs",crafttabsPostConstruct)
+if(GetModConfigData("spellbooks"))then
+    AddClassPostConstruct("widgets/crafttabs",crafttabsPostConstruct)
+end
 
 local doSkeletonSpawn=function(inst)
     local skel=SpawnPrefab("skeletonspawn")
@@ -1133,6 +1142,7 @@ AddPrefabPostInit("ghost",function(inst)
     inst.components.lootdropper:AddChanceLoot("nightmarefuel",0.75)
     inst.components.lootdropper:AddChanceLoot("nightmarefuel",0.18) 
     inst:AddTag("undead")
+    inst:AddTag("fa_evil")
 end)
 
 
@@ -1254,7 +1264,7 @@ AddPrefabPostInit("world", function(inst)
     GLOBAL.Prefabs[player_prefab].fn = function()
         local inst = oldfn()
 
-        if(alwaysonmod)then
+        if(GLOBAL.FA_ModCompat.alwaysonmod)then
             print("alwayson", alwaysonmod.version)
             --cba to care about failures, if it fails oh well i did what i could
             if(not inst.components.switch)then

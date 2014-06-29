@@ -35,6 +35,8 @@ local function fn(Sim)
     inst:AddTag("animal")
     inst:AddTag("largecreature")
     inst:AddTag("prey")
+    inst:AddTag("fa_neutral")
+    inst:AddTag("fa_animal")
 
     anim:SetBank("beefalo")
     anim:SetBuild("beefalo_build")

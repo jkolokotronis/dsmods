@@ -59,7 +59,11 @@ local function OnActivate(inst)
 			-- Ascend
 --			local level = level - 1
 			
-			SaveGameIndex:SaveCurrent(function() SaveGameIndex:EnterCave(onsaved,nil, cave_num, inst.fa_level_up) Sleep(1) end, "ascend", cave_num)
+			SaveGameIndex:SaveCurrent(function() SaveGameIndex:EnterCave(onsaved,nil, cave_num, inst.fa_level_up)
+				if(FA_ModCompat.memspikefixed)then
+					Sleep(FA_ModCompat.memspikefix_delay)
+				end
+			end, "ascend", cave_num)
 		end
 	end
 	GetPlayer().HUD:Hide()

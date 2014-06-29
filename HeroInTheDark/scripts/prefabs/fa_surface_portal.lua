@@ -35,7 +35,12 @@ local function OnActivate(inst)
 		end
 
 		local cave_num =  SaveGameIndex:GetCurrentCaveNum()
-		SaveGameIndex:SaveCurrent(function() SaveGameIndex:LeaveCave(onsaved) end, "ascend", cave_num)
+		SaveGameIndex:SaveCurrent(function() 
+			SaveGameIndex:LeaveCave(onsaved) 
+			if(FA_ModCompat.memspikefixed)then
+					Sleep(FA_ModCompat.memspikefix_delay)
+			end
+		end, "ascend", cave_num)
 		
 	end
 	GetPlayer().HUD:Hide()

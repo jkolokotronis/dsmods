@@ -27,6 +27,8 @@ local function fn(Sim)
     
     inst:AddTag("monster")
     inst:AddTag("hostile")
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_neutral")
 
     MakeCharacterPhysics(inst, 20, .5)
 

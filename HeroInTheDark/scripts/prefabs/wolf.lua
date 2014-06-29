@@ -159,6 +159,8 @@ local function fncommon()
     inst:AddTag("monster")
     inst:AddTag("hostile")
     inst:AddTag("hound")
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
 	
     MakeCharacterPhysics(inst, 10, .5)
      

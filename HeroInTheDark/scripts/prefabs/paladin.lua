@@ -204,7 +204,7 @@ local function onturnundead(clr)
     inst.components.spell.spellname = "fa_turnundead"
     inst.components.spell.duration = TURN_UNDEAD_DURATION
     inst.components.spell.ontargetfn = function(inst,target)
-        target.fa_turnundead = inst
+        target.fa_fear = inst
         target:AddTag(inst.components.spell.spellname)
     end
     inst.components.spell.onstartfn = function() end
@@ -212,7 +212,7 @@ local function onturnundead(clr)
         if not inst.components.spell.target then
             return
         end
-        inst.components.spell.target.fa_turnundead = nil
+        inst.components.spell.target.fa_fear = nil
     end
     inst.components.spell.fn = function(inst, target, variables) end
     inst.components.spell.resumefn = function() end

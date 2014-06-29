@@ -167,6 +167,8 @@ function FA_InspireCourageSpellStart( reader,timer)
     end
 end
 
+
+
 local dm_start=function(inst)
     local target=inst.components.spell.target
     if target then
@@ -461,6 +463,38 @@ local longstrider_start=function(inst, target, variables)
     local target=inst.components.spell.target
     if target then
         target.components.locomotor.runspeed=target.components.locomotor.runspeed+IA_MS_BOOST
+    end
+end
+
+function FA_ProtEvilSpellStart(reader,timer)
+    if(timer==nil or timer<=0)then return false end
+
+    if reader.fa_protevil then
+        reader.fa_protevil.components.spell.lifetime = 0
+--        reader.fa_inspireagility.components.spell:ResumeSpell()
+        return true
+    else
+
+    local inst=CreateEntity()
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_protevil"
+    inst.components.spell.duration = timer
+    inst.components.spell.ontargetfn = function(inst,target)
+        target.fa_protevil = inst
+        target:AddTag(inst.components.spell.spellname)
+    end
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+        inst.components.spell.target.fa_protevil = nil
+    end
+
+        inst.components.spell.resumefn = function() end
+        inst.components.spell.removeonfinish = true
+
+        inst.components.spell:SetTarget(reader)
+        inst.components.spell:StartSpell()
     end
 end
 

@@ -72,8 +72,12 @@ local function OnActivate(inst)
 			end
 			print("actually descending into",level_to_go,"from",GetWorld().topology.level_number)
 			print("level", Levels.cave_levels[level_to_go].name)
-			SaveGameIndex:SaveCurrent(function() SaveGameIndex:EnterCave(onsaved,nil, inst.cavenum, level_to_go) 
-			Sleep(1) end, "descend", inst.cavenum)
+			SaveGameIndex:SaveCurrent(function() 
+				SaveGameIndex:EnterCave(onsaved,nil, inst.cavenum, level_to_go) 
+				if(FA_ModCompat.memspikefixed)then
+					Sleep(FA_ModCompat.memspikefix_delay)
+				end
+			 end, "descend", inst.cavenum)
 		end
 
 		if not inst.cavenum then
