@@ -85,6 +85,12 @@ FA_LEVELDATA["GOBLIN_CAVE"]={
 --			"Military"
 --			"Sacred"
 		},
+		numrandom_set_pieces = math.random(0,2),
+		random_set_pieces = 
+		{
+			"FAcave_scrollchest_3",
+			"FAcave_scrollchest_3_B",
+		},
 		--[[
 		numoptionaltasks = math.random(1,2),
 		optionaltasks = {
@@ -132,6 +138,12 @@ FA_LEVELDATA["GOBLIN_CAVE_2"]={
 			"FAGoblinDungeon8",
 			"FAGoblinDungeonMaze2"
 		},
+		numrandom_set_pieces = math.random(0,2),
+		random_set_pieces = 
+		{
+			"FAcave_scrollchest_3",
+			"FAcave_scrollchest_3_B",
+		},
 		required_prefabs = {
 		"fa_dungeon_exit",
 		"fa_dungeon_entrance",
@@ -172,6 +184,12 @@ FA_LEVELDATA["GOBLIN_CAVE_3"]={
 			"FAGoblinDungeon7",
 			"FAGoblinDungeon8",
 			"FAGoblinDungeonMaze3"
+		},
+		numrandom_set_pieces = math.random(0,2),
+		random_set_pieces = 
+		{
+			"FAcave_scrollchest_3",
+			"FAcave_scrollchest_3_B",
 		},
 		required_prefabs = {
 		"fa_dungeon_exit",

@@ -91,11 +91,39 @@ local function AddOrcPieces(level)
 	level.set_pieces["FAOrcSetHound"]= { count=5, tasks={"Badlands","Oasis"} }
 end
 
---AddLevelPreInit("SURVIVAL_DEFAULT", AddOrcPieces)
---AddLevelPreInit("SURVIVAL_DEFAULT_PLUS", AddOrcPieces)
+local function AddScrollBoons(level)
+	level.set_pieces["FAevilbiome_scrollchest_2"]= { count=2, tasks={"Squeltch","Merms ahoy"} }
+	
+	local Boons=require("map/boons").Sandbox
+	local BoonsLayouts=require("map/boons").Layouts
+	--TODO figure if oer-floortype works here 
+	Boons["Any"]["FAflooring_scrollchest_1"]=Layouts["FAflooring_scrollchest_1"]
+	Boons["Any"]["FAflooring_scrollchest_1_B"]=Layouts["FAflooring_scrollchest_1_B"]
+	Boons["Any"]["FAgrass_scrollchest_1"]=Layouts["FAgrass_scrollchest_1"]
+	Boons["Any"]["FAgrass_scrollchest_1_B"]=Layouts["FAgrass_scrollchest_1_B"]
+	Boons["Any"]["FAgrass_scrollchest_1_C"]=Layouts["FAgrass_scrollchest_1_C"]
+	Boons["Any"]["FArock_scrollchest_1"]=Layouts["FArock_scrollchest_1"]
+	Boons["Any"]["FArock_scrollchest_B"]=Layouts["FArock_scrollchest_B"]
+	Boons["Any"]["FArock_scrollchest_C"]=Layouts["FArock_scrollchest_C"]
+
+	BoonsLayouts["FAflooring_scrollchest_1"]=Layouts["FAflooring_scrollchest_1"]
+	BoonsLayouts["FAflooring_scrollchest_1_B"]=Layouts["FAflooring_scrollchest_1_B"]
+	BoonsLayouts["FAgrass_scrollchest_1"]=Layouts["FAgrass_scrollchest_1"]
+	BoonsLayouts["FAgrass_scrollchest_1_B"]=Layouts["FAgrass_scrollchest_1_B"]
+	BoonsLayouts["FAgrass_scrollchest_1_C"]=Layouts["FAgrass_scrollchest_1_C"]
+	BoonsLayouts["FArock_scrollchest_1"]=Layouts["FArock_scrollchest_1"]
+	BoonsLayouts["FArock_scrollchest_B"]=Layouts["FArock_scrollchest_B"]
+	BoonsLayouts["FArock_scrollchest_C"]=Layouts["FArock_scrollchest_C"]
+end
+
+
+AddLevelPreInit("SURVIVAL_DEFAULT", AddScrollBoons)
+AddLevelPreInit("SURVIVAL_DEFAULT_PLUS", AddScrollBoons)
+
+
+
 -- Squeltch
 --badlands and oasis 
 --"Kill the spiders"  "Mole Colony Rocks" "Dig that rock" ??
 
 --local task = GLOBAL.tasks.GetTaskByName("Forest hunters", GLOBAL.tasks.sampletasks)
---task.room_choices["tut08_room"] = 50

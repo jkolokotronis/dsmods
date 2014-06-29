@@ -188,7 +188,7 @@ end
 local fn = function(inst)
 	ref=inst
 		-- choose which sounds this character will play
-	inst.soundsname = "wolfgang"
+	inst.soundsname = "barb"
 
 	-- a minimap icon must be specified
 	inst.MiniMapEntity:SetIcon( "barb.tex" )

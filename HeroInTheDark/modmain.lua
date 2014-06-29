@@ -428,6 +428,18 @@ AddMinimapAtlas("minimap/druid.xml")
 AddMinimapAtlas("minimap/paladin.xml")
 AddMinimapAtlas("minimap/darkknight.xml")
 
+RemapSoundEvent( "dontstarve/characters/bard/death_voice", "dontstarve/characters/wilson/death_voice" )
+RemapSoundEvent( "dontstarve/characters/bard/hurt", "fa/characters/bard/hurt" )
+RemapSoundEvent( "dontstarve/characters/bard/talk_LP", "fa/characters/bard/talk_LP" )
+RemapSoundEvent( "dontstarve/characters/barb/death_voice", "dontstarve/characters/wilson/death_voice")
+RemapSoundEvent( "dontstarve/characters/barb/hurt", "fa/characters/barb/hurt" )
+RemapSoundEvent( "dontstarve/characters/barb/talk_LP", "fa/characters/barb/talk_LP" )
+RemapSoundEvent( "dontstarve/characters/paladin/death_voice", "fa/characters/paladin/death_voice")
+RemapSoundEvent( "dontstarve/characters/paladin/hurt", "fa/characters/paladin/hurt" )
+RemapSoundEvent( "dontstarve/characters/paladin/talk_LP", "fa/characters/paladin/talk_LP" )
+RemapSoundEvent( "dontstarve/characters/wizard/death_voice", "fa/characters/wizard/death_voice")
+RemapSoundEvent( "dontstarve/characters/wizard/hurt", "fa/characters/wizard/hurt" )
+RemapSoundEvent( "dontstarve/characters/wizard/talk_LP", "fa/characters/wizard/talk_LP" )
 
 local EVIL_SANITY_AURA_OVERRIDE={
     robin=-TUNING.SANITYAURA_MED,
