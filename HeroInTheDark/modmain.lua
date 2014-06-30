@@ -114,6 +114,8 @@ PrefabFiles = {
     "fa_dungeon_entrance",
     "fa_dungeon_exit",
     "fa_surface_portal",
+    "fa_scribescrolls",
+    "fa_summons",
     "cheats",
     "poisonspider",
     "poisonspiderden",

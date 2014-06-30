@@ -14,15 +14,17 @@ local function OnLoad(inst, scenariorunner)
             end
 		scenariorunner:ClearScenario()
         inst:Remove()
+        return true
 	end
-	inst:ListenForEvent("onputininventory", inst.scene_pickupfn)
+	inst.components.inventoryitem.onpickupfn=inst.scene_pickupfn
+--	inst:ListenForEvent("onputininventory", inst.scene_pickupfn)
 end
 
 local function OnDestory(inst)
-	if inst.scene_pickupfn then
-		inst:RemoveEventCallback("onputininventory", inst.scene_pickupfn)
-		inst.scene_pickupfn = nil
-	end
+--	if inst.scene_pickupfn then
+--		inst:RemoveEventCallback("onputininventory", inst.scene_pickupfn)
+--		inst.scene_pickupfn = nil
+--	end
 end	
 
 

@@ -516,9 +516,9 @@ function treeguardianfn(inst,reader)
 
 end
 
-function blackspiderspawn(inst,reader)
+function spawnsummonbyname(inst,reader,prefab)
     local spawn_point= Vector3(reader.Transform:GetWorldPosition())
-    local tree = SpawnPrefab("spider") 
+    local tree = SpawnPrefab(prefab) 
     local pt = Vector3(spawn_point.x, 0, spawn_point.z)
         tree.Physics:SetCollides(false)
         tree.Physics:Teleport(pt.x, pt.y, pt.z) 
@@ -528,23 +528,46 @@ function blackspiderspawn(inst,reader)
         tree:ListenForEvent("stopfollowing",function(f)
             f.components.health:Kill()
         end)
-        --those things have messed up targetting, they'd eat all other followers if not controlled
-        tree.components.combat:SetRetargetFunction(1, function(inst)
-            return FindEntity(inst, 20, function(guy)
-            return  guy.components.combat and 
-                    inst.components.combat:CanTarget(guy) and
-                    (guy.components.combat.target == reader or reader.components.combat.target == guy)
-            end)
-            end 
-            )
 
     return tree
+
+end
+
+function blackspiderspawn(inst,reader)
+    return spawnsummonbyname(inst,reader,"fa_cummonmonster1")
 end
 
 --the hell is it even called differently? meh
 function summon1fn(inst,reader)
 
     local spider=blackspiderspawn(inst,reader)
+    spider.maxfollowtime=NATURESALLY_SUMMON_TIME
+    spider.components.follower:AddLoyaltyTime(NATURESALLY_SUMMON_TIME)
+
+     return true
+
+end
+function summon2fn(inst,reader)
+
+    local spider=spawnsummonbyname(inst,reader,"fa_cummonmonster2")
+    spider.maxfollowtime=NATURESALLY_SUMMON_TIME
+    spider.components.follower:AddLoyaltyTime(NATURESALLY_SUMMON_TIME)
+
+     return true
+
+end
+function summon3fn(inst,reader)
+
+    local spider=spawnsummonbyname(inst,reader,"fa_cummonmonster3")
+    spider.maxfollowtime=NATURESALLY_SUMMON_TIME
+    spider.components.follower:AddLoyaltyTime(NATURESALLY_SUMMON_TIME)
+
+     return true
+
+end
+function summon4fn(inst,reader)
+
+    local spider=spawnsummonbyname(inst,reader,"fa_cummonmonster4")
     spider.maxfollowtime=NATURESALLY_SUMMON_TIME
     spider.components.follower:AddLoyaltyTime(NATURESALLY_SUMMON_TIME)
 
@@ -711,9 +734,9 @@ return
     MakeSpell("fa_spell_protevil",protevilfn,10,FA_SPELL_SCHOOLS.ABJURATION),
     MakeSpell("fa_spell_aid",protevilfn,10,FA_SPELL_SCHOOLS.ENCHANTMENT),
     MakeSpell("fa_spell_summonmonster1",summon1fn,10,FA_SPELL_SCHOOLS.CONJURATION),
---    MakeSpell("fa_spell_summonmonster2",summon2fn,10,FA_SPELL_SCHOOLS.CONJURATION),
---    MakeSpell("fa_spell_summonmonster3",summon3fn,10,FA_SPELL_SCHOOLS.CONJURATION),
---    MakeSpell("fa_spell_summonmonster4",summon4fn,10,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_summonmonster2",summon2fn,10,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_summonmonster3",summon3fn,10,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_summonmonster4",summon4fn,10,FA_SPELL_SCHOOLS.CONJURATION),
 --    MakeSpell("fa_spell_summonmonster5",summon5fn,10,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_inflictlightwoundsmass",inflictlightmass,7,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_curelightwoundsmass",curelighmassfn,5,FA_SPELL_SCHOOLS.CONJURATION),
