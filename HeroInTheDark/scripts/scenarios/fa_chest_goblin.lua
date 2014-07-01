@@ -28,8 +28,14 @@ local function OnCreate(inst, scenariorunner)
 			item = {"yellowgem", "orangegem", "greengem"},
 			count = 1,
 			chance = 0.07,
+		},
+		{
+			item={"fa_scroll_12"},
+			count=1,
+			chance=0.15
 		}
-	}
+	}   
+
 
 	local loots=FA_GenerateLoot(FALLENLOOTTABLEMERGED,FALLENLOOTTABLE.TABLE_WEIGHT,1)
 	for k,prefab in pairs(loots) do

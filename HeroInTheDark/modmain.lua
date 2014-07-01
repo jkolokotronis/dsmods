@@ -1012,7 +1012,6 @@ mound_digcallback=function(inst,worker)
             end
         end     
         local roll=math.random()
-         print(roll,":",GLOBAL.GHOST_MOUND_SPAWN_CHANCE)
         if roll < GLOBAL.GHOST_MOUND_SPAWN_CHANCE then
                 local ghost = SpawnPrefab("ghost")
                 local pos = Point(inst.Transform:GetWorldPosition())
@@ -1021,9 +1020,9 @@ mound_digcallback=function(inst,worker)
                 if ghost then
                     ghost.Transform:SetPosition(pos.x, pos.y, pos.z)
                 end
-                elseif worker.components.inventory then
-                    local item = nil
-                    if math.random() < .5 then
+        elseif worker.components.inventory then
+                local item = nil
+                if math.random() < GLOBAL.GHOST_MOUND_ITEM_CHANCE then
                     local loots = 
                     {
                         nightmarefuel = 1,
@@ -1039,6 +1038,9 @@ mound_digcallback=function(inst,worker)
 
                 if item then
                     inst.components.lootdropper:SpawnLootPrefab(item)
+                end
+                if(math.random()<GLOBAL.GHOST_MOUND_SCROLL_CHANCE)then
+                    inst.components.lootdropper:SpawnLootPrefab("fa_scroll_12")
                 end
         end
     end
@@ -1191,9 +1193,13 @@ end)
 
 
 local function onFishingCollect(inst,data)
+    local spawnPos = GLOBAL.Vector3(inst.Transform:GetWorldPosition() )
     if(math.random()<=GLOBAL.FISHING_MERM_SPAWN_CHANCE)then
         local merm=SpawnPrefab("merm")
-        local spawnPos = GLOBAL.Vector3(inst.Transform:GetWorldPosition() )
+        merm.Transform:SetPosition(spawnPos:Get() )
+    end
+    if(math.random()<=GLOBAL.FISHING_SCROLL_SPAWN_CHANCE)then
+        local merm=SpawnPrefab("fa_scroll_1")
         merm.Transform:SetPosition(spawnPos:Get() )
     end
 end
@@ -1791,24 +1797,106 @@ end)
 
 AddPrefabPostInit("rabbithole", function(inst) addT1LootPrefabPostInit(inst,0.05) end)
 
-AddPrefabPostInit("merm", function(inst) addFullLootPrefabPostInit(inst,0.1) end)
-AddPrefabPostInit("pigman", function(inst) addFullLootPrefabPostInit(inst,0.1) end)
-AddPrefabPostInit("pigguard", function(inst) addFullLootPrefabPostInit(inst,0.1) end)
+AddPrefabPostInit("merm", function(inst) 
+    addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+end)
+AddPrefabPostInit("pigman", function(inst) 
+    addFullLootPrefabPostInit(inst,0.1)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+end)
+AddPrefabPostInit("pigguard", function(inst) 
+    addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+end)
 AddPrefabPostInit("bunnyman", function(inst) addFullLootPrefabPostInit(inst,0.1) end)
 AddPrefabPostInit("orc", function(inst) addFullLootPrefabPostInit(inst,0.1) end)
-AddPrefabPostInit("goblin", function(inst) addFullLootPrefabPostInit(inst,0.1) end)
+AddPrefabPostInit("goblin", function(inst) 
+    addFullLootPrefabPostInit(inst,0.1) 
+end)
+AddPrefabPostInit("fa_goblin_guard_1", function(inst) 
+    addFullLootPrefabPostInit(inst,0.1) 
+end)
+AddPrefabPostInit("fa_goblin_guard_2", function(inst) 
+    addFullLootPrefabPostInit(inst,0.1) 
+end)
+AddPrefabPostInit("fa_goblin_guard_3", function(inst) 
+    addFullLootPrefabPostInit(inst,0.1) 
+end)
 
-AddPrefabPostInit("mermhouse", function(inst) addFullLootPrefabPostInit(inst,0.2) end)
-AddPrefabPostInit("pighouse", function(inst) addFullLootPrefabPostInit(inst,0.2) end)
+AddPrefabPostInit("mermhouse", function(inst) 
+    addFullLootPrefabPostInit(inst,0.2) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.15)
+end)
+AddPrefabPostInit("pighouse", function(inst) 
+    addFullLootPrefabPostInit(inst,0.2) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.15)
+end)
 AddPrefabPostInit("rabbithouse", function(inst) addFullLootPrefabPostInit(inst,0.2) end)
 AddPrefabPostInit("goblinhut", function(inst) addFullLootPrefabPostInit(inst,0.2) end)
 
-AddPrefabPostInit("spiderden", function(inst) addT1LootPrefabPostInit(inst,0.15) end)
-AddPrefabPostInit("poisonspiderden", function(inst) addT1LootPrefabPostInit(inst,0.15) end)
-AddPrefabPostInit("spiderden_2", function(inst) addT1T2LootPrefabPostInit(inst,0.15) end)
-AddPrefabPostInit("poisonspiderden_2", function(inst) addT1T2LootPrefabPostInit(inst,0.15) end)
-AddPrefabPostInit("spiderden_3", function(inst) addFullLootPrefabPostInit(inst,0.15) end)
-AddPrefabPostInit("poisonspiderden_3", function(inst) addFullLootPrefabPostInit(inst,0.15) end)
+AddPrefabPostInit("spiderden", function(inst) 
+    addT1LootPrefabPostInit(inst,0.15) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
+end)
+AddPrefabPostInit("poisonspiderden", function(inst) 
+    addT1LootPrefabPostInit(inst,0.15) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
+end)
+AddPrefabPostInit("spiderden_2", function(inst) 
+    addT1T2LootPrefabPostInit(inst,0.15) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
+end)
+AddPrefabPostInit("poisonspiderden_2", function(inst) 
+    addT1T2LootPrefabPostInit(inst,0.15) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
+end)
+AddPrefabPostInit("spiderden_3", function(inst) 
+    addFullLootPrefabPostInit(inst,0.15) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
+end)
+AddPrefabPostInit("poisonspiderden_3", function(inst) 
+    addFullLootPrefabPostInit(inst,0.15) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
+end)
+AddPrefabPostInit("spiderqueen", function(inst) 
+    addFullLootPrefabPostInit(inst,0.15) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
+end)
+
+AddPrefabPostInit("deerclops", function(inst) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
+end)
+AddPrefabPostInit("leif", function(inst) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
+end)
+AddPrefabPostInit("leif_sparse", function(inst) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
+end)
+AddPrefabPostInit("bearger", function(inst) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
+end)
+AddPrefabPostInit("dragonfly", function(inst) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
+end)
+AddPrefabPostInit("moose", function(inst) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
+end)
+AddPrefabPostInit("minotaur", function(inst) 
+    --should not happen
+    if not inst.components.lootdropper.loot then
+        inst.components.lootdropper.loot={}
+    end
+    table.insert(inst.components.lootdropper.loot,"fa_scroll_45")
+    table.insert(inst.components.lootdropper.loot,"fa_scroll_45")
+end)
 
 --mob resists
 AddPrefabPostInit("firehound", function(inst) inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=1 end)

@@ -99,7 +99,8 @@ local function fn(Sim)
     inst:AddTag("leif")
     inst:AddTag("tree")
     inst:AddTag("largecreature")
-
+    inst:AddTag("fa_summon")
+    inst:AddTag("fa_exclusive")
 
     inst:AddComponent("follower")
 

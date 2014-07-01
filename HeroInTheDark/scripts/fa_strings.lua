@@ -455,6 +455,12 @@ STRINGS.RECIPE_DESC.FA_SPELL_AID = "Grants you temporary HP."
 STRINGS.NAMES.FA_SPELL_HOLDPERSON = "Hold Person"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_SPELL_HOLDPERSON = "Holds a humanoid in place, rendering it unable to defend itself."
 STRINGS.RECIPE_DESC.FA_SPELL_HOLDPERSON = "Holds a humanoid in place, rendering it unable to defend itself."
+STRINGS.NAMES.FA_SPELL_ANIMATEDEAD = "Animate Dead"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_SPELL_ANIMATEDEAD = "Summons a skeleton to fight for you. This is dangerous magic."
+STRINGS.RECIPE_DESC.FA_SPELL_ANIMATEDEAD = "Summons a skeleton to fight for you. This is dangerous magic."
+STRINGS.NAMES.FA_SPELL_SHADOWCONJURATION = "Shadow Conjuration"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_SPELL_SHADOWCONJURATION = "Summons a shadow monster to fight for you. This is dangerous magic to play with."
+STRINGS.RECIPE_DESC.FA_SPELL_SHADOWCONJURATION = "Summons a shadow monster to fight for you. This is dangerous magic to play with."
 
  
 ------------------------

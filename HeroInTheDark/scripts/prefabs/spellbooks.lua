@@ -498,7 +498,21 @@ function earthquakefn(inst,reader)
     return true
 end
 
+local function killexclusivesummons(inst)
+ local leader=inst.components.leader
+    for k,v in pairs(leader.followers) do
+        if(k:HasTag("fa_summon") and k:HasTag("fa_exclusive"))then
+            if(k.components.health and not k.components.health:IsDead()) then
+                k.components.health:Kill()
+            else
+                k:Remove()
+            end
+        end
+    end
+end
+
 function treeguardianfn(inst,reader)
+    killexclusivesummons(reader)
 
     local spawn_point= Vector3(reader.Transform:GetWorldPosition())
     local tree = SpawnPrefab("treeguardian") 
@@ -516,7 +530,10 @@ function treeguardianfn(inst,reader)
 
 end
 
-function spawnsummonbyname(inst,reader,prefab)
+function spawnsummonbyname(inst,reader,prefab,exclusive)
+    if(exclusive)then
+        killexclusivesummons(reader)
+    end
     local spawn_point= Vector3(reader.Transform:GetWorldPosition())
     local tree = SpawnPrefab(prefab) 
     local pt = Vector3(spawn_point.x, 0, spawn_point.z)
@@ -534,45 +551,42 @@ function spawnsummonbyname(inst,reader,prefab)
 end
 
 function blackspiderspawn(inst,reader)
-    return spawnsummonbyname(inst,reader,"fa_cummonmonster1")
+    return spawnsummonbyname(inst,reader,"fa_summonmonster1")
 end
 
 --the hell is it even called differently? meh
 function summon1fn(inst,reader)
 
-    local spider=blackspiderspawn(inst,reader)
-    spider.maxfollowtime=NATURESALLY_SUMMON_TIME
-    spider.components.follower:AddLoyaltyTime(NATURESALLY_SUMMON_TIME)
+    local spider=spawnsummonbyname(inst,reader,"fa_summonmonster1",true)
+--    spider.maxfollowtime=NATURESALLY_SUMMON_TIME
+--    spider.components.follower:AddLoyaltyTime(NATURESALLY_SUMMON_TIME)
 
      return true
 
 end
 function summon2fn(inst,reader)
 
-    local spider=spawnsummonbyname(inst,reader,"fa_cummonmonster2")
-    spider.maxfollowtime=NATURESALLY_SUMMON_TIME
-    spider.components.follower:AddLoyaltyTime(NATURESALLY_SUMMON_TIME)
-
+    local spider=spawnsummonbyname(inst,reader,"fa_summonmonster2",true)
      return true
 
 end
 function summon3fn(inst,reader)
 
-    local spider=spawnsummonbyname(inst,reader,"fa_cummonmonster3")
-    spider.maxfollowtime=NATURESALLY_SUMMON_TIME
-    spider.components.follower:AddLoyaltyTime(NATURESALLY_SUMMON_TIME)
-
+    local spider=spawnsummonbyname(inst,reader,"fa_summonmonster3",true)
      return true
 
 end
 function summon4fn(inst,reader)
-
-    local spider=spawnsummonbyname(inst,reader,"fa_cummonmonster4")
-    spider.maxfollowtime=NATURESALLY_SUMMON_TIME
-    spider.components.follower:AddLoyaltyTime(NATURESALLY_SUMMON_TIME)
-
+    local spider=spawnsummonbyname(inst,reader,"fa_summonmonster4",true)
      return true
-
+end
+function animatedeadfn(inst,reader)
+    local spider=spawnsummonbyname(inst,reader,"fa_animatedead",true)
+     return true
+end
+function shadowconjuration(inst,reader)
+    local spider=spawnsummonbyname(inst,reader,"fa_horrorpet",true)
+     return true
 end
 
 
@@ -740,8 +754,9 @@ return
 --    MakeSpell("fa_spell_summonmonster5",summon5fn,10,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_inflictlightwoundsmass",inflictlightmass,7,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_curelightwoundsmass",curelighmassfn,5,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_animatedead",animatedeadfn,5,FA_SPELL_SCHOOLS.NECROMANCY),
+    MakeSpell("fa_spell_shadowconjuration",shadowconjuration,4,FA_SPELL_SCHOOLS.NECROMANCY),
  
-
         MakeSpell("spell_lightning", firefn, 10,"conjuration"),
        MakeSpell("spell_earthquake", earthquakefn, 12,"divinantion"),
        MakeSpell("spell_grow", growfn, 15,"evocation"),

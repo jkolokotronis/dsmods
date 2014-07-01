@@ -362,24 +362,28 @@ end
 local function normal()
 local inst=common()
     GetInventoryNormal(inst)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
     return inst
 end
 
 local function fnguard1()
     local inst=common()
     GetInventoryGuard1(inst)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
     return inst
 end
 
 local function fnguard2()
     local inst=common()
     GetInventoryGuard2(inst)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
     return inst
 end
 
 local function fnguard3()
     local inst=common()
     GetInventoryGuard3(inst)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
     return inst
 end
 
@@ -422,6 +426,7 @@ local function fnwiz()
 --    inst:ListenForEvent("onmissother", self.onattackfn)
     local brain = require "brains/goblinwizardbrain"
     inst:SetBrain(brain)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_14",0.4)
     return inst
 end
 
@@ -438,7 +443,7 @@ local function fnking()
     inst.components.combat:SetRetargetFunction(1, KingRetargetFn)
     local brain = require "brains/goblinkingbrain"
     inst:SetBrain(brain)
-    inst.components.lootdropper:SetLoot({ "goblinkinghead_item","Boards"})
+    inst.components.lootdropper:SetLoot({ "goblinkinghead_item","Boards","fa_scroll_5","fa_scroll_5"})
     return inst
 end
 return Prefab( "common/goblin", normal, assets),

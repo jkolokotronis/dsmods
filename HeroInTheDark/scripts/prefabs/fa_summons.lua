@@ -1,15 +1,19 @@
 --theyre all defaults, shouldnt need this
-local fa_cummonmonster1_assets=
+local fa_summonmonster1_assets=
 {
 }
-local fa_cummonmonster2_assets=
+local fa_summonmonster2_assets=
 {
 }
-local fa_cummonmonster3_assets=
+local fa_summonmonster3_assets=
 {
 }
-local fa_cummonmonster4_assets=
+local fa_summonmonster4_assets=
 {
+}
+local fa_animated_assets=
+{
+    Asset("ANIM", "anim/drybones.zip"),
 }
     
 
@@ -17,6 +21,7 @@ local WAKE_TO_FOLLOW_DISTANCE = 8
 local SLEEP_NEAR_HOME_DISTANCE = 10
 local SHARE_TARGET_DIST = 30
 local HOME_TELEPORT_DIST = 30
+local PET_HEALTH=300
 
 local function ShouldWakeUp(inst)
     return DefaultWakeTest(inst) or (inst.components.follower and inst.components.follower.leader and not inst.components.follower:IsNearLeader(WAKE_TO_FOLLOW_DISTANCE))
@@ -75,12 +80,23 @@ local function auratest(inst, target)
     return target:HasTag("monster") --or target:HasTag("prey")
 end
 
+
+local loadpostpass=function(inst,data)
+    if(inst.components.follower and inst.components.follower.leader)then
+   inst:ListenForEvent("stopfollowing",function(f)
+            inst.components.health:Kill()
+        end)
+    end
+end
+
 local function common()
     local inst = CreateEntity()
     inst.entity:AddTransform()
     anim=inst.entity:AddAnimState()
     inst.entity:AddSoundEmitter()
     inst.entity:AddDynamicShadow()
+
+    inst.LoadPostPass=loadpostpass
     
     inst.Transform:SetFourFaced()
     inst.entity:AddPhysics()
@@ -100,13 +116,15 @@ local function common()
     return inst
 end
 
-local function fa_cummonmonster1()
+local function fa_summonmonster1()
     
     local inst=common()
 
     MakeCharacterPhysics(inst, 10, .5)
     inst.DynamicShadow:SetSize( 2.5, 1.5 )
     
+    inst:AddTag("fa_summon")
+    inst:AddTag("fa_exclusive")
     inst:AddTag("spider")
     inst.AnimState:SetBank("spider")
     inst.AnimState:SetBuild("spider_build")
@@ -149,14 +167,15 @@ local function fa_cummonmonster1()
     return inst
 end
 
-local function fa_cummonmonster2()
+local function fa_summonmonster2()
     
     local inst=common()
     
     MakeCharacterPhysics(inst, 50, .5)
     shadow:SetSize( 1.5, .75 )
 
-    inst:AddTag("spider")
+    inst:AddTag("fa_summon")
+    inst:AddTag("fa_exclusive")
     inst.AnimState:SetBank("pigman")
     inst.AnimState:SetBuild("merm_build")
     inst.AnimState:PlayAnimation("idle_loop")
@@ -198,13 +217,15 @@ local function fa_cummonmonster2()
     return inst
 end
 
-local function fa_cummonmonster3()
+local function fa_summonmonster3()
     
     local inst=common()
     
     MakeCharacterPhysics(inst, 50, .5)
     shadow:SetSize( 1.5, .75 )
 
+    inst:AddTag("fa_summon")
+    inst:AddTag("fa_exclusive")
     inst:AddTag("pig")
     inst.AnimState:SetBank("pigman")
     inst.AnimState:SetBuild("pig_build")
@@ -244,13 +265,15 @@ local function fa_cummonmonster3()
     return inst
 end
 
-local function fa_cummonmonster4()
+local function fa_summonmonster4()
     
     local inst=common()
     
     MakeCharacterPhysics(inst, 10, .5)
     shadow:SetSize( 2.5, 1.5 )
     
+    inst:AddTag("fa_summon")
+    inst:AddTag("fa_exclusive")
     inst.AnimState:SetBank("hound")
     inst.AnimState:SetBuild("hound_ice")
     inst.AnimState:PlayAnimation("idle")
@@ -289,7 +312,115 @@ local function fa_cummonmonster4()
     return inst
 end
 
-return Prefab( "common/fa_cummonmonster1", fa_cummonmonster1, fa_cummonmonster1_assets),
-    Prefab("common/fa_cummonmonster2",fa_cummonmonster2,fa_cummonmonster2_assets),
-    Prefab("common/fa_cummonmonster3",fa_cummonmonster3,fa_cummonmonster3_assets),
-    Prefab("common/fa_cummonmonster4",fa_cummonmonster4,fa_cummonmonster4_assets)
+
+local function fa_animatedead()
+    
+    local inst=common()
+    
+    MakeCharacterPhysics(inst, 10, .5)
+    shadow:SetSize( 2.5, 1.5 )
+    
+    inst:AddTag("fa_summon")
+    inst:AddTag("fa_exclusive")
+    inst.AnimState:SetBank("wilson")
+    inst.AnimState:SetBuild("drybones")
+    inst.AnimState:PlayAnimation("idle")
+    inst.AnimState:Hide("ARM_carry")
+    inst.AnimState:Hide("hat")
+    inst.AnimState:Hide("hat_hair")
+    inst:AddTag("skeleton")
+    inst:AddTag("undead")
+
+    inst.components.locomotor.runspeed = TUNING.WILSON_RUN_SPEED*2
+
+    inst:SetStateGraph("SGskeletonspawn")
+    
+    inst:AddTag("notraptrigger")
+
+    MakeMediumBurnableCharacter(inst, "hound_body")
+
+    inst:AddComponent("sleeper")
+    inst.components.sleeper:SetResistance(2)
+    inst.components.sleeper.testperiod = GetRandomWithVariance(6, 2)
+    inst.components.sleeper:SetSleepTest(ShouldSleep)
+    inst.components.sleeper:SetWakeTest(ShouldWakeUp)
+
+    inst:AddComponent("combat")
+    inst.components.combat.hiteffectsymbol = "torso"
+    inst.components.combat:SetDefaultDamage(TUNING.HOUND_DAMAGE)
+    inst.components.combat:SetAttackPeriod(2)
+    
+    inst:AddComponent("health")
+    inst.components.health:SetMaxHealth(PET_HEALTH)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1
+    inst.components.health:StartRegen(5,5)
+
+    local brain = require "brains/skeletonspawnbrain"
+    inst:SetBrain(brain)
+
+    return inst
+end
+
+local function fa_horrorpet()
+    
+    local inst=common()
+
+    local sounds = 
+    {
+        attack = "dontstarve/sanity/creature1/attack",
+        attack_grunt = "dontstarve/sanity/creature1/attack_grunt",
+        death = "dontstarve/sanity/creature1/die",
+        idle = "dontstarve/sanity/creature1/idle",
+        taunt = "dontstarve/sanity/creature1/taunt",
+        appear = "dontstarve/sanity/creature1/appear",
+        disappear = "dontstarve/sanity/creature1/dissappear",
+    }
+    
+    MakeCharacterPhysics(inst, 10, .5)
+    shadow:SetSize( 2.5, 1.5 )
+    
+    inst:AddTag("fa_summon")
+    inst:AddTag("fa_exclusive")
+        inst.AnimState:SetBank("shadowcreature1")
+        inst.AnimState:SetBuild("shadow_insanity1_basic")
+        inst.AnimState:PlayAnimation("idle_loop")
+        inst.AnimState:SetMultColour(1, 1, 1, 0.5)
+    inst:AddTag("shadow")
+    inst:AddTag("undead")
+
+    inst.components.locomotor.runspeed = TUNING.WILSON_RUN_SPEED*2
+
+        inst:SetStateGraph("SGshadowcreature")
+    
+    inst:AddTag("notraptrigger")
+
+    MakeMediumBurnableCharacter(inst, "hound_body")
+
+    inst:AddComponent("sleeper")
+    inst.components.sleeper:SetResistance(2)
+    inst.components.sleeper.testperiod = GetRandomWithVariance(6, 2)
+    inst.components.sleeper:SetSleepTest(ShouldSleep)
+    inst.components.sleeper:SetWakeTest(ShouldWakeUp)
+
+    inst:AddComponent("combat")
+    inst.components.combat.hiteffectsymbol = "torso"
+    inst.components.combat:SetDefaultDamage(TUNING.CRAWLINGHORROR_DAMAGE)
+    inst.components.combat:SetAttackPeriod(TUNING.CRAWLINGHORROR_ATTACK_PERIOD)
+    
+    inst:AddComponent("health")
+    inst.components.health:SetMaxHealth(TUNING.CRAWLINGHORROR_HEALTH)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1
+    inst.components.health:StartRegen(5,5)
+
+        local brain = require "brains/shadowcreaturebrain"
+        inst:SetBrain(brain)
+
+    return inst
+end
+
+return Prefab( "common/fa_summonmonster1", fa_summonmonster1, fa_summonmonster1_assets),
+    Prefab("common/fa_summonmonster2",fa_summonmonster2,fa_summonmonster2_assets),
+    Prefab("common/fa_summonmonster3",fa_summonmonster3,fa_summonmonster3_assets),
+    Prefab("common/fa_summonmonster4",fa_summonmonster4,fa_summonmonster4_assets),
+    Prefab("common/fa_animatedead",fa_animatedead,fa_animated_assets),
+    Prefab("common/fa_horrorpet",fa_horrorpet,fa_summonmonster1_assets)

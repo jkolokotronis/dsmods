@@ -28,6 +28,11 @@ local function OnCreate(inst, scenariorunner)
 			item = {"yellowgem", "orangegem", "greengem"},
 			count = 1,
 			chance = 0.07,
+		},
+		{
+			item={"fa_scroll_12"},
+			count=1,
+			chance=0.15
 		}
 	}
 

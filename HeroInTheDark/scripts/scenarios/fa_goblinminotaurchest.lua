@@ -16,6 +16,11 @@ local function OnCreate(inst, scenariorunner)
 			item = {"goldnugget"},
 			count = math.random(1,10),
 			chance = 1--0.15,
+		},
+		{
+			item={"fa_scroll_35"},
+			count=1,
+			chance=0.5
 		}
 	}
 	local count=6

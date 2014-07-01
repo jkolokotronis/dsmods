@@ -126,6 +126,7 @@ local function fn()
     inst:AddComponent("knownlocations")
     inst:AddComponent("lootdropper")
     inst.components.lootdropper:SetLoot({ "monstermeat"})
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_12",0.07)
     inst:AddComponent("inspectable")
     
     inst:ListenForEvent("attacked", OnAttacked)
