@@ -62,7 +62,7 @@ local prefabs =
 "hat_goblinking",
 "hat_pot",
 "firewallwand",
-"magicmissilewand"
+"fa_spell_magicmissile"
 }
 
 local YELL_TIMEOUT=30
@@ -175,7 +175,7 @@ local function GetInventoryWizard(inst)
         inst.components.inventory:Equip(item)
   --  item.components.finiteuses:SetMaxUses(9999)
   --  item.components.finiteuses:SetUses(9999)
-        item=SpawnPrefab("magicmissilewand")
+        item=SpawnPrefab("fa_spell_magicmissile")
         inst.components.inventory:Equip(item)
   --  item.components.finiteuses:SetMaxUses(9999)
   --  item.components.finiteuses:SetUses(9999)
@@ -403,7 +403,7 @@ local function wizattack(inst,data)
     local current=inv:GetEquippedItem( EQUIPSLOTS.HANDS)
     local newitem=nil
     if(current and current.prefab=="firewallwand_insta")then
-        newitem=inv:FindItem(function(item) return item and item.prefab=="magicmissilewand" end)
+        newitem=inv:FindItem(function(item) return item and item.prefab=="fa_spell_magicmissile" end)
     else
         newitem=inv:FindItem(function(item) return item and item.prefab=="firewallwand_insta" end)
     end

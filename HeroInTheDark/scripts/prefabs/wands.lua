@@ -17,6 +17,16 @@ local prefabs =
 }
 
 local MAGICMISSLE_USES=30
+local MAGICMISSLE_DAMAGE=20
+local MAGICMISSLE_DAMAGE_INC=5
+
+local ROE_DEBUFF=0.5
+local ROE_USES=0.5
+local ROE_DURATION=60
+
+local CHARMPERSON_USES=5
+local CHARMPERSON_DURATION=8*60
+
 local ACIDARROW_USES=15
 local FIREBALL_USES=10
 local ICESTORM_USES=10
@@ -48,6 +58,12 @@ local POISON_USES=7
 local SNARE_SPEED=0.5
 local SNARE_DURATION=2*60
 
+local DISEASE_DURATION=20
+local DISEASE_USES=8
+local DISEASE_DAMAGE=5
+local DISEASE_PERIOD=2
+local DISEASE_SNARE=0.8
+
 local INFLICT_LIGHT_WOUNDS=20
 local INFLICT_LIGHT_USES=15
 local INFLICT_MOD_WOUNDS=25
@@ -60,8 +76,11 @@ local INFLICT_CRITICAL_USES=8
 local FEAR_DURATION=30
 local FEAR_USES=10
 
+local ACIDSPLASH_DAMAGe=20
+local ACIDSPLASH_USES=12
+local FROSTRAY_DAMAGE=20
+local FROSTRAY_USES=12
 
-local MAGICMISSLE_DAMAGE=15
 local ACIDARROW_DOT=10
 local ACIDARROW_LENGTH=24
 local FIREBALL_DAMAGE=100
@@ -70,7 +89,8 @@ local ICESTORM_DAMAGE=5
 local SUNBURST_DAMAGE=100
 local LIGHTNINGBOLT_DAMAGE=100
 
-
+local DAZEHUMAN_USES=7
+local DAZEHUMAN_DURATION=20
 
 local WAND_RANGE=15
 
@@ -260,22 +280,6 @@ local function commonfn(colour)
 end
 
 
-local function magicmissile()
-    local inst = commonfn("blue")
-    inst:AddComponent("weapon")
-    inst.components.weapon:SetDamage(MAGICMISSLE_DAMAGE)
-    inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
---    inst.components.weapon:SetOnAttack(onattack_red)
-    inst.components.weapon:SetProjectile("ice_projectilex")
-    inst.components.weapon.fa_damagetype=FA_DAMAGETYPE.FORCE
-    inst.components.inventoryitem.imagename="icestaff"
-
-    inst.components.finiteuses:SetMaxUses(MAGICMISSLE_USES)
-    inst.components.finiteuses:SetUses(MAGICMISSLE_USES)
-
-    return inst
-end
-
 local function acidarrow()
     local inst = commonfn("green")
     inst:AddComponent("weapon")
@@ -406,8 +410,8 @@ end
 local function onattackanimaltrance(inst1,attacker,target)
     if(not target:HasTag("fa_animal")) then return false end
     local cl=1
-    if(reader.components.fa_spellcaster)then
-        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.ENCHANTMENT)
+    if(attacker.components.fa_spellcaster)then
+        cl=attacker.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.ENCHANTMENT)
     end
     local treshold=(1+3*math.floor(cl/5))*100
     if target.components.health and target.components.health.maxhealth<=treshold then
@@ -456,8 +460,8 @@ end
 local function onattackholdanimal(inst1,attacker,target)
     if(not target:HasTag("fa_animal")) then return false end
     local cl=1
-    if(reader.components.fa_spellcaster)then
-        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.ENCHANTMENT)
+    if(attacker.components.fa_spellcaster)then
+        cl=attacker.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.ENCHANTMENT)
     end
     local treshold=(1+3*math.floor(cl/5))*100
     if target.components.health and target.components.health.maxhealth<=treshold then
@@ -538,8 +542,6 @@ end
 
 local function dopoison(inst,target)
     if(target and not target.components.health:IsDead())then
-        --bypassing armor - but this also bypasses potential retarget
---        target.components.health:DoDelta(-POISON_DAMAGE)
             target.components.combat:GetAttacked(inst.caster, POISON_DAMAGE, nil,nil,FA_DAMAGETYPE.POISON)
 
                 local boom =SpawnPrefab("fa_poisonfx")
@@ -596,13 +598,13 @@ end
 local function onattackdominateanimal(inst,attacker,target)
     if(not target:HasTag("fa_animal")) then return false end
     local cl=1
-    if(reader.components.fa_spellcaster)then
-        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.ENCHANTMENT)
+    if(attacker.components.fa_spellcaster)then
+        cl=attacker.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.ENCHANTMENT)
     end
     local treshold=(1+3*math.floor(cl/4))*100
     if(not target.components.follower)then print("using dominate on a mob that does not support follower logic: "..target.prefab) end
     if target.components.follower and target.components.health and target.components.health.maxhealth<=treshold then
-        reader.components.leader:AddFollower(target)
+        attacker.components.leader:AddFollower(target)
     end
 end
 
@@ -699,10 +701,10 @@ end
 
 function oninflictwounds(inst,attacker,target,damagelv)
     local cl=1
-    if(reader.components.fa_spellcaster)then
-        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.NECROMANCY)
+    if(attacker.components.fa_spellcaster)then
+        cl=attacker.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.NECROMANCY)
     end
-    local damage=cl*damagelv
+    local damage=(1+math.floor(cl/4))*damagelv
     if(target.components.combat and not (target.components.health and target.components.health:IsDead())) then
         local fx=SpawnPrefab("fa_heal_redfx")
         fx.persists=false
@@ -781,8 +783,8 @@ end
 local function onattackfear(inst1,attacker,target)
     if(target:HasTag("undead") or target:HasTag("construct")) then return false end
     local cl=1
-    if(reader.components.fa_spellcaster)then
-        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.NECROMANCY)
+    if(attacker.components.fa_spellcaster)then
+        cl=attacker.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.NECROMANCY)
     end
     local treshold=(1+1*math.floor(cl/4))*100
     if target.components.health and target.components.health.maxhealth<=treshold then
@@ -829,8 +831,8 @@ end
 local function onattackholdperson(inst1,attacker,target)
     if(not target:HasTag("fa_humanoid")) then return false end
     local cl=1
-    if(reader.components.fa_spellcaster)then
-        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.ENCHANTMENT)
+    if(attacker.components.fa_spellcaster)then
+        cl=attacker.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.ENCHANTMENT)
     end
     local treshold=(1+3*math.floor(cl/5))*100
     if target.components.health and target.components.health.maxhealth<=treshold then
@@ -880,9 +882,289 @@ local function holdperson()
     return inst
 end
 
+local function dodisease(inst,target)
+    local reader=inst.caster
+    local cl=1
+    if(reader.components.fa_spellcaster)then
+        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.NECROMANCY)
+    end
+    local damage=DISEASE_DAMAGE*(1+math.floor(cl/4))
+    if(target and not target.components.health:IsDead())then
+            target.components.combat:GetAttacked(inst.caster, damage, nil,nil,FA_DAMAGETYPE.DEATH)
+
+                local boom =SpawnPrefab("fa_poisonfx")
+                local follower = boom.entity:AddFollower()
+                follower:FollowSymbol(target.GUID, target.components.combat.hiteffectsymbol, 0, 0.1, -0.0001)
+                boom.persists=false
+                boom:ListenForEvent("animover", function()  boom:Remove() end)
+       
+    end
+end
+
+
+local function castdisease(inst1,attacker,target)
+    if(target.fa_disease)then target.fa_disease.components.spell:OnFinish() end
+
+    local inst=CreateEntity()
+    inst.persists=false
+    inst:AddTag("FX")
+    inst:AddTag("NOCLICK")
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_disease"
+    inst.components.spell.duration = DISEASE_DURATION
+    inst.components.spell.fn = dodisease
+    inst.components.spell.period=DISEASE_PERIOD
+    inst.components.spell.removeonfinish = true
+    inst.components.spell.ontargetfn = function(inst,target)
+        inst.caster=attacker
+        target.fa_disease = inst
+        target:AddTag(inst.components.spell.spellname)
+        if(target.components.locomotor)then
+            target.components.locomotor.runspeed=target.components.locomotor.runspeed*DISEASE_SNARE
+        end
+    end
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+        inst.components.spell.target.fa_disease = nil
+        if(target.components.locomotor)then
+            target.components.locomotor.runspeed=target.components.locomotor.runspeed/DISEASE_SNARE
+        end
+    end
+    inst.components.spell:SetTarget(target)
+    inst.components.spell:StartSpell()
+end
+
+
+local function causediseasefn()
+    local inst = commonfn("green")
+    inst.components.inventoryitem.imagename="greenstaff"
+    inst:AddComponent("weapon")
+    inst.components.weapon:SetDamage(0)
+    inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
+    inst.components.weapon:SetOnAttack(castdisease)
+    inst.components.weapon:SetProjectile("acidarrowprojectile")
+    inst.components.finiteuses:SetMaxUses(DISEASE_USES)
+    inst.components.finiteuses:SetUses(DISEASE_USES)
+
+    return inst
+end
+
+local function acidsplashfn()
+    local inst = commonfn("green")
+    inst:AddComponent("weapon")
+    inst.components.weapon:SetDamage(0)
+    inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
+    inst.components.weapon:SetOnAttack(function(inst,attacker,target)
+        local cl=1
+        if(attacker.components.fa_spellcaster)then
+            cl=attacker.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.CONJURATION)
+        end
+        local damage=(1+math.floor(cl/5))*ACIDSPLASH_DAMAGE
+        if(target.components.combat and not (target.components.health and target.components.health:IsDead())) then
+            target.components.combat:GetAttacked(attacker, damage, nil,nil,FA_DAMAGETYPE.ACID)
+        end
+        end)
+    inst.components.weapon:SetProjectile("acidarrowprojectile")
+    inst.components.inventoryitem.imagename="greenstaff"
+
+    inst.components.finiteuses:SetMaxUses(ACIDSPLASH_USES)
+    inst.components.finiteuses:SetUses(ACIDSPLASH_USES)
+
+    return inst
+end
+
+--why doesnt this have a HD check?
+local function ondazehuman(inst1,attacker,target)
+    if(not target:HasTag("fa_humanoid")) then return false end
+  --[[  local cl=1
+    if(attacker.components.fa_spellcaster)then
+        cl=attacker.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.ENCHANTMENT)
+    end
+    local treshold=(1+3*math.floor(cl/5))*100
+    if target.components.health and target.components.health.maxhealth<=treshold then]]
+        if(target.fa_daze)then target.fa_daze.components.spell:OnFinish() end
+
+        local inst=CreateEntity()
+        inst.persists=false
+        inst:AddTag("FX")
+        inst:AddTag("NOCLICK")
+        local spell = inst:AddComponent("spell")
+        inst.components.spell.spellname = "fa_animaltranse"
+        inst.components.spell.duration = DAZEHUMAN_DURATION
+        inst.components.spell.ontargetfn = function(inst,target)
+
+            local fx=SpawnPrefab("fa_musicnotesfx")
+            fx.persists=false
+            local follower = fx.entity:AddFollower()
+            follower:FollowSymbol( inst.GUID, target.components.combat.hiteffectsymbol, 0, 0, -0.0001 )
+            target.fa_daze_fx=fx
+            target.fa_daze = inst
+            target:ListenForEvent("attacked", ondazedattacked)
+        end
+               --inst.components.spell.onstartfn = function() end
+        inst.components.spell.onfinishfn = function(inst)
+            if not inst.components.spell.target then return end
+            inst.components.spell.target.fa_daze = nil
+            if(inst.components.spell.target.fa_daze_fx) then inst.components.spell.target.fa_daze_fx:Remove() end
+            inst.components.spell.target:RemoveEventListener("attacked",ondazedattacked)
+        end
+                --inst.components.spell.fn = function(inst, target, variables) end
+                inst.components.spell.resumefn = function() end
+                inst.components.spell.removeonfinish = true
+
+        inst.components.spell:SetTarget(v)
+        inst.components.spell:StartSpell()
+--    end
+end
+
+local function dazehumanfn()
+    local inst = commonfn("blue")
+    inst.components.inventoryitem.imagename="icestaff"
+    inst:AddComponent("weapon")
+    inst.components.weapon:SetDamage(0)
+    inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
+    inst.components.weapon:SetOnAttack(ondazehuman)
+    inst.components.weapon:SetProjectile("ice_projectilex")
+    inst.components.finiteuses:SetMaxUses(DAZEHUMAN_USES)
+    inst.components.finiteuses:SetUses(DAZEHUMAN_USES)
+
+    return inst
+end
+
+local function frostrayfn()
+    local inst = commonfn("green")
+    inst:AddComponent("weapon")
+    inst.components.weapon:SetDamage(0)
+    inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
+    inst.components.weapon:SetOnAttack(function(inst,attacker,target)
+        local cl=1
+        if(attacker.components.fa_spellcaster)then
+            cl=attacker.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.EVOCATION)
+        end
+        local damage=(1+math.floor(cl/5))*FROSTRAY_DAMAGE
+        if(target.components.combat and not (target.components.health and target.components.health:IsDead())) then
+            target.components.combat:GetAttacked(attacker, damage, nil,nil,FA_DAMAGETYPE.COLD)
+        end
+        end)
+    inst.components.weapon:SetProjectile("acidarrowprojectile")
+    inst.components.inventoryitem.imagename="greenstaff"
+
+    inst.components.finiteuses:SetMaxUses(FROSTRAY_USES)
+    inst.components.finiteuses:SetUses(FROSTRAY_USES)
+
+    return inst
+end
+
+local function magicmissilefn()
+    local inst = commonfn("blue")
+    inst:AddComponent("weapon")
+    inst.components.weapon:SetDamage(0)
+    inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
+    inst.components.weapon:SetOnAttack(function(inst,attacker,target)
+        local cl=1
+        if(attacker.components.fa_spellcaster)then
+            cl=attacker.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.EVOCATION)
+        end
+        local damage=MAGICMISSLE_DAMAGE+math.floor(cl/5)*MAGICMISSLE_DAMAGE_INC
+        if(target.components.combat and not (target.components.health and target.components.health:IsDead())) then
+            target.components.combat:GetAttacked(attacker, damage, nil,nil,FA_DAMAGETYPE.FORCE)
+        end
+        end)
+    inst.components.weapon:SetProjectile("ice_projectilex")
+    inst.components.inventoryitem.imagename="icestaff"
+
+    inst.components.finiteuses:SetMaxUses(MAGICMISSLE_USES)
+    inst.components.finiteuses:SetUses(MAGICMISSLE_USES)
+
+    return inst
+end
+
+
+local function onattackcharmperson(inst,attacker,target)
+    if(not target:HasTag("fa_humanoid")) then return false end
+    local cl=1
+    if(attacker.components.fa_spellcaster)then
+        cl=attacker.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.ENCHANTMENT)
+    end
+    local treshold=(1+3*math.floor(cl/4))*100
+    if(not target.components.follower)then print("using dominate on a mob that does not support follower logic: "..target.prefab) end
+    if target.components.follower and target.components.health and target.components.health.maxhealth<=treshold then
+        attacker.components.leader:AddFollower(target)
+    end
+end
+
+local function charmpersonfn()
+    local inst = commonfn("blue")
+    inst.components.inventoryitem.imagename="icestaff"
+    inst:AddComponent("weapon")
+    inst.components.weapon:SetDamage(0)
+    inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
+    inst.components.weapon:SetOnAttack(onattackcharmperson)
+    inst.components.weapon:SetProjectile("ice_projectilex")
+    inst.components.finiteuses:SetMaxUses(CHARMPERSON_USES)
+    inst.components.finiteuses:SetUses(CHARMPERSON_USES)
+
+    return inst
+end
+
+--why would roe have hd req?
+function rayofenfeeblementdebuff(inst,attacker,target)
+    local cl=1
+    if(attacker.components.fa_spellcaster)then
+        cl=attacker.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.NECROMANCY)
+    end
+    local treshold=(1+math.floor(cl/3))*100
+    if target.components.health and target.components.health.maxhealth<=treshold then
+
+    local inst = CreateEntity()
+    inst.persists=false
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_rayofenfeeblement"
+    inst.components.spell.duration = ROE_DURATION
+    inst.components.spell.ontargetfn = function(inst,target)
+        target.fa_rayofenfeeblement = inst
+        target:AddTag(inst.components.spell.spellname)
+        if(target.components.combat)then
+            target.components.combat.damagemultiplier=target.components.combat.damagemultiplier*ROE_DEBUFF
+        end
+    end
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+        inst.components.spell.target.fa_rayofenfeeblement = nil
+        if(target.components.combat)then
+            target.components.combat.damagemultiplier=target.components.combat.damagemultiplier/ROE_DEBUFF
+        end
+    end
+    inst.components.spell.resumefn = function(inst,timeleft)   end 
+    inst.components.spell.removeonfinish = true
+    inst.components.spell:SetTarget(target)
+    inst.components.spell:StartSpell()
+    return true
+
+    end
+    return false
+end
+
+local function rayofenfeeblementfn()
+    local inst = commonfn("blue")
+    inst.components.inventoryitem.imagename="icestaff"
+    inst:AddComponent("weapon")
+    inst.components.weapon:SetDamage(0)
+    inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
+    inst.components.weapon:SetOnAttack(rayofenfeeblementdebuff)
+    inst.components.weapon:SetProjectile("ice_projectilex")
+    inst.components.finiteuses:SetMaxUses(ROE_USES)
+    inst.components.finiteuses:SetUses(ROE_USES)
+
+    return inst
+end
 
 return 
-Prefab("common/inventory/fa_spell_animaltrance", onattackanimaltrance, assets, prefabs),
+Prefab("common/inventory/fa_spell_animaltrance", animaltrance, assets, prefabs),
 Prefab("common/inventory/fa_spell_gustofwind", gustofwind, assets, prefabs),
 Prefab("common/inventory/fa_spell_holdanimal", holdanimal, assets, prefabs),
 Prefab("common/inventory/fa_spell_calllightning", calllightning, assets, prefabs),
@@ -896,8 +1178,19 @@ Prefab("common/inventory/fa_spell_inflictmoderatewounds", inflictmodfn, assets, 
 Prefab("common/inventory/fa_spell_inflictseriouswounds", inflictserfn, assets, prefabs),
 Prefab("common/inventory/fa_spell_inflictcriticalwounds", inflictcriticalfn, assets, prefabs),
 Prefab("common/inventory/fa_spell_holdperson", holdperson, assets, prefabs),
+Prefab("common/inventory/fa_spell_causedisease", causediseasefn, assets, prefabs),
+Prefab("common/inventory/fa_spell_acidsplash", acidsplashfn, assets, prefabs),
+Prefab("common/inventory/fa_spell_dazehuman", dazehumanfn, assets, prefabs),
+Prefab("common/inventory/fa_spell_frostray", frostrayfn, assets, prefabs),
+Prefab("common/inventory/fa_spell_magicmissile", magicmissilefn, assets, prefabs),
+Prefab("common/inventory/fa_spell_charmperson", charmpersonfn, assets, prefabs),
+Prefab("common/inventory/fa_spell_rayofenfeeblement", rayofenfeeblementfn, assets, prefabs),
 
-Prefab("common/inventory/magicmissilewand", magicmissile, assets, prefabs),
+--    local r=Recipe("fa_spell_enlargehumanoid", {Ingredient("meat", 4), Ingredient("smallmeat", 4), Ingredient("honey", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+--    local r=Recipe("fa_spell_reducehumanoid", {Ingredient("meat", 4), Ingredient("smallmeat", 4), Ingredient("honey", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+
+--DEPRECATED
+Prefab("common/inventory/magicmissilewand", magicmissilefn, assets, prefabs),
     Prefab("common/inventory/acidarrowwand", acidarrow, assets, prefabs),
     Prefab("common/inventory/fireballwand", fireball, assets, prefabs),
     Prefab("common/inventory/lightningboltwand", lightningbolt, assets, prefabs),

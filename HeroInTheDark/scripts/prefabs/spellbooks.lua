@@ -45,11 +45,14 @@ local FLAMESTRIKE_DAMAGE=10
 local BUFF_LENGTH=100
 local HASTE_LENGTH=60
 local LONGSTRIDER_LENGTH=120
+local SHIELD_PROTECTION=50
+local EXPRETREAT_LENGTH=120
 local INFLICTLIGHT_DAMAGE=20
 local INVISIBILITY_LENGTH=120
 local BB_LENGTH=12
 local PROTEVIL_DURATION=8*60
 local AID_HP=50
+local DISRUPTION_DAMAGE=10
 
 local NATURESALLY_SUMMON_TIME=8*60
 local  NATURESPAWN_SUMMON_TIME=60
@@ -315,6 +318,15 @@ function longstriderfn(inst,reader)
         reader.buff_timers["longstrider"]:ForceCooldown(LONGSTRIDER_LENGTH)
     end
     FA_LongstriderSpellStart( reader,LONGSTRIDER_LENGTH)
+    return true
+end
+
+
+function expretreatfn(inst,reader)
+    if(reader.buff_timers["longstrider"])then
+        reader.buff_timers["longstrider"]:ForceCooldown(EXPRETREAT_LENGTH)
+    end
+    FA_LongstriderSpellStart( reader,EXPRETREAT_LENGTH)
     return true
 end
 
@@ -659,7 +671,103 @@ end
 
 function aidfn(inst,reader)
     --not sure if i want to let it accumulate
-    reader.components.health.fa_temphp=math.max(reader.components.health.fa_temphp,50)
+    reader.components.health.fa_temphp=math.max(reader.components.health.fa_temphp,AID_HP)
+    return true
+end
+
+function shieldfn(inst,reader)
+    local cl=1
+    if(reader.components.fa_spellcaster)then
+        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.ABJURATION)
+    end
+    local damage=(1+math.floor(cl/5))*SHIELD_PROTECTION
+    local current_protection= reader.components.health.fa_protection[FA_DAMAGETYPE.PHYSICAL] or 0
+    --not sure if i want to let it accumulate
+    if(current_protection>damage) then return false 
+    else
+        reader.components.health.fa_protection[FA_DAMAGETYPE.PHYSICAL]=damage
+    end
+    return true
+end
+
+--hmph this makes no sense whatsoever without the whole water/ach logic, ill just leave it as is for now
+local food_water_table={
+    "meat"
+}
+
+function createfoodfn(inst,reader)
+    local spawn_point= Vector3(reader.Transform:GetWorldPosition())
+    local pt = Vector3(spawn_point.x, 0, spawn_point.z)
+    
+    for i=1,3 do
+        local drop = SpawnPrefab(feast_table[1+math.floor(math.random()*#feast_table)]) 
+        drop.Physics:SetCollides(false)
+        drop.Physics:Teleport(pt.x+(math.random()-0.5)*5, pt.y+3, pt.z+(math.random()-0.5)*5) 
+        drop.Physics:SetCollides(true)
+        reader.SoundEmitter:PlaySound("dontstarve/common/stone_drop")
+    end
+    return true
+end
+
+function continualflamefn(inst,reader)
+    local spawn_point= Vector3(reader.Transform:GetWorldPosition())
+    local fx=SpawnPrefab("fa_continualflamefx")
+    fx.Transform:SetPosition(spawn_point.x, 0, spawn_point.z)
+    return true
+end
+
+function disruptundeadfn(inst, reader)
+    local cl=1
+    if(reader.components.fa_spellcaster)then
+        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.NECROMANCY)
+    end
+    local damage=DISRUPTION_DAMAGE*cl
+
+    local pos=Vector3(reader.Transform:GetWorldPosition())
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, AOE_RANGE ,nil, {'smashable',"companion","player","INLIMBO"})
+            for k,v in pairs(ents) do
+                if (v:HasTag("undead") and not (v.components.follower and v.components.follower.leader and v.components.follower.leader:HasTag("player")) )then
+                    
+                    if(v.components.combat and not(v.components.health and v.components.health:IsDead())) then
+                        local boom =SpawnPrefab("fa_heal_redfx")
+                        local follower = boom.entity:AddFollower()
+                        follower:FollowSymbol(v.GUID,reader.components.combat.hiteffectsymbol, 0, 0.1, -0.0001)
+                        boom.persists=false
+                        boom:ListenForEvent("animover", function()  boom:Remove() end)
+                        
+                        v.components.combat:GetAttacked(reader, damage, nil,nil,FA_DAMAGETYPE.HOLY)
+                    end
+                end
+            end
+
+    return true
+end
+
+function sleepfn(inst, reader)
+    local cl=1
+    if(reader.components.fa_spellcaster)then
+        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.ENCHANTMENT)
+    end
+    --im not convinced i should put hd check where normal game does not
+    local sleepiness=math.floor(cl/6)+1
+
+    local pos=Vector3(reader.Transform:GetWorldPosition())
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, AOE_RANGE ,nil, {'smashable',"companion","player","INLIMBO"})
+            for k,v in pairs(ents) do
+                if (target.components.sleeper and not (inst.components.freezable and inst.components.freezable:IsFrozen() ) 
+                    and not (v.components.follower and v.components.follower.leader and v.components.follower.leader:HasTag("player")) )then
+                    
+                    target.components.sleeper:AddSleepiness(sleepiness, 60)
+                    if target.components.combat then
+                        target.components.combat:SuggestTarget(attacker)
+                    end
+                    if target.sg and not target.sg:HasStateTag("sleeping") and target.sg.sg.states.hit then
+                        target.sg:GoToState("hit")
+                    end
+
+                end
+            end
+
     return true
 end
 
@@ -742,7 +850,7 @@ return
     MakeSpell("fa_spell_daylight",daylightfn,12,FA_SPELL_SCHOOLS.EVOCATION),
     MakeSpell("fa_spell_curepoison",curepoisonfn,10,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_grow",growfn,15,FA_SPELL_SCHOOLS.TRANSMUTATION),
-    MakeSpell("fa_spell_grow",atonementfn,3,FA_SPELL_SCHOOLS.ABJURATION),
+    MakeSpell("fa_spell_atonement",atonementfn,3,FA_SPELL_SCHOOLS.ABJURATION),
     MakeSpell("fa_spell_lightningstorm",firefn,6,FA_SPELL_SCHOOLS.EVOCATION),
     MakeSpell("fa_spell_flamestrike",flamestrikefn,5,FA_SPELL_SCHOOLS.EVOCATION),
     MakeSpell("fa_spell_protevil",protevilfn,10,FA_SPELL_SCHOOLS.ABJURATION),
@@ -756,7 +864,17 @@ return
     MakeSpell("fa_spell_curelightwoundsmass",curelighmassfn,5,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_animatedead",animatedeadfn,5,FA_SPELL_SCHOOLS.NECROMANCY),
     MakeSpell("fa_spell_shadowconjuration",shadowconjuration,4,FA_SPELL_SCHOOLS.NECROMANCY),
- 
+    MakeSpell("fa_spell_createfood",createfoodfn,5,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_continualflame",continualflamefn,2,FA_SPELL_SCHOOLS.EVOCATION),
+    MakeSpell("fa_spell_disruptundead",disruptundeadfn,8,FA_SPELL_SCHOOLS.NECROMANCY),
+    MakeSpell("fa_spell_sleep",sleepfn,8,FA_SPELL_SCHOOLS.ENCHANTMENT),
+    MakeSpell("fa_spell_light",daylightfn,8,FA_SPELL_SCHOOLS.EVOCATION),
+    MakeSpell("fa_spell_shield", shieldfn,3,FA_SPELL_SCHOOLS.ABJURATION),
+    MakeSpell("fa_spell_expretreat", expretreatfn,10,FA_SPELL_SCHOOLS.TRANSMUTATION),
+
+
+
+
         MakeSpell("spell_lightning", firefn, 10,"conjuration"),
        MakeSpell("spell_earthquake", earthquakefn, 12,"divinantion"),
        MakeSpell("spell_grow", growfn, 15,"evocation"),

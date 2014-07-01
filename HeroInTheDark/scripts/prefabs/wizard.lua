@@ -99,10 +99,10 @@ end
 
 local function enableL1spells()
     GetPlayer().fa_spellcraft.spells[1]={
-        {
+--[[        {
             recname="fa_spell_resistance",
             school="abjuration",
-        },
+        },]]
         {
             recname="fa_spell_acidsplash",
             school="conjuration",
@@ -181,8 +181,8 @@ local function enableL1spells()
         },
     }
 
-    local r=Recipe("fa_spell_resistance", {Ingredient("pigskin", 2), Ingredient("beefalowool", 6), Ingredient("cutgrass", 8)}, RECIPETABS.SPELLS,TECH.NONE)
-    r.image="book_gardening.tex"
+--    local r=Recipe("fa_spell_resistance", {Ingredient("pigskin", 2), Ingredient("beefalowool", 6), Ingredient("cutgrass", 8)}, RECIPETABS.SPELLS,TECH.NONE)
+--    r.image="book_gardening.tex"
     local r=Recipe("fa_spell_acidsplash", {Ingredient("stinger",10), Ingredient("rot", 5), Ingredient("twigs", 10)},RECIPETABS.SPELLS,TECH.NONE)
     r.image="greenstaff.tex"
     local r=Recipe("fa_spell_dazehuman", {Ingredient("meat",2), Ingredient("twigs", 10), Ingredient("goldnugget", 4)},RECIPETABS.SPELLS,TECH.NONE)
@@ -383,8 +383,6 @@ local function enableL4spells()
     }
 
     local r=Recipe("fa_spell_stoneskin", {Ingredient("rocks", 20), Ingredient("flint", 10), Ingredient("papyrus", 8)}, RECIPETABS.SPELLS,TECH.NONE)
-    r.image="book_gardening.tex"
-    local r=Recipe("fa_spell_tinyhut", {Ingredient("log", 40), Ingredient("bedroll_furry", 1), Ingredient("twigs", 40)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
     local r=Recipe("fa_spell_summonmonster4", {Ingredient("bluegem", 1), Ingredient("houndstooth", 4), Ingredient("papyrus", 6)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
