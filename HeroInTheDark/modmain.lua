@@ -1279,7 +1279,7 @@ AddPrefabPostInit("world", function(inst)
         local inst = oldfn()
 
         if(GLOBAL.FA_ModCompat.alwaysonmod)then
-            print("alwayson", alwaysonmod.version)
+            print("alwayson", GLOBAL.FA_ModCompat.alwaysonmod.version)
             --cba to care about failures, if it fails oh well i did what i could
             if(not inst.components.switch)then
                 GLOBAL.pcall(function()
