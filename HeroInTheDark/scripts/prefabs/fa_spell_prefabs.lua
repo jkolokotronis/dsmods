@@ -1,6 +1,10 @@
-local assets=
+local ssassets=
 {
   Asset("ANIM", "anim/armor_marble.zip"),
+}
+local maassets=
+{
+  Asset("ANIM", "anim/armor_sanity.zip"),
 }
 local STONESKINARMOR_ABSO=1
 local STONESKINARMOR_DURABILITY=1000
@@ -14,6 +18,22 @@ local MAGEARMOR_DURATION=4*60
 
 local function OnBlocked(owner,data) 
     owner.SoundEmitter:PlaySound("dontstarve/wilson/hit_armour") 
+end
+
+local stoneskinonloadfn = function(inst, data)
+    if(data and data.countdown and data.countdown>0)then
+        if inst.shutdowntask then
+            inst.shutdowntask:Cancel()
+        end
+    inst.shutdowntask=inst:DoTaskInTime(data.countdown, function()
+      inst:Remove()
+    end)
+    inst.shutdowntime=GetTime()+data.countdown
+    end
+end
+
+local stoneskinonsavefn = function(inst, data)
+    data.countdown=inst.shutdowntime-GetTime()
 end
 
 local function stoneskinonequip(inst, owner) 
@@ -54,25 +74,43 @@ local function stoneskinfn(Sim)
       inst.components.equippable.equipslot = EQUIPSLOTS.BODY
     
     inst:AddComponent("armor")
+    --i have to intercept all damage types... and since it has to be ran over the rest of the armor, it cant be using the health temp logic
     inst.components.armor:InitCondition(STONESKINARMOR_DURABILITY, STONESKINARMOR_ABSO)
     
-    
+    inst.OnLoad = stoneskinonloadfn
+    inst.OnSave = stoneskinonunequip
+
     inst.components.equippable:SetOnEquip( stoneskinonequip )
     inst.components.equippable:SetOnUnequip( stoneskinonunequip )
-    
+
+    inst.shutdowntime=GetTime()+STONESKIN_DURATION
+    inst.shutdowntask=inst:DoTaskInTime(STONESKIN_DURATION, function()
+      inst:Remove()
+    end)
+
     return inst
 end
 
 local function magearmoronequip(inst, owner) 
-    owner.AnimState:ClearOverrideSymbol("swap_body")
+   local fx=SpawnPrefab("fa_forcefieldfx_teal")
+   fx.persists=false
+   local follower = fx.entity:AddFollower()
+   follower:FollowSymbol( owner.GUID, owner.components.combat.hiteffectsymbol, 0, 0, -0.0001 )
+   inst.fa_forcefieldfx=fx
+   owner.AnimState:ClearOverrideSymbol("swap_body")
 end
 
 local function magearmoronunequip(inst, owner) 
+   inst.fa_forcefieldfx:Remove()
+   inst.fa_forcefieldfx=nil
     owner.AnimState:ClearOverrideSymbol("swap_body")
 end
 
-
+--'armor' does not save anything but remaining durability
 local magearmoronloadfn = function(inst, data)
+    if(data.armorabso)then
+      inst.components.armor.absorb_percent=data.armorabso
+    end
     if(data and data.countdown and data.countdown>0)then
         if inst.shutdowntask then
             inst.shutdowntask:Cancel()
@@ -82,10 +120,12 @@ local magearmoronloadfn = function(inst, data)
     end)
     inst.shutdowntime=GetTime()+data.countdown
     end
+
 end
 
 local magearmoronsavefn = function(inst, data)
     data.countdown=inst.shutdowntime-GetTime()
+    data.armorabso=inst.components.armor.absorb_percent
 end
 
 local function magearmorfn(Sim)
@@ -95,8 +135,8 @@ local function magearmorfn(Sim)
   inst.entity:AddAnimState()
     MakeInventoryPhysics(inst)
     
-    inst.AnimState:SetBank("armor_marble")
-    inst.AnimState:SetBuild("armor_marble")
+    inst.AnimState:SetBank("armor_sanity")
+    inst.AnimState:SetBuild("armor_sanity")
     inst.AnimState:PlayAnimation("anim")
 
     local minimap = inst.entity:AddMiniMapEntity()
@@ -108,6 +148,7 @@ local function magearmorfn(Sim)
     inst:AddComponent("inventoryitem")
      inst.components.inventoryitem.atlasname = "images/inventoryimages/shield.xml"
     inst.components.inventoryitem.imagename="shield"
+    inst.components.inventoryitem.foleysound = "dontstarve/movement/foley/nightarmour"
 
     inst:AddComponent("equippable")
       inst.components.equippable.equipslot = EQUIPSLOTS.BODY
@@ -130,5 +171,5 @@ local function magearmorfn(Sim)
     return inst
 end
 
-return Prefab( "common/inventory/fa_spell_magearmor", magearmorfn, assets),
-Prefab( "common/inventory/fa_spell_stoneskin", stoneskinfn, assets)
+return Prefab( "common/inventory/fa_magearmor", magearmorfn, ssassets),
+Prefab( "common/inventory/fa_stoneskin", stoneskinfn, maassets)

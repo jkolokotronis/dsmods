@@ -55,6 +55,8 @@ local AID_HP=50
 local FALSELIFE_HP=100
 local DISRUPTION_DAMAGE=10
 local HALTUNDEAD_DURATION=2*60
+local MAGEARMOR_ABSO=0.6
+local MAGEARMOR_ABSO_INC=0.05
 
 local NATURESALLY_SUMMON_TIME=8*60
 local  NATURESPAWN_SUMMON_TIME=60
@@ -687,14 +689,6 @@ function atonementfn(inst,reader)
     return false
 end
 
-function atonementfn(inst,reader)
-    if(reader.components.kramped) then
-        reader.components.kramped.actions=0
-        return true
-    end 
-    return false
-end
-
 function aidfn(inst,reader)
     --not sure if i want to let it accumulate
     reader.components.health.fa_temphp=math.max(reader.components.health.fa_temphp,AID_HP)
@@ -846,6 +840,21 @@ local function haltundeadmass(inst, reader)
 
 end
 
+local function magearmorfn(inst, reader)
+    local cl=1
+    if(reader.components.fa_spellcaster)then
+        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.CONJURATION)
+    end
+
+    local prod = SpawnPrefab("fa_magearmor")
+    prod.components.armor.absorb_percent=MAGEARMOR_ABSO+math.floor(cl/5)*MAGEARMOR_ABSO_INC
+    reader.components.inventory:Equip(prod)
+end
+
+local function stoneskinfn(inst, reader)
+    local prod = SpawnPrefab("fa_stoneskin")
+    reader.components.inventory:Equip(prod)
+end
 
 function onfinished(inst)
     inst:Remove()
@@ -952,6 +961,8 @@ return
     MakeSpell("fa_spell_haste",hastefn,6,FA_SPELL_SCHOOLS.TRANSMUTATION),
     MakeSpell("fa_spell_haltundeadmass", haltundeadmass,6,FA_SPELL_SCHOOLS.NECROMANCY),
     MakeSpell("fa_spell_magehound",summonmagehound,1,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_magearmor",magearmorfn,10,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_stoneskin",stoneskinfn,5,FA_SPELL_SCHOOLS.CONJURATION),
 
 
 
