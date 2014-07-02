@@ -1,4 +1,37 @@
+require "constants"
+require "fa_constants"
 local Inventory=require "components/inventory"
+
+
+    EQUIPSLOTS.RING = "ring"
+    EQUIPSLOTS.BOOT = "boot"
+    EQUIPSLOTS.QUIVER = "quiver"
+
+if(not FA_ModCompat.rpghudmod)then
+    EQUIPSLOTS.PACK = "pack"
+    EQUIPSLOTS.NECK = "neck"
+end
+--does not have to correspond to numequipslots, tho I find it hard to think of a case where the compatibility would even matter
+local NUMEQUIPSORTED=8
+
+Inventory.OrderedEquips={
+[EQUIPSLOTS.HANDS] =1, 
+[EQUIPSLOTS.BODY]=2, 
+[EQUIPSLOTS.HEAD]=3,
+[EQUIPSLOTS.PACK]=4,
+[EQUIPSLOTS.BOOT]=5,
+[EQUIPSLOTS.NECK]=6,
+[EQUIPSLOTS.RING]=7,
+[EQUIPSLOTS.QUIVER]=8
+}
+
+local function inventorypostinit(component,inst)
+    inst.components.inventory.numequipslots = 8
+    if(inst:HasTag("player"))then
+        inst.components.inventory.ignorescangoincontainer=true
+    end
+end
+FA_ModUtil.AddComponentPostInit("inventory", inventorypostinit)
 
 --make extra equip checks BEFORE thing is being equipped to prevent all forms of race conditi9ons
 
@@ -46,9 +79,27 @@ function Inventory:ApplyDamage(damage, attacker, weapon,type)
         end
     end
     --check general armor
+    -- to enforce order I can't use a table indexed by strings
+    local postpass={}
     for k,v in pairs(self.equipslots) do
         if v.components.armor then
-            damage = v.components.armor:TakeDamage(damage, attacker, weapon,type)
+            local index=self.OrderedEquips[k]
+            if(index)then
+                postpass[index]=v
+            else
+                --for speed reasons, the equips that are added by other mods fire first - that can be fixed by either running after me and fixing OrderedEquips 
+                --or warning me of their existence. RPGHUD is included as is
+                damage = v.components.armor:TakeDamage(damage, attacker, weapon,type)
+                if damage == 0 then
+                    return 0
+                end
+            end
+        end
+    end
+    for i=1,NUMEQUIPSORTED do
+    --sparse table
+        if(postpass[i])then
+            damage = postpass[i].components.armor:TakeDamage(damage, attacker, weapon,type)
             if damage == 0 then
                 return 0
             end

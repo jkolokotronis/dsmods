@@ -164,6 +164,10 @@ local function fn(Sim)
     inst.shutdowntime=GetTime()+GUARDIAN_SUMMON_TIME
     inst.shutdowntask=inst:DoTaskInTime(GUARDIAN_SUMMON_TIME, guardianshutdown)
 
+    
+    inst.OnLoad = onloadfn
+    inst.OnSave = onsavefn
+
     return inst
 end
 

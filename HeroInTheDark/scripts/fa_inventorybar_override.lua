@@ -22,12 +22,6 @@ local TIP_YFUDGE = 16
 local HINT_UPDATE_INTERVAL = 2.0 -- once per second
 
 inventorybarpostconstruct=nil
-	table.insert(EQUIPSLOTS, "RING")
-	EQUIPSLOTS.RING = "ring"
-	table.insert(EQUIPSLOTS, "BOOT")
-	EQUIPSLOTS.BOOT = "boot"
-	table.insert(EQUIPSLOTS, "QUIVER")
-	EQUIPSLOTS.QUIVER = "quiver"
 
 
 local function BackpackGet(inst, data)
@@ -52,11 +46,6 @@ local function BackpackLose(inst, data)
 end
 
 if(not FA_ModCompat.rpghudmod)then
-	table.insert(EQUIPSLOTS, "PACK")
-	EQUIPSLOTS.PACK = "pack"
-	table.insert(EQUIPSLOTS, "NECK")
-	EQUIPSLOTS.NECK = "neck"
-
 
 inventorybarpostconstruct=function(self, owner)
 

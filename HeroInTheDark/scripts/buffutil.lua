@@ -10,6 +10,10 @@ local IA_MS_BOOST=1*TUNING.WILSON_RUN_SPEED
 local IG_HP_BOOST=150
 local IG_DODGE_BOOST=0.25
 
+local HASTE_SPEED_BOOST=TUNING.WILSON_RUN_SPEED
+local HASTE_DODGE_BOOST=0.25
+local HASTE_ATTACK_BOOST=0.5
+
 
 function InitBuffBar(inst,buff,timer,class,name)
         inst.buff_timers[buff]=CooldownButton(class.owner)
@@ -542,13 +546,15 @@ function HasteSpellStart( reader,timer)
      if(reader.hasteTimer) then
         reader.hasteTimer:Cancel()
     else
-        reader.components.locomotor.runspeed=reader.components.locomotor.runspeed+TUNING.WILSON_RUN_SPEED
-        reader.components.combat.min_attack_period=reader.components.combat.min_attack_period/1.5
+        reader.components.locomotor.runspeed=reader.components.locomotor.runspeed+HASTE_SPEED_BOOST
+        reader.components.combat.min_attack_period=reader.components.combat.min_attack_period/(1+HASTE_ATTACK_BOOST)
+        target.components.health.fa_dodgechance=IG_DODGE_BOOST+target.components.health.fa_dodgechance
     end
     reader.hasteTimer=reader:DoTaskInTime(timer, function() 
         reader.hasteTimer=nil 
-        reader.components.locomotor.runspeed=reader.components.locomotor.runspeed-TUNING.WILSON_RUN_SPEED
-        reader.components.combat.min_attack_period=reader.components.combat.min_attack_period*1.5
+        reader.components.locomotor.runspeed=reader.components.locomotor.runspeed-HASTE_SPEED_BOOST
+        reader.components.combat.min_attack_period=reader.components.combat.min_attack_period*(1+HASTE_ATTACK_BOOST)
+        target.components.health.fa_dodgechance=IG_DODGE_BOOST-target.components.health.fa_dodgechance
         end)
     return true
 end

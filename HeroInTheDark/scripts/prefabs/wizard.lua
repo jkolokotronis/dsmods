@@ -314,7 +314,7 @@ local function enableL3spells()
             school="conjuration",
         },
         {
-            recname="fa_spell_haltundead",
+            recname="fa_spell_haltundeadmass",
             school="evocation",
         },
         {
@@ -342,7 +342,7 @@ local function enableL3spells()
     r.image="firestaff.tex"
     local r=Recipe("fa_spell_tinyhut", {Ingredient("log", 20), Ingredient("bedroll_furry", 1), Ingredient("twigs", 20)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
-    local r=Recipe("fa_spell_haltundead", {Ingredient("nightmarefuel", 8), Ingredient("boneshard", 4), Ingredient("petals_evil", 8)}, RECIPETABS.SPELLS,TECH.NONE)
+    local r=Recipe("fa_spell_haltundeadmass", {Ingredient("nightmarefuel", 8), Ingredient("boneshard", 4), Ingredient("petals_evil", 8)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
     local r=Recipe("fa_spell_haste", {Ingredient("rabbit", 2), Ingredient("batwing", 3), Ingredient("papyrus", 8)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"

@@ -52,7 +52,9 @@ local INVISIBILITY_LENGTH=120
 local BB_LENGTH=12
 local PROTEVIL_DURATION=8*60
 local AID_HP=50
+local FALSELIFE_HP=100
 local DISRUPTION_DAMAGE=10
+local HALTUNDEAD_DURATION=2*60
 
 local NATURESALLY_SUMMON_TIME=8*60
 local  NATURESPAWN_SUMMON_TIME=60
@@ -562,6 +564,30 @@ function spawnsummonbyname(inst,reader,prefab,exclusive)
 
 end
 
+function mirrorimagefn(inst,reader)
+
+    local spider=spawnsummonbyname(inst,reader,"fa_magedecoy",false)
+--    spider.maxfollowtime=NATURESALLY_SUMMON_TIME
+--    spider.components.follower:AddLoyaltyTime(NATURESALLY_SUMMON_TIME)
+
+     return true
+end
+
+function summonmagehound(inst,reader)
+    local leader=inst.components.leader
+    for k,v in pairs(leader.followers) do
+        if(k:HasTag("magehound"))then
+            if(k.components.health and not k.components.health:IsDead()) then
+                k.components.health:Kill()
+            end
+        end
+    end
+    local hound=spawnsummonbyname(inst,reader,"fa_magehound",false)
+
+     return true
+end
+
+
 function blackspiderspawn(inst,reader)
     return spawnsummonbyname(inst,reader,"fa_summonmonster1")
 end
@@ -605,7 +631,7 @@ end
 function naturesallyfn(inst,reader)
 
     local spider=blackspiderspawn(inst,reader)
-    spider.maxfollowtime=NATURESALLY_SUMMON_TIME
+    spider.components.follower.maxfollowtime=NATURESALLY_SUMMON_TIME
     spider.components.follower:AddLoyaltyTime(NATURESALLY_SUMMON_TIME)
 
      return true
@@ -615,10 +641,10 @@ end
 function naturespawnfn(inst,reader)
 
     local spider=blackspiderspawn(inst,reader)
-    spider.maxfollowtime=NATURESPAWN_SUMMON_TIME
+    spider.components.follower.maxfollowtime=NATURESPAWN_SUMMON_TIME
     spider.components.follower:AddLoyaltyTime(NATURESPAWN_SUMMON_TIME)
     local spider=blackspiderspawn(inst,reader)
-    spider.maxfollowtime=NATURESPAWN_SUMMON_TIME
+    spider.components.follower.maxfollowtime=NATURESPAWN_SUMMON_TIME
     spider.components.follower:AddLoyaltyTime(NATURESPAWN_SUMMON_TIME)
 
      return true
@@ -672,6 +698,12 @@ end
 function aidfn(inst,reader)
     --not sure if i want to let it accumulate
     reader.components.health.fa_temphp=math.max(reader.components.health.fa_temphp,AID_HP)
+    return true
+end
+
+function falselifefn(inst,reader)
+    --not sure if i want to let it accumulate
+    reader.components.health.fa_temphp=math.max(reader.components.health.fa_temphp,FALSELIFE_HP)
     return true
 end
 
@@ -752,7 +784,7 @@ function sleepfn(inst, reader)
     local sleepiness=math.floor(cl/6)+1
 
     local pos=Vector3(reader.Transform:GetWorldPosition())
-    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, AOE_RANGE ,nil, {'smashable',"companion","player","INLIMBO"})
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, AOE_RANGE ,nil, {'smashable',"companion","player","INLIMBO","FX"})
             for k,v in pairs(ents) do
                 if (target.components.sleeper and not (inst.components.freezable and inst.components.freezable:IsFrozen() ) 
                     and not (v.components.follower and v.components.follower.leader and v.components.follower.leader:HasTag("player")) )then
@@ -770,6 +802,50 @@ function sleepfn(inst, reader)
 
     return true
 end
+
+
+--why doesnt this have a HD check?
+local function haltundeadmass(inst, reader)
+    local cl=1
+    if(reader.components.fa_spellcaster)then
+        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.NECROMANCY)
+    end
+
+    local treshold=(1+3*math.floor(cl/5))*100
+    local pos=Vector3(reader.Transform:GetWorldPosition())
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, AOE_RANGE ,{'undead'}, {'smashable',"companion","player","INLIMBO","FX"})
+        for k,v in pairs(ents) do
+                if (v.components.health and v.components.health.naxhealth<=treshold) and
+                 not (v.components.follower and v.components.follower.leader and v.components.follower.leader:HasTag("player")) then
+                    if(target.fa_stun)then target.fa_stun.components.spell:OnFinish() end
+                    
+                    local inst=SpawnPrefab("fa_musicnotesfx")
+                    inst.persists=false
+                    local spell = inst:AddComponent("spell")
+                    inst.components.spell.spellname = "fa_haltundeadmass"
+                    inst.components.spell.duration = HALTUNDEAD_DURATION
+                    inst.components.spell.ontargetfn = function(inst,target)
+                    local follower = inst.entity:AddFollower()
+                    follower:FollowSymbol( v.GUID, target.components.combat.hiteffectsymbol, 0, 0, -0.0001 )
+                    target.fa_stun = inst
+                    end
+                    inst.components.spell.onfinishfn = function(inst)
+                        if not inst.components.spell.target then return end
+                        inst.components.spell.target.fa_stun = nil
+                    end
+                    inst.components.spell.resumefn = function() end
+                    inst.components.spell.removeonfinish = true
+
+                    inst.components.spell:SetTarget(v)
+                    inst.components.spell:StartSpell()
+
+                end
+            end
+
+    return true
+
+end
+
 
 function onfinished(inst)
     inst:Remove()
@@ -871,8 +947,20 @@ return
     MakeSpell("fa_spell_light",daylightfn,8,FA_SPELL_SCHOOLS.EVOCATION),
     MakeSpell("fa_spell_shield", shieldfn,3,FA_SPELL_SCHOOLS.ABJURATION),
     MakeSpell("fa_spell_expretreat", expretreatfn,10,FA_SPELL_SCHOOLS.TRANSMUTATION),
+    MakeSpell("fa_spell_falselife", falselifefn,5,FA_SPELL_SCHOOLS.NECROMANCY),
+    MakeSpell("fa_spell_mirrorimage",mirrorimagefn,6,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_haste",hastefn,6,FA_SPELL_SCHOOLS.TRANSMUTATION),
+    MakeSpell("fa_spell_haltundeadmass", haltundeadmass,6,FA_SPELL_SCHOOLS.NECROMANCY),
+    MakeSpell("fa_spell_magehound",summonmagehound,1,FA_SPELL_SCHOOLS.CONJURATION),
 
 
+
+--    local r=Recipe("fa_spell_dancinglight", {Ingredient("poisongland",2), Ingredient("fireflies", 4)},RECIPETABS.SPELLS,TECH.NONE)
+--    local r=Recipe("fa_spell_darkvision", {Ingredient("lightbulb", 12), Ingredient("fireflies", 2), Ingredient("papyrus", 4)}, RECIPETABS.SPELLS,TECH.NONE)
+--    local r=Recipe("fa_spell_deepslumber", {Ingredient("blowdart_sleep", 2), Ingredient("twigs", 15), Ingredient("poop", 8)}, RECIPETABS.SPELLS,TECH.NONE)
+--    local r=Recipe("fa_spell_rage", {Ingredient("meat", 4), Ingredient("monstermeat", 6), Ingredient("papyrus", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+--    local r=Recipe("fa_spell_tinyhut", {Ingredient("log", 20), Ingredient("bedroll_furry", 1), Ingredient("twigs", 20)}, RECIPETABS.SPELLS,TECH.NONE)
+--    local r=Recipe("fa_spell_wallofstone", {Ingredient("rocks", 20), Ingredient("twigs", 10), Ingredient("flint", 10)}, RECIPETABS.SPELLS,TECH.NONE)
 
 
         MakeSpell("spell_lightning", firefn, 10,"conjuration"),
@@ -880,12 +968,8 @@ return
        MakeSpell("spell_grow", growfn, 15,"evocation"),
        MakeSpell("spell_heal", healfn, 10,"enchantment"),
        MakeSpell("spell_divinemight", divinemightfn, 15,"illusion"),
-       MakeSpell("spell_calldiety", calldietyfn, 10,"necromancy"),
        MakeSpell("spell_light", lightfn, 12,"transmutation"),
        MakeSpell("spell_bladebarrier", bladebarrierfn, 5,"abjuration"),
        MakeSpell("spell_guardian", treeguardianfn, 7),
        MakeSpell("spell_summonfeast", summonfeastfn, 5),
-       MakeSpell("spell_summongoodberries", summongoodberriesfn, 10),
-
-       MakeSpell("spell_invisibility", invisibilityfn,10),
-       MakeSpell("spell_haste", hastefn, 5)
+       MakeSpell("spell_summongoodberries", summongoodberriesfn, 10)

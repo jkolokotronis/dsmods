@@ -18,6 +18,7 @@ GLOBAL.FA_ModCompat.memspikefix_delay=1
 --push out the env functions without namespace pollution
 GLOBAL.FA_ModUtil={}
 GLOBAL.FA_ModUtil.AddPrefabPostInit=AddPrefabPostInit
+GLOBAL.FA_ModUtil.AddComponentPostInit=AddComponentPostInit
 
 local memspikefixmod=nil
 for _, mod in ipairs( GLOBAL.ModManager.mods ) do
@@ -116,6 +117,7 @@ PrefabFiles = {
     "fa_surface_portal",
     "fa_scribescrolls",
     "fa_summons",
+    "fa_spell_prefabs",
     "cheats",
     "poisonspider",
     "poisonspiderden",
@@ -373,6 +375,7 @@ Assets = {
 
     Asset( "IMAGE", "colour_cubes/lavacube.tex" ),
     Asset( "IMAGE", "colour_cubes/identity_colourcube.tex" ),
+    Asset( "IMAGE", "colour_cubes/darkvision_cc.tex" ),
 
 
     Asset( "IMAGE", "images/equipslots.tex" ),
@@ -560,15 +563,6 @@ table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "bard")
 
 local PetBuff = require "widgets/petbuff"
 
-
-
-local function inventorypostinit(component,inst)
-    inst.components.inventory.numequipslots = 8
-    if(inst:HasTag("player"))then
-        inst.components.inventory.ignorescangoincontainer=true
-    end
-end
-AddComponentPostInit("inventory", inventorypostinit)
 if(GLOBAL.inventorybarpostconstruct)then
     AddClassPostConstruct("widgets/inventorybar",GLOBAL.inventorybarpostconstruct)
 end
@@ -1372,10 +1366,19 @@ local function OrcMinesPostInit(inst)
     waves:SetWaveTexture(GLOBAL.resolvefilepath("images/lava2.tex"))--GLOBAL.resolvefilepath("images/lava.tex")
     waves:SetWaveEffect( "shaders/waves.ksh" ) -- texture.ksh
     waves:SetWaveSize( 2048, 512 )
-
+--[[ this will collide with other overrides, turning default back to standard cc manager
+    the other option is to rely on the knowledge of how level is set which is not ideal
     GLOBAL.GetWorld().components.colourcubemanager:SetOverrideColourCube(
         GLOBAL.resolvefilepath "colour_cubes/lavacube.tex"
-    )
+    )]]
+
+    local SEASONS=GLOBAL.SEASONS
+    if(FA_DLCACCESS)then
+        GLOBAL.GetWorld().components.colourcubemanager.SEASON_CCS[SEASONS.SUMMER]["DUSK"]=GLOBAL.resolvefilepath "colour_cubes/lavacube.tex"
+    else
+        GLOBAL.GetWorld().components.colourcubemanager.SEASON_CCS[SEASONS.AUTUMN]["DUSK"]=GLOBAL.resolvefilepath "colour_cubes/lavacube.tex"
+    end
+
 --                setTopologyType(inst,"mines")        
 
                 inst.IsCave=function() return false end

@@ -15,6 +15,10 @@ local fa_animated_assets=
 {
     Asset("ANIM", "anim/drybones.zip"),
 }
+local fa_decoy_assets=
+{
+        Asset( "ANIM", "anim/wizard.zip" ),
+}
     
 
 local WAKE_TO_FOLLOW_DISTANCE = 8
@@ -22,6 +26,29 @@ local SLEEP_NEAR_HOME_DISTANCE = 10
 local SHARE_TARGET_DIST = 30
 local HOME_TELEPORT_DIST = 30
 local PET_HEALTH=300
+local DECOY_HEALTH=300
+local DECOY_SPEED=8
+local DECOY_DURATION=60
+
+local guardianshutdown=function(inst)
+    inst.components.health:Kill()
+end
+
+
+local onloadfn = function(inst, data)
+    if(data and data.countdown and data.countdown>0)then
+        if inst.shutdowntask then
+            inst.shutdowntask:Cancel()
+        end
+    inst.shutdowntask=inst:DoTaskInTime(data.countdown, guardianshutdown)
+    inst.shutdowntime=GetTime()+data.countdown
+    end
+end
+
+local onsavefn = function(inst, data)
+    data.countdown=inst.shutdowntime-GetTime()
+end
+
 
 local function ShouldWakeUp(inst)
     return DefaultWakeTest(inst) or (inst.components.follower and inst.components.follower.leader and not inst.components.follower:IsNearLeader(WAKE_TO_FOLLOW_DISTANCE))
@@ -337,7 +364,7 @@ local function fa_animatedead()
     
     inst:AddTag("notraptrigger")
 
-    MakeMediumBurnableCharacter(inst, "hound_body")
+    MakeMediumBurnableCharacter(inst, "torso")
 
     inst:AddComponent("sleeper")
     inst.components.sleeper:SetResistance(2)
@@ -355,7 +382,7 @@ local function fa_animatedead()
     inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1
     inst.components.health:StartRegen(5,5)
 
-    local brain = require "brains/skeletonspawnbrain"
+    local brain = require "brains/magesummonbrain"
     inst:SetBrain(brain)
 
     return inst
@@ -394,7 +421,7 @@ local function fa_horrorpet()
     
     inst:AddTag("notraptrigger")
 
-    MakeMediumBurnableCharacter(inst, "hound_body")
+    MakeMediumBurnableCharacter(inst)
 
     inst:AddComponent("sleeper")
     inst.components.sleeper:SetResistance(2)
@@ -418,9 +445,156 @@ local function fa_horrorpet()
     return inst
 end
 
+local onloadfn = function(inst, data)
+    if(data and data.countdown and data.countdown>0)then
+        if inst.shutdowntask then
+            inst.shutdowntask:Cancel()
+        end
+    inst.shutdowntask=inst:DoTaskInTime(data.countdown, guardianshutdown)
+    inst.shutdowntime=GetTime()+data.countdown
+    end
+end
+
+local onsavefn = function(inst, data)
+    data.countdown=inst.shutdowntime-GetTime()
+end
+
+
+local function fa_magedecoy()
+    
+    local inst=common()
+    
+    MakeCharacterPhysics(inst, 10, .5)
+    shadow:SetSize( 2.5, 1.5 )
+    
+    inst:AddTag("fa_summon")
+    inst.AnimState:SetBank("wilson")
+    --i'm flat out cheating
+    inst.AnimState:SetBuild("wizard")
+    inst.AnimState:PlayAnimation("idle")
+    inst.AnimState:Hide("ARM_carry")
+    inst.AnimState:Hide("hat")
+    inst.AnimState:Hide("hat_hair")
+    inst.AnimState:SetMultColour(1, 1, 1, 0.5)
+
+    inst.components.locomotor.runspeed = DECOY_SPEED
+
+    inst:SetStateGraph("SGskeletonspawn")
+    
+    inst:AddTag("notraptrigger")
+
+    MakeMediumBurnableCharacter(inst, "torso")
+
+    inst:AddComponent("combat")
+    inst.components.combat.hiteffectsymbol = "torso"
+    --if it did 'no damage' it would never take aggro!
+    inst.components.combat:SetDefaultDamage(1)
+    inst.components.combat:SetAttackPeriod(1)
+    
+    inst:AddComponent("health")
+    inst.components.health:SetMaxHealth(DECOY_HEALTH)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1
+    inst.components.health:StartRegen(5,5)
+
+    local brain = require "brains/magesummonbrain"
+    inst:SetBrain(brain)
+
+
+    inst.forceShutdown=guardianshutdown
+    inst.shutdowntime=GetTime()+DECOY_DURATION
+    inst.shutdowntask=inst:DoTaskInTime(DECOY_DURATION, guardianshutdown)
+
+    
+    inst.OnLoad = onloadfn
+    inst.OnSave = onsavefn
+
+    return inst
+end
+
+
+local slotpos_3x3 = {}
+
+for y = 2, 0, -1 do
+    for x = 0, 2 do
+        table.insert(slotpos_3x3, Vector3(80*x-80*2+80, 80*y-80*2+80,0))
+    end
+end
+
+
+local function OnOpen(inst)   
+end 
+
+local function OnClose(inst) 
+end 
+
+local function fa_magehound()
+    local inst=common()
+    
+    inst:AddTag("character")
+    inst:AddTag("notraptrigger")
+
+    local minimap = inst.entity:AddMiniMapEntity()
+    minimap:SetIcon( "chester.png" )
+
+    inst.AnimState:SetBank("hound")
+    inst.AnimState:SetBuild("hound_ice")
+    inst.AnimState:PlayAnimation("idle")
+
+    inst.DynamicShadow:SetSize( 2, 1.5 )
+    MakeCharacterPhysics(inst, 75, .5)
+
+    inst.Physics:SetCollisionGroup(COLLISION.CHARACTERS)
+    inst.Physics:ClearCollisionMask()
+    inst.Physics:CollidesWith(COLLISION.WORLD)
+    inst.Physics:CollidesWith(COLLISION.OBSTACLES)
+    inst.Physics:CollidesWith(COLLISION.CHARACTERS)
+
+    inst.components.combat.hiteffectsymbol = "chester_body"
+
+    inst.components.health:SetMaxHealth(TUNING.CHESTER_HEALTH)
+    inst.components.health:StartRegen(TUNING.CHESTER_HEALTH_REGEN_AMOUNT, TUNING.CHESTER_HEALTH_REGEN_PERIOD)
+    inst:AddTag("noauradamage")
+
+
+    inst.components.locomotor.walkspeed = 3
+    inst.components.locomotor.runspeed = 7
+
+    inst:AddComponent("knownlocations")
+
+    MakeSmallBurnableCharacter(inst)
+    
+    inst:AddComponent("container")
+    inst.components.container:SetNumSlots(#slotpos_3x3)
+    
+    inst.components.container.onopenfn = OnOpen
+    inst.components.container.onclosefn = OnClose
+    
+    inst.components.container.widgetslotpos = slotpos_3x3
+    inst.components.container.widgetanimbank = "ui_chest_3x3"
+    inst.components.container.widgetanimbuild = "ui_chest_3x3"
+    inst.components.container.widgetpos = Vector3(0,200,0)
+    inst.components.container.side_align_tip = 160
+
+    inst.components.sleeper:SetResistance(3)
+    inst.components.sleeper.testperiod = GetRandomWithVariance(6, 2)
+    inst.components.sleeper:SetSleepTest(ShouldSleep)
+    inst.components.sleeper:SetWakeTest(ShouldWakeUp)
+
+    inst:SetStateGraph("SGhound")
+
+-- it's just a blind non combat follower, im lazy to make a new one
+    local brain = require "brains/chesterbrain"
+    inst:SetBrain(brain)
+
+    return inst
+end
+
+
 return Prefab( "common/fa_summonmonster1", fa_summonmonster1, fa_summonmonster1_assets),
     Prefab("common/fa_summonmonster2",fa_summonmonster2,fa_summonmonster2_assets),
     Prefab("common/fa_summonmonster3",fa_summonmonster3,fa_summonmonster3_assets),
     Prefab("common/fa_summonmonster4",fa_summonmonster4,fa_summonmonster4_assets),
     Prefab("common/fa_animatedead",fa_animatedead,fa_animated_assets),
-    Prefab("common/fa_horrorpet",fa_horrorpet,fa_summonmonster1_assets)
+    Prefab("common/fa_horrorpet",fa_horrorpet,fa_summonmonster1_assets),
+    Prefab("common/fa_magedecoy",fa_magedecoy,fa_decoy_assets),
+    Prefab("common/fa_magehound",fa_magehound,fa_summonmonster1_assets)
