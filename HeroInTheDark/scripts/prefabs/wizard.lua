@@ -669,10 +669,11 @@ local fn = function(inst)
         return action_old(act)
     end
 
+
+    RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon_atlas = "images/inventoryimages/herotab.xml"}
     enableL1spells()
 
 
-RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon_atlas = "images/inventoryimages/herotab.xml"}
     
 
     

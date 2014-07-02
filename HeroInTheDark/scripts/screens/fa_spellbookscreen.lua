@@ -34,7 +34,7 @@ function FASpellBookScreen:InitClass()
     	self.closebutton:SetPosition(390,300,0)
     elseif(self.caster.prefab=="wizard")then
 		self.bgframe:SetPosition(20, 80, 0)
-		self.spell:SetPosition(-200, -70, 0)
+		self.spell:SetPosition(-100, -70, 0)
 		self.spell_list:SetPosition(70, 200, 0)
 	    self.prevbutton:SetPosition(-280,-170,0)
     	self.nextbutton:SetPosition(320,-170,0)
