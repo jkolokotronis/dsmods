@@ -57,8 +57,8 @@ local function stoneskinfn(Sim)
     inst.components.armor:InitCondition(STONESKINARMOR_DURABILITY, STONESKINARMOR_ABSO)
     
     
-    inst.components.equippable:SetOnEquip( onequip )
-    inst.components.equippable:SetOnUnequip( onunequip )
+    inst.components.equippable:SetOnEquip( stoneskinonequip )
+    inst.components.equippable:SetOnUnequip( stoneskinonunequip )
     
     return inst
 end
@@ -116,8 +116,8 @@ local function magearmorfn(Sim)
     inst.components.armor:InitCondition(MAGEARMOR_DURABILITY, MAGEARMOR_ABSO)
     
     
-    inst.components.equippable:SetOnEquip( onequip )
-    inst.components.equippable:SetOnUnequip( onunequip )
+    inst.components.equippable:SetOnEquip( magearmoronequip )
+    inst.components.equippable:SetOnUnequip( magearmoronunequip )
 
     inst.OnLoad = magearmoronloadfn
     inst.OnSave = magearmoronsavefn

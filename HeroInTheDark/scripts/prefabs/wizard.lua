@@ -189,11 +189,11 @@ local function enableL1spells()
     r.image="greenstaff.tex"
     local r=Recipe("fa_spell_dancinglight", {Ingredient("poisongland",2), Ingredient("fireflies", 4)},RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
-   local  r=Recipe("fa_spell_light", {Ingredient("fireflies", 1),Ingredient("lightbulb", 4), Ingredient("papyrus", 4)}, RECIPETABS.SPELLS, RECIPETABS.SPELLS,TECH.NONE)
+   local  r=Recipe("fa_spell_light", {Ingredient("fireflies", 1),Ingredient("lightbulb", 4), Ingredient("papyrus", 4)}, RECIPETABS.SPELLS, TECH.NONE)
     r.image="book_gardening.tex" 
     local r=Recipe("fa_spell_frostray", {Ingredient("ice",5), Ingredient("twigs", 10), Ingredient("bluegem", 1)},RECIPETABS.SPELLS,TECH.NONE)
     r.image="bluestaff.tex"
-    local r=Recipe("fa_spell_disruptundead", {Ingredient("boneshard", 4),Ingredient("ash", 10), Ingredient("nightmarefuel", 4)}, RECIPETABS.SPELLS, RECIPETABS.SPELLS,TECH.NONE)
+    local r=Recipe("fa_spell_disruptundead", {Ingredient("boneshard", 4),Ingredient("ash", 10), Ingredient("nightmarefuel", 4)}, RECIPETABS.SPELLS, TECH.NONE)
     r.image="book_gardening.tex" 
     local r=Recipe("fa_spell_mending", {Ingredient("sewing_kit", 1), Ingredient("nightmarefuel", 6), Ingredient("honey", 10)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"

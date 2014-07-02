@@ -42,7 +42,7 @@ STRINGS.CHARACTERS.NECROMANCER = {}
 
 STRINGS.CHARACTER_TITLES.wizard = "The Wizard"
 STRINGS.CHARACTER_NAMES.wizard = "The Wizard"
-STRINGS.CHARACTER_DESCRIPTIONS.wizard = "1.  Has trouble using most armors and weapons.\n2.  Can scribe wizard spells into his spellbook.\n3.  More effective at using wands and books.\n4.  High sanity, low health."
+STRINGS.CHARACTER_DESCRIPTIONS.wizard = "1.  Has trouble using most armors and weapons.\n2.  More effective at using wands and books.\n3.  High sanity, low health.\n4.  Can scribe wizard scrolls into his book."
 STRINGS.CHARACTER_QUOTES.wizard = "\"The only sovereign you can allow to rule you is reason.\""
 STRINGS.CHARACTERS.WIZARD = {}
 
