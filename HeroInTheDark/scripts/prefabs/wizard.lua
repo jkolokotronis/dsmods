@@ -519,6 +519,10 @@ local fn = function(inst)
     inst:AddComponent("fa_spellcaster")
 
 
+    inst.fa_spellcraft={}
+    inst.fa_spellcraft.spells={}
+    
+
     inst.buff_timers={}
 --    inst.buff_timers["light"]={}
 --    inst.buff_timers["divinemight"]={}
@@ -669,36 +673,6 @@ local fn = function(inst)
 
 
 RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon_atlas = "images/inventoryimages/herotab.xml"}
-    local booktab=RECIPETABS.SPELLS
---    inst.components.builder:AddRecipeTab(booktab)
-    local r=Recipe("magicmissilewand", {Ingredient("meat", 1), Ingredient("cutgrass", 1), Ingredient("rocks", 1)}, booktab, {SCIENCE = 0, MAGIC = 0, ANCIENT = 0})
-    r.image="icestaff.tex"
-    r=Recipe("acidarrowwand", {Ingredient("redgem",1), Ingredient("cutgrass", 1), Ingredient("rocks", 1)}, booktab,{MAGIC = 2})
-    r.image="greenstaff.tex"
-    r=Recipe("fireballwand", {Ingredient("meat", 2),Ingredient("cutgrass", 1), Ingredient("rocks", 1)}, booktab, {MAGIC = 2})
-    r.image="firestaff.tex"
-    r=Recipe("icestormwand", {Ingredient("spidergland",1),Ingredient("cutgrass",1), Ingredient("rocks", 1)}, booktab, {MAGIC = 3})
-    r.image="icestaff.tex"
-    r=Recipe("firewallwand", {Ingredient("papyrus", 2), Ingredient("redgem", 1)}, booktab, {MAGIC = 3})
-    r.image="firestaff.tex"
-    r=Recipe("sunburstwand", {Ingredient("papyrus", 2), Ingredient("redgem", 1)}, booktab, {MAGIC = 3})
-    r.image="firestaff.tex"
-    r=Recipe("prismaticwand", {Ingredient("papyrus", 2), Ingredient("redgem", 1)}, booktab, {MAGIC = 3})
-    r.image="firestaff.tex"
-
-
-    r=Recipe("spell_invisibility", {Ingredient("redgem", 4), Ingredient("cutgrass",1), Ingredient("rocks", 1)}, booktab,{MAGIC = 2})
-    r.image="book_brimstone.tex"
-    r=Recipe("spell_haste", {Ingredient("meat", 2),Ingredient("cutgrass", 1), Ingredient("rocks", 1)}, booktab, {MAGIC = 2})
-    r.image="book_gardening.tex"
-    r=Recipe("spell_summonfeast",{Ingredient("redgem", 1), Ingredient("cutgrass", 10), Ingredient("meat", 1)}, RECIPETABS.SPELLS,{MAGIC = 2})
-    r.image="book_gardening.tex"
-
-     r=Recipe("trap_circleofdeath", {Ingredient("tentaclespots", 2),Ingredient("boards", 2), Ingredient("nightmarefuel", 2)}, booktab, {MAGIC = 2})
-    r.image="trap_teeth.tex"
-    
-    inst.fa_spellcraft={}
-    inst.fa_spellcraft.spells={}
     
 
     
