@@ -120,7 +120,7 @@ end
 local function common()
     local inst = CreateEntity()
     inst.entity:AddTransform()
-    anim=inst.entity:AddAnimState()
+    local anim=inst.entity:AddAnimState()
     inst.entity:AddSoundEmitter()
     inst.entity:AddDynamicShadow()
 
@@ -200,7 +200,7 @@ local function fa_summonmonster2()
     local inst=common()
     
     MakeCharacterPhysics(inst, 50, .5)
-    shadow:SetSize( 1.5, .75 )
+    inst.DynamicShadow:SetSize( 1.5, .75 )
 
     inst:AddTag("fa_summon")
     inst:AddTag("fa_exclusive")
@@ -250,7 +250,7 @@ local function fa_summonmonster3()
     local inst=common()
     
     MakeCharacterPhysics(inst, 50, .5)
-    shadow:SetSize( 1.5, .75 )
+    inst.DynamicShadow:SetSize( 1.5, .75 )
 
     inst:AddTag("fa_summon")
     inst:AddTag("fa_exclusive")
@@ -298,7 +298,7 @@ local function fa_summonmonster4()
     local inst=common()
     
     MakeCharacterPhysics(inst, 10, .5)
-    shadow:SetSize( 2.5, 1.5 )
+    inst.DynamicShadow:SetSize( 2.5, 1.5 )
     
     inst:AddTag("fa_summon")
     inst:AddTag("fa_exclusive")
@@ -346,7 +346,7 @@ local function fa_animatedead()
     local inst=common()
     
     MakeCharacterPhysics(inst, 10, .5)
-    shadow:SetSize( 2.5, 1.5 )
+    inst.DynamicShadow:SetSize( 2.5, 1.5 )
     
     inst:AddTag("fa_summon")
     inst:AddTag("fa_exclusive")
@@ -405,7 +405,7 @@ local function fa_horrorpet()
     }
     
     MakeCharacterPhysics(inst, 10, .5)
-    shadow:SetSize( 2.5, 1.5 )
+    inst.DynamicShadow:SetSize( 2.5, 1.5 )
     
     inst:AddTag("fa_summon")
     inst:AddTag("fa_exclusive")
@@ -466,7 +466,7 @@ local function fa_magedecoy()
     local inst=common()
     
     MakeCharacterPhysics(inst, 10, .5)
-    shadow:SetSize( 2.5, 1.5 )
+    inst.DynamicShadow:SetSize( 2.5, 1.5 )
     
     inst:AddTag("fa_summon")
     inst.AnimState:SetBank("wilson")
@@ -487,6 +487,7 @@ local function fa_magedecoy()
     MakeMediumBurnableCharacter(inst, "torso")
 
     inst:AddComponent("combat")
+    inst:AddComponent("inventory")
     inst.components.combat.hiteffectsymbol = "torso"
     --if it did 'no damage' it would never take aggro!
     inst.components.combat:SetDefaultDamage(1)

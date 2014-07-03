@@ -10,7 +10,7 @@ local assets=
 
 local function tagitemtest(item,tags)
     local pass=false
-    if(type(tags)==table)then
+    if(type(tags)=="table")then
         for k,v in pairs(tags) do
             if(item:HasTag(v))then
                 pass=true
@@ -19,7 +19,7 @@ local function tagitemtest(item,tags)
     else
         pass=item:HasTag(tags)
     end
-    return pss
+    return pass
 end
 
 local function krampus_sized(inst)
@@ -81,6 +81,9 @@ local function dorfbag()
     local inst=fn()
     krampus_sized(inst)
     inst.components.container.type = "fa_bag"
+    inst.components.container.side_align_tip = 100
+    inst.components.container.side_widget = false  
+    inst.components.container.widgetpos = Vector3(600,0,0)
     return inst
 end
 
@@ -88,7 +91,7 @@ local function scrollcase()
     local inst=fn()
     krampus_sized(inst)
 
-    inst.components.container.widgetpos = Vector3(100,0,0)
+    inst.components.container.widgetpos = Vector3(50,0,0)
     inst.components.container.side_align_tip = 100
     inst.components.container.side_widget = false    
     inst.components.container.type = "fa_scrollcase"
