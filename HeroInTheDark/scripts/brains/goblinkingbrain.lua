@@ -37,7 +37,8 @@ end
 function Goblinkingbrain:OnStart()
     local root = PriorityNode(
     {
-        WhileNode( function() return self.inst.fa_stun~=nil end, "Stun", Panic(self.inst)),
+         WhileNode( function() return self.inst.fa_daze~=nil end, "Daze", StandStill(self.inst)),
+        WhileNode( function() return self.inst.fa_stun~=nil end, "Stun", StandStill(self.inst)),
         WhileNode( function() return self.inst.fa_root~=nil end, "RootAttack", StandAndAttack(self.inst) ),
         WhileNode( function() return self.inst.components.combat.target == nil or not self.inst.components.combat:InCooldown() end, "AttackMomentarily",
             ChaseAndAttack(self.inst, MAX_CHASE_TIME, MAX_CHASE_DIST) ),
