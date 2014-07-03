@@ -29,6 +29,7 @@ local PET_HEALTH=300
 local DECOY_HEALTH=300
 local DECOY_SPEED=8
 local DECOY_DURATION=60
+local DANCINGLIGHT_DURATION=16*60
 
 local guardianshutdown=function(inst)
     inst.components.health:Kill()
@@ -520,13 +521,6 @@ for y = 2, 0, -1 do
     end
 end
 
-
-local function OnOpen(inst)   
-end 
-
-local function OnClose(inst) 
-end 
-
 local function fa_magehound()
     local inst=common()
     
@@ -566,8 +560,8 @@ local function fa_magehound()
     inst:AddComponent("container")
     inst.components.container:SetNumSlots(#slotpos_3x3)
     
-    inst.components.container.onopenfn = OnOpen
-    inst.components.container.onclosefn = OnClose
+--    inst.components.container.onopenfn = OnOpen
+--    inst.components.container.onclosefn = OnClose
     
     inst.components.container.widgetslotpos = slotpos_3x3
     inst.components.container.widgetanimbank = "ui_chest_3x3"
@@ -590,6 +584,28 @@ local function fa_magehound()
 end
 
 
+local function dancinglight()
+    -- spawnprefab would probably not be what i want, copy pasting isnt either so there we go
+--    TheSim:LoadPrefabs( {"stafflight"} )
+    local inst = Prefabs["stafflight"].fn()
+    inst.init_time=DANCINGLIGHT_DURATION
+    local kill_light=function()inst:Remove()end
+    if inst.death then
+        kill_light=inst.death.fn
+        inst.death:Cancel()
+        inst.death = nil
+    end
+    inst.timeleft = DANCINGLIGHT_DURATION
+    inst.death = inst:DoTaskInTime(time, kill_light)
+
+    inst:AddComponent("knownlocations")
+
+    local brain = require "brains/chesterbrain"
+    inst:SetBrain(brain)
+
+    return inst
+end
+
 return Prefab( "common/fa_summonmonster1", fa_summonmonster1, fa_summonmonster1_assets),
     Prefab("common/fa_summonmonster2",fa_summonmonster2,fa_summonmonster2_assets),
     Prefab("common/fa_summonmonster3",fa_summonmonster3,fa_summonmonster3_assets),
@@ -597,4 +613,5 @@ return Prefab( "common/fa_summonmonster1", fa_summonmonster1, fa_summonmonster1_
     Prefab("common/fa_animatedead",fa_animatedead,fa_animated_assets),
     Prefab("common/fa_horrorpet",fa_horrorpet,fa_summonmonster1_assets),
     Prefab("common/fa_magedecoy",fa_magedecoy,fa_decoy_assets),
-    Prefab("common/fa_magehound",fa_magehound,fa_summonmonster1_assets)
+    Prefab("common/fa_magehound",fa_magehound,fa_summonmonster1_assets),
+    Prefab("common/fa_dancinglight",dancinglight,fa_summonmonster1_assets)

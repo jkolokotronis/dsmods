@@ -10,6 +10,10 @@ local tinyassets =
 {
   Asset("ANIM", "anim/tent.zip"),
 }
+local nightassets =
+{
+Asset("IMAGE","colour_cubes/darkvision_cc.tex")
+}
 
 local STONESKINARMOR_ABSO=1
 local STONESKINARMOR_DURABILITY=1000
@@ -19,6 +23,7 @@ local MAGEARMOR_DURABILITY=2^30
 local MAGEARMOR_DURATION=4*60
 local TINYHUT_DURATION=8*60
 local SHELTER_DURATION=4*8*60
+local DARKVISION_DURATION=4*60
 
 --TODO what's the best way to deal with timers? fuel would do the trick, but it would mess display. And how do I tell the timer anyway?
 
@@ -319,10 +324,52 @@ local function shelterfn(Sim)
     return inst
 end
 
+local function darkvision_fx()
+    local inst = CreateEntity()
+    inst.entity:AddTransform()
+
+    inst:AddTag("FX")
+    inst:AddTag("NOCLICK")
+    --nightvision setup doesnt work outside of rog, and i doubt 'just setting it' in clock in case of vanilla would work
+    --lightwatcher being userdata object tho... who knows, C++ tends to not allow 'file overrides' heh, so I guess I should check some day
+    -- what's the min amount of light? considering that movement is lagging
+    local light = inst.entity:AddLight()
+    light:SetFalloff(1)
+    light:SetIntensity(0.2)
+    light:SetRadius(0.1)
+    light:SetColour(155/255, 225/255, 250/255)
+    light:Enable(true)
+
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_darkvision"
+    inst.components.spell.duration =DARKVISION_DURATION
+    inst.components.spell.ontargetfn = function(inst, target)
+      if not target then return end
+      target.fa_darkvision = inst
+      target:AddTag(inst.components.spell.spellname)
+      GetWorld().components.colourcubemanager:SetOverrideColourCube(resolvefilepath "colour_cubes/darkvision_cc.tex", .25)
+      light:Enable(true)
+    end
+    inst.components.spell.onfinishfn = function(inst)
+      if not inst.components.spell.target then return end
+      GetWorld().components.colourcubemanager:SetOverrideColourCube(nil, .5)
+    end
+
+    inst.components.spell.fn = function(inst, target, variables)
+      if target then
+        inst.Transform:SetPosition(target:GetPosition():Get())
+      end
+    end
+    inst.components.spell.resumefn = function(inst, time) end
+    inst.components.spell.removeonfinish = true
+
+    return inst
+end
 
 return Prefab( "common/inventory/fa_magearmor", magearmorfn, ssassets),
 Prefab( "common/inventory/fa_stoneskin", stoneskinfn, maassets),
 Prefab( "common/inventory/fa_spell_tinyhut", tinyhutfn, tinyassets),
+Prefab("common/fa_darkvision_fx",darkvision_fx,nightassets),
  MakePlacer( "common/fa_spell_tinyhut_placer", "tent", "tent", "idle" ),
 Prefab( "common/inventory/fa_spell_secureshelter", shelterfn, tinyassets),
  MakePlacer( "common/fa_spell_secureshelter_placer", "tent", "tent", "idle" ) 

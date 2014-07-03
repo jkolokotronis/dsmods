@@ -546,6 +546,14 @@ function treeguardianfn(inst,reader)
 
 end
 
+function dancinglightfn(inst,reader)
+    local l=SpawnPrefab("fa_dancinglight")
+    l.Transform:SetPosition(reader.Transform:GetWorldPosition())
+    l.components.knownlocations:RememberLocation("home",reader.Transform:GetWorldPosition(),false)
+
+    return true
+end
+
 function spawnsummonbyname(inst,reader,prefab,exclusive)
     if(exclusive)then
         killexclusivesummons(reader)
@@ -849,11 +857,20 @@ local function magearmorfn(inst, reader)
     local prod = SpawnPrefab("fa_magearmor")
     prod.components.armor.absorb_percent=MAGEARMOR_ABSO+math.floor(cl/5)*MAGEARMOR_ABSO_INC
     reader.components.inventory:Equip(prod)
+    return true
 end
 
 local function stoneskinfn(inst, reader)
     local prod = SpawnPrefab("fa_stoneskin")
     reader.components.inventory:Equip(prod)
+    return true
+end
+
+local function darkvisionfn(inst,reader)
+    local light = SpawnPrefab("fa_darkvision_fx")
+    inst.components.spell:SetTarget(reader)
+    inst.components.spell:StartSpell()
+    return true
 end
 
 function onfinished(inst)
@@ -963,14 +980,13 @@ return
     MakeSpell("fa_spell_magehound",summonmagehound,1,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_magearmor",magearmorfn,10,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_stoneskin",stoneskinfn,5,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_dancinglight",dancinglightfn,5,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_darkvision",darkvisionfn,3,FA_SPELL_SCHOOLS.TRANSMUTATION),
 
 
 
---    local r=Recipe("fa_spell_dancinglight", {Ingredient("poisongland",2), Ingredient("fireflies", 4)},RECIPETABS.SPELLS,TECH.NONE)
---    local r=Recipe("fa_spell_darkvision", {Ingredient("lightbulb", 12), Ingredient("fireflies", 2), Ingredient("papyrus", 4)}, RECIPETABS.SPELLS,TECH.NONE)
 --    local r=Recipe("fa_spell_deepslumber", {Ingredient("blowdart_sleep", 2), Ingredient("twigs", 15), Ingredient("poop", 8)}, RECIPETABS.SPELLS,TECH.NONE)
 --    local r=Recipe("fa_spell_rage", {Ingredient("meat", 4), Ingredient("monstermeat", 6), Ingredient("papyrus", 6)}, RECIPETABS.SPELLS,TECH.NONE)
---    local r=Recipe("fa_spell_tinyhut", {Ingredient("log", 20), Ingredient("bedroll_furry", 1), Ingredient("twigs", 20)}, RECIPETABS.SPELLS,TECH.NONE)
 --    local r=Recipe("fa_spell_wallofstone", {Ingredient("rocks", 20), Ingredient("twigs", 10), Ingredient("flint", 10)}, RECIPETABS.SPELLS,TECH.NONE)
 
 
