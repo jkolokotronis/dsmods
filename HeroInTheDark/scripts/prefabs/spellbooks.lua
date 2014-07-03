@@ -650,13 +650,20 @@ end
 
 function naturespawnfn(inst,reader)
 
+    local cl=1
+    if(reader.components.fa_spellcaster)then
+        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.CONJURATION)
+    end
     local spider=blackspiderspawn(inst,reader)
     spider.components.follower.maxfollowtime=NATURESPAWN_SUMMON_TIME
     spider.components.follower:AddLoyaltyTime(NATURESPAWN_SUMMON_TIME)
-    local spider=blackspiderspawn(inst,reader)
-    spider.components.follower.maxfollowtime=NATURESPAWN_SUMMON_TIME
-    spider.components.follower:AddLoyaltyTime(NATURESPAWN_SUMMON_TIME)
-
+    --1+10 or 20? 20 mobs are way beyond logic, you would have to kill physics to begin with or they'll never hit anything... lets see how this works
+    --should position them better tho
+    for i=0,math.floor(cl/2) do
+        local spider=blackspiderspawn(inst,reader)
+        spider.components.follower.maxfollowtime=NATURESPAWN_SUMMON_TIME
+        spider.components.follower:AddLoyaltyTime(NATURESPAWN_SUMMON_TIME)
+    end
      return true
 
 end

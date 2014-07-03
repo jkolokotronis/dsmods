@@ -441,7 +441,7 @@ local function onattackanimaltrance(inst1,attacker,target)
             if not inst.components.spell.target then return end
             inst.components.spell.target.fa_daze = nil
             if(inst.components.spell.target.fa_daze_fx) then inst.components.spell.target.fa_daze_fx:Remove() end
-            inst.components.spell.target:RemoveEventListener("attacked",ondazedattacked)
+            inst.components.spell.target:RemoveEventCallback("attacked",ondazedattacked)
         end
                 --inst.components.spell.fn = function(inst, target, variables) end
                 inst.components.spell.resumefn = function() end
@@ -1010,7 +1010,7 @@ local function ondazehuman(inst1,attacker,target)
             if not inst.components.spell.target then return end
             inst.components.spell.target.fa_daze = nil
             if(inst.components.spell.target.fa_daze_fx) then inst.components.spell.target.fa_daze_fx:Remove() end
-            inst.components.spell.target:RemoveEventListener("attacked",ondazedattacked)
+            inst.components.spell.target:RemoveEventCallback("attacked",ondazedattacked)
         end
                 --inst.components.spell.fn = function(inst, target, variables) end
                 inst.components.spell.resumefn = function() end

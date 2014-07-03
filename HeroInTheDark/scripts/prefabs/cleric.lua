@@ -125,7 +125,7 @@ local function enableL1spells()
 --    r.image="book_gardening.tex"
     local r=Recipe("fa_spell_fear", {Ingredient("nightmarefuel", 6), Ingredient("twigs", 6), Ingredient("petals_evil", 6)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
-    local r=Recipe("fa_spell_summonmonster1", {Ingredient("papyrus", 4), Ingredient("silk", 2), Ingredient("spidereggsack", 2)}, RECIPETABS.SPELLS,TECH.NONE)
+    local r=Recipe("fa_spell_summonmonster1", {Ingredient("papyrus", 4), Ingredient("silk", 2), Ingredient("spidergland", 2)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
     local r=Recipe("fa_spell_protevil", {Ingredient("houndstooth", 2), Ingredient("goldnugget", 6), Ingredient("healingsalve", 2)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
