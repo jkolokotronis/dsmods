@@ -7,7 +7,11 @@
   </data>
  </layer>
  <objectgroup name="FG_OBJECTS" width="16" height="16">
-  <object type="fa_scrollchest_1" x="128" y="126"/>
+  <object type="treasurechest"  x="128" y="126">
+   <properties>
+    <property name="scenario" value="fa_scrollchest_1"/>
+   </properties>
+  </object>
   <object type="pighouse" x="36" y="110"/>
   <object type="pighouse" x="193" y="221"/>
   <object type="pighouse" x="197" y="54"/>

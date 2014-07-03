@@ -7,7 +7,11 @@
   </data>
  </layer>
  <objectgroup name="FG_OBJECTS" width="16" height="16">
-  <object type="fa_scrollchest_3" x="129" y="125"/>
+  <object type="treasurechest" x="129" y="125">
+   <properties>
+    <property name="scenario" value="fa_scrollchest_goblin"/>
+   </properties>
+  </object>
   <object type="skeleton" x="192" y="61"/>
   <object type="tentacle" x="58" y="83"/>
   <object type="tentacle" x="220" y="133"/>

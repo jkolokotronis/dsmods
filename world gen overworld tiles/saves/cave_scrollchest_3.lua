@@ -63,14 +63,16 @@ return {
       objects = {
         {
           name = "",
-          type = "fa_scrollchest_3",
+          type = "treasurechest",
           shape = "rectangle",
           x = 129,
           y = 125,
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["scenario"] = "fa_scrollchest_goblin"
+          }
         },
         {
           name = "",

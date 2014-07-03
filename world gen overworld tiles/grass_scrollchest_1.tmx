@@ -8,7 +8,11 @@
  </layer>
  <objectgroup name="BG_OBJECTS" width="16" height="16">
   <object type="researchlab" x="190" y="65"/>
-  <object type="fa_scrollchest_1" x="29" y="60"/>
+  <object type="treasurechest"  x="29" y="60">
+   <properties>
+    <property name="scenario" value="fa_scrollchest_1"/>
+   </properties>
+  </object>
   <object type="meatrack" x="134" y="225"/>
  </objectgroup>
 </map>

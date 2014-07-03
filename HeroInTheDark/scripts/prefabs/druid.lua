@@ -258,10 +258,15 @@ local function enableL5spells()
     r.image="book_gardening.tex"
 end
 
+local function enableL6spells() end
+local function enableL7spells() end
+local function enableL8spells() end
+local function enableL9spells() end
+
 local function onxploaded(inst)
     local level=inst.components.xplevel.level
     inst.components.fa_spellcaster.casterlevel=level
-    if(level>=3)then
+    if(level>=2)then
         enableL1spells()
     end
     if(level>=6)then
@@ -276,8 +281,20 @@ local function onxploaded(inst)
     if(level>=12)then
         enableL5spells()
     end
+    if(level>=14)then
+        enableL6spells()
+    end
+    if(level>=16)then
+        enableL7spells()
+    end
     if(level>=15)then
         inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.5
+    end
+    if(level>=18)then
+        enableL8spells()
+    end
+    if(level>=20)then
+        enableL9spells()
     end
     if(level>1)then
         inst.components.health.maxhealth= inst.components.health.maxhealth+HEALTH_PER_LEVEL*(level-1)
@@ -292,7 +309,7 @@ local function onlevelup(inst,data)
     inst.components.health.maxhealth= inst.components.health.maxhealth+HEALTH_PER_LEVEL
     inst.components.sanity.max=inst.components.sanity.max+SANITY_PER_LEVEL
 
-    if(level==3)then
+    if(level==2)then
         enableL1spells()
     elseif(level==5)then
          inst.petBuff:Show()
@@ -304,10 +321,16 @@ local function onlevelup(inst,data)
         enableL4spells()
     elseif(level==12)then
         enableL5spells()
+    elseif(level==14)then
+        enableL6spells()
     elseif(level==15)then
         inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.5
+    elseif(level==16)then
+        enableL7spells()
+    elseif(level==18)then
+        enableL8spells()
     elseif(level==20)then
-
+        enableL9spells()
     end
 end
 

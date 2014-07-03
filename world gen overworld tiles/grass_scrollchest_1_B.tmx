@@ -7,7 +7,11 @@
   </data>
  </layer>
  <objectgroup name="FG_OBJECTS" width="16" height="16">
-  <object type="fa_scrollchest_1" x="161" y="125"/>
+  <object type="treasurechest"  x="161" y="125">
+   <properties>
+    <property name="scenario" value="fa_scrollchest_1"/>
+   </properties>
+  </object>
   <object type="trap_teeth_maxwell" x="21" y="93"/>
   <object type="trap_teeth_maxwell" x="107" y="151"/>
   <object type="trap_teeth_maxwell" x="104" y="93"/>

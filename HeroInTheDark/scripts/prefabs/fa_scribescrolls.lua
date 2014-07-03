@@ -24,25 +24,23 @@ local function onsave(inst, data)
 end
 
 local function OnTeach(inst, learner)
-	if(learner.components.builder:KnowsRecipe(self.recipe))then 
-
-        local prod = SpawnPrefab(self.recipe.product)
-        if self.recipe.numtogive > 1 and prod.components.stackable then
-           	prod.components.stackable:SetStackSize(self.recipe.numtogive)
-			self.inst.components.inventory:GiveItem(prod, nil, TheInput:GetScreenPosition())
-        elseif self.recipe.numtogive > 1 and not prod.components.stackable then
-			self.inst.components.inventory:GiveItem(prod, nil, TheInput:GetScreenPosition())
-			for i = 2, self.recipe.numtogive do
-				local addt_prod = SpawnPrefab(self.recipe.product)
-				self.inst.components.inventory:GiveItem(addt_prod, nil, TheInput:GetScreenPosition())
+	local recipe=GetRecipe(inst.recipetouse)
+	print("in onteach ",recipe)
+        local prod = SpawnPrefab(recipe.product)
+        if recipe.numtogive > 1 and prod.components.stackable then
+           	prod.components.stackable:SetStackSize(recipe.numtogive)
+			learner.components.inventory:GiveItem(prod, nil, TheInput:GetScreenPosition())
+        elseif recipe.numtogive > 1 and not prod.components.stackable then
+			learner.components.inventory:GiveItem(prod, nil, TheInput:GetScreenPosition())
+			for i = 2, recipe.numtogive do
+				local addt_prod = SpawnPrefab(recipe.product)
+				learner.components.inventory:GiveItem(addt_prod, nil, TheInput:GetScreenPosition())
 			end
 	    else
-			self.inst.components.inventory:GiveItem(prod, nil, TheInput:GetScreenPosition())
+			learner.components.inventory:GiveItem(prod, nil, TheInput:GetScreenPosition())
         end
-	end
-	if learner.SoundEmitter then
-		learner.SoundEmitter:PlaySound("dontstarve/HUD/get_gold")    
-	end
+		prod:OnBuilt(learner)
+	return true
 end
 
 
@@ -65,8 +63,10 @@ local function fn()
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem:ChangeImageName("blueprint")
     inst:AddComponent("named")
+    inst.components.named:SetName("Unknown Scroll")
     inst:AddComponent("teacher")
-    inst.components.teacher.onteach = OnTeach
+    --too late
+--    inst.components.teacher.onteach = OnTeach
 
     inst.setRecipe=function(low, high,caster)
     	if(caster.fa_spellcraft and caster.fa_spellcraft.spells and GetTableSize(caster.fa_spellcraft.spells)>0) then 
@@ -82,10 +82,10 @@ local function fn()
 			end
 			local spell=nil
 			if(GetTableSize(unknownnspells)>0)then
-				local spell=spells[amth.random(1,#unknownnspells)]
+				spell=spells[math.random(1,#unknownnspells)]
 				inst.recipetouse=spell.recname
 			elseif(GetTableSize(spells)>0)then
-				local spell=spells[amth.random(1,#spells)]
+				spell=spells[math.random(1,#spells)]
 				inst.recipetouse=spell.recname
 			end
 			if(inst.recipetouse)then
@@ -100,14 +100,23 @@ local function fn()
 	  		print("no caster, no failsafe, sorry")
 	  	end
 	end
---[[
+
     local old_teach=inst.components.teacher.Teach
     function inst.components.teacher:Teach(target)
-    	if(not self.recipe)then
-
+    	local known=false
+    	if target.components.builder then
+			if self.recipe then
+				known=target.components.builder:KnowsRecipe(self.recipe)
+    		end
     	end
-    	return old_teach(self,target)
-    end]]
+    	print("known?",known)
+    	local retval= old_teach(self,target)
+    	if(known)then
+		 	return OnTeach(inst, target)
+		else
+			return old_teach(self,target)
+		end
+    end
     
     inst.OnLoad = onload
     inst.OnSave = onsave

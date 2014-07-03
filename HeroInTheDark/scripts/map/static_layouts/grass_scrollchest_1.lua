@@ -74,14 +74,16 @@ return {
         },
         {
           name = "",
-          type = "fa_scrollchest_1",
+          type = "treasurechest",
           shape = "rectangle",
           x = 29,
           y = 60,
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["scenario"] = "fa_scrollchest_1"
+          }
         },
         {
           name = "",

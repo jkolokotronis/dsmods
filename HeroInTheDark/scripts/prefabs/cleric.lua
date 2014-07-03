@@ -294,6 +294,11 @@ local function enableL5spells()
     r.image="book_gardening.tex"
 end
 
+local function enableL6spells() end
+local function enableL7spells() end
+local function enableL8spells() end
+local function enableL9spells() end
+
 local function onturnundead(clr)
     local pos=Vector3(clr.Transform:GetWorldPosition())
         local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, TURN_UNDEAD_RANGE)
@@ -357,26 +362,35 @@ end
 local function onxploaded(inst)
     local level=inst.components.xplevel.level
     inst.components.fa_spellcaster.casterlevel=level
-    if(level>=3)then
---        inst.turnCooldownButton:Show()
-    end
-    if(level>=4)then
+    if(level>=2)then
         enableL1spells()
     end
-    if(level>=7)then
+    if(level>=4)then
+    end
+    if(level>=5)then
         enableL2spells()
     end
-    if(level>=9)then
+    if(level>=8)then
         enableL3spells()
     end
-    if(level>=11)then
+    if(level>=10)then
         enableL4spells()
     end
-    if(level>=14)then
+    if(level>=12)then
         enableL5spells()
+    end
+    if(level>=14)then
+        enableL6spells()
+    end
+    if(level>=16)then
+        enableL7spells()
+    end
+    if(level>=18)then
+        enableL8spells()
     end
     if(level>=20)then
         addLightAura(inst)
+        enableL9spells()
     end
     if(level>1)then
         inst.components.health.maxhealth= inst.components.health.maxhealth+HEALTH_PER_LEVEL*(level-1)
@@ -390,23 +404,30 @@ local function onlevelup(inst,data)
     inst.components.health.maxhealth= inst.components.health.maxhealth+HEALTH_PER_LEVEL
     inst.components.sanity.max=inst.components.sanity.max+SANITY_PER_LEVEL
 
-    if(level==3)then
+    if(level==2)then
+        enableL1spells()        
+    elseif(level==3)then
         inst.turnCooldownButton:Show()
-    elseif(level==4)then
-        enableL1spells()
-    elseif(level==7)then
+    elseif(level==5)then
         enableL2spells()
-    elseif(level==9)then
+    elseif(level==8)then
         enableL3spells()
+    elseif(level==9)then
         inst.turnCooldownButton:SetCooldown(TURN_UNDEAD_COOLDOWN_MK2)
-    elseif(level==11)then
+    elseif(level==10)then
         enableL4spells()
-    elseif(level==14)then
+    elseif(level==12)then
         enableL5spells()
+    elseif(level==14)then
+        enableL6spells()
+    elseif(level==16)then
+        enableL7spells()
     elseif(level==18)then
         inst.turnCooldownButton:SetCooldown(TURN_UNDEAD_COOLDOWN_MK3)
+        enableL8spells()
     elseif(level==20)then
         addLightAura(inst)
+        enableL9spells()
     end
 end
 
