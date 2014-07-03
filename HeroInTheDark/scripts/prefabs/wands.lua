@@ -447,7 +447,7 @@ local function onattackanimaltrance(inst1,attacker,target)
                 inst.components.spell.resumefn = function() end
                 inst.components.spell.removeonfinish = true
 
-        inst.components.spell:SetTarget(v)
+        inst.components.spell:SetTarget(target)
         inst.components.spell:StartSpell()
     end
 end
@@ -1016,7 +1016,7 @@ local function ondazehuman(inst1,attacker,target)
                 inst.components.spell.resumefn = function() end
                 inst.components.spell.removeonfinish = true
 
-        inst.components.spell:SetTarget(v)
+        inst.components.spell:SetTarget(target)
         inst.components.spell:StartSpell()
 --    end
 end
