@@ -16,9 +16,21 @@ local prefabs =
      "impact",
 }
 
+local WEB_USES=8
+
 local MAGICMISSLE_USES=30
 local MAGICMISSLE_DAMAGE=20
 local MAGICMISSLE_DAMAGE_INC=5
+
+local REDUCE_HUMANOID_DURATION=4*60
+local REDUCE_HUMANOID_SPEED=1.25
+local REDUCE_HUMANOID_MULT=0.75
+local REDUCE_HUMANOID_USES=8
+
+local ENLARGE_HUMANOID_DURATION=4*60
+local ENLARGE_HUMANOID_SPEED=0.75
+local ENLARGE_HUMANOID_MULT=1.25
+local ENLARGE_HUMANOID_USES=8
 
 local ROE_DEBUFF=0.5
 local ROE_USES=0.5
@@ -249,7 +261,7 @@ local function onattackicestorm(staff, target, orpos)
     inst.components.spell:StartSpell()
     staff.components.finiteuses:Use(1)
 end
----------COMMON FUNCTIONS---------
+
 local function onfinished(inst)
     inst.SoundEmitter:PlaySound("dontstarve/common/gem_shatter")
     inst:Remove()
@@ -1036,7 +1048,7 @@ local function dazehumanfn()
 end
 
 local function frostrayfn()
-    local inst = commonfn("green")
+    local inst = commonfn("blue")
     inst:AddComponent("weapon")
     inst.components.weapon:SetDamage(0)
     inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
@@ -1050,8 +1062,8 @@ local function frostrayfn()
             target.components.combat:GetAttacked(attacker, damage, nil,nil,FA_DAMAGETYPE.COLD)
         end
         end)
-    inst.components.weapon:SetProjectile("acidarrowprojectile")
-    inst.components.inventoryitem.imagename="greenstaff"
+    inst.components.weapon:SetProjectile("ice_projectilex")
+    inst.components.inventoryitem.imagename="icestaff"
 
     inst.components.finiteuses:SetMaxUses(FROSTRAY_USES)
     inst.components.finiteuses:SetUses(FROSTRAY_USES)
@@ -1388,6 +1400,143 @@ local function acidarrowfn()
     return inst
 end
 
+local function onattackenlargehumanoid(inst1,attacker,target)
+    if(not target:HasTag("fa_humanoid")) then return false end
+    
+    if(target.fa_enlarge)then 
+            target.fa_enlarge.components.spell.lifetime = 0
+            target.fa_enlarge.components.spell:ResumeSpell()
+    else
+        local inst=CreateEntity()
+        inst.persists=false
+        inst:AddTag("FX")
+        inst:AddTag("NOCLICK")
+        local spell = inst:AddComponent("spell")
+        inst.components.spell.spellname = "fa_enlarge"
+        inst.components.spell.duration = ENLARGE_HUMANOID_DURATION
+        inst.components.spell.ontargetfn = function(inst,target)
+        local x,y,z=target.Transform:GetScale()
+        target.Transform:SetScale(x/2,y/2,z/2)
+        if(target.components.combat)then
+            target.components.combat.damagemultiplier=target.components.combat.damagemultiplier*ENLARGE_HUMANOID_MULT
+            target.components.combat.min_attack_period=target.components.combat.min_attack_period/ENLARGE_HUMANOID_SPEED
+        end        
+        target.fa_enlarge = inst
+        end
+               --inst.components.spell.onstartfn = function() end
+        inst.components.spell.onfinishfn = function(inst)
+            if not inst.components.spell.target then return end
+            local x,y,z=target.Transform:GetScale()
+            target.Transform:SetScale(x*2,y*2,z*2)
+            if(target.components.combat)then
+                target.components.combat.damagemultiplier=target.components.combat.damagemultiplier/ENLARGE_HUMANOID_MULT
+                target.components.combat.min_attack_period=target.components.combat.min_attack_period*ENLARGE_HUMANOID_SPEED
+            end        
+            inst.components.spell.target.fa_enlarge = nil
+        end
+        inst.components.spell.resumefn = function() end
+        inst.components.spell.removeonfinish = true
+
+        inst.components.spell:SetTarget(target)
+        inst.components.spell:StartSpell()
+    end
+
+end
+
+local function enlargehumanoidfn()
+    local inst = commonfn("blue")
+    inst.components.inventoryitem.imagename="icestaff"
+    inst:AddComponent("weapon")
+    inst.components.weapon:SetDamage(0)
+    inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
+    inst.components.weapon:SetOnAttack(onattackenlargehumanoid)
+    inst.components.weapon:SetProjectile("ice_projectilex")
+    inst.components.finiteuses:SetMaxUses(ENLARGE_HUMANOID_USES)
+    inst.components.finiteuses:SetUses(ENLARGE_HUMANOID_USES)
+
+    return inst
+end
+
+local function onattackreducehumanoid(inst1,attacker,target)
+    if(not target:HasTag("fa_humanoid")) then return false end
+    
+    if(target.fa_reduce)then 
+            target.fa_enlarge.components.spell.lifetime = 0
+            target.fa_enlarge.components.spell:ResumeSpell()
+    else
+        local inst=CreateEntity()
+        inst.persists=false
+        inst:AddTag("FX")
+        inst:AddTag("NOCLICK")
+        local spell = inst:AddComponent("spell")
+        inst.components.spell.spellname = "fa_reduce"
+        inst.components.spell.duration = REDUCE_HUMANOID_DURATION
+        inst.components.spell.ontargetfn = function(inst,target)
+        local x,y,z=target.Transform:GetScale()
+        target.Transform:SetScale(x/2,y/2,z/2)
+        if(target.components.combat)then
+            target.components.combat.damagemultiplier=target.components.combat.damagemultiplier*REDUCE_HUMANOID_MULT
+            target.components.combat.min_attack_period=target.components.combat.min_attack_period/REDUCE_HUMANOID_SPEED
+        end        
+        target.fa_reduce = inst
+        end
+               --inst.components.spell.onstartfn = function() end
+        inst.components.spell.onfinishfn = function(inst)
+            if not inst.components.spell.target then return end
+            local x,y,z=target.Transform:GetScale()
+            target.Transform:SetScale(x*2,y*2,z*2)
+            if(target.components.combat)then
+                target.components.combat.damagemultiplier=target.components.combat.damagemultiplier/REDUCE_HUMANOID_MULT
+                target.components.combat.min_attack_period=target.components.combat.min_attack_period*REDUCE_HUMANOID_SPEED
+            end        
+            inst.components.spell.target.fa_reduce = nil
+        end
+        inst.components.spell.resumefn = function() end
+        inst.components.spell.removeonfinish = true
+
+        inst.components.spell:SetTarget(target)
+        inst.components.spell:StartSpell()
+    end
+
+end
+
+local function reducehumanoidfn()
+    local inst = commonfn("blue")
+    inst.components.inventoryitem.imagename="icestaff"
+    inst:AddComponent("weapon")
+    inst.components.weapon:SetDamage(0)
+    inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
+    inst.components.weapon:SetOnAttack(onattackenlargehumanoid)
+    inst.components.weapon:SetProjectile("ice_projectilex")
+    inst.components.finiteuses:SetMaxUses(REDUCE_HUMANOID_USES)
+    inst.components.finiteuses:SetUses(REDUCE_HUMANOID_USES)
+
+    return inst
+end
+
+local function onattackweb(staff, target, orpos)
+    local pos=orpos
+    if(pos==nil and target~=nil)then
+        pos=Vector3(target.Transform:GetWorldPosition())
+    end
+    local inst = SpawnPrefab("fa_webspell_spawn")
+    inst.Transform:SetPosition(pos.x, pos.y, pos.z)
+    staff.components.finiteuses:Use(1)
+end
+
+local function webfn()
+    local inst = commonfn("blue")
+    inst.components.inventoryitem.imagename="icestaff"
+    inst:AddComponent("spellcaster")
+    inst.components.spellcaster:SetSpellFn(onattackweb)
+    inst.components.spellcaster.canuseontargets = false
+    inst.components.spellcaster.canuseonpoint = true
+    inst.components.spellcaster.canusefrominventory = false
+    inst.components.finiteuses:SetMaxUses(WEB_USES)
+    inst.components.finiteuses:SetUses(WEB_USES)
+    return inst
+end
+
 return 
 Prefab("common/inventory/fa_spell_animaltrance", animaltrance, assets, prefabs),
 Prefab("common/inventory/fa_spell_gustofwind", gustofwind, assets, prefabs),
@@ -1416,12 +1565,11 @@ Prefab("common/inventory/fa_spell_slow", slowfn, assets, prefabs),
 Prefab("common/inventory/fa_spell_fireball", fireball, assets, prefabs),
 Prefab("common/inventory/fa_spell_charmmonster", charmmonsterfn, assets, prefabs),
 Prefab("common/inventory/fa_spell_holdmonster", holdmonsterfn, assets, prefabs),
+Prefab("common/inventory/fa_spell_dominateperson", charmpersonfn, assets, prefabs),
+Prefab("common/inventory/fa_spell_enlargehumanoid", enlargehumanoidfn, assets, prefabs),
+Prefab("common/inventory/fa_spell_reducehumanoid", reducehumanoidfn, assets, prefabs),
+Prefab("common/inventory/fa_spell_web", webfn, assets, prefabs),
 
---    local r=Recipe("fa_spell_dominateperson", {Ingredient("meat", 8), Ingredient("twigs", 15), Ingredient("goldnugget", 16)}, RECIPETABS.SPELLS,TECH.NONE)
---    local r=Recipe("fa_spell_enlargehumanoid", {Ingredient("meat", 4), Ingredient("smallmeat", 4), Ingredient("honey", 6)}, RECIPETABS.SPELLS,TECH.NONE)
---    local r=Recipe("fa_spell_reducehumanoid", {Ingredient("meat", 4), Ingredient("smallmeat", 4), Ingredient("honey", 6)}, RECIPETABS.SPELLS,TECH.NONE)
-
---    local r=Recipe("fa_spell_web", {Ingredient("twigs", 10), Ingredient("silk", 8), Ingredient("spidergland", 4)}, RECIPETABS.SPELLS,TECH.NONE)
 Prefab("common/inventory/firewallwand_insta", firewall_insta, assets, prefabs),
 
     --DEPRECATED

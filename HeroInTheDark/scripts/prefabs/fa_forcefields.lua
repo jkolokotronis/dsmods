@@ -44,18 +44,19 @@ local assets_yellow =
 }
 
 
-
 local function kill_fx(inst)
-    inst.AnimState:PlayAnimation("close")
-    inst.components.lighttweener:StartTween(nil, 0, .9, 0.9, nil, .2)
-    inst:DoTaskInTime(0.6, function() inst:Remove() end)    
+   inst.AnimState:PlayAnimation("close")
+   if(inst.components.lighttweener)then
+     inst.components.lighttweener:StartTween(nil, 0, .9, 0.9, nil, .2)
+   end
+   inst:DoTaskInTime(0.6, function() inst:Remove() end)    
 end
 
-local function fn(type)
+local function fn(type,lighton)
 	local inst = CreateEntity()
 	local trans = inst.entity:AddTransform()
-    local anim = inst.entity:AddAnimState()
-    local sound = inst.entity:AddSoundEmitter()
+  local anim = inst.entity:AddAnimState()
+  local sound = inst.entity:AddSoundEmitter()
 
     anim:SetBank("fa_forcefield_"..type)
     anim:SetBuild("fa_forcefield_"..type)
@@ -64,11 +65,12 @@ local function fn(type)
     inst:AddTag("NOCLICK")
     inst:AddTag("FX")
 
-    inst:AddComponent("lighttweener")
-    local light = inst.entity:AddLight()
-    inst.components.lighttweener:StartTween(light, 0, .9, 0.9, {1,1,1}, 0)
-    inst.components.lighttweener:StartTween(nil, 3, .9, 0.9, nil, .2)
-
+    if(lighton)then
+      inst:AddComponent("lighttweener")
+      local light = inst.entity:AddLight()
+      inst.components.lighttweener:StartTween(light, 0, .9, 0.9, {1,1,1}, 0)
+      inst.components.lighttweener:StartTween(nil, 3, .9, 0.9, nil, .2)
+    end
     inst.kill_fx = kill_fx
 
 --    sound:PlaySound("dontstarve/wilson/forcefield_LP", "loop")

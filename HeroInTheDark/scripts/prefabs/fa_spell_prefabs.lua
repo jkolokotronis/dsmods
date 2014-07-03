@@ -24,8 +24,7 @@ local MAGEARMOR_DURATION=4*60
 local TINYHUT_DURATION=8*60
 local SHELTER_DURATION=4*8*60
 local DARKVISION_DURATION=4*60
-
---TODO what's the best way to deal with timers? fuel would do the trick, but it would mess display. And how do I tell the timer anyway?
+local WEB_TTL=4*60
 
 
 local function OnBlocked(owner,data) 
@@ -116,7 +115,7 @@ local function magearmoronequip(inst, owner)
 end
 
 local function magearmoronunequip(inst, owner) 
-   inst.fa_forcefieldfx:Remove()
+   inst.fa_forcefieldfx.kill_fx(inst.fa_forcefieldfx)
    inst.fa_forcefieldfx=nil
     owner.AnimState:ClearOverrideSymbol("swap_body")
 end
@@ -126,20 +125,9 @@ local magearmoronloadfn = function(inst, data)
     if(data.armorabso)then
       inst.components.armor.absorb_percent=data.armorabso
     end
-    if(data and data.countdown and data.countdown>0)then
-        if inst.shutdowntask then
-            inst.shutdowntask:Cancel()
-        end
-    inst.shutdowntask=inst:DoTaskInTime(data.countdown, function()
-      inst:Remove()
-    end)
-    inst.shutdowntime=GetTime()+data.countdown
-    end
-
 end
 
 local magearmoronsavefn = function(inst, data)
-    data.countdown=inst.shutdowntime-GetTime()
     data.armorabso=inst.components.armor.absorb_percent
 end
 
@@ -175,13 +163,15 @@ local function magearmorfn(Sim)
     inst.components.equippable:SetOnEquip( magearmoronequip )
     inst.components.equippable:SetOnUnequip( magearmoronunequip )
 
+
+        inst:AddComponent("fueled")
+        inst.components.fueled.fueltype = "SPELLDURATION"
+        inst.components.fueled:InitializeFuelLevel(MAGEARMOR_DURATION)
+        inst.components.fueled:StartConsuming()        
+        inst.components.fueled:SetDepletedFn(function() inst:Remove() end)
+
     inst.OnLoad = magearmoronloadfn
     inst.OnSave = magearmoronsavefn
-
-    inst.shutdowntime=GetTime()+MAGEARMOR_DURATION
-    inst.shutdowntask=inst:DoTaskInTime(MAGEARMOR_DURATION, function()
-      inst:Remove()
-    end)
     
     return inst
 end
@@ -301,7 +291,7 @@ local function hutfn()
 end
 
 local function tinyhutfn(Sim)
-    local inst=hutfn
+    local inst=hutfn()
     inst:AddComponent("finiteuses")
     inst.components.finiteuses:SetMaxUses(2)
     inst.components.finiteuses:SetUses(2)
@@ -315,11 +305,11 @@ local function tinyhutfn(Sim)
 end
 
 local function shelterfn(Sim)
-    local inst=hutfn
+    local inst=hutfn()
     
     inst.shutdowntime=GetTime()+SHELTER_DURATION
     inst.shutdowntask=inst:DoTaskInTime(SHELTER_DURATION, function()
-     tentonfinished(inst)
+        tentonfinished(inst)
     end)
     return inst
 end
@@ -344,21 +334,21 @@ local function darkvision_fx()
     inst.components.spell.spellname = "fa_darkvision"
     inst.components.spell.duration =DARKVISION_DURATION
     inst.components.spell.ontargetfn = function(inst, target)
-      if not target then return end
-      target.fa_darkvision = inst
-      target:AddTag(inst.components.spell.spellname)
-      GetWorld().components.colourcubemanager:SetOverrideColourCube(resolvefilepath "colour_cubes/darkvision_cc.tex", .25)
-      light:Enable(true)
+    if not target then return end
+    target.fa_darkvision = inst
+    target:AddTag(inst.components.spell.spellname)
+    GetWorld().components.colourcubemanager:SetOverrideColourCube(resolvefilepath "colour_cubes/darkvision_cc.tex", .25)
+    light:Enable(true)
     end
     inst.components.spell.onfinishfn = function(inst)
-      if not inst.components.spell.target then return end
-      GetWorld().components.colourcubemanager:SetOverrideColourCube(nil, .5)
+        if not inst.components.spell.target then return end
+        GetWorld().components.colourcubemanager:SetOverrideColourCube(nil, .5)
     end
 
     inst.components.spell.fn = function(inst, target, variables)
-      if target then
-        inst.Transform:SetPosition(target:GetPosition():Get())
-      end
+        if target then
+            inst.Transform:SetPosition(target:GetPosition():Get())
+        end
     end
     inst.components.spell.resumefn = function(inst, time) end
     inst.components.spell.removeonfinish = true
@@ -366,11 +356,36 @@ local function darkvision_fx()
     return inst
 end
 
+local function webtriggered(inst, data)
+    local target=data.target
+    --what should get catch and does it act as root or stun?
+end
+
+
+local function webfn()
+    local inst = CreateEntity()
+    local trans = inst.entity:AddTransform()
+    local anim = inst.entity:AddAnimState()
+    inst.entity:AddGroundCreepEntity()
+    inst.entity:AddSoundEmitter()
+    
+--    MakeObstaclePhysics(inst, .5)
+    inst:ListenForEvent("creepactivate", webtriggered)
+    --yep cheating
+    inst:AddComponent("fueled")
+    inst.components.fueled.fueltype = "SPELLDURATION"
+    inst.components.fueled:InitializeFuelLevel(WEB_TTL)
+    inst.components.fueled:StartConsuming()        
+    inst.components.fueled:SetDepletedFn(function() inst:Remove() end)
+
+end
+
 return Prefab( "common/inventory/fa_magearmor", magearmorfn, ssassets),
 Prefab( "common/inventory/fa_stoneskin", stoneskinfn, maassets),
+Prefab( "common/inventory/fa_webspell_spawn", webfn, maassets),
 Prefab( "common/inventory/fa_spell_tinyhut", tinyhutfn, tinyassets),
 Prefab("common/fa_darkvision_fx",darkvision_fx,nightassets),
- MakePlacer( "common/fa_spell_tinyhut_placer", "tent", "tent", "idle" ),
+MakePlacer( "common/fa_spell_tinyhut_placer", "tent", "tent", "idle" ),
 Prefab( "common/inventory/fa_spell_secureshelter", shelterfn, tinyassets),
- MakePlacer( "common/fa_spell_secureshelter_placer", "tent", "tent", "idle" ) 
+MakePlacer( "common/fa_spell_secureshelter_placer", "tent", "tent", "idle" ) 
 

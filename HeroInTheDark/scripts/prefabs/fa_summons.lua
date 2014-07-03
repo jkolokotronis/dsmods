@@ -597,11 +597,11 @@ local function dancinglight()
         inst.death = nil
     end
     inst.timeleft = DANCINGLIGHT_DURATION
-    inst.death = inst:DoTaskInTime(time, kill_light)
+    inst.death = inst:DoTaskInTime(DANCINGLIGHT_DURATION, kill_light)
 
     inst:AddComponent("knownlocations")
 
-    local brain = require "brains/chesterbrain"
+    local brain = require "brains/wandererbrain"
     inst:SetBrain(brain)
 
     return inst

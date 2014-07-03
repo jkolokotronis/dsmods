@@ -83,7 +83,7 @@ local function dorfbag()
     inst.components.container.type = "fa_bag"
     inst.components.container.side_align_tip = 100
     inst.components.container.side_widget = false  
-    inst.components.container.widgetpos = Vector3(600,0,0)
+    inst.components.container.widgetpos = Vector3(450,50,0)
     return inst
 end
 
@@ -91,7 +91,7 @@ local function scrollcase()
     local inst=fn()
     krampus_sized(inst)
 
-    inst.components.container.widgetpos = Vector3(50,0,0)
+    inst.components.container.widgetpos = Vector3(0,50,0)
     inst.components.container.side_align_tip = 100
     inst.components.container.side_widget = false    
     inst.components.container.type = "fa_scrollcase"
@@ -102,7 +102,7 @@ end
 local function wandcase()
     local inst=fn()
     krampus_sized(inst)
-    inst.components.container.widgetpos = Vector3(200,0,0)
+    inst.components.container.widgetpos = Vector3(150,50,0)
     inst.components.container.side_align_tip = 100
     inst.components.container.side_widget = false    
     inst.components.container.type = "fa_wandcase"
