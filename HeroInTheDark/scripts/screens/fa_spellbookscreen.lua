@@ -27,7 +27,7 @@ function FASpellBookScreen:InitClass()
 	if(self.caster.prefab=="druid")then
 		self.bgframe:SetPosition(-35, 84, 0)
 		self.spell:SetPosition(-200, -70, 0)
-		self.spell_list:SetPosition(0, 200, 0)
+		self.spell_list:SetPosition(5, 205, 0)
 	    self.prevbutton:SetPosition(-380,-150,0)
     	self.nextbutton:SetPosition(280,-150,0)
 		self.craftbutton:SetPosition(130,-130,0)
@@ -42,8 +42,8 @@ function FASpellBookScreen:InitClass()
     	self.closebutton:SetPosition(450,295,0)
 	elseif(self.caster.prefab=="cleric")then
 		self.bgframe:SetPosition(82, 80, 0)
-		self.spell:SetPosition(-60, -70, 0)
-		self.spell_list:SetPosition(135, 200, 0)
+		self.spell:SetPosition(-60, -65, 0)
+		self.spell_list:SetPosition(135, 205, 0)
 	    self.prevbutton:SetPosition(-175,-167,0)
     	self.nextbutton:SetPosition(325,-167,0)
 		self.craftbutton:SetPosition(250,-110,0)
@@ -163,8 +163,8 @@ function FASpellBookScreen:OnSelectSpell(spell)
 	local popup=self.spell:AddChild(FA_SpellPopup(true))
 --	popup:SetRecipe( GetRecipe(spell.recname),self.caster)
 	popup:SetSpell(spell,self.caster)
---    local can_build = self.caster.components.builder:CanBuild(spell.recname)
-	local can_build=true
+    local can_build = self.caster.components.builder:CanBuild(spell.recname)
+--	local can_build=true
 	popup:SetPosition(-280,120,0)
 	if(can_build)then
 		self.craftbutton:Show()
@@ -176,7 +176,29 @@ function FASpellBookScreen:OnSelectSpell(spell)
 end
 
 function FASpellBookScreen:CraftSpell(spell)
-	self.caster.components.builder:DoBuild(spell.recname)
+
+        local buffered = owner.components.builder:IsBuildBuffered(recipe.name)
+        if buffered then
+            if recipe.placer then
+                owner.components.playercontroller:StartBuildPlacementMode(recipe, function(pt) return owner.components.builder:CanBuildAtPoint(pt, recipe) end)
+                SetPause(false)
+		    	TheFrontEnd:PopScreen(self)
+		    	return
+            else
+				self.caster.components.builder:DoBuild(spell.recname)
+            end
+        else
+            if recipe.placer then
+                owner.components.builder:BufferBuild(recipe.name)
+                owner.components.playercontroller:StartBuildPlacementMode(recipe, function(pt) return owner.components.builder:CanBuildAtPoint(pt, recipe) end)
+                SetPause(false)
+		    	TheFrontEnd:PopScreen(self)
+		    	return
+            else
+                self.caster.components.builder:DoBuild(spell.recname)
+            end
+        end
+
 	self:OnSelectSpell(spell)
 end
 

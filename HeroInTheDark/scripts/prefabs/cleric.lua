@@ -208,7 +208,7 @@ local function enableL3spells()
     r.image="book_gardening.tex"
     local r=Recipe("fa_spell_causedisease", {Ingredient("nightmarefuel", 9), Ingredient("spidergland", 5), Ingredient("monstermeat", 6)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
-    local r=Recipe("fa_spell_createfood", {Ingredient("seeds", 2), Ingredient("poop", 4), Ingredient("paper", 2)}, RECIPETABS.SPELLS,TECH.NONE)
+    local r=Recipe("fa_spell_createfood", {Ingredient("seeds", 2), Ingredient("poop", 4), Ingredient("papyrus", 2)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
     local r=Recipe("fa_spell_continualflame", {Ingredient("lantern", 1), Ingredient("nightmarefuel", 8), Ingredient("fireflies", 2)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"

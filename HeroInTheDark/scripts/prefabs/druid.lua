@@ -202,7 +202,7 @@ end
 local function enableL4spells()
     GetPlayer().fa_spellcraft.spells[4]={
        {
-            recname="fa_spell_commandplant",
+            recname="fa_spell_calllightning",
             school="transmutation",
         },
         {

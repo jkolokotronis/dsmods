@@ -53,7 +53,7 @@ local FA_SpellPopup = Class(Widget, function(self, horizontal)
 	else
         self.desc = self.contents:AddChild(Text(BODYTEXTFONT, 33))
         self.desc:SetPosition(320, -5, 0)
-        self.desc:SetRegionSize(64*3+30,70)	
+        self.desc:SetRegionSize(64*3+60,160)	
     end
     self.desc:EnableWordWrap(true)
     
@@ -75,7 +75,7 @@ local FA_SpellPopup = Class(Widget, function(self, horizontal)
     self.amulet:SetTooltip(STRINGS.GREENAMULET_TOOLTIP)
     
     self.teaser = self.contents:AddChild(Text(BODYTEXTFONT, 28))
-    self.teaser:SetPosition(325, -100, 0)
+    self.teaser:SetPosition(325, -160, 0)
     self.teaser:SetRegionSize(64*3+20,100)
     self.teaser:EnableWordWrap(true)
     self.teaser:Hide()

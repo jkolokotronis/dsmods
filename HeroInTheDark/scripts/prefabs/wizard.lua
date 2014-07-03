@@ -168,15 +168,15 @@ local function enableL1spells()
             school="necromancy",
         },
         {
+            recname="fa_spell_expretreat",
+            school="transmutation",
+        },
+        {
             recname="fa_spell_enlargehumanoid",
             school="transmutation",
         },
         {
             recname="fa_spell_reducehumanoid",
-            school="transmutation",
-        },
-        {
-            recname="fa_spell_expretreat",
             school="transmutation",
         },
     }
@@ -187,7 +187,7 @@ local function enableL1spells()
     r.image="greenstaff.tex"
     local r=Recipe("fa_spell_dazehuman", {Ingredient("meat",2), Ingredient("twigs", 10), Ingredient("goldnugget", 4)},RECIPETABS.SPELLS,TECH.NONE)
     r.image="greenstaff.tex"
-    local r=Recipe("fa_spell_dancinglight", {Ingredient("poisongland",2), Ingredient("fireflies", 4)},RECIPETABS.SPELLS,TECH.NONE)
+    local r=Recipe("fa_spell_dancinglight", {Ingredient("spidergland",2), Ingredient("fireflies", 4)},RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
    local  r=Recipe("fa_spell_light", {Ingredient("fireflies", 1),Ingredient("lightbulb", 4), Ingredient("papyrus", 4)}, RECIPETABS.SPELLS, TECH.NONE)
     r.image="book_gardening.tex" 
@@ -263,7 +263,7 @@ local function enableL2spells()
         },
     }
 
-    local r=Recipe("fa_spell_acidarrow", {Ingredient("stinger",20), Ingredient("rot", 5), Ingredient("twigs", 20)},RECIPETABS.SPELLS,TECH.NONE)
+    local r=Recipe("fa_spell_acidarrow", {Ingredient("stinger",20), Ingredient("spoiled_food", 5), Ingredient("twigs", 20)},RECIPETABS.SPELLS,TECH.NONE)
     r.image="greenstaff.tex"
     local r=Recipe("fa_spell_summonmonster2",  {Ingredient("fish", 4), Ingredient("froglegs", 4), Ingredient("papyrus", 6)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
@@ -271,7 +271,7 @@ local function enableL2spells()
     r.image="book_gardening.tex"
     local r=Recipe("fa_spell_web", {Ingredient("twigs", 10), Ingredient("silk", 8), Ingredient("spidergland", 4)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
-    local r=Recipe("fa_spell_gustofwind", {Ingredient("feather_crow", 4), Ingredient("feather_robin", 4), Ingredient("feater_robin_winter", 4)}, RECIPETABS.SPELLS,TECH.NONE)
+    local r=Recipe("fa_spell_gustofwind", {Ingredient("feather_crow", 4), Ingredient("feather_robin", 4), Ingredient("feather_robin_winter", 4)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
     local r=Recipe("fa_spell_mirrorimage", {Ingredient("meat", 4), Ingredient("beardhair", 4), Ingredient("monstermeat", 4)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
@@ -340,7 +340,7 @@ local function enableL3spells()
     r.image="book_gardening.tex"
     local r=Recipe("fa_spell_fireball", {Ingredient("charcoal", 10), Ingredient("ash", 10), Ingredient("twigs", 10)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="firestaff.tex"
-    local r=Recipe("fa_spell_tinyhut", {Ingredient("log", 20), Ingredient("bedroll_furry", 1), Ingredient("twigs", 20)}, RECIPETABS.SPELLS,TECH.NONE)
+    local r=Recipe("fa_spell_tinyhut", {Ingredient("log", 20), Ingredient("bedroll_furry", 1), Ingredient("twigs", 20)}, RECIPETABS.SPELLS,TECH.NONE,"fa_spell_tinyhut_placer")
     r.image="book_gardening.tex"
     local r=Recipe("fa_spell_haltundeadmass", {Ingredient("nightmarefuel", 8), Ingredient("boneshard", 4), Ingredient("petals_evil", 8)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
@@ -383,6 +383,8 @@ local function enableL4spells()
     }
 
     local r=Recipe("fa_spell_stoneskin", {Ingredient("rocks", 20), Ingredient("flint", 10), Ingredient("papyrus", 8)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_secureshelter", {Ingredient("log", 40), Ingredient("bedroll_furry", 1), Ingredient("twigs", 40)}, RECIPETABS.SPELLS,TECH.NONE,"fa_spell_secureshelter_placer")
     r.image="book_gardening.tex"
     local r=Recipe("fa_spell_summonmonster4", {Ingredient("bluegem", 1), Ingredient("houndstooth", 4), Ingredient("papyrus", 6)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
