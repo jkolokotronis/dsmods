@@ -183,7 +183,7 @@ local function enableL1spells()
 
 --    local r=Recipe("fa_spell_resistance", {Ingredient("pigskin", 2), Ingredient("beefalowool", 6), Ingredient("cutgrass", 8)}, RECIPETABS.SPELLS,TECH.NONE)
 --    r.image="book_gardening.tex"
-    local r=Recipe("fa_spell_acidsplash", {Ingredient("stinger",10), Ingredient("rot", 5), Ingredient("twigs", 10)},RECIPETABS.SPELLS,TECH.NONE)
+    local r=Recipe("fa_spell_acidsplash", {Ingredient("stinger",10), Ingredient("spoiled_food", 5), Ingredient("twigs", 10)},RECIPETABS.SPELLS,TECH.NONE)
     r.image="greenstaff.tex"
     local r=Recipe("fa_spell_dazehuman", {Ingredient("meat",2), Ingredient("twigs", 10), Ingredient("goldnugget", 4)},RECIPETABS.SPELLS,TECH.NONE)
     r.image="greenstaff.tex"

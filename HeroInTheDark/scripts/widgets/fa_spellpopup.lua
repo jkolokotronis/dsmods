@@ -52,8 +52,8 @@ local FA_SpellPopup = Class(Widget, function(self, horizontal)
         self.desc:SetRegionSize(64*3+30,90)
 	else
         self.desc = self.contents:AddChild(Text(BODYTEXTFONT, 33))
-        self.desc:SetPosition(320, -5, 0)
-        self.desc:SetRegionSize(64*3+60,160)	
+        self.desc:SetPosition(320, -50, 0)
+        self.desc:SetRegionSize(64*3+60,180)	
     end
     self.desc:EnableWordWrap(true)
     

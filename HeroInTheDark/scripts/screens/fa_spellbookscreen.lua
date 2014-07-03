@@ -35,7 +35,7 @@ function FASpellBookScreen:InitClass()
     elseif(self.caster.prefab=="wizard")then
 		self.bgframe:SetPosition(20, 80, 0)
 		self.spell:SetPosition(-130, -70, 0)
-		self.spell_list:SetPosition(75, 200, 0)
+		self.spell_list:SetPosition(78, 202, 0)
 	    self.prevbutton:SetPosition(-280,-170,0)
     	self.nextbutton:SetPosition(320,-170,0)
 		self.craftbutton:SetPosition(200,-120,0)
@@ -176,29 +176,37 @@ function FASpellBookScreen:OnSelectSpell(spell)
 end
 
 function FASpellBookScreen:CraftSpell(spell)
-
-        local buffered = owner.components.builder:IsBuildBuffered(recipe.name)
+	local owner=self.caster
+	local recipe=GetRecipe(spell.recname)
+	local old_ingredientmod=self.caster.components.builder.ingredientmod
+	--technically this 'could' lead to race condition but there's very little chance for that
+	--do i want additive behavior to the ammu? or any other type of 'lowering' the req?
+	if(self.caster.prefab=="wizard" and self.caster.components.xplevel and self.caster.components.xplevel.level>=20) then
+		self.caster.components.builder.ingredientmod=0.75*old_ingredientmod
+	end
+        local buffered = self.caster.components.builder:IsBuildBuffered(recipe.name)
         if buffered then
             if recipe.placer then
-                owner.components.playercontroller:StartBuildPlacementMode(recipe, function(pt) return owner.components.builder:CanBuildAtPoint(pt, recipe) end)
-                SetPause(false)
-		    	TheFrontEnd:PopScreen(self)
-		    	return
+                self.caster.components.playercontroller:StartBuildPlacementMode(recipe, function(pt) return self.caster.components.builder:CanBuildAtPoint(pt, recipe) end)
             else
 				self.caster.components.builder:DoBuild(spell.recname)
             end
         else
             if recipe.placer then
-                owner.components.builder:BufferBuild(recipe.name)
-                owner.components.playercontroller:StartBuildPlacementMode(recipe, function(pt) return owner.components.builder:CanBuildAtPoint(pt, recipe) end)
-                SetPause(false)
-		    	TheFrontEnd:PopScreen(self)
-		    	return
+                self.caster.components.builder:BufferBuild(recipe.name)
+                self.caster.components.playercontroller:StartBuildPlacementMode(recipe, function(pt) return self.caster.components.builder:CanBuildAtPoint(pt, recipe) end)
             else
                 self.caster.components.builder:DoBuild(spell.recname)
             end
         end
 
+    self.caster.components.builder.ingredientmod=old_ingredientmod
+
+    if(recipe.placer)then
+    	SetPause(false)
+	  	TheFrontEnd:PopScreen(self)
+	  	return
+	end
 	self:OnSelectSpell(spell)
 end
 
