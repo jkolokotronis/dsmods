@@ -443,7 +443,7 @@ local function onattackanimaltrance(inst1,attacker,target)
             local fx=SpawnPrefab("fa_musicnotesfx")
             fx.persists=false
             local follower = fx.entity:AddFollower()
-            follower:FollowSymbol( target.GUID, target.components.combat.hiteffectsymbol, 0, 0, -0.0001 )
+            follower:FollowSymbol( target.GUID, target.components.combat.hiteffectsymbol, 0,  -200, -0.0001 )
             target.fa_daze_fx=fx
             target.fa_daze = inst
             target:ListenForEvent("attacked", ondazedattacked)
@@ -493,7 +493,7 @@ local function onattackholdanimal(inst1,attacker,target)
             local fx=SpawnPrefab("fa_spinningstarsfx")
             fx.persists=false
             local follower = fx.entity:AddFollower()
-            follower:FollowSymbol( target.GUID, target.components.combat.hiteffectsymbol, 0, 0, -0.0001 )
+            follower:FollowSymbol( target.GUID, target.components.combat.hiteffectsymbol, 0,  -200, -0.0001 )
             target.fa_stun_fx=fx
             target.fa_stun = inst
         end
@@ -723,7 +723,7 @@ function oninflictwounds(inst,attacker,target,damagelv)
         local fx=SpawnPrefab("fa_heal_redfx")
         fx.persists=false
         local follower = fx.entity:AddFollower()
-        follower:FollowSymbol( target.GUID, target.components.combat.hiteffectsymbol, 0, 0, -0.0001 )
+        follower:FollowSymbol( target.GUID, target.components.combat.hiteffectsymbol, 0, 100, -0.0001 )
         fx:ListenForEvent("animover", function()  fx:Remove() end)
         target.components.combat:GetAttacked(attacker, damage, nil,nil,FA_DAMAGETYPE.HOLY)
     end
@@ -864,7 +864,7 @@ local function onattackholdperson(inst1,attacker,target)
             local fx=SpawnPrefab("fa_spinningstarsfx")
             fx.persists=false
             local follower = fx.entity:AddFollower()
-            follower:FollowSymbol( target.GUID, target.components.combat.hiteffectsymbol, 0, 0, -0.0001 )
+            follower:FollowSymbol( target.GUID, target.components.combat.hiteffectsymbol, 0, -200, -0.0001 )
             target.fa_stun_fx=fx
             target.fa_stun = inst
         end
@@ -1012,7 +1012,7 @@ local function ondazehuman(inst1,attacker,target)
             local fx=SpawnPrefab("fa_musicnotesfx")
             fx.persists=false
             local follower = fx.entity:AddFollower()
-            follower:FollowSymbol( target.GUID, target.components.combat.hiteffectsymbol, 0, 0, -0.0001 )
+            follower:FollowSymbol( target.GUID, target.components.combat.hiteffectsymbol, 0,  -200, -0.0001 )
             target.fa_daze_fx=fx
             target.fa_daze = inst
             target:ListenForEvent("attacked", ondazedattacked)
@@ -1276,7 +1276,7 @@ local function onattackholdmonster(inst1,attacker,target)
         inst.components.spell.ontargetfn = function(inst,target)
 
         local follower = inst.entity:AddFollower()
-        follower:FollowSymbol( target.GUID, target.components.combat.hiteffectsymbol, 0, 0, -0.0001 )
+        follower:FollowSymbol( target.GUID, target.components.combat.hiteffectsymbol, 0, -200, -0.0001 )
         target.fa_stun = inst
         end
                --inst.components.spell.onstartfn = function() end

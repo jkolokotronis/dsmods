@@ -289,18 +289,20 @@ local function enableL3spells()
             recname="fa_spell_summonmonster3",
             school="conjuration",
         },
+        --[[
         {
             recname="fa_spell_deepslumber",
             school="enchantment",
-        },
+        },]]
         {
             recname="fa_spell_holdperson",
             school="enchantment",
         },
+        --[[
         {
             recname="fa_spell_rage",
             school="enchantment",
-        },
+        },--]]
         {
             recname="fa_spell_daylight",
             school="evocation",
@@ -330,12 +332,12 @@ local function enableL3spells()
 
     local r=Recipe("fa_spell_summonmonster3", {Ingredient("pigskin", 2), Ingredient("poop", 6), Ingredient("papyrus", 5)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
-    local r=Recipe("fa_spell_deepslumber", {Ingredient("blowdart_sleep", 2), Ingredient("twigs", 15), Ingredient("poop", 8)}, RECIPETABS.SPELLS,TECH.NONE)
-    r.image="book_gardening.tex"
+--    local r=Recipe("fa_spell_deepslumber", {Ingredient("blowdart_sleep", 2), Ingredient("twigs", 15), Ingredient("poop", 8)}, RECIPETABS.SPELLS,TECH.NONE)
+--    r.image="book_gardening.tex"
     local r=Recipe("fa_spell_holdperson", {Ingredient("meat", 2), Ingredient("silk", 6), Ingredient("honey", 6)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
-    local r=Recipe("fa_spell_rage", {Ingredient("meat", 4), Ingredient("monstermeat", 6), Ingredient("papyrus", 6)}, RECIPETABS.SPELLS,TECH.NONE)
-    r.image="book_gardening.tex"
+--    local r=Recipe("fa_spell_rage", {Ingredient("meat", 4), Ingredient("monstermeat", 6), Ingredient("papyrus", 6)}, RECIPETABS.SPELLS,TECH.NONE)
+--    r.image="book_gardening.tex"
     local r=Recipe("fa_spell_daylight", {Ingredient("lightbulb", 12), Ingredient("boneshard", 2), Ingredient("papyrus", 6)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
     local r=Recipe("fa_spell_fireball", {Ingredient("charcoal", 10), Ingredient("ash", 10), Ingredient("twigs", 10)}, RECIPETABS.SPELLS,TECH.NONE)
@@ -404,10 +406,10 @@ local function enableL5spells()
             recname="fa_spell_magehound",
             school="conjuration",
         },
-        {
+--[[        {
             recname="fa_spell_wallofstone",
             school="conjuration",
-        },
+        },]]
         {
             recname="fa_spell_dominateperson",
             school="enchantment",
@@ -420,8 +422,8 @@ local function enableL5spells()
 
     local r=Recipe("fa_spell_magehound", {Ingredient("beardhair", 4), Ingredient("monstermeat", 8), Ingredient("papyrus", 8)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
-    local r=Recipe("fa_spell_wallofstone", {Ingredient("rocks", 20), Ingredient("twigs", 10), Ingredient("flint", 10)}, RECIPETABS.SPELLS,TECH.NONE)
-    r.image="book_gardening.tex"
+--    local r=Recipe("fa_spell_wallofstone", {Ingredient("rocks", 20), Ingredient("twigs", 10), Ingredient("flint", 10)}, RECIPETABS.SPELLS,TECH.NONE)
+--    r.image="book_gardening.tex"
     local r=Recipe("fa_spell_dominateperson", {Ingredient("meat", 8), Ingredient("twigs", 15), Ingredient("goldnugget", 16)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
     local r=Recipe("fa_spell_holdmonster", {Ingredient("monstermeat", 6), Ingredient("silk", 8), Ingredient("honey", 12)}, RECIPETABS.SPELLS,TECH.NONE)

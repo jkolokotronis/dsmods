@@ -1907,6 +1907,14 @@ AddPrefabPostInit("icehound", function(inst) inst.components.health.fa_resistanc
 AddPrefabPostInit("deerclops", function(inst) inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=1 end)
 AddPrefabPostInit("lightninggoat", function(inst) inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=1 end)
 
+--staff tags so they can go into wand bags
+AddPrefabPostInit("icestaff", function(inst) inst:AddTag("staff") end)
+AddPrefabPostInit("firestaff", function(inst) inst:AddTag("staff") end)
+AddPrefabPostInit("telestaff", function(inst) inst:AddTag("staff") end)
+AddPrefabPostInit("orangestaff", function(inst) inst:AddTag("staff") end)
+AddPrefabPostInit("greenstaff", function(inst) inst:AddTag("staff") end)
+AddPrefabPostInit("yellowstaff", function(inst) inst:AddTag("staff") end)
+
 --why would spells ignore longupdate? This will collide with any other postconstructs i assume, but it's not exactly something where i can stack calls
 local Spell=require "components/spell"
 local old_spelllongupdate=Spell.LongUpdate

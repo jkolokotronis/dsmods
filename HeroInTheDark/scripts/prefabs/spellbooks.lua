@@ -82,7 +82,7 @@ function inflictlightmass(inst, reader)
                     if(v.components.combat and not(v.components.health and v.components.health:IsDead())) then
                         local boom =SpawnPrefab("fa_heal_redfx")
                         local follower = boom.entity:AddFollower()
-                        follower:FollowSymbol(v.GUID,reader.components.combat.hiteffectsymbol, 0, 0.1, -0.0001)
+                        follower:FollowSymbol(v.GUID,reader.components.combat.hiteffectsymbol, 0, 100, -0.0001)
                         boom.persists=false
                         boom:ListenForEvent("animover", function()  boom:Remove() end)
                         
@@ -101,7 +101,7 @@ function curelightfn(inst, reader)
     end
     local boom =SpawnPrefab("fa_heal_greenfx")
     local follower = boom.entity:AddFollower()
-    follower:FollowSymbol(reader.GUID,reader.components.combat.hiteffectsymbol, 0, 0.1, -0.0001)
+    follower:FollowSymbol(reader.GUID,reader.components.combat.hiteffectsymbol, 0, 100, -0.0001)
     boom.persists=false
     boom:ListenForEvent("animover", function()  boom:Remove() end)
 
@@ -124,7 +124,7 @@ function curelighmassfn(inst, reader)
                     if(v.components.health and not v.components.health:IsDead()) then
                         local boom =SpawnPrefab("fa_heal_greenfx")
                         local follower = boom.entity:AddFollower()
-                        follower:FollowSymbol(v.GUID,reader.components.combat.hiteffectsymbol, 0, 0.1, -0.0001)
+                        follower:FollowSymbol(v.GUID,reader.components.combat.hiteffectsymbol, 0, 100, -0.0001)
                         boom.persists=false
                         boom:ListenForEvent("animover", function()  boom:Remove() end)
                         v.components.health:DoDelta(damage)
@@ -142,7 +142,7 @@ function curemodfn(inst, reader)
     end
     local boom =SpawnPrefab("fa_heal_greenfx")
     local follower = boom.entity:AddFollower()
-    follower:FollowSymbol(reader.GUID,reader.components.combat.hiteffectsymbol, 0, 0.1, -0.0001)
+    follower:FollowSymbol(reader.GUID,reader.components.combat.hiteffectsymbol, 0, 100, -0.0001)
     boom.persists=false
     boom:ListenForEvent("animover", function()  boom:Remove() end)
     reader.components.health:DoDelta(CURE_MOD*(1+math.floor(cl/4)))
@@ -156,7 +156,7 @@ function cureserfn(inst, reader)
     end
     local boom =SpawnPrefab("fa_heal_greenfx")
     local follower = boom.entity:AddFollower()
-    follower:FollowSymbol(reader.GUID,reader.components.combat.hiteffectsymbol, 0, 0.1, -0.0001)
+    follower:FollowSymbol(reader.GUID,reader.components.combat.hiteffectsymbol, 0, 100, -0.0001)
     boom.persists=false
     boom:ListenForEvent("animover", function()  boom:Remove() end)
     reader.components.health:DoDelta(CURE_SER*(1+math.floor(cl/4)))
@@ -170,7 +170,7 @@ function  curecritfn(inst, reader)
     end
     local boom =SpawnPrefab("fa_heal_greenfx")
     local follower = boom.entity:AddFollower()
-    follower:FollowSymbol(reader.GUID,reader.components.combat.hiteffectsymbol, 0, 0.1, -0.0001)
+    follower:FollowSymbol(reader.GUID,reader.components.combat.hiteffectsymbol, 0, 100, -0.0001)
     boom.persists=false
     boom:ListenForEvent("animover", function()  boom:Remove() end)
     reader.components.health:DoDelta(CURE_CRIT*(1+math.floor(cl/4)))
@@ -772,7 +772,7 @@ function disruptundeadfn(inst, reader)
                     if(v.components.combat and not(v.components.health and v.components.health:IsDead())) then
                         local boom =SpawnPrefab("fa_heal_redfx")
                         local follower = boom.entity:AddFollower()
-                        follower:FollowSymbol(v.GUID,reader.components.combat.hiteffectsymbol, 0, 0.1, -0.0001)
+                        follower:FollowSymbol(v.GUID,reader.components.combat.hiteffectsymbol, 0, 100, -0.0001)
                         boom.persists=false
                         boom:ListenForEvent("animover", function()  boom:Remove() end)
                         
@@ -835,7 +835,7 @@ local function haltundeadmass(inst, reader)
                     inst.components.spell.duration = HALTUNDEAD_DURATION
                     inst.components.spell.ontargetfn = function(inst,target)
                     local follower = inst.entity:AddFollower()
-                    follower:FollowSymbol( v.GUID, target.components.combat.hiteffectsymbol, 0, 0, -0.0001 )
+                    follower:FollowSymbol( v.GUID, target.components.combat.hiteffectsymbol, 0,  -200, -0.0001 )
                     target.fa_stun = inst
                     end
                     inst.components.spell.onfinishfn = function(inst)

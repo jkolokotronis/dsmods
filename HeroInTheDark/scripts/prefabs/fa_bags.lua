@@ -106,7 +106,7 @@ local function wandcase()
     inst.components.container.side_align_tip = 100
     inst.components.container.side_widget = false    
     inst.components.container.type = "fa_wandcase"
-    inst.components.container.itemtestfn = function(cnt, item, slot) return tagitemtest(item,"wand") end
+    inst.components.container.itemtestfn = function(cnt, item, slot) return tagitemtest(item,{"wand","staff"}) end
     return inst
 end
 

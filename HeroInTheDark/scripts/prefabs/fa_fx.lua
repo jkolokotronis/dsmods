@@ -104,13 +104,19 @@ local function heal_redfx()
 end
 
 local function fa_musicnotesfx()
-    return fn("fa_musicnotes","fa_musicnotes","idle",true)
+    local inst= fn("fa_musicnotes","fa_musicnotes","idle",true)
+    inst.Transform:SetScale(0.5,0.5,0.5)
+    return inst
 end
 local function fa_spinningstarsfx()
-    return fn("fa_spinningstars","fa_spinningstars","idle",true)
+    local inst= fn("fa_spinningstars","fa_spinningstars","idle",true)
+    inst.Transform:SetScale(0.5,0.5,0.5)
+    return inst
 end
 local function fa_birdsfx()
-    return fn("fa_birds_fx","fa_birds_fx","idle",true)
+    local inst= fn("fa_birds_fx","fa_birds_fx","idle",true)
+    inst.Transform:SetScale(0.5,0.5,0.5)
+    return inst
 end
 
 return Prefab( "common/fa_bladebarrier_hitfx", bladebarrier_hit_fx, bladebarrier_hit_fx_assets),
