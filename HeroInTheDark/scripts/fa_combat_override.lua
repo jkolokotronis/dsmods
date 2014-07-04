@@ -276,7 +276,7 @@ function Health:DoDelta(amount, overtime, cause, ignore_invincible,dmgtype)
 -- even if it hits temp hp, it will not 'remove' hp but it should trigger the indicator (it got hit, but it went into temp, as opposed to simply being eaten by prot from el)
 --    print("damage",damage,damagetype)
     if(FA_ModUtil.GetModConfigData("damageindicators"))then
-        if math.abs(damage) > 0.1 then
+        if math.abs(damage) > 0.1 and (damage>0 or self:GetPercent()<1) then
             FA_ModUtil.MakeDamageEntity(self.inst, -damage,damagetype)
         end
     end

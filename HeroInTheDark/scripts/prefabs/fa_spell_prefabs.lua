@@ -377,7 +377,7 @@ local function webfn()
     inst.components.fueled:InitializeFuelLevel(WEB_TTL)
     inst.components.fueled:StartConsuming()        
     inst.components.fueled:SetDepletedFn(function() inst:Remove() end)
-
+    return inst
 end
 
 return Prefab( "common/inventory/fa_magearmor", magearmorfn, ssassets),

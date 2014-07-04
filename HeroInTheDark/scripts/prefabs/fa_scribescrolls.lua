@@ -14,13 +14,19 @@ local function onload(inst, data)
 			inst.components.teacher:SetRecipe(inst.recipetouse)
 	    	inst.components.named:SetName(STRINGS.NAMES[string.upper(inst.recipetouse)].." "..STRINGS.NAMES.BLUEPRINT)
 	    end
+		inst.lowbound=data.lowbound
+		inst.highbound=data.highbound
 	end
 end
 
 local function onsave(inst, data)
 	if inst.recipetouse then
 		data.recipetouse = inst.recipetouse
+
 	end
+	data.lowbound=inst.lowbound
+	data.highbound=inst.highbound
+	
 end
 
 local function OnTeach(inst, learner)
@@ -82,7 +88,7 @@ local function fn()
 			end
 			local spell=nil
 			if(GetTableSize(unknownnspells)>0)then
-				spell=spells[math.random(1,#unknownnspells)]
+				spell=unknownnspells[math.random(1,#unknownnspells)]
 				inst.recipetouse=spell.recname
 			elseif(GetTableSize(spells)>0)then
 				spell=spells[math.random(1,#spells)]
@@ -103,6 +109,10 @@ local function fn()
 
     local old_teach=inst.components.teacher.Teach
     function inst.components.teacher:Teach(target)
+    	if(not self.recipe)then
+    		--try one more time - should really find a cleaner way to deal with unassigned recipes
+    		inst.setRecipe(inst.lowbound,inst.highbound,target)
+    	end
     	local known=false
     	if target.components.builder then
 			if self.recipe then
@@ -110,11 +120,12 @@ local function fn()
     		end
     	end
     	print("known?",known)
+    	--i guess to keep prototyping? 
     	local retval= old_teach(self,target)
     	if(known)then
 		 	return OnTeach(inst, target)
 		else
-			return old_teach(self,target)
+			return retval
 		end
     end
     
@@ -144,6 +155,12 @@ local function fn12()
 	local inst=fnpick()
 	inst.lowbound=1
 	inst.highbound=2
+	return inst
+end
+local function fn13()
+	local inst=fnpick()
+	inst.lowbound=1
+	inst.highbound=3
 	return inst
 end
 local function fn14()
@@ -187,6 +204,7 @@ end
 return Prefab( "common/objects/fa_scroll_free", fn, assets),
 Prefab( "common/objects/fa_scroll_1", fn1, assets),
 Prefab( "common/objects/fa_scroll_12", fn12, assets),
+Prefab( "common/objects/fa_scroll_13", fn13, assets),
 Prefab( "common/objects/fa_scroll_14", fn14, assets),
 Prefab( "common/objects/fa_scroll_15", fn15, assets),
 Prefab( "common/objects/fa_scroll_25", fn25, assets),

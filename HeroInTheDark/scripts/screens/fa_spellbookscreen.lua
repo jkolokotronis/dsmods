@@ -14,13 +14,17 @@ local FA_SpellPopup = require "widgets/fa_spellpopup"
 	local YSEP=14
 	local HW=64
 	local HH=64
+	local PAGE_COUNT=16
 
 --TODO write a proper factory 
-FASpellBookScreen = Class(Screen, function(self,caster,level)
+FASpellBookScreen = Class(Screen, function(self,caster,level,page)
 	Screen._ctor(self, "FASpellBookScreen")
 	self.caster=caster or GetPlayer()
 	self:DoInit()
-	self:SetLevel(level or 1)
+
+    self.level=level or 1
+    self.page=page or 1
+	self:SetLevel(self.level,self.page)
 end)
 
 function FASpellBookScreen:InitClass()
@@ -92,11 +96,19 @@ function FASpellBookScreen:DoInit()
 
     self.prevbutton = self.root:AddChild(ImageButton("images/fa_"..self.caster.prefab.."_bookprev.xml", "fa_"..self.caster.prefab.."_bookprev.tex"))--, focus, disabled))
     self.prevbutton:SetOnClick(function()
-    		return self:SetLevel(self.level-1 )
+    		if(self.page>1)then
+	    		return self:SetLevel(self.level,self.page-1 )
+	    	else
+	    		return self:SetLevel(self.level-1,1)
+	    	end
     	end)
     self.nextbutton = self.root:AddChild(ImageButton("images/fa_"..self.caster.prefab.."_booknext.xml", "fa_"..self.caster.prefab.."_booknext.tex"))
     self.nextbutton:SetOnClick(function()
-    	return self:SetLevel(self.level+1 )
+    	if(self.currentcount and self.currentcount>self.page*PAGE_COUNT)then
+    		return self:SetLevel(self.level,self.page+1)
+    	else
+	    	return self:SetLevel(self.level+1,1 )
+	    end
     	end)
     self.craftbutton = self.root:AddChild(ImageButton("images/fa_"..self.caster.prefab.."_bookcraft.xml", "fa_"..self.caster.prefab.."_bookcraft.tex"))
     self.craftbutton:SetOnClick(function() return self:CraftSpell(self.selected) end)
@@ -109,27 +121,28 @@ function FASpellBookScreen:DoInit()
     self:InitClass()
 end
 
-function FASpellBookScreen:SetLevel(level)
---	self.craftbutton:Hide()
+function FASpellBookScreen:SetLevel(level,page)
+	self.craftbutton:Hide()
 	self.level=level
-	print("level",level)
-	
-	if(not self.caster.fa_spellcraft.spells[level+1])then
-		self.nextbutton:Hide()
-	else
-		self.nextbutton:Show()
-	end
-	if(level==1)then
-		self.prevbutton:Hide()
-	else
-		self.prevbutton:Show()
-	end
+	self.page=page
+--	print("level",level,"page",page)
 
 	self.spell_list:KillAllChildren()
-	local list=self.caster.fa_spellcraft.spells[level]
+	local list={}
+	for i=1,#self.caster.fa_spellcraft.spells[level] do
+		local sp=self.caster.fa_spellcraft.spells[level][i]
+		if(self.caster.components.builder:KnowsRecipe(sp.recname))then
+			table.insert(list,sp)
+		end
+	end
+	self.currentcount=#list
+
+--	local list=self.caster.fa_spellcraft.spells[level]
+--repack for just 'known' ones?
+	
 	for i=0,3,1 do
 		for j=0,3 do
-			local spell=list[i*4+j+1]
+			local spell=list[(page-1)*PAGE_COUNT+i*4+j+1]
 			if(spell)then
 			local button=self.spell_list:AddChild(ImageButton(
 				"images/inventoryimages/fa_scroll_"..spell.school..".xml",
@@ -153,6 +166,18 @@ function FASpellBookScreen:SetLevel(level)
 			end
 		end
 	end
+
+	if(self.caster.fa_spellcraft.spells[level+1] or self.currentcount>page*PAGE_COUNT)then
+		self.nextbutton:Show()		
+	else
+		self.nextbutton:Hide()
+	end
+	if(level==1 and page==1)then
+		self.prevbutton:Hide()
+	else
+		self.prevbutton:Show()
+	end
+
 
 	return true
 end
