@@ -19,6 +19,7 @@ GLOBAL.FA_ModCompat.memspikefix_delay=1
 GLOBAL.FA_ModUtil={}
 GLOBAL.FA_ModUtil.AddPrefabPostInit=AddPrefabPostInit
 GLOBAL.FA_ModUtil.AddComponentPostInit=AddComponentPostInit
+GLOBAL.FA_ModUtil.GetModConfigData=GetModConfigData
 
 local memspikefixmod=nil
 for _, mod in ipairs( GLOBAL.ModManager.mods ) do
@@ -40,8 +41,9 @@ else
     print("bypassing memspikefix")
 end
 
-
 print("dlc status",GLOBAL.FA_DLCACCESS)
+modimport "damage_entity.lua"
+GLOBAL.FA_ModUtil.MakeDamageEntity=MakeDamageEntity
 
 local Widget = require "widgets/widget"
 local XPBadge= require "widgets/xpbadge"

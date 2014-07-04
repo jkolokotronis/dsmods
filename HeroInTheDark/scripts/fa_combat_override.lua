@@ -9,7 +9,6 @@ function Armor:TakeDamage(damage_amount, attacker, weapon,element)
         elseif(attacker and attacker.fa_damagetype)then
             damagetype=attacker.fa_damagetype
         end
---        print("take damage from",damagetype)
 --      technically, could just use the same logic for it - but it would break any mod that adds armor without regards to this system
         if(damagetype and damagetype~=FA_DAMAGETYPE.PHYSICAL)then
             --ele dmg, ignore default behavior altogether
@@ -40,6 +39,8 @@ function Armor:TakeDamage(damage_amount, attacker, weapon,element)
 
 local Health=require "components/health"
 --the point of this thing is to allow 'buffers', e.g. temp hp 
+
+--[[
 function Health:ApplyDamage(dmg, attacker,weapon,element)
     local damage=dmg
     local damagetype=element
@@ -63,7 +64,6 @@ function Health:ApplyDamage(dmg, attacker,weapon,element)
             end
         end
 --    end
-
     if(self.fa_temphp and damage>0)then
         if(self.fa_temphp>damage)then
                 self.fa_temphp=self.fa_temphp-damage
@@ -76,7 +76,7 @@ function Health:ApplyDamage(dmg, attacker,weapon,element)
 
     return damage
 end
-
+--]]
 local Combat=require "components/combat"
 
 local combat_doattack_def=Combat.DoAttack
@@ -107,7 +107,7 @@ function Combat:DoAttack(target_override, weapon, projectile, stimuli, instancem
     end
     return combat_doattack_def(self,target_override,weapon,projectile, stimuli, instancemult)
 end
---TODO there's gotta be a better way... but not everything reads inventory/has armor, dodelta has no info on attack type or even a reason... 
+--TODO there's gotta be a better way... but not everything reads inventory/has armor
 local combat_getattacked_def=Combat.GetAttacked
 function Combat:GetAttacked(attacker, damage, weapon,stimuli,element)
     --print ("ATTACKED", self.inst, attacker, damage)
@@ -135,7 +135,7 @@ function Combat:GetAttacked(attacker, damage, weapon,stimuli,element)
             end           
         end
          --now i need to deal with health mods - this should really be done in DoDelta
-         damage=self.inst.components.health:ApplyDamage(damage,attacker,weapon,damagetype)
+--         damage=self.inst.components.health:ApplyDamage(damage,attacker,weapon,damagetype)
 
         if self.inst.components.inventory then
             damage = self.inst.components.inventory:ApplyDamage(damage, attacker,weapon,damagetype)
@@ -150,7 +150,7 @@ function Combat:GetAttacked(attacker, damage, weapon,stimuli,element)
         --why are you so inclined to prevent healing by damage, silly klei?
         if damage~=0 and self.inst.components.health:IsInvincible() == false then
 
-            self.inst.components.health:DoDelta(-damage, nil, attacker and attacker.prefab or "NIL")
+            self.inst.components.health:DoDelta(-damage, nil, attacker and attacker.prefab or "NIL",nil,damagetype)
             if self.inst.components.health:GetPercent() <= 0 then
                 if attacker then
                     attacker:PushEvent("killed", {victim = self.inst})
@@ -213,7 +213,7 @@ function Combat:GetAttacked(attacker, damage, weapon,stimuli,element)
 end
 
 local FIRE_TIMESTART = 1.0
-
+--[[
 function Health:DoFireDamage(amount1, doer)
     if not self.invincible  then
         if not self.takingfiredamage then
@@ -236,8 +236,61 @@ function Health:DoFireDamage(amount1, doer)
         end
         
         if time - self.takingfiredamagestarttime > FIRE_TIMESTART and amount ~= 0 then
+            --extra param might not be 'necesary'... since I know  from this string the cause is fire, i might as well use that. 
+            --But since this is dirty override, its irrelevant, anyone touching this code will collide regardless
             self:DoDelta(-amount*self.fire_damage_scale, false, "fire")
             self.inst:PushEvent("firedamage")       
         end
     end
+end
+]]
+local old_healthdodelta=Health.DoDelta
+--since I'm never using 'cause', I can safely assume that cause=="fire" means I should calculate the res
+function Health:DoDelta(amount, overtime, cause, ignore_invincible,dmgtype)
+    local damage=-amount
+    local damagetype=dmgtype
+    if(not damagetype)then
+        if(cause=="fire" or cause=="hot")then
+            damagetype=FA_DAMAGETYPE.FIRE
+        elseif(cause=="cold")then
+            damagetype=FA_DAMAGETYPE.COLD
+        end
+    end
+    --needed cause this whole thing makes no sense on 'healing', no matter what causes it
+    if(damage>0)then
+
+    if(not damagetype) then damagetype=FA_DAMAGETYPE.PHYSICAL end
+--    if(damagetype)then
+        local res=self.fa_resistances[damagetype]
+        if(res) then damage=damage*(1-res) end
+        if(self.fa_protection[damagetype] and damage>0)then
+            if(self.fa_protection[damagetype]>damage)then
+                self.fa_protection[damagetype]=self.fa_protection[damagetype]-damage
+                damage=0
+            else
+                damage=damage-self.fa_protection[damagetype]
+                self.fa_protection[damagetype]=0
+            end
+        end
+    end
+-- even if it hits temp hp, it will not 'remove' hp but it should trigger the indicator (it got hit, but it went into temp, as opposed to simply being eaten by prot from el)
+--    print("damage",damage,damagetype)
+    if(FA_ModUtil.GetModConfigData("damageindicators"))then
+        if math.abs(damage) > 0.1 then
+            FA_ModUtil.MakeDamageEntity(self.inst, -damage,damagetype)
+        end
+    end
+    if(damage>0)then
+        if(self.fa_temphp and damage>0)then
+            if(self.fa_temphp>damage)then
+                    self.fa_temphp=self.fa_temphp-damage
+                    damage=0
+            else
+                damage=damage-self.fa_temphp
+                self.fa_temphp=0
+            end
+        end
+    end
+    
+    return old_healthdodelta(self,-damage, overtime, cause, ignore_invincible)
 end
