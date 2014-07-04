@@ -263,7 +263,7 @@ local function enableL4spells()
     r.image="book_brimstone.tex"
 end
 local function enableL5spells()
-    GetPlayer().fa_spellcraft.spells[4]={
+    GetPlayer().fa_spellcraft.spells[5]={
         {
             recname="fa_spell_atonement",
             school="abjuration",
