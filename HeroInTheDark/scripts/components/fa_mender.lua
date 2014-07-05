@@ -17,10 +17,13 @@ function FA_Mender:DoMending(target, doer)
 	local used=false
     if target.components.fueled and target.components.fueled.fueltype == "USAGE" and target.components.fueled:GetPercent() < 1 then	
 		target.components.fueled:SetPercent(math.max(1,target.components.fueled:GetPercent()+self.meding_percent))
+    	used=true
 	elseif (target.components.armor and target.components.armor:GetPercent()<1)then
 		target.components.armor:SetPercent(math.max(1,target.components.armor:GetPercent()+self.meding_percent))
+    	used=true
 	elseif (target.components.finiteuses and target.components.finiteuses:GetPercent()<1) then
 		target.components.finiteuses:SetPercent(math.max(1,target.components.finiteuses:GetPercent()+self.meding_percent))
+    	used=true
 	end
 
 	if(used)then
