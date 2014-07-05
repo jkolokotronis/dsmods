@@ -96,11 +96,15 @@ local function absorbredfx()
 end
 
 local function heal_greenfx()
-    return fn("fa_heal_green_fx","fa_heal_green_fx","idle",true)
+    local inst= fn("fa_heal_green_fx","fa_heal_green_fx","idle",false)
+    inst.Transform:SetScale(2,2,2)
+    return inst
 end
 
 local function heal_redfx()
-    return fn("fa_heal_red_fx","fa_heal_red_fx","idle",true)
+    local inst= fn("fa_heal_red_fx","fa_heal_red_fx","idle",false)
+    inst.Transform:SetScale(2,2,2)
+    return inst
 end
 
 local function fa_musicnotesfx()

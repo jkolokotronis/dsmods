@@ -65,9 +65,6 @@ local function common()
     local oldcb=
     inst.Physics:SetCollisionCallback(oncollide)
     
-    anim:SetBank("fireball")
-    anim:SetBuild("fireball")
-    inst.AnimState:PlayAnimation("idle", true)
 --    inst:AddTag("blowdart")
     
     inst:AddTag("projectile")
@@ -115,6 +112,7 @@ local function icex()
     inst.AnimState:PlayAnimation("ice_spin_loop", true)
     inst.components.projectile:SetOnMissFn(OnHit)
     inst.components.projectile:SetOnHitFn(OnHit)
+    inst.AnimState:SetOrientation( ANIM_ORIENTATION.Default )
     return inst
 end
 
@@ -127,6 +125,7 @@ local function firex()
     inst.AnimState:SetBloomEffectHandle( "shaders/anim.ksh" )
     inst.components.projectile:SetOnMissFn(OnHit)
     inst.components.projectile:SetOnHitFn(OnHit)
+    inst.AnimState:SetOrientation( ANIM_ORIENTATION.Default )
     --colour projectile
     --inst.AnimState:SetMultColour(0, 0, 0, 1)
     return inst
@@ -134,6 +133,9 @@ end
 
 local function fire()
     local inst = common()
+    anim:SetBank("fireball")
+    anim:SetBuild("fireball")
+    inst.AnimState:PlayAnimation("idle", true)
     inst.components.projectile:SetOnHitFn(OnHitFb)
     inst.components.projectile:SetSpeed(20)
     inst.components.projectile:SetOnMissFn(OnHitFb)
@@ -142,6 +144,9 @@ end
 
 local function firekos()
     local inst = common()
+    anim:SetBank("fireball")
+    anim:SetBuild("fireball")
+    inst.AnimState:PlayAnimation("idle", true)
     inst.components.projectile:SetOnHitFn(OnHitFb)
     inst.components.projectile:SetSpeed(20)
     inst.components.projectile:SetHoming(false)

@@ -154,6 +154,7 @@ local function fa_summonmonster1()
     inst:AddTag("fa_summon")
     inst:AddTag("fa_exclusive")
     inst:AddTag("spider")
+    inst.entity:AddLightWatcher()
     inst.AnimState:SetBank("spider")
     inst.AnimState:SetBuild("spider_build")
     inst.AnimState:PlayAnimation("idle")
@@ -164,6 +165,8 @@ local function fa_summonmonster1()
     inst.components.locomotor.walkspeed = TUNING.SPIDER_WALK_SPEED
     inst.components.locomotor.runspeed = TUNING.SPIDER_RUN_SPEED
 
+    inst:AddComponent("eater")
+
     inst:SetStateGraph("SGspider")
     
     inst:AddTag("notraptrigger")
@@ -172,6 +175,7 @@ local function fa_summonmonster1()
     MakeMediumFreezableCharacter(inst, "body")
     inst.components.burnable.flammability = TUNING.SPIDER_FLAMMABILITY
 
+    inst:AddComponent("knownlocations")
     inst:AddComponent("sleeper")
     inst.components.sleeper:SetResistance(2)
     inst.components.sleeper.testperiod = GetRandomWithVariance(6, 2)
@@ -217,6 +221,8 @@ local function fa_summonmonster2()
     inst:AddTag("notraptrigger")
     inst:AddTag("merm")
     inst:AddTag("wet")
+    inst:AddComponent("eater")
+    inst:AddComponent("knownlocations")
 
     MakeMediumBurnableCharacter(inst, "pig_torso")
     MakeMediumFreezableCharacter(inst, "pig_torso")
@@ -239,7 +245,7 @@ local function fa_summonmonster2()
     inst.components.combat:SetAttackPeriod(TUNING.MERM_ATTACK_PERIOD)
     inst.components.health:StartRegen(5,5)
 
-    local brain = require "brains/mermbrain"
+    local brain = require "brains/magesummonbrain"
     inst:SetBrain(brain)
 
     return inst
@@ -263,6 +269,8 @@ local function fa_summonmonster3()
     inst.components.locomotor.runspeed = TUNING.PIG_RUN_SPEED
     inst.components.locomotor.walkspeed = TUNING.PIG_WALK_SPEED
 
+    inst:AddComponent("eater")
+    inst:AddComponent("trader")
     inst:SetStateGraph("SGpig")
     
     inst:AddTag("notraptrigger")
@@ -287,7 +295,8 @@ local function fa_summonmonster3()
     inst.components.health:SetMaxHealth(TUNING.PIG_HEALTH)
     inst.components.health:StartRegen(5,5)
 
-    local brain = require "brains/pigbrain"
+--    local brain = require "brains/pigbrain"
+    local brain=require "brains/magesummonbrain"
     inst:SetBrain(brain)
 
     return inst
@@ -314,6 +323,7 @@ local function fa_summonmonster4()
 
     MakeMediumBurnableCharacter(inst, "hound_body")
 
+    inst:AddComponent("eater")
     inst:AddComponent("sleeper")
     inst.components.sleeper:SetResistance(2)
     inst.components.sleeper.testperiod = GetRandomWithVariance(6, 2)
@@ -367,6 +377,7 @@ local function fa_animatedead()
 
     MakeMediumBurnableCharacter(inst, "torso")
 
+    inst:AddComponent("inventory")
     inst:AddComponent("sleeper")
     inst.components.sleeper:SetResistance(2)
     inst.components.sleeper.testperiod = GetRandomWithVariance(6, 2)
@@ -393,6 +404,7 @@ local function fa_horrorpet()
     
     local inst=common()
 
+    --meh, the only thing worse than klei coding practices - copying them yourself... 
     local sounds = 
     {
         attack = "dontstarve/sanity/creature1/attack",
@@ -403,6 +415,7 @@ local function fa_horrorpet()
         appear = "dontstarve/sanity/creature1/appear",
         disappear = "dontstarve/sanity/creature1/dissappear",
     }
+    inst.sounds = sounds
     
     MakeCharacterPhysics(inst, 10, .5)
     inst.DynamicShadow:SetSize( 2.5, 1.5 )
@@ -416,7 +429,9 @@ local function fa_horrorpet()
     inst:AddTag("shadow")
     inst:AddTag("undead")
 
-    inst.components.locomotor.runspeed = TUNING.WILSON_RUN_SPEED*2
+
+    inst.components.locomotor.runspeed = TUNING.WILSON_RUN_SPEED*3
+    inst.components.locomotor.walkspeed = TUNING.WILSON_RUN_SPEED*2
 
         inst:SetStateGraph("SGshadowcreature")
     
@@ -544,8 +559,9 @@ local function fa_magehound()
     inst.Physics:CollidesWith(COLLISION.OBSTACLES)
     inst.Physics:CollidesWith(COLLISION.CHARACTERS)
 
+    inst:AddComponent("combat")
     inst.components.combat.hiteffectsymbol = "chester_body"
-
+    inst:AddComponent("health")
     inst.components.health:SetMaxHealth(TUNING.CHESTER_HEALTH)
     inst.components.health:StartRegen(TUNING.CHESTER_HEALTH_REGEN_AMOUNT, TUNING.CHESTER_HEALTH_REGEN_PERIOD)
     inst:AddTag("noauradamage")
@@ -570,6 +586,7 @@ local function fa_magehound()
     inst.components.container.widgetpos = Vector3(0,200,0)
     inst.components.container.side_align_tip = 160
 
+    inst:AddComponent("sleeper")
     inst.components.sleeper:SetResistance(3)
     inst.components.sleeper.testperiod = GetRandomWithVariance(6, 2)
     inst.components.sleeper:SetSleepTest(ShouldSleep)

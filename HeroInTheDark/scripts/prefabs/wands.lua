@@ -85,6 +85,7 @@ local CALLLIGHTNING_DAMAGE=100
 local CALLLIGHTNING_USES=12
 local POISON_LENGTH=20
 local POISON_DAMAGE=7
+local POISON_PERIOD=2
 local POISON_USES=7
 local SNARE_SPEED=0.5
 local SNARE_DURATION=2*60
@@ -579,7 +580,7 @@ local function castpoison(inst1,attacker,target)
     inst.components.spell.period=POISON_PERIOD
     inst.components.spell.removeonfinish = true
     inst.components.spell.ontargetfn = function(inst,target)
-        inst.caster=caster
+        inst.caster=attacker
         target.fa_poison = inst
         target:AddTag(inst.components.spell.spellname)
     end
@@ -723,7 +724,7 @@ function oninflictwounds(inst,attacker,target,damagelv)
         local fx=SpawnPrefab("fa_heal_redfx")
         fx.persists=false
         local follower = fx.entity:AddFollower()
-        follower:FollowSymbol( target.GUID, target.components.combat.hiteffectsymbol, 0, 100, -0.0001 )
+        follower:FollowSymbol( target.GUID, target.components.combat.hiteffectsymbol, 0, 0, -0.0001 )
         fx:ListenForEvent("animover", function()  fx:Remove() end)
         target.components.combat:GetAttacked(attacker, damage, nil,nil,FA_DAMAGETYPE.HOLY)
     end

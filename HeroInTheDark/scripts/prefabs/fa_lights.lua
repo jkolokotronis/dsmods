@@ -46,8 +46,8 @@ local point=CreateEntity()
     point.OnLoad = onloadfn
     point.OnSave = onsavefn
 
-    inst.shutdowntime=GetTime()+DAYLIGHT_DURATION
-    inst.shutdowntask=inst:DoTaskInTime(DAYLIGHT_DURATION, shutdown)
+    point.shutdowntime=GetTime()+DAYLIGHT_DURATION
+    point.shutdowntask=point:DoTaskInTime(DAYLIGHT_DURATION, shutdown)
 
     return point
 end
@@ -78,8 +78,8 @@ local function continualflamefx()
     end)
 
 
-    point.OnLoad = onloadfn
-    point.OnSave = onsavefn
+    inst.OnLoad = onloadfn
+    inst.OnSave = onsavefn
 
     inst.shutdowntime=GetTime()+CONTINUALFLAME_DURATION
     inst.shutdowntask=inst:DoTaskInTime(CONTINUALFLAME_DURATION, shutdown)

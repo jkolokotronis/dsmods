@@ -82,7 +82,7 @@ function inflictlightmass(inst, reader)
                     if(v.components.combat and not(v.components.health and v.components.health:IsDead())) then
                         local boom =SpawnPrefab("fa_heal_redfx")
                         local follower = boom.entity:AddFollower()
-                        follower:FollowSymbol(v.GUID,reader.components.combat.hiteffectsymbol, 0, 100, -0.0001)
+                        follower:FollowSymbol(v.GUID,reader.components.combat.hiteffectsymbol, 0, 0, -0.0001)
                         boom.persists=false
                         boom:ListenForEvent("animover", function()  boom:Remove() end)
                         
@@ -584,7 +584,7 @@ function mirrorimagefn(inst,reader)
 end
 
 function summonmagehound(inst,reader)
-    local leader=inst.components.leader
+    local leader=reader.components.leader
     for k,v in pairs(leader.followers) do
         if(k:HasTag("magehound"))then
             if(k.components.health and not k.components.health:IsDead()) then
