@@ -32,24 +32,38 @@ end
 
 local function fn(Sim)
 
-local point=CreateEntity()
-    point:AddTag("FX")
-    point:AddTag("NOCLICK")
-    point.entity:AddTransform()
-    local light = point.entity:AddLight()
-    light:SetFalloff(0.75)
-    light:SetIntensity(2)
-    light:SetRadius(2)
-    light:SetColour(255/255, 255/255, 255/255)
-    light:Enable(true)
+
+    local inst = CreateEntity()
+
+    inst:AddTag("NOBLOCK")
+    inst:AddTag("NOCLICK")
+    local trans = inst.entity:AddTransform()
+    local anim = inst.entity:AddAnimState()
+    local sound = inst.entity:AddSoundEmitter()
     
-    point.OnLoad = onloadfn
-    point.OnSave = onsavefn
 
-    point.shutdowntime=GetTime()+DAYLIGHT_DURATION
-    point.shutdowntask=point:DoTaskInTime(DAYLIGHT_DURATION, shutdown)
+      inst:AddComponent("lighttweener")
+      local light = inst.entity:AddLight()
+      inst.components.lighttweener:StartTween(light, 0, .9, 0.9, {1,1,1}, 0)
+      inst.components.lighttweener:StartTween(nil, 3, .9, 0.9, nil, .2)
+--[[ 
+    local light = inst.entity:AddLight()
+    light:SetFalloff(1)
+    light:SetIntensity(1)
+    light:SetRadius(1)
+    light:SetColour(255/255, 150/255, 150/255)
+    light:Enable(true)]]
+    
 
-    return point
+    inst.AnimState:SetRayTestOnBB(true);
+    
+    inst:AddComponent("fueled")
+    inst.components.fueled.fueltype = "SPELLDURATION"
+    inst.components.fueled:InitializeFuelLevel(DAYLIGHT_DURATION)
+    inst.components.fueled:StartConsuming()        
+    inst.components.fueled:SetDepletedFn(function() point:Remove() end)
+    return inst
+
 end
 
 local function continualflamefx()
@@ -64,8 +78,6 @@ local function continualflamefx()
     
     MakeObstaclePhysics(inst, .3)    
     
-    local minimap = inst.entity:AddMiniMapEntity()
-    minimap:SetIcon( "village.png" )
     
     inst:AddComponent("burnable")
     inst:AddComponent("inspectable")
@@ -88,5 +100,5 @@ local function continualflamefx()
 end
 
 return Prefab( "common/objects/fa_daylightfx", fn, assets),
-Prefab( "common/objects/fa_continualflamefx", fn, assets)  
+Prefab( "common/objects/fa_continualflamefx", continualflamefx, assets)  
 

@@ -468,7 +468,8 @@ end
 local function onattackgustofwind(inst,attacker,target)
         local v1=target.Physics:GetVelocity()
         local vhit=inst.Physics:GetVelocity()--will this end up being 0 due to it hitting the target or the actual velocity before the hit?
-        local coef=1
+        --someone tell klei that multiplying constant with a vector is a valid operation...
+        local coef=Vector3(1,1,1)
         target.Physics:SetVelocity((v1+vhit*coef):Get())
 end
 

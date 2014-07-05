@@ -89,6 +89,10 @@ local function enableL1spells()
             recname="fa_spell_naturesally",
             school="conjuration",
         },
+        {
+            recname="spell_summongoodberries",
+            school="conjuration",
+        },
        
     }
     local r=Recipe("fa_spell_curelightwounds", {Ingredient("red_cap", 6), Ingredient("ash", 6), Ingredient("petals", 6)}, RECIPETABS.SPELLS,TECH.NONE)
@@ -139,8 +143,6 @@ local function enableL2spells()
     local r=Recipe("fa_spell_summonswarm", {Ingredient("silk", 5), Ingredient("spidereggsack", 1), Ingredient("papyrus", 8)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
 
-    local r=Recipe("spell_guardian", {Ingredient("papyrus", 5), Ingredient("pinecone", 20),Ingredient("livinglog",10)}, RECIPETABS.SPELLS, {MAGIC = 3})
-    r.image="book_gardening.tex"    
 end
 local function enableL3spells()
     GetPlayer().fa_spellcraft.spells[3]={
@@ -201,10 +203,6 @@ local function enableL3spells()
 end
 local function enableL4spells()
     GetPlayer().fa_spellcraft.spells[4]={
-       {
-            recname="fa_spell_calllightning",
-            school="transmutation",
-        },
         {
             recname="fa_spell_cureseriouswounds",
             school="conjuration",
@@ -214,8 +212,6 @@ local function enableL4spells()
             school="evocation",
         },
     }
-    local r=Recipe("fa_spell_calllightning", {Ingredient("logs", 20), Ingredient("purplegem", 1), Ingredient("livinglog", 5)}, RECIPETABS.SPELLS,TECH.NONE)
-    r.image="book_gardening.tex"
     local r=Recipe("fa_spell_cureseriouswounds", {Ingredient("blue_cap", 6), Ingredient("ash", 8), Ingredient("petals", 15)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
     local r=Recipe("fa_spell_flamestrike", {Ingredient("redgem", 2), Ingredient("ash", 10), Ingredient("gunpowder", 10)}, RECIPETABS.SPELLS,TECH.NONE)

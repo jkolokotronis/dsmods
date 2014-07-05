@@ -52,13 +52,14 @@ local function fn(Sim)
     light:SetFalloff(1)
     light:SetIntensity(INTENSITY)
     light:SetRadius(1)
-    light:SetColour(255/255, 200/255, 200/255)
+    light:SetColour(255/255, 150/255, 150/255)
     light:Enable(true)
     
     inst.AnimState:SetBloomEffectHandle( "shaders/anim.ksh" )
     
     inst.AnimState:SetBank("fa_lavaflies")
     inst.AnimState:SetBuild("fa_lavaflies")
+    inst.AnimState:PushAnimation("swarm_loop", true)
 
     inst.AnimState:SetRayTestOnBB(true);
 

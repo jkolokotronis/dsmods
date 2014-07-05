@@ -186,7 +186,7 @@ local function fa_summonmonster1()
     inst.components.combat.hiteffectsymbol = "body"
     inst.components.combat:SetDefaultDamage(TUNING.SPIDER_DAMAGE)
     inst.components.combat:SetAttackPeriod(TUNING.SPIDER_ATTACK_PERIOD)
-    inst.components.combat:SetRetargetFunction(3, Retarget)
+    inst.components.combat:SetRetargetFunction(1, Retarget)
     inst.components.combat:SetHurtSound("dontstarve/creatures/spider/hit_response")
 
     inst:AddComponent("health")
@@ -236,6 +236,7 @@ local function fa_summonmonster2()
     inst:AddComponent("combat")
     inst.components.combat.hiteffectsymbol = "pig_torso"
     inst.components.combat:SetAttackPeriod(TUNING.MERM_ATTACK_PERIOD)
+    inst.components.combat:SetRetargetFunction(1, Retarget)
 
     inst:AddComponent("inventory")
 
@@ -288,6 +289,7 @@ local function fa_summonmonster3()
     inst.components.combat.hiteffectsymbol = "pig_torso"
     inst.components.combat:SetDefaultDamage(TUNING.PIG_DAMAGE)
     inst.components.combat:SetAttackPeriod(TUNING.PIG_ATTACK_PERIOD)
+    inst.components.combat:SetRetargetFunction(1, Retarget)
 
     inst:AddComponent("inventory")
     
@@ -333,6 +335,7 @@ local function fa_summonmonster4()
     inst:AddComponent("combat")
     inst.components.combat:SetDefaultDamage(TUNING.ICEHOUND_DAMAGE)
     inst.components.combat:SetAttackPeriod(TUNING.ICEHOUND_ATTACK_PERIOD)
+    inst.components.combat:SetRetargetFunction(1, Retarget)
     inst.components.combat:SetHurtSound("dontstarve/creatures/hound/hurt")
     
     inst:AddComponent("health")
@@ -387,6 +390,7 @@ local function fa_animatedead()
     inst:AddComponent("combat")
     inst.components.combat.hiteffectsymbol = "torso"
     inst.components.combat:SetDefaultDamage(TUNING.HOUND_DAMAGE)
+    inst.components.combat:SetRetargetFunction(1, Retarget)
     inst.components.combat:SetAttackPeriod(2)
     
     inst:AddComponent("health")
@@ -449,6 +453,7 @@ local function fa_horrorpet()
     inst.components.combat.hiteffectsymbol = "torso"
     inst.components.combat:SetDefaultDamage(TUNING.CRAWLINGHORROR_DAMAGE)
     inst.components.combat:SetAttackPeriod(TUNING.CRAWLINGHORROR_ATTACK_PERIOD)
+    inst.components.combat:SetRetargetFunction(1, Retarget)
     
     inst:AddComponent("health")
     inst.components.health:SetMaxHealth(TUNING.CRAWLINGHORROR_HEALTH)
@@ -502,6 +507,7 @@ local function fa_magedecoy()
     MakeMediumBurnableCharacter(inst, "torso")
 
     inst:AddComponent("combat")
+    inst.components.combat:SetRetargetFunction(1, Retarget)
     inst:AddComponent("inventory")
     inst.components.combat.hiteffectsymbol = "torso"
     --if it did 'no damage' it would never take aggro!

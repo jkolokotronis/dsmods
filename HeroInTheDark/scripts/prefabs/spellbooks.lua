@@ -220,7 +220,6 @@ end
 
 function growfn(inst, reader)
     print("got into grow")
-    reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
     local range = 30
     local pos = Vector3(reader.Transform:GetWorldPosition())
     local ents = TheSim:FindEntities(pos.x,pos.y,pos.z, range)
@@ -310,7 +309,7 @@ function invisibilityfn(inst,reader)
 end
 
 function hastefn(inst,reader)
-    if(reader.buff_timers["haste"])then
+    if(reader.buff_timers and reader.buff_timers["haste"])then
         reader.buff_timers["haste"]:ForceCooldown(HASTE_LENGTH)
     end
     HasteSpellStart( reader,HASTE_LENGTH)
@@ -318,7 +317,7 @@ function hastefn(inst,reader)
 end
 
 function longstriderfn(inst,reader)
-    if(reader.buff_timers["longstrider"])then
+    if(reader.buff_timers and reader.buff_timers["longstrider"])then
         reader.buff_timers["longstrider"]:ForceCooldown(LONGSTRIDER_LENGTH)
     end
     FA_LongstriderSpellStart( reader,LONGSTRIDER_LENGTH)
@@ -327,7 +326,7 @@ end
 
 
 function expretreatfn(inst,reader)
-    if(reader.buff_timers["longstrider"])then
+    if(reader.buff_timers and reader.buff_timers["longstrider"])then
         reader.buff_timers["longstrider"]:ForceCooldown(EXPRETREAT_LENGTH)
     end
     FA_LongstriderSpellStart( reader,EXPRETREAT_LENGTH)
@@ -335,7 +334,7 @@ function expretreatfn(inst,reader)
 end
 
 function protevilfn(inst,reader)
-    if(reader.buff_timers["protevil"])then
+    if(reader.buff_timers and reader.buff_timers["protevil"])then
         reader.buff_timers["protevil"]:ForceCooldown(PROTEVIL_DURATION)
     end
     FA_ProtEvilSpellStart( reader,PROTEVIL_DURATION)
@@ -683,7 +682,7 @@ end
 function daylightfn(inst,reader)
     local spawn_point= Vector3(reader.Transform:GetWorldPosition())
     local fx=SpawnPrefab("fa_daylightfx")
-    fx.Transform:SetPosition(spawn_point.x, 0, spawn_point.z)
+    fx.Transform:SetPosition(spawn_point.x, spawn_point.y, spawn_point.z)
     return true
 end
 
