@@ -71,6 +71,10 @@ local function fn()
     inst:AddComponent("named")
     inst.components.named:SetName("Unknown Scroll")
     inst:AddComponent("teacher")
+
+    inst.lowbound=1
+    inst.highbound=9999
+
     --too late
 --    inst.components.teacher.onteach = OnTeach
 
