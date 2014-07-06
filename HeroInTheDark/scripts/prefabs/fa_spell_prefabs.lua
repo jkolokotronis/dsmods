@@ -56,7 +56,7 @@ local function stoneskinonequip(inst, owner)
     inst:ListenForEvent("attacked", OnBlocked,owner)
     inst:ListenForEvent("blocked",OnBlocked, owner)
 end
-
+ 
 local function stoneskinonunequip(inst, owner) 
     owner.AnimState:ClearOverrideSymbol("swap_body")
     inst:RemoveEventCallback("blocked", OnBlocked, owner)
@@ -367,7 +367,10 @@ local function webfn()
     local trans = inst.entity:AddTransform()
     local anim = inst.entity:AddAnimState()
     inst.entity:AddGroundCreepEntity()
+    inst.GroundCreepEntity:SetRadius( 9)
     inst.entity:AddSoundEmitter()
+    MakeMediumBurnable(inst)
+    MakeObstaclePhysics(inst, .1)
     
 --    MakeObstaclePhysics(inst, .5)
     inst:ListenForEvent("creepactivate", webtriggered)

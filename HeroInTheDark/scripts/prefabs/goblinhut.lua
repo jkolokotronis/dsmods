@@ -115,6 +115,17 @@ local function fn(Sim)
     
 	MakeSnowCovered(inst, .01)
 
+    MakeLargeBurnable(inst, nil, nil, true)
+
+    inst:ListenForEvent("burntup", function(inst)
+        inst:Remove()
+    end)
+    inst:ListenForEvent("onignite", function(inst)
+        if inst.components.spawner then
+            inst.components.spawner:ReleaseChild()
+        end
+    end)
+
     --[[
     inst:DoTaskInTime(math.random(), function() 
         --print(inst, "spawn check day")

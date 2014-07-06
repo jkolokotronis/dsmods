@@ -38,6 +38,14 @@ local fa_spinningstarsfx_assets={
 local fa_birdsfx_assets={
         Asset( "ANIM", "anim/fa_birds_fx.zip" ),
 }
+local fa_firestormhit_assets =
+{
+    Asset("ANIM", "anim/fa_firestorm_hit_fx.zip"),
+}
+local fa_firestormringfx_assets =
+{
+    Asset("ANIM", "anim/fa_firestorm_ring_fx.zip"),
+}
 
 local function fn(bank,bld,animname,loop)
 	local inst = CreateEntity()
@@ -122,6 +130,31 @@ local function fa_birdsfx()
     inst.Transform:SetScale(0.5,0.5,0.5)
     return inst
 end
+local function fa_firestormfx()
+    local inst= fn("fa_firestorm_ring_fx","fa_firestorm_ring_fx","idle",false)
+    inst.AnimState:SetFinalOffset(-1)
+
+    inst.AnimState:SetOrientation( ANIM_ORIENTATION.OnGround )
+    inst.AnimState:SetLayer( LAYER_BACKGROUND )
+    inst.AnimState:SetSortOrder( 3 )
+
+    inst.AnimState:SetBloomEffectHandle( "shaders/anim.ksh" )
+
+    return inst
+end
+local function fa_firestormhitfx()
+    local inst= fn("fa_firestorm_hit_fx","fa_firestorm_hit_fx","idle",false)
+    inst.AnimState:SetFinalOffset(-1)
+
+    inst.AnimState:SetOrientation( ANIM_ORIENTATION.OnGround )
+    inst.AnimState:SetLayer( LAYER_BACKGROUND )
+    inst.AnimState:SetSortOrder( 3 )
+
+    inst.AnimState:SetBloomEffectHandle( "shaders/anim.ksh" )
+    
+    return inst
+end
+
 
 return Prefab( "common/fa_bladebarrier_hitfx", bladebarrier_hit_fx, bladebarrier_hit_fx_assets),
 Prefab( "common/fa_bladebarrierfx", bladebarrier_fx, bladebarrier_fx_assets),
@@ -135,4 +168,7 @@ Prefab( "common/fa_heal_greenfx", heal_greenfx, fa_heal_greenfx_assets),
 Prefab( "common/fa_heal_redfx", heal_redfx, fa_heal_redfx_assets),
 Prefab( "common/fa_musicnotesfx", fa_musicnotesfx, fa_musicnotesfx_assets),
 Prefab( "common/fa_spinningstarsfx", fa_spinningstarsfx, fa_spinningstarsfx_assets),
-Prefab( "common/fa_birdsfx", fa_birdsfx, fa_birdsfx_assets)
+Prefab( "common/fa_birdsfx", fa_birdsfx, fa_birdsfx_assets),
+--this is... questionable... i'd rather use something else
+Prefab( "common/fa_firestormfx", fa_firestormfx, fa_firestormringfx_assets),
+Prefab( "common/fa_firestormhitfx", fa_firestormhitfx, fa_firestormhit_assets)

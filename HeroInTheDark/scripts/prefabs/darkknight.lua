@@ -251,7 +251,7 @@ local onleechblast=function(inst)
 
 
 --                local proj =SpawnPrefab("fa_blooddropfx")
-                local proj =SpawnPrefab("fa_absorbredfx")
+                local proj =SpawnPrefab("fa_blooddropfx")
                 proj.Transform:SetScale(1, 1, 1)
                 MakeInventoryPhysics(proj)
                 proj:AddTag("projectile")    

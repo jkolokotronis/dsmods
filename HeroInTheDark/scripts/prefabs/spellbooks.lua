@@ -41,7 +41,6 @@ local EARTHQUAKE_MINING_EFFICIENCY=6
 local EARTHQUAKE_DAMAGE=100
 local CALL_DIETY_DAMAGE=100
 local LIGHTNING_DAMAGE=100
-local FLAMESTRIKE_DAMAGE=10
 local BUFF_LENGTH=100
 local HASTE_LENGTH=60
 local LONGSTRIDER_LENGTH=120
@@ -239,28 +238,6 @@ function growfn(inst, reader)
     return true
 end
 
-
-function flamestrikefn(inst, reader)
-    local cl=1
-    if(reader.components.fa_spellcaster)then
-        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.EVOCATION)
-    end
-    local damage=cl*FLAMESTRIKE_DAMAGE
-    local pos=Vector3(reader.Transform:GetWorldPosition())
-            local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, AOE_RANGE)
-            for k,v in pairs(ents) do
-                if not v:HasTag("player") and not v:HasTag("companion") and not v:IsInLimbo() then
-                    if v.components.burnable and not v.components.fueled then
-                     v.components.burnable:Ignite()
-                    end
-
-                    if(v.components.combat and not (v.components.health and v.components.health:IsDead())) then
-                        v.components.combat:GetAttacked(reader, damage, nil,nil,FA_DAMAGETYPE.FIRE)
-                    end
-                end
-            end
-    return true
-end
 
 function firefn(inst, reader)
 
@@ -960,7 +937,6 @@ return
     MakeSpell("fa_spell_grow",growfn,15,FA_SPELL_SCHOOLS.TRANSMUTATION),
     MakeSpell("fa_spell_atonement",atonementfn,3,FA_SPELL_SCHOOLS.ABJURATION),
     MakeSpell("fa_spell_lightningstorm",firefn,6,FA_SPELL_SCHOOLS.EVOCATION),
-    MakeSpell("fa_spell_flamestrike",flamestrikefn,5,FA_SPELL_SCHOOLS.EVOCATION),
     MakeSpell("fa_spell_protevil",protevilfn,10,FA_SPELL_SCHOOLS.ABJURATION),
     MakeSpell("fa_spell_aid",protevilfn,10,FA_SPELL_SCHOOLS.ENCHANTMENT),
     MakeSpell("fa_spell_summonmonster1",summon1fn,10,FA_SPELL_SCHOOLS.CONJURATION),

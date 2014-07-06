@@ -59,6 +59,10 @@ local FIREBALL_USES=10
 local FIREBALL_RADIUS=5
 local FIREBALL_DAMAGE=15
 
+local FLAMESTRIKE_USES=5
+local FLAMESTRIKE_DAMAGE=10
+local FLAMESTRIKE_RANGE=15
+
 local ICESTORM_USES=10
 local SUNBURST_USES=10
 local PRISMATICWALL_USES=5
@@ -263,6 +267,52 @@ local function onattackicestorm(staff, target, orpos)
     staff.components.finiteuses:Use(1)
 end
 
+
+
+function onattackflamestrike(inst, target, orpos)--reader)
+    local pos=orpos
+    if(pos==nil and target~=nil)then
+        pos=Vector3(target.Transform:GetWorldPosition())
+    end
+    local reader = inst.components.inventoryitem.owner
+    local cl=1
+    if(reader.components.fa_spellcaster)then
+        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.EVOCATION)
+    end
+    local damage=cl*FLAMESTRIKE_DAMAGE
+
+    local ringfx =SpawnPrefab("fa_firestormfx")
+    ringfx.persists=false
+    ringfx.Transform:SetPosition(pos.x, pos.y, pos.z)
+    ringfx:ListenForEvent("animover", function() 
+        ringfx.AnimState:ClearBloomEffectHandle()
+        ringfx:Remove() 
+    end)
+
+            local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, FLAMESTRIKE_RANGE)
+            for k,v in pairs(ents) do
+                if not v:HasTag("player") and not v:HasTag("companion") and not v:IsInLimbo() then
+                    if v.components.burnable and not v.components.fueled then
+                     v.components.burnable:Ignite()
+                    end
+
+                    if(v.components.combat and not (v.components.health and v.components.health:IsDead())) then
+                        v.components.combat:GetAttacked(reader, damage, nil,nil,FA_DAMAGETYPE.FIRE)
+
+                        local hitfx =SpawnPrefab("fa_firestormhitfx")
+                        hitfx.persists=false
+                        local follower = hitfx.entity:AddFollower()
+                        follower:FollowSymbol( v.GUID, v.components.combat.hiteffectsymbol, 0,  -200, -0.0001 )
+                        hitfx:ListenForEvent("animover", function() 
+                        hitfx.AnimState:ClearBloomEffectHandle()
+                        hitfx:Remove() 
+                        end)
+                    end
+                end
+            end
+    return true
+end
+
 local function onfinished(inst)
     inst.SoundEmitter:PlaySound("dontstarve/common/gem_shatter")
     inst:Remove()
@@ -340,6 +390,19 @@ inst.components.weapon.fa_damagetype=FA_DAMAGETYPE.ELECTRIC
     return inst
 end
 
+
+local function flamestrikefn()
+    local inst = commonfn("red")
+    inst.components.inventoryitem.imagename="firestaff"
+    inst:AddComponent("spellcaster")
+    inst.components.spellcaster:SetSpellFn(onattackflamestrike)
+    inst.components.spellcaster.canuseontargets = true
+    inst.components.spellcaster.canuseonpoint = true
+    inst.components.spellcaster.canusefrominventory = false
+    inst.components.finiteuses:SetMaxUses(FLAMESTRIKE_USES)
+    inst.components.finiteuses:SetUses(FLAMESTRIKE_USES)
+    return inst
+end
 
 local function icestorm()
     local inst = commonfn("blue")
@@ -465,12 +528,34 @@ local function onattackanimaltrance(inst1,attacker,target)
     end
 end
 
-local function onattackgustofwind(inst,attacker,target)
-        local v1=target.Physics:GetVelocity()
-        local vhit=inst.Physics:GetVelocity()--will this end up being 0 due to it hitting the target or the actual velocity before the hit?
-        --someone tell klei that multiplying constant with a vector is a valid operation...
-        local coef=Vector3(1,1,1)
-        target.Physics:SetVelocity((v1+vhit*coef):Get())
+local function onattackgustofwind(inst,attacker,target,projectile)
+        local coef=10
+        local v1=Vector3(target.Physics:GetVelocity())
+        --nope, i cant get the original speed by any means it seems
+--        local vhit=Vector3(projectile.Physics:GetVelocity())
+--        local angle=target:GetAngleToPoint(attacker:GetPosition())
+        local vel = (target:GetPosition() - attacker:GetPosition()):GetNormalized()     
+        local angle = math.atan2(vel.z, vel.x)
+
+        local vhit=Vector3(coef*math.cos(angle),0,coef*math.sin(angle))
+        if(target.components.locomotor)then
+            target.components.locomotor:Stop()
+        end
+        print("vel",vhit)
+        print("target",target)
+        --tru to make physics actually run for a few... depending on how shit this turns to be, might have to rely on brute force teleporting but thats...
+        
+        if(target.brain)then
+--            target.brain:Stop()  useless 
+            target:StopBrain()
+            target:DoTaskInTime(1,function()
+                target:RestartBrain()
+            end)
+        end
+--        target.Physics:SetVel((vhit):Get())
+        
+        target.Physics:SetMotorVel((vhit):Get())
+
 end
 
 local function onattackholdanimal(inst1,attacker,target)
@@ -1571,6 +1656,7 @@ Prefab("common/inventory/fa_spell_dominateperson", charmpersonfn, assets, prefab
 Prefab("common/inventory/fa_spell_enlargehumanoid", enlargehumanoidfn, assets, prefabs),
 Prefab("common/inventory/fa_spell_reducehumanoid", reducehumanoidfn, assets, prefabs),
 Prefab("common/inventory/fa_spell_web", webfn, assets, prefabs),
+Prefab("common/inventory/fa_spell_flamestrike", flamestrikefn, assets, prefabs),
 
 Prefab("common/inventory/firewallwand_insta", firewall_insta, assets, prefabs),
 
