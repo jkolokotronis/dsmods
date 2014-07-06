@@ -61,7 +61,7 @@ local FIREBALL_DAMAGE=15
 
 local FLAMESTRIKE_USES=5
 local FLAMESTRIKE_DAMAGE=10
-local FLAMESTRIKE_RANGE=15
+local FLAMESTRIKE_RANGE=12
 
 local ICESTORM_USES=10
 local SUNBURST_USES=10
@@ -301,8 +301,9 @@ function onattackflamestrike(inst, target, orpos)--reader)
 
                         local hitfx =SpawnPrefab("fa_firestormhitfx")
                         hitfx.persists=false
-                        local follower = hitfx.entity:AddFollower()
-                        follower:FollowSymbol( v.GUID, v.components.combat.hiteffectsymbol, 0,  -200, -0.0001 )
+                        hitfx.Transform:SetPosition(v.Transform:GetWorldPosition())
+--                        local follower = hitfx.entity:AddFollower()
+--                        follower:FollowSymbol( v.GUID, v.components.combat.hiteffectsymbol, 0,  -200, -0.0001 )
                         hitfx:ListenForEvent("animover", function() 
                         hitfx.AnimState:ClearBloomEffectHandle()
                         hitfx:Remove() 

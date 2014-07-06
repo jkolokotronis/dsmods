@@ -146,7 +146,7 @@ local function fa_firestormhitfx()
     local inst= fn("fa_firestorm_hit_fx","fa_firestorm_hit_fx","idle",false)
     inst.AnimState:SetFinalOffset(-1)
 
-    inst.AnimState:SetOrientation( ANIM_ORIENTATION.OnGround )
+    inst.AnimState:SetOrientation( ANIM_ORIENTATION.Default )
     inst.AnimState:SetLayer( LAYER_BACKGROUND )
     inst.AnimState:SetSortOrder( 3 )
 
