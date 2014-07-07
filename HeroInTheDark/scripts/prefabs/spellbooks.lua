@@ -217,9 +217,9 @@ function firefn(inst, reader)
         for k = 0, num_lightnings do
            local lightning = SpawnPrefab("lightning")
             lightning.Transform:SetPosition(pos:Get())
-            local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, AOE_RANGE)
+            local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, AOE_RANGE,nil,{"player","companion","FX","INLIMBO"})
             for k,v in pairs(ents) do
-                if not v:HasTag("player") and not v:HasTag("companion") and not v:IsInLimbo() then
+                if not(v.components.follower and v.components.follower.leader and v.components.follower.leader:HasTag("player"))  then
                     if v.components.burnable and not v.components.fueled then
                      v.components.burnable:Ignite()
                     end
@@ -435,7 +435,7 @@ function calldietyfn(inst,reader)
         local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, AOE_RANGE,nil, {'smashable',"player","companion","INLIMBO"})
         for k,v in pairs(ents) do
              -- quakes shouldn't break the set dressing
-                if(v.components.combat and not v:IsInLimbo() and not (v.components.health and v.components.health:IsDead()))then
+                if(v.components.combat and not (v.components.health and v.components.health:IsDead()))then
                     v.components.combat:GetAttacked(attacker, CALL_DIETY_DAMAGE, nil,nil,FA_DAMAGETYPE.HOLY)
                 end
         end
