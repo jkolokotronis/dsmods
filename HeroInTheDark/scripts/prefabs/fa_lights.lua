@@ -61,7 +61,7 @@ local function fn(Sim)
     inst.components.fueled.fueltype = "SPELLDURATION"
     inst.components.fueled:InitializeFuelLevel(DAYLIGHT_DURATION)
     inst.components.fueled:StartConsuming()        
-    inst.components.fueled:SetDepletedFn(function() point:Remove() end)
+    inst.components.fueled:SetDepletedFn(function() inst:Remove() end)
     return inst
 
 end
