@@ -17,6 +17,16 @@ local prefabs =
 }
 
 local WEB_USES=8
+local AOE_RANGE=20
+
+local INFLICTMASS_DAMAGE=20
+local INFLICTMASS_USES=7
+
+local DISRUPTION_DAMAGE=10
+local DISRUPTION_USES=8
+
+local HALTUNDEAD_DURATION=2*60
+local HALTUNDEAD_USES=6
 
 local MAGICMISSLE_USES=30
 local MAGICMISSLE_DAMAGE=20
@@ -290,9 +300,9 @@ function onattackflamestrike(inst, target, orpos)--reader)
         ringfx:Remove() 
     end)
 
-            local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, FLAMESTRIKE_RANGE)
+            local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, FLAMESTRIKE_RANGE,nil,{"player","FX","companion","INLIMBO"})
             for k,v in pairs(ents) do
-                if not v:HasTag("player") and not v:HasTag("companion") and not v:IsInLimbo() then
+                if not(v.components.follower and v.components.follower.leader and v.components.follower.leader:HasTag("player")) then
                     if v.components.burnable and not v.components.fueled then
                      v.components.burnable:Ignite()
                     end
@@ -616,21 +626,6 @@ local function animaltrance()
     inst.components.finiteuses:SetUses(ANIMALTRANCE_USES)
     return inst
 end
-
---[[
-local function animaltrance()
-    local inst = commonfn("blue")
-    inst.components.inventoryitem.imagename="icestaff"
-    inst:AddComponent("weapon")
-    inst.components.weapon:SetDamage(0)
-    inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
-    inst.components.weapon:SetOnAttack(onattackanimaltrance)
-    inst.components.weapon:SetProjectile("ice_projectilex")
-    inst.components.finiteuses:SetMaxUses(ANIMALTRANCE_USES)
-    inst.components.finiteuses:SetUses(ANIMALTRANCE_USES)
-
-    return inst
-end]]
 
 local function gustofwind()
     local inst = commonfn("blue")
@@ -1658,6 +1653,153 @@ local function webfn()
     return inst
 end
 
+function inflictlightmass(staff, target, orpos)
+    local reader = staff.components.inventoryitem.owner
+    local cl=1
+    if(reader.components.fa_spellcaster)then
+        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.NECROMANCY)
+    end
+    local damage=INFLICTMASS_DAMAGE*(1+math.floor(cl/4))
+    local pos=orpos
+    if(pos==nil and target~=nil)then
+        pos=Vector3(target.Transform:GetWorldPosition())
+    end
+
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, AOE_RANGE,nil,{"INLIMBO","FX","companion","player"})
+            for k,v in pairs(ents) do
+                if not(v.components.follower and v.components.follower.leader and v.components.follower.leader:HasTag("player"))
+                    and not v:IsInLimbo() then
+                    
+                    if(v.components.combat and not(v.components.health and v.components.health:IsDead())) then
+                        local boom =SpawnPrefab("fa_heal_redfx")
+                        local follower = boom.entity:AddFollower()
+                        follower:FollowSymbol(v.GUID,reader.components.combat.hiteffectsymbol, 0, 0, -0.0001)
+                        boom.persists=false
+                        boom:ListenForEvent("animover", function()  boom:Remove() end)
+                        
+                        v.components.combat:GetAttacked(reader, damage, nil,nil,FA_DAMAGETYPE.HOLY)
+                    end
+                end
+            end
+    staff.components.finiteuses:Use(1)
+    return true
+end
+
+local function inflictlightmassfn()
+    local inst = commonfn("red")
+    inst.components.inventoryitem.imagename="firestaff"
+    inst:AddComponent("spellcaster")
+    inst.components.spellcaster:SetSpellFn(inflictlightmass)
+    inst.components.spellcaster.canuseontargets = true
+    inst.components.spellcaster.canuseonpoint = true
+    inst.components.spellcaster.canusefrominventory = false
+    inst.components.finiteuses:SetMaxUses(INFLICTMASS_USES)
+    inst.components.finiteuses:SetUses(INFLICTMASS_USES)
+    return inst
+end
+
+--why doesnt this have a HD check?
+local function haltundeadmass(staff, target, orpos)
+    local reader = staff.components.inventoryitem.owner
+    local cl=1
+    if(reader.components.fa_spellcaster)then
+        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.NECROMANCY)
+    end
+
+    local treshold=(1+3*math.floor(cl/5))*100
+    local pos=orpos
+    if(pos==nil and target~=nil)then
+        pos=Vector3(target.Transform:GetWorldPosition())
+    end
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, AOE_RANGE ,{'undead'}, {'smashable',"companion","player","INLIMBO","FX"})
+        for k,v in pairs(ents) do
+                if (v.components.health and v.components.health.naxhealth<=treshold) and
+                 not (v.components.follower and v.components.follower.leader and v.components.follower.leader:HasTag("player")) then
+                    if(target.fa_stun)then target.fa_stun.components.spell:OnFinish() end
+                    
+                    local inst=SpawnPrefab("fa_musicnotesfx")
+                    inst.persists=false
+                    local spell = inst:AddComponent("spell")
+                    inst.components.spell.spellname = "fa_haltundeadmass"
+                    inst.components.spell.duration = HALTUNDEAD_DURATION
+                    inst.components.spell.ontargetfn = function(inst,target)
+                    local follower = inst.entity:AddFollower()
+                    follower:FollowSymbol( v.GUID, target.components.combat.hiteffectsymbol, 0,  -200, -0.0001 )
+                    target.fa_stun = inst
+                    end
+                    inst.components.spell.onfinishfn = function(inst)
+                        if not inst.components.spell.target then return end
+                        inst.components.spell.target.fa_stun = nil
+                    end
+                    inst.components.spell.resumefn = function() end
+                    inst.components.spell.removeonfinish = true
+
+                    inst.components.spell:SetTarget(v)
+                    inst.components.spell:StartSpell()
+
+                end
+            end
+    staff.components.finiteuses:Use(1)
+    return true
+end
+
+local function haltundeadmassfn()
+    local inst = commonfn("blue")
+    inst.components.inventoryitem.imagename="icestaff"
+    inst:AddComponent("spellcaster")
+    inst.components.spellcaster:SetSpellFn(haltundeadmass)
+    inst.components.spellcaster.canuseontargets = true
+    inst.components.spellcaster.canuseonpoint = true
+    inst.components.spellcaster.canusefrominventory = false
+    inst.components.finiteuses:SetMaxUses(HALTUNDEAD_USES)
+    inst.components.finiteuses:SetUses(HALTUNDEAD_USES)
+    return inst
+end
+
+function disruptundead(staff, target, orpos)
+    local reader = staff.components.inventoryitem.owner
+    local cl=1
+    if(reader.components.fa_spellcaster)then
+        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.NECROMANCY)
+    end
+    local damage=DISRUPTION_DAMAGE*cl
+
+    local pos=orpos
+    if(pos==nil and target~=nil)then
+        pos=Vector3(target.Transform:GetWorldPosition())
+    end
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, AOE_RANGE ,{'undead'}, {'smashable',"companion","player","INLIMBO","FX"})
+            for k,v in pairs(ents) do
+                if ( not (v.components.follower and v.components.follower.leader and v.components.follower.leader:HasTag("player")) )then
+                    
+                    if(v.components.combat and not(v.components.health and v.components.health:IsDead())) then
+                        local boom =SpawnPrefab("fa_heal_redfx")
+                        local follower = boom.entity:AddFollower()
+                        follower:FollowSymbol(v.GUID,reader.components.combat.hiteffectsymbol, 0, 100, -0.0001)
+                        boom.persists=false
+                        boom:ListenForEvent("animover", function()  boom:Remove() end)
+                        
+                        v.components.combat:GetAttacked(reader, damage, nil,nil,FA_DAMAGETYPE.HOLY)
+                    end
+                end
+            end
+    staff.components.finiteuses:Use(1)
+    return true
+end
+
+local function disruptundeadfn()
+    local inst = commonfn("red")
+    inst.components.inventoryitem.imagename="firestaff"
+    inst:AddComponent("spellcaster")
+    inst.components.spellcaster:SetSpellFn(disruptundead)
+    inst.components.spellcaster.canuseontargets = true
+    inst.components.spellcaster.canuseonpoint = true
+    inst.components.spellcaster.canusefrominventory = false
+    inst.components.finiteuses:SetMaxUses(DISRUPTION_USES)
+    inst.components.finiteuses:SetUses(DISRUPTION_USES)
+    return inst
+end
+
 return 
 Prefab("common/inventory/fa_spell_animaltrance", animaltrance, assets, prefabs),
 Prefab("common/inventory/fa_spell_gustofwind", gustofwind, assets, prefabs),
@@ -1691,7 +1833,9 @@ Prefab("common/inventory/fa_spell_enlargehumanoid", enlargehumanoidfn, assets, p
 Prefab("common/inventory/fa_spell_reducehumanoid", reducehumanoidfn, assets, prefabs),
 Prefab("common/inventory/fa_spell_web", webfn, assets, prefabs),
 Prefab("common/inventory/fa_spell_flamestrike", flamestrikefn, assets, prefabs),
-
+Prefab("common/inventory/fa_spell_inflictlightwoundsmass", inflictlightmassfn, assets, prefabs),
+Prefab("common/inventory/fa_spell_haltundeadmass", haltundeadmassfn, assets, prefabs),
+Prefab("common/inventory/fa_spell_disruptundead", disruptundeadfn, assets, prefabs),
 Prefab("common/inventory/firewallwand_insta", firewall_insta, assets, prefabs),
 
     --DEPRECATED

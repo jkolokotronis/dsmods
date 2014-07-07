@@ -45,7 +45,7 @@ local function fn(Sim)
       inst:AddComponent("lighttweener")
       local light = inst.entity:AddLight()
       inst.components.lighttweener:StartTween(light, 0, .9, 0.9, {1,1,1}, 0)
-      inst.components.lighttweener:StartTween(nil, 3, .9, 0.9, nil, .2)
+      inst.components.lighttweener:StartTween(nil, 9, .9, 0.9, nil, .2)
 --[[ 
     local light = inst.entity:AddLight()
     light:SetFalloff(1)

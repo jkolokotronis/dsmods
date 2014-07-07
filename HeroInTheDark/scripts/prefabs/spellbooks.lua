@@ -46,14 +46,11 @@ local HASTE_LENGTH=60
 local LONGSTRIDER_LENGTH=120
 local SHIELD_PROTECTION=50
 local EXPRETREAT_LENGTH=120
-local INFLICTLIGHT_DAMAGE=20
 local INVISIBILITY_LENGTH=120
 local BB_LENGTH=12
 local PROTEVIL_DURATION=8*60
 local AID_HP=50
 local FALSELIFE_HP=100
-local DISRUPTION_DAMAGE=10
-local HALTUNDEAD_DURATION=2*60
 local MAGEARMOR_ABSO=0.6
 local MAGEARMOR_ABSO_INC=0.05
 
@@ -65,33 +62,6 @@ local CURE_MOD=15
 local CURE_SER=20
 local CURE_CRIT=25
 
-function inflictlightmass(inst, reader)
-    local cl=1
-    if(reader.components.fa_spellcaster)then
-        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.CONJURATION)
-    end
-    local damage=INFLICTLIGHT_DAMAGE*(1+math.floor(cl/4))
-
-    local pos=Vector3(reader.Transform:GetWorldPosition())
-    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, AOE_RANGE)
-            for k,v in pairs(ents) do
-                if not(v:HasTag("player") or v:HasTag("companion") or (v.components.follower and v.components.follower.leader and v.components.follower.leader:HasTag("player")))
-                    and not v:IsInLimbo() then
-                    
-                    if(v.components.combat and not(v.components.health and v.components.health:IsDead())) then
-                        local boom =SpawnPrefab("fa_heal_redfx")
-                        local follower = boom.entity:AddFollower()
-                        follower:FollowSymbol(v.GUID,reader.components.combat.hiteffectsymbol, 0, 0, -0.0001)
-                        boom.persists=false
-                        boom:ListenForEvent("animover", function()  boom:Remove() end)
-                        
-                        v.components.combat:GetAttacked(reader, damage, nil,nil,FA_DAMAGETYPE.HOLY)
-                    end
-                end
-            end
-
-    return true
-end
 
 function curelightfn(inst, reader)
     local cl=1
@@ -733,33 +703,6 @@ function continualflamefn(inst,reader)
     return true
 end
 
-function disruptundeadfn(inst, reader)
-    local cl=1
-    if(reader.components.fa_spellcaster)then
-        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.NECROMANCY)
-    end
-    local damage=DISRUPTION_DAMAGE*cl
-
-    local pos=Vector3(reader.Transform:GetWorldPosition())
-    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, AOE_RANGE ,nil, {'smashable',"companion","player","INLIMBO"})
-            for k,v in pairs(ents) do
-                if (v:HasTag("undead") and not (v.components.follower and v.components.follower.leader and v.components.follower.leader:HasTag("player")) )then
-                    
-                    if(v.components.combat and not(v.components.health and v.components.health:IsDead())) then
-                        local boom =SpawnPrefab("fa_heal_redfx")
-                        local follower = boom.entity:AddFollower()
-                        follower:FollowSymbol(v.GUID,reader.components.combat.hiteffectsymbol, 0, 100, -0.0001)
-                        boom.persists=false
-                        boom:ListenForEvent("animover", function()  boom:Remove() end)
-                        
-                        v.components.combat:GetAttacked(reader, damage, nil,nil,FA_DAMAGETYPE.HOLY)
-                    end
-                end
-            end
-
-    return true
-end
-
 function sleepfn(inst, reader)
     local cl=1
     if(reader.components.fa_spellcaster)then
@@ -786,49 +729,6 @@ function sleepfn(inst, reader)
             end
 
     return true
-end
-
-
---why doesnt this have a HD check?
-local function haltundeadmass(inst, reader)
-    local cl=1
-    if(reader.components.fa_spellcaster)then
-        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.NECROMANCY)
-    end
-
-    local treshold=(1+3*math.floor(cl/5))*100
-    local pos=Vector3(reader.Transform:GetWorldPosition())
-    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, AOE_RANGE ,{'undead'}, {'smashable',"companion","player","INLIMBO","FX"})
-        for k,v in pairs(ents) do
-                if (v.components.health and v.components.health.naxhealth<=treshold) and
-                 not (v.components.follower and v.components.follower.leader and v.components.follower.leader:HasTag("player")) then
-                    if(target.fa_stun)then target.fa_stun.components.spell:OnFinish() end
-                    
-                    local inst=SpawnPrefab("fa_musicnotesfx")
-                    inst.persists=false
-                    local spell = inst:AddComponent("spell")
-                    inst.components.spell.spellname = "fa_haltundeadmass"
-                    inst.components.spell.duration = HALTUNDEAD_DURATION
-                    inst.components.spell.ontargetfn = function(inst,target)
-                    local follower = inst.entity:AddFollower()
-                    follower:FollowSymbol( v.GUID, target.components.combat.hiteffectsymbol, 0,  -200, -0.0001 )
-                    target.fa_stun = inst
-                    end
-                    inst.components.spell.onfinishfn = function(inst)
-                        if not inst.components.spell.target then return end
-                        inst.components.spell.target.fa_stun = nil
-                    end
-                    inst.components.spell.resumefn = function() end
-                    inst.components.spell.removeonfinish = true
-
-                    inst.components.spell:SetTarget(v)
-                    inst.components.spell:StartSpell()
-
-                end
-            end
-
-    return true
-
 end
 
 local function magearmorfn(inst, reader)
@@ -944,13 +844,11 @@ return
     MakeSpell("fa_spell_summonmonster3",summon3fn,10,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_summonmonster4",summon4fn,10,FA_SPELL_SCHOOLS.CONJURATION),
 --    MakeSpell("fa_spell_summonmonster5",summon5fn,10,FA_SPELL_SCHOOLS.CONJURATION),
-    MakeSpell("fa_spell_inflictlightwoundsmass",inflictlightmass,7,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_curelightwoundsmass",curelighmassfn,5,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_animatedead",animatedeadfn,5,FA_SPELL_SCHOOLS.NECROMANCY),
     MakeSpell("fa_spell_shadowconjuration",shadowconjuration,4,FA_SPELL_SCHOOLS.NECROMANCY),
     MakeSpell("fa_spell_createfood",createfoodfn,5,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_continualflame",continualflamefn,2,FA_SPELL_SCHOOLS.EVOCATION),
-    MakeSpell("fa_spell_disruptundead",disruptundeadfn,8,FA_SPELL_SCHOOLS.NECROMANCY),
     MakeSpell("fa_spell_sleep",sleepfn,8,FA_SPELL_SCHOOLS.ENCHANTMENT),
     MakeSpell("fa_spell_light",daylightfn,8,FA_SPELL_SCHOOLS.EVOCATION),
     MakeSpell("fa_spell_shield", shieldfn,3,FA_SPELL_SCHOOLS.ABJURATION),
@@ -958,7 +856,6 @@ return
     MakeSpell("fa_spell_falselife", falselifefn,5,FA_SPELL_SCHOOLS.NECROMANCY),
     MakeSpell("fa_spell_mirrorimage",mirrorimagefn,6,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_haste",hastefn,6,FA_SPELL_SCHOOLS.TRANSMUTATION),
-    MakeSpell("fa_spell_haltundeadmass", haltundeadmass,6,FA_SPELL_SCHOOLS.NECROMANCY),
     MakeSpell("fa_spell_magehound",summonmagehound,1,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_magearmor",magearmorfn,10,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_stoneskin",stoneskinfn,5,FA_SPELL_SCHOOLS.CONJURATION),
