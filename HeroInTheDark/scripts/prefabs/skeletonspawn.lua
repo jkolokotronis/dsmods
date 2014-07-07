@@ -133,7 +133,7 @@ local function fn(Sim)
     local shadow = inst.entity:AddDynamicShadow()
     shadow:SetSize( 2.5, 1.5 )
 --    inst.Transform:SetTwoFaced()
-inst.Transform:SetFourFaced()
+    inst.Transform:SetFourFaced()
 
     inst.OnLoad = onloadfn
     inst.OnSave = onsavefn

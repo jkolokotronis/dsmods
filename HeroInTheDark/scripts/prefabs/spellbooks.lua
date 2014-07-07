@@ -647,7 +647,7 @@ end
 function faeriefirefn(inst,reader)
 
     local spawn_point= Vector3(reader.Transform:GetWorldPosition())
-    local tree = SpawnPrefab("fa_lavaflies") 
+    local tree = SpawnPrefab("fa_faeriefire") 
     local pt = Vector3(spawn_point.x, 0, spawn_point.z)
         tree.Physics:SetCollides(false)
         tree.Physics:Teleport(pt.x, pt.y, pt.z) 

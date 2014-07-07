@@ -46,7 +46,7 @@ local function Retarget(inst)
     local newtarget = FindEntity(inst, 20, function(guy)
             return  guy.components.combat and 
                     inst.components.combat:CanTarget(guy) and
-                    (guy.components.combat.target == GetPlayer() or GetPlayer().components.combat.target == guy)
+                    ((guy.components.combat.target == GetPlayer()) or (GetPlayer().components.combat.target == guy))
     end)
 
     return newtarget

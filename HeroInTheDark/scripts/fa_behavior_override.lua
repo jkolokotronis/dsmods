@@ -292,10 +292,16 @@ end)
 AddPrefabPostInit("merm",function(inst)
     inst:AddTag("fa_humanoid")
     inst:AddTag("fa_evil")
+    if(not inst.components.follower)then
+        inst:AddComponent("follower")
+    end
 end)
 AddPrefabPostInit("pigguard",function(inst)
     inst:AddTag("fa_humanoid")
     inst:AddTag("fa_evil")
+    if(not inst.components.follower)then
+        inst:AddComponent("follower")
+    end
 end)
 AddPrefabPostInit("pigman",function(inst)
     inst:AddTag("fa_humanoid")
@@ -320,10 +326,16 @@ end)
 AddPrefabPostInit("tallbird",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_neutral")
+    if(not inst.components.follower)then
+        inst:AddComponent("follower")
+    end
 end)
 AddPrefabPostInit("walrus",function(inst)
     inst:AddTag("fa_humanoid")
     inst:AddTag("fa_evil")
+    if(not inst.components.follower)then
+        inst:AddComponent("follower")
+    end
 end)
 AddPrefabPostInit("little_walrus",function(inst)
     inst:AddTag("fa_humanoid")
@@ -400,10 +412,16 @@ end)
 AddPrefabPostInit("koalefant_summer",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_neutral")
+    if(not inst.components.follower)then
+        inst:AddComponent("follower")
+    end
 end)
 AddPrefabPostInit("koalefant_winter",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_neutral")
+    if(not inst.components.follower)then
+        inst:AddComponent("follower")
+    end
 end)
 AddPrefabPostInit("smallbird",function(inst)
     inst:AddTag("fa_animal")
@@ -416,18 +434,30 @@ end)
 AddPrefabPostInit("slurtle",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_neutral")
+    if(not inst.components.follower)then
+        inst:AddComponent("follower")
+    end
 end)
 AddPrefabPostInit("snurtle",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_neutral")
+    if(not inst.components.follower)then
+        inst:AddComponent("follower")
+    end
 end)
 AddPrefabPostInit("beefalo",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_neutral")
+    if(not inst.components.follower)then
+        inst:AddComponent("follower")
+    end
 end)
 AddPrefabPostInit("penguin",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_neutral")
+    if(not inst.components.follower)then
+        inst:AddComponent("follower")
+    end
 end)
 AddPrefabPostInit("bunnyman",function(inst)
     inst:AddTag("fa_animal")
@@ -452,10 +482,16 @@ end)
 AddPrefabPostInit("babybeefalo",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_neutral")
+    if(not inst.components.follower)then
+        inst:AddComponent("follower")
+    end
 end)
 AddPrefabPostInit("perd",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_neutral")
+    if(not inst.components.follower)then
+        inst:AddComponent("follower")
+    end
 end)
 AddPrefabPostInit("butterfly",function(inst)
     inst:AddTag("fa_animal")
@@ -529,9 +565,19 @@ AddPrefabPostInit("mole",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_neutral")
 end)
+AddPrefabPostInit("bat",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    if(not inst.components.follower)then
+        inst:AddComponent("follower")
+    end
+end)
 AddPrefabPostInit("lightninggoat",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_neutral")
+    if(not inst.components.follower)then
+        inst:AddComponent("follower")
+    end
 end)
 AddPrefabPostInit("warg",function(inst)
     inst:AddTag("fa_animal")

@@ -63,9 +63,6 @@ local function fn(Sim)
 
     inst.AnimState:SetRayTestOnBB(true);
 
-    inst:AddComponent("heater")
-    inst.components.heater.heat=50    
- 
 --    inst:AddComponent("fader")  
 --    fadein(inst)
      inst.lighton = true

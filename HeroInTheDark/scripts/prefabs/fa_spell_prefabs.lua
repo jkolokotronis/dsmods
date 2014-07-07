@@ -14,7 +14,11 @@ local nightassets =
 {
 Asset("IMAGE","colour_cubes/darkvision_cc.tex")
 }
+local faerieassets={
+  Asset("ANIM", "anim/fa_lavaflies.zip"),
+}
 
+local INTENSITY = .5
 local STONESKINARMOR_ABSO=1
 local STONESKINARMOR_DURABILITY=1000
 local STONESKIN_DURATION=8*60
@@ -25,6 +29,7 @@ local TINYHUT_DURATION=8*60
 local SHELTER_DURATION=4*8*60
 local DARKVISION_DURATION=4*60
 local WEB_TTL=4*60
+local FAERIEFIRE_DURATION=5*8*60
 
 
 local function OnBlocked(owner,data) 
@@ -383,6 +388,47 @@ local function webfn()
     return inst
 end
 
+
+local function faeriefirefn(Sim)
+
+
+  local inst = CreateEntity()
+
+    inst:AddTag("NOBLOCK")
+    inst:AddTag("NOCLICK")
+  inst.entity:AddTransform()
+  inst.entity:AddAnimState()
+    
+    inst.entity:AddPhysics()
+ 
+    local light = inst.entity:AddLight()
+    light:SetFalloff(1)
+    light:SetIntensity(INTENSITY)
+    light:SetRadius(1)
+    light:SetColour(255/255, 150/255, 150/255)
+    light:Enable(true)
+    
+    inst.AnimState:SetBloomEffectHandle( "shaders/anim.ksh" )
+    
+    inst.AnimState:SetBank("fa_lavaflies")
+    inst.AnimState:SetBuild("fa_lavaflies")
+    inst.AnimState:PushAnimation("swarm_loop", true)
+
+    inst.AnimState:SetRayTestOnBB(true);
+
+    inst:AddComponent("heater")
+    inst.components.heater.heat=60    
+
+     inst:AddComponent("fueled")
+    inst.components.fueled.fueltype = "SPELLDURATION"
+    inst.components.fueled:InitializeFuelLevel(FAERIEFIRE_DURATION)
+    inst.components.fueled:StartConsuming()        
+    inst.components.fueled:SetDepletedFn(function() inst:Remove() end)
+ 
+    
+    return inst
+end
+
 return Prefab( "common/inventory/fa_magearmor", magearmorfn, ssassets),
 Prefab( "common/inventory/fa_stoneskin", stoneskinfn, maassets),
 Prefab( "common/inventory/fa_webspell_spawn", webfn, maassets),
@@ -390,5 +436,6 @@ Prefab( "common/inventory/fa_spell_tinyhut", tinyhutfn, tinyassets),
 Prefab("common/fa_darkvision_fx",darkvision_fx,nightassets),
 MakePlacer( "common/fa_spell_tinyhut_placer", "tent", "tent", "idle" ),
 Prefab( "common/inventory/fa_spell_secureshelter", shelterfn, tinyassets),
-MakePlacer( "common/fa_spell_secureshelter_placer", "tent", "tent", "idle" ) 
+MakePlacer( "common/fa_spell_secureshelter_placer", "tent", "tent", "idle" ),
+Prefab( "common/inventory/fa_faeriefire", faeriefirefn, faerieassets)
 

@@ -1150,6 +1150,9 @@ AddPrefabPostInit("ghost",function(inst)
     if(not inst.components.lootdropper)then
         inst:AddComponent("lootdropper")
     end
+    if(not inst.components.follower)then
+        inst:AddComponent("follower")
+    end
     inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1
     inst.components.lootdropper:AddChanceLoot("nightmarefuel",0.75)
     inst.components.lootdropper:AddChanceLoot("nightmarefuel",0.18) 

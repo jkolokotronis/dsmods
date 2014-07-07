@@ -80,6 +80,7 @@ local ANIMALTRANCE_USES=5
 local ANIMALTRANCE_DURATION=2*60
 local GUSTOFWIND_USES=10
 local HOLDANIMAL_USES=5
+local DOMINATEANIMAL_USES=5
 local HOLDANIMAL_DURATION=20
 local HOLDPERSON_USES=5
 local HOLDPERSON_DURATION=20
@@ -486,30 +487,31 @@ end
 
 --TODO get rid of consts - way too bored
 
-local function onattackanimaltrance(inst1,attacker,target)
+
+local function onattackanimaltrance(staff, target, orpos)
+   
     if(not target:HasTag("fa_animal")) then return false end
+
+    local attacker = staff.components.inventoryitem.owner
     local cl=1
     if(attacker.components.fa_spellcaster)then
         cl=attacker.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.ENCHANTMENT)
     end
+
     local treshold=(1+3*math.floor(cl/5))*100
     if target.components.health and target.components.health.maxhealth<=treshold then
         if(target.fa_daze)then target.fa_daze.components.spell:OnFinish() end
 
-        local inst=CreateEntity()
+        local inst=SpawnPrefab("fa_musicnotesfx")
         inst.persists=false
         inst:AddTag("FX")
         inst:AddTag("NOCLICK")
         local spell = inst:AddComponent("spell")
         inst.components.spell.spellname = "fa_animaltranse"
         inst.components.spell.duration = ANIMALTRANCE_DURATION
-        inst.components.spell.ontargetfn = function(inst,target)
-
-            local fx=SpawnPrefab("fa_musicnotesfx")
-            fx.persists=false
-            local follower = fx.entity:AddFollower()
+        inst.components.spell.ontargetfn = function(inst,target)       
+            local follower = inst.entity:AddFollower()
             follower:FollowSymbol( target.GUID, target.components.combat.hiteffectsymbol, 0,  -200, -0.0001 )
-            target.fa_daze_fx=fx
             target.fa_daze = inst
             target:ListenForEvent("attacked", ondazedattacked)
         end
@@ -517,7 +519,6 @@ local function onattackanimaltrance(inst1,attacker,target)
         inst.components.spell.onfinishfn = function(inst)
             if not inst.components.spell.target then return end
             inst.components.spell.target.fa_daze = nil
-            if(inst.components.spell.target.fa_daze_fx) then inst.components.spell.target.fa_daze_fx:Remove() end
             inst.components.spell.target:RemoveEventCallback("attacked",ondazedattacked)
         end
                 --inst.components.spell.fn = function(inst, target, variables) end
@@ -526,7 +527,10 @@ local function onattackanimaltrance(inst1,attacker,target)
 
         inst.components.spell:SetTarget(target)
         inst.components.spell:StartSpell()
-    end
+        staff.components.finiteuses:Use(1)
+        end
+
+    --staff.components.finiteuses:Use(1)
 end
 
 local function onattackgustofwind(inst,attacker,target,projectile)
@@ -599,6 +603,21 @@ local function onattackholdanimal(inst1,attacker,target)
     end
 end
 
+
+local function animaltrance()
+    local inst = commonfn("blue")
+    inst.components.inventoryitem.imagename="icestaff"
+    inst:AddComponent("spellcaster")
+    inst.components.spellcaster:SetSpellFn(onattackanimaltrance)
+    inst.components.spellcaster.canuseontargets = true
+    inst.components.spellcaster.canuseonpoint = false
+    inst.components.spellcaster.canusefrominventory = false
+    inst.components.finiteuses:SetMaxUses(ANIMALTRANCE_USES)
+    inst.components.finiteuses:SetUses(ANIMALTRANCE_USES)
+    return inst
+end
+
+--[[
 local function animaltrance()
     local inst = commonfn("blue")
     inst.components.inventoryitem.imagename="icestaff"
@@ -611,7 +630,7 @@ local function animaltrance()
     inst.components.finiteuses:SetUses(ANIMALTRANCE_USES)
 
     return inst
-end
+end]]
 
 local function gustofwind()
     local inst = commonfn("blue")
@@ -696,8 +715,9 @@ local function poisonwand()
     return inst
 end
 
+local function onattackdominateanimal(staff, target, orpos)
+    local attacker = staff.components.inventoryitem.owner
 
-local function onattackdominateanimal(inst,attacker,target)
     if(not target:HasTag("fa_animal")) then return false end
     local cl=1
     if(attacker.components.fa_spellcaster)then
@@ -707,23 +727,24 @@ local function onattackdominateanimal(inst,attacker,target)
     if(not target.components.follower)then print("using dominate on a mob that does not support follower logic: "..target.prefab) end
     if target.components.follower and target.components.health and target.components.health.maxhealth<=treshold then
         attacker.components.leader:AddFollower(target)
+        staff.components.finiteuses:Use(1)
     end
+
+    --staff.components.finiteuses:Use(1)
 end
 
 local function dominateanimal()
     local inst = commonfn("blue")
     inst.components.inventoryitem.imagename="icestaff"
-    inst:AddComponent("weapon")
-    inst.components.weapon:SetDamage(0)
-    inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
-    inst.components.weapon:SetOnAttack(onattackdominateanimal)
-    inst.components.weapon:SetProjectile("ice_projectilex")
-    inst.components.finiteuses:SetMaxUses(HOLDANIMAL_USES)
-    inst.components.finiteuses:SetUses(HOLDANIMAL_USES)
-
+    inst:AddComponent("spellcaster")
+    inst.components.spellcaster:SetSpellFn(onattackdominateanimal)
+    inst.components.spellcaster.canuseontargets = true
+    inst.components.spellcaster.canuseonpoint = false
+    inst.components.spellcaster.canusefrominventory = false
+    inst.components.finiteuses:SetMaxUses(DOMINATEANIMAL_USES)
+    inst.components.finiteuses:SetUses(DOMINATEANIMAL_USES)
     return inst
 end
-
 
 function snaredebuff(inst,attacker,target)
     local inst = CreateEntity()
@@ -1078,8 +1099,10 @@ local function acidsplashfn()
 end
 
 --why doesnt this have a HD check?
-local function ondazehuman(inst1,attacker,target)
+
+local function ondazehuman(staff, target, orpos)
     if(not target:HasTag("fa_humanoid")) then return false end
+    local attacker = staff.components.inventoryitem.owner
   --[[  local cl=1
     if(attacker.components.fa_spellcaster)then
         cl=attacker.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.ENCHANTMENT)
@@ -1118,20 +1141,22 @@ local function ondazehuman(inst1,attacker,target)
 
         inst.components.spell:SetTarget(target)
         inst.components.spell:StartSpell()
+
+        staff.components.finiteuses:Use(1)
 --    end
 end
+
 
 local function dazehumanfn()
     local inst = commonfn("blue")
     inst.components.inventoryitem.imagename="icestaff"
-    inst:AddComponent("weapon")
-    inst.components.weapon:SetDamage(0)
-    inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
-    inst.components.weapon:SetOnAttack(ondazehuman)
-    inst.components.weapon:SetProjectile("ice_projectilex")
+    inst:AddComponent("spellcaster")
+    inst.components.spellcaster:SetSpellFn(ondazehuman)
+    inst.components.spellcaster.canuseontargets = true
+    inst.components.spellcaster.canuseonpoint = false
+    inst.components.spellcaster.canusefrominventory = false
     inst.components.finiteuses:SetMaxUses(DAZEHUMAN_USES)
     inst.components.finiteuses:SetUses(DAZEHUMAN_USES)
-
     return inst
 end
 
@@ -1183,8 +1208,9 @@ local function magicmissilefn()
     return inst
 end
 
-local function onattackcharmperson(inst,attacker,target)
+local function onattackcharmperson(staff, target, orpos)
     if(not target:HasTag("fa_humanoid")) then return false end
+    local attacker = staff.components.inventoryitem.owner
     local cl=1
     if(attacker.components.fa_spellcaster)then
         cl=attacker.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.ENCHANTMENT)
@@ -1193,22 +1219,22 @@ local function onattackcharmperson(inst,attacker,target)
     if(not target.components.follower)then print("using dominate on a mob that does not support follower logic: "..target.prefab) return false  end
     if target.components.follower and target.components.health and target.components.health.maxhealth<=treshold then
         attacker.components.leader:AddFollower(target)
-            target.components.follower.maxfollowtime=CHARMPERSON_DURATION
+            target.components.follower.maxfollowtime=math.max(target.components.follower.maxfollowtime or 0,CHARMPERSON_DURATION)
             target.components.follower:AddLoyaltyTime(CHARMPERSON_DURATION)
+            staff.components.finiteuses:Use(1)
     end
 end
 
 local function charmpersonfn()
     local inst = commonfn("blue")
     inst.components.inventoryitem.imagename="icestaff"
-    inst:AddComponent("weapon")
-    inst.components.weapon:SetDamage(0)
-    inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
-    inst.components.weapon:SetOnAttack(onattackcharmperson)
-    inst.components.weapon:SetProjectile("ice_projectilex")
+    inst:AddComponent("spellcaster")
+    inst.components.spellcaster:SetSpellFn(onattackcharmperson)
+    inst.components.spellcaster.canuseontargets = true
+    inst.components.spellcaster.canuseonpoint = false
+    inst.components.spellcaster.canusefrominventory = false
     inst.components.finiteuses:SetMaxUses(CHARMPERSON_USES)
     inst.components.finiteuses:SetUses(CHARMPERSON_USES)
-
     return inst
 end
 
@@ -1318,9 +1344,9 @@ local function slowfn()
     return inst
 end
 
-
-local function onattackcommandundead(inst,attacker,target)
+local function onattackcommandundead(staff, target, orpos)
     if(not target:HasTag("undead")) then return false end
+    local attacker = staff.components.inventoryitem.owner
     local cl=1
     if(attacker.components.fa_spellcaster)then
         cl=attacker.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.NECROMANCY)
@@ -1332,20 +1358,20 @@ local function onattackcommandundead(inst,attacker,target)
 
             target.components.follower.maxfollowtime=COMMANDUNDEAD_DURATION
             target.components.follower:AddLoyaltyTime(COMMANDUNDEAD_DURATION)
+            staff.components.finiteuses:Use(1)
     end
 end
 
 local function commandundeadfn()
     local inst = commonfn("blue")
     inst.components.inventoryitem.imagename="icestaff"
-    inst:AddComponent("weapon")
-    inst.components.weapon:SetDamage(0)
-    inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
-    inst.components.weapon:SetOnAttack(onattackcommandundead)
-    inst.components.weapon:SetProjectile("ice_projectilex")
+    inst:AddComponent("spellcaster")
+    inst.components.spellcaster:SetSpellFn(onattackcommandundead)
+    inst.components.spellcaster.canuseontargets = true
+    inst.components.spellcaster.canuseonpoint = false
+    inst.components.spellcaster.canusefrominventory = false
     inst.components.finiteuses:SetMaxUses(COMMANDUNDEAD_USES)
     inst.components.finiteuses:SetUses(COMMANDUNDEAD_USES)
-
     return inst
 end
 
@@ -1394,29 +1420,28 @@ local function holdmonsterfn()
     return inst
 end
 
-local function onattackcharmmonster(inst,attacker,target)
+local function onattackcharmmonster(staff, target, orpos)
     if( target:HasTag("undead") or target:HasTag("fa_giant") or target:HasTag("epic") or target:HasTag("fa_construct")) then return false end
-
+    local attacker = staff.components.inventoryitem.owner
     if(not target.components.follower)then print("using dominate on a mob that does not support follower logic: "..target.prefab)  return false end
     
         attacker.components.leader:AddFollower(target)
 
-            target.components.follower.maxfollowtime=target.components.follower.maxfollowtime or CHARM_DURATION
+            target.components.follower.maxfollowtime=math.max(target.components.follower.maxfollowtime or 0,CHARM_DURATION)
             target.components.follower:AddLoyaltyTime(CHARM_DURATION)
-    
+     staff.components.finiteuses:Use(1)
 end
 
 local function charmmonsterfn()
     local inst = commonfn("blue")
     inst.components.inventoryitem.imagename="icestaff"
-    inst:AddComponent("weapon")
-    inst.components.weapon:SetDamage(0)
-    inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
-    inst.components.weapon:SetOnAttack(onattackcharmmonster)
-    inst.components.weapon:SetProjectile("ice_projectilex")
+    inst:AddComponent("spellcaster")
+    inst.components.spellcaster:SetSpellFn(onattackcharmmonster)
+    inst.components.spellcaster.canuseontargets = true
+    inst.components.spellcaster.canuseonpoint = false
+    inst.components.spellcaster.canusefrominventory = false
     inst.components.finiteuses:SetMaxUses(CHARM_USES)
     inst.components.finiteuses:SetUses(CHARM_USES)
-
     return inst
 end
 
@@ -1488,9 +1513,9 @@ local function acidarrowfn()
     return inst
 end
 
-local function onattackenlargehumanoid(inst1,attacker,target)
+local function onattackenlargehumanoid(staff, target, orpos)
     if(not target:HasTag("fa_humanoid")) then return false end
-    
+    local attacker = staff.components.inventoryitem.owner
     if(target.fa_enlarge)then 
             target.fa_enlarge.components.spell.lifetime = 0
             target.fa_enlarge.components.spell:ResumeSpell()
@@ -1507,8 +1532,10 @@ local function onattackenlargehumanoid(inst1,attacker,target)
         target.Transform:SetScale(x/2,y/2,z/2)
         if(target.components.combat)then
             target.components.combat.damagemultiplier=target.components.combat.damagemultiplier*ENLARGE_HUMANOID_MULT
-            target.components.combat.min_attack_period=target.components.combat.min_attack_period/ENLARGE_HUMANOID_SPEED
-        end        
+        end    
+        if(target.components.locomotor)then
+            target.components.locomotor.runspeed=target.components.locomotor.runspeed*ENLARGE_HUMANOID_SPEED
+        end    
         target.fa_enlarge = inst
         end
                --inst.components.spell.onstartfn = function() end
@@ -1518,8 +1545,10 @@ local function onattackenlargehumanoid(inst1,attacker,target)
             target.Transform:SetScale(x*2,y*2,z*2)
             if(target.components.combat)then
                 target.components.combat.damagemultiplier=target.components.combat.damagemultiplier/ENLARGE_HUMANOID_MULT
-                target.components.combat.min_attack_period=target.components.combat.min_attack_period*ENLARGE_HUMANOID_SPEED
             end        
+            if(target.components.locomotor)then
+                target.components.locomotor.runspeed=target.components.locomotor.runspeed/ENLARGE_HUMANOID_SPEED
+            end
             inst.components.spell.target.fa_enlarge = nil
         end
         inst.components.spell.resumefn = function() end
@@ -1527,6 +1556,7 @@ local function onattackenlargehumanoid(inst1,attacker,target)
 
         inst.components.spell:SetTarget(target)
         inst.components.spell:StartSpell()
+        staff.components.finiteuses:Use(1)
     end
 
 end
@@ -1534,20 +1564,19 @@ end
 local function enlargehumanoidfn()
     local inst = commonfn("blue")
     inst.components.inventoryitem.imagename="icestaff"
-    inst:AddComponent("weapon")
-    inst.components.weapon:SetDamage(0)
-    inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
-    inst.components.weapon:SetOnAttack(onattackenlargehumanoid)
-    inst.components.weapon:SetProjectile("ice_projectilex")
+    inst:AddComponent("spellcaster")
+    inst.components.spellcaster:SetSpellFn(onattackenlargehumanoid)
+    inst.components.spellcaster.canuseontargets = true
+    inst.components.spellcaster.canuseonpoint = false
+    inst.components.spellcaster.canusefrominventory = false
     inst.components.finiteuses:SetMaxUses(ENLARGE_HUMANOID_USES)
     inst.components.finiteuses:SetUses(ENLARGE_HUMANOID_USES)
-
     return inst
 end
 
-local function onattackreducehumanoid(inst1,attacker,target)
+local function onattackreducehumanoid(staff, target, orpos)
     if(not target:HasTag("fa_humanoid")) then return false end
-    
+    local attacker = staff.components.inventoryitem.owner
     if(target.fa_reduce)then 
             target.fa_enlarge.components.spell.lifetime = 0
             target.fa_enlarge.components.spell:ResumeSpell()
@@ -1564,8 +1593,10 @@ local function onattackreducehumanoid(inst1,attacker,target)
         target.Transform:SetScale(x/2,y/2,z/2)
         if(target.components.combat)then
             target.components.combat.damagemultiplier=target.components.combat.damagemultiplier*REDUCE_HUMANOID_MULT
-            target.components.combat.min_attack_period=target.components.combat.min_attack_period/REDUCE_HUMANOID_SPEED
         end        
+        if(target.components.locomotor)then
+                target.components.locomotor.runspeed=target.components.locomotor.runspeed*REDUCE_HUMANOID_SPEED
+        end
         target.fa_reduce = inst
         end
                --inst.components.spell.onstartfn = function() end
@@ -1575,7 +1606,9 @@ local function onattackreducehumanoid(inst1,attacker,target)
             target.Transform:SetScale(x*2,y*2,z*2)
             if(target.components.combat)then
                 target.components.combat.damagemultiplier=target.components.combat.damagemultiplier/REDUCE_HUMANOID_MULT
-                target.components.combat.min_attack_period=target.components.combat.min_attack_period*REDUCE_HUMANOID_SPEED
+            end        
+            if(target.components.locomotor)then
+                target.components.locomotor.runspeed=target.components.locomotor.runspeed/REDUCE_HUMANOID_SPEED
             end        
             inst.components.spell.target.fa_reduce = nil
         end
@@ -1584,6 +1617,7 @@ local function onattackreducehumanoid(inst1,attacker,target)
 
         inst.components.spell:SetTarget(target)
         inst.components.spell:StartSpell()
+        staff.components.finiteuses:Use(1)
     end
 
 end
@@ -1591,14 +1625,13 @@ end
 local function reducehumanoidfn()
     local inst = commonfn("blue")
     inst.components.inventoryitem.imagename="icestaff"
-    inst:AddComponent("weapon")
-    inst.components.weapon:SetDamage(0)
-    inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
-    inst.components.weapon:SetOnAttack(onattackenlargehumanoid)
-    inst.components.weapon:SetProjectile("ice_projectilex")
+    inst:AddComponent("spellcaster")
+    inst.components.spellcaster:SetSpellFn(onattackreducehumanoid)
+    inst.components.spellcaster.canuseontargets = true
+    inst.components.spellcaster.canuseonpoint = false
+    inst.components.spellcaster.canusefrominventory = false
     inst.components.finiteuses:SetMaxUses(REDUCE_HUMANOID_USES)
     inst.components.finiteuses:SetUses(REDUCE_HUMANOID_USES)
-
     return inst
 end
 
