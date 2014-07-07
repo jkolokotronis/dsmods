@@ -76,11 +76,10 @@ local function continualflamefx()
     local sound = inst.entity:AddSoundEmitter()
 
     
-    MakeObstaclePhysics(inst, .3)    
+    MakeObstaclePhysics(inst, .1)    
     
     
     inst:AddComponent("burnable")
-    inst:AddComponent("inspectable")
     inst.components.burnable:AddBurnFX("campfirefire", Vector3(0,1.5,0) )
     inst.components.burnable:SetFXLevel(2, 1)
     inst.components.burnable:Ignite()

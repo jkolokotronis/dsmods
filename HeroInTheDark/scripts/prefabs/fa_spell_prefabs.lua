@@ -377,6 +377,8 @@ local function webfn()
     MakeMediumBurnable(inst)
     MakeObstaclePhysics(inst, .1)
     
+    inst:AddTag("NOBLOCK")
+    inst:AddTag("NOCLICK")
 --    MakeObstaclePhysics(inst, .5)
     inst:ListenForEvent("creepactivate", webtriggered)
     --yep cheating
@@ -396,6 +398,7 @@ local function faeriefirefn(Sim)
 
     inst:AddTag("NOBLOCK")
     inst:AddTag("NOCLICK")
+    inst:AddTag("FX")
   inst.entity:AddTransform()
   inst.entity:AddAnimState()
     
