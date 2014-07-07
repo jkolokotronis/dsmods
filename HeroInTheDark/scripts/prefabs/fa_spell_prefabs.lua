@@ -154,8 +154,7 @@ local function magearmorfn(Sim)
     inst:AddComponent("inspectable")
     
     inst:AddComponent("inventoryitem")
-     inst.components.inventoryitem.atlasname = "images/inventoryimages/shield.xml"
-    inst.components.inventoryitem.imagename="shield"
+    inst.components.inventoryitem.imagename="armor_sanity"
     inst.components.inventoryitem.foleysound = "dontstarve/movement/foley/nightarmour"
 
     inst:AddComponent("equippable")

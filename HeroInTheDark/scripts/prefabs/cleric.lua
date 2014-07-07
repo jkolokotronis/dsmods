@@ -97,11 +97,10 @@ local function enableL1spells()
             recname="fa_spell_inflictlightwounds",
             school="necromancy",
         },
-        --[[
         {
-            recname="fa_spell_resistance",
-            school="abjuration",
-        },]]
+            recname="spell_divinemight",
+            school="evocation",
+        },
         {
             recname="fa_spell_fear",
             school="necromancy",
@@ -130,7 +129,7 @@ local function enableL1spells()
     local r=Recipe("fa_spell_protevil", {Ingredient("houndstooth", 2), Ingredient("goldnugget", 6), Ingredient("healingsalve", 2)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
 
-    local r=Recipe("spell_divinemight", {Ingredient("meat", 5), Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, RECIPETABS.SPELLS, {SCIENCE = 0, MAGIC = 0, ANCIENT = 0})
+    local r=Recipe("spell_divinemight", {Ingredient("meat", 5), Ingredient("monstermeat", 5), Ingredient("papyrus", 8)}, RECIPETABS.SPELLS, TECH.NONE)
     r.image="book_brimstone.tex"
 end
 local function enableL2spells()
@@ -219,8 +218,6 @@ local function enableL3spells()
     local r=Recipe("fa_spell_summonmonster3", {Ingredient("pigskin", 2), Ingredient("poop", 6), Ingredient("papyrus", 5)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
 
-    local r=Recipe("spell_heal", {Ingredient("spidergland",5),Ingredient("cutgrass", 5), Ingredient("rocks", 15)}, RECIPETABS.SPELLS, {MAGIC = 3})
-    r.image="book_gardening.tex"
 end
 local function enableL4spells()
     GetPlayer().fa_spellcraft.spells[4]={
@@ -257,10 +254,6 @@ local function enableL4spells()
     local r=Recipe("fa_spell_summonmonster4", {Ingredient("bluegem", 1), Ingredient("houndstooth", 4), Ingredient("papyrus", 6)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
 
-    local  r=Recipe("spell_calldiety", {Ingredient("redgem", 4), Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, RECIPETABS.SPELLS,{MAGIC = 2})
-    r.image="book_brimstone.tex"
-    local  r=Recipe("spell_summonfeast", {Ingredient("redgem", 1), Ingredient("cutgrass", 10), Ingredient("meat", 1)}, RECIPETABS.SPELLS,{MAGIC = 2})
-    r.image="book_brimstone.tex"
 end
 local function enableL5spells()
     GetPlayer().fa_spellcraft.spells[5]={
@@ -280,6 +273,10 @@ local function enableL5spells()
             recname="fa_spell_flamestrike",
             school="evocation",
         },
+        {
+            recname="spell_bladebarrier",
+            school="evocation",
+        },
     }
     local r=Recipe("fa_spell_atonement", {Ingredient("charcoal", 10), Ingredient("butterfly", 4), Ingredient("monstermeat", 4)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
@@ -290,11 +287,20 @@ local function enableL5spells()
     local r=Recipe("fa_spell_flamestrike", {Ingredient("redgem", 2), Ingredient("ash", 10), Ingredient("gunpowder", 5)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
 
-    local r=Recipe("spell_bladebarrier", {Ingredient("papyrus", 2), Ingredient("redgem", 1)}, RECIPETABS.SPELLS, {MAGIC = 3})
+    local r=Recipe("spell_bladebarrier", {Ingredient("papyrus", 2), Ingredient("redgem", 1)}, RECIPETABS.SPELLS, TECH.NONE)
     r.image="book_gardening.tex"
 end
 
-local function enableL6spells() end
+local function enableL6spells() 
+    GetPlayer().fa_spellcraft.spells[6]={
+        {
+            recname="spell_calldiety",
+            school="abjuration",
+        },
+    }
+    local  r=Recipe("spell_calldiety", {Ingredient("redgem", 4), Ingredient("cutgrass", 5), Ingredient("rocks", 20)}, RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_brimstone.tex"
+end
 local function enableL7spells() end
 local function enableL8spells() end
 local function enableL9spells() end

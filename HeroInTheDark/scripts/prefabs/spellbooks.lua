@@ -435,8 +435,10 @@ function calldietyfn(inst,reader)
         local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, AOE_RANGE,nil, {'smashable',"player","companion","INLIMBO"})
         for k,v in pairs(ents) do
              -- quakes shouldn't break the set dressing
+             local damage=CALL_DIETY_DAMAGE
+             if(v:HasTag("undead")) then damage=2*damage end
                 if(v.components.combat and not (v.components.health and v.components.health:IsDead()))then
-                    v.components.combat:GetAttacked(attacker, CALL_DIETY_DAMAGE, nil,nil,FA_DAMAGETYPE.HOLY)
+                    v.components.combat:GetAttacked(attacker, damage, nil,nil,FA_DAMAGETYPE.HOLY)
                 end
         end
      inst:DoTaskInTime(3, function() inst.SoundEmitter:KillSound("earthquake") end)
@@ -829,38 +831,39 @@ return
     MakeSpell("fa_spell_curecriticalwounds",curecritfn,6,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_longstrider", longstriderfn,10,FA_SPELL_SCHOOLS.TRANSMUTATION),
     MakeSpell("fa_spell_faeriefire",faeriefirefn,7,FA_SPELL_SCHOOLS.EVOCATION),
-    MakeSpell("fa_spell_naturesally",naturesallyfn,10,FA_SPELL_SCHOOLS.CONJURATION),
-    MakeSpell("fa_spell_summonswarm",naturespawnfn,5,FA_SPELL_SCHOOLS.CONJURATION),
-    MakeSpell("fa_spell_naturesally2",treeguardianfn,7,FA_SPELL_SCHOOLS.CONJURATION),
-    MakeSpell("fa_spell_daylight",daylightfn,12,FA_SPELL_SCHOOLS.EVOCATION),
-    MakeSpell("fa_spell_curepoison",curepoisonfn,10,FA_SPELL_SCHOOLS.CONJURATION),
-    MakeSpell("fa_spell_grow",growfn,15,FA_SPELL_SCHOOLS.TRANSMUTATION),
+    MakeSpell("fa_spell_naturesally",naturesallyfn,20,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_summonswarm",naturespawnfn,8,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_naturesally2",treeguardianfn,10,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_daylight",daylightfn,4,FA_SPELL_SCHOOLS.EVOCATION),
+    MakeSpell("fa_spell_curepoison",curepoisonfn,25,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_grow",growfn,20,FA_SPELL_SCHOOLS.TRANSMUTATION),
     MakeSpell("fa_spell_atonement",atonementfn,3,FA_SPELL_SCHOOLS.ABJURATION),
-    MakeSpell("fa_spell_lightningstorm",firefn,6,FA_SPELL_SCHOOLS.EVOCATION),
+    MakeSpell("fa_spell_lightningstorm",firefn,25,FA_SPELL_SCHOOLS.EVOCATION),
     MakeSpell("fa_spell_protevil",protevilfn,10,FA_SPELL_SCHOOLS.ABJURATION),
     MakeSpell("fa_spell_aid",protevilfn,10,FA_SPELL_SCHOOLS.ENCHANTMENT),
-    MakeSpell("fa_spell_summonmonster1",summon1fn,10,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_summonmonster1",summon1fn,20,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_summonmonster2",summon2fn,10,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_summonmonster3",summon3fn,10,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_summonmonster4",summon4fn,10,FA_SPELL_SCHOOLS.CONJURATION),
 --    MakeSpell("fa_spell_summonmonster5",summon5fn,10,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_curelightwoundsmass",curelighmassfn,5,FA_SPELL_SCHOOLS.CONJURATION),
-    MakeSpell("fa_spell_animatedead",animatedeadfn,5,FA_SPELL_SCHOOLS.NECROMANCY),
-    MakeSpell("fa_spell_shadowconjuration",shadowconjuration,4,FA_SPELL_SCHOOLS.NECROMANCY),
+    MakeSpell("fa_spell_animatedead",animatedeadfn,8,FA_SPELL_SCHOOLS.NECROMANCY),
+    MakeSpell("fa_spell_shadowconjuration",shadowconjuration,8,FA_SPELL_SCHOOLS.NECROMANCY),
     MakeSpell("fa_spell_createfood",createfoodfn,5,FA_SPELL_SCHOOLS.CONJURATION),
-    MakeSpell("fa_spell_continualflame",continualflamefn,2,FA_SPELL_SCHOOLS.EVOCATION),
-    MakeSpell("fa_spell_sleep",sleepfn,8,FA_SPELL_SCHOOLS.ENCHANTMENT),
+    MakeSpell("fa_spell_continualflame",continualflamefn,5,FA_SPELL_SCHOOLS.EVOCATION),
+    MakeSpell("fa_spell_sleep",sleepfn,15,FA_SPELL_SCHOOLS.ENCHANTMENT),
     MakeSpell("fa_spell_light",daylightfn,8,FA_SPELL_SCHOOLS.EVOCATION),
-    MakeSpell("fa_spell_shield", shieldfn,3,FA_SPELL_SCHOOLS.ABJURATION),
+    MakeSpell("fa_spell_shield", shieldfn,10,FA_SPELL_SCHOOLS.ABJURATION),
     MakeSpell("fa_spell_expretreat", expretreatfn,10,FA_SPELL_SCHOOLS.TRANSMUTATION),
-    MakeSpell("fa_spell_falselife", falselifefn,5,FA_SPELL_SCHOOLS.NECROMANCY),
-    MakeSpell("fa_spell_mirrorimage",mirrorimagefn,6,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_falselife", falselifefn,10,FA_SPELL_SCHOOLS.NECROMANCY),
+    MakeSpell("fa_spell_mirrorimage",mirrorimagefn,10,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_haste",hastefn,6,FA_SPELL_SCHOOLS.TRANSMUTATION),
     MakeSpell("fa_spell_magehound",summonmagehound,1,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_magearmor",magearmorfn,10,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_stoneskin",stoneskinfn,5,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_dancinglight",dancinglightfn,5,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_darkvision",darkvisionfn,3,FA_SPELL_SCHOOLS.TRANSMUTATION),
+    MakeSpell("spell_calldiety",calldietyfn,15,FA_SPELL_SCHOOLS.DIVINATION),
 
 
 
