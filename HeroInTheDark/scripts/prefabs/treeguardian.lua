@@ -24,6 +24,22 @@ local GUARDIAN_HP=1200
 local GUARDIAN_ATK_SPEED=3
 local GUARDIAN_SUMMON_TIME=480
 
+local function guardianshutdown(inst)
+    if(inst.shutdowntask)then
+        inst.shutdowntask:Cancel()
+    end
+    inst.brain:Stop()
+    inst.Physics:Stop()
+    inst.AnimState:PlayAnimation("transform_tree", false)
+    inst.SoundEmitter:PlaySound("dontstarve/creatures/leif/transform_VO")
+    local spawn_point= Vector3(inst.Transform:GetWorldPosition())
+    inst:Remove()
+    local tree=SpawnPrefab("evergreen_tall")
+    local pt = Vector3(spawn_point.x, 0, spawn_point.z)
+    tree.Transform:SetPosition(pt:Get() )
+--    inst.SoundEmitter:PlaySound("dontstarve/wilson/plant_tree")
+end
+
 local onloadfn = function(inst, data)
     if(data and data.countdown and data.countdown>0)then
         if inst.shutdowntask then
@@ -67,21 +83,6 @@ local function OnBurnt(inst)
     end
 end
 
-local function guardianshutdown(inst)
-    if(inst.shutdowntask)then
-        inst.shutdowntask:Cancel()
-    end
-    inst.brain:Stop()
-    inst.Physics:Stop()
-    inst.AnimState:PlayAnimation("transform_tree", false)
-    inst.SoundEmitter:PlaySound("dontstarve/creatures/leif/transform_VO")
-    local spawn_point= Vector3(inst.Transform:GetWorldPosition())
-    inst:Remove()
-    local tree=SpawnPrefab("evergreen_tall")
-    local pt = Vector3(spawn_point.x, 0, spawn_point.z)
-    tree.Transform:SetPosition(pt:Get() )
---    inst.SoundEmitter:PlaySound("dontstarve/wilson/plant_tree")
-end
 
 local function fn(Sim)
     
