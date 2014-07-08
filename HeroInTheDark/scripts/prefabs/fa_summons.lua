@@ -30,6 +30,8 @@ local DECOY_HEALTH=300
 local DECOY_SPEED=8
 local DECOY_DURATION=60
 local DANCINGLIGHT_DURATION=16*60
+local UNDEADTIMER=4*60
+local UNDEADBREAKCHANCE=0.4
 
 local guardianshutdown=function(inst)
     inst.components.health:Kill()
@@ -76,12 +78,21 @@ local function OnNewTarget(inst, data)
 end
 
 local function Retarget(inst)
-
-    local newtarget = FindEntity(inst, 20, function(guy)
+    local newtarget=nil
+    if(inst.components.follower.leader and inst.components.follower.leader:HasTag("player"))then 
+        newtarget = FindEntity(inst, 20, function(guy)
             return  guy.components.combat and 
                     inst.components.combat:CanTarget(guy) and
                     ((guy.components.combat.target == GetPlayer()) or (GetPlayer().components.combat.target == guy))
-    end)
+        end)
+    else
+        --and the demons have lost their way...
+         newtarget = FindEntity(inst, 20, function(guy)
+            return  guy.components.combat and 
+                    inst.components.combat:CanTarget(guy) and
+                    guy:HasTag("character")
+        end)
+    end
     return newtarget
 end
 
@@ -124,7 +135,7 @@ local function common()
     inst.entity:AddSoundEmitter()
     inst.entity:AddDynamicShadow()
 
-    inst.LoadPostPass=loadpostpass
+--    inst.LoadPostPass=loadpostpass
     
     inst.Transform:SetFourFaced()
     inst.entity:AddPhysics()
@@ -140,6 +151,8 @@ local function common()
     inst:AddComponent("locomotor") -- locomotor must be constructed before the stategraph   
     inst:AddComponent("inspectable")        
     inst:AddComponent("follower")
+
+    inst:ListenForEvent("stopfollowing",guardianshutdown)
 
     return inst
 end
@@ -332,6 +345,9 @@ local function fa_summonmonster4()
     inst.components.sleeper:SetSleepTest(ShouldSleep)
     inst.components.sleeper:SetWakeTest(ShouldWakeUp)
 
+    inst:AddComponent("sanityaura")
+    inst.components.sanityaura.aura = -TUNING.SANITYAURA_MED
+
     inst:AddComponent("combat")
     inst.components.combat:SetDefaultDamage(TUNING.ICEHOUND_DAMAGE)
     inst.components.combat:SetAttackPeriod(TUNING.ICEHOUND_ATTACK_PERIOD)
@@ -351,6 +367,32 @@ local function fa_summonmonster4()
     end)
 
     return inst
+end
+
+local checkforturning=function(inst)
+    local leader=inst.components.follower.leader
+    if(leader and leader.fa_protevil) then return 
+    elseif(leader)then
+        if(math.random()<=UNDEADBREAKCHANCE)then
+            inst:RemoveEventCallback("StopFollowing",guardianshutdown)
+            inst.components.follower:StopFollowing()
+            inst.components.combat:SetTarget(leader)
+        end
+    end
+end
+
+local undeadonloadfn = function(inst, data)
+    if(data and data.countdown and data.countdown>0)then
+        if inst.breaktask then
+            inst.breaktask:Cancel()
+        end
+    inst.breaktask=inst:DoTaskInTime(data.countdown, checkforturning)
+    inst.breaktimer=GetTime()+data.countdown
+    end
+end
+
+local undeadonsavefn = function(inst, data)
+    data.countdown=inst.breaktimer-GetTime()
 end
 
 
@@ -381,11 +423,9 @@ local function fa_animatedead()
     MakeMediumBurnableCharacter(inst, "torso")
 
     inst:AddComponent("inventory")
-    inst:AddComponent("sleeper")
-    inst.components.sleeper:SetResistance(2)
-    inst.components.sleeper.testperiod = GetRandomWithVariance(6, 2)
-    inst.components.sleeper:SetSleepTest(ShouldSleep)
-    inst.components.sleeper:SetWakeTest(ShouldWakeUp)
+
+    inst:AddComponent("sanityaura")
+    inst.components.sanityaura.aura = -TUNING.SANITYAURA_MED
 
     inst:AddComponent("combat")
     inst.components.combat.hiteffectsymbol = "torso"
@@ -396,7 +436,13 @@ local function fa_animatedead()
     inst:AddComponent("health")
     inst.components.health:SetMaxHealth(PET_HEALTH)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1
-    inst.components.health:StartRegen(5,5)
+    inst.components.health:StartRegen(10,5)
+
+    inst.breaktimer=GetTime()+UNDEADTIMER
+    inst.breaktask=inst:DoTaskInTime(UNDEADTIMER, guardianshutdown)
+
+    inst.OnLoad = undeadonloadfn
+    inst.OnSave = undeadonsavefn
 
     local brain = require "brains/magesummonbrain"
     inst:SetBrain(brain)
@@ -433,6 +479,8 @@ local function fa_horrorpet()
     inst:AddTag("shadow")
     inst:AddTag("undead")
 
+    inst:AddComponent("sanityaura")
+    inst.components.sanityaura.aura = -TUNING.SANITYAURA_MED
 
     inst.components.locomotor.runspeed = TUNING.WILSON_RUN_SPEED*3
     inst.components.locomotor.walkspeed = TUNING.WILSON_RUN_SPEED*2
@@ -443,11 +491,6 @@ local function fa_horrorpet()
 
     MakeMediumBurnableCharacter(inst)
 
-    inst:AddComponent("sleeper")
-    inst.components.sleeper:SetResistance(2)
-    inst.components.sleeper.testperiod = GetRandomWithVariance(6, 2)
-    inst.components.sleeper:SetSleepTest(ShouldSleep)
-    inst.components.sleeper:SetWakeTest(ShouldWakeUp)
 
     inst:AddComponent("combat")
     inst.components.combat.hiteffectsymbol = "torso"
@@ -464,20 +507,6 @@ local function fa_horrorpet()
         inst:SetBrain(brain)
 
     return inst
-end
-
-local onloadfn = function(inst, data)
-    if(data and data.countdown and data.countdown>0)then
-        if inst.shutdowntask then
-            inst.shutdowntask:Cancel()
-        end
-    inst.shutdowntask=inst:DoTaskInTime(data.countdown, guardianshutdown)
-    inst.shutdowntime=GetTime()+data.countdown
-    end
-end
-
-local onsavefn = function(inst, data)
-    data.countdown=inst.shutdowntime-GetTime()
 end
 
 
