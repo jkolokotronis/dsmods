@@ -77,22 +77,19 @@ STRINGS.TABS.SPELLS = "Spells"
 
 local leavestealth=function(inst)
     inst:RemoveTag("notarget")
-    inst.buff_timers["invisibility"]:Hide()
-    inst.buff_timers["invisibility"].cooldowntimer=0 
+    inst.components.fa_bufftimers:ForceRemove("invisibility")
+--    inst.buff_timers["invisibility"]:Hide()
+--    inst.buff_timers["invisibility"].cooldowntimer=0 
 end
 
 local onloadfn = function(inst, data)
     if(data)then
         inst.loadedSpawn=data.loadedSpawn
     end
-    inst.invisBuffUp=data.invisBuffUp
-    inst.hasteBuffUp=data.hasteBuffUp
     inst.fa_playername=data.fa_playername
 end
 
 local onsavefn = function(inst, data)
-    data.invisBuffUp=inst.buff_timers["invisibility"].cooldowntimer
-    data.hasteBuffUp=inst.buff_timers["haste"].cooldowntimer
     data.fa_playername=inst.fa_playername
 end
 
@@ -700,23 +697,10 @@ local fn = function(inst)
     RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon_atlas = "images/inventoryimages/herotab.xml"}
     enableL1spells()
 
-    
-
-    
-
-    
-
-    
-
-    
-
     inst.newControlsInit = function (class)
-        local btn=InitBuffBar(inst,"invisibility",inst.invisBuffUp,class,"Invis")
-        btn:SetPosition(-100,0,0)
-        InvisibilitySpellStart(inst,inst.bbBuffUp )
-        local btn=InitBuffBar(inst,"haste",inst.hasteBuffUp,class,"Haste")
-        btn:SetPosition(0,0,0)
-        HasteSpellStart(inst,inst.hasteBuffUp )
+        if(cnt.buffbar)then
+            cnt.buffbar.width=800
+        end
     end
 
 

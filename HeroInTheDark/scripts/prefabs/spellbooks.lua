@@ -236,55 +236,49 @@ end
 
 function healfn(inst, reader)
 
---    reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
     reader.components.health:DoDelta(SPELL_HEAL_AMOUNT)
     return true
 end
 
 function divinemightfn(inst, reader)
---    reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
-    reader.buff_timers["divinemight"]:ForceCooldown(BUFF_LENGTH)
-    DivineMightSpellStart( reader,BUFF_LENGTH)
+--    reader.buff_timers["divinemight"]:ForceCooldown(BUFF_LENGTH)
+    reader.components.fa_bufftimers:AddBuff("divinemight","Divine Might","DivineMight",BUFF_LENGTH)
+--    DivineMightSpellStart( reader,BUFF_LENGTH)
     return true
 end
 
 function invisibilityfn(inst,reader)
-    --reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
-    reader.buff_timers["invisibility"]:ForceCooldown(INVISIBILITY_LENGTH)
-    InvisibilitySpellStart( reader,INVISIBILITY_LENGTH)
+--    reader.buff_timers["invisibility"]:ForceCooldown(INVISIBILITY_LENGTH)
+
+    reader.components.fa_bufftimers:AddBuff("invisibility","Invisibility","Invisibility",INVISIBILITY_LENGTH)
+--    InvisibilitySpellStart( reader,INVISIBILITY_LENGTH)
     return true
 end
 
 function hastefn(inst,reader)
-    if(reader.buff_timers and reader.buff_timers["haste"])then
-        reader.buff_timers["haste"]:ForceCooldown(HASTE_LENGTH)
-    end
-    HasteSpellStart( reader,HASTE_LENGTH)
+    reader.components.fa_bufftimers:AddBuff("haste","Haste","Haste",HASTE_LENGTH)
+--    HasteSpellStart( reader,HASTE_LENGTH)
     return true
 end
 
 function longstriderfn(inst,reader)
-    if(reader.buff_timers and reader.buff_timers["longstrider"])then
-        reader.buff_timers["longstrider"]:ForceCooldown(LONGSTRIDER_LENGTH)
-    end
-    FA_LongstriderSpellStart( reader,LONGSTRIDER_LENGTH)
+    reader.components.fa_bufftimers:AddBuff("longstrider","Longstrider","Longstrider",LONGSTRIDER_LENGTH)
+--    FA_LongstriderSpellStart( reader,LONGSTRIDER_LENGTH)
     return true
 end
 
 
 function expretreatfn(inst,reader)
-    if(reader.buff_timers and reader.buff_timers["longstrider"])then
-        reader.buff_timers["longstrider"]:ForceCooldown(EXPRETREAT_LENGTH)
-    end
-    FA_LongstriderSpellStart( reader,EXPRETREAT_LENGTH)
+    reader.components.fa_bufftimers:AddBuff("expretreat","Exp Retreat","Longstrider",EXPRETREAT_LENGTH)
+--    FA_LongstriderSpellStart( reader,EXPRETREAT_LENGTH)
     return true
 end
 
 function protevilfn(inst,reader)
-    if(reader.buff_timers and reader.buff_timers["protevil"])then
-        reader.buff_timers["protevil"]:ForceCooldown(PROTEVIL_DURATION)
-    end
-    FA_ProtEvilSpellStart( reader,PROTEVIL_DURATION)
+
+    reader.components.fa_bufftimers:AddBuff("protevil","Prot from Evil","ProtEvil",PROTEVIL_DURATION)
+--[[
+    FA_ProtEvilSpellStart( reader,PROTEVIL_DURATION)]]
     return true
 end
 
@@ -322,15 +316,18 @@ function summongoodberriesfn(inst,reader)
 end
 
 function lightfn(inst, reader)
-    reader.buff_timers["light"]:ForceCooldown(BUFF_LENGTH)
-    LightSpellStart( reader,BUFF_LENGTH)
+    reader.components.fa_bufftimers:AddBuff("light","Light","Light",BUFF_LENGTH)
+--    reader.buff_timers["light"]:ForceCooldown(BUFF_LENGTH)
+--    LightSpellStart( reader,BUFF_LENGTH)
     return true
 end
 
 function bladebarrierfn(inst,reader)
 --    reader.components.sanity:DoDelta(-TUNING.SANITY_MED)
-    reader.buff_timers["bladebarrier"]:ForceCooldown(BB_LENGTH)
-    BladeBarrierSpellStart( reader,BB_LENGTH)
+--    reader.buff_timers["bladebarrier"]:ForceCooldown(BB_LENGTH)
+
+    reader.components.fa_bufftimers:AddBuff("bladebarrier","Blade Barrier","BladeBarrier",BB_LENGTH)
+--    BladeBarrierSpellStart( reader,BB_LENGTH)
     return true
 end
 
@@ -523,10 +520,16 @@ function spawnsummonbyname(inst,reader,prefab,exclusive)
 end
 
 function mirrorimagefn(inst,reader)
-
+    --they may be weak and short term but spamming 10 at once is a tad too much
+    local leader=reader.components.leader
+    for k,v in pairs(leader.followers) do
+        if(k.prefab=="fa_magedecoy")then
+            if(k.components.health and not k.components.health:IsDead()) then
+                k.components.health:Kill()
+            end
+        end
+    end
     local spider=spawnsummonbyname(inst,reader,"fa_magedecoy",false)
---    spider.maxfollowtime=NATURESALLY_SUMMON_TIME
---    spider.components.follower:AddLoyaltyTime(NATURESALLY_SUMMON_TIME)
 
      return true
 end
@@ -544,7 +547,6 @@ function summonmagehound(inst,reader)
 
      return true
 end
-
 
 function blackspiderspawn(inst,reader)
     return spawnsummonbyname(inst,reader,"fa_summonmonster1")
@@ -753,8 +755,8 @@ end
 
 local function darkvisionfn(inst,reader)
     local light = SpawnPrefab("fa_darkvision_fx")
-    inst.components.spell:SetTarget(reader)
-    inst.components.spell:StartSpell()
+    light.components.spell:SetTarget(reader)
+    light.components.spell:StartSpell()
     return true
 end
 

@@ -381,13 +381,17 @@ end)
 
 
     inst.newControlsInit = function (cnt)
+        if(cnt.buffbar)then
+            cnt.buffbar.width=500
+        end
+
         local pet=nil
     
         inst.petBuff=PetBuff(cnt.owner)
         local rage = cnt:AddChild(inst.petBuff)
  --    class.rage:SetHAnchor(ANCHOR_MIDDLE)
   --  class.rage:SetVAnchor(ANCHOR_TOP)
-        rage:SetPosition(0,0,0)
+        rage:SetPosition(-250,0,0)
         rage:SetOnClick(function(state) 
             if(state and state=="on") then
                 spawnPet(inst)
@@ -424,7 +428,7 @@ end)
              inst.htCooldownButton:ForceCooldown(inst.htcooldowntimer)
         end
         local htbtn=cnt:AddChild(inst.htCooldownButton)
-        htbtn:SetPosition(-100,0,0)
+        htbtn:SetPosition(-150,0,0)
         if(inst.components.xplevel.level<5)then
             inst.htCooldownButton:Hide()
         end
@@ -437,7 +441,7 @@ end)
              inst.leechCooldownButton:ForceCooldown(inst.leechcooldowntimer)
         end
         local leechbtn=cnt:AddChild(inst.leechCooldownButton)
-        leechbtn:SetPosition(100,0,0)
+        leechbtn:SetPosition(-50,0,0)
         if(inst.components.xplevel.level<13)then
             inst.leechCooldownButton:Hide()
         end

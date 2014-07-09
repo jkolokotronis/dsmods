@@ -35,26 +35,12 @@ local FA_SpellPopup = Class(Widget, function(self, horizontal)
     self.contents = self:AddChild(Widget(""))
     self.contents:SetPosition(-75,0,0)
     
-    if JapaneseOnPS4() then
-        self.name = self.contents:AddChild(Text(UIFONT, 42 * 0.8))
-    else
-        self.name = self.contents:AddChild(Text(UIFONT, 42))
-	end
+    self.name = self.contents:AddChild(Text(UIFONT, 42))
+	
     self.name:SetPosition(320, 142, 0)
-    if JapaneseOnPS4() then
-        self.name:SetRegionSize(64*3+20,90)
-        self.name:EnableWordWrap(true)
-    end
-
-    if JapaneseOnPS4() then
-        self.desc = self.contents:AddChild(Text(BODYTEXTFONT, 33 * 0.8))
-        self.desc:SetPosition(320, -10, 0)
-        self.desc:SetRegionSize(64*3+30,90)
-	else
-        self.desc = self.contents:AddChild(Text(BODYTEXTFONT, 33))
-        self.desc:SetPosition(320, -50, 0)
-        self.desc:SetRegionSize(64*3+60,180)	
-    end
+    self.desc = self.contents:AddChild(Text(BODYTEXTFONT, 33))
+    self.desc:SetPosition(320, -50, 0)
+    self.desc:SetRegionSize(64*3+60,180)	
     self.desc:EnableWordWrap(true)
     
     self.ing = {}

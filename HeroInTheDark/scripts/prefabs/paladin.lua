@@ -72,8 +72,6 @@ local onloadfn = function(inst, data)
     inst.ddcooldowntimer=data.ddcooldowntimer
     inst.fa_playername=data.fa_playername
     inst.turncooldowntimer=data.turncooldowntimer
-    inst.lightBuffUp=data.lightBuffUp
-    inst.dmBuffUp=data.dmBuffUp
 end
 
 local onsavefn = function(inst, data)
@@ -81,8 +79,6 @@ local onsavefn = function(inst, data)
     data.ddcooldowntimer=inst.divinedefenderCooldownButton.cooldowntimer
     data.fa_playername=inst.fa_playername
     data.turncooldowntimer=inst.turnCooldownButton.cooldowntimer
-    data.lightBuffUp=inst.buff_timers["light"].cooldowntimer
-    data.dmBuffUp=inst.buff_timers["divinemight"].cooldowntimer
 end
 
 local function enableL1spells()
@@ -186,9 +182,9 @@ end
 
 local function onturnundead(clr)
     local pos=Vector3(clr.Transform:GetWorldPosition())
-        local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, TURN_UNDEAD_RANGE)
+        local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, TURN_UNDEAD_RANGE,nil,{"FX","INLIMBO","player","companion"})
         for k,v in pairs(ents) do
-            if (not v:HasTag("player") and not v:HasTag("pet") and v.components.combat and not v:IsInLimbo() and v:HasTag("undead")) then
+            if ( v.components.combat  and v:HasTag("undead")) then
 
                 local rng=math.random()
                 print("turn undead rng",rng)
@@ -199,7 +195,7 @@ local function onturnundead(clr)
 
                 local inst = CreateEntity()
                 inst.entity:AddTransform()
-
+                inst.persists=false
                 local spell = inst:AddComponent("spell")
     inst.components.spell.spellname = "fa_turnundead"
     inst.components.spell.duration = TURN_UNDEAD_DURATION
@@ -289,7 +285,7 @@ local fn = function(inst)
         if(weapon and not weapon.components.weapon:CanRangedAttack() and target and target:HasTag("undead"))then
 --        if(target and target:HasTag("undead"))then
             old=old*inst.fa_undeadcombatmultiplier*inst.fa_meleedamagemultiplier
-            print("undead multiplier",old)
+--            print("undead multiplier",old)
         elseif(weapon and not weapon.components.weapon:CanRangedAttack())then
             old=old*inst.fa_meleedamagemultiplier
         end
@@ -309,7 +305,7 @@ local fn = function(inst)
              inst.lohCooldownButton:ForceCooldown(inst.lohcooldowntimer)
         end
         local htbtn=cnt:AddChild(inst.lohCooldownButton)
-        htbtn:SetPosition(-100,0,0)
+        htbtn:SetPosition(-250,0,0)
         htbtn:Show()         
         if(inst.components.xplevel.level<5)then
             inst.lohCooldownButton:Hide()
@@ -325,7 +321,7 @@ local fn = function(inst)
              inst.components.health.invincible=false
         end
         local htbtn=cnt:AddChild(inst.divinedefenderCooldownButton)
-        htbtn:SetPosition(0,0,0) 
+        htbtn:SetPosition(-150,0,0) 
         htbtn:Show()         
         if(inst.components.xplevel.level<20)then
             inst.divinedefenderCooldownButton:Hide()
@@ -341,18 +337,23 @@ local fn = function(inst)
              inst.turnCooldownButton:ForceCooldown(inst.turncooldowntimer)
         end
         local htbtn=cnt:AddChild(inst.turnCooldownButton)
-        htbtn:SetPosition(100,0,0)
+        htbtn:SetPosition(-50,0,0)
         htbtn:Show()         
         if(inst.components.xplevel.level<9)then
             inst.turnCooldownButton:Hide()
         end
 
+        if(cnt.buffbar)then
+            cnt.buffbar.width=500
+        end
+
+--[[
         local btn=InitBuffBar(inst,"light",inst.lightBuffUp,cnt,"light")
         btn:SetPosition(200,0,0)
         LightSpellStart(inst,inst.lightBuffUp )
         local btn=InitBuffBar(inst,"divinemight",inst.dmBuffUp,cnt,"DM")
         btn:SetPosition(300,0,0)
-        DivineMightSpellStart(inst,inst.dmBuffUp )
+        DivineMightSpellStart(inst,inst.dmBuffUp )]]
         
     end
     local prefabs1 = {

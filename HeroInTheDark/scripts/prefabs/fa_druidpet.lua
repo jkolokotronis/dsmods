@@ -104,7 +104,7 @@ local function fn(Sim)
     inst:AddTag("companion")
     inst:AddTag("pet")
     inst:AddTag("character")
-    inst:AddTag("scarytoprey")
+--    inst:AddTag("scarytoprey")
    
     MakeCharacterPhysics(inst, 10, .5)
 

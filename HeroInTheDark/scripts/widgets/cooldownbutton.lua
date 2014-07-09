@@ -146,7 +146,6 @@ function CooldownButton:DoClick()
         self.cooldowntimerstart=GetTime()
         self.cooldowntext:Show()
         self.cooldowntext:SetString(""..math.floor(self.cooldown))
-        --why self:DoPeriodicTask not working?
         self.cooldowntask=GetPlayer():DoPeriodicTask(1, function() self:countdownfn() end)
     end
 end

@@ -224,7 +224,7 @@ local fn = function(inst)
 	inst.newControlsInit = function (class)
         inst.rageBuff=RageBuff(class.owner)
         class.rage = class:AddChild(inst.rageBuff)
-        class.rage:SetPosition(0,0,0)
+        class.rage:SetPosition(-250,0,0)
         class.rage:SetOnClick(function(state) 
         	print("onclick",state) 
         	if(state and state=="on") then

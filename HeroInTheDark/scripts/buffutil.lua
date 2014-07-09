@@ -14,6 +14,7 @@ local HASTE_SPEED_BOOST=TUNING.WILSON_RUN_SPEED
 local HASTE_DODGE_BOOST=0.25
 local HASTE_ATTACK_BOOST=0.5
 
+local FA_BuffUtil={}
 
 function InitBuffBar(inst,buff,timer,class,name)
         inst.buff_timers[buff]=CooldownButton(class.owner)
@@ -80,6 +81,8 @@ function FA_InspireGreatnessSpellStart( reader,timer)
     return true
 end
 
+FA_BuffUtil.InspireGreatness=FA_InspireGreatnessSpellStart
+
 local ia_start=function(inst, target, variables)
     local target=inst.components.spell.target
     if target then
@@ -124,6 +127,8 @@ function FA_InspireAgilitySpellStart( reader,timer)
         inst.components.spell:StartSpell()
     end
 end
+
+FA_BuffUtil.InspireAgility=FA_InspireGreatnessSpellStart
 
 local ic_start=function(inst)
     local target=inst.components.spell.target
@@ -171,7 +176,7 @@ function FA_InspireCourageSpellStart( reader,timer)
     end
 end
 
-
+FA_BuffUtil.InspireCourage=FA_InspireCourageSpellStart
 
 local dm_start=function(inst)
     local target=inst.components.spell.target
@@ -226,6 +231,8 @@ function DivineMightSpellStart( reader,timer)
     
     return true
 end
+
+FA_BuffUtil.DivineMight=DivineMightSpellStart
 
 local lightfn=function(inst, target, variables)
     if target then
@@ -336,6 +343,9 @@ function LightSpellStart(reader,timer)
 
     return true
 end
+
+FA_BuffUtil.Light=LightSpellStart
+
 --would it simply be easier to write a timed-aoe-dmg myself? likely..
 
 local function apply_bb_damage(reader)
@@ -384,6 +394,8 @@ function BladeBarrierSpellStart(reader,timer)
     reader.bladeBarrierAnim=boom
 end
 
+FA_BuffUtil.BladeBarrier=BladeBarrierSpellStart
+
 local function casterbbdamage(inst, target)
     local tags={}
     local blocktags={}
@@ -417,6 +429,7 @@ end
 function BladeBarrierSpellStartCaster(reader,timer,variables)
     if(timer==nil or timer<=0)then return false end
     local inst = CreateEntity()
+    inst.persists=false
     local caster = reader
     local trans = inst.entity:AddTransform()
     inst.Transform:SetTwoFaced()
@@ -480,6 +493,7 @@ function FA_ProtEvilSpellStart(reader,timer)
     else
 
     local inst=CreateEntity()
+    inst.persists=false
     local spell = inst:AddComponent("spell")
     inst.components.spell.spellname = "fa_protevil"
     inst.components.spell.duration = timer
@@ -502,6 +516,8 @@ function FA_ProtEvilSpellStart(reader,timer)
     end
 end
 
+FA_BuffUtil.ProtEvil=FA_ProtEvilSpellStart
+
 function FA_LongstriderSpellStart( reader,timer)
 
     if(timer==nil or timer<=0)then return false end
@@ -513,6 +529,7 @@ function FA_LongstriderSpellStart( reader,timer)
     else
 
     local inst=CreateEntity()
+    inst.persists=false
     local spell = inst:AddComponent("spell")
     inst.components.spell.spellname = "fa_longstrider"
     inst.components.spell.duration = timer
@@ -540,24 +557,59 @@ function FA_LongstriderSpellStart( reader,timer)
     end
 end
 
+FA_BuffUtil.Longstrider=FA_LongstriderSpellStart
+
+
+local haste_start=function(inst)
+    local target=inst.components.spell.target
+    if target then
+        target.components.locomotor.runspeed=target.components.locomotor.runspeed+HASTE_SPEED_BOOST
+        target.components.combat.min_attack_period=target.components.combat.min_attack_period/(1+HASTE_ATTACK_BOOST)
+        target.components.health.fa_dodgechance=IG_DODGE_BOOST+target.components.health.fa_dodgechance
+    end
+end
+
 function HasteSpellStart( reader,timer)
     if(timer==nil or timer<=0)then return false end
     
-     if(reader.hasteTimer) then
-        reader.hasteTimer:Cancel()
+    if reader.fa_haste then
+        reader.fa_divinemight.components.spell.lifetime = 0
+        reader.fa_divinemight.components.spell:ResumeSpell()
+        return true
     else
-        reader.components.locomotor.runspeed=reader.components.locomotor.runspeed+HASTE_SPEED_BOOST
-        reader.components.combat.min_attack_period=reader.components.combat.min_attack_period/(1+HASTE_ATTACK_BOOST)
-        target.components.health.fa_dodgechance=IG_DODGE_BOOST+target.components.health.fa_dodgechance
+
+    local inst=CreateEntity()
+    inst.persists=false
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_haste"
+    inst.components.spell.duration = timer
+    inst.components.spell.ontargetfn = function(inst,target)
+        target.fa_haste = inst
+        target:AddTag(inst.components.spell.spellname)
     end
-    reader.hasteTimer=reader:DoTaskInTime(timer, function() 
-        reader.hasteTimer=nil 
+
+    inst.components.spell.onstartfn = haste_start
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
         reader.components.locomotor.runspeed=reader.components.locomotor.runspeed-HASTE_SPEED_BOOST
         reader.components.combat.min_attack_period=reader.components.combat.min_attack_period*(1+HASTE_ATTACK_BOOST)
-        target.components.health.fa_dodgechance=IG_DODGE_BOOST-target.components.health.fa_dodgechance
-        end)
+        reader.components.health.fa_dodgechance=IG_DODGE_BOOST-reader.components.health.fa_dodgechance
+        inst.components.spell.target.fa_haste = nil
+    end
+
+    inst.components.spell.resumefn = function() end
+    inst.components.spell.removeonfinish = true
+
+    inst.components.spell:SetTarget(reader)
+    inst.components.spell:StartSpell()
+    end
+    
     return true
 end
+
+FA_BuffUtil.Haste=HasteSpellStart
 
 function InvisibilitySpellStart( reader,timer)
     if(timer==nil or timer<=0)then return false end
@@ -588,6 +640,8 @@ function InvisibilitySpellStart( reader,timer)
     return true
 end
 
+FA_BuffUtil.Invisibility=InvisibilitySpellStart
+
 function LichSpellStart(reader,timer)
 
 end
@@ -600,3 +654,4 @@ function LifeDrainSpellStart(reader,timer)
 
 end
 
+return FA_BuffUtil

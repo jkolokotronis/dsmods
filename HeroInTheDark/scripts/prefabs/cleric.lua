@@ -1,7 +1,7 @@
 
 local MakePlayerCharacter = require "prefabs/player_common"
 local CooldownButton = require "widgets/cooldownbutton"
-
+local FA_BuffBar=require "widgets/fa_buffbar"
 
 local assets = {
 
@@ -67,17 +67,17 @@ local TURN_UNDEAD_DURATION=60
 local TURN_UNDEAD_RANGE=15
 
 local onloadfn = function(inst, data)
-    inst.lightBuffUp=data.lightBuffUp
-    inst.dmBuffUp=data.dmBuffUp
-    inst.bbBuffUp=data.bbBuffUp
+--    inst.lightBuffUp=data.lightBuffUp
+--    inst.dmBuffUp=data.dmBuffUp
+--    inst.bbBuffUp=data.bbBuffUp
     inst.fa_playername=data.fa_playername
     inst.turncooldowntimer=data.turncooldowntimer
 end
 
 local onsavefn = function(inst, data)
-    data.lightBuffUp=inst.buff_timers["light"].cooldowntimer
-    data.dmBuffUp=inst.buff_timers["divinemight"].cooldowntimer
-    data.bbBuffUp=inst.buff_timers["bladebarrier"].cooldowntimer
+--    data.lightBuffUp=inst.buff_timers["light"].cooldowntimer
+--    data.dmBuffUp=inst.buff_timers["divinemight"].cooldowntimer
+--    data.bbBuffUp=inst.buff_timers["bladebarrier"].cooldowntimer
     data.fa_playername=inst.fa_playername
     data.turncooldowntimer=inst.turnCooldownButton.cooldowntimer
 end
@@ -478,6 +478,8 @@ RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon
     inst:ListenForEvent("xplevelup", onlevelup)
 
     inst.newControlsInit = function (class)
+
+    --[[
         local btn=InitBuffBar(inst,"light",inst.lightBuffUp,class,"light")
         btn:SetPosition(-100,0,0)
         LightSpellStart(inst,inst.lightBuffUp )
@@ -487,7 +489,7 @@ RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon
         local btn=InitBuffBar(inst,"bladebarrier",inst.bbBuffUp,class,"BB")
         btn:SetPosition(100,0,0)
         BladeBarrierSpellStart(inst,inst.bbBuffUp )
-
+]]
         inst.turnCooldownButton=CooldownButton(class.owner)
         inst.turnCooldownButton:SetText("Turn")
         inst.turnCooldownButton:SetOnClick(function() return onturnundead(inst) end)
@@ -502,7 +504,7 @@ RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon
              inst.turnCooldownButton:ForceCooldown(inst.turncooldowntimer)
         end
         local htbtn=class:AddChild(inst.turnCooldownButton)
-        htbtn:SetPosition(200,0,0)
+        htbtn:SetPosition(-250,0,0)
         htbtn:Show()         
         if(inst.components.xplevel.level<3)then
             inst.turnCooldownButton:Hide()

@@ -64,6 +64,12 @@ local fn = function(inst)
 
     inst.OnLoad = onloadfn
     inst.OnSave = onsavefn
+
+    inst.newControlsInit = function (cnt)
+        if(cnt.buffbar)then
+            cnt.buffbar.width=800
+        end
+    end
 end
 
 return MakePlayerCharacter("bard", prefabs, assets, fn)

@@ -41,13 +41,18 @@ local function hearfascinatefn(inst, musician, instrument)
 end
 
 local function hearagilityfn(inst, musician, instrument)
-    if(inst:HasTag("player") or inst:HasTag("pet") or inst:HasTag("companion"))then
-        FA_InspireAgilitySpellStart(inst,IA_TIMER)
+    if(inst:HasTag("player") or inst:HasTag("companion"))then
+        if(inst.components.fa_bufftimers)then
+            inst.components.fa_bufftimers:AddBuff("inspireagility","Inspire Agility","InspireAgility",IA_TIMER)
+        else
+            --because I'm still not sure if i want to add component to everything? kind of overkill...
+            FA_InspireAgilitySpellStart(inst,IA_TIMER)
+        end
     end
 end
 
 local function hearsuggestionfn(inst, musician, instrument)
-    if(inst:HasTag("player") or inst:HasTag("pet") or inst:HasTag("companion"))then return end
+    if(inst:HasTag("player") or inst:HasTag("companion"))then return end
     if(not inst.components.follower)then return end
     local leader=musician.components.leader
     if(not leader)then return end
@@ -67,8 +72,14 @@ local function hearsuggestionfn(inst, musician, instrument)
 end
 
 local function heargreaternessfn(inst, musician, instrument)
-    if(inst:HasTag("player") or inst:HasTag("pet") or inst:HasTag("companion"))then
-        FA_InspireGreatnessSpellStart(inst,IG_TIMER)
+    if(inst:HasTag("player") or inst:HasTag("companion"))then
+        if(inst.components.fa_bufftimers)then
+            inst.components.fa_bufftimers:AddBuff("inspiregreatness","Inspire Greatness","InspireGreatness",IG_TIMER)
+        else
+            --because I'm still not sure if i want to add component to everything? kind of overkill...
+            FA_InspireGreatnessSpellStart(inst,IG_TIMER)
+        end
+        
     end
 end
 

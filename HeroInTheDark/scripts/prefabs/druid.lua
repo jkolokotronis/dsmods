@@ -482,6 +482,7 @@ local fn = function(inst)
 	inst.components.sanity:SetMax(250)
 	inst.components.hunger:SetMax(150)
 
+    inst:RemoveTag("scarytoprey")
     inst:AddTag("fa_spellcaster")
     inst.fa_spellcraft={}
     inst.fa_spellcraft.spells={}
@@ -496,7 +497,7 @@ local fn = function(inst)
         local rage = cnt:AddChild(inst.petBuff)
  --    class.rage:SetHAnchor(ANCHOR_MIDDLE)
   --  class.rage:SetVAnchor(ANCHOR_TOP)
-        rage:SetPosition(0,0,0)
+        rage:SetPosition(-250,0,0)
         rage:SetOnClick(function(state) 
             if(state and state=="on") then
                 spawnFairy(inst)

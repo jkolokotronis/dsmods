@@ -50,6 +50,7 @@ local XPBadge= require "widgets/xpbadge"
 local TextEdit=require "widgets/textedit"
 local ItemTile = require "widgets/itemtile"
 local FA_WarClock = require "widgets/fa_warclock"
+local FA_BuffBar=require "widgets/fa_buffbar"
 
 require "constants"
 require "fa_constants"
@@ -801,18 +802,7 @@ end
 
 local function newControlsInit(class)
     local under_root=class;
-    if GetPlayer() and GetPlayer().newControlsInit then
-        local xabilitybar = under_root:AddChild(Widget("abilitybar"))
-        xabilitybar:SetPosition(0,-76,0)
-        xabilitybar:SetScaleMode(GLOBAL.SCALEMODE_PROPORTIONAL)
-        xabilitybar:SetMaxPropUpscale(1.25)
-        xabilitybar:SetHAnchor(GLOBAL.ANCHOR_MIDDLE)
-        xabilitybar:SetVAnchor(GLOBAL.ANCHOR_TOP)
-        GetPlayer().newControlsInit(xabilitybar)
-    end
-    if GetPlayer() and GetPlayer().newStatusDisplaysInit then
-        GetPlayer().newStatusDisplaysInit(class)
-    end
+    local inst=GetPlayer()
     if GetPlayer() and GetPlayer().components and GetPlayer().components.xplevel then
 --       GetPlayer():ListenForEvent("healthdelta", onhpchange)
         local xpbar = under_root:AddChild(XPBadge(class.owner))
@@ -858,8 +848,6 @@ local function newControlsInit(class)
             inst.components.xplevel:DoDelta(GLOBAL.PROTOTYPE_XP)
         end,class.owner)
 
-
-
         if(GetPlayer().fa_playername==nil or GetPlayer().fa_playername=="")then
         GetPlayer():DoTaskInTime(0,function()
             GLOBAL.TheFrontEnd:PushScreen(FA_CharRenameScreen(GLOBAL.STRINGS.CHARACTER_TITLES[GetPlayer().prefab]))
@@ -867,6 +855,36 @@ local function newControlsInit(class)
         end)
         end
     end
+
+--this so i can cut on copy pasting, the details can be reconfigured on per-char basis
+    local xabilitybar = under_root:AddChild(Widget("abilitybar"))
+        local buffbar=FA_BuffBar(xabilitybar.owner)
+        buffbar:SetPosition(250,0,0)
+        xabilitybar:AddChild(buffbar)
+        xabilitybar.buffbar=buffbar
+
+
+        inst:ListenForEvent("fa_rebuildbuffs",function(inst,data)
+            buffbar:RegisterBuffs(data.buffs)
+        end)
+        inst:ListenForEvent("fa_addbuff",function(inst,data)
+            buffbar:AddBuff(data.id,data.buff)
+        end)
+        inst:ListenForEvent("fa_removebuff",function(inst,data)
+            buffbar:RemoveBuff(data.id)
+        end)
+
+
+    if GetPlayer() and GetPlayer().newControlsInit then
+        xabilitybar:SetPosition(0,-76,0)
+        xabilitybar:SetScaleMode(GLOBAL.SCALEMODE_PROPORTIONAL)
+        xabilitybar:SetMaxPropUpscale(1.25)
+        xabilitybar:SetHAnchor(GLOBAL.ANCHOR_MIDDLE)
+        xabilitybar:SetVAnchor(GLOBAL.ANCHOR_TOP)
+        GetPlayer().newControlsInit(xabilitybar)
+    end
+
+    buffbar:RegisterBuffs(inst.components.fa_bufftimers.buff_timers)
     --[[
     GetPlayer():DoPeriodicTask(10, function()
                  GetPlayer().AnimState:PlayAnimation("test1")
@@ -1282,6 +1300,8 @@ AddPrefabPostInit("world", function(inst)
     local oldfn = GLOBAL.Prefabs[player_prefab].fn
     GLOBAL.Prefabs[player_prefab].fn = function()
         local inst = oldfn()
+
+        inst:AddComponent("fa_bufftimers")
 
         if(GLOBAL.FA_ModCompat.alwaysonmod)then
             print("alwayson", GLOBAL.FA_ModCompat.alwaysonmod.version)
