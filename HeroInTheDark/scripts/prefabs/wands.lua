@@ -1499,7 +1499,7 @@ local function acidarrowfn()
     inst:AddComponent("weapon")
     inst.components.weapon:SetDamage(0)
     inst.components.weapon:SetRange(WAND_RANGE-2, WAND_RANGE)
-    inst.components.weapon:SetOnAttack(onattackacidarrow)
+    inst.components.weapon:SetOnAttack(castacidarrow)
     inst.components.inventoryitem.imagename="greenstaff"
 --    inst.AnimState:SetMultColour(0,1,0,1)
     inst.components.weapon:SetProjectile("acidarrowprojectile")
@@ -1526,7 +1526,7 @@ local function onattackenlargehumanoid(staff, target, orpos)
         inst.components.spell.duration = ENLARGE_HUMANOID_DURATION
         inst.components.spell.ontargetfn = function(inst,target)
         local x,y,z=target.Transform:GetScale()
-        target.Transform:SetScale(x/2,y/2,z/2)
+        target.Transform:SetScale(x*2,y*2,z*2)
         if(target.components.combat)then
             target.components.combat.damagemultiplier=target.components.combat.damagemultiplier*ENLARGE_HUMANOID_MULT
         end    
@@ -1539,7 +1539,7 @@ local function onattackenlargehumanoid(staff, target, orpos)
         inst.components.spell.onfinishfn = function(inst)
             if not inst.components.spell.target then return end
             local x,y,z=target.Transform:GetScale()
-            target.Transform:SetScale(x*2,y*2,z*2)
+            target.Transform:SetScale(x/2,y/2,z/2)
             if(target.components.combat)then
                 target.components.combat.damagemultiplier=target.components.combat.damagemultiplier/ENLARGE_HUMANOID_MULT
             end        

@@ -1207,6 +1207,7 @@ AddClassPostConstruct("components/health",function(component)
     component.fa_resistances=component.fa_resistances or {}
     component.fa_protection=component.fa_protection or {}
     component.fa_dodgechance=component.fa_dodgechance or 0
+    component.fa_temphp=component.fa_temphp or 0
 end)
 
 

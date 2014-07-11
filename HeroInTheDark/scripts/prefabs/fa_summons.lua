@@ -586,6 +586,15 @@ local function fa_magehound()
     inst.AnimState:PlayAnimation("idle")
 
     inst.DynamicShadow:SetSize( 2, 1.5 )
+    
+    local light = inst.entity:AddLight()
+    light:SetFalloff(0.9)
+    light:SetIntensity(0.9)
+    light:SetRadius(0.7)
+    light:SetColour(155/255, 225/255, 250/255)
+    light:Enable(true)
+    inst.AnimState:SetBloomEffectHandle( "shaders/anim.ksh" )
+
     MakeCharacterPhysics(inst, 75, .5)
 
     inst.Physics:SetCollisionGroup(COLLISION.CHARACTERS)
