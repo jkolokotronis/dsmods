@@ -82,7 +82,7 @@ local function stoneskinfn(Sim)
     local minimap = inst.entity:AddMiniMapEntity()
     minimap:SetIcon( "evilsword.tex" )
     
-    
+    inst:AddTag("fa_boundarmor")
     inst:AddComponent("inspectable")
     
     inst:AddComponent("inventoryitem")
@@ -151,6 +151,7 @@ local function magearmorfn(Sim)
     minimap:SetIcon( "evilsword.tex" )
     
     
+    inst:AddTag("fa_boundarmor")
     inst:AddComponent("inspectable")
     
     inst:AddComponent("inventoryitem")

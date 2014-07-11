@@ -740,17 +740,18 @@ end
 AddClassPostConstruct("screens/playerhud", OpenBackpack)
 --SaveGameIndex:GetCurrentCaveLevel()
 
-local FA_MEND=Action()
+local FA_MEND=Action(1, true)
 FA_MEND.id="FA_MEND"
 FA_MEND.str="Mend"
 FA_MEND.fn=function(act)
+print("actionfn")
     if(act.target and act.invobject and act.invobject.components.fa_mender)then
         return act.invobject.components.fa_mender:DoMending(act.target, act.doer)
     end
 end
 
 AddAction(FA_MEND) 
-ACTIONS.FA_MEND=FA_MEND
+GLOBAL.ACTIONS.FA_MEND=FA_MEND
 
 local RELOAD = Action(1, true)
 RELOAD.id = "RELOAD"

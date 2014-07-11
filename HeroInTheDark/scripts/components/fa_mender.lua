@@ -14,15 +14,16 @@ end)
 
 
 function FA_Mender:DoMending(target, doer)
+print("in domending")
 	local used=false
     if target.components.fueled and target.components.fueled.fueltype == "USAGE" and target.components.fueled:GetPercent() < 1 then	
-		target.components.fueled:SetPercent(math.max(1,target.components.fueled:GetPercent()+self.meding_percent))
+		target.components.fueled:SetPercent(math.min(1,target.components.fueled:GetPercent()+self.meding_percent))
     	used=true
 	elseif (target.components.armor and target.components.armor:GetPercent()<1)then
-		target.components.armor:SetPercent(math.max(1,target.components.armor:GetPercent()+self.meding_percent))
+		target.components.armor:SetPercent(math.min(1,target.components.armor:GetPercent()+self.meding_percent))
     	used=true
 	elseif (target.components.finiteuses and target.components.finiteuses:GetPercent()<1) then
-		target.components.finiteuses:SetPercent(math.max(1,target.components.finiteuses:GetPercent()+self.meding_percent))
+		target.components.finiteuses:SetPercent(math.min(1,target.components.finiteuses:GetPercent()+self.meding_percent))
     	used=true
 	end
 
@@ -41,7 +42,8 @@ end
 function FA_Mender:CollectUseActions(doer, target, actions, right)
 
 	--default sewing nonsense
-    if ( (not target:HasTag("no_sewing") and target.components.fueled and target.components.fueled.fueltype == "USAGE" and target.components.fueled:GetPercent() < 1) or
+    if 	not target:HasTag("scroll") and not target:HasTag("wand") and
+    	((not target:HasTag("no_sewing") and target.components.fueled and target.components.fueled.fueltype == "USAGE" and target.components.fueled:GetPercent() < 1) or
     	(target.components.armor and target.components.armor:GetPercent()<1) or
     	(target.components.finiteuses and target.components.finiteuses:GetPercent()<1) ) then
         table.insert(actions, ACTIONS.FA_MEND)

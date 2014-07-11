@@ -68,6 +68,7 @@ local prefabs = {
 }
 
 local DAMAGE_MULT=0.5
+local ARMOR_SPEED_MULT=0.3
 local SANITY_PER_LEVEL=6
 
 
@@ -559,6 +560,16 @@ local fn = function(inst)
     inst:ListenForEvent("xplevelup", onlevelup)
     inst:ListenForEvent("xplevel_loaded",onxploaded)
 
+    local old_speedmult=inst.components.locomotor.GetSpeedMultiplier
+    function inst.components.locomotor:GetSpeedMultiplier()
+        local res=old_speedmult(self)
+        local body=self.inst.components.inventory:GetEquippedItem(EQUIPSLOTS.BODY)
+        if(body and body.components.armor and not body:HasTag("fa_boundarmor"))then
+            res=res*ARMOR_SPEED_MULT
+        end
+        return res
+    end
+
     local action_old=ACTIONS.FORCEATTACK.fn
     ACTIONS.FORCEATTACK.fn = function(act)
          if(act.doer and act.doer:HasTag("player") and act.doer:HasTag("notarget")) then
@@ -698,8 +709,8 @@ local fn = function(inst)
     enableL1spells()
 
     inst.newControlsInit = function (class)
-        if(cnt.buffbar)then
-            cnt.buffbar.width=800
+        if(class.buffbar)then
+            class.buffbar.width=800
         end
     end
 

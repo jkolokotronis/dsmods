@@ -119,6 +119,14 @@ local fn = function(inst)
     end
 
     
+    inst.newControlsInit = function (class)
+        if(class.buffbar)then
+            class.buffbar.width=800
+        end
+    end
+
+
+    
 RECIPETABS["TINKERING"] = {str = "TINKERING", sort=999, icon = "trap_teeth.tex", icon_atlas = "images/inventoryimages.xml"}
     local booktab=RECIPETABS.TINKERING
 --    inst.components.builder:AddRecipeTab(booktab)
