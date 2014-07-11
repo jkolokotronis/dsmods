@@ -60,7 +60,7 @@ function FA_BuffTimers:AddBuff(id,name,fn,timer)
 end
 
 function FA_BuffTimers:LongUpdate(dt)
-	self:DoDelta(dt, true)
+	self:OnUpdate(dt, true)
     self.inst:PushEvent("fa_rebuildbuffs",{buffs=self.buff_timers})
 end
 

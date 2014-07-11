@@ -133,8 +133,8 @@ end
 
 local function fire()
     local inst = common()
-    anim:SetBank("fireball")
-    anim:SetBuild("fireball")
+    inst.AnimState:SetBank("fireball")
+    inst.AnimState:SetBuild("fireball")
     inst.AnimState:PlayAnimation("idle", true)
     inst.components.projectile:SetOnHitFn(OnHitFb)
     inst.components.projectile:SetSpeed(20)
@@ -144,8 +144,8 @@ end
 
 local function firekos()
     local inst = common()
-    anim:SetBank("fireball")
-    anim:SetBuild("fireball")
+    inst.AnimState:SetBank("fireball")
+    inst.AnimState:SetBuild("fireball")
     inst.AnimState:PlayAnimation("idle", true)
     inst.components.projectile:SetOnHitFn(OnHitFb)
     inst.components.projectile:SetSpeed(20)
