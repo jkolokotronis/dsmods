@@ -718,15 +718,15 @@ function sleepfn(inst, reader)
     local pos=Vector3(reader.Transform:GetWorldPosition())
     local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, AOE_RANGE ,nil, {'smashable',"companion","player","INLIMBO","FX"})
             for k,v in pairs(ents) do
-                if (target.components.sleeper and not (inst.components.freezable and inst.components.freezable:IsFrozen() ) 
+                if (v.components.sleeper and not (inst.components.freezable and inst.components.freezable:IsFrozen() ) 
                     and not (v.components.follower and v.components.follower.leader and v.components.follower.leader:HasTag("player")) )then
                     
-                    target.components.sleeper:AddSleepiness(sleepiness, 60)
-                    if target.components.combat then
-                        target.components.combat:SuggestTarget(attacker)
+                    v.components.sleeper:AddSleepiness(sleepiness, 60)
+                    if v.components.combat then
+                        v.components.combat:SuggestTarget(attacker)
                     end
-                    if target.sg and not target.sg:HasStateTag("sleeping") and target.sg.sg.states.hit then
-                        target.sg:GoToState("hit")
+                    if v.sg and not v.sg:HasStateTag("sleeping") and v.sg.sg.states.hit then
+                        v.sg:GoToState("hit")
                     end
 
                 end
