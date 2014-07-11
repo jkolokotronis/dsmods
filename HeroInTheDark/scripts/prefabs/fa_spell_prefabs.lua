@@ -290,7 +290,7 @@ local function hutfn()
     inst:AddComponent("sleepingbag")
     inst.components.sleepingbag.onsleep = onsleep
     MakeSnowCovered(inst, .01)
-    inst:ListenForEvent( "onbuilt", onbuilt)
+    inst:ListenForEvent( "onbuilt", tentonbuilt)
     return inst
 
 end

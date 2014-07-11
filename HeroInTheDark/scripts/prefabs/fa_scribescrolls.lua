@@ -142,6 +142,7 @@ end
 local function fnpick()
 	local inst=fn()
 	inst.components.inventoryitem.onpickupfn=function(inst, pickupguy)
+		if(inst.recipetouse) then return end
 		local low=inst.lowbound or 1
 		local high=inst.highbound or 9999
 		inst.setRecipe(low,high,pickupguy) 
