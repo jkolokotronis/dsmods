@@ -661,6 +661,7 @@ local function dancinglight()
     inst.death = inst:DoTaskInTime(DANCINGLIGHT_DURATION, kill_light)
 
     inst:AddComponent("follower")
+    inst:AddComponent("locomotor")
     inst:AddComponent("knownlocations")
 
     local brain = require "brains/wandererbrain"

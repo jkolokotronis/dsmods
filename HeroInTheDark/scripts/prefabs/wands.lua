@@ -189,7 +189,7 @@ local function onattacksunburst(inst,attacker,target)
 local pos=Vector3(target.Transform:GetWorldPosition())
     local lightning = SpawnPrefab("lightning")
     lightning.Transform:SetPosition(pos:Get())
-    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, SUNBURST_RADIUS,nil,{"player","pet","companion","INLIMBO"})
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, SUNBURST_RADIUS,nil,{"player","pet","FX","companion","INLIMBO"})
             for k,v in pairs(ents) do
                 if v.components.combat and not v==target and not (v.components.health and v.components.health:IsDead()) then
                     if(v:HasTag("undead"))then
@@ -244,7 +244,7 @@ end
 local function doicestorm(inst,target)
     local pos=Vector3(inst.Transform:GetWorldPosition())
     print("wtf is target?",target)
-    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, ICESTORM_RADIUS,nil,{"player","pet","companion","INLIMBO"})
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, ICESTORM_RADIUS,nil,{"player","pet","FX","companion","INLIMBO"})
     for k,v in pairs(ents) do
         if v.components.combat and not (v.components.health and v.components.health:IsDead()) then
             --it should have blunt component, do i want to do this twice?
@@ -1304,7 +1304,7 @@ function slowdebuff(inst,attacker,target)
             target.components.locomotor.runspeed=target.components.locomotor.runspeed*SLOW_MOVEMENTSPEED
         end
         if(target.components.combat)then
-            reader.components.combat.min_attack_period=reader.components.combat.min_attack_period/SLOW_ATTACK
+            target.components.combat.min_attack_period=target.components.combat.min_attack_period/SLOW_ATTACK
         end
     end
     inst.components.spell.onfinishfn = function(inst)
@@ -1316,7 +1316,7 @@ function slowdebuff(inst,attacker,target)
             target.components.locomotor.runspeed=target.components.locomotor.runspeed/SLOW_MOVEMENTSPEED
         end
         if(target.components.combat)then
-            reader.components.combat.min_attack_period=reader.components.combat.min_attack_period*SLOW_ATTACK
+            target.components.combat.min_attack_period=target.components.combat.min_attack_period*SLOW_ATTACK
         end
     end
     inst.components.spell.resumefn = function(inst,timeleft)   end 
