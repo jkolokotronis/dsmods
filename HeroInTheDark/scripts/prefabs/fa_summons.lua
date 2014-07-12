@@ -660,8 +660,15 @@ local function dancinglight()
     inst.timeleft = DANCINGLIGHT_DURATION
     inst.death = inst:DoTaskInTime(DANCINGLIGHT_DURATION, kill_light)
 
+
+    inst.entity:AddPhysics()
+    MakeGhostPhysics(inst, 1, .5)
+    inst.components.propagator.spreading = false
     inst:AddComponent("follower")
     inst:AddComponent("locomotor")
+    inst.components.locomotor.walkspeed = 2
+    inst.components.locomotor.runspeed = 3
+    inst.components.locomotor.directdrive = true
     inst:AddComponent("knownlocations")
 
     local brain = require "brains/wandererbrain"

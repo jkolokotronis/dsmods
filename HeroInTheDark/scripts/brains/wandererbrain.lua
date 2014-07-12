@@ -20,14 +20,14 @@ local function KeepFaceTargetFn(inst, target)
 end
 
 local function GetPos(inst)
-    if(self.inst.components.follower and self.inst.components.follower.leader)then
-        return Vector3(self.inst.components.follower.leader.Transform:GetWorldPosition())
-    elseif(self.inst.components.homeseeker and self.inst.components.homeseeker.home)then
-                return self.inst.components.homeseeker:GetHomePos()
-            elseif(self.inst.components.knownlocations and self.inst.components.knownlocations:GetLocation("home"))then
-                return self.inst.components.knownlocations:GetLocation("home")
+    if(inst.components.follower and inst.components.follower.leader)then
+        return Vector3(inst.components.follower.leader.Transform:GetWorldPosition())
+    elseif(inst.components.homeseeker and inst.components.homeseeker.home)then
+                return inst.components.homeseeker:GetHomePos()
+            elseif(inst.components.knownlocations and inst.components.knownlocations:GetLocation("home"))then
+                return inst.components.knownlocations:GetLocation("home")
             else
-                return Vector3(self.inst.Transform:GetWorldPosition())
+                return Vector3(inst.Transform:GetWorldPosition())
             end
         end
 

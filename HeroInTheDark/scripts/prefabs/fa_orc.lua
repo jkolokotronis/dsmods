@@ -119,7 +119,7 @@ local function fn()
     inst.components.combat:SetAttackPeriod(ORC_ATTACK_PERIOD)
     inst.components.combat:SetRange(3)
 --    inst.components.combat.hiteffectsymbol = "pig_torso"
-    inst.components.combat.hiteffectsymbol = "torso"
+    inst.components.combat.hiteffectsymbol = "combatfx"
     inst.components.combat:SetRetargetFunction(1, RetargetFn)
     inst.components.combat:SetKeepTargetFunction(KeepTargetFn)
 

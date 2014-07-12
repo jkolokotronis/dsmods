@@ -494,7 +494,7 @@ end
 function dancinglightfn(inst,reader)
     local l=SpawnPrefab("fa_dancinglight")
     l.Transform:SetPosition(reader.Transform:GetWorldPosition())
-    l.components.knownlocations:RememberLocation("home",reader.Transform:GetWorldPosition(),false)
+    l.components.knownlocations:RememberLocation("home",Vector3(reader.Transform:GetWorldPosition()),false)
 
     return true
 end
@@ -723,7 +723,7 @@ function sleepfn(inst, reader)
                     
                     v.components.sleeper:AddSleepiness(sleepiness, 60)
                     if v.components.combat then
-                        v.components.combat:SuggestTarget(attacker)
+                        v.components.combat:SuggestTarget(reader)
                     end
                     if v.sg and not v.sg:HasStateTag("sleeping") and v.sg.sg.states.hit then
                         v.sg:GoToState("hit")
