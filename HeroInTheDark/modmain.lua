@@ -1983,11 +1983,13 @@ AddModCharacter("druid")
 AddModCharacter("paladin")
 AddModCharacter("cleric")
 AddModCharacter("darkknight")
-AddModCharacter("ranger")
 AddModCharacter("wizard")
 
+--[[
+AddModCharacter("ranger")
 AddModCharacter("thief")
 AddModCharacter("monk")
 AddModCharacter("necromancer")
 AddModCharacter("tinkerer")
 AddModCharacter("bard")
+]]

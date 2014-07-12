@@ -23,6 +23,7 @@ configuration_options =
         },
         default = true,
     },
+    --[[
     {
         name = "detailedexamine",
         label = "Detailed Examine",
@@ -32,7 +33,7 @@ configuration_options =
             {description = "Off", data = false}
         },
         default = true,
-    },
+    },]]
     {
         name = "spellbooks",
         label = "Detailed Spell Books",
@@ -45,7 +46,7 @@ configuration_options =
     },
     {
         name = "memspikefix",
-        label = "Local fix version",
+        label = "Local MemSpikefix version",
         options =
         {
             {description = "On", data = true},
