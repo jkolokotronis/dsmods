@@ -31,6 +31,7 @@ function FASpellBookScreen:InitClass()
 	if(self.caster.prefab=="druid")then
 		self.bgframe:SetPosition(-35, 84, 0)
 		self.spell:SetPosition(-200, -70, 0)
+		self.leveltext:SetPosition(150,276,0)
 		self.spell_list:SetPosition(5, 205, 0)
 	    self.prevbutton:SetPosition(-380,-150,0)
     	self.nextbutton:SetPosition(280,-150,0)
@@ -39,6 +40,7 @@ function FASpellBookScreen:InitClass()
     elseif(self.caster.prefab=="wizard")then
 		self.bgframe:SetPosition(20, 80, 0)
 		self.spell:SetPosition(-130, -70, 0)
+		self.leveltext:SetPosition(210,274,0)
 		self.spell_list:SetPosition(78, 202, 0)
 	    self.prevbutton:SetPosition(-280,-170,0)
     	self.nextbutton:SetPosition(320,-170,0)
@@ -47,6 +49,7 @@ function FASpellBookScreen:InitClass()
 	elseif(self.caster.prefab=="cleric")then
 		self.bgframe:SetPosition(82, 80, 0)
 		self.spell:SetPosition(-60, -65, 0)
+		self.leveltext:SetPosition(280,274,0)
 		self.spell_list:SetPosition(135, 205, 0)
 	    self.prevbutton:SetPosition(-175,-167,0)
     	self.nextbutton:SetPosition(325,-167,0)
@@ -90,6 +93,8 @@ function FASpellBookScreen:DoInit()
     self.quote:EnableWordWrap(true)
     self.quote:SetRegionSize(250, 200)
 
+    self.leveltext=self.root:AddChild(Text(UIFONT, 32))
+
     self.spell = self.root:AddChild(Widget("SPELL"))
 
     self.spell_list= self.root:AddChild(Widget("SPELLLIST"))
@@ -122,6 +127,7 @@ function FASpellBookScreen:DoInit()
 end
 
 function FASpellBookScreen:SetLevel(level,page)
+	self.leveltext:SetString("Level "..level)
 	self.craftbutton:Hide()
 	self.level=level
 	self.page=page
