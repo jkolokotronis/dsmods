@@ -10618,7 +10618,7 @@
   <object type="fa_dungeon_marblepillar" x="591" y="843"/>
   <object type="fa_teleporter" x="827" y="1471">
    <properties>
-    <property name="data.sourcetag" value="roomB"/>
+    <property name="data.sourcetag" value="roomBA"/>
     <property name="data.targettag" value="roomA"/>
    </properties>
   </object>
@@ -10710,7 +10710,7 @@
   <object type="ruins_vase" x="1556" y="356"/>
   <object type="fa_teleporter" x="897" y="127">
    <properties>
-    <property name="data.sourcetag" value="roomB"/>
+    <property name="data.sourcetag" value="roomBC"/>
     <property name="data.targettag" value="roomC"/>
    </properties>
   </object>

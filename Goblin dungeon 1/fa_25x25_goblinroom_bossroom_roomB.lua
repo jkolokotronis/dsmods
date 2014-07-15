@@ -6842,7 +6842,7 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.sourcetag"] = "roomB",
+            ["data.sourcetag"] = "roomBA",
             ["data.targettag"] = "roomA"
           }
         },
@@ -7592,7 +7592,7 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.sourcetag"] = "roomB",
+            ["data.sourcetag"] = "roomBC",
             ["data.targettag"] = "roomC"
           }
         }

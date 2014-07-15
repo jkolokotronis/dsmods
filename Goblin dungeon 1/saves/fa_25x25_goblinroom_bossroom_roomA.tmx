@@ -10482,7 +10482,7 @@
   <object type="fa_teleporter" x="1410" y="384">
    <properties>
     <property name="data.sourcetag" value="roomA"/>
-    <property name="data.targettag" value="roomB"/>
+    <property name="data.targettag" value="roomBA"/>
    </properties>
   </object>
  </objectgroup>

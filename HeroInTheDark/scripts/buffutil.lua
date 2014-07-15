@@ -194,7 +194,7 @@ function DivineMightSpellStart( reader,timer)
 
     if reader.fa_divinemight then
         reader.fa_divinemight.components.spell.lifetime = 0
-        target.components.health.currenthealth=math.min(target.components.health.currenthealth+DM_HP_BOOST,target.components.health.maxhealth)
+        reader.components.health.currenthealth=math.min(reader.components.health.currenthealth+DM_HP_BOOST,reader.components.health.maxhealth)
 --        reader.fa_divinemight.components.spell:ResumeSpell()
         return true
     else
@@ -573,8 +573,8 @@ function HasteSpellStart( reader,timer)
     if(timer==nil or timer<=0)then return false end
     
     if reader.fa_haste then
-        reader.fa_divinemight.components.spell.lifetime = 0
-        reader.fa_divinemight.components.spell:ResumeSpell()
+        reader.fa_haste.components.spell.lifetime = 0
+        reader.fa_haste.components.spell:ResumeSpell()
         return true
     else
 

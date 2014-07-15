@@ -5252,7 +5252,7 @@ return {
           visible = true,
           properties = {
             ["data.sourcetag"] = "roomA",
-            ["data.targettag"] = "roomB"
+            ["data.targettag"] = "roomBA"
           }
         }
       }

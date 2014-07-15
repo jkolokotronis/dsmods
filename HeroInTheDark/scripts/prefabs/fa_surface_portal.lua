@@ -28,6 +28,9 @@ local function OnActivate(inst)
 	local level = GetWorld().topology.level_number or 1
 	local function head_upwards()
 		SaveGameIndex:GetSaveFollowers(GetPlayer())
+		if(FA_DLCACCESS)then
+			SaveGameIndex:SetSaveSeasonData(GetPlayer())
+		end
 
 		local function onsaved()
 		    SetPause(false)

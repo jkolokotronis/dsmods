@@ -895,6 +895,7 @@ end
 AddClassPostConstruct("widgets/statusdisplays", newControlsInit)
 
 local crafttabsPostConstruct=function(self,owner,top_root)
+    if(not GetPlayer().fa_spellcraft) then return end
     local spelltab=nil
     for k,v in pairs(self.tabbyfilter) do
         if(v.filter.str=="SPELLS")then
@@ -1456,7 +1457,7 @@ local function OrcMinesPostInit(inst)
     inst:AddComponent("fa_warzone")
     AddClassPostConstruct("widgets/controls", function(self, owner)
         self.clock:Kill()
-        self.clock=self.sidepanel:AddChild(FAWarClock(owner))
+        self.clock=self.sidepanel:AddChild(FA_WarClock(owner))
     end)
 end
 

@@ -14,7 +14,7 @@ end
 local function OnActivate(inst,doer)
 		inst.SoundEmitter:PlaySound("fa/teleporter/activate")
 	--inst.AnimState:PushAnimation("idle_on", true)
---				inst.components.activatable.inactive = true
+	
 	local dest=TheSim:FindFirstEntityWithTag(inst.targettag)
 	if(dest)then
 			doer.components.locomotor:Stop()
@@ -32,6 +32,7 @@ local function OnActivate(inst,doer)
 			end)
 
 	end
+	inst.components.activatable.inactive = true
 end
 
 local function onsave(inst, data)

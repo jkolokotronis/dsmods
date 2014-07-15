@@ -4372,7 +4372,7 @@ return {
           visible = true,
           properties = {
             ["data.sourcetag"] = "roomC",
-            ["data.targettag"] = "roomB"
+            ["data.targettag"] = "roomBC"
           }
         }
       }
