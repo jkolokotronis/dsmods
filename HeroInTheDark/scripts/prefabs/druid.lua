@@ -75,23 +75,23 @@ local function enableL1spells()
     GetPlayer().fa_spellcraft.spells[1]={
         {
             recname="fa_spell_curelightwounds",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
         {
             recname="fa_spell_faeriefire",
-            school="evocation",
+            school=FA_SPELL_SCHOOLS.EVOCATION,
         },
         {
             recname="fa_spell_longstrider",
-            school="transmutation",
+            school=FA_SPELL_SCHOOLS.TRANSMUTATION,
         },
         {
             recname="fa_spell_naturesally",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
         {
             recname="spell_summongoodberries",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
        
     }
@@ -103,7 +103,6 @@ local function enableL1spells()
     r.image="book_gardening.tex"
      local r=Recipe("fa_spell_naturesally", {Ingredient("silk", 2), Ingredient("spidereggsack", 2), Ingredient("papyrus", 4)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
-
     local r=Recipe("spell_summongoodberries", {Ingredient("berries", 5), Ingredient("twigs", 10), Ingredient("charcoal", 5)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
 end
@@ -111,24 +110,24 @@ local function enableL2spells()
     GetPlayer().fa_spellcraft.spells[2]={
         {
             recname="fa_spell_animaltrance",
-            school="enchantment",
+            school=FA_SPELL_SCHOOLS.ENCHANTMENT,
         },
         {
             recname="fa_spell_gustofwind",
-            school="evocation",
+            school=FA_SPELL_SCHOOLS.EVOCATION,
         },
         {
             recname="fa_spell_holdanimal",
-            school="enchantment",
+            school=FA_SPELL_SCHOOLS.ENCHANTMENT,
         },
 
         {
             recname="fa_spell_naturesally2",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
         {
             recname="fa_spell_summonswarm",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
     }
 
@@ -148,35 +147,35 @@ local function enableL3spells()
     GetPlayer().fa_spellcraft.spells[3]={
        {
             recname="fa_spell_calllightning",
-            school="evocation",
+            school=FA_SPELL_SCHOOLS.EVOCATION,
         },
         {
             recname="fa_spell_curemoderatewounds",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
         {
             recname="fa_spell_daylight",
-            school="evocation",
+            school=FA_SPELL_SCHOOLS.EVOCATION,
         },
         {
             recname="fa_spell_dominateanimal",
-            school="enchantment",
+            school=FA_SPELL_SCHOOLS.ENCHANTMENT,
         },
         {
             recname="fa_spell_curepoison",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
         {
             recname="fa_spell_grow",
-            school="transmutation",
+            school=FA_SPELL_SCHOOLS.TRANSMUTATION,
         },
         {
             recname="fa_spell_poison",
-            school="necromancy",
+            school=FA_SPELL_SCHOOLS.NECROMANCY,
         },
         {
             recname="fa_spell_snare",
-            school="transmutation",
+            school=FA_SPELL_SCHOOLS.TRANSMUTATION,
         },
     }
 
@@ -197,19 +196,16 @@ local function enableL3spells()
     local r=Recipe("fa_spell_snare", {Ingredient("twigs", 10), Ingredient("guano", 4), Ingredient("poop", 5)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
 
-
-    local r=Recipe("spell_lightning", {Ingredient("flint", 20), Ingredient("bluegem", 4),Ingredient("papyrus", 5)}, RECIPETABS.SPELLS, {MAGIC = 2})
-    r.image="book_brimstone.tex"   
 end
 local function enableL4spells()
     GetPlayer().fa_spellcraft.spells[4]={
         {
             recname="fa_spell_cureseriouswounds",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
         {
             recname="fa_spell_flamestrike",
-            school="evocation",
+            school=FA_SPELL_SCHOOLS.EVOCATION,
         },
     }
     local r=Recipe("fa_spell_cureseriouswounds", {Ingredient("blue_cap", 6), Ingredient("ash", 8), Ingredient("petals", 15)}, RECIPETABS.SPELLS,TECH.NONE)
@@ -218,26 +214,25 @@ local function enableL4spells()
     r.image="book_gardening.tex"
     
 
-    local r=Recipe("spell_earthquake", {Ingredient("rocks", 20), Ingredient("redgem", 5),Ingredient("papyrus", 5)},  RECIPETABS.SPELLS,{MAGIC = 2})
-    r.image="book_brimstone.tex"
+   
 end
 local function enableL5spells()
     GetPlayer().fa_spellcraft.spells[5]={
         {
             recname="fa_spell_atonement",
-            school="abjuration",
+            school=FA_SPELL_SCHOOLS.ABJURATION,
         },
         {
             recname="fa_spell_lightningstorm",
-            school="evocation",
+            school=FA_SPELL_SCHOOLS.EVOCATION,
         },
         {
             recname="fa_spell_curecriticalwounds",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
         {
             recname="fa_spell_firewall",
-            school="evocation",
+            school=FA_SPELL_SCHOOLS.EVOCATION,
         },
     }
 
@@ -250,13 +245,30 @@ local function enableL5spells()
     local r=Recipe("fa_spell_firewall", {Ingredient("redgem", 4), Ingredient("rocks", 10), Ingredient("twigs", 10)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
 
-    local r=Recipe("spell_heal", {Ingredient("papyrus", 5), Ingredient("honey", 5),Ingredient("spidergland",10)}, RECIPETABS.SPELLS, {MAGIC = 3})
-    r.image="book_gardening.tex"
+    
 end
 
 local function enableL6spells() end
-local function enableL7spells() end
-local function enableL8spells() end
+local function enableL7spells() 
+    GetPlayer().fa_spellcraft.spells[5]={
+        {
+            recname="fa_spell_heal",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
+        },
+    }
+    local r=Recipe("fa_spell_heal", {Ingredient("papyrus", 5), Ingredient("honey", 5),Ingredient("spidergland",10)}, RECIPETABS.SPELLS, TECH.NONE)
+    r.image="book_gardening.tex"
+end
+local function enableL8spells() 
+    GetPlayer().fa_spellcraft.spells[5]={
+        {
+            recname="fa_spell_earthquake",
+            school=FA_SPELL_SCHOOLS.EVOCATION,
+        },
+    }
+    local r=Recipe("fa_spell_earthquake", {Ingredient("rocks", 20), Ingredient("redgem", 5),Ingredient("papyrus", 5)},  RECIPETABS.SPELLS,TECH.NONE)
+    r.image="book_brimstone.tex"
+end
 local function enableL9spells() end
 
 local function onxploaded(inst)

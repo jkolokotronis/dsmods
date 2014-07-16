@@ -866,6 +866,8 @@ return
     MakeSpell("fa_spell_dancinglight",dancinglightfn,5,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_darkvision",darkvisionfn,3,FA_SPELL_SCHOOLS.TRANSMUTATION),
     MakeSpell("spell_calldiety",calldietyfn,15,FA_SPELL_SCHOOLS.DIVINATION),
+    MakeSpell("fa_spell_heal", healfn, 10,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_earthquake", earthquakefn, 12,FA_SPELL_SCHOOLS.EVOCATION),
 
 
 
@@ -875,9 +877,7 @@ return
 
 
         MakeSpell("spell_lightning", firefn, 10,"conjuration"),
-       MakeSpell("spell_earthquake", earthquakefn, 12,"divinantion"),
        MakeSpell("spell_grow", growfn, 15,"evocation"),
-       MakeSpell("spell_heal", healfn, 10,"enchantment"),
        MakeSpell("spell_divinemight", divinemightfn, 15,"illusion"),
        MakeSpell("spell_light", lightfn, 12,"transmutation"),
        MakeSpell("spell_bladebarrier", bladebarrierfn, 5,"abjuration"),

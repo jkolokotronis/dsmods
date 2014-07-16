@@ -59,10 +59,6 @@ STRINGS.NAMES.SPELL_LIGHT = "Banish Darkness"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_LIGHT = "Banish Darkness"
 STRINGS.RECIPE_DESC.SPELL_LIGHT = "Banish Darkness"
 
-STRINGS.NAMES.SPELL_HEAL = "Heal"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_HEAL = "Heal"
-STRINGS.RECIPE_DESC.SPELL_HEAL = "Heal"
-
 STRINGS.NAMES.SPELL_DIVINEMIGHT = "Divine Might"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_DIVINEMIGHT = "Divine Might"
 STRINGS.RECIPE_DESC.SPELL_DIVINEMIGHT = "Divine Might"
@@ -90,7 +86,7 @@ local function enableL2spells()
     r.image="book_gardening.tex" 
 end
 local function enableL3spells()
-    local r=Recipe("spell_heal", {Ingredient("spidergland",5),Ingredient("cutgrass", 5), Ingredient("rocks", 15)}, RECIPETABS.SPELLS, {MAGIC = 3})
+    local r=Recipe("fa_spell_heal", {Ingredient("spidergland",5),Ingredient("cutgrass", 5), Ingredient("rocks", 15)}, RECIPETABS.SPELLS, {MAGIC = 3})
     r.image="book_gardening.tex"
 end
 

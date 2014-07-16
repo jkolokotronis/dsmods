@@ -87,31 +87,31 @@ local function enableL1spells()
     GetPlayer().fa_spellcraft.spells[1]={
         {
             recname="fa_spell_curelightwounds",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
         {
             recname="fa_spell_mending",
-            school="transmutation",
+            school=FA_SPELL_SCHOOLS.TRANSMUTATION,
         },
         {
             recname="fa_spell_inflictlightwounds",
-            school="necromancy",
+            school=FA_SPELL_SCHOOLS.NECROMANCY,
         },
         {
             recname="spell_divinemight",
-            school="evocation",
+            school=FA_SPELL_SCHOOLS.EVOCATION,
         },
         {
             recname="fa_spell_fear",
-            school="necromancy",
+            school=FA_SPELL_SCHOOLS.NECROMANCY,
         },
         {
             recname="fa_spell_summonmonster1",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
         {
             recname="fa_spell_protevil",
-            school="abjuration",
+            school=FA_SPELL_SCHOOLS.ABJURATION,
         },
     }
     local r=Recipe("fa_spell_curelightwounds", {Ingredient("red_cap", 6), Ingredient("ash", 6), Ingredient("petals", 6)}, RECIPETABS.SPELLS,TECH.NONE)
@@ -136,23 +136,23 @@ local function enableL2spells()
     GetPlayer().fa_spellcraft.spells[2]={
         {
             recname="fa_spell_aid",
-            school="enchantment",
+            school=FA_SPELL_SCHOOLS.ENCHANTMENT,
         },
         {
             recname="fa_spell_curemoderatewounds",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
         {
             recname="fa_spell_inflictmoderatewounds",
-            school="necromancy",
+            school=FA_SPELL_SCHOOLS.NECROMANCY,
         },
         {
             recname="fa_spell_holdperson",
-            school="enchantment",
+            school=FA_SPELL_SCHOOLS.ENCHANTMENT,
         },
         {
             recname="fa_spell_summonmonster2",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
     }
     local r=Recipe("fa_spell_aid", {Ingredient("bird_egg", 1), Ingredient("meat", 2), Ingredient("nightmarefuel", 2)}, RECIPETABS.SPELLS,TECH.NONE)
@@ -175,31 +175,31 @@ local function enableL3spells()
     GetPlayer().fa_spellcraft.spells[3]={
         {
             recname="fa_spell_animatedead",
-            school="necromancy",
+            school=FA_SPELL_SCHOOLS.NECROMANCY,
         },
         {
             recname="fa_spell_causedisease",
-            school="necromancy",
+            school=FA_SPELL_SCHOOLS.NECROMANCY,
         },
         {
             recname="fa_spell_createfood",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
         {
             recname="fa_spell_continualflame",
-            school="evocation",
+            school=FA_SPELL_SCHOOLS.EVOCATION,
         },
         {
             recname="fa_spell_cureseriouswounds",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
         {
             recname="fa_spell_inflictseriouswounds",
-            school="necromancy",
+            school=FA_SPELL_SCHOOLS.NECROMANCY,
         },
         {
             recname="fa_spell_summonmonster3",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
     }
 
@@ -223,23 +223,23 @@ local function enableL4spells()
     GetPlayer().fa_spellcraft.spells[4]={
         {
             recname="fa_spell_curecriticalwounds",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
         {
             recname="fa_spell_inflictcriticalwounds",
-            school="necromancy",
+            school=FA_SPELL_SCHOOLS.NECROMANCY,
         },
         {
             recname="fa_spell_curepoison",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
         {
             recname="fa_spell_poison",
-            school="necromancy",
+            school=FA_SPELL_SCHOOLS.NECROMANCY,
         },
         {
             recname="fa_spell_summonmonster4",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
     }
 
@@ -259,23 +259,23 @@ local function enableL5spells()
     GetPlayer().fa_spellcraft.spells[5]={
         {
             recname="fa_spell_atonement",
-            school="abjuration",
+            school=FA_SPELL_SCHOOLS.ABJURATION,
         },
         {
             recname="fa_spell_curelightwoundsmass",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
         {
             recname="fa_spell_inflictlightwoundsmass",
-            school="necromancy",
+            school=FA_SPELL_SCHOOLS.NECROMANCY,
         },
         {
             recname="fa_spell_flamestrike",
-            school="evocation",
+            school=FA_SPELL_SCHOOLS.EVOCATION,
         },
         {
             recname="spell_bladebarrier",
-            school="evocation",
+            school=FA_SPELL_SCHOOLS.EVOCATION,
         },
     }
     local r=Recipe("fa_spell_atonement", {Ingredient("charcoal", 10), Ingredient("butterfly", 4), Ingredient("monstermeat", 4)}, RECIPETABS.SPELLS,TECH.NONE)
@@ -295,7 +295,7 @@ local function enableL6spells()
     GetPlayer().fa_spellcraft.spells[6]={
         {
             recname="spell_calldiety",
-            school="abjuration",
+            school=FA_SPELL_SCHOOLS.ABJURATION,
         },
     }
     local  r=Recipe("spell_calldiety", {Ingredient("redgem", 4), Ingredient("cutgrass", 5), Ingredient("rocks", 20)}, RECIPETABS.SPELLS,TECH.NONE)

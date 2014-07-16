@@ -119,79 +119,79 @@ local function enableL1spells()
         },]]
         {
             recname="fa_spell_acidsplash",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
         {
             recname="fa_spell_dazehuman",
-            school="enchantment",
+            school=FA_SPELL_SCHOOLS.ENCHANTMENT,
         },
         {
             recname="fa_spell_dancinglight",
-            school="evocation",
+            school=FA_SPELL_SCHOOLS.EVOCATION,
         },
         {
             recname="fa_spell_light",
-            school="evocation",
+            school=FA_SPELL_SCHOOLS.EVOCATION,
         },
         {
             recname="fa_spell_frostray",
-            school="evocation",
+            school=FA_SPELL_SCHOOLS.EVOCATION,
         },
         {
             recname="fa_spell_disruptundead",
-            school="necromancy",
+            school=FA_SPELL_SCHOOLS.NECROMANCY,
         },
         {
             recname="fa_spell_mending",
-            school="transmutation",
+            school=FA_SPELL_SCHOOLS.ABJURATION,
         },
         {
             recname="fa_spell_summonmonster1",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
         {
             recname="fa_spell_protevil",
-            school="abjuration",
+            school=FA_SPELL_SCHOOLS.ABJURATION,
         },
         {
             recname="fa_spell_shield",
-            school="abjuration",
+            school=FA_SPELL_SCHOOLS.ABJURATION,
         },
         {
             recname="fa_spell_magearmor",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
         {
             recname="fa_spell_charmperson",
-            school="enchantment",
+            school=FA_SPELL_SCHOOLS.ENCHANTMENT,
         },
         {
             recname="fa_spell_sleep",
-            school="enchantment",
+            school=FA_SPELL_SCHOOLS.ENCHANTMENT,
         },
         {
             recname="fa_spell_magicmissile",
-            school="evocation",
+            school=FA_SPELL_SCHOOLS.EVOCATION,
         },
         {
             recname="fa_spell_fear",
-            school="necromancy",
+            school=FA_SPELL_SCHOOLS.NECROMANCY,
         },
         {
             recname="fa_spell_rayofenfeeblement",
-            school="necromancy",
+            school=FA_SPELL_SCHOOLS.NECROMANCY,
         },
         {
             recname="fa_spell_expretreat",
-            school="transmutation",
+            school=FA_SPELL_SCHOOLS.TRANSMUTATION,
         },
         {
             recname="fa_spell_enlargehumanoid",
-            school="transmutation",
+            school=FA_SPELL_SCHOOLS.TRANSMUTATION,
         },
         {
             recname="fa_spell_reducehumanoid",
-            school="transmutation",
+            school=FA_SPELL_SCHOOLS.TRANSMUTATION,
         },
     }
 
@@ -241,39 +241,39 @@ local function enableL2spells()
     GetPlayer().fa_spellcraft.spells[2]={
         {
             recname="fa_spell_acidarrow",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
         {
             recname="fa_spell_summonmonster2",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
         {
             recname="fa_spell_summonswarm",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
         {
             recname="fa_spell_web",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
         {
             recname="fa_spell_gustofwind",
-            school="evocation",
+            school=FA_SPELL_SCHOOLS.EVOCATION,
         },
         {
             recname="fa_spell_mirrorimage",
-            school="illusion",
+            school=FA_SPELL_SCHOOLS.ILLUSION,
         },
         {
             recname="fa_spell_commandundead",
-            school="necromancy",
+            school=FA_SPELL_SCHOOLS.NECROMANCY,
         },
         {
             recname="fa_spell_falselife",
-            school="necromancy",
+            school=FA_SPELL_SCHOOLS.NECROMANCY,
         },
         {
             recname="fa_spell_darkvision",
-            school="transmutation",
+            school=FA_SPELL_SCHOOLS.TRANSMUTATION,
         },
     }
 
@@ -301,7 +301,7 @@ local function enableL3spells()
     GetPlayer().fa_spellcraft.spells[3]={
         {
             recname="fa_spell_summonmonster3",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
         --[[
         {
@@ -310,7 +310,7 @@ local function enableL3spells()
         },]]
         {
             recname="fa_spell_holdperson",
-            school="enchantment",
+            school=FA_SPELL_SCHOOLS.ENCHANTMENT,
         },
         --[[
         {
@@ -319,27 +319,27 @@ local function enableL3spells()
         },--]]
         {
             recname="fa_spell_daylight",
-            school="evocation",
+            school=FA_SPELL_SCHOOLS.EVOCATION,
         },
         {
             recname="fa_spell_fireball",
-            school="evocation",
+            school=FA_SPELL_SCHOOLS.EVOCATION,
         },
         {
             recname="fa_spell_tinyhut",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
         {
             recname="fa_spell_haltundeadmass",
-            school="evocation",
+            school=FA_SPELL_SCHOOLS.EVOCATION,
         },
         {
             recname="fa_spell_haste",
-            school="transmutation",
+            school=FA_SPELL_SCHOOLS.TRANSMUTATION,
         },
         {
             recname="fa_spell_slow",
-            school="transmutation",
+            school=FA_SPELL_SCHOOLS.TRANSMUTATION,
         },
     }
 
@@ -370,31 +370,31 @@ local function enableL4spells()
     GetPlayer().fa_spellcraft.spells[4]={
         {
             recname="fa_spell_stoneskin",--wasnt this conjuration?
-            school="abjuration",
+            school=FA_SPELL_SCHOOLS.ABJURATION,
         },
         {
             recname="fa_spell_secureshelter",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
         {
             recname="fa_spell_summonmonster4",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
         {
             recname="fa_spell_charmmonster",
-            school="enchantment",
+            school=FA_SPELL_SCHOOLS.ENCHANTMENT,
         },
         {
             recname="fa_spell_firewall",
-            school="evocation",
+            school=FA_SPELL_SCHOOLS.EVOCATION,
         },
         {
             recname="fa_spell_shadowconjuration",
-            school="illusion",
+            school=FA_SPELL_SCHOOLS.ILLUSION,
         },
         {
             recname="fa_spell_animatedead",
-            school="necromancy",
+            school=FA_SPELL_SCHOOLS.NECROMANCY,
         },
     }
 
@@ -418,7 +418,7 @@ local function enableL5spells()
     GetPlayer().fa_spellcraft.spells[5]={
         {
             recname="fa_spell_magehound",
-            school="conjuration",
+            school=FA_SPELL_SCHOOLS.CONJURATION,
         },
 --[[        {
             recname="fa_spell_wallofstone",
@@ -426,11 +426,11 @@ local function enableL5spells()
         },]]
         {
             recname="fa_spell_dominateperson",
-            school="enchantment",
+            school=FA_SPELL_SCHOOLS.ENCHANTMENT,
         },
         {
             recname="fa_spell_holdmonster",
-            school="enchantment",
+            school=FA_SPELL_SCHOOLS.ENCHANTMENT,
         },
     }
 
