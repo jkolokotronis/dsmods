@@ -7,6 +7,11 @@ local assets=
 	Asset("ANIM", "anim/fa_dungeon_entrance.zip"),
 
 }
+local mineassets=
+{
+	Asset("ANIM", "anim/fa_mine_entrance.zip"),
+
+}
 
 local prefabs = 
 {
@@ -240,7 +245,6 @@ local function fn(Sim)
 	inst.components.childspawner:SetSpawnPeriod(.1)
 	inst.components.childspawner:SetMaxChildren(6)
 	inst.components.childspawner.childname = "bat"
-	Open(inst)
 --    Close(inst)
 	inst.OnSave = onsave
 	inst.OnLoad = onload
@@ -253,4 +257,21 @@ local function fn(Sim)
     return inst
 end
 
-return Prefab( "common/fa_dungeon_entrance", fn, assets, prefabs) 
+local function dungfn()
+	local inst=fn()
+	inst.AnimState:SetBuild("fa_dungeon_entrance")
+	inst.AnimState:SetBank("fa_dungeon_entrance")
+	Open(inst)
+	return inst
+end
+
+local function minefn()
+	local inst=fn()
+	inst.AnimState:SetBuild("fa_mine_entrance")
+	inst.AnimState:SetBank("fa_mine_entrance")
+	Open(inst)
+	return inst
+end
+
+return Prefab( "common/fa_dungeon_entrance", dungfn, assets, prefabs),
+Prefab( "common/fa_mine_entrance", minefn, mineassets, prefabs) 
