@@ -1,7 +1,7 @@
 name = "Hero in the Dark"
 description = "This mod will incorporate traditional fantasy elements and lore while retaining the artistic style and the survive or die elements of Don\'t Starve. A large focus of the lore and design of the mod will be from D&D and other games/books within the genre."
 author = "kraken121 / DeathDisciple"
-version = "0.06.2 Alpha"
+version = "0.07 Alpha"
 
 
 forumthread = "/files/file/518-mod-hero-in-the-dark/"
@@ -37,6 +37,26 @@ configuration_options =
     {
         name = "spellbooks",
         label = "Detailed Spell Books",
+        options =
+        {
+            {description = "On", data = true},
+            {description = "Off", data = false}
+        },
+        default = true,
+    },
+    {
+        name = "extracontrollerrange",
+        label = "Extra Controller Target Range",
+        options =
+        {
+            {description = "On", data = true},
+            {description = "Off", data = false}
+        },
+        default = true,
+    },
+    {
+        name = "extrazoom",
+        label = "Unlock full camera zoon",
         options =
         {
             {description = "On", data = true},

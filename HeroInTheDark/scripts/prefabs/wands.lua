@@ -145,6 +145,14 @@ local BOW_DAMAGE=20
 local BOW_RANGE=15
 
 
+local function canCastOnCombatTarget(inst, caster, target, pos)
+    if(target and target.components.combat and not (target.components.health and target.components.health:IsDead()) and not target:IsInLimbo())then
+        return true
+    else
+        return false
+    end
+end
+
 local function onattackacidarrow(inst,attacker,target)
     --no stacking dots
     if(target.acidarrowtask)then
@@ -624,6 +632,7 @@ local function animaltrance()
     inst.components.spellcaster.canuseontargets = true
     inst.components.spellcaster.canuseonpoint = false
     inst.components.spellcaster.canusefrominventory = false
+    inst.components.spellcaster:SetSpellTestFn(canCastOnCombatTarget)
     inst.components.finiteuses:SetMaxUses(ANIMALTRANCE_USES)
     inst.components.finiteuses:SetUses(ANIMALTRANCE_USES)
     return inst
@@ -738,6 +747,7 @@ local function dominateanimal()
     inst.components.spellcaster.canuseontargets = true
     inst.components.spellcaster.canuseonpoint = false
     inst.components.spellcaster.canusefrominventory = false
+    inst.components.spellcaster:SetSpellTestFn(canCastOnCombatTarget)
     inst.components.finiteuses:SetMaxUses(DOMINATEANIMAL_USES)
     inst.components.finiteuses:SetUses(DOMINATEANIMAL_USES)
     return inst
@@ -811,6 +821,7 @@ local inst = commonfn("blue")
     inst.components.spellcaster.canuseontargets = true
     inst.components.spellcaster.canuseonpoint = false
     inst.components.spellcaster.canusefrominventory = false
+    inst.components.spellcaster:SetSpellTestFn(canCastOnCombatTarget)
     inst.components.finiteuses:SetMaxUses(CALLLIGHTNING_USES)
     inst.components.finiteuses:SetUses(CALLLIGHTNING_USES)
 
@@ -1152,6 +1163,7 @@ local function dazehumanfn()
     inst.components.spellcaster.canuseontargets = true
     inst.components.spellcaster.canuseonpoint = false
     inst.components.spellcaster.canusefrominventory = false
+    inst.components.spellcaster:SetSpellTestFn(canCastOnCombatTarget)
     inst.components.finiteuses:SetMaxUses(DAZEHUMAN_USES)
     inst.components.finiteuses:SetUses(DAZEHUMAN_USES)
     return inst
@@ -1230,6 +1242,7 @@ local function charmpersonfn()
     inst.components.spellcaster.canuseontargets = true
     inst.components.spellcaster.canuseonpoint = false
     inst.components.spellcaster.canusefrominventory = false
+    inst.components.spellcaster:SetSpellTestFn(canCastOnCombatTarget)
     inst.components.finiteuses:SetMaxUses(CHARMPERSON_USES)
     inst.components.finiteuses:SetUses(CHARMPERSON_USES)
     return inst
@@ -1367,6 +1380,7 @@ local function commandundeadfn()
     inst.components.spellcaster.canuseontargets = true
     inst.components.spellcaster.canuseonpoint = false
     inst.components.spellcaster.canusefrominventory = false
+    inst.components.spellcaster:SetSpellTestFn(canCastOnCombatTarget)
     inst.components.finiteuses:SetMaxUses(COMMANDUNDEAD_USES)
     inst.components.finiteuses:SetUses(COMMANDUNDEAD_USES)
     return inst
@@ -1437,6 +1451,7 @@ local function charmmonsterfn()
     inst.components.spellcaster.canuseontargets = true
     inst.components.spellcaster.canuseonpoint = false
     inst.components.spellcaster.canusefrominventory = false
+    inst.components.spellcaster:SetSpellTestFn(canCastOnCombatTarget)
     inst.components.finiteuses:SetMaxUses(CHARM_USES)
     inst.components.finiteuses:SetUses(CHARM_USES)
     return inst
@@ -1567,6 +1582,7 @@ local function enlargehumanoidfn()
     inst.components.spellcaster.canuseonpoint = false
     inst.components.spellcaster.canusefrominventory = false
     inst.components.finiteuses:SetMaxUses(ENLARGE_HUMANOID_USES)
+    inst.components.spellcaster:SetSpellTestFn(canCastOnCombatTarget)
     inst.components.finiteuses:SetUses(ENLARGE_HUMANOID_USES)
     return inst
 end
@@ -1627,6 +1643,7 @@ local function reducehumanoidfn()
     inst.components.spellcaster.canuseontargets = true
     inst.components.spellcaster.canuseonpoint = false
     inst.components.spellcaster.canusefrominventory = false
+    inst.components.spellcaster:SetSpellTestFn(canCastOnCombatTarget)
     inst.components.finiteuses:SetMaxUses(REDUCE_HUMANOID_USES)
     inst.components.finiteuses:SetUses(REDUCE_HUMANOID_USES)
     return inst

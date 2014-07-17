@@ -42,7 +42,7 @@ end
 function FA_Mender:CollectUseActions(doer, target, actions, right)
 
 	--default sewing nonsense
-    if 	not target:HasTag("scroll") and not target:HasTag("wand") and
+    if 	not target:HasTag("scroll") and not target:HasTag("wand") and not target:HasTag("book") and not target.components.fa_mender and
     	((not target:HasTag("no_sewing") and target.components.fueled and target.components.fueled.fueltype == "USAGE" and target.components.fueled:GetPercent() < 1) or
     	(target.components.armor and target.components.armor:GetPercent()<1) or
     	(target.components.finiteuses and target.components.finiteuses:GetPercent()<1) ) then

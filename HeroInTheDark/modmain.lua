@@ -1,6 +1,7 @@
 local require = GLOBAL.require
 require "class"
 require "util"
+require "stategraph"
 local MergeMaps=GLOBAL.MergeMaps
 
 GLOBAL.FA_DLCACCESS=false
@@ -368,7 +369,8 @@ Assets = {
     Asset( "IMAGE", "minimap/darkknight.tex" ),
     Asset( "ATLAS", "minimap/darkknight.xml" ), 
     Asset( "ANIM", "anim/fa_shieldpuff.zip" ),
---    Asset( "ANIM", "anim/player_actions_test1.zip" ),
+    Asset( "ANIM", "anim/fa_player_anims.zip" ),
+--    Asset( "ANIM", "anim/player_test.zip" ),
 
     Asset( "ANIM", "anim/generating_goblin_cave.zip" ),
     Asset( "IMAGE", "images/lava3.tex" ),
@@ -387,6 +389,10 @@ Assets = {
     Asset( "ATLAS", "images/fa_equipbar_bg.xml" ),  
 }
 
+--[[
+            inst.components.locomotor:Stop()
+            inst.AnimState:PlayAnimation("spriter_idle", true)
+]]
 
 if(not GLOBAL.FA_DLCACCESS)then
 --not gonna rewrite 100 things for one prefab
@@ -547,7 +553,20 @@ GLOBAL.FALLENLOOTTABLEMERGED=MergeMaps(GLOBAL.FALLENLOOTTABLE["tier1"],GLOBAL.FA
 local FALLENLOOTTABLE=GLOBAL.FALLENLOOTTABLE
 local FALLENLOOTTABLEMERGED=GLOBAL.FALLENLOOTTABLEMERGED
 
+--[[    
+    local SGWilson=require "stategraphs/SGwilson"
 
+    SGWilson.states["idle"]= GLOBAL.State{
+        name = "idle",
+        tags = {"idle", "canrotate"},
+        onenter = function(inst, pushanim)
+            
+            inst.components.locomotor:Stop()
+
+            inst.AnimState:PlayAnimation("spriter_idle", true)
+        end,        
+    }
+]]
 
 -- Let the game know Wod is a male, for proper pronouns during the end-game sequence.
 -- Possible genders here are MALE, FEMALE, or ROBOT
@@ -917,6 +936,28 @@ end
 if(GetModConfigData("spellbooks"))then
     AddClassPostConstruct("widgets/crafttabs",crafttabsPostConstruct)
 end
+
+
+local function playerhudPostContruct(self)
+    
+    function self:UpdateClouds(dt)
+            local TheCamera = GLOBAL.TheCamera
+            TheCamera.should_push_down = false
+            self.clouds_on = false
+            if(self.clouds)then
+                self.clouds:Hide()
+            end
+    end
+end
+
+if(GetModConfigData("extrazoom"))then
+    AddClassPostConstruct ("screens/playerhud", playerhudPostContruct)
+end
+
+if(GetModConfigData("extracontrollerrange"))then
+    AddClassPostConstruct ("screens/playerhud", playerhudPostContruct)
+end
+
 
 local doSkeletonSpawn=function(inst)
     local skel=SpawnPrefab("skeletonspawn")
@@ -1986,11 +2027,9 @@ AddModCharacter("cleric")
 AddModCharacter("darkknight")
 AddModCharacter("wizard")
 
---[[
 AddModCharacter("ranger")
 AddModCharacter("thief")
 AddModCharacter("monk")
 AddModCharacter("necromancer")
 AddModCharacter("tinkerer")
 AddModCharacter("bard")
-]]

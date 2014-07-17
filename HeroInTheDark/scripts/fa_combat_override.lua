@@ -294,3 +294,102 @@ function Health:DoDelta(amount, overtime, cause, ignore_invincible,dmgtype)
     
     return old_healthdodelta(self,-damage, overtime, cause, ignore_invincible)
 end
+
+
+if(FA_ModUtil.GetModConfigData("extracontrollerrange"))then
+    print('overriding controller max range')
+    local PlayerController=require "components/playercontroller"
+    --sigh inline constants
+    
+    function PlayerController:UpdateControllerAttackTarget(dt)
+    if self.controllerattacktargetage then
+        self.controllerattacktargetage = self.controllerattacktargetage + dt
+    end
+    
+    --if self.controller_attack_target and self.controllerattacktargetage and self.controllerattacktargetage < .3 then return end
+
+    local heading_angle = -(self.inst.Transform:GetRotation())
+    local dir = Vector3(math.cos(heading_angle*DEGREES),0, math.sin(heading_angle*DEGREES))
+    
+    local me_pos = Vector3(self.inst.Transform:GetWorldPosition())
+    
+    
+    local min_rad = 4
+    local max_range = self.inst.components.combat:GetAttackRange() + 3
+
+    local rad = max_range
+    if self.controller_attack_target and self.controller_attack_target:IsValid() and self:CanAttackWithController(self.controller_attack_target) then
+        local distsq = self.inst:GetDistanceSqToInst(self.controller_attack_target)
+        if distsq <= max_range*max_range then
+            rad = math.min(rad, math.sqrt(distsq) * .5)
+        end
+    end
+    
+    local x,y,z = me_pos:Get()
+    local nearby_ents = TheSim:FindEntities(x,y,z, rad, must_have_attack, cant_have_attack)
+
+    local target = nil
+    local target_score = nil
+    local target_action = nil
+
+    if self.controller_attack_target then
+        table.insert(nearby_ents, self.controller_attack_target)
+    end
+
+    for k,v in pairs(nearby_ents) do
+    
+        local canattack = self:CanAttackWithController(v)
+
+        if canattack then
+
+            local px,py,pz = v.Transform:GetWorldPosition()
+            local ox,oy,oz = px - me_pos.x, py - me_pos.y, pz - me_pos.z
+            local dsq = ox*ox + oy*oy +oz*oz
+            local dist = dsq > 0 and math.sqrt(dsq) or 0
+            
+            local dot = 0
+            if dist > 0 then
+                local nx, ny, nz = ox/dist, oy/dist, oz/dist
+                dot = nx*dir.x + ny*dir.y + nz*dir.z
+            end
+            
+            if (dist < min_rad or dot > 0) and dist < max_range then
+                
+                local score = (1 + dot)* (1 / math.max(min_rad*min_rad, dsq))
+
+                if (v.components.follower and v.components.follower.leader == self.inst) or self.inst.components.combat:IsAlly(v) then
+                    score = score * .25
+                elseif v:HasTag("monster") then
+                    score = score * 4
+                end
+
+                if v.components.combat.target == self.inst then
+                    score = score * 6
+                end
+
+                if self.controller_attack_target == v then
+                    score = score * 10
+                end
+
+                if not target or target_score < score then
+                    target = v
+                    target_score = score
+                end
+            end
+        end
+    end
+
+    if not target and self.controller_target and self.controller_target:HasTag("wall") and self.controller_target.components.health and self.controller_target.components.health.currenthealth > 0 then
+        target = self.controller_target
+    end
+
+    if target ~= self.controller_attack_target then
+        self.controller_attack_target = target
+        self.controllerattacktargetage = 0
+    end
+    
+    
+
+end
+
+end
