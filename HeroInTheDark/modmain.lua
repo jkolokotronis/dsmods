@@ -369,8 +369,6 @@ Assets = {
     Asset( "IMAGE", "minimap/darkknight.tex" ),
     Asset( "ATLAS", "minimap/darkknight.xml" ), 
     Asset( "ANIM", "anim/fa_shieldpuff.zip" ),
-    Asset( "ANIM", "anim/fa_player_anims.zip" ),
---    Asset( "ANIM", "anim/player_test.zip" ),
 
     Asset( "ANIM", "anim/generating_goblin_cave.zip" ),
     Asset( "IMAGE", "images/lava3.tex" ),
@@ -387,6 +385,11 @@ Assets = {
     Asset( "ATLAS", "images/equipslots.xml" ),  
     Asset( "IMAGE", "images/fa_equipbar_bg.tex" ),
     Asset( "ATLAS", "images/fa_equipbar_bg.xml" ),  
+
+
+    Asset( "ANIM", "anim/fa_player_anims.zip" ),
+--    Asset( "ANIM", "anim/icebomb.zip" ),
+--    Asset( "ANIM", "anim/player_test.zip" ),
 }
 
 --[[
@@ -553,7 +556,8 @@ GLOBAL.FALLENLOOTTABLEMERGED=MergeMaps(GLOBAL.FALLENLOOTTABLE["tier1"],GLOBAL.FA
 local FALLENLOOTTABLE=GLOBAL.FALLENLOOTTABLE
 local FALLENLOOTTABLEMERGED=GLOBAL.FALLENLOOTTABLEMERGED
 
---[[    
+
+--[[            
     local SGWilson=require "stategraphs/SGwilson"
 
     SGWilson.states["idle"]= GLOBAL.State{
@@ -564,6 +568,8 @@ local FALLENLOOTTABLEMERGED=GLOBAL.FALLENLOOTTABLEMERGED
             inst.components.locomotor:Stop()
 
             inst.AnimState:PlayAnimation("spriter_idle", true)
+            inst.AnimState:OverrideSymbol("icebomb", "icebomb", "icebomb")
+
         end,        
     }
 ]]

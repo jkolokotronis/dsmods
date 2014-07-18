@@ -298,6 +298,11 @@ end
 
 if(FA_ModUtil.GetModConfigData("extracontrollerrange"))then
     print('overriding controller max range')
+
+
+local must_have_attack ={"HASCOMBATCOMPONENT"}
+local cant_have_attack ={"FX", "NOCLICK", "DECOR", "INLIMBO"}
+
     local PlayerController=require "components/playercontroller"
     --sigh inline constants
     
