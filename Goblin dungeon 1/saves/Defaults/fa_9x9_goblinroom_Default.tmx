@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="36" height="36" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="tiles" tilewidth="64" tileheight="64">
+  <image source="../../../tiles.png" width="512" height="128"/>
+ </tileset>
+ <layer name="BG_TILES" width="36" height="36">
+  <data encoding="base64" compression="zlib">
+   eJzt0rENADAMgLCo/x+dvQ8QJNjYPVOm3rEvV7SX/LijveTHHe0lP+5oL/lxR3vJjzvaS37c0V7y44728v8C+SsAow==
+  </data>
+ </layer>
+ <objectgroup name="FG_OBJECTS" width="36" height="36">
+  <object type="fa_dungeon_wall" x="179" y="12"/>
+  <object type="fa_dungeon_wall" x="201" y="12"/>
+  <object type="fa_dungeon_wall" x="225" y="12"/>
+  <object type="fa_dungeon_wall" x="250" y="10"/>
+  <object type="fa_dungeon_wall" x="273" y="11"/>
+  <object type="fa_dungeon_wall" x="298" y="12"/>
+  <object type="fa_dungeon_wall" x="321" y="13"/>
+  <object type="fa_dungeon_wall" x="344" y="12"/>
+  <object type="fa_dungeon_wall" x="369" y="13"/>
+  <object type="fa_dungeon_wall" x="391" y="12"/>
+  <object type="fa_dungeon_wall" x="415" y="12"/>
+  <object type="fa_dungeon_wall" x="437" y="13"/>
+  <object type="fa_dungeon_wall" x="460" y="12"/>
+  <object type="fa_dungeon_wall" x="483" y="13"/>
+  <object type="fa_dungeon_wall" x="508" y="13"/>
+  <object type="fa_dungeon_wall" x="531" y="14"/>
+  <object type="fa_dungeon_wall" x="555" y="14"/>
+  <object type="fa_dungeon_wall" x="148" y="169"/>
+  <object type="fa_dungeon_wall" x="12" y="444"/>
+  <object type="fa_dungeon_wall" x="12" y="468"/>
+  <object type="fa_dungeon_wall" x="12" y="492"/>
+  <object type="fa_dungeon_wall" x="12" y="514"/>
+  <object type="fa_dungeon_wall" x="13" y="537"/>
+  <object type="fa_dungeon_wall" x="13" y="235"/>
+  <object type="fa_dungeon_wall" x="13" y="259"/>
+  <object type="fa_dungeon_wall" x="12" y="283"/>
+  <object type="fa_dungeon_wall" x="13" y="306"/>
+  <object type="fa_dungeon_wall" x="12" y="329"/>
+  <object type="fa_dungeon_wall" x="12" y="352"/>
+  <object type="fa_dungeon_wall" x="12" y="376"/>
+  <object type="fa_dungeon_wall" x="12" y="399"/>
+  <object type="fa_dungeon_wall" x="11" y="421"/>
+  <object type="fa_dungeon_wall" x="13" y="53"/>
+  <object type="fa_dungeon_wall" x="12" y="75"/>
+  <object type="fa_dungeon_wall" x="12" y="96"/>
+  <object type="fa_dungeon_wall" x="11" y="120"/>
+  <object type="fa_dungeon_wall" x="11" y="142"/>
+  <object type="fa_dungeon_wall" x="11" y="165"/>
+  <object type="fa_dungeon_wall" x="12" y="188"/>
+  <object type="fa_dungeon_wall" x="13" y="212"/>
+  <object type="fa_dungeon_wall" x="107" y="12"/>
+  <object type="fa_dungeon_wall" x="82" y="12"/>
+  <object type="fa_dungeon_wall" x="58" y="12"/>
+  <object type="fa_dungeon_wall" x="34" y="12"/>
+  <object type="fa_dungeon_wall" x="12" y="9"/>
+  <object type="fa_dungeon_wall" x="12" y="31"/>
+  <object type="fa_dungeon_wall" x="155" y="13"/>
+  <object type="fa_dungeon_wall" x="131" y="12"/>
+  <object type="fa_dungeon_wall" x="561" y="125"/>
+  <object type="fa_dungeon_wall" x="562" y="564"/>
+  <object type="fa_dungeon_wall" x="562" y="404"/>
+  <object type="fa_dungeon_wall" x="562" y="193"/>
+  <object type="fa_dungeon_wall" x="562" y="449"/>
+  <object type="fa_dungeon_wall" x="562" y="288"/>
+  <object type="fa_dungeon_wall" x="562" y="80"/>
+  <object type="fa_dungeon_wall" x="562" y="519"/>
+  <object type="fa_dungeon_wall" x="562" y="357"/>
+  <object type="fa_dungeon_wall" x="561" y="147"/>
+  <object type="fa_dungeon_wall" x="563" y="240"/>
+  <object type="fa_dungeon_wall" x="561" y="426"/>
+  <object type="fa_dungeon_wall" x="563" y="217"/>
+  <object type="fa_dungeon_wall" x="562" y="36"/>
+  <object type="fa_dungeon_wall" x="562" y="473"/>
+  <object type="fa_dungeon_wall" x="563" y="311"/>
+  <object type="fa_dungeon_wall" x="562" y="101"/>
+  <object type="fa_dungeon_wall" x="563" y="542"/>
+  <object type="fa_dungeon_wall" x="562" y="381"/>
+  <object type="fa_dungeon_wall" x="561" y="170"/>
+  <object type="fa_dungeon_wall" x="563" y="264"/>
+  <object type="fa_dungeon_wall" x="563" y="58"/>
+  <object type="fa_dungeon_wall" x="562" y="497"/>
+  <object type="fa_dungeon_wall" x="562" y="334"/>
+  <object type="fa_dungeon_wall" x="298" y="561"/>
+  <object type="fa_dungeon_wall" x="344" y="561"/>
+  <object type="fa_dungeon_wall" x="34" y="561"/>
+  <object type="fa_dungeon_wall" x="531" y="563"/>
+  <object type="fa_dungeon_wall" x="155" y="562"/>
+  <object type="fa_dungeon_wall" x="415" y="561"/>
+  <object type="fa_dungeon_wall" x="250" y="559"/>
+  <object type="fa_dungeon_wall" x="179" y="561"/>
+  <object type="fa_dungeon_wall" x="483" y="562"/>
+  <object type="fa_dungeon_wall" x="12" y="558"/>
+  <object type="fa_dungeon_wall" x="369" y="562"/>
+  <object type="fa_dungeon_wall" x="131" y="561"/>
+  <object type="fa_dungeon_wall" x="201" y="561"/>
+  <object type="fa_dungeon_wall" x="437" y="562"/>
+  <object type="fa_dungeon_wall" x="273" y="560"/>
+  <object type="fa_dungeon_wall" x="321" y="562"/>
+  <object type="fa_dungeon_wall" x="508" y="562"/>
+  <object type="fa_dungeon_wall" x="391" y="561"/>
+  <object type="fa_dungeon_wall" x="58" y="561"/>
+  <object type="fa_dungeon_wall" x="225" y="561"/>
+  <object type="fa_dungeon_wall" x="107" y="561"/>
+  <object type="fa_dungeon_wall" x="460" y="561"/>
+  <object type="fa_dungeon_wall" x="82" y="561"/>
+ </objectgroup>
+</map>
