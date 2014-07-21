@@ -435,6 +435,8 @@ local function fa_animatedead()
     
     inst:AddComponent("health")
     inst.components.health:SetMaxHealth(PET_HEALTH)
+    inst.components.health.fa_resistances={}
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=1
     inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1
     inst.components.health:StartRegen(10,5)
 
@@ -500,6 +502,8 @@ local function fa_horrorpet()
     
     inst:AddComponent("health")
     inst.components.health:SetMaxHealth(TUNING.CRAWLINGHORROR_HEALTH)
+    inst.components.health.fa_resistances={}
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=1
     inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1
     inst.components.health:StartRegen(5,5)
 

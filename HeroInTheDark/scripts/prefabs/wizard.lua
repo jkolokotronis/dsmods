@@ -1,7 +1,7 @@
 
 local MakePlayerCharacter = require "prefabs/player_common"
 local CooldownButton = require "widgets/cooldownbutton"
-
+require "fa_constants"
 
 local assets = {
 

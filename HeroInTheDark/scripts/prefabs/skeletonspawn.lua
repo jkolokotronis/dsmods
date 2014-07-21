@@ -203,6 +203,8 @@ inst:AddComponent("eater")
 
     inst:AddComponent("health")
     inst.components.health:SetMaxHealth(PET_HEALTH)
+    inst.components.health.fa_resistances={}
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=1
     inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1
 
     inst.SoundEmitter:PlaySound("dontstarve/ghost/ghost_howl_LP", "howl")

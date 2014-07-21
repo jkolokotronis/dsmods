@@ -117,6 +117,7 @@ FA_SPELL_SCHOOLS={
 	CONJURATION="conjuration",
 	ENCHANTMENT="enchantment",
 	NECROMANCY="necromancy",
+	ILLUSION="illusion",
 	ABJURATION="abjuration",
 }
 

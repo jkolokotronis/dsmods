@@ -248,7 +248,7 @@ FA_LEVELDATA["ORC_MINES"]={
 		nomaxwell=true,
 		name="Orc Mines",
 		overrides={
-			{"world_size", 		"tiny"},
+--			{"world_size", 		"tiny"},
 			{"day", 			"onlydusk"}, 
 			{"season", 			"onlysummer"}, 
 			{"season_start", 	"summer"},
@@ -275,10 +275,8 @@ FA_LEVELDATA["DWARF_FORTRESS"]={
 		id="DWARF_FORTRESS",
 		name="Dwarf Fortress",
 		overrides={
-			{"world_size", 		"tiny"},
+			{"world_size", 		"huge"},
 			{"day", 			"onlydusk"}, 
-			{"season", 			"onlysummer"}, 
-			{"season_start", 	"summer"},
 			{"weather", 	"never"},
 			{"waves", 			"on"},
 			{"location",		"cave"},
@@ -287,24 +285,14 @@ FA_LEVELDATA["DWARF_FORTRESS"]={
 			{"traps", 			"never"},
 			{"protected", 		"never"},
 			{"start_setpeice", 	"FADungeonStart"},
-			{"start_node",		"BGWilds"},
+			{"start_node",		"FA_BGEmpty"},
 		},
 		tasks={
-			"RuinsStart",
-			"TheLabyrinth",
-			"Residential",
-			"Military",
-			"Sacred",
+			"FAEmpty",
+			"FAGoblinBossroom2",
 		},
-		numoptionaltasks = math.random(1,2),
-		optionaltasks = {
-			"MoreAltars",
-			"SacredDanger",
-			"FailedCamp",
-			"Residential2",
-			"Residential3",
-			"Military2",
-			"Sacred2",
+		required_prefabs = {
+		"fa_dungeon_exit",
 		},
 
 	}

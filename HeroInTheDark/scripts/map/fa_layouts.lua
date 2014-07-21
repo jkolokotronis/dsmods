@@ -52,10 +52,14 @@ Layouts["FAGoblinBossroom1"]=StaticLayout.Get("map/static_layouts/fa_25x25_gobli
 Layouts["FAGoblinBossroom2"]=StaticLayout.Get("map/static_layouts/fa_25x25_goblinroom_bossroom_roomB")
 Layouts["FAGoblinBossroom3"]=StaticLayout.Get("map/static_layouts/fa_25x25_goblinroom_bossroom_roomC")
 
+
+Layouts["FA9x9DefaultRoom"]=StaticLayout.Get("map/static_layouts/fa_9x9_goblinroom_Default")
+Layouts["FA10x10DefaultRoom"]=StaticLayout.Get("map/static_layouts/fa_10x10_goblinroom_Default")
+Layouts["FA25x25DefaultRoom"]=StaticLayout.Get("map/static_layouts/fa_25x25_goblinroom_Default")
+
 Layouts["FAOrcSetEvil"]=StaticLayout.Get("map/static_layouts/orc_set_evilbiome")
 Layouts["FAOrcSetHound"]=StaticLayout.Get("map/static_layouts/orc_set_houndbiome")
 Layouts["FAOrcSetRocky"]=StaticLayout.Get("map/static_layouts/orc_set_rockybiome")
---Layouts["FAGoblinBossroom"]=StaticLayout.Get("map/static_layouts/fa_goblin_bossroom_test_5")
 
 Layouts["FAcave_scrollchest_3"]=StaticLayout.Get("map/static_layouts/cave_scrollchest_3")
 Layouts["FAcave_scrollchest_3_B"]=StaticLayout.Get("map/static_layouts/cave_scrollchest_3_B")

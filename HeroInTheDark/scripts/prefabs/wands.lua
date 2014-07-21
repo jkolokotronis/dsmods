@@ -1553,6 +1553,7 @@ local function onattackenlargehumanoid(staff, target, orpos)
                --inst.components.spell.onstartfn = function() end
         inst.components.spell.onfinishfn = function(inst)
             if not inst.components.spell.target then return end
+            if(target:IsValid() and target.Transform and not (target.components.health and target.components.health:IsDead()))then
             local x,y,z=target.Transform:GetScale()
             target.Transform:SetScale(x/2,y/2,z/2)
             if(target.components.combat)then
@@ -1562,6 +1563,7 @@ local function onattackenlargehumanoid(staff, target, orpos)
                 target.components.locomotor.runspeed=target.components.locomotor.runspeed/ENLARGE_HUMANOID_SPEED
             end
             inst.components.spell.target.fa_enlarge = nil
+            end
         end
         inst.components.spell.resumefn = function() end
         inst.components.spell.removeonfinish = true
@@ -1615,15 +1617,17 @@ local function onattackreducehumanoid(staff, target, orpos)
                --inst.components.spell.onstartfn = function() end
         inst.components.spell.onfinishfn = function(inst)
             if not inst.components.spell.target then return end
-            local x,y,z=target.Transform:GetScale()
-            target.Transform:SetScale(x*2,y*2,z*2)
-            if(target.components.combat)then
-                target.components.combat.damagemultiplier=target.components.combat.damagemultiplier/REDUCE_HUMANOID_MULT
-            end        
-            if(target.components.locomotor)then
-                target.components.locomotor.runspeed=target.components.locomotor.runspeed/REDUCE_HUMANOID_SPEED
-            end        
-            inst.components.spell.target.fa_reduce = nil
+            if(target:IsValid() and target.Transform and not (target.components.health and target.components.health:IsDead()))then
+                local x,y,z=target.Transform:GetScale()
+                target.Transform:SetScale(x*2,y*2,z*2)
+                if(target.components.combat)then
+                    target.components.combat.damagemultiplier=target.components.combat.damagemultiplier/REDUCE_HUMANOID_MULT
+                end        
+                if(target.components.locomotor)then
+                    target.components.locomotor.runspeed=target.components.locomotor.runspeed/REDUCE_HUMANOID_SPEED
+                end        
+              inst.components.spell.target.fa_reduce = nil
+            end
         end
         inst.components.spell.resumefn = function() end
         inst.components.spell.removeonfinish = true
