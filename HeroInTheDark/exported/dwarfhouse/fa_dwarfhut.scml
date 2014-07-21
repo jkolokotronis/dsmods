@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
+    <folder id="0">
+        <file id="0" name="Zwerghaus_0004_day-closed-door.png" width="658" height="449" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="Zwerghaus_0003_day-open-door.png" width="666" height="541" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="Zwerghaus_0002_night-closed-door.png" width="658" height="465" pivot_x="0" pivot_y="1"/>
+        <file id="3" name="Zwerghaus_0001_night-open-door.png" width="666" height="541" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="fa_dwarfhut">
+        <animation id="0" name="light_closed" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="Zwerghaus_0004_day-closed-door">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-354" y="354"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="0" file="0" x="-354" y="354"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="light_open" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="Zwerghaus_0004_day-closed-door">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-355" y="451"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="2" name="dark_closed" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="Zwerghaus_0004_day-closed-door">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="-354" y="364"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="3" name="dark_open" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="Zwerghaus_0004_day-closed-door">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" x="-349" y="438"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

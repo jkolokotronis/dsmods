@@ -153,10 +153,12 @@
         <file id="0" name="lantern_overlay/lantern_overlay-0.png" width="344" height="368" pivot_x="0.306249" pivot_y="0.471673"/>
     </folder>
     <folder id="19" name="swap_face">
-        <file id="0" name="swap_face/swap_face-0.png" width="3" height="3" pivot_x="0.536334" pivot_y="0.180721"/>
+		<file id="0" name="swap_face/swap_face-0.png" width="3" height="3" pivot_x="0.536334" pivot_y="0.580721" />
     </folder>
     <folder id="20" name="hairfront">
-        <file id="0" name="hairfront/hairfront-0.png" width="3" height="3" pivot_x="0.536334" pivot_y="0.180721"/>
+		<file id="0" name="hairfront/hairfront-0.png" width="172" height="188" pivot_x="0.536334" pivot_y="0.580721" />
+		<file id="1" name="hairfront/hairfront-1.png" width="136" height="188" pivot_x="0.299629" pivot_y="0.683912" />
+		<file id="2" name="hairfront/hairfront-2.png" width="172" height="188" pivot_x="0.536334" pivot_y="0.580721" />
     </folder>
     <folder id="21" name="tail">
         <file id="0" name="tail/tail-0.png" width="96" height="32" pivot_x="0.806245" pivot_y="0.509391" />
