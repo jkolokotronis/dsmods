@@ -1228,11 +1228,9 @@ AddPrefabPostInit("ghost",function(inst)
     inst:AddTag("fa_evil")
 end)
 
-
-local Dapperness=require "components/dapperness"
-local dapperness_getdapperness_def=Dapperness.GetDapperness
---AddComponentPostInit("dapperness", function(component,inst) 
-    function Dapperness:GetDapperness(owner)
+local function dappernessPostContruct(component)
+    local dapperness_getdapperness_def=component.GetDapperness
+    function component:GetDapperness(owner)
         local d=dapperness_getdapperness_def(self,owner)
         if(owner and owner:HasTag("player") and owner.prefab=="cleric" and d<0)then
           --  print("got in dapperness nerf")
@@ -1240,10 +1238,12 @@ local dapperness_getdapperness_def=Dapperness.GetDapperness
         end
         return d
     end
---end)
+end
 
-
-
+AddClassPostConstruct("components/dapperness",dappernessPostContruct)
+if(FA_DLCACCESS)then
+    AddClassPostConstruct("components/equippable",dappernessPostContruct)
+end
 --AddComponentPostInit("armor",function(component,inst)
 AddClassPostConstruct("components/armor",function(component)
     component.fa_resistances=component.fa_resistances or {}
