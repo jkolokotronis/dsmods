@@ -1,8 +1,6 @@
 require "recipes"
 local Assets =
 {
-    Asset("ATLAS", "images/inventoryimages/fa_bottles.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_bottles.tex" ),
     Asset("ANIM", "anim/fa_bottles.zip"),
 	Asset("ANIM", "anim/frog.zip"),
 	Asset("SOUND", "sound/frog.fsb"),
@@ -437,7 +435,27 @@ local function fnb(Sim)
 
 end
 
+
+local function curepoison(inst,data)
+	local eater=data.eater
+	if(eater and eater.fa_poison)then
+        eater.fa_poison.components.spell:OnFinished()
+	end
+end
+
+local function fncurepoison(Sim)
+
+	local inst = common("bottle_light_green")
+	inst:ListenForEvent("oneaten",curepoison)
+
+    return inst
+
+end
+
 return Prefab( "common/inventory/fa_bottle_r", fnr, Assets),
 	Prefab( "common/inventory/fa_bottle_y", fny, Assets),
 	Prefab( "common/inventory/fa_bottle_g", fng, Assets),
-	Prefab( "common/inventory/fa_bottle_b", fnb, Assets)
+	Prefab( "common/inventory/fa_bottle_b", fnb, Assets),
+	Prefab( "common/inventory/fa_bottle_curepoison", fncurepoison, Assets)
+
+	

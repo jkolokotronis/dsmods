@@ -39,13 +39,13 @@ local ig_start=function(inst, target, variables)
     end
 end
 
-function FA_InspireGreatnessSpellStart( reader,timer)
+local function FA_InspireGreatnessSpellStart( reader,timer)
 
     if(timer==nil or timer<=0)then return false end
 
     if reader.fa_inspiregreatness then
         reader.fa_inspiregreatness.components.spell.lifetime = 0
-        target.components.health.fa_temphp=IG_HP_BOOST
+        reader.components.health.fa_temphp=IG_HP_BOOST
 --        reader.fa_inspiregreatness.components.spell:ResumeSpell()
         return true
     else
@@ -64,7 +64,7 @@ function FA_InspireGreatnessSpellStart( reader,timer)
             return
         end
         reader.components.health:DoDelta(0)
-        target.components.health.fa_dodgechance=IG_DODGE_BOOST-target.components.health.fa_dodgechance
+        reader.components.health.fa_dodgechance=IG_DODGE_BOOST-reader.components.health.fa_dodgechance
         inst.components.spell.target.fa_inspiregreatness = nil
     end
 
@@ -90,7 +90,7 @@ local ia_start=function(inst, target, variables)
     end
 end
 
-function FA_InspireAgilitySpellStart( reader,timer)
+local function FA_InspireAgilitySpellStart( reader,timer)
 
     if(timer==nil or timer<=0)then return false end
 
@@ -138,7 +138,7 @@ local ic_start=function(inst)
     end
 end
 
-function FA_InspireCourageSpellStart( reader,timer)
+local function FA_InspireCourageSpellStart( reader,timer)
 
     if(timer==nil or timer<=0)then return false end
 
@@ -189,7 +189,7 @@ local dm_start=function(inst)
     end
 end
 
-function DivineMightSpellStart( reader,timer)
+local function DivineMightSpellStart( reader,timer)
     if(timer==nil or timer<=0)then return false end
 
     if reader.fa_divinemight then
@@ -483,7 +483,7 @@ local longstrider_start=function(inst, target, variables)
     end
 end
 
-function FA_ProtEvilSpellStart(reader,timer)
+local function FA_ProtEvilSpellStart(reader,timer)
     if(timer==nil or timer<=0)then return false end
 
     if reader.fa_protevil then
@@ -518,7 +518,7 @@ end
 
 FA_BuffUtil.ProtEvil=FA_ProtEvilSpellStart
 
-function FA_LongstriderSpellStart( reader,timer)
+local function FA_LongstriderSpellStart( reader,timer)
 
     if(timer==nil or timer<=0)then return false end
 
@@ -569,7 +569,7 @@ local haste_start=function(inst)
     end
 end
 
-function HasteSpellStart( reader,timer)
+local function HasteSpellStart( reader,timer)
     if(timer==nil or timer<=0)then return false end
     
     if reader.fa_haste then
@@ -611,7 +611,7 @@ end
 
 FA_BuffUtil.Haste=HasteSpellStart
 
-function InvisibilitySpellStart( reader,timer)
+local function InvisibilitySpellStart( reader,timer)
     if(timer==nil or timer<=0)then return false end
     
     if(reader.invisibilityTimer) then
@@ -641,6 +641,7 @@ function InvisibilitySpellStart( reader,timer)
 end
 
 FA_BuffUtil.Invisibility=InvisibilitySpellStart
+
 
 function LichSpellStart(reader,timer)
 

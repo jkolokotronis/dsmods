@@ -53,6 +53,12 @@ local ItemTile = require "widgets/itemtile"
 local FA_WarClock = require "widgets/fa_warclock"
 local FA_BuffBar=require "widgets/fa_buffbar"
 
+local FA_CharRenameScreen=require "screens/fa_charrenamescreen"
+local FA_SpellBookScreen=require "screens/fa_spellbookscreen"
+local StatusDisplays = require "widgets/statusdisplays"
+local ImageButton = require "widgets/imagebutton"
+local Levels=require("map/levels")
+
 require "constants"
 require "fa_constants"
 require "widgets/text"
@@ -68,11 +74,10 @@ require "fa_inventorybar_override"
 require "fa_combat_override"
 require "fa_hounded_override"
 require "fa_behavior_override"
+require "fa_recipes"
 
 --modimport "spelleffects.lua"
 
-local FA_CharRenameScreen=require "screens/fa_charrenamescreen"
-local FA_SpellBookScreen=require "screens/fa_spellbookscreen"
 --
 local Ingredient = GLOBAL.Ingredient
 local RECIPETABS = GLOBAL.RECIPETABS
@@ -89,9 +94,6 @@ local TheFrontEnd=GLOBAL.TheFrontEnd
 
 local FA_DAMAGETYPE=GLOBAL.FA_DAMAGETYPE
 
-local StatusDisplays = require "widgets/statusdisplays"
-local ImageButton = require "widgets/imagebutton"
-local Levels=require("map/levels")
 
 --it should be fixed now
 --require "repairabledescriptionfix"
@@ -122,9 +124,13 @@ PrefabFiles = {
     "fa_scribescrolls",
     "fa_summons",
     "fa_spell_prefabs",
+    "fa_skins",
     "cheats",
+    "fa_weaponupgrades",
     "poisonspider",
+    "poisonspider_gland",
     "poisonspiderden",
+    "poisonspiderqueen",
     "poisonspidereggsack",
     "spellprojectiles",
     "natureshealing",
@@ -138,8 +144,6 @@ PrefabFiles = {
     "fizzlepet",
     "fizzlemanipulator",
     "rjk1100",
-
-
     "dksword",
     "holysword",
     "thieftraps",
@@ -157,9 +161,7 @@ PrefabFiles = {
     "shields",
     "armor_fire",
     "armor_frost",
-
     "fa_totems",
-
     "dagger",
     "fa_lightningsword",
     "flamingsword",
@@ -316,16 +318,27 @@ Assets = {
 
 
 
-  Asset("ATLAS", "images/inventoryimages/boneshield.xml"),
-  Asset("ATLAS", "images/inventoryimages/rockshield.xml"),
-  Asset("ATLAS", "images/inventoryimages/woodshield.xml"),
-  Asset("ATLAS", "images/inventoryimages/marbleshield.xml"),
-  Asset("ATLAS", "images/inventoryimages/reflectshield.xml"),
-  Asset("IMAGE", "images/inventoryimages/boneshield.tex"),
-  Asset("IMAGE", "images/inventoryimages/rockshield.tex"),
-  Asset("IMAGE", "images/inventoryimages/woodshield.tex"),
-  Asset("IMAGE", "images/inventoryimages/marbleshield.tex"),
-  Asset("IMAGE", "images/inventoryimages/reflectshield.tex"),
+    Asset("ATLAS", "images/inventoryimages/boneshield.xml"),
+    Asset("ATLAS", "images/inventoryimages/rockshield.xml"),
+    Asset("ATLAS", "images/inventoryimages/woodshield.xml"),
+    Asset("ATLAS", "images/inventoryimages/marbleshield.xml"),
+    Asset("ATLAS", "images/inventoryimages/reflectshield.xml"),
+    Asset("IMAGE", "images/inventoryimages/boneshield.tex"),
+    Asset("IMAGE", "images/inventoryimages/rockshield.tex"),
+    Asset("IMAGE", "images/inventoryimages/woodshield.tex"),
+    Asset("IMAGE", "images/inventoryimages/marbleshield.tex"),
+    Asset("IMAGE", "images/inventoryimages/reflectshield.tex"),
+    Asset("ATLAS", "images/inventoryimages/poisonspidergland.xml"),
+    Asset("IMAGE", "images/inventoryimages/poisonspidergland.tex"),
+    Asset("ATLAS", "images/inventoryimages/poisonspider_gland_salve.xml"),
+    Asset("IMAGE", "images/inventoryimages/poisonspider_gland_salve.tex"),
+    Asset("ATLAS", "images/inventoryimages/fa_goblinskin.xml"),
+    Asset("IMAGE", "images/inventoryimages/fa_goblinskin.tex"),
+    Asset("ATLAS", "images/inventoryimages/fa_wand_case.xml"),
+    Asset("IMAGE", "images/inventoryimages/fa_wand_case.tex"),
+    Asset("ATLAS", "images/inventoryimages/fa_scroll_case.xml"),
+    Asset("IMAGE", "images/inventoryimages/fa_scroll_case.tex"),
+
 
     Asset( "IMAGE", "images/inventoryimages/fa_scroll_conjuration.tex" ),
     Asset( "ATLAS", "images/inventoryimages/fa_scroll_conjuration.xml" ),
@@ -343,6 +356,8 @@ Assets = {
     Asset( "ATLAS", "images/inventoryimages/fa_scroll_transmutation.xml" ),
     Asset( "IMAGE", "images/inventoryimages/fa_scroll_abjuration.tex" ),
     Asset( "ATLAS", "images/inventoryimages/fa_scroll_abjuration.xml" ),
+    Asset("ATLAS", "images/inventoryimages/fa_bottles.xml"),
+    Asset("IMAGE", "images/inventoryimages/fa_bottles.tex" ),
 
     Asset( "IMAGE", "minimap/goblin.tex" ),
     Asset( "ATLAS", "minimap/goblin.xml" ),  

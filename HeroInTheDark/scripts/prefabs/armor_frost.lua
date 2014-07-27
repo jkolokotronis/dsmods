@@ -38,7 +38,7 @@ local function OnBlocked(owner,data)
 end
 
 local function onequip(inst, owner) 
---    owner.AnimState:OverrideSymbol("swap_body", "armor_marble", "swap_body")
+    owner.AnimState:OverrideSymbol("swap_body", "armor_frost", "swap_body")
      inst:ListenForEvent("attacked", OnBlocked,owner)
     inst:ListenForEvent("blocked",OnBlocked,owner)
 end

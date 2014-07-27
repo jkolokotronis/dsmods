@@ -6,11 +6,11 @@ local assets=
 
 local prefabs =
 {
-
+    "fa_orcskin"
 }
 local YELL_TIMEOUT=30
-local ORC_HEALTH=500
-local ORC_DAMAGE=40
+local ORC_HEALTH=850
+local ORC_DAMAGE=60
 local ORC_ATTACK_PERIOD=2
 local ORC_RUN_SPEED=5
 local ORC_WALK_SPEED=3
@@ -127,6 +127,8 @@ local function fn()
     inst:AddComponent("lootdropper")
     inst.components.lootdropper:SetLoot({ "monstermeat"})
     inst.components.lootdropper:AddChanceLoot("fa_scroll_12",0.07)
+    inst.components.lootdropper:AddChanceLoot("fa_orcskin",0.03)
+
     inst:AddComponent("inspectable")
     
     inst:ListenForEvent("attacked", OnAttacked)

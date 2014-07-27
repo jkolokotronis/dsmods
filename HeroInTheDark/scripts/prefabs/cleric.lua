@@ -98,7 +98,7 @@ local function enableL1spells()
             school=FA_SPELL_SCHOOLS.NECROMANCY,
         },
         {
-            recname="spell_divinemight",
+            recname="fa_spell_divinemight",
             school=FA_SPELL_SCHOOLS.EVOCATION,
         },
         {
@@ -128,8 +128,7 @@ local function enableL1spells()
     r.image="book_gardening.tex"
     local r=Recipe("fa_spell_protevil", {Ingredient("houndstooth", 2), Ingredient("goldnugget", 6), Ingredient("healingsalve", 2)}, RECIPETABS.SPELLS,TECH.NONE)
     r.image="book_gardening.tex"
-
-    local r=Recipe("spell_divinemight", {Ingredient("meat", 5), Ingredient("monstermeat", 5), Ingredient("papyrus", 8)}, RECIPETABS.SPELLS, TECH.NONE)
+    local r=Recipe("fa_spell_divinemight", {Ingredient("meat", 5), Ingredient("monstermeat", 5), Ingredient("papyrus", 8)}, RECIPETABS.SPELLS, TECH.NONE)
     r.image="book_brimstone.tex"
 end
 local function enableL2spells()
@@ -167,9 +166,6 @@ local function enableL2spells()
     r.image="book_gardening.tex"
 
 
-
-    local r=Recipe("spell_light", {Ingredient("fireflies", 2),Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, RECIPETABS.SPELLS, {MAGIC = 2})
-    r.image="book_gardening.tex" 
 end
 local function enableL3spells()
     GetPlayer().fa_spellcraft.spells[3]={

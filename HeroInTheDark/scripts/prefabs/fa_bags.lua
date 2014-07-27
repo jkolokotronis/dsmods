@@ -4,6 +4,8 @@ local assets=
 	Asset("ANIM", "anim/swap_krampus_sack.zip"),
   Asset("ATLAS", "images/inventoryimages/woodshield.xml"),
   Asset("IMAGE", "images/inventoryimages/woodshield.tex"),
+    Asset("ANIM", "anim/fa_scroll_case.zip"),
+    Asset("ANIM", "anim/fa_wand_case.zip"),
 }
 
 
@@ -96,6 +98,11 @@ local function scrollcase()
     inst.components.container.side_widget = false    
     inst.components.container.type = "fa_scrollcase"
     inst.components.container.itemtestfn = function(cnt, item, slot) return tagitemtest(item,{"book","scroll"}) end
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_scroll_case.xml"
+    inst.components.inventoryitem.imagename="fa_scroll_case"
+    inst.AnimState:SetBank("fa_scroll_case")
+    inst.AnimState:SetBuild("fa_scroll_case")
+    inst.AnimState:PlayAnimation("idle")
     return inst
 end
 
@@ -107,6 +114,11 @@ local function wandcase()
     inst.components.container.side_widget = false    
     inst.components.container.type = "fa_wandcase"
     inst.components.container.itemtestfn = function(cnt, item, slot) return tagitemtest(item,{"wand","staff"}) end
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_wand_case.xml"
+    inst.components.inventoryitem.imagename="fa_wand_case"
+    inst.AnimState:SetBank("icepack")
+    inst.AnimState:SetBuild("fa_wand_case")
+    inst.AnimState:PlayAnimation("anim")
     return inst
 end
 
@@ -132,5 +144,9 @@ end
 return Prefab( "common/inventory/fa_dorf_bag", dorfbag, assets),
 Prefab( "common/inventory/fa_scrollcase", scrollcase, assets),
 Prefab( "common/inventory/fa_wandcase", wandcase, assets),
+Prefab( "common/inventory/fa_tinyscrollcase", scrollcase, assets),
+Prefab( "common/inventory/fa_tinywandcase", wandcase, assets),
+Prefab( "common/inventory/fa_smallscrollcase", scrollcase, assets),
+Prefab( "common/inventory/fa_smallwandcase", wandcase, assets),
 Prefab( "common/inventory/fa_potioncase", potioncase, assets),
 Prefab( "common/inventory/fa_foodbag", foodbag, assets)

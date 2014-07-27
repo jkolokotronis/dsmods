@@ -59,6 +59,7 @@ FA_MOBXP_TABLE={
 	deerclops={default=500},
 	minotaur={default=700},
 	spiderqueen={default=200},
+	poisonspiderqueen={default=300},
 	beehive={default=50},
 	spiderden={default=50},
 	spiderden_2={default=100},

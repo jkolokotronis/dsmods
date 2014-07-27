@@ -20,7 +20,8 @@ local warrior_assets =
     
 local prefabs =
 {
-	"spidergland",
+	"poisonspidergland",
+    "spidergland",
     "monstermeat",
     "silk",
     "fa_poisonfx"
@@ -115,12 +116,28 @@ end
 local function OnAttackOther(spider, data)
   local target=data.target
   if(target and target.components.health and target.components.combat and not target.components.health:IsDead())then
+
+    if target.fa_poison then
+        if(target.fa_poison.strength and target.fa_poison.strength==POISON_DAMAGE)then
+            print("resetting poison timer")
+            target.fa_poison.components.spell.lifetime = 0
+        --        reader.fa_inspiregreatness.components.spell:ResumeSpell()
+            return true
+        elseif(target.fa_poison.strength and target.fa_poison.strength>POISON_DAMAGE)then
+            print("don't overwrite stronger poison")
+            return true
+        else
+            target.fa_poison.components.spell:OnFinish() 
+        end
+    end
+
       local inst = CreateEntity()
       inst.persists=false
       local caster=spider
       local trans = inst.entity:AddTransform()
 
     local spell = inst:AddComponent("spell")
+    inst.strength=POISON_DAMAGE
     inst.components.spell.spellname = "fa_poison"
     inst.components.spell.duration = POISON_LENGTH
     inst.components.spell.fn = dopoison
@@ -209,7 +226,8 @@ local function create_common(Sim)
     inst:AddComponent("lootdropper")
     inst.components.lootdropper:AddRandomLoot("monstermeat", 1)
     inst.components.lootdropper:AddRandomLoot("silk", .5)
-    inst.components.lootdropper:AddRandomLoot("spidergland", .5)
+--    inst.components.lootdropper:AddRandomLoot("spidergland", .4)
+    inst.components.lootdropper:AddRandomLoot("poisonspidergland", .1)
     inst.components.lootdropper.numrandomloot = 1
     
     inst:AddComponent("follower")

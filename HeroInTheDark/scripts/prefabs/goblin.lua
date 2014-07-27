@@ -59,6 +59,7 @@ local assets_king={
 
 local prefabs =
 {
+    "fa_goblinskin",
 "hat_goblinking",
 "hat_pot",
 "firewallwand",
@@ -347,6 +348,8 @@ local function common()
 
     inst:AddComponent("lootdropper")
     inst.components.lootdropper:AddChanceLoot( "monstermeat",0.5)
+    inst.components.lootdropper:AddChanceLoot( "fa_goblinskin",0.05)
+
     inst.components.lootdropper:AddFallenLootTable(LOOTTABLE,WEIGHT,0.1)
 
     inst:AddComponent("inspectable")

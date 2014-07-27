@@ -120,7 +120,7 @@ local function AttemptMakeQueen(inst)
     local num_dens = 0
     
     for k,v in pairs(ents) do
-        if v:HasTag("spiderden") or v.prefab == "spiderqueen" then
+        if v:HasTag("spiderden") or v:HasTag("spiderqueen") then
             num_dens = num_dens + 1
         end
         
@@ -140,7 +140,7 @@ local function AttemptMakeQueen(inst)
     inst:DoTaskInTime(15*FRAMES, function() inst.SoundEmitter:PlaySound("dontstarve/creatures/spiderqueen/legburst") end)
     
     inst:DoTaskInTime(35*FRAMES, function() 
-        local queen = SpawnPrefab("spiderqueen")
+        local queen = SpawnPrefab("poisonspiderqueen")
         local pt = Vector3(inst.Transform:GetWorldPosition())
         local rad = 1.25
         local angle = math.random(2*PI)

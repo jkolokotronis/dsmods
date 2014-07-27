@@ -54,15 +54,6 @@ local HEALTH_PER_LEVEL=5
 local SANITY_PER_LEVEL=1
 
 
-
-STRINGS.NAMES.SPELL_LIGHT = "Banish Darkness"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_LIGHT = "Banish Darkness"
-STRINGS.RECIPE_DESC.SPELL_LIGHT = "Banish Darkness"
-
-STRINGS.NAMES.SPELL_DIVINEMIGHT = "Divine Might"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPELL_DIVINEMIGHT = "Divine Might"
-STRINGS.RECIPE_DESC.SPELL_DIVINEMIGHT = "Divine Might"
-
 local onloadfn = function(inst, data)
     inst.lohcooldowntimer=data.lohcooldowntimer
     inst.ddcooldowntimer=data.ddcooldowntimer
@@ -78,11 +69,11 @@ local onsavefn = function(inst, data)
 end
 
 local function enableL1spells()
-    local r=Recipe("spell_divinemight", {Ingredient("meat", 5), Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, RECIPETABS.SPELLS, {SCIENCE = 0, MAGIC = 0, ANCIENT = 0})
+    local r=Recipe("fa_spell_divinemight", {Ingredient("meat", 5), Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, RECIPETABS.SPELLS, {SCIENCE = 0, MAGIC = 0, ANCIENT = 0})
     r.image="book_brimstone.tex"
 end
 local function enableL2spells()
-    local r=Recipe("spell_light", {Ingredient("fireflies", 2),Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, RECIPETABS.SPELLS, {MAGIC = 2})
+    local r=Recipe("fa_spell_banishdarkness", {Ingredient("fireflies", 2),Ingredient("cutgrass", 5), Ingredient("rocks", 10)}, RECIPETABS.SPELLS, {MAGIC = 2})
     r.image="book_gardening.tex" 
 end
 local function enableL3spells()
