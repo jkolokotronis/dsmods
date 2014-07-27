@@ -119,6 +119,7 @@ FA_SPELL_SCHOOLS={
 	NECROMANCY="necromancy",
 	ILLUSION="illusion",
 	ABJURATION="abjuration",
+	DIVINATION="divination",
 }
 
 --just in case

@@ -2,10 +2,10 @@ local assets=
 {
 	Asset("ANIM", "anim/backpack.zip"),
 	Asset("ANIM", "anim/swap_krampus_sack.zip"),
-  Asset("ATLAS", "images/inventoryimages/woodshield.xml"),
-  Asset("IMAGE", "images/inventoryimages/woodshield.tex"),
     Asset("ANIM", "anim/fa_scroll_case.zip"),
     Asset("ANIM", "anim/fa_wand_case.zip"),
+    Asset("ANIM", "anim/ui_chest_3x2.zip"),
+    Asset("ANIM", "anim/ui_chester_shadow_3x4.zip"),
 }
 
 
@@ -39,6 +39,46 @@ local function krampus_sized(inst)
     --inst.components.container.widgetpos = Vector3(645,-85,0)
     inst.components.container.widgetpos = Vector3(-100,-75,0)
     inst.components.container.side_widget = true    
+end
+
+local function f3x2(inst)
+
+local slotpos = {}
+
+for y = 1, 0, -1 do
+    for x = 0, 2 do
+        table.insert(slotpos, Vector3(80*x-80*2+80, 80*y-40,0))
+    end
+end
+
+    inst.components.container:SetNumSlots(#slotpos)
+    inst.components.container.widgetslotpos = slotpos
+    inst.components.container.widgetanimbank = "ui_chest_3x2"
+    inst.components.container.widgetanimbuild = "ui_chest_3x2"
+    --inst.components.container.widgetpos = Vector3(645,-85,0)
+    inst.components.container.widgetpos = Vector3(-100,-75,0)
+    inst.components.container.side_widget = true    
+
+end
+
+local function f3x4(inst)
+
+local slotpos_3x4 = {}
+
+for y = 2.5, -0.5, -1 do
+    for x = 0, 2 do
+        table.insert(slotpos_3x4, Vector3(75*x-75*2+75, 75*y-75*2+75,0))
+    end
+end
+
+    inst.components.container:SetNumSlots(#slotpos_3x4)
+    inst.components.container.widgetslotpos = slotpos_3x4
+    inst.components.container.widgetanimbank = "ui_chester_shadow_3x4"
+    inst.components.container.widgetanimbuild = "ui_chester_shadow_3x4"
+    inst.components.container.widgetpos = Vector3(0,220,0)
+--    inst.components.container.widgetpos_controller = Vector3(0,220,0)
+    inst.components.container.side_align_tip = 160  
+
 end
 
 
@@ -122,6 +162,73 @@ local function wandcase()
     return inst
 end
 
+local function tinyscrollcase()
+    local inst=fn()
+    f3x2(inst)
+
+    inst.components.container.widgetpos = Vector3(0,50,0)
+    inst.components.container.side_align_tip = 100
+    inst.components.container.side_widget = false    
+    inst.components.container.type = "fa_scrollcase"
+    inst.components.container.itemtestfn = function(cnt, item, slot) return tagitemtest(item,{"book","scroll"}) end
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_scroll_case.xml"
+    inst.components.inventoryitem.imagename="fa_scroll_case"
+    inst.AnimState:SetBank("fa_scroll_case")
+    inst.AnimState:SetBuild("fa_scroll_case")
+    inst.AnimState:PlayAnimation("idle")
+    return inst
+end
+
+local function tinywandcase()
+    local inst=fn()
+    f3x2(inst)
+    inst.components.container.widgetpos = Vector3(150,50,0)
+    inst.components.container.side_align_tip = 100
+    inst.components.container.side_widget = false    
+    inst.components.container.type = "fa_wandcase"
+    inst.components.container.itemtestfn = function(cnt, item, slot) return tagitemtest(item,{"wand","staff"}) end
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_wand_case.xml"
+    inst.components.inventoryitem.imagename="fa_wand_case"
+    inst.AnimState:SetBank("icepack")
+    inst.AnimState:SetBuild("fa_wand_case")
+    inst.AnimState:PlayAnimation("anim")
+    return inst
+end
+
+local function smallscrollcase()
+    local inst=fn()
+    f3x4(inst)
+
+    inst.components.container.widgetpos = Vector3(0,50,0)
+    inst.components.container.side_align_tip = 100
+    inst.components.container.side_widget = false    
+    inst.components.container.type = "fa_scrollcase"
+    inst.components.container.itemtestfn = function(cnt, item, slot) return tagitemtest(item,{"book","scroll"}) end
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_scroll_case.xml"
+    inst.components.inventoryitem.imagename="fa_scroll_case"
+    inst.AnimState:SetBank("fa_scroll_case")
+    inst.AnimState:SetBuild("fa_scroll_case")
+    inst.AnimState:PlayAnimation("idle")
+    return inst
+end
+
+local function smallwandcase()
+    local inst=fn()
+    f3x4(inst)
+    inst.components.container.widgetpos = Vector3(150,50,0)
+    inst.components.container.side_align_tip = 100
+    inst.components.container.side_widget = false    
+    inst.components.container.type = "fa_wandcase"
+    inst.components.container.itemtestfn = function(cnt, item, slot) return tagitemtest(item,{"wand","staff"}) end
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_wand_case.xml"
+    inst.components.inventoryitem.imagename="fa_wand_case"
+    inst.AnimState:SetBank("icepack")
+    inst.AnimState:SetBuild("fa_wand_case")
+    inst.AnimState:PlayAnimation("anim")
+    return inst
+end
+
+
 local function potioncase()
     local inst=fn()
     krampus_sized(inst)
@@ -144,9 +251,9 @@ end
 return Prefab( "common/inventory/fa_dorf_bag", dorfbag, assets),
 Prefab( "common/inventory/fa_scrollcase", scrollcase, assets),
 Prefab( "common/inventory/fa_wandcase", wandcase, assets),
-Prefab( "common/inventory/fa_tinyscrollcase", scrollcase, assets),
-Prefab( "common/inventory/fa_tinywandcase", wandcase, assets),
-Prefab( "common/inventory/fa_smallscrollcase", scrollcase, assets),
-Prefab( "common/inventory/fa_smallwandcase", wandcase, assets),
+Prefab( "common/inventory/fa_tinyscrollcase", tinyscrollcase, assets),
+Prefab( "common/inventory/fa_tinywandcase", tinywandcase, assets),
+Prefab( "common/inventory/fa_smallscrollcase", smallscrollcase, assets),
+Prefab( "common/inventory/fa_smallwandcase", smallwandcase, assets),
 Prefab( "common/inventory/fa_potioncase", potioncase, assets),
 Prefab( "common/inventory/fa_foodbag", foodbag, assets)

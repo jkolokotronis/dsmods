@@ -291,7 +291,7 @@ local function enableL6spells()
     GetPlayer().fa_spellcraft.spells[6]={
         {
             recname="spell_calldiety",
-            school=FA_SPELL_SCHOOLS.ABJURATION,
+            school=FA_SPELL_SCHOOLS.DIVINATION,
         },
     }
     local  r=Recipe("spell_calldiety", {Ingredient("redgem", 4), Ingredient("cutgrass", 5), Ingredient("rocks", 20)}, RECIPETABS.SPELLS,TECH.NONE)
