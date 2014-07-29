@@ -332,6 +332,7 @@ function onattackflamestrike(inst, target, orpos)--reader)
                     end
                 end
             end
+    inst.components.finiteuses:Use(1)
     return true
 end
 

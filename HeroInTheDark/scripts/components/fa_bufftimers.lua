@@ -51,7 +51,10 @@ function FA_BuffTimers:OnLoad(data)
 end
 
 function FA_BuffTimers:AddBuff(id,name,fn,timer)
-    self.buff_timers[id]={}
+    if(not self.buff_timers[id])then
+        self.buff_timers[id]={}
+    end
+
     self.buff_timers[id].name=name
     self.buff_timers[id].fname=fn
     self.buff_timers[id].cooldowntimer=timer

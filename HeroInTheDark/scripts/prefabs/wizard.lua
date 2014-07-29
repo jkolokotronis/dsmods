@@ -331,7 +331,7 @@ local function enableL3spells()
         },
         {
             recname="fa_spell_haltundeadmass",
-            school=FA_SPELL_SCHOOLS.EVOCATION,
+            school=FA_SPELL_SCHOOLS.NECROMANCY,
         },
         {
             recname="fa_spell_haste",

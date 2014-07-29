@@ -46,14 +46,19 @@ function FA_BuffBar:RegisterBuffs(timers)
 end
 
 function FA_BuffBar:AddBuff(k,buff)
-	local btn=FA_BuffButton(self.owner)
-	btn:SetText(buff.name)
-    self.root:AddChild(btn)
-	local xcount=math.floor(self.width/self.buttonwidth)
-	local i=GetTableSize(self.buttons)
-	btn:SetPosition(-(i%xcount)*self.buttonwidth,-math.floor(i/xcount),0)
+	local btn=nil
+	if(not self.buttons[k])then
+		btn=FA_BuffButton(self.owner)
+		self.root:AddChild(btn)
+		local xcount=math.floor(self.width/self.buttonwidth)
+		local i=GetTableSize(self.buttons)
+		btn:SetPosition(-(i%xcount)*self.buttonwidth,-math.floor(i/xcount),0)
+	    self.buttons[k]=btn
+    else
+    	btn=self.buttons[k]
+    end
+    btn:SetText(buff.name)
     btn.cooldowntext:SetString(""..math.floor(buff.cooldowntimer))
-    self.buttons[k]=btn
 	buff.btn=btn
 end
 

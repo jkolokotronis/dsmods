@@ -2,6 +2,7 @@ local CooldownButton = require "widgets/cooldownbutton"
 
 local BB_RADIUS=9
 local BB_DAMAGE=30
+local BB_PERIOD=2
 local DM_DAMAGE_MULT_BOOST=1.0
 local IC_DAMAGE_MULT_BOOST=0.2
 local DM_HP_BOOST=100
@@ -374,6 +375,7 @@ local function apply_bb_damage(reader)
 	end
 end
 
+--[[
 function BladeBarrierSpellStart(reader,timer)
     if(timer==nil or timer<=0)then return false end
     
@@ -393,8 +395,7 @@ function BladeBarrierSpellStart(reader,timer)
 --    boom.Transform:SetPosition(0, 0.2, 0)
     reader.bladeBarrierAnim=boom
 end
-
-FA_BuffUtil.BladeBarrier=BladeBarrierSpellStart
+]]
 
 local function casterbbdamage(inst, target)
     local tags={}
@@ -409,7 +410,9 @@ local function casterbbdamage(inst, target)
     local pos=Vector3(inst.Transform:GetWorldPosition())
     local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, BB_RADIUS,tags,blocktags)
     for k,v in pairs(ents) do
-        if ( v.components.combat and not (v.components.health and v.components.health:IsDead())) then
+        if ( v.components.combat and not (v.components.health and v.components.health:IsDead())
+            and not (v.components.follower and v.components.follower.leader and v.components.follower.leader==target)
+            ) then
 
                 local current = Vector3(v.Transform:GetWorldPosition() )
                 local direction = (pos - current):GetNormalized()
@@ -460,7 +463,7 @@ function BladeBarrierSpellStartCaster(reader,timer,variables)
     inst.components.spell.onstartfn = function(inst)
     end
     inst.components.spell.fn = casterbbdamage
-    inst.components.spell.period=2
+    inst.components.spell.period=BB_PERIOD
 --    inst.components.spell.resumefn = light_resume
     inst.components.spell.onfinishfn = function(inst)
         if not inst.components.spell.target then
@@ -475,6 +478,13 @@ function BladeBarrierSpellStartCaster(reader,timer,variables)
 --    inst.fa_icestorm_caster=caster
 end
 
+local function BladeBarrierSpellStartPlayer(reader,timer)
+    local variables={}
+    variables.blocktags={"player","INLIMBO","companion"}
+    return BladeBarrierSpellStartCaster(reader,timer,variables)
+end
+
+FA_BuffUtil.BladeBarrier=BladeBarrierSpellStartPlayer
 
 local longstrider_start=function(inst, target, variables)
     local target=inst.components.spell.target

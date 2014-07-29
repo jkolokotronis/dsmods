@@ -259,11 +259,21 @@ function Health:DoDelta(amount, overtime, cause, ignore_invincible,dmgtype)
     --needed cause this whole thing makes no sense on 'healing', no matter what causes it
     if(damage>0)then
 
-    if(not damagetype) then damagetype=FA_DAMAGETYPE.PHYSICAL end
---    if(damagetype)then
+        if(not damagetype) then damagetype=FA_DAMAGETYPE.PHYSICAL end
+
         local res=self.fa_resistances[damagetype]
         if(res) then damage=damage*(1-res) end
-        if(self.fa_protection[damagetype] and damage>0)then
+    end
+
+-- even if it hits temp hp, it will not 'remove' hp but it should trigger the indicator (it got hit, but it went into temp, as opposed to simply being eaten by prot from el)
+    --    print("damage",damage,damagetype)
+    if(FA_ModUtil.GetModConfigData("damageindicators"))then
+        if math.abs(damage) > 0.1 and (damage>0 or self:GetPercent()<1) then
+            FA_ModUtil.MakeDamageEntity(self.inst, -damage,damagetype)
+        end
+    end
+
+    if(self.fa_protection[damagetype] and damage>0)then
             if(self.fa_protection[damagetype]>damage)then
                 self.fa_protection[damagetype]=self.fa_protection[damagetype]-damage
                 damage=0
@@ -271,15 +281,8 @@ function Health:DoDelta(amount, overtime, cause, ignore_invincible,dmgtype)
                 damage=damage-self.fa_protection[damagetype]
                 self.fa_protection[damagetype]=0
             end
-        end
     end
--- even if it hits temp hp, it will not 'remove' hp but it should trigger the indicator (it got hit, but it went into temp, as opposed to simply being eaten by prot from el)
---    print("damage",damage,damagetype)
-    if(FA_ModUtil.GetModConfigData("damageindicators"))then
-        if math.abs(damage) > 0.1 and (damage>0 or self:GetPercent()<1) then
-            FA_ModUtil.MakeDamageEntity(self.inst, -damage,damagetype)
-        end
-    end
+
     if(damage>0)then
         if(self.fa_temphp and damage>0)then
             if(self.fa_temphp>damage)then
