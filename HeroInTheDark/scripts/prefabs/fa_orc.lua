@@ -83,6 +83,7 @@ local function fn()
     inst.Transform:SetFourFaced()
     inst.Transform:SetScale(0.6,0.6, 0.6)
 	
+    inst:AddTag("pickpocketable")
 	inst:AddTag("scarytoprey")
     inst:AddTag("monster")
     inst:AddTag("orc")
@@ -106,6 +107,8 @@ local function fn()
     
     inst:AddComponent("health")
     inst.components.health:SetMaxHealth(ORC_HEALTH)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.4
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
     
     inst:AddComponent("sanityaura")
     inst.components.sanityaura.aura = -TUNING.SANITYAURA_MED
@@ -128,6 +131,7 @@ local function fn()
     inst.components.lootdropper:SetLoot({ "monstermeat"})
     inst.components.lootdropper:AddChanceLoot("fa_scroll_12",0.07)
     inst.components.lootdropper:AddChanceLoot("fa_orcskin",0.03)
+    inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLEMERGED,FALLENLOOTTABLE.TABLE_WEIGHT,0.1)
 
     inst:AddComponent("inspectable")
     

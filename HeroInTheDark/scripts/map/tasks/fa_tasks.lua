@@ -225,7 +225,7 @@ AddTask("DFEntrance", {
 		room_choices={
 			["BeefalowPlain"] = 3 + math.random(SIZE_VARIATION), 
 --			["FA_DwarfEntrance"] =1,
-			["FA_MineEntranceEvil"]=1
+			["FA_DwarfEntrance"]=1
 		},
 		room_bg=GROUND.FA_LAVA_ASH,
 		background_room="FA_BGGoblin",
@@ -237,7 +237,7 @@ AddTask("ORCFEntrance", {
 		room_choices={
 			["BeefalowPlain"] = 3 + math.random(SIZE_VARIATION), 
 --			["FA_OrcEntrance"] =1,
-			["FA_MineEntranceEvil"]=1
+			["FA_OrcEntrance"]=1
 		},
 		room_bg=GROUND.FA_LAVA_ASH,
 		background_room="FA_BGGoblin",

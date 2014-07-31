@@ -115,9 +115,13 @@ local function fn(Sim)
 
     inst:AddComponent("health")
     inst.components.health:SetMaxHealth(THULECITE_HP)
-    inst.components.health:SetInvincible(false)
-    inst.components.health.fa_resistances={}
     inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.25
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=-0.30
 
     inst.SoundEmitter:PlaySound("dontstarve/ghost/ghost_howl_LP", "howl")
     inst:SetStateGraph("SGanimated")

@@ -157,6 +157,10 @@ local function common()
     ------------------------------------------
     inst:AddComponent("health")
     inst.components.health:SetMaxHealth(TUNING.PIG_HEALTH)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=-0.3
 
     ------------------------------------------
 

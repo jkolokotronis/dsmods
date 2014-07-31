@@ -203,6 +203,8 @@ local function create_common(Sim)
     
     ----------
     
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_evil")
     inst:AddTag("monster")
     inst:AddTag("hostile")
 	inst:AddTag("scarytoprey")    
@@ -227,7 +229,7 @@ local function create_common(Sim)
     inst.components.lootdropper:AddRandomLoot("monstermeat", 1)
     inst.components.lootdropper:AddRandomLoot("silk", .5)
 --    inst.components.lootdropper:AddRandomLoot("spidergland", .4)
-    inst.components.lootdropper:AddRandomLoot("poisonspidergland", .1)
+    inst.components.lootdropper:AddChanceLoot("poisonspidergland", .1)
     inst.components.lootdropper.numrandomloot = 1
     
     inst:AddComponent("follower")
@@ -242,8 +244,9 @@ local function create_common(Sim)
     
     ------------------
     inst:AddComponent("health")
-    inst.components.health.fa_resistances={}
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.9
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.1
     ------------------
     
     inst:AddComponent("combat")

@@ -343,6 +343,9 @@ local function MakeSpiderDenFn(den_level)
         -------------------
         inst:AddComponent("health")
         inst.components.health:SetMaxHealth(200)
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=1
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.1
 
         -------------------
         inst:AddComponent("childspawner")

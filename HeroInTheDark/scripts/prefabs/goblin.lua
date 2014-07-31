@@ -284,6 +284,7 @@ local function common()
     inst.Transform:SetFourFaced()
     inst.Transform:SetScale(1,1, 1)
 	
+    inst:AddTag("pickpocketable")
 	inst:AddTag("scarytoprey")
     inst:AddTag("monster")
     inst:AddTag("goblin")
@@ -349,8 +350,8 @@ local function common()
     inst:AddComponent("lootdropper")
     inst.components.lootdropper:AddChanceLoot( "monstermeat",0.5)
     inst.components.lootdropper:AddChanceLoot( "fa_goblinskin",0.05)
-
     inst.components.lootdropper:AddFallenLootTable(LOOTTABLE,WEIGHT,0.1)
+    inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLEMERGED,FALLENLOOTTABLE.TABLE_WEIGHT,0.1)
 
     inst:AddComponent("inspectable")
     inst:ListenForEvent("attacked", OnAttacked)
@@ -366,27 +367,35 @@ local function normal()
 local inst=common()
     GetInventoryNormal(inst)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.1
+    return inst
+end
+
+local function fnguards()
+    local inst=common()
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=-0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.1
     return inst
 end
 
 local function fnguard1()
-    local inst=common()
+    local inst=fnguards()
     GetInventoryGuard1(inst)
-    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
     return inst
 end
 
 local function fnguard2()
-    local inst=common()
+    local inst=fnguards()
     GetInventoryGuard2(inst)
-    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
     return inst
 end
 
 local function fnguard3()
-    local inst=common()
+    local inst=fnguards()
     GetInventoryGuard3(inst)
-    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
     return inst
 end
 
@@ -430,6 +439,9 @@ local function fnwiz()
     local brain = require "brains/goblinwizardbrain"
     inst:SetBrain(brain)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_14",0.4)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=0.3
     return inst
 end
 
@@ -442,11 +454,15 @@ local function fnking()
     inst.components.locomotor.walkspeed=6
     inst.components.locomotor.runspeed = 6
     inst.components.health:SetMaxHealth(1600)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.3
     GetInventoryKing(inst)
     inst.components.combat:SetRetargetFunction(1, KingRetargetFn)
     local brain = require "brains/goblinkingbrain"
     inst:SetBrain(brain)
-    inst.components.lootdropper:SetLoot({ "goblinkinghead_item","Boards","fa_scroll_5","fa_scroll_5"})
+    inst.components.lootdropper:SetLoot({ "goblinkinghead_item","fa_scroll_5","fa_scroll_5"})
     return inst
 end
 return Prefab( "common/goblin", normal, assets),

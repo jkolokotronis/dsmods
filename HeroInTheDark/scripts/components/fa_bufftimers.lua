@@ -25,6 +25,7 @@ function FA_BuffTimers:OnSave()
             saveents[k].cooldowntimer=v.cooldowntimer
             saveents[k].fname=v.fname
             saveents[k].name=v.name
+            saveents[k].variables=variables
         end
     end
     return {saveents=saveents}
@@ -33,7 +34,7 @@ end
 function FA_BuffTimers:LoadPostPass(newents, data)
     for k,v in pairs(self.buff_timers) do
         if(v.fname)then
-            FA_BuffUtil[v.fname](self.inst,v.cooldowntimer)
+            FA_BuffUtil[v.fname](self.inst,v.cooldowntimer,v.variables)
         end
     end 
 end
@@ -50,7 +51,7 @@ function FA_BuffTimers:OnLoad(data)
     end
 end
 
-function FA_BuffTimers:AddBuff(id,name,fn,timer)
+function FA_BuffTimers:AddBuff(id,name,fn,timer,variables)
     if(not self.buff_timers[id])then
         self.buff_timers[id]={}
     end
@@ -58,7 +59,8 @@ function FA_BuffTimers:AddBuff(id,name,fn,timer)
     self.buff_timers[id].name=name
     self.buff_timers[id].fname=fn
     self.buff_timers[id].cooldowntimer=timer
-    FA_BuffUtil[fn](self.inst,timer)
+    self.buff_timers[id].variables=variables
+    FA_BuffUtil[fn](self.inst,timer,variables)
     self.inst:PushEvent("fa_addbuff",{id=id,buff=self.buff_timers[id]})
 end
 

@@ -140,6 +140,8 @@ local function fn(Sim)
     
     ----------
     
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_evil")
     inst:AddTag("monster")
     inst:AddTag("hostile")
     inst:AddTag("epic")    
@@ -158,6 +160,9 @@ local function fn(Sim)
     
     inst:AddComponent("lootdropper")
     inst.components.lootdropper:SetLoot(loot)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
+    inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLEMERGED,FALLENLOOTTABLE.TABLE_WEIGHT,0.15)
     
     ---------------------        
     MakeLargeBurnableCharacter(inst, "body")
@@ -169,6 +174,9 @@ local function fn(Sim)
     ------------------
     inst:AddComponent("health")
     inst.components.health:SetMaxHealth(SPIDERQUEEN_HEALTH)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.1
 
     ------------------
     

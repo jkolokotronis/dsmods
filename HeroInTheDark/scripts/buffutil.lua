@@ -347,8 +347,8 @@ end
 
 FA_BuffUtil.Light=LightSpellStart
 
---would it simply be easier to write a timed-aoe-dmg myself? likely..
 
+--[[
 local function apply_bb_damage(reader)
 	if(reader.buff_timers["bladebarrier"].cooldowntimer<=0)then
 		reader.bladeBarrierTimer:Cancel()
@@ -375,7 +375,6 @@ local function apply_bb_damage(reader)
 	end
 end
 
---[[
 function BladeBarrierSpellStart(reader,timer)
     if(timer==nil or timer<=0)then return false end
     
@@ -652,6 +651,84 @@ end
 
 FA_BuffUtil.Invisibility=InvisibilitySpellStart
 
+
+local function dopoison(inst,target)
+    local variables=inst.components.spell.variables
+    local strength=variables.strength
+    if(variables and variables.tags)then
+        tags=variables.tags
+    end
+    if(variables and variables.blocktags)then
+        blocktags=variables.blocktags
+    end
+    if(target and not target.components.health:IsDead())then
+        --bypassing armor - but this also bypasses potential retarget
+--        target.components.health:DoDelta(-POISON_DAMAGE)
+            target.components.combat:GetAttacked(inst.caster, strength, nil,nil,FA_DAMAGETYPE.POISON)
+
+                local boom =SpawnPrefab("fa_poisonfx")
+                local follower = boom.entity:AddFollower()
+                follower:FollowSymbol(target.GUID, target.components.combat.hiteffectsymbol, 0, 0.1, -0.0001)
+                boom.persists=false
+                boom:ListenForEvent("animover", function()  boom:Remove() end)
+       
+    end
+end
+
+--variables can't have references
+local function PoisonSpellStart(target,timer,variables,attacker)
+
+    local strength=variables.strength
+    local duration=variables.duration
+    local period=variables.period
+  
+  if(target and target.components.health and target.components.combat and not target.components.health:IsDead())then
+
+    if target.fa_poison then
+        if(target.fa_poison.strength and target.fa_poison.strength==POISON_DAMAGE)then
+            print("resetting poison timer")
+            target.fa_poison.components.spell.lifetime = 0
+        --        reader.fa_inspiregreatness.components.spell:ResumeSpell()
+            return true
+        elseif(target.fa_poison.strength and target.fa_poison.strength>POISON_DAMAGE)then
+            print("don't overwrite stronger poison")
+            return true
+        else
+            target.fa_poison.components.spell:OnFinish() 
+        end
+    end
+
+      local inst = CreateEntity()
+      inst.persists=false
+      local caster=attacker
+      local trans = inst.entity:AddTransform()
+
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_poison"
+    inst.strength=strength
+    inst.components.spell.variables=variables
+    inst.components.spell.duration = duration
+    inst.components.spell.fn = dopoison
+    inst.components.spell.period=period
+    inst.components.spell.removeonfinish = true
+    inst.components.spell.ontargetfn = function(inst,target)
+        inst.caster=caster
+        target.fa_poison = inst
+        target:AddTag(inst.components.spell.spellname)
+    end
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+        inst.components.spell.target.fa_poison = nil
+    end
+    inst.components.spell:SetTarget(target)
+    inst.components.spell:StartSpell()
+  end
+end
+
+
+FA_BuffUtil.Poison=PoisonSpellStart
 
 function LichSpellStart(reader,timer)
 
