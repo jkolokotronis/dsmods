@@ -27,6 +27,8 @@ local prefabs =
     "fa_poisonfx"
 }
 
+local FA_BuffUtil=require "buffutil"
+
 local POISON_LENGTH=10
 local POISON_DAMAGE=5
 local POISON_PERIOD=2
@@ -96,67 +98,23 @@ local function StartDay(inst)
 	end
 end
 
-
-local function dopoison(inst,target)
-    if(target and not target.components.health:IsDead())then
-        --bypassing armor - but this also bypasses potential retarget
---        target.components.health:DoDelta(-POISON_DAMAGE)
-            target.components.combat:GetAttacked(inst.caster, POISON_DAMAGE, nil,nil,FA_DAMAGETYPE.POISON)
-
-                local boom =SpawnPrefab("fa_poisonfx")
-                local follower = boom.entity:AddFollower()
-                follower:FollowSymbol(target.GUID, target.components.combat.hiteffectsymbol, 0, 0.1, -0.0001)
-                boom.persists=false
-                boom:ListenForEvent("animover", function()  boom:Remove() end)
-       
-    end
-end
-
-
 local function OnAttackOther(spider, data)
-  local target=data.target
-  if(target and target.components.health and target.components.combat and not target.components.health:IsDead())then
+    local target=data.target
+    local variables={}
+    variables.strength=POISON_DAMAGE
+    variables.period=POISON_PERIOD
+        variables.buttontint={
+                r=0.5,
+                g=1,
+                b=0.5,
+                a=0.7
+            }
 
-    if target.fa_poison then
-        if(target.fa_poison.strength and target.fa_poison.strength==POISON_DAMAGE)then
-            print("resetting poison timer")
-            target.fa_poison.components.spell.lifetime = 0
-        --        reader.fa_inspiregreatness.components.spell:ResumeSpell()
-            return true
-        elseif(target.fa_poison.strength and target.fa_poison.strength>POISON_DAMAGE)then
-            print("don't overwrite stronger poison")
-            return true
-        else
-            target.fa_poison.components.spell:OnFinish() 
-        end
+    if(target and target.components.fa_bufftimers)then
+        target.components.fa_bufftimers:AddBuff("poison","Poison","Poison",POISON_LENGTH,variables)
+    else
+        FA_BuffUtil.Poison(target,POISON_LENGTH,variables,spider)
     end
-
-      local inst = CreateEntity()
-      inst.persists=false
-      local caster=spider
-      local trans = inst.entity:AddTransform()
-
-    local spell = inst:AddComponent("spell")
-    inst.strength=POISON_DAMAGE
-    inst.components.spell.spellname = "fa_poison"
-    inst.components.spell.duration = POISON_LENGTH
-    inst.components.spell.fn = dopoison
-    inst.components.spell.period=POISON_PERIOD
-    inst.components.spell.removeonfinish = true
-    inst.components.spell.ontargetfn = function(inst,target)
-        inst.caster=caster
-        target.fa_poison = inst
-        target:AddTag(inst.components.spell.spellname)
-    end
-    inst.components.spell.onfinishfn = function(inst)
-        if not inst.components.spell.target then
-            return
-        end
-        inst.components.spell.target.fa_poison = nil
-    end
-    inst.components.spell:SetTarget(target)
-    inst.components.spell:StartSpell()
-  end
 end
 
 local function OnEntitySleep(inst)

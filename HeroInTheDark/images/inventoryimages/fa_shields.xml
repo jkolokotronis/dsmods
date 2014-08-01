@@ -1,0 +1,13 @@
+<Atlas><Texture filename="fa_shields.tex" />
+<Elements>
+		<Element name="fa_deathward.tex" u1="0" u2="0.25" v1="0" v2="0.25" />
+		<Element name="fa_marbleshield.tex" u1="0.25" u2="0.50" v1="0" v2="0.25" />
+		<Element name="fa_white" u1="0.5" u2="0.75" v1="0" v2="0.25" />
+		<Element name="fa_metal" u1="0.75" u2="1" v1="0" v2="0.25" />
+		<Element name="fa_boneshield" u1="0" u2="0.25" v1="0.25" v2="0.5" />
+		<Element name="fa_reflectshield" u1="0.25" u2="0.5" v1="0.25" v2="0.5" />
+		<Element name="fa_rockshield" u1="0.5" u2="0.75" v1="0.25" v2="0.5" />
+		<Element name="fa_woodshield" u1="0.75" u2="1" v1="0.25" v2="0.5" />
+		<Element name="fa_heart" u1="0.0" u2="0.25" v1="0.5" v2="0.75" />
+</Elements>
+</Atlas>

@@ -318,16 +318,8 @@ Assets = {
 
 
 
-    Asset("ATLAS", "images/inventoryimages/boneshield.xml"),
-    Asset("ATLAS", "images/inventoryimages/rockshield.xml"),
-    Asset("ATLAS", "images/inventoryimages/woodshield.xml"),
-    Asset("ATLAS", "images/inventoryimages/marbleshield.xml"),
-    Asset("ATLAS", "images/inventoryimages/reflectshield.xml"),
-    Asset("IMAGE", "images/inventoryimages/boneshield.tex"),
-    Asset("IMAGE", "images/inventoryimages/rockshield.tex"),
-    Asset("IMAGE", "images/inventoryimages/woodshield.tex"),
-    Asset("IMAGE", "images/inventoryimages/marbleshield.tex"),
-    Asset("IMAGE", "images/inventoryimages/reflectshield.tex"),
+    Asset("ATLAS", "images/inventoryimages/fa_shields.xml"),
+    Asset("IMAGE", "images/inventoryimages/fa_shields.tex"),
     Asset("ATLAS", "images/inventoryimages/poisonspidergland.xml"),
     Asset("IMAGE", "images/inventoryimages/poisonspidergland.tex"),
     Asset("ATLAS", "images/inventoryimages/poisonspider_gland_salve.xml"),
@@ -1661,17 +1653,17 @@ AddSimPostInit(function(inst)
         if (inst.prefab=="darkknight" or inst.prefab=="cleric" or inst.prefab=="paladin") then
             --add shields
             local r=Recipe("woodenshield", {Ingredient("log", 20),Ingredient("rope", 5) }, RECIPETABS.WAR,  GLOBAL.TECH.SCIENCE_ONE)
-            r.image="woodshield.tex"
-            r.atlas = "images/inventoryimages/woodshield.xml"
+            r.image="fa_woodshield.tex"
+            r.atlas = "images/inventoryimages/fa_shields.xml"
             local r=Recipe("rockshield", {Ingredient("rocks", 20),Ingredient("rope", 5)}, RECIPETABS.WAR,  GLOBAL.TECH.SCIENCE_TWO)    
-            r.image="rockshield.tex"
-            r.atlas = "images/inventoryimages/rockshield.xml"
+            r.image="fa_rockshield.tex"
+            r.atlas = "images/inventoryimages/fa_shields.xml"
             local r=Recipe("marbleshield", {Ingredient("marble", 20),Ingredient("rope", 5) }, RECIPETABS.WAR,  GLOBAL.TECH.SCIENCE_TWO)
-            r.image="marbleshield.tex"
-            r.atlas = "images/inventoryimages/marbleshield.xml"
+            r.image="fa_marbleshield.tex"
+            r.atlas = "images/inventoryimages/fa_shields.xml"
             local r=Recipe("boneshield", {Ingredient("houndstooth", 10),Ingredient("rope", 5) }, RECIPETABS.WAR,  GLOBAL.TECH.SCIENCE_ONE)
-            r.image="boneshield.tex"
-            r.atlas = "images/inventoryimages/boneshield.xml"
+            r.image="fa_boneshield.tex"
+            r.atlas = "images/inventoryimages/fa_shields.xml"
         end
         inst:ListenForEvent("fishingcollect",onFishingCollect)
 

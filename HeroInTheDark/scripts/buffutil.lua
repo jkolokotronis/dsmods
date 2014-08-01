@@ -655,12 +655,6 @@ FA_BuffUtil.Invisibility=InvisibilitySpellStart
 local function dopoison(inst,target)
     local variables=inst.components.spell.variables
     local strength=variables.strength
-    if(variables and variables.tags)then
-        tags=variables.tags
-    end
-    if(variables and variables.blocktags)then
-        blocktags=variables.blocktags
-    end
     if(target and not target.components.health:IsDead())then
         --bypassing armor - but this also bypasses potential retarget
 --        target.components.health:DoDelta(-POISON_DAMAGE)
@@ -679,20 +673,19 @@ end
 local function PoisonSpellStart(target,timer,variables,attacker)
 
     local strength=variables.strength
-    local duration=variables.duration
     local period=variables.period
   
   if(target and target.components.health and target.components.combat and not target.components.health:IsDead())then
 
     if target.fa_poison then
-        if(target.fa_poison.strength and target.fa_poison.strength==POISON_DAMAGE)then
+        if(target.fa_poison.strength and target.fa_poison.strength==strength)then
             print("resetting poison timer")
             target.fa_poison.components.spell.lifetime = 0
         --        reader.fa_inspiregreatness.components.spell:ResumeSpell()
             return true
-        elseif(target.fa_poison.strength and target.fa_poison.strength>POISON_DAMAGE)then
+        elseif(target.fa_poison.strength and target.fa_poison.strength>strength)then
             print("don't overwrite stronger poison")
-            return true
+            return false
         else
             target.fa_poison.components.spell:OnFinish() 
         end
@@ -707,7 +700,7 @@ local function PoisonSpellStart(target,timer,variables,attacker)
     inst.components.spell.spellname = "fa_poison"
     inst.strength=strength
     inst.components.spell.variables=variables
-    inst.components.spell.duration = duration
+    inst.components.spell.duration = timer
     inst.components.spell.fn = dopoison
     inst.components.spell.period=period
     inst.components.spell.removeonfinish = true
@@ -725,6 +718,7 @@ local function PoisonSpellStart(target,timer,variables,attacker)
     inst.components.spell:SetTarget(target)
     inst.components.spell:StartSpell()
   end
+  return true
 end
 
 

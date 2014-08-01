@@ -55,13 +55,14 @@ function FA_BuffTimers:AddBuff(id,name,fn,timer,variables)
     if(not self.buff_timers[id])then
         self.buff_timers[id]={}
     end
-
-    self.buff_timers[id].name=name
-    self.buff_timers[id].fname=fn
-    self.buff_timers[id].cooldowntimer=timer
-    self.buff_timers[id].variables=variables
-    FA_BuffUtil[fn](self.inst,timer,variables)
-    self.inst:PushEvent("fa_addbuff",{id=id,buff=self.buff_timers[id]})
+    local ret=FA_BuffUtil[fn](self.inst,timer,variables)
+    if(ret==nil or ret==true)then
+        self.buff_timers[id].name=name
+        self.buff_timers[id].fname=fn
+        self.buff_timers[id].cooldowntimer=timer
+        self.buff_timers[id].variables=variables
+        self.inst:PushEvent("fa_addbuff",{id=id,buff=self.buff_timers[id]})
+    end
 end
 
 function FA_BuffTimers:LongUpdate(dt)

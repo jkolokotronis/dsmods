@@ -244,6 +244,16 @@ function Health:DoFireDamage(amount1, doer)
     end
 end
 ]]
+function Health:SetTempHP(amount)
+    local old_hp=self.fa_temphp
+    self.fa_temphp=amount
+    self.inst:PushEvent("fa_temphpdelta", {old = old_hp, new=amount})
+end
+function Health:SetProtection(amount,damagetype)
+    local old_prot=self.fa_protection[damagetype] or 0
+    self.fa_protection[damagetype]=amount
+    self.inst:PushEvent("fa_protectiondelta", {old = old_prot, new = amount,damagetype=damagetype})
+end
 local old_healthdodelta=Health.DoDelta
 --since I'm never using 'cause', I can safely assume that cause=="fire" means I should calculate the res
 function Health:DoDelta(amount, overtime, cause, ignore_invincible,dmgtype)
@@ -273,25 +283,26 @@ function Health:DoDelta(amount, overtime, cause, ignore_invincible,dmgtype)
         end
     end
 
-    if(self.fa_protection[damagetype] and damage>0)then
+    if(self.fa_protection[damagetype] and damage>0)then            
             if(self.fa_protection[damagetype]>damage)then
-                self.fa_protection[damagetype]=self.fa_protection[damagetype]-damage
+                self:SetProtection(self.fa_protection[damagetype]-damage,damagetype)
                 damage=0
             else
                 damage=damage-self.fa_protection[damagetype]
-                self.fa_protection[damagetype]=0
+                self:SetProtection(0,damagetype)
             end
     end
 
     if(damage>0)then
         if(self.fa_temphp and damage>0)then
             if(self.fa_temphp>damage)then
-                    self.fa_temphp=self.fa_temphp-damage
-                    damage=0
+                self:SetTempHP(self.fa_temphp-damage)
+                damage=0
             else
                 damage=damage-self.fa_temphp
-                self.fa_temphp=0
+                self:SetTempHP(0)
             end
+            
         end
     end
     

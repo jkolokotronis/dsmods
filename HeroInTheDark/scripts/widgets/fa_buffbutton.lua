@@ -3,6 +3,13 @@ local Text = require "widgets/text"
 local Image = require "widgets/image"
 require "constants"
 
+local DEFAULT_TINT={
+            r=0.5,
+            g=0.5,
+            b=1,
+            a=0.7
+        }
+
 local FA_BuffButton = Class(Widget, function(self,owner, data)
 
     local init=data or {}
@@ -39,7 +46,11 @@ local FA_BuffButton = Class(Widget, function(self,owner, data)
     self.image:SetTexture(self.normaltex.atlas,self.normaltex.tex)
     self.image:SetMouseOverTexture(self.overtex.atlas,self.overtex.tex)
     self.image:SetDisabledTexture(self.disabledtex.atlas,self.disabledtex.tex)
-    self.image:SetTint(0.5,0.5,1,0.7)
+    local tint=data and  data.buttontint
+    if(not tint)then
+        tint=DEFAULT_TINT
+    end
+    self.image:SetTint(tint.r,tint.g,tint.b,tint.a)
 
 end)
 

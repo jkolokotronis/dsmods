@@ -126,40 +126,24 @@ local WONDER_EFFECTS={
 		fn=function(eater)
 			local talk=GetString(eater.prefab, "FA_WONDER_POISON")
 			if(talk and eater.components.talker) then eater.components.talker:Say(talk) end
-			local function dopoison(inst,target)
-    if(target and not target.components.health:IsDead())then
---        target.components.health:DoDelta(-POISON_DAMAGE)
-		 	target.components.combat:GetAttacked(eater, POISON_DAMAGE, nil,nil,FA_DAMAGETYPE.POISON)
-		 		local boom =SpawnPrefab("fa_poisonfx")
---                boom.AnimState:SetMultColour(0.3, 1, 0.3,1)
-                local follower = boom.entity:AddFollower()
-                follower:FollowSymbol(target.GUID, target.components.combat.hiteffectsymbol, 0, 0.1, -0.0001)
-                boom.persists=false
-                boom:ListenForEvent("animover", function()  boom:Remove() end)
-    end
-			end
+			
+		    local target=eater
+    		local variables={}
+    		variables.strength=POISON_DAMAGE
+    		variables.period=POISON_PERIOD
+    		variables.buttontint={
+    			r=0.5,
+    			g=1,
+    			b=0.5,
+    			a=0.7
+	    	}
+    		if(target and target.components.fa_bufftimers)then
+        		target.components.fa_bufftimers:AddBuff("poison","Poison","Poison",POISON_LENGTH,variables)
+    		else
+        		FA_BuffUtil.Poison(target,POISON_LENGTH,variables,target)
+		    end
 			eater.components.hunger:DoDelta(-50)
-			local inst = CreateEntity()
-      		local trans = inst.entity:AddTransform()
 
-    		local spell = inst:AddComponent("spell")
-    		inst.components.spell.spellname = "fa_poison"
-    		inst.components.spell.duration = POISON_LENGTH
-    		inst.components.spell.fn = dopoison
-    		inst.components.spell.period=POISON_PERIOD
-    		inst.components.spell.removeonfinish = true
-    		inst.components.spell.ontargetfn = function(inst,target)
-        		target.fa_poison = inst
-        		target:AddTag(inst.components.spell.spellname)
-    		end
-    		inst.components.spell.onfinishfn = function(inst)
-        		if not inst.components.spell.target then
-            		return
-        		end
-		        inst.components.spell.target.fa_poison = nil
-    		end
-    		inst.components.spell:SetTarget(eater)
-    		inst.components.spell:StartSpell()
 		end
 	},
 	{
