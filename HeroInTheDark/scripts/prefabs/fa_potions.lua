@@ -14,7 +14,7 @@ local prefabs = {
 
 local blueprints={"tools_blueprint","magic_blueprint","town_blueprint","dress_blueprint","survival_blueprint","refine_blueprint","war_blueprint","ancient_blueprint","light_blueprint","farm_blueprint"}
 
-
+local POISON_IMMUNITY_TIMER=10
 local POISON_LENGTH=10
 local POISON_DAMAGE=5
 local POISON_PERIOD=2
@@ -424,6 +424,13 @@ local function curepoison(inst,data)
 	local eater=data.eater
 	if(eater and eater.fa_poison)then
         eater.fa_poison.components.spell:OnFinished()
+    	local res=eater.components.health.fa_resistances[FA_DAMAGETYPE.POISON] or 0
+    	if(res<1)then
+    		eater.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=res+1
+    		eater:DoTaskInTime(POISON_IMMUNITY_TIMER,function()
+    				eater.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=eater.components.health.fa_resistances[FA_DAMAGETYPE.POISON]-1
+    		end)
+    	end
 	end
 end
 

@@ -52,6 +52,7 @@ local TextEdit=require "widgets/textedit"
 local ItemTile = require "widgets/itemtile"
 local FA_WarClock = require "widgets/fa_warclock"
 local FA_BuffBar=require "widgets/fa_buffbar"
+local FA_StatusBar=require "widgets/fa_statusbar"
 
 local FA_CharRenameScreen=require "screens/fa_charrenamescreen"
 local FA_SpellBookScreen=require "screens/fa_spellbookscreen"
@@ -896,7 +897,6 @@ local function newControlsInit(class)
         xabilitybar:AddChild(buffbar)
         xabilitybar.buffbar=buffbar
 
-
         inst:ListenForEvent("fa_rebuildbuffs",function(inst,data)
             buffbar:RegisterBuffs(data.buffs)
         end)
@@ -907,6 +907,17 @@ local function newControlsInit(class)
             buffbar:RemoveBuff(data.id)
         end)
 
+        local statusbar=FA_StatusBar(xabilitybar.owner)
+        xabilitybar:AddChild(statusbar)
+        xabilitybar.statusbar=statusbar
+        statusbar:SetPosition(-300,-30,0)
+
+        inst:ListenForEvent("fa_temphpdelta",function(inst,data)
+            statusbar:TempHPDelta(data.old, data.new)
+        end)
+        inst:ListenForEvent("fa_protectiondelta",function(inst,data)
+            statusbar:ProtectionDelta(data.old,data.new,data.damagetype)
+        end)
 
     if GetPlayer() and GetPlayer().newControlsInit then
         xabilitybar:SetPosition(0,-76,0)
@@ -917,6 +928,7 @@ local function newControlsInit(class)
         GetPlayer().newControlsInit(xabilitybar)
     end
 
+    statusbar:RegisterBuffs()
     buffbar:RegisterBuffs(inst.components.fa_bufftimers.buff_timers)
     --[[
     GetPlayer():DoPeriodicTask(10, function()

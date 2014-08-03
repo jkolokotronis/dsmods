@@ -656,13 +656,14 @@ end
 
 function aidfn(inst,reader)
     --not sure if i want to let it accumulate
-    reader.components.health.fa_temphp=math.max(reader.components.health.fa_temphp,AID_HP)
+    reader.components.health:SetTempHP(math.max(reader.components.health.fa_temphp,AID_HP))
     return true
 end
 
 function falselifefn(inst,reader)
     --not sure if i want to let it accumulate
-    reader.components.health.fa_temphp=math.max(reader.components.health.fa_temphp,FALSELIFE_HP)
+
+    reader.components.health:SetTempHP(math.max(reader.components.health.fa_temphp,FALSELIFE_HP))
     return true
 end
 
@@ -676,7 +677,7 @@ function shieldfn(inst,reader)
     --not sure if i want to let it accumulate
     if(current_protection>damage) then return false 
     else
-        reader.components.health.fa_protection[FA_DAMAGETYPE.PHYSICAL]=damage
+        reader.components.health:SetProtection(damage,FA_DAMAGETYPE.PHYSICAL)
     end
     return true
 end
@@ -862,7 +863,7 @@ return
     MakeSpell("fa_spell_haste",hastefn,6,FA_SPELL_SCHOOLS.TRANSMUTATION),
     MakeSpell("fa_spell_magehound",summonmagehound,1,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_magearmor",magearmorfn,10,FA_SPELL_SCHOOLS.CONJURATION),
-    MakeSpell("fa_spell_stoneskin",stoneskinfn,5,FA_SPELL_SCHOOLS.CONJURATION),
+    MakeSpell("fa_spell_stoneskin",stoneskinfn,5,FA_SPELL_SCHOOLS.ABJURATION),
     MakeSpell("fa_spell_dancinglight",dancinglightfn,5,FA_SPELL_SCHOOLS.EVOCATION),
     MakeSpell("fa_spell_darkvision",darkvisionfn,3,FA_SPELL_SCHOOLS.TRANSMUTATION),
     MakeSpell("spell_calldiety",calldietyfn,15,FA_SPELL_SCHOOLS.DIVINATION),

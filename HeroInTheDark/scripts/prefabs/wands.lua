@@ -57,6 +57,10 @@ local SLOW_DURATION=2*60
 local CHARMPERSON_USES=5
 local CHARMPERSON_DURATION=8*60
 
+local DOMINATEPERSON_USES=5
+local DOMINATEPERSON_DMG=1.25
+local DOMINATEPERSON_AS=1.25
+
 local COMMANDUNDEAD_USES=10
 local COMMANDUNDEAD_DURATION=4*60
 
@@ -1249,6 +1253,36 @@ local function charmpersonfn()
     return inst
 end
 
+local function onattackdominateperson(staff, target, orpos)
+    if(not target:HasTag("fa_humanoid")) then return false end
+    local attacker = staff.components.inventoryitem.owner
+    if(not target.components.follower)then print("using dominate on a mob that does not support follower logic: "..target.prefab) return false  end
+    if target.components.follower  then
+        --this is needed so it resets the timer - it can have a side effect tho
+        target.components.follower:SetLeader(nil)
+        target.components.follower:SetLeader(attacker)
+        if(target.components.combat)then
+            --no, this shit wont hold through save/load, what can i do? Is this good enough reason to override combat save/load logic...
+            target.components.combat.damagemultiplier=target.components.combat.damagemultiplier*DOMINATEPERSON_DMG
+            target.components.combat.min_attack_period=target.components.combat.min_attack_period/DOMINATEPERSON_AS
+        end
+            staff.components.finiteuses:Use(1)
+    end
+end
+
+local function dominatepersonfn()
+    local inst = commonfn("blue")
+    inst.components.inventoryitem.imagename="icestaff"
+    inst:AddComponent("spellcaster")
+    inst.components.spellcaster:SetSpellFn(onattackdominateperson)
+    inst.components.spellcaster.canuseontargets = true
+    inst.components.spellcaster.canuseonpoint = false
+    inst.components.spellcaster.canusefrominventory = false
+    inst.components.spellcaster:SetSpellTestFn(canCastOnCombatTarget)
+    inst.components.finiteuses:SetMaxUses(DOMINATEPERSON_USES)
+    inst.components.finiteuses:SetUses(DOMINATEPERSON_USES)
+    return inst
+end
 --why would roe have hd req?
 function rayofenfeeblementdebuff(inst,attacker,target)
     local cl=1
@@ -1398,7 +1432,7 @@ local function onattackholdmonster(inst1,attacker,target)
         inst:AddTag("NOCLICK")
         local spell = inst:AddComponent("spell")
         inst.components.spell.spellname = "fa_holdmonster"
-        inst.components.spell.duration = HOLDPERSON_DURATION
+        inst.components.spell.duration = HOLDMONSTER_DURATION
         inst.components.spell.ontargetfn = function(inst,target)
 
         local follower = inst.entity:AddFollower()
@@ -1737,7 +1771,7 @@ local function haltundeadmass(staff, target, orpos)
     end
     local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, AOE_RANGE ,{'undead'}, {'smashable',"companion","player","INLIMBO","FX"})
         for k,v in pairs(ents) do
-                if (v.components.health and v.components.health.naxhealth<=treshold) and
+                if (v.components.health and v.components.health.maxhealth<=treshold) and
                  not (v.components.follower and v.components.follower.leader and v.components.follower.leader:HasTag("player")) then
                     if(target.fa_stun)then target.fa_stun.components.spell:OnFinish() end
                     
@@ -1852,7 +1886,7 @@ Prefab("common/inventory/fa_spell_slow", slowfn, assets, prefabs),
 Prefab("common/inventory/fa_spell_fireball", fireball, assets, prefabs),
 Prefab("common/inventory/fa_spell_charmmonster", charmmonsterfn, assets, prefabs),
 Prefab("common/inventory/fa_spell_holdmonster", holdmonsterfn, assets, prefabs),
-Prefab("common/inventory/fa_spell_dominateperson", charmpersonfn, assets, prefabs),
+Prefab("common/inventory/fa_spell_dominateperson", dominatepersonfn, assets, prefabs),
 Prefab("common/inventory/fa_spell_enlargehumanoid", enlargehumanoidfn, assets, prefabs),
 Prefab("common/inventory/fa_spell_reducehumanoid", reducehumanoidfn, assets, prefabs),
 Prefab("common/inventory/fa_spell_web", webfn, assets, prefabs),

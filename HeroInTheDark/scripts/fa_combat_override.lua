@@ -244,6 +244,24 @@ function Health:DoFireDamage(amount1, doer)
     end
 end
 ]]
+local old_healthsave=Health.OnSave
+function Health:OnSave()    
+    local data=old_healthsave(self)
+    data.fa_temphp=self.fa_temphp
+    data.fa_protection=self.fa_protection
+    return data
+end
+local old_healthload=Health.OnLoad
+function Health:OnLoad(data)
+    old_healthload(self,data)
+    if(data and data.fa_temphp)then
+        self.fa_temphp=data.fa_temphp
+    end
+    if(data and data.fa_protection) then
+        self.fa_protection=data.fa_protection
+    end
+end
+
 function Health:SetTempHP(amount)
     local old_hp=self.fa_temphp
     self.fa_temphp=amount

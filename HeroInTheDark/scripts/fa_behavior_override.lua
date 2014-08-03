@@ -24,6 +24,10 @@ local function rootAttackNode(self)
     return WhileNode( function() return self.inst.fa_root~=nil end, "RootAttack", StandAndAttack(self.inst) )
 end
 
+local function rootNoAttackNode(self)
+    return WhileNode( function() return self.inst.fa_root~=nil end, "Root", StandStill(self.inst))
+end
+
 --just so i can do oneliner properly
 local function appendNode(root,node,index)
     node.parent=root
@@ -42,7 +46,40 @@ local function walkerDefault(inst)
     appendNode(inst.bt.root,dazeNode(inst),1)
     appendNode(inst.bt.root,stunNode(inst),1)
 end
+local ButterflyBrain=require "brains/butterflybrain"
+local old_onstart=ButterflyBrain.OnStart
+function ButterflyBrain:OnStart()
+    old_onstart(self)
+    appendNode(self.bt.root,fearnode(self),1)
 
+    local function fn(inst)
+        inst:ClearBufferedAction()
+        inst.Physics:Stop()
+        inst.sg:GoToState("land")
+--        inst.AnimState:PlayAnimation("land")
+--        inst.AnimState:PushAnimation("idle", true)
+        return true
+    end
+    local node=WhileNode( function() return self.inst.fa_stun~=nil or self.inst.fa_daze~=nil end, "Stun",StandStill(self.inst,fn))
+    appendNode(self.bt.root, node,1)
+end
+local RabbitBrain=require "brains/rabbitbrain"
+local old_ghostonstart=RabbitBrain.OnStart
+function RabbitBrain:OnStart()
+    old_ghostonstart(self)
+    appendNode(self.bt.root,fearnode(self),1)
+    appendNode(self.bt.root,dazeNode(self),1)
+    appendNode(self.bt.root,stunNode(self),1)
+    appendNode(self.bt.root,rootNoAttackNode(self),1)
+end
+--[[
+local BirdBrain=require "brains/birdbrain"
+local old_ghostonstart=BirdBrain.OnStart
+function BirdBrain:OnStart()
+        old_ghostonstart(self)
+        appendNode(self.bt.root,dazeNode(self),1)
+        appendNode(self.bt.root,stunNode(self),1)
+end]]
 local GhostBrain=require "brains/ghostbrain"
 local old_ghostonstart=GhostBrain.OnStart
 function GhostBrain:OnStart()
@@ -252,6 +289,45 @@ local old_onstart=BuzzardBrain.OnStart
 function BuzzardBrain:OnStart()
         old_onstart(self)
         flyerDefault(self)
+end
+local CatcoonBrain=require "brains/catcoonbrain"
+local old_onstart=CatcoonBrain.OnStart
+function CatcoonBrain:OnStart()
+        old_onstart(self)
+        walkerDefault(self)
+end
+local MosslingBrain=require "brains/mosslingbrain"
+local old_onstart=MosslingBrain.OnStart
+function MosslingBrain:OnStart()
+        old_onstart(self)
+        walkerDefault(self)
+end
+local MoleBrain=require "brains/molebrain"
+local old_onstart=MoleBrain.OnStart
+function MoleBrain:OnStart()
+        old_onstart(self)
+        appendNode(self.bt.root,fearnode(self),1)
+
+    local function fn(inst)
+        --wouldnt it be too good if it would actually work? chained 
+        --[[
+        if((not inst.sg.currentstate) or not(inst.sg.currentstate.name=="stunned"))then
+            inst.sg:GoToState("stunned",false)
+        end]]
+        inst.sg:GoToState("idle")
+        inst:ClearBufferedAction()
+            inst.SoundEmitter:KillSound("sniff")
+            inst.components.inventory:DropEverything(false, true) 
+            inst.Physics:Stop() 
+            inst.SoundEmitter:PlaySound("dontstarve_DLC001/creatures/mole/hurt")
+            inst.AnimState:PlayAnimation("stunned_pre", false)
+            inst.AnimState:PushAnimation("stunned_loop", true)
+            --if i turn it on nothing will be there to turn it off - this really needs a proper state
+--                inst.components.inventoryitem.canbepickedup = true
+        return true
+    end
+    local node=WhileNode( function() return self.inst.fa_stun~=nil or self.inst.fa_daze~=nil end, "Stun",StandStill(self.inst,fn))
+    appendNode(self.bt.root, node,1)
 end
 
 end
