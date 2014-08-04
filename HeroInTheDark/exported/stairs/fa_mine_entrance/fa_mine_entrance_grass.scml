@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
     <folder id="0">
-        <file id="0" name="mine_entrance.png" width="1701" height="900" pivot_x="0" pivot_y="1"/>
+        <file id="0" name="mine_entrance_grass.png" width="1701" height="900" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="fa_mine_entrance">
+    <entity id="0" name="fa_mine_entrance_grass">
         <animation id="0" name="idle_open" length="50">
             <mainline>
                 <key id="0">

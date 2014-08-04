@@ -12,6 +12,11 @@ local mineassets=
 	Asset("ANIM", "anim/fa_mine_entrance.zip"),
 
 }
+local minegrassassets=
+{
+	Asset("ANIM", "anim/fa_mine_entrance_grass.zip"),
+
+}
 
 local prefabs = 
 {
@@ -269,9 +274,19 @@ local function minefn()
 	local inst=fn()
 	inst.AnimState:SetBuild("fa_mine_entrance")
 	inst.AnimState:SetBank("fa_mine_entrance")
+    inst.Transform:SetScale(1.3,1.3, 1.3)
+	Open(inst)
+	return inst
+end
+local function minegrassfn()
+	local inst=fn()
+	inst.AnimState:SetBuild("fa_mine_entrance_grass")
+	inst.AnimState:SetBank("fa_mine_entrance_grass")
+    inst.Transform:SetScale(1.3,1.3, 1.3)
 	Open(inst)
 	return inst
 end
 
 return Prefab( "common/fa_dungeon_entrance", dungfn, assets, prefabs),
-Prefab( "common/fa_mine_entrance", minefn, mineassets, prefabs) 
+Prefab( "common/fa_mine_entrance", minefn, mineassets, prefabs),
+Prefab( "common/fa_mine_entrance_grass", minegrassfn, minegrassassets, prefabs)
