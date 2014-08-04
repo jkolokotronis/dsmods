@@ -25,7 +25,7 @@ function FA_BuffTimers:OnSave()
             saveents[k].cooldowntimer=v.cooldowntimer
             saveents[k].fname=v.fname
             saveents[k].name=v.name
-            saveents[k].variables=variables
+            saveents[k].variables=v.variables
         end
     end
     return {saveents=saveents}
