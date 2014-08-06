@@ -294,11 +294,11 @@ local WONDER_EFFECTS={
 			local merged=MergeMaps(eater.components.inventory.itemslots,eater.components.inventory.equipslots)
     		for k,v in pairs(merged) do
 		        if v.components.fueled then
-        		    v.components.fueled:SetPercent(v.components.fueled:GetPercent()/2)
+        		    v.components.fueled:SetPercent(math.min(1,v.components.fueled:GetPercent()*2))
         		elseif v.components.armor then
-        			v.components.armor:SetPercent(v.components.armor:GetPercent()/2)
+        			v.components.armor:SetPercent(math.min(1,v.components.armor:GetPercent()*2))
         		elseif v.components.finiteuses then
-        			v.components.finiteuses:SetPercent(v.components.finiteuses:GetPercent()/2)
+        			v.components.finiteuses:SetPercent(math.min(1,v.components.finiteuses:GetPercent()*2))
         		end
     		end
 		end
