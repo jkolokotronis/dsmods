@@ -111,6 +111,8 @@ local function common()
 	shadow:SetSize( 1.5, .75 )
     inst.Transform:SetFourFaced()
 
+    inst.Transform:SetScale(0.65,0.65, 0.65)
+
     inst.entity:AddLightWatcher()
     
     inst:AddComponent("talker")

@@ -1,7 +1,15 @@
-local assets =
+local hutassets =
 {
+    Asset("ANIM", "anim/fa_dwarfhut.zip"),    
 }
-
+local bedassets =
+{
+    Asset("ANIM", "anim/fa_dwarfbed.zip"),    
+}
+local standassets =
+{
+    Asset("ANIM", "anim/fa_dwarfstand.zip"),    
+}
 local prefabs = 
 {
 	"fa_dorf",
@@ -26,29 +34,15 @@ local function onhammered(inst, worker)
 	inst:Remove()
 end
 
-local function fn(Sim)
-	local inst = CreateEntity()
-	local trans = inst.entity:AddTransform()
-	local anim = inst.entity:AddAnimState()
-    local light = inst.entity:AddLight()
+local function fn()
+    local inst = CreateEntity()
+    local trans = inst.entity:AddTransform()
+    local anim = inst.entity:AddAnimState()
     inst.entity:AddSoundEmitter()
     local shadow = inst.entity:AddDynamicShadow()
     shadow:SetSize( 6, 3 )
---    inst.Transform:SetScale(2,2, 2)
-
-	local minimap = inst.entity:AddMiniMapEntity()
-	minimap:SetIcon( "fa_dorf.tex" )
-    light:SetFalloff(2)
-    light:SetIntensity(.5)
-    light:SetRadius(2)
-    light:Enable(true)
-    light:SetColour(180/255, 35/255, 50/255)
-    
-    MakeObstaclePhysics(inst, 4)
-
-    anim:SetBank("fa_dorfhut")
-    anim:SetBuild("fa_dorfhut")
-    anim:PlayAnimation("idle",true)
+    local minimap = inst.entity:AddMiniMapEntity()
+    minimap:SetIcon( "fa_dorf.tex" )
 
     inst:AddTag("structure")
     inst:AddComponent("lootdropper")
@@ -56,22 +50,77 @@ local function fn(Sim)
     inst:AddComponent("workable")
     inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
     inst.components.workable:SetWorkLeft(8)
-	inst.components.workable:SetOnFinishCallback(onhammered)
+    inst.components.workable:SetOnFinishCallback(onhammered)
+    inst:AddComponent("inspectable")
+    
+    MakeSnowCovered(inst, .01)
+    return inst
+end
+
+local function fnhut(Sim)
+    local inst=fn()
+    inst.Transform:SetScale(1.3,1.3, 1.3)
+
+--    inst.Transform:SetScale(2,2, 2)
+    local light = inst.entity:AddLight()
+
+    light:SetFalloff(2)
+    light:SetIntensity(.5)
+    light:SetRadius(3)
+    light:Enable(true)
+    light:SetColour(180/255, 35/255, 50/255)
+    
+    MakeObstaclePhysics(inst, 2)
+
+    inst.AnimState:SetBank("fa_dwarfhut")
+    inst.AnimState:SetBuild("fa_dwarfhut")
+    inst.AnimState:PlayAnimation("light_closed",true)
+
 --	inst.components.workable:SetOnWorkCallback(onhit)
 	
     inst:AddComponent("childspawner")
     inst.components.childspawner.childname = "fa_dorf"
     inst.components.childspawner:SetRegenPeriod(TUNING.SPIDERDEN_REGEN_TIME)
     inst.components.childspawner:SetSpawnPeriod(TUNING.SPIDERDEN_RELEASE_TIME)
-    inst.components.childspawner:SetMaxChildren(2)
+    inst.components.childspawner:SetMaxChildren(1)
     inst.components.childspawner:StartSpawning()
-
-
-    inst:AddComponent("inspectable")
-    
-	MakeSnowCovered(inst, .01)
 
     return inst
 end
 
-return Prefab( "common/objects/fa_dorfhut", fn, assets, prefabs )
+local function fnbed()
+    local inst=fn()
+     MakeObstaclePhysics(inst, 1)
+    inst.Transform:SetScale(1.2,1.2, 1.2)
+    inst.AnimState:SetBank("fa_dwarfbed")
+    inst.AnimState:SetBuild("fa_dwarfbed")
+    inst.AnimState:PlayAnimation("full",true)
+    inst:AddComponent("childspawner")
+    inst.components.childspawner.childname = "fa_dorf"
+    inst.components.childspawner:SetRegenPeriod(TUNING.SPIDERDEN_REGEN_TIME)
+    inst.components.childspawner:SetSpawnPeriod(TUNING.SPIDERDEN_RELEASE_TIME)
+    inst.components.childspawner:SetMaxChildren(1)
+    inst.components.childspawner:StartSpawning()
+    return inst
+end
+
+local function fnstand()
+    local inst=fn()
+    local light = inst.entity:AddLight()
+
+    light:SetFalloff(2)
+    light:SetIntensity(.8)
+    light:SetRadius(3)
+    light:Enable(true)
+    light:SetColour(180/255, 35/255, 50/255)
+    inst.Transform:SetScale(1.7,1.7, 1.7)
+     MakeObstaclePhysics(inst, 4)
+    inst.AnimState:SetBank("fa_dwarfstand")
+    inst.AnimState:SetBuild("fa_dwarfstand")
+    inst.AnimState:PlayAnimation("idle",true)
+    return inst
+end
+
+return Prefab( "common/objects/fa_dorfhut", fnhut, hutassets, prefabs ),
+Prefab( "common/objects/fa_dorfbed", fnbed, bedassets, prefabs ),
+Prefab( "common/objects/fa_dorfstand", fnstand, standassets, prefabs )
