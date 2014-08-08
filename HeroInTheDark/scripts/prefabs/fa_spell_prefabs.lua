@@ -8,7 +8,7 @@ local maassets=
 }
 local tinyassets =
 {
-  Asset("ANIM", "anim/tent.zip"),
+  Asset("ANIM", "anim/fa_dwarfhut.zip"),    
 }
 local nightassets =
 {
@@ -191,8 +191,7 @@ local function tentonfinished(inst)
 end
 
 local function tentonbuilt(inst)
-  inst.AnimState:PlayAnimation("place")
-  inst.AnimState:PushAnimation("idle", true)
+  inst.AnimState:PlayAnimation("dark_open", true)
 end
 
 
@@ -265,9 +264,9 @@ local function hutfn()
     MakeObstaclePhysics(inst, 1)    
 
     inst:AddTag("structure")
-    anim:SetBank("tent")
-    anim:SetBuild("tent")
-    anim:PlayAnimation("idle", true)
+    anim:SetBank("fa_dwarfhut")
+    anim:SetBuild("fa_dwarfhut")
+    anim:PlayAnimation("dark_open", true)
     
     local minimap = inst.entity:AddMiniMapEntity()
     minimap:SetIcon( "tent.png" )
@@ -297,6 +296,7 @@ end
 
 local function tinyhutfn(Sim)
     local inst=hutfn()
+    inst.Transform:SetScale(1.1,1.1, 1.1)
     inst:AddComponent("finiteuses")
     inst.components.finiteuses:SetMaxUses(2)
     inst.components.finiteuses:SetUses(2)
@@ -311,6 +311,7 @@ end
 
 local function shelterfn(Sim)
     local inst=hutfn()
+    inst.Transform:SetScale(1.4,1.4, 1.4)
     
     inst.shutdowntime=GetTime()+SHELTER_DURATION
     inst.shutdowntask=inst:DoTaskInTime(SHELTER_DURATION, function()
@@ -437,8 +438,8 @@ Prefab( "common/inventory/fa_stoneskin", stoneskinfn, maassets),
 Prefab( "common/inventory/fa_webspell_spawn", webfn, maassets),
 Prefab( "common/inventory/fa_spell_tinyhut", tinyhutfn, tinyassets),
 Prefab("common/fa_darkvision_fx",darkvision_fx,nightassets),
-MakePlacer( "common/fa_spell_tinyhut_placer", "tent", "tent", "idle" ),
+MakePlacer( "common/fa_spell_tinyhut_placer", "fa_dwarfhut", "fa_dwarfhut", "dark_closed" ),
 Prefab( "common/inventory/fa_spell_secureshelter", shelterfn, tinyassets),
-MakePlacer( "common/fa_spell_secureshelter_placer", "tent", "tent", "idle" ),
+MakePlacer( "common/fa_spell_secureshelter_placer", "fa_dwarfhut", "fa_dwarfhut", "dark_closed" ),
 Prefab( "common/inventory/fa_faeriefire", faeriefirefn, faerieassets)
 

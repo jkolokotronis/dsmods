@@ -59,7 +59,7 @@ end
 
 local function fnhut(Sim)
     local inst=fn()
-    inst.Transform:SetScale(1.3,1.3, 1.3)
+    inst.Transform:SetScale(1.4,1.4, 1.4)
 
 --    inst.Transform:SetScale(2,2, 2)
     local light = inst.entity:AddLight()
@@ -91,7 +91,7 @@ end
 local function fnbed()
     local inst=fn()
      MakeObstaclePhysics(inst, 1)
-    inst.Transform:SetScale(1.2,1.2, 1.2)
+    inst.Transform:SetScale(1.3,1.3, 1.3)
     inst.AnimState:SetBank("fa_dwarfbed")
     inst.AnimState:SetBuild("fa_dwarfbed")
     inst.AnimState:PlayAnimation("full",true)
