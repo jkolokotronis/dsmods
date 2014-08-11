@@ -17,9 +17,9 @@ function Armor:TakeDamage(damage_amount, attacker, weapon,element)
                 absorbed = math.floor(math.min(absorbed, self.condition))
                 local leftover = damage_amount - absorbed
                 --note: absorb % can be negative, in which case you are taking more damage - which is fine, but it shouldnt repair your gear
-                --TODO should absorbing elemental damage damage the equipment?
-                if(leftover>0)then
+                if(absorbed>0)then
                     self:SetCondition(self.condition - absorbed)
+                    --this is debatable... should it trigger when player takes damage or when armor itself takes damage? I'll guess the latter
                     if self.ontakedamage then
                         self.ontakedamage(self.inst, damage_amount, absorbed, leftover)
                     end
