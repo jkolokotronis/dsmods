@@ -2399,11 +2399,13 @@ AddPrefabPostInit("birchnutdrake",function(inst)
     inst:AddTag("fa_neutral")
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
 end)
+--[[
 AddPrefabPostInit("deciduous_root",function(inst)
-    inst:AddTag("fa_animal")
+    inst:AddTag("fa_plant")
     inst:AddTag("fa_neutral")
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.5
+--    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.5
 end)
+]]
 AddPrefabPostInit("ghost",function(inst)
     if(not inst.components.lootdropper)then
         inst:AddComponent("lootdropper")
