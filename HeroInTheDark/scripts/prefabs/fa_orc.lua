@@ -132,6 +132,7 @@ local function fn()
     inst.components.lootdropper:AddChanceLoot("fa_scroll_12",0.07)
     inst.components.lootdropper:AddChanceLoot("fa_orcskin",0.03)
     inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLEMERGED,FALLENLOOTTABLE.TABLE_WEIGHT,0.1)
+     inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLE.keys2,FALLENLOOTTABLE.TABLE_KEYS2_WEIGHT,0.15)
 
     inst:AddComponent("inspectable")
     

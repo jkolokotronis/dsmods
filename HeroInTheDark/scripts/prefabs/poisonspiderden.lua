@@ -87,6 +87,7 @@ local function SetLarge(inst)
     }
     SetStage(inst, 3)
     inst.components.lootdropper:SetLoot({ "silk","silk","silk","silk","silk","silk", "poisonspidereggsack"})
+    inst.components.lootdropper:AddFallenLootTable(MergeMaps(FALLENLOOTTABLEMERGED,FALLENLOOTTABLE.keys3),FALLENLOOTTABLE.TABLE_WEIGHT+FALLENLOOTTABLE.TABLE_KEYS3_WEIGHT,0.15)
 
     if inst.components.burnable then
         inst.components.burnable:SetFXLevel(4)

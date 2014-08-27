@@ -75,6 +75,81 @@ FA_WETTNESS_DAMAGE_MODIFIER={
 	[FA_DAMAGETYPE.ELECTRIC]=0.4
 }
 
+
+FALLENLOOTTABLE={
+    tier1={ 
+
+            armorfire=50,
+            armorfrost=50,
+            dagger=50,
+            flamingsword=50,
+            frostsword=50,
+            undeadbanesword=50,
+            vorpalaxe=50,
+            fa_lightningsword=50,
+            fa_bottle_r=50,
+            fa_bottle_y=50,
+            fa_bottle_g=50,
+            fa_bottle_b=50,
+            fa_fireaxe=50,
+            fa_iceaxe=50
+        
+    },
+    tier2={
+            armorfire2=35,
+            armorfrost2=35,
+            dagger2=35,
+            flamingsword2=35,
+            frostsword2=35,
+            undeadbanesword2=35,
+            vorpalaxe2=35,
+            fa_lightningsword=35,
+            fa_fireaxe2=35,
+            fa_iceaxe2=35
+    },
+    tier3={
+            armorfire3=15,
+            armorfrost3=15,
+            dagger3=15,
+            flamingsword3=15,
+            frostsword3=15,
+            undeadbanesword3=15,
+            vorpalaxe3=15,
+            fa_lightningsword=15,
+            fa_fireaxe3=15,
+            fa_iceaxe3=15,
+            fa_redtotem_item=15,
+            fa_bluetotem_item=15
+    },
+    keys1={
+    	fa_key_generic=70,
+    	fa_key_skeleton=20,
+    	fa_key_jewel=9,
+    	fa_key_swift=1
+	},
+	keys2={
+		fa_key_generic=40,
+    	fa_key_skeleton=30,
+    	fa_key_jewel=19,
+    	fa_key_swift=11
+	},
+    keys3={
+    	fa_key_generic=7.5,
+    	fa_key_skeleton=4.5,
+    	fa_key_jewel=2.25,
+    	fa_key_swift=0.75
+	},
+    TABLE_WEIGHT=1260,
+    TABLE_TIER1_WEIGHT=700,
+    TABLE_TIER2_WEIGHT=350,
+    TABLE_TIER3_WEIGHT=180,
+    TABLE_KEYS1_WEIGHT=100,
+    TABLE_KEYS2_WEIGHT=100,
+    TABLE_KEYS3_WEIGHT=15
+}
+FALLENLOOTTABLEMERGED=MergeMaps(FALLENLOOTTABLE["tier1"],FALLENLOOTTABLE["tier2"],FALLENLOOTTABLE["tier3"])
+
+
 FA_QUAKER_LOOT_OVERRIDE ={}
 FA_QUAKER_LOOT_OVERRIDE["GOBLIN_CAVE"] ={
 	common = 

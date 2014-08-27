@@ -366,6 +366,7 @@ end
 local function normal()
 local inst=common()
     GetInventoryNormal(inst)
+     inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLE.keys1,FALLENLOOTTABLE.TABLE_KEYS1_WEIGHT,0.05)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.1
     return inst
@@ -373,6 +374,7 @@ end
 
 local function fnguards()
     local inst=common()
+     inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLE.keys1,FALLENLOOTTABLE.TABLE_KEYS1_WEIGHT,0.05)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.1
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
@@ -432,6 +434,7 @@ end
 local function fnwiz()
     local inst=common()
     GetInventoryWizard(inst)
+     inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLE.keys1,FALLENLOOTTABLE.TABLE_KEYS1_WEIGHT,0.05)
     inst.components.locomotor.runspeed = 7
     inst.components.combat:SetAttackPeriod(7)
     inst:ListenForEvent("onattackother", wizattack)
@@ -462,6 +465,7 @@ local function fnking()
     inst.components.combat:SetRetargetFunction(1, KingRetargetFn)
     local brain = require "brains/goblinkingbrain"
     inst:SetBrain(brain)
+     inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLE.keys2,FALLENLOOTTABLE.TABLE_KEYS2_WEIGHT,0.15)
     inst.components.lootdropper:SetLoot({ "goblinkinghead_item","fa_scroll_5","fa_scroll_5"})
     return inst
 end

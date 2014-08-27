@@ -121,6 +121,7 @@ local function fn(Sim)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
     inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLEMERGED,FALLENLOOTTABLE.TABLE_WEIGHT,0.15)
+     inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLE.keys2,FALLENLOOTTABLE.TABLE_KEYS2_WEIGHT,0.15)
     
     ---------------------        
     MakeLargeBurnableCharacter(inst, "body")

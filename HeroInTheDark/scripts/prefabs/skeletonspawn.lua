@@ -173,6 +173,7 @@ inst:AddComponent("eater")
     
     inst:AddComponent("lootdropper")
     inst.components.lootdropper:SetLoot({ "boneshard","boneshard"})
+     inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLE.keys1,FALLENLOOTTABLE.TABLE_KEYS1_WEIGHT,0.05)
 
     inst:AddComponent("inventory")
 --    inst:AddComponent("sanity")

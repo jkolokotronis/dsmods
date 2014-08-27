@@ -152,6 +152,7 @@ PrefabFiles = {
     "fa_arrows",
     "fa_bow",
     "fa_keys",
+    "fa_chests",
     "fa_boots",
     "fa_rings",
     "fa_fireaxe",
@@ -508,58 +509,6 @@ local EVIL_SANITY_AURA_OVERRIDE={
     penguin=-TUNING.SANITYAURA_MED,
     flower=-TUNING.SANITYAURA_MED
 }
-
-GLOBAL.FALLENLOOTTABLE={
-    tier1={ 
-
-            armorfire=50,
-            armorfrost=50,
-            dagger=50,
-            flamingsword=50,
-            frostsword=50,
-            undeadbanesword=50,
-            vorpalaxe=50,
-            fa_lightningsword=50,
-            fa_bottle_r=50,
-            fa_bottle_y=50,
-            fa_bottle_g=50,
-            fa_bottle_b=50,
-            fa_fireaxe=50,
-            fa_iceaxe=50
-        
-    },
-    tier2={
-            armorfire2=35,
-            armorfrost2=35,
-            dagger2=35,
-            flamingsword2=35,
-            frostsword2=35,
-            undeadbanesword2=35,
-            vorpalaxe2=35,
-            fa_lightningsword=35,
-            fa_fireaxe2=35,
-            fa_iceaxe2=35
-    },
-    tier3={
-            armorfire3=15,
-            armorfrost3=15,
-            dagger3=15,
-            flamingsword3=15,
-            frostsword3=15,
-            undeadbanesword3=15,
-            vorpalaxe3=15,
-            fa_lightningsword=15,
-            fa_fireaxe3=15,
-            fa_iceaxe3=15,
-            fa_redtotem_item=15,
-            fa_bluetotem_item=15
-    },
-    TABLE_WEIGHT=1260,
-    TABLE_TIER1_WEIGHT=700,
-    TABLE_TIER2_WEIGHT=350,
-    TABLE_TIER3_WEIGHT=180
-}
-GLOBAL.FALLENLOOTTABLEMERGED=MergeMaps(GLOBAL.FALLENLOOTTABLE["tier1"],GLOBAL.FALLENLOOTTABLE["tier2"],GLOBAL.FALLENLOOTTABLE["tier3"])
 
 local FALLENLOOTTABLE=GLOBAL.FALLENLOOTTABLE
 local FALLENLOOTTABLEMERGED=GLOBAL.FALLENLOOTTABLEMERGED
@@ -1257,7 +1206,6 @@ AddClassPostConstruct("components/health",function(component)
     component.fa_temphp=component.fa_temphp or 0
 end)
 
-
 local function onFishingCollect(inst,data)
     local spawnPos = GLOBAL.Vector3(inst.Transform:GetWorldPosition() )
     if(math.random()<=GLOBAL.FISHING_MERM_SPAWN_CHANCE)then
@@ -1860,6 +1808,27 @@ function addFullLootPrefabPostInit(inst,chance)
     inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLEMERGED,FALLENLOOTTABLE.TABLE_WEIGHT,chance)
 end
 
+function addFullStructureLootPrefabPostInit(inst,chance)
+    if(not inst.components.lootdropper)then
+        inst:AddComponent("lootdropper")
+    end
+    inst.components.lootdropper:AddFallenLootTable(MergeMaps(FALLENLOOTTABLEMERGED,FALLENLOOTTABLE.keys3),FALLENLOOTTABLE.TABLE_WEIGHT+FALLENLOOTTABLE.TABLE_KEYS3_WEIGHT,chance)
+end
+
+function addKeyTable1PostInit(inst,chance)
+    if(not inst.components.lootdropper)then
+        inst:AddComponent("lootdropper")
+    end
+    inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLE.keys1,FALLENLOOTTABLE.TABLE_KEYS1_WEIGHT,chance)
+end
+
+function addKeyTable2PostInit(inst,chance)
+    if(not inst.components.lootdropper)then
+        inst:AddComponent("lootdropper")
+    end
+    inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLE.keys2,FALLENLOOTTABLE.TABLE_KEYS2_WEIGHT,chance)
+end
+
 --this has to be the only non-fx thing that doesn't have one...
 AddPrefabPostInit("thulecite_pieces", function(inst) 
     if(not inst.SoundEmitter)then
@@ -1919,6 +1888,7 @@ AddPrefabPostInit("merm",function(inst)
     if(not inst.components.follower)then
         inst:AddComponent("follower")
     end
+    addKeyTable1PostInit(inst,0.05)
     addFullLootPrefabPostInit(inst,0.1) 
     inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
@@ -1932,6 +1902,7 @@ AddPrefabPostInit("pigguard",function(inst)
     if(not inst.components.follower)then
         inst:AddComponent("follower")
     end
+    addKeyTable1PostInit(inst,0.05)
     addFullLootPrefabPostInit(inst,0.1) 
     inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
@@ -1941,6 +1912,7 @@ AddPrefabPostInit("pigman",function(inst)
     inst:AddTag("fa_humanoid")
     inst:AddTag("fa_good")
     inst:AddTag("pickpocketable")
+    addKeyTable1PostInit(inst,0.05)
     addFullLootPrefabPostInit(inst,0.1)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
@@ -1989,6 +1961,7 @@ AddPrefabPostInit("walrus",function(inst)
     if(not inst.components.follower)then
         inst:AddComponent("follower")
     end
+    addKeyTable1PostInit(inst,0.05)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.4
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.5
@@ -1999,6 +1972,7 @@ AddPrefabPostInit("little_walrus",function(inst)
     if(not inst.components.follower)then
         inst:AddComponent("follower")
     end
+    addKeyTable1PostInit(inst,0.05)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.2
@@ -2006,6 +1980,7 @@ end)
 AddPrefabPostInit("krampus",function(inst)
     inst:AddTag("fa_humanoid")
     inst:AddTag("fa_evil")
+    addKeyTable1PostInit(inst,0.05)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-0.1
     inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=0.1
     inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2
@@ -2014,6 +1989,7 @@ end)
 AddPrefabPostInit("monkey",function(inst)
     inst:AddTag("fa_humanoid")
     inst:AddTag("fa_evil")
+    addKeyTable1PostInit(inst,0.05)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
 end)
 AddPrefabPostInit("knight",function(inst)
@@ -2209,6 +2185,7 @@ AddPrefabPostInit("bunnyman",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_neutral")
     inst:AddTag("pickpocketable")
+    addKeyTable1PostInit(inst,0.05)
     addFullLootPrefabPostInit(inst,0.1) 
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
     inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2
@@ -2217,6 +2194,7 @@ end)
 AddPrefabPostInit("rocky",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_good")
+    addKeyTable1PostInit(inst,0.05)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=1
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.5
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.5
@@ -2264,6 +2242,7 @@ end)
 AddPrefabPostInit("spiderqueen",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_evil")
+    addKeyTable2PostInit(inst,0.15)
     addFullLootPrefabPostInit(inst,0.15) 
     inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
@@ -2295,6 +2274,7 @@ AddPrefabPostInit("deerclops",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_giant")
     inst:AddTag("fa_evil")
+    addKeyTable2PostInit(inst,0.15)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=1.5
@@ -2308,6 +2288,7 @@ AddPrefabPostInit("minotaur",function(inst)
     if not inst.components.lootdropper.loot then
         inst.components.lootdropper.loot={}
     end
+    addKeyTable2PostInit(inst,0.15)
     table.insert(inst.components.lootdropper.loot,"fa_scroll_45")
     table.insert(inst.components.lootdropper.loot,"fa_scroll_45")
     inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=2
@@ -2322,6 +2303,7 @@ AddPrefabPostInit("dragonfly",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_giant")
     inst:AddTag("fa_evil")
+    addKeyTable2PostInit(inst,0.15)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=1.5
@@ -2331,6 +2313,7 @@ AddPrefabPostInit("bearger",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_giant")
     inst:AddTag("fa_evil")
+    addKeyTable2PostInit(inst,0.15)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
@@ -2341,6 +2324,7 @@ AddPrefabPostInit("moose",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_giant")
     inst:AddTag("fa_evil")
+    addKeyTable2PostInit(inst,0.15)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=1.5
@@ -2360,6 +2344,7 @@ end)
 AddPrefabPostInit("catcoon",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_neutral")
+    addKeyTable1PostInit(inst,0.05)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
 end)
 AddPrefabPostInit("glommer",function(inst)
@@ -2424,11 +2409,11 @@ end)
 
 
 AddPrefabPostInit("mermhouse", function(inst) 
-    addFullLootPrefabPostInit(inst,0.2) 
+    addFullStructureLootPrefabPostInit(inst,0.2) 
     inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.15)
 end)
 AddPrefabPostInit("pighouse", function(inst) 
-    addFullLootPrefabPostInit(inst,0.2) 
+    addFullStructureLootPrefabPostInit(inst,0.2) 
     inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.15)
 end)
 AddPrefabPostInit("rabbithouse", function(inst) addFullLootPrefabPostInit(inst,0.2) end)
@@ -2451,11 +2436,11 @@ AddPrefabPostInit("poisonspiderden_2", function(inst)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
 end)
 AddPrefabPostInit("spiderden_3", function(inst) 
-    addFullLootPrefabPostInit(inst,0.15) 
+    addFullStructureLootPrefabPostInit(inst,0.15) 
     inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
 end)
 AddPrefabPostInit("poisonspiderden_3", function(inst) 
-    addFullLootPrefabPostInit(inst,0.15) 
+    addFullStructureLootPrefabPostInit(inst,0.15) 
     inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
 end)
 
@@ -2503,6 +2488,7 @@ AddClassPostConstruct("screens/newgamescreen", function(self)
     local atlas = "images/saveslot_portraits/"..self.character..".xml"
     self.portrait:SetTexture(atlas, self.character..".tex")
 end)
+
 
 AddModCharacter("barb")
 AddModCharacter("druid")

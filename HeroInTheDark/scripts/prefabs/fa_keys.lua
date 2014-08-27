@@ -6,7 +6,7 @@ local assets=
     Asset("IMAGE", "images/inventoryimages/fa_keys.tex"),
 }
 
-local function fn(type)
+local function fn(type,keylevel)
 		local inst = CreateEntity()
 		inst.entity:AddTransform()
 		inst.entity:AddAnimState()
@@ -23,6 +23,11 @@ local function fn(type)
 	    inst:AddComponent("inventoryitem")
     	inst.components.inventoryitem.imagename="fa_key_"..type
     	inst.components.inventoryitem.atlasname="images/inventoryimages/fa_keys.xml"
+    	inst:AddComponent("key")
+    	inst.components.key.keytype="chest"
+    	if(keylevel)then
+    		inst.components.key.keytype=inst.components.key.keytype.."_t"..keylevel
+    	end
 	    
 		inst:AddComponent("tradable")
 	    
@@ -33,16 +38,16 @@ local function fnfoli()
 	return fn("foli")
 end
 local function fnjewel()
-	return fn("jewel")
+	return fn("jewel",3)
 end
 local function fnskeleton()
-	return fn("skeleton")
+	return fn("skeleton",2)
 end
 local function fngeneric()
-	return fn("generic")
+	return fn("generic",1)
 end
 local function fnswift()
-	return fn("swift")
+	return fn("swift",4)
 end
 
 
