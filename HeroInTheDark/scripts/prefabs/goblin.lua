@@ -465,8 +465,8 @@ local function fnking()
     inst.components.combat:SetRetargetFunction(1, KingRetargetFn)
     local brain = require "brains/goblinkingbrain"
     inst:SetBrain(brain)
-     inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLE.keys2,FALLENLOOTTABLE.TABLE_KEYS2_WEIGHT,0.15)
-    inst.components.lootdropper:SetLoot({ "goblinkinghead_item","fa_scroll_5","fa_scroll_5"})
+--     inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLE.keys2,FALLENLOOTTABLE.TABLE_KEYS2_WEIGHT,0.15)
+    inst.components.lootdropper:SetLoot({ "goblinkinghead_item","fa_scroll_5","fa_scroll_5","fa_key_swift"})
     return inst
 end
 return Prefab( "common/goblin", normal, assets),

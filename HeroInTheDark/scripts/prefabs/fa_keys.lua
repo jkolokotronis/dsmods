@@ -19,6 +19,10 @@ local function fn(type,keylevel)
 	    local minimap = inst.entity:AddMiniMapEntity()
     	minimap:SetIcon( "fa_key.tex" )
 
+    	
+    inst:AddComponent("stackable")
+	inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
+
 		inst:AddComponent("inspectable")
 	    inst:AddComponent("inventoryitem")
     	inst.components.inventoryitem.imagename="fa_key_"..type
