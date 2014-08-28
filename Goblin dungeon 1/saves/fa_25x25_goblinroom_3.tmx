@@ -10973,7 +10973,7 @@
   <object type="fa_bottle_y" x="1365" y="1392"/>
   <object type="fa_bottle_g" x="714" y="1530"/>
   <object type="poop" x="67" y="83"/>
-  <object type="treasurechest" x="697" y="1419">
+  <object type="fa_treasurechest" x="697" y="1419">
    <properties>
     <property name="scenario" value="fa_goblintreasurechest"/>
    </properties>

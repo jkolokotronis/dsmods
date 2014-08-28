@@ -935,14 +935,17 @@ return {
         },
         {
           name = "",
-          type = "treasurechest",
+          type = "fa_treasurechest",
           shape = "rectangle",
           x = 150,
           y = 160,
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = 
+          {
+            ["scenario"] = "fa_goblintreasurechest"
+          }
         },
         {
           name = "",

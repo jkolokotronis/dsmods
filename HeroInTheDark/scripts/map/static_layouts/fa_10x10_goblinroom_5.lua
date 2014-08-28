@@ -1769,7 +1769,7 @@ return {
         },
         {
           name = "",
-          type = "pandoraschest",
+          type = "fa_pandoraschest",
           shape = "rectangle",
           x = 214,
           y = 482,

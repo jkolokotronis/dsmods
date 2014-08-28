@@ -2286,7 +2286,7 @@ return {
         },
         {
           name = "",
-          type = "skullchest",
+          type = "fa_skullchest",
           shape = "rectangle",
           x = 572,
           y = 576,

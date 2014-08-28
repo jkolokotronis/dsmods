@@ -10981,7 +10981,7 @@
     <property name="scenario" value="fa_pickup_thulecitearmor"/>
    </properties>
   </object>
-  <object type="treasurechest" x="635" y="1301">
+  <object type="fa_treasurechest" x="635" y="1301">
    <properties>
     <property name="scenario" value="fa_goblintreasurechest"/>
    </properties>

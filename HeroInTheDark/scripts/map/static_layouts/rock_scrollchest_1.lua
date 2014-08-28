@@ -63,7 +63,7 @@ return {
       objects = {
         {
           name = "",
-          type = "treasurechest",
+          type = "fa_treasurechest",
           shape = "rectangle",
           x = 171,
           y = 78,

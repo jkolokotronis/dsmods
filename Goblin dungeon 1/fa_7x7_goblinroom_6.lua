@@ -2505,7 +2505,7 @@ return {
         },
         {
           name = "",
-          type = "treasurechest",
+          type = "fa_treasurechest",
           shape = "rectangle",
           x = 232,
           y = 238,

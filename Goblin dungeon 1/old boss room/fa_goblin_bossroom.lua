@@ -8731,14 +8731,14 @@ return {
         },
         {
           name = "",
-          type = "treasurechest",
+          type = "fa_treasurechest",
           shape = "rectangle",
           x = 2482,
           y = 2488,
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {["scenario"] = "fa_goblintreasurechest"}
         },
         {
           name = "",

@@ -784,7 +784,7 @@
   <object type="fa_goblin_guard_1" x="1858" y="2222"/>
   <object type="fa_goblin_wiz_1" x="2439" y="2273"/>
   <object type="fa_goblin_wiz_1" x="2272" y="2445"/>
-  <object type="treasurechest" x="2482" y="2488"/>
+  <object type="fa_treasurechest" x="2482" y="2488"/>
   <object type="fa_bottle_g" x="2459" y="2405"/>
   <object type="fa_bottle_y" x="2402" y="2411"/>
   <object type="fa_bottle_r" x="2354" y="2411"/>

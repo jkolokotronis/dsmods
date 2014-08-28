@@ -2110,7 +2110,7 @@ return {
         },
         {
           name = "",
-          type = "treasurechest",
+          type = "fa_treasurechest",
           shape = "rectangle",
           x = 53,
           y = 352,
@@ -2200,7 +2200,7 @@ return {
         },
         {
           name = "",
-          type = "skullchest",
+          type = "fa_skullchest",
           shape = "rectangle",
           x = 579,
           y = 574,
@@ -2213,7 +2213,7 @@ return {
         },
         {
           name = "",
-          type = "treasurechest",
+          type = "fa_treasurechest",
           shape = "rectangle",
           x = 593,
           y = 226,

@@ -10376,7 +10376,7 @@
   <object type="fa_dungeon_marblepillar" x="1197" y="228"/>
   <object type="fa_dungeon_marblepillar" x="1197" y="205"/>
   <object type="fa_dungeon_marblepillar" x="1198" y="160"/>
-  <object type="minotaurchest" x="1513" y="79">
+  <object type="fa_minotaurchest" x="1513" y="79">
    <properties>
     <property name="scenario" value="fa_goblinminotaurchest"/>
    </properties>

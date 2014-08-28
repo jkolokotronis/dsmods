@@ -88,7 +88,11 @@
   <object type="trap_teeth_maxwell" x="250" y="228"/>
   <object type="trap_teeth_maxwell" x="286" y="244"/>
   <object type="trap_teeth_maxwell" x="297" y="279"/>
-  <object type="treasurechest" x="150" y="160"/>
+  <object type="fa_treasurechest" x="150" y="160">
+  <properties>
+     <property name="scenario" value="fa_goblintreasurechest"/>
+  </properties>
+  </object>
   <object type="fa_goblin_guard_1" x="142" y="91"/>
  </objectgroup>
 </map>

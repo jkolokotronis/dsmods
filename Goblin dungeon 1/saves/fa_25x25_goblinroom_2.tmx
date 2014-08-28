@@ -10910,7 +10910,7 @@
   <object type="fa_redtotem_kos" x="1295" y="446"/>
   <object type="fa_redtotem_kos" x="1408" y="448"/>
   <object type="fa_redtotem_kos" x="1354" y="287"/>
-  <object type="treasurechest" x="1407" y="857">
+  <object type="fa_treasurechest" x="1407" y="857">
    <properties>
     <property name="scenario" value="fa_goblintreasurechest"/>
    </properties>

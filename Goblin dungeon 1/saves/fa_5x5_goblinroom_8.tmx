@@ -55,7 +55,7 @@
   <object type="fa_dungeon_wall" x="54" y="11"/>
   <object type="fa_dungeon_wall" x="33" y="10"/>
   <object type="fa_dungeon_wall" x="12" y="9"/>
-  <object type="treasurechest" x="255" y="267">
+  <object type="fa_treasurechest" x="255" y="267">
    <properties>
     <property name="scenario" value="fa_goblintreasurechest"/>
    </properties>

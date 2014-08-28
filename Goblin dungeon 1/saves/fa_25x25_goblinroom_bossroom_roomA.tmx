@@ -10457,12 +10457,12 @@
   <object type="fa_goblin_guard_2" x="381" y="125"/>
   <object type="fa_goblin_guard_2" x="1219" y="379"/>
   <object type="fa_goblin_guard_2" x="1473" y="188"/>
-  <object type="treasurechest" x="85" y="72">
+  <object type="fa_treasurechest" x="85" y="72">
    <properties>
     <property name="scenario" value="fa_goblintreasurechest"/>
    </properties>
   </object>
-  <object type="treasurechest" x="78" y="1525">
+  <object type="fa_treasurechest" x="78" y="1525">
    <properties>
     <property name="scenario" value="fa_goblintreasurechest"/>
    </properties>

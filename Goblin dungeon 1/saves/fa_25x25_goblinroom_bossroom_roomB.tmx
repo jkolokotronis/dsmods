@@ -10643,22 +10643,22 @@
   <object type="fa_goblin_wiz_1" x="77" y="191"/>
   <object type="fa_goblin_wiz_1" x="906" y="281"/>
   <object type="fa_goblin_wiz_1" x="1517" y="187"/>
-  <object type="treasurechest" x="73" y="1282">
+  <object type="fa_treasurechest" x="73" y="1282">
    <properties>
     <property name="scenario" value="fa_goblintreasurechest"/>
    </properties>
   </object>
-  <object type="treasurechest" x="69" y="694">
+  <object type="fa_treasurechest" x="69" y="694">
    <properties>
     <property name="scenario" value="fa_goblintreasurechest"/>
    </properties>
   </object>
-  <object type="treasurechest" x="1525" y="317">
+  <object type="fa_treasurechest" x="1525" y="317">
    <properties>
     <property name="scenario" value="fa_goblintreasurechest"/>
    </properties>
   </object>
-  <object type="treasurechest" x="1522" y="1259">
+  <object type="fa_treasurechest" x="1522" y="1259">
    <properties>
     <property name="scenario" value="fa_goblintreasurechest"/>
    </properties>

@@ -4194,7 +4194,7 @@ return {
         },
         {
           name = "",
-          type = "minotaurchest",
+          type = "fa_minotaurchest",
           shape = "rectangle",
           x = 1513,
           y = 79,
