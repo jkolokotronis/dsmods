@@ -44,6 +44,8 @@ local function common(origprefab,locklevel)
     inst:DoTaskInTime(0,function()
     	if(not inst.components.lock.islocked)then
     		inst.components.container.canbeopened=true
+    	else
+    		inst.components.container.canbeopened=false
     	end
     end)
 
