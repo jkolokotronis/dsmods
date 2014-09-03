@@ -269,7 +269,7 @@ FA_LEVELDATA["ORC_MINES"]={
 			"ORCFEntrance"
 		},
 		required_prefabs = {
-		"fa_dungeon_exit",
+		"fa_mine_exit",
 		},
 
 	}
@@ -295,7 +295,7 @@ FA_LEVELDATA["DWARF_FORTRESS"]={
 			"FAGoblinBossroom2",
 		},
 		required_prefabs = {
-		"fa_dungeon_exit",
+		"fa_mine_exit",
 		},
 
 	}
@@ -336,7 +336,7 @@ FA_LEVELDATA["ORC_FORTRESS"]={
 			"Sacred2",
 		},
 		required_prefabs = {
-		"fa_dungeon_exit",
+		"fa_mine_exit",
 		},
 
 	}

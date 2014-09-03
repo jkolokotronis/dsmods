@@ -92,8 +92,8 @@ FALLENLOOTTABLE={
             fa_bottle_g=50,
             fa_bottle_b=50,
             fa_fireaxe=50,
-            fa_iceaxe=50
-        
+            fa_iceaxe=50, 
+            fa_ring_poop=50,       
     },
     tier2={
             armorfire2=35,
@@ -105,7 +105,8 @@ FALLENLOOTTABLE={
             vorpalaxe2=35,
             fa_lightningsword=35,
             fa_fireaxe2=35,
-            fa_iceaxe2=35
+            fa_iceaxe2=35,
+            fa_ring_speed=35
     },
     tier3={
             armorfire3=15,
@@ -119,7 +120,10 @@ FALLENLOOTTABLE={
             fa_fireaxe3=15,
             fa_iceaxe3=15,
             fa_redtotem_item=15,
-            fa_bluetotem_item=15
+            fa_bluetotem_item=15,
+            fa_ring_frozen=15,
+            fa_ring_burning=15,
+            fa_ring_light=15
     },
     keys1={
     	fa_key_generic=70,
@@ -139,10 +143,10 @@ FALLENLOOTTABLE={
     	fa_key_jewel=2.25,
     	fa_key_swift=0.75
 	},
-    TABLE_WEIGHT=1260,
-    TABLE_TIER1_WEIGHT=700,
-    TABLE_TIER2_WEIGHT=350,
-    TABLE_TIER3_WEIGHT=180,
+    TABLE_WEIGHT=1360,
+    TABLE_TIER1_WEIGHT=750,
+    TABLE_TIER2_WEIGHT=385,
+    TABLE_TIER3_WEIGHT=225,
     TABLE_KEYS1_WEIGHT=100,
     TABLE_KEYS2_WEIGHT=100,
     TABLE_KEYS3_WEIGHT=15

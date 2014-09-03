@@ -78,7 +78,7 @@ return {
       objects = {
         {
           name = "",
-          type = "fa_dungeon_exit",
+          type = "fa_mine_exit",
           shape = "rectangle",
           x = 256,
           y = 251,

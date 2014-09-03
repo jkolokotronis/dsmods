@@ -7,6 +7,11 @@ local assets=
 	Asset("ANIM", "anim/fa_dungeon_exit.zip"),
 }
 
+local mineassets=
+{
+	Asset("ANIM", "anim/fa_mine_exit.zip"),
+
+}
 
 local function GetVerb(inst)
 	return STRINGS.ACTIONS.ACTIVATE.CLIMB
@@ -82,8 +87,6 @@ local function fn(Sim)
     local minimap = inst.entity:AddMiniMapEntity()
     minimap:SetIcon( "cave_open2.png" )
     
-    anim:SetBank("fa_dungeon_exit")
-    anim:SetBuild("fa_dungeon_exit")
 	inst.AnimState:PlayAnimation("idle",true)
     inst.Transform:SetScale(2, 2, 2)
 
@@ -103,4 +106,21 @@ local function fn(Sim)
     return inst
 end
 
-return Prefab( "common/fa_dungeon_exit", fn, assets) 
+
+local function dungfn()
+	local inst=fn()
+	inst.AnimState:SetBuild("fa_dungeon_exit")
+	inst.AnimState:SetBank("fa_dungeon_exit")
+	return inst
+end
+
+local function minefn()
+	local inst=fn()
+	inst.AnimState:SetBuild("fa_mine_exit")
+	inst.AnimState:SetBank("fa_mine_exit")
+    inst.Transform:SetScale(4, 4, 4)
+	return inst
+end
+
+return Prefab( "common/fa_dungeon_exit", dungfn, assets) ,
+Prefab( "common/fa_mine_exit", minefn, mineassets, prefabs)
