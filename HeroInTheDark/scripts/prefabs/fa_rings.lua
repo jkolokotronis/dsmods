@@ -61,7 +61,7 @@ local function stopfueled(inst, owner)
 end
 
 local function fnfrozen()
-	local inst=fn("cyan","silver")
+	local inst=fn("blue","silver")
 	if(FA_DLCACCESS)then
 		inst.components.equippable.dapperness =FROZEN_DAPPERNESS
 	else
@@ -100,6 +100,7 @@ local function fnburning()
 
         inst.components.equippable:SetOnEquip( startfueled )
         inst.components.equippable:SetOnUnequip( stopfueled )
+    inst:AddComponent("heater")
 	inst.components.heater.equippedheatfn=function(owner, observer)
         	if(owner and owner.components.temperature and owner.components.temperature.current)then
         		return owner.component.temperature.current+1
@@ -132,11 +133,42 @@ local function startlight(inst, owner)
     if inst.components.fueled then
         inst.components.fueled:StartConsuming()        
     end
+    if(inst.pooptask)then
+        inst.pooptask:Cancel()
+        inst.pooptask=nil
+    end
+    inst.pooptask=inst:DoPeriodicTask(2,function()
+            if(owner.components.hunger)then
+                owner.components.hunger:DoDelta(-1)
+            end
+    end)
+
+    local le = CreateEntity()
+    le.entity:AddTransform()
+
+    le:AddComponent("lighttweener")
+    le.light = le.entity:AddLight()
+    le.light:Enable(true)
+    le:AddTag("FX")
+    le:AddTag("NOCLICK")
+    le.persists=false
+    le.components.lighttweener:StartTween(le.light, 4, 0.8, 0.8, {180/255, 100/255, 100/255}, 1)
+    local follower = le.entity:AddFollower()
+    follower:FollowSymbol( owner.GUID, owner.components.combat.hiteffectsymbol, 0, 0, 1 )
+    inst.light_entity=le
 end
 
 local function stoplight(inst, owner) 
     if inst.components.fueled then
         inst.components.fueled:StopConsuming()        
+    end
+    if(inst.pooptask)then
+        inst.pooptask:Cancel()
+        inst.pooptask=nil
+    end
+    if(inst.light_entity)then
+        inst.light_entity:Remove()
+        inst.light_entity=nil
     end
 end
 
@@ -144,12 +176,11 @@ local function fnlight()
 	local inst=fn("yellow","gold")
 
     local light = inst.entity:AddLight()
-    light:SetFalloff(2)
+    light:SetFalloff(0.8)
     light:SetIntensity(.8)
-    light:SetRadius(3)
+    light:SetRadius(1)
     light:Enable(true)
-    light:SetColour(180/255, 35/255, 50/255)
-    light:Enable(true)
+    light:SetColour(180/255, 100/255, 100/255)
 
 
         inst.components.equippable:SetOnEquip( startlight )
@@ -175,10 +206,14 @@ local function startpoop(inst, owner)
 		inst.pooptask:Cancel()
 		inst.pooptask=nil
 	end
-	inst.pooptask=DoPeriodicTask(2,function()
+	inst.pooptask=inst:DoPeriodicTask(2,function()
 		if(owner and owner:IsValid() and not (owner.components.health and owner.components.health:IsDead()))then
 			local poo = SpawnPrefab("poop")
 	        poo.Transform:SetPosition(owner.Transform:GetWorldPosition())  
+            --simply making a hunger_drain comp might be better... cant just change 'rate' because changing that would get overwritten by various other factors
+            if(owner.components.hunger)then
+                owner.components.hunger:DoDelta(-owner.components.hunger.hungerrate*2)
+            end
 		else
 			print("warning: invalid owner of equipped ring!")
 		end
@@ -200,6 +235,8 @@ end
 
 local function fnpoop()
 	local inst=fn("orange","bronze")
+        inst.components.equippable:SetOnEquip( startpoop )
+        inst.components.equippable:SetOnUnequip( stoppoop )
 
         inst:AddComponent("fueled")
         inst.components.fueled.fueltype = "MAGIC"
