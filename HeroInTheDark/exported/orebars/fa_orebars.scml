@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
     <folder id="0">
-        <file id="0" name="DiffGroundArts_0000_silver-bar--Kopie.png" width="177" height="116" pivot_x="0" pivot_y="1"/>
-        <file id="1" name="DiffGroundArts_0004_gold-bar-Kopie.png" width="153" height="66" pivot_x="0" pivot_y="1"/>
-        <file id="2" name="DiffGroundArts_0006_copper-bar-Kopie.png" width="176" height="60" pivot_x="0" pivot_y="1"/>
-        <file id="3" name="DiffGroundArts_0010_coke-Kopie.png" width="103" height="86" pivot_x="0" pivot_y="1"/>
-        <file id="4" name="DiffGroundArts_0012_steel-bar-Kopie.png" width="192" height="100" pivot_x="0" pivot_y="1"/>
-        <file id="5" name="DiffGroundArts_0014_pig-iron-bar-Kopie.png" width="173" height="83" pivot_x="0" pivot_y="1"/>
-        <file id="6" name="DiffGroundArts_0018_iron-bar-Kopie.png" width="141" height="50" pivot_x="0" pivot_y="1"/>
+        <file id="0" name="DiffGroundArts_0000_silver-bar--Kopie.png" width="248" height="163" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="DiffGroundArts_0004_gold-bar-Kopie.png" width="214" height="161" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="DiffGroundArts_0006_copper-bar-Kopie.png" width="237" height="87" pivot_x="0" pivot_y="1"/>
+        <file id="3" name="DiffGroundArts_0010_coke-Kopie.png" width="148" height="122" pivot_x="0" pivot_y="1"/>
+        <file id="4" name="DiffGroundArts_0012_steel-bar-Kopie.png" width="270" height="145" pivot_x="0" pivot_y="1"/>
+        <file id="5" name="DiffGroundArts_0014_pig-iron-bar-Kopie.png" width="223" height="108" pivot_x="0" pivot_y="1"/>
+        <file id="6" name="DiffGroundArts_0018_iron-bar-Kopie.png" width="202" height="71" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="fa_silverbar">
         <animation id="0" name="idle" length="1000">
@@ -18,7 +18,7 @@
             </mainline>
             <timeline id="0" name="DiffGroundArts_0000_silver-bar--Kopie">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-77" y="80" angle="0"/>
+                    <object folder="0" file="0" x="-107" y="115" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -32,7 +32,7 @@
             </mainline>
             <timeline id="0" name="DiffGroundArts_0000_silver-bar--Kopie">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-82" y="42" angle="0"/>
+                    <object folder="0" file="1" x="-106" y="54" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -46,7 +46,7 @@
             </mainline>
             <timeline id="0" name="DiffGroundArts_0000_silver-bar--Kopie">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="-95" y="37" angle="0"/>
+                    <object folder="0" file="2" x="-124" y="58" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -60,7 +60,7 @@
             </mainline>
             <timeline id="0" name="DiffGroundArts_0000_silver-bar--Kopie">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="-55" y="73" angle="0"/>
+                    <object folder="0" file="3" x="-87" y="108" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -74,7 +74,7 @@
             </mainline>
             <timeline id="0" name="DiffGroundArts_0000_silver-bar--Kopie">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="-105" y="34" angle="0"/>
+                    <object folder="0" file="4" x="-141" y="49" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -88,7 +88,7 @@
             </mainline>
             <timeline id="0" name="DiffGroundArts_0000_silver-bar--Kopie">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="-97" y="64" angle="0"/>
+                    <object folder="0" file="5" x="-117" y="82" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -102,7 +102,7 @@
             </mainline>
             <timeline id="0" name="DiffGroundArts_0000_silver-bar--Kopie">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="-70" y="33" angle="0"/>
+                    <object folder="0" file="6" x="-107" y="39" angle="0"/>
                 </key>
             </timeline>
         </animation>
