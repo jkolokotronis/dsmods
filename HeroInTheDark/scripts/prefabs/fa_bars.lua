@@ -1,6 +1,6 @@
 local assets =
 {
-
+	Asset("ANIM", "anim/fa_orebars.zip"),	
 }
 
 local prefabs =
@@ -17,8 +17,8 @@ local function barfn(name)
 
     inst:AddTag("fa_bar")
 --    inst.AnimState:SetBank("fa_"..name.."pebble")
-	inst.AnimState:SetBank("fa_metalbar")
-    inst.AnimState:SetBuild("fa_"..name.."bar")
+	inst.AnimState:SetBank("fa_"..name.."bar")
+    inst.AnimState:SetBuild("fa_orebars")
 	inst.AnimState:PlayAnimation("idle")
 
     inst:AddComponent("edible")
@@ -83,6 +83,9 @@ local function steelbarfn(Sim)
 	return barfn("steel")
 end
 
+local function goldbarfn(Sim)
+	return barfn("gold")
+end 
 return Prefab( "common/inventory/fa_ironbar", ironbarfn, assets,prefabs),
 Prefab( "common/inventory/fa_pigironbar", pigironbarfn, assets,prefabs),
 Prefab( "common/inventory/fa_coalbar", coalbarfn, assets,prefabs),
@@ -91,4 +94,5 @@ Prefab( "common/inventory/fa_adamantinebar", adamantinebarfn, assets,prefabs),
 Prefab( "common/inventory/fa_copperbar", copperbarfn, assets,prefabs),
 Prefab( "common/inventory/fa_steelbar", steelbarfn, assets,prefabs),
 Prefab( "common/inventory/fa_silverbar", silverbarfn, assets,prefabs),
+Prefab( "common/inventory/fa_goldbar", goldbarfn, assets,prefabs),
 Prefab( "common/inventory/fa_lavabar", lavabarfn, assets,prefabs)

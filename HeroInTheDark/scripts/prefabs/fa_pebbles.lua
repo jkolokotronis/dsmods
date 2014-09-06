@@ -1,7 +1,7 @@
 
 local pebble_assets=
 {
-	Asset("ANIM", "anim/fa_lavapebble.zip"),
+	Asset("ANIM", "anim/fa_pebbles.zip"),
     Asset("ATLAS", "images/inventoryimages/fa_lavapebble.xml"),
     Asset("IMAGE", "images/inventoryimages/fa_lavapebble.tex"),
 }
@@ -38,8 +38,8 @@ local function pebblefn(name,animnames)
 
 	inst:AddTag("ore")
 --    inst.AnimState:SetBank("fa_"..name.."pebble")
-	 inst.AnimState:SetBank("fa_lavapebble")
-    inst.AnimState:SetBuild("fa_"..name.."pebble")
+	 inst.AnimState:SetBank("fa_"..name.."pebble")
+    inst.AnimState:SetBuild("fa_pebbles")
 
     inst:AddComponent("edible")
     inst.components.edible.foodtype = "ELEMENTAL"
@@ -72,11 +72,11 @@ local function lavapebblefn(Sim)
 end
 
 local function ironpebblefn(Sim)
-	return pebblefn("iron",lavapebble_names)
+	return pebblefn("iron")
 end
 
 local function coalpebblefn(Sim)
-	local inst= pebblefn("coal",lavapebble_names)
+	local inst= pebblefn("coal")
 	MakeSmallBurnable(inst, TUNING.LARGE_BURNTIME*2)
     MakeSmallPropagator(inst)
     inst:AddComponent("fuel")
@@ -85,19 +85,19 @@ local function coalpebblefn(Sim)
 end
 
 local function limestonepebblefn(Sim)
-	return pebblefn("limestone",lavapebble_names)
+	return pebblefn("limestone")
 end
 
 local function adamantinepebblefn(Sim)
-	return pebblefn("adamantine",lavapebble_names)
+	return pebblefn("adamantine")
 end
 
 local function copperpebblefn(Sim)
-	return pebblefn("copper",lavapebble_names)
+	return pebblefn("copper")
 end
 
 local function silverpebblefn(Sim)
-	return pebblefn("silver",lavapebble_names)
+	return pebblefn("silver")
 end
 
 return Prefab( "common/inventory/fa_lavapebble", lavapebblefn, pebble_assets),
