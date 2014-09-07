@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
+    <folder id="0" name="rock01">
+        <file id="0" name="rock01/rock01-0.png" width="947" height="828" pivot_x="0.496216" pivot_y="0.437081"/>
+        <file id="1" name="rock01/rock01-1.png" width="947" height="581" pivot_x="0.596099" pivot_y="0.502719"/>
+        <file id="2" name="rock01/rock01-2.png" width="1011" height="581" pivot_x="0.53089" pivot_y="0.802597"/>
+        <file id="3" name="rock01/rock01-3.png" width="965" height="780" pivot_x="0" pivot_y="1"/>
+        <file id="4" name="rock01/rock01-4.png" width="922" height="695" pivot_x="0" pivot_y="1"/>
+        <file id="5" name="rock01/rock01-5.png" width="652" height="277" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="fa_copperrock">
+        <animation id="0" name="anim" length="67">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="rock01">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="0.201299" y="272.058307" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="5" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="rock01">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="67.288201" y="244.965643" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="2" name="1" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="rock01">
+                <key id="0" spin="0">
+                    <object folder="0" file="5" x="-398.247836" y="224.862039" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="3" name="6" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="rock01">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="1.752164" y="273.510688" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="4" name="2" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="rock01">
+                <key id="0" spin="0">
+                    <object folder="0" file="4" x="-403.037674" y="637.128946" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="5" name="3" length="200">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="rock01">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" x="-413.520563" y="708.506359" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="6" name="4" length="200">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="rock01">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="62.395168" y="403.614203" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

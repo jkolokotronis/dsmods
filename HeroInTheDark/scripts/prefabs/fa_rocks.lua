@@ -19,7 +19,12 @@ local rock_assets_fa_coalrock =
 {
 	Asset("ANIM", "anim/fa_coalrock.zip"),
 }
-
+local rock_assets_fa_copperrock={
+	Asset("ANIM", "anim/fa_copperrock.zip"),
+}
+local rock_assets_fa_adamantinerock={
+	Asset("ANIM", "anim/fa_adamantinerock.zip"),
+}
 local prefabs =
 {
 	--[[ meh not necesary
@@ -219,17 +224,21 @@ local function limestonerock()
 	return inst
 end
 local function adamantinerock()
-	return baserock_fn("adamantine",nil,ADAMANTINE_MINE)
+	local inst= baserock_fn("adamantine",nil,ADAMANTINE_MINE)
+	inst.stages=3
+	return inst
 end
 local function copperrock()
-	return baserock_fn("copper",nil,COPPER_MINE)
+	local inst=baserock_fn("copper",nil,COPPER_MINE)
+	inst.stages=6
+	return inst
 end
 
 return	Prefab("mines/objects/rocks/fa_lavarock", rock1_fn, rock_assets_fa_lavarock, prefabs),
 		Prefab("mines/objects/rocks/fa_ironrock", ironrock, rock_assets_fa_ironrock, prefabs),
 		Prefab("mines/objects/rocks/fa_coalrock", coalrock, rock_assets_fa_coalrock, prefabs),
 		Prefab("mines/objects/rocks/fa_limestonerock", limestonerock, rock_assets_fa_limestonerock, prefabs),
-		Prefab("mines/objects/rocks/fa_adamantinerock", adamantinerock, rock_assets, prefabs),
-		Prefab("mines/objects/rocks/fa_copperrock", copperrock, rock_assets, prefabs)
+		Prefab("mines/objects/rocks/fa_adamantinerock", adamantinerock, rock_assets_fa_adamantinerock, prefabs),
+		Prefab("mines/objects/rocks/fa_copperrock", copperrock, rock_assets_fa_copperrock, prefabs)
 		
 
