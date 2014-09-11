@@ -8,11 +8,11 @@ local FA_Furnace = Class(function(self, inst,matcher)
     self.matcher = matcher
 end)
 
-function FA_Furnace:dostew(inst)
+function FA_Furnace:dostew()
 	self.task = nil
 	
 	if self.ondonecooking then
-		self.ondonecooking(inst)
+		self.ondonecooking(self.inst)
 	end
 	
 	self.done = true
@@ -80,7 +80,6 @@ function FA_Furnace:OnSave()
 		local data = {}
 		data.cooking = true
 		data.product = self.product
-		data.product_spoilage = self.product_spoilage
 		local time = GetTime()
 		if self.targettime and self.targettime > time then
 			data.time = self.targettime - time
@@ -89,7 +88,6 @@ function FA_Furnace:OnSave()
     elseif self.done then
 		local data = {}
 		data.product = self.product
-		data.product_spoilage = self.product_spoilage
 		data.done = true
 		return data		
     end
@@ -101,7 +99,6 @@ function FA_Furnace:OnLoad(data)
 		self.product = data.product
 		if self.oncontinuecooking then
 			local time = data.time or 1
-			self.product_spoilage = data.product_spoilage or 1
 			self.oncontinuecooking(self.inst)
 			self.cooking = true
 			self.targettime = GetTime() + time
@@ -113,7 +110,6 @@ function FA_Furnace:OnLoad(data)
 			
 		end
     elseif data.done then
-		self.product_spoilage = data.product_spoilage or 1
 		self.done = true
 		self.product = data.product
 		if self.oncontinuedone then
@@ -131,7 +127,7 @@ function FA_Furnace:CollectSceneActions(doer, actions, right)
     if self.done then
         table.insert(actions, ACTIONS.HARVEST)
     elseif right and self:CanCook() then
-		table.insert(actions, ACTIONS.COOK)
+		table.insert(actions, ACTIONS.FA_FURNACE)
     end
 end
 
@@ -154,9 +150,6 @@ function FA_Furnace:Harvest( harvester )
 				end
 				
 				for k,v in loot do
-					if v and v.components.perishable then
-						loot.components.perishable:SetPercent( self.product_spoilage)
-					end
 					harvester.components.inventory:GiveItem(v, nil, Vector3(TheSim:GetScreenPos(self.inst.Transform:GetWorldPosition())))
 				end
 				

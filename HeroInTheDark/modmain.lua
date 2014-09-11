@@ -731,6 +731,27 @@ end
 AddClassPostConstruct("screens/playerhud", OpenBackpack)
 --SaveGameIndex:GetCurrentCaveLevel()
 
+local FA_FURNACE=Action()
+FA_FURNACE.id="FA_FURNACE"
+--FA_FURNACE.str=STRINGS.ACTIONS.FA_FURNACE
+GLOBAL.ACTIONS.FA_FURNACE=FA_FURNACE
+
+FA_FURNACE.fn = function(act)
+    if act.target.components.fa_furnace then
+        act.target.components.fa_furnace:StartCooking()
+        return true
+    end
+end
+
+FA_FURNACE.strfn = function(act)
+    if act.target.components.fa_furnace.getverb then
+        return act.target.components.fa_furnace.getverb(act.target, act.doer)
+    else
+        return STRINGS.ACTIONS.FA_FURNACE.GENERIC
+    end
+end
+
+
 local FA_MEND=Action(1, true)
 FA_MEND.id="FA_MEND"
 FA_MEND.str="Mend"
@@ -740,7 +761,6 @@ print("actionfn")
         return act.invobject.components.fa_mender:DoMending(act.target, act.doer)
     end
 end
-
 AddAction(FA_MEND) 
 GLOBAL.ACTIONS.FA_MEND=FA_MEND
 

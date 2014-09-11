@@ -152,7 +152,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="1" name="finisher" length="2300">
+        <animation id="1" name="finished" length="2300">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="1" key="0" z_index="0"/>

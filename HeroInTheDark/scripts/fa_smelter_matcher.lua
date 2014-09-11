@@ -696,11 +696,11 @@ local forge_recipes={
 	},
 }
 
-local FA_SmelterMatcher=Class(function(self, craftlists)
+local FA_Matcher=Class(function(self, craftlists)
 	self.craftlists=craftlists
 end)
 
-function FA_SmelterMatcher:Match(itemlist)
+function FA_Matcher:Match(itemlist)
 
 	local matched=false
 	for k,v in ipairs(self.craftlists) do
@@ -752,8 +752,14 @@ function FA_SmelterMatcher:Match(itemlist)
 	return {product=product,cooktime=FAIL_TIMER}
 end
 
-function FA_SmelterMatcher:TryMatch(itemlist)
+function FA_Matcher:TryMatch(itemlist)
 	return true
 end
 
-return FA_SmelterMatcher
+local matchers={
+	SmelterMatcher=FA_Matcher(smelt_recipes),
+	AlchemyMatcher=FA_Matcher(alchemy_recipes),
+	ForgeMatcher=FA_Matcher(forge_recipes)
+}
+
+return matchers

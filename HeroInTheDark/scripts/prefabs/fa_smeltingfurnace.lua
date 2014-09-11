@@ -1,3 +1,4 @@
+local matchers=require "fa_smelter_matcher"
 local assets =
 {
     Asset("ANIM", "anim/fa_smeltingfurnace.zip"),
@@ -6,13 +7,13 @@ local assets =
 local slotpos = {}
 
 for y = 0, 3 do
-	table.insert(slotpos, Vector3(0, -y*75 + 114 ,0))
-	table.insert(slotpos, Vector3(0 +75, -y*75 + 114 ,0))
+	table.insert(slotpos, Vector3(-150, -y*75 + 114 ,0))
+	table.insert(slotpos, Vector3(-150 +75, -y*75 + 114 ,0))
 end
 
 local widgetbuttoninfo = {
 	text = "Smelt",
-	position = Vector3(0, -165, 0),
+	position = Vector3(-150, -165, 0),
 	fn = function(inst)
 		inst.components.fa_furnace:StartCooking()	
 	end,
@@ -35,16 +36,6 @@ end
 
 local function onhit(inst, worker)
 	
-	inst.AnimState:PlayAnimation("hit_empty")
-	
-	if inst.components.fa_furnace.cooking then
-		inst.AnimState:PushAnimation("cooking_loop")
-	elseif inst.components.fa_furnace.done then
-		inst.AnimState:PushAnimation("idle_full")
-	else
-		inst.AnimState:PushAnimation("idle_empty")
-	end
-	
 end
 
 local function itemtest(inst, item, slot)
@@ -57,7 +48,7 @@ end
 --anim and sound callbacks
 
 local function startcookfn(inst)
-	inst.AnimState:PlayAnimation("cooking_loop", true)
+	inst.AnimState:PlayAnimation("working", true)
 	--play a looping sound
 	inst.SoundEmitter:KillSound("snd")
 	inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
@@ -66,22 +57,17 @@ end
 
 
 local function onopen(inst)
-	inst.AnimState:PlayAnimation("cooking_pre_loop", true)
 	inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_open", "open")
 	inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot", "snd")
 end
 
 local function onclose(inst)
-	if not inst.components.stewer.cooking then
-		inst.AnimState:PlayAnimation("idle_empty")
-		inst.SoundEmitter:KillSound("snd")
-	end
 	inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close", "close")
 end
 
 local function donecookfn(inst)
-	inst.AnimState:PlayAnimation("cooking_pst")
-	inst.AnimState:PushAnimation("idle_full")
+	inst.AnimState:PlayAnimation("finished",true)
+--	inst.AnimState:PushAnimation("idle_far",true)
 	inst.AnimState:OverrideSymbol("swap_cooked", "cook_pot_food", inst.components.fa_furnace.product)
 	
 	inst.SoundEmitter:KillSound("snd")
@@ -91,12 +77,13 @@ local function donecookfn(inst)
 end
 
 local function continuedonefn(inst)
-	inst.AnimState:PlayAnimation("idle_full")
+	inst.AnimState:PlayAnimation("finished",true)
+--	inst.AnimState:PlayAnimation("idle_far",true)
 	inst.AnimState:OverrideSymbol("swap_cooked", "cook_pot_food", inst.components.fa_furnace.product)
 end
 
 local function continuecookfn(inst)
-	inst.AnimState:PlayAnimation("cooking_loop", true)
+	inst.AnimState:PlayAnimation("working", true)
 	--play a looping sound
 	inst.Light:Enable(true)
 
@@ -104,7 +91,7 @@ local function continuecookfn(inst)
 end
 
 local function harvestfn(inst)
-	inst.AnimState:PlayAnimation("idle_empty")
+	inst.AnimState:PlayAnimation("idle_close",true)
 end
 
 local function getstatus(inst)
@@ -124,8 +111,6 @@ local function onfar(inst)
 end
 
 local function onbuilt(inst)
-	inst.AnimState:PlayAnimation("place")
-	inst.AnimState:PushAnimation("idle_empty")
 end
 
 local function fn(Sim)
@@ -133,9 +118,6 @@ local function fn(Sim)
 	inst.entity:AddTransform()
 	inst.entity:AddAnimState()
 	inst.entity:AddSoundEmitter()
-	
-	local minimap = inst.entity:AddMiniMapEntity()
-	minimap:SetIcon( "cookpot.png" )
 	
     local light = inst.entity:AddLight()
     inst.Light:Enable(false)
@@ -159,21 +141,22 @@ local function fn(Sim)
     inst.components.fa_furnace.oncontinuedone = continuedonefn
     inst.components.fa_furnace.ondonecooking = donecookfn
     inst.components.fa_furnace.onharvest = harvestfn
-    inst.components.fa_furnace.mather = require "fa_smelter_matcher"
+    inst.components.fa_furnace.matcher = matchers.SmelterMatcher
+    inst.components.fa_furnace.getverb=function() return STRINGS.ACTIONS.FA_FURNACE.SMELT end
     
     
     
     inst:AddComponent("container")
     inst.components.container.itemtestfn = itemtest
-    inst.components.container:SetNumSlots(4)
+    inst.components.container:SetNumSlots(8)
     inst.components.container.widgetslotpos = slotpos
     inst.components.container.widgetanimbank = "ui_backpack_2x4"
     inst.components.container.widgetanimbuild =  "ui_backpack_2x4"
-    inst.components.container.widgetpos = Vector3(200,0,0)
+    inst.components.container.widgetpos = Vector3(0,0,0)
     inst.components.container.side_align_tip = 100
     inst.components.container.widgetbuttoninfo = widgetbuttoninfo
     inst.components.container.acceptsstacks = false
-    inst.components.container.type = "cooker"
+    inst.components.container.type = "smelter"
 
     inst.components.container.onopenfn = onopen
     inst.components.container.onclosefn = onclose

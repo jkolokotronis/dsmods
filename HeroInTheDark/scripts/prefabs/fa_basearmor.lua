@@ -31,8 +31,10 @@ local function fn(name)
     local minimap = inst.entity:AddMiniMapEntity()
     minimap:SetIcon( "firearmor.tex" )
     
-    inst.AnimState:SetBank(name)
-    inst.AnimState:SetBuild(name)
+--    inst.AnimState:SetBank(name)
+--    inst.AnimState:SetBuild(name)
+    inst.AnimState:SetBank("torso_dragonfly")
+    inst.AnimState:SetBuild("torso_dragonfly")
     inst.AnimState:PlayAnimation("anim")
     
     inst:AddComponent("inspectable")

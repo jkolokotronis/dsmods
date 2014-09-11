@@ -1,28 +1,28 @@
 
 local assets_ironsword={
-    Asset("ANIM", "anim/fa_irondagger.zip"),    
+    Asset("ANIM", "anim/fa_ironsword.zip"),    
 }
 local assets_silversword={
-    Asset("ANIM", "anim/fa_silverdagger.zip"),
+    Asset("ANIM", "anim/fa_silversword.zip"),
 }
 local assets_steelsword={
-    Asset("ANIM", "anim/fa_steeldagger.zip"), 
+    Asset("ANIM", "anim/fa_steelsword.zip"), 
 }
 local assets_coppersword={
-    Asset("ANIM", "anim/fa_copperdagger.zip"),
+    Asset("ANIM", "anim/fa_coppersword.zip"),
 }
 
 local assets_ironaxe={
-    Asset("ANIM", "anim/fa_irondagger.zip"),    
+    Asset("ANIM", "anim/fa_ironaxe.zip"),    
 }
 local assets_silveraxe={
-    Asset("ANIM", "anim/fa_silverdagger.zip"),
+    Asset("ANIM", "anim/fa_silveraxe.zip"),
 }
 local assets_steelaxe={
-    Asset("ANIM", "anim/fa_steeldagger.zip"), 
+    Asset("ANIM", "anim/fa_steelaxe.zip"), 
 }
 local assets_copperaxe={
-    Asset("ANIM", "anim/fa_copperdagger.zip"),
+    Asset("ANIM", "anim/fa_copperaxe.zip"),
 }
 
 local AXE_DAMAGE_T1=60
@@ -155,7 +155,7 @@ return
     Prefab( "common/inventory/fa_steelsword",steelsword, assets_steelsword),
     Prefab( "common/inventory/fa_ironsword", ironsword, assets_ironsword),
     Prefab( "common/inventory/fa_silversword", silversword, assets_silversword),
-    Prefab( "common/inventory/fa_copperaxe",copperaxe, assets_coppersword),
-    Prefab( "common/inventory/fa_steelaxe",steelaxe, assets_steelsword),
-    Prefab( "common/inventory/fa_ironaxe", ironaxe, assets_ironsword),
-    Prefab( "common/inventory/fa_silveraxe", silveraxe, assets_silversword)
+    Prefab( "common/inventory/fa_copperaxe",copperaxe, assets_copperaxe),
+    Prefab( "common/inventory/fa_steelaxe",steelaxe, assets_steelaxe),
+    Prefab( "common/inventory/fa_ironaxe", ironaxe, assets_ironaxe),
+    Prefab( "common/inventory/fa_silveraxe", silveraxe, assets_silveraxe)
