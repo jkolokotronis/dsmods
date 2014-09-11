@@ -1,7 +1,6 @@
 local assets=
 {
-    Asset("ANIM", "anim/evilsword.zip"),
-    Asset("ANIM", "anim/swap_evilsword.zip"),
+    Asset("ANIM", "anim/fa_evilsword.zip"),
     
     Asset("ATLAS", "images/inventoryimages/evilsword.xml"),
     Asset("IMAGE", "images/inventoryimages/evilsword.tex"),
@@ -17,7 +16,7 @@ local function onattack(inst, attacker, target)
 end
 
 local function onequip(inst, owner)
-    owner.AnimState:OverrideSymbol("swap_object", "swap_evilsword", "swap_evilsword")
+    owner.AnimState:OverrideSymbol("swap_object", "fa_evilsword", "swap_evilsword")
     owner.AnimState:Show("ARM_carry") 
     owner.AnimState:Hide("ARM_normal") 
 end
@@ -39,8 +38,8 @@ local function fn(Sim)
     local minimap = inst.entity:AddMiniMapEntity()
     minimap:SetIcon( "evilsword.tex" )
 
-    inst.AnimState:SetBank("evilsword")
-    inst.AnimState:SetBuild("evilsword")
+    inst.AnimState:SetBank("fa_evilsword")
+    inst.AnimState:SetBuild("fa_evilsword")
     inst.AnimState:PlayAnimation("idle")
 
     inst.Transform:SetScale(2, 2, 1)

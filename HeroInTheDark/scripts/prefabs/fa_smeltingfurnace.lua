@@ -1,5 +1,6 @@
 local assets =
 {
+    Asset("ANIM", "anim/fa_smeltingfurnace.zip"),
 }
 
 local slotpos = {}
@@ -147,9 +148,10 @@ local function fn(Sim)
     inst:AddTag("structure")
     MakeObstaclePhysics(inst, .5)
     
-    inst.AnimState:SetBank("cook_pot")
-    inst.AnimState:SetBuild("cook_pot")
-    inst.AnimState:PlayAnimation("idle_empty")
+    inst.AnimState:SetBank("fa_smeltingfurnace")
+    inst.AnimState:SetBuild("fa_smeltingfurnace")
+    inst.AnimState:PlayAnimation("idle_close",true)
+    inst.Transform:SetScale(2.4, 2.4, 2.4)
 
     inst:AddComponent("fa_furnace")
     inst.components.fa_furnace.onstartcooking = startcookfn

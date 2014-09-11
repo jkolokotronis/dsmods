@@ -2,8 +2,6 @@
 local pebble_assets=
 {
 	Asset("ANIM", "anim/fa_pebbles.zip"),
-    Asset("ATLAS", "images/inventoryimages/fa_lavapebble.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_lavapebble.tex"),
 }
 
 local lavapebble_names = {"f1","f2","f3"}
@@ -53,7 +51,7 @@ local function pebblefn(name,animnames)
     
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem.imagename="fa_"..name.."pebble"
-    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_"..name.."pebble.xml"
+    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_pebbles.xml"
 
 	inst:AddComponent("repairer")
 	inst.components.repairer.repairmaterial = name

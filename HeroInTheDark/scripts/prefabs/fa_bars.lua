@@ -33,7 +33,7 @@ local function barfn(name)
     
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem.imagename="fa_"..name.."bar"
---    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_"..name.."bar.xml"
+    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_orebars.xml"
 
 	inst:AddComponent("repairer")
 	inst.components.repairer.repairmaterial = name
@@ -43,7 +43,9 @@ local function barfn(name)
 end
 
 local function lavabarfn(Sim)
-	return barfn("lava")
+	local inst=  barfn("lava")
+    inst.AnimState:SetBloomEffectHandle( "shaders/anim.ksh" )
+    return inst
 end
 
 local function ironbarfn(Sim)

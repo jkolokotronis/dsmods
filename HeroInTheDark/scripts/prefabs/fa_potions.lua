@@ -436,17 +436,58 @@ end
 
 local function fncurepoison(Sim)
 
-	local inst = common("bottle_light_green")
+	local inst = common("bottle_dark_lime")
 	inst:ListenForEvent("oneaten",curepoison)
 
     return inst
 
 end
 
+local function fnempty()
+	local inst=common("bottle_e")
+	return inst
+end
+
+local function fnwater()
+	local inst=common("bottle_light_green")
+	return inst
+end
+
+local function fnoil()
+	local inst=common("bottle_dark_blue")
+	return inst
+end
+
+local function fnmineralwater()
+	local inst=common("bottle_light_cyan")
+	return inst
+end
+
+local function fnfrozenessence()
+	local inst=common("bottle_light_lime")
+	return inst
+end
+
+local function fnlifeessence()
+	local inst=common("bottle_dark_auburn")
+	return inst
+end
+
+local function fnlightningessence()
+	local inst=common("bottle_light_blue")
+	return inst
+end
 return Prefab( "common/inventory/fa_bottle_r", fnr, Assets),
 	Prefab( "common/inventory/fa_bottle_y", fny, Assets),
 	Prefab( "common/inventory/fa_bottle_g", fng, Assets),
 	Prefab( "common/inventory/fa_bottle_b", fnb, Assets),
+	Prefab( "common/inventory/fa_bottle_empty", fnempty, Assets),
+	Prefab( "common/inventory/fa_bottle_water", fnempty, Assets),
+	Prefab( "common/inventory/fa_bottle_oil", fnempty, Assets),
+	Prefab( "common/inventory/fa_bottle_mineralwater", fnempty, Assets),
+	Prefab( "common/inventory/fa_bottle_frozenessence", fnfrozenessence, Assets),
+	Prefab( "common/inventory/fa_bottle_lifeessence", fnlifeessence, Assets),
+	Prefab( "common/inventory/fa_bottle_lightningessence", fnlightningessence, Assets),
 	Prefab( "common/inventory/fa_bottle_curepoison", fncurepoison, Assets)
 
 	

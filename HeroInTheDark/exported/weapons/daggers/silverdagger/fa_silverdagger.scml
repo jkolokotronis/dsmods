@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
+    <folder id="0">
+        <file id="0" name="_0004_Sil-dag.png" width="70" height="258" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <folder id="1" name="swap_dagger">
+        <file id="0" name="swap_dagger/swap.png" width="70" height="258" pivot_x="0.5" pivot_y="0.242308"/>
+    </folder>
+    <entity id="0" name="fa_silverdagger">
+        <animation id="0" name="idle" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="_0004_Sil-dag">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="7" y="-33" angle="162.759"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="BUILD" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="_0004_Sil-dag">
+                <key id="0" spin="0">
+                    <object folder="1" file="0" x="7" y="-33" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

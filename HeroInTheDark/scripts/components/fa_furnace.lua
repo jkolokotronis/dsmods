@@ -41,6 +41,7 @@ function FA_Furnace:CanCook()
 		return self.matcher:TryMatch(self:GetIngreds())
 	else
 		return false
+	end
 end
 
 

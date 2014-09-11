@@ -1,7 +1,6 @@
 local assets=
 {
-    Asset("ANIM", "anim/holysword.zip"),
-    Asset("ANIM", "anim/swap_holysword.zip"),
+    Asset("ANIM", "anim/fa_holysword.zip"),
     Asset("ATLAS", "images/inventoryimages/holysword.xml"),
     Asset("IMAGE", "images/inventoryimages/holysword.tex"),
     
@@ -17,7 +16,7 @@ local function onattack(inst, attacker, target)
 end
 
 local function onequip(inst, owner)
-    owner.AnimState:OverrideSymbol("swap_object", "swap_holysword", "swap_holysword")
+    owner.AnimState:OverrideSymbol("swap_object", "fa_holysword", "swap_holysword")
     owner.AnimState:Show("ARM_carry") 
     owner.AnimState:Hide("ARM_normal") 
 end
@@ -39,8 +38,8 @@ local function fn(Sim)
     local minimap = inst.entity:AddMiniMapEntity()
     minimap:SetIcon( "holysword.tex" )
 
-    inst.AnimState:SetBank("holysword")
-    inst.AnimState:SetBuild("holysword")
+    inst.AnimState:SetBank("fa_holysword")
+    inst.AnimState:SetBuild("fa_holysword")
     inst.AnimState:PlayAnimation("idle")
     inst.AnimState:SetMultColour(2, 2, 1, 0.6)
     

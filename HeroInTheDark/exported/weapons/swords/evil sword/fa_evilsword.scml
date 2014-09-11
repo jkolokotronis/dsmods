@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
+    <folder id="0" name="swap_evilsword">
+        <file id="0" name="swap_evilsword/swap_evilsword.png" width="1200" height="680" pivot_x="0.505824" pivot_y="0.444282"/>
+    </folder>
+    <folder id="1">
+        <file id="0" name="ground_evilsword.png" width="600" height="340" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="fa_evilsword">
+        <animation id="0" name="BUILD" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="swap_evilsword">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="1.209202" y="49.451896" pivot_x="0.505373" pivot_y="0.440817" angle="0"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="0" file="0" x="1.209202" y="49.451896" pivot_x="0.505373" pivot_y="0.440817" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="swap_evilsword">
+                <key id="0" spin="0">
+                    <object folder="1" file="0" x="12.209202" y="0.451896" pivot_x="0.505373" pivot_y="0.440817" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

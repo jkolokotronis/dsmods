@@ -1,0 +1,161 @@
+
+local assets_ironsword={
+    Asset("ANIM", "anim/fa_irondagger.zip"),    
+}
+local assets_silversword={
+    Asset("ANIM", "anim/fa_silverdagger.zip"),
+}
+local assets_steelsword={
+    Asset("ANIM", "anim/fa_steeldagger.zip"), 
+}
+local assets_coppersword={
+    Asset("ANIM", "anim/fa_copperdagger.zip"),
+}
+
+local assets_ironaxe={
+    Asset("ANIM", "anim/fa_irondagger.zip"),    
+}
+local assets_silveraxe={
+    Asset("ANIM", "anim/fa_silverdagger.zip"),
+}
+local assets_steelaxe={
+    Asset("ANIM", "anim/fa_steeldagger.zip"), 
+}
+local assets_copperaxe={
+    Asset("ANIM", "anim/fa_copperdagger.zip"),
+}
+
+local AXE_DAMAGE_T1=60
+local AXE_DAMAGE_T2=70
+local AXE_DAMAGE_T3=85
+local AXE_USES_T1=50
+local AXE_USES_T2=100
+local AXE_USES_T3=150
+local SWORD_DAMAGE_T1=55
+local SWORD_DAMAGE_T2=65
+local SWORD_DAMAGE_T3=80
+local SWORD_USES_T1=50
+local SWORD_USES_T2=100
+local SWORD_USES_T3=150
+
+
+local function onfinished(inst)
+    inst.SoundEmitter:PlaySound("dontstarve/common/gem_shatter")
+    inst:Remove()
+end
+
+
+local function onunequip(inst, owner) 
+    owner.AnimState:Hide("ARM_carry") 
+    owner.AnimState:Show("ARM_normal") 
+end
+
+local function common(name)
+
+    local inst = CreateEntity()
+    local trans = inst.entity:AddTransform()
+    local anim = inst.entity:AddAnimState()
+    local sound = inst.entity:AddSoundEmitter()
+    MakeInventoryPhysics(inst)
+    inst:AddTag("sharp")
+    inst:AddComponent("weapon")
+    inst:AddComponent("inspectable")
+    
+    inst.AnimState:SetBank(name)
+    inst.AnimState:SetBuild(name)
+    inst.AnimState:PlayAnimation("idle")
+
+    --local minimap = inst.entity:AddMiniMapEntity()
+    --minimap:SetIcon( "dagger.tex" )
+
+    inst:AddComponent("inventoryitem")
+    inst.components.inventoryitem.imagename=name
+    inst.components.inventoryitem.atlasname="images/inventoryimages/"..name..".xml"
+
+    inst:AddComponent("finiteuses")
+    inst.components.finiteuses:SetOnFinished( onfinished )
+    inst:AddComponent("equippable")
+    inst.components.equippable:SetOnUnequip( onunequip )
+    inst.components.equippable:SetOnEquip(function(inst,owner)
+    	owner.AnimState:OverrideSymbol("swap_object", name, "swap_weapon")
+    	owner.AnimState:Show("ARM_carry") 
+	    owner.AnimState:Hide("ARM_normal") 
+    end)
+    return inst
+end
+
+local function coppersword()
+    local inst=common("fa_coppersword")
+
+    inst.components.weapon:SetDamage(SWORD_DAMAGE_T1)
+    inst.components.finiteuses:SetMaxUses(SWORD_USES_T1)
+    inst.components.finiteuses:SetUses(SWORD_USES_T1)
+    return inst
+end
+local function steelsword()
+    local inst=common("fa_steelsword")
+
+    inst.components.weapon:SetDamage(SWORD_DAMAGE_T3)
+    inst.components.finiteuses:SetMaxUses(SWORD_USES_T3)
+    inst.components.finiteuses:SetUses(SWORD_USES_T3)
+    return inst
+end
+local function ironsword()
+    local inst=common("fa_ironsword")
+
+    inst.components.weapon:SetDamage(SWORD_DAMAGE_T2)
+    inst.components.finiteuses:SetMaxUses(SWORD_USES_T2)
+    inst.components.finiteuses:SetUses(SWORD_USES_T2)
+    return inst
+end
+local function silversword()
+    local inst=common("fa_silversword")
+
+    inst:AddTag("fa_silver")
+    inst.components.weapon:SetDamage(SWORD_DAMAGE_T2)
+    inst.components.finiteuses:SetMaxUses(SWORD_USES_T2)
+    inst.components.finiteuses:SetUses(SWORD_USES_T2)
+    return inst
+end
+local function copperaxe()
+    local inst=common("fa_copperaxe")
+
+    inst.components.weapon:SetDamage(AXE_DAMAGE_T1)
+    inst.components.finiteuses:SetMaxUses(AXE_USES_T1)
+    inst.components.finiteuses:SetUses(AXE_USES_T1)
+    return inst
+end
+local function steelaxe()
+    local inst=common("fa_steelaxe")
+
+    inst.components.weapon:SetDamage(AXE_DAMAGE_T3)
+    inst.components.finiteuses:SetMaxUses(AXE_USES_T3)
+    inst.components.finiteuses:SetUses(AXE_USES_T3)
+    return inst
+end
+local function ironaxe()
+    local inst=common("fa_ironaxe")
+
+    inst.components.weapon:SetDamage(AXE_DAMAGE_T2)
+    inst.components.finiteuses:SetMaxUses(AXE_USES_T2)
+    inst.components.finiteuses:SetUses(AXE_USES_T2)
+    return inst
+end
+local function silveraxe()
+    local inst=common("fa_silveraxe")
+
+    inst.components.weapon:SetDamage(AXE_DAMAGE_T2)
+    inst.components.finiteuses:SetMaxUses(AXE_USES_T2)
+    inst.components.finiteuses:SetUses(AXE_USES_T2)
+    return inst
+end
+
+return
+    Prefab( "common/inventory/fa_coppersword",coppersword, assets_coppersword),
+    Prefab( "common/inventory/fa_steelsword",steelsword, assets_steelsword),
+    Prefab( "common/inventory/fa_ironsword", ironsword, assets_ironsword),
+    Prefab( "common/inventory/fa_silversword", silversword, assets_silversword),
+    Prefab( "common/inventory/fa_copperaxe",copperaxe, assets_coppersword),
+    Prefab( "common/inventory/fa_steelaxe",steelaxe, assets_steelsword),
+    Prefab( "common/inventory/fa_ironaxe", ironaxe, assets_ironsword),
+    Prefab( "common/inventory/fa_silveraxe", silveraxe, assets_silversword)
