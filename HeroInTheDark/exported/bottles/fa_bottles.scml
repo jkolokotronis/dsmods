@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8">
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
     <folder id="0">
         <file id="0" name="bottle_b_ground.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
         <file id="1" name="bottle_e_ground.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
@@ -51,7 +51,7 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="1" name="fa_bottle_e">
+    <entity id="1" name="fa_bottle_empty">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">

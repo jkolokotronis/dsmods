@@ -195,4 +195,5 @@ local function fn(Sim)
 end
 
 
-return Prefab( "common/fa_forge", fn, assets)
+return Prefab( "common/fa_forge", fn, assets),
+MakePlacer( "common/fa_forge_placer", "fa_forge", "fa_forge", "idle_far" )

@@ -444,7 +444,7 @@ local function fncurepoison(Sim)
 end
 
 local function fnempty()
-	local inst=common("bottle_e")
+	local inst=common("bottle_empty")
 	return inst
 end
 

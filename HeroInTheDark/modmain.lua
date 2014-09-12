@@ -326,7 +326,12 @@ Assets = {
     Asset( "IMAGE", "minimap/woodshield.tex" ),
     Asset( "ATLAS", "minimap/woodshield.xml" ), 
 
-
+    Asset("ATLAS", "images/inventoryimages/fa_smeltingfurnace.xml"),
+    Asset("IMAGE", "images/inventoryimages/fa_smeltingfurnace.tex"),
+    Asset("ATLAS", "images/inventoryimages/fa_forge.xml"),
+    Asset("IMAGE", "images/inventoryimages/fa_forge.tex"),
+    Asset("ATLAS", "images/inventoryimages/fa_alchemytable.xml"),
+    Asset("IMAGE", "images/inventoryimages/fa_alchemytable.tex"),
 
     Asset("ATLAS", "images/inventoryimages/fa_shields.xml"),
     Asset("IMAGE", "images/inventoryimages/fa_shields.tex"),
@@ -737,53 +742,7 @@ AddClassPostConstruct("screens/playerhud", OpenBackpack)
 
 --table.insert(SGWilson.actionhandlers,ActionHandler(ACTIONS.FA_CRAFTPICKUP, "dolongaction"))
 
-local FA_MEND=Action(1, true)
-FA_MEND.id="FA_MEND"
-FA_MEND.str="Mend"
-FA_MEND.fn=function(act)
-print("actionfn")
-    if(act.target and act.invobject and act.invobject.components.fa_mender)then
-        return act.invobject.components.fa_mender:DoMending(act.target, act.doer)
-    end
-end
-AddAction(FA_MEND) 
-GLOBAL.ACTIONS.FA_MEND=FA_MEND
 
-
-local action_old=ACTIONS.MURDER.fn
-
-ACTIONS.MURDER.fn = function(act)
-
-    local murdered = act.invobject or act.target
-    if murdered and murdered.components.health then
-                
-        local obj=murdered.components.inventoryitem:RemoveFromOwner(false)
-
-        if murdered.components.health.murdersound then
-            act.doer.SoundEmitter:PlaySound(murdered.components.health.murdersound)
-        end
-
-        local stacksize = 1
-        if murdered.components.stackable then
-            stacksize = murdered.components.stackable.stacksize
-        end
-
-        if murdered.components.lootdropper then
---            for i = 1, stacksize do
-                local loots = murdered.components.lootdropper:GenerateLoot()
-                for k, v in pairs(loots) do
-                    local loot = SpawnPrefab(v)
-                    act.doer.components.inventory:GiveItem(loot)
-                end      
---            end
-        end
-
-        act.doer:PushEvent("killed", {victim = obj})
-        obj:Remove()
-
-        return true
-    end
-end
 
 local function newControlsInit(class)
     local under_root=class;

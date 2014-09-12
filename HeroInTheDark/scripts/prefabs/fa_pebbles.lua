@@ -98,9 +98,13 @@ local function silverpebblefn(Sim)
 	return pebblefn("silver")
 end
 
+local function diamondpebblefn(Sim)
+    return pebblefn("diamond")
+end
 return Prefab( "common/inventory/fa_lavapebble", lavapebblefn, pebble_assets),
 Prefab( "common/inventory/fa_ironpebble", ironpebblefn, pebble_assets),
 Prefab( "common/inventory/fa_coalpebble", coalpebblefn, pebble_assets),
+Prefab( "common/inventory/fa_diamondpebble", diamondpebblefn, pebble_assets),
 Prefab( "common/inventory/fa_limestonepebble", limestonepebblefn, pebble_assets),
 Prefab( "common/inventory/fa_adamantinepebble", adamantinepebblefn, pebble_assets),
 Prefab( "common/inventory/fa_copperpebble", copperpebblefn, pebble_assets),

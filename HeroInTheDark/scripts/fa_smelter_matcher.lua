@@ -694,8 +694,28 @@ local forge_recipes={
 			{ingred="fa_bottle_oil", count=1},
 		},
 	},
+	{
+		match={product={"fa_bottle_empty","blowdart_sleep"},cooktime=120},
+		test={
+			{ingred="fa_sand",count=5},
+			{ingred="blowdart_sleep",count=1},
+		},
+	},
+	{
+		match={product={"fa_bottle_empty","blowdart_fire"},cooktime=120},
+		test={
+			{ingred="fa_sand",count=5},
+			{ingred="blowdart_fire",count=1},
+		},
+	},
+	{
+		match={product={"fa_bottle_empty","blowdart_pipe"},cooktime=120},
+		test={
+			{ingred="fa_sand",count=5},
+			{ingred="blowdart_pipe",count=1},
+		},
+	},
 }
-
 local FA_Matcher=Class(function(self, craftlists)
 	self.craftlists=craftlists
 end)

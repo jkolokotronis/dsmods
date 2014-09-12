@@ -193,4 +193,5 @@ local function fn(Sim)
 end
 
 
-return Prefab( "common/fa_smeltingfurnace", fn, assets)
+return Prefab( "common/fa_smeltingfurnace", fn, assets),
+MakePlacer( "common/fa_smeltingfurnace_placer", "fa_smeltingfurnace", "fa_smeltingfurnace", "idle_far" )

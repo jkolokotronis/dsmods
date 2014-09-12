@@ -195,4 +195,5 @@ local function fn(Sim)
 end
 
 
-return Prefab( "common/fa_alchemytable", fn, assets)
+return Prefab( "common/fa_alchemytable", fn, assets),
+MakePlacer( "common/fa_alchemytable_placer", "fa_alchemytable", "fa_alchemytable", "idle_far" )

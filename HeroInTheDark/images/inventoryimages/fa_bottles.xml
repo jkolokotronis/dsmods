@@ -1,7 +1,7 @@
 <Atlas><Texture filename="fa_bottles.tex" />
 <Elements>
 		<Element name="fa_bottle_b.tex" u1="0" u2="0.125" v1="0" v2="0.125" />
-		<Element name="fa_bottle_e.tex" u1="0.125" u2="0.250" v1="0" v2="0.125" />
+		<Element name="fa_bottle_empty.tex" u1="0.125" u2="0.250" v1="0" v2="0.125" />
 		<Element name="fa_bottle_g.tex" u1="0.250" u2="0.375" v1="0" v2="0.125" />
 		<Element name="fa_bottle_r.tex" u1="0.375" u2="0.5" v1="0" v2="0.125" />
 		<Element name="fa_bottle_y.tex" u1="0.5" u2="0.625" v1="0" v2="0.125" />
