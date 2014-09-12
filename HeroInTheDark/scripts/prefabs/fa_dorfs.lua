@@ -31,6 +31,13 @@ local prefabs =
 {
 }
 
+local DWARF_HEALTH=400
+local DWARF_DAMAGE=50
+local DWARF_ATTACK_PERIOD=2
+local DWARF_RUN_SPEED=6
+local DWARF_WALK_SPEED=3
+
+
 local MAX_TARGET_SHARES = 5
 local SHARE_TARGET_DIST = 30
 
@@ -125,8 +132,8 @@ local function common()
     MakeCharacterPhysics(inst, 50, .5)
     
     inst:AddComponent("locomotor") -- locomotor must be constructed before the stategraph
-    inst.components.locomotor.runspeed = TUNING.PIG_RUN_SPEED --5
-    inst.components.locomotor.walkspeed = TUNING.PIG_WALK_SPEED --3
+    inst.components.locomotor.runspeed = DWARF_RUN_SPEED
+    inst.components.locomotor.walkspeed = DWARF_WALK_SPEED
 
     inst:AddTag("character")
     inst:AddTag("dorf")
@@ -144,8 +151,8 @@ local function common()
     ------------------------------------------
     inst:AddComponent("combat")
     inst.components.combat.hiteffectsymbol = "torso"
-    inst.components.combat:SetDefaultDamage(TUNING.PIG_DAMAGE)
-    inst.components.combat:SetAttackPeriod(TUNING.PIG_ATTACK_PERIOD)
+    inst.components.combat:SetDefaultDamage(DWARF_DAMAGE)
+    inst.components.combat:SetAttackPeriod(DWARF_ATTACK_PERIOD)
     inst.components.combat:SetKeepTargetFunction(NormalKeepTargetFn)
     inst.components.combat:SetRetargetFunction(3, NormalRetargetFn)   
  
@@ -158,7 +165,7 @@ local function common()
 --    inst.components.follower.maxfollowtime = TUNING.PIG_LOYALTY_MAXTIME
     ------------------------------------------
     inst:AddComponent("health")
-    inst.components.health:SetMaxHealth(TUNING.PIG_HEALTH)
+    inst.components.health:SetMaxHealth(DWARF_HEALTH)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.2
     inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.5
     inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2

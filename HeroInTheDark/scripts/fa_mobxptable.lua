@@ -52,8 +52,8 @@ FA_MOBXP_TABLE={
 	rabbit={default=3},
 	skeletonspawn={default=20},
 	goblin={default=25},
-	orc={default=35},
-	ogre={default=75},
+	fa_orc={default=65},
+	fa_ogre={default=450},
 	leif={default=100},
 	leif_sparse={default=100},
 	deerclops={default=500},
@@ -85,4 +85,6 @@ FA_MOBXP_TABLE={
 	fa_goblin_guard_3={default=50},
 	fa_goblin_wiz_1={default=35},
 	fa_goblin_king_1={default=250},
+	fa_redgoblin={default=55},
+	fa_dorf={default=50}
 }

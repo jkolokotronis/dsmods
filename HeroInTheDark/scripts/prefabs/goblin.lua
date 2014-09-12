@@ -57,6 +57,11 @@ local assets_king={
         Asset("ANIM","anim/betterbarrier.zip")
 }
 
+local assets_red={
+        Asset( "ANIM", "anim/fa_redgoblin.zip" ),
+    
+}
+
 local prefabs =
 {
     "fa_goblinskin",
@@ -72,6 +77,9 @@ local GOBLIN_DAMAGE=30
 local GOBLIN_ATTACK_PERIOD=2
 local GOBLIN_RUN_SPEED=6
 local GOBLIN_WALK_SPEED=3
+
+local REDGOBLIN_HEALTH=600
+local REDGOBLIN_DAMAGE=50
 
 local BB_TIMER=15
 local BB_COOLDOWN=60
@@ -469,9 +477,25 @@ local function fnking()
     inst.components.lootdropper:SetLoot({ "goblinkinghead_item","fa_scroll_5","fa_scroll_5","fa_key_swift"})
     return inst
 end
+
+local function fnred()
+local inst=common()
+     inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLE.keys1,FALLENLOOTTABLE.TABLE_KEYS1_WEIGHT,0.05)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=1.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=-1
+    inst.components.combat:SetDefaultDamage(REDGOBLIN_DAMAGE)
+    inst.components.health:SetMaxHealth(REDGOBLIN_HEALTH)
+        inst.AnimState:SetBank("wilson")
+        inst.AnimState:SetBuild("fa_redgoblin")
+    return inst
+end
+
 return Prefab( "common/goblin", normal, assets),
 Prefab( "common/fa_goblin_guard_1", fnguard1, assets),
 Prefab( "common/fa_goblin_guard_2", fnguard2, assets),
 Prefab( "common/fa_goblin_guard_3", fnguard3, assets),
 Prefab( "common/fa_goblin_wiz_1", fnwiz, assets),
-Prefab( "common/fa_goblin_king_1", fnking, assets_king)
+Prefab( "common/fa_goblin_king_1", fnking, assets_king),
+Prefab( "common/fa_redgoblin",fnred,assets_red)

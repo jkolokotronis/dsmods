@@ -73,6 +73,11 @@ local function fn()
     
     inst:AddComponent("health")
     inst.components.health:SetMaxHealth(OGRE_HEALTH)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.2
     
     inst:AddComponent("sanityaura")
     inst.components.sanityaura.aura = -TUNING.SANITYAURA_MED
