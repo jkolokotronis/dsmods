@@ -17,6 +17,7 @@ function FA_Furnace:dostew()
 	
 	self.done = true
 	self.cooking = nil
+	print("done cooking",self.product)
 end
 
 function FA_Furnace:GetTimeToCook()
@@ -37,7 +38,7 @@ end
 
 function FA_Furnace:CanCook()
 
-	if(self.matcher)then
+	if(not self.done and not self.cooking and self.matcher)then
 		return self.matcher:TryMatch(self:GetIngreds())
 	else
 		return false
@@ -49,6 +50,8 @@ function FA_Furnace:StartCooking()
 	if not self.done and not self.cooking then
 		if self.inst.components.container then
 			
+			local cooktime = 1
+
 			local res=self.matcher:Match(self:GetIngreds())
 			self.product=res.product
 			cooktime=res.cooktime 
@@ -60,7 +63,6 @@ function FA_Furnace:StartCooking()
 			end
 		
 			
-			local cooktime = 1
 			
 			local grow_time = cooktime
 			self.targettime = GetTime() + grow_time
@@ -125,7 +127,7 @@ end
 
 function FA_Furnace:CollectSceneActions(doer, actions, right)
     if self.done then
-        table.insert(actions, ACTIONS.HARVEST)
+        table.insert(actions, ACTIONS.FA_CRAFTPICKUP)
     elseif right and self:CanCook() then
 		table.insert(actions, ACTIONS.FA_FURNACE)
     end
@@ -133,6 +135,7 @@ end
 
 
 function FA_Furnace:Harvest( harvester )
+	print("harvester")
 	if self.done then
 		if self.onharvest then
 			self.onharvest(self.inst)
@@ -142,14 +145,14 @@ function FA_Furnace:Harvest( harvester )
 			if harvester and harvester.components.inventory then
 				local loot={}
 				if(type(self.product)=="table")then
-					for k,v in self.product do
+					for k,v in pairs(self.product) do
 						table.insert(loot, SpawnPrefab(v))
 					end
 				else
 					table.insert(loot, SpawnPrefab(self.product))
 				end
 				
-				for k,v in loot do
+				for k,v in pairs(loot) do
 					harvester.components.inventory:GiveItem(v, nil, Vector3(TheSim:GetScreenPos(self.inst.Transform:GetWorldPosition())))
 				end
 				

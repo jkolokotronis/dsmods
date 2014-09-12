@@ -21,6 +21,8 @@ GLOBAL.FA_ModUtil={}
 GLOBAL.FA_ModUtil.AddPrefabPostInit=AddPrefabPostInit
 GLOBAL.FA_ModUtil.AddComponentPostInit=AddComponentPostInit
 GLOBAL.FA_ModUtil.GetModConfigData=GetModConfigData
+GLOBAL.FA_ModUtil.AddAction=AddAction
+GLOBAL.FA_ModUtil.AddStategraphActionHandler=AddStategraphActionHandler
 
 local memspikefixmod=nil
 for _, mod in ipairs( GLOBAL.ModManager.mods ) do
@@ -63,18 +65,18 @@ local Levels=require("map/levels")
 require "constants"
 require "fa_constants"
 require "widgets/text"
-require "stategraph"
 require "buffutil"
 require "fa_mobxptable"
 require "fa_strings"
-require "fa_electricalfence"
 require "fa_levelxptable"
 require "fa_stealthdetectiontable"
+require "fa_actions"
 require "fa_inventory_override"
 require "fa_inventorybar_override"
 require "fa_combat_override"
 require "fa_hounded_override"
 require "fa_behavior_override"
+require "fa_electricalfence"
 require "fa_recipes"
 
 --modimport "spelleffects.lua"
@@ -86,6 +88,7 @@ local STRINGS = GLOBAL.STRINGS
 local ACTIONS = GLOBAL.ACTIONS
 local GROUND=GLOBAL.GROUND
 local Action = GLOBAL.Action
+local ActionHandler=GLOBAL.ActionHandler
 local GetPlayer = GLOBAL.GetPlayer
 local GetClock=GLOBAL.GetClock
 local GetWorld=GLOBAL.GetWorld
@@ -522,10 +525,10 @@ local EVIL_SANITY_AURA_OVERRIDE={
 local FALLENLOOTTABLE=GLOBAL.FALLENLOOTTABLE
 local FALLENLOOTTABLEMERGED=GLOBAL.FALLENLOOTTABLEMERGED
 
+           
 
---[[            
-    local SGWilson=require "stategraphs/SGwilson"
 
+--[[ 
     SGWilson.states["idle"]= GLOBAL.State{
         name = "idle",
         tags = {"idle", "canrotate"},
@@ -731,26 +734,8 @@ end
 AddClassPostConstruct("screens/playerhud", OpenBackpack)
 --SaveGameIndex:GetCurrentCaveLevel()
 
-local FA_FURNACE=Action()
-FA_FURNACE.id="FA_FURNACE"
---FA_FURNACE.str=STRINGS.ACTIONS.FA_FURNACE
-GLOBAL.ACTIONS.FA_FURNACE=FA_FURNACE
 
-FA_FURNACE.fn = function(act)
-    if act.target.components.fa_furnace then
-        act.target.components.fa_furnace:StartCooking()
-        return true
-    end
-end
-
-FA_FURNACE.strfn = function(act)
-    if act.target.components.fa_furnace.getverb then
-        return act.target.components.fa_furnace.getverb(act.target, act.doer)
-    else
-        return STRINGS.ACTIONS.FA_FURNACE.GENERIC
-    end
-end
-
+--table.insert(SGWilson.actionhandlers,ActionHandler(ACTIONS.FA_CRAFTPICKUP, "dolongaction"))
 
 local FA_MEND=Action(1, true)
 FA_MEND.id="FA_MEND"
@@ -764,18 +749,6 @@ end
 AddAction(FA_MEND) 
 GLOBAL.ACTIONS.FA_MEND=FA_MEND
 
-local RELOAD = Action(1, true)
-RELOAD.id = "RELOAD"
-RELOAD.str = "Reload"
-RELOAD.fn = function(act)
-    if act.target and act.target.components.reloadable and act.invobject and act.invobject.components.reloading then
-        return act.target.components.reloadable:Reload(act.doer, act.invobject)
-    end
-
-end
-
-AddAction(RELOAD)
-GLOBAL.ACTIONS.RELOAD = RELOAD
 
 local action_old=ACTIONS.MURDER.fn
 

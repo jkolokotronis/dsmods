@@ -355,7 +355,7 @@ local fn = function(inst)
             print("dagger ",weapon)
             old=old*1.5
         end
-        if(weapon and weapon:CanRangedAttack())then
+        if(weapon and weapon.components.weapon:CanRangedAttack())then
             return old*RANGE_MULTIPLIER
         end
         if(sneaking and not(target.components.combat and target.components.combat.target==GetPlayer()))then

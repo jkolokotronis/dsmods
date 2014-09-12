@@ -914,6 +914,7 @@ STRINGS.ACTIONS.FA_FURNACE={
    	ALCHEMY = "Mix",
     SMELT    = "Smelt",
 }
+STRINGS.ACTIONS.FA_CRAFTPICKUP="Empty"
 
 STRINGS.UI.WORLDGEN.GOBLIN={}
 STRINGS.UI.WORLDGEN.GOBLIN.VERBS={"Wrangling","Generating","Herding","Embiggening","Iterating upon","Insinuating","Reticulating","Inserting","Framing"}

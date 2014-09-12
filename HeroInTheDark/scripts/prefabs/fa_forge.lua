@@ -8,13 +8,13 @@ local assets =
 local slotpos = {}
 
 for y = 0, 3 do
-	table.insert(slotpos, Vector3(-150, -y*75 + 114 ,0))
-	table.insert(slotpos, Vector3(-150 +75, -y*75 + 114 ,0))
+	table.insert(slotpos, Vector3(-162, -y*75 + 114 ,0))
+	table.insert(slotpos, Vector3(-162 +75, -y*75 + 114 ,0))
 end
 
 local widgetbuttoninfo = {
 	text = "Forge",
-	position = Vector3(-150, -165, 0),
+	position = Vector3(-130, -165, 0),
 	fn = function(inst)
 		inst.components.fa_furnace:StartCooking()	
 	end,
@@ -69,7 +69,6 @@ end
 local function donecookfn(inst)
 	inst.AnimState:PlayAnimation("finished",true)
 --	inst.AnimState:PushAnimation("idle_close",true)
-	inst.AnimState:OverrideSymbol("swap_cooked", "cook_pot_food", inst.components.fa_furnace.product)
 	
 	inst.SoundEmitter:KillSound("snd")
 	inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish", "snd")
@@ -80,7 +79,6 @@ end
 local function continuedonefn(inst)
 	inst.AnimState:PlayAnimation("finished",true)
 --	inst.AnimState:PlayAnimation("idle_close",true)
-	inst.AnimState:OverrideSymbol("swap_cooked", "cook_pot_food", inst.components.fa_furnace.product)
 end
 
 local function continuecookfn(inst)
@@ -108,7 +106,15 @@ local function getstatus(inst)
 end
 
 local function onfar(inst)
+	if(not inst.components.fa_furnace.done and not inst.components.fa_furnace.cooking)then
+		inst.AnimState:PlayAnimation("idle_far",true)
+	end
 	inst.components.container:Close()
+end
+local function onnear(inst)
+	if(not inst.components.fa_furnace.done and not inst.components.fa_furnace.cooking)then
+		inst.AnimState:PlayAnimation("idle_close",true)
+	end
 end
 
 local function onbuilt(inst)
@@ -167,12 +173,13 @@ local function fn(Sim)
 
 
     inst:AddComponent("inspectable")
-	inst.components.inspectable.getstatus = getstatus
+--	inst.components.inspectable.getstatus = getstatus
 
 
     inst:AddComponent("playerprox")
     inst.components.playerprox:SetDist(3,5)
     inst.components.playerprox:SetOnPlayerFar(onfar)
+    inst.components.playerprox:SetOnPlayerNear(onnear)
 
 
     inst:AddComponent("lootdropper")

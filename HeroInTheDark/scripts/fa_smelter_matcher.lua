@@ -704,7 +704,7 @@ function FA_Matcher:Match(itemlist)
 
 	local matched=false
 	for k,v in ipairs(self.craftlists) do
-		test=true
+		local test=true
 		local copylist=deepcopy(itemlist)
 		for k1,t in ipairs(v.test) do
 			local count=t.count
