@@ -139,4 +139,11 @@ local function fn(Sim)
     return inst
 end
 
-return Prefab( "common/objects/goblinhut", fn, assets, prefabs )
+local function fnfire()
+    local inst=fn()
+    inst.components.childspawner.childname="fa_redgoblin"
+    return inst
+end
+
+return Prefab( "common/objects/goblinhut", fn, assets, prefabs ),
+Prefab( "common/objects/fa_firegoblinhut", fnfire, assets, prefabs )

@@ -125,6 +125,8 @@ PrefabFiles = {
     "fa_stickheads",
     "fa_dungeon_walls",
     "goblinsignpost",
+    "fa_lavamound",
+    "fa_firehoundmound",
     "fa_animatedarmor",
     "fa_bonfire",
     "fa_dungeon_entrance",

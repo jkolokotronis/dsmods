@@ -266,7 +266,8 @@ FA_LEVELDATA["ORC_MINES"]={
 			"FA_RuinsStart",
 			"FA_GreaterPlains",
 			"DFEntrance",
-			"ORCFEntrance"
+			"ORCFEntrance",
+			"FA_MineConflict"
 		},
 		required_prefabs = {
 		"fa_mine_exit",
