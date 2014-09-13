@@ -71,7 +71,7 @@ local function donecookfn(inst)
 --	inst.AnimState:PushAnimation("idle_close",true)
 	
 	inst.SoundEmitter:KillSound("snd")
-	inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish", "snd")
+	inst.SoundEmitter:PlaySound("fa/machines/forge_finish", "snd")
 	inst.Light:Enable(false)
 	--play a one-off sound
 end

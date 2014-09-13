@@ -51,7 +51,7 @@ local function startcookfn(inst)
 	inst.AnimState:PlayAnimation("working", true)
 	--play a looping sound
 	inst.SoundEmitter:KillSound("snd")
-	inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
+	inst.SoundEmitter:PlaySound("fa/machines/smelter_working", "snd")
 	inst.Light:Enable(true)
 end
 
@@ -71,7 +71,7 @@ local function donecookfn(inst)
 --	inst.AnimState:OverrideSymbol("swap_cooked", "cook_pot_food", inst.components.fa_furnace.product)
 	
 	inst.SoundEmitter:KillSound("snd")
-	inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish", "snd")
+	inst.SoundEmitter:PlaySound("fa/machines/forge_finish", "snd")
 	inst.Light:Enable(false)
 	--play a one-off sound
 end
@@ -87,7 +87,7 @@ local function continuecookfn(inst)
 	--play a looping sound
 	inst.Light:Enable(true)
 
-	inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
+	inst.SoundEmitter:PlaySound("fa/machines/smelter_working", "snd")
 end
 
 local function harvestfn(inst)

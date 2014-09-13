@@ -52,7 +52,7 @@ local function startcookfn(inst)
 	inst.AnimState:PlayAnimation("working", true)
 	--play a looping sound
 	inst.SoundEmitter:KillSound("snd")
-	inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
+	inst.SoundEmitter:PlaySound("fa/machines/alchemy_working", "snd")
 	inst.Light:Enable(true)
 end
 
@@ -86,7 +86,7 @@ local function continuecookfn(inst)
 	--play a looping sound
 	inst.Light:Enable(true)
 
-	inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
+	inst.SoundEmitter:PlaySound("fa/machines/alchemy_working", "snd")
 end
 
 local function harvestfn(inst)
