@@ -129,7 +129,7 @@ ACTIONS.MINE.fn = function(act)
 	local ret=mine_old(act)
     if pos and ((act.target and act.target.components.workable and act.target.components.workable.workleft<=0) or not act.target:IsValid()) and math.random()<MINE_DIAMOND_CHANCE then
 	    local sand=SpawnPrefab("fa_diamondpebble")
-        sand.Transform:SetPosition(spawnPos:Get() )
+        sand.Transform:SetPosition(pos:Get() )
     end
 
     return ret

@@ -163,7 +163,7 @@ AddRoom("FA_MineDwarfRoom", {
 										fa_dorfhut=2, 
 										fa_dorfbed=3
 									},
-									distributepercent = 0.05,
+									distributepercent = 0.1,
 					                distributeprefabs= 
 					                {
 					                	fa_lavaflies = 0.5,
@@ -180,7 +180,7 @@ AddRoom("FA_MineHoundRoom", {
 									countprefabs = {
 										fa_firehoundmound=5, 
 									},
-									distributepercent = 0.05,
+									distributepercent = 0.1,
 					                distributeprefabs= 
 					                {
 					                	fa_lavaflies = 0.5,
@@ -199,7 +199,7 @@ AddRoom("FA_MineMoundRoom", {
 										fa_lavamound=7, 
 										fa_firegoblinhut=2
 									},
-									distributepercent = 0.05,
+									distributepercent = 0.1,
 					                distributeprefabs= 
 					                {
 					                	fa_lavaflies = 0.5,
@@ -625,12 +625,12 @@ AddRoom("FA_BGLava_Ash",  {
 									countprefabs={
 										fa_fissure_red=1
 									},
-									distributepercent = 0.1,
+									distributepercent = 0.2,
 					                distributeprefabs= 
 					                {
 					                	stalagmite_med = .25,
 					                	stalagmite_low = .25,
-					                	fa_coalrock = .5,
+					                	fa_ironrock = .5,
 					                	rock1=0.1,
 					                	rock2=0.1,
 					                	fa_fissure_red = 0.25,
@@ -645,7 +645,7 @@ AddRoom("FA_BGLava_Shiny",  {
 									countprefabs={
 										fa_fissure_red=1
 									},
-									distributepercent = 0.1,
+									distributepercent = 0.2,
 					                distributeprefabs= 
 					                {
 					                	stalagmite_med = .25,
@@ -665,7 +665,7 @@ AddRoom("FA_BGLava_Green",  {
 									countprefabs={
 										fa_fissure_red=1
 									},
-									distributepercent = 0.1,
+									distributepercent = 0.2,
 					                distributeprefabs= 
 					                {
 					                	stalagmite_med = .25,

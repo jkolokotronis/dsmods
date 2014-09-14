@@ -24,7 +24,7 @@ SetSharedLootTable( 'fa_firehoundmound',
 })
 
 local function GetSpecialHoundChance()
-    return 0.5
+    return 0.7
 end
 
 local function SpawnGuardHound(inst, attacker)
@@ -108,8 +108,8 @@ local function fn(Sim)
 
     -------------------
 	inst:AddComponent("childspawner")
-	inst.components.childspawner.childname = "hound"
-    inst.components.childspawner:SetRareChild("firehound", 0.7)
+	inst.components.childspawner.childname = "firehound"
+    inst.components.childspawner:SetRareChild("hound", 0.3)
 
 	inst.components.childspawner:SetRegenPeriod(TUNING.HOUNDMOUND_REGEN_TIME)
 	inst.components.childspawner:SetSpawnPeriod(TUNING.HOUNDMOUND_RELEASE_TIME)

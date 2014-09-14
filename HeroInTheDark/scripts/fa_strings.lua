@@ -924,6 +924,14 @@ STRINGS.UI.WORLDGEN.GOBLIN.NOUNS={"Pot Helms","GOBLINS!","Poop","Walls","Monster
 
 STRINGS.DORFNAMES={"Dalak","Fari","Ketnia","Dwinkona","Ketmin","Billin","Grorundi","Balzadi","Brounn","Farkk","Balgini","Gilbura","Boftil","Munmin","Kila","Grorimi","Munkon","Gari","Harimi","Chalgrima","Herrak","Barar","Munia","Nalgari","Fimund","Griund","Haondi","Dunni","Gruntil","Runum","Ketdria","Thraka","Gribur","Bulkk","Balola","Gimria","Bartri","Haund","Harria","Gargini","Goror","Garbur","Bgrima","Durondi","Thil","Thorzad","Gilana","Ovana","Bofmin","Ragur","Klmina","Balon","Gorond","Simgin","Dalbari","Gomgari","Drui","Bulni","Storzadi","Nalbari","Kilrund","Ketond","Herundi","Thortria","Ketain","Kilgin","Ragdria","Balon","Gilil","Bulim","Dwinria","Farnia","Bartil","Thinain","Barbura","Brokka","Mormin","Griak","Balola","Gara"}
 
+STRINGS.NAMES.FA_DORF = "Dwarf"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_DORF ="Dwarf"
+STRINGS.NAMES.FA_DORFHUT = "Dwarf Hut"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_DORFHUT = "Dwarf Hut"
+STRINGS.NAMES.FA_DORFBED = "Dwarf Bed"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_DORFBED = "Dwarf Bed"
+STRINGS.NAMES.FA_DORFSTAND = "Dwarf Stand"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_DORFSTAND = "Dwarf Stand"
 
 STRINGS.NAMES.FA_SPELL_DIVINEMIGHT = "Divine Might"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_SPELL_DIVINEMIGHT = "Divine Might"
