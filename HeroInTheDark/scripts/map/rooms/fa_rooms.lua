@@ -97,7 +97,7 @@ AddRoom("FA_OrcEntrance", {
 					value = GROUND.FA_LAVA_GREEN,
 					contents =  {
 									countprefabs = {
-										fa_orchut=3,
+										fa_orchut=5,
 										fa_adamantinerock=2,
 										fa_dungeon_entrance=1
 									},
@@ -120,7 +120,7 @@ AddRoom("FA_MineOrcRoom", {
 					value = GROUND.FA_LAVA_GREEN,
 					contents =  {
 									countprefabs = {
-										fa_orchut=3,
+										fa_orchut=6,
 									},
 									distributepercent = 0.05,
 					                distributeprefabs= 
@@ -137,7 +137,7 @@ AddRoom("FA_DwarfEntrance", {
 					value = GROUND.FA_LAVA_SHINY,
 					contents =  {
 									countprefabs = {
-										fa_dorfhut=2, 
+										fa_dorfhut=6, 
 										rock2=3,
 										fa_dungeon_entrance=1
 									},
@@ -160,8 +160,8 @@ AddRoom("FA_MineDwarfRoom", {
 					value = GROUND.FA_LAVA_SHINY,
 					contents =  {
 									countprefabs = {
-										fa_dorfhut=2, 
-										fa_dorfbed=3
+										fa_dorfhut=5, 
+										fa_dorfbed=5
 									},
 									distributepercent = 0.1,
 					                distributeprefabs= 
@@ -631,6 +631,29 @@ AddRoom("FA_BGLava_Ash",  {
 					                	stalagmite_med = .25,
 					                	stalagmite_low = .25,
 					                	fa_ironrock = .5,
+					                	fa_coalrock = .1,
+					                	rock1=0.1,
+					                	rock2=0.1,
+					                	fa_fissure_red = 0.25,
+					                }
+					            }
+					})
+AddRoom("FA_BGLava_OF_Ash",  {	
+					colour={r=0.3,g=0.2,b=0.1,a=0.3},
+--					value =GROUND.IMPASSABLE, 
+					value =GROUND.FA_LAVA_ASH, 
+					contents =  {
+									countprefabs={
+										fa_fissure_red=1,
+										fa_orchut=2
+									},
+									distributepercent = 0.2,
+					                distributeprefabs= 
+					                {
+					                	stalagmite_med = .25,
+					                	stalagmite_low = .25,
+					                	fa_ironrock = .5,
+					                	fa_coalrock = .1,
 					                	rock1=0.1,
 					                	rock2=0.1,
 					                	fa_fissure_red = 0.25,
@@ -650,8 +673,32 @@ AddRoom("FA_BGLava_Shiny",  {
 					                {
 					                	stalagmite_med = .25,
 					                	stalagmite_low = .25,
-					                	fa_lavarock = .5,
+					                	fa_copperrock = .5,
+					                	fa_coalrock = .1,
 					                	rock1=0.1,
+					                	rock2=0.1,
+					                	fa_fissure_red = 0.25,
+					                }
+					            }
+					})
+AddRoom("FA_BGLava_DF_Shiny",  {	
+					colour={r=0.3,g=0.2,b=0.1,a=0.3},
+--					value =GROUND.IMPASSABLE, 
+					value =GROUND.FA_LAVA_SHINY, 
+					contents =  {
+									countprefabs={
+										fa_fissure_red=1,
+										fa_dorfhut=2,
+									},
+									distributepercent = 0.2,
+					                distributeprefabs= 
+					                {
+					                	stalagmite_med = .25,
+					                	stalagmite_low = .25,
+					                	fa_copperrock = .5,
+					                	fa_coalrock = .1,
+					                	rock1=0.1,
+					                	fa_ironrock = .1,
 					                	rock2=0.1,
 					                	fa_fissure_red = 0.25,
 					                }
@@ -672,6 +719,7 @@ AddRoom("FA_BGLava_Green",  {
 					                	stalagmite_low = .25,
 					                	fa_ironrock = .5,
 					                	rock1=0.1,
+					                	fa_copperrock = .1,
 					                	rock2=0.1,
 					                	fa_fissure_red = 0.25,
 					                }

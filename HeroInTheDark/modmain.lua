@@ -396,6 +396,8 @@ Assets = {
     Asset( "ATLAS", "minimap/paladin.xml" ),  
     Asset( "IMAGE", "minimap/darkknight.tex" ),
     Asset( "ATLAS", "minimap/darkknight.xml" ), 
+    Asset( "IMAGE", "minimap/fa_rocks.tex" ),
+    Asset( "ATLAS", "minimap/fa_rocks.xml" ), 
     Asset( "ANIM", "anim/fa_shieldpuff.zip" ),
 
     Asset( "ANIM", "anim/generating_goblin_cave.zip" ),
@@ -472,6 +474,7 @@ AddMinimapAtlas("minimap/barb.xml")
 AddMinimapAtlas("minimap/druid.xml")
 AddMinimapAtlas("minimap/paladin.xml")
 AddMinimapAtlas("minimap/darkknight.xml")
+AddMinimapAtlas("minimap/fa_rocks.xml")
 
 RemapSoundEvent( "dontstarve/characters/bard/death_voice", "dontstarve/characters/wilson/death_voice" )
 RemapSoundEvent( "dontstarve/characters/bard/hurt", "fa/characters/bard/hurt" )

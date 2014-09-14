@@ -160,7 +160,7 @@ local function baserock_fn(name,animnames,minehits)
 	MakeObstaclePhysics(inst, 1.)
 	
 	local minimap = inst.entity:AddMiniMapEntity()
-	minimap:SetIcon( "rock.png" )
+	minimap:SetIcon( 'fa_'..name..'rock.tex' )
 
 	inst:AddComponent("lootdropper") 
 	inst.components.lootdropper:SetChanceLootTable('fa_'..name..'rock')

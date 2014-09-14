@@ -223,22 +223,22 @@ AddTask("DFEntrance", {
 		locks={LOCKS.TIER1},
 		keys_given= {KEYS.TIER2},
 		room_choices={
-			["FA_MineDwarfRoom"] = 2 + math.random(SIZE_VARIATION), 
+			["FA_MineDwarfRoom"] = 6 + math.random(SIZE_VARIATION), 
 			["FA_DwarfEntrance"]=1
 		},
 		room_bg=GROUND.FA_LAVA_ASH,
-		background_room="FA_BGLava_Shiny",
+		background_room="FA_BGLava_DF_Shiny",
 		colour={r=1,g=0,b=0.6,a=1},
 		})
 AddTask("ORCFEntrance", {
 		locks={LOCKS.TIER3},
 		keys_given= {KEYS.TIER4},
 		room_choices={
-			["FA_MineOrcRoom"] = 3 + math.random(SIZE_VARIATION), 
+			["FA_MineOrcRoom"] = 6 + math.random(SIZE_VARIATION), 
 			["FA_OrcEntrance"] =1,
 		},
 		room_bg=GROUND.FA_LAVA_ASH,
-		background_room="FA_BGLava_Ash",
+		background_room="FA_BGLava_OF_Ash",
 		colour={r=1,g=0,b=0.6,a=1},
 		})
 AddTask("FA_GreaterPlains", {
@@ -259,9 +259,9 @@ AddTask("FA_MineConflict", {
 		keys_given={KEYS.MEAT,KEYS.WOOL,KEYS.POOP,KEYS.HOUNDS,KEYS.WALRUS,KEYS.TIER3},
 		entrance_room="Moundfield",
 		room_choices={
-			["FA_MineOrcRoom"] = 1 + math.random(SIZE_VARIATION), 		
+			["FA_MineOrcRoom"] = 4 + math.random(SIZE_VARIATION), 		
 			["FA_MineHoundRoom"] = 1 + math.random(SIZE_VARIATION), 
-			["FA_MineDwarfRoom"] = 1 + math.random(SIZE_VARIATION), 
+			["FA_MineDwarfRoom"] = 4 + math.random(SIZE_VARIATION), 
 		}, 
 		room_bg=GROUND.FA_LAVA_GREEN,
 		background_room="FA_BGLava_Green",
