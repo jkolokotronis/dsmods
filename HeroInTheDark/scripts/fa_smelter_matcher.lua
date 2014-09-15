@@ -299,7 +299,7 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"fa_ironsword","fa_bottle_empty"},cooktime=144},
+		match={product={"fa_ironsword","fa_bottle_empty"},cooktime=240},
 		test={
 			{ingred="fa_ironbar",count=3},
 			{ingred="fa_coalbar",count=4},
@@ -307,42 +307,18 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"fa_ironsword","fa_bottle_empty"},cooktime=240},
-		test={
-			{ingred="fa_ironbar",count=3},
-			{ingred=isfuel,count=4},
-			{ingred=heavywater, count=1},
-		},
-	},
-	{
-		match={product={"fa_ironaxe","fa_bottle_empty"},cooktime=144},
-		test={
-			{ingred="fa_ironbar",count=4},
-			{ingred="fa_coalbar",count=3},
-			{ingred=heavywater, count=1},
-		},
-	},
-	{
 		match={product={"fa_ironaxe","fa_bottle_empty"},cooktime=240},
 		test={
 			{ingred="fa_ironbar",count=4},
-			{ingred=isfuel,count=3},
-			{ingred=heavywater, count=1},
-		},
-	},
-	{
-		match={product={"fa_irondagger","fa_bottle_empty","fa_bottle_empty"},cooktime=144},
-		test={
-			{ingred="fa_ironbar",count=3},
 			{ingred="fa_coalbar",count=3},
-			{ingred=heavywater, count=2},
+			{ingred=heavywater, count=1},
 		},
 	},
 	{
 		match={product={"fa_irondagger","fa_bottle_empty","fa_bottle_empty"},cooktime=240},
 		test={
 			{ingred="fa_ironbar",count=3},
-			{ingred=isfuel,count=3},
+			{ingred="fa_coalbar",count=3},
 			{ingred=heavywater, count=2},
 		},
 	},
@@ -414,18 +390,10 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"fa_ironarmor","fa_bottle_empty","fa_bottle_empty"},cooktime=288},
-		test={
-			{ingred="fa_ironbar",count=4},
-			{ingred="fa_coalbar",count=2},
-			{ingred=heavywater, count=2},
-		},
-	},
-	{
 		match={product={"fa_ironarmor","fa_bottle_empty","fa_bottle_empty"},cooktime=480},
 		test={
 			{ingred="fa_ironbar",count=4},
-			{ingred=isfuel,count=2},
+			{ingred="fa_coalbar",count=2},
 			{ingred=heavywater, count=2},
 		},
 	},
@@ -772,9 +740,15 @@ function FA_Matcher:Match(itemlist)
 		--too lazy to read lua string/regex options
 		if(not slag)then
 			local index=string.find(k,"pebble")
-			if(not index)then index=string.find(k,"bar") end
+			if(not index or index<=0)then index=string.find(k,"bar") end
 			if(index and index>0)then
 				slag=string.sub(k,1,index-1).."slag"
+			end
+		end
+		if(not slag)then
+			local index=string.find(k,"bottle")
+			if(index and index>0) then 
+				slag="fa_bottle_empty"
 			end
 		end
 		if(slag)then

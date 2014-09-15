@@ -121,4 +121,5 @@ Prefab( "common/inventory/fa_lavaslag", slagfn, pebble_assets),
 Prefab( "common/inventory/fa_ironslag", slagfn, pebble_assets),
 Prefab( "common/inventory/fa_silverslag", slagfn, pebble_assets),
 Prefab( "common/inventory/fa_copperslag", slagfn, pebble_assets),
+Prefab( "common/inventory/fa_steelslag", slagfn, pebble_assets),
 Prefab( "common/inventory/fa_limestoneslag", slagfn, pebble_assets)
