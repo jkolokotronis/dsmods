@@ -1,5 +1,11 @@
 --yeah i should break it some day when I have a reason to
-local FAIL_TIMER=120
+local FAIL_TIMER=60
+
+local FAIL_PERSISTANT={
+	fa_adamantinepebble="fa_adamantinepebble",
+	fa_diamondpebble="fa_diamondpebble",
+	fa_adamantinebar="fa_adamantinebar"
+}
 
 local function isfuel(ing)
 	return ing=="charcoal" or ing=="fa_coalbar"
@@ -8,7 +14,7 @@ end
 local function bottleany(ing)
 	return (ing=="fa_bottle_oil") or (ing=="fa_bottle_mineralwater") or (ing=="fa_bottle_water")
 end
-local function heavywater(inst)
+local function heavywater(ing)
 	return (ing=="fa_bottle_mineralwater") or (ing=="fa_bottle_oil") 
 end 
 local function anyanimal(ing)
@@ -762,11 +768,20 @@ function FA_Matcher:Match(itemlist)
 	--failed
 	local product={}
 	for k,v in pairs(itemlist) do
-		if(string.find(k,"pebble"))then
-		for i=1,v do
-
-			table.insert(product,i)
+		local slag=FAIL_PERSISTANT[k]
+		--too lazy to read lua string/regex options
+		if(not slag)then
+			local index=string.find(k,"pebble")
+			if(not index)then index=string.find(k,"bar") end
+			if(index and index>0)then
+				slag=string.sub(k,1,index-1).."slag"
+			end
 		end
+		if(slag)then
+			print("adding slag",slag)
+			for i=1,v do
+				table.insert(product,slag)
+			end
 		end
 	end
 	return {product=product,cooktime=FAIL_TIMER}

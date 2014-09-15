@@ -335,6 +335,14 @@ Assets = {
     Asset("ATLAS", "images/inventoryimages/fa_alchemytable.xml"),
     Asset("IMAGE", "images/inventoryimages/fa_alchemytable.tex"),
 
+    Asset("ATLAS", "minimap/fa_smeltingfurnace.xml"),
+    Asset("IMAGE", "minimap/fa_smeltingfurnace.tex"),
+    Asset("ATLAS", "minimap/fa_forge.xml"),
+    Asset("IMAGE", "minimap/fa_forge.tex"),
+    Asset("ATLAS", "minimap/fa_alchemytable.xml"),
+    Asset("IMAGE", "minimap/fa_alchemytable.tex"),
+
+
     Asset("ATLAS", "images/inventoryimages/fa_shields.xml"),
     Asset("IMAGE", "images/inventoryimages/fa_shields.tex"),
     Asset("ATLAS", "images/inventoryimages/poisonspidergland.xml"),
@@ -475,6 +483,9 @@ AddMinimapAtlas("minimap/druid.xml")
 AddMinimapAtlas("minimap/paladin.xml")
 AddMinimapAtlas("minimap/darkknight.xml")
 AddMinimapAtlas("minimap/fa_rocks.xml")
+AddMinimapAtlas("minimap/fa_alchemytable.xml")
+AddMinimapAtlas("minimap/fa_smeltingfurnace.xml")
+AddMinimapAtlas("minimap/fa_forge.xml")
 
 RemapSoundEvent( "dontstarve/characters/bard/death_voice", "dontstarve/characters/wilson/death_voice" )
 RemapSoundEvent( "dontstarve/characters/bard/hurt", "fa/characters/bard/hurt" )

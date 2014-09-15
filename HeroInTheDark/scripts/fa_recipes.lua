@@ -28,4 +28,6 @@ r.atlas = "images/inventoryimages/fa_forge.xml"
 local r=Recipe("fa_alchemytable", {Ingredient("livinglog", 10),Ingredient("nightmarefuel", 5),Ingredient("fa_bottle_empty", 1,"images/inventoryimages/fa_bottles.xml"),Ingredient("boards", 5)}, RECIPETABS.SCIENCE, TECH.NONE, "fa_alchemytable_placer")
 r.image="fa_alchemytable.tex"
 r.atlas = "images/inventoryimages/fa_alchemytable.xml"
-
+local r=Recipe("fa_lavawall_item", {Ingredient("fa_lavabar", 4,"images/inventoryimages/fa_orebars.xml")}, RECIPETABS.TOWN, TECH.SCIENCE_ONE,"fa_lavawall_placer")
+r.image="fa_lavawall.tex"
+r.atlas = "images/inventoryimages/fa_lavawall.xml"

@@ -13,6 +13,7 @@
         <file id="4" name="rock_iron_g.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
         <file id="5" name="AdaBoulder_0004_ground-with-shadow.png" width="228" height="166" pivot_x="0" pivot_y="1"/>
         <file id="6" name="LS_0008_Lime-ground-shadow.png" width="292" height="198" pivot_x="0" pivot_y="1"/>
+        <file id="7" name="rock_diamond_g.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="fa_lavapebble">
         <animation id="0" name="f1" length="34">
@@ -164,6 +165,20 @@
             <timeline id="0" name="rocks01_LAYER_Layer 1">
                 <key id="0" spin="0">
                     <object folder="1" file="6" x="-162.648649" y="141.589541" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="8" name="fa_slag">
+        <animation id="0" name="idle" length="34">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="rocks01_LAYER_Layer 1">
+                <key id="0" spin="0">
+                    <object folder="1" file="7" x="-69.648649" y="103.589541" angle="0"/>
                 </key>
             </timeline>
         </animation>

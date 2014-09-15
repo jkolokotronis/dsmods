@@ -127,7 +127,7 @@ local function fn(Sim)
 	inst.entity:AddSoundEmitter()
 	
 	local minimap = inst.entity:AddMiniMapEntity()
-	minimap:SetIcon( "cookpot.png" )
+	minimap:SetIcon( "fa_alchemytable.tex" )
 	
     local light = inst.entity:AddLight()
     inst.Light:Enable(false)

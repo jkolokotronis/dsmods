@@ -45,6 +45,9 @@ end
 local function lavabarfn(Sim)
 	local inst=  barfn("lava")
     inst.AnimState:SetBloomEffectHandle( "shaders/anim.ksh" )
+	inst:AddComponent("repairer")
+	inst.components.repairer.repairmaterial = "lava"
+	inst.components.repairer.healthrepairvalue = TUNING.REPAIR_ROCKS_HEALTH
     return inst
 end
 

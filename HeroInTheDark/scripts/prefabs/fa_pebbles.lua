@@ -101,6 +101,14 @@ end
 local function diamondpebblefn(Sim)
     return pebblefn("diamond")
 end
+
+local function slagfn(Sim)
+    local inst=pebblefn("slag")
+    inst.components.inventoryitem.imagename="fa_slag"
+    inst.AnimState:SetBank("fa_slag")
+    return inst
+end
+
 return Prefab( "common/inventory/fa_lavapebble", lavapebblefn, pebble_assets),
 Prefab( "common/inventory/fa_ironpebble", ironpebblefn, pebble_assets),
 Prefab( "common/inventory/fa_coalpebble", coalpebblefn, pebble_assets),
@@ -108,4 +116,9 @@ Prefab( "common/inventory/fa_diamondpebble", diamondpebblefn, pebble_assets),
 Prefab( "common/inventory/fa_limestonepebble", limestonepebblefn, pebble_assets),
 Prefab( "common/inventory/fa_adamantinepebble", adamantinepebblefn, pebble_assets),
 Prefab( "common/inventory/fa_copperpebble", copperpebblefn, pebble_assets),
-Prefab( "common/inventory/fa_silverpebble", silverpebblefn, pebble_assets)
+Prefab( "common/inventory/fa_silverpebble", silverpebblefn, pebble_assets),
+Prefab( "common/inventory/fa_lavaslag", slagfn, pebble_assets),
+Prefab( "common/inventory/fa_ironslag", slagfn, pebble_assets),
+Prefab( "common/inventory/fa_silverslag", slagfn, pebble_assets),
+Prefab( "common/inventory/fa_copperslag", slagfn, pebble_assets),
+Prefab( "common/inventory/fa_limestoneslag", slagfn, pebble_assets)

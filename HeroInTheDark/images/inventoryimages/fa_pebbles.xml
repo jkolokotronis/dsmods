@@ -8,5 +8,6 @@
 		<Element name="fa_ironpebble.tex" u1="0.25" u2="0.5" v1="0.25" v2="0.5" />
 		<Element name="fa_adamantinepebble.tex" u1="0.5" u2="0.75" v1="0.25" v2="0.5" />
 		<Element name="fa_limestonepebble.tex" u1="0.75" u2="1" v1="0.25" v2="0.5" />
+		<Element name="fa_slag.tex" u1="0" u2="0.25" v1="0.5" v2="0.75" />
 </Elements>
 </Atlas>

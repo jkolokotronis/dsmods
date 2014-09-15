@@ -1,7 +1,7 @@
 local SGWilson=require "stategraphs/SGwilson"
 require "actions"
 
-local DIG_SAND_CHANCE=0.1
+local DIG_SAND_CHANCE=0.35
 local MINE_DIAMOND_CHANCE=0.05
 
 local FA_FURNACE=Action(1)
