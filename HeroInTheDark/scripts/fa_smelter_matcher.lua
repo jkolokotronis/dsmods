@@ -74,13 +74,6 @@ local alchemy_recipes={
 		},
 	},
 	{
-		match={product={"fa_bottle_water"},cooktime=30},
-		test={
-			{ingred="ice",count=4},
-			{ingred="fa_bottle_empty",count=1},
-		},
-	},
-	{
 		match={product={"fa_bottle_frozenessence"},cooktime=30},
 		test={
 			{ingred="ice",count=5},
@@ -117,6 +110,13 @@ local alchemy_recipes={
 		match={product={"fa_bottle_oil"},cooktime=120},
 		test={
 			{ingred=anymeat,count=7},
+			{ingred="fa_bottle_empty",count=1},
+		},
+	},
+	{
+		match={product={"fa_bottle_water"},cooktime=30},
+		test={
+			{ingred="ice",count=4},
 			{ingred="fa_bottle_empty",count=1},
 		},
 	},

@@ -1,6 +1,8 @@
 local assets=
 {
 	Asset("ANIM", "anim/fa_sand.zip"),
+    Asset("ATLAS", "images/inventoryimages/fa_sand.xml"),
+    Asset("IMAGE", "images/inventoryimages/fa_sand.tex"),
 }
 
 
@@ -48,6 +50,8 @@ local function fn(Sim)
     
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem:SetOnPutInInventoryFn(StopBlowAway)
+    inst.components.inventoryitem.imagename="fa_sand"
+    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_sand.xml"
 
    
 	inst:ListenForEvent("ondropped",  PrepareBlowAway)
