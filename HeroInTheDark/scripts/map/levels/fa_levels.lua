@@ -259,7 +259,7 @@ FA_LEVELDATA["ORC_MINES"]={
 			{"poi", 			"never"},
 			{"traps", 			"never"},
 			{"protected", 		"never"},
-			{"start_setpeice", 	"FADungeonStart"},
+			{"start_setpeice", 	"FAMineExit"},
 			{"start_node",		"FA_BGLava"},
 		},
 		tasks={

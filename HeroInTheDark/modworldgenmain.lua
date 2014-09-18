@@ -29,6 +29,17 @@ local levels = require("map/levels")
 require("map/terrain")
 local Layouts = require("map/layouts").Layouts
 local StaticLayout = require("map/static_layout")
+--patching for custom layout support - there is no external table to mod, and if i put it into tileadder id need to override same function 4 times
+local oldget=StaticLayout.Get
+StaticLayout.Get=function(...)
+	local oldlayout=oldget(...)
+	oldlayout.ground_types[GLOBAL.FA_TILES_START]=GROUND.FA_LAVA_ASH
+	oldlayout.ground_types[GLOBAL.FA_TILES_START+1]=GROUND.FA_LAVA_GREEN
+	oldlayout.ground_types[GLOBAL.FA_TILES_START+2]=GROUND.FA_LAVA_SHINY
+	oldlayout.ground_types[GLOBAL.FA_TILES_START+3]=GROUND.FA_LAVA_TERRAIN2
+	return oldlayout
+end
+
 require "map/levels/fa_levels"
 require "map/rooms/fa_rooms"
 require "map/tasks/fa_tasks"
