@@ -288,6 +288,23 @@ STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_GOLDBAR = "Gold Bar"
 STRINGS.NAMES.FA_LAVABAR = "Lava Bar"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_LAVABAR = "Lava Bar"
 
+STRINGS.NAMES.FA_IRONBARSLAG = "Iron Bar Slag"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_IRONBARSLAG = "Iron Bar Slag"
+STRINGS.NAMES.FA_PIGIRONBARSLAG = "Pig Iron Bar Slag"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_PIGIRONBARSLAG = "Pig Iron Bar Slag"
+STRINGS.NAMES.FA_LIMESTONEBARSLAG = "Limestone Bar"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_LIMESTONEBARSLAG =  "Limestone Bar Slag"
+STRINGS.NAMES.FA_COPPERBARSLAG = "Copper Bar Slag"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_COPPERBARSLAG = "Copper Bar Slag"
+STRINGS.NAMES.FA_STEELBARSLAG = "Steel Bar Slag"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_STEELBARSLAG = "Steel Bar Slag"
+STRINGS.NAMES.FA_SILVERBARSLAG = "Silver Bar Slag"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_SILVERBARSLAG = "Silver Bar Slag"
+STRINGS.NAMES.FA_GOLDBARSLAG = "Gold Bar Slag"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_GOLDBARSLAG = "Gold Bar Slag"
+STRINGS.NAMES.FA_LAVABARSLAG = "Lava Bar Slag"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_LAVABARSLAG = "Lava Bar Slag"
+
 STRINGS.NAMES.FA_IRONSLAG = "Iron Slag"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_IRONSLAG ="Iron Slag"
 STRINGS.NAMES.FA_STEELSLAG = "Steel Slag"
@@ -389,6 +406,21 @@ STRINGS.CHARACTERS.GENERIC.DESCRIBE.GOBLINSIGN_5 = "It says 'Go bak now!'."
 
 STRINGS.NAMES.FA_TELEPORTER="Teleporter"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_TELEPORTER="Teleporter"
+
+STRINGS.DWARF_TALK_FOLLOWGENERIC = {"I shall follow you overworlder!", "I am at your command.", "I shall return with many great tales.", "I live for adventure!"}
+STRINGS.DWARF_TALK_FIND_DARK = {"The light burns my eyes.", "I wish to return back to the mines.", "How do you overworlders deal with this?"}
+STRINGS.DWARF_TALK_LOOKATGENERIC = {"Greetings, overworlder.", "Do you wish to trade?", "Glory to the Dwarves!"}
+STRINGS.DWARF_TALK_FIGHT = {"I SHALL DRINK TO VICTORY!", "FOOL! YOU THINK YOU CAN BEAT A DWARF?!", "VICTORY OR DEATH!!", "MAY DEATH BE MERCIFUL TO YOU!"}
+STRINGS.DWARF_TALK_HELP_CHOP_WOOD = {"What do you think i am, a beaver?", "HA! This tree is no match for me!", "I hardly believe you need me to assist you with this." }
+    STRINGS.DWARF_TALK_ATTEMPT_TRADE = {"What do you have?", "You better have something good, overworlder."}
+    STRINGS.DWARF_TALK_PANIC = {"RETREAT!!", "HAVE MERCY!", "I DO NOT WISH TO DIE THIS DAY!"}
+    STRINGS.DWARF_TALK_PANICFIRE = {"THE PAIN!", "THE HEAT IS WORSE THAN THE MINES!", "OW, HELP!"}
+    STRINGS.DWARF_TALK_FIND_FOOD = {"Now, who left this laying around?", "I’m sure no one will mind if i just pick this up."}
+    STRINGS.DWARF_TALK_EAT_FOOD = {"Ah, Dinner!", "That was hardly enough to fill a Dwarf."}
+    STRINGS.DWARF_TALK_GO_HOME = {"I must return to my people", "I am afraid it is my time to depart, overworlder."}
+   STRINGS.DWARF_TALK_EARTHQUAKE = {"FIND COVER!", "LAVA RAIN!"}
+    STRINGS.DWARF_TALK_WARTIME = {"MEN TO ARMS!", "BATTLE IS UPON US!"}
+    STRINGS.DWARF_TALK_PEACETIME = {"Peace at last", "We must prepare..."}
 
 
 STRINGS.NAMES.FA_DORF_BAG="Dwarven Bag of Holding"

@@ -117,9 +117,18 @@ Prefab( "common/inventory/fa_limestonepebble", limestonepebblefn, pebble_assets)
 Prefab( "common/inventory/fa_adamantinepebble", adamantinepebblefn, pebble_assets),
 Prefab( "common/inventory/fa_copperpebble", copperpebblefn, pebble_assets),
 Prefab( "common/inventory/fa_silverpebble", silverpebblefn, pebble_assets),
+
 Prefab( "common/inventory/fa_lavaslag", slagfn, pebble_assets),
 Prefab( "common/inventory/fa_ironslag", slagfn, pebble_assets),
 Prefab( "common/inventory/fa_silverslag", slagfn, pebble_assets),
 Prefab( "common/inventory/fa_copperslag", slagfn, pebble_assets),
-Prefab( "common/inventory/fa_steelslag", slagfn, pebble_assets),
-Prefab( "common/inventory/fa_limestoneslag", slagfn, pebble_assets)
+Prefab( "common/inventory/fa_limestoneslag", slagfn, pebble_assets),
+
+Prefab( "common/inventory/fa_ironbarslag", slagfn, assets,prefabs),
+Prefab( "common/inventory/fa_pigironbarslag", slagfn, assets,prefabs),
+Prefab( "common/inventory/fa_limestonebarslag", slagfn, assets,prefabs),
+Prefab( "common/inventory/fa_copperbarslag", slagfn, assets,prefabs),
+Prefab( "common/inventory/fa_steelbarslag", slagfn, assets,prefabs),
+Prefab( "common/inventory/fa_silverbarslag", slagfn, assets,prefabs),
+Prefab( "common/inventory/fa_goldbarslag", slagfn, assets,prefabs),
+Prefab( "common/inventory/fa_lavabarslag", slagfn, assets,prefabs)

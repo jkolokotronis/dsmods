@@ -247,6 +247,41 @@ local smelt_recipes={
 			{ingred=isfuel,count=4},
 		},
 	},
+	{
+		match={product={"fa_lavapebble","fa_lavapebble","fa_lavapebble","fa_lavapebble","fa_lavapebble","fa_lavapebble"},cooktime=60},
+		test={
+			{ingred="fa_lavaslag",count=6},
+			{ingred=isfuel,count=2},
+		},
+	},
+	{
+		match={product={"fa_ironpebble","fa_ironpebble","fa_ironpebble","fa_ironpebble","fa_ironpebble","fa_ironpebble"},cooktime=60},
+		test={
+			{ingred="fa_ironslag",count=6},
+			{ingred=isfuel,count=2},
+		},
+	},
+	{
+		match={product={"fa_silverpebble","fa_silverpebble","fa_silverpebble","fa_silverpebble","fa_silverpebble","fa_silverpebble"},cooktime=60},
+		test={
+			{ingred="fa_silverslag",count=6},
+			{ingred=isfuel,count=2},
+		},
+	},
+	{
+		match={product={"fa_copperpebble","fa_copperpebble","fa_copperpebble","fa_copperpebble","fa_copperpebble","fa_copperpebble"},cooktime=60},
+		test={
+			{ingred="fa_copperslag",count=6},
+			{ingred=isfuel,count=2},
+		},
+	},
+	{
+		match={product={"fa_limestonepebble","fa_limestonepebble","fa_limestonepebble","fa_limestonepebble","fa_limestonepebble","fa_limestonepebble"},cooktime=60},
+		test={
+			{ingred="fa_limestoneslag",count=6},
+			{ingred=isfuel,count=2},
+		},
+	},
 }
 
 local forge_recipes={
@@ -689,6 +724,62 @@ local forge_recipes={
 			{ingred="blowdart_pipe",count=1},
 		},
 	},
+	{
+		match={product={"fa_ironbar","fa_ironbar","fa_ironbar","fa_ironbar","fa_ironbar","fa_ironbar"},cooktime=60},
+		test={
+			{ingred="fa_ironbarslag",count=6},
+			{ingred=isfuel,count=2},
+		},
+	},
+	{
+		match={product={"fa_pigironbar","fa_pigironbar","fa_pigironbar","fa_pigironbar","fa_pigironbar","fa_pigironbar"},cooktime=60},
+		test={
+			{ingred="fa_pigironbarslag",count=6},
+			{ingred=isfuel,count=2},
+		},
+	},
+	{
+		match={product={"fa_limestonebar","fa_limestonebar","fa_limestonebar","fa_limestonebar","fa_limestonebar","fa_limestonebar"},cooktime=60},
+		test={
+			{ingred="fa_limestonebarslag",count=6},
+			{ingred=isfuel,count=2},
+		},
+	},
+	{
+		match={product={"fa_copperbar","fa_copperbar","fa_copperbar","fa_copperbar","fa_copperbar","fa_copperbar"},cooktime=60},
+		test={
+			{ingred="fa_copperbarslag",count=6},
+			{ingred=isfuel,count=2},
+		},
+	},
+	{
+		match={product={"fa_steelbar","fa_steelbar","fa_steelbar","fa_steelbar","fa_steelbar","fa_steelbar"},cooktime=60},
+		test={
+			{ingred="fa_steelbarslag",count=6},
+			{ingred=isfuel,count=2},
+		},
+	},
+	{
+		match={product={"fa_silverbar","fa_silverbar","fa_silverbar","fa_silverbar","fa_silverbar","fa_silverbar"},cooktime=60},
+		test={
+			{ingred="fa_silverbarslag",count=6},
+			{ingred=isfuel,count=2},
+		},
+	},
+	{
+		match={product={"fa_goldbar","fa_goldbar","fa_goldbar","fa_goldbar","fa_goldbar","fa_goldbar"},cooktime=60},
+		test={
+			{ingred="fa_goldbarslag",count=6},
+			{ingred=isfuel,count=2},
+		},
+	},
+	{
+		match={product={"fa_lavabar","fa_lavabar","fa_lavabar","fa_lavabar","fa_lavabar","fa_lavabar"},cooktime=60},
+		test={
+			{ingred="fa_lavabarslag",count=6},
+			{ingred=isfuel,count=2},
+		},
+	},
 }
 local FA_Matcher=Class(function(self, craftlists)
 	self.craftlists=craftlists
@@ -739,10 +830,21 @@ function FA_Matcher:Match(itemlist)
 		local slag=FAIL_PERSISTANT[k]
 		--too lazy to read lua string/regex options
 		if(not slag)then
-			local index=string.find(k,"pebble")
-			if(not index or index<=0)then index=string.find(k,"bar") end
+			local index=string.find(k,"slag")
 			if(index and index>0)then
-				slag=string.sub(k,1,index-1).."slag"
+				slag=k
+			end
+			if(not index or index<=0)then 
+				index=string.find(k,"bar")
+				if(index and index>0)then
+					slag=k.."slag"
+				end
+			end
+			if(not index or index<=0)then 
+				index=string.find(k,"pebble")
+				if(index and index>0)then
+					slag=string.sub(k,1,index-1).."slag"
+				end
 			end
 		end
 		if(not slag)then
