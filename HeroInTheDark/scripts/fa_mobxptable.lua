@@ -1,5 +1,6 @@
 FA_MOBXP_TABLE={
 	bee={default=5},
+	bat={default=5},
 	killerbee={default=5},
 	mosquito={default=5},
 	spider={default=7},

@@ -1894,6 +1894,20 @@ AddPrefabPostInit("pigman",function(inst)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
     inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2
+
+    local onsetwerefn_old=inst.components.werebeast.onsetwerefn
+    inst.components.werebeast:SetOnWereFn(function(inst)
+        if onsetwerefn_old then onsetwerefn_old(inst) end
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.6
+    end)
+    local onsetnormalfn_old=inst.components.werebeast.onsetnormalfn
+    inst.components.werebeast:SetOnNormalFn(function(inst)
+        if onsetnormalfn_old then onsetnormalfn_old(inst) end
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2
+    end)
+
 end)
 AddPrefabPostInit("tentacle",function(inst)
     inst:AddTag("fa_magicalbeast")
@@ -2393,8 +2407,7 @@ AddPrefabPostInit("pighouse", function(inst)
     addFullStructureLootPrefabPostInit(inst,0.2) 
     inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.15)
 end)
-AddPrefabPostInit("rabbithouse", function(inst) addFullLootPrefabPostInit(inst,0.2) end)
-AddPrefabPostInit("goblinhut", function(inst) addFullLootPrefabPostInit(inst,0.2) end)
+AddPrefabPostInit("rabbithouse", function(inst) addFullStructureLootPrefabPostInit(inst,0.2) end)
 
 AddPrefabPostInit("spiderden", function(inst) 
     addT1LootPrefabPostInit(inst,0.15) 
