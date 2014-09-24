@@ -467,6 +467,7 @@ local function fnking()
     inst.components.health:SetMaxHealth(1600)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.2
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.2
     inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=0.2
     inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.3
     GetInventoryKing(inst)

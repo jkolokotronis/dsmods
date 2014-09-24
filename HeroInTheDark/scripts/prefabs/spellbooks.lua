@@ -851,7 +851,7 @@ return
 --    MakeSpell("fa_spell_summonmonster5",summon5fn,10,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_curelightwoundsmass",curelighmassfn,5,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_animatedead",animatedeadfn,8,FA_SPELL_SCHOOLS.NECROMANCY),
-    MakeSpell("fa_spell_shadowconjuration",shadowconjuration,8,FA_SPELL_SCHOOLS.NECROMANCY),
+    MakeSpell("fa_spell_shadowconjuration",shadowconjuration,8,FA_SPELL_SCHOOLS.ILLUSION),
     MakeSpell("fa_spell_createfood",createfoodfn,5,FA_SPELL_SCHOOLS.CONJURATION),
     MakeSpell("fa_spell_continualflame",continualflamefn,5,FA_SPELL_SCHOOLS.EVOCATION),
     MakeSpell("fa_spell_sleep",sleepfn,15,FA_SPELL_SCHOOLS.ENCHANTMENT),
