@@ -71,6 +71,31 @@ for k,name in pairs({"SpiderfieldEasy","Spiderfield","SunkenMarsh","SpiderCity",
 	end
 end
 
+local function AddCaveRocksPreInit(room)
+	room.contents.distributeprefabs.fa_coalrock=0.2
+	room.contents.distributeprefabs.fa_copperrock=0.2
+	room.contents.distributeprefabs.fa_limestonerock=0.1
+end
+local function AddCaveRocksPreInit2(room)
+	room.contents.distributeprefabs.fa_coalrock=0.025
+	room.contents.distributeprefabs.fa_copperrock=0.025
+	room.contents.distributeprefabs.fa_limestonerock=0.025
+	room.contents.distributeprefabs.fa_ironrock=0.1
+end
+AddRoomPreInit("CaveBase", AddCaveRocksPreInit)
+AddRoomPreInit("BGNoisyCave", AddCaveRocksPreInit)
+AddRoomPreInit("BGCaveRoom", AddCaveRocksPreInit)
+AddRoomPreInit("BatCaveRoom", AddCaveRocksPreInit)
+AddRoomPreInit("BatCaveRoomAntichamber", AddCaveRocksPreInit)
+AddRoomPreInit("PitCave", AddCaveRocksPreInit)
+AddRoomPreInit("RockLobsterPlains", AddCaveRocksPreInit)
+
+AddRoomPreInit("CaveRoom", AddCaveRocksPreInit2)
+AddRoomPreInit("NoisyCave", AddCaveRocksPreInit2)
+AddRoomPreInit("FungusRoom", AddCaveRocksPreInit2)
+
+
+
 local function AddGoblinEntrancePreInit(task)
 	-- Insert the custom room we created above into the task.
 	-- We could modify the task here as well.

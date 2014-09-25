@@ -283,6 +283,10 @@ AddRoom("FA_GoblinRoom1",{
 					                	mushtree_tall = 0.2,
 										mushtree_medium = 0.2,
 										mushtree_small = 0.2,
+					                	fa_ironrock = .05,
+					                	fa_coalrock = .1,
+					                	fa_copperrock = .1,
+										fa_limestonerock = .05,
 						            }
 					            }
 	})
@@ -310,6 +314,10 @@ AddRoom("FA_GoblinRoom2",{
 					                	mushtree_tall = 0.2,
 										mushtree_medium = 0.2,
 										mushtree_small = 0.2,
+					                	fa_ironrock = .05,
+					                	fa_coalrock = .1,
+					                	fa_copperrock = .1,
+										fa_limestonerock = .05,
 						            }
 					            }
 	})
@@ -336,6 +344,10 @@ AddRoom("FA_GoblinRoom3",{
 					                	mushtree_tall = 0.2,
 										mushtree_medium = 0.2,
 										mushtree_small = 0.2,
+					                	fa_ironrock = .05,
+					                	fa_coalrock = .1,
+					                	fa_copperrock = .1,
+										fa_limestonerock = .05,
 						            }
 					            }
 	})
@@ -362,6 +374,10 @@ AddRoom("FA_GoblinRoom4",{
 					                	mushtree_tall = 0.2,
 										mushtree_medium = 0.2,
 										mushtree_small = 0.2,
+					                	fa_ironrock = .05,
+					                	fa_coalrock = .1,
+					                	fa_copperrock = .1,
+										fa_limestonerock = .05,
 						            }
 					            }
 	})
@@ -388,6 +404,10 @@ AddRoom("FA_GoblinRoom5",{
 					                	mushtree_tall = 0.2,
 										mushtree_medium = 0.2,
 										mushtree_small = 0.2,
+					                	fa_ironrock = .05,
+					                	fa_coalrock = .1,
+					                	fa_copperrock = .1,
+										fa_limestonerock = .05,
 						            }
 					            }
 	})
@@ -416,6 +436,10 @@ AddRoom("FA_GoblinRoom6",{
 					                	mushtree_tall = 0.2,
 										mushtree_medium = 0.2,
 										mushtree_small = 0.2,
+					                	fa_ironrock = .05,
+					                	fa_coalrock = .1,
+					                	fa_copperrock = .1,
+										fa_limestonerock = .05,
 						            }
 					            }
 	})
@@ -442,6 +466,10 @@ AddRoom("FA_GoblinRoom7",{
 					                	mushtree_tall = 0.2,
 										mushtree_medium = 0.2,
 										mushtree_small = 0.2,
+					                	fa_ironrock = .05,
+					                	fa_coalrock = .1,
+					                	fa_copperrock = .1,
+										fa_limestonerock = .05,
 						            }
 					            }
 	})
@@ -470,6 +498,10 @@ AddRoom("FA_GoblinRoom8",{
 					                	mushtree_tall = 0.2,
 										mushtree_medium = 0.2,
 										mushtree_small = 0.2,
+					                	fa_ironrock = .05,
+					                	fa_coalrock = .1,
+					                	fa_copperrock = .1,
+										fa_limestonerock = .05,
 						            }
 					            }
 	})

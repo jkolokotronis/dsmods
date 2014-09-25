@@ -1,7 +1,6 @@
 local assets =
 {
 	Asset("ANIM", "anim/poisonspider_queen.zip"),
-    Asset("ANIM", "anim/poisonspider_queen2.zip"),
 }
 
 local prefabs =
@@ -193,6 +192,5 @@ local pos2=function()
     return inst
 end
 
-return Prefab( "forest/monsters/poisonspiderqueen", fn, assets, prefabs),
-Prefab( "forest/monsters/poisonspiderqueen2", pos2, assets, prefabs)
+return Prefab( "forest/monsters/poisonspiderqueen", fn, assets, prefabs)
     
