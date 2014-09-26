@@ -6,15 +6,15 @@
         <file id="2" name="face/face-2.png" width="160" height="400" pivot_x="0.494528" pivot_y="0.792892"/>
         <file id="3" name="face/face-3.png" width="160" height="400" pivot_x="0.494528" pivot_y="0.792892"/>
         <file id="4" name="face/face-4.png" width="490" height="125" pivot_x="0.967172" pivot_y="0.472513"/>
-        <file id="5" name="face/face-5.png" width="490" height="125" pivot_x="0.967172" pivot_y="0.452097"/>
+        <file id="5" name="face/face-5.png" width="490" height="125" pivot_x="0.967172" pivot_y="0.472513"/>
         <file id="6" name="face/face-6.png" width="490" height="125" pivot_x="0.967562" pivot_y="0.477359"/>
-        <file id="7" name="face/face-7.png" width="490" height="125" pivot_x="0.967172" pivot_y="0.447236"/>
+        <file id="7" name="face/face-7.png" width="490" height="125" pivot_x="0.967172" pivot_y="0.472513"/>
         <file id="8" name="face/face-8.png" width="160" height="400" pivot_x="0.494528" pivot_y="0.792892"/>
         <file id="9" name="face/face-9.png" width="160" height="400" pivot_x="0.496403" pivot_y="0.809588"/>
-        <file id="10" name="face/face-10.png" width="160" height="400" pivot_x="0.497966" pivot_y="0.806657"/>
-        <file id="11" name="face/face-11.png" width="160" height="400" pivot_x="0.494528" pivot_y="0.781254"/>
-        <file id="12" name="face/face-12.png" width="160" height="400" pivot_x="0.497966" pivot_y="0.708039"/>
-        <file id="13" name="face/face-13.png" width="160" height="400" pivot_x="0.496403" pivot_y="0.684031"/>
+        <file id="10" name="face/face-10.png" width="160" height="400" pivot_x="0.497966" pivot_y="0.792892"/>
+        <file id="11" name="face/face-11.png" width="160" height="400" pivot_x="0.494528" pivot_y="0.792892"/>
+        <file id="12" name="face/face-12.png" width="160" height="400" pivot_x="0.497966" pivot_y="0.792892"/>
+        <file id="13" name="face/face-13.png" width="160" height="400" pivot_x="0.496403" pivot_y="0.792892"/>
     </folder>
     <folder id="1" name="headbase">
         <file id="0" name="headbase/headbase-0.png" width="245" height="232" pivot_x="0.507976" pivot_y="0.13567"/>
