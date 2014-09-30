@@ -8,8 +8,25 @@ local assets =
 local prefabs = 
 {
 	"fa_orc",
+    "boneshards"
 }
 
+SetSharedLootTable( 'fa_orchut',
+{
+    {'rocks',  1},
+    {'rocks',  1},
+    {'cutgrass',  1},
+    {'boards', 1},
+    {'boards', 1},
+    {'boards', 1},
+    {'boards', 1},
+    {'boneshards',  0.8},
+    {'boneshards',  0.8},
+    {'boneshards',  0.5},
+    {'boneshards',  0.5},
+    {'boneshards',  0.2},
+    {'boneshards',  0.2},
+})
 
         
 local function onhammered(inst, worker)

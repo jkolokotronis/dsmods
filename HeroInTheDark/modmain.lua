@@ -24,19 +24,19 @@ GLOBAL.FA_ModUtil.GetModConfigData=GetModConfigData
 GLOBAL.FA_ModUtil.AddAction=AddAction
 GLOBAL.FA_ModUtil.AddStategraphActionHandler=AddStategraphActionHandler
 
-local memspikefixmod=nil
 for _, mod in ipairs( GLOBAL.ModManager.mods ) do
         if mod.modinfo.name == "RPG HUD" or mod.modinfo.id == "RPG HUD" then
             GLOBAL.FA_ModCompat.rpghudmod=mod
 --            print("hud version",mod,mod.modinfo.id,mod.modinfo.name, mod.modinfo.description)
         elseif mod.modinfo.name == "memspikefix" or mod.modinfo.id == "memspikefix"  then
-            memspikefixmod=mod
             GLOBAL.FA_ModCompat.memspikefixed=true
         elseif mod.modinfo.name=="Always On Status" or mod.modinfo.id=="Always On Status" then
             GLOBAL.FA_ModCompat.alwaysonmod=mod
+        elseif mod.modinfo.name=="UpAndAway" or mod.modinfo.id=="UpAndAway" then
+            GLOBAL.FA_ModCompat.UnA=mod
         end
     end
-if(not memspikefixmod and GetModConfigData("memspikefix"))then
+if(not GLOBAL.FA_ModCompat.memspikefixed and GetModConfigData("memspikefix"))then
     print("patching memory abuse")
     modimport "memspikefix.lua"
     GLOBAL.FA_ModCompat.memspikefixed=true

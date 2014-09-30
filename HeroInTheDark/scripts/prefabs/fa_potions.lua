@@ -354,7 +354,7 @@ local function common(name)
 	local inst = CreateEntity()
 	inst.entity:AddTransform()
 	inst.entity:AddAnimState()
-    inst.Transform:SetScale(3,3, 3)
+--    inst.Transform:SetScale(3,3, 3)
 
 
     inst.AnimState:SetBank("fa_"..name)
@@ -445,6 +445,7 @@ end
 
 local function fnempty()
 	local inst=common("bottle_empty")
+    inst:RemoveComponent("edible")
 	return inst
 end
 
@@ -455,6 +456,7 @@ end
 
 local function fnoil()
 	local inst=common("bottle_dark_blue")
+    inst:RemoveComponent("edible")
 	return inst
 end
 
@@ -465,18 +467,29 @@ end
 
 local function fnfrozenessence()
 	local inst=common("bottle_light_lime")
+    inst:RemoveComponent("edible")
 	return inst
 end
 
 local function fnlifeessence()
 	local inst=common("bottle_dark_auburn")
+    inst:RemoveComponent("edible")
 	return inst
 end
 
 local function fnlightningessence()
 	local inst=common("bottle_light_blue")
+    inst:RemoveComponent("edible")
 	return inst
 end
+
+local function ftest(name)
+	return function()
+		local inst=common(name)
+		return inst
+	end
+end
+
 return Prefab( "common/inventory/fa_bottle_r", fnr, Assets),
 	Prefab( "common/inventory/fa_bottle_y", fny, Assets),
 	Prefab( "common/inventory/fa_bottle_g", fng, Assets),
@@ -489,5 +502,17 @@ return Prefab( "common/inventory/fa_bottle_r", fnr, Assets),
 	Prefab( "common/inventory/fa_bottle_lifeessence", fnlifeessence, Assets),
 	Prefab( "common/inventory/fa_bottle_lightningessence", fnlightningessence, Assets),
 	Prefab( "common/inventory/fa_bottle_curepoison", fncurepoison, Assets)
-
+--[[
+	,
+	Prefab( "common/inventory/fa_bottle_1_0", ftest("bottle_1_0"), Assets),
+	Prefab( "common/inventory/fa_bottle_1_1", ftest("bottle_1_1"), Assets),
+	Prefab( "common/inventory/fa_bottle_1_2", ftest("bottle_1_2"), Assets),
+	Prefab( "common/inventory/fa_bottle_1_3", ftest("bottle_1_3"), Assets),
+	Prefab( "common/inventory/fa_bottle_1_4", ftest("bottle_1_4"), Assets),
+	Prefab( "common/inventory/fa_bottle_1_5", ftest("bottle_1_5"), Assets),
+	Prefab( "common/inventory/fa_bottle_1_6", ftest("bottle_1_6"), Assets),
+	Prefab( "common/inventory/fa_bottle_1_7", ftest("bottle_1_7"), Assets),
+	Prefab( "common/inventory/fa_bottle_1_8", ftest("bottle_1_8"), Assets),
+	Prefab( "common/inventory/fa_bottle_1_9", ftest("bottle_1_9"), Assets)
+]]
 	

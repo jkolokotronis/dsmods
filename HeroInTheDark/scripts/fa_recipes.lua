@@ -1,5 +1,39 @@
 require "recipe"
 require "tuning"
+require "constants"
+
+
+
+RECIPETABS["FA_DWARFTRADER"] = {str = "FA_DWARFTRADER", sort=999, icon = "fa_dorf.tex", icon_atlas ="minimap/fa_dorf.xml"}
+STRINGS.TABS.FA_DWARFTRADER = "Trader"
+
+--wicker is already fixing the hardcoded crap - I see no reason to reinvent the wheel
+if(not FA_ModCompat.UnA)then
+	print("patching hardcoded builder tech bonuses")
+	local Builder = require "components/builder"
+
+	function Builder:KnowsRecipe(recname)
+		local recipe = GetRecipe(recname)
+	 
+		if recipe then
+			local is_intrinsic = true
+
+			for k, v in pairs(recipe.level) do
+				local bonus = self[k:lower().."_bonus"] or 0
+				if bonus < v then
+					is_intrinsic = false
+					break
+				end
+			end
+
+			if is_intrinsic then
+				return true
+			end
+		end
+	 
+		return self.freebuildmode or table.contains(self.recipes, recname)
+	end
+end
 
 local r=Recipe("fa_tinyscrollcase", {Ingredient("fa_goblinskin", 4,"images/inventoryimages/fa_goblinskin.xml"),Ingredient("pigskin", 4),Ingredient("twigs", 10)}, RECIPETABS.SURVIVAL,  TECH.MAGIC_TWO)    
 r.image="fa_scroll_case.tex"
@@ -31,3 +65,9 @@ r.atlas = "images/inventoryimages/fa_alchemytable.xml"
 local r=Recipe("fa_lavawall_item", {Ingredient("fa_lavabar", 4,"images/inventoryimages/fa_orebars.xml")}, RECIPETABS.TOWN, TECH.SCIENCE_ONE)
 r.image="fa_lavawall.tex"
 r.atlas = "images/inventoryimages/fa_lavawall.xml"
+
+local r=Recipe("baconeggs", {Ingredient("fa_copperpebble", 4,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_FOODSTAND, nil, nil, true)
+local r=Recipe("meatballs", {Ingredient("fa_copperpebble", 3,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_FOODSTAND, nil, nil, true)
+local r=Recipe("bonestew", {Ingredient("fa_ironpebble", 4,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_FOODSTAND, nil, nil, true)
+local r=Recipe("kabobs", {Ingredient("fa_coalpebble", 2,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_FOODSTAND, nil, nil, true)
+local r=Recipe("icecream", {Ingredient("fa_silverpebble", 1,"images/inventoryimages/fa_pebbles.xml"),Ingredient("fa_ironpebble", 1,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_FOODSTAND, nil, nil, true)

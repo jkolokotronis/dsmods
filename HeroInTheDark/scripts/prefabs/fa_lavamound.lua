@@ -152,4 +152,56 @@ local function fn(Sim)
 end
 
 
-return Prefab( "common/fa_lavamound", fn, assets, prefabs ) 
+local function fngrave(Sim)
+    local inst = CreateEntity()
+    local trans = inst.entity:AddTransform()
+    local anim = inst.entity:AddAnimState()
+    local minimap = inst.entity:AddMiniMapEntity()
+
+    minimap:SetIcon( "gravestones.png" )
+
+    MakeObstaclePhysics(inst, .25)
+    
+    anim:SetBank("gravestone")
+    anim:SetBuild("gravestones")
+    anim:PlayAnimation("grave" .. tostring( math.random(4)))
+
+    inst:AddComponent("inspectable")    
+    inst.components.inspectable:SetDescription( STRINGS.EPITAPHS[math.random(#STRINGS.EPITAPHS)] )          
+    
+    inst:AddTag("grave")
+
+    inst:DoTaskInTime(0,function()
+
+        if(not inst.fa_mounded)then
+            local mound=SpawnPrefab("fa_lavamound")
+            local pos=inst:GetPosition()+(TheCamera:GetDownVec()*.5)
+            mound.Transform:SetPosition(pos:Get())
+            inst.fa_mounded=true
+        end
+    end)
+
+    inst.OnSave= function (inst, data)
+        if inst.setepitaph then
+            data.setepitaph = inst.setepitaph
+        end
+        data.fa_mounded=inst.fa_mounded
+    end
+
+    inst.OnLoad= function (inst, data)
+        if data then
+        if data.setepitaph then 
+            --this handles custom epitaphs set in the tile editor       
+            inst.components.inspectable:SetDescription("'"..data.setepitaph.."'")
+            inst.setepitaph = data.setepitaph
+        end
+         inst.fa_mounded=data.fa_mounded
+        end
+    end
+     
+    return inst
+end
+
+
+return Prefab( "common/fa_lavamound", fn, assets, prefabs ),
+Prefab( "common/fa_lavagrave", fngrave, assets, prefabs )

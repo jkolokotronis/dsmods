@@ -46,7 +46,7 @@ local function fn()
 
     inst:AddTag("structure")
     inst:AddComponent("lootdropper")
-    inst.components.lootdropper:SetLoot({ "rocks", "rocks","cutgrass","cutgrass","cutgrass","cutgrass","boards","boards","boards","boards"})
+    inst.components.lootdropper:SetLoot({ "rocks", "rocks","rocks","rocks","cutgrass","cutgrass","boards","boards","boards","boards"})
     inst.components.lootdropper:AddFallenLootTable(MergeMaps(FALLENLOOTTABLEMERGED,FALLENLOOTTABLE.keys3),FALLENLOOTTABLE.TABLE_WEIGHT+FALLENLOOTTABLE.TABLE_KEYS3_WEIGHT,0.15)
     inst:AddComponent("workable")
     inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
@@ -112,16 +112,42 @@ local function fnstand()
     light:SetFalloff(2)
     light:SetIntensity(.8)
     light:SetRadius(3)
-    light:Enable(true)
+    light:Enable(false)
     light:SetColour(180/255, 35/255, 50/255)
     inst.Transform:SetScale(1.7,1.7, 1.7)
-     MakeObstaclePhysics(inst, 4)
+     MakeObstaclePhysics(inst, 2)
     inst.AnimState:SetBank("fa_dwarfstand")
     inst.AnimState:SetBuild("fa_dwarfstand")
     inst.AnimState:PlayAnimation("idle",true)
     return inst
 end
 
+local function fnfoodstand1()
+    local inst=fnstand()
+    inst.AnimState:PlayAnimation("full",true)
+    inst.AnimState:OverrideSymbol("swap_item_1", "cook_pot_food", "baconeggs")
+    inst.AnimState:OverrideSymbol("swap_item_2", "cook_pot_food", "meatballs")
+    inst.AnimState:OverrideSymbol("swap_item_3", "cook_pot_food", "bonestew")
+    inst.AnimState:OverrideSymbol("swap_item_4", "cook_pot_food", "kabobs")
+    inst.AnimState:OverrideSymbol("swap_item_5", "cook_pot_food", "icecream")
+        inst:AddTag("prototyper")
+        inst:AddComponent("prototyper")
+
+    inst.components.prototyper.onturnon =function(prot)
+        prot.Light:Enable(true)
+    end
+    inst.components.prototyper.onturnoff = function(prot)
+        prot.Light:Enable(false)
+        GetPlayer().components.builder.accessible_tech_trees["FA_FOODSTAND"] = 0
+        GetPlayer():PushEvent("techtreechange", {level = GetPlayer().components.builder.accessible_tech_trees})
+    end
+    inst.components.prototyper.trees = TUNING.PROTOTYPER_TREES.FA_FOODSTAND
+    inst.components.prototyper.onactivate = function() end
+    return inst
+end
+
 return Prefab( "common/objects/fa_dorfhut", fnhut, hutassets, prefabs ),
 Prefab( "common/objects/fa_dorfbed", fnbed, bedassets, prefabs ),
-Prefab( "common/objects/fa_dorfstand", fnstand, standassets, prefabs )
+Prefab( "common/objects/fa_dorfstand", fnstand, standassets, prefabs ),
+Prefab( "common/objects/fa_dorfstand_food_1", fnfoodstand1, standassets, prefabs )
+

@@ -357,7 +357,6 @@ local function common()
 
     inst:AddComponent("lootdropper")
     inst.components.lootdropper:AddChanceLoot( "monstermeat",0.5)
-    inst.components.lootdropper:AddChanceLoot( "fa_goblinskin",0.05)
     inst.components.lootdropper:AddFallenLootTable(LOOTTABLE,WEIGHT,0.1)
     inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLEMERGED,FALLENLOOTTABLE.TABLE_WEIGHT,0.1)
 
@@ -376,6 +375,7 @@ local inst=common()
     GetInventoryNormal(inst)
      inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLE.keys1,FALLENLOOTTABLE.TABLE_KEYS1_WEIGHT,0.05)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
+    inst.components.lootdropper:AddChanceLoot( "fa_goblinskin",0.05)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.1
     return inst
 end
@@ -384,6 +384,7 @@ local function fnguards()
     local inst=common()
      inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLE.keys1,FALLENLOOTTABLE.TABLE_KEYS1_WEIGHT,0.05)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
+    inst.components.lootdropper:AddChanceLoot( "fa_goblinskin",0.05)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.1
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=-0.1
@@ -450,6 +451,7 @@ local function fnwiz()
     local brain = require "brains/goblinwizardbrain"
     inst:SetBrain(brain)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_14",0.4)
+    inst.components.lootdropper:AddChanceLoot( "fa_goblinskin",0.05)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.3
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.3
     inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=0.3
@@ -461,6 +463,7 @@ local function fnking()
     inst.AnimState:SetBank("wilson")
     inst.AnimState:SetBuild("bluegoblin")
     inst.AnimState:PlayAnimation("idle")
+    inst.components.lootdropper:AddChanceLoot( "fa_goblinskin",0.05)
     inst.components.combat:SetAttackPeriod(2)
     inst.components.locomotor.walkspeed=6
     inst.components.locomotor.runspeed = 6
@@ -483,6 +486,7 @@ local function fnred()
 local inst=common()
      inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLE.keys1,FALLENLOOTTABLE.TABLE_KEYS1_WEIGHT,0.05)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
+    inst.components.lootdropper:AddChanceLoot( "fa_redgoblinskin",0.05)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.1
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=1.5
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=-1

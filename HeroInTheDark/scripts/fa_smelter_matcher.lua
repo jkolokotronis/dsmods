@@ -30,6 +30,40 @@ local function anymeat(ing)
 	return (ing=="smallmeat" or ing=="meat" or ing=="monstermeat" or ing=="drumstick" or ing=="batwing")
 end
 
+local stand_food_recipes={
+	{
+		match={product={"baconeggs"},cooktime=0},
+		test={
+			{ingred="fa_copperpebble",count=4},
+		},
+	},
+	{
+		match={product={"meatballs"},cooktime=0},
+		test={
+			{ingred="fa_copperpebble",count=3},
+		},
+	},
+	{
+		match={product={"bonestew"},cooktime=0},
+		test={
+			{ingred="fa_ironpebble",count=4},
+		},
+	},
+	{
+		match={product={"kabobs"},cooktime=0},
+		test={
+			{ingred="fa_coalpebble",count=2},
+		},
+	},
+	{
+		match={product={"icecream"},cooktime=0},
+		test={
+			{ingred="fa_silverpebble",count=1},
+			{ingred="fa_ironpebble",count=1},
+		},
+	},
+}
+
 local alchemy_recipes={
 	{
 		match={product={"fa_bottle_r"},cooktime=960},
@@ -785,9 +819,7 @@ local FA_Matcher=Class(function(self, craftlists)
 	self.craftlists=craftlists
 end)
 
-function FA_Matcher:Match(itemlist)
-
-	local matched=false
+function FA_Matcher:GetProduct(itemlist)
 	for k,v in ipairs(self.craftlists) do
 		local test=true
 		local copylist=deepcopy(itemlist)
@@ -823,9 +855,9 @@ function FA_Matcher:Match(itemlist)
 			return v.match
 		end
 	end
+end
 
-	--failed
-	local product={}
+function FA_Matcher:GetFailResult(itemlist)
 	for k,v in pairs(itemlist) do
 		local slag=FAIL_PERSISTANT[k]
 		--too lazy to read lua string/regex options
@@ -863,14 +895,42 @@ function FA_Matcher:Match(itemlist)
 	return {product=product,cooktime=FAIL_TIMER}
 end
 
+function FA_Matcher:Match(itemlist)
+	
+	local product=self:GetProduct(itemlist)
+	if(product)then 
+		return product
+	else
+		return self:GetFailResult(itemlist)
+	end
+	
+end
+
 function FA_Matcher:TryMatch(itemlist)
 	return true
+end
+
+local FA_StandMatcher=Class(FA_Matcher,function(self, craftlists)
+    FA_Matcher._ctor(self, craftlists)
+end)
+
+function FA_StandMatcher:GetFailResult(itemlist)
+	local product={}
+	for k,v in pairs(itemlist) do
+		for i=1,v do
+			table.insert(product,k)
+		end
+	end
+	return  {product=product, cooktime=0}
 end
 
 local matchers={
 	SmelterMatcher=FA_Matcher(smelt_recipes),
 	AlchemyMatcher=FA_Matcher(alchemy_recipes),
-	ForgeMatcher=FA_Matcher(forge_recipes)
+	ForgeMatcher=FA_Matcher(forge_recipes),
+	DorfStandFoodMatcher=FA_StandMatcher(stand_food_recipes)
 }
+
+
 
 return matchers

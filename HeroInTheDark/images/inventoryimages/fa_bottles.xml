@@ -25,5 +25,15 @@
 		<Element name="fa_bottle_light_purple.tex" u1="0.750" u2="0.875" v1="0.250" v2="0.375" />
 		<Element name="fa_bottle_light_red.tex" u1="0.875" u2="1" v1="0.250" v2="0.375" />
 		<Element name="fa_bottle_light_yellow.tex" u1="0" u2="0.125" v1="0.375" v2="0.5" />
+		<Element name="fa_bottle_1_0.tex" u1="0.125" u2="0.25" v1="0.375" v2="0.5" />
+		<Element name="fa_bottle_1_1.tex" u1="0.25" u2="0.375" v1="0.375" v2="0.5" />
+		<Element name="fa_bottle_1_2.tex" u1="0.375" u2="0.5" v1="0.375" v2="0.5" />
+		<Element name="fa_bottle_1_3.tex" u1="0.5" u2="0.625" v1="0.375" v2="0.5" />
+		<Element name="fa_bottle_1_4.tex" u1="0.625" u2="0.75" v1="0.375" v2="0.5" />
+		<Element name="fa_bottle_1_5.tex" u1="0.75" u2="0.875" v1="0.375" v2="0.5" />
+		<Element name="fa_bottle_1_6.tex" u1="0.875" u2="1" v1="0.375" v2="0.5" />
+		<Element name="fa_bottle_1_7.tex" u1="0.0" u2="0.125" v1="0.5" v2="0.625" />
+		<Element name="fa_bottle_1_8.tex" u1="0.125" u2="0.25" v1="0.5" v2="0.625" />
+		<Element name="fa_bottle_1_9.tex" u1="0.250" u2="0.375" v1="0.5" v2="0.625" />
 </Elements>
 </Atlas>

@@ -466,7 +466,7 @@ local fn = function(inst)
     inst.OnLoad = onloadfn
     inst.OnSave = onsavefn
 
-RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon_atlas = "images/inventoryimages/herotab.xml"}
+RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}
     local booktab=RECIPETABS.SPELLS
 --    inst.components.builder:AddRecipeTab(booktab)
     

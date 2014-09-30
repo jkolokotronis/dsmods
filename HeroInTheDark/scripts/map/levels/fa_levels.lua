@@ -269,6 +269,10 @@ FA_LEVELDATA["ORC_MINES"]={
 			"ORCFEntrance",
 			"FA_MineConflict"
 		},
+		set_pieces = {
+			["FADorfTown1"] = { count=2, tasks={"DFEntrance", } },
+			["FADorfTown1Graveyard"] = { count=3, tasks={"DFEntrance","FA_MineConflict" } },
+		},
 		required_prefabs = {
 		"fa_mine_exit",
 		},

@@ -4,6 +4,19 @@ local goblin_assets =
     Asset("ATLAS", "images/inventoryimages/goblinking_head.xml"),
     Asset("IMAGE", "images/inventoryimages/goblinking_head.tex"),
 }
+
+local skull_assets={
+    Asset("ANIM", "anim/fa_skullstick.zip"),
+}
+local skullground_assets={
+    Asset("ANIM", "anim/fa_skullground.zip"),
+}
+local skullpillar_assets={
+    Asset("ANIM", "anim/fa_skullpillar.zip"),
+}
+
+local prefabs={}
+
 local goblin_prefabs=
 {
 	"spoiled_food",
@@ -66,18 +79,22 @@ local function castfear(inst)
 
 end
 
-local function create_goblinhead()
-	local inst = CreateEntity()
-	inst.entity:AddTransform()
-	inst.entity:AddAnimState()
+
+local function common(name)
+    local inst=CreateEntity()
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
         MakeInventoryPhysics(inst)
-
-	inst.AnimState:SetBank("goblinking_head")
-	inst.AnimState:SetBuild("goblinking_head")
-
-	
+    inst.AnimState:SetBank(name)
+    inst.AnimState:SetBuild(name)
+    inst.AnimState:PlayAnimation("idle")
     inst.entity:AddSoundEmitter()
+    return inst
 
+end
+
+local function create_goblinhead()
+	local inst = common("goblinking_head")
     inst.AnimState:PlayAnimation("idle_asleep")
 
     inst:AddComponent("lootdropper")
@@ -96,6 +113,7 @@ local function create_goblinhead()
 
 	return inst
 end
+
 
 local function ondeploy(inst, pt, deployer)
     local turret = SpawnPrefab("goblinkinghead") 
@@ -131,6 +149,22 @@ local function goblinhead_itemfn(Sim)
     return inst
 end
 
+local function skullhead(  )
+    local inst=common("fa_skullstick")
+    return inst
+end
+
+local function skullpillar(  )
+    local inst=common("fa_skullpillar")
+    return inst
+end
+local function skullground(  )
+    local inst=common("fa_skullground")
+    return inst
+end
 return Prefab("forest/objects/goblinkinghead", create_goblinhead, goblin_assets, goblin_prefabs),
 	   Prefab("forest/objects/goblinkinghead_item", goblinhead_itemfn, goblin_assets, goblin_prefabs),
-		MakePlacer("common/objects/goblinkinghead_placer", "goblinking_head", "goblinking_head", "idle_asleep")
+		MakePlacer("common/objects/goblinkinghead_placer", "goblinking_head", "goblinking_head", "idle_asleep"),
+        Prefab("forest/objects/fa_skullground", skullground, skullground_assets, prefabs),
+        Prefab("forest/objects/fa_skullstick", skullhead, skull_assets, prefabs),
+        Prefab("forest/objects/fa_skullpillar", skullpillar, skullpillar_assets, prefabs)

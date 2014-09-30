@@ -74,3 +74,5 @@ Layouts["FArock_scrollchest_B"]=StaticLayout.Get("map/static_layouts/rock_scroll
 Layouts["FArock_scrollchest_C"]=StaticLayout.Get("map/static_layouts/rock_scrollchest_C")
 
 Layouts["FAMineExit"]=StaticLayout.Get("map/static_layouts/fa_mine_exit")
+Layouts["FADorfTown1"]=StaticLayout.Get("map/static_layouts/dorf_town_1")
+Layouts["FADorfTown1Graveyard"]=StaticLayout.Get("map/static_layouts/dorf_town_1_graveyard")
