@@ -167,7 +167,7 @@ PrefabFiles = {
     "fa_rings",
     "fa_fireaxe",
     "fa_iceaxe",
-    "fa_goodberries",
+    "fa_food",
     "fa_potions",
     "spellbooks",
     "shields",
@@ -406,6 +406,8 @@ Assets = {
     Asset( "ATLAS", "minimap/darkknight.xml" ), 
     Asset( "IMAGE", "minimap/fa_rocks.tex" ),
     Asset( "ATLAS", "minimap/fa_rocks.xml" ), 
+    Asset( "IMAGE", "minimap/fa_wheat.tex" ),
+    Asset( "ATLAS", "minimap/fa_wheat.xml" ), 
     Asset( "ANIM", "anim/fa_shieldpuff.zip" ),
 
     Asset( "ANIM", "anim/generating_goblin_cave.zip" ),
@@ -486,6 +488,7 @@ AddMinimapAtlas("minimap/fa_rocks.xml")
 AddMinimapAtlas("minimap/fa_alchemytable.xml")
 AddMinimapAtlas("minimap/fa_smeltingfurnace.xml")
 AddMinimapAtlas("minimap/fa_forge.xml")
+AddMinimapAtlas("minimap/fa_wheat.xml")
 
 RemapSoundEvent( "dontstarve/characters/bard/death_voice", "dontstarve/characters/wilson/death_voice" )
 RemapSoundEvent( "dontstarve/characters/bard/hurt", "fa/characters/bard/hurt" )
