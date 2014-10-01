@@ -215,16 +215,6 @@ STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_DUG_WHEAT = "Dug Wheat"
 STRINGS.NAMES.FA_WHEAT = "Wheat"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_WHEAT = "Wheat"
 
-
-Prefab( "common/inventory/fa_nuts", fnnuts, nut_assets),
-Prefab( "common/inventory/fa_flour", fnflour, flour_assets),
-Prefab( "common/inventory/fa_cutwheat", fncutwheat, cutwheat_assets),
-Prefab( "common/inventory/fa_dug_wheat", fndugwheat, wheat_assets),
-Prefab( "common/inventory/fa_wheat", fnwheat, wheat_assets)
-
-
-
-
 STRINGS.NAMES.FA_BOTTLE_R = "Health Potion"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_BOTTLE_R =  "Health Potion"
 STRINGS.NAMES.FA_BOTTLE_Y = "Hunger Potion"
