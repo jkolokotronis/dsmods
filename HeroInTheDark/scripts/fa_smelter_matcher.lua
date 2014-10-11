@@ -160,6 +160,13 @@ local alchemy_recipes={
 			{ingred="fa_bottle_empty",count=1},
 		},
 	},
+	{
+		match={product={"fa_bottle_poisonessence"},cooktime=30},
+		test={
+			{ingred="poisonspidergland",count=7},
+			{ingred="fa_bottle_empty",count=1},
+		},
+	},
 }
 
 local smelt_recipes={
@@ -535,7 +542,7 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"fa_fireaxe","fa_bottle_empty"},cooktime=120},
+		match={product={"fa_fireaxe","fa_bottle_empty"},cooktime=240},
 		test={
 			{ingred="fa_lavabar",count=1},
 			{ingred="charcoal",count=3},
@@ -564,7 +571,7 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"flamingsword","fa_bottle_empty"},cooktime=120},
+		match={product={"flamingsword","fa_bottle_empty"},cooktime=240},
 		test={
 			{ingred="fa_lavabar",count=1},
 			{ingred="charcoal",count=3},
@@ -593,7 +600,7 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"frostsword","fa_bottle_empty"},cooktime=120},
+		match={product={"frostsword","fa_bottle_empty"},cooktime=240},
 		test={
 			{ingred="fa_bottle_frozenessence",count=1},
 			{ingred="charcoal",count=3},
@@ -622,7 +629,7 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"fa_iceaxe","fa_bottle_empty"},cooktime=120},
+		match={product={"fa_iceaxe","fa_bottle_empty"},cooktime=240},
 		test={
 			{ingred="fa_bottle_frozenessence",count=1},
 			{ingred="charcoal",count=3},
@@ -651,7 +658,7 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"vorpalaxe","fa_bottle_empty"},cooktime=120},
+		match={product={"vorpalaxe","fa_bottle_empty"},cooktime=240},
 		test={
 			{ingred="fa_bottle_lifeessence",count=1},
 			{ingred="charcoal",count=3},
@@ -680,7 +687,7 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"dagger","fa_bottle_empty"},cooktime=120},
+		match={product={"dagger","fa_bottle_empty"},cooktime=240},
 		test={
 			{ingred="fa_bottle_lifeessence",count=1},
 			{ingred="charcoal",count=3},
@@ -709,7 +716,36 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"fa_lightningsword","fa_bottle_empty"},cooktime=120},
+		match={product={"fa_venomdagger1","fa_bottle_empty"},cooktime=240},
+		test={
+			{ingred="fa_bottle_poisonessence",count=1},
+			{ingred="charcoal",count=3},
+			{ingred="fa_copperdagger",count=1},
+			{ingred=isfuel,count=2},
+			{ingred=bottleany, count=1},
+		},
+	},
+	{
+		match={product={"fa_venomdagger2","fa_bottle_empty"},cooktime=480},
+		test={
+			{ingred="fa_bottle_poisonessence",count=2},
+			{ingred="charcoal",count=2},
+			{ingred="fa_irondagger",count=1},
+			{ingred="fa_coalbar",count=2},
+			{ingred=heavywater, count=1},
+		},
+	},
+	{
+		match={product={"fa_venomdagger3","fa_bottle_empty"},cooktime=960},
+		test={
+			{ingred="fa_bottle_poisonessence",count=3},
+			{ingred="fa_coalbar",count=3},
+			{ingred="fa_steeldagger",count=1},
+			{ingred="fa_bottle_oil", count=1},
+		},
+	},
+	{
+		match={product={"fa_lightningsword","fa_bottle_empty"},cooktime=240},
 		test={
 			{ingred="fa_bottle_lightningessence",count=1},
 			{ingred="charcoal",count=3},

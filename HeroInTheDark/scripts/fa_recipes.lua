@@ -71,3 +71,4 @@ local r=Recipe("meatballs", {Ingredient("fa_copperpebble", 3,"images/inventoryim
 local r=Recipe("bonestew", {Ingredient("fa_ironpebble", 4,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_FOODSTAND, nil, nil, true)
 local r=Recipe("kabobs", {Ingredient("fa_coalpebble", 2,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_FOODSTAND, nil, nil, true)
 local r=Recipe("icecream", {Ingredient("fa_silverpebble", 1,"images/inventoryimages/fa_pebbles.xml"),Ingredient("fa_ironpebble", 1,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_FOODSTAND, nil, nil, true)
+local r=Recipe("meat_dried", {Ingredient("goldnugget", 1)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_FOODSTAND, nil, nil, true)

@@ -973,28 +973,22 @@ local function onattackholdperson(inst1,attacker,target)
     local treshold=(1+3*math.floor(cl/5))*100
     if target.components.health and target.components.health.maxhealth<=treshold then
         if(target.fa_stun)then target.fa_stun.components.spell:OnFinish() end
-        --meh. slap spell on fx. lazy to rewrite
-        local inst=CreateEntity()
+
+        local inst=SpawnPrefab("fa_spinningstarsfx")
         inst.persists=false
-        inst:AddTag("FX")
-        inst:AddTag("NOCLICK")
         local spell = inst:AddComponent("spell")
         inst.components.spell.spellname = "fa_holdperson"
         inst.components.spell.duration = HOLDPERSON_DURATION
         inst.components.spell.ontargetfn = function(inst,target)
 
-            local fx=SpawnPrefab("fa_spinningstarsfx")
-            fx.persists=false
-            local follower = fx.entity:AddFollower()
+            local follower = inst.entity:AddFollower()
             follower:FollowSymbol( target.GUID, target.components.combat.hiteffectsymbol, 0, -200, -0.0001 )
-            target.fa_stun_fx=fx
             target.fa_stun = inst
         end
                --inst.components.spell.onstartfn = function() end
         inst.components.spell.onfinishfn = function(inst)
             if not inst.components.spell.target then return end
             inst.components.spell.target.fa_stun = nil
-            if(inst.components.spell.target.fa_stun_fx) then inst.components.spell.target.fa_stun_fx:Remove() end
         end
         inst.components.spell.resumefn = function() end
         inst.components.spell.removeonfinish = true

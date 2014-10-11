@@ -6,15 +6,15 @@ local assets=
     Asset("IMAGE", "images/inventoryimages/vorpalaxe.tex"),
 }
 
-local VORPALAXE_DAMAGE_T1=60
-local VORPALAXE_DAMAGE_T2=70
-local VORPALAXE_DAMAGE_T3=85
+local VORPALAXE_DAMAGE_T1=55
+local VORPALAXE_DAMAGE_T2=75
+local VORPALAXE_DAMAGE_T3=90
 local VORPALAXE_PROC_T1=0.03
 local VORPALAXE_PROC_T2=0.07
 local VORPALAXE_PROC_T3=0.12
-local VORPALAXE_USES_T1=50
-local VORPALAXE_USES_T2=100
-local VORPALAXE_USES_T3=150
+local VORPALAXE_USES_T1=150
+local VORPALAXE_USES_T2=250
+local VORPALAXE_USES_T3=375
 
 local function onfinished(inst)
     inst.SoundEmitter:PlaySound("dontstarve/common/gem_shatter")

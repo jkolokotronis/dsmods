@@ -8,16 +8,16 @@ local assets=
 }
 
 
-local FROZENSWORD_DAMAGE_T1=55
-local FROZENSWORD_DAMAGE_T2=65
-local FROZENSWORD_DAMAGE_T3=80
+local FROZENSWORD_DAMAGE_T1=50
+local FROZENSWORD_DAMAGE_T2=70
+local FROZENSWORD_DAMAGE_T3=85
 local FROZENSWORD_PROC_T1=0.05
 local FROZENSWORD_PROC_T2=0.15
 local FROZENSWORD_PROC_T3=0.30
 local FROZENSWORD_ICE_PROC=50
-local FROZENSWORD_USES_T1=50
-local FROZENSWORD_USES_T2=100
-local FROZENSWORD_USES_T3=150
+local FROZENSWORD_USES_T1=150
+local FROZENSWORD_USES_T2=250
+local FROZENSWORD_USES_T3=375
 local FROZENSWORD_COLDNESS=1
 local FROZEN_DEBUFF_LENGTH=10
 
@@ -36,7 +36,7 @@ local function onattack(inst, attacker, target)
             target.components.combat:GetAttacked(attacker, FROZENSWORD_ICE_PROC, nil,nil,FA_DAMAGETYPE.COLD)
             target.components.freezable:AddColdness(FROZENSWORD_COLDNESS)
             target.components.freezable:SpawnShatterFX()
-            frozenSlowDebuff(target,FROZEN_DEBUFF_LENGTH)
+            FA_BuffUtil.FrozenSlowDebuff(target,FROZEN_DEBUFF_LENGTH)
         end
     end
 end

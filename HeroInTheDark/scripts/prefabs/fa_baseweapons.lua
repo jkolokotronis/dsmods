@@ -41,18 +41,18 @@ local assets_copperaxe={
     Asset("IMAGE", "images/inventoryimages/fa_copperaxe.tex"),
 }
 
-local AXE_DAMAGE_T1=60
-local AXE_DAMAGE_T2=70
-local AXE_DAMAGE_T3=85
-local AXE_USES_T1=50
-local AXE_USES_T2=100
-local AXE_USES_T3=150
-local SWORD_DAMAGE_T1=55
-local SWORD_DAMAGE_T2=65
-local SWORD_DAMAGE_T3=80
-local SWORD_USES_T1=50
-local SWORD_USES_T2=100
-local SWORD_USES_T3=150
+local AXE_DAMAGE_T1=55
+local AXE_DAMAGE_T2=75
+local AXE_DAMAGE_T3=90
+local AXE_USES_T1=115
+local AXE_USES_T2=225
+local AXE_USES_T3=350
+local SWORD_DAMAGE_T1=50
+local SWORD_DAMAGE_T2=70
+local SWORD_DAMAGE_T3=85
+local SWORD_USES_T1=115
+local SWORD_USES_T2=225
+local SWORD_USES_T3=350
 
 
 local function onfinished(inst)

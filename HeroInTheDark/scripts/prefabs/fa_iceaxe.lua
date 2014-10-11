@@ -8,16 +8,16 @@ local assets=
 }
 
 
-local ICEAXE_DAMAGE_T1=60
-local ICEAXE_DAMAGE_T2=70
-local ICEAXE_DAMAGE_T3=85
+local ICEAXE_DAMAGE_T1=55
+local ICEAXE_DAMAGE_T2=75
+local ICEAXE_DAMAGE_T3=90
 local ICEAXE_PROC_T1=0.05
 local ICEAXE_PROC_T2=0.15
 local ICEAXE_PROC_T3=0.30
 local ICEAXE_ICE_PROC=50
-local ICEAXE_USES_T1=50
-local ICEAXE_USES_T2=100
-local ICEAXE_USES_T3=150
+local ICEAXE_USES_T1=150
+local ICEAXE_USES_T2=250
+local ICEAXE_USES_T3=375
 local ICEAXE_COLDNESS=1
 local FROZEN_DEBUFF_LENGTH=10
 
@@ -36,7 +36,7 @@ local function onattack(inst, attacker, target)
             target.components.combat:GetAttacked(attacker, ICEAXE_ICE_PROC, nil,nil,FA_DAMAGETYPE.COLD)
             target.components.freezable:AddColdness(ICEAXE_COLDNESS)
             target.components.freezable:SpawnShatterFX()
-            frozenSlowDebuff(target,FROZEN_DEBUFF_LENGTH)
+            FA_BuffUtil.FrozenSlowDebuff(target,FROZEN_DEBUFF_LENGTH)
         end
     end
 end

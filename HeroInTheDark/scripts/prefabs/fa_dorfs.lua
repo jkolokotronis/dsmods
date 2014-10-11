@@ -178,6 +178,7 @@ local function common()
     ------------------------------------------
 
     inst:AddComponent("lootdropper")    
+    inst.components.lootdropper:SetLoot({ "goldnugget", "meat"})
 
     ------------------------------------------
 

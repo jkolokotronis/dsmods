@@ -285,7 +285,7 @@ local function create_light(timer)
 
 end
 
-function frozenSlowDebuff(target,timer)
+local function createfrozenSlowDebuff(target,timer)
     local inst = CreateEntity()
     inst.persists=false
     local spell = inst:AddComponent("spell")
@@ -322,10 +322,23 @@ function frozenSlowDebuff(target,timer)
 --    inst.components.spell.fn = lightfn
     inst.components.spell.resumefn = function(inst,timeleft)   end 
     inst.components.spell.removeonfinish = true
-    inst.components.spell:SetTarget(target)
-    inst.components.spell:StartSpell()
     return inst
 end
+
+local function frozenSlowDebuff(target,timer)
+    if(timer==nil or timer<=0)then return false end
+    if(target.fa_frozenslow)then
+        reader.fa_frozenslow.components.spell.lifetime = 0
+        reader.fa_frozenslow.components.spell:ResumeSpell()
+    else
+        local inst=createfrozenSlowDebuff(target,timer)
+        inst.components.spell:SetTarget(target)
+        inst.components.spell:StartSpell()
+    end
+    return true
+
+end
+FA_BuffUtil.FrozenSlowDebuff=frozenSlowDebuff
 
 function LightSpellStart(reader,timer)
     if(timer==nil or timer<=0)then return false end

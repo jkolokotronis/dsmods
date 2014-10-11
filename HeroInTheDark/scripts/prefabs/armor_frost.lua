@@ -32,7 +32,7 @@ local function OnBlocked(owner,data)
         if data.attacker.components.freezable then
             data.attacker.components.freezable:AddColdness(ARMORFROST_COLDNESS)
             data.attacker.components.freezable:SpawnShatterFX()
-            frozenSlowDebuff(data.attacker,FROZEN_DEBUFF_LENGTH)
+            FA_BuffUtil.FrozenSlowDebuff(data.attacker,FROZEN_DEBUFF_LENGTH)
         end
     end
 end

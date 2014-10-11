@@ -8,25 +8,64 @@ local assets=
 }
 
 
-local LIGHTNINGSWORD_DAMAGE_T1=55
-local LIGHTNINGSWORD_DAMAGE_T2=65
-local LIGHTNINGSWORD_DAMAGE_T3=80
+local LIGHTNINGSWORD_DAMAGE_T1=50
+local LIGHTNINGSWORD_DAMAGE_T2=75
+local LIGHTNINGSWORD_DAMAGE_T3=85
 local LIGHTNINGSWORD_PROC_T1=0.05
 local LIGHTNINGSWORD_PROC_T2=0.15
 local LIGHTNINGSWORD_PROC_T3=0.30
-local LIGHTNINGSWORD_LIGHT_PROC=100
-local LIGHTNINGSWORD_USES_T1=50
-local LIGHTNINGSWORD_USES_T2=100
-local LIGHTNINGSWORD_USES_T3=150
+local LIGHTNINGSWORD_LIGHT_PROC=50
+local LIGHTNINGSWORD_USES_T1=150
+local LIGHTNINGSWORD_USES_T2=250
+local LIGHTNINGSWORD_USES_T3=375
+
+local LIGHTNINGSWORD_STUN_DURATION=5
 
 local function onfinished(inst)
     inst.SoundEmitter:PlaySound("dontstarve/common/gem_shatter")
     inst:Remove()
 end
 
+local function stunfx(inst,attacker,target)
+
+        if(target.fa_stun)then
+            if (target.fa_stun.components.spell.duration-target.fa_stun.components.spell.lifetime)>LIGHTNINGSWORD_STUN_DURATION then
+                return
+            else
+                target.fa_stun.components.spell:OnFinish() 
+            end
+        end
+
+        local inst=SpawnPrefab("fa_spinningstarsfx")
+        inst.persists=false
+        local spell = inst:AddComponent("spell")
+        inst.components.spell.spellname = "fa_lightningstun"
+        inst.components.spell.duration = HOLDPERSON_DURATION
+        inst.components.spell.ontargetfn = function(inst,target)
+            local follower = inst.entity:AddFollower()
+            follower:FollowSymbol( target.GUID, target.components.combat.hiteffectsymbol, 0, -200, -0.0001 )
+            target.fa_stun = inst
+        end
+        inst.components.spell.onfinishfn = function(inst)
+            if not inst.components.spell.target then return end
+            inst.components.spell.target.fa_stun = nil
+        end
+        inst.components.spell.resumefn = function() end
+        inst.components.spell.removeonfinish = true
+
+        inst.components.spell:SetTarget(target)
+        inst.components.spell:StartSpell()
+end
+
 local function onattack(inst, attacker, target)
     if(target.components.health:IsInvincible() == false and target.components.burnable and not target.components.fueled and math.random()<=inst.procRate)then
-        target.components.burnable:Ignite()
+        if not(target:HasTag("fa_undead") or target:HasTag("fa_contruct")) then
+            stunfx(inst,attacker,target)
+        end
+        local pos=Vector3(reader.Transform:GetWorldPosition())
+        local lightning = SpawnPrefab("lightning")
+        lightning.Transform:SetPosition(pos:Get())
+
         target.components.combat:GetAttacked(attacker, LIGHTNINGSWORD_LIGHT_PROC, nil,nil,FA_DAMAGETYPE.ELECTRIC)
     end
 end
