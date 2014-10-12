@@ -1,20 +1,43 @@
 local assets=
 {
     Asset("ANIM", "anim/fa_dagger.zip"),
-    Asset("ATLAS", "images/inventoryimages/dagger.xml"),
-    Asset("IMAGE", "images/inventoryimages/dagger.tex"),
+    Asset("ATLAS", "images/inventoryimages/fa_dagger.xml"),
+    Asset("IMAGE", "images/inventoryimages/fa_dagger.tex"),
 }
 local assets_iron={
     Asset("ANIM", "anim/fa_irondagger.zip"),    
+    Asset("ATLAS", "images/inventoryimages/fa_irondagger.xml"),
+    Asset("IMAGE", "images/inventoryimages/fa_irondagger.tex"),
 }
 local assets_silver={
     Asset("ANIM", "anim/fa_silverdagger.zip"),
+    Asset("ATLAS", "images/inventoryimages/fa_silverdagger.xml"),
+    Asset("IMAGE", "images/inventoryimages/fa_silverdagger.tex"),
 }
 local assets_steel={
     Asset("ANIM", "anim/fa_steeldagger.zip"), 
+    Asset("ATLAS", "images/inventoryimages/fa_steeldagger.xml"),
+    Asset("IMAGE", "images/inventoryimages/fa_steeldagger.tex"),
 }
 local assets_copper={
     Asset("ANIM", "anim/fa_copperdagger.zip"),
+    Asset("ATLAS", "images/inventoryimages/fa_copperdagger.xml"),
+    Asset("IMAGE", "images/inventoryimages/fa_copperdagger.tex"),
+}
+local assets_venom1={
+    Asset("ANIM", "anim/fa_venomdagger1.zip"),
+    Asset("ATLAS", "images/inventoryimages/fa_venomdagger1.xml"),
+    Asset("IMAGE", "images/inventoryimages/fa_venomdagger1.tex"),
+}
+local assets_venom2={
+    Asset("ANIM", "anim/fa_venomdagger2.zip"),
+    Asset("ATLAS", "images/inventoryimages/fa_venomdagger2.xml"),
+    Asset("IMAGE", "images/inventoryimages/fa_venomdagger2.tex"),
+}
+local assets_venom3={
+    Asset("ANIM", "anim/fa_venomdagger3.zip"),
+    Asset("ATLAS", "images/inventoryimages/fa_venomdagger3.xml"),
+    Asset("IMAGE", "images/inventoryimages/fa_venomdagger3.tex"),
 }
 
 local DAGGER_DAMAGE_T1=45
@@ -59,47 +82,47 @@ local function onunequip(inst, owner)
     owner.AnimState:Hide("ARM_carry") 
     owner.AnimState:Show("ARM_normal") 
 end
-local function common()
+local function common(name)
 
     local inst = CreateEntity()
     local trans = inst.entity:AddTransform()
     local anim = inst.entity:AddAnimState()
     local sound = inst.entity:AddSoundEmitter()
     MakeInventoryPhysics(inst)
+
+    local minimap = inst.entity:AddMiniMapEntity()
+    minimap:SetIcon( "dagger.tex" )
+
+    inst.AnimState:SetBank(name)
+    inst.AnimState:SetBuild(name)
+    inst.AnimState:PlayAnimation("idle")
+
     inst:AddTag("sharp")
     inst:AddTag("dagger")
     inst:AddComponent("weapon")
     inst:AddComponent("inspectable")
     
     inst:AddComponent("inventoryitem")
+    inst.components.inventoryitem.imagename=name
+    inst.components.inventoryitem.atlasname="images/inventoryimages/"..name..".xml"
     inst:AddComponent("finiteuses")
     inst.components.finiteuses:SetOnFinished( onfinished )
     inst:AddComponent("equippable")
+    inst.components.equippable:SetOnEquip( function(inst,owner)
+        owner.AnimState:OverrideSymbol("swap_object", name, "swap_dagger")
+        owner.AnimState:Show("ARM_carry") 
+        owner.AnimState:Hide("ARM_normal") 
+    end)
     inst.components.equippable:SetOnUnequip( onunequip )
-
     return inst
 end
 
 local function fn(Sim)
-    local inst=common()
-  
-    inst.AnimState:SetBank("fa_dagger")
-    inst.AnimState:SetBuild("fa_dagger")
-    inst.AnimState:PlayAnimation("idle")
-
-    local minimap = inst.entity:AddMiniMapEntity()
-    minimap:SetIcon( "dagger.tex" )
+    local inst=common("fa_dagger")
 
     inst.Transform:SetScale(2, 2, 1)
     
     inst.components.weapon:SetOnAttack(onattack)
-    
-    inst.components.inventoryitem.imagename="dagger"
-    inst.components.inventoryitem.atlasname="images/inventoryimages/dagger.xml"
-
-    
-    inst.components.equippable:SetOnEquip( onequip )
-    
     return inst
 end
 
@@ -133,96 +156,32 @@ local function t3()
     return inst
 end
 
-local function onequipcopper(inst, owner)
-    owner.AnimState:OverrideSymbol("swap_object", "fa_copperdagger", "swap_dagger")
-    owner.AnimState:Show("ARM_carry") 
-    owner.AnimState:Hide("ARM_normal") 
-end
 local function copper()
-    local inst=common()
-  
-    inst.AnimState:SetBank("fa_copperdagger")
-    inst.AnimState:SetBuild("fa_copperdagger")
-    inst.AnimState:PlayAnimation("idle")
-
-    local minimap = inst.entity:AddMiniMapEntity()
-    minimap:SetIcon( "dagger.tex" )
-    inst.components.inventoryitem.imagename="dagger"
-    inst.components.inventoryitem.atlasname="images/inventoryimages/dagger.xml"
-    inst.components.equippable:SetOnEquip( onequipcopper )
-
+    local inst=common("fa_copperdagger")
     inst.components.weapon:SetDamage(DAGGER_DAMAGE_T1)
     inst.components.finiteuses:SetMaxUses(DAGGER_USES_COPPER)
     inst.components.finiteuses:SetUses(DAGGER_USES_COPPER)
     return inst
 end
 
-local function onequipiron(inst, owner)
-    owner.AnimState:OverrideSymbol("swap_object", "fa_irondagger", "swap_dagger")
-    owner.AnimState:Show("ARM_carry") 
-    owner.AnimState:Hide("ARM_normal") 
-end
 local function iron()
-    local inst=common()
-  
-    inst.AnimState:SetBank("fa_irondagger")
-    inst.AnimState:SetBuild("fa_irondagger")
-    inst.AnimState:PlayAnimation("idle")
-
-    local minimap = inst.entity:AddMiniMapEntity()
-    minimap:SetIcon( "dagger.tex" )
-    inst.components.inventoryitem.imagename="dagger"
-    inst.components.inventoryitem.atlasname="images/inventoryimages/dagger.xml"
-    inst.components.equippable:SetOnEquip( onequipiron )
-
+    local inst=common("fa_irondagger")
     inst.components.weapon:SetDamage(DAGGER_DAMAGE_T2)
     inst.components.finiteuses:SetMaxUses(DAGGER_USES_IRON)
     inst.components.finiteuses:SetUses(DAGGER_USES_IRON)
     return inst
 end
 
-local function onequipsteel(inst, owner)
-    owner.AnimState:OverrideSymbol("swap_object", "fa_steeldagger", "swap_dagger")
-    owner.AnimState:Show("ARM_carry") 
-    owner.AnimState:Hide("ARM_normal") 
-end
 local function steel()
-    local inst=common()
-  
-    inst.AnimState:SetBank("fa_steeldagger")
-    inst.AnimState:SetBuild("fa_steeldagger")
-    inst.AnimState:PlayAnimation("idle")
-
-    local minimap = inst.entity:AddMiniMapEntity()
-    minimap:SetIcon( "dagger.tex" )
-    inst.components.inventoryitem.imagename="dagger"
-    inst.components.inventoryitem.atlasname="images/inventoryimages/dagger.xml"
-    inst.components.equippable:SetOnEquip( onequipsteel )
-
+    local inst=common("fa_steeldagger")
     inst.components.weapon:SetDamage(DAGGER_DAMAGE_T3)
     inst.components.finiteuses:SetMaxUses(DAGGER_USES_STEEL)
     inst.components.finiteuses:SetUses(DAGGER_USES_STEEL)
     return inst
 end
 
-local function onequipsilver(inst, owner)
-    owner.AnimState:OverrideSymbol("swap_object", "fa_silverdagger", "swap_dagger")
-    owner.AnimState:Show("ARM_carry") 
-    owner.AnimState:Hide("ARM_normal") 
-end
 local function silver()
-    local inst=common()
-  
-    inst.AnimState:SetBank("fa_silverdagger")
-    inst.AnimState:SetBuild("fa_silverdagger")
-    inst.AnimState:PlayAnimation("idle")
-
-    local minimap = inst.entity:AddMiniMapEntity()
-    minimap:SetIcon( "dagger.tex" )
-    inst.components.inventoryitem.imagename="dagger"
-    inst.components.inventoryitem.atlasname="images/inventoryimages/dagger.xml"
-    inst.components.equippable:SetOnEquip( onequipsilver )
-
+    local inst=common("fa_silverdagger")
     inst.components.weapon:SetDamage(DAGGER_DAMAGE_T2)
     inst.components.finiteuses:SetMaxUses(DAGGER_USES_IRON)
     inst.components.finiteuses:SetUses(DAGGER_USES_IRON)
@@ -245,21 +204,31 @@ local function onattackvenom(inst, attacker, target)
  end
 
 local function venom1()
-    local inst=copper()
+    local inst=common("fa_venomdagger1")
+
+    inst.components.weapon:SetDamage(DAGGER_DAMAGE_T1)
+    inst.components.finiteuses:SetMaxUses(DAGGER_USES_T1)
+    inst.components.finiteuses:SetUses(DAGGER_USES_T1)
     inst.procRate=DAGGER_PROC_T1
     inst.components.weapon:SetOnAttack(onattackvenom)
     return inst
 end
 
 local function venom2()
-    local inst=iron()
+    local inst=common("fa_venomdagger2")
+    inst.components.weapon:SetDamage(DAGGER_DAMAGE_T2)
+    inst.components.finiteuses:SetMaxUses(DAGGER_USES_T2)
+    inst.components.finiteuses:SetUses(DAGGER_USES_T2)
     inst.procRate=DAGGER_PROC_T2
     inst.components.weapon:SetOnAttack(onattackvenom)
     return inst
 end
 
 local function venom3()
-    local inst=steel()
+    local inst=common("fa_venomdagger3")
+    inst.components.weapon:SetDamage(DAGGER_DAMAGE_T3)
+    inst.components.finiteuses:SetMaxUses(DAGGER_USES_T3)
+    inst.components.finiteuses:SetUses(DAGGER_USES_T3)
     inst.procRate=DAGGER_PROC_T3
     inst.components.weapon:SetOnAttack(onattackvenom)
     return inst
@@ -273,6 +242,6 @@ return Prefab( "common/inventory/dagger", t1, assets),
     Prefab( "common/inventory/fa_steeldagger",steel, assets_steel),
     Prefab( "common/inventory/fa_irondagger", iron, assets_iron),
     Prefab( "common/inventory/fa_silverdagger", silver, assets_silver),
-    Prefab( "common/inventory/fa_venomdagger1",venom1, assets_copper),
-    Prefab( "common/inventory/fa_venomdagger2",venom2, assets_steel),
-    Prefab( "common/inventory/fa_venomdagger3", venom3, assets_iron)
+    Prefab( "common/inventory/fa_venomdagger1",venom1, assets_venom1),
+    Prefab( "common/inventory/fa_venomdagger2",venom2, assets_venom2),
+    Prefab( "common/inventory/fa_venomdagger3", venom3, assets_venom3)

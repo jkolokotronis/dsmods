@@ -15,7 +15,7 @@
             </mainline>
             <timeline id="0" name="_0014_Silver-Axe_g">
                 <key id="0" spin="0">
-                    <object folder="1" file="0" x="148" y="64" angle="220.833"/>
+                    <object folder="1" file="0" x="-11" y="230" angle="329.534"/>
                 </key>
             </timeline>
         </animation>
@@ -27,7 +27,7 @@
             </mainline>
             <timeline id="0" name="_0014_Silver-Axe">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-2.87741" y="-39.501843"/>
+                    <object folder="0" file="0" x="-2.87741" y="-39.501843" angle="0"/>
                 </key>
             </timeline>
         </animation>

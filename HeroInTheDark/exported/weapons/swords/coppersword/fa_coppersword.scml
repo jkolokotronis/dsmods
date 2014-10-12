@@ -7,7 +7,7 @@
         <file id="0" name="swap_weapon/_0010_Cop-Sw.png" width="533" height="357" pivot_x="0.631776" pivot_y="0.158774"/>
     </folder>
     <entity id="0" name="fa_coppersword">
-        <animation id="0" name="idle" length="1000">
+        <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -15,7 +15,7 @@
             </mainline>
             <timeline id="0" name="_0010_Cop-Sw_g_000">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="349" y="37" angle="191.31"/>
+                    <object folder="0" file="0" x="-265" y="372" angle="344.745"/>
                 </key>
             </timeline>
         </animation>
@@ -27,7 +27,7 @@
             </mainline>
             <timeline id="0" name="_0010_Cop-Sw_g">
                 <key id="0" spin="0">
-                    <object folder="1" file="0" x="2.736608" y="-22.317682"/>
+                    <object folder="1" file="0" x="2.736608" y="-22.317682" angle="0"/>
                 </key>
             </timeline>
         </animation>

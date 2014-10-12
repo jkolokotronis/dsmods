@@ -4,18 +4,18 @@
         <file id="0" name="swap_dagger/swap.png" width="289" height="348" pivot_x="0.109966" pivot_y="0.185714"/>
     </folder>
     <folder id="1">
-        <file id="0" name="_0003_Iron-dag.png" width="289" height="348" pivot_x="0" pivot_y="1"/>
+        <file id="0" name="_0003_Iron-dag.png" width="70" height="258" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="fa_irondagger">
-        <animation id="0" name="idle" length="1000">
+        <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
                 </key>
             </mainline>
-            <timeline id="0" name="_0003_Iron-dag">
+            <timeline id="0" name="_0003_Iron-dag_000">
                 <key id="0" spin="0">
-                    <object folder="1" file="0" x="29.980524" y="-115.052379" angle="183.814"/>
+                    <object folder="1" file="0" x="-77" y="201" angle="14.036"/>
                 </key>
             </timeline>
         </animation>

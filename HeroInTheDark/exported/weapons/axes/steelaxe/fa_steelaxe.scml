@@ -7,7 +7,7 @@
         <file id="0" name="_0012_Steel-Axe_g.png" width="202" height="271" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="fa_steelaxe">
-        <animation id="0" name="idle" length="1000">
+        <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -15,7 +15,7 @@
             </mainline>
             <timeline id="0" name="_0012_Steel-Axe_g">
                 <key id="0" spin="0">
-                    <object folder="1" file="0" x="124" y="103" angle="239.036"/>
+                    <object folder="1" file="0" x="-40" y="232" angle="340.201"/>
                 </key>
             </timeline>
         </animation>
@@ -27,7 +27,7 @@
             </mainline>
             <timeline id="0" name="_0012_Steel-Axe">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="2.078368" y="7.428494"/>
+                    <object folder="0" file="0" x="2.078368" y="7.428494" angle="0"/>
                 </key>
             </timeline>
         </animation>
