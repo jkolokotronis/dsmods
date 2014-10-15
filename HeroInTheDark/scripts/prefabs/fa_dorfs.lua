@@ -59,13 +59,35 @@ local function CalcSanityAura(inst, observer)
 	return 0
 end
 
+local INV_TABLE={
+    {"armorfire","fa_fireaxe","footballhat"},
+    {"armormarble","fa_copperaxe","footballhat"},
+    {"armormarble","fa_ironaxe","footballhat"},
+    {"armormarble","fa_steelaxe","footballhat"}
+}
+
+local function getinventory(inst)
+        inst:DoTaskInTime(0,function()
+            if(inst.loadedSpawn) then return end
+            local items=INV_TABLE[math.random(#INV_TABLE)]
+            for k,v in ipairs(items) do
+                local item=SpawnPrefab(v)
+                if(item)then
+                    inst.components.inventory:Equip(item)
+                end
+            end
+            inst.loadedSpawn=true
+        end)
+end
 
 local onload = function(inst, data)
-    
+     if(data)then
+        inst.loadedSpawn=data.loadedSpawn
+    end
 end
 
 local onsave = function(inst, data)
-
+    data.loadedSpawn=inst.loadedSpawn
 end
 
 local function OnAttacked(inst, data)
@@ -174,11 +196,13 @@ local function common()
     ------------------------------------------
 
     inst:AddComponent("inventory")
+    inst.components.inventory.dropondeath=false
     
     ------------------------------------------
 
     inst:AddComponent("lootdropper")    
     inst.components.lootdropper:SetLoot({ "goldnugget", "meat"})
+    inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLEMERGED,FALLENLOOTTABLE.TABLE_WEIGHT,0.1)
 
     ------------------------------------------
 
@@ -209,6 +233,7 @@ end
 
 local function normal()
     local inst = common()
+    getinventory(inst)
     return inst
 end
 

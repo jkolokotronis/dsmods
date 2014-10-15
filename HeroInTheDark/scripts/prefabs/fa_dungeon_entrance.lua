@@ -25,7 +25,7 @@ local prefabs =
 }
 
 local function GetVerb(inst)
-	return STRINGS.ACTIONS.ACTIVATE.SPELUNK
+	return STRINGS.ACTIONS.ACTIVATE.ENTER
 end
 
 local function ReturnChildren(inst)
@@ -144,11 +144,13 @@ local function Open(inst)
     inst:RemoveComponent("workable")
     
     inst.open = true
-
+--[[
     inst.name = STRINGS.NAMES.CAVE_ENTRANCE_OPEN
 	if SaveGameIndex:GetCurrentMode() == "cave" then
         inst.name = STRINGS.NAMES.CAVE_ENTRANCE_OPEN_CAVE
     end
+	]]
+
 	inst:RemoveComponent("lootdropper")
 
 	inst.MiniMapEntity:SetIcon("cave_open.png")
@@ -196,11 +198,12 @@ local function Close(inst)
 	inst:AddComponent("lootdropper")
 	inst.components.lootdropper:SetLoot({"rocks", "rocks", "flint", "flint", "flint"})
 
+--[[
     inst.name = STRINGS.NAMES.CAVE_ENTRANCE_CLOSED
 	if SaveGameIndex:GetCurrentMode() == "cave" then
         inst.name = STRINGS.NAMES.CAVE_ENTRANCE_CLOSED_CAVE
     end
-
+]]
     inst.open = false
 end      
 

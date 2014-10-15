@@ -63,6 +63,8 @@ local FA_WarClock = Class(Widget, function(self,owner)
     
     local ground = GetWorld()   
     self.world_num = SaveGameIndex:GetSlotWorld()
+
+    self.clock_str="Peace"
     
     self.inst:ListenForEvent( "clocktick", function(inst, data) 
     				self:SetTime(data.normalizedtime, data.phase) 
@@ -72,6 +74,16 @@ local FA_WarClock = Class(Widget, function(self,owner)
 	self:UpdateDayString()
 
     self.inst:ListenForEvent( "daycomplete", function() self:UpdateDayString() end, GetWorld())
+
+    self.inst:ListenForEvent("warphasechange", function(inst,data)
+        if(data.newphase.name=="war")then
+            self.clock_str="Peace"
+        else
+            self.clock_str="War"
+            inst.SoundEmitter:PlaySound("fa/orc/drums")
+        end
+        self:UpdateDayString()
+    end, GetWorld())
 
 --[[
 	self.inst:ListenForEvent( "daytime", function(inst, data) 
@@ -131,10 +143,11 @@ function FA_WarClock:RecalcSegs(phases)
 end
 
 function FA_WarClock:UpdateDayString()
-    local clock_str = STRINGS.UI.HUD.CLOCKDAY.." "..tostring(GetClock().numcycles+1)
+    local clock_str =  self.clock_str.." "..tostring(GetClock().numcycles+1)
     self.text:SetString(clock_str)
 end
 
+--[[
 function FA_WarClock:OnGainFocus()
 	FA_WarClock._base.OnGainFocus(self)
 	local clock_str = STRINGS.UI.HUD.WORLD.." ".. tostring(self.world_num or 1)
@@ -147,7 +160,7 @@ function FA_WarClock:OnLoseFocus()
 	self:UpdateDayString()
 	return true
 end
-
+]]
 
 function FA_WarClock:ShowMoon()
     local mp = GetClock():GetMoonPhase()

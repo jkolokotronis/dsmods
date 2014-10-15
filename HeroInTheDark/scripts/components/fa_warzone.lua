@@ -66,9 +66,9 @@ end
 function FA_Warzone:OnLoad(data)
 	if(data and data.phase)then
 		self.phase=data.phase
+		self.inst:PushEvent("warphasechange",  {oldphase = nil, newphase = self.phases[self.phase]})
 	end
 
---	self.inst:PushEvent("phasechange", {oldphase = self.phase, newphase = self.phase})
 
 	self.timeLeftInEra=data.timeLeftInEra or 0
 

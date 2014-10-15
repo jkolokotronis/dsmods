@@ -991,6 +991,8 @@ STRINGS.ACTIONS.FA_FURNACE={
 }
 STRINGS.ACTIONS.FA_CRAFTPICKUP="Empty"
 
+ STRINGS.ACTIONS.ACTIVATE.ENTER="Enter"
+
 STRINGS.UI.WORLDGEN.GOBLIN={}
 STRINGS.UI.WORLDGEN.GOBLIN.VERBS={"Wrangling","Generating","Herding","Embiggening","Iterating upon","Insinuating","Reticulating","Inserting","Framing"}
 STRINGS.UI.WORLDGEN.GOBLIN.NOUNS={"Pot Helms","GOBLINS!","Poop","Walls","Monsters","a keen sense of despair","Goblin huts","Treasure and other loots","Goblin plans for world domination!","The Kings stronghold"}

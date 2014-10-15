@@ -184,7 +184,7 @@ inst:AddComponent("eater")
 
     inst:AddComponent("locomotor") -- locomotor must be constructed before the stategraph
 --    inst.components.locomotor:EnableGroundSpeedMultiplier(false)
-    inst.components.locomotor.runspeed = TUNING.WILSON_RUN_SPEED*2
+    inst.components.locomotor.runspeed = TUNING.WILSON_RUN_SPEED+2
 
     inst:AddComponent("follower")
     
@@ -234,7 +234,7 @@ end
 local function drybones(Sim)
     local inst=fn(Sim)
     local anim=inst.AnimState
-    inst.Transform:SetScale(2, 2, 2)
+    inst.Transform:SetScale(1.5, 1.5, 1.5)
     anim:SetBank("wilson")
     anim:SetBuild("drybones")
     anim:PlayAnimation("idle")
