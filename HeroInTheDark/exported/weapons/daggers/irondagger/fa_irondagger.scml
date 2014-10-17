@@ -4,7 +4,7 @@
         <file id="0" name="swap_dagger/swap.png" width="289" height="348" pivot_x="0.109966" pivot_y="0.185714"/>
     </folder>
     <folder id="1">
-        <file id="0" name="_0003_Iron-dag.png" width="70" height="258" pivot_x="0" pivot_y="1"/>
+        <file id="0" name="_0003_Iron-dag.png" width="289" height="348" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="fa_irondagger">
         <animation id="0" name="idle" length="50">
@@ -15,7 +15,7 @@
             </mainline>
             <timeline id="0" name="_0003_Iron-dag_000">
                 <key id="0" spin="0">
-                    <object folder="1" file="0" x="-77" y="201" angle="14.036"/>
+                    <object folder="1" file="0" x="-129" y="295" angle="0"/>
                 </key>
             </timeline>
         </animation>

@@ -4,7 +4,7 @@
         <file id="0" name="swap_weapon/_0012_Steel-Axe.png" width="202" height="271" pivot_x="0.460784" pivot_y="0.285714"/>
     </folder>
     <folder id="1">
-        <file id="0" name="_0012_Steel-Axe_g.png" width="202" height="271" pivot_x="0" pivot_y="1"/>
+        <file id="0" name="_0012_Steel-Axe_g.png" width="259" height="271" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="fa_steelaxe">
         <animation id="0" name="idle" length="50">
@@ -15,7 +15,7 @@
             </mainline>
             <timeline id="0" name="_0012_Steel-Axe_g">
                 <key id="0" spin="0">
-                    <object folder="1" file="0" x="-40" y="232" angle="340.201"/>
+                    <object folder="1" file="0" x="-139" y="238" angle="0"/>
                 </key>
             </timeline>
         </animation>

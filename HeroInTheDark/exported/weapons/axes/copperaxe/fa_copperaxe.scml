@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
     <folder id="0">
-        <file id="0" name="_0015_cop-axe_g.png" width="202" height="271" pivot_x="0" pivot_y="1"/>
+        <file id="0" name="_0015_cop-axe_g.png" width="259" height="271" pivot_x="0" pivot_y="1"/>
     </folder>
     <folder id="1" name="swap_weapon">
         <file id="0" name="swap_weapon/_0015_cop-axe.png" width="202" height="271" pivot_x="0.446078" pivot_y="0.307692"/>
@@ -15,7 +15,7 @@
             </mainline>
             <timeline id="0" name="_0015_cop-axe_g_000">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-41" y="236" angle="344.055"/>
+                    <object folder="0" file="0" x="-136" y="234" angle="0"/>
                 </key>
             </timeline>
         </animation>

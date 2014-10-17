@@ -34,6 +34,17 @@ local function onhammered(inst, worker)
 	inst:Remove()
 end
 
+local function onwork(inst, worker, workleft)
+    if inst.components.childspawner then
+        inst.components.childspawner:ReleaseAllChildren()
+        if worker and worker.components.combat then
+            for k,v in pairs(inst.components.childspawner.childrenoutside)do
+                v.components.combat:SetTarget(worker)
+            end
+        end
+    end    
+end
+
 local function fn()
     local inst = CreateEntity()
     local trans = inst.entity:AddTransform()
@@ -52,6 +63,7 @@ local function fn()
     inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
     inst.components.workable:SetWorkLeft(8)
     inst.components.workable:SetOnFinishCallback(onhammered)
+    inst.components.workable.onwork=onwork
     inst:AddComponent("inspectable")
     
     MakeSnowCovered(inst, .01)

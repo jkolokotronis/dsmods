@@ -99,7 +99,7 @@ AddRoom("FA_OrcEntrance", {
 									countprefabs = {
 										fa_orchut=5,
 										fa_adamantinerock=2,
-										fa_dungeon_entrance=1
+--										fa_dungeon_entrance=1
 									},
 									distributepercent = 0.05,
 					                distributeprefabs= 
@@ -139,7 +139,7 @@ AddRoom("FA_DwarfEntrance", {
 									countprefabs = {
 										fa_dorfhut=6, 
 										rock2=3,
-										fa_dungeon_entrance=1
+--										fa_dungeon_entrance=1
 									},
 									distributepercent = 0.05,
 					                distributeprefabs= 

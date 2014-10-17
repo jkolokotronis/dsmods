@@ -40,6 +40,8 @@ local assets_venom3={
     Asset("IMAGE", "images/inventoryimages/fa_venomdagger3.tex"),
 }
 
+local FA_BuffUtil=require "buffutil"
+
 local DAGGER_DAMAGE_T1=45
 local DAGGER_DAMAGE_T2=55
 local DAGGER_DAMAGE_T3=70
@@ -198,7 +200,7 @@ local function onattackvenom(inst, attacker, target)
         else
             FA_BuffUtil.Poison(target,POISON_LENGTH,variables,attacker)
         end
-        target.components.combat:GetAttacked(attacker, POISON_DAMAGE, nil,nil,FA_DAMAGETYPE.POISON_DAMAGE)
+        target.components.combat:GetAttacked(attacker, POISON_DAMAGE, nil,nil,FA_DAMAGETYPE.POISON)
 
      end
  end

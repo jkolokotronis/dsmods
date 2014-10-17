@@ -71,20 +71,12 @@ local FA_WarClock = Class(Widget, function(self,owner)
     			end, GetWorld())
 
 
-	self:UpdateDayString()
+--	self:UpdateDayString()
 
     self.inst:ListenForEvent( "daycomplete", function() self:UpdateDayString() end, GetWorld())
 
-    self.inst:ListenForEvent("warphasechange", function(inst,data)
-        if(data.newphase.name=="war")then
-            self.clock_str="Peace"
-        else
-            self.clock_str="War"
-            inst.SoundEmitter:PlaySound("fa/orc/drums")
-        end
-        self:UpdateDayString()
-    end, GetWorld())
-
+    self.inst:ListenForEvent("warphasechange", function(inst,data) self:PhaseChange(data) end, GetWorld())
+    self:PhaseChange({newphase=GetWorld().components.fa_warzone:GetPhaseById(GetWorld().components.fa_warzone:GetPhase())})
 --[[
 	self.inst:ListenForEvent( "daytime", function(inst, data) 
         self.text:SetString(STRINGS.UI.HUD.CLOCKDAY.." "..tostring(data.day)+1) 
@@ -124,6 +116,17 @@ local FA_WarClock = Class(Widget, function(self,owner)
     end]]
 end)
 
+function FA_WarClock:PhaseChange(data)
+        print("warphasechange")
+        if(data.newphase.name=="peace")then
+            self.clock_str="Peace"
+        else
+            self.clock_str="War"
+            GetPlayer().SoundEmitter:PlaySound("fa/orc/drums")
+        end
+        self:UpdateDayString()
+end
+
 function FA_WarClock:RecalcSegs(phases)
     local i=1
     for k, v in ipairs(phases) do
@@ -143,7 +146,7 @@ function FA_WarClock:RecalcSegs(phases)
 end
 
 function FA_WarClock:UpdateDayString()
-    local clock_str =  self.clock_str.." "..tostring(GetClock().numcycles+1)
+    local clock_str =  self.clock_str--.." "..tostring(GetClock().numcycles+1)
     self.text:SetString(clock_str)
 end
 

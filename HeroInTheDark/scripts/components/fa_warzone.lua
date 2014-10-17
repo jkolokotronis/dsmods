@@ -79,6 +79,9 @@ function FA_Warzone:GetDebugString()
     return string.format("%s: %2.2f ", self.phase, self:GetTimeLeftInEra())
 end
 
+function FA_Warzone:GetPhaseById(i)
+	return self.phases[i]
+end
 
 function FA_Warzone:GetPhase()
 	return self.phase

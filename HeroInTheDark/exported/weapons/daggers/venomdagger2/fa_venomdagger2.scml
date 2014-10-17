@@ -4,7 +4,7 @@
         <file id="0" name="swap_dagger/swap.png" width="70" height="258" pivot_x="0.486111" pivot_y="0.242308"/>
     </folder>
     <folder id="1">
-        <file id="0" name="ground.png" width="70" height="258" pivot_x="0" pivot_y="1"/>
+        <file id="0" name="ground.png" width="289" height="348" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="fa_venomdagger2">
         <animation id="0" name="idle" length="50">
@@ -15,7 +15,7 @@
             </mainline>
             <timeline id="0" name="ground">
                 <key id="0" spin="0">
-                    <object folder="1" file="0" x="-84" y="189" angle="18.435"/>
+                    <object folder="1" file="0" x="-125" y="289" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -27,7 +27,7 @@
             </mainline>
             <timeline id="0" name="swap_000">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="11" y="11"/>
+                    <object folder="0" file="0" x="11" y="11" angle="0"/>
                 </key>
             </timeline>
         </animation>

@@ -15,7 +15,7 @@ local HASTE_SPEED_BOOST=TUNING.WILSON_RUN_SPEED
 local HASTE_DODGE_BOOST=0.25
 local HASTE_ATTACK_BOOST=0.5
 
-local FA_BuffUtil={}
+FA_BuffUtil={}
 
 function InitBuffBar(inst,buff,timer,class,name)
         inst.buff_timers[buff]=CooldownButton(class.owner)

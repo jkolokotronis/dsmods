@@ -4,7 +4,7 @@
         <file id="0" name="swap_dagger/swap.png" width="70" height="258" pivot_x="0.430556" pivot_y="0.253846"/>
     </folder>
     <folder id="1">
-        <file id="0" name="daggerground.png" width="70" height="258" pivot_x="0.389474" pivot_y="0.442105"/>
+        <file id="0" name="daggerground.png" width="127" height="258" pivot_x="0.389474" pivot_y="0.442105"/>
     </folder>
     <entity id="0" name="fa_copperdagger">
         <animation id="0" name="idle" length="1000">
@@ -15,7 +15,7 @@
             </mainline>
             <timeline id="0" name="swap">
                 <key id="0" spin="0">
-                    <object folder="1" file="0" x="5.478744" y="37.407279" angle="0"/>
+                    <object folder="1" file="0" x="-22.521256" y="85.407279" angle="0"/>
                 </key>
             </timeline>
         </animation>

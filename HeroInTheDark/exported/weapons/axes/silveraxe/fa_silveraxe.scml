@@ -4,7 +4,7 @@
         <file id="0" name="swap_weapon/_0014_Silver-Axe.png" width="210" height="273" pivot_x="0.438679" pivot_y="0.250909"/>
     </folder>
     <folder id="1">
-        <file id="0" name="_0014_Silver-Axe_g.png" width="210" height="273" pivot_x="0" pivot_y="1"/>
+        <file id="0" name="_0014_Silver-Axe_g.png" width="267" height="273" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="fa_silveraxe">
         <animation id="0" name="idle" length="1000">
@@ -15,7 +15,7 @@
             </mainline>
             <timeline id="0" name="_0014_Silver-Axe_g">
                 <key id="0" spin="0">
-                    <object folder="1" file="0" x="-11" y="230" angle="329.534"/>
+                    <object folder="1" file="0" x="-156" y="243" angle="0"/>
                 </key>
             </timeline>
         </animation>
