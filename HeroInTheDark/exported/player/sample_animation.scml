@@ -137,6 +137,8 @@
     </folder>
     <folder id="15" name="swap_object">
         <file id="0" name="swap_object/swap_object-0.png" width="240" height="340" pivot_x="0.173554" pivot_y="0.236842"/>
+        <file id="1" name="swap_object/swap_object-2.png" width="240" height="340" pivot_x="0.173554" pivot_y="0.236842"/>
+        <file id="2" name="swap_object/swap_object-3.png" width="240" height="340" pivot_x="0.173554" pivot_y="0.236842"/>
     </folder>
     <folder id="16" name="hairpigtails">
         <file id="0" name="hairpigtails/hairpigtails-0.png" width="160" height="176" pivot_x="0.687809" pivot_y="0.826707"/>
@@ -151,6 +153,8 @@
     </folder>
     <folder id="18" name="lantern_overlay">
         <file id="0" name="lantern_overlay/lantern_overlay-0.png" width="344" height="368" pivot_x="0.306249" pivot_y="0.471673"/>
+        <file id="1" name="lantern_overlay/lantern_overlay-1.png" width="344" height="368" pivot_x="0.306249" pivot_y="0.471673"/>
+        <file id="2" name="lantern_overlay/lantern_overlay-2.png" width="344" height="368" pivot_x="0.306249" pivot_y="0.471673"/>
     </folder>
     <folder id="19" name="swap_face">
 		<file id="0" name="swap_face/swap_face-0.png" width="3" height="3" pivot_x="0.536334" pivot_y="0.580721" />
@@ -314,7 +318,7 @@
             </timeline>
             <timeline id="22" name="swap_object_LAYER_ARM_carry">
                 <key id="0" spin="0">
-                    <object folder="15" file="0" x="104.918266" y="115.016076" angle="0"/>
+                    <object folder="15" file="2" x="104.918266" y="115.016076" angle="0"/>
                 </key>
             </timeline>
             <timeline id="23" name="swap_body-9_LAYER_SWAP_BODY">
@@ -324,7 +328,7 @@
             </timeline>
             <timeline id="24" name="LANTERN_OVERLAY">
                 <key id="0" spin="0">
-                    <object folder="18" file="0" x="105.449997" y="107.448997" angle="0" scale_x="0.948755" scale_y="0.948755"/>
+                    <object folder="18" file="2" x="105.449997" y="107.448997" angle="0" scale_x="0.948755" scale_y="0.948755"/>
                 </key>
             </timeline>
             <timeline id="25" name="HAIR_pigtails-0_000">
@@ -483,7 +487,7 @@
             </timeline>
             <timeline id="21" name="swap_object_LAYER_ARM_carry">
                 <key id="0" spin="0">
-                    <object folder="15" file="0" x="98.75" y="108.75" angle="0"/>
+                    <object folder="15" file="2" x="98.75" y="108.75" angle="0"/>
                 </key>
             </timeline>
             <timeline id="22" name="swap_body-10_LAYER_SWAP_BODY">
@@ -493,7 +497,7 @@
             </timeline>
             <timeline id="23" name="LANTERN_OVERLAY">
                 <key id="0" spin="0">
-                    <object folder="18" file="0" x="106.382716" y="119.663814" angle="350" scale_x="0.948755" scale_y="0.948755"/>
+                    <object folder="18" file="2" x="106.382716" y="119.663814" angle="350" scale_x="0.948755" scale_y="0.948755"/>
                 </key>
             </timeline>
             <timeline id="24" name="BEARD">
@@ -651,7 +655,7 @@
             </timeline>
             <timeline id="20" name="swap_object_LAYER_ARM_carry">
                 <key id="0" spin="0">
-                    <object folder="15" file="0" x="-103.75" y="106.25" angle="180" scale_y="-1"/>
+                    <object folder="15" file="2" x="-103.75" y="106.25" angle="180" scale_y="-1"/>
                 </key>
             </timeline>
             <timeline id="21" name="swap_body-9_LAYER_SWAP_BODY">
@@ -661,7 +665,7 @@
             </timeline>
             <timeline id="22" name="LANTERN_OVERLAY">
                 <key id="0" spin="0">
-                    <object folder="18" file="0" x="-241.212584" y="126.370604" angle="350" scale_x="0.948755" scale_y="0.948755"/>
+                    <object folder="18" file="2" x="-241.212584" y="126.370604" angle="350" scale_x="0.948755" scale_y="0.948755"/>
                 </key>
             </timeline>
             <timeline id="23" name="BEARD">
