@@ -46,6 +46,9 @@ local fa_firestormringfx_assets =
 {
     Asset("ANIM", "anim/fa_firestorm_ring_fx.zip"),
 }
+local fa_fireball_hit_assets={
+    Asset("ANIM", "anim/fireball_hit.zip"),
+}
 
 local function fn(bank,bld,animname,loop)
 	local inst = CreateEntity()
@@ -154,7 +157,11 @@ local function fa_firestormhitfx()
     
     return inst
 end
+local function fa_fireball_hit()
+    local inst= fn("fireball_hit")
+    return inst
 
+end
 
 return Prefab( "common/fa_bladebarrier_hitfx", bladebarrier_hit_fx, bladebarrier_hit_fx_assets),
 Prefab( "common/fa_bladebarrierfx", bladebarrier_fx, bladebarrier_fx_assets),
@@ -171,4 +178,5 @@ Prefab( "common/fa_spinningstarsfx", fa_spinningstarsfx, fa_spinningstarsfx_asse
 Prefab( "common/fa_birdsfx", fa_birdsfx, fa_birdsfx_assets),
 --this is... questionable... i'd rather use something else
 Prefab( "common/fa_firestormfx", fa_firestormfx, fa_firestormringfx_assets),
-Prefab( "common/fa_firestormhitfx", fa_firestormhitfx, fa_firestormhit_assets)
+Prefab( "common/fa_firestormhitfx", fa_firestormhitfx, fa_firestormhit_assets),
+Prefab( "common/fa_fireball_hit",fa_fireball_hit,fa_fireball_hit_assets)

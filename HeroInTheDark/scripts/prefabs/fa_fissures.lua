@@ -35,7 +35,14 @@ end
 local function spawnchildren(inst)
     if inst.components.childspawner then
         inst.components.childspawner:StartSpawning()
-        inst.components.childspawner:StopRegen()
+--        inst.components.childspawner:StopRegen()
+    end 
+end
+
+local function stopspawning(inst)
+    if inst.components.childspawner then
+        inst.components.childspawner:StopSpawning()
+        inst.components.childspawner:StartRegen()
     end 
 end
 
@@ -111,7 +118,7 @@ local states =
             inst.fx.AnimState:PlayAnimation("idle_open")
         end
 
---        spawnchildren(inst)
+        spawnchildren(inst)
     end,
 
     dawn = function(inst, instant)
@@ -127,7 +134,7 @@ local states =
        
         inst.SoundEmitter:PlaySound("dontstarve/cave/nightmare_spawner_open")
 
- --       spawnchildren(inst)
+        spawnchildren(inst)
     end
 }
 
@@ -227,11 +234,19 @@ local function commonfn(type,bank)
     anim:PlayAnimation("idle_closed")
 
     inst:AddComponent( "childspawner" )
-    inst.components.childspawner:SetRegenPeriod(5)
+    inst.components.childspawner:SetRegenPeriod(120)
     inst.components.childspawner:SetSpawnPeriod(30)
     inst.components.childspawner:SetMaxChildren(1)
-    inst.components.childspawner.childname = "crawlingnightmare"
-    inst.components.childspawner:SetRareChild("nightmarebeak", 0.35)
+    inst.components.childspawner.childname = "fa_fireboulder"
+--    inst.components.childspawner:SetRareChild("fa_fireboulder", 0.35)
+--it doesnt seem it clears children proper if they dont have natural 'death'
+
+    local old_own=inst.components.childspawner.TakeOwnership
+    function inst.components.childspawner:TakeOwnership(child)
+        local ret=old_own(self,child)
+        self.inst:ListenForEvent( "onremove", function() self:OnChildKilled( child ) end, child )
+        return ret
+    end
 
     inst:AddComponent("lighttweener")
     inst.entity:AddLight()

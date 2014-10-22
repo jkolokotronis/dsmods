@@ -108,6 +108,7 @@ PrefabFiles = {
     "fa_bars",
     "fa_smeltingfurnace",
     "fa_forge",
+    "fa_fireboulder",
     "fa_alchemytable",
     "fa_bags",
     "fa_pebbles",
@@ -411,6 +412,7 @@ Assets = {
     Asset( "ANIM", "anim/fa_shieldpuff.zip" ),
 
     Asset( "ANIM", "anim/generating_goblin_cave.zip" ),
+    Asset( "ANIM", "anim/generating_mine_cave.zip" ),
     Asset( "IMAGE", "images/lava3.tex" ),
     Asset( "IMAGE", "images/lava2.tex" ),
     Asset( "IMAGE", "images/lava1.tex" ),
@@ -1336,10 +1338,10 @@ local function UpdateWorldGenScreen(self, profile, cb, world_gen_options)
 --separate thread... cant do anything about it atm
 --                self:ChangeFlavourText()
     
-            elseif(data.id=="ORC_STRONGHOLD")then
-                self.bg:SetTint(GLOBAL.BGCOLOURS.RED[1],GLOBAL.BGCOLOURS.RED[2],GLOBAL.BGCOLOURS.RED[3], 1)
-                self.worldanim:GetAnimState():SetBank("generating_goblin_cave")
-                self.worldanim:GetAnimState():SetBuild("generating_goblin_cave")
+            elseif(data.id=="ORC_MINES" or data.id=="ORC_FORTRESS" or data.id=="DWARF_FORTRESS")then
+--                self.bg:SetTint(GLOBAL.BGCOLOURS.RED[1],GLOBAL.BGCOLOURS.RED[2],GLOBAL.BGCOLOURS.RED[3], 1)
+                self.worldanim:GetAnimState():SetBank("generating_mine_cave")
+                self.worldanim:GetAnimState():SetBuild("generating_mine_cave")
                 self.worldanim:GetAnimState():PlayAnimation("idle", true)
             end
         end
