@@ -446,6 +446,14 @@ end
 local function fnempty()
 	local inst=common("bottle_empty")
     inst:RemoveComponent("edible")
+    inst:DoPeriodicTask(1,function()
+    	if(not inst:IsInLimbo() and GetSeasonManager():IsRaining()) then
+    		local pos=inst:GetPosition()
+    		inst:Remove()
+    		local water=SpawnPrefab("fa_bottle_water")
+		    water.Transform:SetPosition(pos.x, pos.y, pos.z)
+    	end
+    end)
 	return inst
 end
 
