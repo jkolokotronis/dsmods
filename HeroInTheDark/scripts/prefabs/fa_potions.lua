@@ -334,6 +334,10 @@ local WONDER_EFFECTS={
 }
 
 local function oneaten(inst,eater)
+
+	if(eater.components.inventory)then
+		eater.components.inventory:GiveItem( SpawnPrefab("fa_bottle_empty") )
+	end
 end
 
 local function eatwonder(inst,data)
@@ -347,6 +351,9 @@ local function eatwonder(inst,data)
 		else
 			print("no effect??")
 		end
+	end
+	if(eater.components.inventory)then
+		eater.components.inventory:GiveItem( SpawnPrefab("fa_bottle_empty") )
 	end
 end
 
@@ -431,6 +438,9 @@ local function curepoison(inst,data)
     				eater.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=eater.components.health.fa_resistances[FA_DAMAGETYPE.POISON]-1
     		end)
     	end
+	end
+	if(eater.components.inventory)then
+		eater.components.inventory:GiveItem( SpawnPrefab("fa_bottle_empty") )
 	end
 end
 

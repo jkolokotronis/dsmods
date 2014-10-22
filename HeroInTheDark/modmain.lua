@@ -1343,6 +1343,8 @@ local function UpdateWorldGenScreen(self, profile, cb, world_gen_options)
                 self.worldanim:GetAnimState():SetBank("generating_mine_cave")
                 self.worldanim:GetAnimState():SetBuild("generating_mine_cave")
                 self.worldanim:GetAnimState():PlayAnimation("idle", true)
+                self.verbs = GLOBAL.shuffleArray(GLOBAL.STRINGS.UI.WORLDGEN.MINES.VERBS)
+                self.nouns = GLOBAL.shuffleArray(GLOBAL.STRINGS.UI.WORLDGEN.MINES.NOUNS)
             end
         end
        
