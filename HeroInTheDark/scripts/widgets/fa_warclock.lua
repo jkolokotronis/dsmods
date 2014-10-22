@@ -120,9 +120,10 @@ function FA_WarClock:PhaseChange(data)
         print("warphasechange")
         if(data.newphase.name=="peace")then
             self.clock_str="Peace"
+             GetPlayer().SoundEmitter:KillSound("warclock_loop")
         else
             self.clock_str="War"
-            GetPlayer().SoundEmitter:PlaySound("fa/orc/drums")
+            GetPlayer().SoundEmitter:PlaySound("fa/orc/drums_loop","warclock_loop")
         end
         self:UpdateDayString()
 end
