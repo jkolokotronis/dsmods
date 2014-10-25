@@ -3,26 +3,41 @@ local FA_Furnace = Class(function(self, inst,matcher)
     self.inst = inst
     self.cooking = false
     self.done = false
-    
+    self.time=0
     self.product = nil
     self.matcher = matcher
+    self.inst:StartUpdatingComponent(self)
 end)
 
+
+function FA_Furnace:OnUpdate(dt)
+	if(self.cooking)then
+		self.time=self.time-dt
+		if(self.time<=0)then
+			self:dostew()
+		end
+	end
+end
+
+
+function FA_Furnace:LongUpdate(dt)
+	self:OnUpdate(dt)
+end
+
 function FA_Furnace:dostew()
-	self.task = nil
-	
+	self.done = true
+	self.cooking = nil
+
 	if self.ondonecooking then
 		self.ondonecooking(self.inst)
 	end
 	
-	self.done = true
-	self.cooking = nil
 	print("done cooking",self.product)
 end
 
 function FA_Furnace:GetTimeToCook()
 	if self.cooking then
-		return self.targettime - GetTime()
+		return self.time
 	end
 	return 0
 end
@@ -55,6 +70,7 @@ function FA_Furnace:StartCooking()
 			local res=self.matcher:Match(self:GetIngreds())
 			self.product=res.product
 			cooktime=res.cooktime 
+			self.time=cooktime
 			self.done = nil
 			self.cooking = true
 			
@@ -64,9 +80,7 @@ function FA_Furnace:StartCooking()
 		
 			
 			
-			local grow_time = cooktime
-			self.targettime = GetTime() + grow_time
-			self.task = self.inst:DoTaskInTime(grow_time, function() self:dostew() end)
+--			self.task = self.inst:DoTaskInTime(grow_time, function() self:dostew() end)
 
 			self.inst.components.container:Close()
 			self.inst.components.container:DestroyContents()
@@ -83,8 +97,8 @@ function FA_Furnace:OnSave()
 		data.cooking = true
 		data.product = self.product
 		local time = GetTime()
-		if self.targettime and self.targettime > time then
-			data.time = self.targettime - time
+		if self.time and self.time>0 then
+			data.time = self.time
 		end
 		return data
     elseif self.done then
@@ -99,17 +113,15 @@ function FA_Furnace:OnLoad(data)
     --self.produce = data.produce
     if data.cooking then
 		self.product = data.product
-		if self.oncontinuecooking then
-			local time = data.time or 1
-			self.oncontinuecooking(self.inst)
 			self.cooking = true
-			self.targettime = GetTime() + time
-			self.task = self.inst:DoTaskInTime(time, function() self:dostew() end)
-			
+			self.time=data.time or 1
+--			self.targettime = GetTime() + time
+--			self.task = self.inst:DoTaskInTime(time, function() self:dostew() end)			
 			if self.inst.components.container then		
 				self.inst.components.container.canbeopened = false
 			end
-			
+		if self.oncontinuecooking then
+			self.oncontinuecooking(self.inst)			
 		end
     elseif data.done then
 		self.done = true

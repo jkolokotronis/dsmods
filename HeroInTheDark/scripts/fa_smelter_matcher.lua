@@ -894,6 +894,7 @@ function FA_Matcher:GetProduct(itemlist)
 end
 
 function FA_Matcher:GetFailResult(itemlist)
+	local product={}
 	for k,v in pairs(itemlist) do
 		local slag=FAIL_PERSISTANT[k]
 		--too lazy to read lua string/regex options
