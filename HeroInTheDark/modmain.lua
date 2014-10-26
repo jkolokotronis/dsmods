@@ -106,6 +106,7 @@ PrefabFiles = {
     "fa_bbq",
     "fa_fx",
     "fa_bars",
+    "fa_decor",
     "fa_smeltingfurnace",
     "fa_forge",
     "fa_fireboulder",

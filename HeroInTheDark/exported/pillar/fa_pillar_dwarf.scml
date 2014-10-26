@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
+    <folder id="0" name="ruins_pieces">
+        <file id="0" name="ruins_pieces/ruins_pieces-0.png" width="988" height="680" pivot_x="0.507186" pivot_y="0.138824"/>
+        <file id="1" name="ruins_pieces/ruins_pieces-1.png" width="664" height="836" pivot_x="0.49695" pivot_y="0.109301"/>
+        <file id="2" name="ruins_pieces/ruins_pieces-2.png" width="448" height="380" pivot_x="0.523157" pivot_y="0.469672"/>
+        <file id="3" name="ruins_pieces/ruins_pieces-3.png" width="564" height="1092" pivot_x="0.535194" pivot_y="0.202313"/>
+        <file id="4" name="ruins_pieces/ruins_pieces-4.png" width="516" height="920" pivot_x="0.543216" pivot_y="0.151332"/>
+    </folder>
+    <folder id="1" name="shdw">
+        <file id="0" name="shdw/shdw-0.png" width="1036" height="212" pivot_x="0.499975" pivot_y="0.500002"/>
+    </folder>
+    <entity id="0" name="fa_pillar_dwarf">
+        <animation id="0" name="idle" length="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="5" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="4" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="1" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="0" key="0" z_index="5"/>
+                </key>
+                <key id="1" time="34">
+                    <object_ref id="0" timeline="5" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="4" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="1" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="0" key="1" z_index="5"/>
+                </key>
+                <key id="2" time="67">
+                    <object_ref id="0" timeline="5" key="2" z_index="0"/>
+                    <object_ref id="1" timeline="4" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="2" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="2" z_index="3"/>
+                    <object_ref id="4" timeline="1" key="2" z_index="4"/>
+                    <object_ref id="5" timeline="0" key="2" z_index="5"/>
+                </key>
+                <key id="3" time="100">
+                    <object_ref id="0" timeline="5" key="3" z_index="0"/>
+                    <object_ref id="1" timeline="4" key="3" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="3" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="3" z_index="3"/>
+                    <object_ref id="4" timeline="1" key="3" z_index="4"/>
+                    <object_ref id="5" timeline="0" key="3" z_index="5"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="ruins_pieces_LAYER_ruins_pieces">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="15.35" y="1455.25" angle="179.561" scale_x="-1.01642" scale_y="0.890823"/>
+                </key>
+                <key id="1" time="34" spin="0">
+                    <object folder="0" file="2" x="15.35" y="1455.25" angle="179.561" scale_x="-1.01642" scale_y="0.890823"/>
+                </key>
+                <key id="2" time="67" spin="0">
+                    <object folder="0" file="2" x="15.35" y="1455.25" angle="179.561" scale_x="-1.01642" scale_y="0.890823"/>
+                </key>
+                <key id="3" time="100" spin="0">
+                    <object folder="0" file="2" x="15.35" y="1455.25" angle="179.561" scale_x="-1.01642" scale_y="0.890823"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="ruins_pieces_1_LAYER_ruins_pieces">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" x="-24.999" y="2303.45" angle="180.447" scale_x="1.24041" scale_y="1.10942"/>
+                </key>
+                <key id="1" time="34" spin="0">
+                    <object folder="0" file="3" x="-24.999" y="2303.45" angle="180.447" scale_x="1.24041" scale_y="1.10942"/>
+                </key>
+                <key id="2" time="67" spin="0">
+                    <object folder="0" file="3" x="-24.999" y="2303.45" angle="180.447" scale_x="1.24041" scale_y="1.10942"/>
+                </key>
+                <key id="3" time="100" spin="0">
+                    <object folder="0" file="3" x="-24.999" y="2303.45" angle="180.447" scale_x="1.24041" scale_y="1.10942"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="ruins_pieces_2_LAYER_ruins_pieces">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="3.5" y="709.499" angle="359.457" scale_x="1.01906" scale_y="1.01285"/>
+                </key>
+                <key id="1" time="34" spin="0">
+                    <object folder="0" file="1" x="3.5" y="709.499" angle="359.457" scale_x="1.01906" scale_y="1.01285"/>
+                </key>
+                <key id="2" time="67" spin="0">
+                    <object folder="0" file="1" x="3.5" y="709.499" angle="359.457" scale_x="1.01906" scale_y="1.01285"/>
+                </key>
+                <key id="3" time="100" spin="0">
+                    <object folder="0" file="1" x="3.5" y="709.499" angle="359.457" scale_x="1.01906" scale_y="1.01285"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="ruins_pieces_3_LAYER_ruins_pieces">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="0.45" y="2.399" angle="359.291" scale_x="1.01737" scale_y="1.31999"/>
+                </key>
+                <key id="1" time="34" spin="0">
+                    <object folder="0" file="0" x="0.45" y="2.399" angle="359.291" scale_x="1.01737" scale_y="1.31999"/>
+                </key>
+                <key id="2" time="67" spin="0">
+                    <object folder="0" file="0" x="0.45" y="2.399" angle="359.291" scale_x="1.01737" scale_y="1.31999"/>
+                </key>
+                <key id="3" time="100" spin="0">
+                    <object folder="0" file="0" x="0.45" y="2.399" angle="359.291" scale_x="1.01737" scale_y="1.31999"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="ruins_pieces_4_LAYER_ruins_pieces">
+                <key id="0" spin="0">
+                    <object folder="0" file="4" x="57.95" y="3683.05" angle="2.10725" scale_x="0.443429" scale_y="0.442276"/>
+                </key>
+                <key id="1" time="34" spin="0">
+                    <object folder="0" file="4" x="57.95" y="3683.05" angle="2.10725" scale_x="0.443429" scale_y="0.442276"/>
+                </key>
+                <key id="2" time="67" spin="0">
+                    <object folder="0" file="4" x="57.95" y="3683.05" angle="2.10725" scale_x="0.443429" scale_y="0.442276"/>
+                </key>
+                <key id="3" time="100" spin="0">
+                    <object folder="0" file="4" x="57.95" y="3683.05" angle="2.10725" scale_x="0.443429" scale_y="0.442276"/>
+                </key>
+            </timeline>
+            <timeline id="5" name="shdw_LAYER_shdw">
+                <key id="0" spin="0">
+                    <object folder="1" file="0" x="4.5" y="-8.25" angle="0"/>
+                </key>
+                <key id="1" time="34" spin="0">
+                    <object folder="1" file="0" x="4.5" y="-8.25" angle="0"/>
+                </key>
+                <key id="2" time="67" spin="0">
+                    <object folder="1" file="0" x="4.5" y="-8.25" angle="0"/>
+                </key>
+                <key id="3" time="100" spin="0">
+                    <object folder="1" file="0" x="4.5" y="-8.25" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

@@ -66,8 +66,6 @@ local function fn(Sim)
 		inst.components.perishable:StartPerishing()
 		inst.components.perishable.onperishreplacement = "spoiled_food"
 		
-	    MakeSmallBurnable(inst)
-		MakeSmallPropagator(inst)
 
 		inst:AddComponent("bait")
 		inst:AddComponent("tradable")
@@ -258,10 +256,6 @@ end
 	    inst.components.workable:SetOnFinishCallback(dig_up)
 	    inst.components.workable:SetWorkLeft(1)
 	    
-	    ---------------------        
-
-	    MakeMediumBurnable(inst)
-	    MakeSmallPropagator(inst)
 
 --		MakeNoGrowInWinter(inst)  
 		  
