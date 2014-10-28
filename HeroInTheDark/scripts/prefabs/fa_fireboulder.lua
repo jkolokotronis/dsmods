@@ -238,7 +238,7 @@ local function fn(Sim)
                     local v=Vector3(inst.Physics:GetVelocity())
                     inst.currentAngle = math.atan2(v.z, v.x)/DEGREES
                 end
-                inst.currentAngle=((inst.currentAngle*DEGREES+180+ (math.random()-0.5)*60)%360)/DEGREES
+                inst.currentAngle=((inst.currentAngle*DEGREES+180+ (math.random()-0.5)*180)%360)/DEGREES
                 inst.Transform:SetRotation(inst.currentAngle)
                 inst.components.locomotor:WalkForward(true)
             end
