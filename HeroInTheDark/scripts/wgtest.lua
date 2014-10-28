@@ -59,15 +59,24 @@ local function DorfPostPop(graph,entities, width, height)
     	print("node",idx,node,node.data,node.populated)
 		local points_x, points_y, points_type = WorldSim:GetPointsForSite(node.id)
 		print("npoints",#points_x,#points_y,points_type)
-		print("t1",WorldSim:GetVisualTileAtPosition(points_x[1],points_y[1]))
-		--node.data.value=GROUND.IMPASSABLE
---		print("pos",node.cent[1],node.cent[2])
+		--[[
 		for i=1,#points_x do
 			--theres prob a way faster way 
 			local tile=WorldSim:GetVisualTileAtPosition(points_x[i],points_y[i])
 			if(tile and tile==FA_FAKE_TILE)then
-				print("fake ",points_x[i],points_y[i])
 				WorldSim:SetTile(points_x[i],points_y[i], GROUND.IMPASSABLE)
+			end
+		end
+		]]
+	end
+
+	print("w h",width,height)
+	for i=1,width do
+		for j=1,height do
+			local tile=WorldSim:GetVisualTileAtPosition(i,j)
+			if(tile and tile==FA_FAKE_TILE)then
+				print("fake ",i,j)
+				WorldSim:SetTile(i,j, GROUND.IMPASSABLE)
 			end
 		end
 	end
