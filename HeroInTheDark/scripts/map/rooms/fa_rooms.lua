@@ -139,7 +139,7 @@ AddRoom("FA_DwarfEntrance", {
 									countprefabs = {
 										fa_dorfhut=6, 
 										rock2=3,
---										fa_dungeon_entrance=1
+										fa_dungeon_entrance=1
 									},
 									distributepercent = 0.05,
 					                distributeprefabs= 
@@ -602,12 +602,86 @@ AddRoom("FA_GoblinBossroom3",{
 									}, 
 					            }
 	})
+
+AddRoom("FA_DwarfFortressStartRoom",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.ROCKY,	
+--					tags = {"ForceDisconnected"},
+--					tags = {"ForceConnected","RoadPoison"},
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FADorfFortressStartRoom"] = 1,
+									}, 
+					            }
+	})
+AddRoom("FA_DwarfFortressRoom",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.FUNGUSGREEN,	
+--					tags = {"ForceDisconnected"},
+--					tags = {"ForceConnected","RoadPoison"},
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FADorfFortressBase1"] = 1,
+									}, 
+					            }
+	})
+
+AddRoom("FA_DwarfFortressRoom1",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.FUNGUSGREEN,	
+--					tags = {"ForceDisconnected"},
+--					tags = {"ForceConnected","RoadPoison"},
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FADorfFortressStartRoom"] = 1,
+									}, 
+					            }
+	})
+
+AddRoom("FA_DwarfFortressTestRoom",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.FUNGUSGREEN,	
+--					tags = {"ForceDisconnected"},
+--					tags = {"ForceConnected","RoadPoison"},
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FATestwithimpass"] = 1,
+									}, 
+					            }
+	})
+
+
+
+
 AddRoom("FA_5x5GoblinRoom_1", MakeSetpieceRoom("FA5x5GoblinRoom_1"))
 AddRoom("FA_5x5GoblinRoom_2", MakeSetpieceRoom("FA5x5GoblinRoom_2"))
 AddRoom("FA_5x5GoblinRoom_3", MakeSetpieceRoom("FA5x5GoblinRoom_3"))
 AddRoom("FA_5x5GoblinRoom_4", MakeSetpieceRoom("FA5x5GoblinRoom_4"))
 AddRoom("FA_5x5GoblinRoom_5", MakeSetpieceRoom("FA5x5GoblinRoom_5"))
 
+AddRoom("FA_BGDwarfFortress",  {	
+					colour={r=0.3,g=0.2,b=0.1,a=0.3},
+					value =GROUND.IMPASSABLE, 
+					contents =  {
+									
+					            }
+					})
+
+AddRoom("FA_BGDwarfFortressStart",  {	
+					colour={r=0.3,g=0.2,b=0.1,a=0.3},
+					value =GROUND.FUNGUSGREEN, 
+					contents =  {
+									
+					            }
+					})
 AddRoom("FA_BGGoblin",  {	
 					colour={r=0.3,g=0.2,b=0.1,a=0.3},
 --					value =GROUND.IMPASSABLE, 

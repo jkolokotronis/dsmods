@@ -78,3 +78,7 @@ Layouts["FADorfTown1"]=StaticLayout.Get("map/static_layouts/dorf_town_1")
 Layouts["FADorfTown1Graveyard"]=StaticLayout.Get("map/static_layouts/dorf_town_1_graveyard")
 Layouts["FADorfTownField"]=StaticLayout.Get("map/static_layouts/dorf_town_field")
 Layouts["FAOrcTown1"]=StaticLayout.Get("map/static_layouts/orc_town_1")
+
+Layouts["FADorfFortressBase1"]=StaticLayout.Get("map/static_layouts/20x20_dorf_fortress_lv_1_1_base")
+Layouts["FATestwithimpass"]=StaticLayout.Get("map/static_layouts/testwithimpass")
+Layouts["FADorfFortressStartRoom"]=StaticLayout.Get("map/static_layouts/20x20_dorf_fortress_lv_1_1_A_entrance")

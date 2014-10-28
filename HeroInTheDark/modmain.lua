@@ -1383,20 +1383,19 @@ local function OrcMinesPostInit(inst)
     if(FA_DLCACCESS)then
         GLOBAL.GetWorld().components.colourcubemanager.SEASON_CCS[SEASONS.SUMMER]["DUSK"]=GLOBAL.resolvefilepath "colour_cubes/lavacube.tex"
     else
-        GLOBAL.GetWorld().components.colourcubemanager.SEASON_CCS[SEASONS.AUTUMN]["DUSK"]=GLOBAL.resolvefilepath "colour_cubes/lavacube.tex"
+        GLOBAL.GetWorld().components.colourcubemanager.SEASON_CCS[SEASONS.SUMMER]["DUSK"]=GLOBAL.resolvefilepath "colour_cubes/lavacube.tex"
     end
 
 --                setTopologyType(inst,"mines")        
-
-                inst.IsCave=function() return false end
-
+--[[
                 if(not inst.components.seasonmanager)then
                     inst:AddComponent("SeasonManager")
                 end
                 inst.components.seasonmanager:AlwaysDry()
-                inst.components.seasonmanager.current_season = GLOBAL.SEASONS.SUMMER
-                inst.components.seasonmanager:AlwaysSummer()
+                    inst.components.seasonmanager.current_season = GLOBAL.SEASONS.SUMMER
+                    inst.components.seasonmanager:AlwaysSummer()
 
+]]
                 local startLavaRain=function()
                     if(not inst.fa_lavarain)then
                         inst.fa_lavarain=SpawnPrefab("fa_lavarain")
@@ -1433,11 +1432,7 @@ local function OrcMinesPostInit(inst)
                     inst.fa_lavarain=nil
                 end)   
 
-    inst:AddComponent("fa_warzone")
-    AddClassPostConstruct("widgets/controls", function(self, owner)
-        self.clock:Kill()
-        self.clock=self.sidepanel:AddChild(FA_WarClock(owner))
-    end)
+    
 end
 
 AddPrefabPostInit("cave", function(inst)
@@ -1448,7 +1443,14 @@ AddPrefabPostInit("cave", function(inst)
         inst:RemoveComponent("periodicthreat")
         local data=Levels.cave_levels[level]
         if(data and GLOBAL.FA_LEVELS[data.id])then
-
+            if(data.id=="ORC_MINES")then
+                inst.IsCave=function() return false end
+                inst:AddComponent("fa_warzone")
+                    AddClassPostConstruct("widgets/controls", function(self, owner)
+                    self.clock:Kill()
+                    self.clock=self.sidepanel:AddChild(FA_WarClock(owner))
+                end)
+            end
             if(data.id=="ORC_MINES" or data.id=="DWARF_FORTRESS" or data.id=="ORC_FORTRESS")then
                 OrcMinesPostInit(inst)
             end

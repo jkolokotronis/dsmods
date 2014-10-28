@@ -78,4 +78,5 @@ local function fn(Sim)
     return inst
 end
 
-return Prefab( "common/fa_teleporter", fn, assets, prefabs) 
+return Prefab( "common/fa_teleporter", fn, assets, prefabs),
+Prefab( "common/fa_teleporter_dorf", fn, assets, prefabs) 

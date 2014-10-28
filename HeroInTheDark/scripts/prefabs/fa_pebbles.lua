@@ -3,7 +3,9 @@ local pebble_assets=
 {
 	Asset("ANIM", "anim/fa_pebbles.zip"),
 }
-
+local prefabs={
+    
+}
 local lavapebble_names = {"f1","f2","f3"}
 
 local function pebbleonsave(inst, data)

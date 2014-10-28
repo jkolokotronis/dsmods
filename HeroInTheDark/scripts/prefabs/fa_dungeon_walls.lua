@@ -319,9 +319,16 @@ end
 local function lavaitemfn()
 	return itemfn(lavawall_data)
 end
+local function dorfwallfn()
+	local inst=stonewallfn()
+	inst.AnimState:SetBank("fa_lavawall")
+	inst.AnimState:SetBuild("fa_lavawall")
+	return inst
+end
 
 
 return Prefab( "common/fa_dungeon_wall", stonewallfn, assets),
+	Prefab( "common/fa_dorf_wall_1", dorfwallfn, lava_assets),
 	Prefab( "common/fa_dungeon_marblepillar", pillarfn, assets),
 	Prefab( "common/fa_lavawall",lavafn , lava_assets),
 	Prefab( "common/fa_lavawall_item", lavaitemfn, lava_assets, {"fa_lavawall", "fa_lavawall_placer"}),

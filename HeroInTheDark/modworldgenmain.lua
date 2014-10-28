@@ -3,6 +3,7 @@ require("constants")
 require("fa_constants")
 modimport 'tile_adder.lua'
 local GROUND = GLOBAL.GROUND
+--local WorldSim = GLOBAL.WorldSim
 
 
 -- The parameters passed are, in order:
@@ -156,8 +157,7 @@ end
 AddLevelPreInit("SURVIVAL_DEFAULT", AddScrollBoons)
 AddLevelPreInit("SURVIVAL_DEFAULT_PLUS", AddScrollBoons)
 
-
-
+require "wgtest"
 -- Squeltch
 --badlands and oasis 
 --"Kill the spiders"  "Mole Colony Rocks" "Dig that rock" ??

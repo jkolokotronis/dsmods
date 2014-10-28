@@ -57,6 +57,56 @@ AddTask("FADungeonStart", {
 		colour={r=1,g=0,b=0.6,a=1},
 		})		]]
 
+AddTask("FADwarfFortressTask1", {
+		locks={LOCKS.NONE},
+		keys_given= {KEYS.TIER1},
+		room_choices={
+--			["PondWilds"] = math.random(1,3),
+--			["SlurperWilds"] = math.random(1,3),
+--			["LushWilds"] = math.random(1,2),
+--			["FA_GoblinRoomEntry"] = 3,
+			["FA_DwarfFortressRoom"] = 1,
+--			["FA_5x5GoblinRoom_5"] = 1,
+			
+		},
+		room_bg=GROUND.IMPASSABLE,
+		background_room="FA_BGDwarfFortress",
+		colour={r=1,g=0,b=0.6,a=1},
+		})
+AddTask("FADwarfFortressTask3", {
+		locks={LOCKS.NONE},
+		keys_given= {KEYS.TIER1},
+		room_choices={
+--			["PondWilds"] = math.random(1,3),
+--			["SlurperWilds"] = math.random(1,3),
+--			["LushWilds"] = math.random(1,2),
+--			["FA_GoblinRoomEntry"] = 3,
+			["FA_DwarfFortressRoom1"] = 1,
+--			["FA_5x5GoblinRoom_5"] = 1,
+			
+		},
+		room_bg=GROUND.IMPASSABLE,
+		background_room="FA_BGDwarfFortress",
+		colour={r=1,g=0,b=0.6,a=1},
+		})
+
+AddTask("FADwarfFortressTask2", {
+		locks={LOCKS.NONE},
+		keys_given= {KEYS.TIER1},
+		room_choices={
+--			["PondWilds"] = math.random(1,3),
+--			["SlurperWilds"] = math.random(1,3),
+--			["LushWilds"] = math.random(1,2),
+--			["FA_GoblinRoomEntry"] = 3,
+			["FA_DwarfFortressTestRoom"] = 1,
+--			["FA_5x5GoblinRoom_5"] = 1,
+			
+		},
+		room_bg=GROUND.IMPASSABLE,
+		background_room="FA_BGDwarfFortress",
+		colour={r=1,g=0,b=0.6,a=1},
+		})
+
 AddTask("FAGoblinDungeon1", {
 		locks={LOCKS.NONE},
 		keys_given= {KEYS.TIER1},

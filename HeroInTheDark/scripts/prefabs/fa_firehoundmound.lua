@@ -23,6 +23,12 @@ SetSharedLootTable( 'fa_firehoundmound',
     {'redgem',      0.11},
 })
 
+
+local        HOUNDMOUND_HOUNDS_MIN = 2
+local        HOUNDMOUND_HOUNDS_MAX = 3
+local        HOUNDMOUND_REGEN_TIME = 30 * 4
+local        HOUNDMOUND_RELEASE_TIME = 30
+
 local function GetSpecialHoundChance()
     return 0.7
 end
@@ -111,10 +117,10 @@ local function fn(Sim)
 	inst.components.childspawner.childname = "firehound"
     inst.components.childspawner:SetRareChild("hound", 0.3)
 
-	inst.components.childspawner:SetRegenPeriod(TUNING.HOUNDMOUND_REGEN_TIME)
-	inst.components.childspawner:SetSpawnPeriod(TUNING.HOUNDMOUND_RELEASE_TIME)
+	inst.components.childspawner:SetRegenPeriod(HOUNDMOUND_REGEN_TIME)
+	inst.components.childspawner:SetSpawnPeriod(HOUNDMOUND_RELEASE_TIME)
 
-	inst.components.childspawner:SetMaxChildren(math.random(TUNING.HOUNDMOUND_HOUNDS_MIN, TUNING.HOUNDMOUND_HOUNDS_MAX))
+	inst.components.childspawner:SetMaxChildren(math.random(HOUNDMOUND_HOUNDS_MIN, HOUNDMOUND_HOUNDS_MAX))
 
     ---------------------
     inst:AddComponent("lootdropper")

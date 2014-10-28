@@ -27,8 +27,8 @@ end
 
 local function fa_pillar_dwarf()
 	local inst= fn("fa_pillar_dwarf")
-    inst.Transform:SetScale(0.8,0.8,0.8)
+--    inst.Transform:SetScale(0.8,0.8,0.8)
     return inst
 end
 
-return Prefab( "common/fa_pillar_dwarf", fa_pillar_dwarf, fa_pillar_dwarf_assets)
+return Prefab( "common/fa_dorf_gold_pillar", fa_pillar_dwarf, fa_pillar_dwarf_assets)

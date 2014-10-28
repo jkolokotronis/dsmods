@@ -101,6 +101,7 @@ FA_LEVELDATA["GOBLIN_CAVE"]={
 		"fa_dungeon_exit",
 		"fa_dungeon_entrance",
 		},
+		background_node_range={0,0}
 
 	}
 
@@ -148,6 +149,7 @@ FA_LEVELDATA["GOBLIN_CAVE_2"]={
 		"fa_dungeon_exit",
 		"fa_dungeon_entrance",
 		},
+		background_node_range={0,0}
 
 	}
 
@@ -195,6 +197,7 @@ FA_LEVELDATA["GOBLIN_CAVE_3"]={
 		"fa_dungeon_exit",
 		"fa_dungeon_entrance",
 		},
+		background_node_range={0,0}
 
 	}
 
@@ -238,6 +241,7 @@ FA_LEVELDATA["GOBLIN_CAVE_BOSSLEVEL"]={
 		"fa_dungeon_exit",
 		"fa_goblin_king_1",
 		},
+		background_node_range={0,0}
 
 	}
 
@@ -250,11 +254,11 @@ FA_LEVELDATA["ORC_MINES"]={
 		overrides={
 --			{"world_size", 		"tiny"},
 			{"day", 			"onlydusk"}, 
+			{"season_mode",		"onlysummer"},
 			{"season", 			"onlysummer"}, 
 			{"season_start", 	"summer"},
 			{"weather", 	"never"},
 			{"waves", 			"on"},
---			{"location",		"cave"},
 			{"boons", 			"never"},
 			{"poi", 			"never"},
 			{"traps", 			"never"},
@@ -283,37 +287,43 @@ FA_LEVELDATA["ORC_MINES"]={
 
 FA_LEVELDATA["DWARF_FORTRESS"]={
 		id="DWARF_FORTRESS",
+		nomaxwell=true,
 		name="Dwarf Fortress",
 		overrides={
-			{"world_size", 		"huge"},
+--			{"world_size", 		"huge"},
 			{"day", 			"onlydusk"}, 
-			{"weather", 	"never"},
+			{"season_mode",		"onlysummer"},
+			{"season", 			"onlysummer"}, 
+			{"season_start", 	"summer"},
+			{"weather", 		"never"},
 			{"waves", 			"on"},
 			{"location",		"cave"},
 			{"boons", 			"never"},
 			{"poi", 			"never"},
 			{"traps", 			"never"},
-			{"protected", 		"never"},
-			{"start_setpeice", 	"FADungeonStart"},
-			{"start_node",		"FA_BGEmpty"},
+			{"start_setpeice", 	"FADorfFortressBase1"},
+			{"start_node",		"FA_BGDwarfFortressStart"},
 		},
 		tasks={
-			"FAEmpty",
-			"FAGoblinBossroom2",
+			"FADwarfFortressTask1",
+			"FADwarfFortressTask2",
+			"FADwarfFortressTask3",
 		},
 		required_prefabs = {
-		"fa_mine_exit",
+--		"fa_mine_exit",
 		},
+		background_node_range={0,0}
 
 	}
 
 FA_LEVELDATA["ORC_FORTRESS"]={
 		id="ORC_FORTRESS",
+		nomaxwell=true,
 		name="Orc Fortress",
 		overrides={
 			{"world_size", 		"tiny"},
 			{"day", 			"onlydusk"}, 
-			{"season", 			"onlysummer"}, 
+			{"season", 			"onlywinter"}, 
 			{"season_start", 	"summer"},
 			{"weather", 	"never"},
 			{"waves", 			"on"},

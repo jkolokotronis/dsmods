@@ -172,7 +172,6 @@ end
 
 
 local function oncollide(inst, other)
-      print("collision with ",other)
     if(other and (other:HasTag("player") or other:HasTag("companion")))then
         inst.components.propagator:StopSpreading()
         inst.components.burnable:Extinguish()

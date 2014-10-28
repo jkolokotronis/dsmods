@@ -45,7 +45,7 @@ local function OnActivate(inst)
 	local level = GetWorld().topology.level_number or 1
 	local function head_upwards()
 		SaveGameIndex:GetSaveFollowers(GetPlayer())
-		if(FA_DLCACCESS)then
+		if(FA_DLCACCESS and inst.saveseasons)then
 			SaveGameIndex:SetSaveSeasonData(GetPlayer())
 		end
 
@@ -109,6 +109,7 @@ end
 
 local function dungfn()
 	local inst=fn()
+	inst.saveseasons=true
 	inst.AnimState:SetBuild("fa_dungeon_exit")
 	inst.AnimState:SetBank("fa_dungeon_exit")
 	return inst
@@ -123,4 +124,4 @@ local function minefn()
 end
 
 return Prefab( "common/fa_dungeon_exit", dungfn, assets) ,
-Prefab( "common/fa_mine_exit", minefn, mineassets, prefabs)
+Prefab( "common/fa_mine_exit", minefn, mineassets)

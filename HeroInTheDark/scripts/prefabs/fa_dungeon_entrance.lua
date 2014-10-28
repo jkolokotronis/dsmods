@@ -45,7 +45,7 @@ local function OnActivate(inst)
 
 	local function go_spelunking()
 		SaveGameIndex:GetSaveFollowers(GetPlayer())
-		if(FA_DLCACCESS)then
+		if(FA_DLCACCESS and inst.saveseasons)then
 			SaveGameIndex:SetSaveSeasonData(GetPlayer())
 		end
 
@@ -267,6 +267,7 @@ end
 
 local function dungfn()
 	local inst=fn()
+	inst.saveseasons=true
 	inst.AnimState:SetBuild("fa_dungeon_entrance")
 	inst.AnimState:SetBank("fa_dungeon_entrance")
 	Open(inst)
