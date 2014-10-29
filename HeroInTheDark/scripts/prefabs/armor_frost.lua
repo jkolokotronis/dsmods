@@ -82,7 +82,7 @@ local function fn()
 --    inst.components.insulator.insulation = TUNING.INSULATION_MED
         inst:AddComponent("heater")
         inst.components.heater.iscooler = true
-        inst.components.heater.equippedheat = 20
+        inst.components.heater.equippedheat = 40
     
     inst.components.equippable:SetOnEquip( onequip )
     inst.components.equippable:SetOnUnequip( onunequip )

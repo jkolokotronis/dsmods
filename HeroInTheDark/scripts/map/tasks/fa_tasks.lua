@@ -65,11 +65,14 @@ AddTask("FADwarfFortressTask1", {
 --			["SlurperWilds"] = math.random(1,3),
 --			["LushWilds"] = math.random(1,2),
 --			["FA_GoblinRoomEntry"] = 3,
-			["FA_DwarfFortressRoom"] = 1,
+			["FA_DwarfFortressRoom"] = 3,
+--			["FA_DwarfFortressRoom1"] = 1,
+--			["FA_DwarfFortressTestRoom"] = 1,
+--			["FA_BGDwarfFortress"]=4
 --			["FA_5x5GoblinRoom_5"] = 1,
 			
 		},
-		room_bg=GROUND.IMPASSABLE,
+		room_bg=GROUND.FUNGUSRED,
 		background_room="FA_BGDwarfFortress",
 		colour={r=1,g=0,b=0.6,a=1},
 		})
@@ -81,11 +84,13 @@ AddTask("FADwarfFortressTask3", {
 --			["SlurperWilds"] = math.random(1,3),
 --			["LushWilds"] = math.random(1,2),
 --			["FA_GoblinRoomEntry"] = 3,
-			["FA_DwarfFortressRoom1"] = 1,
+			["FA_DwarfFortressRoom1"] = 3,
+--			["FA_BGDwarfFortress"]=4
+
 --			["FA_5x5GoblinRoom_5"] = 1,
 			
 		},
-		room_bg=GROUND.IMPASSABLE,
+		room_bg=GROUND.FUNGUSRED,
 		background_room="FA_BGDwarfFortress",
 		colour={r=1,g=0,b=0.6,a=1},
 		})
@@ -98,11 +103,12 @@ AddTask("FADwarfFortressTask2", {
 --			["SlurperWilds"] = math.random(1,3),
 --			["LushWilds"] = math.random(1,2),
 --			["FA_GoblinRoomEntry"] = 3,
-			["FA_DwarfFortressTestRoom"] = 1,
+			["FA_DwarfFortressTestRoom"] = 3,
+--			["FA_BGDwarfFortress"]=4
 --			["FA_5x5GoblinRoom_5"] = 1,
 			
 		},
-		room_bg=GROUND.IMPASSABLE,
+		room_bg=GROUND.FUNGUSRED,
 		background_room="FA_BGDwarfFortress",
 		colour={r=1,g=0,b=0.6,a=1},
 		})
