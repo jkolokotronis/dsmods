@@ -153,9 +153,62 @@ local function AddScrollBoons(level)
 	BoonsLayouts["FArock_scrollchest_C"]=Layouts["FArock_scrollchest_C"]
 end
 
+local function OrcMineBoonsOverride(level)
+	--wonder if there's a cleaner way here.. 
+	local Boons=require("map/boons").Sandbox
+	local BoonsLayouts=require("map/boons").Layouts
+	Boons["Any"]={}
+	Boons["Rare"]={}
+	Boons["Any"]["FAOrcMineBasicset1"]=Layouts["FAOrcMineBasicset1"]
+	Boons["Any"]["FAOrcMineBasicset2"]=Layouts["FAOrcMineBasicset2"]
+	Boons["Any"]["FAOrcMineBasicset3"]=Layouts["FAOrcMineBasicset3"]
+	Boons["Any"]["FAOrcMineBasicset4"]=Layouts["FAOrcMineBasicset4"]
+	Boons["Any"]["FAOrcMineBasicset5"]=Layouts["FAOrcMineBasicset5"]
+	Boons["Any"]["FAOrcMineBasicset6"]=Layouts["FAOrcMineBasicset6"]
+	Boons["Any"]["FAOrcMineBasicset7"]=Layouts["FAOrcMineBasicset7"]
+	Boons["Any"]["FAOrcMineBasicset8"]=Layouts["FAOrcMineBasicset8"]
+	Boons["Any"]["FAOrcMineBasicset9"]=Layouts["FAOrcMineBasicset9"]
+	Boons["Any"]["FAOrcMineBasicset10"]=Layouts["FAOrcMineBasicset10"]
+	Boons["Any"]["FAOrcMineBasicset11"]=Layouts["FAOrcMineBasicset11"]
+	Boons["Any"]["FAOrcMineBasicset12"]=Layouts["FAOrcMineBasicset12"]
+	Boons["Any"]["FAOrcMineBasicset13"]=Layouts["FAOrcMineBasicset13"]
+	Boons["Any"]["FAOrcMineBasicset14"]=Layouts["FAOrcMineBasicset14"]
+--[[
+	Boons["Any"]["FAOrcMineBasicsetTrap1"]=Layouts["FAOrcMineBasicsetTrap1"]
+	Boons["Any"]["FAOrcMineBasicsetTrap2"]=Layouts["FAOrcMineBasicsetTrap2"]
+	Boons["Any"]["FAOrcMineBasicsetTrap3"]=Layouts["FAOrcMineBasicsetTrap3"]
+	Boons["Any"]["FAOrcMineBasicsetTrap4"]=Layouts["FAOrcMineBasicsetTrap4"]
+]]
+	BoonsLayouts={}
+	for k,area in pairs(Boons) do
+		for name, layout in pairs(area) do
+			BoonsLayouts[name] = layout
+		end
+	end
+
+--[[
+	local Traps=require("map/traps").Sandbox
+	local TrapsLayouts=require("map/traps").Layouts
+--	Traps={}
+	Traps["Any"]={}
+	Traps["Rare"]={}
+	Traps["Any"]["FAOrcMineBasicsetTrap1"]=Layouts["FAOrcMineBasicsetTrap1"]
+	Traps["Any"]["FAOrcMineBasicsetTrap2"]=Layouts["FAOrcMineBasicsetTrap2"]
+	Traps["Any"]["FAOrcMineBasicsetTrap3"]=Layouts["FAOrcMineBasicsetTrap3"]
+	Traps["Any"]["FAOrcMineBasicsetTrap4"]=Layouts["FAOrcMineBasicsetTrap4"]
+
+--	TrapsLayouts={}
+	for k,area in pairs(Traps) do
+		for name, layout in pairs(area) do
+			TrapsLayouts[name] = layout
+		end
+	end
+	]]
+end
 
 AddLevelPreInit("SURVIVAL_DEFAULT", AddScrollBoons)
 AddLevelPreInit("SURVIVAL_DEFAULT_PLUS", AddScrollBoons)
+AddLevelPreInit("ORC_MINES", OrcMineBoonsOverride)
 
 require "wgtest"
 -- Squeltch

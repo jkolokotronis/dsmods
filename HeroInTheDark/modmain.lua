@@ -1626,11 +1626,6 @@ AddSimPostInit(function(inst)
             end
             
 
-        GetPlayer():DoTaskInTime(0,function()
-            GLOBAL.FA_ElectricalFence.MakeGrid()
-            GLOBAL.FA_ElectricalFence.StartTask()
-
-        end)
 
     end
 end)

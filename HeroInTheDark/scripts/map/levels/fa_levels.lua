@@ -259,9 +259,9 @@ FA_LEVELDATA["ORC_MINES"]={
 			{"season_start", 	"summer"},
 			{"weather", 	"never"},
 			{"waves", 			"on"},
-			{"boons", 			"never"},
+			{"boons", 			"always"},
 			{"poi", 			"never"},
-			{"traps", 			"never"},
+			{"traps", 			"always"},
 			{"protected", 		"never"},
 			{"start_setpeice", 	"FAMineExit"},
 			{"start_node",		"FA_BGLava"},
@@ -278,12 +278,19 @@ FA_LEVELDATA["ORC_MINES"]={
 			["FAOrcTown1"] = { count=2, tasks={"ORCFEntrance", } },
 			["FADorfTownField"] = { count=2, tasks={"DFEntrance", } },
 			["FADorfTown1Graveyard"] = { count=3, tasks={"DFEntrance","FA_MineConflict" } },
+			["FAOrcMineBasicsetTrap1"] = { count=1, tasks={"DFEntrance","FA_MineConflict","FA_RuinsStart","FA_GreaterPlains" } },
+			["FAOrcMineBasicsetTrap2"] = { count=1, tasks={"DFEntrance","FA_MineConflict","FA_RuinsStart","FA_GreaterPlains" } },
+			["FAOrcMineBasicsetTrap3"] = { count=1, tasks={"DFEntrance","FA_MineConflict","FA_RuinsStart","FA_GreaterPlains" } },
+			["FAOrcMineBasicsetTrap4"] = { count=1, tasks={"DFEntrance","FA_MineConflict","FA_RuinsStart","FA_GreaterPlains" } },
+
+
 		},
 		required_prefabs = {
 		"fa_mine_exit",
 		},
 
 	}
+
 
 FA_LEVELDATA["DWARF_FORTRESS"]={
 		id="DWARF_FORTRESS",

@@ -2,8 +2,11 @@ local BLUETOTEM_RANGE=8
 local BLUETOTEM_DAMAGE=100
 local WALL_WIDTH=1.0
 
-FA_ElectricalFence = {}
-FA_ElectricalFence.nodetable={}
+--its probably best to turn this into a world component...
+FA_ElectricalFence = Class(function(self)
+    self.nodetable={}
+
+end)
 
 local makepuffanimation=function(v)
     local boom = CreateEntity()
@@ -56,14 +59,14 @@ local makebeameffect=function(node,v)
 
 end
 
-FA_ElectricalFence.AddNode=function(node)
-	FA_ElectricalFence.RegisterNode(node)
+function FA_ElectricalFence:AddNode(node)
+	self:RegisterNode(node)
 
 	local pos=Vector3(node.Transform:GetWorldPosition())
     local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, BLUETOTEM_RANGE,{'lightningfence'}, {"FX", "DECOR","INLIMBO"})
     for k,v in pairs(ents) do
         
-      if(v~=node and not node.fa_nodelist[v.GUID])then
+      if(v~=node and self.nodetable[v.GUID] and not node.fa_nodelist[v.GUID])then
         print("k",k,"v",v)
     	if(not v.components.fueled.consuming)then
             print("starting consumer",v)
@@ -85,15 +88,15 @@ FA_ElectricalFence.AddNode=function(node)
 end
 
 --This needs to be synchronized() or it will (IT DOES) crash the rest
-FA_ElectricalFence.RemoveNode=function(node)
-    while(FA_ElectricalFence.lock)do
+function FA_ElectricalFence:RemoveNode(node)
+    while(self.lock)do
         Sleep(0.1)
     end
 
-    FA_ElectricalFence.lock=true
+    self.lock=true
 
-	if(FA_ElectricalFence.nodetable[node.GUID])then
-		FA_ElectricalFence.nodetable[node.GUID]=nil
+	if(self.nodetable[node.GUID])then
+		self.nodetable[node.GUID]=nil
 	end
     if(node.fa_puffanim)then
                 node.fa_puffanim:Remove()
@@ -124,34 +127,40 @@ FA_ElectricalFence.RemoveNode=function(node)
 		end
 	end 
 
-    FA_ElectricalFence.lock=false
+    self.lock=false
 end
 
-FA_ElectricalFence.RegisterNode=function(node)
-	FA_ElectricalFence.nodetable[node.GUID]=node
+function FA_ElectricalFence:RegisterNode(node)
+	self.nodetable[node.GUID]=node
 end
 
-FA_ElectricalFence.MakeGrid=function()
-	for k,v in pairs(FA_ElectricalFence.nodetable)do
-		FA_ElectricalFence.AddNode(v)
+function FA_ElectricalFence:MakeGrid()
+	for k,v in pairs(self.nodetable)do
+		self:AddNode(v)
 	end 
 end
 
-FA_ElectricalFence.StartTask=function()
+function FA_ElectricalFence:Config(inst,caster,dotags, donttags)
+    self.inst=inst
+    self.caster=caster
+    self.dotags=dotags or {}
+    self.donttags=donttags or {}
+end
+
+function FA_ElectricalFence:StartTask()
 --xpcall(everything) catch(donothing) because it crashes if and only if it's in illegal state due to language limitations?
 -- this will crash because no volatile
    
-    FA_ElectricalFence.caster=GetPlayer() --get this out of here
-    if(FA_ElectricalFence.task)then
-        FA_ElectricalFence.task:Cancel()
+    if(self.task)then
+        self.task:Cancel()
     end
-    FA_ElectricalFence.task=GetPlayer():DoPeriodicTask(1, function()
+    self.task=self.inst:DoPeriodicTask(1, function()
 --note this WILL trigger double 
-        while(FA_ElectricalFence.lock)do
+        while(self.lock)do
             Sleep(0.1)
         end
-        FA_ElectricalFence.lock=true
-        for k,node in pairs(FA_ElectricalFence.nodetable) do
+        self.lock=true
+        for k,node in pairs(self.nodetable) do
             
 
             local pos=Vector3(node.Transform:GetWorldPosition())
@@ -163,21 +172,38 @@ FA_ElectricalFence.StartTask=function()
                 local alpha=math.atan(WALL_WIDTH/dist)
                 local r=math.tan(alpha)*WALL_WIDTH+dist
                 local angle=node:GetAngleToPoint(v:GetPosition())
-                local ents = TheSim:FindEntities(middle.x, middle.y, middle.z, r,nil, {"FX", "DECOR","INLIMBO","pet","companion","player"})
+                local ents = TheSim:FindEntities(middle.x, middle.y, middle.z, r,self.dotags,self.donttags)
                 for i,caught in pairs(ents) do
                     if(caught and caught.components.combat and not (caught.components.health and caught.components.health:IsDead()))then
                         local caughtangle=node:GetAngleToPoint(caught:GetPosition())-angle
                         local dh=math.sqrt(node:GetDistanceSqToInst(caught))*math.sin(caughtangle)
                         --phew
                         if(dh<=WALL_WIDTH)then
-                            caught.components.combat:GetAttacked(FA_ElectricalFence.caster,BLUETOTEM_DAMAGE/2, nil,nil,FA_DAMAGETYPE.ELECTRIC)
+                            caught.components.combat:GetAttacked(self.caster,BLUETOTEM_DAMAGE/2, nil,nil,FA_DAMAGETYPE.ELECTRIC)
                         end
                     end
                 end
             end
         end
-        FA_ElectricalFence.lock=false
+        self.lock=false
     end)
 end
 
-return FA_ElectricalFence
+local PlayerFence=FA_ElectricalFence()
+local MobFence=FA_ElectricalFence()
+
+FA_ModUtil.AddPrefabPostInit("world",function(inst)
+    inst:DoTaskInTime(0,function()
+        --need to delay activate for player, but i could just fire it up for the rest without delays? Meh
+        inst:DoTaskInTime(0,function()
+            PlayerFence:Config(inst,GetPlayer(),nil, {"FX", "DECOR","INLIMBO","pet","companion","player"})
+            PlayerFence:MakeGrid()
+            PlayerFence:StartTask()
+            MobFence:Config(inst,nil,nil,nil)
+            MobFence:MakeGrid()
+            MobFence:StartTask()
+        end)
+    end)
+end)
+
+return {PlayerFence=PlayerFence,MobFence=MobFence}

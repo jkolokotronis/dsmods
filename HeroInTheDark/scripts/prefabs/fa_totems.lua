@@ -29,6 +29,11 @@ local prefabskos =
     "fa_firebombfx",
     "fireballprojectilekos"
 }
+
+local fences=require "fa_electricalfence"
+local PlayerFence=fences.PlayerFence
+local MobFence=fences.MobFence
+
 local REDTOTEM_RANGE=10
 local REDTOTEM_USES=20
 local REDTOTEM_DAMAGE=100
@@ -419,7 +424,6 @@ end
 local function bluefn(Sim)
 	local inst=fn(Sim)
 	inst:AddTag("lightningfence") 
-    inst:AddTag("companion")
 --    inst:AddTag("pet")
 
     inst.AnimState:SetBank("fa_bluetotem")
@@ -437,6 +441,11 @@ local function bluefn(Sim)
     light:Enable(true)
     light:SetColour(180/255, 195/255, 255/255)
 
+--the only purpose is to allow combat:getattacked
+    inst.components.combat:SetRange(0)
+    inst.components.combat:SetDefaultDamage(0)
+    inst.components.combat:SetAttackPeriod(9999)
+
     inst:AddComponent("machine")
     inst.components.machine.ison = true
     local function pickup(inst)
@@ -453,24 +462,39 @@ local function bluefn(Sim)
     inst.components.fueled:SetDepletedFn(outoffuel)
 --    inst.components.fueled.ontakefuelfn = refuel
     inst.components.fueled.accepting = false
-	inst.OnRemoveEntity = function(inst)
-		FA_ElectricalFence.RemoveNode(inst)
-	end
 
 --    inst.OnLoad=onblueloadfn
 --    inst.OnSave=onbluesavefn
-    FA_ElectricalFence.RegisterNode(inst)
 	inst.fa_nodelist={}
 	inst.fa_effectlist={}
 
     return inst
 end
 
+local function bluefn_player()
+    local inst=bluefn()
+    inst:AddTag("companion")
+    PlayerFence:RegisterNode(inst)
+    inst.OnRemoveEntity = function(inst)
+        PlayerFence:RemoveNode(inst)
+    end
+    return inst
+end
+
+local function bluefn_kos(Sim)
+    local inst=bluefn(Sim)
+    MobFence:RegisterNode(inst)
+    inst.OnRemoveEntity = function(inst)
+        MobFence:RemoveNode(inst)
+    end
+    return inst
+end
+
 return Prefab( "common/fa_redtotem", redfn, red_assets, prefabs),
 Prefab( "common/fa_redtotem_kos", redfnkos, red_assets, prefabskos)
 ,Prefab("common/fa_redtotem_item", redtotem_itemfn, red_assets, prefabs),
-MakePlacer("common/fa_redtotem_placer", "fa_redtotem", "fa_redtotem", "idle")
-,
-Prefab( "common/fa_bluetotem", bluefn, blue_assets, prefabs),
+MakePlacer("common/fa_redtotem_placer", "fa_redtotem", "fa_redtotem", "idle"),
+Prefab( "common/fa_bluetotem", bluefn_player, blue_assets, prefabs),
+Prefab( "common/fa_bluetotem_kos", bluefn_kos, blue_assets, prefabs),
 Prefab("common/fa_bluetotem_item", bluetotem_itemfn, blue_assets, prefabs),
 MakePlacer("common/fa_bluetotem_placer", "fa_bluetotem", "fa_bluetotem", "idle")
