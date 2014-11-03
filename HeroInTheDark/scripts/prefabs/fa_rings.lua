@@ -8,6 +8,7 @@ local assets=
 local FROZEN_DAPPERNESS=-1
 local BURNING_DAPPERNESS=-1
 local LIGHT_DAPPERNESS=1
+local DEMON_DAPPERNESS=-5
 local RING_FUELLEVEL=200
 local SPEED_MULT=1.5
 
@@ -267,9 +268,148 @@ local function fnpoop()
     return inst
 end 
 
+
+local function demonattack(attacker,data)
+    local target=data.target
+    target.components.combat:GetAttacked(attacker, 20, nil,nil,FA_DAMAGETYPE.FIRE)
+    if(target.components.health:IsInvincible() == false and math.random()<=0.2)then
+        if(target.components.burnable and not target.components.fueled)then
+            target.components.burnable:Ignite()
+        end
+    end
+end
+
+local function OnBlocked(owner,data) 
+    if(data and data.attacker and  data.attacker.components.burnable and not data.attacker.components.fueled )then
+        if(math.random()<=0.2)then
+            print("reflecting to",data.attacker)
+            data.attacker.components.combat:GetAttacked(owner, 20, nil,nil,FA_DAMAGETYPE.FIRE)
+            data.attacker.components.burnable:Ignite()
+        end
+    end
+end
+
+local function onequip(inst, owner) 
+    owner.AnimState:OverrideSymbol("swap_body", "armor_fire", "swap_body")
+end
+
+local function startdemon(inst, owner) 
+    if(owner:HasTag("player"))then
+        inst.origprefab=owner.prefab
+        owner.AnimState:SetBuild("wortox")
+        owner.fa_hasmonster=owner:HasTag("monster")
+        owner:AddTag("monster")
+        owner.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=owner.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]+1
+        owner.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=owner.components.health.fa_resistances[FA_DAMAGETYPE.COLD]-1
+        --need to return this to orig - if at some point in between it gets changed, tough luck, one would need a stack not get/set 
+        owner.components.eater.fa_foodprefback=owner.components.eater.foodprefs
+        owner.components.eater.fa_monsterimmuneback=owner.components.eater.monsterimmune
+        owner.components.eater.fa_strongstomachback=owner.components.eater.strongstomach
+        owner.components.eater:SetCarnivore(true)
+        owner.components.eater.monsterimmune = true
+        owner.components.eater.strongstomach = true
+        owner.components.combat.fa_defaultdamageback=owner.components.combat.defaultdamage
+        owner.components.combat.defaultdamage=40
+        owner.components.locomotor.runspeed=owner.components.locomotor.runspeed+0.1*TUNING.WILSON_RUN_SPEED
+        owner:ListenForEvent("onhitother",demonattack) 
+        inst:ListenForEvent("attacked",OnBlocked,owner)
+        inst:ListenForEvent("blocked",OnBlocked, owner)
+    elseif(owner.prefab=="fa_cursedwortox")then
+
+    else
+        local copy=SpawnPrefab("fa_ring_demon")
+        copy.origprefab=owner.prefab
+        local wortox=SpawnPrefab("fa_cursedwortox")
+        wortox.components.inventory:Equip(copy)
+        wortox.Transform:SetPosition(owner.Transform:GetWorldPosition())
+        inst:Remove()
+        owner:Remove()
+    end
+end
+
+local function stopdemon( inst,owner )
+    if(owner:HasTag("player"))then
+        if(not owner.fa_hasmonster)then
+            owner:RemoveTag("monster")
+        end
+        owner.AnimState:SetBuild(inst.origprefab) --this will work for most cases, where it doesn't, well... I'll have to supply override somehow 
+        owner.components.eater.foodprefs=owner.components.eater.fa_foodprefback
+        owner.components.eater.monsterimmune=owner.components.eater.fa_monsterimmuneback
+        owner.components.eater.strongstomach=owner.components.eater.fa_strongstomachback
+        owner.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=owner.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]-1
+        owner.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=owner.components.health.fa_resistances[FA_DAMAGETYPE.COLD]+1
+        owner.components.combat.defaultdamage=owner.components.combat.fa_defaultdamageback
+        owner.components.locomotor.runspeed=owner.components.locomotor.runspeed-0.1*TUNING.WILSON_RUN_SPEED
+        owner:RemoveEventCallback("onhitother", demonattack, owner)
+        owner:RemoveEventCallback("attacked", OnBlocked, owner)
+        owner:RemoveEventCallback("blocked", OnBlocked, owner)
+    else
+
+    end
+end
+
+local function demoncursefinish(inst, owner) 
+    if(owner:HasTag("player"))then
+        local eslot = inst.components.equippable.equipslot
+        --need to force through it because the cursed state will stay, if klei changes params at some point ill be in trouble...
+        owner.components.inventory:Unequip(inst,true)
+    else
+        owner.components.inventory:Unequip(inst,true)
+        owner.components.inventory:DropItem(inst, true)        
+        local wortox=SpawnPrefab(inst.origprefab)
+        wortox.Transform:SetPosition(owner.Transform:GetWorldPosition())
+        owner:Remove()
+    end
+end
+
+
+local function fndemon()
+    local inst=fn("red","gold")
+
+    local light = inst.entity:AddLight()
+    light:SetFalloff(0.8)
+    light:SetIntensity(.8)
+    light:SetRadius(1)
+    light:Enable(true)
+    light:SetColour(160/255, 30/255, 30/255)
+
+
+    inst.components.equippable:SetOnEquip( startdemon )
+        inst.components.equippable:SetOnUnequip( stopdemon )
+
+        inst:AddComponent("fueled")
+        inst.components.fueled.fueltype = "CURSE"
+        inst.components.fueled:InitializeFuelLevel(RING_FUELLEVEL)
+        inst.components.fueled:SetDepletedFn(demoncursefinish)
+
+
+    if(FA_DLCACCESS)then
+        inst.components.equippable.dapperness =DEMON_DAPPERNESS
+    else
+        inst:AddComponent("dapperness")
+        inst.components.dapperness.dapperness =DEMON_DAPPERNESS    
+    end
+
+        inst:AddComponent("fueled")
+        inst.components.fueled.fueltype = "MAGIC"
+        inst.components.fueled:InitializeFuelLevel(RING_FUELLEVEL)
+        inst.components.fueled:SetDepletedFn(onfinished)
+
+    inst.OnLoad = function(inst, data)
+        inst.origprefab=data.origprefab
+    end
+    inst.OnSave = function(inst, data)
+        data.origprefab=inst.origprefab
+    end
+
+
+    return inst
+end
+
 return  Prefab( "common/inventory/fa_ring_green_gold", fnfoli, assets),
 Prefab( "common/inventory/fa_ring_frozen", fnfrozen, assets),
 Prefab( "common/inventory/fa_ring_burning", fnburning, assets),
 Prefab( "common/inventory/fa_ring_speed", fnspeed, assets),
 Prefab( "common/inventory/fa_ring_poop", fnpoop, assets),
-Prefab( "common/inventory/fa_ring_light", fnlight, assets)
+Prefab( "common/inventory/fa_ring_light", fnlight, assets),
+Prefab( "common/inventory/fa_ring_demon", fndemon, assets)

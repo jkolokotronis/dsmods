@@ -134,3 +134,14 @@ ACTIONS.MINE.fn = function(act)
 
     return ret
 end
+
+local pickup_old=ACTIONS.PICKUP.fn
+ACTIONS.PICKUP.fn = function(act)
+    if act.doer.components.inventory and act.target and (act.target:HasTag("cursed") or act.target:HasTag("unidentified")   ) and act.target.components.inventoryitem and not act.target:IsInLimbo() then    
+        act.doer:PushEvent("onpickup", {item = act.target})
+        act.doer.components.inventory:GiveItem(act.target, nil, Vector3(TheSim:GetScreenPos(act.target.Transform:GetWorldPosition())))
+        return true 
+    else
+        return pickup_old(act)
+    end
+end

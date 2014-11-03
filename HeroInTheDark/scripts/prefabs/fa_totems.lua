@@ -140,7 +140,7 @@ local function ondeployblue(inst, pt, deployer)
             turret.components.fueled:InitializeFuelLevel(inst.components.fueled.currentfuel)
         end
         
-        FA_ElectricalFence.AddNode(turret)
+--        PlayerFence:AddNode(turret)
         
         inst:Remove()
     end         
@@ -446,15 +446,6 @@ local function bluefn(Sim)
     inst.components.combat:SetDefaultDamage(0)
     inst.components.combat:SetAttackPeriod(9999)
 
-    inst:AddComponent("machine")
-    inst.components.machine.ison = true
-    local function pickup(inst)
-        local item=SpawnPrefab("fa_bluetotem_item")
-        item.components.fueled:InitializeFuelLevel(inst.components.fueled.currentfuel)
-        inst:Remove()
-        GetPlayer().components.inventory:GiveItem(item)
-    end
-    inst.components.machine.turnofffn  = pickup
 
     inst:AddComponent("fueled")
     inst.components.fueled.fueltype = "BURNABLE"
@@ -474,16 +465,40 @@ end
 local function bluefn_player()
     local inst=bluefn()
     inst:AddTag("companion")
-    PlayerFence:RegisterNode(inst)
+    
+    inst:AddComponent("machine")
+    inst.components.machine.ison = true
+    local function pickup(inst)
+        local item=SpawnPrefab("fa_bluetotem_item")
+        item.components.fueled:InitializeFuelLevel(inst.components.fueled.currentfuel)
+        inst:Remove()
+        GetPlayer().components.inventory:GiveItem(item)
+    end
+    inst.components.machine.turnofffn  = pickup
+    --delay enough for placers and crap to finish, otherwise it will fail to connect
+    if(PlayerFence.initialized)then
+        inst:DoTaskInTime(0.1,function(inst)
+            PlayerFence:AddNode(inst)
+        end)
+    else
+        PlayerFence:AddNode(inst)
+    end
     inst.OnRemoveEntity = function(inst)
         PlayerFence:RemoveNode(inst)
     end
+
     return inst
 end
 
 local function bluefn_kos(Sim)
     local inst=bluefn(Sim)
-    MobFence:RegisterNode(inst)
+    if(MobFence.initialized)then
+        inst:DoTaskInTime(0.1,function(inst)
+            MobFence:AddNode(inst)
+        end)
+    else
+        MobFence:AddNode(inst)
+    end
     inst.OnRemoveEntity = function(inst)
         MobFence:RemoveNode(inst)
     end

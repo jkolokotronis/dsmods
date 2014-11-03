@@ -51,6 +51,9 @@ local RAGE_SANITY_DELTA=-5
 local RAGE_HUNGER_DELTA=-10
 local RAGE_PERIOD=2
 
+local RAGE_RESIST=0.25
+local RAGE_RESIST20=0.5
+
 local HEALTH_PER_LEVEL=5
 local HUNGER_PER_LEVEL=1
 
@@ -160,23 +163,34 @@ local function rageProc(inst)
 
 end
 
+local function doresistdelta(inst,delta)
+
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]+delta
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]+delta
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]+delta
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]+delta
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]+delta
+end
+
 local function rageStart(inst)
+    local resist=RAGE_RESIST
 	if(inst.components.xplevel.level<20)then
         inst.components.locomotor.runspeed=RAGE_MS_DELTA+inst.components.locomotor.runspeed
-       inst.components.temperature.hurtrate=BASE_FREEZING/1.5
-       inst.components.health.fire_damage_scale = RAGE_FIREDMG
        inst.components.combat.min_attack_period=def_attack_period/1.3       
     else
+        resist=RAGE_RESIST20
 	   inst.components.locomotor.runspeed=RAGE_MS_DELTA+inst.components.locomotor.runspeed
-	   inst.components.temperature.hurtrate=BASE_FREEZING/2.0
-	   inst.components.health.fire_damage_scale = RAGE_FIREDMG2
 	   inst.components.combat.min_attack_period=def_attack_period/1.5	    
     end
+    inst.fa_rage_resistboost=resist
+    doresistdelta(inst,resist)
         inst.task = inst:DoPeriodicTask(RAGE_PERIOD, function() rageProc(inst) end)
         inst.AnimState:SetBuild("barbarian_rage")
 end
 
 local function rageEnd(inst)
+    doresistdelta(inst,-inst.fa_rage_resistboost)
+    inst.fa_rage_resistboost=nil
 	inst.components.locomotor.runspeed=inst.components.locomotor.runspeed-RAGE_MS_DELTA
 	inst.components.health.fire_damage_scale=BASE_FIREDMG
 	inst.components.temperature.hurtrate=BASE_FREEZING
@@ -197,9 +211,13 @@ local fn = function(inst)
 	
 	
 	def_attack_period=inst.components.combat.min_attack_period
-	BASE_FIREDMG=inst.components.health.fire_damage_scale
-	BASE_FREEZING=inst.components.temperature.hurtrate
-	
+--	BASE_FIREDMG=inst.components.health.fire_damage_scale
+--	BASE_FREEZING=inst.components.temperature.hurtrate
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=0
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0
 	
 	inst.components.combat.damagemultiplier=DAMAGE_MULT
     inst.components.combat.fa_basedamagemultiplier=DAMAGE_MULT

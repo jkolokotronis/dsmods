@@ -61,7 +61,7 @@ end
 
 function FA_ElectricalFence:AddNode(node)
 	self:RegisterNode(node)
-
+    if(not self.initialized) then return end
 	local pos=Vector3(node.Transform:GetWorldPosition())
     local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, BLUETOTEM_RANGE,{'lightningfence'}, {"FX", "DECOR","INLIMBO"})
     for k,v in pairs(ents) do
@@ -196,10 +196,12 @@ FA_ModUtil.AddPrefabPostInit("world",function(inst)
     inst:DoTaskInTime(0,function()
         --need to delay activate for player, but i could just fire it up for the rest without delays? Meh
         inst:DoTaskInTime(0,function()
-            PlayerFence:Config(inst,GetPlayer(),nil, {"FX", "DECOR","INLIMBO","pet","companion","player"})
+            PlayerFence:Config(inst,GetPlayer(),nil, {"FX", "DECOR","INLIMBO","pet","companion","player","lightningfence"})
+            PlayerFence.initialized=true
             PlayerFence:MakeGrid()
             PlayerFence:StartTask()
-            MobFence:Config(inst,nil,nil,nil)
+            MobFence:Config(inst,nil,nil,{"lightningfence"})
+            MobFence.initialized=true
             MobFence:MakeGrid()
             MobFence:StartTask()
         end)

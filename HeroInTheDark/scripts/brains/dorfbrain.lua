@@ -34,7 +34,8 @@ function DorfBrain:OnStart()
         WhileNode( function() return self.inst.fa_stun~=nil end, "Stun", StandStill(self.inst)),
         WhileNode( function() return self.inst.fa_root~=nil end, "RootAttack", StandAndAttack(self.inst) ),
         WhileNode( function() return self.inst.fa_fear~=nil end, "Fear", Panic(self.inst)),
-        WhileNode( function() return self.inst.components.health.takingfiredamage end, "OnFire", Panic(self.inst)),
+        WhileNode( function() return self.inst.components.health.takingfiredamage and not (self.inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE] and self.inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]>=1) end,
+         "OnFire", Panic(self.inst)),
           ChaseAndAttack(self.inst, MAX_CHASE_TIME,MAX_CHASE_DIST),
         Wander(self.inst, function() 
             if(self.inst.components.homeseeker and self.inst.components.homeseeker.home)then
