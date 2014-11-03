@@ -1,7 +1,5 @@
 local assets=
 {
-
-
         Asset( "ANIM", "anim/player_basic.zip" ),
         Asset( "ANIM", "anim/player_idles_shiver.zip" ),
         Asset( "ANIM", "anim/player_actions.zip" ),
@@ -25,12 +23,13 @@ local assets=
         Asset( "ANIM", "anim/wilson_fx.zip" ),
         Asset( "ANIM", "anim/player_one_man_band.zip" ),
 
-    Asset("SOUND", "sound/hound.fsb"),
-    Asset("SOUND", "sound/ghost.fsb"),
     Asset("ANIM", "anim/wilton.zip"),
+}
+local drybones_assets={
     Asset("ANIM", "anim/drybones.zip"),
+}
+local skull_assets={
     Asset("ANIM", "anim/fa_skull.zip"),
-    Asset("ANIM", "anim/swap_nightmaresword.zip")
 }
 
 local PET_HEALTH=300
@@ -264,6 +263,6 @@ end
 
 
 return Prefab( "common/skeletonspawn", spawn, assets),
-     Prefab( "common/fa_drybones", drybones, assets),
-     Prefab("common/fa_dartdrybones", firedartspawn, assets),
-     Prefab("common/fa_skull", skull, assets)
+     Prefab( "common/fa_drybones", drybones, drybones_assets),
+     Prefab("common/fa_dartdrybones", firedartspawn, drybones_assets),
+     Prefab("common/fa_skull", skull, skull_assets)

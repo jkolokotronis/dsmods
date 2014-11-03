@@ -46,6 +46,7 @@ local function common(origprefab,locklevel)
     		inst.components.container.canbeopened=true
     	else
     		inst.components.container.canbeopened=false
+    		inst:RemoveComponent("workable")
     	end
     end)
 
@@ -68,7 +69,15 @@ local function fa_minotaurchest()
 	return common("minotaurchest",4)
 end
 
+local function fa_mine_skullchest()
+	local inst = Prefabs["skullchest"].fn()
+	inst:RemoveComponent("workable")
+	inst:RemoveComponent("burnable")
+	return inst
+end
+
 return Prefab( "common/fa_treasurechest", fa_treasurechest, assets, prefabs),
 		Prefab( "common/fa_pandoraschest", fa_pandoraschest, assets, prefabs),
 		Prefab( "common/fa_skullchest", fa_skullchest, assets, prefabs),
-		Prefab("common/fa_minotaurchest", fa_minotaurchest, assets, prefabs)
+		Prefab("common/fa_minotaurchest", fa_minotaurchest, assets, prefabs),
+		Prefab("common/fa_mine_skullchest",fa_mine_skullchest,assets,prefabs)

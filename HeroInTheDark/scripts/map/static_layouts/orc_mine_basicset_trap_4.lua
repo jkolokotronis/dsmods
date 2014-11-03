@@ -66,7 +66,7 @@ return {
       objects = {
         {
           name = "",
-          type = "pandoraschest",
+          type = "fa_mine_skullchest",
           shape = "rectangle",
           x = 160,
           y = 167,

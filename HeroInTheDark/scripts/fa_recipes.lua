@@ -35,6 +35,15 @@ if(not FA_ModCompat.UnA)then
 	end
 end
 
+
+TECH.FA_FOODSTAND={ FA_FOODSTAND=2}
+for k,v in pairs(TUNING.PROTOTYPER_TREES) do
+    v["FA_FOODSTAND"]=0
+end 
+TUNING.PROTOTYPER_TREES.FA_FOODSTAND=deepcopy(TECH.NONE)
+TUNING.PROTOTYPER_TREES.FA_FOODSTAND["FA_FOODSTAND"]=2
+TECH.NONE.FA_FOODSTAND=0
+
 local r=Recipe("fa_tinyscrollcase", {Ingredient("fa_goblinskin", 4,"images/inventoryimages/fa_goblinskin.xml"),Ingredient("pigskin", 4),Ingredient("twigs", 10)}, RECIPETABS.SURVIVAL,  TECH.MAGIC_TWO)    
 r.image="fa_scroll_case.tex"
 r.atlas = "images/inventoryimages/fa_scroll_case.xml"

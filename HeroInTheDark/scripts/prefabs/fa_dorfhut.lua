@@ -153,6 +153,11 @@ local function fnfoodstand1()
         GetPlayer().components.builder.accessible_tech_trees["FA_FOODSTAND"] = 0
         GetPlayer():PushEvent("techtreechange", {level = GetPlayer().components.builder.accessible_tech_trees})
     end
+    
+    inst.OnRemoveEntity = function(inst)
+        GetPlayer().components.builder.accessible_tech_trees["FA_FOODSTAND"] = 0
+        GetPlayer():PushEvent("techtreechange", {level = GetPlayer().components.builder.accessible_tech_trees})
+    end
     inst.components.prototyper.trees = TUNING.PROTOTYPER_TREES.FA_FOODSTAND
     inst.components.prototyper.onactivate = function() end
     return inst
