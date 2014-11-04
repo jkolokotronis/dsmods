@@ -22,7 +22,7 @@
     <folder id="2" name="part">
         <file id="0" name="part/part-0.png" width="60" height="52" pivot_x="0.499575" pivot_y="0.50001"/>
     </folder>
-    <entity id="0" name="sand">
+    <entity id="0" name="fa_sand">
         <animation id="0" name="disappear" length="1667">
             <mainline>
                 <key id="0">

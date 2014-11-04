@@ -278,10 +278,11 @@ FA_LEVELDATA["ORC_MINES"]={
 			["FAOrcTown1"] = { count=2, tasks={"ORCFEntrance", } },
 			["FADorfTownField"] = { count=2, tasks={"DFEntrance", } },
 			["FADorfTown1Graveyard"] = { count=3, tasks={"DFEntrance","FA_MineConflict" } },
-			["FAOrcMineBasicsetTrap1"] = { count=1, tasks={"DFEntrance","FA_MineConflict","FA_RuinsStart","FA_GreaterPlains" } },
-			["FAOrcMineBasicsetTrap2"] = { count=1, tasks={"DFEntrance","FA_MineConflict","FA_RuinsStart","FA_GreaterPlains" } },
-			["FAOrcMineBasicsetTrap3"] = { count=1, tasks={"DFEntrance","FA_MineConflict","FA_RuinsStart","FA_GreaterPlains" } },
-			["FAOrcMineBasicsetTrap4"] = { count=1, tasks={"DFEntrance","FA_MineConflict","FA_RuinsStart","FA_GreaterPlains" } },
+			["FAOrcMineBasicsetTrap1"] = { count=1, tasks={"DFEntrance","FA_MineConflict","FA_RuinsStart","FA_GreaterPlains","ORCFEntrance" } },
+			["FAOrcMineBasicsetTrap2"] = { count=1, tasks={"DFEntrance","FA_MineConflict","FA_RuinsStart","FA_GreaterPlains","ORCFEntrance" } },
+			["FAOrcMineBasicsetTrap3"] = { count=1, tasks={"DFEntrance","FA_MineConflict","FA_RuinsStart","FA_GreaterPlains","ORCFEntrance" } },
+			["FAOrcMineBasicsetTrap4"] = { count=1, tasks={"DFEntrance","FA_MineConflict","FA_RuinsStart","FA_GreaterPlains","ORCFEntrance" } },
+			["FAOrcMineWortox"] = { count=1, tasks={"DFEntrance","FA_MineConflict","FA_RuinsStart","FA_GreaterPlains" } },
 
 
 		},

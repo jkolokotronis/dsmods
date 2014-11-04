@@ -102,5 +102,6 @@ return Prefab( "common/objects/goblinsign_1", fn1, assets),
 Prefab( "common/objects/goblinsign_2", fn2, assets),
 Prefab( "common/objects/goblinsign_3", fn3, assets),
 Prefab( "common/objects/goblinsign_4", fn4, assets),
-Prefab( "common/objects/goblinsign_5", fn5, assets)
+Prefab( "common/objects/goblinsign_5", fn5, assets),
+Prefab( "common/objects/fa_wortox_sign", fn5, assets)
 --		MakePlacer( "common/homesign_placer", "sign_home", "sign_home", "idle" ) 

@@ -5,11 +5,20 @@ local assets=
     Asset("ATLAS", "images/inventoryimages/fa_rings.xml"),
     Asset("IMAGE", "images/inventoryimages/fa_rings.tex"),
 }
+
+local demonassets={
+    Asset("ANIM", "anim/fa_rings.zip"),
+    Asset("ANIM", "anim/wortox.zip"),
+    
+    Asset("ATLAS", "images/inventoryimages/fa_rings.xml"),
+    Asset("IMAGE", "images/inventoryimages/fa_rings.tex"),
+}
 local FROZEN_DAPPERNESS=-1
 local BURNING_DAPPERNESS=-1
 local LIGHT_DAPPERNESS=1
-local DEMON_DAPPERNESS=-5
+local DEMON_DAPPERNESS=-5/60
 local RING_FUELLEVEL=200
+local DEMON_FUELLEVEL=30
 local SPEED_MULT=1.5
 
 local function onfinished(inst)
@@ -293,8 +302,13 @@ local function onequip(inst, owner)
     owner.AnimState:OverrideSymbol("swap_body", "armor_fire", "swap_body")
 end
 
+
 local function startdemon(inst, owner) 
     if(owner:HasTag("player"))then
+
+    if inst.components.fueled then
+        inst.components.fueled:StartConsuming()        
+    end
         inst.origprefab=owner.prefab
         owner.AnimState:SetBuild("wortox")
         owner.fa_hasmonster=owner:HasTag("monster")
@@ -311,11 +325,25 @@ local function startdemon(inst, owner)
         owner.components.combat.fa_defaultdamageback=owner.components.combat.defaultdamage
         owner.components.combat.defaultdamage=40
         owner.components.locomotor.runspeed=owner.components.locomotor.runspeed+0.1*TUNING.WILSON_RUN_SPEED
-        owner:ListenForEvent("onhitother",demonattack) 
-        inst:ListenForEvent("attacked",OnBlocked,owner)
-        inst:ListenForEvent("blocked",OnBlocked, owner)
+        owner.components.health.maxhealth=owner.components.health.maxhealth+100
+        owner.components.health:DoDelta(100)
+        owner:ListenForEvent("onattackother",demonattack,owner) 
+        owner:ListenForEvent("attacked",OnBlocked,owner)
+        owner:ListenForEvent("blocked",OnBlocked,owner)
+        local x,y,z=owner.Transform:GetScale()
+        owner.Transform:SetScale(x*1.25,y*1.25,z*1.25)
+
+        local  eqhead=owner.components.inventory:GetEquippedItem(EQUIPSLOTS.HEAD)
+        if(eqhead)then
+            owner.components.inventory:Unequip(EQUIPSLOTS.HEAD,nil,true)   
+            owner.components.inventory:GiveItem(eqhead)         
+        end
+
     elseif(owner.prefab=="fa_cursedwortox")then
 
+    if inst.components.fueled then
+        inst.components.fueled:StartConsuming()        
+    end
     else
         local copy=SpawnPrefab("fa_ring_demon")
         copy.origprefab=owner.prefab
@@ -328,7 +356,11 @@ local function startdemon(inst, owner)
 end
 
 local function stopdemon( inst,owner )
-    if(owner:HasTag("player"))then
+
+    if inst.components.fueled then
+        inst.components.fueled:StopConsuming()        
+    end
+    if(owner and owner:HasTag("player"))then
         if(not owner.fa_hasmonster)then
             owner:RemoveTag("monster")
         end
@@ -343,18 +375,27 @@ local function stopdemon( inst,owner )
         owner:RemoveEventCallback("onhitother", demonattack, owner)
         owner:RemoveEventCallback("attacked", OnBlocked, owner)
         owner:RemoveEventCallback("blocked", OnBlocked, owner)
+        owner.components.health.maxhealth=owner.components.health.maxhealth-100
+        owner.components.health:DoDelta(0)
+        local x,y,z=owner.Transform:GetScale()
+        owner.Transform:SetScale(x/1.25,y/1.25,z/1.25)
+        inst.components.fueled:InitializeFuelLevel(DEMON_FUELLEVEL)
     else
 
     end
 end
 
-local function demoncursefinish(inst, owner) 
+local function demoncursefinish(inst)
+    local owner=inst.components.inventoryitem.owner 
+    if(not owner or not owner:IsValid())then  return end
     if(owner:HasTag("player"))then
         local eslot = inst.components.equippable.equipslot
         --need to force through it because the cursed state will stay, if klei changes params at some point ill be in trouble...
-        owner.components.inventory:Unequip(inst,true)
+        owner.components.inventory:Unequip(EQUIPSLOTS.RING,nil,true)
+        owner.components.inventory:GiveItem(inst)         
     else
-        owner.components.inventory:Unequip(inst,true)
+        owner.components.inventory:Unequip(EQUIPSLOTS.RING,nil,true)
+        inst.components.fueled:InitializeFuelLevel(RING_FUELLEVEL)
         owner.components.inventory:DropItem(inst, true)        
         local wortox=SpawnPrefab(inst.origprefab)
         wortox.Transform:SetPosition(owner.Transform:GetWorldPosition())
@@ -365,7 +406,7 @@ end
 
 local function fndemon()
     local inst=fn("red","gold")
-
+    inst:AddTag("cursed")
     local light = inst.entity:AddLight()
     light:SetFalloff(0.8)
     light:SetIntensity(.8)
@@ -379,7 +420,7 @@ local function fndemon()
 
         inst:AddComponent("fueled")
         inst.components.fueled.fueltype = "CURSE"
-        inst.components.fueled:InitializeFuelLevel(RING_FUELLEVEL)
+        inst.components.fueled:InitializeFuelLevel(DEMON_FUELLEVEL)
         inst.components.fueled:SetDepletedFn(demoncursefinish)
 
 
@@ -390,10 +431,6 @@ local function fndemon()
         inst.components.dapperness.dapperness =DEMON_DAPPERNESS    
     end
 
-        inst:AddComponent("fueled")
-        inst.components.fueled.fueltype = "MAGIC"
-        inst.components.fueled:InitializeFuelLevel(RING_FUELLEVEL)
-        inst.components.fueled:SetDepletedFn(onfinished)
 
     inst.OnLoad = function(inst, data)
         inst.origprefab=data.origprefab
@@ -412,4 +449,4 @@ Prefab( "common/inventory/fa_ring_burning", fnburning, assets),
 Prefab( "common/inventory/fa_ring_speed", fnspeed, assets),
 Prefab( "common/inventory/fa_ring_poop", fnpoop, assets),
 Prefab( "common/inventory/fa_ring_light", fnlight, assets),
-Prefab( "common/inventory/fa_ring_demon", fndemon, assets)
+Prefab( "common/inventory/fa_ring_demon", fndemon, demonassets)

@@ -178,6 +178,23 @@ local function common()
     inst.components.combat:SetKeepTargetFunction(NormalKeepTargetFn)
     inst.components.combat:SetRetargetFunction(3, NormalRetargetFn)   
  
+    inst:AddComponent("trader")
+    inst.components.trader.test=function(inst, item)
+        if(item and item.components.equippable and item.components.equippable.equipslot == EQUIPSLOTS.RING)then
+            return true
+        else 
+            return false
+        end
+    end
+    inst.components.trader.onaccept=function(inst, giver, item)
+        if item.components.equippable and item.components.equippable.equipslot == EQUIPSLOTS.RING then
+            local current = inst.components.inventory:GetEquippedItem(EQUIPSLOTS.RING)
+            if current then
+                inst.components.inventory:DropItem(current)
+            end
+            inst.components.inventory:Equip(item)
+        end
+    end
 
     inst:AddComponent("named")
     inst.components.named.possiblenames = STRINGS.DORFNAMES

@@ -124,6 +124,7 @@ PrefabFiles = {
     "fa_hats",
     "fa_baseweapons",
     "fa_basearmor",
+    "fa_wortox",
     "fa_stickheads",
     "fa_dungeon_walls",
     "goblinsignpost",
@@ -1710,6 +1711,29 @@ local nonEvilSanityPostinit=function(inst)
     end
 end
 
+local function AddRingAsTradeOption(inst)
+
+    local shouldacceptitem=inst.components.trader.test
+    inst.components.trader.test=function(inst, item)
+        if(item and item.components.equippable and item.components.equippable.equipslot == EQUIPSLOTS.RING)then
+            return true
+        else 
+            return shouldacceptitem(inst,item)
+        end
+    end
+    local onacceptitem=inst.components.trader.onaccept
+    inst.components.trader.onaccept=function(inst, giver, item)
+        if item.components.equippable and item.components.equippable.equipslot == EQUIPSLOTS.RING then
+            local current = inst.components.inventory:GetEquippedItem(EQUIPSLOTS.RING)
+            if current then
+                inst.components.inventory:DropItem(current)
+            end
+            inst.components.inventory:Equip(item)
+        end
+        return onacceptitem(inst,giver,item)
+    end
+end
+
 AddPrefabPostInit("nightsword",nonEvilSanityPostinit)
 AddPrefabPostInit("armor_sanity",nonEvilSanityPostinit)
 AddPrefabPostInit("spiderhat",nonEvilSanityPostinit)
@@ -1912,6 +1936,7 @@ AddPrefabPostInit("pigman",function(inst)
         inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
         inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2
     end)
+    AddRingAsTradeOption(inst)
 
 end)
 AddPrefabPostInit("tentacle",function(inst)
@@ -2186,6 +2211,7 @@ AddPrefabPostInit("bunnyman",function(inst)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
     inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2
     inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.2
+    AddRingAsTradeOption(inst)
 end)
 AddPrefabPostInit("rocky",function(inst)
     inst:AddTag("fa_animal")
@@ -2198,6 +2224,7 @@ AddPrefabPostInit("rocky",function(inst)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=0.25
     inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.25
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=-0.3
+    AddRingAsTradeOption(inst)
 end)
 AddPrefabPostInit("crow",function(inst)
     inst:AddTag("fa_animal")

@@ -39,14 +39,27 @@ FA_ModUtil.AddComponentPostInit("inventory", inventorypostinit)
 local inventory_equip=Inventory.Equip
 
 function Inventory:Equip(item, old_to_active)
+
     if not item or not item.components.equippable or not item:IsValid() then
         return
-    elseif (item.components.equippable.fa_canequip and not item.components.equippable.fa_canequip(self.inst)) then
+    end
+    local old = self.equipslots[item.components.equippable.equipslot]
+    if (item.components.equippable.fa_canequip and not item.components.equippable.fa_canequip(self.inst) or (old and old:HasTag("cursed"))) then
         if(not old_to_active)then
             self:GiveItem(item)
         end
     else
         return inventory_equip(self,item,old_to_active)
+    end
+end
+
+local inventory_unequip=Inventory.Unequip
+function Inventory:Unequip(equipslot, slip,force)
+    local item = self.equipslots[equipslot]
+    if((not force) and item and item:HasTag("cursed"))then
+        print("cant unequip cursed item!")  
+    else
+        return inventory_unequip(self,equipslot,slip)
     end
 end
 
@@ -367,6 +380,9 @@ function Inventory:GiveItem( inst, slot, screen_src_pos )
     end
 
     local eslot = self:IsItemEquipped(inst)
+    if(eslot and inst:HasTag("cursed"))then
+        return
+    end
     
     if eslot then
        self:Unequip(eslot) 
