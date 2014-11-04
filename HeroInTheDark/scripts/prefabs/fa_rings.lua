@@ -313,8 +313,16 @@ local function startdemon(inst, owner)
         owner.AnimState:SetBuild("wortox")
         owner.fa_hasmonster=owner:HasTag("monster")
         owner:AddTag("monster")
-        owner.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=owner.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]+1
-        owner.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=owner.components.health.fa_resistances[FA_DAMAGETYPE.COLD]-1
+        if(owner.components.health.fa_resistances[FA_DAMAGETYPE.FIRE])then
+            owner.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=owner.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]+1
+        else
+            owner.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=1
+        end
+        if(owner.components.health.fa_resistances[FA_DAMAGETYPE.COLD])then
+            owner.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=owner.components.health.fa_resistances[FA_DAMAGETYPE.COLD]+1
+        else
+            owner.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=1
+        end
         --need to return this to orig - if at some point in between it gets changed, tough luck, one would need a stack not get/set 
         owner.components.eater.fa_foodprefback=owner.components.eater.foodprefs
         owner.components.eater.fa_monsterimmuneback=owner.components.eater.monsterimmune

@@ -182,6 +182,7 @@ end
 
 local function npc()
     local inst=fn()
+    inst:RemoveTag("monster")
 
     inst:AddComponent("lootdropper")
     inst.components.lootdropper:SetLoot({ "fa_ring_demon"})
