@@ -15,7 +15,7 @@
             </mainline>
             <timeline id="0" name="swap_hat_3_0">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="8.503199" y="-72.428401" angle="0" scale_x="0.797775" scale_y="0.79776"/>
+                    <object folder="0" file="3" x="-157.496801" y="81.571599" angle="260.538" scale_x="0.797775" scale_y="0.79776"/>
                 </key>
             </timeline>
         </animation>
