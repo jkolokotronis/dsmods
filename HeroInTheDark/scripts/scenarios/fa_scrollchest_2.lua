@@ -1,5 +1,5 @@
 chestfunctions = require("scenarios/chestfunctions")
-require("scenarios/fa_helperfunctions")
+local FA_ScenarioUtil=require("scenarios/fa_helperfunctions")
 chest_openfunctions = require("scenarios/chest_openfunctions")
 
 local function OnCreate(inst, scenariorunner)
@@ -37,7 +37,7 @@ local function OnCreate(inst, scenariorunner)
 	}   
 
 
-	local loots=FA_GenerateLoot(FALLENLOOTTABLE.tier1,FALLENLOOTTABLE.TABLE_TIER1_WEIGHT,0.5)
+	local loots=FA_ScenarioUtil.FA_GenerateLoot(FALLENLOOTTABLE.tier1,FALLENLOOTTABLE.TABLE_TIER1_WEIGHT,0.5)
 	for k,prefab in pairs(loots) do
 		inst.components.container:GiveItem(SpawnPrefab(prefab))
 	end

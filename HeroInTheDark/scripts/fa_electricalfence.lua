@@ -176,7 +176,7 @@ function FA_ElectricalFence:StartTask()
                 for i,caught in pairs(ents) do
                     if(caught and caught.components.combat and not (caught.components.health and caught.components.health:IsDead()))then
                         local caughtangle=node:GetAngleToPoint(caught:GetPosition())-angle
-                        local dh=math.sqrt(node:GetDistanceSqToInst(caught))*math.sin(caughtangle)
+                        local dh=math.abs(math.sqrt(node:GetDistanceSqToInst(caught))*math.sin(caughtangle))
                         --phew
                         if(dh<=WALL_WIDTH)then
                             caught.components.combat:GetAttacked(self.caster,BLUETOTEM_DAMAGE/2, nil,nil,FA_DAMAGETYPE.ELECTRIC)

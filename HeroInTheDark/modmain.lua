@@ -382,6 +382,8 @@ Assets = {
     Asset("IMAGE", "images/inventoryimages/fa_pebbles.tex"),
     Asset("ATLAS", "images/inventoryimages/fa_orebars.xml"),
     Asset("IMAGE", "images/inventoryimages/fa_orebars.tex"),
+    Asset("ATLAS", "images/inventoryimages/fa_hats.xml"),
+    Asset("IMAGE", "images/inventoryimages/fa_hats.tex"),
 
     Asset( "IMAGE", "minimap/goblin.tex" ),
     Asset( "ATLAS", "minimap/goblin.xml" ),  
@@ -493,6 +495,7 @@ AddMinimapAtlas("minimap/fa_alchemytable.xml")
 AddMinimapAtlas("minimap/fa_smeltingfurnace.xml")
 AddMinimapAtlas("minimap/fa_forge.xml")
 AddMinimapAtlas("minimap/fa_wheat.xml")
+AddMinimapAtlas("images/inventoryimages/fa_hats.xml")
 
 RemapSoundEvent( "dontstarve/characters/bard/death_voice", "dontstarve/characters/wilson/death_voice" )
 RemapSoundEvent( "dontstarve/characters/bard/hurt", "fa/characters/bard/hurt" )
@@ -908,8 +911,25 @@ local function playerhudPostContruct(self)
     end
 end
 
+
 if(GetModConfigData("extrazoom"))then
     AddClassPostConstruct ("screens/playerhud", playerhudPostContruct)
+
+    --resetting cave zoom levels - could do it just for mine i suppose, but the limited zoom is annoying overall
+    local FollowCamera=require "cameras/followcamera"
+    local cameradefault=FollowCamera.SetDefault
+    function FollowCamera:SetDefault(...)
+        cameradefault(self,...)
+
+        if GetWorld() and GetWorld():IsCave() then
+        self.distancetarget = 30
+        self.mindist = 15
+        self.maxdist = 50 
+        self.mindistpitch = 30
+        self.maxdistpitch = 60
+        end
+    end
+
 end
 
 if(GetModConfigData("extracontrollerrange"))then

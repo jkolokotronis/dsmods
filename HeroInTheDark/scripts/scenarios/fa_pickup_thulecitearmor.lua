@@ -1,5 +1,5 @@
 
-require("scenarios/fa_helperfunctions")
+local FA_ScenarioUtil=require("scenarios/fa_helperfunctions")
 local function OnLoad(inst, scenariorunner)
 	inst.scene_pickupfn = function()
     local player = GetPlayer()

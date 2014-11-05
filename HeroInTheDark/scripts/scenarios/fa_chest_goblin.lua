@@ -1,5 +1,5 @@
 chestfunctions = require("scenarios/chestfunctions")
-require("scenarios/fa_helperfunctions")
+local FA_ScenarioUtil=require("scenarios/fa_helperfunctions")
 chest_openfunctions = require("scenarios/chest_openfunctions")
 
 local function OnCreate(inst, scenariorunner)
@@ -37,7 +37,7 @@ local function OnCreate(inst, scenariorunner)
 	}   
 
 
-	local loots=FA_GenerateLoot(FALLENLOOTTABLEMERGED,FALLENLOOTTABLE.TABLE_WEIGHT,1)
+	local loots=FA_ScenarioUtil.FA_GenerateLoot(FALLENLOOTTABLEMERGED,FALLENLOOTTABLE.TABLE_WEIGHT,1)
 	for k,prefab in pairs(loots) do
 		inst.components.container:GiveItem(SpawnPrefab(prefab))
 	end
@@ -46,7 +46,7 @@ local function OnCreate(inst, scenariorunner)
 end
 
 local function OnLoad(inst, scenariorunner) 
---   	chestfunctions.InitializeChestTrap(inst, scenariorunner, GetRandomItem(chest_openfunctions))
+--   	FA_ScenarioUtil.InitializeChestTrap(inst, scenariorunner, GetRandomItem(chest_openfunctions))
 end
 
 local function OnDestroy(inst)

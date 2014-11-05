@@ -131,9 +131,9 @@
         <file id="2" name="beard/beard-2.png" width="132" height="132" pivot_x="0.580299" pivot_y="1.00246"/>
     </folder>
     <folder id="14" name="swap_hat">
-        <file id="0" name="swap_hat/swap_hat-0.png" width="244" height="216" pivot_x="0.5" pivot_y="-0.1"/>
-        <file id="1" name="swap_hat/swap_hat-1.png" width="208" height="224" pivot_x="0.7" pivot_y="-0.03"/>
-        <file id="2" name="swap_hat/swap_hat-2.png" width="240" height="220" pivot_x="0.5" pivot_y="0"/>
+        <file id="0" name="swap_hat/swap_hat-0.png" width="244" height="216" pivot_x="0.501227459016" pivot_y="-0.080087962963"/>
+        <file id="1" name="swap_hat/swap_hat-1.png" width="208" height="224" pivot_x="0.699396634615" pivot_y="-0.016625"/>
+        <file id="2" name="swap_hat/swap_hat-2.png" width="240" height="220" pivot_x="0.523435416667" pivot_y="0.0269340909091"/>
     </folder>
     <folder id="15" name="swap_object">
         <file id="0" name="swap_object/swap_object-0.png" width="240" height="340" pivot_x="0.173554" pivot_y="0.236842"/>

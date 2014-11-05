@@ -102,6 +102,8 @@ local function fn(Sim)
 --    inst.OnSave = onsavefn
 
     inst.entity:AddPhysics()
+    local minimap = inst.entity:AddMiniMapEntity()
+    minimap:SetIcon( "wortox.png" )
  
 --
     local light = inst.entity:AddLight()
@@ -186,6 +188,10 @@ local function npc()
 
     inst:AddComponent("lootdropper")
     inst.components.lootdropper:SetLoot({ "fa_ring_demon"})
+
+    inst:ListenForEvent("death",function()
+        inst.components.lootdropper:DropLoot()
+    end)
     return inst
 end
 

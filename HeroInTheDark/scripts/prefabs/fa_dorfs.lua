@@ -93,7 +93,7 @@ end
 local function OnAttacked(inst, data)
     --print(inst, "OnAttacked")
     local attacker = data.attacker
-
+    if(not attacker) then return end
     inst.components.combat:SetTarget(attacker)
 
         if not (attacker:HasTag("dorf") ) then

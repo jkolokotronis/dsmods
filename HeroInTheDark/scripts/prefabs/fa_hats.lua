@@ -2,19 +2,50 @@
 local assets_goblinking={
     Asset("ANIM", "anim/hat_goblinking_swap.zip"),
     Asset("ANIM", "anim/hat_goblinking.zip"),
-    Asset("ATLAS", "images/inventoryimages/hat_goblinking.xml"),
-    Asset("IMAGE", "images/inventoryimages/hat_goblinking.tex"),
     
 }
 local assets_pot={
     Asset("ANIM", "anim/hat_pot_swap.zip"),
     Asset("ANIM", "anim/hat_pot_goblin_swap.zip"),
-    Asset("ANIM", "anim/hat_pot.zip"),
-    Asset("ATLAS", "images/inventoryimages/hat_pot.xml"),
-    Asset("IMAGE", "images/inventoryimages/hat_pot.tex"),    
+    Asset("ANIM", "anim/hat_pot.zip"),  
+}
+local assets_copper={
+    Asset("ANIM", "anim/fa_hat_copper.zip"), 
+}
+local assets_iron={
+    Asset("ANIM", "anim/fa_hat_iron.zip"), 
+}
+local assets_steel={
+    Asset("ANIM", "anim/fa_hat_steel.zip"), 
+}
+local assets_adamant={
+    Asset("ANIM", "anim/fa_hat_adamant.zip"), 
+}
+local assets_silver={
+    Asset("ANIM", "anim/fa_hat_silver.zip"), 
+}
+local assets_gold={
+    Asset("ANIM", "anim/fa_hat_gold.zip"), 
 }
 
 local prefabs ={}
+
+local ARMOR_POTHAT = 500
+local ARMOR_POTHAT_ABSORPTION = .2
+local ARMOR_COPPERHAT = 1500
+local ARMOR_COPPERHAT_ABSORPTION = .6
+local ARMOR_IRONHAT = 2500
+local ARMOR_IRONHAT_ABSORPTION = .8
+local ARMOR_STEELHAT = 3500
+local ARMOR_STEELHAT_ABSORPTION = .9
+local ARMOR_ADAMANTHAT = 4500
+local ARMOR_ADAMANTHAT_ABSORPTION = .95
+local ARMOR_SILVERHAT = 2500
+local ARMOR_SILVERHAT_ABSORPTION = .8
+local ARMOR_GOLDHAT = 2500
+local ARMOR_GOLDHAT_ABSORPTION = .8
+local ARMOR_GOBLINKING=20000
+local ARMOR_GOBLINKING_ABSORPTION= 0.3
 
 local function onequip(inst, owner, build)
         owner.AnimState:OverrideSymbol("swap_hat", build, "swap_hat")
@@ -64,20 +95,26 @@ local function onequip(inst, owner, build)
 		end
     end
 
-    local function common()
+    local function common(build)
         local inst = CreateEntity()
 
         inst.entity:AddTransform()
         inst.entity:AddAnimState()
         MakeInventoryPhysics(inst)
 
-        
+    local minimap = inst.entity:AddMiniMapEntity()
+    minimap:SetIcon( build..".tex" )
 
+        inst.AnimState:SetBank(build)
+        inst.AnimState:SetBuild(build)
+        inst.AnimState:PlayAnimation("idle")
         inst:AddTag("hat")
 
         inst:AddComponent("inspectable")
 
         inst:AddComponent("inventoryitem")
+        inst.components.inventoryitem.imagename = build
+        inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_hats.xml"
         inst:AddComponent("tradable")
 
         inst:AddComponent("equippable")
@@ -88,10 +125,7 @@ local function onequip(inst, owner, build)
         return inst
     end
     local function fnpot()
-    	local inst=common()
-    	inst.AnimState:SetBank("hat_pot")
-        inst.AnimState:SetBuild("hat_pot")
-        inst.AnimState:PlayAnimation("idle")
+    	local inst=common("hat_pot")
         inst.components.equippable:SetOnEquip(function(inst,owner)
             if(owner and owner:HasTag("goblin"))then    
                 onequip(inst,owner,"hat_pot_goblin_swap") 
@@ -99,27 +133,73 @@ local function onequip(inst, owner, build)
                 onequip(inst,owner,"hat_pot_swap") 
             end
         end )
-    	inst.components.inventoryitem.imagename = "hat_pot"
-    	inst.components.inventoryitem.atlasname = "images/inventoryimages/hat_pot.xml"
         inst:AddComponent("armor")
-        inst.components.armor:InitCondition(400, 0.3)
+        inst.components.armor:InitCondition(ARMOR_POTHAT, ARMOR_POTHAT_ABSORPTION)
         inst.components.armor.fa_resistances[FA_DAMAGETYPE.ACID]=0.2
         inst.components.armor.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
         inst.components.armor.fa_resistances[FA_DAMAGETYPE.FIRE]=0.2
     	return inst
     end
     local function fnking()
-    	local inst=common()
-    	inst.AnimState:SetBank("hat_goblinking")
-        inst.AnimState:SetBuild("hat_goblinking")
-        inst.AnimState:PlayAnimation("idle")
+    	local inst=common("hat_goblinking")
         inst.components.equippable:SetOnEquip( function(inst,owner) opentop_onequip(inst,owner,"hat_goblinking_swap") end  )
-    	inst.components.inventoryitem.imagename = "hat_goblinking"
-    	inst.components.inventoryitem.atlasname = "images/inventoryimages/hat_goblinking.xml"
         inst:AddComponent("armor")
-        inst.components.armor:InitCondition(20000, 0.3)
+        inst.components.armor:InitCondition(ARMOR_GOBLINKING, ARMOR_GOBLINKING_ABSORPTION)
     	return inst
     end
 
+    local function fncopper()
+        local inst=common("fa_hat_copper")
+        inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_copper") end  )
+        inst:AddComponent("armor")
+        inst.components.armor:InitCondition(ARMOR_COPPERHAT, ARMOR_COPPERHAT_ABSORPTION)
+        return inst
+    end
+
+    local function fniron()
+        local inst=common("fa_hat_iron")
+        inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_iron") end  )
+        inst:AddComponent("armor")
+        inst.components.armor:InitCondition(ARMOR_IRONHAT, ARMOR_IRONHAT_ABSORPTION)
+        return inst
+    end
+
+    local function fnsilver()
+        local inst=common("fa_hat_silver")
+        inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_silver") end  )
+        inst:AddComponent("armor")
+        inst.components.armor:InitCondition(ARMOR_SILVERHAT, ARMOR_SILVERHAT_ABSORPTION)
+        return inst
+    end
+
+    local function fngold()
+        local inst=common("fa_hat_gold")
+        inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_gold") end  )
+        inst:AddComponent("armor")
+        inst.components.armor:InitCondition(ARMOR_GOLDHAT, ARMOR_GOLDHAT_ABSORPTION)
+        return inst
+    end
+
+    local function fnsteel()
+        local inst=common("fa_hat_steel")
+        inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_steel") end  )
+        inst:AddComponent("armor")
+        inst.components.armor:InitCondition(ARMOR_STEELHAT, ARMOR_STEELHAT_ABSORPTION)
+        return inst
+    end
+
+    local function fnadamant()
+        local inst=common("fa_hat_adamant")
+        inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_adamant") end  )
+        inst:AddComponent("armor")
+        inst.components.armor:InitCondition(ARMOR_ADAMANTHAT, ARMOR_ADAMANTHAT_ABSORPTION)
+        return inst
+    end
+
 return Prefab( "common/inventory/hat_goblinking", fnking, assets_goblinking, prefabs),
-Prefab( "common/inventory/hat_pot", fnpot, assets_pot, prefabs)
+Prefab( "common/inventory/fa_hat_adamant", fnadamant, assets_adamant, prefabs),
+Prefab( "common/inventory/fa_hat_copper", fncopper, assets_copper, prefabs),
+Prefab( "common/inventory/fa_hat_iron", fniron, assets_iron, prefabs),
+Prefab( "common/inventory/fa_hat_silver", fnsilver, assets_silver, prefabs),
+Prefab( "common/inventory/fa_hat_gold", fngold, assets_gold, prefabs),
+Prefab( "common/inventory/fa_hat_steel", fnsteel, assets_steel, prefabs)

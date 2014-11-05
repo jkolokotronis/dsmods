@@ -1,11 +1,11 @@
 
-require("scenarios/fa_helperfunctions")
+local FA_ScenarioUtil=require("scenarios/fa_helperfunctions")
 
 
 local function OnWakeUp(inst, scenariorunner)
 -- Spawn spider queen here, disable scenario.
 
-FA_SpawnPrefabInProx(inst,"hound",4)
+FA_ScenarioUtil.FA_SpawnPrefabInProx(inst,"hound",4)
 
 	scenariorunner:ClearScenario()
 end
