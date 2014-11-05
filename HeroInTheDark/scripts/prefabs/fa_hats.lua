@@ -197,6 +197,7 @@ local function onequip(inst, owner, build)
     end
 
 return Prefab( "common/inventory/hat_goblinking", fnking, assets_goblinking, prefabs),
+Prefab( "common/inventory/hat_pot", fnpot, assets_pot, prefabs),
 Prefab( "common/inventory/fa_hat_adamant", fnadamant, assets_adamant, prefabs),
 Prefab( "common/inventory/fa_hat_copper", fncopper, assets_copper, prefabs),
 Prefab( "common/inventory/fa_hat_iron", fniron, assets_iron, prefabs),
