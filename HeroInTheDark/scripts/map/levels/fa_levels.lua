@@ -101,7 +101,7 @@ FA_LEVELDATA["GOBLIN_CAVE"]={
 		"fa_dungeon_exit",
 		"fa_dungeon_entrance",
 		},
-		background_node_range={0,0}
+		background_node_range={0,1}
 
 	}
 
@@ -149,7 +149,7 @@ FA_LEVELDATA["GOBLIN_CAVE_2"]={
 		"fa_dungeon_exit",
 		"fa_dungeon_entrance",
 		},
-		background_node_range={0,0}
+		background_node_range={0,1}
 
 	}
 
@@ -197,7 +197,7 @@ FA_LEVELDATA["GOBLIN_CAVE_3"]={
 		"fa_dungeon_exit",
 		"fa_dungeon_entrance",
 		},
-		background_node_range={0,0}
+		background_node_range={0,1}
 
 	}
 
@@ -241,7 +241,7 @@ FA_LEVELDATA["GOBLIN_CAVE_BOSSLEVEL"]={
 		"fa_dungeon_exit",
 		"fa_goblin_king_1",
 		},
-		background_node_range={0,0}
+		background_node_range={0,1}
 
 	}
 
@@ -322,7 +322,7 @@ FA_LEVELDATA["DWARF_FORTRESS"]={
 		required_prefabs = {
 --		"fa_mine_exit",
 		},
-		background_node_range={0,0}
+		background_node_range={0,1}
 
 	}
 

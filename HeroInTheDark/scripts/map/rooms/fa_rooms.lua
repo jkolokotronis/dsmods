@@ -669,7 +669,7 @@ AddRoom("FA_5x5GoblinRoom_5", MakeSetpieceRoom("FA5x5GoblinRoom_5"))
 
 AddRoom("FA_BGDwarfFortress",  {	
 					colour={r=0.3,g=0.2,b=0.1,a=0.3},
-					value =GROUND.FUNGUSGREEN, 
+					value =GROUND.IMPASSABLE, 
 					contents =  {
 									
 					            }

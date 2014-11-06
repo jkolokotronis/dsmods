@@ -1735,7 +1735,7 @@ local function AddRingAsTradeOption(inst)
 
     local shouldacceptitem=inst.components.trader.test
     inst.components.trader.test=function(inst, item)
-        if(item and item.components.equippable and item.components.equippable.equipslot == EQUIPSLOTS.RING)then
+        if(item and item.components.equippable and item.components.equippable.equipslot == GLOBAL.EQUIPSLOTS.RING)then
             return true
         else 
             return shouldacceptitem(inst,item)
@@ -1743,8 +1743,8 @@ local function AddRingAsTradeOption(inst)
     end
     local onacceptitem=inst.components.trader.onaccept
     inst.components.trader.onaccept=function(inst, giver, item)
-        if item.components.equippable and item.components.equippable.equipslot == EQUIPSLOTS.RING then
-            local current = inst.components.inventory:GetEquippedItem(EQUIPSLOTS.RING)
+        if item.components.equippable and item.components.equippable.equipslot == GLOBAL.EQUIPSLOTS.RING then
+            local current = inst.components.inventory:GetEquippedItem(GLOBAL.EQUIPSLOTS.RING)
             if current then
                 inst.components.inventory:DropItem(current)
             end
