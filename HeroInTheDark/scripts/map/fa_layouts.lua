@@ -87,6 +87,7 @@ Layouts["FAOrcMineBasicsetTrap1"]=StaticLayout.Get("map/static_layouts/orc_mine_
 Layouts["FAOrcMineBasicsetTrap2"]=StaticLayout.Get("map/static_layouts/orc_mine_basicset_trap_2")
 Layouts["FAOrcMineBasicsetTrap3"]=StaticLayout.Get("map/static_layouts/orc_mine_basicset_trap_3")
 Layouts["FAOrcMineBasicsetTrap4"]=StaticLayout.Get("map/static_layouts/orc_mine_basicset_trap_4")
+Layouts["FAOrcMineBasicsetTrap5"]=StaticLayout.Get("map/static_layouts/orc_mine_basicset_trap_5")
 
 Layouts["FAOrcMineBasicset1"]=StaticLayout.Get("map/static_layouts/orc_mine_basicset_1")
 Layouts["FAOrcMineBasicset2"]=StaticLayout.Get("map/static_layouts/orc_mine_basicset_2")

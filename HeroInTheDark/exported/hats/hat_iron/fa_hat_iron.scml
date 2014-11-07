@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
     <folder id="0" name="swap_hat">
-        <file id="0" name="swap_hat/swap_hat-0.png" width="216" height="230" pivot_x="0.491227" pivot_y="0.100088"/>
-        <file id="1" name="swap_hat/swap_hat-1.png" width="198" height="219" pivot_x="0.589397" pivot_y="0.126625"/>
-        <file id="2" name="swap_hat/swap_hat-2.png" width="216" height="230" pivot_x="0.483435" pivot_y="0.106934"/>
-        <file id="3" name="swap_hat/swap_hat-3.png" width="216" height="230" pivot_x="0.558686" pivot_y="-0.180347"/>
+        <file id="0" name="swap_hat/swap_hat-0.png" width="229" height="242" pivot_x="0.491227" pivot_y="0.080088"/>
+        <file id="1" name="swap_hat/swap_hat-1.png" width="210" height="232" pivot_x="0.559397" pivot_y="0.126625"/>
+        <file id="2" name="swap_hat/swap_hat-2.png" width="229" height="243" pivot_x="0.533435" pivot_y="0.106934"/>
+        <file id="3" name="swap_hat/swap_hat-3.png" width="229" height="242" pivot_x="0.558686" pivot_y="-0.180347"/>
     </folder>
     <entity id="0" name="fa_hat_iron">
         <animation id="0" name="idle" length="1000">
@@ -15,7 +15,7 @@
             </mainline>
             <timeline id="0" name="swap_hat_3_0">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="-89.374851" y="224.385209" angle="206.565"/>
+                    <object folder="0" file="3" x="-90.374851" y="225.385209" angle="206.565"/>
                 </key>
             </timeline>
         </animation>

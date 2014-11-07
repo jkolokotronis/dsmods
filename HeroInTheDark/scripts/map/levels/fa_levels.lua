@@ -282,6 +282,7 @@ FA_LEVELDATA["ORC_MINES"]={
 			["FAOrcMineBasicsetTrap2"] = { count=1, tasks={"DFEntrance","FA_MineConflict","FA_RuinsStart","FA_GreaterPlains","ORCFEntrance" } },
 			["FAOrcMineBasicsetTrap3"] = { count=1, tasks={"DFEntrance","FA_MineConflict","FA_RuinsStart","FA_GreaterPlains","ORCFEntrance" } },
 			["FAOrcMineBasicsetTrap4"] = { count=1, tasks={"DFEntrance","FA_MineConflict","FA_RuinsStart","FA_GreaterPlains","ORCFEntrance" } },
+			["FAOrcMineBasicsetTrap5"] = { count=1, tasks={"DFEntrance","FA_MineConflict","FA_RuinsStart","FA_GreaterPlains","ORCFEntrance" } },
 			["FAOrcMineWortox"] = { count=1, tasks={"DFEntrance","FA_MineConflict","FA_RuinsStart","FA_GreaterPlains" } },
 
 

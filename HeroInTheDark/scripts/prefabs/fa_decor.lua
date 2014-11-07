@@ -28,7 +28,7 @@ end
 local function fa_pillar_dwarf()
 	local inst= fn("fa_pillar_dwarf")
     MakeObstaclePhysics(inst, 1)
---    inst.Transform:SetScale(0.8,0.8,0.8)
+    inst.Transform:SetScale(1.3,1.3,1.3)
     return inst
 end
 

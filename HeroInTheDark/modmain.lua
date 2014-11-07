@@ -1959,6 +1959,29 @@ AddPrefabPostInit("pigman",function(inst)
     AddRingAsTradeOption(inst)
 
 end)
+AddPrefabPostInit("pigking",function(inst)
+    local shouldacceptitem=inst.components.trader.test
+    inst.components.trader.test=function(inst, item)
+    --yeah this is dirty
+        if(item and item.components.equippable and item.components.equippable.equipslot == GLOBAL.EQUIPSLOTS.RING and item.prefab=="fa_ring_demon")then
+            return true
+        else 
+            return shouldacceptitem(inst,item)
+        end
+    end
+
+    local onacceptitem=inst.components.trader.onaccept
+    inst.components.trader.onaccept=function(inst, giver, item)
+        if item.components.equippable and item.components.equippable.equipslot == GLOBAL.EQUIPSLOTS.RING and item.prefab=="fa_ring_demon" then
+            local wortox=SpawnPrefab("fa_cursedpigking")
+--            wortox.components.inventory:GiveItem(item)
+            wortox.Transform:SetPosition(owner.Transform:GetWorldPosition())
+            inst:Remove()
+            owner:Remove()
+        end
+        return onacceptitem(inst,giver,item)
+    end
+end)
 AddPrefabPostInit("tentacle",function(inst)
     inst:AddTag("fa_magicalbeast")
     inst:AddTag("fa_evil")

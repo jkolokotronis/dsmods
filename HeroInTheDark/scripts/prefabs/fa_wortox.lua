@@ -28,10 +28,13 @@ local assets = {
         Asset( "SOUND", "sound/wilson.fsb" ),
         Asset( "ANIM", "anim/beard.zip" ),
         Asset( "ANIM", "anim/wortox.zip" ),
+-- i need to read through memfix again, I should lazy load this only on transform, but the only lazy thing here is me
+        Asset( "ANIM", "anim/bluegoblin.zip" ),
 }
 local prefabs = {}
 
 local TARGET_DISTANCE=30
+local NPC_RING_COST=10
 
 local function RetargetFn(inst)
 
@@ -182,19 +185,79 @@ local function mob()
     return inst
 end
 
+local function king()
+    local inst=fn()
+    inst.components.combat:SetRetargetFunction(1, RetargetFn)
+    inst.components.combat:SetKeepTargetFunction(KeepTargetFn)
+    inst:SetStateGraph("SGskeletonspawn")    
+    local brain = require "brains/orcbrain"
+    inst:SetBrain(brain)
+    inst.components.health:SetMaxHealth(5000)
+    return inst
+end
+
 local function npc()
     local inst=fn()
+
+    inst.diamondcount=0
+
     inst:RemoveTag("monster")
 
     inst:AddComponent("lootdropper")
     inst.components.lootdropper:SetLoot({ "fa_ring_demon"})
 
-    inst:ListenForEvent("death",function()
+    local deathfn=function()
         inst.components.lootdropper:DropLoot()
+    end
+
+    inst:ListenForEvent("death",deathfn)
+
+    inst:AddComponent("talker")
+
+    inst:AddComponent("trader")
+
+    inst.components.trader:SetAcceptTest(
+        function(inst, item)
+        --for some silly reason it gives just a single entry, so i have to force remove the rest
+        --this is silly hack but its still better than hacking the accept logic of component's function to do what I want?
+        --not convinced
+        local test=item.prefab=="fa_diamondpebble" and item.components.stackable.stacksize>=10 
+        if(test)then
+            local extra=item.components.stackable.stacksize-9
+            item.components.stackable.stacksize=extra
+        end
+        return test
     end)
+
+    inst.components.trader.onaccept =function(inst, giver, item)
+        inst:RemoveEventCallback("death", deathfn)
+        inst.persists=false
+
+        local curse=SpawnPrefab("fa_ring_demon")
+        giver.components.inventory:GiveItem(curse)
+        giver.components.inventory:Equip(curse)
+        inst.AnimState:SetBuild("bluegoblin")
+        local talk=GetString(inst.prefab, "FREE_AT_LAST")
+        if(talk and inst.components.talker) then inst.components.talker:Say(talk) end
+        inst:DoTaskInTime(5,function()
+            local particle = SpawnPrefab("poopcloud")
+            particle.Transform:SetPosition( inst.Transform:GetWorldPosition())
+            inst:Remove()
+        end)
+    end
+    inst.components.trader.onrefuse = function(inst, giver, item)
+        local talk=nil
+        if item.prefab=="fa_diamondpebble" and item.components.stackable.stacksize<10 then 
+            talk=GetString(inst.prefab, "NOT_ENOUGH_DIAMONS")
+        else
+            talk=GetString(inst.prefab, "WRONG_ITEM")
+        end
+        if(talk and inst.components.talker) then inst.components.talker:Say(talk) end
+    end
+
     return inst
 end
 
 return Prefab( "common/fa_cursedwortox", mob, assets),
-Prefab( "common/fa_cursedpigking", mob, assets),
+Prefab( "common/fa_cursedpigking", king, assets),
 Prefab( "common/fa_wortox_npc", npc, assets)

@@ -18,7 +18,7 @@ local BURNING_DAPPERNESS=-1
 local LIGHT_DAPPERNESS=1
 local DEMON_DAPPERNESS=-5/60
 local RING_FUELLEVEL=200
-local DEMON_FUELLEVEL=30
+local DEMON_FUELLEVEL=666
 local SPEED_MULT=1.5
 
 local function onfinished(inst)
@@ -348,10 +348,9 @@ local function startdemon(inst, owner)
         end
 
     elseif(owner.prefab=="fa_cursedwortox")then
-
-    if inst.components.fueled then
-        inst.components.fueled:StartConsuming()        
-    end
+        if inst.components.fueled then
+            inst.components.fueled:StartConsuming()        
+        end
     else
         local copy=SpawnPrefab("fa_ring_demon")
         copy.origprefab=owner.prefab
