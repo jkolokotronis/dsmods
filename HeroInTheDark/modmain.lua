@@ -1975,9 +1975,8 @@ AddPrefabPostInit("pigking",function(inst)
         if item.components.equippable and item.components.equippable.equipslot == GLOBAL.EQUIPSLOTS.RING and item.prefab=="fa_ring_demon" then
             local wortox=SpawnPrefab("fa_cursedpigking")
 --            wortox.components.inventory:GiveItem(item)
-            wortox.Transform:SetPosition(owner.Transform:GetWorldPosition())
+            wortox.Transform:SetPosition(inst.Transform:GetWorldPosition())
             inst:Remove()
-            owner:Remove()
         end
         return onacceptitem(inst,giver,item)
     end
