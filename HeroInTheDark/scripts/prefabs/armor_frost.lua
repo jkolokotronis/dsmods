@@ -1,8 +1,6 @@
 local assets=
 {
 	Asset("ANIM", "anim/armor_frost.zip"),
-  Asset("ATLAS", "images/inventoryimages/frostarmor.xml"),
-  Asset("IMAGE", "images/inventoryimages/frostarmor.tex"),
 }
 
 local ARMORFROST_ABSORPTION_T1=0.70
@@ -67,7 +65,7 @@ local function fn()
     
     inst:AddComponent("inventoryitem")
 	inst.components.inventoryitem.foleysound = "dontstarve/movement/foley/marblearmour"
-     inst.components.inventoryitem.atlasname = "images/inventoryimages/frostarmor.xml"
+     inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_basearmors.xml"
     inst.components.inventoryitem.imagename="frostarmor"
     
     inst:AddComponent("armor")

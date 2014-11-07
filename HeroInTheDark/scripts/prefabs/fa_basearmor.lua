@@ -1,11 +1,22 @@
 local assets_copper=
 {
+    Asset("ANIM", "anim/fa_copperarmor.zip"),
 }
 local assets_iron=
 {
+    Asset("ANIM", "anim/fa_ironarmor.zip"),
 }
 local assets_steel=
 {
+    Asset("ANIM", "anim/fa_steelarmor.zip"),
+}
+local assets_silver=
+{
+    Asset("ANIM", "anim/fa_silverarmor.zip"),
+}
+local assets_gold=
+{
+    Asset("ANIM", "anim/fa_goldarmor.zip"),
 }
 
 local ARMOR_ABSORPTION_T1=0.70
@@ -29,20 +40,18 @@ local function fn(name)
     MakeInventoryPhysics(inst)
 
     local minimap = inst.entity:AddMiniMapEntity()
-    minimap:SetIcon( "firearmor.tex" )
+    minimap:SetIcon( name..".tex" )
     
---    inst.AnimState:SetBank(name)
---    inst.AnimState:SetBuild(name)
-    inst.AnimState:SetBank("torso_dragonfly")
-    inst.AnimState:SetBuild("torso_dragonfly")
+    inst.AnimState:SetBank(name)
+    inst.AnimState:SetBuild(name)
     inst.AnimState:PlayAnimation("anim")
     
     inst:AddComponent("inspectable")
     
     inst:AddComponent("inventoryitem")
 	inst.components.inventoryitem.foleysound = "dontstarve/movement/foley/marblearmour"
-     inst.components.inventoryitem.atlasname = "images/inventoryimages/firearmor.xml"
-    inst.components.inventoryitem.imagename="firearmor"
+     inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_basearmors.xml"
+    inst.components.inventoryitem.imagename=name
     
     inst:AddComponent("armor")
     
@@ -72,8 +81,20 @@ local function ironarmor()
     inst.components.armor:InitCondition(ARMOR_DURABILITY_T2, ARMOR_ABSORPTION_T2)
     return inst
 end
+local function silverarmor()
+    local inst =fn("fa_silverarmor")
+    inst.components.armor:InitCondition(ARMOR_DURABILITY_T2, ARMOR_ABSORPTION_T2)
+    return inst
+end
+local function goldarmor()
+    local inst =fn("fa_goldarmor")
+    inst.components.armor:InitCondition(ARMOR_DURABILITY_T2, ARMOR_ABSORPTION_T2)
+    return inst
+end
 
 return
     Prefab( "common/inventory/fa_copperarmor",copperarmor, assets_copper),
     Prefab( "common/inventory/fa_steelarmor",steelarmor, assets_steel),
-    Prefab( "common/inventory/fa_ironarmor", ironarmor, assets_iron)
+    Prefab( "common/inventory/fa_ironarmor", ironarmor, assets_iron),
+    Prefab( "common/inventory/fa_silverarmor", silverarmor, assets_silver),
+    Prefab( "common/inventory/fa_goldarmor", goldarmor, assets_gold)

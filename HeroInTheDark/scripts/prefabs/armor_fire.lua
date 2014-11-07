@@ -1,8 +1,6 @@
 local assets=
 {
 	Asset("ANIM", "anim/armor_fire.zip"),
-  Asset("ATLAS", "images/inventoryimages/firearmor.xml"),
-  Asset("IMAGE", "images/inventoryimages/firearmor.tex"),
 }
 
 local ARMORFIRE_ABSORPTION_T1=0.70
@@ -61,7 +59,7 @@ local function fn()
     
     inst:AddComponent("inventoryitem")
 	inst.components.inventoryitem.foleysound = "dontstarve/movement/foley/marblearmour"
-     inst.components.inventoryitem.atlasname = "images/inventoryimages/firearmor.xml"
+     inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_basearmors.xml"
     inst.components.inventoryitem.imagename="firearmor"
     
     inst:AddComponent("armor")

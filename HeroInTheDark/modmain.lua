@@ -308,12 +308,8 @@ Assets = {
     Asset( "ATLAS", "minimap/dagger.xml" ),
     Asset( "IMAGE", "minimap/evilsword.tex" ),
     Asset( "ATLAS", "minimap/evilsword.xml" ),
-    Asset( "IMAGE", "minimap/firearmor.tex" ),
-    Asset( "ATLAS", "minimap/firearmor.xml" ),
     Asset( "IMAGE", "minimap/flamingsword.tex" ),
     Asset( "ATLAS", "minimap/flamingsword.xml" ),
-    Asset( "IMAGE", "minimap/frostarmor.tex" ),
-    Asset( "ATLAS", "minimap/frostarmor.xml" ),
     Asset( "IMAGE", "minimap/holysword.tex" ),
     Asset( "ATLAS", "minimap/holysword.xml" ),
     Asset( "IMAGE", "minimap/marbleshield.tex" ),
@@ -384,6 +380,8 @@ Assets = {
     Asset("IMAGE", "images/inventoryimages/fa_orebars.tex"),
     Asset("ATLAS", "images/inventoryimages/fa_hats.xml"),
     Asset("IMAGE", "images/inventoryimages/fa_hats.tex"),
+  Asset("ATLAS", "images/inventoryimages/fa_basearmors.xml"),
+  Asset("IMAGE", "images/inventoryimages/fa_basearmors.tex"),
 
     Asset( "IMAGE", "minimap/goblin.tex" ),
     Asset( "ATLAS", "minimap/goblin.xml" ),  
@@ -466,9 +464,7 @@ end
 AddMinimapAtlas("minimap/boneshield.xml")
 AddMinimapAtlas("minimap/dagger.xml")
 AddMinimapAtlas("minimap/evilsword.xml")
-AddMinimapAtlas("minimap/firearmor.xml")
 AddMinimapAtlas("minimap/flamingsword.xml")
-AddMinimapAtlas("minimap/frostarmor.xml")
 AddMinimapAtlas("minimap/frostsword.xml")
 AddMinimapAtlas("minimap/holysword.xml")
 AddMinimapAtlas("minimap/marbleshield.xml")
@@ -496,6 +492,7 @@ AddMinimapAtlas("minimap/fa_smeltingfurnace.xml")
 AddMinimapAtlas("minimap/fa_forge.xml")
 AddMinimapAtlas("minimap/fa_wheat.xml")
 AddMinimapAtlas("images/inventoryimages/fa_hats.xml")
+AddMinimapAtlas("images/inventoryimages/fa_basearmors.xml")
 
 RemapSoundEvent( "dontstarve/characters/bard/death_voice", "dontstarve/characters/wilson/death_voice" )
 RemapSoundEvent( "dontstarve/characters/bard/hurt", "fa/characters/bard/hurt" )
