@@ -2,6 +2,12 @@
 local fa_pillar_dwarf_assets={
     Asset( "ANIM", "anim/fa_pillar_dwarf.zip" ),
 }
+local fa_stool_assets={
+    Asset( "ANIM", "anim/fa_stool.zip" ),
+}
+local fa_table_assets={
+    Asset( "ANIM", "anim/fa_table.zip" ),
+}
 local function fn(bank,bld,animname,loop)
 	local inst = CreateEntity()
 	local trans = inst.entity:AddTransform()
@@ -32,4 +38,26 @@ local function fa_pillar_dwarf()
     return inst
 end
 
-return Prefab( "common/fa_dorf_gold_pillar", fa_pillar_dwarf, fa_pillar_dwarf_assets)
+local function fa_table()
+    local inst= fn("fa_table")
+    MakeObstaclePhysics(inst, 0.3)
+    return inst
+end
+
+local function fa_stool_blown()
+    local inst= fn("fa_stool")
+    MakeInventoryPhysics(inst)
+    inst.AnimState:PlayAnimation("blown")
+    return inst
+end
+
+local function fa_stool()
+    local inst= fn("fa_stool")
+    MakeInventoryPhysics(inst)
+    return inst
+end
+
+return Prefab( "common/fa_dorf_gold_pillar", fa_pillar_dwarf, fa_pillar_dwarf_assets),
+Prefab( "common/fa_dorf_stool", fa_stool, fa_stool_assets),
+Prefab( "common/fa_dorf_stool_blown", fa_stool_blown, fa_stool_assets),
+Prefab( "common/fa_dorf_table", fa_table, fa_table_assets)

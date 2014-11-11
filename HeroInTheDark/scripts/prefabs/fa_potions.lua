@@ -352,9 +352,6 @@ local function eatwonder(inst,data)
 			print("no effect??")
 		end
 	end
-	if(eater.components.inventory)then
-		eater.components.inventory:GiveItem( SpawnPrefab("fa_bottle_empty") )
-	end
 end
 
 local function common(name)
@@ -459,8 +456,10 @@ local function fnempty()
     inst:DoPeriodicTask(1,function()
     	if(not inst:IsInLimbo() and GetSeasonManager():IsRaining()) then
     		local pos=inst:GetPosition()
+    		local stack=inst.components.stackable.stacksize
     		inst:Remove()
     		local water=SpawnPrefab("fa_bottle_water")
+    		water.components.stackable.stacksize=stack
 		    water.Transform:SetPosition(pos.x, pos.y, pos.z)
     	end
     end)

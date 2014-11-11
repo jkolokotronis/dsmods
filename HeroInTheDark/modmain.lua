@@ -52,6 +52,7 @@ local Widget = require "widgets/widget"
 local XPBadge= require "widgets/xpbadge"
 local TextEdit=require "widgets/textedit"
 local ItemTile = require "widgets/itemtile"
+local Image = require "widgets/image"
 local FA_WarClock = require "widgets/fa_warclock"
 local FA_BuffBar=require "widgets/fa_buffbar"
 local FA_StatusBar=require "widgets/fa_statusbar"
@@ -419,6 +420,9 @@ Assets = {
     Asset( "IMAGE", "images/lava2.tex" ),
     Asset( "IMAGE", "images/lava1.tex" ),
     Asset( "IMAGE", "images/lava.tex" ),
+
+    Asset( "IMAGE", "images/fa_title.tex" ),
+    Asset( "ATLAS", "images/fa_title.xml" ), 
 
     Asset( "IMAGE", "colour_cubes/lavacube.tex" ),
     Asset( "IMAGE", "colour_cubes/identity_colourcube.tex" ),
@@ -1372,6 +1376,14 @@ local function UpdateWorldGenScreen(self, profile, cb, world_gen_options)
 end
 
 AddClassPostConstruct("screens/worldgenscreen", UpdateWorldGenScreen)
+
+local function UpdateMainScreen(self,...)
+    if(self.shield) then self.shield:Kill() end
+    self.shield = self.fixed_root:AddChild(Image())
+    self.shield:SetTexture("images/fa_title.xml", "fa_title.tex")
+end
+
+AddClassPostConstruct("screens/mainscreen",UpdateMainScreen)
 
 local function setTopologyType(inst,type)
     local oldLoadPostPass = inst.LoadPostPass
@@ -2510,7 +2522,26 @@ end)
 AddPrefabPostInit("icestaff", function(inst) inst:AddTag("staff") end)
 AddPrefabPostInit("firestaff", function(inst) inst:AddTag("staff") end)
 AddPrefabPostInit("telestaff", function(inst) inst:AddTag("staff") end)
-AddPrefabPostInit("orangestaff", function(inst) inst:AddTag("staff") end)
+AddPrefabPostInit("orangestaff", function(inst) 
+    inst:AddTag("staff") 
+    local canblink=inst.components.blinkstaff.CanBlinkToPoint
+    function inst.components.blinkstaff:CanBlinkToPoint(pt)
+        local level=GLOBAL.SaveGameIndex:GetCurrentCaveLevel()
+        if(level>3)then
+--            local data=Levels.cave_levels[level]
+            local ground = GetWorld()
+            if ground then
+                local owner = self.inst.components.inventoryitem.owner
+                local ownerpt=owner:GetPosition()
+                local clear=ground.Pathfinder:IsClear(ownerpt.x, ownerpt.y, ownerpt.z,
+                                                         pt.x, pt.y, pt.z,
+                                                         {ignorewalls = false, ignorecreep = true})
+                if(not clear) then return false end
+            end
+        end
+        return canblink(self,pt)
+    end
+end)
 AddPrefabPostInit("greenstaff", function(inst) inst:AddTag("staff") end)
 AddPrefabPostInit("yellowstaff", function(inst) inst:AddTag("staff") end)
 

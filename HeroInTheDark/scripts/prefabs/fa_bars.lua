@@ -94,7 +94,6 @@ end
 return Prefab( "common/inventory/fa_ironbar", ironbarfn, assets,prefabs),
 Prefab( "common/inventory/fa_pigironbar", pigironbarfn, assets,prefabs),
 Prefab( "common/inventory/fa_coalbar", coalbarfn, assets,prefabs),
-Prefab( "common/inventory/fa_limestonebar", limebarfn, assets,prefabs),
 Prefab( "common/inventory/fa_adamantinebar", adamantinebarfn, assets,prefabs),
 Prefab( "common/inventory/fa_copperbar", copperbarfn, assets,prefabs),
 Prefab( "common/inventory/fa_steelbar", steelbarfn, assets,prefabs),

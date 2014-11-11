@@ -32,20 +32,36 @@ local prefabs ={}
 
 local ARMOR_POTHAT = 500
 local ARMOR_POTHAT_ABSORPTION = .2
+local ARMOR_POTHAT_WATERPROOFNESS=0.2
 local ARMOR_COPPERHAT = 1500
 local ARMOR_COPPERHAT_ABSORPTION = .6
+local ARMOR_COPPERHAT_WATERPROOFNESS=0.2
 local ARMOR_IRONHAT = 2500
 local ARMOR_IRONHAT_ABSORPTION = .8
+local ARMOR_IRONHAT_WATERPROOFNESS=0.2
 local ARMOR_STEELHAT = 3500
 local ARMOR_STEELHAT_ABSORPTION = .9
+local ARMOR_STEELHAT_WATERPROOFNESS=0.2
 local ARMOR_ADAMANTHAT = 4500
 local ARMOR_ADAMANTHAT_ABSORPTION = .95
+local ARMOR_ADAMANTHAT_WATERPROOFNESS=0.2
 local ARMOR_SILVERHAT = 2500
-local ARMOR_SILVERHAT_ABSORPTION = .8
-local ARMOR_GOLDHAT = 2500
-local ARMOR_GOLDHAT_ABSORPTION = .8
+local ARMOR_SILVERHAT_ABSORPTION = .85
+local ARMOR_SILVERHAT_WATERPROOFNESS=0.2
+local ARMOR_GOLDHAT = 2000
+local ARMOR_GOLDHAT_ABSORPTION = .7
+local ARMOR_GOLDHAT_WATERPROOFNESS=0.2
 local ARMOR_GOBLINKING=20000
 local ARMOR_GOBLINKING_ABSORPTION= 0.3
+
+local ARMOR_GOLD_DAPPERNESS=5.0/60
+local ARMOR_GOLD_FUELLEVEL=1200
+local ARMOR_POT_DAPPERNESS=-5.0/60
+local ARMOR_SILVER_DR=5
+
+    local function generic_perish(inst)
+        inst:Remove()
+    end
 
 local function onequip(inst, owner, build)
         owner.AnimState:OverrideSymbol("swap_hat", build, "swap_hat")
@@ -112,6 +128,9 @@ local function onequip(inst, owner, build)
 
         inst:AddComponent("inspectable")
 
+        inst:AddComponent("waterproofer")
+        inst.components.waterproofer:SetEffectiveness(TUNING.WATERPROOFNESS_ABSOLUTE)
+
         inst:AddComponent("inventoryitem")
         inst.components.inventoryitem.imagename = build
         inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_hats.xml"
@@ -132,7 +151,36 @@ local function onequip(inst, owner, build)
             else
                 onequip(inst,owner,"hat_pot_swap") 
             end
+            if(owner and owner.components.playerlightningtarget and owner.components.playerlightningtarget.hitchance)then
+                owner.components.playerlightningtarget.hitchance=owner.components.playerlightningtarget.hitchance+0.2
+            end
         end )
+
+        inst.components.equippable:SetOnUnequip(function(inst,owner) 
+            if(owner and owner.components.playerlightningtarget and owner.components.playerlightningtarget.hitchance)then
+                owner.components.playerlightningtarget.hitchance=owner.components.playerlightningtarget.hitchance-0.2
+            end
+            onunequip(inst,owner)
+        end)
+
+        inst:AddComponent("waterproofer")
+        inst.components.waterproofer:SetEffectiveness(ARMOR_POTHAT_WATERPROOFNESS)
+
+        local dapperfn=function(inst,owner)
+            local seasonmanager=GetSeasonManager()
+            if(seasonmanager and seasonmanager:IsRaining())then
+                return ARMOR_POT_DAPPERNESS
+            else
+                return 0
+            end
+        end
+        if(FA_DLCACCESS)then
+            inst.components.equippable.dapperfn = dapperfn
+        else
+            inst:AddComponent("dapperness")
+            inst.components.dapperness.dapperfn = dapperfn
+        end
+
         inst:AddComponent("armor")
         inst.components.armor:InitCondition(ARMOR_POTHAT, ARMOR_POTHAT_ABSORPTION)
         inst.components.armor.fa_resistances[FA_DAMAGETYPE.ACID]=0.2
@@ -150,7 +198,22 @@ local function onequip(inst, owner, build)
 
     local function fncopper()
         local inst=common("fa_hat_copper")
-        inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_copper") end  )
+        inst.components.equippable:SetOnEquip( function(inst,owner) 
+            onequip(inst,owner,"fa_hat_copper") 
+            if(owner and owner.components.playerlightningtarget and owner.components.playerlightningtarget.hitchance)then
+                owner.components.playerlightningtarget.hitchance=owner.components.playerlightningtarget.hitchance+0.3
+            end
+        end  )
+
+        inst.components.equippable:SetOnUnequip(function(inst,owner) 
+            if(owner and owner.components.playerlightningtarget and owner.components.playerlightningtarget.hitchance)then
+                owner.components.playerlightningtarget.hitchance=owner.components.playerlightningtarget.hitchance-0.3
+            end
+            onunequip(inst,owner)
+        end)
+
+        inst:AddComponent("waterproofer")
+        inst.components.waterproofer:SetEffectiveness(ARMOR_COPPERHAT_WATERPROOFNESS)
         inst:AddComponent("armor")
         inst.components.armor:InitCondition(ARMOR_COPPERHAT, ARMOR_COPPERHAT_ABSORPTION)
         return inst
@@ -158,7 +221,22 @@ local function onequip(inst, owner, build)
 
     local function fniron()
         local inst=common("fa_hat_iron")
-        inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_iron") end  )
+        inst.components.equippable:SetOnEquip( function(inst,owner) 
+            onequip(inst,owner,"fa_hat_iron") 
+            if(owner and owner.components.playerlightningtarget and owner.components.playerlightningtarget.hitchance)then
+                owner.components.playerlightningtarget.hitchance=owner.components.playerlightningtarget.hitchance+0.2
+            end
+        end  )
+
+        inst.components.equippable:SetOnUnequip(function(inst,owner) 
+            if(owner and owner.components.playerlightningtarget and owner.components.playerlightningtarget.hitchance)then
+                owner.components.playerlightningtarget.hitchance=owner.components.playerlightningtarget.hitchance-0.2
+            end
+            onunequip(inst,owner)
+        end)
+
+        inst:AddComponent("waterproofer")
+        inst.components.waterproofer:SetEffectiveness(ARMOR_IRONHAT_WATERPROOFNESS)
         inst:AddComponent("armor")
         inst.components.armor:InitCondition(ARMOR_IRONHAT, ARMOR_IRONHAT_ABSORPTION)
         return inst
@@ -166,7 +244,17 @@ local function onequip(inst, owner, build)
 
     local function fnsilver()
         local inst=common("fa_hat_silver")
-        inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_silver") end  )
+
+        inst.components.equippable:SetOnEquip( function(inst,owner) 
+            onequip(inst,owner,"fa_hat_silver") 
+        end  )
+
+        inst.components.equippable:SetOnUnequip(function(inst,owner)     
+            onunequip(inst,owner)
+        end)
+
+        inst:AddComponent("waterproofer")
+        inst.components.waterproofer:SetEffectiveness(ARMOR_SILVERHAT_WATERPROOFNESS)
         inst:AddComponent("armor")
         inst.components.armor:InitCondition(ARMOR_SILVERHAT, ARMOR_SILVERHAT_ABSORPTION)
         return inst
@@ -175,6 +263,24 @@ local function onequip(inst, owner, build)
     local function fngold()
         local inst=common("fa_hat_gold")
         inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_gold") end  )
+        inst:AddComponent("waterproofer")
+        inst.components.waterproofer:SetEffectiveness(ARMOR_GOLDHAT_WATERPROOFNESS)
+
+        if(FA_DLCACCESS)then
+            inst.components.equippable.dapperness = -ARMOR_GOLD_DAPPERNESS
+        else
+            inst:AddComponent("dapperness")
+            inst.components.dapperness.dapperness = -ARMOR_GOLD_DAPPERNESS
+        end
+
+        inst:AddComponent("fueled")
+        inst.components.fueled.fueltype = "USAGE"
+        inst.components.fueled:InitializeFuelLevel(ARMOR_GOLD_FUELLEVEL)
+        inst.components.fueled:SetDepletedFn( generic_perish )
+
+        inst:ListenForEvent("rainstop", function() inst.components.fueled.rate=1 end, GetWorld()) 
+        inst:ListenForEvent("rainstart", function() inst.components.fueled.rate=2 end, GetWorld()) 
+
         inst:AddComponent("armor")
         inst.components.armor:InitCondition(ARMOR_GOLDHAT, ARMOR_GOLDHAT_ABSORPTION)
         return inst
@@ -182,7 +288,20 @@ local function onequip(inst, owner, build)
 
     local function fnsteel()
         local inst=common("fa_hat_steel")
-        inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_steel") end  )
+        inst.components.equippable:SetOnEquip( function(inst,owner) 
+            onequip(inst,owner,"fa_hat_steel") 
+            if(owner and owner.components.playerlightningtarget and owner.components.playerlightningtarget.hitchance)then
+                owner.components.playerlightningtarget.hitchance=owner.components.playerlightningtarget.hitchance+0.2
+            end
+        end  )
+        inst.components.equippable:SetOnUnequip(function(inst,owner) 
+            if(owner and owner.components.playerlightningtarget and owner.components.playerlightningtarget.hitchance)then
+                owner.components.playerlightningtarget.hitchance=owner.components.playerlightningtarget.hitchance-0.2
+            end
+            onunequip(inst,owner)
+        end)
+        inst:AddComponent("waterproofer")
+        inst.components.waterproofer:SetEffectiveness(ARMOR_STEELHAT_WATERPROOFNESS)
         inst:AddComponent("armor")
         inst.components.armor:InitCondition(ARMOR_STEELHAT, ARMOR_STEELHAT_ABSORPTION)
         return inst
@@ -191,6 +310,8 @@ local function onequip(inst, owner, build)
     local function fnadamant()
         local inst=common("fa_hat_adamant")
         inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_adamant") end  )
+        inst:AddComponent("waterproofer")
+        inst.components.waterproofer:SetEffectiveness(ARMOR_ADAMANTHAT_WATERPROOFNESS)
         inst:AddComponent("armor")
         inst.components.armor:InitCondition(ARMOR_ADAMANTHAT, ARMOR_ADAMANTHAT_ABSORPTION)
         return inst

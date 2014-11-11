@@ -167,6 +167,14 @@ local alchemy_recipes={
 			{ingred="fa_bottle_empty",count=1},
 		},
 	},
+	{
+		match={product={"fa_key_generic"},cooktime=30},
+		test={
+			{ingred="nightmarefuel",count=1},
+			{ingred="boards",count=2},
+			{ingred="razor",count=1}
+		},
+	},
 }
 
 local smelt_recipes={
@@ -316,13 +324,6 @@ local smelt_recipes={
 			{ingred=isfuel,count=2},
 		},
 	},
-	{
-		match={product={"fa_limestonepebble","fa_limestonepebble","fa_limestonepebble","fa_limestonepebble","fa_limestonepebble","fa_limestonepebble"},cooktime=60},
-		test={
-			{ingred="fa_limestoneslag",count=6},
-			{ingred=isfuel,count=2},
-		},
-	},
 }
 
 local forge_recipes={
@@ -401,8 +402,7 @@ local forge_recipes={
 	{
 		match={product={"fa_steelsword","fa_bottle_empty"},cooktime=480},
 		test={
-			{ingred="fa_steelbar",count=2},
-			{ingred="fa_pigironbar",count=1},
+			{ingred="fa_steelbar",count=3},
 			{ingred="fa_coalbar",count=4},
 			{ingred="fa_bottle_oil", count=1},
 		},
@@ -410,8 +410,7 @@ local forge_recipes={
 	{
 		match={product={"fa_steelaxe","fa_bottle_empty"},cooktime=480},
 		test={
-			{ingred="fa_steelbar",count=3},
-			{ingred="fa_pigironbar",count=1},
+			{ingred="fa_steelbar",count=4},
 			{ingred="fa_coalbar",count=3},
 			{ingred="fa_bottle_oil", count=1},
 		},
@@ -419,8 +418,7 @@ local forge_recipes={
 	{
 		match={product={"fa_steeldagger","fa_bottle_empty","fa_bottle_empty"},cooktime=480},
 		test={
-			{ingred="fa_steelbar",count=2},
-			{ingred="fa_pigironbar",count=1},
+			{ingred="fa_steelbar",count=3},
 			{ingred="fa_coalbar",count=3},
 			{ingred="fa_bottle_oil", count=2},
 		},
@@ -479,6 +477,78 @@ local forge_recipes={
 			{ingred="fa_steelbar",count=4},
 			{ingred="fa_coalbar",count=2},
 			{ingred="fa_bottle_oil", count=2},
+		},
+	},
+	{
+		match={product={"fa_goldarmor","fa_bottle_empty","fa_bottle_empty"},cooktime=960},
+		test={
+			{ingred="fa_goldbar",count=5},
+			{ingred="fa_coalbar",count=1},
+			{ingred="fa_bottle_oil", count=2},
+		},
+	},
+	{
+		match={product={"fa_silverarmor","fa_bottle_empty","fa_bottle_empty"},cooktime=960},
+		test={
+			{ingred="fa_silverbar",count=5},
+			{ingred="fa_coalbar",count=1},
+			{ingred="fa_bottle_oil", count=2},
+		},
+	},
+	{
+		match={product={"fa_hat_copper","fa_bottle_empty","fa_bottle_empty","fa_bottle_empty"},cooktime=72},
+		test={
+			{ingred="fa_copperbar",count=2},
+			{ingred="fa_coalbar",count=3},
+			{ingred=bottleany, count=3},
+		},
+	},
+	{
+		match={product={"fa_hat_copper","fa_bottle_empty","fa_bottle_empty","fa_bottle_empty"},cooktime=120},
+		test={
+			{ingred="fa_copperbar",count=2},
+			{ingred=isfuel,count=3},
+			{ingred=bottleany, count=3},
+		},
+	},
+	{
+		match={product={"fa_hat_iron","fa_bottle_empty","fa_bottle_empty","fa_bottle_empty"},cooktime=216},
+		test={
+			{ingred="fa_ironbar",count=2},
+			{ingred=isfuel,count=3},
+			{ingred=heavywater, count=3},
+		},
+	},
+	{
+		match={product={"fa_hat_iron","fa_bottle_empty","fa_bottle_empty","fa_bottle_empty"},cooktime=360},
+		test={
+			{ingred="fa_ironbar",count=2},
+			{ingred="fa_coalbar",count=3},
+			{ingred=heavywater, count=3},
+		},
+	},
+	{
+		match={product={"fa_hat_steel","fa_bottle_empty","fa_bottle_empty","fa_bottle_empty"},cooktime=840},
+		test={
+			{ingred="fa_steelbar",count=2},
+			{ingred="fa_coalbar",count=3},
+			{ingred="fa_bottle_oil", count=3},
+		},
+	},
+	{
+		match={product={"fa_hat_gold","fa_bottle_empty","fa_bottle_empty","fa_bottle_empty"},cooktime=720},
+		test={
+			{ingred="fa_goldbar",count=2},
+			{ingred="fa_coalbar",count=3},
+			{ingred="fa_bottle_oil", count=3},
+		},
+	},
+	{
+		match={product={"fa_hat_silver","fa_bottle_empty","fa_bottle_empty","fa_bottle_empty"},cooktime=840},
+		test={
+			{ingred="fa_silverbar",count=2},
+			{ingred="fa_coalbar",count=3},
+			{ingred="fa_bottle_oil", count=3},
 		},
 	},
 	{
@@ -805,13 +875,6 @@ local forge_recipes={
 		match={product={"fa_pigironbar","fa_pigironbar","fa_pigironbar","fa_pigironbar","fa_pigironbar","fa_pigironbar"},cooktime=60},
 		test={
 			{ingred="fa_pigironbarslag",count=6},
-			{ingred=isfuel,count=2},
-		},
-	},
-	{
-		match={product={"fa_limestonebar","fa_limestonebar","fa_limestonebar","fa_limestonebar","fa_limestonebar","fa_limestonebar"},cooktime=60},
-		test={
-			{ingred="fa_limestonebarslag",count=6},
 			{ingred=isfuel,count=2},
 		},
 	},

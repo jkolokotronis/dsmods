@@ -328,8 +328,8 @@ end
 local function frozenSlowDebuff(target,timer)
     if(timer==nil or timer<=0)then return false end
     if(target.fa_frozenslow)then
-        reader.fa_frozenslow.components.spell.lifetime = 0
-        reader.fa_frozenslow.components.spell:ResumeSpell()
+        target.fa_frozenslow.components.spell.lifetime = 0
+        target.fa_frozenslow.components.spell:ResumeSpell()
     else
         local inst=createfrozenSlowDebuff(target,timer)
         inst.components.spell:SetTarget(target)

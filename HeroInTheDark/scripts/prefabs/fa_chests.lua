@@ -38,11 +38,11 @@ local function common(origprefab,locklevel)
 		end
 	end
 
-
+	inst:RemoveComponent("burnable")
 
     --post pass doesnt trigger right after worldgen for some reason, and entity load triggers too early, and why doesn't container save canbeopened field...
     inst:DoTaskInTime(0,function()
-    	if(not inst.components.lock.islocked)then
+    	if(not inst.components.lock.islocked and inst.components.container)then
     		inst.components.container.canbeopened=true
     	else
     		inst.components.container.canbeopened=false
@@ -72,7 +72,6 @@ end
 local function fa_mine_skullchest()
 
 	local inst =Prefabs["skullchest"].fn()
-	inst:RemoveComponent("burnable")
 	return inst
 end
 

@@ -25,7 +25,18 @@ local ARMOR_ABSORPTION_T3=0.95
 local ARMOR_DURABILITY_T1=1800
 local ARMOR_DURABILITY_T2=2800
 local ARMOR_DURABILITY_T3=4000
+local ARMOR_DURABILITY_SILVER=2500
+local ARMOR_ABSORPTION_SILVER=0.85
+local ARMOR_DURABILITY_GOLD=2000
+local ARMOR_ABSORPTION_GOLD=0.7
 
+local ARMOR_GOLD_DAPPERNESS=5.0/60
+local ARMOR_GOLD_FUELLEVEL=1200
+
+
+    local function generic_perish(inst)
+        inst:Remove()
+    end
 
 
 local function onunequip(inst, owner) 
@@ -36,6 +47,7 @@ local function fn(name)
 	local inst = CreateEntity()
     
 	inst.entity:AddTransform()
+    inst.Transform:SetScale(1.3, 1.3, 1.3)
 	inst.entity:AddAnimState()
     MakeInventoryPhysics(inst)
 
@@ -83,12 +95,40 @@ local function ironarmor()
 end
 local function silverarmor()
     local inst =fn("fa_silverarmor")
-    inst.components.armor:InitCondition(ARMOR_DURABILITY_T2, ARMOR_ABSORPTION_T2)
+    inst.components.armor:InitCondition(ARMOR_DURABILITY_SILVER, ARMOR_ABSORPTION_SILVER)
     return inst
 end
 local function goldarmor()
     local inst =fn("fa_goldarmor")
-    inst.components.armor:InitCondition(ARMOR_DURABILITY_T2, ARMOR_ABSORPTION_T2)
+    inst.components.armor:InitCondition(ARMOR_DURABILITY_GOLD, ARMOR_ABSORPTION_GOLD)
+
+
+        if(FA_DLCACCESS)then
+            inst.components.equippable.dapperness = -ARMOR_GOLD_DAPPERNESS
+        else
+            inst:AddComponent("dapperness")
+            inst.components.dapperness.dapperness = -ARMOR_GOLD_DAPPERNESS
+        end
+
+
+        inst:AddComponent("fueled")
+        inst.components.fueled.fueltype = "USAGE"
+        inst.components.fueled:InitializeFuelLevel(ARMOR_GOLD_FUELLEVEL)
+        inst.components.fueled:SetDepletedFn( generic_perish )
+
+
+        inst:ListenForEvent("rainstop", function() inst.components.fueled.rate=1 end, GetWorld()) 
+        inst:ListenForEvent("rainstart", function() inst.components.fueled.rate=2 end, GetWorld()) 
+
+    inst.components.equippable:SetOnEquip(function(inst,owner)
+        owner.AnimState:OverrideSymbol("swap_body", "fa_goldarmor", "swap_body")
+        inst.components.fueled:StartConsuming()        
+    end)
+    inst.components.equippable:SetOnUnequip( function(inst,owner)
+        inst.components.fueled:StopConsuming()        
+        onunequip(inst,owner)
+    end)
+
     return inst
 end
 
