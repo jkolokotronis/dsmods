@@ -97,6 +97,59 @@
         <file id="1" name="headbase_hat/headbase_hat-1.png" width="170" height="200" pivot_x="0.599629" pivot_y="0.127104"/>
         <file id="2" name="headbase_hat/headbase_hat-2.png" width="180" height="200" pivot_x="0.536334" pivot_y="0.121386"/>
     </folder>
+    <folder id="12" name="sneak_torso">
+        <file id="0" name="sneak_torso/torso-1.png" width="77" height="89" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="sneak_torso/torso-0.png" width="72" height="92" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="sneak_torso/torso-6.png" width="123" height="128" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <folder id="13" name="sneak_headbase">
+        <file id="0" name="sneak_headbase/headbase-1.png" width="180" height="220" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="sneak_headbase/headbase-0.png" width="188" height="220" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="sneak_headbase/headbase-2.png" width="188" height="220" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <folder id="14" name="sneak_arm_upper">
+        <file id="0" name="sneak_arm_upper/arm_upper-1.png" width="22" height="56" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="sneak_arm_upper/_0010_arm_upper.png" width="18" height="50" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <folder id="15" name="sneak_arm_lower">
+        <file id="0" name="sneak_arm_lower/arm_lower-1.png" width="40" height="45" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="sneak_arm_lower/arm_lower-0.png" width="23" height="25" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <folder id="16" name="sneak_hand">
+        <file id="0" name="sneak_hand/hand-0.png" width="39" height="35" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="sneak_hand/_0008_hand-Copy.png" width="33" height="38" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="sneak_hand/hand-1.png" width="56" height="44" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <folder id="17" name="sneak_leg">
+        <file id="0" name="sneak_leg/leg-1.png" width="32" height="52" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="sneak_leg/leg-5.png" width="43" height="35" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="sneak_leg/leg-4.png" width="34" height="31" pivot_x="0" pivot_y="1"/>
+        <file id="3" name="sneak_leg/leg-0.png" width="33" height="51" pivot_x="0" pivot_y="1"/>
+        <file id="4" name="sneak_leg/3leg.png" width="29" height="63" pivot_x="0" pivot_y="1"/>
+        <file id="5" name="sneak_leg/3leg-copy.png" width="14" height="33" pivot_x="0" pivot_y="1"/>
+        <file id="6" name="sneak_leg/2leg.png" width="38" height="49" pivot_x="0" pivot_y="1"/>
+        <file id="7" name="sneak_leg/2leg-copy.png" width="16" height="54" pivot_x="0" pivot_y="1"/>
+        <file id="8" name="sneak_leg/1leg.png" width="28" height="40" pivot_x="0" pivot_y="1"/>
+        <file id="9" name="sneak_leg/leg-2.png" width="36" height="44" pivot_x="0" pivot_y="1"/>
+        <file id="10" name="sneak_leg/leg-3.png" width="35" height="29" pivot_x="0" pivot_y="1"/>
+        <file id="11" name="sneak_leg/leg-6.png" width="38" height="53" pivot_x="0" pivot_y="1"/>
+        <file id="12" name="sneak_leg/leg-7.png" width="33" height="51" pivot_x="0" pivot_y="1"/>
+        <file id="13" name="sneak_leg/1leg-copy.png" width="16" height="52" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <folder id="18" name="sneak_foot">
+        <file id="0" name="sneak_foot/foot-0.png" width="26" height="23" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="sneak_foot/foot-4.png" width="25" height="33" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="sneak_foot/foot-1.png" width="25" height="25" pivot_x="0" pivot_y="1"/>
+        <file id="3" name="sneak_foot/foot-2.png" width="21" height="33" pivot_x="0" pivot_y="1"/>
+        <file id="4" name="sneak_foot/foot-3.png" width="22" height="36" pivot_x="0" pivot_y="1"/>
+        <file id="5" name="sneak_foot/foot-5.png" width="32" height="20" pivot_x="0" pivot_y="1"/>
+        <file id="6" name="sneak_foot/1foot-copy.png" width="18" height="44" pivot_x="0" pivot_y="1"/>
+        <file id="7" name="sneak_foot/1foot.png" width="20" height="18" pivot_x="0" pivot_y="1"/>
+        <file id="8" name="sneak_foot/3foot-copy-3.png" width="18" height="29" pivot_x="0" pivot_y="1"/>
+        <file id="9" name="sneak_foot/3foot-copy-2.png" width="23" height="31" pivot_x="0" pivot_y="1"/>
+        <file id="10" name="sneak_foot/2foot-copy-3.png" width="23" height="21" pivot_x="0" pivot_y="1"/>
+        <file id="11" name="sneak_foot/2foot-copy-2.png" width="21" height="31" pivot_x="0" pivot_y="1"/>
+    </folder>
     <entity id="0" name="template">
         <animation id="0" name="BUILD_PLAYER" length="1000">
             <mainline>

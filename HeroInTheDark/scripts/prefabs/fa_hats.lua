@@ -27,6 +27,11 @@ local assets_silver={
 local assets_gold={
     Asset("ANIM", "anim/fa_hat_gold.zip"), 
 }
+local asset_dorfcrown={
+    Asset("ANIM", "anim/fa_dorf_crown.zip"),     
+    Asset("ATLAS", "images/inventoryimages/fa_dorf_crown.xml"),
+    Asset("IMAGE", "images/inventoryimages/fa_dorf_crown.tex"),
+}
 
 local prefabs ={}
 
@@ -317,6 +322,16 @@ local function onequip(inst, owner, build)
         return inst
     end
 
+    local function fncrown()
+        local inst=common("fa_dorf_crown")
+        inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_dorf_crown") end  )
+        inst.components.inventoryitem.imagename = "fa_dorf_crown"
+        inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_dorf_crown.xml"
+        inst:AddComponent("armor")
+        inst.components.armor:InitCondition(ARMOR_ADAMANTHAT, ARMOR_ADAMANTHAT_ABSORPTION)
+        return inst
+    end
+
 return Prefab( "common/inventory/hat_goblinking", fnking, assets_goblinking, prefabs),
 Prefab( "common/inventory/hat_pot", fnpot, assets_pot, prefabs),
 Prefab( "common/inventory/fa_hat_adamant", fnadamant, assets_adamant, prefabs),
@@ -324,4 +339,5 @@ Prefab( "common/inventory/fa_hat_copper", fncopper, assets_copper, prefabs),
 Prefab( "common/inventory/fa_hat_iron", fniron, assets_iron, prefabs),
 Prefab( "common/inventory/fa_hat_silver", fnsilver, assets_silver, prefabs),
 Prefab( "common/inventory/fa_hat_gold", fngold, assets_gold, prefabs),
-Prefab( "common/inventory/fa_hat_steel", fnsteel, assets_steel, prefabs)
+Prefab( "common/inventory/fa_hat_steel", fnsteel, assets_steel, prefabs),
+Prefab( "common/inventory/fa_dorf_crown", fncrown, asset_dorfcrown, prefabs)
