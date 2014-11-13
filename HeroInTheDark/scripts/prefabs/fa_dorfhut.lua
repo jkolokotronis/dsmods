@@ -10,6 +10,10 @@ local standassets =
 {
     Asset("ANIM", "anim/fa_dwarfstand.zip"),    
 }
+local throneassets =
+{
+    Asset("ANIM", "anim/fa_dorf_throne.zip"),    
+}
 local prefabs = 
 {
 	"fa_dorf",
@@ -67,6 +71,16 @@ local function fn()
     inst:AddComponent("inspectable")
     
     MakeSnowCovered(inst, .01)
+    return inst
+end
+
+local function fnthrone()
+    local inst=fn()
+    MakeObstaclePhysics(inst, 1)
+
+    inst.AnimState:SetBank("fa_dorf_throne")
+    inst.AnimState:SetBuild("fa_dorf_throne")
+    inst.AnimState:PlayAnimation("idle",true)
     return inst
 end
 
@@ -166,5 +180,6 @@ end
 return Prefab( "common/objects/fa_dorfhut", fnhut, hutassets, prefabs ),
 Prefab( "common/objects/fa_dorfbed", fnbed, bedassets, prefabs ),
 Prefab( "common/objects/fa_dorfstand", fnstand, standassets, prefabs ),
-Prefab( "common/objects/fa_dorfstand_food_1", fnfoodstand1, standassets, prefabs )
+Prefab( "common/objects/fa_dorfstand_food_1", fnfoodstand1, standassets, prefabs ),
+Prefab( "common/objects/fa_dorfthrone", fnthrone, throneassets, prefabs )
 

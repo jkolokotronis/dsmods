@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
+    <folder id="0" name="Front View">
+        <file id="0" name="Front View/Body_Front.png" width="934" height="1464" pivot_x="0.548077" pivot_y="0.1794"/>
+        <file id="1" name="Front View/Leg_Upper_Left_Front.png" width="332" height="284" pivot_x="0.571856" pivot_y="0.800699"/>
+        <file id="2" name="Front View/Leg_Upper_Right_Front.png" width="332" height="284" pivot_x="0.404192" pivot_y="0.811189"/>
+        <file id="3" name="Front View/Lef_Lower_Left_Front.png" width="320" height="314" pivot_x="0.571429" pivot_y="0.901899"/>
+        <file id="4" name="Front View/Lef_Lower_Right_Front.png" width="320" height="314" pivot_x="0.413043" pivot_y="0.892405"/>
+        <file id="5" name="Front View/Head_Front.png" width="613" height="916" pivot_x="0.507317" pivot_y="0.20915"/>
+        <file id="6" name="Front View/Foot_LEft_Front.png" width="607" height="434" pivot_x="0.246305" pivot_y="0.894495"/>
+        <file id="7" name="Front View/Foot_Right_Front.png" width="607" height="434" pivot_x="0.756979" pivot_y="0.887615"/>
+        <file id="8" name="Front View/Arm_Upper_R.png" width="470" height="633" pivot_x="0.625" pivot_y="0.900787"/>
+        <file id="9" name="Front View/Arm_Upper_L.png" width="470" height="633" pivot_x="0.476695" pivot_y="0.925984"/>
+        <file id="10" name="Front View/Arm_Lower_Left.png" width="407" height="607" pivot_x="0.689487" pivot_y="0.945813"/>
+        <file id="11" name="Front View/Arm_Lower_Right.png" width="407" height="607" pivot_x="0.342298" pivot_y="0.932677"/>
+        <file id="12" name="Front View/ax_2.png" width="455" height="1745" pivot_x="0.704595" pivot_y="0.145392"/>
+        <file id="13" name="Front View/Hand_Left_Front.png" width="281" height="354" pivot_x="0.551237" pivot_y="0.882022"/>
+        <file id="14" name="Front View/Hand_Right_Back_Ax.png" width="455" height="1745" pivot_x="0.698031" pivot_y="0.151689"/>
+        <file id="15" name="Front View/Hand_Right_Front.png" width="455" height="1745" pivot_x="0.706783" pivot_y="0.145965"/>
+        <file id="16" name="Front View/r-hand.png" width="370" height="347" pivot_x="0.053763" pivot_y="0.398281"/>
+        <file id="17" name="Front View/Foot_Right_Step.png" width="499" height="262" pivot_x="0" pivot_y="1"/>
+        <file id="18" name="Front View/Foot_Left_Step.png" width="499" height="262" pivot_x="0" pivot_y="1"/>
+        <file id="19" name="Front View/ax.png" width="1" height="1" pivot_x="0" pivot_y="1"/>
+        <file id="20" name="Front View/Head_Front01.png" width="571" height="984" pivot_x="0.481675" pivot_y="0.258621"/>
+        <file id="21" name="Front View/Head_Front02.png" width="613" height="902" pivot_x="0.479675" pivot_y="0.253319"/>
+        <file id="22" name="Front View/head_Front03.png" width="571" height="984" pivot_x="0.457243" pivot_y="0.261663"/>
+    </folder>
+    <entity id="0" name="fa_ogre">
+        <animation id="0" name="X" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="Body_Front">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-1" y="-34" scale_x="0.1" scale_y="0.1"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

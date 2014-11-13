@@ -1,7 +1,12 @@
 
 local assets=
 {
-	Asset("ANIM", "anim/PlaceholderBeast.zip"),
+--	Asset("ANIM", "anim/PlaceholderBeast.zip"),
+--    Asset("ANIM", "anim/fa_ogre.zip"),
+    Asset("ANIM", "anim/fa_ogre_side.zip"),
+    Asset("ANIM", "anim/fa_ogre_back.zip"),
+    Asset("ANIM", "anim/fa_ogre_front.zip"),
+    Asset("ANIM", "anim/fa_ogre_anim.zip"),
 	Asset("SOUND", "sound/hound.fsb"),
 }
 
@@ -46,7 +51,7 @@ local function fn()
 	local shadow = inst.entity:AddDynamicShadow()
 	shadow:SetSize( 3, 2 )
     inst.Transform:SetFourFaced()
-    inst.Transform:SetScale(2,2, 2)
+--    inst.Transform:SetScale(0.5,0.5, 0.5)
 	
 	inst:AddTag("scarytoprey")
     inst:AddTag("monster")
@@ -59,8 +64,12 @@ local function fn()
     MakeCharacterPhysics(inst, 100, 0.5)
      
     inst:AddTag("largecreature")
-    anim:SetBank("PlaceholderBeast")
-    anim:SetBuild("PlaceholderBeast") 
+    anim:SetBank("fa_ogre")
+    anim:SetBuild("fa_ogre_side") 
+    anim:OverrideSymbol("back view", "fa_ogre_back", "back view")
+--    anim:OverrideSymbol("side view", "fa_ogre_side", "side view")
+    anim:OverrideSymbol("Front View", "fa_ogre_front","Front View")
+
 
     inst.AnimState:PlayAnimation('idle',true)
     inst:AddComponent("locomotor") -- locomotor must be constructed before the stategraph

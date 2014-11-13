@@ -35,6 +35,7 @@ local assets = {
 
 		-- Don't forget to include your character's custom assets!
         Asset( "ANIM", "anim/thief.zip" ),
+        Asset( "ANIM", "anim/thief_sneak.zip" ),
         Asset( "ANIM", "anim/smoke_up.zip" ),
         Asset( "ANIM", "anim/question.zip" ),
 }
@@ -102,6 +103,8 @@ end
 
 local leavestealth=function(inst)
     inst:RemoveTag("notarget")
+    inst:RemoveTag("fa_sneak")
+    inst.AnimState:SetMultColour(1, 1, 1,1)
     inst.sneakBuff:ForceState("off")
     inst.components.hunger:SetRate(TUNING.WILSON_HUNGER_RATE)
     if(inst.fa_stealthdetecttask)then
@@ -111,7 +114,7 @@ local leavestealth=function(inst)
 end
 
 local onpickpocket=function(inst)
-    if(not inst:HasTag("notarget"))then
+    if(not inst:HasTag("fa_sneak"))then
         return false
     end
     
@@ -217,11 +220,12 @@ end
 local enterstealth=function(inst)
     inst.components.hunger:SetRate(SNEAK_HUNGER_MULT*TUNING.WILSON_HUNGER_RATE)
     inst:AddTag("notarget")
+    inst:AddTag("fa_sneak")
+    inst.AnimState:SetMultColour(1, 1, 1, 0.3)
 
     local boom = CreateEntity()
     boom.entity:AddTransform()
     local anim=boom.entity:AddAnimState()
-    boom.Transform:SetScale(1, 1, 1)
     anim:SetBank("smoke_up")
     anim:SetBuild("smoke_up")
     anim:PlayAnimation("idle",false)
@@ -229,7 +233,7 @@ local enterstealth=function(inst)
     local pos =inst:GetPosition()
     boom.Transform:SetPosition(pos.x, pos.y, pos.z)
     
-    boom:ListenForEvent("animover", function() print("cleanup") boom:Remove() end)
+    boom:ListenForEvent("animover", function()  boom:Remove() end)
 
     if(inst.fa_stealthdetecttask)then
         inst.fa_stealthdetecttask:Cancel()
@@ -309,14 +313,14 @@ end
 local onattacked=function(inst,data)
     local damage=data.damage
     local weapon=data.weapon
-    if(damage and damage>0 and inst:HasTag("notarget"))then
+    if(damage and damage>0 and inst:HasTag("fa_sneak"))then
         leavestealth(inst)
     end
 end
 
 local onhitother=function(inst,data)
     local damage=data.damage
-    if(damage and damage>0 and inst:HasTag("notarget"))then
+    if(damage and damage>0 and inst:HasTag("fa_sneak"))then
         leavestealth(inst)
     end
 end
@@ -343,7 +347,7 @@ local fn = function(inst)
     local combatmod=inst.components.combat
 
     function combatmod:CalcDamage (target, weapon, multiplier)
-        local sneaking=inst:HasTag("notarget")
+        local sneaking=inst:HasTag("fa_sneak")
         local backstab=BACKSTAB_MULTIPLIER
         if(inst.components.xplevel.level>=19)then
             backstab=BACKSTAB_MULTIPLIER_MK2
@@ -369,7 +373,7 @@ local fn = function(inst)
             return old*backstab
        end
     end
-
+    
     local sg=inst.sg.sg
 
     sg.states["sneak"]=State{
@@ -406,6 +410,41 @@ local fn = function(inst)
         end
         
     }
+
+    sg.states["run_start"].onenter=function(inst)
+            inst.components.locomotor:RunForward()
+            if(inst:HasTag("fa_sneak"))then
+                inst.AnimState:PlayAnimation("sneak")
+            else
+                inst.AnimState:PlayAnimation("run_pre")
+            end
+            inst.sg.mem.foosteps = 0
+    end
+    sg.states["run"].onenter=function(inst)
+            inst.components.locomotor:RunForward()
+            if(inst:HasTag("fa_sneak"))then
+                inst.AnimState:PlayAnimation("sneak",true)
+            else
+                inst.AnimState:PlayAnimation("run_loop")
+            end
+    end
+
+
+--[[ 
+    SGWilson.states["idle"]= GLOBAL.State{
+        name = "idle",
+        tags = {"idle", "canrotate"},
+        onenter = function(inst, pushanim)
+            
+            inst.components.locomotor:Stop()
+
+            inst.AnimState:PlayAnimation("spriter_idle", true)
+            inst.AnimState:OverrideSymbol("icebomb", "icebomb", "icebomb")
+
+        end,        
+    }
+]]
+
 
 --TODO there's gotta be a better way and move this out of here 
 
@@ -556,7 +595,7 @@ RECIPETABS["SUBTERFUGE"] = {str = "SUBTERFUGE", sort=999, icon = "trap_teeth.tex
                         if(state and state=="on") then
 --                                inst.sg:GoToState("hide")
                                 inst.sg:GoToState("sneak")
-                        elseif(inst:HasTag("notarget"))then
+                        elseif(inst:HasTag("fa_sneak"))then
                             leavestealth(inst)
                             inst.sg:GoToState("idle")
                         end

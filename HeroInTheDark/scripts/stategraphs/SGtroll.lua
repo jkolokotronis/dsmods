@@ -37,7 +37,7 @@ local states=
         name = "idle",
         tags = {"idle", "canrotate"},
         onenter = function(inst, playanim)
-            inst.AnimState:PlayAnimation('Idle', true)
+            inst.AnimState:PlayAnimation('idle', true)
             inst.Physics:Stop()
         end,
     },
@@ -45,7 +45,7 @@ local states=
         name = "walk",
         tags = {"walk", "canrotate"},
         onenter = function(inst, playanim)
-            inst.AnimState:PlayAnimation('Walk', true)
+            inst.AnimState:PlayAnimation('walk', true)
             inst.components.locomotor:RunForward()
             
         end,
@@ -57,7 +57,7 @@ local states=
         
         onenter = function(inst)
             inst.components.locomotor:RunForward()
-            inst.AnimState:PlayAnimation("Walk")
+            inst.AnimState:PlayAnimation("walk")
             inst.sg.mem.foosteps = 0
         end,
 
@@ -85,7 +85,7 @@ local states=
         
         onenter = function(inst) 
             inst.components.locomotor:RunForward()
-            inst.AnimState:PlayAnimation("Walk",true)
+            inst.AnimState:PlayAnimation("walk",true)
             
         end,
         
@@ -131,7 +131,7 @@ local states=
             inst.sg.statemem.target = target
             inst.Physics:Stop()
             inst.components.combat:StartAttack()
-            inst.AnimState:PlayAnimation("Attack")
+            inst.AnimState:PlayAnimation("attack")
         end,
         timeline =
         {
@@ -150,7 +150,7 @@ local states=
         onenter = function(inst, cb)
             inst.Physics:Stop()
             inst.SoundEmitter:PlaySound("dontstarve/characters/wilton/hurt")
-            inst.AnimState:PlayAnimation("Flinch")
+            inst.AnimState:PlayAnimation("hit")
         end,
 
         events=
@@ -164,7 +164,7 @@ local states=
         tags = {"busy"},
 
         onenter = function(inst)
-            inst.AnimState:PlayAnimation("Death")
+            inst.AnimState:PlayAnimation("death")
             inst.Physics:Stop()
             print("diaf")
             RemovePhysicsColliders(inst)            
@@ -199,7 +199,7 @@ local states=
         onenter = function(inst)
             inst.Physics:Stop() 
             print("got into regen sg")           
-            inst.AnimState:PlayAnimation("Death")
+            inst.AnimState:PlayAnimation("death")
         end,
         timeline=
         {
@@ -209,5 +209,5 @@ local states=
 }
 
 
-return StateGraph("troll", states, events, "spawn", actionhandlers)
+return StateGraph("troll", states, events, "idle", actionhandlers)
 
