@@ -330,6 +330,7 @@ local function startdemon(inst, owner)
         owner.components.eater:SetCarnivore(true)
         owner.components.eater.monsterimmune = true
         owner.components.eater.strongstomach = true
+        owner.components.hunger.hungerrate=owner.components.hunger.hungerrate+TUNING.WILSON_HUNGER_RATE
         owner.components.combat.fa_defaultdamageback=owner.components.combat.defaultdamage
         owner.components.combat.defaultdamage=40
         owner.components.locomotor.runspeed=owner.components.locomotor.runspeed+0.1*TUNING.WILSON_RUN_SPEED
@@ -375,6 +376,7 @@ local function stopdemon( inst,owner )
         owner.components.eater.foodprefs=owner.components.eater.fa_foodprefback
         owner.components.eater.monsterimmune=owner.components.eater.fa_monsterimmuneback
         owner.components.eater.strongstomach=owner.components.eater.fa_strongstomachback
+        owner.components.hunger.hungerrate=owner.components.hunger.hungerrate-TUNING.WILSON_HUNGER_RATE
         owner.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=owner.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]-1
         owner.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=owner.components.health.fa_resistances[FA_DAMAGETYPE.COLD]+1
         owner.components.combat.defaultdamage=owner.components.combat.fa_defaultdamageback

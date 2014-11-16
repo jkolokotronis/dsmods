@@ -1,6 +1,6 @@
 FA_MOBXP_TABLE={
 	bee={default=5},
-	bat={default=5},
+	bat={default=10},
 	killerbee={default=5},
 	mosquito={default=5},
 	spider={default=7},
@@ -87,5 +87,11 @@ FA_MOBXP_TABLE={
 	fa_goblin_wiz_1={default=35},
 	fa_goblin_king_1={default=250},
 	fa_redgoblin={default=55},
-	fa_dorf={default=50}
+	fa_dorf={default=50},
+	fa_ogre={default=550},
+	fa_dartdrybones={default=55},
+	fa_drybones={default=55},
+	fa_cursedwortox={default=80},
+	fa_cursedpigking={default=500},
+	fa_wortox_npc={default=100},
 }

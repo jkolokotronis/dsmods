@@ -102,6 +102,7 @@ local function fn()
 
     inst:AddComponent("lootdropper")
     inst.components.lootdropper:SetLoot({"monstermeat",  "monstermeat"})
+    inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLE.keys2,FALLENLOOTTABLE.TABLE_KEYS2_WEIGHT,chance)
 --    inst:AddComponent("inspectable")
     
     inst:ListenForEvent("attacked", OnAttacked)

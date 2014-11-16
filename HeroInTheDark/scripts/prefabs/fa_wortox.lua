@@ -29,7 +29,7 @@ local assets = {
         Asset( "ANIM", "anim/beard.zip" ),
         Asset( "ANIM", "anim/wortox.zip" ),
 -- i need to read through memfix again, I should lazy load this only on transform, but the only lazy thing here is me
-        Asset( "ANIM", "anim/bluegoblin.zip" ),
+        Asset( "ANIM", "anim/goblin.zip" ),
 }
 local prefabs = {}
 
@@ -145,7 +145,7 @@ inst:AddComponent("eater")
 
     inst:AddComponent("locomotor") -- locomotor must be constructed before the stategraph
 --    inst.components.locomotor:EnableGroundSpeedMultiplier(false)
-    inst.components.locomotor.runspeed = TUNING.WILSON_RUN_SPEED
+    inst.components.locomotor.runspeed = TUNING.WILSON_RUN_SPEED*0.9
 
     inst:AddComponent("follower")
     
@@ -177,6 +177,7 @@ end
 
 local function mob()
     local inst=fn()
+    inst.Transform:SetScale(1.25,1.25, 1.25)
     inst.components.combat:SetRetargetFunction(1, RetargetFn)
     inst.components.combat:SetKeepTargetFunction(KeepTargetFn)
     inst:SetStateGraph("SGskeletonspawn")    
@@ -187,6 +188,7 @@ end
 
 local function king()
     local inst=fn()
+    inst.Transform:SetScale(2.0,2,2)
     inst.components.combat:SetRetargetFunction(1, RetargetFn)
     inst.components.combat:SetKeepTargetFunction(KeepTargetFn)
     inst:SetStateGraph("SGskeletonspawn")    
@@ -236,7 +238,7 @@ local function npc()
         local curse=SpawnPrefab("fa_ring_demon")
         giver.components.inventory:GiveItem(curse)
         giver.components.inventory:Equip(curse)
-        inst.AnimState:SetBuild("bluegoblin")
+        inst.AnimState:SetBuild("goblin")
         local talk=GetString(inst.prefab, "FREE_AT_LAST")
         if(talk and inst.components.talker) then inst.components.talker:Say(talk) end
         inst:DoTaskInTime(5,function()
