@@ -11,6 +11,9 @@ local fa_table_assets={
 local fa_minecart_assets={
     Asset( "ANIM", "anim/fa_minecart.zip" ),
 }
+local fa_orcrefuse_assets={
+    Asset( "ANIM", "anim/fa_orcrefuse.zip" ),
+}
 local function fn(bank,bld,animname,loop)
 	local inst = CreateEntity()
 	local trans = inst.entity:AddTransform()
@@ -68,8 +71,18 @@ local function fa_minecart()
     return inst
 end
 
+local function orcrefuse()
+    local inst= fn("fa_orcrefuse")
+    inst.Transform:SetScale(1.5, 1.5, 1.5)
+    MakeObstaclePhysics(inst, 0.5)
+    inst:RemoveTag("NOCLICK")
+    return inst
+end
+
+
 return Prefab( "common/fa_dorf_gold_pillar", fa_pillar_dwarf, fa_pillar_dwarf_assets),
 Prefab( "common/fa_dorf_stool", fa_stool, fa_stool_assets),
 Prefab( "common/fa_dorf_stool_blown", fa_stool_blown, fa_stool_assets),
 Prefab( "common/fa_dorf_table", fa_table, fa_table_assets),
-Prefab( "common/fa_minecart", fa_minecart, fa_minecart_assets)
+Prefab( "common/fa_minecart", fa_minecart, fa_minecart_assets),
+Prefab( "common/fa_orcrefuse", orcrefuse, fa_orcrefuse_assets)
