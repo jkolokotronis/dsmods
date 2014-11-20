@@ -1554,7 +1554,7 @@ local function evilSanityMod(inst)
     
                     local aura_delta = 0
                     local x,y,z = self.inst.Transform:GetWorldPosition()
-                    local ents = TheSim:FindEntities(x,y,z, TUNING.SANITY_EFFECT_RANGE, nil, {"FX", "NOCLICK", "DECOR","INLIMBO"} )
+                    local ents = GLOBAL.TheSim:FindEntities(x,y,z, TUNING.SANITY_EFFECT_RANGE, nil, {"FX", "NOCLICK", "DECOR","INLIMBO"} )
                     for k,v in pairs(ents) do 
 
                         local override=EVIL_SANITY_AURA_OVERRIDE[v.prefab]
