@@ -9,6 +9,10 @@ local assets_iron=
     Asset("ANIM", "anim/fa_orc_iron.zip"),
 }
 
+local assets_king=
+{
+    Asset("ANIM", "anim/fa_orc_king.zip"),
+}
 local prefabs =
 {
     "fa_orcskin"
@@ -155,6 +159,13 @@ function fn_iron()
     inst.AnimState:SetBank("fa_orc_iron")
     return inst
 end
+function fa_king()
+    local inst=fn()
+    inst.AnimState:SetBuild("fa_orc_king")
+    inst.AnimState:SetBank("fa_orc_king")
+    return inst
+end
 
 return Prefab( "common/fa_orc", fn, assets),
- Prefab( "common/fa_orc_iron", fn_iron, assets_iron)
+ Prefab( "common/fa_orc_iron", fn_iron, assets_iron),
+ Prefab("common/fa_orc_king",fa_king, assets_king)

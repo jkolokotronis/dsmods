@@ -99,7 +99,7 @@ AddRoom("FA_OrcEntrance", {
 									countprefabs = {
 										fa_orchut=5,
 										fa_adamantinerock=2,
---										fa_dungeon_entrance=1
+										fa_orcfort=1
 									},
 									distributepercent = 0.05,
 					                distributeprefabs= 
@@ -109,7 +109,7 @@ AddRoom("FA_OrcEntrance", {
 					                	stalagmite_med = .25,
 						            },
 					                prefabdata = {
-										fa_dungeon_entrance = function() return {fa_cavename="ORC_FORTRESS"}
+										fa_orcfort = function() return {fa_cavename="ORC_FORTRESS"}
 															end,
 									},
 					            }
@@ -139,7 +139,7 @@ AddRoom("FA_DwarfEntrance", {
 									countprefabs = {
 										fa_dorfhut=6, 
 										rock2=3,
-										fa_dungeon_entrance=1
+										fa_dorffort=1
 									},
 									distributepercent = 0.05,
 					                distributeprefabs= 
@@ -149,7 +149,7 @@ AddRoom("FA_DwarfEntrance", {
 					                	stalagmite_med = .25,
 						            },
 					                prefabdata = {
-										fa_dungeon_entrance = function() return {fa_cavename="DWARF_FORTRESS"}
+										fa_dorffort = function() return {fa_cavename="DWARF_FORTRESS"}
 															end,
 									},
 					            }

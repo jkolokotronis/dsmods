@@ -58,6 +58,15 @@ local function fn()
     inst.fire3 = SpawnPrefab( "torchfire" )
     local follower = inst.fire3.entity:AddFollower()
     follower:FollowSymbol( inst.GUID, "fire3", 0, 0, 0.1 )
+    inst.fire4 = SpawnPrefab( "torchfire" )
+    local follower = inst.fire4.entity:AddFollower()
+    follower:FollowSymbol( inst.GUID, "fire4", 0, 0, 0.1 )
+    inst.fire5 = SpawnPrefab( "torchfire" )
+    local follower = inst.fire5.entity:AddFollower()
+    follower:FollowSymbol( inst.GUID, "fire5", 0, 0, 0.1 )
+    inst.fire6 = SpawnPrefab( "torchfire" )
+    local follower = inst.fire6.entity:AddFollower()
+    follower:FollowSymbol( inst.GUID, "fire6", 0, 0, 0.1 )
 
     inst.OnSave = pebbleonsave 
     inst.OnLoad = pebbleonload 

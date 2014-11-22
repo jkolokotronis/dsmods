@@ -17,6 +17,21 @@ local minegrassassets=
 	Asset("ANIM", "anim/fa_mine_entrance_grass.zip"),
 
 }
+local orcfortassets=
+{
+	Asset("ANIM", "anim/fa_orcfort.zip"),
+	Asset("ANIM", "anim/fa_orcfort_back.zip"),
+
+}
+local dorffortassets=
+{
+	Asset("ANIM", "anim/fa_dorffortentrance.zip"),
+	Asset("ANIM", "anim/fa_dorffort_rcage.zip"),
+	Asset("ANIM", "anim/fa_dorffort_lcage.zip"),
+	Asset("ANIM", "anim/fa_dorffortentrance_back.zip"),
+	
+}
+
 
 local prefabs = 
 {
@@ -290,7 +305,82 @@ local function minegrassfn()
 	Open(inst)
 	return inst
 end
+local function orcfort()
+	local inst=fn()
+	inst.AnimState:SetBuild("fa_orcfort")
+	inst.AnimState:SetBank("fa_orcfort")
+	inst.components.childspawner:SetMaxChildren(3)
+	inst.components.childspawner.childname = "fa_orc_iron"
+	inst.components.childspawner:StartRegen()	
+	inst.components.childspawner:StartSpawning()
+
+    inst.AnimState:PlayAnimation("idle", true)
+    inst.AnimState:OverrideSymbol("fortback", "fa_orcfort_back", "fortback_swap")
+    inst:RemoveComponent("workable")
+    inst.open = true
+
+	inst.MiniMapEntity:SetIcon("cave_open.png")
+	inst:AddComponent("activatable")
+    inst.components.activatable.OnActivate = function(inst)
+		SetPause(true)
+		inst.AnimState.PlayAnimation("opening")
+		inst.AnimState.PushAnimation("open",true)
+		inst:ListenForEvent("animover",function()
+			OnActivate(inst)
+		end)
+	end
+    inst.components.activatable.inactive = true
+    inst.components.activatable.getverb = GetVerb
+	inst.components.activatable.quickaction = true
+
+	return inst
+end
+
+local function createcage(parent,animname)
+	local inst = CreateEntity()
+	local trans = inst.entity:AddTransform()
+	local anim = inst.entity:AddAnimState()
+	inst.AnimState:SetBuild(animname)
+	inst.AnimState:SetBank(animname)
+	inst.AnimState:PlayAnimation("idle")
+    inst.entity:AddSoundEmitter()
+
+    inst:AddComponent("inspectable")
+	inst:AddComponent("activatable")
+    inst.components.activatable.inactive = true
+    inst.components.activatable.getverb = GetVerb
+	inst.components.activatable.quickaction = true
+    inst.components.activatable.OnActivate = function(inst)
+    	OnActivate(parent)
+	end
+	return inst
+end
+
+local function dorffort()
+	local inst=fn()
+	inst.AnimState:SetBuild("fa_dorffortentrance")
+	inst.AnimState:SetBank("fa_dorffortentrance")
+	inst.components.childspawner:SetMaxChildren(3)
+	inst.components.childspawner.childname = "fa_dorf"
+	inst.components.childspawner:StartRegen()	
+	inst.components.childspawner:StartSpawning()
+
+    inst.AnimState:OverrideSymbol("back", "fa_dorffortentrance_back", "back_swap")
+    inst.AnimState:PlayAnimation("idle", true)
+    inst:RemoveComponent("workable")
+    inst.open = true
+    inst.fa_dorffort_rcage=createcage(inst,"fa_dorffort_rcage")
+    local follower = inst.fa_dorffort_rcage.entity:AddFollower()
+    follower:FollowSymbol( inst.GUID, "lift_r", 0, 0, 0.1 )
+    inst.fa_dorffort_lcage=createcage(inst,"fa_dorffort_lcage")
+    local follower = inst.fa_dorffort_lcage.entity:AddFollower()
+    follower:FollowSymbol( inst.GUID, "lift_l", 0, 0, 0.1 )
+
+	return inst
+end
 
 return Prefab( "common/fa_dungeon_entrance", dungfn, assets, prefabs),
 Prefab( "common/fa_mine_entrance", minefn, mineassets, prefabs),
-Prefab( "common/fa_mine_entrance_grass", minegrassfn, minegrassassets, prefabs)
+Prefab( "common/fa_mine_entrance_grass", minegrassfn, minegrassassets, prefabs),
+Prefab( "common/fa_orcfort", orcfort, orcfortassets, prefabs),
+Prefab("common/fa_dorffort",dorffort, dorffortassets,prefabs)

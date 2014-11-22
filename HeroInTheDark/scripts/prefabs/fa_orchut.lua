@@ -5,6 +5,10 @@ local assets =
     Asset("SOUND", "sound/pig.fsb"),
 }
 
+local throneassets =
+{
+    Asset("ANIM", "anim/fa_orcthrone.zip"),    
+}
 local prefabs = 
 {
 	"fa_orc",
@@ -139,4 +143,38 @@ local flag = CreateEntity()
     return inst
 end
 
-return Prefab( "common/objects/fa_orchut", fn, assets, prefabs )
+
+local function fnthrone()
+   local inst = CreateEntity()
+    local trans = inst.entity:AddTransform()
+    local anim = inst.entity:AddAnimState()
+    local light = inst.entity:AddLight()
+    inst.entity:AddSoundEmitter()
+    local shadow = inst.entity:AddDynamicShadow()
+    shadow:SetSize( 5, 5 )
+    
+    MakeObstaclePhysics(inst, 1)
+
+    anim:SetBank("fa_orcthrone")
+    anim:SetBuild("fa_orcthrone")
+    anim:PlayAnimation("idle",true)
+    
+    inst:AddComponent("childspawner")
+    inst.components.childspawner.childname = "fa_orc_king"
+    inst.components.childspawner:SetRegenPeriod(TUNING.SPIDERDEN_REGEN_TIME)
+    inst.components.childspawner:SetSpawnPeriod(TUNING.SPIDERDEN_RELEASE_TIME)
+--    inst.components.childspawner.spawnoffscreen=true
+    inst.components.childspawner:SetMaxChildren(1)
+    inst.components.childspawner:StartSpawning()
+--        inst.components.childspawner:SetSpawnedFn(onspawnspider)
+
+    inst:AddComponent("inspectable")
+    
+    MakeSnowCovered(inst, .01)
+
+    return inst
+end
+
+return Prefab( "common/objects/fa_orchut", fn, assets, prefabs ),
+Prefab( "common/objects/fa_orcthrone", fnthrone, throneassets, prefabs )
+

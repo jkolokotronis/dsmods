@@ -13,6 +13,13 @@ local mineassets=
 
 }
 
+local cageassets=
+{
+    Asset( "ANIM", "anim/player_cage_drop.zip" ),
+    Asset( "ANIM", "anim/fa_cagechains.zip" ),
+	Asset("ANIM", "anim/fa_orcfort_cage.zip"),
+
+}
 local function GetVerb(inst)
 	return STRINGS.ACTIONS.ACTIVATE.CLIMB
 end
@@ -123,5 +130,21 @@ local function minefn()
 	return inst
 end
 
+local function cagefn()
+local inst=fn()
+	inst.AnimState:SetBuild("fa_orcfort_cage")
+	inst.AnimState:SetBank("fa_orcfort_cage")
+    inst.components.activatable.OnActivate = function(inst,doer)
+    	SetPause(true)
+    	doer.AnimState:OverrideSymbol("chains", "fa_cagechains", "chains")
+	    doer.AnimState:OverrideSymbol("cage", "fa_orcfort_cage", "cage")
+	    inst:RemoveFromScene()
+	    doer.AnimState:PlayAnimation("fa_cagedrop",true)
+	    DoTaskInTime(5,OnActivate)
+    end
+	return inst
+end
+
 return Prefab( "common/fa_dungeon_exit", dungfn, assets) ,
-Prefab( "common/fa_mine_exit", minefn, mineassets)
+Prefab( "common/fa_mine_exit", minefn, mineassets),
+Prefab( "common/fa_orccage_exit", cagefn, cageassets)

@@ -45,6 +45,11 @@ local assets_dorfkingaxe={
     Asset("ATLAS", "images/inventoryimages/fa_dorfkingaxe.xml"),
     Asset("IMAGE", "images/inventoryimages/fa_dorfkingaxe.tex"),
 }
+local assets_orckingaxe={
+    Asset("ANIM", "anim/fa_orckinghammer.zip"),
+    Asset("ATLAS", "images/inventoryimages/fa_orckinghammer.xml"),
+    Asset("IMAGE", "images/inventoryimages/fa_orckinghammer.tex"),
+}
 
 local AXE_DAMAGE_T1=55
 local AXE_DAMAGE_T2=75
@@ -178,6 +183,14 @@ local function dorfkingaxe()
     inst.components.finiteuses:SetUses(AXE_USES_T2)
     return inst
 end
+local function orckingaxe()
+    local inst=common("fa_orckinghammer")
+
+    inst.components.weapon:SetDamage(AXE_DAMAGE_T2)
+    inst.components.finiteuses:SetMaxUses(AXE_USES_T2)
+    inst.components.finiteuses:SetUses(AXE_USES_T2)
+    return inst
+end
 
 return
     Prefab( "common/inventory/fa_coppersword",coppersword, assets_coppersword),
@@ -188,4 +201,5 @@ return
     Prefab( "common/inventory/fa_steelaxe",steelaxe, assets_steelaxe),
     Prefab( "common/inventory/fa_ironaxe", ironaxe, assets_ironaxe),
     Prefab( "common/inventory/fa_silveraxe", silveraxe, assets_silveraxe),
-    Prefab( "common/inventory/fa_dorfkingaxe", dorfkingaxe, assets_dorfkingaxe)
+    Prefab( "common/inventory/fa_dorfkingaxe", dorfkingaxe, assets_dorfkingaxe),
+    Prefab( "common/inventory/fa_orckinghammer", orckingaxe, assets_orckingaxe)

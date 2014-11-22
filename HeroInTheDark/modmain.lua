@@ -438,6 +438,9 @@ Assets = {
 
 
     Asset( "ANIM", "anim/fa_player_anims.zip" ),
+    Asset( "ANIM", "anim/player_cage_drop.zip" ),
+    Asset( "ANIM", "anim/fa_cagechains.zip" ),
+    Asset( "ANIM", "anim/fa_orcfort_cage.zip" ),
 --    Asset( "ANIM", "anim/icebomb.zip" ),
 --    Asset( "ANIM", "anim/player_test.zip" ),
 }
@@ -561,8 +564,8 @@ local FALLENLOOTTABLEMERGED=GLOBAL.FALLENLOOTTABLEMERGED
 
            
 
-
---[[ 
+--[[
+    local SGWilson=require "stategraphs/SGwilson"
     SGWilson.states["idle"]= GLOBAL.State{
         name = "idle",
         tags = {"idle", "canrotate"},
@@ -570,8 +573,7 @@ local FALLENLOOTTABLEMERGED=GLOBAL.FALLENLOOTTABLEMERGED
             
             inst.components.locomotor:Stop()
 
-            inst.AnimState:PlayAnimation("spriter_idle", true)
-            inst.AnimState:OverrideSymbol("icebomb", "icebomb", "icebomb")
+            inst.AnimState:PlayAnimation("fa_cagedrop", true)
 
         end,        
     }
@@ -1594,6 +1596,12 @@ end
 AddSimPostInit(function(inst)
 
     if(inst:HasTag("player"))then
+
+
+
+    inst.AnimState:OverrideSymbol("chains", "fa_cagechains", "chains")
+    inst.AnimState:OverrideSymbol("cage", "fa_orcfort_cage", "cage")
+
 --        GLOBAL.trace_flow()
         --why the hell did they even add this...
         if(inst.components.eater.ablefoods)then

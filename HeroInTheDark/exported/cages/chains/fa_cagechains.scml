@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
+    <folder id="0" name="chains">
+        <file id="0" name="chains/DF_0005_links-links-oben.png" width="80" height="381" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="chains/DF_0006_links-links.png" width="112" height="706" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="chains/DF_0007_links-rechts-oben.png" width="79" height="409" pivot_x="0" pivot_y="1"/>
+        <file id="3" name="chains/DF_0008_links-rechts.png" width="138" height="741" pivot_x="0" pivot_y="1"/>
+        <file id="4" name="chains/DF_0009_rechts-links-oben.png" width="68" height="402" pivot_x="0" pivot_y="1"/>
+        <file id="5" name="chains/DF_0010_rechts-links.png" width="108" height="682" pivot_x="0" pivot_y="1"/>
+        <file id="6" name="chains/DF_0011_rechts-rechts-oben.png" width="76" height="384" pivot_x="0" pivot_y="1"/>
+        <file id="7" name="chains/DF_0012_rechts-rechts.png" width="180" height="781" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="fa_cagechains">
+        <animation id="0" name="idle" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="DF_0007_links-rechts-oben">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-35" y="253"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

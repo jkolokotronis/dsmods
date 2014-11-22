@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
+    <folder id="0" name="cage">
+        <file id="0" name="cage/DF_0023_L-lift-backside.png" width="600" height="815" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="cage/DF_0022_L-lift-front.png" width="674" height="796" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="cage/DF_0021_L-lift-haken.png" width="412" height="326" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="fa_dorffort_lcage">
+        <animation id="0" name="idle" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="DF_0023_L-lift-backside">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-285.129032" y="680.066471" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="DF_0022_L-lift-front">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-329.59456" y="625.544017" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="DF_0021_L-lift-haken">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="-170.960784" y="838.067736" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>
