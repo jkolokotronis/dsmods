@@ -35,7 +35,20 @@ if(not FA_ModCompat.UnA)then
 	end
 end
 
+local function AddTech(name)
+	for k,v in pairs(TUNING.PROTOTYPER_TREES) do
+    	v[name]=0
+	end 
+	TECH.NONE[name]=0
+end
+local function AddPrototyper(name,tech,level)
+	TECH[name]={} 
+	TECH[name][tech]=level
+	TUNING.PROTOTYPER_TREES[name]=deepcopy(TECH.NONE)
+	TUNING.PROTOTYPER_TREES[name][tech]=level
+end
 
+--[[
 TECH.FA_FOODSTAND={ FA_FOODSTAND=2}
 for k,v in pairs(TUNING.PROTOTYPER_TREES) do
     v["FA_FOODSTAND"]=0
@@ -43,6 +56,21 @@ end
 TUNING.PROTOTYPER_TREES.FA_FOODSTAND=deepcopy(TECH.NONE)
 TUNING.PROTOTYPER_TREES.FA_FOODSTAND["FA_FOODSTAND"]=2
 TECH.NONE.FA_FOODSTAND=0
+]]
+AddTech("FA_FOODSTAND")
+AddPrototyper("FA_FOODSTAND","FA_FOODSTAND",2)
+AddTech("FA_DORFITEMSTAND")
+AddPrototyper("FA_DORFITEMSTAND","FA_DORFITEMSTAND",2)
+AddTech("FA_DORFPOTIONSTAND")
+AddPrototyper("FA_DORFPOTIONSTAND","FA_DORFPOTIONSTAND",2)
+AddTech("FA_DORFRESOURCESTAND")
+AddPrototyper("FA_DORFRESOURCESTAND","FA_DORFRESOURCESTAND",2)
+AddTech("FA_DORFRWEAPONSTAND")
+AddPrototyper("FA_DORFRWEAPONSTAND","FA_DORFRWEAPONSTAND",2)
+AddTech("FA_DORFARMORSTAND")
+AddPrototyper("FA_DORFARMORSTAND","FA_DORFARMORSTAND",2)
+AddTech("FA_DORFRECIPESTAND")
+AddPrototyper("FA_DORFRECIPESTAND","FA_DORFRECIPESTAND",2)
 
 local r=Recipe("fa_tinyscrollcase", {Ingredient("fa_goblinskin", 4,"images/inventoryimages/fa_goblinskin.xml"),Ingredient("pigskin", 4),Ingredient("twigs", 10)}, RECIPETABS.SURVIVAL,  TECH.MAGIC_TWO)    
 r.image="fa_scroll_case.tex"

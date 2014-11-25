@@ -7,6 +7,10 @@ local Assets =
 	Asset( "ANIM", "anim/smoke_up.zip" ),
 }
 
+local mugassets={
+    Asset("ANIM", "anim/fa_mug.zip"),
+}
+
 local prefabs = {
     "blueprint",
     "fa_blooddownfx"
@@ -506,6 +510,29 @@ local function fnpoisonessence()
 	return inst
 end
 
+local function emptymug()
+	local inst=common("mug")
+    inst.AnimState:SetBuild("fa_mug")
+    inst.AnimState:PlayAnimation("empty")
+    inst.components.inventoryitem.imagename="fa_emptymug"
+    inst:RemoveComponent("edible")
+    return inst
+end
+local function rummug()
+	local inst=common("mug")
+    inst.AnimState:SetBuild("fa_mug")
+    inst.AnimState:PlayAnimation("rum")
+    inst.components.inventoryitem.imagename="fa_rummug"
+    return inst
+end
+local function beermug()
+	local inst=common("mug")
+    inst.AnimState:SetBuild("fa_mug")
+    inst.AnimState:PlayAnimation("beer")
+    inst.components.inventoryitem.imagename="fa_beermug"
+    return inst
+end
+
 local function ftest(name)
 	return function()
 		local inst=common(name)
@@ -525,7 +552,10 @@ return Prefab( "common/inventory/fa_bottle_r", fnr, Assets),
 	Prefab( "common/inventory/fa_bottle_lifeessence", fnlifeessence, Assets),
 	Prefab( "common/inventory/fa_bottle_lightningessence", fnlightningessence, Assets),
 	Prefab( "common/inventory/fa_bottle_poisonessence", fnpoisonessence, Assets),
-	Prefab( "common/inventory/fa_bottle_curepoison", fncurepoison, Assets)
+	Prefab( "common/inventory/fa_bottle_curepoison", fncurepoison, Assets),
+	Prefab( "common/inventory/fa_emptymug", emptymug, mugassets),
+	Prefab( "common/inventory/fa_rummug", rummug, mugassets),
+	Prefab( "common/inventory/fa_beermug", beermug, mugassets)
 --[[
 	,
 	Prefab( "common/inventory/fa_bottle_1_0", ftest("bottle_1_0"), Assets),

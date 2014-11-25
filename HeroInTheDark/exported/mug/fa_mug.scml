@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
+    <folder id="0">
+        <file id="0" name="_0029_whole-mug.png" width="188" height="208" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="_0028_mug-filled-with-rum.png" width="188" height="208" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="_0017_mug-full-of-beer.png" width="192" height="239" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="fa_mug">
+        <animation id="0" name="empty" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="_0029_whole-mug">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-73" y="171"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="rum" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="_0029_whole-mug">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-73" y="171"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="2" name="beer" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="_0029_whole-mug">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="-73" y="204"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

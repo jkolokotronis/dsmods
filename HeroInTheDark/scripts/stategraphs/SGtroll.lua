@@ -179,7 +179,7 @@ local states=
         
         onenter = function(inst)
             inst.Physics:Stop()            
-            inst.AnimState:PlayAnimation("Eat")
+            inst.AnimState:PlayAnimation("eat")
         end,
         
         timeline=

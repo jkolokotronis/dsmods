@@ -35,5 +35,8 @@
 		<Element name="fa_bottle_1_7.tex" u1="0.0" u2="0.125" v1="0.5" v2="0.625" />
 		<Element name="fa_bottle_1_8.tex" u1="0.125" u2="0.25" v1="0.5" v2="0.625" />
 		<Element name="fa_bottle_1_9.tex" u1="0.250" u2="0.375" v1="0.5" v2="0.625" />
+		<Element name="fa_emptymug.tex" u1="0.3750" u2="0.5" v1="0.5" v2="0.625" />
+		<Element name="fa_rummug.tex" u1="0.50" u2="0.625" v1="0.5" v2="0.625" />
+		<Element name="fa_beermug.tex" u1="0.6250" u2="0.75" v1="0.5" v2="0.625" />
 </Elements>
 </Atlas>

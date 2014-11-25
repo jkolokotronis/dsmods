@@ -261,7 +261,7 @@ FA_LEVELDATA["ORC_MINES"]={
 			{"waves", 			"on"},
 			{"boons", 			"always"},
 			{"poi", 			"never"},
-			{"traps", 			"always"},
+			{"traps", 			"never"},
 			{"protected", 		"never"},
 			{"start_setpeice", 	"FAMineExit"},
 			{"start_node",		"FA_BGLava"},

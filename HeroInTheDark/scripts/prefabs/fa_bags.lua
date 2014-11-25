@@ -8,7 +8,12 @@ local assets=
     Asset("ANIM", "anim/ui_chester_shadow_3x4.zip"),
 }
 
-
+local bagassets={
+    Asset("ANIM", "anim/fa_bag.zip"),
+    Asset("ATLAS", "images/inventoryimages/fa_bag.xml"),
+    Asset("IMAGE", "images/inventoryimages/fa_bag.tex"),
+    
+}
 
 local function tagitemtest(item,tags)
     local pass=false
@@ -55,6 +60,23 @@ end
     inst.components.container.widgetslotpos = slotpos
     inst.components.container.widgetanimbank = "ui_chest_3x2"
     inst.components.container.widgetanimbuild = "ui_chest_3x2"
+    --inst.components.container.widgetpos = Vector3(645,-85,0)
+    inst.components.container.widgetpos = Vector3(-100,-75,0)
+    inst.components.container.side_widget = true    
+
+end
+
+local function f1x4(inst)
+
+    local slotpos = {   Vector3(0,64+32+8+4,0), 
+                    Vector3(0,32+4,0),
+                    Vector3(0,-(32+4),0), 
+                    Vector3(0,-(64+32+8+4),0)}
+
+    inst.components.container:SetNumSlots(#slotpos)
+    inst.components.container.widgetslotpos = slotpos
+    inst.components.container.widgetanimbank = "ui_cookpot_1x4"
+    inst.components.container.widgetanimbuild = "ui_cookpot_1x4"
     --inst.components.container.widgetpos = Vector3(645,-85,0)
     inst.components.container.widgetpos = Vector3(-100,-75,0)
     inst.components.container.side_widget = true    
@@ -126,6 +148,34 @@ local function dorfbag()
     inst.components.container.side_align_tip = 100
     inst.components.container.side_widget = false  
     inst.components.container.widgetpos = Vector3(450,50,0)
+    return inst
+end
+local function tinydorfbag()
+    local inst=fn()
+    f1x4(inst)
+    inst.components.container.type = "fa_bag"
+    inst.components.container.side_align_tip = 100
+    inst.components.container.side_widget = false  
+    inst.components.container.widgetpos = Vector3(450,50,0)
+    inst.AnimState:SetBank("fa_bag")
+    inst.AnimState:SetBuild("fa_bag")
+    inst.AnimState:PlayAnimation("idle")
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_bag.xml"
+    inst.components.inventoryitem.imagename="fa_bag"
+    return inst
+end
+local function smalldorfbag()
+    local inst=fn()
+    f3x2(inst)
+    inst.components.container.type = "fa_bag"
+    inst.components.container.side_align_tip = 100
+    inst.components.container.side_widget = false  
+    inst.components.container.widgetpos = Vector3(450,50,0)
+    inst.AnimState:SetBank("fa_bag")
+    inst.AnimState:SetBuild("fa_bag")
+    inst.AnimState:PlayAnimation("idle")
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_bag.xml"
+    inst.components.inventoryitem.imagename="fa_bag"
     return inst
 end
 
@@ -249,6 +299,8 @@ local function foodbag()
 end
 
 return Prefab( "common/inventory/fa_dorf_bag", dorfbag, assets),
+ Prefab( "common/inventory/fa_tinydorfbag", tinydorfbag, bagassets),
+  Prefab( "common/inventory/fa_smalldorfbag", smalldorfbag, bagassets),
 Prefab( "common/inventory/fa_scrollcase", scrollcase, assets),
 Prefab( "common/inventory/fa_wandcase", wandcase, assets),
 Prefab( "common/inventory/fa_tinyscrollcase", tinyscrollcase, assets),

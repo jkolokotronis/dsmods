@@ -13,6 +13,8 @@
         <file id="9" name="side view/s_foot3.png" width="434" height="466" pivot_x="0.412844" pivot_y="0.726496"/>
         <file id="10" name="side view/s_head_01.png" width="603" height="931" pivot_x="0.087603" pivot_y="0.30761"/>
         <file id="11" name="side view/s_head_02.png" width="603" height="931" pivot_x="0.084298" pivot_y="0.30761"/>
+        <file id="12" name="side view/s_head_03.png" width="609" height="952" pivot_x="0.07856" pivot_y="0.328092"/>
+        <file id="13" name="side view/s_head_04.png" width="609" height="899" pivot_x="0.080196" pivot_y="0.289678"/>
     </folder>
     <entity id="0" name="fa_ogre">
         <animation id="0" name="X" length="50">

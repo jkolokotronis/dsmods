@@ -200,7 +200,7 @@ local smelt_recipes={
 		},
 	},
 	{
-		match={product={"fa_pigironbar"},cooktime=120},
+		match={product={"fa_pigironbar"},cooktime=360},
 		test={
 			{ingred="fa_ironbar",count=4},
 			{ingred="marble",count=2},
@@ -208,7 +208,7 @@ local smelt_recipes={
 		},
 	},
 	{
-		match={product={"fa_pigironbar"},cooktime=120},
+		match={product={"fa_pigironbar"},cooktime=360},
 		test={
 			{ingred="fa_ironbar",count=4},
 			{ingred="fa_limestonepebble",count=2},
