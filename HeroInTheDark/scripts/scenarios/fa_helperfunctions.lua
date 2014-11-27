@@ -20,10 +20,10 @@ function FA_GenerateLoot(loottable,weight,chance,loots)
 end
 FA_ScenarioUtil.FA_GenerateLoot=FA_GenerateLoot
 
-function FA_SpawnPrefabInProx(inst,prefab,count)
+function FA_SpawnPrefabInProx(inst,prefab,count,rad)
     local pt = Vector3(inst.Transform:GetWorldPosition())
     local theta = math.random() * 2 * PI
-    local radius = 5
+    local radius = rad or 5
     local steps = 3
     local ground = GetWorld()
     local player = GetPlayer()

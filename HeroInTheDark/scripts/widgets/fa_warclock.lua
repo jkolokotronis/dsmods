@@ -114,6 +114,7 @@ local FA_WarClock = Class(Widget, function(self,owner)
     if GetClock():IsNight() then
 		self:ShowMoon()
     end]]
+
 end)
 
 function FA_WarClock:PhaseChange(data)

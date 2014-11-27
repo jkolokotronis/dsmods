@@ -131,7 +131,6 @@ local function fn(Sim)
 	inst.entity:AddAnimState()
 	inst.entity:AddSoundEmitter()
 	
-	local minimap = inst.entity:AddMiniMapEntity()
 	
     local light = inst.entity:AddLight()
     inst.Light:Enable(false)
@@ -189,6 +188,7 @@ end
 local function distillerfn()
 	local inst=fn()
 
+	local minimap = inst.entity:AddMiniMapEntity()
 	minimap:SetIcon( "fa_forge.tex" )
 
     inst.components.container.widgetanimbank = "ui_cookpot_1x4"
@@ -233,6 +233,7 @@ end
 local function kegfn()
 	local inst=fn()
 
+	local minimap = inst.entity:AddMiniMapEntity()
 	minimap:SetIcon( "fa_forge.tex" )
 
     inst.components.container:SetNumSlots(4)
@@ -277,6 +278,7 @@ end
 local function alchemyfn()
 	local inst=fn()
 
+	local minimap = inst.entity:AddMiniMapEntity()
 	minimap:SetIcon( "fa_alchemytable.tex" )
 
 	inst.Light:SetRadius(.6)
@@ -289,7 +291,7 @@ local function alchemyfn()
     inst.AnimState:SetBank("fa_alchemytable")
     inst.AnimState:SetBuild("fa_alchemytable")
     inst.AnimState:PlayAnimation("idle_close",true)
-    inst.Transform:SetScale(1.15, 1.15, 1.15)
+    inst.Transform:SetScale(2.4, 2.4, 2.4)
 
     inst.components.fa_furnace.matcher = matchers.AlchemyMatcher
     inst.components.fa_furnace.getverb=function() return STRINGS.ACTIONS.FA_FURNACE.ALCHEMY end
@@ -324,6 +326,7 @@ end
 local function forgefn()
 	local inst=fn()
 
+	local minimap = inst.entity:AddMiniMapEntity()
 	minimap:SetIcon( "fa_forge.tex" )
 
     inst.components.container.widgetanimbank = "ui_backpack_2x4"
@@ -368,19 +371,20 @@ end
 local function smelterfn()
 	local inst=fn()
 
-	minimap:SetIcon( "fa_forge.tex" )
+	local minimap = inst.entity:AddMiniMapEntity()
+	minimap:SetIcon( "fa_smeltingfurnace.tex" )
 
     inst.components.container.widgetanimbank = "ui_backpack_2x4"
     inst.components.container.widgetanimbuild =  "ui_backpack_2x4"
-    inst.components.container.type = "forge"
+    inst.components.container.type = "smelter"
 
-    inst.AnimState:SetBank("fa_forge")
-    inst.AnimState:SetBuild("fa_forge")
+    inst.AnimState:SetBank("fa_smeltingfurnace")
+    inst.AnimState:SetBuild("fa_smeltingfurnace")
     inst.AnimState:PlayAnimation("idle_close",true)
     inst.Transform:SetScale(1.5, 1.5, 1.5)
 
-    inst.components.fa_furnace.matcher = matchers.ForgeMatcher
-    inst.components.fa_furnace.getverb=function() return STRINGS.ACTIONS.FA_FURNACE.FORGE end
+    inst.components.fa_furnace.matcher = matchers.SmelterMatcher
+    inst.components.fa_furnace.getverb=function() return STRINGS.ACTIONS.FA_FURNACE.SMELT end
 
 
 	local slotpos = {}
