@@ -1,0 +1,31 @@
+<Atlas><Texture filename="fa_bottles.tex" />
+<Elements>
+		<Element name="fa_copperdagger.tex" u1="0" u2="0.125" v1="0" v2="0.125" />
+		<Element name="fa_copperaxe.tex" u1="0.125" u2="0.250" v1="0" v2="0.125" />
+		<Element name="fa_coppersword.tex" u1="0.250" u2="0.375" v1="0" v2="0.125" />
+		<Element name="fa_dagger.tex" u1="0.375" u2="0.5" v1="0" v2="0.125" />
+		<Element name="fa_dorfkingaxe.tex" u1="0.5" u2="0.625" v1="0" v2="0.125" />
+		<Element name="fa_fireaxe.tex" u1="0.625" u2="0.750" v1="0" v2="0.125" />
+		<Element name="fa_iceaxe.tex" u1="0.750" u2="0.875" v1="0" v2="0.125" />
+		<Element name="fa_ironaxe.tex" u1="0.875" u2="1" v1="0" v2="0.125" />
+		<Element name="fa_irondagger.tex" u1="0" u2="0.125" v1="0.125" v2="0.250" />
+		<Element name="fa_ironsword.tex" u1="0.125" u2="0.250" v1="0.125" v2="0.250" />
+		<Element name="fa_lightningsword.tex" u1="0.250" u2="0.375" v1="0.125" v2="0.250" />
+		<Element name="fa_orckinghammer.tex" u1="0.375" u2="0.5" v1="0.125" v2="0.250" />
+		<Element name="fa_silveraxe.tex" u1="0.5" u2="0.625" v1="0.125" v2="0.250" />
+		<Element name="fa_silverdagger.tex" u1="0.625" u2="0.750" v1="0.125" v2="0.250" />
+		<Element name="fa_silversword.tex" u1="0.750" u2="0.875" v1="0.125" v2="0.250" />
+		<Element name="fa_steelaxe.tex" u1="0.875" u2="1" v1="0.125" v2="0.250" />
+		<Element name="fa_steeldagger.tex" u1="0" u2="0.125" v1="0.250" v2="0.375" />
+		<Element name="fa_steelsword.tex" u1="0.125" u2="0.250" v1="0.250" v2="0.375" />
+		<Element name="fa_venomdagger1.tex" u1="0.250" u2="0.375" v1="0.250" v2="0.375" />
+		<Element name="fa_venomdagger2.tex" u1="0.375" u2="0.5" v1="0.250" v2="0.375" />
+		<Element name="fa_venomdagger3.tex" u1="0.5" u2="0.625" v1="0.250" v2="0.375" />
+		<Element name="flamingsword.tex" u1="0.625" u2="0.750" v1="0.250" v2="0.375" />
+		<Element name="frostsword.tex" u1="0.750" u2="0.875" v1="0.250" v2="0.375" />
+		<Element name="holysword.tex" u1="0.875" u2="1" v1="0.250" v2="0.375" />
+		<Element name="undeadbanesword.tex" u1="0" u2="0.125" v1="0.375" v2="0.5" />
+		<Element name="vorpalaxe.tex" u1="0.125" u2="0.25" v1="0.375" v2="0.5" />
+		<Element name="evilsword.tex" u1="0.25" u2="0.375" v1="0.375" v2="0.5" />
+</Elements>
+</Atlas>

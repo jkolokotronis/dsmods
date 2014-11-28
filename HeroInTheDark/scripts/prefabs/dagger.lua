@@ -1,43 +1,27 @@
 local assets=
 {
     Asset("ANIM", "anim/fa_dagger.zip"),
-    Asset("ATLAS", "images/inventoryimages/fa_dagger.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_dagger.tex"),
 }
 local assets_iron={
     Asset("ANIM", "anim/fa_irondagger.zip"),    
-    Asset("ATLAS", "images/inventoryimages/fa_irondagger.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_irondagger.tex"),
 }
 local assets_silver={
     Asset("ANIM", "anim/fa_silverdagger.zip"),
-    Asset("ATLAS", "images/inventoryimages/fa_silverdagger.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_silverdagger.tex"),
 }
 local assets_steel={
     Asset("ANIM", "anim/fa_steeldagger.zip"), 
-    Asset("ATLAS", "images/inventoryimages/fa_steeldagger.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_steeldagger.tex"),
 }
 local assets_copper={
     Asset("ANIM", "anim/fa_copperdagger.zip"),
-    Asset("ATLAS", "images/inventoryimages/fa_copperdagger.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_copperdagger.tex"),
 }
 local assets_venom1={
     Asset("ANIM", "anim/fa_venomdagger1.zip"),
-    Asset("ATLAS", "images/inventoryimages/fa_venomdagger1.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_venomdagger1.tex"),
 }
 local assets_venom2={
     Asset("ANIM", "anim/fa_venomdagger2.zip"),
-    Asset("ATLAS", "images/inventoryimages/fa_venomdagger2.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_venomdagger2.tex"),
 }
 local assets_venom3={
     Asset("ANIM", "anim/fa_venomdagger3.zip"),
-    Asset("ATLAS", "images/inventoryimages/fa_venomdagger3.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_venomdagger3.tex"),
 }
 
 local FA_BuffUtil=require "buffutil"
@@ -93,7 +77,7 @@ local function common(name)
     MakeInventoryPhysics(inst)
 
     local minimap = inst.entity:AddMiniMapEntity()
-    minimap:SetIcon( "dagger.tex" )
+    minimap:SetIcon( name..".tex" )
 
     inst.AnimState:SetBank(name)
     inst.AnimState:SetBuild(name)
@@ -106,7 +90,7 @@ local function common(name)
     
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem.imagename=name
-    inst.components.inventoryitem.atlasname="images/inventoryimages/"..name..".xml"
+    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_baseweapons.xml"
     inst:AddComponent("finiteuses")
     inst.components.finiteuses:SetOnFinished( onfinished )
     inst:AddComponent("equippable")

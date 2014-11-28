@@ -16,10 +16,13 @@ print("test?")
 end
 
 FA_FURNACE.strfn = function(act)
+
     if act.target.components.fa_furnace.getverb then
-        return act.target.components.fa_furnace.getverb(act.target, act.doer)
+        local what=act.target.components.fa_furnace.getverb(act.target, act.doer)
+--        print(what)
+        return what
     else
-        return STRINGS.ACTIONS.FA_FURNACE.GENERIC
+        return nil
     end
 end
 

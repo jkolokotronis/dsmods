@@ -2,9 +2,6 @@ local assets=
 {
     Asset("ANIM", "anim/frostsword.zip"),
     Asset("ANIM", "anim/swap_frostsword.zip"),
-    
-    Asset("ATLAS", "images/inventoryimages/frostsword.xml"),
-    Asset("IMAGE", "images/inventoryimages/frostsword.tex"),
 }
 
 
@@ -81,7 +78,7 @@ local function fn(Sim)
 
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem.imagename="frostsword"
-    inst.components.inventoryitem.atlasname="images/inventoryimages/frostsword.xml"
+    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_baseweapons.xml"
 --    inst:AddComponent("dapperness")
 --    inst.components.dapperness.dapperness = TUNING.CRAZINESS_MED,
     

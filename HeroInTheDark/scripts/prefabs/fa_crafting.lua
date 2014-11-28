@@ -189,7 +189,7 @@ local function distillerfn()
 	local inst=fn()
 
 	local minimap = inst.entity:AddMiniMapEntity()
-	minimap:SetIcon( "fa_forge.tex" )
+	minimap:SetIcon( "fa_distiller.tex" )
 
     inst.components.container.widgetanimbank = "ui_cookpot_1x4"
     inst.components.container.widgetanimbuild =  "ui_cookpot_1x4"
@@ -198,10 +198,10 @@ local function distillerfn()
     inst.AnimState:SetBank("fa_distiller")
     inst.AnimState:SetBuild("fa_distiller")
     inst.AnimState:PlayAnimation("idle_close",true)
-    inst.Transform:SetScale(1.5, 1.5, 1.5)
+    inst.Transform:SetScale(0.8, 0.8, 0.8)
 
     inst.components.fa_furnace.matcher = matchers.SmelterMatcher
-    inst.components.fa_furnace.getverb=function() return STRINGS.ACTIONS.FA_FURNACE.ALCHEMY end
+    inst.components.fa_furnace.getverb=function() return "BREW" end
 
 
 
@@ -211,14 +211,14 @@ local slotpos = {	Vector3(0,64+32+8+4,0),
 					Vector3(0,-(64+32+8+4),0)}
 
 local widgetbuttoninfo = {
-	text = "Mix",
+	text = "Brew",
 	position = Vector3(0, -165, 0),
 	fn = function(inst)
-		inst.components.stewer:StartCooking()	
+		inst.components.fa_furnace:StartCooking()	
 	end,
 	
 	validfn = function(inst)
-		return inst.components.stewer:CanCook()
+		return inst.components.fa_furnace:CanCook()
 	end,
 }
 
@@ -234,7 +234,7 @@ local function kegfn()
 	local inst=fn()
 
 	local minimap = inst.entity:AddMiniMapEntity()
-	minimap:SetIcon( "fa_forge.tex" )
+	minimap:SetIcon( "fa_keg.tex" )
 
     inst.components.container:SetNumSlots(4)
     inst.components.container.widgetanimbank = "ui_cookpot_1x4"
@@ -244,10 +244,10 @@ local function kegfn()
     inst.AnimState:SetBank("fa_keg")
     inst.AnimState:SetBuild("fa_keg")
     inst.AnimState:PlayAnimation("idle_close",true)
-    inst.Transform:SetScale(1.5, 1.5, 1.5)
+--    inst.Transform:SetScale(1.5, 1.5, 1.5)
 
     inst.components.fa_furnace.matcher = matchers.SmelterMatcher
-    inst.components.fa_furnace.getverb=function() return STRINGS.ACTIONS.FA_FURNACE.ALCHEMY end
+    inst.components.fa_furnace.getverb=function() return "BREW" end
 
 
 local slotpos = {	Vector3(0,64+32+8+4,0), 
@@ -256,14 +256,14 @@ local slotpos = {	Vector3(0,64+32+8+4,0),
 					Vector3(0,-(64+32+8+4),0)}
 
 local widgetbuttoninfo = {
-	text = "Mix",
+	text = "Brew",
 	position = Vector3(0, -165, 0),
 	fn = function(inst)
-		inst.components.stewer:StartCooking()	
+		inst.components.fa_furnace:StartCooking()	
 	end,
 	
 	validfn = function(inst)
-		return inst.components.stewer:CanCook()
+		return inst.components.fa_furnace:CanCook()
 	end,
 }
 
@@ -294,7 +294,7 @@ local function alchemyfn()
     inst.Transform:SetScale(2.4, 2.4, 2.4)
 
     inst.components.fa_furnace.matcher = matchers.AlchemyMatcher
-    inst.components.fa_furnace.getverb=function() return STRINGS.ACTIONS.FA_FURNACE.ALCHEMY end
+    inst.components.fa_furnace.getverb=function() return "ALCHEMY" end
 
 
 	local slotpos = {}
@@ -339,7 +339,7 @@ local function forgefn()
     inst.Transform:SetScale(1.5, 1.5, 1.5)
 
     inst.components.fa_furnace.matcher = matchers.ForgeMatcher
-    inst.components.fa_furnace.getverb=function() return STRINGS.ACTIONS.FA_FURNACE.FORGE end
+    inst.components.fa_furnace.getverb=function() return "FORGE" end
 
 
 	local slotpos = {}
@@ -384,7 +384,7 @@ local function smelterfn()
     inst.Transform:SetScale(1.5, 1.5, 1.5)
 
     inst.components.fa_furnace.matcher = matchers.SmelterMatcher
-    inst.components.fa_furnace.getverb=function() return STRINGS.ACTIONS.FA_FURNACE.SMELT end
+    inst.components.fa_furnace.getverb=function() return "SMELT" end
 
 
 	local slotpos = {}

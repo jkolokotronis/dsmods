@@ -24,7 +24,61 @@ local function GetInventory(inst)
 
     end)
 end
-    
+local function GetCopper(inst)
+    inst:DoTaskInTime(0,function()
+        if(inst.loadedSpawn)then
+            return
+        end
+        local item=SpawnPrefab("fa_hat_copper")
+        inst.components.inventory:Equip(item)
+        item=SpawnPrefab("fa_copperarmor")
+        inst.components.inventory:Equip(item)
+        if(math.random()<0.5)then
+            item=SpawnPrefab("fa_coppersword")
+        else
+            item=SpawnPrefab("fa_copperaxe")
+        end
+        inst.components.inventory:Equip(item)
+         inst.loadedSpawn=true
+    end)
+end
+local function GetIron(inst)
+    inst:DoTaskInTime(0,function()
+        if(inst.loadedSpawn)then
+            return
+        end
+        local item=SpawnPrefab("fa_hat_iron")
+        inst.components.inventory:Equip(item)
+        item=SpawnPrefab("fa_ironarmor")
+        inst.components.inventory:Equip(item)
+        if(math.random()<0.5)then
+            item=SpawnPrefab("fa_ironsword")
+        else
+            item=SpawnPrefab("fa_ironaxe")
+        end
+        inst.components.inventory:Equip(item)
+         inst.loadedSpawn=true
+    end)
+end
+local function GetSteel(inst)
+    inst:DoTaskInTime(0,function()
+        if(inst.loadedSpawn)then
+            return
+        end
+        local item=SpawnPrefab("fa_hat_steel")
+        inst.components.inventory:Equip(item)
+        item=SpawnPrefab("fa_steelarmor")
+        inst.components.inventory:Equip(item)
+        if(math.random()<0.5)then
+            item=SpawnPrefab("fa_steelsword")
+        else
+            item=SpawnPrefab("fa_steelaxe")
+        end
+        inst.components.inventory:Equip(item)
+         inst.loadedSpawn=true
+    end)
+end
+ 
 
 local onloadfn = function(inst, data)
      if(data)then
@@ -134,11 +188,33 @@ end
 
 local function spawn(Sim)
     local inst=fn(Sim)
-    local anim=inst.AnimState
-
     inst.components.inventory.dropondeath = true
     GetInventory(inst)
     return inst
 end
 
-return Prefab( "common/fa_animatedarmor", spawn, assets)
+local function copperspawn(Sim)
+    local inst=fn(Sim)
+    inst.components.inventory.dropondeath = true
+    GetCopper(inst)
+    return inst
+end
+
+local function ironspawn(Sim)
+    local inst=fn(Sim)
+    inst.components.inventory.dropondeath = true
+    GetIron(inst)
+    return inst
+end
+
+local function steelspawn(Sim)
+    local inst=fn(Sim)
+    inst.components.inventory.dropondeath = true
+    GetSteel(inst)
+    return inst
+end
+
+return Prefab( "common/fa_animatedarmor", spawn, assets),
+Prefab( "common/fa_animatedarmor_copper", copperspawn, assets),
+Prefab( "common/fa_animatedarmor_iron", ironspawn, assets),
+Prefab( "common/fa_animatedarmor_steel", steelspawn, assets)

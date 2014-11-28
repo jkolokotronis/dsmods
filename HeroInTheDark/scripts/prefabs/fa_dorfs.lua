@@ -262,4 +262,5 @@ local function trader()
     return inst
 end
 
-return Prefab( "common/characters/fa_dorf", normal, assets, prefabs)
+return Prefab( "common/characters/fa_dorf", normal, assets, prefabs),
+Prefab( "common/characters/fa_dorf_king", normal, assets, prefabs)

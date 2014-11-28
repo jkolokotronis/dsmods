@@ -304,24 +304,12 @@ Assets = {
 
     Asset( "IMAGE", "minimap/boneshield.tex" ),
     Asset( "ATLAS", "minimap/boneshield.xml" ),
-    Asset( "IMAGE", "minimap/dagger.tex" ),
-    Asset( "ATLAS", "minimap/dagger.xml" ),
-    Asset( "IMAGE", "minimap/evilsword.tex" ),
-    Asset( "ATLAS", "minimap/evilsword.xml" ),
-    Asset( "IMAGE", "minimap/flamingsword.tex" ),
-    Asset( "ATLAS", "minimap/flamingsword.xml" ),
-    Asset( "IMAGE", "minimap/holysword.tex" ),
-    Asset( "ATLAS", "minimap/holysword.xml" ),
     Asset( "IMAGE", "minimap/marbleshield.tex" ),
     Asset( "ATLAS", "minimap/marbleshield.xml" ),
     Asset( "IMAGE", "minimap/reflectshield.tex" ),
     Asset( "ATLAS", "minimap/reflectshield.xml" ),
     Asset( "IMAGE", "minimap/rockshield.tex" ),
     Asset( "ATLAS", "minimap/rockshield.xml" ),
-    Asset( "IMAGE", "minimap/undeadbanesword.tex" ),
-    Asset( "ATLAS", "minimap/undeadbanesword.xml" ),
-    Asset( "IMAGE", "minimap/vorpalaxe.tex" ),
-    Asset( "ATLAS", "minimap/vorpalaxe.xml" ),
     Asset( "IMAGE", "minimap/woodbow.tex" ),
     Asset( "ATLAS", "minimap/woodbow.xml" ),
     Asset( "IMAGE", "minimap/woodshield.tex" ),
@@ -340,6 +328,10 @@ Assets = {
     Asset("IMAGE", "minimap/fa_forge.tex"),
     Asset("ATLAS", "minimap/fa_alchemytable.xml"),
     Asset("IMAGE", "minimap/fa_alchemytable.tex"),
+    Asset("ATLAS", "minimap/fa_keg.xml"),
+    Asset("IMAGE", "minimap/fa_keg.tex"),
+    Asset("ATLAS", "minimap/fa_distiller.xml"),
+    Asset("IMAGE", "minimap/fa_distiller.tex"),
 
 
     Asset("ATLAS", "images/inventoryimages/fa_shields.xml"),
@@ -382,6 +374,8 @@ Assets = {
     Asset("IMAGE", "images/inventoryimages/fa_hats.tex"),
   Asset("ATLAS", "images/inventoryimages/fa_basearmors.xml"),
   Asset("IMAGE", "images/inventoryimages/fa_basearmors.tex"),
+  Asset("ATLAS", "images/inventoryimages/fa_baseweapons.xml"),
+  Asset("IMAGE", "images/inventoryimages/fa_baseweapons.tex"),
 
     Asset( "IMAGE", "minimap/goblin.tex" ),
     Asset( "ATLAS", "minimap/goblin.xml" ),  
@@ -468,16 +462,9 @@ GLOBAL.SetSharedLootTable( 'hound_mound',
 end
 
 AddMinimapAtlas("minimap/boneshield.xml")
-AddMinimapAtlas("minimap/dagger.xml")
-AddMinimapAtlas("minimap/evilsword.xml")
-AddMinimapAtlas("minimap/flamingsword.xml")
-AddMinimapAtlas("minimap/frostsword.xml")
-AddMinimapAtlas("minimap/holysword.xml")
 AddMinimapAtlas("minimap/marbleshield.xml")
 AddMinimapAtlas("minimap/reflectshield.xml")
 AddMinimapAtlas("minimap/rockshield.xml")
-AddMinimapAtlas("minimap/undeadbanesword.xml")
-AddMinimapAtlas("minimap/vorpalaxe.xml")
 AddMinimapAtlas("minimap/woodbow.xml")
 AddMinimapAtlas("minimap/woodshield.xml")
 AddMinimapAtlas("minimap/goblin.xml")
@@ -496,9 +483,12 @@ AddMinimapAtlas("minimap/fa_rocks.xml")
 AddMinimapAtlas("minimap/fa_alchemytable.xml")
 AddMinimapAtlas("minimap/fa_smeltingfurnace.xml")
 AddMinimapAtlas("minimap/fa_forge.xml")
+AddMinimapAtlas("minimap/fa_keg.xml")
+AddMinimapAtlas("minimap/fa_distiller.xml")
 AddMinimapAtlas("minimap/fa_wheat.xml")
 AddMinimapAtlas("images/inventoryimages/fa_hats.xml")
 AddMinimapAtlas("images/inventoryimages/fa_basearmors.xml")
+AddMinimapAtlas("images/inventoryimages/fa_baseweapons.xml")
 
 RemapSoundEvent( "dontstarve/characters/bard/death_voice", "dontstarve/characters/wilson/death_voice" )
 RemapSoundEvent( "dontstarve/characters/bard/hurt", "fa/characters/bard/hurt" )

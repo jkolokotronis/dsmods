@@ -1,54 +1,34 @@
 
 local assets_ironsword={
     Asset("ANIM", "anim/fa_ironsword.zip"),    
-    Asset("ATLAS", "images/inventoryimages/fa_ironsword.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_ironsword.tex"),
 }
 local assets_silversword={
     Asset("ANIM", "anim/fa_silversword.zip"),
-    Asset("ATLAS", "images/inventoryimages/fa_silversword.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_silversword.tex"),
 }
 local assets_steelsword={
     Asset("ANIM", "anim/fa_steelsword.zip"), 
-    Asset("ATLAS", "images/inventoryimages/fa_steelsword.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_steelsword.tex"),
 }
 local assets_coppersword={
     Asset("ANIM", "anim/fa_coppersword.zip"),
-    Asset("ATLAS", "images/inventoryimages/fa_coppersword.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_coppersword.tex"),
 }
 
 local assets_ironaxe={
     Asset("ANIM", "anim/fa_ironaxe.zip"),    
-    Asset("ATLAS", "images/inventoryimages/fa_ironaxe.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_ironaxe.tex"),
 }
 local assets_silveraxe={
     Asset("ANIM", "anim/fa_silveraxe.zip"),
-    Asset("ATLAS", "images/inventoryimages/fa_silveraxe.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_silveraxe.tex"),
 }
 local assets_steelaxe={
     Asset("ANIM", "anim/fa_steelaxe.zip"), 
-    Asset("ATLAS", "images/inventoryimages/fa_steelaxe.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_steelaxe.tex"),
 }
 local assets_copperaxe={
     Asset("ANIM", "anim/fa_copperaxe.zip"),
-    Asset("ATLAS", "images/inventoryimages/fa_copperaxe.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_copperaxe.tex"),
 }
 local assets_dorfkingaxe={
     Asset("ANIM", "anim/fa_dorfkingaxe.zip"),
-    Asset("ATLAS", "images/inventoryimages/fa_dorfkingaxe.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_dorfkingaxe.tex"),
 }
 local assets_orckingaxe={
     Asset("ANIM", "anim/fa_orckinghammer.zip"),
-    Asset("ATLAS", "images/inventoryimages/fa_orckinghammer.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_orckinghammer.tex"),
 }
 
 local AXE_DAMAGE_T1=55
@@ -91,12 +71,12 @@ local function common(name)
     inst.AnimState:SetBuild(name)
     inst.AnimState:PlayAnimation("idle")
 
-    --local minimap = inst.entity:AddMiniMapEntity()
-    --minimap:SetIcon( "dagger.tex" )
+    local minimap = inst.entity:AddMiniMapEntity()
+    minimap:SetIcon( name..".tex" )
 
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem.imagename=name
-    inst.components.inventoryitem.atlasname="images/inventoryimages/"..name..".xml"
+    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_baseweapons.xml"
 
     inst:AddComponent("finiteuses")
     inst.components.finiteuses:SetOnFinished( onfinished )

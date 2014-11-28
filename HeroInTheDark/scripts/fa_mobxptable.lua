@@ -94,4 +94,10 @@ FA_MOBXP_TABLE={
 	fa_cursedwortox={default=80},
 	fa_cursedpigking={default=500},
 	fa_wortox_npc={default=100},
+	fa_dorf_trader={default=2},
+	fa_dorf_king={default=500},
+	fa_orc_king={default=500},
+	fa_animatedarmor_copper={default=30},
+	fa_animatedarmor_iron={default=40},
+	fa_animatedarmor_steel={default=60},
 }

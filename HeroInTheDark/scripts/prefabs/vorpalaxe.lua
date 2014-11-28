@@ -2,8 +2,6 @@ local assets=
 {
     Asset("ANIM", "anim/vorpalaxe.zip"),
     Asset("ANIM", "anim/swap_vorpalaxe.zip"),    
-    Asset("ATLAS", "images/inventoryimages/vorpalaxe.xml"),
-    Asset("IMAGE", "images/inventoryimages/vorpalaxe.tex"),
 }
 
 local VORPALAXE_DAMAGE_T1=55
@@ -68,7 +66,7 @@ local function fn(Sim)
     
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem.imagename="vorpalaxe"
-    inst.components.inventoryitem.atlasname="images/inventoryimages/vorpalaxe.xml"
+    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_baseweapons.xml"
 --    inst:AddComponent("dapperness")
 --    inst.components.dapperness.dapperness = TUNING.CRAZINESS_MED,
     

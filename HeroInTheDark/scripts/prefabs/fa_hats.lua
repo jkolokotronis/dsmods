@@ -76,6 +76,9 @@ local ARMOR_GOLD_FUELLEVEL=1200
 local ARMOR_POT_DAPPERNESS=-5.0/60
 local ARMOR_SILVER_DR=5
 
+local ARMOR_DORF_CROWN=1000
+local ARMOR_DORF_CROWN_ABSORPTION=0.2
+
     local function generic_perish(inst)
         inst:Remove()
     end
@@ -340,7 +343,7 @@ local function onequip(inst, owner, build)
         inst.components.inventoryitem.imagename = "fa_dorf_crown"
         inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_dorf_crown.xml"
         inst:AddComponent("armor")
-        inst.components.armor:InitCondition(ARMOR_ADAMANTHAT, ARMOR_ADAMANTHAT_ABSORPTION)
+        inst.components.armor:InitCondition(ARMOR_DORF_CROWN, ARMOR_DORF_CROWN_ABSORPTION)
         return inst
     end
 

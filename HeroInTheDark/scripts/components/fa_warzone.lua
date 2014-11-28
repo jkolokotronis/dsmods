@@ -55,7 +55,7 @@ local FA_Warzone = Class(function(self, inst)
 			name="peace",
 			length=12,
 			onenter=function()
-				self:StopSpawner()
+--				self:StopSpawner()
 			end,
 			onexit=function()
 
@@ -66,9 +66,9 @@ local FA_Warzone = Class(function(self, inst)
 			length=4,
 			onenter=function()
 				self:SetSpawner()
+				self.age=self.age+1
 			end,
 			onexit=function()
-				self.age=self.age+1
 			end,
 		}
 	}
@@ -157,7 +157,7 @@ function FA_Warzone:NextPhase(phase,left)
 end
 
 function FA_Warzone:SetSpawner()
-	local worldage=self.inst.components.age:GetAge() / TUNING.TOTAL_DAY_TIME --TODO I think the age thing is broken, ill have to rewrite it proper self.age
+	local worldage=self.age--self.inst.components.age:GetAge() / TUNING.TOTAL_DAY_TIME --TODO I think the age thing is broken, ill have to rewrite it proper 
 	self.currentspawns=nil
 	local newspawner=nil
 	for k,v in ipairs(self.spawnlist) do

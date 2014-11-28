@@ -1067,7 +1067,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="7" name="idle_near" length="1500">
+        <animation id="7" name="idle_close" length="1500">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>

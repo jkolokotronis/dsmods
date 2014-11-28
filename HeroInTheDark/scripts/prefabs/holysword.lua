@@ -1,9 +1,6 @@
 local assets=
 {
     Asset("ANIM", "anim/fa_holysword.zip"),
-    Asset("ATLAS", "images/inventoryimages/holysword.xml"),
-    Asset("IMAGE", "images/inventoryimages/holysword.tex"),
-    
 }
 
 local HOLY_SWORD_LEECH=5
@@ -54,7 +51,7 @@ local function fn(Sim)
     
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem.imagename="holysword"
-    inst.components.inventoryitem.atlasname="images/inventoryimages/holysword.xml"
+    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_baseweapons.xml"
 --    inst:AddComponent("dapperness")
 --    inst.components.dapperness.dapperness = TUNING.CRAZINESS_MED,
     

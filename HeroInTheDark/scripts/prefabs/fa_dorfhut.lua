@@ -19,6 +19,11 @@ local prefabs =
 	"fa_dorf",
 }
 
+local DWARF_BED_USES=10
+local DWARF_BED_HP=100
+local DWARF_BED_SANITY=50
+local DWARF_BED_HUNGER=-50
+
 
         
 local function onhammered(inst, worker)
@@ -177,9 +182,115 @@ local function fnfoodstand1()
     return inst
 end
 
+
+local function tentonfinished(inst)
+  inst.AnimState:PlayAnimation("destroy")
+  inst:ListenForEvent("animover", function(inst, data) inst:Remove() end)
+  inst.SoundEmitter:PlaySound("dontstarve/common/tent_dis_pre")
+  inst.persists = false
+  inst:DoTaskInTime(16*FRAMES, function() inst.SoundEmitter:PlaySound("dontstarve/common/tent_dis_twirl") end)
+end
+
+
+local function onsleep(inst, sleeper)
+  
+  local hounded = GetWorld().components.hounded
+  local danger = FindEntity(inst, 10, function(target) return  target.components.combat and target.components.combat.target == inst end)  
+  if hounded and (hounded.warning or hounded.timetoattack <= 0) then
+    danger = true
+  end
+  
+  if danger then
+    if sleeper.components.talker then
+      sleeper.components.talker:Say(GetString(sleeper.prefab, "ANNOUNCE_NODANGERSLEEP"))
+    end
+    return
+  end
+    if sleeper.components.hunger.current < -DWARF_BED_HUNGER then
+        sleeper.components.talker:Say(GetString(sleeper.prefab, "ANNOUNCE_NOHUNGERSLEEP"))
+        return
+    end
+
+  sleeper.components.health:SetInvincible(true)
+  sleeper.components.playercontroller:Enable(false)
+
+  GetPlayer().HUD:Hide()
+  TheFrontEnd:Fade(false,1)
+
+  inst:DoTaskInTime(1.2, function() 
+    
+    GetPlayer().HUD:Show()
+    TheFrontEnd:Fade(true,1) 
+    
+    
+    if sleeper.components.sanity then
+      sleeper.components.sanity:DoDelta(DWARF_BED_SANITY)
+    end
+    if sleeper.components.health then
+      sleeper.components.health:DoDelta(DWARF_BED_HP, false, "tent", true)
+    end
+        if sleeper.components.hunger then
+            sleeper.components.hunger:DoDelta(DWARF_BED_HUNGER, false, true)
+        end
+    if(FA_DLCACCESS)then
+      if sleeper.components.temperature and sleeper.components.temperature.current < TUNING.TARGET_SLEEP_TEMP then
+        sleeper.components.temperature:SetTemperature(TUNING.TARGET_SLEEP_TEMP)
+      end 
+    else    
+      if sleeper.components.temperature then
+        sleeper.components.temperature:SetTemperature(sleeper.components.temperature.maxtemp)
+      end
+    end  
+    
+    inst.components.finiteuses:Use()
+    GetClock():MakeNextDay()
+--[[
+    if(sleeper.components.moisture)then
+      sleeper.components.moisture.moisture=0
+    end
+    ]]
+
+    sleeper.components.health:SetInvincible(false)
+    sleeper.components.playercontroller:Enable(true)
+    sleeper.sg:GoToState("wakeup")  
+  end)  
+  
+end
+
+local function fnbed_player()
+    local inst = CreateEntity()
+    local trans = inst.entity:AddTransform()
+    local anim = inst.entity:AddAnimState()
+    inst.entity:AddSoundEmitter()
+    inst:AddTag("tent")    
+    inst:AddTag("structure")
+     MakeObstaclePhysics(inst, 0.5)
+    inst.Transform:SetScale(1.3,1.3, 1.3)
+    inst.AnimState:SetBank("fa_dwarfbed")
+    inst.AnimState:SetBuild("fa_dwarfbed")
+    inst.AnimState:PlayAnimation("idle",true)
+    local minimap = inst.entity:AddMiniMapEntity()
+    minimap:SetIcon( "tent.png" )
+    inst:AddComponent("inspectable")
+
+    inst:AddComponent("lootdropper")
+    inst:AddComponent("sleepingbag")
+    inst.components.sleepingbag.onsleep = onsleep
+
+    inst:AddComponent("finiteuses")
+    inst.components.finiteuses:SetMaxUses(DWARF_BED_USES)
+    inst.components.finiteuses:SetUses(DWARF_BED_USES)
+    inst.components.finiteuses:SetOnFinished( tentonfinished )
+
+    MakeSnowCovered(inst, .01)
+    return inst
+end
+
 return Prefab( "common/objects/fa_dorfhut", fnhut, hutassets, prefabs ),
 Prefab( "common/objects/fa_dorfbed", fnbed, bedassets, prefabs ),
 Prefab( "common/objects/fa_dorfstand", fnstand, standassets, prefabs ),
 Prefab( "common/objects/fa_dorfstand_food_1", fnfoodstand1, standassets, prefabs ),
-Prefab( "common/objects/fa_dorfthrone", fnthrone, throneassets, prefabs )
+Prefab( "common/objects/fa_dorfthrone", fnthrone, throneassets, prefabs ),
+Prefab( "common/objects/fa_dorfbed_player", fnbed_player, bedassets),
+MakePlacer( "common/fa_dorfbed_player_placer", "fa_dwarfbed", "fa_dwarfbed", "idle" )
 

@@ -132,7 +132,7 @@
     </folder>
     <folder id="14" name="swap_hat">
         <file id="0" name="swap_hat/swap_hat-0.png" width="244" height="216" pivot_x="0.501227459016" pivot_y="-0.080087962963"/>
-        <file id="1" name="swap_hat/swap_hat-1.png" width="208" height="224" pivot_x="0.699396634615" pivot_y="-0.016625"/>
+        <file id="1" name="swap_hat/swap_hat-1.png" width="208" height="224" pivot_x="0.669396634615" pivot_y="-0.016625"/>
         <file id="2" name="swap_hat/swap_hat-2.png" width="240" height="220" pivot_x="0.523435416667" pivot_y="0.0269340909091"/>
     </folder>
     <folder id="15" name="swap_object">

@@ -65,12 +65,16 @@ AddTech("FA_DORFPOTIONSTAND")
 AddPrototyper("FA_DORFPOTIONSTAND","FA_DORFPOTIONSTAND",2)
 AddTech("FA_DORFRESOURCESTAND")
 AddPrototyper("FA_DORFRESOURCESTAND","FA_DORFRESOURCESTAND",2)
-AddTech("FA_DORFRWEAPONSTAND")
-AddPrototyper("FA_DORFRWEAPONSTAND","FA_DORFRWEAPONSTAND",2)
-AddTech("FA_DORFARMORSTAND")
-AddPrototyper("FA_DORFARMORSTAND","FA_DORFARMORSTAND",2)
-AddTech("FA_DORFRECIPESTAND")
-AddPrototyper("FA_DORFRECIPESTAND","FA_DORFRECIPESTAND",2)
+AddTech("FA_DORFWEAPONRECIPES")
+AddPrototyper("FA_DORFWEAPONRECIPES","FA_DORFWEAPONRECIPES",2)
+AddTech("FA_DORFEQUIPMENT")
+AddPrototyper("FA_DORFEQUIPMENT","FA_DORFEQUIPMENT",2)
+AddTech("FA_DORFARMORRECIPES")
+AddPrototyper("FA_DORFARMORRECIPES","FA_DORFARMORRECIPES",2)
+AddTech("FA_DORFSMELTRECIPESTAND")
+AddPrototyper("FA_DORFSMELTRECIPESTAND","FA_DORFSMELTRECIPESTAND",2)
+AddTech("FA_DORFOTHERRECIPESTAND")
+AddPrototyper("FA_DORFOTHERRECIPESTAND","FA_DORFOTHERRECIPESTAND",2)
 
 local r=Recipe("fa_tinyscrollcase", {Ingredient("fa_goblinskin", 4,"images/inventoryimages/fa_goblinskin.xml"),Ingredient("pigskin", 4),Ingredient("twigs", 10)}, RECIPETABS.SURVIVAL,  TECH.MAGIC_TWO)    
 r.image="fa_scroll_case.tex"
@@ -109,4 +113,116 @@ local r=Recipe("meatballs", {Ingredient("fa_copperpebble", 3,"images/inventoryim
 local r=Recipe("bonestew", {Ingredient("fa_ironpebble", 4,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_FOODSTAND, nil, nil, true)
 local r=Recipe("kabobs", {Ingredient("fa_coalpebble", 2,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_FOODSTAND, nil, nil, true)
 local r=Recipe("icecream", {Ingredient("fa_silverpebble", 1,"images/inventoryimages/fa_pebbles.xml"),Ingredient("fa_ironpebble", 1,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_FOODSTAND, nil, nil, true)
-local r=Recipe("meat_dried", {Ingredient("goldnugget", 1)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_FOODSTAND, nil, nil, true)
+local r=Recipe("meat_dried", {Ingredient("goldnugget", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_FOODSTAND, nil, nil, true,5)
+
+local r=Recipe("multitool_axe_pickaxe", {Ingredient("bluegem", 2)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFITEMSTAND, nil, nil, true)
+local r=Recipe("sewing_kit", {Ingredient("gold", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFITEMSTAND, nil, nil, true)
+local r=Recipe("armorslurper", {Ingredient("fa_diamondpebble", 1,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFITEMSTAND, nil, nil, true)
+local r=Recipe("sewing_kit", {Ingredient("gold", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFITEMSTAND, nil, nil, true)
+local r=Recipe("lantern", {Ingredient("gold", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFITEMSTAND, nil, nil, true)
+local r=Recipe("trap_teeth", {Ingredient("gold", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFITEMSTAND, nil, nil, true)
+--Dwarf bed	2 red gems
+local r=Recipe("yellowstaff", {Ingredient("fa_diamondpebble", 3,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFITEMSTAND, nil, nil, true)
+local r=Recipe("fa_tinydorfbag", {Ingredient("fa_diamondpebble", 3,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFITEMSTAND, nil, nil, true)
+local r=Recipe("fa_smalldorfbag", {Ingredient("fa_diamondpebble", 7,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFITEMSTAND, nil, nil, true)
+local r=Recipe("yellowstaff", {Ingredient("fa_diamondpebble", 3,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFITEMSTAND, nil, nil, true)
+--Empty Recipe book	1 diamond
+
+local r=Recipe("fa_bottle_r", {Ingredient("fa_diamondpebble", 1,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFPOTIONSTAND, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_bottles.xml"
+local r=Recipe("fa_bottle_y", {Ingredient("gold", 6)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFPOTIONSTAND, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_bottles.xml"
+local r=Recipe("fa_bottle_g", {Ingredient("gold", 15)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFPOTIONSTAND, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_bottles.xml"
+local r=Recipe("fa_bottle_b", {Ingredient("gold", 10)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFPOTIONSTAND, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_bottles.xml"
+
+local r=Recipe("fa_dorfbed_player", {Ingredient("bluegem", 2)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFRESOURCESTAND, "fa_dorfbed_player_placer",nil,true)
+r.image="tent.png"
+local r=Recipe("charcoal", {Ingredient("gold", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFRESOURCESTAND, nil, nil, true,20)
+local r=Recipe("gunpowder", {Ingredient("gold", 1)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFRESOURCESTAND, nil, nil, true)
+local r=Recipe("thulecite", {Ingredient("gold", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFRESOURCESTAND, nil, nil, true)
+local r=Recipe("marble", {Ingredient("gold", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFRESOURCESTAND, nil, nil, true,5)
+local r=Recipe("bleugem", {Ingredient("gold", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFRESOURCESTAND, nil, nil, true)
+local r=Recipe("redgem", {Ingredient("gold", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFRESOURCESTAND, nil, nil, true)
+
+local r=Recipe("fa_coppersword", {Ingredient("gold", 25)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFEQUIPMENT, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_coppersword.xml"
+local r=Recipe("fa_copperaxe", {Ingredient("gold", 25)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFEQUIPMENT, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_copperaxe.xml"
+local r=Recipe("fa_copperdagger", {Ingredient("gold", 25)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFEQUIPMENT, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_copperdagger.xml"
+local r=Recipe("fa_ironsword", {Ingredient("fa_diamondpebble", 4,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFEQUIPMENT, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_ironsword.xml"
+local r=Recipe("fa_ironaxe", {Ingredient("fa_diamondpebble", 4,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFEQUIPMENT, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_ironaxe.xml"
+local r=Recipe("fa_irondagger", {Ingredient("fa_diamondpebble", 4,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFEQUIPMENT, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_irondagger.xml"
+local r=Recipe("fa_steelsword", {Ingredient("fa_diamondpebble", 7,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFEQUIPMENT, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_steelsword.xml"
+local r=Recipe("fa_steelaxe", {Ingredient("fa_diamondpebble", 7,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFEQUIPMENT, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_steelaxe.xml"
+local r=Recipe("fa_steeldagger", {Ingredient("fa_diamondpebble", 7,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFEQUIPMENT, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_steeldagger.xml"
+local r=Recipe("fa_copperarmor", {Ingredient("gold", 25)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFEQUIPMENT, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_basearmors.xml"
+local r=Recipe("fa_ironarmor", {Ingredient("fa_diamondpebble", 8,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFEQUIPMENT, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_basearmors.xml"
+local r=Recipe("fa_steelarmor", {Ingredient("fa_diamondpebble", 13,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFEQUIPMENT, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_basearmors.xml"
+local r=Recipe("fa_hat_copper", {Ingredient("gold", 25)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFEQUIPMENT, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_hats.xml"
+local r=Recipe("fa_hat_iron", {Ingredient("fa_diamondpebble", 10,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFEQUIPMENT, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_hats.xml"
+local r=Recipe("fa_hat_steel", {Ingredient("fa_diamondpebble", 15,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFEQUIPMENT, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_hats.xml"
+
+local r=Recipe("fa_coppersword", {Ingredient("gold", 20)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_coppersword.xml"
+local r=Recipe("fa_copperaxe", {Ingredient("gold", 20)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_copperaxe.xml"
+local r=Recipe("fa_copperdagger", {Ingredient("gold", 20)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_copperdagger.xml"
+local r=Recipe("fa_ironsword", {Ingredient("fa_diamondpebble", 3,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_ironsword.xml"
+local r=Recipe("fa_ironaxe", {Ingredient("fa_diamondpebble", 3,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_ironaxe.xml"
+local r=Recipe("fa_irondagger", {Ingredient("fa_diamondpebble", 3,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_irondagger.xml"
+local r=Recipe("fa_steelsword", {Ingredient("fa_diamondpebble", 6,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_steelsword.xml"
+local r=Recipe("fa_steelaxe", {Ingredient("fa_diamondpebble", 6,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_steelaxe.xml"
+local r=Recipe("fa_steeldagger", {Ingredient("fa_diamondpebble", 6,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_steeldagger.xml"
+
+local r=Recipe("fa_copperarmor", {Ingredient("gold", 20)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_basearmors.xml"
+local r=Recipe("fa_ironarmor", {Ingredient("fa_diamondpebble", 4,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_basearmors.xml"
+local r=Recipe("fa_steelarmor", {Ingredient("fa_diamondpebble", 8,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_basearmors.xml"
+local r=Recipe("fa_hat_copper", {Ingredient("gold", 20)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_hats.xml"
+local r=Recipe("fa_hat_iron", {Ingredient("fa_diamondpebble", 3,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_hats.xml"
+local r=Recipe("fa_hat_steel", {Ingredient("fa_diamondpebble", 6,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_hats.xml"
+
+local r=Recipe("fa_copperbar", {Ingredient("gold", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFSMELTRECIPESTAND, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_bars.xml"
+local r=Recipe("fa_ironbar", {Ingredient("gold", 10)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFSMELTRECIPESTAND, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_bars.xml"
+local r=Recipe("fa_pigironbar", {Ingredient("fa_diamondpebble", 1,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFSMELTRECIPESTAND, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_bars.xml"
+local r=Recipe("fa_steelbar", {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFSMELTRECIPESTAND, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_bars.xml"
+local r=Recipe("fa_goldbar", {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFSMELTRECIPESTAND, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_bars.xml"
+local r=Recipe("fa_silverbar", {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFSMELTRECIPESTAND, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_bars.xml"
+local r=Recipe("fa_lavabar", {Ingredient("gold", 10)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFSMELTRECIPESTAND, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_bars.xml"
+local r=Recipe("fa_coalbar", {Ingredient("gold", 2)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFSMELTRECIPESTAND, nil, nil, true)
+r.atlas = "images/inventoryimages/fa_bars.xml"
+
