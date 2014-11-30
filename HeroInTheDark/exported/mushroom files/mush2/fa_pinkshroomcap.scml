@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
+    <folder id="0">
+        <file id="0" name="ground_item-mush-two.png" width="541" height="550" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="fa_pinkshroomcap">
+        <animation id="0" name="idle" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="ground_item-mush1">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-289" y="421"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

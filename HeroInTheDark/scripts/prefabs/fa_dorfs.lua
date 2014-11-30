@@ -37,6 +37,8 @@ local DWARF_ATTACK_PERIOD=2
 local DWARF_RUN_SPEED=6
 local DWARF_WALK_SPEED=3
 
+local TRADER_HEALTH=150
+local TRADER_DAMAGE=50
 
 local MAX_TARGET_SHARES = 5
 local SHARE_TARGET_DIST = 30
@@ -256,11 +258,15 @@ end
 
 local function trader()
     local inst = common()
-    
-    skel:AddComponent("homeseeker")
+    inst.components.health:SetMaxHealth(TRADER_HEALTH)
+    inst.components.combat:SetDefaultDamage(TRADER_DAMAGE)
+    inst.components.lootdropper:SetLoot({ "goldnugget",  "goldnugget", "goldnugget", "goldnugget", "goldnugget", "goldnugget", "goldnugget", "goldnugget", "goldnugget", "goldnugget","meat","fa_dorf_crown"})
+
+    inst:AddComponent("homeseeker")
 --    skel.components.homeseeker:SetHome(inst)
     return inst
 end
 
 return Prefab( "common/characters/fa_dorf", normal, assets, prefabs),
+ Prefab( "common/characters/fa_dorf_merchant", trader, assets, prefabs),
 Prefab( "common/characters/fa_dorf_king", normal, assets, prefabs)

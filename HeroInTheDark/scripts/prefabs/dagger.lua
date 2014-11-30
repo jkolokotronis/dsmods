@@ -11,6 +11,9 @@ local assets_silver={
 local assets_steel={
     Asset("ANIM", "anim/fa_steeldagger.zip"), 
 }
+local assets_adamantine={
+    Asset("ANIM", "anim/fa_adamantinedagger.zip"), 
+}
 local assets_copper={
     Asset("ANIM", "anim/fa_copperdagger.zip"),
 }
@@ -166,6 +169,13 @@ local function steel()
     return inst
 end
 
+local function adamantine()
+    local inst=common("fa_adamantinedagger")
+    inst.components.weapon:SetDamage(DAGGER_DAMAGE_T3)
+    inst.components.finiteuses:SetMaxUses(DAGGER_USES_STEEL)
+    inst.components.finiteuses:SetUses(DAGGER_USES_STEEL)
+    return inst
+end
 local function silver()
     local inst=common("fa_silverdagger")
     inst.components.weapon:SetDamage(DAGGER_DAMAGE_T2)
@@ -226,6 +236,7 @@ return Prefab( "common/inventory/dagger", t1, assets),
     Prefab( "common/inventory/dagger3", t3, assets),
     Prefab( "common/inventory/fa_copperdagger",copper, assets_copper),
     Prefab( "common/inventory/fa_steeldagger",steel, assets_steel),
+    Prefab( "common/inventory/fa_adamantinedagger",adamantine, assets_adamantine),
     Prefab( "common/inventory/fa_irondagger", iron, assets_iron),
     Prefab( "common/inventory/fa_silverdagger", silver, assets_silver),
     Prefab( "common/inventory/fa_venomdagger1",venom1, assets_venom1),

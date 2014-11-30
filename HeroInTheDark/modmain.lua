@@ -108,6 +108,8 @@ PrefabFiles = {
     "fa_fx",
     "fa_bars",
     "fa_decor",
+    "fa_racks",
+    "fa_shrooms",
     "fa_dorfkingstatue",
     "fa_crafting",
     "fa_fireboulder",
@@ -333,6 +335,8 @@ Assets = {
     Asset("ATLAS", "minimap/fa_distiller.xml"),
     Asset("IMAGE", "minimap/fa_distiller.tex"),
 
+    Asset("ATLAS", "images/inventoryimages/fa_puppet.xml"),
+    Asset("IMAGE", "images/inventoryimages/fa_puppet.tex"),
 
     Asset("ATLAS", "images/inventoryimages/fa_shields.xml"),
     Asset("IMAGE", "images/inventoryimages/fa_shields.tex"),
@@ -489,6 +493,7 @@ AddMinimapAtlas("minimap/fa_wheat.xml")
 AddMinimapAtlas("images/inventoryimages/fa_hats.xml")
 AddMinimapAtlas("images/inventoryimages/fa_basearmors.xml")
 AddMinimapAtlas("images/inventoryimages/fa_baseweapons.xml")
+AddMinimapAtlas("images/inventoryimages/fa_puppet.xml")
 
 RemapSoundEvent( "dontstarve/characters/bard/death_voice", "dontstarve/characters/wilson/death_voice" )
 RemapSoundEvent( "dontstarve/characters/bard/hurt", "fa/characters/bard/hurt" )

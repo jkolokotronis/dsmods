@@ -8,6 +8,9 @@ local assets_silversword={
 local assets_steelsword={
     Asset("ANIM", "anim/fa_steelsword.zip"), 
 }
+local assets_adamantinesword={
+    Asset("ANIM", "anim/fa_adamantinesword.zip"), 
+}
 local assets_coppersword={
     Asset("ANIM", "anim/fa_coppersword.zip"),
 }
@@ -20,6 +23,9 @@ local assets_silveraxe={
 }
 local assets_steelaxe={
     Asset("ANIM", "anim/fa_steelaxe.zip"), 
+}
+local assets_adamantineaxe={
+    Asset("ANIM", "anim/fa_adamantineaxe.zip"), 
 }
 local assets_copperaxe={
     Asset("ANIM", "anim/fa_copperaxe.zip"),
@@ -98,14 +104,6 @@ local function coppersword()
     inst.components.finiteuses:SetUses(SWORD_USES_T1)
     return inst
 end
-local function steelsword()
-    local inst=common("fa_steelsword")
-
-    inst.components.weapon:SetDamage(SWORD_DAMAGE_T3)
-    inst.components.finiteuses:SetMaxUses(SWORD_USES_T3)
-    inst.components.finiteuses:SetUses(SWORD_USES_T3)
-    return inst
-end
 local function ironsword()
     local inst=common("fa_ironsword")
 
@@ -123,6 +121,22 @@ local function silversword()
     inst.components.finiteuses:SetUses(SWORD_USES_T2)
     return inst
 end
+local function steelsword()
+    local inst=common("fa_steelsword")
+
+    inst.components.weapon:SetDamage(SWORD_DAMAGE_T3)
+    inst.components.finiteuses:SetMaxUses(SWORD_USES_T3)
+    inst.components.finiteuses:SetUses(SWORD_USES_T3)
+    return inst
+end
+local function adamantinesword()
+    local inst=common("fa_adamantinesword")
+
+    inst.components.weapon:SetDamage(SWORD_DAMAGE_T3)
+    inst.components.finiteuses:SetMaxUses(SWORD_USES_T3)
+    inst.components.finiteuses:SetUses(SWORD_USES_T3)
+    return inst
+end
 local function copperaxe()
     local inst=common("fa_copperaxe")
 
@@ -133,6 +147,14 @@ local function copperaxe()
 end
 local function steelaxe()
     local inst=common("fa_steelaxe")
+
+    inst.components.weapon:SetDamage(AXE_DAMAGE_T3)
+    inst.components.finiteuses:SetMaxUses(AXE_USES_T3)
+    inst.components.finiteuses:SetUses(AXE_USES_T3)
+    return inst
+end
+local function adamantineaxe()
+    local inst=common("fa_adamantineaxe")
 
     inst.components.weapon:SetDamage(AXE_DAMAGE_T3)
     inst.components.finiteuses:SetMaxUses(AXE_USES_T3)
@@ -175,10 +197,12 @@ end
 return
     Prefab( "common/inventory/fa_coppersword",coppersword, assets_coppersword),
     Prefab( "common/inventory/fa_steelsword",steelsword, assets_steelsword),
+    Prefab( "common/inventory/fa_adamantinesword",adamantinesword, assets_adamantinesword),
     Prefab( "common/inventory/fa_ironsword", ironsword, assets_ironsword),
     Prefab( "common/inventory/fa_silversword", silversword, assets_silversword),
     Prefab( "common/inventory/fa_copperaxe",copperaxe, assets_copperaxe),
     Prefab( "common/inventory/fa_steelaxe",steelaxe, assets_steelaxe),
+    Prefab( "common/inventory/fa_adamantineaxe",adamantineaxe, assets_adamantineaxe),
     Prefab( "common/inventory/fa_ironaxe", ironaxe, assets_ironaxe),
     Prefab( "common/inventory/fa_silveraxe", silveraxe, assets_silveraxe),
     Prefab( "common/inventory/fa_dorfkingaxe", dorfkingaxe, assets_dorfkingaxe),

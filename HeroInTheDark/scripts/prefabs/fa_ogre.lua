@@ -16,9 +16,12 @@ local prefabs =
 
 }
 
-local OGRE_HEALTH=3000
-local OGRE_DAMAGE=60
-local OGRE_ATTACK_PERIOD=1.2
+local OGRE_HEALTH = 5000
+local   OGRE_DAMAGE = 175
+local   OGRE_ATTACK_PERIOD = 4
+local   OGRE_ATTACK_RANGE = 6
+local   OGRE_AOE_RANGE = 6
+local   OGRE_AOE_SCALE = 0.8
 
 
 local function RetargetFn(inst)
@@ -75,7 +78,7 @@ local function fn()
 
     inst.AnimState:PlayAnimation('idle',true)
     inst:AddComponent("locomotor") -- locomotor must be constructed before the stategraph
-    inst.components.locomotor.runspeed = 2
+    inst.components.locomotor.runspeed = 5
     inst:SetStateGraph("SGogre")
 
 
@@ -97,7 +100,7 @@ local function fn()
     inst:AddComponent("combat")
     inst.components.combat:SetDefaultDamage(OGRE_DAMAGE)
     inst.components.combat:SetAttackPeriod(OGRE_ATTACK_PERIOD)
-    inst.components.combat:SetRange(5)
+    inst.components.combat:SetRange(OGRE_ATTACK_RANGE)
 --    inst.components.combat.hiteffectsymbol = "pig_torso"
     inst.components.combat:SetRetargetFunction(1, RetargetFn)
     inst.components.combat:SetKeepTargetFunction(KeepTargetFn)

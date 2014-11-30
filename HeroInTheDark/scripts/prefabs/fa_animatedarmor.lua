@@ -5,6 +5,9 @@ local assets=
 }
 
 local THULECITE_HP=100
+local COPPER_HP = 50
+local IRON_HP = 75
+local STEEL_HP= 150
 
 
 local function GetInventory(inst)
@@ -189,6 +192,7 @@ end
 local function spawn(Sim)
     local inst=fn(Sim)
     inst.components.inventory.dropondeath = true
+    inst.components.health:SetMaxHealth(THULECITE_HP)
     GetInventory(inst)
     return inst
 end
@@ -196,6 +200,7 @@ end
 local function copperspawn(Sim)
     local inst=fn(Sim)
     inst.components.inventory.dropondeath = true
+    inst.components.health:SetMaxHealth(COPPER_HP)
     GetCopper(inst)
     return inst
 end
@@ -203,6 +208,7 @@ end
 local function ironspawn(Sim)
     local inst=fn(Sim)
     inst.components.inventory.dropondeath = true
+    inst.components.health:SetMaxHealth(IRON_HP)
     GetIron(inst)
     return inst
 end
@@ -210,6 +216,7 @@ end
 local function steelspawn(Sim)
     local inst=fn(Sim)
     inst.components.inventory.dropondeath = true
+    inst.components.health:SetMaxHealth(STEEL_HP)
     GetSteel(inst)
     return inst
 end

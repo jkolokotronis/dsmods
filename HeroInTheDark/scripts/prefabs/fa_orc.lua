@@ -24,6 +24,13 @@ local ORC_ATTACK_PERIOD=2
 local ORC_RUN_SPEED=5
 local ORC_WALK_SPEED=3
 
+local KING_ORC_HEALTH=4000
+local KING_ORC_DAMAGE=130
+local KING_ORC_ATTACK_PERIOD=2
+local KING_ORC_RUN_SPEED=5
+local KING_ORC_WALK_SPEED=3
+
+
 local MAX_TARGET_SHARES = 6
 local TARGET_DISTANCE = 30
 local SHARE_TARGET_DIST = 40
@@ -163,6 +170,13 @@ function fa_king()
     local inst=fn()
     inst.AnimState:SetBuild("fa_orc_king")
     inst.AnimState:SetBank("fa_orc_king")
+    inst.components.locomotor.runspeed=KING_ORC_RUN_SPEED
+    inst.components.health:SetMaxHealth(KING_ORC_HEALTH)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.4
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.5
+    inst.components.combat:SetDefaultDamage(KING_ORC_DAMAGE)
+    inst.components.combat:SetAttackPeriod(KING_ORC_ATTACK_PERIOD)
+    inst.components.lootdropper:SetLoot({ "monstermeat","fa_hat_orcking","fa_orckinghammer"})
     return inst
 end
 

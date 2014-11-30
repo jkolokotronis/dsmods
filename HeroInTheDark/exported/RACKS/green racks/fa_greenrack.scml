@@ -27,12 +27,12 @@
             </timeline>
             <timeline id="1" name="_0000s_0011_Ebene-25">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-59.513228" y="305.753968" angle="0"/>
+                    <object folder="0" file="1" x="-59.513228" y="303.753968" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" name="swap_hat-0">
                 <key id="0" spin="0">
-                    <object folder="1" file="0" x="3.306204" y="149.171193" angle="0" scale_x="0.75" scale_y="0.75"/>
+                    <object folder="1" file="0" x="3.306204" y="147.171193" angle="0" scale_x="0.75" scale_y="0.75"/>
                 </key>
             </timeline>
             <timeline id="3" name="swap_body-0">
