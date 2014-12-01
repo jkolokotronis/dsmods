@@ -1,9 +1,6 @@
-
-
-
 local blueassets =
 {
-    Asset("ANIM", "anim/fa_bluerack.zip"),
+    Asset("ANIM", "anim/fa_bluerack.zip")
 }
 local pinkassets =
 {
@@ -36,10 +33,7 @@ local function PuppetOnOpen(inst)
         body.components.inventoryitem:RemoveFromOwner(true)
         inst.components.container:GiveItem(body)
     end
-    inst.components.equippable.equipslot = EQUIPSLOTS.BODY
-    inst.components.equippable.equipslot = EQUIPSLOTS.HEAD
 
-    local dropped = item.components.inventoryitem:RemoveFromOwner(wholestack) or item
 end 
 
 local function PuppetOnClose(inst) 
@@ -75,19 +69,19 @@ end
 
 local function fn(name)
     local inst = CreateEntity()
+    inst.entity:AddTransform()
     local anim=inst.entity:AddAnimState()
     inst.entity:AddSoundEmitter()
-    inst.entity:AddTransform()
     inst.entity:AddDynamicShadow()
     inst.DynamicShadow:SetSize( 2, 1.5 )
-    MakeCharacterPhysics(inst, 10, .5)
+    MakeObstaclePhysics(inst, .5)
     
 --    inst.OnLoad=onloadfn
 --    inst.OnSave=onsavefn
 
 
---    local minimap = inst.entity:AddMiniMapEntity()
---    minimap:SetIcon( "fa_puppet.tex" )
+    local minimap = inst.entity:AddMiniMapEntity()
+    minimap:SetIcon( "fa_puppet.tex" )
 
         anim:SetBank(name)
         anim:SetBuild(name)
@@ -105,7 +99,7 @@ for y = 2, 0, -1 do
 end
 
     local function itemtest(inst, item, slot)
-        if(item and item.components.weapon)then
+        if(item and item.components.equippable)then
             return true
         end
     end
@@ -147,12 +141,13 @@ end
 
 local function fnweap()
     local inst = CreateEntity()
+
+    inst.entity:AddTransform()
     local anim=inst.entity:AddAnimState()
     inst.entity:AddSoundEmitter()
-    inst.entity:AddTransform()
     inst.entity:AddDynamicShadow()
     inst.DynamicShadow:SetSize( 2, 1.5 )
-    MakeCharacterPhysics(inst, 10, .5)
+    MakeObstaclePhysics(inst, .5)
     
 --    inst.OnLoad=onloadfn
 --    inst.OnSave=onsavefn
@@ -175,10 +170,17 @@ for y = 2, 0, -1 do
         table.insert(slotpos, Vector3(80*x-80*2+80, 80*y-80*2+80,0))
     end
 end
+
+    local function itemtest(inst, item, slot)
+        if(item and item.components.weapon)then
+            return true
+        end
+    end
     inst:AddComponent("container")
     inst.components.container:SetNumSlots(#slotpos)
     inst.components.container.onopenfn = PuppetOnOpen
     inst.components.container.onclosefn = PuppetOnClose
+    inst.components.container.itemtestfn=itemtest
     
     inst.components.container.widgetslotpos = slotpos
     inst.components.container.widgetanimbank = "ui_chest_3x3"

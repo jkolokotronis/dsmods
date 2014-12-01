@@ -7,5 +7,6 @@
 		<Element name="fa_ironarmor.tex" u1="0" u2="0.25" v1="0.25" v2="0.5" />
 		<Element name="fa_silverarmor.tex" u1="0.25" u2="0.5" v1="0.25" v2="0.5" />
 		<Element name="fa_steelarmor.tex" u1="0.5" u2="0.75" v1="0.25" v2="0.5" />
+		<Element name="fa_adamantinearmor.tex" u1="0.75" u2="1" v1="0.25" v2="0.5" /> 
 </Elements>
 </Atlas>

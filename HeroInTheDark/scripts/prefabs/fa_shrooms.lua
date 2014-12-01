@@ -60,12 +60,13 @@ local function shroomfn(name)
     	local inst = CreateEntity()
         inst.entity:AddSoundEmitter()
     	inst.entity:AddTransform()
+    MakeObstaclePhysics(inst, 0.3)
 
 
     local light = inst.entity:AddLight()
     light:SetFalloff(1)
     light:SetIntensity(0.4)
-    light:SetRadius(2)
+    light:SetRadius(3)
     light:SetColour(255/255, 150/255, 150/255)
     light:Enable(true)
     

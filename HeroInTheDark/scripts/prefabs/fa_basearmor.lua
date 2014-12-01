@@ -18,6 +18,10 @@ local assets_gold=
 {
     Asset("ANIM", "anim/fa_goldarmor.zip"),
 }
+local assets_adamantine=
+{
+    Asset("ANIM", "anim/fa_adamantinearmor.zip"),
+}
 
 local ARMOR_ABSORPTION_T1=0.70
 local ARMOR_ABSORPTION_T2=0.80
@@ -47,8 +51,7 @@ local function fn(name)
 	local inst = CreateEntity()
     
 	inst.entity:AddTransform()
-    inst.Transform:SetScale(1.3, 1.3, 1.3)
-	inst.entity:AddAnimState()
+    inst.entity:AddAnimState()
     MakeInventoryPhysics(inst)
 
     local minimap = inst.entity:AddMiniMapEntity()
@@ -85,6 +88,11 @@ local function copperarmor()
 end
 local function steelarmor()
     local inst =fn("fa_steelarmor")
+    inst.components.armor:InitCondition(ARMOR_DURABILITY_T3, ARMOR_ABSORPTION_T3)
+    return inst
+end
+local function adamantinearmor()
+    local inst =fn("fa_adamantinearmor")
     inst.components.armor:InitCondition(ARMOR_DURABILITY_T3, ARMOR_ABSORPTION_T3)
     return inst
 end
@@ -135,6 +143,7 @@ end
 return
     Prefab( "common/inventory/fa_copperarmor",copperarmor, assets_copper),
     Prefab( "common/inventory/fa_steelarmor",steelarmor, assets_steel),
+    Prefab( "common/inventory/fa_adamantinearmor",adamantinearmor, assets_adamantine),
     Prefab( "common/inventory/fa_ironarmor", ironarmor, assets_iron),
     Prefab( "common/inventory/fa_silverarmor", silverarmor, assets_silver),
     Prefab( "common/inventory/fa_goldarmor", goldarmor, assets_gold)

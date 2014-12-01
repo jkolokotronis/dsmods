@@ -11,7 +11,7 @@
         <file id="0" name="swap_body/swap_body-0.png" width="92" height="156" pivot_x="0.480429" pivot_y="0.173441"/>
     </folder>
     <entity id="0" name="fa_bluerack">
-        <animation id="0" name="idle" length="1000">
+        <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
