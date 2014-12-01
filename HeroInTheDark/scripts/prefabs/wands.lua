@@ -142,6 +142,9 @@ local LIGHTNINGBOLT_DAMAGE=100
 local DAZEHUMAN_USES=25
 local DAZEHUMAN_DURATION=20
 
+local KNOCK_USES=10
+local KNOCK_LEVELS={2,8,14,18,22}
+
 local WAND_RANGE=20
 
 local BOW_USES=20
@@ -1852,6 +1855,51 @@ local function disruptundeadfn()
     return inst
 end
 
+
+local function canCastOnLockedTarget(inst, caster, target, pos)
+    if(target and target.components.lock and target.components.lock:IsLocked()  and not target:IsInLimbo())then
+        return true
+    else
+        return false
+    end
+end
+
+local function onknock(staff, target, orpos)
+    local reader = staff.components.inventoryitem.owner
+    local cl=1
+    if(reader.components.fa_spellcaster)then
+        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.TRANSMUTATION)
+    end
+    local maxlv=0
+    for k,v in ipairs(KNOCK_LEVELS) do
+        if(cl>=v)then 
+            maxlv=maxlv+1
+        else
+            break
+        end
+    end
+    if(target and target.components.lock and target.components.lock:IsLocked() )then
+        if target.components.lock.locklevel~=nil and   target.components.lock.locklevel<maxlv then
+            target.components.lock:Unlock(nil, reader)
+            staff.components.finiteuses:Use(1)
+        end
+    end
+end
+
+local function knockfn()
+    local inst = commonfn("blue")
+    inst.components.inventoryitem.imagename="icestaff"
+    inst:AddComponent("spellcaster")
+    inst.components.spellcaster:SetSpellFn(onknock)
+    inst.components.spellcaster.canuseontargets = true
+    inst.components.spellcaster.canuseonpoint = false
+    inst.components.spellcaster.canusefrominventory = false
+    inst.components.finiteuses:SetMaxUses(KNOCK_USES)
+    inst.components.spellcaster:SetSpellTestFn(canCastOnLockedTarget)
+    inst.components.finiteuses:SetUses(KNOCK_USES)
+    return inst
+end
+
 return 
 Prefab("common/inventory/fa_spell_animaltrance", animaltrance, assets, prefabs),
 Prefab("common/inventory/fa_spell_gustofwind", gustofwind, assets, prefabs),
@@ -1888,6 +1936,7 @@ Prefab("common/inventory/fa_spell_flamestrike", flamestrikefn, assets, prefabs),
 Prefab("common/inventory/fa_spell_inflictlightwoundsmass", inflictlightmassfn, assets, prefabs),
 Prefab("common/inventory/fa_spell_haltundeadmass", haltundeadmassfn, assets, prefabs),
 Prefab("common/inventory/fa_spell_disruptundead", disruptundeadfn, assets, prefabs),
+Prefab("common/inventory/fa_spell_knock", knockfn, assets, prefabs),
 Prefab("common/inventory/firewallwand_insta", firewall_insta, assets, prefabs),
 
     --DEPRECATED

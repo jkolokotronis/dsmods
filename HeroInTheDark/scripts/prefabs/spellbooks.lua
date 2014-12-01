@@ -53,6 +53,9 @@ local AID_HP=50
 local FALSELIFE_HP=100
 local MAGEARMOR_ABSO=0.6
 local MAGEARMOR_ABSO_INC=0.05
+local RESISTANCE_LENGTH=120
+local RESISTANCE_USES=5
+local ENDUREELEMENTS_LENGTH=4*60
 
 local NATURESALLY_SUMMON_TIME=8*60
 local  NATURESPAWN_SUMMON_TIME=60
@@ -315,6 +318,7 @@ function summongoodberriesfn(inst,reader)
     return true
 end
 
+
 function lightfn(inst, reader)
     reader.components.fa_bufftimers:AddBuff("light","Light","Light",BUFF_LENGTH)
 --    reader.buff_timers["light"]:ForceCooldown(BUFF_LENGTH)
@@ -328,6 +332,21 @@ function bladebarrierfn(inst,reader)
 
     reader.components.fa_bufftimers:AddBuff("bladebarrier","Blade Barrier","BladeBarrier",BB_LENGTH)
 --    BladeBarrierSpellStart( reader,BB_LENGTH)
+    return true
+end
+
+function resistancefn(inst,reader)
+    reader.components.fa_bufftimers:AddBuff("resistance","Resistance","Resistance",RESISTANCE_LENGTH)
+    return true
+end
+
+function endureelementsheatfn(inst,reader)
+    reader.components.fa_bufftimers:AddBuff("endureelementsheat","EndureHeat","EndureElements",RESISTANCE_LENGTH,{summer=true})
+    return true
+end
+
+function endureelementscoldfn(inst,reader)
+    reader.components.fa_bufftimers:AddBuff("endureelementscold","EndureCold","EndureElements",RESISTANCE_LENGTH)
     return true
 end
 
@@ -871,6 +890,9 @@ return
     MakeSpell("fa_spell_earthquake", earthquakefn, 12,FA_SPELL_SCHOOLS.EVOCATION),
     MakeSpell("fa_spell_banishdarkness", lightfn, 12,FA_SPELL_SCHOOLS.EVOCATION),
     MakeSpell("fa_spell_divinemight", divinemightfn, 15,FA_SPELL_SCHOOLS.EVOCATION),
+    MakeSpell("fa_spell_resistance", resistancefn, RESISTANCE_USES,FA_SPELL_SCHOOLS.ABJURATION),
+    MakeSpell("fa_spell_endureelementsheat", endureelementsheatfn, 6,FA_SPELL_SCHOOLS.ABJURATION),
+    MakeSpell("fa_spell_endureelementscold", endureelementscoldfn, 6,FA_SPELL_SCHOOLS.ABJURATION),
 
 
 

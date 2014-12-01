@@ -22,6 +22,7 @@ local function common(origprefab,locklevel)
     inst.components.lock.islocked=true
     inst.components.container.canbeopened=false
     inst.components.lock.locktype="chest"
+    inst.components.lock.locklevel=locklevel
 
     inst.components.lock.onunlocked=function(inst, key, doer)
     	inst.components.container.canbeopened=true

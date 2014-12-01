@@ -193,7 +193,20 @@ local function enableL1spells()
             recname="fa_spell_reducehumanoid",
             school=FA_SPELL_SCHOOLS.TRANSMUTATION,
         },
+        {
+            recname="fa_spell_resistance",
+            school=FA_SPELL_SCHOOLS.ABJURATION,
+        },
+        {
+            recname="fa_spell_endureelementsheat",
+            school=FA_SPELL_SCHOOLS.ABJURATION,
+        },
+        {
+            recname="fa_spell_endureelementscold",
+            school=FA_SPELL_SCHOOLS.ABJURATION,
+        },
     }
+
 
 --    local r=Recipe("fa_spell_resistance", {Ingredient("pigskin", 2), Ingredient("beefalowool", 6), Ingredient("cutgrass", 8)}, RECIPETABS.SPELLS,TECH.NONE)
 --    r.image="book_gardening.tex"
@@ -235,6 +248,12 @@ local function enableL1spells()
     r.image="book_gardening.tex"
     local r=Recipe("fa_spell_protevil", {Ingredient("houndstooth", 2), Ingredient("goldnugget", 6), Ingredient("healingsalve", 2)}, RECIPETABS.SPELLS,TECH.FA_SPELL)
     r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_resistance", {Ingredient("fa_lavapebble", 2,"images/inventoryimages/fa_pebbles.xml"), Ingredient("ice", 2), Ingredient("fa_bottle_water", 1,"images/inventoryimages/fa_bottles.xml")}, RECIPETABS.SPELLS,TECH.FA_SPELL)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_endureelementsheat", {Ingredient("fa_lavapebble", 4,"images/inventoryimages/fa_pebbles.xml"), Ingredient("nightmarefuel", 4), Ingredient("redgem", 1)}, RECIPETABS.SPELLS,TECH.FA_SPELL)
+    r.image="book_gardening.tex"
+    local r=Recipe("fa_spell_endureelementscold", {Ingredient("ice", 4,"images/inventoryimages/fa_pebbles.xml"), Ingredient("nightmarefuel", 2), Ingredient("bluegem", 1)}, RECIPETABS.SPELLS,TECH.FA_SPELL)
+    r.image="book_gardening.tex"
 end
 
 local function enableL2spells()
@@ -275,6 +294,10 @@ local function enableL2spells()
             recname="fa_spell_darkvision",
             school=FA_SPELL_SCHOOLS.TRANSMUTATION,
         },
+        {
+            recname="fa_spell_knock",
+            school=FA_SPELL_SCHOOLS.TRANSMUTATION,
+        },
     }
 
     local r=Recipe("fa_spell_acidarrow", {Ingredient("stinger",20), Ingredient("spoiled_food", 5), Ingredient("twigs", 20)},RECIPETABS.SPELLS,TECH.FA_SPELL)
@@ -295,6 +318,8 @@ local function enableL2spells()
     r.image="book_gardening.tex"
     local r=Recipe("fa_spell_darkvision", {Ingredient("lightbulb", 12), Ingredient("fireflies", 2), Ingredient("papyrus", 4)}, RECIPETABS.SPELLS,TECH.FA_SPELL)
     r.image="book_gardening.tex"
+   local  r=Recipe("fa_spell_knock", {Ingredient("nightmarefuel", 2), Ingredient("hammer", 1), Ingredient("fa_copperbar", 1,"images/inventoryimages/fa_bars.xml")}, RECIPETABS.SPELLS,TECH.FA_SPELL)
+    r.image="icestaff.tex"
 end
 
 local function enableL3spells()

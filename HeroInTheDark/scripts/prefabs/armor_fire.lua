@@ -1,6 +1,6 @@
 local assets=
 {
-	Asset("ANIM", "anim/armor_fire.zip"),
+	Asset("ANIM", "anim/fa_firearmor.zip"),
 }
 
 local ARMORFIRE_ABSORPTION_T1=0.70
@@ -30,7 +30,7 @@ local function OnBlocked(owner,data)
 end
 
 local function onequip(inst, owner) 
-    owner.AnimState:OverrideSymbol("swap_body", "armor_fire", "swap_body")
+    owner.AnimState:OverrideSymbol("swap_body", "fa_firearmor", "swap_body")
      inst:ListenForEvent("attacked",OnBlocked,owner)
     inst:ListenForEvent("blocked",OnBlocked, owner)
 end
@@ -51,8 +51,8 @@ local function fn()
     local minimap = inst.entity:AddMiniMapEntity()
     minimap:SetIcon( "firearmor.tex" )
     
-    inst.AnimState:SetBank("armor_fire")
-    inst.AnimState:SetBuild("armor_fire")
+    inst.AnimState:SetBank("fa_firearmor")
+    inst.AnimState:SetBuild("fa_firearmor")
     inst.AnimState:PlayAnimation("anim")
     
     inst:AddComponent("inspectable")
@@ -60,7 +60,7 @@ local function fn()
     inst:AddComponent("inventoryitem")
 	inst.components.inventoryitem.foleysound = "dontstarve/movement/foley/marblearmour"
      inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_basearmors.xml"
-    inst.components.inventoryitem.imagename="firearmor"
+    inst.components.inventoryitem.imagename="fa_firearmor"
     
     inst:AddComponent("armor")
     inst.components.armor.fa_resistances={}

@@ -62,10 +62,10 @@ local function CalcSanityAura(inst, observer)
 end
 
 local INV_TABLE={
-    {"armorfire","fa_fireaxe","footballhat"},
-    {"armormarble","fa_copperaxe","footballhat"},
-    {"armormarble","fa_ironaxe","footballhat"},
-    {"armormarble","fa_steelaxe","footballhat"}
+    {"armorfire","fa_fireaxe","fa_hat_copper"},
+    {"armormarble","fa_copperaxe","fa_hat_copper"},
+    {"armormarble","fa_ironaxe","fa_hat_iron"},
+    {"armormarble","fa_steelaxe","fa_hat_steel"}
 }
 
 local function getinventory(inst)

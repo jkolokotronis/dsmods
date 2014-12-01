@@ -25,14 +25,16 @@ local function PuppetOnOpen(inst)
     --this is stupid but so is the fact that inventory cant be accessed as container and all the copy paste between inventory/container 
     local head=inst.components.inventory:Unequip(EQUIPSLOTS.HEAD,nil,true)
     if(head)then
-        head.components.inventoryitem:RemoveFromOwner(true)
-        inst.components.container:GiveItem(head)
+--        head.components.inventoryitem:RemoveFromOwner(true)
+--        inst.components.container:GiveItem(head)
     end
     local body=inst.components.inventory:Unequip(EQUIPSLOTS.BODY,nil,true)
     if(body)then
-        body.components.inventoryitem:RemoveFromOwner(true)
-        inst.components.container:GiveItem(body)
+--        body.components.inventoryitem:RemoveFromOwner(true)
+--        inst.components.container:GiveItem(body)
     end
+        inst.AnimState:ClearOverrideSymbol("swap_hat")
+        inst.AnimState:ClearOverrideSymbol("swap_body")
 
 end 
 
@@ -45,7 +47,7 @@ local function PuppetOnClose(inst)
             end
         end)
     if(item)then
-        item.components.inventoryitem.RemoveFromOwner(true)
+        item.components.inventoryitem:RemoveFromOwner(true)
         inst.components.inventory:Equip(item)
     end
     local item=inst.components.container:FindItem(function(item)
@@ -56,7 +58,7 @@ local function PuppetOnClose(inst)
             end
         end)
     if(item)then
-        item.components.inventoryitem.RemoveFromOwner(true)
+        item.components.inventoryitem:RemoveFromOwner(true)
         inst.components.inventory:Equip(item)
     end
 end 

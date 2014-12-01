@@ -235,6 +235,118 @@ end
 
 FA_BuffUtil.DivineMight=DivineMightSpellStart
 
+
+local resiststart=function(inst)
+    local target=inst.components.spell.target
+    if target then
+        target.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=(target.components.health.fa_resistances[FA_DAMAGETYPE.FIRE] or 0)+0.3
+        target.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=(target.components.health.fa_resistances[FA_DAMAGETYPE.COLD] or 0)+0.3
+        target.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=(target.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC] or 0)+0.3
+        target.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=(target.components.health.fa_resistances[FA_DAMAGETYPE.ACID] or 0) +0.3
+    end
+end
+
+local function ResistanceSpellStart( reader,timer)
+    if(timer==nil or timer<=0)then return false end
+
+    if reader.fa_resistance then
+        reader.fa_resistance.components.spell.lifetime = 0
+--        reader.fa_resistance.components.spell:ResumeSpell()
+        return true
+    else
+
+
+    local inst=CreateEntity()
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_resistance"
+    inst.components.spell.duration = timer
+    inst.components.spell.ontargetfn = function(inst,target)
+        target.fa_resistance = inst
+        target:AddTag(inst.components.spell.spellname)
+    end
+    inst.components.spell.onstartfn = resiststart
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+        target.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=(target.components.health.fa_resistances[FA_DAMAGETYPE.FIRE] or 0)-0.3
+        target.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=(target.components.health.fa_resistances[FA_DAMAGETYPE.COLD] or 0)+0.3
+        target.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=(target.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC] or 0)-0.3
+        target.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=(target.components.health.fa_resistances[FA_DAMAGETYPE.ACID] or 0) -0.3
+        inst.components.spell.target.fa_resistance = nil
+    end
+
+        inst.components.spell.resumefn = resiststart
+        inst.components.spell.removeonfinish = true
+
+        inst.components.spell:SetTarget(reader)
+        if not inst.components.spell.target then
+            inst:Remove()
+        end
+        inst.components.spell:StartSpell()
+    end
+    
+    return true
+end
+
+FA_BuffUtil.Resistance=ResistanceSpellStart
+
+local endurestart=function(inst)
+    local target=inst.components.spell.target
+    local variables=inst.components.spell.variables
+    if target then
+        if(variables and variables.summer)then
+            target.components.temperature.inherentsummerinsulation = (target.components.temperature.inherentsummerinsulation or 0)+120
+        else
+            target.components.temperature.inherentinsulation = target.components.temperature.inherentinsulation +120
+        end
+    end
+end
+
+local function EndureElementsSpellStart( reader,timer,variables)
+    if(timer==nil or timer<=0)then return false end
+
+    if reader.fa_endureelements then
+        reader.fa_endureelements.components.spell:OnFinish()
+    else
+
+    local inst=CreateEntity()
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_endureelements"
+    inst.components.spell.duration = timer
+    inst.components.spell.variables=variables
+    inst.components.spell.ontargetfn = function(inst,target)
+        target.fa_endureelements = inst
+        target:AddTag(inst.components.spell.spellname)
+    end
+    inst.components.spell.onstartfn = endurestart
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+        if(variables and variables.summer)then
+            reader.components.temperature.inherentsummerinsulation = (reader.components.temperature.inherentsummerinsulation or 0)-120
+        else
+            reader.components.temperature.inherentinsulation = reader.components.temperature.inherentinsulation -120
+        end
+        inst.components.spell.target.fa_endureelements = nil
+    end
+
+        inst.components.spell.resumefn = resiststart
+        inst.components.spell.removeonfinish = true
+
+        inst.components.spell:SetTarget(reader)
+        if not inst.components.spell.target then
+            inst:Remove()
+        end
+        inst.components.spell:StartSpell()
+    end
+    
+    return true
+end
+
+FA_BuffUtil.EndureElements=EndureElementsSpellStart
+
 local lightfn=function(inst, target, variables)
     if target then
         inst.Transform:SetPosition(target:GetPosition():Get())
