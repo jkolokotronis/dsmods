@@ -142,6 +142,7 @@ inst:AddComponent("eater")
     inst:AddComponent("inventory")
 --    inst:AddComponent("sanity")
     
+    inst:AddComponent("lootdropper")
 
     inst:AddComponent("locomotor") -- locomotor must be constructed before the stategraph
 --    inst.components.locomotor:EnableGroundSpeedMultiplier(false)
@@ -209,7 +210,6 @@ local function npc()
 
     inst:RemoveTag("monster")
 
-    inst:AddComponent("lootdropper")
     inst.components.lootdropper:SetLoot({ "fa_ring_demon"})
 
     local deathfn=function()
