@@ -322,12 +322,15 @@ local function orcfort()
 	inst.MiniMapEntity:SetIcon("cave_open.png")
 	inst:AddComponent("activatable")
     inst.components.activatable.OnActivate = function(inst)
+
+    	GetPlayer().components.talker:Say("The entrance is blocked")
+    	--[[
 		SetPause(true)
 		inst.AnimState.PlayAnimation("opening")
 		inst.AnimState.PushAnimation("open",true)
 		inst:ListenForEvent("animover",function()
 			OnActivate(inst)
-		end)
+		end)]]
 	end
     inst.components.activatable.inactive = true
     inst.components.activatable.getverb = GetVerb
@@ -351,7 +354,8 @@ local function createcage(parent,animname)
     inst.components.activatable.getverb = GetVerb
 	inst.components.activatable.quickaction = true
     inst.components.activatable.OnActivate = function(inst)
-    	OnActivate(parent)
+    	GetPlayer().components.talker:Say("The entrance is blocked")
+--    	OnActivate(parent)
 	end
 	return inst
 end

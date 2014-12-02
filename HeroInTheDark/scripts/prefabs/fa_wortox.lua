@@ -189,10 +189,13 @@ end
 local function king()
     local inst=fn()
     inst.Transform:SetScale(3.0,3,3)
+    inst.components.locomotor.runspeed =2
     inst.components.combat:SetRetargetFunction(1, RetargetFn)
     inst.components.combat:SetKeepTargetFunction(KeepTargetFn)
     inst:SetStateGraph("SGskeletonspawn")    
     local brain = require "brains/cursedpigkingbrain"
+    inst.components.lootdropper:SetLoot({ "fa_ring_demon","meat","meat","meat","meat","meat","meat","meat","meat","meat","meat","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget"
+        ,"goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget"})
     inst:SetBrain(brain)
     inst.components.health:SetMaxHealth(5000)
     inst.components.combat:SetDefaultDamage(150)

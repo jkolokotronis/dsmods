@@ -173,7 +173,7 @@ local states=
         onenter = function(inst, cb)
             inst.Physics:Stop()
             inst.SoundEmitter:PlaySound("dontstarve/characters/wilton/hurt")
-            inst.AnimState:PlayAnimation("hit")
+            inst.AnimState:PlayAnimation("hurt")
         end,
 
         events=
