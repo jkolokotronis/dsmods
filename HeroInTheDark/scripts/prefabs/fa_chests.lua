@@ -73,6 +73,7 @@ end
 local function fa_mine_skullchest()
 
 	local inst =Prefabs["skullchest"].fn()
+	inst:RemoveComponent("burnable")
 	return inst
 end
 
