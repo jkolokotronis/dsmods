@@ -17,8 +17,8 @@
         <file id="13" name="face/face-13.png" width="160" height="400" pivot_x="0.496403" pivot_y="0.792892"/>
     </folder>
     <folder id="1" name="headbase">
-        <file id="0" name="headbase/headbase-0.png" width="216" height="260" pivot_x="0.507976" pivot_y="0.13567"/>
-        <file id="1" name="headbase/headbase-1.png" width="212" height="264" pivot_x="0.544809" pivot_y="0.143752"/>
+        <file id="0" name="headbase/headbase-0.png" width="216" height="260" pivot_x="0.507976" pivot_y="0.16567"/>
+        <file id="1" name="headbase/headbase-1.png" width="212" height="264" pivot_x="0.533651" pivot_y="0.179008"/>
         <file id="2" name="headbase/headbase-2.png" width="220" height="260" pivot_x="0.519789" pivot_y="0.136209"/>
     </folder>
     <folder id="2" name="torso">
@@ -83,8 +83,8 @@
         <file id="2" name="arm_lower/arm_lower-2.png" width="64" height="40" pivot_x="0.761711" pivot_y="0.710013"/>
     </folder>
     <folder id="9" name="headbase_hat">
-        <file id="0" name="headbase_hat/headbase_hat-0.png" width="216" height="316" pivot_x="0.509306" pivot_y="0.097304"/>
-        <file id="1" name="headbase_hat/headbase_hat-1.png" width="212" height="264" pivot_x="0.533651" pivot_y="0.169008"/>
+        <file id="0" name="headbase_hat/headbase_hat-0.png" width="216" height="316" pivot_x="0.509306" pivot_y="0.16567"/>
+        <file id="1" name="headbase_hat/headbase_hat-1.png" width="212" height="264" pivot_x="0.533651" pivot_y="0.179008"/>
         <file id="2" name="headbase_hat/headbase_hat-2.png" width="220" height="260" pivot_x="0.519789" pivot_y="0.122659"/>
     </folder>
     <entity id="0" name="wizard">
