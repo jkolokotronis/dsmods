@@ -74,7 +74,7 @@ function CursedPigKingBrain:TryPull()
             local dsq = self.inst:GetDistanceSqToInst(v)
             if(dsq>(FORCEPULL_MINRANGE*FORCEPULL_MINRANGE))then
                 local r=self.inst.Physics:GetRadius() + v.Physics:GetRadius() + 1
-                local vector = (pos-p1):GetNormalized()
+                local vector = (p1-pos):GetNormalized()
                 local newpos=pos+vector*r
                 print("r",r,"oldpos",pos,"newpos",newpos)
                 if GetWorld().Map and GetWorld().Map:GetTileAtPoint(newpos.x, newpos.y, newpos.z) ~= GROUND.IMPASSABLE then
