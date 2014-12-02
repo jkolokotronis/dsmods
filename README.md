@@ -1,4 +1,0 @@
-dsmods
-======
-
-DontStarve mods
