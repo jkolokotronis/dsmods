@@ -155,6 +155,7 @@ inst:AddComponent("eater")
     inst:AddComponent("inspectable")
     inst:AddComponent("knownlocations")
         
+    inst:AddComponent("lootdropper")
     inst:AddComponent("combat")
     inst.components.combat.hiteffectsymbol = "torso"
     inst.components.combat:SetDefaultDamage(40)
@@ -194,8 +195,7 @@ local function king()
     inst.components.combat:SetKeepTargetFunction(KeepTargetFn)
     inst:SetStateGraph("SGskeletonspawn")    
     local brain = require "brains/cursedpigkingbrain"
-    inst.components.lootdropper:SetLoot({ "fa_ring_demon","meat","meat","meat","meat","meat","meat","meat","meat","meat","meat","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget"
-        ,"goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget"})
+    inst.components.lootdropper:SetLoot({ "fa_ring_demon","meat","meat","meat","meat","meat","meat","meat","meat","meat","meat","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget"})
     inst:SetBrain(brain)
     inst.components.health:SetMaxHealth(5000)
     inst.components.combat:SetDefaultDamage(150)
@@ -209,7 +209,6 @@ local function npc()
 
     inst:RemoveTag("monster")
 
-    inst:AddComponent("lootdropper")
     inst.components.lootdropper:SetLoot({ "fa_ring_demon"})
 
     local deathfn=function()
