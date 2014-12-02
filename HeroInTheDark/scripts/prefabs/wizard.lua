@@ -205,6 +205,10 @@ local function enableL1spells()
             recname="fa_spell_endureelementscold",
             school=FA_SPELL_SCHOOLS.ABJURATION,
         },
+        {
+            recname="fa_mageweapon",
+            school=FA_SPELL_SCHOOLS.TRANSMUTATION,
+        },
     }
 
 
@@ -254,6 +258,9 @@ local function enableL1spells()
     r.image="book_gardening.tex"
     local r=Recipe("fa_spell_endureelementscold", {Ingredient("ice", 4,"images/inventoryimages/fa_pebbles.xml"), Ingredient("nightmarefuel", 2), Ingredient("bluegem", 1)}, RECIPETABS.SPELLS,TECH.FA_SPELL)
     r.image="book_gardening.tex"
+    local r=Recipe("fa_mageweapon", {Ingredient("fa_coppersword", 1,"images/inventoryimages/fa_baseweapons.xml"), Ingredient("nightmarefuel", 2)}, RECIPETABS.SPELLS,TECH.FA_SPELL)
+    r.image="fa_coppersword.tex"
+    r.atlas="images/inventoryimages/fa_baseweapons.xml"
 end
 
 local function enableL2spells()

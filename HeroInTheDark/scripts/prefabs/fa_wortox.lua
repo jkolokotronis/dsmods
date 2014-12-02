@@ -33,7 +33,7 @@ local assets = {
 }
 local prefabs = {}
 
-local TARGET_DISTANCE=30
+local TARGET_DISTANCE=35
 local NPC_RING_COST=10
 
 local function RetargetFn(inst)
@@ -145,7 +145,7 @@ inst:AddComponent("eater")
 
     inst:AddComponent("locomotor") -- locomotor must be constructed before the stategraph
 --    inst.components.locomotor:EnableGroundSpeedMultiplier(false)
-    inst.components.locomotor.runspeed = TUNING.WILSON_RUN_SPEED*0.9
+    inst.components.locomotor.runspeed =5
 
     inst:AddComponent("follower")
     
@@ -188,13 +188,14 @@ end
 
 local function king()
     local inst=fn()
-    inst.Transform:SetScale(2.0,2,2)
+    inst.Transform:SetScale(3.0,3,3)
     inst.components.combat:SetRetargetFunction(1, RetargetFn)
     inst.components.combat:SetKeepTargetFunction(KeepTargetFn)
     inst:SetStateGraph("SGskeletonspawn")    
-    local brain = require "brains/orcbrain"
+    local brain = require "brains/cursedpigkingbrain"
     inst:SetBrain(brain)
     inst.components.health:SetMaxHealth(5000)
+    inst.components.combat:SetDefaultDamage(150)
     return inst
 end
 

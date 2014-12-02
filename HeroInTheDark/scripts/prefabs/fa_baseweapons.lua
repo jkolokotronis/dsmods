@@ -193,6 +193,16 @@ local function orckingaxe()
     inst.components.finiteuses:SetUses(AXE_USES_T2)
     return inst
 end
+local function magesword()
+    local inst=common("fa_coppersword")
+    inst.components.weapon:SetDamage(inst.components.weapon.damage*2)
+    inst:AddComponent("characterspecific")
+    inst.components.characterspecific:SetOwner("wizard")
+    inst.components.weapon:SetDamage(SWORD_DAMAGE_T1*2)
+    inst.components.finiteuses:SetMaxUses(SWORD_USES_T1*0.75)
+    inst.components.finiteuses:SetUses(SWORD_USES_T1*0.75)
+    return inst
+end
 
 return
     Prefab( "common/inventory/fa_coppersword",coppersword, assets_coppersword),
@@ -206,4 +216,5 @@ return
     Prefab( "common/inventory/fa_ironaxe", ironaxe, assets_ironaxe),
     Prefab( "common/inventory/fa_silveraxe", silveraxe, assets_silveraxe),
     Prefab( "common/inventory/fa_dorfkingaxe", dorfkingaxe, assets_dorfkingaxe),
-    Prefab( "common/inventory/fa_orckinghammer", orckingaxe, assets_orckingaxe)
+    Prefab( "common/inventory/fa_orckinghammer", orckingaxe, assets_orckingaxe),
+    Prefab( "common/inventory/fa_magesword", magesword, assets_coppersword)
