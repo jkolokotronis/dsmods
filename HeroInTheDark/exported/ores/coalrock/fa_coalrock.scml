@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8">
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
     <folder id="0" name="rock01">
-        <file id="0" name="rock01/rock01-0.png" width="653" height="708" pivot_x="0.496216" pivot_y="0.437081"/>
-        <file id="1" name="rock01/rock01-1.png" width="721" height="484" pivot_x="0.596099" pivot_y="0.502719"/>
-        <file id="2" name="rock01/rock01-2.png" width="721" height="290" pivot_x="0.53089" pivot_y="0.802597"/>
-        <file id="3" name="rock01/rock01-3.png" width="1020" height="321" pivot_x="0" pivot_y="1"/>
+        <file id="0" name="rock01/rock01-0.png" width="653" height="708" pivot_x="0.5" pivot_y="0"/>
+        <file id="1" name="rock01/rock01-1.png" width="721" height="484" pivot_x="0.5" pivot_y="0"/>
+        <file id="2" name="rock01/rock01-2.png" width="721" height="290" pivot_x="0.5" pivot_y="0"/>
+        <file id="3" name="rock01/rock01-3.png" width="1020" height="321" pivot_x="0.665362" pivot_y="0"/>
     </folder>
     <entity id="0" name="fa_coalrock">
         <animation id="0" name="anim" length="67">
@@ -15,7 +15,7 @@
             </mainline>
             <timeline id="0" name="rock01">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-10.215368" y="262.558307" angle="0"/>
+                    <object folder="0" file="0" y="-40" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -27,7 +27,7 @@
             </mainline>
             <timeline id="0" name="rock01">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-11.081169" y="261.927355" angle="0"/>
+                    <object folder="0" file="0" y="-40" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -42,10 +42,10 @@
             </mainline>
             <timeline id="0" name="rock01">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="-658.348485" y="274.899216" angle="0"/>
+                    <object folder="0" file="3" x="-7" y="-33" angle="0"/>
                 </key>
                 <key id="1" time="50" spin="0">
-                    <object folder="0" file="3" x="-658.348485" y="274.899216" angle="0"/>
+                    <object folder="0" file="3" x="20.320755" y="-46.100784" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -60,10 +60,10 @@
             </mainline>
             <timeline id="0" name="rock01">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="15.729437" y="181.089693" angle="0"/>
+                    <object folder="0" file="2" x="-28" y="-40" angle="0"/>
                 </key>
                 <key id="1" time="200" spin="0">
-                    <object folder="0" file="2" x="15.729437" y="181.089693" angle="0"/>
+                    <object folder="0" file="2" x="376.229437" y="-108.910307" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -78,10 +78,10 @@
             </mainline>
             <timeline id="0" name="rock01">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="53.613636" y="207.346186" angle="0"/>
+                    <object folder="0" file="1" x="-28" y="-34" angle="0"/>
                 </key>
                 <key id="1" time="200" spin="0">
-                    <object folder="0" file="1" x="53.613636" y="207.346186" angle="0"/>
+                    <object folder="0" file="1" x="414.113636" y="-276.653814" angle="0"/>
                 </key>
             </timeline>
         </animation>

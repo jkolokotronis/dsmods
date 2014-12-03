@@ -14,7 +14,7 @@
             </mainline>
             <timeline id="0" name="rock01">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="1.5" y="195.104405" angle="0"/>
+                    <object folder="0" file="0" x="-14.71622" y="211.32062" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -38,7 +38,7 @@
             </mainline>
             <timeline id="0" name="rock01">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="112.310811" y="465.374676" angle="0"/>
+                    <object folder="0" file="2" x="106.310811" y="465.374676" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -50,7 +50,7 @@
             </mainline>
             <timeline id="0" name="rock01">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="135.121622" y="224.834135" angle="0"/>
+                    <object folder="0" file="1" x="137.121622" y="224.834135" angle="0"/>
                 </key>
             </timeline>
         </animation>
