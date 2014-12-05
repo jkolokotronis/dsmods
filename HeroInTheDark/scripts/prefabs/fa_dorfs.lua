@@ -139,6 +139,7 @@ local function common()
 	local anim = inst.entity:AddAnimState()
 	local sound = inst.entity:AddSoundEmitter()
 	local shadow = inst.entity:AddDynamicShadow()
+    inst.soundsname="dwarf"
 	shadow:SetSize( 1.5, .75 )
     inst.Transform:SetFourFaced()
 

@@ -118,7 +118,7 @@ local states=
             inst.sg.statemem.target = target
             inst.Physics:Stop()
             inst.components.combat:StartAttack()
-            inst.SoundEmitter:PlaySound("fa/orc/orc_atk")
+            inst.SoundEmitter:PlaySound("fa/mobs/orc/orc_atk")
             inst.AnimState:PlayAnimation("Attack")
         end,
          timeline =
@@ -138,7 +138,7 @@ local states=
         onenter = function(inst, cb)
             inst.Physics:Stop()
             inst.AnimState:PlayAnimation("Hurt")
-            inst.SoundEmitter:PlaySound("fa/orc/orc_hit")
+            inst.SoundEmitter:PlaySound("fa/mobs/orc/orc_hit")
  --           inst.sg:GoToState("idle") 
         end,
 
@@ -154,7 +154,7 @@ local states=
 
         onenter = function(inst)
             inst.AnimState:PlayAnimation("Death")
-            inst.SoundEmitter:PlaySound("fa/orc/orc_die")
+            inst.SoundEmitter:PlaySound("fa/mobs/orc/orc_die")
             inst.Physics:Stop()
             RemovePhysicsColliders(inst)            
             inst.components.lootdropper:DropLoot(Vector3(inst.Transform:GetWorldPosition()))            

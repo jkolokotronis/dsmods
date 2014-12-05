@@ -181,7 +181,7 @@ local function mob()
     inst.Transform:SetScale(1.25,1.25, 1.25)
     inst.components.combat:SetRetargetFunction(1, RetargetFn)
     inst.components.combat:SetKeepTargetFunction(KeepTargetFn)
-    inst:SetStateGraph("SGskeletonspawn")    
+    inst:SetStateGraph("SGfa_wortox")    
     local brain = require "brains/orcbrain"
     inst:SetBrain(brain)
     return inst
@@ -193,7 +193,7 @@ local function king()
     inst.components.locomotor.runspeed =2
     inst.components.combat:SetRetargetFunction(1, RetargetFn)
     inst.components.combat:SetKeepTargetFunction(KeepTargetFn)
-    inst:SetStateGraph("SGskeletonspawn")    
+    inst:SetStateGraph("SGfa_wortox")    
     local brain = require "brains/cursedpigkingbrain"
     inst.components.lootdropper:SetLoot({ "fa_ring_demon","meat","meat","meat","meat","meat","meat","meat","meat","meat","meat","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget"
         ,"goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget","goldnugget"})

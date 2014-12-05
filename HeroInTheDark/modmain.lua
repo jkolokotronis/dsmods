@@ -507,6 +507,7 @@ RemapSoundEvent( "dontstarve/characters/paladin/talk_LP", "fa/characters/paladin
 RemapSoundEvent( "dontstarve/characters/wizard/death_voice", "fa/characters/wizard/death_voice")
 RemapSoundEvent( "dontstarve/characters/wizard/hurt", "fa/characters/wizard/hurt" )
 RemapSoundEvent( "dontstarve/characters/wizard/talk_LP", "fa/characters/wizard/talk_LP" )
+RemapSoundEvent( "dontstarve/characters/dwarf/talk_LP", "fa/mobs/dwarf/talk_LP" )
 
 local EVIL_SANITY_AURA_OVERRIDE={
     robin=-TUNING.SANITYAURA_MED,

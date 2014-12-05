@@ -73,7 +73,7 @@ local states=
         timeline=
         {        
             TimeEvent(4*FRAMES, function(inst)
-                inst.SoundEmitter:PlaySound("dontstarve/maxwell/shadowmax_step")
+                inst.SoundEmitter:PlaySound("fa/mobs/ogre/footstep")
             end),
         },        
         
@@ -136,6 +136,7 @@ local states=
             else
                 inst.AnimState:PlayAnimation("smash")
             end
+            inst.SoundEmitter:PlaySound("fa/mobs/ogre/atk")
         end,
         timeline =
         {
@@ -172,7 +173,7 @@ local states=
 
         onenter = function(inst, cb)
             inst.Physics:Stop()
-            inst.SoundEmitter:PlaySound("dontstarve/characters/wilton/hurt")
+            inst.SoundEmitter:PlaySound("fa/mobs/ogre/hurt")
             inst.AnimState:PlayAnimation("hurt")
         end,
 
@@ -189,7 +190,7 @@ local states=
         onenter = function(inst)
             inst.AnimState:PlayAnimation("death")
             inst.Physics:Stop()
-            print("diaf")
+            inst.SoundEmitter:PlaySound("fa/mobs/ogre/death")
             RemovePhysicsColliders(inst)            
             inst.components.lootdropper:DropLoot(Vector3(inst.Transform:GetWorldPosition()))            
         end,

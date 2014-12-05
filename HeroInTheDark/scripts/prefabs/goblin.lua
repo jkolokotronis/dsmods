@@ -224,7 +224,7 @@ local function RetargetFn(inst)
     if(invader and not inst.components.combat.target)then--invader~=inst.components.combat.target)then
         if not(inst.fa_yelltime and (GetTime()-inst.fa_yelltime)<YELL_TIMEOUT)then
             inst.fa_yelltime=GetTime()
-            inst.SoundEmitter:PlaySound("fa/goblin/goblin_yell")
+            inst.SoundEmitter:PlaySound("fa/mobs/goblin/goblin_yell")
         end
     end
     return invader

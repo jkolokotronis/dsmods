@@ -459,7 +459,7 @@ local states=
             inst.components.locomotor:Stop()
             inst.AnimState:Hide("swap_arm_carry")
             inst.AnimState:PlayAnimation("death")
-            inst.SoundEmitter:PlaySound("fa/goblin/goblin_die")
+            inst.SoundEmitter:PlaySound("fa/mobs/dwarf/die")
             inst.components.lootdropper:DropLoot(Vector3(inst.Transform:GetWorldPosition()))   
         end,
     },
@@ -1497,11 +1497,11 @@ local states=
                 end
             elseif otherequipped and (otherequipped:HasTag("light") or otherequipped:HasTag("nopunch")) then
                 inst.AnimState:PlayAnimation("atk")
- --               inst.SoundEmitter:PlaySound("fa/skeleton/skel_atk")
+                inst.SoundEmitter:PlaySound("dontstarve/wilson/attack_weapon")
             else
 				inst.sg.statemem.slow = true
                 inst.AnimState:PlayAnimation("punch")
- --               inst.SoundEmitter:PlaySound("fa/skeleton/skel_atk")
+                inst.SoundEmitter:PlaySound("dontstarve/wilson/attack_whoosh")
             end
             
             if inst.components.combat.target then
@@ -1764,7 +1764,7 @@ local states=
         tags = {"busy"},
         
         onenter = function(inst)
---            inst.SoundEmitter:PlaySound("fa/skeleton/skel_hit")        
+            inst.SoundEmitter:PlaySound("fa/mobs/dwarf/hurt")        
             inst.AnimState:PlayAnimation("hit")
             inst:ClearBufferedAction()
             
