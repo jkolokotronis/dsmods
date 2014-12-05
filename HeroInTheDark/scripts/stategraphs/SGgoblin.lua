@@ -459,7 +459,7 @@ local states=
             inst.components.locomotor:Stop()
             inst.AnimState:Hide("swap_arm_carry")
             inst.AnimState:PlayAnimation("death")
-            inst.SoundEmitter:PlaySound("fa/goblin/goblin_die")
+            inst.SoundEmitter:PlaySound("fa/mobs/goblin/goblin_die")
             inst.components.lootdropper:DropLoot(Vector3(inst.Transform:GetWorldPosition()))   
         end,
     },
