@@ -35,7 +35,7 @@ function KiBar:OnUpdate(dt)
 end
 
 function KiBar:LongUpdate(dt)
-	self:DoDec(dt, true)
+	self:OnUpdate(dt, true)
 end
 
 function KiBar:Pause()

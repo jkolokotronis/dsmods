@@ -1,7 +1,6 @@
 local assets=
 {
-    Asset("ANIM", "anim/flamingsword.zip"),
-    Asset("ANIM", "anim/swap_flamingsword.zip"),
+    Asset("ANIM", "anim/fa_flamingsword.zip"),
 }
 
 
@@ -29,7 +28,7 @@ local function onattack(inst, attacker, target)
 end
 
 local function onequip(inst, owner)
-    owner.AnimState:OverrideSymbol("swap_object", "swap_flamingsword", "swap_flamingsword")
+    owner.AnimState:OverrideSymbol("swap_object", "fa_flamingsword", "swap_weapon")
     owner.AnimState:Show("ARM_carry") 
     owner.AnimState:Hide("ARM_normal") 
 end
@@ -48,10 +47,10 @@ local function fn(Sim)
     MakeInventoryPhysics(inst)
 
     local minimap = inst.entity:AddMiniMapEntity()
-    minimap:SetIcon( "flamingsword.tex" )
+    minimap:SetIcon( "fa_flamingsword.tex" )
   
-    inst.AnimState:SetBank("flamingsword")
-    inst.AnimState:SetBuild("flamingsword")
+    inst.AnimState:SetBank("fa_flamingsword")
+    inst.AnimState:SetBuild("fa_flamingsword")
     inst.AnimState:PlayAnimation("idle")
 
     inst.Transform:SetScale(2, 2, 1)
@@ -67,7 +66,7 @@ local function fn(Sim)
     inst.components.finiteuses:SetOnFinished( onfinished )
 
     inst:AddComponent("inventoryitem")
-    inst.components.inventoryitem.imagename="flamingsword"
+    inst.components.inventoryitem.imagename="fa_flamingsword"
     inst.components.inventoryitem.atlasname="images/inventoryimages/fa_baseweapons.xml"
 --    inst:AddComponent("dapperness")
 --    inst.components.dapperness.dapperness = TUNING.CRAZINESS_MED,

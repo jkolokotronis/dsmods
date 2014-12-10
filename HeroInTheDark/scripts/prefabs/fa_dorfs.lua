@@ -27,6 +27,34 @@ local assets =
         Asset("ANIM","anim/fa_dorf.zip")
 }
 
+local assets_king={
+    
+        Asset( "ANIM", "anim/player_basic.zip" ),
+        Asset( "ANIM", "anim/player_idles_shiver.zip" ),
+        Asset( "ANIM", "anim/player_actions.zip" ),
+        Asset( "ANIM", "anim/player_actions_axe.zip" ),
+        Asset( "ANIM", "anim/player_actions_pickaxe.zip" ),
+        Asset( "ANIM", "anim/player_actions_shovel.zip" ),
+        Asset( "ANIM", "anim/player_actions_blowdart.zip" ),
+        Asset( "ANIM", "anim/player_actions_eat.zip" ),
+        Asset( "ANIM", "anim/player_actions_item.zip" ),
+        Asset( "ANIM", "anim/player_actions_uniqueitem.zip" ),
+        Asset( "ANIM", "anim/player_actions_bugnet.zip" ),
+        Asset( "ANIM", "anim/player_actions_fishing.zip" ),
+        Asset( "ANIM", "anim/player_actions_boomerang.zip" ),
+        Asset( "ANIM", "anim/player_bush_hat.zip" ),
+        Asset( "ANIM", "anim/player_attacks.zip" ),
+        Asset( "ANIM", "anim/player_idles.zip" ),
+        Asset( "ANIM", "anim/player_rebirth.zip" ),
+        Asset( "ANIM", "anim/player_jump.zip" ),
+        Asset( "ANIM", "anim/player_amulet_resurrect.zip" ),
+        Asset( "ANIM", "anim/player_teleport.zip" ),
+        Asset( "ANIM", "anim/wilson_fx.zip" ),
+        Asset( "ANIM", "anim/player_one_man_band.zip" ),
+
+        Asset("ANIM","anim/fa_dorf_king.zip")
+}
+
 local prefabs =
 {
 }
@@ -268,6 +296,13 @@ local function trader()
     return inst
 end
 
+
+local function kingfn()
+    local inst = common()
+    inst.AnimState:SetBuild("fa_dorf_king")
+    return inst
+end
+
 return Prefab( "common/characters/fa_dorf", normal, assets, prefabs),
  Prefab( "common/characters/fa_dorf_merchant", trader, assets, prefabs),
-Prefab( "common/characters/fa_dorf_king", normal, assets, prefabs)
+Prefab( "common/characters/fa_dorf_king", kingfn, assets, prefabs)

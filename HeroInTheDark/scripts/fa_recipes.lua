@@ -91,6 +91,11 @@ r.atlas = "images/inventoryimages/fa_wand_case.xml"
 local r=Recipe("fa_bottle_curepoison", {Ingredient("poisonspidergland", 4,"images/inventoryimages/poisonspidergland.xml"), Ingredient("spidergland", 4), Ingredient("fa_bottle_r",1,"images/inventoryimages/fa_bottles.xml")}, RECIPETABS.SURVIVAL,  TECH.NONE)
 r.image="fa_bottle_light_green.tex"
 r.atlas = "images/inventoryimages/fa_bottles.xml"
+local r=Recipe("fa_barrel_wood", {Ingredient("fa_copperbar", 4,"images/inventoryimages/fa_orebars.xml"), Ingredient("boards", 2)}, RECIPETABS.SURVIVAL,  TECH.NONE)
+r.image="fa_barrel_wood.tex"
+--r.atlas = "images/inventoryimages/fa_barrel_wood.xml"
+
+
 --[[
 local r=Recipe("fa_weaponupgrade_poison", {Ingredient("poisonspidergland", 4,"images/inventoryimages/poisonspidergland.xml"), Ingredient("spidergland", 4), Ingredient("twigs",1)}, RECIPETABS.SURVIVAL,  TECH.NONE)
 r.image="poisonspider_gland_salve.tex"

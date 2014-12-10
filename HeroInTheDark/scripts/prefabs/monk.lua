@@ -35,7 +35,7 @@ local assets = {
 
 		-- Don't forget to include your character's custom assets!
         Asset( "ANIM", "anim/monk.zip" ),
-        Asset("ANIM","anim/fa_dorf.zip")
+        Asset("ANIM","anim/fa_dorf_king.zip")
 }
 local prefabs = {}
 
@@ -73,7 +73,7 @@ end
 
 local updatekiboosts=function(inst,data)
     for i=1,math.floor(data.new/10) do
-        local bufftostart=inst.kibuffs[i*10]
+        local bufftostart=inst.kibuffs[i]
         if(bufftostart and not bufftostart.active)then
             bufftostart.active=true
             bufftostart.onenter()
@@ -81,7 +81,7 @@ local updatekiboosts=function(inst,data)
     end
     if(data.old>data.new)then
         for i=math.floor(data.new/10)+1,math.floor(data.old/10) do
-            local bufftostart=inst.kibuffs[i*10]
+            local bufftostart=inst.kibuffs[i]
             if(bufftostart and bufftostart.active)then
                 bufftostart.active=false
                 bufftostart.onexit()
@@ -98,7 +98,7 @@ local fn = function(inst)
 	-- a minimap icon must be specified
 	inst.MiniMapEntity:SetIcon( "wilson.png" )
 
-    inst.AnimState:SetBuild("fa_dorf")
+    inst.AnimState:SetBuild("fa_dorf_king")
 
 	-- todo: Add an example special power here.
     inst.components.locomotor.runspeed=BASE_MS
@@ -120,7 +120,7 @@ local fn = function(inst)
     inst.components.kibar.current=0
 
     inst.kibuffs={
-        [10]={
+        [1]={
             onenter=function()
                 inst.components.locomotor.runspeed=inst.components.locomotor.runspeed+KIBUFF_MS
             end,
@@ -129,7 +129,7 @@ local fn = function(inst)
             end,
             active=false
         },
-        [20]={
+        [2]={
             onenter=function()
             end,
             onexit=function()
@@ -137,7 +137,7 @@ local fn = function(inst)
             active=false
 
         },
-        [30]={
+        [3]={
             onenter=function()
             inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+KIBUFF_STRIKE
             end,
@@ -146,7 +146,7 @@ local fn = function(inst)
             end,
             active=false
         },
-        [40]={
+        [4]={
             onenter=function()
             inst.components.health.fa_dodgechance=inst.components.health.fa_dodgechance+KIBUFF_EVASION
             end,
@@ -155,14 +155,14 @@ local fn = function(inst)
             end,
             active=false
         },
-        [50]={
+        [5]={
             onenter=function()
             end,
             onexit=function()
             end,
             active=false
         },
-        [60]={
+        [6]={
             onenter=function()
                 inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=1
                 inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]+0.5
@@ -179,7 +179,7 @@ local fn = function(inst)
             end,
             active=false
         },
-        [70]={
+        [7]={
         --it is possible this will lead to heal effects - if there are additional effects on this layer... will have to come back here later
             onenter=function()
             inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+KIBUFF_IMPROVEDSTRIKE-KIBUFF_STRIKE
@@ -191,7 +191,7 @@ local fn = function(inst)
             end,
             active=false
         },
-        [80]={
+        [8]={
             onenter=function()
             inst.components.health.fa_dodgechance=inst.components.health.fa_dodgechance-KIBUFF_EVASION+KIBUFF_GREATEREVASION
             end,
@@ -200,7 +200,7 @@ local fn = function(inst)
             end,
             active=false
         },
-        [90]={
+        [9]={
             onenter=function()
                 if not inst.components.health.regen or not inst.components.health.regen.task then
                     inst.components.health:StartRegen(KIBUFF_REGEN, 1)
@@ -220,7 +220,7 @@ local fn = function(inst)
             end,
             active=false
         },
-        [100]={
+        [10]={
             onenter=function()
                 inst.components.health.absorb= inst.components.health.absorb+KIBUFF_ABSORB
             end,
