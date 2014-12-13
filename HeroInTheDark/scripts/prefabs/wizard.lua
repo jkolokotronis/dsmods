@@ -325,7 +325,7 @@ local function enableL2spells()
     r.image="book_gardening.tex"
     local r=Recipe("fa_spell_darkvision", {Ingredient("lightbulb", 12), Ingredient("fireflies", 2), Ingredient("papyrus", 4)}, RECIPETABS.SPELLS,TECH.FA_SPELL)
     r.image="book_gardening.tex"
-   local  r=Recipe("fa_spell_knock", {Ingredient("nightmarefuel", 2), Ingredient("hammer", 1), Ingredient("fa_copperbar", 1,"images/inventoryimages/fa_bars.xml")}, RECIPETABS.SPELLS,TECH.FA_SPELL)
+   local  r=Recipe("fa_spell_knock", {Ingredient("nightmarefuel", 2), Ingredient("hammer", 1), Ingredient("fa_copperbar", 1,"images/inventoryimages/fa_orebars.xml")}, RECIPETABS.SPELLS,TECH.FA_SPELL)
     r.image="icestaff.tex"
 end
 
