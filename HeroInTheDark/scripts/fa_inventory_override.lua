@@ -6,11 +6,8 @@ local Inventory=require "components/inventory"
     EQUIPSLOTS.RING = "ring"
     EQUIPSLOTS.BOOT = "boot"
     EQUIPSLOTS.QUIVER = "quiver"
-
-if(not FA_ModCompat.rpghudmod)then
     EQUIPSLOTS.PACK = "pack"
     EQUIPSLOTS.NECK = "neck"
-end
 --does not have to correspond to numequipslots, tho I find it hard to think of a case where the compatibility would even matter
 local NUMEQUIPSORTED=8
 

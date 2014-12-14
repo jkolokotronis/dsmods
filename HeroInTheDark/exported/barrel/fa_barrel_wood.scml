@@ -12,7 +12,7 @@
             </mainline>
             <timeline id="0" name="woodbarrel">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-139" y="306"/>
+                    <object folder="0" file="0" x="-145" y="315" angle="0"/>
                 </key>
             </timeline>
         </animation>

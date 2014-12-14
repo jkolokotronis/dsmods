@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
     <folder id="0">
-        <file id="0" name="cart_zps8054b4f7.png" width="560" height="500" pivot_x="0" pivot_y="1"/>
+        <file id="0" name="molasses.png" width="313" height="366" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="fa_minecart">
+    <entity id="0" name="fa_barrel_molasses">
         <animation id="0" name="idle" length="1000">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
                 </key>
             </mainline>
-            <timeline id="0" name="cart_zps8054b4f7">
+            <timeline id="0" name="woodbarrel">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-243" y="363"/>
+                    <object folder="0" file="0" x="-145" y="315" angle="0"/>
                 </key>
             </timeline>
         </animation>

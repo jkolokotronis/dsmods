@@ -514,6 +514,7 @@ local function emptymug()
 	local inst=common("mug")
     inst.AnimState:SetBuild("fa_mug")
     inst.AnimState:PlayAnimation("empty")
+    inst.components.edible.hungervalue = 5
     inst.components.inventoryitem.imagename="fa_emptymug"
     inst:RemoveComponent("edible")
     return inst
@@ -522,6 +523,7 @@ local function rummug()
 	local inst=common("mug")
     inst.AnimState:SetBuild("fa_mug")
     inst.AnimState:PlayAnimation("rum")
+    inst.components.edible.hungervalue = 5
     inst.components.inventoryitem.imagename="fa_rummug"
     return inst
 end
@@ -529,6 +531,31 @@ local function beermug()
 	local inst=common("mug")
     inst.AnimState:SetBuild("fa_mug")
     inst.AnimState:PlayAnimation("beer")
+    inst.components.edible.hungervalue = 5
+    inst.components.inventoryitem.imagename="fa_beermug"
+    return inst
+end
+local function beermug()
+	local inst=common("mug")
+    inst.AnimState:SetBuild("fa_mug")
+    inst.AnimState:PlayAnimation("beer")
+    inst:RemoveComponent("edible")
+    inst.components.inventoryitem.imagename="fa_beermug"
+    return inst
+end
+local function beermug()
+	local inst=common("mug")
+    inst.AnimState:SetBuild("fa_mug")
+    inst.AnimState:PlayAnimation("beer")
+    inst:RemoveComponent("edible")
+    inst.components.inventoryitem.imagename="fa_beermug"
+    return inst
+end
+local function beermug()
+	local inst=common("mug")
+    inst.AnimState:SetBuild("fa_mug")
+    inst.AnimState:PlayAnimation("beer")
+    inst:RemoveComponent("edible")
     inst.components.inventoryitem.imagename="fa_beermug"
     return inst
 end
@@ -538,6 +565,12 @@ local function ftest(name)
 		local inst=common(name)
 		return inst
 	end
+end
+
+local function fnwort()
+	local inst=common("bottle_light_green")
+    inst.components.edible.hungervalue = 5
+	return inst
 end
 
 return Prefab( "common/inventory/fa_bottle_r", fnr, Assets),
@@ -554,9 +587,17 @@ return Prefab( "common/inventory/fa_bottle_r", fnr, Assets),
 	Prefab( "common/inventory/fa_bottle_poisonessence", fnpoisonessence, Assets),
 	Prefab( "common/inventory/fa_bottle_curepoison", fncurepoison, Assets),
 	Prefab( "common/inventory/fa_emptymug", emptymug, mugassets),
+	Prefab( "common/inventory/fa_bottle_wort", emptymug, mugassets),
 	Prefab( "common/inventory/fa_rummug", rummug, mugassets),
-	Prefab( "common/inventory/fa_beermug", beermug, mugassets)
+	Prefab( "common/inventory/fa_lightalemug", beermug, mugassets),
+	Prefab( "common/inventory/fa_ronalemug", beermug, mugassets),
+	Prefab( "common/inventory/fa_dwarfalemug", beermug, mugassets)
+
 --[[
+	Wine yeast	30 sec	green underground mushroom	green underground mushroom
+distilling yeast	30 sec	pink underground mushroom	pink underground mushroom
+brewing yeast	30 sec	orange underground mushroom	orange underground mushroom
+
 	,
 	Prefab( "common/inventory/fa_bottle_1_0", ftest("bottle_1_0"), Assets),
 	Prefab( "common/inventory/fa_bottle_1_1", ftest("bottle_1_1"), Assets),

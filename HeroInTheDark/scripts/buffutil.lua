@@ -332,7 +332,7 @@ local function EndureElementsSpellStart( reader,timer,variables)
         inst.components.spell.target.fa_endureelements = nil
     end
 
-        inst.components.spell.resumefn = resiststart
+        inst.components.spell.resumefn = endurestart
         inst.components.spell.removeonfinish = true
 
         inst.components.spell:SetTarget(reader)
@@ -346,6 +346,59 @@ local function EndureElementsSpellStart( reader,timer,variables)
 end
 
 FA_BuffUtil.EndureElements=EndureElementsSpellStart
+
+
+local drstart=function(inst)
+    local target=inst.components.spell.target
+    local variables=inst.components.spell.variables
+    local damagetype=variables.damagetype
+    local drdelta=variables.drdelta
+    if target then
+        target.components.health.fa_damagereduction[damagetype]=(target.components.health.fa_damagereduction[damagetype] or 0)+drdelta
+    end
+end
+
+local function DamageReductionSpellStart( reader,timer,variables)
+    if(timer==nil or timer<=0)then return false end
+
+    if reader.fa_damagereduction then
+        reader.fa_damagereduction.components.spell:OnFinish()
+    else
+
+    local inst=CreateEntity()
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_damagereduction"
+    inst.components.spell.duration = timer
+    inst.components.spell.variables=variables
+    inst.components.spell.ontargetfn = function(inst,target)
+        target.fa_damagereduction = inst
+        target:AddTag(inst.components.spell.spellname)
+    end
+    inst.components.spell.onstartfn = drstart
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+        local damagetype=variables.damagetype
+        local drdelta=variables.drdelta
+        target.components.health.fa_damagereduction[damagetype]=(target.components.health.fa_damagereduction[damagetype] or 0)-drdelta
+        inst.components.spell.target.fa_damagereduction = nil
+    end
+
+        inst.components.spell.resumefn = drstart
+        inst.components.spell.removeonfinish = true
+
+        inst.components.spell:SetTarget(reader)
+        if not inst.components.spell.target then
+            inst:Remove()
+        end
+        inst.components.spell:StartSpell()
+    end
+    
+    return true
+end
+
+FA_BuffUtil.DamageReduction=DamageReductionSpellStart
 
 local lightfn=function(inst, target, variables)
     if target then

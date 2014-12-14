@@ -292,6 +292,9 @@ function Health:DoDelta(amount, overtime, cause, ignore_invincible,dmgtype)
         local res=self.fa_resistances[damagetype]
         if(res) then damage=damage*(1-res) end
     end
+    if(self.fa_damagereduction[damagetype] and damage>0)then
+        damage=math.max(0,damage-self.fa_damagereduction[damagetype])
+    end
 
 -- even if it hits temp hp, it will not 'remove' hp but it should trigger the indicator (it got hit, but it went into temp, as opposed to simply being eaten by prot from el)
     --    print("damage",damage,damagetype)

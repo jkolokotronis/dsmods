@@ -354,8 +354,8 @@ local function createcage(parent,animname)
     inst.components.activatable.getverb = GetVerb
 	inst.components.activatable.quickaction = true
     inst.components.activatable.OnActivate = function(inst)
-    	GetPlayer().components.talker:Say("The entrance is blocked")
---    	OnActivate(parent)
+--    	GetPlayer().components.talker:Say("The entrance is blocked")
+    	OnActivate(parent)
 	end
 	return inst
 end

@@ -8,7 +8,7 @@ local FA_FURNACE=Action(1)
 FA_FURNACE.id="FA_FURNACE"
 
 FA_FURNACE.fn = function(act)
-print("test?")
+--print("test?")
     if act.target.components.fa_furnace then
         act.target.components.fa_furnace:StartCooking()
         return true
@@ -34,7 +34,7 @@ local FA_CRAFTPICKUP=Action(1)
 FA_CRAFTPICKUP.id="FA_CRAFTPICKUP"
 
 FA_CRAFTPICKUP.fn = function(act)
-print("test?")
+--print("test?")
     if act.target.components.fa_furnace then
        return act.target.components.fa_furnace:Harvest(act.doer)
     end
@@ -48,6 +48,7 @@ end
 ACTIONS.FA_CRAFTPICKUP=FA_CRAFTPICKUP
 --FA_ModUtil.AddAction(FA_CRAFTPICKUP)
 
+SGWilson.actionhandlers[ACTIONS.FA_CRAFTPICKUP]=ActionHandler(ACTIONS.FA_CRAFTPICKUP, "dolongaction")
 
 local RELOAD = Action(1, true)
 RELOAD.id = "RELOAD"
@@ -61,7 +62,6 @@ end
 ACTIONS.RELOAD = RELOAD
 --FA_ModUtil.AddAction(RELOAD)
 
-SGWilson.actionhandlers[ACTIONS.FA_CRAFTPICKUP]=ActionHandler(ACTIONS.FA_CRAFTPICKUP, "dolongaction")
 
 
 local FA_MEND=Action(1, true)

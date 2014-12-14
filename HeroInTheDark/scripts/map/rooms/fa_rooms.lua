@@ -630,6 +630,28 @@ AddRoom("FA_DwarfFortressRoom",{
 					            }
 	})
 
+AddRoom("FA_DwarfFortressGrowRoom",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.FUNGUSGREEN,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FADorfFortressGrowRoom"] = 1,
+									}, 
+					            }
+	})
+AddRoom("FA_DwarfFortressMerchants",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.FUNGUSGREEN,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FADorfFortressMerchants"] = 1,
+									}, 
+					            }
+	})
 AddRoom("FA_DwarfFortressRoom1",{
 		colour={r=0.2,g=0.0,b=0.2,a=0.3},
 					value = GROUND.FUNGUSGREEN,	

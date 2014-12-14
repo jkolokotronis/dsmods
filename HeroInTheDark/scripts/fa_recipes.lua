@@ -215,19 +215,19 @@ local r=Recipe("fa_hat_steel", {Ingredient("fa_diamondpebble", 6,"images/invento
 r.atlas = "images/inventoryimages/fa_hats.xml"
 
 local r=Recipe("fa_copperbar", {Ingredient("gold", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFSMELTRECIPESTAND, nil, nil, true)
-r.atlas = "images/inventoryimages/fa_bars.xml"
+r.atlas = "images/inventoryimages/fa_orebars.xml"
 local r=Recipe("fa_ironbar", {Ingredient("gold", 10)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFSMELTRECIPESTAND, nil, nil, true)
-r.atlas = "images/inventoryimages/fa_bars.xml"
+r.atlas = "images/inventoryimages/fa_orebars.xml"
 local r=Recipe("fa_pigironbar", {Ingredient("fa_diamondpebble", 1,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFSMELTRECIPESTAND, nil, nil, true)
-r.atlas = "images/inventoryimages/fa_bars.xml"
+r.atlas = "images/inventoryimages/fa_orebars.xml"
 local r=Recipe("fa_steelbar", {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFSMELTRECIPESTAND, nil, nil, true)
-r.atlas = "images/inventoryimages/fa_bars.xml"
+r.atlas = "images/inventoryimages/fa_orebars.xml"
 local r=Recipe("fa_goldbar", {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFSMELTRECIPESTAND, nil, nil, true)
-r.atlas = "images/inventoryimages/fa_bars.xml"
+r.atlas = "images/inventoryimages/fa_orebars.xml"
 local r=Recipe("fa_silverbar", {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_pebbles.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFSMELTRECIPESTAND, nil, nil, true)
-r.atlas = "images/inventoryimages/fa_bars.xml"
+r.atlas = "images/inventoryimages/fa_orebars.xml"
 local r=Recipe("fa_lavabar", {Ingredient("gold", 10)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFSMELTRECIPESTAND, nil, nil, true)
-r.atlas = "images/inventoryimages/fa_bars.xml"
+r.atlas = "images/inventoryimages/fa_orebars.xml"
 local r=Recipe("fa_coalbar", {Ingredient("gold", 2)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFSMELTRECIPESTAND, nil, nil, true)
-r.atlas = "images/inventoryimages/fa_bars.xml"
+r.atlas = "images/inventoryimages/fa_orebars.xml"
 

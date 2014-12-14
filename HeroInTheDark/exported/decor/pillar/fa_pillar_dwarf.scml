@@ -4,22 +4,40 @@
         <file id="0" name="pillar-bottom.png" width="1016" height="2047" pivot_x="0" pivot_y="1"/>
         <file id="1" name="pillar-top.png" width="1016" height="333" pivot_x="0" pivot_y="1"/>
     </folder>
+    <folder id="1" name="fire1">
+        <file id="0" name="fire1/swap1.png" width="16" height="16" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <folder id="2" name="fire2">
+        <file id="0" name="fire2/swap2.png" width="16" height="16" pivot_x="0" pivot_y="1"/>
+    </folder>
     <entity id="0" name="fa_pillar_dwarf">
         <animation id="0" name="idle" length="1000">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
                     <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
                 </key>
             </mainline>
             <timeline id="0" name="_0002_pillar-full">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-596.522687" y="1876.261796" angle="0"/>
+                    <object folder="0" file="0" x="-682" y="1840" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="pillar-top">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-596.52269" y="2209.2618" angle="0"/>
+                    <object folder="0" file="1" x="-682" y="2171" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="swap1">
+                <key id="0" spin="0">
+                    <object folder="1" file="0" x="-368.57143" y="401" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="swap2">
+                <key id="0" spin="0">
+                    <object folder="2" file="0" x="22.833333" y="395" angle="0"/>
                 </key>
             </timeline>
         </animation>

@@ -8,9 +8,6 @@ local ItemTile = require "widgets/itemtile"
 local Text = require "widgets/text"
 local ThreeSlice = require "widgets/threeslice"
 
-
-
-
 local HUD_ATLAS = "images/hud.xml"
 
 local W = 68
@@ -45,6 +42,21 @@ local function BackpackLose(inst, data)
 	end		
 end
 
+local function commonpostconstruct(self,owner)
+--just kill it off completely again
+		self.equipslotinfo={}
+
+		self:AddEquipSlot(EQUIPSLOTS.HANDS, "images/equipslots.xml", "equip_slot_hand.tex") 
+    	self:AddEquipSlot(EQUIPSLOTS.BODY, "images/equipslots.xml", "equip_slot_body.tex")  
+    	self:AddEquipSlot(EQUIPSLOTS.HEAD, "images/equipslots.xml", "equip_slot_head.tex")  
+    	self:AddEquipSlot(EQUIPSLOTS.NECK, "images/equipslots.xml", "equip_slot_neck.tex")  
+    	self:AddEquipSlot(EQUIPSLOTS.PACK, "images/equipslots.xml", "equip_slot_pack.tex")  
+    	self:AddEquipSlot(EQUIPSLOTS.RING, "images/equipslots.xml", "equip_slot_ring.tex")  
+    	self:AddEquipSlot(EQUIPSLOTS.BOOT, "images/equipslots.xml", "equip_slot_boot.tex")  
+    	self:AddEquipSlot(EQUIPSLOTS.QUIVER, "images/equipslots.xml", "equip_slot_quiver.tex")  
+
+end
+
 if(not FA_ModCompat.rpghudmod)then
 
 inventorybarpostconstruct=function(self, owner)
@@ -58,21 +70,8 @@ inventorybarpostconstruct=function(self, owner)
 		self.bgequip:SetScale(0.5,1,1)
 		self.bgequip:MoveToBack()
 
---just kill it off completely again
-		self.equipslotinfo={}
-
-		self:AddEquipSlot(EQUIPSLOTS.HANDS, "images/equipslots.xml", "equip_slot_hand.tex") 
-    	self:AddEquipSlot(EQUIPSLOTS.BODY, "images/equipslots.xml", "equip_slot_body.tex")  
-    	self:AddEquipSlot(EQUIPSLOTS.HEAD, "images/equipslots.xml", "equip_slot_head.tex")  
-    	self:AddEquipSlot(EQUIPSLOTS.NECK, "images/equipslots.xml", "equip_slot_neck.tex")  
-    	self:AddEquipSlot(EQUIPSLOTS.PACK, "images/equipslots.xml", "equip_slot_pack.tex")  
-    	self:AddEquipSlot(EQUIPSLOTS.RING, "images/equipslots.xml", "equip_slot_ring.tex")  
-    	self:AddEquipSlot(EQUIPSLOTS.BOOT, "images/equipslots.xml", "equip_slot_boot.tex")  
-    	self:AddEquipSlot(EQUIPSLOTS.QUIVER, "images/equipslots.xml", "equip_slot_quiver.tex")  
-
+		commonpostconstruct(self,owner)
 --TODO this likely does not need to be rewritten
-
-
 
 function self:Rebuild()
 
@@ -232,8 +231,6 @@ end
 	
 end
 
-
-
 else
 
 
@@ -247,9 +244,8 @@ INTERSEP = 11		--MOD
 
 		self.bgequip = self.root:AddChild(Image("images/fa_equipbar_bg.xml", "fa_equipbar_bg.tex"))
 		self.bgequip:SetScale(0.48,1,1)
-	   	self:AddEquipSlot(EQUIPSLOTS.RING, "images/equipslots.xml", "equip_slot_ring.tex")  
-    	self:AddEquipSlot(EQUIPSLOTS.BOOT, "images/equipslots.xml", "equip_slot_boot.tex")  
-    	self:AddEquipSlot(EQUIPSLOTS.QUIVER, "images/equipslots.xml", "equip_slot_quiver.tex")  
+		commonpostconstruct(self,owner)
+
     
     	local old_build=self.Rebuild
     	function self:Rebuild()
@@ -262,9 +258,10 @@ INTERSEP = 11		--MOD
 	local num_slots = self.owner.components.inventory:GetNumSlots()
 	local total_e = num_equip*W + (num_equip - 1)*SEP
 
+
 	if(GetPlayer().components.inventory.maxslots==60)then
 	
-	self.bgequip:SetPosition(Vector3(0, 90, 0))
+	self.bgequip:SetPosition(Vector3(0, 60, 0))
 	--being that i have overwritten all that crap up already, i should be able to just...
 	for k, v in ipairs(self.equipslotinfo) do
 --		local slot = EquipSlot(v.slot, v.atlas, v.image, self.owner)
@@ -279,7 +276,7 @@ INTERSEP = 11		--MOD
 	--AFTER THIS POINT EVERYTHING IS FUCKED UP 
 	for k = 1,55 do
 		local pos=self.inv[k]:GetPosition()
-		self.inv[k]:SetPosition(pos.x+280,pos.y,pos.z)
+		self.inv[k]:SetPosition(pos.x+175,pos.y,pos.z)
 	end
 
 	local num_intersep = math.floor(.2*(num_slots - 30))																				--MOD
@@ -298,81 +295,35 @@ INTERSEP = 11		--MOD
 		end
 		
 	end
-
-			elseif(GetPlayer().components.inventory.maxslots==50)then
-
-				self.bgequip:SetPosition(Vector3(0, 90, 0))
-				for k, v in ipairs(self.equipslotinfo) do
-					local slot=self.equip[v.slot] 
-					local x = -total_e/2 + W/2 + (k-1)*W + (k-1)*SEP	
-					slot:SetPosition(x,y+146,0)						--MOD
-				end 
-				for k = 1,45 do
-					local pos=self.inv[k]:GetPosition()
-					self.inv[k]:SetPosition(pos.x+190,pos.y,pos.z)
-				end
-
-				local num_intersep = num_equip - 1    																	--MOD
-				local total_w = (num_slots-20)*(W) + (num_slots-20 - 1 - num_intersep)*(SEP) + (INTERSEP*num_intersep)	--MOD
-
-				for k=46,50 do
-
-					local slot = InvSlot(k, HUD_ATLAS, "inv_slot.tex", self.owner, self.owner.components.inventory)
-					self.inv[k] = self.toprow:AddChild(slot)
-					local interseps =  math.floor((k-1-35) / 5)
-					local x = -total_w/2 + W/2 + (k-1-35)*W + (k-1-35)*SEP
---					local x = -total_w/2 + W/2 + interseps*(INTERSEP - SEP) + (k-1-30)*W + (k-1-30)*SEP
-					slot:SetPosition(x+192,y + 71,0)
-		
-					local item = self.owner.components.inventory:GetItemInSlot(k)
-					if item then
-						slot:SetTile(ItemTile(item, self.owner.components.inventory))
-					end
-
-				end
-
-			elseif(GetPlayer().components.inventory.maxslots==30)then
+			elseif(GetPlayer().components.inventory.maxslots==45 and string.find(FA_ModCompat.rpghudmod.modinfo.description,"Custom UI"))then
 
 				self.bgequip:SetPosition(Vector3(0, 90, 0))
 				for k, v in ipairs(self.equipslotinfo) do
 					local slot=self.equip[v.slot] 
 					local x = -total_e/2 + W/2 + (k-1)*W + (k-1)*SEP	
-					slot:SetPosition(x,y+151,0)						--MOD
+					slot:SetPosition(x,y+146,0)						
 				end 
-				for k = 1,25 do
-					local pos=self.inv[k]:GetPosition()
-					self.inv[k]:SetPosition(pos.x+185,pos.y,pos.z)
-				end
 
-			
-				local num_intersep = 2																					--MOD
-				local total_w = (num_slots-10)*(W) + (num_slots-10 - 1 - num_intersep)*(SEP) + (INTERSEP*num_intersep)	--MOD
-				for k=26,30 do
-					local slot = InvSlot(k, HUD_ATLAS, "inv_slot.tex", self.owner, self.owner.components.inventory)
-					self.inv[k] = self.toprow:AddChild(slot)
-					local interseps = math.floor((k-1-20) / 5)
-					local x = -total_w/2 + W/2 + interseps*(INTERSEP - SEP) + (k-1-20)*W + (k-1-20)*SEP
-					slot:SetPosition(x+185,y + 71,0)
-			
-					local item = self.owner.components.inventory:GetItemInSlot(k)
-					if item then
-						slot:SetTile(ItemTile(item, self.owner.components.inventory))
-					end
-			
-				end
+			elseif(GetPlayer().components.inventory.maxslots==25 and string.find(FA_ModCompat.rpghudmod.modinfo.description,"Custom UI"))then
+
+				self.bgequip:SetPosition(Vector3(0, 90, 0))
+				for k, v in ipairs(self.equipslotinfo) do
+					local slot=self.equip[v.slot] 
+					local x = -total_e/2 + W/2 + (k-1)*W + (k-1)*SEP	
+					slot:SetPosition(x,y+151,0)						
+				end 
 
 			elseif(GetPlayer().components.inventory.maxslots==25)then
 
-				self.bgequip:SetPosition(Vector3(0, 30, 0))
+				self.bgequip:SetPosition(Vector3(0, 00, 0))
 				for k, v in ipairs(self.equipslotinfo) do
 					local slot=self.equip[v.slot] 
 					local x = -total_e/2 + W/2 + (k-1)*W + (k-1)*SEP	
-					slot:SetPosition(x,y+80,0)						--MOD
+					slot:SetPosition(x,y+80,0)					
 				end 
-				for k = 1,25 do
-					local pos=self.inv[k]:GetPosition()
-					self.inv[k]:SetPosition(pos.x+10,pos.y,pos.z)
-				end
+			elseif(GetPlayer().components.inventory.maxslots==15)then
+
+				self.bgequip:Kill()
 			end
     	end
 	end

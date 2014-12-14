@@ -108,6 +108,7 @@ PrefabFiles = {
     "fa_fx",
     "fa_bars",
     "fa_decor",
+    "fa_barrels",
     "fa_racks",
     "fa_shrooms",
     "fa_dorfkingstatue",
@@ -323,6 +324,8 @@ Assets = {
     Asset("IMAGE", "images/inventoryimages/fa_forge.tex"),
     Asset("ATLAS", "images/inventoryimages/fa_alchemytable.xml"),
     Asset("IMAGE", "images/inventoryimages/fa_alchemytable.tex"),
+    Asset("ATLAS", "images/inventoryimages/fa_barrel.xml"),
+    Asset("IMAGE", "images/inventoryimages/fa_barrel.tex"),
 
     Asset("ATLAS", "minimap/fa_smeltingfurnace.xml"),
     Asset("IMAGE", "minimap/fa_smeltingfurnace.tex"),
@@ -691,8 +694,13 @@ end
 local function SGWilsonPostInit(sg)
     sg.states["amulet_rebirth"].onexit = newOnExit
 end
-
 AddStategraphPostInit("wilson", SGWilsonPostInit)
+
+if(GetModConfigData("doubleinventoryspace")==true)then
+    AddComponentPostInit("inventory", function(cmp,inst)
+
+    end)
+end
 
 else
 
@@ -702,10 +710,10 @@ local function hud_inventorypostinit_fix(cmp,inst)
     --it would be cleaner to just provide versions...
     if(inst.components.inventory.maxslots==55)then
         inst.components.inventory.maxslots=60
-    elseif(inst.components.inventory.maxslots==45)then
-       inst.components.inventory.maxslots=50
-    elseif(inst.components.inventory.maxslots==25 and string.find(GLOBAL.FA_ModCompat.rpghudmod.modinfo.description,"Custom UI"))then
-        inst.components.inventory.maxslots=30
+--    elseif(inst.components.inventory.maxslots==45)then
+--       inst.components.inventory.maxslots=50
+--    elseif(inst.components.inventory.maxslots==25 and string.find(GLOBAL.FA_ModCompat.rpghudmod.modinfo.description,"Custom UI"))then
+--        inst.components.inventory.maxslots=30
     end
 end
 --this was breaking display BADLY. one would expect he'd use proper w/h numbers for 2 row calculations instead of reliance on the total....
@@ -1204,6 +1212,7 @@ end)
 AddClassPostConstruct("components/health",function(component)
     component.fa_resistances=component.fa_resistances or {}
     component.fa_protection=component.fa_protection or {}
+    component.fa_damagereduction=component.fa_damagereduction or {}
     component.fa_dodgechance=component.fa_dodgechance or 0
     component.fa_temphp=component.fa_temphp or 0
 end)
@@ -1301,6 +1310,7 @@ AddPrefabPostInit("world", function(inst)
         local inst = oldfn()
 
         inst:AddComponent("fa_bufftimers")
+        inst:AddComponent("fa_intoxication")
 
         if(GLOBAL.FA_ModCompat.alwaysonmod)then
             print("alwayson", GLOBAL.FA_ModCompat.alwaysonmod.version)
@@ -1310,7 +1320,6 @@ AddPrefabPostInit("world", function(inst)
                     inst:AddComponent("switch")
                     print("alwayson failsafe")
                 end)
-
             end
         end
  

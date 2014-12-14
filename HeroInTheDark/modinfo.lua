@@ -56,13 +56,23 @@ configuration_options =
     },
     {
         name = "extrazoom",
-        label = "Unlock full camera zoon",
+        label = "Unlock full camera zoom",
         options =
         {
             {description = "On", data = true},
             {description = "Off", data = false}
         },
         default = true,
+    },
+    {
+        name = "doubleinventoryspace",
+        label = "Double inventory space",
+        options =
+        {
+            {description = "On", data = true},
+            {description = "Off", data = false}
+        },
+        default = false,
     },
     {
         name = "memspikefix",

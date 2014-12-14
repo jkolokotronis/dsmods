@@ -64,7 +64,7 @@ local function fn(name)
 --    inst.components.dapperness.dapperness = TUNING.CRAZINESS_MED,
     
     local function onequip(inst, owner)
-        owner.AnimState:OverrideSymbol("swap_object", name, "swap_evilsword")
+        owner.AnimState:OverrideSymbol("swap_object", name, "swap_weapon")
         owner.AnimState:Show("ARM_carry") 
         owner.AnimState:Hide("ARM_normal") 
     end

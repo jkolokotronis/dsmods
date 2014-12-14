@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
     <folder id="0">
-        <file id="0" name="woodbarrel.png" width="282" height="339" pivot_x="0" pivot_y="1"/>
-        <file id="1" name="hotrum.png" width="527" height="544" pivot_x="0" pivot_y="1"/>
+        <file id="0" name="hotrum.png" width="313" height="366" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="fa_barrel_hotrum">
         <animation id="0" name="idle" length="1000">
@@ -13,7 +12,7 @@
             </mainline>
             <timeline id="0" name="woodbarrel">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-266" y="428"/>
+                    <object folder="0" file="0" x="-145" y="315" angle="0"/>
                 </key>
             </timeline>
         </animation>

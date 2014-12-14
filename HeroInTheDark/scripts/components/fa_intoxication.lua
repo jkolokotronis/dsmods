@@ -94,13 +94,8 @@ function FA_Intoxication:SetMax(amount)
     self.max = amount
 end
 
-function FA_Intoxication:DoDelta(delta, overtime, ignore_invincible)
+function FA_Intoxication:DoDelta(delta)
     
-    if self.redirect then
-        self.redirect(self.inst, delta, overtime)
-        return
-    end
-
     local old = self.current
     self.current = self.current + delta
     if self.current < 0 then 
@@ -108,7 +103,7 @@ function FA_Intoxication:DoDelta(delta, overtime, ignore_invincible)
     elseif self.current > self.max then
         self.current = self.max
     end
-    self.inst:PushEvent("kidelta", {old= old, new = self.current,max=self.max})
+    self.inst:PushEvent("fa_intoxicationdelta", {old= old, new = self.current,max=self.max})
     
 end
 
@@ -119,14 +114,11 @@ end
 function FA_Intoxication:SetPercent(p)
     local old = self.current
     self.current  = p*self.max
-    self.inst:PushEvent("kidelta", {oldpercent = old/self.max, newpercent = p})
+    self.inst:PushEvent("fa_intoxicationdelta", {oldpercent = old/self.max, newpercent = p})
 end
 
-
-
-function KiBar:SetRate(rate)
+function FA_Intoxication:SetRate(rate)
     self.decrate = rate
 end
 
-
-return KiBar
+return FA_Intoxication
