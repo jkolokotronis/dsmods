@@ -60,8 +60,6 @@ local function fn(name)
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem.imagename=name
     inst.components.inventoryitem.atlasname="images/inventoryimages/fa_baseweapons.xml"
---    inst:AddComponent("dapperness")
---    inst.components.dapperness.dapperness = TUNING.CRAZINESS_MED,
     
     local function onequip(inst, owner)
         owner.AnimState:OverrideSymbol("swap_object", name, "swap_weapon")

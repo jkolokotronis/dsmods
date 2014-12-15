@@ -49,7 +49,11 @@ local function startcookfn(inst)
 	--play a looping sound
 	inst.SoundEmitter:KillSound("snd")
 	inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
-	inst.Light:Enable(true)
+--	inst.Light:Enable(true)
+
+	inst.Light:SetRadius(3)
+    inst.Light:SetFalloff(0.7)
+    inst.Light:SetIntensity(.6)
 end
 
 
@@ -76,7 +80,9 @@ local function donecookfn(inst)
 	
 	inst.SoundEmitter:KillSound("snd")
 	inst.SoundEmitter:PlaySound("fa/machines/forge_finish", "snd")
-	inst.Light:Enable(false)
+	inst.Light:SetRadius(1.6)
+    inst.Light:SetFalloff(0.7)
+    inst.Light:SetIntensity(.5)
 	--play a one-off sound
 end
 
@@ -88,7 +94,9 @@ end
 local function continuecookfn(inst)
 	inst.AnimState:PlayAnimation("working", true)
 	--play a looping sound
-	inst.Light:Enable(true)
+	inst.Light:SetRadius(3)
+    inst.Light:SetFalloff(0.7)
+    inst.Light:SetIntensity(.6)
 
 	inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
 end
@@ -133,7 +141,7 @@ local function fn(Sim)
 	
 	
     local light = inst.entity:AddLight()
-    inst.Light:Enable(false)
+    inst.Light:Enable(true)
 	inst.Light:SetRadius(1.6)
     inst.Light:SetFalloff(0.7)
     inst.Light:SetIntensity(.5)

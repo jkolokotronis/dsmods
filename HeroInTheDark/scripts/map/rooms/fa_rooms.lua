@@ -652,6 +652,17 @@ AddRoom("FA_DwarfFortressMerchants",{
 									}, 
 					            }
 	})
+AddRoom("FA_DwarfFortressSmelting",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.FUNGUSGREEN,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FADorfFortressSmelting"] = 1,
+									}, 
+					            }
+	})
 AddRoom("FA_DwarfFortressRoom1",{
 		colour={r=0.2,g=0.0,b=0.2,a=0.3},
 					value = GROUND.FUNGUSGREEN,	

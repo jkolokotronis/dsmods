@@ -67,7 +67,7 @@ AddTask("FADwarfFortressTask1", {
 			["FA_DwarfFortressMerchants"] = 1,
 			["FA_DwarfFortressRoom"] = 1,
 			["FA_DwarfFortressGrowRoom"] = 1,
---			["FA_DwarfFortressTestRoom"] = 1,
+			["FA_DwarfFortressSmelting"] = 1,
 --			["FA_BGDwarfFortress"]=4
 --			["FA_5x5GoblinRoom_5"] = 1,
 			
