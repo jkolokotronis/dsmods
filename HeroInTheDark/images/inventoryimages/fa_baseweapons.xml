@@ -24,8 +24,8 @@
 		<Element name="fa_flamingsword.tex" u1="0.625" u2="0.750" v1="0.250" v2="0.375" />
 		<Element name="fa_frostsword.tex" u1="0.750" u2="0.875" v1="0.250" v2="0.375" />
 		<Element name="fa_holysword.tex" u1="0.875" u2="1" v1="0.250" v2="0.375" />
-		<Element name="undeadbanesword.tex" u1="0" u2="0.125" v1="0.375" v2="0.5" />
-		<Element name="vorpalaxe.tex" u1="0.125" u2="0.25" v1="0.375" v2="0.5" /> 
+		<Element name="fa_undeadbanesword.tex" u1="0" u2="0.125" v1="0.375" v2="0.5" />
+		<Element name="fa_vorpalaxe.tex" u1="0.125" u2="0.25" v1="0.375" v2="0.5" /> 
 		<Element name="fa_evilsword.tex" u1="0.25" u2="0.375" v1="0.375" v2="0.5" />
 		<Element name="fa_adamantineaxe.tex" u1="0.375" u2="0.5" v1="0.375" v2="0.5" />
 		<Element name="fa_adamantinesword.tex" u1="0.5" u2="0.625" v1="0.375" v2="0.5" />

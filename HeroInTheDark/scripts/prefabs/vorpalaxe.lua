@@ -1,7 +1,6 @@
 local assets=
 {
-    Asset("ANIM", "anim/vorpalaxe.zip"),
-    Asset("ANIM", "anim/swap_vorpalaxe.zip"),    
+    Asset("ANIM", "anim/fa_vorpalaxe.zip"),
 }
 
 local VORPALAXE_DAMAGE_T1=55
@@ -27,7 +26,7 @@ local function onattack(inst, attacker, target)
 end
 
 local function onequip(inst, owner)
-    owner.AnimState:OverrideSymbol("swap_object", "swap_vorpalaxe", "swap_vorpalaxe")
+    owner.AnimState:OverrideSymbol("swap_object", "fa_vorpalaxe", "swap_weapon")
     owner.AnimState:Show("ARM_carry") 
     owner.AnimState:Hide("ARM_normal") 
 end
@@ -46,10 +45,10 @@ local function fn(Sim)
     MakeInventoryPhysics(inst)
   
     local minimap = inst.entity:AddMiniMapEntity()
-    minimap:SetIcon( "vorpalaxe.tex" )
+    minimap:SetIcon( "fa_vorpalaxe.tex" )
 
-    inst.AnimState:SetBank("vorpalaxe")
-    inst.AnimState:SetBuild("vorpalaxe")
+    inst.AnimState:SetBank("fa_vorpalaxe")
+    inst.AnimState:SetBuild("fa_vorpalaxe")
     inst.AnimState:PlayAnimation("idle")
 
     inst.Transform:SetScale(2, 2, 1)
@@ -65,7 +64,7 @@ local function fn(Sim)
     inst:AddComponent("inspectable")
     
     inst:AddComponent("inventoryitem")
-    inst.components.inventoryitem.imagename="vorpalaxe"
+    inst.components.inventoryitem.imagename="fa_vorpalaxe"
     inst.components.inventoryitem.atlasname="images/inventoryimages/fa_baseweapons.xml"
 --    inst:AddComponent("dapperness")
 --    inst.components.dapperness.dapperness = TUNING.CRAZINESS_MED,

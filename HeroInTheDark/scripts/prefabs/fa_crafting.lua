@@ -389,7 +389,7 @@ local function smelterfn()
     inst.AnimState:SetBank("fa_smeltingfurnace")
     inst.AnimState:SetBuild("fa_smeltingfurnace")
     inst.AnimState:PlayAnimation("idle_close",true)
-    inst.Transform:SetScale(1.5, 1.5, 1.5)
+    inst.Transform:SetScale(1.7, 1.7, 1.7)
 
     inst.components.fa_furnace.matcher = matchers.SmelterMatcher
     inst.components.fa_furnace.getverb=function() return "SMELT" end

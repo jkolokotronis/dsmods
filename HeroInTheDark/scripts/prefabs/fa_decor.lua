@@ -60,12 +60,14 @@ end
 local function fa_table()
     local inst= fn("fa_table")
     MakeObstaclePhysics(inst, 0.3)
+    inst.Transform:SetScale(.75,.75,.75)
     return inst
 end
 
 local function fa_stool_blown()
     local inst= fn("fa_stool")
     MakeInventoryPhysics(inst)
+    inst.Transform:SetScale(.75,.75,.75)
     inst.AnimState:PlayAnimation("blown")
     return inst
 end
@@ -73,6 +75,7 @@ end
 local function fa_stool()
     local inst= fn("fa_stool")
     MakeInventoryPhysics(inst)
+    inst.Transform:SetScale(.75,.75,.75)
     return inst
 end
 
@@ -127,9 +130,10 @@ local function dorftorchfn()
     local anim = inst.entity:AddAnimState()
     inst.entity:AddSoundEmitter()
 
-    MakeObstaclePhysics(inst, 0.33)
+    MakeObstaclePhysics(inst, 0.1)
+    inst.Transform:SetScale(0.70, 0.70, 0.70)
 
-    inst:AddComponent("inspectable")
+--    inst:AddComponent("inspectable")
 
 
     inst.fire = SpawnPrefab( "pigtorch_flame" )

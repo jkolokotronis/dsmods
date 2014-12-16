@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
     <folder id="0">
-        <file id="0" name="ground.png" width="178" height="347" pivot_x="0" pivot_y="1"/>
+        <file id="0" name="ground.png" width="204" height="350" pivot_x="0" pivot_y="1"/>
     </folder>
     <folder id="1" name="swap_weapon">
-        <file id="0" name="swap_weapon/swap.png" width="99" height="345" pivot_x="0.60396" pivot_y="0.210375"/>
+        <file id="0" name="swap_weapon/swap.png" width="161" height="369" pivot_x="0.509202" pivot_y="0.169811"/>
     </folder>
-    <entity id="0" name="fa_flamingsword">
+    <entity id="0" name="fa_undeadbanesword">
         <animation id="0" name="idle" length="1000">
             <mainline>
                 <key id="0">
@@ -15,7 +15,7 @@
             </mainline>
             <timeline id="0" name="_0007_Steel-Sw_g">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-60" y="329" angle="0"/>
+                    <object folder="0" file="0" x="-77" y="272" angle="0"/>
                 </key>
             </timeline>
         </animation>

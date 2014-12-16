@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="80" height="80" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="tiles" tilewidth="64" tileheight="64">
+  <image source="../../tiles/tiles.png" width="512" height="512"/>
+ </tileset>
+ <layer name="BG_TILES" width="80" height="80">
+  <data encoding="base64" compression="zlib">
+   eJzt2zEKxSAQBcBA7n/nX1mkCB+y6q460wnRaOFDRa8LAGBtd+dytP1o/dHjAfZRLZ96tx9tD+BNNC965021/gB1zd4/Zu9nrf+AZnSeRb/vTb4BvWTnn/M/4Kvo/M/OC/kHfJV93jdb9v+BOqqd941en8k/oInud0ffX8kuA/sy/59OHz+cJHs/+0/1/gHrqp4v1fsH7KNaXmSfNwLnqH7/r9p7YWBd3v8Cp1rt/W92fYBm9voruz7AqX7itgIg
+  </data>
+ </layer>
+ <objectgroup name="FG_OBJECTS" width="80" height="80">
+  <object type="fa_bucket" x="813" y="595"/>
+  <object type="fa_dorf_stool" x="768" y="877"/>
+  <object type="fa_dorf_gold_pillar" x="508" y="575"/>
+  <object type="fa_dorf_gold_pillar" x="512" y="833"/>
+  <object type="fa_dorf_gold_pillar" x="957" y="831"/>
+  <object type="fa_dorf_gold_pillar" x="893" y="447"/>
+  <object type="fa_smeltingfurnace" x="573" y="383"/>
+  <object type="fa_smeltingfurnace" x="125" y="121"/>
+  <object type="fa_smeltingfurnace" x="125" y="320"/>
+  <object type="fa_smeltingfurnace" x="124" y="500"/>
+  <object type="fa_smeltingfurnace" x="125" y="1087"/>
+  <object type="fa_smeltingfurnace" x="320" y="825"/>
+  <object type="fa_smeltingfurnace" x="767" y="824"/>
+  <object type="fa_smeltingfurnace" x="1091" y="1159"/>
+  <object type="fa_smeltingfurnace" x="832" y="1152"/>
+  <object type="fa_smeltingfurnace" x="1155" y="445"/>
+  <object type="fa_smeltingfurnace" x="764" y="123"/>
+  <object type="fa_dorf_stool" x="1087" y="1085"/>
+  <object type="fa_dorf_stool" x="832" y="1088"/>
+  <object type="fa_dorf_stool" x="320" y="888"/>
+  <object type="fa_dorf_stool" x="191" y="1088"/>
+  <object type="fa_dorf_stool" x="129" y="575"/>
+  <object type="fa_dorf_stool" x="204" y="317"/>
+  <object type="fa_dorf_stool" x="203" y="127"/>
+  <object type="fa_dorf_stool" x="856" y="127"/>
+  <object type="fa_dorf_stool" x="1091" y="459"/>
+  <object type="fa_dorf_table" x="320" y="636"/>
+  <object type="fa_dorf_table" x="141" y="769"/>
+  <object type="fa_dorf_stool" x="343" y="600"/>
+  <object type="fa_dorf_stool" x="325" y="685"/>
+  <object type="fa_dorf_stool" x="163" y="816"/>
+  <object type="fa_dorf_stool" x="160" y="725"/>
+  <object type="fa_dorf_table" x="401" y="1079"/>
+  <object type="fa_dorf_stool" x="381" y="1052"/>
+  <object type="fa_dorf_stool" x="416" y="1131"/>
+  <object type="fa_dorf_table" x="1152" y="885"/>
+  <object type="fa_dorf_stool" x="1117" y="875"/>
+  <object type="fa_dorf_stool" x="1192" y="876"/>
+  <object type="fa_dorf_table" x="1167" y="97"/>
+  <object type="fa_dorf_stool" x="1145" y="137"/>
+  <object type="fa_dorf_stool" x="1195" y="136"/>
+  <object type="fa_smeltingfurnace" x="585" y="101"/>
+  <object type="fa_dorf_stool" x="591" y="152"/>
+  <object type="fa_dorf_stool" x="560" y="319"/>
+  <object type="fa_dorf" x="776" y="680"/>
+  <object type="fa_dorf" x="1177" y="699"/>
+  <object type="fa_dorf" x="1160" y="832"/>
+  <object type="fa_dorf" x="1113" y="1060"/>
+  <object type="fa_dorf" x="840" y="1055"/>
+  <object type="fa_dorf" x="601" y="1185"/>
+  <object type="fa_dorf" x="359" y="1125"/>
+  <object type="fa_dorf" x="155" y="1052"/>
+  <object type="fa_dorf" x="360" y="911"/>
+  <object type="fa_dorf" x="101" y="837"/>
+  <object type="fa_dorf" x="155" y="543"/>
+  <object type="fa_dorf" x="296" y="571"/>
+  <object type="fa_dorf" x="268" y="279"/>
+  <object type="fa_dorf" x="388" y="300"/>
+  <object type="fa_dorf" x="239" y="95"/>
+  <object type="fa_dorf" x="529" y="145"/>
+  <object type="fa_dorf" x="924" y="127"/>
+  <object type="fa_dorf" x="1077" y="107"/>
+  <object type="fa_dorf" x="909" y="293"/>
+  <object type="fa_dorf" x="1179" y="413"/>
+  <object type="fa_dorf_table" x="384" y="373"/>
+  <object type="fa_dorf_stool" x="389" y="423"/>
+  <object type="fa_dorf_stool" x="407" y="337"/>
+  <object type="fa_dorf_light" x="1195" y="937"/>
+  <object type="fa_dorf_light" x="427" y="1043"/>
+  <object type="fa_dorf_light" x="81" y="876"/>
+  <object type="fa_dorf_light" x="428" y="272"/>
+  <object type="fa_dorf_light" x="1197" y="81"/>
+  <object type="fa_dorf" x="301" y="87"/>
+  <object type="fa_dorf" x="573" y="283"/>
+  <object type="fa_treasurechest" x="80" y="564">
+   <properties>
+    <property name="scenario" value="fa_df_smeltingchest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="228" y="364">
+   <properties>
+    <property name="scenario" value="fa_df_smeltingchest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="229" y="168">
+   <properties>
+    <property name="scenario" value="fa_df_smeltingchest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="468" y="89">
+   <properties>
+    <property name="scenario" value="fa_df_smeltingchest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="833" y="173">
+   <properties>
+    <property name="scenario" value="fa_df_smeltingchest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="615" y="337">
+   <properties>
+    <property name="scenario" value="fa_df_smeltingchest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="1117" y="404">
+   <properties>
+    <property name="scenario" value="fa_df_smeltingchest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="1132" y="1128">
+   <properties>
+    <property name="scenario" value="fa_df_smeltingchest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="871" y="1121">
+   <properties>
+    <property name="scenario" value="fa_df_smeltingchest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="184" y="1132">
+   <properties>
+    <property name="scenario" value="fa_df_smeltingchest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="273" y="855">
+   <properties>
+    <property name="scenario" value="fa_df_smeltingchest"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_light" x="333" y="497"/>
+  <object type="fa_treasurechest" x="724" y="891">
+   <properties>
+    <property name="scenario" value="fa_df_smeltingchest"/>
+   </properties>
+  </object>
+  <object type="maxwelllight_area" x="617" y="1040"/>
+  <object type="fa_bucket" x="1039" y="1196"/>
+  <object type="fa_bucket" x="876" y="1192"/>
+  <object type="fa_bucket" x="81" y="1040"/>
+  <object type="fa_bucket" x="365" y="784"/>
+  <object type="fa_bucket" x="81" y="465"/>
+  <object type="fa_bucket" x="80" y="367"/>
+  <object type="fa_bucket" x="80" y="176"/>
+  <object type="fa_bucket" x="719" y="175"/>
+  <object type="fa_bucket" x="1196" y="492"/>
+  <object type="fa_teleporter_dorf" x="761" y="639"/>
+  <object type="maxwelllight_area" x="1196" y="656"/>
+ </objectgroup>
+</map>

@@ -535,7 +535,7 @@ local function beermug()
     inst.components.inventoryitem.imagename="fa_beermug"
     return inst
 end
-local function beermug()
+local function ronsalemug()
 	local inst=common("mug")
     inst.AnimState:SetBuild("fa_mug")
     inst.AnimState:PlayAnimation("beer")
@@ -543,7 +543,7 @@ local function beermug()
     inst.components.inventoryitem.imagename="fa_beermug"
     return inst
 end
-local function beermug()
+local function dwarfalemug()
 	local inst=common("mug")
     inst.AnimState:SetBuild("fa_mug")
     inst.AnimState:PlayAnimation("beer")
@@ -551,7 +551,23 @@ local function beermug()
     inst.components.inventoryitem.imagename="fa_beermug"
     return inst
 end
-local function beermug()
+local function wineyeast()
+	local inst=common("mug")
+    inst.AnimState:SetBuild("fa_mug")
+    inst.AnimState:PlayAnimation("beer")
+    inst:RemoveComponent("edible")
+    inst.components.inventoryitem.imagename="fa_beermug"
+    return inst
+end
+local function distillingyeast()
+	local inst=common("mug")
+    inst.AnimState:SetBuild("fa_mug")
+    inst.AnimState:PlayAnimation("beer")
+    inst:RemoveComponent("edible")
+    inst.components.inventoryitem.imagename="fa_beermug"
+    return inst
+end
+local function brewingyeast()
 	local inst=common("mug")
     inst.AnimState:SetBuild("fa_mug")
     inst.AnimState:PlayAnimation("beer")
@@ -590,14 +606,13 @@ return Prefab( "common/inventory/fa_bottle_r", fnr, Assets),
 	Prefab( "common/inventory/fa_bottle_wort", emptymug, mugassets),
 	Prefab( "common/inventory/fa_rummug", rummug, mugassets),
 	Prefab( "common/inventory/fa_lightalemug", beermug, mugassets),
-	Prefab( "common/inventory/fa_ronalemug", beermug, mugassets),
-	Prefab( "common/inventory/fa_dwarfalemug", beermug, mugassets)
+	Prefab( "common/inventory/fa_ronsalemug", ronsalemug, mugassets),
+	Prefab( "common/inventory/fa_dwarfalemug", dwarfalemug, mugassets),
+	Prefab( "common/inventory/fa_wineyeast", wineyeast, mugassets),
+	Prefab( "common/inventory/fa_distillingyeast", distillingyeast, mugassets),
+	Prefab( "common/inventory/fa_brewingyeast", brewingyeast, mugassets)
 
 --[[
-	Wine yeast	30 sec	green underground mushroom	green underground mushroom
-distilling yeast	30 sec	pink underground mushroom	pink underground mushroom
-brewing yeast	30 sec	orange underground mushroom	orange underground mushroom
-
 	,
 	Prefab( "common/inventory/fa_bottle_1_0", ftest("bottle_1_0"), Assets),
 	Prefab( "common/inventory/fa_bottle_1_1", ftest("bottle_1_1"), Assets),

@@ -1,7 +1,6 @@
 local assets=
 {
     Asset("ANIM", "anim/fa_lightningsword.zip"),
-    Asset("ANIM", "anim/swap_fa_lightningsword.zip"),
     
 }
 
@@ -69,7 +68,7 @@ local function onattack(inst, attacker, target)
 end
 
 local function onequip(inst, owner)
-    owner.AnimState:OverrideSymbol("swap_object", "swap_fa_lightningsword", "swap_fa_lightningsword")
+    owner.AnimState:OverrideSymbol("swap_object", "fa_lightningsword", "swap_weapon")
     owner.AnimState:Show("ARM_carry") 
     owner.AnimState:Hide("ARM_normal") 
 end
