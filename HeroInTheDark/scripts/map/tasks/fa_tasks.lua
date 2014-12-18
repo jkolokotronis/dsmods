@@ -84,9 +84,7 @@ AddTask("FADwarfFortressTask3", {
 --			["SlurperWilds"] = math.random(1,3),
 --			["LushWilds"] = math.random(1,2),
 			["FA_DwarfFortressForge"] = 1,
-			["FA_DwarfFortressRoom1"] = 3,
---			["FA_BGDwarfFortress"]=4
-
+			["FA_DwarfFortressBedrooms"]=1
 --			["FA_5x5GoblinRoom_5"] = 1,
 			
 		},

@@ -268,6 +268,7 @@ end
 return Prefab( "common/inventory/fa_goodberries", fn, assets),
 Prefab( "common/inventory/fa_nuts", fnnuts, nut_assets),
 Prefab( "common/inventory/fa_flour", fnflour, flour_assets),
+Prefab( "common/inventory/fa_mash", fnflour, flour_assets),
 Prefab( "common/inventory/fa_cutwheat", fncutwheat, cutwheat_assets),
 Prefab( "common/inventory/fa_dug_wheat", fndugwheat, wheat_assets),
 Prefab( "common/inventory/fa_wheat", fnwheat, wheat_assets)

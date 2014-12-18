@@ -85,6 +85,7 @@ Layouts["FADorfFortressMerchants"]=StaticLayout.Get("map/static_layouts/20x20_do
 Layouts["FADorfFortressGrowRoom"]=StaticLayout.Get("map/static_layouts/20x20_dorf_fortress_lv_1_D_growroom")
 Layouts["FADorfFortressSmelting"]=StaticLayout.Get("map/static_layouts/20x20_dorf_fortress_lv_1_F_smelting")
 Layouts["FADorfFortressForge"]=StaticLayout.Get("map/static_layouts/20x20_dorf_fortress_lv_1_G_forge")
+Layouts["FADorfFortressBedrooms"]=StaticLayout.Get("map/static_layouts/20x20_dorf_fortress_lv_1_e_bedrooms")
 
 Layouts["FATestwithimpass"]=StaticLayout.Get("map/static_layouts/testwithimpass")
 Layouts["FAOrcMineBasicsetTrap1"]=StaticLayout.Get("map/static_layouts/orc_mine_basicset_trap_1")

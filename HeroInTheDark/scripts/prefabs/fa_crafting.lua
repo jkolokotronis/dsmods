@@ -208,7 +208,7 @@ local function distillerfn()
     inst.AnimState:PlayAnimation("idle_close",true)
     inst.Transform:SetScale(0.5, 0.5, 0.5)
 
-    inst.components.fa_furnace.matcher = matchers.SmelterMatcher
+    inst.components.fa_furnace.matcher = matchers.DistillerMAtcher
     inst.components.fa_furnace.getverb=function() return "BREW" end
 
 
@@ -254,7 +254,7 @@ local function kegfn()
     inst.AnimState:PlayAnimation("idle_close",true)
     inst.Transform:SetScale(0.5, 0.5, 0.5)
 
-    inst.components.fa_furnace.matcher = matchers.SmelterMatcher
+    inst.components.fa_furnace.matcher = matchers.KegMatcher
     inst.components.fa_furnace.getverb=function() return "BREW" end
 
 

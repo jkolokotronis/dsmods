@@ -337,6 +337,10 @@ local WONDER_EFFECTS={
 
 }
 
+local function onfinished(inst)
+    inst:Remove()
+end
+
 local function oneaten(inst,eater)
 
 	if(eater.components.inventory)then
@@ -589,6 +593,84 @@ local function fnwort()
 	return inst
 end
 
+local function winecommon(inst,eatfn)
+    inst:AddComponent("finiteuses")
+    inst.components.finiteuses:SetOnFinished( onfinished )
+    inst.components.finiteuses:SetMaxUses(3)
+    inst.components.finiteuses:SetUses(3)
+    inst.components.edible.hungervalue=-5
+    inst:ListenForEvent("oneaten",function(inst,data)
+        local eater=data.eater
+        if(eater and eater.components.fa_intoxication)then
+            eater.components.fa_intoxication:DoDelta(10)
+            if(eatfn)then eatfn(inst) end
+--            eater.components.fa_bufftimers:AddBuff("physicaldr","PhysicalDR","DamageReduction",DR_LENGTH,{damagetype=FA_DAMAGETYPE.ELECTRIC,drdelta=5})
+        end
+    end)
+
+end
+
+
+local function pomegranatewine()
+	local inst=common("bottle_light_cyan")
+	winecommon(inst)
+	return inst
+end
+
+local function durianwine()
+	local inst=common("bottle_light_cyan")
+	winecommon(inst)
+	return inst
+end
+
+local function dragonwine()
+	local inst=common("bottle_light_cyan")
+	winecommon(inst)
+	return inst
+end
+
+local function melonwine()
+	local inst=common("bottle_light_cyan")
+	winecommon(inst)
+    inst.components.edible.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
+    inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_AVERAGE
+	return inst
+end
+
+local function redwine()
+	local inst=common("bottle_light_cyan")
+	winecommon(inst)
+	return inst
+end
+
+local function goodberrywine()
+	local inst=common("bottle_light_cyan")
+	winecommon(inst)
+    inst.components.edible.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
+    inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_LONG
+	return inst
+end
+
+local function glowingwine()
+	local inst=common("bottle_light_cyan")
+	winecommon(inst)
+	return inst
+end
+
+local function cactuswine()
+	local inst=common("bottle_light_cyan")
+	winecommon(inst)
+    inst.components.edible.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
+    inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_LONG
+	return inst
+end
+
+local function mead()
+	local inst=common("bottle_light_cyan")
+	winecommon(inst)
+	return inst
+end
+
 return Prefab( "common/inventory/fa_bottle_r", fnr, Assets),
 	Prefab( "common/inventory/fa_bottle_y", fny, Assets),
 	Prefab( "common/inventory/fa_bottle_g", fng, Assets),
@@ -610,9 +692,32 @@ return Prefab( "common/inventory/fa_bottle_r", fnr, Assets),
 	Prefab( "common/inventory/fa_dwarfalemug", dwarfalemug, mugassets),
 	Prefab( "common/inventory/fa_wineyeast", wineyeast, mugassets),
 	Prefab( "common/inventory/fa_distillingyeast", distillingyeast, mugassets),
-	Prefab( "common/inventory/fa_brewingyeast", brewingyeast, mugassets)
+	Prefab( "common/inventory/fa_brewingyeast", brewingyeast, mugassets),
+
+	Prefab( "common/inventory/fa_pomegranate_wine", pomegranatewine, Assets),
+	Prefab( "common/inventory/fa_durian_wine", durianwine, Assets),
+	Prefab( "common/inventory/fa_dragon_wine", dragonwine, Assets),
+	Prefab( "common/inventory/fa_melon_wine", melonwine, Assets),
+	Prefab( "common/inventory/fa_red_wine", redwine, Assets),
+	Prefab( "common/inventory/fa_goodberry_wine", goodberrywine, Assets),
+	Prefab( "common/inventory/fa_glowing_wine", glowingwine, Assets),
+	Prefab( "common/inventory/fa_cactus_wine", cactuswine, Assets),
+	Prefab( "common/inventory/fa_mead", mead, Assets)
+
+
 
 --[[
+
+Pomegranate wine
+Durian wine
+Dragon wine
+Melon Wine
+Red wine
+Goodberry Wine
+Glowing wine
+Cactus Wine
+Mead
+
 	,
 	Prefab( "common/inventory/fa_bottle_1_0", ftest("bottle_1_0"), Assets),
 	Prefab( "common/inventory/fa_bottle_1_1", ftest("bottle_1_1"), Assets),

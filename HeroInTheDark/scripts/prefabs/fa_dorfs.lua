@@ -144,8 +144,6 @@ end
 local function NormalKeepTargetFn(inst, target)
     --give up on dead guys, or guys in the dark, or werepigs
     return inst.components.combat:CanTarget(target)
-           and (not target.LightWatcher or target.LightWatcher:IsInLight())
-           and not (target.sg and target.sg:HasStateTag("transform") )
 end
 
 local function NormalShouldSleep(inst)

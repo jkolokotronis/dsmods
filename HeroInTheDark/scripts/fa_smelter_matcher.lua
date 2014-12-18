@@ -29,37 +29,302 @@ end
 local function anymeat(ing)
 	return (ing=="smallmeat" or ing=="meat" or ing=="monstermeat" or ing=="drumstick" or ing=="batwing")
 end
+local function cornorwheat(ing)
+	return (ing=="fa_cutwheat" or ing=="corn")
+end
 
-local stand_food_recipes={
+local keg_recipes={
 	{
-		match={product={"baconeggs"},cooktime=0},
+		match={product={"fa_barrel_molasses"},cooktime=60},
 		test={
-			{ingred="fa_copperpebble",count=4},
+			{ingred="pomegranate",count=4},
 		},
 	},
 	{
-		match={product={"meatballs"},cooktime=0},
+		match={product={"fa_barrel_darkrum"},cooktime=1440},
 		test={
-			{ingred="fa_copperpebble",count=3},
+			{ingred="fa_barrel_lightrum",count=3},
+			{ingred="fa_barrel_wood",count=1},
 		},
 	},
 	{
-		match={product={"bonestew"},cooktime=0},
+		match={product={"fa_barrel_bourbon"},cooktime=960},
 		test={
-			{ingred="fa_ironpebble",count=4},
+			{ingred="fa_barrel_clearbourbon",count=3},
+			{ingred="fa_barrel_wood",count=1},
 		},
 	},
 	{
-		match={product={"kabobs"},cooktime=0},
+		match={product={"fa_barrel_goldrum"},cooktime=960},
 		test={
-			{ingred="fa_coalpebble",count=2},
+			{ingred="fa_barrel_lightrum",count=2},
+			{ingred="fa_goldpebble",count=1},
+			{ingred="fa_barrel_wood",count=1},
 		},
 	},
 	{
-		match={product={"icecream"},cooktime=0},
+		match={product={"fa_barrel_flavoredrum"},cooktime=960},
 		test={
-			{ingred="fa_silverpebble",count=1},
-			{ingred="fa_ironpebble",count=1},
+			{ingred="fa_barrel_lightrum",count=2},
+			{ingred="dragonfruit",count=1},
+			{ingred="fa_barrel_wood",count=1},
+		},
+	},
+	{
+		match={product={"fa_barrel_hotrum"},cooktime=960},
+		test={
+			{ingred="fa_barrel_lightrum",count=2},
+			{ingred="fa_lavapebble",count=1},
+			{ingred="fa_barrel_wood",count=1},
+		},
+	},
+	{
+		match={product={"fa_mash"},cooktime=120},
+		test={
+			{ingred=cornorwheat,count=4},
+		},
+	},
+	{
+		match={product={"fa_bottle_wort"},cooktime=120},
+		test={
+			{ingred="fa_mash",count=2},
+			{ingred="fa_bottle_water",count=2},
+		},
+	},
+	{
+		match={product={"fa_lightalemug"},cooktime=480},
+		test={
+			{ingred="fa_bottle_wort",count=1},
+			{ingred="fa_bottle_water",count=1},
+			{ingred="fa_brewingyeast",count=1},
+			{ingred="fa_emptymug",count=1},
+		},
+	},
+	{
+		match={product={"fa_ronsalemug"},cooktime=480},
+		test={
+			{ingred="fa_bottle_wort",count=1},
+			{ingred="fa_mash",count=1},
+			{ingred="fa_brewingyeast",count=1},
+			{ingred="fa_emptymug",count=1},
+		},
+	},
+	{
+		match={product={"fa_barrel_lightale"},cooktime=960},
+		test={
+			{ingred="fa_bottle_wort",count=1},
+			{ingred="fa_bottle_water",count=1},
+			{ingred="fa_brewingyeast",count=1},
+			{ingred="fa_barrel_wood",count=1},
+		},
+	},
+	{
+		match={product={"fa_barrel_ronsale"},cooktime=960},
+		test={
+			{ingred="fa_bottle_wort",count=1},
+			{ingred="fa_mash",count=1},
+			{ingred="fa_brewingyeast",count=1},
+			{ingred="fa_barrel_wood",count=1},
+		},
+	},
+	{
+		match={product={"fa_barrel_drakeale"},cooktime=960},
+		test={
+			{ingred="fa_bottle_wort",count=1},
+			{ingred="mandrake",count=1},
+			{ingred="fa_brewingyeast",count=1},
+			{ingred="fa_barrel_wood",count=1},
+		},
+	},
+	{
+		match={product={"fa_barrel_oriansale"},cooktime=960},
+		test={
+			{ingred="fa_bottle_wort",count=1},
+			{ingred="pumpkin",count=1},
+			{ingred="fa_brewingyeast",count=1},
+			{ingred="fa_barrel_wood",count=1},
+		},
+	},
+	{
+		match={product={"fa_barrel_dorfale"},cooktime=960},
+		test={
+			{ingred="fa_bottle_wort",count=1},
+			{ingred="cutlichen",count=1},
+			{ingred="fa_brewingyeast",count=1},
+			{ingred="fa_barrel_wood",count=1},
+		},
+	},
+	{
+		match={product={"fa_dwarfalemug"},cooktime=480},
+		test={
+			{ingred="fa_bottle_wort",count=1},
+			{ingred="cutlichen",count=1},
+			{ingred="fa_brewingyeast",count=1},
+			{ingred="fa_emptymug",count=1},
+		},
+	},
+	{
+		match={product={"fa_barrel_deathbrew"},cooktime=960},
+		test={
+			{ingred="fa_bottle_wort",count=1},
+			{ingred="nightmarefuel",count=1},
+			{ingred="fa_brewingyeast",count=1},
+			{ingred="fa_barrel_wood",count=1},
+		},
+	},
+	{
+		match={product={"fa_pomegranate_wine"},cooktime=480},
+		test={
+			{ingred="fa_wineyeast",count=1},
+			{ingred="fa_bottle_water",count=1},
+			{ingred="pomegranate",count=1},
+			{ingred="fa_barrel_wood",count=1},
+		},
+	},
+	{
+		match={product={"fa_durian_wine"},cooktime=480},
+		test={
+			{ingred="fa_wineyeast",count=1},
+			{ingred="fa_bottle_water",count=1},
+			{ingred="durian",count=1},
+			{ingred="fa_barrel_wood",count=1},
+		},
+	},
+	{
+		match={product={"fa_dragon_wine"},cooktime=480},
+		test={
+			{ingred="fa_wineyeast",count=1},
+			{ingred="fa_bottle_water",count=1},
+			{ingred="dragonfruit",count=1},
+			{ingred="fa_barrel_wood",count=1},
+		},
+	},
+	{
+		match={product={"fa_melon_wine"},cooktime=480},
+		test={
+			{ingred="fa_wineyeast",count=1},
+			{ingred="fa_bottle_water",count=1},
+			{ingred="watermelon",count=1},
+			{ingred="fa_barrel_wood",count=1},
+		},
+	},
+	{
+		match={product={"fa_red_wine"},cooktime=480},
+		test={
+			{ingred="fa_wineyeast",count=1},
+			{ingred="fa_bottle_water",count=1},
+			{ingred="berries",count=1},
+			{ingred="fa_barrel_wood",count=1},
+		},
+	},
+	{
+		match={product={"fa_goodberry_wine"},cooktime=960},
+		test={
+			{ingred="fa_wineyeast",count=1},
+			{ingred="fa_bottle_water",count=1},
+			{ingred="fa_goodberries",count=1},
+			{ingred="fa_barrel_wood",count=1},
+		},
+	},
+	{
+		match={product={"fa_glowing_wine"},cooktime=960},
+		test={
+			{ingred="fa_wineyeast",count=1},
+			{ingred="fa_bottle_water",count=1},
+			{ingred="wormlight",count=1},
+			{ingred="fa_barrel_wood",count=1},
+		},
+	},
+	{
+		match={product={"fa_cactus_wine"},cooktime=480},
+		test={
+			{ingred="fa_wineyeast",count=1},
+			{ingred="fa_bottle_water",count=1},
+			{ingred="cactus_meat",count=1},
+			{ingred="fa_barrel_wood",count=1},
+		},
+	},
+	{
+		match={product={"fa_mead"},cooktime=480},
+		test={
+			{ingred="fa_wineyeast",count=1},
+			{ingred="fa_bottle_water",count=1},
+			{ingred="honey",count=1},
+			{ingred="fa_barrel_wood",count=1},
+		},
+	},
+}
+
+
+
+local distiller_recipes={
+	{
+		match={product={"fa_barrel_lightrum"},cooktime=480},
+		test={
+			{ingred="fa_barrel_molasses",count=2},
+			{ingred="fa_distillingyeast",count=1},
+			{ingred="fa_barrel_water",count=1},
+		},
+	},
+	{
+		match={product={"fa_barrel_clearbourbon"},cooktime=480},
+		test={
+			{ingred="corn",count=1},
+			{ingred="fa_cutwheat",count=1},
+			{ingred="fa_distillingyeast",count=1},
+			{ingred="fa_barrel_water",count=1},
+		},
+	},
+	{
+		match={product={"fa_barrel_vodka"},cooktime=480},
+		test={
+			{ingred="fa_mash",count=1},
+			{ingred="fa_cutwheat",count=1},
+			{ingred="fa_distillingyeast",count=1},
+			{ingred="fa_barrel_water",count=1},
+		},
+	},
+	{
+		match={product={"fa_barrel_gin"},cooktime=480},
+		test={
+			{ingred="fa_mash",count=1},
+			{ingred="acorn",count=1},
+			{ingred="fa_distillingyeast",count=1},
+			{ingred="fa_barrel_water",count=1},
+		},
+	},
+	{
+		match={product={"fa_barrel_tequila"},cooktime=480},
+		test={
+			{ingred="fa_mash",count=1},
+			{ingred="cutlichen",count=1},
+			{ingred="fa_distillingyeast",count=1},
+			{ingred="fa_barrel_water",count=1},
+		},
+	},
+	{
+		match={product={"fa_barrel_whiskey"},cooktime=480},
+		test={
+			{ingred="fa_mash",count=1},
+			{ingred="corn",count=1},
+			{ingred="fa_distillingyeast",count=1},
+			{ingred="fa_barrel_water",count=1},
+		},
+	},
+	{
+		match={product={"fa_barrel_baijui"},cooktime=480},
+		test={
+			{ingred="fa_mash",count=2},
+			{ingred="fa_distillingyeast",count=1},
+			{ingred="fa_barrel_water",count=1},
+		},
+	},
+	{
+		match={product={"fa_barrel_soju"},cooktime=480},
+		test={
+			{ingred="fa_cutwheat",count=2},
+			{ingred="fa_distillingyeast",count=1},
+			{ingred="fa_barrel_water",count=1},
 		},
 	},
 }
@@ -175,6 +440,25 @@ local alchemy_recipes={
 			{ingred="razor",count=1}
 		},
 	},
+	{
+		match={product={"fa_wineyeast"},cooktime=30},
+		test={
+			{ingred="fa_greenshroomcap",count=2},
+		},
+	},
+	{
+		match={product={"fa_distillingyeast"},cooktime=30},
+		test={
+			{ingred="fa_pinkshroomcap",count=2},
+		},
+	},
+	{
+		match={product={"fa_brewingyeast"},cooktime=30},
+		test={
+			{ingred="fa_redshroomcap",count=2},
+		},
+	},
+
 }
 
 local smelt_recipes={
@@ -1028,7 +1312,8 @@ local matchers={
 	SmelterMatcher=FA_Matcher(smelt_recipes),
 	AlchemyMatcher=FA_Matcher(alchemy_recipes),
 	ForgeMatcher=FA_Matcher(forge_recipes),
-	DorfStandFoodMatcher=FA_StandMatcher(stand_food_recipes)
+	KegMatcher=FA_Matcher(keg_recipes),
+	DistillerMatcher=FA_Matcher(distiller_recipes)
 }
 
 
