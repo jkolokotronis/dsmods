@@ -136,52 +136,6 @@ local function fnbed()
     return inst
 end
 
-local function fnstand()
-    local inst=fn()
-    local light = inst.entity:AddLight()
-
-    light:SetFalloff(2)
-    light:SetIntensity(.8)
-    light:SetRadius(3)
-    light:Enable(false)
-    light:SetColour(180/255, 35/255, 50/255)
-    inst.Transform:SetScale(1.7,1.7, 1.7)
-     MakeObstaclePhysics(inst, 2)
-    inst.AnimState:SetBank("fa_dwarfstand")
-    inst.AnimState:SetBuild("fa_dwarfstand")
-    inst.AnimState:PlayAnimation("idle",true)
-    return inst
-end
-
-local function fnfoodstand1()
-    local inst=fnstand()
-    inst.AnimState:PlayAnimation("full",true)
-    inst.AnimState:OverrideSymbol("swap_item_1", "cook_pot_food", "baconeggs")
-    inst.AnimState:OverrideSymbol("swap_item_2", "cook_pot_food", "meatballs")
-    inst.AnimState:OverrideSymbol("swap_item_3", "cook_pot_food", "bonestew")
-    inst.AnimState:OverrideSymbol("swap_item_4", "cook_pot_food", "kabobs")
-    inst.AnimState:OverrideSymbol("swap_item_5", "cook_pot_food", "icecream")
-        inst:AddTag("prototyper")
-        inst:AddComponent("prototyper")
-
-    inst.components.prototyper.onturnon =function(prot)
-        prot.Light:Enable(true)
-    end
-    inst.components.prototyper.onturnoff = function(prot)
-        prot.Light:Enable(false)
-        GetPlayer().components.builder.accessible_tech_trees["FA_FOODSTAND"] = 0
-        GetPlayer():PushEvent("techtreechange", {level = GetPlayer().components.builder.accessible_tech_trees})
-    end
-    
-    inst.OnRemoveEntity = function(inst)
-        GetPlayer().components.builder.accessible_tech_trees["FA_FOODSTAND"] = 0
-        GetPlayer():PushEvent("techtreechange", {level = GetPlayer().components.builder.accessible_tech_trees})
-    end
-    inst.components.prototyper.trees = TUNING.PROTOTYPER_TREES.FA_FOODSTAND
-    inst.components.prototyper.onactivate = function() end
-    return inst
-end
-
 
 local function tentonfinished(inst)
   inst.AnimState:PlayAnimation("destroy")
@@ -286,11 +240,169 @@ local function fnbed_player()
     return inst
 end
 
+
+local function fnstand(techtree)
+    local inst=fn()
+    local light = inst.entity:AddLight()
+
+    light:SetFalloff(2)
+    light:SetIntensity(.5)
+    light:SetRadius(3)
+    light:Enable(true)
+    light:SetColour(180/255, 35/255, 50/255)
+    inst.Transform:SetScale(1.7,1.7, 1.7)
+     MakeObstaclePhysics(inst, 2)
+    inst.AnimState:SetBank("fa_dwarfstand")
+    inst.AnimState:SetBuild("fa_dwarfstand")
+    inst.AnimState:PlayAnimation("idle",true)
+
+    inst:AddTag("prototyper")
+    inst:AddComponent("prototyper")
+
+    inst.components.prototyper.onturnon =function(prot)
+        prot.Light:Enable(true)
+        light:SetIntensity(.8)
+        light:SetRadius(4.5)
+    end
+
+    inst.components.prototyper.onturnoff = function(prot)
+        light:SetIntensity(.5)
+        light:SetRadius(3)
+        GetPlayer().components.builder.accessible_tech_trees[techtree] = 0
+        GetPlayer():PushEvent("techtreechange", {level = GetPlayer().components.builder.accessible_tech_trees})
+    end
+
+    inst.OnRemoveEntity = function(inst)
+        GetPlayer().components.builder.accessible_tech_trees[techtree] = 0
+        GetPlayer():PushEvent("techtreechange", {level = GetPlayer().components.builder.accessible_tech_trees})
+    end
+
+    inst.components.prototyper.trees = TUNING.PROTOTYPER_TREES[techtree]
+    inst.components.prototyper.onactivate = function() end
+
+    return inst
+end
+
+local function fnfoodstand1()
+    local inst=fnstand("FA_FOODSTAND")
+    inst.AnimState:PlayAnimation("full",true)
+    inst.AnimState:OverrideSymbol("swap_item_1", "cook_pot_food", "baconeggs")
+    inst.AnimState:OverrideSymbol("swap_item_2", "cook_pot_food", "meatballs")
+    inst.AnimState:OverrideSymbol("swap_item_3", "cook_pot_food", "bonestew")
+    inst.AnimState:OverrideSymbol("swap_item_4", "cook_pot_food", "kabobs")
+    inst.AnimState:OverrideSymbol("swap_item_5", "cook_pot_food", "icecream")
+
+    return inst
+end
+
+local function fndorfitemstand()
+    local inst=fnstand("FA_DORFITEMSTAND")
+    inst.AnimState:PlayAnimation("full",true)
+    inst.AnimState:OverrideSymbol("swap_item_1", "cook_pot_food", "baconeggs")
+    inst.AnimState:OverrideSymbol("swap_item_2", "cook_pot_food", "meatballs")
+    inst.AnimState:OverrideSymbol("swap_item_3", "cook_pot_food", "bonestew")
+    inst.AnimState:OverrideSymbol("swap_item_4", "cook_pot_food", "kabobs")
+    inst.AnimState:OverrideSymbol("swap_item_5", "cook_pot_food", "icecream")
+
+    return inst
+end
+
+local function fndorfpotionstand()
+    local inst=fnstand("FA_DORFPOTIONSTAND")
+    inst.AnimState:PlayAnimation("full",true)
+    inst.AnimState:OverrideSymbol("swap_item_1", "cook_pot_food", "baconeggs")
+    inst.AnimState:OverrideSymbol("swap_item_2", "cook_pot_food", "meatballs")
+    inst.AnimState:OverrideSymbol("swap_item_3", "cook_pot_food", "bonestew")
+    inst.AnimState:OverrideSymbol("swap_item_4", "cook_pot_food", "kabobs")
+    inst.AnimState:OverrideSymbol("swap_item_5", "cook_pot_food", "icecream")
+
+    return inst
+end
+
+local function fndorfresourcestand()
+    local inst=fnstand("FA_DORFRESOURCESTAND")
+    inst.AnimState:PlayAnimation("full",true)
+    inst.AnimState:OverrideSymbol("swap_item_1", "cook_pot_food", "baconeggs")
+    inst.AnimState:OverrideSymbol("swap_item_2", "cook_pot_food", "meatballs")
+    inst.AnimState:OverrideSymbol("swap_item_3", "cook_pot_food", "bonestew")
+    inst.AnimState:OverrideSymbol("swap_item_4", "cook_pot_food", "kabobs")
+    inst.AnimState:OverrideSymbol("swap_item_5", "cook_pot_food", "icecream")
+
+    return inst
+end
+
+local function fnweaponrecipes()
+    local inst=fnstand("FA_DORFWEAPONRECIPES")
+    inst.AnimState:PlayAnimation("full",true)
+    inst.AnimState:OverrideSymbol("swap_item_1", "cook_pot_food", "baconeggs")
+    inst.AnimState:OverrideSymbol("swap_item_2", "cook_pot_food", "meatballs")
+    inst.AnimState:OverrideSymbol("swap_item_3", "cook_pot_food", "bonestew")
+    inst.AnimState:OverrideSymbol("swap_item_4", "cook_pot_food", "kabobs")
+    inst.AnimState:OverrideSymbol("swap_item_5", "cook_pot_food", "icecream")
+
+    return inst
+end
+
+local function fndorfequipment()
+    local inst=fnstand("FA_DORFEQUIPMENT")
+    inst.AnimState:PlayAnimation("full",true)
+    inst.AnimState:OverrideSymbol("swap_item_1", "cook_pot_food", "baconeggs")
+    inst.AnimState:OverrideSymbol("swap_item_2", "cook_pot_food", "meatballs")
+    inst.AnimState:OverrideSymbol("swap_item_3", "cook_pot_food", "bonestew")
+    inst.AnimState:OverrideSymbol("swap_item_4", "cook_pot_food", "kabobs")
+    inst.AnimState:OverrideSymbol("swap_item_5", "cook_pot_food", "icecream")
+
+    return inst
+end
+
+local function fndorfarmorrecipes()
+    local inst=fnstand("FA_DORFARMORRECIPES")
+    inst.AnimState:PlayAnimation("full",true)
+    inst.AnimState:OverrideSymbol("swap_item_1", "cook_pot_food", "baconeggs")
+    inst.AnimState:OverrideSymbol("swap_item_2", "cook_pot_food", "meatballs")
+    inst.AnimState:OverrideSymbol("swap_item_3", "cook_pot_food", "bonestew")
+    inst.AnimState:OverrideSymbol("swap_item_4", "cook_pot_food", "kabobs")
+    inst.AnimState:OverrideSymbol("swap_item_5", "cook_pot_food", "icecream")
+
+    return inst
+end
+
+local function fndorfsmelterrecipes()
+    local inst=fnstand("FA_DORFSMELTRECIPESTAND")
+    inst.AnimState:PlayAnimation("full",true)
+    inst.AnimState:OverrideSymbol("swap_item_1", "cook_pot_food", "baconeggs")
+    inst.AnimState:OverrideSymbol("swap_item_2", "cook_pot_food", "meatballs")
+    inst.AnimState:OverrideSymbol("swap_item_3", "cook_pot_food", "bonestew")
+    inst.AnimState:OverrideSymbol("swap_item_4", "cook_pot_food", "kabobs")
+    inst.AnimState:OverrideSymbol("swap_item_5", "cook_pot_food", "icecream")
+
+    return inst
+end
+
+local function fndorfotherrecipes()
+    local inst=fnstand("FA_DORFOTHERRECIPESTAND")
+    inst.AnimState:PlayAnimation("full",true)
+    inst.AnimState:OverrideSymbol("swap_item_1", "cook_pot_food", "baconeggs")
+    inst.AnimState:OverrideSymbol("swap_item_2", "cook_pot_food", "meatballs")
+    inst.AnimState:OverrideSymbol("swap_item_3", "cook_pot_food", "bonestew")
+    inst.AnimState:OverrideSymbol("swap_item_4", "cook_pot_food", "kabobs")
+    inst.AnimState:OverrideSymbol("swap_item_5", "cook_pot_food", "icecream")
+
+    return inst
+end
+
 return Prefab( "common/objects/fa_dorfhut", fnhut, hutassets, prefabs ),
 Prefab( "common/objects/fa_dorfbed", fnbed, bedassets, prefabs ),
 Prefab( "common/objects/fa_dorfstand", fnstand, standassets, prefabs ),
-Prefab( "common/objects/fa_dorfstand_food_1", fnfoodstand1, standassets, prefabs ),
 Prefab( "common/objects/fa_dorfthrone", fnthrone, throneassets, prefabs ),
 Prefab( "common/objects/fa_dorfbed_player", fnbed_player, bedassets),
-MakePlacer( "common/fa_dorfbed_player_placer", "fa_dwarfbed", "fa_dwarfbed", "idle" )
-
+MakePlacer( "common/fa_dorfbed_player_placer", "fa_dwarfbed", "fa_dwarfbed", "idle" ),
+Prefab( "common/objects/fa_dorfstand_food_1", fnfoodstand1, standassets, prefabs ),
+Prefab( "common/objects/fa_dorfstand_items_2", fndorfitemstand, standassets, prefabs ),
+Prefab( "common/objects/fa_dorfstand_potions_3", fndorfpotionstand, standassets, prefabs ),
+Prefab( "common/objects/fa_dorfstand_resources_4", fndorfresourcestand, standassets, prefabs ),
+Prefab( "common/objects/fa_dorfstand_recipe_weapon_5", fnweaponrecipes, standassets, prefabs ),
+Prefab( "common/objects/fa_dorfstand_equipment_6", fndorfequipment, standassets, prefabs ),
+Prefab( "common/objects/fa_dorfstand_recipe_armor_7", fndorfarmorrecipes, standassets, prefabs ),
+Prefab( "common/objects/fa_dorfstand_recipe_smelting_8", fndorfsmelterrecipes, standassets, prefabs ),
+Prefab( "common/objects/fa_dorfstand_recipe_other_9", fndorfotherrecipes, standassets, prefabs )

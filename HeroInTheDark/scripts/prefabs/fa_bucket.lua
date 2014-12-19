@@ -70,4 +70,4 @@ local function fn(Sim)
 end
 
 
-return Prefab( "common/fa_bucket", fn, assets),
+return Prefab( "common/fa_bucket", fn, assets)

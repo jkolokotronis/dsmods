@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="80" height="80" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="tiles" tilewidth="64" tileheight="64">
+  <image source="../../tiles/tiles.png" width="512" height="512"/>
+ </tileset>
+ <layer name="BG_TILES" width="80" height="80">
+  <data encoding="base64" compression="zlib">
+   eJzt17ENgDAQBEEk+u+ZiAACBALzPnsmuwZW/8sCpFrtVxvIVd2P9A3kqu5H+gZyVfcjfQO5qvuRvoF5VPdGz4CvPO1BdZ/+7p9ewrj075r+AXdV98u/C3xl9PvwTC+Bnf4B/EN/gF61vqfe9s+9B7SifwBt6BHQK/cfMCv9A2hDj4Beuf+AWenf0Qav/wME
+  </data>
+ </layer>
+ <objectgroup name="FG_OBJECTS" width="80" height="80">
+  <object type="fa_dorf_gold_pillar" x="1087" y="1216"/>
+  <object type="fa_dorf_gold_pillar" x="894" y="1215"/>
+  <object type="fa_dorf_gold_pillar" x="894" y="1023"/>
+  <object type="fa_dorf_gold_pillar" x="895" y="832"/>
+  <object type="fa_dorf_gold_pillar" x="1087" y="833"/>
+  <object type="fa_dorf_gold_pillar" x="1089" y="1024"/>
+  <object type="fa_dorf_gold_pillar" x="1151" y="640"/>
+  <object type="fa_dorf_gold_pillar" x="1216" y="449"/>
+  <object type="fa_dorf_gold_pillar" x="191" y="642"/>
+  <object type="fa_dorf_gold_pillar" x="63" y="447"/>
+  <object type="fa_dorf_gold_pillar" x="254" y="831"/>
+  <object type="fa_dorf_gold_pillar" x="447" y="833"/>
+  <object type="fa_dorf_gold_pillar" x="446" y="1023"/>
+  <object type="fa_dorf_gold_pillar" x="255" y="1024"/>
+  <object type="fa_dorf_gold_pillar" x="256" y="1217"/>
+  <object type="fa_dorf_gold_pillar" x="448" y="1218"/>
+  <object type="fa_dorf_gold_pillar" x="830" y="636"/>
+  <object type="fa_dorf_gold_pillar" x="509" y="641"/>
+  <object type="fa_dorf_gold_pillar" x="830" y="379"/>
+  <object type="fa_dorf_gold_pillar" x="510" y="381"/>
+  <object type="fa_dorfthrone" x="667" y="96"/>
+  <object type="fa_dorf_gold_pillar" x="958" y="254"/>
+  <object type="fa_dorf_gold_pillar" x="381" y="254"/>
+  <object type="fa_dorf_gold_pillar" x="384" y="62"/>
+  <object type="fa_dorf_gold_pillar" x="957" y="63"/>
+  <object type="fa_dorf_king_guard" x="1214" y="253"/>
+  <object type="fa_dorf_king_guard" x="808" y="256"/>
+  <object type="fa_dorf_king_guard" x="961" y="359"/>
+  <object type="fa_dorf_king_guard" x="1138" y="158"/>
+  <object type="fa_dorf_king_guard" x="553" y="233"/>
+  <object type="fa_dorf_king_guard" x="495" y="83"/>
+  <object type="fa_dorf_king_guard" x="227" y="173"/>
+  <object type="fa_dorf_king_guard" x="344" y="355"/>
+  <object type="fa_dorf_king_guard" x="513" y="519"/>
+  <object type="fa_dorf_king_guard" x="885" y="538"/>
+  <object type="fa_dorf_king" x="671" y="182"/>
+  <object type="fa_dorf_light" x="602" y="22"/>
+  <object type="fa_dorf_light" x="800" y="18"/>
+ </objectgroup>
+</map>

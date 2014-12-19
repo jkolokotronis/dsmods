@@ -318,7 +318,7 @@ FA_LEVELDATA["DWARF_FORTRESS"]={
 		tasks={
 			"FADwarfFortressTask1",
 			"FADwarfFortressTask2",
-			"FADwarfFortressTask3",
+--			"FADwarfFortressTask3",
 		},
 		required_prefabs = {
 --		"fa_mine_exit",

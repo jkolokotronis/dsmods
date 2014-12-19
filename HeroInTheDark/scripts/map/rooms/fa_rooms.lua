@@ -606,8 +606,6 @@ AddRoom("FA_GoblinBossroom3",{
 AddRoom("FA_DwarfFortressStartRoom",{
 		colour={r=0.2,g=0.0,b=0.2,a=0.3},
 					value = GROUND.ROCKY,	
---					tags = {"ForceDisconnected"},
---					tags = {"ForceConnected","RoadPoison"},
 					contents =  {
 
 									countstaticlayouts = 
@@ -619,8 +617,6 @@ AddRoom("FA_DwarfFortressStartRoom",{
 AddRoom("FA_DwarfFortressRoom",{
 		colour={r=0.2,g=0.0,b=0.2,a=0.3},
 					value = GROUND.FUNGUSGREEN,	
---					tags = {"ForceDisconnected"},
---					tags = {"ForceConnected","RoadPoison"},
 					contents =  {
 
 									countstaticlayouts = 
@@ -671,6 +667,28 @@ AddRoom("FA_DwarfFortressForge",{
 									countstaticlayouts = 
 									{
 										["FADorfFortressForge"] = 1,
+									}, 
+					            }
+	})
+AddRoom("FA_DwarfFortressThrone",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.FUNGUSGREEN,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FADorfFortressThrone"] = 1,
+									}, 
+					            }
+	})
+AddRoom("FA_DwarfFortressStorage",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.FUNGUSGREEN,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FADorfFortressStorage"] = 1,
 									}, 
 					            }
 	})

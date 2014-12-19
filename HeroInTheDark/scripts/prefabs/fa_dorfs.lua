@@ -303,4 +303,5 @@ end
 
 return Prefab( "common/characters/fa_dorf", normal, assets, prefabs),
  Prefab( "common/characters/fa_dorf_merchant", trader, assets, prefabs),
-Prefab( "common/characters/fa_dorf_king", kingfn, assets, prefabs)
+Prefab( "common/characters/fa_dorf_king", kingfn, assets, prefabs),
+Prefab( "common/characters/fa_dorf_king_guard", normal, assets, prefabs)
