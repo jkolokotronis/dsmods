@@ -703,6 +703,17 @@ AddRoom("FA_DwarfFortressBedrooms",{
 									}, 
 					            }
 	})
+AddRoom("FA_DwarfFortressAlcohol",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.FUNGUSGREEN,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FADorfFortressAlcohol"] = 1,
+									}, 
+					            }
+	})
 
 
 AddRoom("FA_DwarfFortressRoom1",{

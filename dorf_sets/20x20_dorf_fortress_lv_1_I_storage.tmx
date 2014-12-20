@@ -238,13 +238,11 @@
   <object type="fa_dorf_wall_1" x="703" y="191"/>
   <object type="fa_dorf_wall_1" x="1075" y="190"/>
   <object type="fa_dorf_wall_1" x="1096" y="190"/>
-  <object type="fa_dorf_wall_1" x="324" y="191"/>
   <object type="fa_dorf_wall_1" x="480" y="191"/>
   <object type="fa_dorf_wall_1" x="837" y="190"/>
   <object type="fa_dorf_wall_1" x="1180" y="190"/>
   <object type="fa_dorf_wall_1" x="168" y="191"/>
   <object type="fa_dorf_wall_1" x="815" y="191"/>
-  <object type="fa_dorf_wall_1" x="57" y="191"/>
   <object type="fa_dorf_wall_1" x="458" y="191"/>
   <object type="fa_dorf_wall_1" x="391" y="191"/>
   <object type="fa_dorf_wall_1" x="748" y="190"/>
@@ -258,18 +256,15 @@
   <object type="fa_dorf_wall_1" x="279" y="191"/>
   <object type="fa_dorf_wall_1" x="659" y="191"/>
   <object type="fa_dorf_wall_1" x="1037" y="191"/>
-  <object type="fa_dorf_wall_1" x="1225" y="190"/>
   <object type="fa_dorf_wall_1" x="146" y="191"/>
   <object type="fa_dorf_wall_1" x="726" y="191"/>
   <object type="fa_dorf_wall_1" x="1116" y="190"/>
-  <object type="fa_dorf_wall_1" x="79" y="191"/>
   <object type="fa_dorf_wall_1" x="369" y="191"/>
   <object type="fa_dorf_wall_1" x="860" y="190"/>
   <object type="fa_dorf_wall_1" x="1136" y="190"/>
   <object type="fa_dorf_wall_1" x="503" y="191"/>
   <object type="fa_dorf_wall_1" x="636" y="191"/>
   <object type="fa_dorf_wall_1" x="993" y="191"/>
-  <object type="fa_dorf_wall_1" x="346" y="191"/>
   <object type="fa_dorf_wall_1" x="592" y="191"/>
   <object type="fa_dorf_wall_1" x="949" y="190"/>
   <object type="fa_dorf_wall_1" x="190" y="191"/>
@@ -279,11 +274,9 @@
   <object type="fa_dorf_wall_1" x="123" y="191"/>
   <object type="fa_dorf_wall_1" x="436" y="191"/>
   <object type="fa_dorf_wall_1" x="793" y="190"/>
-  <object type="fa_dorf_wall_1" x="1247" y="190"/>
   <object type="fa_dorf_wall_1" x="101" y="191"/>
   <object type="fa_dorf_wall_1" x="1056" y="191"/>
   <object type="fa_dorf_wall_1" x="1158" y="190"/>
-  <object type="fa_dorf_wall_1" x="34" y="191"/>
   <object type="fa_dorf_wall_1" x="681" y="191"/>
   <object type="fa_dorf_wall_1" x="570" y="191"/>
   <object type="fa_dorf_wall_1" x="927" y="190"/>
@@ -292,7 +285,6 @@
   <object type="fa_dorf_wall_1" x="882" y="190"/>
   <object type="fa_dorf_wall_1" x="257" y="191"/>
   <object type="fa_dorf_wall_1" x="702" y="371"/>
-  <object type="fa_dorf_wall_1" x="1074" y="370"/>
   <object type="fa_dorf_wall_1" x="1095" y="370"/>
   <object type="fa_dorf_wall_1" x="323" y="371"/>
   <object type="fa_dorf_wall_1" x="479" y="371"/>
@@ -300,7 +292,6 @@
   <object type="fa_dorf_wall_1" x="1179" y="370"/>
   <object type="fa_dorf_wall_1" x="167" y="371"/>
   <object type="fa_dorf_wall_1" x="814" y="371"/>
-  <object type="fa_dorf_wall_1" x="56" y="371"/>
   <object type="fa_dorf_wall_1" x="457" y="371"/>
   <object type="fa_dorf_wall_1" x="390" y="371"/>
   <object type="fa_dorf_wall_1" x="747" y="370"/>
@@ -329,7 +320,6 @@
   <object type="fa_dorf_wall_1" x="591" y="371"/>
   <object type="fa_dorf_wall_1" x="948" y="370"/>
   <object type="fa_dorf_wall_1" x="189" y="371"/>
-  <object type="fa_dorf_wall_1" x="546" y="371"/>
   <object type="fa_dorf_wall_1" x="903" y="371"/>
   <object type="fa_dorf_wall_1" x="1201" y="371"/>
   <object type="fa_dorf_wall_1" x="122" y="371"/>
@@ -337,20 +327,13 @@
   <object type="fa_dorf_wall_1" x="792" y="370"/>
   <object type="fa_dorf_wall_1" x="1246" y="370"/>
   <object type="fa_dorf_wall_1" x="100" y="371"/>
-  <object type="fa_dorf_wall_1" x="1055" y="371"/>
   <object type="fa_dorf_wall_1" x="1157" y="370"/>
-  <object type="fa_dorf_wall_1" x="33" y="371"/>
   <object type="fa_dorf_wall_1" x="680" y="371"/>
   <object type="fa_dorf_wall_1" x="569" y="371"/>
   <object type="fa_dorf_wall_1" x="926" y="370"/>
-  <object type="fa_dorf_wall_1" x="234" y="371"/>
-  <object type="fa_dorf_wall_1" x="524" y="371"/>
   <object type="fa_dorf_wall_1" x="881" y="370"/>
-  <object type="fa_dorf_wall_1" x="256" y="371"/>
   <object type="fa_dorf_wall_1" x="702" y="575"/>
-  <object type="fa_dorf_wall_1" x="1074" y="574"/>
   <object type="fa_dorf_wall_1" x="1095" y="574"/>
-  <object type="fa_dorf_wall_1" x="323" y="575"/>
   <object type="fa_dorf_wall_1" x="479" y="575"/>
   <object type="fa_dorf_wall_1" x="836" y="574"/>
   <object type="fa_dorf_wall_1" x="1179" y="574"/>
@@ -370,7 +353,6 @@
   <object type="fa_dorf_wall_1" x="278" y="575"/>
   <object type="fa_dorf_wall_1" x="658" y="575"/>
   <object type="fa_dorf_wall_1" x="1036" y="575"/>
-  <object type="fa_dorf_wall_1" x="1224" y="574"/>
   <object type="fa_dorf_wall_1" x="145" y="575"/>
   <object type="fa_dorf_wall_1" x="725" y="575"/>
   <object type="fa_dorf_wall_1" x="1115" y="574"/>
@@ -381,44 +363,33 @@
   <object type="fa_dorf_wall_1" x="502" y="575"/>
   <object type="fa_dorf_wall_1" x="635" y="575"/>
   <object type="fa_dorf_wall_1" x="992" y="575"/>
-  <object type="fa_dorf_wall_1" x="345" y="575"/>
   <object type="fa_dorf_wall_1" x="591" y="575"/>
   <object type="fa_dorf_wall_1" x="948" y="574"/>
   <object type="fa_dorf_wall_1" x="189" y="575"/>
   <object type="fa_dorf_wall_1" x="546" y="575"/>
-  <object type="fa_dorf_wall_1" x="903" y="575"/>
   <object type="fa_dorf_wall_1" x="1201" y="575"/>
   <object type="fa_dorf_wall_1" x="122" y="575"/>
   <object type="fa_dorf_wall_1" x="435" y="575"/>
   <object type="fa_dorf_wall_1" x="792" y="574"/>
-  <object type="fa_dorf_wall_1" x="1246" y="574"/>
   <object type="fa_dorf_wall_1" x="100" y="575"/>
-  <object type="fa_dorf_wall_1" x="1055" y="575"/>
   <object type="fa_dorf_wall_1" x="1157" y="574"/>
   <object type="fa_dorf_wall_1" x="33" y="575"/>
   <object type="fa_dorf_wall_1" x="680" y="575"/>
   <object type="fa_dorf_wall_1" x="569" y="575"/>
-  <object type="fa_dorf_wall_1" x="926" y="574"/>
   <object type="fa_dorf_wall_1" x="234" y="575"/>
   <object type="fa_dorf_wall_1" x="524" y="575"/>
   <object type="fa_dorf_wall_1" x="881" y="574"/>
   <object type="fa_dorf_wall_1" x="256" y="575"/>
-  <object type="fa_dorf_wall_1" x="701" y="774"/>
-  <object type="fa_dorf_wall_1" x="1073" y="773"/>
   <object type="fa_dorf_wall_1" x="1094" y="773"/>
   <object type="fa_dorf_wall_1" x="322" y="774"/>
   <object type="fa_dorf_wall_1" x="478" y="774"/>
   <object type="fa_dorf_wall_1" x="835" y="773"/>
-  <object type="fa_dorf_wall_1" x="1178" y="773"/>
   <object type="fa_dorf_wall_1" x="166" y="774"/>
   <object type="fa_dorf_wall_1" x="813" y="774"/>
-  <object type="fa_dorf_wall_1" x="55" y="774"/>
   <object type="fa_dorf_wall_1" x="456" y="774"/>
   <object type="fa_dorf_wall_1" x="389" y="774"/>
-  <object type="fa_dorf_wall_1" x="746" y="773"/>
   <object type="fa_dorf_wall_1" x="211" y="774"/>
   <object type="fa_dorf_wall_1" x="412" y="774"/>
-  <object type="fa_dorf_wall_1" x="769" y="773"/>
   <object type="fa_dorf_wall_1" x="300" y="774"/>
   <object type="fa_dorf_wall_1" x="612" y="774"/>
   <object type="fa_dorf_wall_1" x="969" y="773"/>
@@ -428,7 +399,6 @@
   <object type="fa_dorf_wall_1" x="1035" y="774"/>
   <object type="fa_dorf_wall_1" x="1223" y="773"/>
   <object type="fa_dorf_wall_1" x="144" y="774"/>
-  <object type="fa_dorf_wall_1" x="724" y="774"/>
   <object type="fa_dorf_wall_1" x="1114" y="773"/>
   <object type="fa_dorf_wall_1" x="77" y="774"/>
   <object type="fa_dorf_wall_1" x="367" y="774"/>
@@ -442,19 +412,14 @@
   <object type="fa_dorf_wall_1" x="947" y="773"/>
   <object type="fa_dorf_wall_1" x="188" y="774"/>
   <object type="fa_dorf_wall_1" x="545" y="774"/>
-  <object type="fa_dorf_wall_1" x="902" y="774"/>
   <object type="fa_dorf_wall_1" x="1200" y="774"/>
   <object type="fa_dorf_wall_1" x="121" y="774"/>
   <object type="fa_dorf_wall_1" x="434" y="774"/>
   <object type="fa_dorf_wall_1" x="791" y="773"/>
   <object type="fa_dorf_wall_1" x="1245" y="773"/>
   <object type="fa_dorf_wall_1" x="99" y="774"/>
-  <object type="fa_dorf_wall_1" x="1054" y="774"/>
-  <object type="fa_dorf_wall_1" x="1156" y="773"/>
-  <object type="fa_dorf_wall_1" x="32" y="774"/>
   <object type="fa_dorf_wall_1" x="679" y="774"/>
   <object type="fa_dorf_wall_1" x="568" y="774"/>
-  <object type="fa_dorf_wall_1" x="925" y="773"/>
   <object type="fa_dorf_wall_1" x="233" y="774"/>
   <object type="fa_dorf_wall_1" x="523" y="774"/>
   <object type="fa_dorf_wall_1" x="880" y="773"/>
@@ -465,22 +430,18 @@
   <object type="fa_dorf_wall_1" x="323" y="952"/>
   <object type="fa_dorf_wall_1" x="479" y="952"/>
   <object type="fa_dorf_wall_1" x="836" y="951"/>
-  <object type="fa_dorf_wall_1" x="1179" y="951"/>
   <object type="fa_dorf_wall_1" x="167" y="952"/>
   <object type="fa_dorf_wall_1" x="814" y="952"/>
   <object type="fa_dorf_wall_1" x="56" y="952"/>
   <object type="fa_dorf_wall_1" x="457" y="952"/>
   <object type="fa_dorf_wall_1" x="390" y="952"/>
-  <object type="fa_dorf_wall_1" x="747" y="951"/>
   <object type="fa_dorf_wall_1" x="212" y="952"/>
   <object type="fa_dorf_wall_1" x="413" y="952"/>
-  <object type="fa_dorf_wall_1" x="770" y="951"/>
   <object type="fa_dorf_wall_1" x="301" y="952"/>
   <object type="fa_dorf_wall_1" x="613" y="952"/>
   <object type="fa_dorf_wall_1" x="970" y="951"/>
   <object type="fa_dorf_wall_1" x="1014" y="952"/>
   <object type="fa_dorf_wall_1" x="278" y="952"/>
-  <object type="fa_dorf_wall_1" x="658" y="952"/>
   <object type="fa_dorf_wall_1" x="1036" y="952"/>
   <object type="fa_dorf_wall_1" x="1224" y="951"/>
   <object type="fa_dorf_wall_1" x="145" y="952"/>
@@ -491,7 +452,6 @@
   <object type="fa_dorf_wall_1" x="859" y="951"/>
   <object type="fa_dorf_wall_1" x="1135" y="951"/>
   <object type="fa_dorf_wall_1" x="502" y="952"/>
-  <object type="fa_dorf_wall_1" x="635" y="952"/>
   <object type="fa_dorf_wall_1" x="992" y="952"/>
   <object type="fa_dorf_wall_1" x="345" y="952"/>
   <object type="fa_dorf_wall_1" x="591" y="952"/>
@@ -499,10 +459,8 @@
   <object type="fa_dorf_wall_1" x="189" y="952"/>
   <object type="fa_dorf_wall_1" x="546" y="952"/>
   <object type="fa_dorf_wall_1" x="903" y="952"/>
-  <object type="fa_dorf_wall_1" x="1201" y="952"/>
   <object type="fa_dorf_wall_1" x="122" y="952"/>
   <object type="fa_dorf_wall_1" x="435" y="952"/>
-  <object type="fa_dorf_wall_1" x="792" y="951"/>
   <object type="fa_dorf_wall_1" x="1246" y="951"/>
   <object type="fa_dorf_wall_1" x="100" y="952"/>
   <object type="fa_dorf_wall_1" x="1055" y="952"/>
@@ -524,27 +482,20 @@
   <object type="fa_dorf_wall_1" x="1178" y="1133"/>
   <object type="fa_dorf_wall_1" x="166" y="1134"/>
   <object type="fa_dorf_wall_1" x="813" y="1134"/>
-  <object type="fa_dorf_wall_1" x="55" y="1134"/>
   <object type="fa_dorf_wall_1" x="456" y="1134"/>
   <object type="fa_dorf_wall_1" x="389" y="1134"/>
-  <object type="fa_dorf_wall_1" x="746" y="1133"/>
   <object type="fa_dorf_wall_1" x="211" y="1134"/>
   <object type="fa_dorf_wall_1" x="412" y="1134"/>
-  <object type="fa_dorf_wall_1" x="769" y="1133"/>
   <object type="fa_dorf_wall_1" x="300" y="1134"/>
   <object type="fa_dorf_wall_1" x="612" y="1134"/>
   <object type="fa_dorf_wall_1" x="969" y="1133"/>
-  <object type="fa_dorf_wall_1" x="1013" y="1134"/>
   <object type="fa_dorf_wall_1" x="277" y="1134"/>
   <object type="fa_dorf_wall_1" x="657" y="1134"/>
-  <object type="fa_dorf_wall_1" x="1035" y="1134"/>
-  <object type="fa_dorf_wall_1" x="1223" y="1133"/>
   <object type="fa_dorf_wall_1" x="144" y="1134"/>
   <object type="fa_dorf_wall_1" x="724" y="1134"/>
   <object type="fa_dorf_wall_1" x="1114" y="1133"/>
   <object type="fa_dorf_wall_1" x="77" y="1134"/>
   <object type="fa_dorf_wall_1" x="367" y="1134"/>
-  <object type="fa_dorf_wall_1" x="858" y="1133"/>
   <object type="fa_dorf_wall_1" x="1134" y="1133"/>
   <object type="fa_dorf_wall_1" x="501" y="1134"/>
   <object type="fa_dorf_wall_1" x="634" y="1134"/>
@@ -555,7 +506,6 @@
   <object type="fa_dorf_wall_1" x="188" y="1134"/>
   <object type="fa_dorf_wall_1" x="545" y="1134"/>
   <object type="fa_dorf_wall_1" x="902" y="1134"/>
-  <object type="fa_dorf_wall_1" x="1200" y="1134"/>
   <object type="fa_dorf_wall_1" x="121" y="1134"/>
   <object type="fa_dorf_wall_1" x="434" y="1134"/>
   <object type="fa_dorf_wall_1" x="791" y="1133"/>
@@ -563,13 +513,11 @@
   <object type="fa_dorf_wall_1" x="99" y="1134"/>
   <object type="fa_dorf_wall_1" x="1054" y="1134"/>
   <object type="fa_dorf_wall_1" x="1156" y="1133"/>
-  <object type="fa_dorf_wall_1" x="32" y="1134"/>
   <object type="fa_dorf_wall_1" x="679" y="1134"/>
   <object type="fa_dorf_wall_1" x="568" y="1134"/>
   <object type="fa_dorf_wall_1" x="925" y="1133"/>
   <object type="fa_dorf_wall_1" x="233" y="1134"/>
   <object type="fa_dorf_wall_1" x="523" y="1134"/>
-  <object type="fa_dorf_wall_1" x="880" y="1133"/>
   <object type="fa_dorf_wall_1" x="255" y="1134"/>
   <object type="fa_dorf_wall_1" x="1135" y="794"/>
   <object type="fa_dorf_wall_1" x="1135" y="928"/>
@@ -580,8 +528,6 @@
   <object type="fa_dorf_wall_1" x="1135" y="816"/>
   <object type="fa_dorf_wall_1" x="992" y="795"/>
   <object type="fa_dorf_wall_1" x="992" y="929"/>
-  <object type="fa_dorf_wall_1" x="992" y="862"/>
-  <object type="fa_dorf_wall_1" x="992" y="885"/>
   <object type="fa_dorf_wall_1" x="992" y="840"/>
   <object type="fa_dorf_wall_1" x="992" y="907"/>
   <object type="fa_dorf_wall_1" x="992" y="817"/>
@@ -600,53 +546,39 @@
   <object type="fa_dorf_wall_1" x="677" y="908"/>
   <object type="fa_dorf_wall_1" x="677" y="818"/>
   <object type="fa_dorf_wall_1" x="499" y="796"/>
-  <object type="fa_dorf_wall_1" x="499" y="930"/>
   <object type="fa_dorf_wall_1" x="499" y="863"/>
   <object type="fa_dorf_wall_1" x="499" y="886"/>
   <object type="fa_dorf_wall_1" x="499" y="841"/>
-  <object type="fa_dorf_wall_1" x="499" y="908"/>
   <object type="fa_dorf_wall_1" x="499" y="818"/>
-  <object type="fa_dorf_wall_1" x="368" y="795"/>
   <object type="fa_dorf_wall_1" x="368" y="929"/>
   <object type="fa_dorf_wall_1" x="368" y="862"/>
   <object type="fa_dorf_wall_1" x="368" y="885"/>
   <object type="fa_dorf_wall_1" x="368" y="840"/>
   <object type="fa_dorf_wall_1" x="368" y="907"/>
-  <object type="fa_dorf_wall_1" x="368" y="817"/>
-  <object type="fa_dorf_wall_1" x="212" y="796"/>
   <object type="fa_dorf_wall_1" x="212" y="930"/>
   <object type="fa_dorf_wall_1" x="212" y="863"/>
   <object type="fa_dorf_wall_1" x="212" y="886"/>
   <object type="fa_dorf_wall_1" x="212" y="841"/>
   <object type="fa_dorf_wall_1" x="212" y="908"/>
-  <object type="fa_dorf_wall_1" x="212" y="818"/>
   <object type="fa_dorf_wall_1" x="101" y="975"/>
-  <object type="fa_dorf_wall_1" x="101" y="1109"/>
   <object type="fa_dorf_wall_1" x="101" y="1042"/>
   <object type="fa_dorf_wall_1" x="101" y="1065"/>
   <object type="fa_dorf_wall_1" x="101" y="1020"/>
-  <object type="fa_dorf_wall_1" x="101" y="1087"/>
   <object type="fa_dorf_wall_1" x="101" y="997"/>
-  <object type="fa_dorf_wall_1" x="255" y="974"/>
   <object type="fa_dorf_wall_1" x="255" y="1108"/>
   <object type="fa_dorf_wall_1" x="255" y="1041"/>
   <object type="fa_dorf_wall_1" x="255" y="1064"/>
   <object type="fa_dorf_wall_1" x="255" y="1019"/>
   <object type="fa_dorf_wall_1" x="255" y="1086"/>
-  <object type="fa_dorf_wall_1" x="255" y="996"/>
   <object type="fa_dorf_wall_1" x="411" y="976"/>
-  <object type="fa_dorf_wall_1" x="411" y="1110"/>
   <object type="fa_dorf_wall_1" x="411" y="1043"/>
   <object type="fa_dorf_wall_1" x="411" y="1066"/>
   <object type="fa_dorf_wall_1" x="411" y="1021"/>
-  <object type="fa_dorf_wall_1" x="411" y="1088"/>
   <object type="fa_dorf_wall_1" x="411" y="998"/>
   <object type="fa_dorf_wall_1" x="565" y="976"/>
-  <object type="fa_dorf_wall_1" x="565" y="1110"/>
   <object type="fa_dorf_wall_1" x="565" y="1043"/>
   <object type="fa_dorf_wall_1" x="565" y="1066"/>
   <object type="fa_dorf_wall_1" x="565" y="1021"/>
-  <object type="fa_dorf_wall_1" x="565" y="1088"/>
   <object type="fa_dorf_wall_1" x="565" y="998"/>
   <object type="fa_dorf_wall_1" x="679" y="976"/>
   <object type="fa_dorf_wall_1" x="679" y="1110"/>
@@ -664,8 +596,6 @@
   <object type="fa_dorf_wall_1" x="836" y="997"/>
   <object type="fa_dorf_wall_1" x="969" y="975"/>
   <object type="fa_dorf_wall_1" x="969" y="1109"/>
-  <object type="fa_dorf_wall_1" x="969" y="1042"/>
-  <object type="fa_dorf_wall_1" x="969" y="1065"/>
   <object type="fa_dorf_wall_1" x="969" y="1020"/>
   <object type="fa_dorf_wall_1" x="969" y="1087"/>
   <object type="fa_dorf_wall_1" x="969" y="997"/>
@@ -677,8 +607,6 @@
   <object type="fa_dorf_wall_1" x="1113" y="1086"/>
   <object type="fa_dorf_wall_1" x="1113" y="996"/>
   <object type="fa_dorf_wall_1" x="1179" y="1202"/>
-  <object type="fa_dorf_wall_1" x="1179" y="1248"/>
-  <object type="fa_dorf_wall_1" x="1180" y="1225"/>
   <object type="fa_dorf_wall_1" x="1179" y="1180"/>
   <object type="fa_dorf_wall_1" x="1179" y="1157"/>
   <object type="fa_dorf_wall_1" x="969" y="1203"/>
@@ -686,9 +614,7 @@
   <object type="fa_dorf_wall_1" x="970" y="1226"/>
   <object type="fa_dorf_wall_1" x="969" y="1181"/>
   <object type="fa_dorf_wall_1" x="969" y="1158"/>
-  <object type="fa_dorf_wall_1" x="837" y="1201"/>
   <object type="fa_dorf_wall_1" x="837" y="1247"/>
-  <object type="fa_dorf_wall_1" x="838" y="1224"/>
   <object type="fa_dorf_wall_1" x="837" y="1179"/>
   <object type="fa_dorf_wall_1" x="837" y="1156"/>
   <object type="fa_dorf_wall_1" x="679" y="1201"/>
@@ -697,23 +623,15 @@
   <object type="fa_dorf_wall_1" x="679" y="1179"/>
   <object type="fa_dorf_wall_1" x="679" y="1156"/>
   <object type="fa_dorf_wall_1" x="567" y="1202"/>
-  <object type="fa_dorf_wall_1" x="567" y="1248"/>
-  <object type="fa_dorf_wall_1" x="568" y="1225"/>
   <object type="fa_dorf_wall_1" x="567" y="1180"/>
   <object type="fa_dorf_wall_1" x="567" y="1157"/>
   <object type="fa_dorf_wall_1" x="412" y="1202"/>
   <object type="fa_dorf_wall_1" x="412" y="1248"/>
   <object type="fa_dorf_wall_1" x="413" y="1225"/>
-  <object type="fa_dorf_wall_1" x="412" y="1180"/>
-  <object type="fa_dorf_wall_1" x="412" y="1157"/>
   <object type="fa_dorf_wall_1" x="253" y="1202"/>
-  <object type="fa_dorf_wall_1" x="253" y="1248"/>
-  <object type="fa_dorf_wall_1" x="254" y="1225"/>
   <object type="fa_dorf_wall_1" x="253" y="1180"/>
   <object type="fa_dorf_wall_1" x="253" y="1157"/>
   <object type="fa_dorf_wall_1" x="101" y="1199"/>
-  <object type="fa_dorf_wall_1" x="101" y="1245"/>
-  <object type="fa_dorf_wall_1" x="102" y="1222"/>
   <object type="fa_dorf_wall_1" x="101" y="1177"/>
   <object type="fa_dorf_wall_1" x="101" y="1154"/>
   <object type="fa_dorf_wall_1" x="1135" y="660"/>
@@ -758,8 +676,6 @@
   <object type="fa_dorf_wall_1" x="368" y="709"/>
   <object type="fa_dorf_wall_1" x="211" y="663"/>
   <object type="fa_dorf_wall_1" x="211" y="686"/>
-  <object type="fa_dorf_wall_1" x="211" y="596"/>
-  <object type="fa_dorf_wall_1" x="211" y="619"/>
   <object type="fa_dorf_wall_1" x="211" y="753"/>
   <object type="fa_dorf_wall_1" x="211" y="731"/>
   <object type="fa_dorf_wall_1" x="211" y="641"/>
@@ -784,8 +700,6 @@
   <object type="fa_dorf_wall_1" x="500" y="486"/>
   <object type="fa_dorf_wall_1" x="500" y="396"/>
   <object type="fa_dorf_wall_1" x="500" y="419"/>
-  <object type="fa_dorf_wall_1" x="500" y="553"/>
-  <object type="fa_dorf_wall_1" x="500" y="531"/>
   <object type="fa_dorf_wall_1" x="500" y="441"/>
   <object type="fa_dorf_wall_1" x="500" y="508"/>
   <object type="fa_dorf_wall_1" x="680" y="463"/>
@@ -797,13 +711,11 @@
   <object type="fa_dorf_wall_1" x="680" y="441"/>
   <object type="fa_dorf_wall_1" x="680" y="508"/>
   <object type="fa_dorf_wall_1" x="836" y="461"/>
-  <object type="fa_dorf_wall_1" x="836" y="484"/>
   <object type="fa_dorf_wall_1" x="836" y="394"/>
   <object type="fa_dorf_wall_1" x="836" y="417"/>
   <object type="fa_dorf_wall_1" x="836" y="551"/>
   <object type="fa_dorf_wall_1" x="836" y="529"/>
   <object type="fa_dorf_wall_1" x="836" y="439"/>
-  <object type="fa_dorf_wall_1" x="836" y="506"/>
   <object type="fa_dorf_wall_1" x="992" y="460"/>
   <object type="fa_dorf_wall_1" x="992" y="483"/>
   <object type="fa_dorf_wall_1" x="992" y="393"/>
@@ -816,36 +728,26 @@
   <object type="fa_dorf_wall_1" x="1136" y="483"/>
   <object type="fa_dorf_wall_1" x="1136" y="393"/>
   <object type="fa_dorf_wall_1" x="1136" y="416"/>
-  <object type="fa_dorf_wall_1" x="1136" y="550"/>
-  <object type="fa_dorf_wall_1" x="1136" y="528"/>
   <object type="fa_dorf_wall_1" x="1136" y="438"/>
   <object type="fa_dorf_wall_1" x="1136" y="505"/>
   <object type="fa_dorf_wall_1" x="1135" y="324"/>
   <object type="fa_dorf_wall_1" x="1135" y="347"/>
-  <object type="fa_dorf_wall_1" x="1136" y="234"/>
   <object type="fa_dorf_wall_1" x="1135" y="302"/>
-  <object type="fa_dorf_wall_1" x="1136" y="211"/>
   <object type="fa_dorf_wall_1" x="1135" y="279"/>
   <object type="fa_dorf_wall_1" x="1135" y="256"/>
   <object type="fa_dorf_wall_1" x="992" y="324"/>
   <object type="fa_dorf_wall_1" x="992" y="347"/>
   <object type="fa_dorf_wall_1" x="993" y="234"/>
-  <object type="fa_dorf_wall_1" x="992" y="302"/>
   <object type="fa_dorf_wall_1" x="993" y="211"/>
-  <object type="fa_dorf_wall_1" x="992" y="279"/>
   <object type="fa_dorf_wall_1" x="992" y="256"/>
   <object type="fa_dorf_wall_1" x="837" y="325"/>
   <object type="fa_dorf_wall_1" x="837" y="348"/>
   <object type="fa_dorf_wall_1" x="838" y="235"/>
-  <object type="fa_dorf_wall_1" x="837" y="303"/>
   <object type="fa_dorf_wall_1" x="838" y="212"/>
-  <object type="fa_dorf_wall_1" x="837" y="280"/>
   <object type="fa_dorf_wall_1" x="837" y="257"/>
   <object type="fa_dorf_wall_1" x="681" y="324"/>
   <object type="fa_dorf_wall_1" x="681" y="347"/>
-  <object type="fa_dorf_wall_1" x="682" y="234"/>
   <object type="fa_dorf_wall_1" x="681" y="302"/>
-  <object type="fa_dorf_wall_1" x="682" y="211"/>
   <object type="fa_dorf_wall_1" x="681" y="279"/>
   <object type="fa_dorf_wall_1" x="681" y="256"/>
   <object type="fa_dorf_wall_1" x="501" y="324"/>
@@ -871,30 +773,22 @@
   <object type="fa_dorf_wall_1" x="212" y="257"/>
   <object type="fa_dorf_wall_1" x="1135" y="145"/>
   <object type="fa_dorf_wall_1" x="1135" y="123"/>
-  <object type="fa_dorf_wall_1" x="1136" y="33"/>
-  <object type="fa_dorf_wall_1" x="1136" y="56"/>
   <object type="fa_dorf_wall_1" x="1136" y="168"/>
   <object type="fa_dorf_wall_1" x="1135" y="101"/>
   <object type="fa_dorf_wall_1" x="1135" y="78"/>
-  <object type="fa_dorf_wall_1" x="992" y="144"/>
   <object type="fa_dorf_wall_1" x="992" y="122"/>
   <object type="fa_dorf_wall_1" x="993" y="32"/>
   <object type="fa_dorf_wall_1" x="993" y="55"/>
-  <object type="fa_dorf_wall_1" x="993" y="167"/>
   <object type="fa_dorf_wall_1" x="992" y="100"/>
   <object type="fa_dorf_wall_1" x="992" y="77"/>
   <object type="fa_dorf_wall_1" x="837" y="145"/>
   <object type="fa_dorf_wall_1" x="837" y="123"/>
-  <object type="fa_dorf_wall_1" x="838" y="33"/>
-  <object type="fa_dorf_wall_1" x="838" y="56"/>
   <object type="fa_dorf_wall_1" x="838" y="168"/>
   <object type="fa_dorf_wall_1" x="837" y="101"/>
   <object type="fa_dorf_wall_1" x="837" y="78"/>
-  <object type="fa_dorf_wall_1" x="681" y="145"/>
   <object type="fa_dorf_wall_1" x="681" y="123"/>
   <object type="fa_dorf_wall_1" x="682" y="33"/>
   <object type="fa_dorf_wall_1" x="682" y="56"/>
-  <object type="fa_dorf_wall_1" x="682" y="168"/>
   <object type="fa_dorf_wall_1" x="681" y="101"/>
   <object type="fa_dorf_wall_1" x="681" y="78"/>
   <object type="fa_dorf_wall_1" x="500" y="144"/>
@@ -902,21 +796,16 @@
   <object type="fa_dorf_wall_1" x="501" y="32"/>
   <object type="fa_dorf_wall_1" x="501" y="55"/>
   <object type="fa_dorf_wall_1" x="501" y="167"/>
-  <object type="fa_dorf_wall_1" x="500" y="100"/>
-  <object type="fa_dorf_wall_1" x="500" y="77"/>
   <object type="fa_dorf_wall_1" x="368" y="145"/>
   <object type="fa_dorf_wall_1" x="368" y="123"/>
-  <object type="fa_dorf_wall_1" x="369" y="33"/>
-  <object type="fa_dorf_wall_1" x="369" y="56"/>
   <object type="fa_dorf_wall_1" x="369" y="168"/>
   <object type="fa_dorf_wall_1" x="368" y="101"/>
   <object type="fa_dorf_wall_1" x="368" y="78"/>
-  <object type="fa_dorf_wall_1" x="211" y="147"/>
-  <object type="fa_dorf_wall_1" x="211" y="125"/>
-  <object type="fa_dorf_wall_1" x="212" y="35"/>
-  <object type="fa_dorf_wall_1" x="212" y="58"/>
-  <object type="fa_dorf_wall_1" x="212" y="170"/>
-  <object type="fa_dorf_wall_1" x="211" y="103"/>
-  <object type="fa_dorf_wall_1" x="211" y="80"/>
+  <object type="fa_dorf_wall_1" x="208" y="123"/>
+  <object type="fa_dorf_wall_1" x="209" y="33"/>
+  <object type="fa_dorf_wall_1" x="209" y="56"/>
+  <object type="fa_dorf_wall_1" x="208" y="101"/>
+  <object type="fa_dorf_wall_1" x="208" y="78"/>
+  <object type="fa_dorf_table" x="577" y="659"/>
  </objectgroup>
 </map>

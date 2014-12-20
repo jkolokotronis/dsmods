@@ -94,6 +94,8 @@ AddTask("FADwarfFortressTask2", {
 			["FA_DwarfFortressForge"] = 1,
 			["FA_DwarfFortressBedrooms"]=1,
 			["FA_DwarfFortressStorage"] = 1,
+			["FA_DwarfFortressAlcohol"] = 1,
+			
 --			["PondWilds"] = math.random(1,3),
 --			["SlurperWilds"] = math.random(1,3),
 --			["LushWilds"] = math.random(1,2),
