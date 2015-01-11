@@ -109,7 +109,7 @@ local function MakeWoodenShield()
     inst.AnimState:SetBuild("swap_woodshield")
     inst.AnimState:PlayAnimation("anim")
 
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_shields.xml"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_inventoryimages.xml"
     inst.components.inventoryitem.imagename="fa_woodshield"
     inst.components.inventoryitem.foleysound = "dontstarve/movement/foley/backpack"
 
@@ -138,7 +138,7 @@ local function MakeRockShield()
     inst.AnimState:SetBuild("swap_rockshield")
     inst.AnimState:PlayAnimation("anim")
 
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_shields.xml"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_inventoryimages.xml"
     inst.components.inventoryitem.imagename="fa_rockshield"
     inst.components.inventoryitem.foleysound = "dontstarve/movement/foley/backpack"
     inst.components.armor:InitCondition(ROCK_SHIELD_DURA, ROCK_SHIELD_ABSO )
@@ -154,7 +154,7 @@ local function MakeMarbleShield()
     inst.AnimState:SetBuild("swap_marbleshield")
     inst.AnimState:PlayAnimation("anim")
     
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_shields.xml"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_inventoryimages.xml"
     inst.components.inventoryitem.imagename="fa_marbleshield"
     inst.components.inventoryitem.foleysound = "dontstarve/movement/foley/backpack"
     inst.components.armor:InitCondition(MARBLE_SHIELD_DURA, MARBLE_SHIELD_ABSO )
@@ -170,7 +170,7 @@ local function MakeBoneShield()
     inst.AnimState:SetBuild("swap_boneshield")
     inst.AnimState:PlayAnimation("anim")
 
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_shields.xml"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_inventoryimages.xml"
     inst.components.inventoryitem.imagename="fa_boneshield"
     inst.components.inventoryitem.foleysound = "dontstarve/movement/foley/backpack"
     inst.components.armor:InitCondition(BONE_SHIELD_DURA, BONE_SHIELD_ABSO )
@@ -187,7 +187,7 @@ local function MakeReflectShield()
     inst.AnimState:PlayAnimation("anim")
 
     
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_shields.xml"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_inventoryimages.xml"
     inst.components.inventoryitem.imagename="fa_reflectshield"
     inst.components.inventoryitem.foleysound = "dontstarve/movement/foley/backpack"
     inst.components.armor:InitCondition(REFLECT_SHIELD_DURA, REFLECT_SHIELD_ABSO )

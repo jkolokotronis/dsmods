@@ -14,8 +14,19 @@ local fa_minecart_assets={
 local fa_orcrefuse_assets={
     Asset( "ANIM", "anim/fa_orcrefuse.zip" ),
 }
+local fa_clothes_assets={
+    Asset( "ANIM", "anim/fa_clothes.zip" ),
+}
 local fa_dorftorch_assets={
     Asset( "ANIM", "anim/fa_dorf_torch.zip" ),
+}
+local cageassets=
+{
+    Asset( "ANIM", "anim/player_cage_drop.zip" ),
+    Asset( "ANIM", "anim/fa_cagechains.zip" ),
+    Asset("ANIM", "anim/fa_orcfort_cage.zip"),
+        Asset( "ANIM", "anim/bluegoblin.zip" ),
+
 }
 local function fn(bank,bld,animname,loop)
 	local inst = CreateEntity()
@@ -79,6 +90,11 @@ local function fa_stool()
     return inst
 end
 
+local function fa_clothes()
+    local inst= fn("fa_clothes")
+    MakeInventoryPhysics(inst)
+    return inst
+end
 
 local function fa_minecart()
     local inst= fn("fa_minecart","fa_minecart","full")
@@ -153,10 +169,31 @@ local function dorftorchfn()
 end
 
 
+local function cagefn()
+    local inst = CreateEntity()
+    local trans = inst.entity:AddTransform()
+    local anim = inst.entity:AddAnimState()
+    inst.entity:AddSoundEmitter()
+         
+        inst.AnimState:SetBank("wilson")
+        inst.AnimState:SetBuild("bluegoblin")
+
+        inst.AnimState:OverrideSymbol("chains", "fa_cagechains", "chains")
+        inst.AnimState:OverrideSymbol("cage", "fa_orcfort_cage", "cage")
+        inst.AnimState:PlayAnimation("fa_cagedrop",true)
+
+    inst:AddComponent("inspectable")
+
+    return inst
+end
+
+
 return Prefab( "common/fa_dorf_gold_pillar", fa_pillar_dwarf, fa_pillar_dwarf_assets),
 Prefab( "common/fa_dorf_stool", fa_stool, fa_stool_assets),
 Prefab( "common/fa_dorf_stool_blown", fa_stool_blown, fa_stool_assets),
+Prefab( "common/fa_clothes", fa_clothes, fa_clothes_assets),
 Prefab( "common/fa_dorf_table", fa_table, fa_table_assets),
 Prefab( "common/fa_dorf_light", dorftorchfn, fa_dorftorch_assets),
 Prefab( "common/fa_minecart", fa_minecart, fa_minecart_assets),
-Prefab( "common/fa_orcrefuse", orcrefuse, fa_orcrefuse_assets)
+Prefab( "common/fa_playerjailcage", cagefn, cageassets),
+Prefab( "common/fa_orcjailcage", cagefn, cageassets)

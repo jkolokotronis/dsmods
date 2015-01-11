@@ -4,8 +4,6 @@ local red_assets =
     Asset("ANIM", "anim/swap_fa_redtotem.zip"),
     Asset("ANIM", "anim/fa_shieldpuff.zip"),
     Asset("ANIM", "anim/bolt_tesla.zip"),
-    Asset("ATLAS", "images/inventoryimages/fa_redtotem.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_redtotem.tex"),
 }
 
 local blue_assets =
@@ -14,8 +12,6 @@ local blue_assets =
     Asset("ANIM", "anim/swap_fa_bluetotem.zip"),
     Asset("ANIM", "anim/fa_shieldpuff.zip"),
     Asset("ANIM", "anim/bolt_tesla.zip"),
-    Asset("ATLAS", "images/inventoryimages/fa_bluetotem.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_bluetotem.tex"),
 }
 
 local prefabs = 
@@ -251,7 +247,7 @@ local function redtotem_itemfn(Sim)
     inst.components.deployable.ondeploy = ondeployred
     inst.components.deployable.placer = "fa_redtotem_placer"
     inst.components.inventoryitem.imagename="fa_redtotem"
-    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_redtotem.xml"
+    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_inventoryimages.xml"
 
     inst:AddComponent("finiteuses")
     inst.components.finiteuses:SetMaxUses(REDTOTEM_USES)
@@ -270,7 +266,7 @@ local function bluetotem_itemfn(Sim)
     inst.components.deployable.ondeploy = ondeployblue
     inst.components.deployable.placer = "fa_bluetotem_placer"
     inst.components.inventoryitem.imagename="fa_bluetotem"
-    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_bluetotem.xml"
+    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_inventoryimages.xml"
 
     inst:AddComponent("fueled")
     inst.components.fueled.fueltype = "BURNABLE"

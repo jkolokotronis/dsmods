@@ -18,7 +18,7 @@ local function fn()
     inst:AddComponent("inspectable")
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem.imagename="bone_shards_compat"
-    inst.components.inventoryitem.atlasname="images/inventoryimages/bone_shards_compat.xml"
+    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_inventoryimages.xml"
 
     inst:AddComponent("stackable")
 

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="80" height="80" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="tiles" tilewidth="64" tileheight="64">
+  <image source="../../tiles/tiles.png" width="512" height="512"/>
+ </tileset>
+ <layer name="BG_TILES" width="80" height="80">
+  <data encoding="base64" compression="zlib">
+   eJzt2kEKhDAQBEDB//95z+4lOyxmxrbqJn2YEEgjmuMAAHi2c9jzt2nrAXJ0n/dq/92tez+AfXa/f/07f5XfvR4gh/6r5UAO/VfLgRz6r5YDOab9f909fzUPyOW8X9kPeI/u+3XTn4FczvuV/YD36P7+1j1/NQ/I5f9vLQdy6L9aDuTQf7UcyKH/ajmQQ//VciBH93mf1kfd+wHs032/uPv+i/vPAL/5AB7pAno=
+  </data>
+ </layer>
+ <objectgroup name="FG_OBJECTS" width="80" height="80">
+  <object type="maxwelllight_area" x="796" y="590"/>
+  <object type="maxwelllight_area" x="541" y="590"/>
+  <object type="maxwelllight_area" x="144" y="592"/>
+  <object type="maxwelllight_area" x="1198" y="601"/>
+  <object type="maxwelllight_area" x="1198" y="1196"/>
+  <object type="maxwelllight_area" x="721" y="1198"/>
+  <object type="maxwelllight_area" x="848" y="775"/>
+  <object type="maxwelllight_area" x="490" y="777"/>
+  <object type="maxwelllight_area" x="83" y="1200"/>
+  <object type="maxwelllight_area" x="620" y="1197"/>
+  <object type="maxwelllight_area" x="79" y="80"/>
+  <object type="maxwelllight_area" x="496" y="206"/>
+  <object type="maxwelllight_area" x="623" y="77"/>
+  <object type="maxwelllight_area" x="719" y="77"/>
+  <object type="maxwelllight_area" x="845" y="432"/>
+  <object type="maxwelllight_area" x="1200" y="77"/>
+  <object type="fa_lavagrave" x="258" y="253"/>
+  <object type="fa_lavagrave" x="320" y="253"/>
+  <object type="fa_lavagrave" x="382" y="253"/>
+  <object type="fa_lavagrave" x="446" y="254"/>
+  <object type="fa_lavagrave" x="447" y="318"/>
+  <object type="fa_lavagrave" x="445" y="381"/>
+  <object type="fa_lavagrave" x="447" y="445"/>
+  <object type="fa_lavagrave" x="382" y="446"/>
+  <object type="fa_lavagrave" x="318" y="445"/>
+  <object type="fa_lavagrave" x="253" y="445"/>
+  <object type="fa_lavagrave" x="254" y="382"/>
+  <object type="fa_lavagrave" x="320" y="381"/>
+  <object type="fa_lavagrave" x="382" y="383"/>
+  <object type="fa_lavagrave" x="381" y="318"/>
+  <object type="fa_lavagrave" x="320" y="318"/>
+  <object type="fa_lavagrave" x="257" y="317"/>
+  <object type="fa_lavagrave" x="956" y="449"/>
+  <object type="fa_lavagrave" x="892" y="386"/>
+  <object type="fa_lavagrave" x="895" y="321"/>
+  <object type="fa_lavagrave" x="896" y="257"/>
+  <object type="fa_lavagrave" x="1020" y="257"/>
+  <object type="fa_lavagrave" x="958" y="385"/>
+  <object type="fa_lavagrave" x="958" y="257"/>
+  <object type="fa_lavagrave" x="891" y="449"/>
+  <object type="fa_lavagrave" x="958" y="322"/>
+  <object type="fa_lavagrave" x="1020" y="450"/>
+  <object type="fa_lavagrave" x="1020" y="387"/>
+  <object type="fa_lavagrave" x="1019" y="322"/>
+  <object type="fa_lavagrave" x="928" y="1031"/>
+  <object type="fa_lavagrave" x="864" y="968"/>
+  <object type="fa_lavagrave" x="1056" y="840"/>
+  <object type="fa_lavagrave" x="867" y="903"/>
+  <object type="fa_lavagrave" x="868" y="839"/>
+  <object type="fa_lavagrave" x="1057" y="1031"/>
+  <object type="fa_lavagrave" x="992" y="839"/>
+  <object type="fa_lavagrave" x="930" y="967"/>
+  <object type="fa_lavagrave" x="930" y="839"/>
+  <object type="fa_lavagrave" x="1057" y="904"/>
+  <object type="fa_lavagrave" x="863" y="1031"/>
+  <object type="fa_lavagrave" x="930" y="904"/>
+  <object type="fa_lavagrave" x="992" y="1032"/>
+  <object type="fa_lavagrave" x="992" y="969"/>
+  <object type="fa_lavagrave" x="1055" y="967"/>
+  <object type="fa_lavagrave" x="991" y="904"/>
+  <object type="fa_lavagrave" x="318" y="1018"/>
+  <object type="fa_lavagrave" x="254" y="955"/>
+  <object type="fa_lavagrave" x="446" y="827"/>
+  <object type="fa_lavagrave" x="257" y="890"/>
+  <object type="fa_lavagrave" x="258" y="826"/>
+  <object type="fa_lavagrave" x="447" y="1018"/>
+  <object type="fa_lavagrave" x="382" y="826"/>
+  <object type="fa_lavagrave" x="320" y="954"/>
+  <object type="fa_lavagrave" x="320" y="826"/>
+  <object type="fa_lavagrave" x="447" y="891"/>
+  <object type="fa_lavagrave" x="253" y="1018"/>
+  <object type="fa_lavagrave" x="320" y="891"/>
+  <object type="fa_lavagrave" x="382" y="1019"/>
+  <object type="fa_lavagrave" x="382" y="956"/>
+  <object type="fa_lavagrave" x="445" y="954"/>
+  <object type="fa_lavagrave" x="381" y="891"/>
+ </objectgroup>
+</map>

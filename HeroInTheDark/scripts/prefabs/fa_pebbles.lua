@@ -53,7 +53,7 @@ local function pebblefn(name,animnames)
     
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem.imagename="fa_"..name.."pebble"
-    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_pebbles.xml"
+    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_inventoryimages.xml"
 
 	inst:AddComponent("repairer")
 	inst.components.repairer.repairmaterial = name

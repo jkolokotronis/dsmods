@@ -543,18 +543,11 @@
   <object type="fa_greenshroom" x="157" y="372"/>
   <object type="fa_greenshroom" x="60" y="358"/>
   <object type="fa_greenshroom" x="78" y="428"/>
-  <object type="maxwelllight_area" x="885" y="1030"/>
   <object type="maxwelllight_area" x="392" y="1026"/>
-  <object type="maxwelllight_area" x="397" y="754"/>
   <object type="maxwelllight_area" x="884" y="752"/>
-  <object type="maxwelllight_area" x="884" y="497"/>
-  <object type="maxwelllight_area" x="395" y="494"/>
-  <object type="maxwelllight_area" x="396" y="248"/>
+  <object type="maxwelllight_area" x="397" y="497"/>
   <object type="maxwelllight_area" x="885" y="242"/>
-  <object type="maxwelllight_area" x="647" y="37"/>
-  <object type="maxwelllight_area" x="639" y="389"/>
-  <object type="maxwelllight_area" x="639" y="895"/>
-  <object type="maxwelllight_area" x="640" y="1244"/>
+  <object type="maxwelllight_area" x="641" y="693"/>
   <object type="fa_teleporter_dorf" x="641" y="188"/>
   <object type="fa_teleporter_dorf" x="640" y="625">
    <properties>

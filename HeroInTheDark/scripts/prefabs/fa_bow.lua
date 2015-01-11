@@ -5,8 +5,6 @@ local assets=
 	Asset("ANIM", "anim/swap_blowdart_pipe.zip"),
     Asset("ANIM", "anim/woodbow.zip"),
     Asset("ANIM", "anim/swap_woodbow.zip"),
-    Asset("ATLAS", "images/inventoryimages/woodbow.xml"),
-    Asset("IMAGE", "images/inventoryimages/woodbow.tex"),
 }
 
 local prefabs = 
@@ -77,7 +75,7 @@ local function commonfn(colour)
     
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem.imagename="woodbow"
-    inst.components.inventoryitem.atlasname="images/inventoryimages/woodbow.xml"
+    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_inventoryimages.xml"
     
     inst:AddComponent("equippable")
     inst.components.equippable:SetOnEquip( onequip )

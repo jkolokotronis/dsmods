@@ -59,7 +59,7 @@ local function fn(name)
     
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem.imagename=name
-    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_baseweapons.xml"
+    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_inventoryimages.xml"
     
     local function onequip(inst, owner)
         owner.AnimState:OverrideSymbol("swap_object", name, "swap_weapon")

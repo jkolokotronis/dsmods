@@ -1,9 +1,6 @@
 local assets=
 {
     Asset("ANIM", "anim/fa_keys.zip"),
-    
-    Asset("ATLAS", "images/inventoryimages/fa_keys.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_keys.tex"),
 }
 
 local function fn(type,keylevel)
@@ -26,7 +23,7 @@ local function fn(type,keylevel)
 		inst:AddComponent("inspectable")
 	    inst:AddComponent("inventoryitem")
     	inst.components.inventoryitem.imagename="fa_key_"..type
-    	inst.components.inventoryitem.atlasname="images/inventoryimages/fa_keys.xml"
+    	inst.components.inventoryitem.atlasname="images/inventoryimages/fa_inventoryimages.xml"
     	inst:AddComponent("key")
     	inst.components.key.keytype="chest"
     	if(keylevel)then

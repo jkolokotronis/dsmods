@@ -714,6 +714,39 @@ AddRoom("FA_DwarfFortressAlcohol",{
 									}, 
 					            }
 	})
+AddRoom("FA_DwarfFortressDungeon",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.FUNGUSGREEN,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FADorfFortressDungeon"] = 1,
+									}, 
+					            }
+	})
+AddRoom("FA_DwarfFortressDiningRoom",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.FUNGUSGREEN,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FADorfFortressDiningRoom"] = 1,
+									}, 
+					            }
+	})
+AddRoom("FA_DwarfFortressGraveyard",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.FUNGUSGREEN,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FADorfFortressGraveyard"] = 1,
+									}, 
+					            }
+	})
 
 
 AddRoom("FA_DwarfFortressRoom1",{

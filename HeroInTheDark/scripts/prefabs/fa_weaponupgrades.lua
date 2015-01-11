@@ -21,7 +21,7 @@ local function fn(Sim)
     
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem.imagename="poisonspider_gland_salve"
-    inst.components.inventoryitem.atlasname="images/inventoryimages/poisonspider_gland_salve.xml"
+    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_inventoryimages.xml"
     
     inst:AddComponent("healer")
     inst.components.healer:SetHealthAmount(TUNING.HEALING_MED)

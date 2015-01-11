@@ -65,7 +65,7 @@ local function fn(name)
     
     inst:AddComponent("inventoryitem")
 	inst.components.inventoryitem.foleysound = "dontstarve/movement/foley/marblearmour"
-     inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_basearmors.xml"
+     inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_inventoryimages.xml"
     inst.components.inventoryitem.imagename=name
     
     inst:AddComponent("armor")

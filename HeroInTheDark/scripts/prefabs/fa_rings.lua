@@ -1,17 +1,11 @@
 local assets=
 {
     Asset("ANIM", "anim/fa_rings.zip"),
-    
-    Asset("ATLAS", "images/inventoryimages/fa_rings.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_rings.tex"),
 }
 
 local demonassets={
     Asset("ANIM", "anim/fa_rings.zip"),
     Asset("ANIM", "anim/wortox.zip"),
-    
-    Asset("ATLAS", "images/inventoryimages/fa_rings.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_rings.tex"),
 }
 local FROZEN_DAPPERNESS=-1
 local BURNING_DAPPERNESS=-1
@@ -41,7 +35,7 @@ local function fn(color,type)
         inst:AddComponent("inspectable")
         inst:AddComponent("inventoryitem")
         inst.components.inventoryitem.imagename="fa_ring_"..color.."_"..type
-        inst.components.inventoryitem.atlasname="images/inventoryimages/fa_rings.xml"
+        inst.components.inventoryitem.atlasname="images/inventoryimages/fa_inventoryimages.xml"
 
 
     inst:AddComponent("equippable")

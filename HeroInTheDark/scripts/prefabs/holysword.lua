@@ -56,7 +56,7 @@ local function fn(name)
     
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem.imagename="fa_holysword"
-    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_baseweapons.xml"
+    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_inventoryimages.xml"
     
     inst:AddComponent("equippable")
     local function onequip(inst, owner)

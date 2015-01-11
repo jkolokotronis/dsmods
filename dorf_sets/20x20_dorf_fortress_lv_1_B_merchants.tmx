@@ -353,5 +353,53 @@
     <property name="data.targettag" value="Room_dorf_F"/>
    </properties>
   </object>
+  <object type="fa_dorf_light" x="43" y="1238"/>
+  <object type="fa_dorf_light" x="639" y="1241"/>
+  <object type="fa_dorf_light" x="1238" y="1236"/>
+  <object type="fa_dorf_light" x="1242" y="703"/>
+  <object type="fa_dorf_light" x="699" y="704"/>
+  <object type="fa_dorf_light" x="362" y="1244"/>
+  <object type="fa_dorf_light" x="954" y="1241"/>
+  <object type="fa_dorf_light" x="1244" y="988"/>
+  <object type="fa_dorf_light" x="696" y="943"/>
+  <object type="fa_dorf_light" x="362" y="952"/>
+  <object type="fa_dorf_light" x="38" y="955"/>
+  <object type="fa_dorf_light" x="383" y="636"/>
+  <object type="fa_dorf" x="633" y="1165"/>
+  <object type="fa_dorf" x="491" y="1164"/>
+  <object type="fa_dorf" x="342" y="1165"/>
+  <object type="fa_dorf" x="176" y="1165"/>
+  <object type="fa_dorf" x="644" y="887"/>
+  <object type="fa_dorf" x="502" y="886"/>
+  <object type="fa_dorf" x="353" y="887"/>
+  <object type="fa_dorf" x="187" y="887"/>
+  <object type="fa_dorf" x="808" y="892"/>
+  <object type="fa_dorf" x="658" y="525"/>
+  <object type="fa_dorf" x="516" y="524"/>
+  <object type="fa_dorf" x="367" y="525"/>
+  <object type="fa_dorf" x="201" y="525"/>
+  <object type="fa_dorf" x="822" y="530"/>
+  <object type="fa_dorf" x="742" y="277"/>
+  <object type="fa_dorf" x="600" y="276"/>
+  <object type="fa_dorf" x="451" y="277"/>
+  <object type="fa_dorf" x="285" y="277"/>
+  <object type="fa_dorf" x="906" y="282"/>
+  <object type="fa_dorf" x="1055" y="766"/>
+  <object type="fa_dorf" x="891" y="761"/>
+  <object type="fa_dorf" x="749" y="760"/>
+  <object type="fa_dorf" x="1193" y="777"/>
+  <object type="fa_dorf_bucket_water" x="1205" y="1204"/>
+  <object type="fa_dorf_bucket_water" x="1206" y="492"/>
+  <object type="fa_dorf_bucket_water" x="1229" y="392"/>
+  <object type="fa_dorf_bucket_water" x="71" y="244"/>
+  <object type="fa_dorf_guard" x="549" y="197"/>
+  <object type="fa_dorf_guard" x="744" y="195"/>
+  <object type="/fa_barrel_wood" x="46" y="759"/>
+  <object type="/fa_barrel_wood" x="52" y="1073"/>
+  <object type="/fa_barrel_wood" x="47" y="444"/>
+  <object type="/fa_barrel_wood" x="807" y="432"/>
+  <object type="/fa_barrel_wood" x="1235" y="571"/>
+  <object type="/fa_barrel_wood" x="1232" y="1120"/>
+  <object type="fa_keg" x="1230" y="924"/>
  </objectgroup>
 </map>

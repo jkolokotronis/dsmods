@@ -86,7 +86,7 @@ local function stoneskinfn(Sim)
     inst:AddComponent("inspectable")
     
     inst:AddComponent("inventoryitem")
-     inst.components.inventoryitem.atlasname = "images/inventoryimages/shield.xml"
+     inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_inventoryimages.xml"
     inst.components.inventoryitem.imagename="shield"
 
     inst:AddComponent("equippable")

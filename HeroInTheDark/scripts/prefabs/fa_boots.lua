@@ -1,16 +1,9 @@
 local assets=
 {
     Asset("ANIM", "anim/fa_walkingshoes.zip"),
-    
-    Asset("ATLAS", "images/inventoryimages/fa_walkingshoes.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_walkingshoes.tex"),
 }
 local socksassets={
     Asset("ANIM", "anim/fa_dorf_socks.zip"),
-    
-    Asset("ATLAS", "images/inventoryimages/fa_dorf_socks.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_dorf_socks.tex"),
-	
 }
 
 local function fn(Sim)
@@ -29,7 +22,7 @@ local function fn(Sim)
 		inst:AddComponent("inspectable")
 	    inst:AddComponent("inventoryitem")
     	inst.components.inventoryitem.imagename="fa_walkingshoes"
-    	inst.components.inventoryitem.atlasname="images/inventoryimages/fa_walkingshoes.xml"
+    	inst.components.inventoryitem.atlasname="images/inventoryimages/fa_inventoryimages.xml"
 	    
 		inst:AddComponent("tradable")
 	    
@@ -47,7 +40,7 @@ local function socks()
 		inst:AddComponent("inspectable")
 	    inst:AddComponent("inventoryitem")
     	inst.components.inventoryitem.imagename="fa_dorf_socks"
-    	inst.components.inventoryitem.atlasname="images/inventoryimages/fa_dorf_socks.xml"
+    	inst.components.inventoryitem.atlasname="images/inventoryimages/fa_inventoryimages.xml"
 	
     return inst
 end

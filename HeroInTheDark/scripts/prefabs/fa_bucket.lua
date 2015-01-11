@@ -44,7 +44,7 @@ local function fn(Sim)
     inst.AnimState:PlayAnimation("idle")
     inst.Transform:SetScale(1.15, 1.15, 1.15)
 
-    inst.AddComponent("harvestable")
+    inst:AddComponent("harvestable")
     local function onharvest(bucket, picker, produce)
     	if(picker and picker.components.temperature)then
     		picker.components.temperature.current = math.max( picker.components.temperature.current-40, owner.components.temperature.mintemp)

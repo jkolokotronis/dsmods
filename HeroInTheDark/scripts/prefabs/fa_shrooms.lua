@@ -13,24 +13,18 @@ local greenshroomassets=
 local redshroomcapassets=
 {
 	Asset("ANIM", "anim/fa_redshroomcap.zip"),
-
-    Asset( "IMAGE", "images/inventoryimages/fa_redshroomcap.tex" ),
-    Asset( "ATLAS", "images/inventoryimages/fa_redshroomcap.xml" ),
 }
 local pinkshroomcapassets=
 {
 	Asset("ANIM", "anim/fa_pinkshroomcap.zip"),
-
-    Asset( "IMAGE", "images/inventoryimages/fa_pinkshroomcap.tex" ),
-    Asset( "ATLAS", "images/inventoryimages/fa_pinkshroomcap.xml" ),
 }
 local greenshroomcapassets=
 {
 	Asset("ANIM", "anim/fa_greenshroomcap.zip"),
     
-    Asset( "IMAGE", "images/inventoryimages/fa_greenshroomcap.tex" ),
-    Asset( "ATLAS", "images/inventoryimages/fa_greenshroomcap.xml" ),
 }
+
+local prebafs={}
 
 local function onregenfn(inst)
 	inst.AnimState:PlayAnimation("idle", true)
@@ -112,7 +106,7 @@ end
         MakeSmallBurnable(inst, TUNING.TINY_BURNTIME)
         MakeSmallPropagator(inst)
         inst:AddComponent("inventoryitem")
-    inst.components.inventoryitem.atlasname="images/inventoryimages/"..name..".xml"
+    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_inventoryimages.xml"
 
         --this is where it gets interesting
         inst:AddComponent("edible")

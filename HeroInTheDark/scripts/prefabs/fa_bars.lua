@@ -33,7 +33,7 @@ local function barfn(name)
     
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem.imagename="fa_"..name.."bar"
-    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_orebars.xml"
+    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_inventoryimages.xml"
 
 	inst:AddComponent("repairer")
 	inst.components.repairer.repairmaterial = name

@@ -7,8 +7,6 @@ require "prefabutil"
 	}
 local lava_assets={
 		Asset("ANIM", "anim/fa_lavawall.zip"),
-	    Asset("ATLAS", "images/inventoryimages/fa_lavawall.xml"),
-    	Asset("IMAGE", "images/inventoryimages/fa_lavawall.tex"),	
 }
 local LAVAWALL_HEALTH=2000
 
@@ -182,7 +180,7 @@ local function clearobstacle(inst)
 		inst:AddComponent("inspectable")
     	inst:AddComponent("inventoryitem")
     	inst.components.inventoryitem.imagename="fa_"..data.name.."wall"
-    	inst.components.inventoryitem.atlasname="images/inventoryimages/fa_"..data.name.."wall.xml"
+    	inst.components.inventoryitem.atlasname="images/inventoryimages/fa_inventoryimages.xml"
 		
 		inst:AddComponent("repairer")
 	    inst.components.repairer.repairmaterial = data.name

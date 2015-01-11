@@ -29,19 +29,13 @@ local assets_gold={
 }
 local asset_dorfcrown={
     Asset("ANIM", "anim/fa_dorf_crown.zip"),     
-    Asset("ATLAS", "images/inventoryimages/fa_dorf_crown.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_dorf_crown.tex"),
 }
 local assets_dorfking={
     Asset("ANIM", "anim/fa_hat_dorfking.zip"),     
-    Asset("ATLAS", "images/inventoryimages/fa_hat_dorfking.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_hat_dorfking.tex"),
     
 }
 local assets_orcking={
     Asset("ANIM", "anim/fa_hat_orcking.zip"),     
-    Asset("ATLAS", "images/inventoryimages/fa_hat_orcking.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_hat_orcking.tex"),
     
 }
 
@@ -153,7 +147,7 @@ local function onequip(inst, owner, build)
 
         inst:AddComponent("inventoryitem")
         inst.components.inventoryitem.imagename = build
-        inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_hats.xml"
+        inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_inventoryimages.xml"
         inst:AddComponent("tradable")
 
         inst:AddComponent("equippable")
@@ -340,8 +334,6 @@ local function onequip(inst, owner, build)
     local function fncrown()
         local inst=common("fa_dorf_crown")
         inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_dorf_crown") end  )
-        inst.components.inventoryitem.imagename = "fa_dorf_crown"
-        inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_dorf_crown.xml"
         inst:AddComponent("armor")
         inst.components.armor:InitCondition(ARMOR_DORF_CROWN, ARMOR_DORF_CROWN_ABSORPTION)
         return inst
@@ -350,8 +342,6 @@ local function onequip(inst, owner, build)
     local function fndorfking()
         local inst=common("fa_hat_dorfking")
         inst.components.equippable:SetOnEquip( function(inst,owner) opentop_onequip(inst,owner,"fa_hat_dorfking") end  )
-        inst.components.inventoryitem.imagename = "fa_hat_dorfking"
-        inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_hat_dorfking.xml"
         inst:AddComponent("armor")
         inst.components.armor:InitCondition(ARMOR_ADAMANTHAT, ARMOR_ADAMANTHAT_ABSORPTION)
         return inst
@@ -359,8 +349,6 @@ local function onequip(inst, owner, build)
     local function fnorcking()
         local inst=common("fa_hat_orcking")
         inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_orcking") end  )
-        inst.components.inventoryitem.imagename = "fa_hat_orcking"
-        inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_hat_orcking.xml"
         inst:AddComponent("armor")
         inst.components.armor:InitCondition(ARMOR_ADAMANTHAT, ARMOR_ADAMANTHAT_ABSORPTION)
         return inst

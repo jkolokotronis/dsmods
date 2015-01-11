@@ -10,8 +10,6 @@ local assets=
 
 local bagassets={
     Asset("ANIM", "anim/fa_bag.zip"),
-    Asset("ATLAS", "images/inventoryimages/fa_bag.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_bag.tex"),
     
 }
 
@@ -160,7 +158,7 @@ local function tinydorfbag()
     inst.AnimState:SetBank("fa_bag")
     inst.AnimState:SetBuild("fa_bag")
     inst.AnimState:PlayAnimation("idle")
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_bag.xml"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_inventoryimages.xml"
     inst.components.inventoryitem.imagename="fa_bag"
     return inst
 end
@@ -174,7 +172,7 @@ local function smalldorfbag()
     inst.AnimState:SetBank("fa_bag")
     inst.AnimState:SetBuild("fa_bag")
     inst.AnimState:PlayAnimation("idle")
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_bag.xml"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_inventoryimages.xml"
     inst.components.inventoryitem.imagename="fa_bag"
     return inst
 end
@@ -188,7 +186,7 @@ local function scrollcase()
     inst.components.container.side_widget = false    
     inst.components.container.type = "fa_scrollcase"
     inst.components.container.itemtestfn = function(cnt, item, slot) return tagitemtest(item,{"book","scroll"}) end
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_scroll_case.xml"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_inventoryimages.xml"
     inst.components.inventoryitem.imagename="fa_scroll_case"
     inst.AnimState:SetBank("fa_scroll_case")
     inst.AnimState:SetBuild("fa_scroll_case")
@@ -204,7 +202,7 @@ local function wandcase()
     inst.components.container.side_widget = false    
     inst.components.container.type = "fa_wandcase"
     inst.components.container.itemtestfn = function(cnt, item, slot) return tagitemtest(item,{"wand","staff"}) end
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_wand_case.xml"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_inventoryimages.xml"
     inst.components.inventoryitem.imagename="fa_wand_case"
     inst.AnimState:SetBank("icepack")
     inst.AnimState:SetBuild("fa_wand_case")
@@ -221,7 +219,7 @@ local function tinyscrollcase()
     inst.components.container.side_widget = false    
     inst.components.container.type = "fa_scrollcase"
     inst.components.container.itemtestfn = function(cnt, item, slot) return tagitemtest(item,{"book","scroll"}) end
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_scroll_case.xml"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_inventoryimages.xml"
     inst.components.inventoryitem.imagename="fa_scroll_case"
     inst.AnimState:SetBank("fa_scroll_case")
     inst.AnimState:SetBuild("fa_scroll_case")
@@ -237,7 +235,7 @@ local function tinywandcase()
     inst.components.container.side_widget = false    
     inst.components.container.type = "fa_wandcase"
     inst.components.container.itemtestfn = function(cnt, item, slot) return tagitemtest(item,{"wand","staff"}) end
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_wand_case.xml"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_inventoryimages.xml"
     inst.components.inventoryitem.imagename="fa_wand_case"
     inst.AnimState:SetBank("icepack")
     inst.AnimState:SetBuild("fa_wand_case")
@@ -254,7 +252,7 @@ local function smallscrollcase()
     inst.components.container.side_widget = false    
     inst.components.container.type = "fa_scrollcase"
     inst.components.container.itemtestfn = function(cnt, item, slot) return tagitemtest(item,{"book","scroll"}) end
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_scroll_case.xml"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_inventoryimages.xml"
     inst.components.inventoryitem.imagename="fa_scroll_case"
     inst.AnimState:SetBank("fa_scroll_case")
     inst.AnimState:SetBuild("fa_scroll_case")
@@ -270,7 +268,7 @@ local function smallwandcase()
     inst.components.container.side_widget = false    
     inst.components.container.type = "fa_wandcase"
     inst.components.container.itemtestfn = function(cnt, item, slot) return tagitemtest(item,{"wand","staff"}) end
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_wand_case.xml"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_inventoryimages.xml"
     inst.components.inventoryitem.imagename="fa_wand_case"
     inst.AnimState:SetBank("icepack")
     inst.AnimState:SetBuild("fa_wand_case")

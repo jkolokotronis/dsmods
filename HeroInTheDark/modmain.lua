@@ -109,6 +109,7 @@ PrefabFiles = {
     "fa_bars",
     "fa_decor",
     "fa_barrels",
+    "fa_bucket",
     "fa_racks",
     "fa_shrooms",
     "fa_dorfkingstatue",
@@ -306,113 +307,11 @@ Assets = {
     Asset( "IMAGE", "images/transparent.tex" ),
     Asset( "ATLAS", "images/transparent.xml" ),
 
-    Asset( "IMAGE", "minimap/boneshield.tex" ),
-    Asset( "ATLAS", "minimap/boneshield.xml" ),
-    Asset( "IMAGE", "minimap/marbleshield.tex" ),
-    Asset( "ATLAS", "minimap/marbleshield.xml" ),
-    Asset( "IMAGE", "minimap/reflectshield.tex" ),
-    Asset( "ATLAS", "minimap/reflectshield.xml" ),
-    Asset( "IMAGE", "minimap/rockshield.tex" ),
-    Asset( "ATLAS", "minimap/rockshield.xml" ),
-    Asset( "IMAGE", "minimap/woodbow.tex" ),
-    Asset( "ATLAS", "minimap/woodbow.xml" ),
-    Asset( "IMAGE", "minimap/woodshield.tex" ),
-    Asset( "ATLAS", "minimap/woodshield.xml" ), 
+    Asset("ATLAS", "images/inventoryimages/fa_inventoryimages.xml"),
+    Asset("IMAGE", "images/inventoryimages/fa_inventoryimages.tex"),
 
-    Asset("ATLAS", "images/inventoryimages/fa_smeltingfurnace.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_smeltingfurnace.tex"),
-    Asset("ATLAS", "images/inventoryimages/fa_forge.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_forge.tex"),
-    Asset("ATLAS", "images/inventoryimages/fa_alchemytable.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_alchemytable.tex"),
-    Asset("ATLAS", "images/inventoryimages/fa_barrel.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_barrel.tex"),
-
-    Asset("ATLAS", "minimap/fa_smeltingfurnace.xml"),
-    Asset("IMAGE", "minimap/fa_smeltingfurnace.tex"),
-    Asset("ATLAS", "minimap/fa_forge.xml"),
-    Asset("IMAGE", "minimap/fa_forge.tex"),
-    Asset("ATLAS", "minimap/fa_alchemytable.xml"),
-    Asset("IMAGE", "minimap/fa_alchemytable.tex"),
-    Asset("ATLAS", "minimap/fa_keg.xml"),
-    Asset("IMAGE", "minimap/fa_keg.tex"),
-    Asset("ATLAS", "minimap/fa_distiller.xml"),
-    Asset("IMAGE", "minimap/fa_distiller.tex"),
-
-    Asset("ATLAS", "images/inventoryimages/fa_puppet.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_puppet.tex"),
-
-    Asset("ATLAS", "images/inventoryimages/fa_shields.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_shields.tex"),
-    Asset("ATLAS", "images/inventoryimages/poisonspidergland.xml"),
-    Asset("IMAGE", "images/inventoryimages/poisonspidergland.tex"),
-    Asset("ATLAS", "images/inventoryimages/poisonspider_gland_salve.xml"),
-    Asset("IMAGE", "images/inventoryimages/poisonspider_gland_salve.tex"),
-    Asset("ATLAS", "images/inventoryimages/fa_goblinskin.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_goblinskin.tex"),
-    Asset("ATLAS", "images/inventoryimages/fa_wand_case.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_wand_case.tex"),
-    Asset("ATLAS", "images/inventoryimages/fa_scroll_case.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_scroll_case.tex"),
-
-
-    Asset( "IMAGE", "images/inventoryimages/fa_scroll_conjuration.tex" ),
-    Asset( "ATLAS", "images/inventoryimages/fa_scroll_conjuration.xml" ),
-    Asset( "IMAGE", "images/inventoryimages/fa_scroll_divination.tex" ),
-    Asset( "ATLAS", "images/inventoryimages/fa_scroll_divination.xml" ),
-    Asset( "IMAGE", "images/inventoryimages/fa_scroll_evocation.tex" ),
-    Asset( "ATLAS", "images/inventoryimages/fa_scroll_evocation.xml" ),
-    Asset( "IMAGE", "images/inventoryimages/fa_scroll_enchantment.tex" ),
-    Asset( "ATLAS", "images/inventoryimages/fa_scroll_enchantment.xml" ),
-    Asset( "IMAGE", "images/inventoryimages/fa_scroll_illusion.tex" ),
-    Asset( "ATLAS", "images/inventoryimages/fa_scroll_illusion.xml" ),
-    Asset( "IMAGE", "images/inventoryimages/fa_scroll_necromancy.tex" ),
-    Asset( "ATLAS", "images/inventoryimages/fa_scroll_necromancy.xml" ),
-    Asset( "IMAGE", "images/inventoryimages/fa_scroll_transmutation.tex" ),
-    Asset( "ATLAS", "images/inventoryimages/fa_scroll_transmutation.xml" ),
-    Asset( "IMAGE", "images/inventoryimages/fa_scroll_abjuration.tex" ),
-    Asset( "ATLAS", "images/inventoryimages/fa_scroll_abjuration.xml" ),
-    Asset("ATLAS", "images/inventoryimages/fa_bottles.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_bottles.tex" ),
-    Asset("ATLAS", "images/inventoryimages/fa_pebbles.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_pebbles.tex"),
-    Asset("ATLAS", "images/inventoryimages/fa_orebars.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_orebars.tex"),
-    Asset("ATLAS", "images/inventoryimages/fa_hats.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_hats.tex"),
-  Asset("ATLAS", "images/inventoryimages/fa_basearmors.xml"),
-  Asset("IMAGE", "images/inventoryimages/fa_basearmors.tex"),
-  Asset("ATLAS", "images/inventoryimages/fa_baseweapons.xml"),
-  Asset("IMAGE", "images/inventoryimages/fa_baseweapons.tex"),
-
-    Asset( "IMAGE", "minimap/goblin.tex" ),
-    Asset( "ATLAS", "minimap/goblin.xml" ),  
-    Asset( "IMAGE", "minimap/fa_orc.tex" ),
-    Asset( "ATLAS", "minimap/fa_orc.xml" ),  
-    Asset( "IMAGE", "minimap/fa_dorf.tex" ),
-    Asset( "ATLAS", "minimap/fa_dorf.xml" ),  
-    Asset( "IMAGE", "minimap/cleric.tex" ),
-    Asset( "ATLAS", "minimap/cleric.xml" ),  
-    Asset( "IMAGE", "minimap/bard.tex" ),
-    Asset( "ATLAS", "minimap/bard.xml" ),  
-    Asset( "IMAGE", "minimap/wizard.tex" ),
-    Asset( "ATLAS", "minimap/wizard.xml" ),  
-    Asset( "IMAGE", "minimap/necromancer.tex" ),
-    Asset( "ATLAS", "minimap/necromancer.xml" ),  
-    Asset( "IMAGE", "minimap/tinkerer.tex" ),
-    Asset( "ATLAS", "minimap/tinkerer.xml" ),  
-    Asset( "IMAGE", "minimap/barb.tex" ),
-    Asset( "ATLAS", "minimap/barb.xml" ),  
-    Asset( "IMAGE", "minimap/druid.tex" ),
-    Asset( "ATLAS", "minimap/druid.xml" ),  
-    Asset( "IMAGE", "minimap/paladin.tex" ),
-    Asset( "ATLAS", "minimap/paladin.xml" ),  
-    Asset( "IMAGE", "minimap/darkknight.tex" ),
-    Asset( "ATLAS", "minimap/darkknight.xml" ), 
-    Asset( "IMAGE", "minimap/fa_rocks.tex" ),
-    Asset( "ATLAS", "minimap/fa_rocks.xml" ), 
-    Asset( "IMAGE", "minimap/fa_wheat.tex" ),
-    Asset( "ATLAS", "minimap/fa_wheat.xml" ), 
+    Asset( "IMAGE", "minimap/fa_minimap.tex" ),
+    Asset( "ATLAS", "minimap/fa_minimap.xml" ),  
     Asset( "ANIM", "anim/fa_shieldpuff.zip" ),
 
     Asset( "ANIM", "anim/generating_goblin_cave.zip" ),
@@ -452,8 +351,6 @@ Assets = {
 if(not GLOBAL.FA_DLCACCESS)then
 --not gonna rewrite 100 things for one prefab
     table.insert(PrefabFiles,"fa_boneshard_compat")
-    table.insert(Assets,Asset("ATLAS", "images/inventoryimages/bone_shards_compat.xml"))
-    table.insert(Assets,Asset("IMAGE", "images/inventoryimages/bone_shards_compat.tex"))
 
 --[[
 --is the table set before mods are loaded or on the first spawn?
@@ -469,35 +366,13 @@ GLOBAL.SetSharedLootTable( 'hound_mound',
 })]]
 end
 
-AddMinimapAtlas("minimap/boneshield.xml")
-AddMinimapAtlas("minimap/marbleshield.xml")
-AddMinimapAtlas("minimap/reflectshield.xml")
-AddMinimapAtlas("minimap/rockshield.xml")
-AddMinimapAtlas("minimap/woodbow.xml")
-AddMinimapAtlas("minimap/woodshield.xml")
-AddMinimapAtlas("minimap/goblin.xml")
-AddMinimapAtlas("minimap/fa_orc.xml")
-AddMinimapAtlas("minimap/fa_dorf.xml")
-AddMinimapAtlas("minimap/cleric.xml")
-AddMinimapAtlas("minimap/bard.xml")
-AddMinimapAtlas("minimap/wizard.xml")
-AddMinimapAtlas("minimap/necromancer.xml")
-AddMinimapAtlas("minimap/tinkerer.xml")
-AddMinimapAtlas("minimap/barb.xml")
-AddMinimapAtlas("minimap/druid.xml")
-AddMinimapAtlas("minimap/paladin.xml")
-AddMinimapAtlas("minimap/darkknight.xml")
-AddMinimapAtlas("minimap/fa_rocks.xml")
-AddMinimapAtlas("minimap/fa_alchemytable.xml")
-AddMinimapAtlas("minimap/fa_smeltingfurnace.xml")
-AddMinimapAtlas("minimap/fa_forge.xml")
-AddMinimapAtlas("minimap/fa_keg.xml")
-AddMinimapAtlas("minimap/fa_distiller.xml")
-AddMinimapAtlas("minimap/fa_wheat.xml")
-AddMinimapAtlas("images/inventoryimages/fa_hats.xml")
-AddMinimapAtlas("images/inventoryimages/fa_basearmors.xml")
-AddMinimapAtlas("images/inventoryimages/fa_baseweapons.xml")
-AddMinimapAtlas("images/inventoryimages/fa_puppet.xml")
+AddMinimapAtlas("minimap/fa_minimap.xml")
+--is there really a reason to duplicate this? is there a case or a reason why would minimap be different from inv?
+AddMinimapAtlas("images/inventoryimages/fa_inventoryimages.xml")
+--AddMinimapAtlas("images/inventoryimages/fa_hats.xml")
+--AddMinimapAtlas("images/inventoryimages/fa_basearmors.xml")
+--AddMinimapAtlas("images/inventoryimages/fa_baseweapons.xml")
+--AddMinimapAtlas("images/inventoryimages/fa_puppet.xml")
 
 RemapSoundEvent( "dontstarve/characters/bard/death_voice", "dontstarve/characters/wilson/death_voice" )
 RemapSoundEvent( "dontstarve/characters/bard/hurt", "fa/characters/bard/hurt" )

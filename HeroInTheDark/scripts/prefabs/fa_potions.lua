@@ -1,4 +1,7 @@
 require "recipes"
+
+
+
 local Assets =
 {
     Asset("ANIM", "anim/fa_bottles.zip"),
@@ -377,7 +380,7 @@ local function common(name)
         
     inst:AddTag("potion")
     inst:AddComponent("inventoryitem")
-	inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_bottles.xml"
+	inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_inventoryimages.xml"
     inst.components.inventoryitem.imagename="fa_"..name
 
 	inst:AddComponent("inspectable")	
@@ -555,31 +558,6 @@ local function dwarfalemug()
     inst.components.inventoryitem.imagename="fa_beermug"
     return inst
 end
-local function wineyeast()
-	local inst=common("mug")
-    inst.AnimState:SetBuild("fa_mug")
-    inst.AnimState:PlayAnimation("beer")
-    inst:RemoveComponent("edible")
-    inst.components.inventoryitem.imagename="fa_beermug"
-    return inst
-end
-local function distillingyeast()
-	local inst=common("mug")
-    inst.AnimState:SetBuild("fa_mug")
-    inst.AnimState:PlayAnimation("beer")
-    inst:RemoveComponent("edible")
-    inst.components.inventoryitem.imagename="fa_beermug"
-    return inst
-end
-local function brewingyeast()
-	local inst=common("mug")
-    inst.AnimState:SetBuild("fa_mug")
-    inst.AnimState:PlayAnimation("beer")
-    inst:RemoveComponent("edible")
-    inst.components.inventoryitem.imagename="fa_beermug"
-    return inst
-end
-
 local function ftest(name)
 	return function()
 		local inst=common(name)
@@ -588,7 +566,7 @@ local function ftest(name)
 end
 
 local function fnwort()
-	local inst=common("bottle_light_green")
+	local inst=common("bottle_1_7")
     inst.components.edible.hungervalue = 5
 	return inst
 end
@@ -685,14 +663,11 @@ return Prefab( "common/inventory/fa_bottle_r", fnr, Assets),
 	Prefab( "common/inventory/fa_bottle_poisonessence", fnpoisonessence, Assets),
 	Prefab( "common/inventory/fa_bottle_curepoison", fncurepoison, Assets),
 	Prefab( "common/inventory/fa_emptymug", emptymug, mugassets),
-	Prefab( "common/inventory/fa_bottle_wort", emptymug, mugassets),
+	Prefab( "common/inventory/fa_bottle_wort", fnwort, mugassets),
 	Prefab( "common/inventory/fa_rummug", rummug, mugassets),
 	Prefab( "common/inventory/fa_lightalemug", beermug, mugassets),
 	Prefab( "common/inventory/fa_ronsalemug", ronsalemug, mugassets),
 	Prefab( "common/inventory/fa_dwarfalemug", dwarfalemug, mugassets),
-	Prefab( "common/inventory/fa_wineyeast", wineyeast, mugassets),
-	Prefab( "common/inventory/fa_distillingyeast", distillingyeast, mugassets),
-	Prefab( "common/inventory/fa_brewingyeast", brewingyeast, mugassets),
 
 	Prefab( "common/inventory/fa_pomegranate_wine", pomegranatewine, Assets),
 	Prefab( "common/inventory/fa_durian_wine", durianwine, Assets),

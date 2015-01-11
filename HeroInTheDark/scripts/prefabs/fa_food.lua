@@ -1,33 +1,22 @@
 local assets=
 {
     Asset("ANIM", "anim/goodberries.zip"),
-    
-    Asset("ATLAS", "images/inventoryimages/goodberries.xml"),
-    Asset("IMAGE", "images/inventoryimages/goodberries.tex"),
 }
 
 local cutwheat_assets={
     Asset("ANIM", "anim/fa_cutwheat.zip"),	
-    Asset("ATLAS", "images/inventoryimages/fa_cutwheat.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_cutwheat.tex"),
 }
 
 local wheat_assets={
     Asset("ANIM", "anim/fa_wheat.zip"),	
-    Asset("ATLAS", "images/inventoryimages/fa_wheat.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_wheat.tex"),
 }
 
 local nut_assets={
     Asset("ANIM", "anim/fa_nuts.zip"),	
-    Asset("ATLAS", "images/inventoryimages/fa_nuts.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_nuts.tex"),
 }
 
 local flour_assets={
     Asset("ANIM", "anim/fa_flour.zip"),	
-    Asset("ATLAS", "images/inventoryimages/fa_flour.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_flour.tex"),	
 }
 
 local function common(name)
@@ -44,7 +33,7 @@ local function common(name)
 	    inst:AddComponent("inventoryitem")
 
     	inst.components.inventoryitem.imagename=name
-    	inst.components.inventoryitem.atlasname="images/inventoryimages/"..name..".xml"
+    	inst.components.inventoryitem.atlasname="images/inventoryimages/fa_inventoryimages.xml"
 
 		inst:AddComponent("stackable")
 	    inst.components.stackable.maxsize = 40
@@ -107,6 +96,21 @@ local function fnflour(Sim)
 
 		return inst
 	end
+
+
+local function wineyeast()
+	local inst = common("fa_flour")
+    return inst
+end
+local function distillingyeast()
+	local inst = common("fa_flour")
+    return inst
+end
+local function brewingyeast()
+	local inst = common("fa_flour")
+    return inst
+end
+
 
 local function fncutwheat(Sim)
 	--what's the proper inv/drop for cut? is it in the pack at all?
@@ -271,4 +275,7 @@ Prefab( "common/inventory/fa_flour", fnflour, flour_assets),
 Prefab( "common/inventory/fa_mash", fnflour, flour_assets),
 Prefab( "common/inventory/fa_cutwheat", fncutwheat, cutwheat_assets),
 Prefab( "common/inventory/fa_dug_wheat", fndugwheat, wheat_assets),
-Prefab( "common/inventory/fa_wheat", fnwheat, wheat_assets)
+Prefab( "common/inventory/fa_wheat", fnwheat, wheat_assets),
+	Prefab( "common/inventory/fa_wineyeast", wineyeast, flour_assets),
+	Prefab( "common/inventory/fa_distillingyeast", distillingyeast, flour_assets),
+	Prefab( "common/inventory/fa_brewingyeast", brewingyeast, flour_assets)

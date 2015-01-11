@@ -1,8 +1,6 @@
 local goblin_assets =
 {
 	Asset("ANIM", "anim/goblinking_head.zip"),
-    Asset("ATLAS", "images/inventoryimages/goblinking_head.xml"),
-    Asset("IMAGE", "images/inventoryimages/goblinking_head.tex"),
 }
 
 local skull_assets={
@@ -143,7 +141,7 @@ local function goblinhead_itemfn(Sim)
     inst.components.deployable.ondeploy = ondeploy
     inst.components.deployable.placer = "goblinkinghead_placer"
     inst.components.inventoryitem.imagename="goblinking_head"
-    inst.components.inventoryitem.atlasname="images/inventoryimages/goblinking_head.xml"
+    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_inventoryimages.xml"
 
 
     return inst

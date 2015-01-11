@@ -2,29 +2,21 @@ local assets_wood=
 {
     Asset("ANIM", "anim/fa_woodarrows.zip"),
     Asset("ANIM", "anim/fa_woodarrows_projectile.zip"),
-    Asset("ATLAS", "images/inventoryimages/fa_woodarrows.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_woodarrows.tex"),
 }
 local assets_ice=
 {
     Asset("ANIM", "anim/fa_icearrows.zip"),
     Asset("ANIM", "anim/fa_icearrows_projectile.zip"),
-    Asset("ATLAS", "images/inventoryimages/fa_icearrows.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_icearrows.tex"),
 }
 local assets_poison=
 {
     Asset("ANIM", "anim/fa_poisonarrows.zip"),
     Asset("ANIM", "anim/fa_poisonarrows_projectile.zip"),
-    Asset("ATLAS", "images/inventoryimages/fa_poisonarrows.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_poisonarrows.tex"),
 }
 local assets_fire=
 {
     Asset("ANIM", "anim/fa_firearrows.zip"),
     Asset("ANIM", "anim/fa_firearrows_projectile.zip"),
-    Asset("ATLAS", "images/inventoryimages/fa_firearrows.xml"),
-    Asset("IMAGE", "images/inventoryimages/fa_firearrows.tex"),
 }
 
 local function onsewn(inst, target, doer)
@@ -43,7 +35,7 @@ local function fn(name)
     MakeInventoryPhysics(inst)
     
     inst:AddComponent("inventoryitem")
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_"..name.."arrows.xml"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_inventoryimages.xml"
     inst.components.inventoryitem.imagename="fa_"..name.."arrows"
 
 

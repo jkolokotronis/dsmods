@@ -77,7 +77,7 @@ local function fn(Sim)
 
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem.imagename="fa_frostsword"
-    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_baseweapons.xml"
+    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_inventoryimages.xml"
 --    inst:AddComponent("dapperness")
 --    inst.components.dapperness.dapperness = TUNING.CRAZINESS_MED,
     

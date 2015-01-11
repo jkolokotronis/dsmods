@@ -103,7 +103,7 @@ local function fn()
 				inst.components.teacher:SetRecipe(inst.recipetouse)
 				inst.components.named:SetName(STRINGS.NAMES[string.upper(inst.recipetouse)].." Scroll")
     			inst.components.inventoryitem.imagename=assetname
-			    inst.components.inventoryitem.atlasname="images/inventoryimages/"..assetname..".xml"
+			    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_inventoryimages.xml"
 			end
 		end
 		if(not inst.recipetouse) then

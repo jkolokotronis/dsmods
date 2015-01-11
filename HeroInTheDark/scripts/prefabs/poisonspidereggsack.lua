@@ -3,8 +3,6 @@ local assets =
 {
     Asset("ANIM", "anim/poisonspider_egg_sac.zip"),
     Asset("SOUND", "sound/spider.fsb"),
-    Asset("ATLAS", "images/inventoryimages/poisonspider_egg_sac.xml"),
-    Asset("IMAGE", "images/inventoryimages/poisonspider_egg_sac.tex"),
 }
 
 local function ondeploy(inst, pt) 
@@ -39,7 +37,7 @@ local function fn(Sim)
     
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem.imagename="poisonspider_egg_sac"
-    inst.components.inventoryitem.atlasname="images/inventoryimages/poisonspider_egg_sac.xml"
+    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_inventoryimages.xml"
     
     inst.components.inventoryitem:SetOnPickupFn(function() inst.SoundEmitter:PlaySound("dontstarve/creatures/spider/spider_egg_sack") end)
     

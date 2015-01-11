@@ -1,7 +1,6 @@
 local assets=
 {
   Asset("ANIM", "anim/swap_reflectshield.zip"),
-  Asset("ATLAS", "images/inventoryimages/shield.xml"),
 }
 local REFLECT_DAMAGE=60
 local ARMOR_ABSO=0
@@ -50,7 +49,7 @@ local function fn(Sim)
     inst:AddComponent("inspectable")
     
     inst:AddComponent("inventoryitem")
-     inst.components.inventoryitem.atlasname = "images/inventoryimages/shield.xml"
+     inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_inventoryimages.xml"
     inst.components.inventoryitem.imagename="shield"
 
     inst:AddComponent("equippable")

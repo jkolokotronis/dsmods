@@ -93,7 +93,7 @@ local function common(name)
     
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem.imagename=name
-    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_baseweapons.xml"
+    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_inventoryimages.xml"
     inst:AddComponent("finiteuses")
     inst.components.finiteuses:SetOnFinished( onfinished )
     inst:AddComponent("equippable")

@@ -31,7 +31,7 @@ local function fn(Sim)
 	
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem.imagename="fa_goblinskin"
-    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_goblinskin.xml"
+    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_inventoryimages.xml"
     
     inst:AddComponent("edible")
     inst.components.edible.foodtype = "HORRIBLE"
