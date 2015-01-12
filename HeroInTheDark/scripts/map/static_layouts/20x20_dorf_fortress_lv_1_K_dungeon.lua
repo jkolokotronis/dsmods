@@ -249,12 +249,15 @@ return {
           name = "",
           type = "fa_teleporter_dorf",
           shape = "rectangle",
-          x = 704,
-          y = 573,
+          x = 701,
+          y = 567,
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.sourcetag"] = "Room_dorf_N",
+            ["data.targettag"] = "Room_dorf_M"
+          }
         },
         {
           name = "",
@@ -277,6 +280,20 @@ return {
           height = 0,
           visible = true,
           properties = {}
+        },
+        {
+          name = "",
+          type = "fa_teleporter_dorf",
+          shape = "rectangle",
+          x = 1022,
+          y = 1215,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.sourcetag"] = "Room_dorf_O",
+            ["data.targettag"] = "Room_dorf_P"
+          }
         }
       }
     }

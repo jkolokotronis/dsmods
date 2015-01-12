@@ -47,5 +47,29 @@
   <object type="fa_dorf_king" x="671" y="182"/>
   <object type="fa_dorf_light" x="602" y="22"/>
   <object type="fa_dorf_light" x="800" y="18"/>
+  <object type="fa_teleporter_dorf" x="594" y="1215">
+   <properties>
+    <property name="data.sourcetag" value="Room_dorf_R"/>
+    <property name="data.targettag" value="Room_dorf_Q"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_bucket_water" x="711" y="688"/>
+  <object type="fa_dorf_bucket_water" x="564" y="691"/>
+  <object type="fa_dorf_bucket_water" x="1034" y="496"/>
+  <object type="fa_dorf_bucket_water" x="307" y="494"/>
+  <object type="fa_dorf_bucket_water" x="177" y="304"/>
+  <object type="fa_dorf_bucket_water" x="1097" y="304"/>
+  <object type="fa_teleporter_dorf" x="674" y="1214">
+   <properties>
+    <property name="data.sourcetag" value="Room_dorf_HH"/>
+    <property name="data.targettag" value="Room_dorf_GG"/>
+   </properties>
+  </object>
+  <object type="fa_teleporter_dorf" x="60" y="33">
+   <properties>
+    <property name="data.sourcetag" value="Room_dorf_XX"/>
+    <property name="data.targettag" value="Room_dorf_A"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

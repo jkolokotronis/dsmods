@@ -66,7 +66,7 @@
   <object type="fa_dorf" x="155" y="543"/>
   <object type="fa_dorf" x="296" y="571"/>
   <object type="fa_dorf" x="268" y="279"/>
-  <object type="fa_dorf" x="388" y="300"/>
+  <object type="fa_dorf" x="347" y="437"/>
   <object type="fa_dorf" x="239" y="95"/>
   <object type="fa_dorf" x="529" y="145"/>
   <object type="fa_dorf" x="924" y="127"/>
@@ -154,7 +154,24 @@
   <object type="fa_bucket" x="80" y="176"/>
   <object type="fa_bucket" x="719" y="175"/>
   <object type="fa_bucket" x="1196" y="492"/>
-  <object type="fa_teleporter_dorf" x="761" y="639"/>
+  <object type="fa_teleporter_dorf" x="761" y="639">
+   <properties>
+    <property name="data.sourcetag" value="Room_dorf_S"/>
+    <property name="data.targettag" value="Room_dorf_T"/>
+   </properties>
+  </object>
   <object type="maxwelllight_area" x="1196" y="656"/>
+  <object type="fa_teleporter_dorf" x="531" y="1042">
+   <properties>
+    <property name="data.sourcetag" value="Room_dorf_F"/>
+    <property name="data.targettag" value="Room_dorf_E"/>
+   </properties>
+  </object>
+  <object type="fa_teleporter_dorf" x="385" y="283">
+   <properties>
+    <property name="data.sourcetag" value="Room_dorf_I"/>
+    <property name="data.targettag" value="Room_dorf_J"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

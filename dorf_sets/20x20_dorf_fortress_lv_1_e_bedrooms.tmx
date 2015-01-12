@@ -934,5 +934,17 @@
   <object type="fa_clothes" x="38" y="400"/>
   <object type="fa_clothes" x="236" y="86"/>
   <object type="fa_clothes" x="169" y="278"/>
+  <object type="fa_teleporter_dorf" x="74" y="1199">
+   <properties>
+    <property name="data.sourcetag" value="Room_dorf_L"/>
+    <property name="data.targettag" value="Room_dorf_K"/>
+   </properties>
+  </object>
+  <object type="fa_teleporter_dorf" x="1199" y="1205">
+   <properties>
+    <property name="data.sourcetag" value="Room_dorf_W"/>
+    <property name="data.targettag" value="Room_dorf_X"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

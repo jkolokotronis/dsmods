@@ -667,12 +667,15 @@ return {
           name = "",
           type = "fa_teleporter_dorf",
           shape = "rectangle",
-          x = 639,
-          y = 639,
+          x = 510,
+          y = 638,
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.sourcetag"] = "Room_dorf_U",
+            ["data.targettag"] = "Room_dorf_V"
+          }
         },
         {
           name = "",
@@ -1098,6 +1101,119 @@ return {
           height = 0,
           visible = true,
           properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_light",
+          shape = "rectangle",
+          x = 361,
+          y = 131,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_light",
+          shape = "rectangle",
+          x = 357,
+          y = 384,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_light",
+          shape = "rectangle",
+          x = 352,
+          y = 634,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_light",
+          shape = "rectangle",
+          x = 348,
+          y = 896,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_light",
+          shape = "rectangle",
+          x = 909,
+          y = 1022,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_light",
+          shape = "rectangle",
+          x = 918,
+          y = 811,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_light",
+          shape = "rectangle",
+          x = 922,
+          y = 571,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_light",
+          shape = "rectangle",
+          x = 922,
+          y = 322,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_light",
+          shape = "rectangle",
+          x = 925,
+          y = 80,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_teleporter_dorf",
+          shape = "rectangle",
+          x = 767,
+          y = 639,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.sourcetag"] = "Room_dorf_T",
+            ["data.targettag"] = "Room_dorf_S"
+          }
         }
       }
     }

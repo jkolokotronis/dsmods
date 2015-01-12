@@ -8576,6 +8576,34 @@ return {
           height = 0,
           visible = true,
           properties = {}
+        },
+        {
+          name = "",
+          type = "fa_teleporter_dorf",
+          shape = "rectangle",
+          x = 74,
+          y = 1199,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.sourcetag"] = "Room_dorf_L",
+            ["data.targettag"] = "Room_dorf_K"
+          }
+        },
+        {
+          name = "",
+          type = "fa_teleporter_dorf",
+          shape = "rectangle",
+          x = 1199,
+          y = 1205,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.sourcetag"] = "Room_dorf_W",
+            ["data.targettag"] = "Room_dorf_X"
+          }
         }
       }
     }

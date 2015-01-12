@@ -104,15 +104,10 @@
   <object type="fa_dorfcage_exit" x="871" y="1087"/>
   <object type="fa_dorfkingstatue" x="641" y="1021"/>
   <object type="fa_dorf_light" x="943" y="915"/>
-  <object type="fa_dorf_light" x="830" y="912"/>
   <object type="fa_dorf_light" x="713" y="911"/>
   <object type="fa_dorf_light" x="944" y="1137"/>
-  <object type="fa_dorf_light" x="831" y="1137"/>
-  <object type="fa_dorf_light" x="712" y="1136"/>
   <object type="fa_dorf_light" x="572" y="906"/>
   <object type="fa_dorf_light" x="340" y="913"/>
-  <object type="fa_dorf_light" x="447" y="912"/>
-  <object type="fa_dorf_light" x="447" y="1136"/>
   <object type="fa_dorf_light" x="335" y="1136"/>
  </objectgroup>
 </map>

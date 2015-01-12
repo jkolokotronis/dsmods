@@ -502,5 +502,11 @@
   <object type="fa_dorf" x="456" y="1145"/>
   <object type="fa_dorf" x="454" y="1006"/>
   <object type="fa_dorf" x="474" y="794"/>
+  <object type="fa_teleporter_dorf" x="122" y="1139">
+   <properties>
+    <property name="data.sourcetag" value="Room_dorf_D"/>
+    <property name="data.targettag" value="Room_dorf_C"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

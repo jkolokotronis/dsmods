@@ -287,12 +287,10 @@
   <object type="fa_dorf_wall_1" x="702" y="371"/>
   <object type="fa_dorf_wall_1" x="1095" y="370"/>
   <object type="fa_dorf_wall_1" x="323" y="371"/>
-  <object type="fa_dorf_wall_1" x="479" y="371"/>
   <object type="fa_dorf_wall_1" x="836" y="370"/>
   <object type="fa_dorf_wall_1" x="1179" y="370"/>
   <object type="fa_dorf_wall_1" x="167" y="371"/>
   <object type="fa_dorf_wall_1" x="814" y="371"/>
-  <object type="fa_dorf_wall_1" x="457" y="371"/>
   <object type="fa_dorf_wall_1" x="390" y="371"/>
   <object type="fa_dorf_wall_1" x="747" y="370"/>
   <object type="fa_dorf_wall_1" x="212" y="371"/>
@@ -323,7 +321,6 @@
   <object type="fa_dorf_wall_1" x="903" y="371"/>
   <object type="fa_dorf_wall_1" x="1201" y="371"/>
   <object type="fa_dorf_wall_1" x="122" y="371"/>
-  <object type="fa_dorf_wall_1" x="435" y="371"/>
   <object type="fa_dorf_wall_1" x="792" y="370"/>
   <object type="fa_dorf_wall_1" x="1246" y="370"/>
   <object type="fa_dorf_wall_1" x="100" y="371"/>
@@ -382,11 +379,9 @@
   <object type="fa_dorf_wall_1" x="256" y="575"/>
   <object type="fa_dorf_wall_1" x="1094" y="773"/>
   <object type="fa_dorf_wall_1" x="322" y="774"/>
-  <object type="fa_dorf_wall_1" x="478" y="774"/>
   <object type="fa_dorf_wall_1" x="835" y="773"/>
   <object type="fa_dorf_wall_1" x="166" y="774"/>
   <object type="fa_dorf_wall_1" x="813" y="774"/>
-  <object type="fa_dorf_wall_1" x="456" y="774"/>
   <object type="fa_dorf_wall_1" x="389" y="774"/>
   <object type="fa_dorf_wall_1" x="211" y="774"/>
   <object type="fa_dorf_wall_1" x="412" y="774"/>
@@ -414,7 +409,6 @@
   <object type="fa_dorf_wall_1" x="545" y="774"/>
   <object type="fa_dorf_wall_1" x="1200" y="774"/>
   <object type="fa_dorf_wall_1" x="121" y="774"/>
-  <object type="fa_dorf_wall_1" x="434" y="774"/>
   <object type="fa_dorf_wall_1" x="791" y="773"/>
   <object type="fa_dorf_wall_1" x="1245" y="773"/>
   <object type="fa_dorf_wall_1" x="99" y="774"/>
@@ -806,6 +800,406 @@
   <object type="fa_dorf_wall_1" x="209" y="56"/>
   <object type="fa_dorf_wall_1" x="208" y="101"/>
   <object type="fa_dorf_wall_1" x="208" y="78"/>
-  <object type="fa_dorf_table" x="577" y="659"/>
+  <object type="fa_dorf_table" x="542" y="616"/>
+  <object type="fa_dorf_stool" x="543" y="650"/>
+  <object type="fa_dorf_stool" x="579" y="614"/>
+  <object type="fa_dorf_bucket_water" x="525" y="750"/>
+  <object type="fa_dorf_light" x="705" y="597"/>
+  <object type="maxwelllight_area" x="813" y="1160"/>
+  <object type="fa_dorf_guard" x="609" y="609"/>
+  <object type="fa_barrel_wood" x="814" y="598"/>
+  <object type="fa_barrel_wood" x="943" y="1244"/>
+  <object type="fa_barrel_wood" x="1199" y="552"/>
+  <object type="fa_barrel_wood" x="860" y="79"/>
+  <object type="fa_barrel_wood" x="233" y="122"/>
+  <object type="fa_barrel_wood" x="526" y="885"/>
+  <object type="fa_barrel_hotrum" x="813" y="975"/>
+  <object type="fa_barrel_hotrum" x="814" y="999"/>
+  <object type="fa_barrel_hotrum" x="813" y="1024"/>
+  <object type="fa_barrel_hotrum" x="812" y="1049"/>
+  <object type="fa_barrel_hotrum" x="811" y="1073"/>
+  <object type="fa_barrel_hotrum" x="814" y="1097"/>
+  <object type="fa_barrel_darkrum" x="702" y="977"/>
+  <object type="fa_barrel_darkrum" x="702" y="1001"/>
+  <object type="fa_barrel_darkrum" x="702" y="1025"/>
+  <object type="fa_barrel_darkrum" x="702" y="1048"/>
+  <object type="fa_barrel_darkrum" x="701" y="1072"/>
+  <object type="fa_barrel_darkrum" x="701" y="1098"/>
+  <object type="fa_barrel_goldrum" x="702" y="1159"/>
+  <object type="fa_barrel_goldrum" x="701" y="1184"/>
+  <object type="fa_barrel_goldrum" x="700" y="1209"/>
+  <object type="fa_barrel_goldrum" x="700" y="1235"/>
+  <object type="fa_barrel_water" x="814" y="1242"/>
+  <object type="fa_barrel_water" x="791" y="1245"/>
+  <object type="fa_barrel_water" x="768" y="1245"/>
+  <object type="fa_barrel_water" x="745" y="1244"/>
+  <object type="fa_barrel_water" x="721" y="1244"/>
+  <object type="fa_barrel_bourbon" x="946" y="1158"/>
+  <object type="fa_barrel_bourbon" x="945" y="1184"/>
+  <object type="fa_barrel_bourbon" x="944" y="1211"/>
+  <object type="fa_barrel_bourbon" x="918" y="1245"/>
+  <object type="fa_barrel_flavoredrum" x="860" y="972"/>
+  <object type="fa_barrel_flavoredrum" x="858" y="996"/>
+  <object type="fa_barrel_flavoredrum" x="858" y="1019"/>
+  <object type="fa_barrel_flavoredrum" x="856" y="1042"/>
+  <object type="fa_barrel_flavoredrum" x="856" y="1068"/>
+  <object type="fa_barrel_lightale" x="991" y="974"/>
+  <object type="fa_barrel_lightale" x="1013" y="976"/>
+  <object type="fa_barrel_lightale" x="1038" y="977"/>
+  <object type="fa_barrel_lightale" x="1061" y="977"/>
+  <object type="fa_barrel_lightale" x="1087" y="977"/>
+  <object type="fa_barrel_ronsale" x="32" y="974"/>
+  <object type="fa_barrel_ronsale" x="32" y="997"/>
+  <object type="fa_barrel_ronsale" x="31" y="1020"/>
+  <object type="fa_barrel_ronsale" x="32" y="1044"/>
+  <object type="fa_barrel_ronsale" x="32" y="1067"/>
+  <object type="fa_barrel_ronsale" x="77" y="975"/>
+  <object type="fa_barrel_ronsale" x="77" y="997"/>
+  <object type="fa_barrel_ronsale" x="79" y="1019"/>
+  <object type="fa_barrel_ronsale" x="80" y="1040"/>
+  <object type="fa_barrel_ronsale" x="78" y="1065"/>
+  <object type="fa_barrel_drakeale" x="230" y="1159"/>
+  <object type="fa_barrel_drakeale" x="206" y="1161"/>
+  <object type="fa_barrel_drakeale" x="183" y="1160"/>
+  <object type="fa_barrel_drakeale" x="161" y="1162"/>
+  <object type="fa_barrel_drakeale" x="136" y="1161"/>
+  <object type="fa_barrel_oriansale" x="275" y="1159"/>
+  <object type="fa_barrel_oriansale" x="299" y="1159"/>
+  <object type="fa_barrel_oriansale" x="323" y="1157"/>
+  <object type="fa_barrel_oriansale" x="347" y="1159"/>
+  <object type="fa_barrel_oriansale" x="274" y="1184"/>
+  <object type="fa_barrel_oriansale" x="274" y="1209"/>
+  <object type="fa_barrel_dorfale" x="1093" y="1109"/>
+  <object type="fa_barrel_dorfale" x="1072" y="1110"/>
+  <object type="fa_barrel_dorfale" x="992" y="1243"/>
+  <object type="fa_barrel_dorfale" x="1014" y="1243"/>
+  <object type="fa_barrel_dorfale" x="1034" y="1243"/>
+  <object type="fa_barrel_dorfale" x="1054" y="1159"/>
+  <object type="fa_barrel_dorfale" x="1077" y="1158"/>
+  <object type="fa_barrel_molasses" x="1249" y="1245"/>
+  <object type="fa_barrel_molasses" x="1247" y="1221"/>
+  <object type="fa_barrel_molasses" x="1246" y="1198"/>
+  <object type="fa_barrel_molasses" x="1246" y="1174"/>
+  <object type="fa_barrel_deathbrew" x="544" y="1158"/>
+  <object type="fa_barrel_deathbrew" x="544" y="1179"/>
+  <object type="fa_barrel_deathbrew" x="543" y="1202"/>
+  <object type="fa_barrel_lightrum" x="1245" y="1111"/>
+  <object type="fa_barrel_lightrum" x="1243" y="1088"/>
+  <object type="fa_barrel_lightrum" x="1243" y="1065"/>
+  <object type="fa_barrel_lightrum" x="1244" y="1041"/>
+  <object type="fa_barrel_lightrum" x="1244" y="1017"/>
+  <object type="fa_barrel_lightrum" x="1244" y="993"/>
+  <object type="fa_barrel_clearbourbon" x="1160" y="926"/>
+  <object type="fa_barrel_clearbourbon" x="1159" y="903"/>
+  <object type="fa_barrel_clearbourbon" x="1158" y="880"/>
+  <object type="fa_barrel_clearbourbon" x="1157" y="856"/>
+  <object type="fa_barrel_clearbourbon" x="1159" y="831"/>
+  <object type="fa_barrel_vodka" x="1158" y="620"/>
+  <object type="fa_barrel_vodka" x="1159" y="598"/>
+  <object type="fa_barrel_vodka" x="1160" y="644"/>
+  <object type="fa_barrel_vodka" x="1160" y="667"/>
+  <object type="fa_barrel_vodka" x="1160" y="689"/>
+  <object type="fa_barrel_gin" x="1159" y="392"/>
+  <object type="fa_barrel_gin" x="1181" y="394"/>
+  <object type="fa_barrel_gin" x="1204" y="393"/>
+  <object type="fa_barrel_gin" x="1227" y="394"/>
+  <object type="fa_barrel_gin" x="1159" y="414"/>
+  <object type="fa_barrel_tequila" x="1113" y="595"/>
+  <object type="fa_barrel_tequila" x="1111" y="617"/>
+  <object type="fa_barrel_tequila" x="1110" y="640"/>
+  <object type="fa_barrel_tequila" x="1110" y="663"/>
+  <object type="fa_barrel_tequila" x="1111" y="686"/>
+  <object type="fa_barrel_tequila" x="1113" y="708"/>
+  <object type="fa_barrel_whiskey" x="1110" y="794"/>
+  <object type="fa_barrel_whiskey" x="1111" y="817"/>
+  <object type="fa_barrel_whiskey" x="1110" y="839"/>
+  <object type="fa_barrel_whiskey" x="1111" y="862"/>
+  <object type="fa_barrel_whiskey" x="1112" y="885"/>
+  <object type="fa_barrel_whiskey" x="1113" y="909"/>
+  <object type="fa_barrel_baijui" x="861" y="931"/>
+  <object type="fa_barrel_baijui" x="884" y="930"/>
+  <object type="fa_barrel_baijui" x="905" y="928"/>
+  <object type="fa_barrel_baijui" x="927" y="929"/>
+  <object type="fa_barrel_baijui" x="951" y="928"/>
+  <object type="fa_barrel_soju" x="970" y="747"/>
+  <object type="fa_barrel_soju" x="966" y="721"/>
+  <object type="fa_barrel_soju" x="968" y="696"/>
+  <object type="fa_barrel_soju" x="967" y="672"/>
+  <object type="fa_barrel_soju" x="966" y="647"/>
+  <object type="fa_barrel_soju" x="968" y="622"/>
+  <object type="fa_barrel_soju" x="967" y="597"/>
+  <object type="fa_treasurechest" x="702" y="396">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="702" y="422">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="702" y="448">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="702" y="472">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="702" y="496">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="703" y="520">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="702" y="545">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest"/>
+   </properties>
+  </object>
+  <object type="fa_dragon_wine" x="857" y="393"/>
+  <object type="fa_dragon_wine" x="856" y="417"/>
+  <object type="fa_dragon_wine" x="856" y="440"/>
+  <object type="fa_dragon_wine" x="856" y="463"/>
+  <object type="fa_melon_wine" x="856" y="552"/>
+  <object type="fa_melon_wine" x="857" y="527"/>
+  <object type="fa_melon_wine" x="968" y="553"/>
+  <object type="fa_melon_wine" x="946" y="550"/>
+  <object type="fa_glowing_wine" x="966" y="395"/>
+  <object type="fa_glowing_wine" x="966" y="420"/>
+  <object type="fa_glowing_wine" x="966" y="444"/>
+  <object type="fa_glowing_wine" x="967" y="467"/>
+  <object type="fa_glowing_wine" x="966" y="490"/>
+  <object type="fa_glowing_wine" x="967" y="515"/>
+  <object type="fa_pomegranate_wine" x="1115" y="393"/>
+  <object type="fa_pomegranate_wine" x="1114" y="415"/>
+  <object type="fa_pomegranate_wine" x="1113" y="439"/>
+  <object type="fa_pomegranate_wine" x="1111" y="462"/>
+  <object type="fa_pomegranate_wine" x="1112" y="485"/>
+  <object type="fa_pomegranate_wine" x="1112" y="506"/>
+  <object type="fa_barrel_wood" x="811" y="396"/>
+  <object type="fa_emptymug" x="1113" y="346"/>
+  <object type="fa_emptymug" x="1111" y="323"/>
+  <object type="fa_emptymug" x="1112" y="300"/>
+  <object type="fa_emptymug" x="1111" y="278"/>
+  <object type="fa_bottle_wort" x="967" y="346"/>
+  <object type="fa_bottle_wort" x="945" y="347"/>
+  <object type="fa_bottle_wort" x="923" y="347"/>
+  <object type="fa_bottle_wort" x="903" y="348"/>
+  <object type="fa_bottle_wort" x="882" y="347"/>
+  <object type="fa_bottle_wort" x="859" y="348"/>
+  <object type="fa_wineyeast" x="814" y="349"/>
+  <object type="fa_wineyeast" x="793" y="348"/>
+  <object type="fa_wineyeast" x="773" y="349"/>
+  <object type="fa_wineyeast" x="751" y="349"/>
+  <object type="fa_wineyeast" x="726" y="348"/>
+  <object type="fa_wineyeast" x="812" y="214"/>
+  <object type="fa_wineyeast" x="813" y="237"/>
+  <object type="fa_wineyeast" x="815" y="260"/>
+  <object type="fa_wineyeast" x="789" y="213"/>
+  <object type="fa_wineyeast" x="767" y="216"/>
+  <object type="fa_wineyeast" x="742" y="215"/>
+  <object type="fa_wineyeast" x="723" y="215"/>
+  <object type="fa_distillingyeast" x="658" y="349"/>
+  <object type="fa_distillingyeast" x="658" y="325"/>
+  <object type="fa_distillingyeast" x="659" y="301"/>
+  <object type="fa_distillingyeast" x="659" y="277"/>
+  <object type="fa_distillingyeast" x="659" y="254"/>
+  <object type="fa_distillingyeast" x="633" y="346"/>
+  <object type="fa_distillingyeast" x="609" y="347"/>
+  <object type="fa_distillingyeast" x="585" y="347"/>
+  <object type="fa_brewingyeast" x="569" y="398"/>
+  <object type="fa_brewingyeast" x="591" y="398"/>
+  <object type="fa_brewingyeast" x="613" y="399"/>
+  <object type="fa_brewingyeast" x="635" y="400"/>
+  <object type="fa_brewingyeast" x="654" y="398"/>
+  <object type="fa_brewingyeast" x="655" y="422"/>
+  <object type="fa_brewingyeast" x="656" y="444"/>
+  <object type="fa_brewingyeast" x="656" y="466"/>
+  <object type="fa_brewingyeast" x="656" y="489"/>
+  <object type="fa_brewingyeast" x="657" y="511"/>
+  <object type="fa_brewingyeast" x="658" y="533"/>
+  <object type="fa_brewingyeast" x="633" y="549"/>
+  <object type="fa_pandoraschest" x="397" y="397">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest_pandora"/>
+   </properties>
+  </object>
+  <object type="fa_pandoraschest" x="396" y="436">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest_pandora"/>
+   </properties>
+  </object>
+  <object type="fa_pandoraschest" x="394" y="473">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest_pandora"/>
+   </properties>
+  </object>
+  <object type="fa_pandoraschest" x="397" y="516">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest_pandora"/>
+   </properties>
+  </object>
+  <object type="fa_pandoraschest" x="396" y="553">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest_pandora"/>
+   </properties>
+  </object>
+  <object type="fa_minotaurchest" x="619" y="1207">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest_minotaur"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="475" y="624">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="475" y="648">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="475" y="598">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="475" y="672">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_bucket_water" x="475" y="215"/>
+  <object type="fa_treasurechest" x="386" y="1027">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="386" y="1051">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="386" y="977">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="386" y="1003">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest"/>
+   </properties>
+  </object>
+  <object type="fa_pandoraschest" x="538" y="1053">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest_pandora"/>
+   </properties>
+  </object>
+  <object type="fa_pandoraschest" x="540" y="1016">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest_pandora"/>
+   </properties>
+  </object>
+  <object type="fa_pandoraschest" x="541" y="977">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest_pandora"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_socks" x="651" y="1107"/>
+  <object type="fa_barrel_clearbourbon" x="809" y="870"/>
+  <object type="fa_barrel_clearbourbon" x="810" y="893"/>
+  <object type="fa_barrel_clearbourbon" x="807" y="823"/>
+  <object type="fa_barrel_clearbourbon" x="808" y="847"/>
+  <object type="fa_barrel_clearbourbon" x="809" y="798"/>
+  <object type="fa_keg" x="802" y="671"/>
+  <object type="fa_dorf_table" x="130" y="313"/>
+  <object type="fa_dorf_stool" x="171" y="279"/>
+  <object type="fa_dorf_stool" x="170" y="336"/>
+  <object type="maxwelllight_area" x="178" y="218"/>
+  <object type="fa_wineyeast" x="767" y="165"/>
+  <object type="fa_wineyeast" x="748" y="165"/>
+  <object type="fa_wineyeast" x="814" y="163"/>
+  <object type="fa_wineyeast" x="792" y="166"/>
+  <object type="fa_treasurechest" x="398" y="242">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="397" y="218">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="397" y="267">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="179" y="425">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="178" y="401">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="178" y="450">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest"/>
+   </properties>
+  </object>
+  <object type="fa_pandoraschest" x="36" y="36">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest_pandora"/>
+   </properties>
+  </object>
+  <object type="fa_pandoraschest" x="101" y="36">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest_pandora"/>
+   </properties>
+  </object>
+  <object type="fa_pandoraschest" x="175" y="37">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest_pandora"/>
+   </properties>
+  </object>
+  <object type="fa_minotaurchest" x="294" y="896">
+   <properties>
+    <property name="scenario" value="fa_df_storagechest_minotaur"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_table" x="600" y="845"/>
+  <object type="fa_dorf_stool" x="640" y="868"/>
+  <object type="fa_dorf_stool" x="641" y="811"/>
+  <object type="fa_barrel_lightrum" x="654" y="1021"/>
+  <object type="fa_barrel_lightrum" x="654" y="1069"/>
+  <object type="fa_barrel_lightrum" x="654" y="1045"/>
+  <object type="fa_teleporter_dorf" x="579" y="745">
+   <properties>
+    <property name="data.sourcetag" value="Room_dorf_GG"/>
+    <property name="data.targettag" value="Room_dorf_HH"/>
+   </properties>
+  </object>
+  <object type="fa_teleporter_dorf" x="803" y="740">
+   <properties>
+    <property name="data.sourcetag" value="Room_dorf_Z"/>
+    <property name="data.targettag" value="Room_dorf_Y"/>
+   </properties>
+  </object>
+  <object type="fa_teleporter_dorf" x="705" y="639">
+   <properties>
+    <property name="data.sourcetag" value="Room_dorf_FF"/>
+    <property name="data.targettag" value="Room_dorf_EE"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

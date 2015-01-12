@@ -58,7 +58,12 @@
   <object type="fa_dorf" x="289" y="207"/>
   <object type="fa_dorf" x="287" y="469"/>
   <object type="fa_dorf" x="287" y="721"/>
-  <object type="fa_teleporter_dorf" x="639" y="639"/>
+  <object type="fa_teleporter_dorf" x="510" y="638">
+   <properties>
+    <property name="data.sourcetag" value="Room_dorf_U"/>
+    <property name="data.targettag" value="Room_dorf_V"/>
+   </properties>
+  </object>
   <object type="fa_dorf_bucket_water" x="700" y="682"/>
   <object type="fa_treasurechest" x="1069" y="79">
    <properties>
@@ -132,5 +137,20 @@
   <object type="fa_dorf_stool" x="427" y="456"/>
   <object type="fa_dorf_stool" x="471" y="214"/>
   <object type="fa_dorf_stool" x="428" y="213"/>
+  <object type="fa_dorf_light" x="361" y="131"/>
+  <object type="fa_dorf_light" x="357" y="384"/>
+  <object type="fa_dorf_light" x="352" y="634"/>
+  <object type="fa_dorf_light" x="348" y="896"/>
+  <object type="fa_dorf_light" x="909" y="1022"/>
+  <object type="fa_dorf_light" x="918" y="811"/>
+  <object type="fa_dorf_light" x="922" y="571"/>
+  <object type="fa_dorf_light" x="922" y="322"/>
+  <object type="fa_dorf_light" x="925" y="80"/>
+  <object type="fa_teleporter_dorf" x="767" y="639">
+   <properties>
+    <property name="data.sourcetag" value="Room_dorf_T"/>
+    <property name="data.targettag" value="Room_dorf_S"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

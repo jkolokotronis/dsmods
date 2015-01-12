@@ -3186,17 +3186,6 @@ return {
           name = "",
           type = "fa_dorf_wall_1",
           shape = "rectangle",
-          x = 479,
-          y = 371,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_dorf_wall_1",
-          shape = "rectangle",
           x = 836,
           y = 370,
           width = 0,
@@ -3231,17 +3220,6 @@ return {
           type = "fa_dorf_wall_1",
           shape = "rectangle",
           x = 814,
-          y = 371,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_dorf_wall_1",
-          shape = "rectangle",
-          x = 457,
           y = 371,
           width = 0,
           height = 0,
@@ -3572,17 +3550,6 @@ return {
           type = "fa_dorf_wall_1",
           shape = "rectangle",
           x = 122,
-          y = 371,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_dorf_wall_1",
-          shape = "rectangle",
-          x = 435,
           y = 371,
           width = 0,
           height = 0,
@@ -4231,17 +4198,6 @@ return {
           name = "",
           type = "fa_dorf_wall_1",
           shape = "rectangle",
-          x = 478,
-          y = 774,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_dorf_wall_1",
-          shape = "rectangle",
           x = 835,
           y = 773,
           width = 0,
@@ -4265,17 +4221,6 @@ return {
           type = "fa_dorf_wall_1",
           shape = "rectangle",
           x = 813,
-          y = 774,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_dorf_wall_1",
-          shape = "rectangle",
-          x = 456,
           y = 774,
           width = 0,
           height = 0,
@@ -4573,17 +4518,6 @@ return {
           type = "fa_dorf_wall_1",
           shape = "rectangle",
           x = 121,
-          y = 774,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_dorf_wall_1",
-          shape = "rectangle",
-          x = 434,
           y = 774,
           width = 0,
           height = 0,
@@ -8895,12 +8829,2828 @@ return {
           name = "",
           type = "fa_dorf_table",
           shape = "rectangle",
-          x = 577,
-          y = 659,
+          x = 542,
+          y = 616,
           width = 0,
           height = 0,
           visible = true,
           properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_stool",
+          shape = "rectangle",
+          x = 543,
+          y = 650,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_stool",
+          shape = "rectangle",
+          x = 579,
+          y = 614,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_bucket_water",
+          shape = "rectangle",
+          x = 525,
+          y = 750,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_light",
+          shape = "rectangle",
+          x = 705,
+          y = 597,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "maxwelllight_area",
+          shape = "rectangle",
+          x = 813,
+          y = 1160,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_guard",
+          shape = "rectangle",
+          x = 609,
+          y = 609,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_wood",
+          shape = "rectangle",
+          x = 814,
+          y = 598,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_wood",
+          shape = "rectangle",
+          x = 943,
+          y = 1244,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_wood",
+          shape = "rectangle",
+          x = 1199,
+          y = 552,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_wood",
+          shape = "rectangle",
+          x = 860,
+          y = 79,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_wood",
+          shape = "rectangle",
+          x = 233,
+          y = 122,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_wood",
+          shape = "rectangle",
+          x = 526,
+          y = 885,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_hotrum",
+          shape = "rectangle",
+          x = 813,
+          y = 975,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_hotrum",
+          shape = "rectangle",
+          x = 814,
+          y = 999,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_hotrum",
+          shape = "rectangle",
+          x = 813,
+          y = 1024,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_hotrum",
+          shape = "rectangle",
+          x = 812,
+          y = 1049,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_hotrum",
+          shape = "rectangle",
+          x = 811,
+          y = 1073,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_hotrum",
+          shape = "rectangle",
+          x = 814,
+          y = 1097,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_darkrum",
+          shape = "rectangle",
+          x = 702,
+          y = 977,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_darkrum",
+          shape = "rectangle",
+          x = 702,
+          y = 1001,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_darkrum",
+          shape = "rectangle",
+          x = 702,
+          y = 1025,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_darkrum",
+          shape = "rectangle",
+          x = 702,
+          y = 1048,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_darkrum",
+          shape = "rectangle",
+          x = 701,
+          y = 1072,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_darkrum",
+          shape = "rectangle",
+          x = 701,
+          y = 1098,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_goldrum",
+          shape = "rectangle",
+          x = 702,
+          y = 1159,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_goldrum",
+          shape = "rectangle",
+          x = 701,
+          y = 1184,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_goldrum",
+          shape = "rectangle",
+          x = 700,
+          y = 1209,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_goldrum",
+          shape = "rectangle",
+          x = 700,
+          y = 1235,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_water",
+          shape = "rectangle",
+          x = 814,
+          y = 1242,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_water",
+          shape = "rectangle",
+          x = 791,
+          y = 1245,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_water",
+          shape = "rectangle",
+          x = 768,
+          y = 1245,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_water",
+          shape = "rectangle",
+          x = 745,
+          y = 1244,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_water",
+          shape = "rectangle",
+          x = 721,
+          y = 1244,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_bourbon",
+          shape = "rectangle",
+          x = 946,
+          y = 1158,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_bourbon",
+          shape = "rectangle",
+          x = 945,
+          y = 1184,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_bourbon",
+          shape = "rectangle",
+          x = 944,
+          y = 1211,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_bourbon",
+          shape = "rectangle",
+          x = 918,
+          y = 1245,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_flavoredrum",
+          shape = "rectangle",
+          x = 860,
+          y = 972,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_flavoredrum",
+          shape = "rectangle",
+          x = 858,
+          y = 996,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_flavoredrum",
+          shape = "rectangle",
+          x = 858,
+          y = 1019,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_flavoredrum",
+          shape = "rectangle",
+          x = 856,
+          y = 1042,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_flavoredrum",
+          shape = "rectangle",
+          x = 856,
+          y = 1068,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_lightale",
+          shape = "rectangle",
+          x = 991,
+          y = 974,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_lightale",
+          shape = "rectangle",
+          x = 1013,
+          y = 976,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_lightale",
+          shape = "rectangle",
+          x = 1038,
+          y = 977,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_lightale",
+          shape = "rectangle",
+          x = 1061,
+          y = 977,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_lightale",
+          shape = "rectangle",
+          x = 1087,
+          y = 977,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_ronsale",
+          shape = "rectangle",
+          x = 32,
+          y = 974,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_ronsale",
+          shape = "rectangle",
+          x = 32,
+          y = 997,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_ronsale",
+          shape = "rectangle",
+          x = 31,
+          y = 1020,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_ronsale",
+          shape = "rectangle",
+          x = 32,
+          y = 1044,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_ronsale",
+          shape = "rectangle",
+          x = 32,
+          y = 1067,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_ronsale",
+          shape = "rectangle",
+          x = 77,
+          y = 975,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_ronsale",
+          shape = "rectangle",
+          x = 77,
+          y = 997,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_ronsale",
+          shape = "rectangle",
+          x = 79,
+          y = 1019,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_ronsale",
+          shape = "rectangle",
+          x = 80,
+          y = 1040,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_ronsale",
+          shape = "rectangle",
+          x = 78,
+          y = 1065,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_drakeale",
+          shape = "rectangle",
+          x = 230,
+          y = 1159,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_drakeale",
+          shape = "rectangle",
+          x = 206,
+          y = 1161,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_drakeale",
+          shape = "rectangle",
+          x = 183,
+          y = 1160,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_drakeale",
+          shape = "rectangle",
+          x = 161,
+          y = 1162,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_drakeale",
+          shape = "rectangle",
+          x = 136,
+          y = 1161,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_oriansale",
+          shape = "rectangle",
+          x = 275,
+          y = 1159,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_oriansale",
+          shape = "rectangle",
+          x = 299,
+          y = 1159,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_oriansale",
+          shape = "rectangle",
+          x = 323,
+          y = 1157,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_oriansale",
+          shape = "rectangle",
+          x = 347,
+          y = 1159,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_oriansale",
+          shape = "rectangle",
+          x = 274,
+          y = 1184,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_oriansale",
+          shape = "rectangle",
+          x = 274,
+          y = 1209,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_dorfale",
+          shape = "rectangle",
+          x = 1093,
+          y = 1109,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_dorfale",
+          shape = "rectangle",
+          x = 1072,
+          y = 1110,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_dorfale",
+          shape = "rectangle",
+          x = 992,
+          y = 1243,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_dorfale",
+          shape = "rectangle",
+          x = 1014,
+          y = 1243,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_dorfale",
+          shape = "rectangle",
+          x = 1034,
+          y = 1243,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_dorfale",
+          shape = "rectangle",
+          x = 1054,
+          y = 1159,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_dorfale",
+          shape = "rectangle",
+          x = 1077,
+          y = 1158,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_molasses",
+          shape = "rectangle",
+          x = 1249,
+          y = 1245,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_molasses",
+          shape = "rectangle",
+          x = 1247,
+          y = 1221,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_molasses",
+          shape = "rectangle",
+          x = 1246,
+          y = 1198,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_molasses",
+          shape = "rectangle",
+          x = 1246,
+          y = 1174,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_deathbrew",
+          shape = "rectangle",
+          x = 544,
+          y = 1158,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_deathbrew",
+          shape = "rectangle",
+          x = 544,
+          y = 1179,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_deathbrew",
+          shape = "rectangle",
+          x = 543,
+          y = 1202,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_lightrum",
+          shape = "rectangle",
+          x = 1245,
+          y = 1111,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_lightrum",
+          shape = "rectangle",
+          x = 1243,
+          y = 1088,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_lightrum",
+          shape = "rectangle",
+          x = 1243,
+          y = 1065,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_lightrum",
+          shape = "rectangle",
+          x = 1244,
+          y = 1041,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_lightrum",
+          shape = "rectangle",
+          x = 1244,
+          y = 1017,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_lightrum",
+          shape = "rectangle",
+          x = 1244,
+          y = 993,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_clearbourbon",
+          shape = "rectangle",
+          x = 1160,
+          y = 926,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_clearbourbon",
+          shape = "rectangle",
+          x = 1159,
+          y = 903,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_clearbourbon",
+          shape = "rectangle",
+          x = 1158,
+          y = 880,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_clearbourbon",
+          shape = "rectangle",
+          x = 1157,
+          y = 856,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_clearbourbon",
+          shape = "rectangle",
+          x = 1159,
+          y = 831,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_vodka",
+          shape = "rectangle",
+          x = 1158,
+          y = 620,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_vodka",
+          shape = "rectangle",
+          x = 1159,
+          y = 598,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_vodka",
+          shape = "rectangle",
+          x = 1160,
+          y = 644,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_vodka",
+          shape = "rectangle",
+          x = 1160,
+          y = 667,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_vodka",
+          shape = "rectangle",
+          x = 1160,
+          y = 689,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_gin",
+          shape = "rectangle",
+          x = 1159,
+          y = 392,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_gin",
+          shape = "rectangle",
+          x = 1181,
+          y = 394,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_gin",
+          shape = "rectangle",
+          x = 1204,
+          y = 393,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_gin",
+          shape = "rectangle",
+          x = 1227,
+          y = 394,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_gin",
+          shape = "rectangle",
+          x = 1159,
+          y = 414,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_tequila",
+          shape = "rectangle",
+          x = 1113,
+          y = 595,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_tequila",
+          shape = "rectangle",
+          x = 1111,
+          y = 617,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_tequila",
+          shape = "rectangle",
+          x = 1110,
+          y = 640,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_tequila",
+          shape = "rectangle",
+          x = 1110,
+          y = 663,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_tequila",
+          shape = "rectangle",
+          x = 1111,
+          y = 686,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_tequila",
+          shape = "rectangle",
+          x = 1113,
+          y = 708,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_whiskey",
+          shape = "rectangle",
+          x = 1110,
+          y = 794,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_whiskey",
+          shape = "rectangle",
+          x = 1111,
+          y = 817,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_whiskey",
+          shape = "rectangle",
+          x = 1110,
+          y = 839,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_whiskey",
+          shape = "rectangle",
+          x = 1111,
+          y = 862,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_whiskey",
+          shape = "rectangle",
+          x = 1112,
+          y = 885,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_whiskey",
+          shape = "rectangle",
+          x = 1113,
+          y = 909,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_baijui",
+          shape = "rectangle",
+          x = 861,
+          y = 931,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_baijui",
+          shape = "rectangle",
+          x = 884,
+          y = 930,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_baijui",
+          shape = "rectangle",
+          x = 905,
+          y = 928,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_baijui",
+          shape = "rectangle",
+          x = 927,
+          y = 929,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_baijui",
+          shape = "rectangle",
+          x = 951,
+          y = 928,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_soju",
+          shape = "rectangle",
+          x = 970,
+          y = 747,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_soju",
+          shape = "rectangle",
+          x = 966,
+          y = 721,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_soju",
+          shape = "rectangle",
+          x = 968,
+          y = 696,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_soju",
+          shape = "rectangle",
+          x = 967,
+          y = 672,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_soju",
+          shape = "rectangle",
+          x = 966,
+          y = 647,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_soju",
+          shape = "rectangle",
+          x = 968,
+          y = 622,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_soju",
+          shape = "rectangle",
+          x = 967,
+          y = 597,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 702,
+          y = 396,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 702,
+          y = 422,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 702,
+          y = 448,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 702,
+          y = 472,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 702,
+          y = 496,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 703,
+          y = 520,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 702,
+          y = 545,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dragon_wine",
+          shape = "rectangle",
+          x = 857,
+          y = 393,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dragon_wine",
+          shape = "rectangle",
+          x = 856,
+          y = 417,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dragon_wine",
+          shape = "rectangle",
+          x = 856,
+          y = 440,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dragon_wine",
+          shape = "rectangle",
+          x = 856,
+          y = 463,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_melon_wine",
+          shape = "rectangle",
+          x = 856,
+          y = 552,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_melon_wine",
+          shape = "rectangle",
+          x = 857,
+          y = 527,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_melon_wine",
+          shape = "rectangle",
+          x = 968,
+          y = 553,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_melon_wine",
+          shape = "rectangle",
+          x = 946,
+          y = 550,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_glowing_wine",
+          shape = "rectangle",
+          x = 966,
+          y = 395,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_glowing_wine",
+          shape = "rectangle",
+          x = 966,
+          y = 420,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_glowing_wine",
+          shape = "rectangle",
+          x = 966,
+          y = 444,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_glowing_wine",
+          shape = "rectangle",
+          x = 967,
+          y = 467,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_glowing_wine",
+          shape = "rectangle",
+          x = 966,
+          y = 490,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_glowing_wine",
+          shape = "rectangle",
+          x = 967,
+          y = 515,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_pomegranate_wine",
+          shape = "rectangle",
+          x = 1115,
+          y = 393,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_pomegranate_wine",
+          shape = "rectangle",
+          x = 1114,
+          y = 415,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_pomegranate_wine",
+          shape = "rectangle",
+          x = 1113,
+          y = 439,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_pomegranate_wine",
+          shape = "rectangle",
+          x = 1111,
+          y = 462,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_pomegranate_wine",
+          shape = "rectangle",
+          x = 1112,
+          y = 485,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_pomegranate_wine",
+          shape = "rectangle",
+          x = 1112,
+          y = 506,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_wood",
+          shape = "rectangle",
+          x = 811,
+          y = 396,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_emptymug",
+          shape = "rectangle",
+          x = 1113,
+          y = 346,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_emptymug",
+          shape = "rectangle",
+          x = 1111,
+          y = 323,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_emptymug",
+          shape = "rectangle",
+          x = 1112,
+          y = 300,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_emptymug",
+          shape = "rectangle",
+          x = 1111,
+          y = 278,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bottle_wort",
+          shape = "rectangle",
+          x = 967,
+          y = 346,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bottle_wort",
+          shape = "rectangle",
+          x = 945,
+          y = 347,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bottle_wort",
+          shape = "rectangle",
+          x = 923,
+          y = 347,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bottle_wort",
+          shape = "rectangle",
+          x = 903,
+          y = 348,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bottle_wort",
+          shape = "rectangle",
+          x = 882,
+          y = 347,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bottle_wort",
+          shape = "rectangle",
+          x = 859,
+          y = 348,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_wineyeast",
+          shape = "rectangle",
+          x = 814,
+          y = 349,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_wineyeast",
+          shape = "rectangle",
+          x = 793,
+          y = 348,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_wineyeast",
+          shape = "rectangle",
+          x = 773,
+          y = 349,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_wineyeast",
+          shape = "rectangle",
+          x = 751,
+          y = 349,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_wineyeast",
+          shape = "rectangle",
+          x = 726,
+          y = 348,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_wineyeast",
+          shape = "rectangle",
+          x = 812,
+          y = 214,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_wineyeast",
+          shape = "rectangle",
+          x = 813,
+          y = 237,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_wineyeast",
+          shape = "rectangle",
+          x = 815,
+          y = 260,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_wineyeast",
+          shape = "rectangle",
+          x = 789,
+          y = 213,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_wineyeast",
+          shape = "rectangle",
+          x = 767,
+          y = 216,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_wineyeast",
+          shape = "rectangle",
+          x = 742,
+          y = 215,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_wineyeast",
+          shape = "rectangle",
+          x = 723,
+          y = 215,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_distillingyeast",
+          shape = "rectangle",
+          x = 658,
+          y = 349,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_distillingyeast",
+          shape = "rectangle",
+          x = 658,
+          y = 325,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_distillingyeast",
+          shape = "rectangle",
+          x = 659,
+          y = 301,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_distillingyeast",
+          shape = "rectangle",
+          x = 659,
+          y = 277,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_distillingyeast",
+          shape = "rectangle",
+          x = 659,
+          y = 254,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_distillingyeast",
+          shape = "rectangle",
+          x = 633,
+          y = 346,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_distillingyeast",
+          shape = "rectangle",
+          x = 609,
+          y = 347,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_distillingyeast",
+          shape = "rectangle",
+          x = 585,
+          y = 347,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_brewingyeast",
+          shape = "rectangle",
+          x = 569,
+          y = 398,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_brewingyeast",
+          shape = "rectangle",
+          x = 591,
+          y = 398,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_brewingyeast",
+          shape = "rectangle",
+          x = 613,
+          y = 399,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_brewingyeast",
+          shape = "rectangle",
+          x = 635,
+          y = 400,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_brewingyeast",
+          shape = "rectangle",
+          x = 654,
+          y = 398,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_brewingyeast",
+          shape = "rectangle",
+          x = 655,
+          y = 422,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_brewingyeast",
+          shape = "rectangle",
+          x = 656,
+          y = 444,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_brewingyeast",
+          shape = "rectangle",
+          x = 656,
+          y = 466,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_brewingyeast",
+          shape = "rectangle",
+          x = 656,
+          y = 489,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_brewingyeast",
+          shape = "rectangle",
+          x = 657,
+          y = 511,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_brewingyeast",
+          shape = "rectangle",
+          x = 658,
+          y = 533,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_brewingyeast",
+          shape = "rectangle",
+          x = 633,
+          y = 549,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_pandoraschest",
+          shape = "rectangle",
+          x = 397,
+          y = 397,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest_pandora"
+          }
+        },
+        {
+          name = "",
+          type = "fa_pandoraschest",
+          shape = "rectangle",
+          x = 396,
+          y = 436,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest_pandora"
+          }
+        },
+        {
+          name = "",
+          type = "fa_pandoraschest",
+          shape = "rectangle",
+          x = 394,
+          y = 473,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest_pandora"
+          }
+        },
+        {
+          name = "",
+          type = "fa_pandoraschest",
+          shape = "rectangle",
+          x = 397,
+          y = 516,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest_pandora"
+          }
+        },
+        {
+          name = "",
+          type = "fa_pandoraschest",
+          shape = "rectangle",
+          x = 396,
+          y = 553,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest_pandora"
+          }
+        },
+        {
+          name = "",
+          type = "fa_minotaurchest",
+          shape = "rectangle",
+          x = 619,
+          y = 1207,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest_minotaur"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 475,
+          y = 624,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 475,
+          y = 648,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 475,
+          y = 598,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 475,
+          y = 672,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_bucket_water",
+          shape = "rectangle",
+          x = 475,
+          y = 215,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 386,
+          y = 1027,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 386,
+          y = 1051,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 386,
+          y = 977,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 386,
+          y = 1003,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_pandoraschest",
+          shape = "rectangle",
+          x = 538,
+          y = 1053,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest_pandora"
+          }
+        },
+        {
+          name = "",
+          type = "fa_pandoraschest",
+          shape = "rectangle",
+          x = 540,
+          y = 1016,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest_pandora"
+          }
+        },
+        {
+          name = "",
+          type = "fa_pandoraschest",
+          shape = "rectangle",
+          x = 541,
+          y = 977,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest_pandora"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_socks",
+          shape = "rectangle",
+          x = 651,
+          y = 1107,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_clearbourbon",
+          shape = "rectangle",
+          x = 809,
+          y = 870,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_clearbourbon",
+          shape = "rectangle",
+          x = 810,
+          y = 893,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_clearbourbon",
+          shape = "rectangle",
+          x = 807,
+          y = 823,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_clearbourbon",
+          shape = "rectangle",
+          x = 808,
+          y = 847,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_clearbourbon",
+          shape = "rectangle",
+          x = 809,
+          y = 798,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_keg",
+          shape = "rectangle",
+          x = 802,
+          y = 671,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_table",
+          shape = "rectangle",
+          x = 130,
+          y = 313,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_stool",
+          shape = "rectangle",
+          x = 171,
+          y = 279,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_stool",
+          shape = "rectangle",
+          x = 170,
+          y = 336,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "maxwelllight_area",
+          shape = "rectangle",
+          x = 178,
+          y = 218,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_wineyeast",
+          shape = "rectangle",
+          x = 767,
+          y = 165,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_wineyeast",
+          shape = "rectangle",
+          x = 748,
+          y = 165,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_wineyeast",
+          shape = "rectangle",
+          x = 814,
+          y = 163,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_wineyeast",
+          shape = "rectangle",
+          x = 792,
+          y = 166,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 398,
+          y = 242,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 397,
+          y = 218,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 397,
+          y = 267,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 179,
+          y = 425,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 178,
+          y = 401,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 178,
+          y = 450,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_pandoraschest",
+          shape = "rectangle",
+          x = 36,
+          y = 36,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest_pandora"
+          }
+        },
+        {
+          name = "",
+          type = "fa_pandoraschest",
+          shape = "rectangle",
+          x = 101,
+          y = 36,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest_pandora"
+          }
+        },
+        {
+          name = "",
+          type = "fa_pandoraschest",
+          shape = "rectangle",
+          x = 175,
+          y = 37,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest_pandora"
+          }
+        },
+        {
+          name = "",
+          type = "fa_minotaurchest",
+          shape = "rectangle",
+          x = 294,
+          y = 896,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_storagechest_minotaur"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_table",
+          shape = "rectangle",
+          x = 600,
+          y = 845,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_stool",
+          shape = "rectangle",
+          x = 640,
+          y = 868,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_stool",
+          shape = "rectangle",
+          x = 641,
+          y = 811,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_lightrum",
+          shape = "rectangle",
+          x = 654,
+          y = 1021,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_lightrum",
+          shape = "rectangle",
+          x = 654,
+          y = 1069,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_barrel_lightrum",
+          shape = "rectangle",
+          x = 654,
+          y = 1045,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_teleporter_dorf",
+          shape = "rectangle",
+          x = 579,
+          y = 745,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.sourcetag"] = "Room_dorf_GG",
+            ["data.targettag"] = "Room_dorf_HH"
+          }
+        },
+        {
+          name = "",
+          type = "fa_teleporter_dorf",
+          shape = "rectangle",
+          x = 803,
+          y = 740,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.sourcetag"] = "Room_dorf_Z",
+            ["data.targettag"] = "Room_dorf_Y"
+          }
+        },
+        {
+          name = "",
+          type = "fa_teleporter_dorf",
+          shape = "rectangle",
+          x = 705,
+          y = 639,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.sourcetag"] = "Room_dorf_FF",
+            ["data.targettag"] = "Room_dorf_EE"
+          }
         }
       }
     }

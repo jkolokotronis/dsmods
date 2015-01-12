@@ -66,9 +66,6 @@ AddTask("FADwarfFortressTask1", {
 			["FA_DwarfFortressSmelting"] = 1,
 			["FA_DwarfFortressThrone"] = 1,
 			["FA_DwarfFortressDiningRoom"] = 1,
-
-			
-			
 		},
 		room_bg=GROUND.FUNGUSRED,
 		background_room="FA_BGDwarfFortress",
@@ -82,17 +79,7 @@ AddTask("FADwarfFortressTask2", {
 			["FA_DwarfFortressBedrooms"]=1,
 			["FA_DwarfFortressStorage"] = 1,
 			["FA_DwarfFortressAlcohol"] = 1,
-			["FA_DwarfFortressDungeon"] = 1,
-			
-			
---			["PondWilds"] = math.random(1,3),
---			["SlurperWilds"] = math.random(1,3),
---			["LushWilds"] = math.random(1,2),
---			["FA_GoblinRoomEntry"] = 3,
---			["FA_DwarfFortressTestRoom"] = 3,
---			["FA_BGDwarfFortress"]=4
---			["FA_5x5GoblinRoom_5"] = 1,
-			
+			["FA_DwarfFortressDungeon"] = 1,		
 		},
 		room_bg=GROUND.FUNGUSRED,
 		background_room="FA_BGDwarfFortress",
@@ -103,11 +90,9 @@ AddTask("FADwarfFortressTask3", {
 		locks={LOCKS.NONE},
 		keys_given= {KEYS.TIER1},
 		room_choices={
---			["PondWilds"] = math.random(1,3),
---			["SlurperWilds"] = math.random(1,3),
---			["LushWilds"] = math.random(1,2),
 			["FA_DwarfFortressGraveyard"] = 1,
---			["FA_5x5GoblinRoom_5"] = 1,
+			["FA_DwarfFortressArmory"] = 1,
+			["FA_DwarfFortressTreasure"]=1,
 			
 		},
 		room_bg=GROUND.FUNGUSRED,

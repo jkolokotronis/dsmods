@@ -5390,6 +5390,20 @@ return {
           height = 0,
           visible = true,
           properties = {}
+        },
+        {
+          name = "",
+          type = "fa_teleporter_dorf",
+          shape = "rectangle",
+          x = 122,
+          y = 1139,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.sourcetag"] = "Room_dorf_D",
+            ["data.targettag"] = "Room_dorf_C"
+          }
         }
       }
     }

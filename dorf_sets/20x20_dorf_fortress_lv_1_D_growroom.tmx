@@ -548,13 +548,19 @@
   <object type="maxwelllight_area" x="397" y="497"/>
   <object type="maxwelllight_area" x="885" y="242"/>
   <object type="maxwelllight_area" x="641" y="693"/>
-  <object type="fa_teleporter_dorf" x="641" y="188"/>
   <object type="fa_teleporter_dorf" x="640" y="625">
    <properties>
     <property name="data.sourcetag" value="Room_dorf_H"/>
     <property name="data.targettag" value="Room_dorf_G"/>
    </properties>
   </object>
-  <object type="fa_teleporter_dorf" x="638" y="1116"/>
+  <object type="fa_dorf_bucket_water" x="641" y="37"/>
+  <object type="fa_dorf_bucket_water" x="639" y="1241"/>
+  <object type="fa_teleporter_dorf" x="642" y="121">
+   <properties>
+    <property name="data.sourcetag" value="Room_dorf_M"/>
+    <property name="data.targettag" value="Room_dorf_N"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

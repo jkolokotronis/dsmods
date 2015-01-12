@@ -85,5 +85,71 @@
   <object type="fa_lavagrave" x="382" y="956"/>
   <object type="fa_lavagrave" x="445" y="954"/>
   <object type="fa_lavagrave" x="381" y="891"/>
+  <object type="fa_dorf_bucket_water" x="592" y="587"/>
+  <object type="bat" x="485" y="248"/>
+  <object type="bat" x="269" y="193"/>
+  <object type="bat" x="207" y="329"/>
+  <object type="bat" x="74" y="146"/>
+  <object type="bat" x="238" y="79"/>
+  <object type="bat" x="461" y="95"/>
+  <object type="bat" x="461" y="95"/>
+  <object type="bat" x="727" y="195"/>
+  <object type="bat" x="727" y="195"/>
+  <object type="bat" x="747" y="346"/>
+  <object type="bat" x="755" y="475"/>
+  <object type="bat" x="994" y="488"/>
+  <object type="bat" x="1062" y="401"/>
+  <object type="bat" x="1057" y="220"/>
+  <object type="bat" x="897" y="220"/>
+  <object type="bat" x="1067" y="98"/>
+  <object type="bat" x="1184" y="245"/>
+  <object type="bat" x="1187" y="400"/>
+  <object type="bat" x="1183" y="553"/>
+  <object type="bat" x="1194" y="715"/>
+  <object type="bat" x="1178" y="891"/>
+  <object type="bat" x="1189" y="1139"/>
+  <object type="bat" x="1038" y="1191"/>
+  <object type="bat" x="855" y="1187"/>
+  <object type="bat" x="732" y="1058"/>
+  <object type="bat" x="729" y="813"/>
+  <object type="bat" x="1041" y="743"/>
+  <object type="bat" x="1025" y="931"/>
+  <object type="bat" x="937" y="1061"/>
+  <object type="bat" x="241" y="735"/>
+  <object type="bat" x="375" y="770"/>
+  <object type="bat" x="351" y="853"/>
+  <object type="bat" x="280" y="988"/>
+  <object type="bat" x="439" y="1049"/>
+  <object type="bat" x="604" y="737"/>
+  <object type="bat" x="612" y="847"/>
+  <object type="bat" x="597" y="1014"/>
+  <object type="bat" x="600" y="1145"/>
+  <object type="bat" x="506" y="1189"/>
+  <object type="bat" x="340" y="1171"/>
+  <object type="bat" x="172" y="1171"/>
+  <object type="bat" x="92" y="1066"/>
+  <object type="bat" x="112" y="938"/>
+  <object type="bat" x="78" y="726"/>
+  <object type="bat" x="187" y="605"/>
+  <object type="bat" x="77" y="400"/>
+  <object type="bat" x="107" y="237"/>
+  <object type="fa_teleporter_dorf" x="689" y="589">
+   <properties>
+    <property name="data.sourcetag" value="Room_dorf_P"/>
+    <property name="data.targettag" value="Room_dorf_O"/>
+   </properties>
+  </object>
+  <object type="fa_teleporter_dorf" x="895" y="592">
+   <properties>
+    <property name="data.sourcetag" value="Room_dorf_BB"/>
+    <property name="data.targettag" value="Room_dorf_AA"/>
+   </properties>
+  </object>
+  <object type="fa_teleporter_dorf" x="440" y="589">
+   <properties>
+    <property name="data.sourcetag" value="Room_dorf_Q"/>
+    <property name="data.targettag" value="Room_dorf_R"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

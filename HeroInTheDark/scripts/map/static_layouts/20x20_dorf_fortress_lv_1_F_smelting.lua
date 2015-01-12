@@ -755,8 +755,8 @@ return {
           name = "",
           type = "fa_dorf",
           shape = "rectangle",
-          x = 388,
-          y = 300,
+          x = 347,
+          y = 437,
           width = 0,
           height = 0,
           visible = true,
@@ -1224,7 +1224,10 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.sourcetag"] = "Room_dorf_S",
+            ["data.targettag"] = "Room_dorf_T"
+          }
         },
         {
           name = "",
@@ -1236,6 +1239,34 @@ return {
           height = 0,
           visible = true,
           properties = {}
+        },
+        {
+          name = "",
+          type = "fa_teleporter_dorf",
+          shape = "rectangle",
+          x = 531,
+          y = 1042,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.sourcetag"] = "Room_dorf_F",
+            ["data.targettag"] = "Room_dorf_E"
+          }
+        },
+        {
+          name = "",
+          type = "fa_teleporter_dorf",
+          shape = "rectangle",
+          x = 385,
+          y = 283,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.sourcetag"] = "Room_dorf_I",
+            ["data.targettag"] = "Room_dorf_J"
+          }
         }
       }
     }

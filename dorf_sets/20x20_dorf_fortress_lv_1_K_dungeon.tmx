@@ -20,8 +20,19 @@
   <object type="fa_dorf_gold_pillar" x="1216" y="1215"/>
   <object type="fa_dorf_gold_pillar" x="1021" y="385"/>
   <object type="fa_dorf_gold_pillar" x="1023" y="190"/>
-  <object type="fa_teleporter_dorf" x="704" y="573"/>
+  <object type="fa_teleporter_dorf" x="701" y="567">
+   <properties>
+    <property name="data.sourcetag" value="Room_dorf_N"/>
+    <property name="data.targettag" value="Room_dorf_M"/>
+   </properties>
+  </object>
   <object type="fa_dorf_bucket_water" x="745" y="617"/>
   <object type="fa_dorf_gold_pillar" x="59" y="578"/>
+  <object type="fa_teleporter_dorf" x="1022" y="1215">
+   <properties>
+    <property name="data.sourcetag" value="Room_dorf_O"/>
+    <property name="data.targettag" value="Room_dorf_P"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

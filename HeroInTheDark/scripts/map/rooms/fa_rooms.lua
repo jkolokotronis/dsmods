@@ -747,6 +747,63 @@ AddRoom("FA_DwarfFortressGraveyard",{
 									}, 
 					            }
 	})
+AddRoom("FA_DwarfFortressArmory",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.FUNGUSGREEN,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FADorfFortressArmory"] = 1,
+									}, 
+					            }
+	})
+
+
+AddRoom("FA_DwarfFortressTreasure",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.FUNGUSGREEN,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FADorfFortressTreasure"] = 1,
+									}, 
+					            }
+	})
+AddRoom("FA_DwarfFortressSecretEntrance",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.FUNGUSGREEN,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FADorfFortressSecretEntrance"] = 1,
+									}, 
+					            }
+	})
+AddRoom("FA_DwarfFortressSecret1",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.FUNGUSGREEN,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FADorfFortressSecret1"] = 1,
+									}, 
+					            }
+	})
+AddRoom("FA_DwarfFortressSecret2",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.FUNGUSGREEN,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FADorfFortressSecret2"] = 1,
+									}, 
+					            }
+	})
 
 
 AddRoom("FA_DwarfFortressRoom1",{

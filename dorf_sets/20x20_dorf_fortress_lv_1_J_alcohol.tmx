@@ -508,45 +508,8 @@
   <object type="fa_emptymug" x="300" y="619"/>
   <object type="fa_emptymug" x="300" y="686"/>
   <object type="fa_emptymug" x="299" y="731"/>
-  <object type="fa_bottle_wort" x="348" y="1155"/>
-  <object type="fa_bottle_wort" x="371" y="1156"/>
-  <object type="fa_bottle_wort" x="394" y="1154"/>
-  <object type="fa_bottle_wort" x="417" y="1155"/>
-  <object type="fa_bottle_wort" x="439" y="1156"/>
-  <object type="fa_bottle_wort" x="462" y="1157"/>
-  <object type="fa_bottle_wort" x="485" y="1155"/>
-  <object type="fa_bottle_wort" x="508" y="1156"/>
-  <object type="fa_bottle_wort" x="530" y="1157"/>
-  <object type="fa_bottle_wort" x="553" y="1158"/>
-  <object type="fa_bottle_wort" x="576" y="1156"/>
-  <object type="fa_bottle_wort" x="599" y="1157"/>
-  <object type="fa_wineyeast" x="344" y="1243"/>
-  <object type="fa_wineyeast" x="366" y="1244"/>
-  <object type="fa_wineyeast" x="388" y="1245"/>
-  <object type="fa_wineyeast" x="432" y="1244"/>
-  <object type="fa_wineyeast" x="454" y="1245"/>
-  <object type="fa_wineyeast" x="410" y="1243"/>
-  <object type="fa_wineyeast" x="500" y="1245"/>
-  <object type="fa_wineyeast" x="522" y="1246"/>
-  <object type="fa_wineyeast" x="478" y="1244"/>
   <object type="maxwelllight_area" x="641" y="1112"/>
   <object type="maxwelllight_area" x="646" y="150"/>
-  <object type="fa_dorf_light" x="640" y="510"/>
-  <object type="fa_dorf_light" x="640" y="700"/>
-  <object type="fa_distillingyeast" x="544" y="1245"/>
-  <object type="fa_distillingyeast" x="568" y="1244"/>
-  <object type="fa_distillingyeast" x="592" y="1244"/>
-  <object type="fa_distillingyeast" x="615" y="1246"/>
-  <object type="fa_treasurechest" x="925" y="1240">
-   <properties>
-    <property name="scenario" value="fa_df_tavernchest"/>
-   </properties>
-  </object>
-  <object type="fa_treasurechest" x="925" y="1155">
-   <properties>
-    <property name="scenario" value="fa_df_tavernchest"/>
-   </properties>
-  </object>
   <object type="fa_treasurechest" x="772" y="1154">
    <properties>
     <property name="scenario" value="fa_df_tavernchest"/>
@@ -557,7 +520,7 @@
     <property name="scenario" value="fa_df_tavernchest"/>
    </properties>
   </object>
-  <object type="fa_treasurechest" x="851" y="1201">
+  <object type="fa_treasurechest" x="830" y="1201">
    <properties>
     <property name="scenario" value="fa_df_tavernchest"/>
    </properties>
@@ -572,5 +535,100 @@
   <object type="maxwelllight_area" x="1162" y="32"/>
   <object type="maxwelllight_area" x="1158" y="1241"/>
   <object type="maxwelllight_area" x="1245" y="706"/>
+  <object type="fa_dorf_bucket_water" x="349" y="150"/>
+  <object type="fa_dorf_bucket_water" x="924" y="149"/>
+  <object type="fa_dorf_bucket_water" x="927" y="1109"/>
+  <object type="fa_dorf_bucket_water" x="344" y="1113"/>
+  <object type="fa_treasurechest" x="504" y="1246">
+   <properties>
+    <property name="scenario" value="fa_df_tavernchest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="506" y="1156">
+   <properties>
+    <property name="scenario" value="fa_df_tavernchest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="659" y="1242">
+   <properties>
+    <property name="scenario" value="fa_df_tavernchest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="585" y="1203">
+   <properties>
+    <property name="scenario" value="fa_df_tavernchest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="659" y="1157">
+   <properties>
+    <property name="scenario" value="fa_df_tavernchest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="271" y="1246">
+   <properties>
+    <property name="scenario" value="fa_df_tavernchest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="273" y="1156">
+   <properties>
+    <property name="scenario" value="fa_df_tavernchest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="426" y="1242">
+   <properties>
+    <property name="scenario" value="fa_df_tavernchest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="467" y="1203">
+   <properties>
+    <property name="scenario" value="fa_df_tavernchest"/>
+   </properties>
+  </object>
+  <object type="fa_treasurechest" x="426" y="1157">
+   <properties>
+    <property name="scenario" value="fa_df_tavernchest"/>
+   </properties>
+  </object>
+  <object type="fa_teleporter_dorf" x="638" y="510">
+   <properties>
+    <property name="data.sourcetag" value="Room_dorf_X"/>
+    <property name="data.targettag" value="Room_dorf_W"/>
+   </properties>
+  </object>
+  <object type="fa_skullchest" x="897" y="1202">
+   <properties>
+    <property name="scenario" value="fa_df_tavernchest_skull"/>
+   </properties>
+  </object>
+  <object type="fa_dwarfalemug" x="412" y="280"/>
+  <object type="fa_dwarfalemug" x="646" y="352"/>
+  <object type="fa_dwarfalemug" x="890" y="284"/>
+  <object type="fa_dwarfalemug" x="236" y="398"/>
+  <object type="fa_dwarfalemug" x="242" y="108"/>
+  <object type="fa_dwarfalemug" x="137" y="409"/>
+  <object type="fa_dwarfalemug" x="241" y="642"/>
+  <object type="fa_dwarfalemug" x="127" y="877"/>
+  <object type="fa_dwarfalemug" x="238" y="1175"/>
+  <object type="fa_red_wine" x="1134" y="98"/>
+  <object type="fa_red_wine" x="700" y="57"/>
+  <object type="fa_red_wine" x="1158" y="1100"/>
+  <object type="fa_teleporter_dorf" x="384" y="65">
+   <properties>
+    <property name="data.sourcetag" value="Room_dorf_AA"/>
+    <property name="data.targettag" value="Room_dorf_BB"/>
+   </properties>
+  </object>
+  <object type="fa_teleporter_dorf" x="639" y="701">
+   <properties>
+    <property name="data.sourcetag" value="Room_dorf_V"/>
+    <property name="data.targettag" value="Room_dorf_U"/>
+   </properties>
+  </object>
+  <object type="fa_teleporter_dorf" x="574" y="66">
+   <properties>
+    <property name="data.sourcetag" value="Room_dorf_Y"/>
+    <property name="data.targettag" value="Room_dorf_Z"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

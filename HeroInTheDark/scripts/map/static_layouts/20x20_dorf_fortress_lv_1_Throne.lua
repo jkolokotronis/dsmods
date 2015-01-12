@@ -541,6 +541,114 @@ return {
           height = 0,
           visible = true,
           properties = {}
+        },
+        {
+          name = "",
+          type = "fa_teleporter_dorf",
+          shape = "rectangle",
+          x = 594,
+          y = 1215,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.sourcetag"] = "Room_dorf_R",
+            ["data.targettag"] = "Room_dorf_Q"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_bucket_water",
+          shape = "rectangle",
+          x = 711,
+          y = 688,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_bucket_water",
+          shape = "rectangle",
+          x = 564,
+          y = 691,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_bucket_water",
+          shape = "rectangle",
+          x = 1034,
+          y = 496,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_bucket_water",
+          shape = "rectangle",
+          x = 307,
+          y = 494,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_bucket_water",
+          shape = "rectangle",
+          x = 177,
+          y = 304,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_bucket_water",
+          shape = "rectangle",
+          x = 1097,
+          y = 304,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_teleporter_dorf",
+          shape = "rectangle",
+          x = 674,
+          y = 1214,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.sourcetag"] = "Room_dorf_HH",
+            ["data.targettag"] = "Room_dorf_GG"
+          }
+        },
+        {
+          name = "",
+          type = "fa_teleporter_dorf",
+          shape = "rectangle",
+          x = 60,
+          y = 33,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.sourcetag"] = "Room_dorf_XX",
+            ["data.targettag"] = "Room_dorf_A"
+          }
         }
       }
     }

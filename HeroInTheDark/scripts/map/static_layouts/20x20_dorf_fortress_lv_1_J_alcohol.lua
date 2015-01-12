@@ -5615,237 +5615,6 @@ return {
         },
         {
           name = "",
-          type = "fa_bottle_wort",
-          shape = "rectangle",
-          x = 348,
-          y = 1155,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_bottle_wort",
-          shape = "rectangle",
-          x = 371,
-          y = 1156,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_bottle_wort",
-          shape = "rectangle",
-          x = 394,
-          y = 1154,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_bottle_wort",
-          shape = "rectangle",
-          x = 417,
-          y = 1155,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_bottle_wort",
-          shape = "rectangle",
-          x = 439,
-          y = 1156,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_bottle_wort",
-          shape = "rectangle",
-          x = 462,
-          y = 1157,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_bottle_wort",
-          shape = "rectangle",
-          x = 485,
-          y = 1155,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_bottle_wort",
-          shape = "rectangle",
-          x = 508,
-          y = 1156,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_bottle_wort",
-          shape = "rectangle",
-          x = 530,
-          y = 1157,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_bottle_wort",
-          shape = "rectangle",
-          x = 553,
-          y = 1158,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_bottle_wort",
-          shape = "rectangle",
-          x = 576,
-          y = 1156,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_bottle_wort",
-          shape = "rectangle",
-          x = 599,
-          y = 1157,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_wineyeast",
-          shape = "rectangle",
-          x = 344,
-          y = 1243,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_wineyeast",
-          shape = "rectangle",
-          x = 366,
-          y = 1244,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_wineyeast",
-          shape = "rectangle",
-          x = 388,
-          y = 1245,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_wineyeast",
-          shape = "rectangle",
-          x = 432,
-          y = 1244,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_wineyeast",
-          shape = "rectangle",
-          x = 454,
-          y = 1245,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_wineyeast",
-          shape = "rectangle",
-          x = 410,
-          y = 1243,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_wineyeast",
-          shape = "rectangle",
-          x = 500,
-          y = 1245,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_wineyeast",
-          shape = "rectangle",
-          x = 522,
-          y = 1246,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_wineyeast",
-          shape = "rectangle",
-          x = 478,
-          y = 1244,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
           type = "maxwelllight_area",
           shape = "rectangle",
           x = 641,
@@ -5865,98 +5634,6 @@ return {
           height = 0,
           visible = true,
           properties = {}
-        },
-        {
-          name = "",
-          type = "fa_dorf_light",
-          shape = "rectangle",
-          x = 640,
-          y = 510,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_dorf_light",
-          shape = "rectangle",
-          x = 640,
-          y = 700,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_distillingyeast",
-          shape = "rectangle",
-          x = 544,
-          y = 1245,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_distillingyeast",
-          shape = "rectangle",
-          x = 568,
-          y = 1244,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_distillingyeast",
-          shape = "rectangle",
-          x = 592,
-          y = 1244,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_distillingyeast",
-          shape = "rectangle",
-          x = 615,
-          y = 1246,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_treasurechest",
-          shape = "rectangle",
-          x = 925,
-          y = 1240,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {
-            ["scenario"] = "fa_df_tavernchest"
-          }
-        },
-        {
-          name = "",
-          type = "fa_treasurechest",
-          shape = "rectangle",
-          x = 925,
-          y = 1155,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {
-            ["scenario"] = "fa_df_tavernchest"
-          }
         },
         {
           name = "",
@@ -5988,7 +5665,7 @@ return {
           name = "",
           type = "fa_treasurechest",
           shape = "rectangle",
-          x = 851,
+          x = 830,
           y = 1201,
           width = 0,
           height = 0,
@@ -6106,6 +5783,381 @@ return {
           height = 0,
           visible = true,
           properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_bucket_water",
+          shape = "rectangle",
+          x = 349,
+          y = 150,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_bucket_water",
+          shape = "rectangle",
+          x = 924,
+          y = 149,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_bucket_water",
+          shape = "rectangle",
+          x = 927,
+          y = 1109,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_bucket_water",
+          shape = "rectangle",
+          x = 344,
+          y = 1113,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 504,
+          y = 1246,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_tavernchest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 506,
+          y = 1156,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_tavernchest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 659,
+          y = 1242,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_tavernchest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 585,
+          y = 1203,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_tavernchest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 659,
+          y = 1157,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_tavernchest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 271,
+          y = 1246,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_tavernchest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 273,
+          y = 1156,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_tavernchest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 426,
+          y = 1242,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_tavernchest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 467,
+          y = 1203,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_tavernchest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 426,
+          y = 1157,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_tavernchest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_teleporter_dorf",
+          shape = "rectangle",
+          x = 638,
+          y = 510,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.sourcetag"] = "Room_dorf_X",
+            ["data.targettag"] = "Room_dorf_W"
+          }
+        },
+        {
+          name = "",
+          type = "fa_skullchest",
+          shape = "rectangle",
+          x = 897,
+          y = 1202,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_tavernchest_skull"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dwarfalemug",
+          shape = "rectangle",
+          x = 412,
+          y = 280,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dwarfalemug",
+          shape = "rectangle",
+          x = 646,
+          y = 352,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dwarfalemug",
+          shape = "rectangle",
+          x = 890,
+          y = 284,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dwarfalemug",
+          shape = "rectangle",
+          x = 236,
+          y = 398,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dwarfalemug",
+          shape = "rectangle",
+          x = 242,
+          y = 108,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dwarfalemug",
+          shape = "rectangle",
+          x = 137,
+          y = 409,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dwarfalemug",
+          shape = "rectangle",
+          x = 241,
+          y = 642,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dwarfalemug",
+          shape = "rectangle",
+          x = 127,
+          y = 877,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dwarfalemug",
+          shape = "rectangle",
+          x = 238,
+          y = 1175,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_red_wine",
+          shape = "rectangle",
+          x = 1134,
+          y = 98,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_red_wine",
+          shape = "rectangle",
+          x = 700,
+          y = 57,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_red_wine",
+          shape = "rectangle",
+          x = 1158,
+          y = 1100,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_teleporter_dorf",
+          shape = "rectangle",
+          x = 384,
+          y = 65,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.sourcetag"] = "Room_dorf_AA",
+            ["data.targettag"] = "Room_dorf_BB"
+          }
+        },
+        {
+          name = "",
+          type = "fa_teleporter_dorf",
+          shape = "rectangle",
+          x = 639,
+          y = 701,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.sourcetag"] = "Room_dorf_V",
+            ["data.targettag"] = "Room_dorf_U"
+          }
+        },
+        {
+          name = "",
+          type = "fa_teleporter_dorf",
+          shape = "rectangle",
+          x = 574,
+          y = 66,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.sourcetag"] = "Room_dorf_Y",
+            ["data.targettag"] = "Room_dorf_Z"
+          }
         }
       }
     }

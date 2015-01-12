@@ -327,6 +327,36 @@ FA_LEVELDATA["DWARF_FORTRESS"]={
 
 	}
 
+FA_LEVELDATA["DWARF_FORTRESS_SECRETS"]={
+		id="DWARF_FORTRESS",
+		nomaxwell=true,
+		name="Dwarf Fortress",
+		overrides={
+			{"world_size", 		"huge"},
+			{"day", 			"onlydusk"}, 
+			{"season_mode",		"onlysummer"},
+			{"season", 			"onlysummer"}, 
+			{"season_start", 	"summer"},
+			{"weather", 		"never"},
+			{"waves", 			"on"},
+			{"roads",			"never"},
+			{"islands", 		"never"},
+			{"location",		"cave"},
+			{"boons", 			"never"},
+			{"poi", 			"never"},
+			{"traps", 			"never"},
+			{"start_setpeice", 	"FADorfFortressStartRoom"},
+			{"start_node",		"FA_BGDwarfFortressStart"},
+		},
+		tasks={
+			"FADwarfFortressSecrets",
+		},
+		required_prefabs = {
+--		"fa_mine_exit",
+		},
+		background_node_range={0,1}
+
+	}
 FA_LEVELDATA["ORC_FORTRESS"]={
 		id="ORC_FORTRESS",
 		nomaxwell=true,
@@ -444,5 +474,6 @@ AddNewCaveLevel("GOBLIN_CAVE_3")
 AddNewCaveLevel("GOBLIN_CAVE_BOSSLEVEL")
 AddNewCaveLevel("ORC_MINES")
 AddNewCaveLevel("DWARF_FORTRESS")
+AddNewCaveLevel("DWARF_FORTRESS_SECRETS")
 AddNewCaveLevel("ORC_FORTRESS")
 AddNewCaveLevel("CRYPT_LEVEL_1")
