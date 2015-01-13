@@ -53,7 +53,7 @@ local function fn(name)
     
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem.imagename="fa_barrel"
-    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_barrel.xml"
+    inst.components.inventoryitem.atlasname="images/inventoryimages/fa_inventoryimages.xml"
 
 	return inst
 end
