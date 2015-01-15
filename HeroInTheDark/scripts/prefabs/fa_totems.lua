@@ -48,10 +48,10 @@ end
 
 local function onblueloadfn(inst,data)
     
-    if(data.fueled and data.fueled.rate~=nil)then
+    if(data and data.fueled and data.fueled.rate~=nil)then
         inst.components.fueled.rate=data.fueled.rate
     end
-    if(data.fa_fencetag)then
+    if(data and data.fa_fencetag)then
         inst.fa_fencetag=data.fa_fencetag
         inst:AddTag(inst.fa_fencetag)
     end
@@ -496,16 +496,16 @@ end
 
  local function onloadbluekos(inst,data)
     
-    if(data.fueled and data.fueled.rate~=nil)then
+    if(data and data.fueled and data.fueled.rate~=nil)then
         inst.components.fueled.rate=data.fueled.rate
     end
-    if(data.fa_fencetag)then
+    if(data and data.fa_fencetag)then
         inst.fa_fencetag=data.fa_fencetag
         inst:AddTag(inst.fa_fencetag)
         --something has to do configuration, and tags are unknown before load
         --this is extremely ugly place to put it in
         if(FenceManager:GetFence(inst.fa_fencetag)==nil)then
-            FenceManager:ConfigFence(inst.fa_fencetag,nil,nil,{"FX", "DECOR","INLIMBO","lightningfence"})
+            FenceManager:ConfigFence(inst.fa_fencetag,nil,{inst.fa_fencetag},{"FX", "DECOR","INLIMBO","lightningfence"})
         end
     end
 end

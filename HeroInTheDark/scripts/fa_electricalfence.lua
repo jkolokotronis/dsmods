@@ -61,9 +61,9 @@ end
 function FA_ElectricalFence:AddNode(node)
 	self:RegisterNode(node)
     if(not self.initialized) then return end
-        local tag=node.fa_fencetag or "lightningfence"
+--        local tag=node.fa_fencetag or "lightningfence"
 	local pos=Vector3(node.Transform:GetWorldPosition())
-    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, BLUETOTEM_RANGE,{tag}, {"FX", "DECOR","INLIMBO"})
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, BLUETOTEM_RANGE,self.dotags, {"FX", "DECOR","INLIMBO"})
     for k,v in pairs(ents) do
         
       if(v~=node and self.nodetable[v.GUID] and not node.fa_nodelist[v.GUID])then
@@ -252,11 +252,11 @@ FA_ModUtil.AddPrefabPostInit("world",function(inst)
     inst:DoTaskInTime(0,function()
         --need to delay activate for player, but i could just fire it up for the rest without delays? Meh
 --        inst:DoTaskInTime(0,function()
-            FenceManager:ConfigFence("lightningfence",GetPlayer(),nil, {"FX", "DECOR","INLIMBO","pet","companion","player","lightningfence"})
-            FenceManager:ConfigFence("lightningfence_kos",nil,nil,{"FX", "DECOR","INLIMBO","lightningfence"})
+            FenceManager:ConfigFence("lightningfence",GetPlayer(),{"lightningfence"}, {"FX", "DECOR","INLIMBO","pet","companion","player","lightningfence"})
+            FenceManager:ConfigFence("lightningfence_kos",nil,{"lightningfence_kos"},{"FX", "DECOR","INLIMBO","lightningfence"})
             FenceManager:Init()
---        end)
-    end)
+        end)
+--    end)
 end)
 
 return {FenceManager=FenceManager}

@@ -7774,8 +7774,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_001",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_001",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -7788,8 +7788,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_001",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_001",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -7802,8 +7802,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_002",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_002",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -7816,8 +7816,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_002",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_002",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -7830,8 +7830,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_003",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_003",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -7844,8 +7844,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_003",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_003",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -7858,8 +7858,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_004",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_004",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -7872,8 +7872,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_004",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_004",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -7886,8 +7886,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_005",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_005",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -7900,8 +7900,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_005",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_005",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -7914,8 +7914,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_006",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_006",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -7928,8 +7928,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_006",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_006",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -7942,8 +7942,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_007",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_007",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -7956,8 +7956,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_007",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_007",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -7970,8 +7970,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_008",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_008",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -7984,8 +7984,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_008",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_008",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -7998,8 +7998,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_009",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_009",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8012,8 +8012,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_009",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_009",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8246,8 +8246,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_010",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_010",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8271,8 +8271,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_010",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_010",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8351,8 +8351,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_011",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_011",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8365,8 +8365,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_011",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_011",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8423,8 +8423,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_012",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_012",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8448,8 +8448,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_012",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_012",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8473,8 +8473,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_013",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_013",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8487,8 +8487,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_013",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_013",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8534,8 +8534,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_014",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_014",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8548,8 +8548,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_014",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_014",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8597,8 +8597,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_015",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_015",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8622,8 +8622,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_015",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_015",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8647,8 +8647,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_016",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_016",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8661,8 +8661,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_016",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_016",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8752,8 +8752,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_017",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_017",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8766,8 +8766,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_017",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_017",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8791,8 +8791,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_018",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_018",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8816,8 +8816,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_018",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_018",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8830,8 +8830,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_019",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_019",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8844,8 +8844,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_019",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_019",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8913,8 +8913,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_020",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_020",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8938,8 +8938,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_020",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_020",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8985,8 +8985,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_021",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_021",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8999,8 +8999,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_021",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_021",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -9035,8 +9035,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_022",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_022",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -9049,8 +9049,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_022",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_022",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -9085,8 +9085,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_023",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_023",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -9110,8 +9110,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_023",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_023",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -9410,8 +9410,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_024",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_024",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -9424,8 +9424,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_024",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_024",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -9471,8 +9471,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_025",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_025",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -9485,8 +9485,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_025",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_025",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -9532,8 +9532,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_026",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_026",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -9546,8 +9546,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_026",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_026",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -9560,8 +9560,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_027",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_027",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -9585,8 +9585,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_027",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_027",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -10061,8 +10061,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_028",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_028",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -10097,8 +10097,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_028",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_028",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -10111,8 +10111,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_029",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_029",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -10147,8 +10147,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_029",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_029",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -10337,8 +10337,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_030",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_030",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -10351,8 +10351,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_030",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_030",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -10365,8 +10365,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_031",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_031",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -10379,8 +10379,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_031",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_031",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -10393,8 +10393,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_032",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_032",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -10407,8 +10407,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_032",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_032",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -10421,8 +10421,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_033",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_033",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -10435,8 +10435,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_033",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_033",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -10449,8 +10449,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_034",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_034",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -10463,8 +10463,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_034",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_034",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -10477,8 +10477,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_035",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_035",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -10491,8 +10491,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_035",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_035",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -10505,8 +10505,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_036",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_036",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -10519,8 +10519,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_036",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_036",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -10533,8 +10533,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_037",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_037",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -10547,8 +10547,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_037",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_037",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -10561,8 +10561,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_038",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_038",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -10575,8 +10575,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_038",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_038",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -10589,8 +10589,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_039",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_039",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -10603,8 +10603,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_039",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_039",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -10617,8 +10617,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_040",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_040",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -10631,8 +10631,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_040",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_040",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -11470,8 +11470,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_041",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_041",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -11506,8 +11506,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_041",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_041",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -11520,8 +11520,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_042",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_042",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -11556,8 +11556,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_042",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_042",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -11570,8 +11570,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_043",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_043",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -11606,8 +11606,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_043",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_043",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -11631,8 +11631,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_044",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_044",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -11656,8 +11656,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_044",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_044",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -11681,8 +11681,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_045",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_045",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -11706,8 +11706,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "fa_fencetag_045",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "fa_fencetag_045",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
