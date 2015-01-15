@@ -63,7 +63,6 @@ local function fn(Sim)
     inst.AnimState:SetBuild("fa_frostsword")
     inst.AnimState:PlayAnimation("idle")
 
-    inst.Transform:SetScale(2, 2, 1)
     
     inst:AddTag("sharp")
     

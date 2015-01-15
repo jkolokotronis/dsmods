@@ -2,7 +2,6 @@ local BLUETOTEM_RANGE=8
 local BLUETOTEM_DAMAGE=100
 local WALL_WIDTH=1.0
 
---its probably best to turn this into a world component...
 FA_ElectricalFence = Class(function(self)
     self.nodetable={}
 
@@ -62,8 +61,9 @@ end
 function FA_ElectricalFence:AddNode(node)
 	self:RegisterNode(node)
     if(not self.initialized) then return end
+        local tag=node.fa_fencetag or "lightningfence"
 	local pos=Vector3(node.Transform:GetWorldPosition())
-    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, BLUETOTEM_RANGE,{'lightningfence'}, {"FX", "DECOR","INLIMBO"})
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, BLUETOTEM_RANGE,{tag}, {"FX", "DECOR","INLIMBO"})
     for k,v in pairs(ents) do
         
       if(v~=node and self.nodetable[v.GUID] and not node.fa_nodelist[v.GUID])then
@@ -140,8 +140,7 @@ function FA_ElectricalFence:MakeGrid()
 	end 
 end
 
-function FA_ElectricalFence:Config(inst,caster,dotags, donttags)
-    self.inst=inst
+function FA_ElectricalFence:Config(caster,dotags, donttags)
     self.caster=caster
     self.dotags=dotags or {}
     self.donttags=donttags or {}
@@ -154,7 +153,7 @@ function FA_ElectricalFence:StartTask()
     if(self.task)then
         self.task:Cancel()
     end
-    self.task=self.inst:DoPeriodicTask(1, function()
+    self.task=GetWorld():DoPeriodicTask(1, function()
 --note this WILL trigger double 
         while(self.lock)do
             Sleep(0.1)
@@ -162,7 +161,6 @@ function FA_ElectricalFence:StartTask()
         self.lock=true
         for k,node in pairs(self.nodetable) do
             
-
             local pos=Vector3(node.Transform:GetWorldPosition())
             for k1,v in pairs(node.fa_nodelist) do
                 local p2=Vector3(v.Transform:GetWorldPosition())
@@ -189,23 +187,76 @@ function FA_ElectricalFence:StartTask()
     end)
 end
 
-local PlayerFence=FA_ElectricalFence()
-local MobFence=FA_ElectricalFence()
+FA_FenceManager = Class(function(self)
+    self.unresolvedNodes={}
+    self.fences={}
+    self.initialized=false
+end)
+
+function FA_FenceManager:GetFence(tag)
+    return self.fences[tag]
+end
+function FA_FenceManager:ConfigFence(tag,caster,dotags, donttags)
+    local fence=self.fences[tag]
+    if(fence==nil)then
+        fence=FA_ElectricalFence()
+    end
+    fence:Config(caster,dotags,donttags)
+end
+function FA_FenceManager:RegisterNode(node)
+    table.insert(self.unresolvedNodes,node)
+end
+function FA_FenceManager:Init()
+    self.initialized=true
+    while(self.lock)do
+            Sleep(0.1)
+        end
+    self.lock=true
+    for k,v in ipairs(self.unresolvedNodes) do
+        --set up separate graph per fencetag
+        local tag=v.fa_fencetag or "lightningfence"
+        if(self.fences[tag]==nil)then
+            self.fences[tag]=FA_ElectricalFence()
+        end
+        self.fences[tag]:RegisterNode(v)
+
+    end
+    self.unresolvedNodes={}
+    for k,v in pairs(self.fences) do 
+        print(k)
+        v.initialized=true
+        v:MakeGrid()
+        v:StartTask()
+    end
+    self.lock=false
+end
+function FA_FenceManager:AddNode(node)
+    local tag=node.fa_fencetag or "lightningfence"
+    local fence=self.fences[tag]
+    if(fence==nil)then
+        fence=FA_ElectricalFence()
+    end
+    fence:AddNode(node)
+end
+function FA_FenceManager:RemoveNode(node)
+    local tag=node.fa_fencetag or "lightningfence"
+    local fence=self.fences[tag]
+    if(fence)then
+        fence:RemoveNode(node)
+    end
+end
+
+local FenceManager=FA_FenceManager()
 
 FA_ModUtil.AddPrefabPostInit("world",function(inst)
     inst:DoTaskInTime(0,function()
         --need to delay activate for player, but i could just fire it up for the rest without delays? Meh
-        inst:DoTaskInTime(0,function()
-            PlayerFence:Config(inst,GetPlayer(),nil, {"FX", "DECOR","INLIMBO","pet","companion","player","lightningfence"})
-            PlayerFence.initialized=true
-            PlayerFence:MakeGrid()
-            PlayerFence:StartTask()
-            MobFence:Config(inst,nil,nil,{"lightningfence"})
-            MobFence.initialized=true
-            MobFence:MakeGrid()
-            MobFence:StartTask()
-        end)
+--        inst:DoTaskInTime(0,function()
+            FenceManager:ConfigFence("lightningfence",GetPlayer(),nil, {"FX", "DECOR","INLIMBO","pet","companion","player","lightningfence"})
+            FenceManager:ConfigFence("lightningfence_kos",nil,nil,{"FX", "DECOR","INLIMBO","lightningfence"})
+            FenceManager:Init()
+--        end)
     end)
 end)
 
-return {PlayerFence=PlayerFence,MobFence=MobFence}
+return {FenceManager=FenceManager}

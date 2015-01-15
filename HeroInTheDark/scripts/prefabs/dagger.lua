@@ -109,7 +109,6 @@ end
 local function fn(Sim)
     local inst=common("fa_dagger")
 
-    inst.Transform:SetScale(2, 2, 1)
     
     inst.components.weapon:SetOnAttack(onattack)
     return inst
@@ -117,6 +116,7 @@ end
 
 local function t1()
     local inst =fn()
+    inst.Transform:SetScale(2, 2, 1)
     inst:AddTag("tier1")
     inst.procRate=DAGGER_PROC_T1
     inst.components.weapon:SetDamage(DAGGER_DAMAGE_T1)
@@ -127,6 +127,7 @@ end
 
 local function t2()
     local inst =fn()
+    inst.Transform:SetScale(2, 2, 1)
     inst:AddTag("tier2")
     inst.procRate=DAGGER_PROC_T2
     inst.components.weapon:SetDamage(DAGGER_DAMAGE_T2)
@@ -137,6 +138,7 @@ end
 
 local function t3()
     local inst =fn()
+    inst.Transform:SetScale(2, 2, 1)
     inst:AddTag("tier3")
     inst.procRate=DAGGER_PROC_T3
     inst.components.weapon:SetDamage(DAGGER_DAMAGE_T3)

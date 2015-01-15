@@ -4605,7 +4605,7 @@ return {
           name = "",
           type = "fa_dorf_wall_1",
           shape = "rectangle",
-          x = 524,
+          x = 528,
           y = 887,
           width = 0,
           height = 0,
@@ -4726,8 +4726,8 @@ return {
           name = "",
           type = "fa_dorf_wall_1",
           shape = "rectangle",
-          x = 658,
-          y = 887,
+          x = 664,
+          y = 888,
           width = 0,
           height = 0,
           visible = true,
@@ -7763,6 +7763,4216 @@ return {
             ["data.sourcetag"] = "Room_dorf_DD",
             ["data.targettag"] = "Room_dorf_CC"
           }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 322,
+          y = 1177,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_001",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 324,
+          y = 1243,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_001",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 587,
+          y = 1179,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_002",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 589,
+          y = 1245,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_002",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 853,
+          y = 1178,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_003",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 855,
+          y = 1244,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_003",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1132,
+          y = 1176,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_004",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1134,
+          y = 1242,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_004",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1132,
+          y = 1131,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_005",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1131,
+          y = 1043,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_005",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 989,
+          y = 1135,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_006",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 988,
+          y = 1043,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_006",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 854,
+          y = 1041,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_007",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 855,
+          y = 1133,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_007",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 720,
+          y = 1134,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_008",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 719,
+          y = 1042,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_008",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 590,
+          y = 1134,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_009",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 589,
+          y = 1042,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_009",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1115,
+          y = 1242,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1109,
+          y = 1177,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 830,
+          y = 1179,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 834,
+          y = 1245,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 567,
+          y = 1245,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 565,
+          y = 1179,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 301,
+          y = 1177,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 302,
+          y = 1246,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1154,
+          y = 1177,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1153,
+          y = 1155,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1154,
+          y = 1134,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1154,
+          y = 1044,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1011,
+          y = 1043,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1012,
+          y = 1135,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 875,
+          y = 1042,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 878,
+          y = 1134,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 743,
+          y = 1133,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 741,
+          y = 1042,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 611,
+          y = 1044,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 612,
+          y = 1135,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 405,
+          y = 1133,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_010",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 427,
+          y = 1134,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 404,
+          y = 1041,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_010",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 426,
+          y = 1043,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 377,
+          y = 1020,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 380,
+          y = 1043,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 385,
+          y = 1135,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_redtotem_kos",
+          shape = "rectangle",
+          x = 279,
+          y = 144,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_redtotem_kos",
+          shape = "rectangle",
+          x = 371,
+          y = 144,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 369,
+          y = 862,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_011",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 276,
+          y = 863,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_011",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 369,
+          y = 885,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 275,
+          y = 885,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_wall_1",
+          shape = "rectangle",
+          x = 794,
+          y = 887,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 276,
+          y = 731,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 277,
+          y = 709,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_012",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 370,
+          y = 731,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 370,
+          y = 708,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_012",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 371,
+          y = 596,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 371,
+          y = 573,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_013",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 278,
+          y = 574,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_013",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 277,
+          y = 596,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 370,
+          y = 458,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 276,
+          y = 458,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 370,
+          y = 435,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_014",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 277,
+          y = 436,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_014",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_steelarmor",
+          shape = "rectangle",
+          x = 457,
+          y = 317,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_pickup_animatedarmor"
+          }
+        },
+        {
+          name = "",
+          type = "fa_copperarmor",
+          shape = "rectangle",
+          x = 223,
+          y = 1095,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_skullchest",
+          shape = "rectangle",
+          x = 328,
+          y = 145,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 413,
+          y = 861,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_015",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 506,
+          y = 883,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 506,
+          y = 860,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_015",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 412,
+          y = 883,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 390,
+          y = 907,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_016",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 399,
+          y = 997,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_016",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 377,
+          y = 997,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 377,
+          y = 975,
+          width = 1,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 418,
+          y = 996,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 413,
+          y = 906,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 369,
+          y = 907,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 504,
+          y = 729,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 410,
+          y = 729,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 504,
+          y = 706,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_017",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 411,
+          y = 707,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_017",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 507,
+          y = 594,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 507,
+          y = 571,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_018",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 413,
+          y = 594,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 414,
+          y = 572,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_018",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 414,
+          y = 433,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_019",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 507,
+          y = 432,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_019",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 507,
+          y = 455,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 413,
+          y = 455,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 416,
+          y = 281,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 508,
+          y = 280,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 506,
+          y = 907,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 529,
+          y = 908,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_020",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 552,
+          y = 908,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 529,
+          y = 1001,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_020",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 508,
+          y = 1002,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 552,
+          y = 1001,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 550,
+          y = 886,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 645,
+          y = 798,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_021",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 550,
+          y = 798,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_021",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 549,
+          y = 821,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 644,
+          y = 822,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 644,
+          y = 632,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_022",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 549,
+          y = 632,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_022",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 643,
+          y = 656,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 548,
+          y = 655,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 553,
+          y = 437,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_023",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 552,
+          y = 460,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 648,
+          y = 437,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_023",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 647,
+          y = 461,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_bucket_water",
+          shape = "rectangle",
+          x = 122,
+          y = 1045,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_bucket_water",
+          shape = "rectangle",
+          x = 32,
+          y = 1135,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_bucket_water",
+          shape = "rectangle",
+          x = 121,
+          y = 1251,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_bucket_water",
+          shape = "rectangle",
+          x = 1246,
+          y = 1045,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_bucket_water",
+          shape = "rectangle",
+          x = 1247,
+          y = 1245,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_bucket_water",
+          shape = "rectangle",
+          x = 734,
+          y = 998,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_bucket_water",
+          shape = "rectangle",
+          x = 600,
+          y = 1000,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_bucket_water",
+          shape = "rectangle",
+          x = 276,
+          y = 955,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_bucket_water",
+          shape = "rectangle",
+          x = 34,
+          y = 36,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_bucket_water",
+          shape = "rectangle",
+          x = 33,
+          y = 1000,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "maxwelllight_area",
+          shape = "rectangle",
+          x = 33,
+          y = 123,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "maxwelllight_area",
+          shape = "rectangle",
+          x = 35,
+          y = 305,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "maxwelllight_area",
+          shape = "rectangle",
+          x = 33,
+          y = 460,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "maxwelllight_area",
+          shape = "rectangle",
+          x = 34,
+          y = 620,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_bucket_water",
+          shape = "rectangle",
+          x = 552,
+          y = 146,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_bucket_water",
+          shape = "rectangle",
+          x = 642,
+          y = 148,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 601,
+          y = 147,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_diamondpebble",
+          shape = "rectangle",
+          x = 555,
+          y = 182,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_diamondpebble",
+          shape = "rectangle",
+          x = 589,
+          y = 182,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_diamondpebble",
+          shape = "rectangle",
+          x = 630,
+          y = 183,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_diamondpebble",
+          shape = "rectangle",
+          x = 630,
+          y = 219,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_diamondpebble",
+          shape = "rectangle",
+          x = 596,
+          y = 216,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_diamondpebble",
+          shape = "rectangle",
+          x = 561,
+          y = 215,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_diamondpebble",
+          shape = "rectangle",
+          x = 563,
+          y = 247,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_diamondpebble",
+          shape = "rectangle",
+          x = 598,
+          y = 243,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 685,
+          y = 861,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_024",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 780,
+          y = 861,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_024",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 779,
+          y = 885,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 684,
+          y = 884,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 781,
+          y = 658,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 782,
+          y = 634,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_025",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 687,
+          y = 634,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_025",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 686,
+          y = 657,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 782,
+          y = 462,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 687,
+          y = 461,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 688,
+          y = 438,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_026",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 783,
+          y = 438,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_026",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 782,
+          y = 239,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_027",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 686,
+          y = 262,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 687,
+          y = 239,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_027",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 781,
+          y = 263,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 800,
+          y = 913,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 818,
+          y = 940,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 784,
+          y = 944,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 806,
+          y = 970,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 780,
+          y = 993,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 818,
+          y = 994,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 833,
+          y = 971,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 849,
+          y = 942,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 853,
+          y = 913,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 887,
+          y = 921,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 881,
+          y = 954,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 868,
+          y = 981,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 894,
+          y = 998,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 961,
+          y = 941,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 949,
+          y = 971,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1011,
+          y = 982,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1024,
+          y = 955,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 927,
+          y = 945,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 923,
+          y = 994,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 943,
+          y = 914,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 976,
+          y = 972,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 961,
+          y = 995,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1037,
+          y = 999,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 992,
+          y = 943,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1030,
+          y = 922,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 996,
+          y = 914,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1101,
+          y = 938,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1089,
+          y = 968,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1151,
+          y = 979,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1164,
+          y = 952,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1067,
+          y = 942,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1063,
+          y = 991,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1083,
+          y = 911,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1116,
+          y = 969,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1101,
+          y = 992,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1177,
+          y = 996,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1132,
+          y = 940,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1170,
+          y = 919,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1136,
+          y = 911,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_skullchest",
+          shape = "rectangle",
+          x = 1239,
+          y = 956,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "maxwelllight_area",
+          shape = "rectangle",
+          x = 1245,
+          y = 1109,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 824,
+          y = 219,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_028",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 803,
+          y = 220,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 801,
+          y = 148,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 822,
+          y = 147,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_028",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1049,
+          y = 149,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_029",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1028,
+          y = 150,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1028,
+          y = 219,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1049,
+          y = 218,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_029",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 855,
+          y = 154,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 862,
+          y = 181,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 855,
+          y = 212,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 885,
+          y = 204,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 889,
+          y = 160,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 919,
+          y = 153,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 906,
+          y = 179,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 918,
+          y = 204,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 937,
+          y = 218,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 962,
+          y = 197,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 959,
+          y = 153,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 987,
+          y = 145,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1003,
+          y = 166,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1006,
+          y = 188,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 981,
+          y = 216,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1007,
+          y = 210,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1051,
+          y = 330,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_030",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1051,
+          y = 261,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_030",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1052,
+          y = 373,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_031",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1052,
+          y = 442,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_031",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1049,
+          y = 487,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_032",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1049,
+          y = 556,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_032",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1050,
+          y = 599,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_033",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1050,
+          y = 668,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_033",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1052,
+          y = 784,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_034",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1052,
+          y = 715,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_034",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1165,
+          y = 801,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_035",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1247,
+          y = 801,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_035",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1246,
+          y = 662,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_036",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1164,
+          y = 662,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_036",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1163,
+          y = 519,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_037",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1245,
+          y = 519,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_037",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1162,
+          y = 375,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_038",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1244,
+          y = 375,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_038",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1247,
+          y = 238,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_039",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1165,
+          y = 238,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_039",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1167,
+          y = 126,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_040",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1249,
+          y = 126,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_040",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1012,
+          y = 299,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 925,
+          y = 264,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 987,
+          y = 327,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 895,
+          y = 271,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 943,
+          y = 329,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 891,
+          y = 315,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1009,
+          y = 277,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 924,
+          y = 315,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 861,
+          y = 323,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1013,
+          y = 321,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 968,
+          y = 308,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 868,
+          y = 292,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 861,
+          y = 265,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 912,
+          y = 290,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 965,
+          y = 264,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1009,
+          y = 408,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 922,
+          y = 373,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 984,
+          y = 436,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 892,
+          y = 380,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 940,
+          y = 438,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 888,
+          y = 424,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1006,
+          y = 386,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 921,
+          y = 424,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 858,
+          y = 432,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1010,
+          y = 430,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 965,
+          y = 417,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 865,
+          y = 401,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 858,
+          y = 374,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 909,
+          y = 399,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 962,
+          y = 373,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1015,
+          y = 526,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 928,
+          y = 491,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 990,
+          y = 554,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 898,
+          y = 498,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 946,
+          y = 556,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 894,
+          y = 542,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1012,
+          y = 504,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 927,
+          y = 542,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 864,
+          y = 550,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1016,
+          y = 548,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 971,
+          y = 535,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 871,
+          y = 519,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 864,
+          y = 492,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 915,
+          y = 517,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 968,
+          y = 491,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1018,
+          y = 635,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 931,
+          y = 600,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 993,
+          y = 663,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 901,
+          y = 607,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 949,
+          y = 665,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 897,
+          y = 651,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1015,
+          y = 613,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 930,
+          y = 651,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 867,
+          y = 659,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1019,
+          y = 657,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 974,
+          y = 644,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 874,
+          y = 628,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 867,
+          y = 601,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 918,
+          y = 626,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 971,
+          y = 600,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1014,
+          y = 750,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 927,
+          y = 715,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 989,
+          y = 778,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 897,
+          y = 722,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 945,
+          y = 780,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 893,
+          y = 766,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1011,
+          y = 728,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 926,
+          y = 766,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 863,
+          y = 774,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1015,
+          y = 772,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 970,
+          y = 759,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 870,
+          y = 743,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 863,
+          y = 716,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 914,
+          y = 741,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 967,
+          y = 715,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1096,
+          y = 104,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_041",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1117,
+          y = 105,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 1114,
+          y = 31,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 1093,
+          y = 30,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_041",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 864,
+          y = 32,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_042",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 885,
+          y = 33,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 888,
+          y = 107,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 867,
+          y = 106,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_042",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 615,
+          y = 30,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_043",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 636,
+          y = 31,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 639,
+          y = 105,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 618,
+          y = 104,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_043",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 438,
+          y = 30,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 420,
+          y = 103,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_044",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 441,
+          y = 104,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 417,
+          y = 29,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_044",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 289,
+          y = 102,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 268,
+          y = 101,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_045",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 286,
+          y = 28,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_bluetotem_kos",
+          shape = "rectangle",
+          x = 265,
+          y = 27,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["fa_fencetag"] = "fa_fencetag_045",
+            ["fueled.rate"] = "0"
+          }
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 343,
+          y = 32,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 344,
+          y = 55,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 345,
+          y = 77,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 345,
+          y = 101,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 525,
+          y = 56,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 526,
+          y = 78,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 526,
+          y = 102,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 524,
+          y = 33,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 758,
+          y = 58,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 759,
+          y = 80,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 759,
+          y = 104,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 757,
+          y = 35,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 995,
+          y = 57,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 996,
+          y = 79,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 996,
+          y = 103,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "trap_teeth_maxwell",
+          shape = "rectangle",
+          x = 994,
+          y = 34,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "goblinsign_3",
+          shape = "rectangle",
+          x = 203,
+          y = 1240,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "goblinsign_3",
+          shape = "rectangle",
+          x = 204,
+          y = 1156,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "goblinsign_3",
+          shape = "rectangle",
+          x = 232,
+          y = 1205,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "goblinsign_5",
+          shape = "rectangle",
+          x = 1216,
+          y = 1203,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "goblinsign_5",
+          shape = "rectangle",
+          x = 316,
+          y = 1088,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "goblinsign_5",
+          shape = "rectangle",
+          x = 745,
+          y = 949,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "goblinsign_5",
+          shape = "rectangle",
+          x = 1060,
+          y = 843,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "goblinsign_5",
+          shape = "rectangle",
+          x = 1205,
+          y = 69,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
         }
       }
     }

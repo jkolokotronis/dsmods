@@ -20,6 +20,9 @@ local fa_clothes_assets={
 local fa_dorftorch_assets={
     Asset( "ANIM", "anim/fa_dorf_torch.zip" ),
 }
+local fa_fountain_assets={
+    Asset("ANIM","anim/fa_fountain.zip")
+}
 local cageassets=
 {
     Asset( "ANIM", "anim/player_cage_drop.zip" ),
@@ -131,6 +134,19 @@ local function fa_minecart()
     return inst
 end
 
+local function fountainfn()
+    local inst= fn("fa_fountain","fa_fountain","idle",true)
+    MakeObstaclePhysics(inst, 0.5)
+    inst:RemoveTag("NOCLICK")
+    inst.playindex=1
+    local anims={"idle","bad","good"}
+    inst:DoPeriodicTask(10,function()
+        inst.playindex=(inst.playindex+1)%3+1
+        inst.AnimState:PlayAnimation(anims[inst.playindex],true)
+    end)
+    return inst
+end
+
 local function orcrefuse()
     local inst= fn("fa_orcrefuse")
     inst.Transform:SetScale(1.5, 1.5, 1.5)
@@ -196,4 +212,5 @@ Prefab( "common/fa_dorf_table", fa_table, fa_table_assets),
 Prefab( "common/fa_dorf_light", dorftorchfn, fa_dorftorch_assets),
 Prefab( "common/fa_minecart", fa_minecart, fa_minecart_assets),
 Prefab( "common/fa_playerjailcage", cagefn, cageassets),
+Prefab( "common/fa_fountain", fountainfn, fa_fountain_assets),
 Prefab( "common/fa_orcjailcage", cagefn, cageassets)

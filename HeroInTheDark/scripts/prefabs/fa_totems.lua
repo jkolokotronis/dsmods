@@ -27,8 +27,9 @@ local prefabskos =
 }
 
 local fences=require "fa_electricalfence"
-local PlayerFence=fences.PlayerFence
-local MobFence=fences.MobFence
+local FenceManager=fences.FenceManager
+--local PlayerFence=fences.PlayerFence
+--local MobFence=fences.MobFence
 
 local REDTOTEM_RANGE=10
 local REDTOTEM_USES=20
@@ -39,16 +40,20 @@ local TOTEM_HEALTH=1000
 local BLUETOTEM_DURATION=1000
 local FIREBALL_RADIUS=5
 
-local function onsaveblue(inst,data)
-
-    if self.currentfuel ~= self.maxfuel then
-        return {fuel = self.currentfuel}
+local function onbluesavefn(inst,data)
+    if(inst.fa_fencetag)then
+        data.fa_fencetag=inst.fa_fencetag
     end
 end
 
-local function onloadblue(inst,data)
-    if data.fuel then
-        self:InitializeFuelLevel(data.fuel)
+local function onblueloadfn(inst,data)
+    
+    if(data.fueled and data.fueled.rate~=nil)then
+        inst.components.fueled.rate=data.fueled.rate
+    end
+    if(data.fa_fencetag)then
+        inst.fa_fencetag=data.fa_fencetag
+        inst:AddTag(inst.fa_fencetag)
     end
 end
 
@@ -436,6 +441,7 @@ local function bluefn(Sim)
     light:SetFalloff(.6)
     light:Enable(true)
     light:SetColour(180/255, 195/255, 255/255)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=1
 
 --the only purpose is to allow combat:getattacked
     inst.components.combat:SetRange(0)
@@ -450,8 +456,8 @@ local function bluefn(Sim)
 --    inst.components.fueled.ontakefuelfn = refuel
     inst.components.fueled.accepting = false
 
---    inst.OnLoad=onblueloadfn
---    inst.OnSave=onbluesavefn
+    inst.OnLoad=onblueloadfn
+    inst.OnSave=onbluesavefn
 	inst.fa_nodelist={}
 	inst.fa_effectlist={}
 
@@ -461,6 +467,7 @@ end
 local function bluefn_player()
     local inst=bluefn()
     inst:AddTag("companion")
+    data.fa_fencetag="lightningfence"
     
     inst:AddComponent("machine")
     inst.components.machine.ison = true
@@ -472,32 +479,52 @@ local function bluefn_player()
     end
     inst.components.machine.turnofffn  = pickup
     --delay enough for placers and crap to finish, otherwise it will fail to connect
-    if(PlayerFence.initialized)then
+    --the only real reason i do register special is so it can get sorted out in one go on file load - both for speed and sync sake
+    if(FenceManager.initialized)then
         inst:DoTaskInTime(0.1,function(inst)
-            PlayerFence:AddNode(inst)
+            FenceManager:AddNode(inst)
         end)
     else
-        PlayerFence:AddNode(inst)
+        FenceManager:RegisterNode(inst)
     end
     inst.OnRemoveEntity = function(inst)
-        PlayerFence:RemoveNode(inst)
+        FenceManager:RemoveNode(inst)
     end
 
     return inst
 end
 
+ local function onloadbluekos(inst,data)
+    
+    if(data.fueled and data.fueled.rate~=nil)then
+        inst.components.fueled.rate=data.fueled.rate
+    end
+    if(data.fa_fencetag)then
+        inst.fa_fencetag=data.fa_fencetag
+        inst:AddTag(inst.fa_fencetag)
+        --something has to do configuration, and tags are unknown before load
+        --this is extremely ugly place to put it in
+        if(FenceManager:GetFence(inst.fa_fencetag)==nil)then
+            FenceManager:ConfigFence(inst.fa_fencetag,nil,nil,{"FX", "DECOR","INLIMBO","lightningfence"})
+        end
+    end
+end
+
 local function bluefn_kos(Sim)
     local inst=bluefn(Sim)
-    if(MobFence.initialized)then
+    inst.fa_fencetag="lightningfence_kos"
+    if(FenceManager.initialized)then
         inst:DoTaskInTime(0.1,function(inst)
-            MobFence:AddNode(inst)
+            FenceManager:AddNode(inst)
         end)
     else
-        MobFence:AddNode(inst)
+        FenceManager:RegisterNode(inst)
     end
     inst.OnRemoveEntity = function(inst)
-        MobFence:RemoveNode(inst)
+        FenceManager:RemoveNode(inst)
     end
+    inst.OnLoad=onloadbluekos
+   
     return inst
 end
 

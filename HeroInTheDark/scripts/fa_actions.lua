@@ -77,6 +77,15 @@ FA_ModUtil.AddAction(FA_MEND)
 
 
 
+local harveststrfn_old=ACTIONS.HARVEST.strfn 
+ACTIONS.HARVEST.strfn = function(act)
+    if act.target.components.harvestable and act.target.components.harvestable.getverb then
+        return act.target.components.harvestable.getverb(act.target, act.doer)
+    else
+        return harveststrfn_old(act)
+    end
+end
+
 local action_old=ACTIONS.MURDER.fn
 
 ACTIONS.MURDER.fn = function(act)

@@ -57,7 +57,6 @@ local function fn(Sim)
     inst.AnimState:SetBuild("fa_undeadbanesword")
     inst.AnimState:PlayAnimation("idle")
 
-    inst.Transform:SetScale(2, 2, 1)
 --    inst.AnimState:SetMultColour(1, 1, 1, 0.6)
     
     inst:AddTag("sharp")

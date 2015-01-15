@@ -4,6 +4,7 @@ local assets =
     Asset("ANIM", "anim/fa_bucket.zip"),
 }
 
+local WATER_REGEN=120
         
 local function onhammered(inst, worker)
     if inst.doortask then
@@ -44,17 +45,6 @@ local function fn(Sim)
     inst.AnimState:PlayAnimation("idle")
     inst.Transform:SetScale(1.15, 1.15, 1.15)
 
-    inst:AddComponent("harvestable")
-    local function onharvest(bucket, picker, produce)
-    	if(picker and picker.components.temperature)then
-    		picker.components.temperature.current = math.max( picker.components.temperature.current-40, owner.components.temperature.mintemp)
-    	end
-    	inst.AnimState:PlayAnimation("idle")    	
-    end
-    local function ongrow(  )
-	    inst.AnimState:PlayAnimation("full")    	
-    end
-    inst.components.harvestable:SetUp(nil, nil, 60, onharvest, ongrow)
 
     inst.full=false
     inst:AddComponent("inspectable")
@@ -69,5 +59,27 @@ local function fn(Sim)
     return inst
 end
 
+local function fnwater()
+    local inst=fn()
 
-return Prefab( "common/fa_bucket", fn, assets)
+    inst:AddComponent("harvestable")
+    local function onharvest(bucket, picker, produce)
+        if(picker and picker.components.temperature)then
+            picker.components.temperature.current = math.max( picker.components.temperature.current-40, picker.components.temperature.mintemp)
+        end
+        inst.AnimState:PlayAnimation("idle")        
+    end
+    local function ongrow(  )
+        inst.AnimState:PlayAnimation("full")        
+    end
+    inst.components.harvestable:SetUp(nil, nil, WATER_REGEN, onharvest, ongrow)
+    inst.components.harvestable:Grow()
+    inst.components.harvestable.getverb=function(target, doer)
+        return "USE"
+    end
+
+    return inst
+end
+
+return Prefab( "common/fa_bucket", fn, assets),
+Prefab("common/fa_dorf_bucket_water",fnwater,assets)
