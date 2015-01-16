@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
+    <folder id="0">
+        <file id="0" name="orc stone stool without fur.png" width="468" height="258" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="orc stone stool with yellow fur.png" width="468" height="268" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="orc stone with red fur .png" width="468" height="266" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="fa_orc_stool">
+        <animation id="0" name="stone" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="orc stone stool without fur">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-207" y="225"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="yellow" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="orc stone stool without fur">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-207" y="225"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="2" name="red" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="orc stone stool without fur">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="-207" y="225"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

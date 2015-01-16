@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
+    <folder id="0" name="lantern_overlay">
+        <file id="0" name="lantern_overlay/_0002_light-behind-lantern.png" width="700" height="700" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <folder id="1" name="swap_lantern_on">
+        <file id="0" name="swap_lantern_on/_0001_lantern-on.png" width="700" height="700" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <folder id="2" name="swap_lantern_off">
+        <file id="0" name="swap_lantern_off/_0004_lantern-off.png" width="700" height="700" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <folder id="3">
+        <file id="0" name="_0003_ground--.png" width="700" height="700" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="fa_elven_lantern">
+        <animation id="0" name="BUILD" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="_0002_light-behind-lantern">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-650" y="452"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="_0001_lantern-on">
+                <key id="0" spin="0">
+                    <object folder="1" file="0" x="-62.5" y="440"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="_0004_lantern-off">
+                <key id="0" spin="0">
+                    <object folder="2" file="0" x="400" y="440"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="idle" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="_0003_ground--">
+                <key id="0" spin="0">
+                    <object folder="3" file="0" x="-330" y="595"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

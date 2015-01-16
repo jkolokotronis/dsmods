@@ -590,25 +590,25 @@ end
 
 
 local function pomegranatewine()
-	local inst=common("bottle_light_cyan")
+	local inst=common("bottle_1_2")
 	winecommon(inst)
 	return inst
 end
 
 local function durianwine()
-	local inst=common("bottle_light_cyan")
+	local inst=common("bottle_1_2")
 	winecommon(inst)
 	return inst
 end
 
 local function dragonwine()
-	local inst=common("bottle_light_cyan")
+	local inst=common("bottle_1_0")
 	winecommon(inst)
 	return inst
 end
 
 local function melonwine()
-	local inst=common("bottle_light_cyan")
+	local inst=common("bottle_1_6")
 	winecommon(inst)
     inst.components.edible.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
     inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_AVERAGE
@@ -616,13 +616,13 @@ local function melonwine()
 end
 
 local function redwine()
-	local inst=common("bottle_light_cyan")
+	local inst=common("bottle_1_0")
 	winecommon(inst)
 	return inst
 end
 
 local function goodberrywine()
-	local inst=common("bottle_light_cyan")
+	local inst=common("bottle_1_7")
 	winecommon(inst)
     inst.components.edible.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
     inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_LONG
@@ -630,13 +630,13 @@ local function goodberrywine()
 end
 
 local function glowingwine()
-	local inst=common("bottle_light_cyan")
+	local inst=common("bottle_1_9")
 	winecommon(inst)
 	return inst
 end
 
 local function cactuswine()
-	local inst=common("bottle_light_cyan")
+	local inst=common("bottle_1_2")
 	winecommon(inst)
     inst.components.edible.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
     inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_LONG
@@ -644,7 +644,7 @@ local function cactuswine()
 end
 
 local function mead()
-	local inst=common("bottle_light_cyan")
+	local inst=common("bottle_1_7")
 	winecommon(inst)
 	return inst
 end

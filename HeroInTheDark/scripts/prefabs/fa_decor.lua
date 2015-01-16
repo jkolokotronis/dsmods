@@ -8,6 +8,12 @@ local fa_stool_assets={
 local fa_table_assets={
     Asset( "ANIM", "anim/fa_table.zip" ),
 }
+local fa_orc_table_assets={
+    Asset( "ANIM", "anim/fa_orc_table.zip" ),
+}
+local fa_orc_stool_assets={
+    Asset( "ANIM", "anim/fa_orc_stool.zip" ),
+}
 local fa_minecart_assets={
     Asset( "ANIM", "anim/fa_minecart.zip" ),
 }
@@ -74,14 +80,17 @@ end
 local function fa_table()
     local inst= fn("fa_table")
     MakeObstaclePhysics(inst, 0.3)
-    inst.Transform:SetScale(.75,.75,.75)
+    return inst
+end
+local function fa_orc_table()
+    local inst= fn("fa_orc_table")
+    MakeObstaclePhysics(inst, 0.3)
     return inst
 end
 
 local function fa_stool_blown()
     local inst= fn("fa_stool")
     MakeInventoryPhysics(inst)
-    inst.Transform:SetScale(.75,.75,.75)
     inst.AnimState:PlayAnimation("blown")
     return inst
 end
@@ -89,7 +98,14 @@ end
 local function fa_stool()
     local inst= fn("fa_stool")
     MakeInventoryPhysics(inst)
-    inst.Transform:SetScale(.75,.75,.75)
+    return inst
+end
+
+local ORC_STOOL_LIST={"stone","red","yellow"}
+local function fa_orc_stool()
+    local inst= fn("fa_orc_stool")
+    inst.AnimState:PlayAnimation(ORC_STOOL_LIST[math.random(#ORC_STOOL_LIST)])
+    MakeInventoryPhysics(inst)
     return inst
 end
 
@@ -213,4 +229,8 @@ Prefab( "common/fa_dorf_light", dorftorchfn, fa_dorftorch_assets),
 Prefab( "common/fa_minecart", fa_minecart, fa_minecart_assets),
 Prefab( "common/fa_playerjailcage", cagefn, cageassets),
 Prefab( "common/fa_fountain", fountainfn, fa_fountain_assets),
-Prefab( "common/fa_orcjailcage", cagefn, cageassets)
+Prefab( "common/fa_orcjailcage", cagefn, cageassets),
+Prefab( "common/fa_dorf_stool", fa_stool, fa_stool_assets),
+Prefab( "common/fa_dorf_stool_blown", fa_stool_blown, fa_stool_assets),
+Prefab( "common/fa_orc_table", fa_orc_table, fa_orc_table_assets),
+Prefab( "common/fa_orc_stool", fa_orc_stool, fa_orc_stool_assets)

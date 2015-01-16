@@ -70,6 +70,7 @@ local function woodfn(Sim)
             water.Transform:SetPosition(pos.x, pos.y, pos.z)
         end
     end)
+    inst:RemoveComponent("edible")
     return inst
 end 
 
