@@ -100,4 +100,10 @@ FA_MOBXP_TABLE={
 	fa_animatedarmor_copper={default=30},
 	fa_animatedarmor_iron={default=40},
 	fa_animatedarmor_steel={default=60},
+	fa_animatedarmor_gold={default=80},
+	fa_animatedarmor_silver={default=80},
+	fa_animatedarmor_adamant={default=150},
+	fa_dorf_king_guard={default=100},
+	fa_dorf_guard={default=75}
+
 }

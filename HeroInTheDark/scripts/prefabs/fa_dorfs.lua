@@ -59,11 +59,24 @@ local prefabs =
 {
 }
 
-local DWARF_HEALTH=400
+local DWARF_HEALTH=300
 local DWARF_DAMAGE=50
 local DWARF_ATTACK_PERIOD=2
 local DWARF_RUN_SPEED=6
 local DWARF_WALK_SPEED=3
+
+local GUARD_HEALTH=300
+local GUARD_DAMAGE=50
+local GUARD_ATTACK_PERIOD=2
+local GUARD_RUN_SPEED=6
+local GUARD_WALK_SPEED=3
+
+local KING_GUARD_HEALTH=300
+local KING_GUARD_DAMAGE=50
+local KING_GUARD_ATTACK_PERIOD=2
+local KING_GUARD_RUN_SPEED=6
+local KING_GUARD_WALK_SPEED=3
+
 
 local TRADER_HEALTH=150
 local TRADER_DAMAGE=50
@@ -108,6 +121,51 @@ local function getinventory(inst)
             end
             inst.loadedSpawn=true
         end)
+end
+
+local function getguardinventory(inst)
+    inst:DoTaskInTime(0,function()
+        if(inst.loadedSpawn)then
+            return
+        end
+        local item=SpawnPrefab("fa_steelarmor")
+        inst.components.inventory:Equip(item)
+        item=SpawnPrefab("fa_fireaxe")
+        inst.components.inventory:Equip(item)
+        item=SpawnPrefab("fa_hat_steel")
+        inst.components.inventory:Equip(item)
+         inst.loadedSpawn=true
+    end)
+end
+
+local function getkingguardinventory(inst)
+    inst:DoTaskInTime(0,function()
+        if(inst.loadedSpawn)then
+            return
+        end
+        local item=SpawnPrefab("fa_animatedarmor_gold")
+        inst.components.inventory:Equip(item)
+        item=SpawnPrefab("fa_silveraxe")
+        inst.components.inventory:Equip(item)
+        item=SpawnPrefab("fa_hat_gold")
+        inst.components.inventory:Equip(item)
+         inst.loadedSpawn=true
+    end)
+end
+local function getkinginventory(inst)
+    inst:DoTaskInTime(0,function()
+        if(inst.loadedSpawn)then
+            return
+        end
+        local item=SpawnPrefab("fa_adamantinearmor")
+        inst.components.inventory:Equip(item)
+        item=SpawnPrefab("fa_adamantinesword")
+        inst.components.inventory:Equip(item)
+        --implicit
+--        item=SpawnPrefab("fa_hat_dorfking")
+--        inst.components.inventory:Equip(item)
+         inst.loadedSpawn=true
+    end)
 end
 
 local onload = function(inst, data)
@@ -248,7 +306,6 @@ local function common()
 
     inst:AddComponent("lootdropper")    
     inst.components.lootdropper:SetLoot({ "goldnugget", "meat"})
-    inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLEMERGED,FALLENLOOTTABLE.TABLE_WEIGHT,0.1)
 
     ------------------------------------------
 
@@ -280,6 +337,21 @@ end
 local function normal()
     local inst = common()
     getinventory(inst)
+    inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLEMERGED,FALLENLOOTTABLE.TABLE_WEIGHT,0.1)
+    return inst
+end
+
+local function guard()
+    local inst = common()
+    getguardinventory(inst)
+    inst.components.inventory.dropondeath=true
+    return inst
+end
+
+local function kingguard()
+    local inst = common()
+    getkingguardinventory(inst)
+    inst.components.inventory.dropondeath=true
     return inst
 end
 
@@ -298,10 +370,15 @@ end
 local function kingfn()
     local inst = common()
     inst.AnimState:SetBuild("fa_dorf_king")
+    inst.components.inventory.dropondeath=true
+    --TODO what the heck is special key?
+    inst.components.lootdropper:SetLoot({ "goldnugget", "meat","fa_hat_dorfking"})
+    getkinginventory(inst)
     return inst
 end
 
 return Prefab( "common/characters/fa_dorf", normal, assets, prefabs),
  Prefab( "common/characters/fa_dorf_merchant", trader, assets, prefabs),
 Prefab( "common/characters/fa_dorf_king", kingfn, assets, prefabs),
-Prefab( "common/characters/fa_dorf_king_guard", normal, assets, prefabs)
+Prefab( "common/characters/fa_dorf_king_guard", kingguard, assets, prefabs),
+Prefab( "common/characters/fa_dorf_guard", guard, assets, prefabs)

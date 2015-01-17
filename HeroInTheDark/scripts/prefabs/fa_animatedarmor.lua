@@ -8,6 +8,11 @@ local THULECITE_HP=100
 local COPPER_HP = 50
 local IRON_HP = 75
 local STEEL_HP= 150
+local GOLD_HP= 150
+local SILVER_HP= 150
+local ADAMANT_HP= 300
+
+
 
 
 local function GetInventory(inst)

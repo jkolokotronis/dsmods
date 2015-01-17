@@ -4,6 +4,7 @@
         <file id="0" name="swap_hat/swap_hat-0.png" width="207" height="250" pivot_x="0.511227" pivot_y="0.04"/>
         <file id="1" name="swap_hat/swap_hat-1.png" width="208" height="255" pivot_x="0.511227" pivot_y="0.04"/>
         <file id="2" name="swap_hat/swap_hat-2.png" width="211" height="256" pivot_x="0.511227" pivot_y="0.04"/>
+        <file id="3" name="swap_hat/swap_hat-0 - Copy.png" width="247" height="263" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="fa_dorf_crown">
         <animation id="0" name="idle" length="1000">
@@ -12,9 +13,9 @@
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
                 </key>
             </mainline>
-            <timeline id="0" name="swap_hat_3_0">
+            <timeline id="0" name="swap_hat-0 - Copy">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-40.278193" y="201.229232" angle="197.776"/>
+                    <object folder="0" file="3" x="-135" y="233.333333"/>
                 </key>
             </timeline>
         </animation>

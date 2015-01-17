@@ -33,7 +33,7 @@ local makebeameffect=function(node,v)
 --        local u2,v2=TheSim:GetScreenPos(current:Get())
 --        dist=math.sqrt((u2-u1)*(u2-u1)+(v2-v1)*(v2-v1))--node:GetDistanceSqToInst(v)--
         local scale=math.sqrt(dist/3.1)--120)
-        print("dist",dist,"scale",scale)
+--        print("dist",dist,"scale",scale)
         local angle = node:GetAngleToPoint(v:GetPosition())
         local boom = CreateEntity()
         boom:AddTag("FX")
@@ -67,16 +67,16 @@ function FA_ElectricalFence:AddNode(node)
     for k,v in pairs(ents) do
         
       if(v~=node and self.nodetable[v.GUID] and not node.fa_nodelist[v.GUID])then
-        print("k",k,"v",v)
+--        print("k",k,"v",v)
     	if(not v.components.fueled.consuming)then
-            print("starting consumer",v)
+--            print("starting consumer",v)
     		v.components.fueled:StartConsuming()
             makepuffanimation(v)    		
     	end
     	node.fa_nodelist[v.GUID]=v
    		v.fa_nodelist[node.GUID]=node
     	if(not node.components.fueled.consuming)then
-            print("starting consumer",node)
+--            print("starting consumer",node)
     		node.components.fueled:StartConsuming()
             makepuffanimation(node)
     	end
@@ -107,7 +107,7 @@ function FA_ElectricalFence:RemoveNode(node)
 	end
 	for k,v in pairs(node.fa_nodelist) do
 		if(v.fa_nodelist[node.GUID])then
-            print("removing ref to ",node.GUID)
+--            print("removing ref to ",node.GUID)
 			v.fa_nodelist[node.GUID]=nil
 		end
 		if(v.fa_effectlist[node.GUID])then
@@ -116,7 +116,7 @@ function FA_ElectricalFence:RemoveNode(node)
 		end
         local tablecount=GetTableSize(v.fa_nodelist)
 
-        print("nodelist",tablecount)
+--        print("nodelist",tablecount)
 	
     	if(tablecount<1)then
 			v.components.fueled:StopConsuming()
@@ -160,24 +160,25 @@ function FA_ElectricalFence:StartTask()
         end
         self.lock=true
         for k,node in pairs(self.nodetable) do
-            
-            local pos=Vector3(node.Transform:GetWorldPosition())
-            for k1,v in pairs(node.fa_nodelist) do
-                local p2=Vector3(v.Transform:GetWorldPosition())
-                local dist=math.sqrt(node:GetDistanceSqToInst(v))
-                local middle=Vector3((pos.x+p2.x)/2,(pos.y+p2.y)/2,(pos.z+p2.z)/2)
+            if(node:IsAwake())then
+                local pos=Vector3(node.Transform:GetWorldPosition())
+                for k1,v in pairs(node.fa_nodelist) do
+                    local p2=Vector3(v.Transform:GetWorldPosition())
+                    local dist=math.sqrt(node:GetDistanceSqToInst(v))
+                    local middle=Vector3((pos.x+p2.x)/2,(pos.y+p2.y)/2,(pos.z+p2.z)/2)
                 --rsin(angle) on the edges = the width of a trigger zone,dlsin(alpha) = radius delta,tan(alpha)=dr/width
-                local alpha=math.atan(WALL_WIDTH/dist)
-                local r=math.tan(alpha)*WALL_WIDTH+dist
-                local angle=node:GetAngleToPoint(v:GetPosition())
-                local ents = TheSim:FindEntities(middle.x, middle.y, middle.z, r,self.dotags,self.donttags)
-                for i,caught in pairs(ents) do
-                    if(caught and caught.components.combat and not (caught.components.health and caught.components.health:IsDead()))then
-                        local caughtangle=node:GetAngleToPoint(caught:GetPosition())-angle
-                        local dh=math.abs(math.sqrt(node:GetDistanceSqToInst(caught))*math.sin(caughtangle))
+                    local alpha=math.atan(WALL_WIDTH/dist)
+                    local r=math.tan(alpha)*WALL_WIDTH+dist
+                    local angle=node:GetAngleToPoint(v:GetPosition())
+                    local ents = TheSim:FindEntities(middle.x, middle.y, middle.z, r,self.dotags,self.donttags)
+                    for i,caught in pairs(ents) do
+                        if(caught and caught.components.combat and not (caught.components.health and caught.components.health:IsDead()))then
+                            local caughtangle=node:GetAngleToPoint(caught:GetPosition())-angle
+                            local dh=math.abs(math.sqrt(node:GetDistanceSqToInst(caught))*math.sin(caughtangle))
                         --phew
-                        if(dh<=WALL_WIDTH)then
-                            caught.components.combat:GetAttacked(self.caster,BLUETOTEM_DAMAGE/2, nil,nil,FA_DAMAGETYPE.ELECTRIC)
+                            if(dh<=WALL_WIDTH)then
+                                caught.components.combat:GetAttacked(self.caster,BLUETOTEM_DAMAGE/2, nil,nil,FA_DAMAGETYPE.ELECTRIC)
+                            end
                         end
                     end
                 end
@@ -223,7 +224,7 @@ function FA_FenceManager:Init()
     end
     self.unresolvedNodes={}
     for k,v in pairs(self.fences) do 
-        print(k)
+--        print(k)
         v.initialized=true
         v:MakeGrid()
         v:StartTask()

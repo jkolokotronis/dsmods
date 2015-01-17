@@ -368,6 +368,8 @@ local function dorffort()
 	inst.components.childspawner.childname = "fa_dorf"
 	inst.components.childspawner:StartRegen()	
 	inst.components.childspawner:StartSpawning()
+	
+	inst.MiniMapEntity:SetIcon("cave_open.png")
 
     inst.AnimState:OverrideSymbol("back", "fa_dorffortentrance_back", "back_swap")
     inst.AnimState:PlayAnimation("idle", true)

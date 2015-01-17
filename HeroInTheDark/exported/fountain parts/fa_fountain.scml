@@ -56,7 +56,7 @@
                     <object_ref id="1" timeline="1" key="0" z_index="1"/>
                     <object_ref id="2" timeline="9" key="0" z_index="2"/>
                     <object_ref id="3" timeline="4" key="0" z_index="3"/>
-                    <object_ref id="4" timeline="2" key="2" z_index="4"/>
+                    <object_ref id="4" timeline="2" key="1" z_index="4"/>
                     <object_ref id="5" timeline="3" key="1" z_index="5"/>
                 </key>
                 <key id="3" time="360">
@@ -64,8 +64,8 @@
                     <object_ref id="1" timeline="1" key="0" z_index="1"/>
                     <object_ref id="2" timeline="10" key="0" z_index="2"/>
                     <object_ref id="3" timeline="5" key="0" z_index="3"/>
-                    <object_ref id="4" timeline="2" key="3" z_index="4"/>
-                    <object_ref id="5" timeline="3" key="2" z_index="5"/>
+                    <object_ref id="4" timeline="2" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="3" key="1" z_index="5"/>
                     <object_ref id="6" timeline="4" key="1" z_index="6"/>
                 </key>
                 <key id="4" time="481">
@@ -73,10 +73,20 @@
                     <object_ref id="1" timeline="1" key="0" z_index="1"/>
                     <object_ref id="2" timeline="11" key="0" z_index="2"/>
                     <object_ref id="3" timeline="6" key="0" z_index="3"/>
-                    <object_ref id="4" timeline="2" key="4" z_index="4"/>
-                    <object_ref id="5" timeline="3" key="3" z_index="5"/>
-                    <object_ref id="6" timeline="4" key="2" z_index="6"/>
+                    <object_ref id="4" timeline="2" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="3" key="1" z_index="5"/>
+                    <object_ref id="6" timeline="4" key="1" z_index="6"/>
                     <object_ref id="7" timeline="5" key="1" z_index="7"/>
+                </key>
+                <key id="5" time="600">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="11" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="6" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="2" key="2" z_index="4"/>
+                    <object_ref id="5" timeline="3" key="2" z_index="5"/>
+                    <object_ref id="6" timeline="4" key="2" z_index="6"/>
+                    <object_ref id="7" timeline="5" key="2" z_index="7"/>
                 </key>
             </mainline>
             <timeline id="0" name="_0015_water-base">
@@ -96,13 +106,7 @@
                 <key id="1" time="118" curve_type="instant">
                     <object folder="0" file="2" x="-160.377358" y="1024.528302" angle="0" a="0"/>
                 </key>
-                <key id="2" time="240" curve_type="instant">
-                    <object folder="0" file="2" x="-160.377358" y="1024.528302" angle="0" a="0"/>
-                </key>
-                <key id="3" time="360" curve_type="instant">
-                    <object folder="0" file="2" x="-160.377358" y="1024.528302" angle="0" a="0"/>
-                </key>
-                <key id="4" time="481" curve_type="instant">
+                <key id="2" time="600" curve_type="instant">
                     <object folder="0" file="2" x="-160.377358" y="1024.528302" angle="0" a="0"/>
                 </key>
             </timeline>
@@ -113,10 +117,7 @@
                 <key id="1" time="240" curve_type="instant">
                     <object folder="0" file="11" x="-171.698113" y="1016.981132" angle="0" a="0"/>
                 </key>
-                <key id="2" time="360" curve_type="instant">
-                    <object folder="0" file="11" x="-171.698113" y="1016.981132" angle="0" a="0"/>
-                </key>
-                <key id="3" time="481" curve_type="instant">
+                <key id="2" time="600" curve_type="instant">
                     <object folder="0" file="11" x="-171.698113" y="1016.981132" angle="0" a="0"/>
                 </key>
             </timeline>
@@ -127,7 +128,7 @@
                 <key id="1" time="360" curve_type="instant">
                     <object folder="0" file="12" x="-170.666667" y="1045.333333" angle="0" a="0"/>
                 </key>
-                <key id="2" time="481" curve_type="instant">
+                <key id="2" time="600" curve_type="instant">
                     <object folder="0" file="12" x="-170.666667" y="1045.333333" angle="0" a="0"/>
                 </key>
             </timeline>
@@ -138,19 +139,25 @@
                 <key id="1" time="481" curve_type="instant">
                     <object folder="0" file="13" x="-188" y="1040" angle="0" a="0"/>
                 </key>
+                <key id="2" time="600" curve_type="instant">
+                    <object folder="0" file="13" x="-188" y="1040" angle="0" a="0"/>
+                </key>
             </timeline>
             <timeline id="6" name="_0006_e">
                 <key id="0" time="481" curve_type="instant">
                     <object folder="0" file="14" x="-158.666667" y="1056" angle="0"/>
                 </key>
+                <key id="1" time="600" curve_type="instant">
+                    <object folder="0" file="14" x="-158.666667" y="1056" angle="0"/>
+                </key>
             </timeline>
             <timeline id="7" name="_0013_k1_000">
-                <key id="0" spin="0">
+                <key id="0" curve_type="instant">
                     <object folder="0" file="10" x="-152.830189" y="571.698113" angle="0"/>
                 </key>
             </timeline>
             <timeline id="8" name="_0012_k2_001">
-                <key id="0" time="118" spin="0">
+                <key id="0" time="118" curve_type="instant">
                     <object folder="0" file="9" x="-196.226415" y="562.264151" angle="0"/>
                 </key>
             </timeline>
@@ -166,6 +173,9 @@
             </timeline>
             <timeline id="11" name="_0012_k2_002">
                 <key id="0" time="481" spin="0">
+                    <object folder="0" file="9" x="-164.150943" y="566.037736" angle="0"/>
+                </key>
+                <key id="1" time="600" spin="0">
                     <object folder="0" file="9" x="-164.150943" y="566.037736" angle="0"/>
                 </key>
             </timeline>

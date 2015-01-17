@@ -1,7 +1,6 @@
 local assets=
 {
     Asset("ANIM", "anim/fa_iceaxe.zip"),
-    Asset("ANIM", "anim/swap_fa_iceaxe.zip"),
 }
 
 
@@ -39,7 +38,7 @@ local function onattack(inst, attacker, target)
 end
 
 local function onequip(inst, owner)
-    owner.AnimState:OverrideSymbol("swap_object", "swap_fa_iceaxe", "swap_fa_iceaxe")
+    owner.AnimState:OverrideSymbol("swap_object", "fa_iceaxe", "swap_weapon")
     owner.AnimState:Show("ARM_carry") 
     owner.AnimState:Hide("ARM_normal") 
 end
