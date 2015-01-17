@@ -60,6 +60,7 @@ local FA_StatusBar=require "widgets/fa_statusbar"
 local FA_CharRenameScreen=require "screens/fa_charrenamescreen"
 local FA_SpellBookScreen=require "screens/fa_spellbookscreen"
 local StatusDisplays = require "widgets/statusdisplays"
+local FA_IntoxicationBadge=require "widgets/fa_intoxicationbadge"
 local ImageButton = require "widgets/imagebutton"
 local Levels=require("map/levels")
 
@@ -335,6 +336,7 @@ Assets = {
     Asset( "ATLAS", "images/fa_equipbar_bg.xml" ),  
 
 
+    Asset( "ANIM", "anim/fa_intoxicationbadge.zip" ),
     Asset( "ANIM", "anim/fa_player_anims.zip" ),
     Asset( "ANIM", "anim/player_cage_drop.zip" ),
     Asset( "ANIM", "anim/fa_cagechains.zip" ),
@@ -655,6 +657,29 @@ AddClassPostConstruct("screens/playerhud", OpenBackpack)
 local function newControlsInit(class)
     local under_root=class;
     local inst=GetPlayer()
+-- TODO anything that messes up with default badges will likely break the positioning
+-- IDC to write another set of x-mod-compat crap, if it bothers you fix it yourself
+
+    class.brain:SetPosition(40,-40,0)
+    class.fa_intoxication = class:AddChild(FA_IntoxicationBadge(class.owner))
+    class.fa_intoxication:SetPosition(-40,-40,0)
+    class.fa_intoxication:SetPercent(class.owner.components.fa_intoxication:GetPercent(), class.owner.components.fa_intoxication.max, 0)
+
+    class.inst:ListenForEvent("fa_intoxicationdelta", function(inst, data)  
+       class.fa_intoxication:SetPercent(data.newpercent, data.max)
+    
+    if not data.overtime then
+        if data.newpercent > data.oldpercent then
+            class.fa_intoxication:PulseGreen()
+--            TheFrontEnd:GetSound():PlaySound("dontstarve/HUD/sanity_up")
+        elseif data.newpercent < data.oldpercent then
+            class.fa_intoxication:PulseRed()
+ --           TheFrontEnd:GetSound():PlaySound("dontstarve/HUD/sanity_down")
+        end
+    end
+
+    end, class.owner)
+
     if GetPlayer() and GetPlayer().components and GetPlayer().components.xplevel then
 --       GetPlayer():ListenForEvent("healthdelta", onhpchange)
         local xpbar = under_root:AddChild(XPBadge(class.owner))
@@ -1243,13 +1268,19 @@ local function UpdateWorldGenScreen(self, profile, cb, world_gen_options)
 --separate thread... cant do anything about it atm
 --                self:ChangeFlavourText()
     
-            elseif(data.id=="ORC_MINES" or data.id=="ORC_FORTRESS" or data.id=="DWARF_FORTRESS")then
+            elseif(data.id=="ORC_MINES" or data.id=="ORC_FORTRESS") then
 --                self.bg:SetTint(GLOBAL.BGCOLOURS.RED[1],GLOBAL.BGCOLOURS.RED[2],GLOBAL.BGCOLOURS.RED[3], 1)
                 self.worldanim:GetAnimState():SetBank("generating_mine_cave")
                 self.worldanim:GetAnimState():SetBuild("generating_mine_cave")
                 self.worldanim:GetAnimState():PlayAnimation("idle", true)
                 self.verbs = GLOBAL.shuffleArray(GLOBAL.STRINGS.UI.WORLDGEN.MINES.VERBS)
                 self.nouns = GLOBAL.shuffleArray(GLOBAL.STRINGS.UI.WORLDGEN.MINES.NOUNS)
+            elseif(data.id=="DWARF_FORTRESS") then
+                self.worldanim:GetAnimState():SetBank("generating_mine_cave")
+                self.worldanim:GetAnimState():SetBuild("generating_mine_cave")
+                self.worldanim:GetAnimState():PlayAnimation("idle", true)
+                self.verbs = GLOBAL.shuffleArray(GLOBAL.STRINGS.UI.WORLDGEN.DWARFFORTRESS.VERBS)
+                self.nouns = GLOBAL.shuffleArray(GLOBAL.STRINGS.UI.WORLDGEN.DWARFFORTRESS.NOUNS)
             end
         end
        

@@ -416,7 +416,7 @@
   <object type="fa_treasurechest" x="74" y="207"/>
   <object type="fa_treasurechest" x="138" y="208"/>
   <object type="fa_dorf_wall_1" x="1185" y="886"/>
-  <object type="fa_dorf_wall_1" x="524" y="887"/>
+  <object type="fa_dorf_wall_1" x="528" y="887"/>
   <object type="fa_dorf_wall_1" x="1134" y="886"/>
   <object type="fa_dorf_wall_1" x="1074" y="886"/>
   <object type="fa_dorf_wall_1" x="813" y="886"/>
@@ -427,7 +427,7 @@
   <object type="fa_dorf_wall_1" x="948" y="886"/>
   <object type="fa_dorf_wall_1" x="970" y="886"/>
   <object type="fa_dorf_wall_1" x="858" y="886"/>
-  <object type="fa_dorf_wall_1" x="658" y="887"/>
+  <object type="fa_dorf_wall_1" x="664" y="888"/>
   <object type="fa_dorf_wall_1" x="1245" y="886"/>
   <object type="fa_dorf_wall_1" x="1036" y="886"/>
   <object type="fa_dorf_wall_1" x="1166" y="886"/>
@@ -713,5 +713,817 @@
     <property name="data.targettag" value="Room_dorf_CC"/>
    </properties>
   </object>
+  <object type="fa_bluetotem_kos" x="322" y="1177">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_001"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="324" y="1243">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_001"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="587" y="1179">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_002"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="589" y="1245">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_002"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="853" y="1178">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_003"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="855" y="1244">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_003"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="1132" y="1176">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_004"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="1134" y="1242">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_004"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="1132" y="1131">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_005"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="1131" y="1043">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_005"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="989" y="1135">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_006"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="988" y="1043">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_006"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="854" y="1041">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_007"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="855" y="1133">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_007"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="720" y="1134">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_008"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="719" y="1042">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_008"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="590" y="1134">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_009"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="589" y="1042">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_009"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="1115" y="1242"/>
+  <object type="trap_teeth_maxwell" x="1109" y="1177"/>
+  <object type="trap_teeth_maxwell" x="830" y="1179"/>
+  <object type="trap_teeth_maxwell" x="834" y="1245"/>
+  <object type="trap_teeth_maxwell" x="567" y="1245"/>
+  <object type="trap_teeth_maxwell" x="565" y="1179"/>
+  <object type="trap_teeth_maxwell" x="301" y="1177"/>
+  <object type="trap_teeth_maxwell" x="302" y="1246"/>
+  <object type="trap_teeth_maxwell" x="1154" y="1177"/>
+  <object type="trap_teeth_maxwell" x="1153" y="1155"/>
+  <object type="trap_teeth_maxwell" x="1154" y="1134"/>
+  <object type="trap_teeth_maxwell" x="1154" y="1044"/>
+  <object type="trap_teeth_maxwell" x="1011" y="1043"/>
+  <object type="trap_teeth_maxwell" x="1012" y="1135"/>
+  <object type="trap_teeth_maxwell" x="875" y="1042"/>
+  <object type="trap_teeth_maxwell" x="878" y="1134"/>
+  <object type="trap_teeth_maxwell" x="743" y="1133"/>
+  <object type="trap_teeth_maxwell" x="741" y="1042"/>
+  <object type="trap_teeth_maxwell" x="611" y="1044"/>
+  <object type="trap_teeth_maxwell" x="612" y="1135"/>
+  <object type="fa_bluetotem_kos" x="405" y="1133">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_010"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="427" y="1134"/>
+  <object type="fa_bluetotem_kos" x="404" y="1041">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_010"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="426" y="1043"/>
+  <object type="trap_teeth_maxwell" x="377" y="1020"/>
+  <object type="trap_teeth_maxwell" x="380" y="1043"/>
+  <object type="trap_teeth_maxwell" x="385" y="1135"/>
+  <object type="fa_redtotem_kos" x="279" y="144"/>
+  <object type="fa_redtotem_kos" x="371" y="144"/>
+  <object type="fa_bluetotem_kos" x="369" y="862">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_011"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="276" y="863">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_011"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="369" y="885"/>
+  <object type="trap_teeth_maxwell" x="275" y="885"/>
+  <object type="fa_dorf_wall_1" x="794" y="887"/>
+  <object type="trap_teeth_maxwell" x="276" y="731"/>
+  <object type="fa_bluetotem_kos" x="277" y="709">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_012"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="370" y="731"/>
+  <object type="fa_bluetotem_kos" x="370" y="708">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_012"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="371" y="596"/>
+  <object type="fa_bluetotem_kos" x="371" y="573">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_013"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="278" y="574">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_013"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="277" y="596"/>
+  <object type="trap_teeth_maxwell" x="370" y="458"/>
+  <object type="trap_teeth_maxwell" x="276" y="458"/>
+  <object type="fa_bluetotem_kos" x="370" y="435">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_014"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="277" y="436">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_014"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_steelarmor" x="457" y="317">
+   <properties>
+    <property name="scenario" value="fa_pickup_animatedarmor"/>
+   </properties>
+  </object>
+  <object type="fa_copperarmor" x="223" y="1095"/>
+  <object type="fa_skullchest" x="328" y="145"/>
+  <object type="fa_bluetotem_kos" x="413" y="861">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_015"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="506" y="883"/>
+  <object type="fa_bluetotem_kos" x="506" y="860">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_015"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="412" y="883"/>
+  <object type="fa_bluetotem_kos" x="390" y="907">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_016"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="399" y="997">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_016"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="377" y="997"/>
+  <object type="trap_teeth_maxwell" x="377" y="975" width="1"/>
+  <object type="trap_teeth_maxwell" x="418" y="996"/>
+  <object type="trap_teeth_maxwell" x="413" y="906"/>
+  <object type="trap_teeth_maxwell" x="369" y="907"/>
+  <object type="trap_teeth_maxwell" x="504" y="729"/>
+  <object type="trap_teeth_maxwell" x="410" y="729"/>
+  <object type="fa_bluetotem_kos" x="504" y="706">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_017"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="411" y="707">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_017"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="507" y="594"/>
+  <object type="fa_bluetotem_kos" x="507" y="571">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_018"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="413" y="594"/>
+  <object type="fa_bluetotem_kos" x="414" y="572">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_018"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="414" y="433">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_019"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="507" y="432">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_019"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="507" y="455"/>
+  <object type="trap_teeth_maxwell" x="413" y="455"/>
+  <object type="fa_treasurechest" x="416" y="281"/>
+  <object type="fa_treasurechest" x="508" y="280"/>
+  <object type="trap_teeth_maxwell" x="506" y="907"/>
+  <object type="fa_bluetotem_kos" x="529" y="908">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_020"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="552" y="908"/>
+  <object type="fa_bluetotem_kos" x="529" y="1001">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_020"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="508" y="1002"/>
+  <object type="trap_teeth_maxwell" x="552" y="1001"/>
+  <object type="trap_teeth_maxwell" x="550" y="886"/>
+  <object type="fa_bluetotem_kos" x="645" y="798">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_021"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="550" y="798">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_021"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="549" y="821"/>
+  <object type="trap_teeth_maxwell" x="644" y="822"/>
+  <object type="fa_bluetotem_kos" x="644" y="632">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_022"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="549" y="632">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_022"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="643" y="656"/>
+  <object type="trap_teeth_maxwell" x="548" y="655"/>
+  <object type="fa_bluetotem_kos" x="553" y="437">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_023"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="552" y="460"/>
+  <object type="fa_bluetotem_kos" x="648" y="437">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_023"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="647" y="461"/>
+  <object type="fa_dorf_bucket_water" x="122" y="1045"/>
+  <object type="fa_dorf_bucket_water" x="32" y="1135"/>
+  <object type="fa_dorf_bucket_water" x="121" y="1251"/>
+  <object type="fa_dorf_bucket_water" x="1246" y="1045"/>
+  <object type="fa_dorf_bucket_water" x="1247" y="1245"/>
+  <object type="fa_dorf_bucket_water" x="734" y="998"/>
+  <object type="fa_dorf_bucket_water" x="600" y="1000"/>
+  <object type="fa_dorf_bucket_water" x="276" y="955"/>
+  <object type="fa_dorf_bucket_water" x="34" y="36"/>
+  <object type="fa_dorf_bucket_water" x="33" y="1000"/>
+  <object type="maxwelllight_area" x="33" y="123"/>
+  <object type="maxwelllight_area" x="35" y="305"/>
+  <object type="maxwelllight_area" x="33" y="460"/>
+  <object type="maxwelllight_area" x="34" y="620"/>
+  <object type="fa_dorf_bucket_water" x="552" y="146"/>
+  <object type="fa_dorf_bucket_water" x="642" y="148"/>
+  <object type="fa_treasurechest" x="601" y="147"/>
+  <object type="fa_diamondpebble" x="555" y="182"/>
+  <object type="fa_diamondpebble" x="589" y="182"/>
+  <object type="fa_diamondpebble" x="630" y="183"/>
+  <object type="fa_diamondpebble" x="630" y="219"/>
+  <object type="fa_diamondpebble" x="596" y="216"/>
+  <object type="fa_diamondpebble" x="561" y="215"/>
+  <object type="fa_diamondpebble" x="563" y="247"/>
+  <object type="fa_diamondpebble" x="598" y="243"/>
+  <object type="fa_bluetotem_kos" x="685" y="861">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_024"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="780" y="861">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_024"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="779" y="885"/>
+  <object type="trap_teeth_maxwell" x="684" y="884"/>
+  <object type="trap_teeth_maxwell" x="781" y="658"/>
+  <object type="fa_bluetotem_kos" x="782" y="634">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_025"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="687" y="634">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_025"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="686" y="657"/>
+  <object type="trap_teeth_maxwell" x="782" y="462"/>
+  <object type="trap_teeth_maxwell" x="687" y="461"/>
+  <object type="fa_bluetotem_kos" x="688" y="438">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_026"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="783" y="438">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_026"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="782" y="239">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_027"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="686" y="262"/>
+  <object type="fa_bluetotem_kos" x="687" y="239">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_027"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="781" y="263"/>
+  <object type="trap_teeth_maxwell" x="800" y="913"/>
+  <object type="trap_teeth_maxwell" x="818" y="940"/>
+  <object type="trap_teeth_maxwell" x="784" y="944"/>
+  <object type="trap_teeth_maxwell" x="806" y="970"/>
+  <object type="trap_teeth_maxwell" x="780" y="993"/>
+  <object type="trap_teeth_maxwell" x="818" y="994"/>
+  <object type="trap_teeth_maxwell" x="833" y="971"/>
+  <object type="trap_teeth_maxwell" x="849" y="942"/>
+  <object type="trap_teeth_maxwell" x="853" y="913"/>
+  <object type="trap_teeth_maxwell" x="887" y="921"/>
+  <object type="trap_teeth_maxwell" x="881" y="954"/>
+  <object type="trap_teeth_maxwell" x="868" y="981"/>
+  <object type="trap_teeth_maxwell" x="894" y="998"/>
+  <object type="trap_teeth_maxwell" x="961" y="941"/>
+  <object type="trap_teeth_maxwell" x="949" y="971"/>
+  <object type="trap_teeth_maxwell" x="1011" y="982"/>
+  <object type="trap_teeth_maxwell" x="1024" y="955"/>
+  <object type="trap_teeth_maxwell" x="927" y="945"/>
+  <object type="trap_teeth_maxwell" x="923" y="994"/>
+  <object type="trap_teeth_maxwell" x="943" y="914"/>
+  <object type="trap_teeth_maxwell" x="976" y="972"/>
+  <object type="trap_teeth_maxwell" x="961" y="995"/>
+  <object type="trap_teeth_maxwell" x="1037" y="999"/>
+  <object type="trap_teeth_maxwell" x="992" y="943"/>
+  <object type="trap_teeth_maxwell" x="1030" y="922"/>
+  <object type="trap_teeth_maxwell" x="996" y="914"/>
+  <object type="trap_teeth_maxwell" x="1101" y="938"/>
+  <object type="trap_teeth_maxwell" x="1089" y="968"/>
+  <object type="trap_teeth_maxwell" x="1151" y="979"/>
+  <object type="trap_teeth_maxwell" x="1164" y="952"/>
+  <object type="trap_teeth_maxwell" x="1067" y="942"/>
+  <object type="trap_teeth_maxwell" x="1063" y="991"/>
+  <object type="trap_teeth_maxwell" x="1083" y="911"/>
+  <object type="trap_teeth_maxwell" x="1116" y="969"/>
+  <object type="trap_teeth_maxwell" x="1101" y="992"/>
+  <object type="trap_teeth_maxwell" x="1177" y="996"/>
+  <object type="trap_teeth_maxwell" x="1132" y="940"/>
+  <object type="trap_teeth_maxwell" x="1170" y="919"/>
+  <object type="trap_teeth_maxwell" x="1136" y="911"/>
+  <object type="fa_skullchest" x="1239" y="956"/>
+  <object type="maxwelllight_area" x="1245" y="1109"/>
+  <object type="fa_bluetotem_kos" x="824" y="219">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_028"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="803" y="220"/>
+  <object type="trap_teeth_maxwell" x="801" y="148"/>
+  <object type="fa_bluetotem_kos" x="822" y="147">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_028"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="1049" y="149">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_029"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="1028" y="150"/>
+  <object type="trap_teeth_maxwell" x="1028" y="219"/>
+  <object type="fa_bluetotem_kos" x="1049" y="218">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_029"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="855" y="154"/>
+  <object type="trap_teeth_maxwell" x="862" y="181"/>
+  <object type="trap_teeth_maxwell" x="855" y="212"/>
+  <object type="trap_teeth_maxwell" x="885" y="204"/>
+  <object type="trap_teeth_maxwell" x="889" y="160"/>
+  <object type="trap_teeth_maxwell" x="919" y="153"/>
+  <object type="trap_teeth_maxwell" x="906" y="179"/>
+  <object type="trap_teeth_maxwell" x="918" y="204"/>
+  <object type="trap_teeth_maxwell" x="937" y="218"/>
+  <object type="trap_teeth_maxwell" x="962" y="197"/>
+  <object type="trap_teeth_maxwell" x="959" y="153"/>
+  <object type="trap_teeth_maxwell" x="987" y="145"/>
+  <object type="trap_teeth_maxwell" x="1003" y="166"/>
+  <object type="trap_teeth_maxwell" x="1006" y="188"/>
+  <object type="trap_teeth_maxwell" x="981" y="216"/>
+  <object type="trap_teeth_maxwell" x="1007" y="210"/>
+  <object type="fa_bluetotem_kos" x="1051" y="330">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_030"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="1051" y="261">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_030"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="1052" y="373">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_031"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="1052" y="442">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_031"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="1049" y="487">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_032"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="1049" y="556">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_032"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="1050" y="599">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_033"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="1050" y="668">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_033"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="1052" y="784">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_034"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="1052" y="715">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_034"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="1165" y="801">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_035"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="1247" y="801">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_035"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="1246" y="662">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_036"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="1164" y="662">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_036"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="1163" y="519">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_037"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="1245" y="519">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_037"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="1162" y="375">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_038"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="1244" y="375">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_038"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="1247" y="238">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_039"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="1165" y="238">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_039"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="1167" y="126">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_040"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="1249" y="126">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_040"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="1012" y="299"/>
+  <object type="trap_teeth_maxwell" x="925" y="264"/>
+  <object type="trap_teeth_maxwell" x="987" y="327"/>
+  <object type="trap_teeth_maxwell" x="895" y="271"/>
+  <object type="trap_teeth_maxwell" x="943" y="329"/>
+  <object type="trap_teeth_maxwell" x="891" y="315"/>
+  <object type="trap_teeth_maxwell" x="1009" y="277"/>
+  <object type="trap_teeth_maxwell" x="924" y="315"/>
+  <object type="trap_teeth_maxwell" x="861" y="323"/>
+  <object type="trap_teeth_maxwell" x="1013" y="321"/>
+  <object type="trap_teeth_maxwell" x="968" y="308"/>
+  <object type="trap_teeth_maxwell" x="868" y="292"/>
+  <object type="trap_teeth_maxwell" x="861" y="265"/>
+  <object type="trap_teeth_maxwell" x="912" y="290"/>
+  <object type="trap_teeth_maxwell" x="965" y="264"/>
+  <object type="trap_teeth_maxwell" x="1009" y="408"/>
+  <object type="trap_teeth_maxwell" x="922" y="373"/>
+  <object type="trap_teeth_maxwell" x="984" y="436"/>
+  <object type="trap_teeth_maxwell" x="892" y="380"/>
+  <object type="trap_teeth_maxwell" x="940" y="438"/>
+  <object type="trap_teeth_maxwell" x="888" y="424"/>
+  <object type="trap_teeth_maxwell" x="1006" y="386"/>
+  <object type="trap_teeth_maxwell" x="921" y="424"/>
+  <object type="trap_teeth_maxwell" x="858" y="432"/>
+  <object type="trap_teeth_maxwell" x="1010" y="430"/>
+  <object type="trap_teeth_maxwell" x="965" y="417"/>
+  <object type="trap_teeth_maxwell" x="865" y="401"/>
+  <object type="trap_teeth_maxwell" x="858" y="374"/>
+  <object type="trap_teeth_maxwell" x="909" y="399"/>
+  <object type="trap_teeth_maxwell" x="962" y="373"/>
+  <object type="trap_teeth_maxwell" x="1015" y="526"/>
+  <object type="trap_teeth_maxwell" x="928" y="491"/>
+  <object type="trap_teeth_maxwell" x="990" y="554"/>
+  <object type="trap_teeth_maxwell" x="898" y="498"/>
+  <object type="trap_teeth_maxwell" x="946" y="556"/>
+  <object type="trap_teeth_maxwell" x="894" y="542"/>
+  <object type="trap_teeth_maxwell" x="1012" y="504"/>
+  <object type="trap_teeth_maxwell" x="927" y="542"/>
+  <object type="trap_teeth_maxwell" x="864" y="550"/>
+  <object type="trap_teeth_maxwell" x="1016" y="548"/>
+  <object type="trap_teeth_maxwell" x="971" y="535"/>
+  <object type="trap_teeth_maxwell" x="871" y="519"/>
+  <object type="trap_teeth_maxwell" x="864" y="492"/>
+  <object type="trap_teeth_maxwell" x="915" y="517"/>
+  <object type="trap_teeth_maxwell" x="968" y="491"/>
+  <object type="trap_teeth_maxwell" x="1018" y="635"/>
+  <object type="trap_teeth_maxwell" x="931" y="600"/>
+  <object type="trap_teeth_maxwell" x="993" y="663"/>
+  <object type="trap_teeth_maxwell" x="901" y="607"/>
+  <object type="trap_teeth_maxwell" x="949" y="665"/>
+  <object type="trap_teeth_maxwell" x="897" y="651"/>
+  <object type="trap_teeth_maxwell" x="1015" y="613"/>
+  <object type="trap_teeth_maxwell" x="930" y="651"/>
+  <object type="trap_teeth_maxwell" x="867" y="659"/>
+  <object type="trap_teeth_maxwell" x="1019" y="657"/>
+  <object type="trap_teeth_maxwell" x="974" y="644"/>
+  <object type="trap_teeth_maxwell" x="874" y="628"/>
+  <object type="trap_teeth_maxwell" x="867" y="601"/>
+  <object type="trap_teeth_maxwell" x="918" y="626"/>
+  <object type="trap_teeth_maxwell" x="971" y="600"/>
+  <object type="trap_teeth_maxwell" x="1014" y="750"/>
+  <object type="trap_teeth_maxwell" x="927" y="715"/>
+  <object type="trap_teeth_maxwell" x="989" y="778"/>
+  <object type="trap_teeth_maxwell" x="897" y="722"/>
+  <object type="trap_teeth_maxwell" x="945" y="780"/>
+  <object type="trap_teeth_maxwell" x="893" y="766"/>
+  <object type="trap_teeth_maxwell" x="1011" y="728"/>
+  <object type="trap_teeth_maxwell" x="926" y="766"/>
+  <object type="trap_teeth_maxwell" x="863" y="774"/>
+  <object type="trap_teeth_maxwell" x="1015" y="772"/>
+  <object type="trap_teeth_maxwell" x="970" y="759"/>
+  <object type="trap_teeth_maxwell" x="870" y="743"/>
+  <object type="trap_teeth_maxwell" x="863" y="716"/>
+  <object type="trap_teeth_maxwell" x="914" y="741"/>
+  <object type="trap_teeth_maxwell" x="967" y="715"/>
+  <object type="fa_bluetotem_kos" x="1096" y="104">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_041"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="1117" y="105"/>
+  <object type="trap_teeth_maxwell" x="1114" y="31"/>
+  <object type="fa_bluetotem_kos" x="1093" y="30">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_041"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="864" y="32">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_042"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="885" y="33"/>
+  <object type="trap_teeth_maxwell" x="888" y="107"/>
+  <object type="fa_bluetotem_kos" x="867" y="106">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_042"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="fa_bluetotem_kos" x="615" y="30">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_043"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="636" y="31"/>
+  <object type="trap_teeth_maxwell" x="639" y="105"/>
+  <object type="fa_bluetotem_kos" x="618" y="104">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_043"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="438" y="30"/>
+  <object type="fa_bluetotem_kos" x="420" y="103">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_044"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="441" y="104"/>
+  <object type="fa_bluetotem_kos" x="417" y="29">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_044"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="289" y="102"/>
+  <object type="fa_bluetotem_kos" x="268" y="101">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_045"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="286" y="28"/>
+  <object type="fa_bluetotem_kos" x="265" y="27">
+   <properties>
+    <property name="data.fa_fencetag" value="fa_fencetag_045"/>
+    <property name="data.fueled.rate" value="0"/>
+   </properties>
+  </object>
+  <object type="trap_teeth_maxwell" x="343" y="32"/>
+  <object type="trap_teeth_maxwell" x="344" y="55"/>
+  <object type="trap_teeth_maxwell" x="345" y="77"/>
+  <object type="trap_teeth_maxwell" x="345" y="101"/>
+  <object type="trap_teeth_maxwell" x="525" y="56"/>
+  <object type="trap_teeth_maxwell" x="526" y="78"/>
+  <object type="trap_teeth_maxwell" x="526" y="102"/>
+  <object type="trap_teeth_maxwell" x="524" y="33"/>
+  <object type="trap_teeth_maxwell" x="758" y="58"/>
+  <object type="trap_teeth_maxwell" x="759" y="80"/>
+  <object type="trap_teeth_maxwell" x="759" y="104"/>
+  <object type="trap_teeth_maxwell" x="757" y="35"/>
+  <object type="trap_teeth_maxwell" x="995" y="57"/>
+  <object type="trap_teeth_maxwell" x="996" y="79"/>
+  <object type="trap_teeth_maxwell" x="996" y="103"/>
+  <object type="trap_teeth_maxwell" x="994" y="34"/>
+  <object type="goblinsign_3" x="203" y="1240"/>
+  <object type="goblinsign_3" x="204" y="1156"/>
+  <object type="goblinsign_3" x="232" y="1205"/>
+  <object type="goblinsign_5" x="1216" y="1203"/>
+  <object type="goblinsign_5" x="316" y="1088"/>
+  <object type="goblinsign_5" x="745" y="949"/>
+  <object type="goblinsign_5" x="1060" y="843"/>
+  <object type="goblinsign_5" x="1205" y="69"/>
  </objectgroup>
 </map>

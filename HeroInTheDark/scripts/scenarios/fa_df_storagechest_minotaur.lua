@@ -7,35 +7,22 @@ local function OnCreate(inst, scenariorunner)
 
 	local items = 
 	{
-	--[[
+
 		{
-			--Body Items
-			item = {"armorwood", "footballhat"},
-			chance = 0.2,
-			initfn = function(item) item.components.armor:SetCondition(math.random(item.components.armor.maxcondition * 0.33, item.components.armor.maxcondition * 0.8))end
-		},]]
-		{
-			item = "nightmarefuel",
-			count = math.random(1, 3),
-			chance = 0.2,
+			item = {"fa_diamondpebble"},
+			count = 10,
+			chance = 1,
 		},
 		{
-			item = {"redgem", "bluegem", "purplegem"},
-			count = math.random(1,2),
-			chance = 0.15,
-		},
-		{
-			item = {"yellowgem", "orangegem", "greengem"},
-			count = 1,
-			chance = 0.07,
+			item = {"fa_barrel_darkrum","fa_barrel_goldrum","fa_barrel_water","fa_barrel_bourbon","fa_barrel_flavoredrum","fa_barrel_lightale","fa_barrel_ronsale","fa_barrel_drakeale","fa_barrel_oriansale",
+			"fa_barrel_dorfale","fa_barrel_molasses","fa_barrel_deathbrew","fa_barrel_lightrum","fa_barrel_clearbourbon","fa_barrel_vodka","fa_barrel_gin","fa_barrel_tequila","fa_barrel_whiskey","fa_barrel_baijui",
+			"fa_barrel_soju","fa_pomegranate_wine","fa_durian_wine","fa_dragon_wine","fa_melon_wine","fa_red_wine","fa_goodberry_wine","fa_glowing_wine","fa_cactus_wine","fa_mead"},
+			count = 20,
+			chance = 1,
 		},
 	}   
 
 
-	local loots=FA_ScenarioUtil.FA_GenerateLoot(FALLENLOOTTABLE.tier1,FALLENLOOTTABLE.TABLE_TIER1_WEIGHT,0.5)
-	for k,prefab in pairs(loots) do
-		inst.components.container:GiveItem(SpawnPrefab(prefab))
-	end
 	chestfunctions.AddChestItems(inst, items)
 
 end

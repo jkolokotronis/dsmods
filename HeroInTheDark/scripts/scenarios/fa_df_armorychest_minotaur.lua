@@ -7,35 +7,24 @@ local function OnCreate(inst, scenariorunner)
 
 	local items = 
 	{
-	--[[
 		{
-			--Body Items
-			item = {"armorwood", "footballhat"},
-			chance = 0.2,
-			initfn = function(item) item.components.armor:SetCondition(math.random(item.components.armor.maxcondition * 0.33, item.components.armor.maxcondition * 0.8))end
-		},]]
-		{
-			item = "nightmarefuel",
-			count = math.random(1, 3),
-			chance = 0.2,
-		},
-		{
-			item = {"redgem", "bluegem", "purplegem"},
-			count = math.random(1,2),
-			chance = 0.15,
-		},
-		{
-			item = {"yellowgem", "orangegem", "greengem"},
+			item = "fa_hat_adamant",
 			count = 1,
-			chance = 0.07,
+			chance = 1,
+		},
+		{
+			item = "fa_adamantinearmor",
+			count = 1,
+			chance = 1,
+		},
+		{
+			item = {"fa_adamantinesword", "fa_adamantineaxe"},
+			count = 1,
+			chance = 1,
 		},
 	}   
 
 
-	local loots=FA_ScenarioUtil.FA_GenerateLoot(FALLENLOOTTABLE.tier1,FALLENLOOTTABLE.TABLE_TIER1_WEIGHT,0.5)
-	for k,prefab in pairs(loots) do
-		inst.components.container:GiveItem(SpawnPrefab(prefab))
-	end
 	chestfunctions.AddChestItems(inst, items)
 
 end

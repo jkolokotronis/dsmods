@@ -269,6 +269,7 @@ local function ResistanceSpellStart( reader,timer)
         if not inst.components.spell.target then
             return
         end
+        local target=inst.components.spell.target
         target.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=(target.components.health.fa_resistances[FA_DAMAGETYPE.FIRE] or 0)-0.3
         target.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=(target.components.health.fa_resistances[FA_DAMAGETYPE.COLD] or 0)+0.3
         target.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=(target.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC] or 0)-0.3
@@ -379,6 +380,7 @@ local function DamageReductionSpellStart( reader,timer,variables)
         if not inst.components.spell.target then
             return
         end
+        local target=inst.components.spell.target
         local damagetype=variables.damagetype
         local drdelta=variables.drdelta
         target.components.health.fa_damagereduction[damagetype]=(target.components.health.fa_damagereduction[damagetype] or 0)-drdelta

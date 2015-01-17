@@ -1184,6 +1184,10 @@ STRINGS.UI.WORLDGEN.MINES={}
 STRINGS.UI.WORLDGEN.MINES.VERBS={"Wrangling","Generating","Herding","Embiggening","Iterating upon","Insinuating","Reticulating","Inserting","Framing"}
 STRINGS.UI.WORLDGEN.MINES.NOUNS={"rocks and ores","FIRE GOBLINS!","Lava","Orc Stench","Dwarf rage","Wheat","Lava cracks","Treasure and other loots","The Orc Fortress","The Dwarf Fortress"}
 
+STRINGS.UI.WORLDGEN.DWARFFORTRESS={}
+STRINGS.UI.WORLDGEN.DWARFFORTRESS.VERBS={"Wrangling","Generating","Herding","Embiggening","Iterating upon","Insinuating","Reticulating","Inserting","Framing"}
+STRINGS.UI.WORLDGEN.DWARFFORTRESS.NOUNS={"rocks and ores","Dwarf beds","Lava","dwarvern ale!","Dwarf rage","kegs","Lava walls","Secrets","The dwarf king","Smelters and forges"}
+
 STRINGS.DORFNAMES={"Dalak","Fari","Ketnia","Dwinkona","Ketmin","Billin","Grorundi","Balzadi","Brounn","Farkk","Balgini","Gilbura","Boftil","Munmin","Kila","Grorimi","Munkon","Gari","Harimi","Chalgrima","Herrak","Barar","Munia","Nalgari","Fimund","Griund","Haondi","Dunni","Gruntil","Runum","Ketdria","Thraka","Gribur","Bulkk","Balola","Gimria","Bartri","Haund","Harria","Gargini","Goror","Garbur","Bgrima","Durondi","Thil","Thorzad","Gilana","Ovana","Bofmin","Ragur","Klmina","Balon","Gorond","Simgin","Dalbari","Gomgari","Drui","Bulni","Storzadi","Nalbari","Kilrund","Ketond","Herundi","Thortria","Ketain","Kilgin","Ragdria","Balon","Gilil","Bulim","Dwinria","Farnia","Bartil","Thinain","Barbura","Brokka","Mormin","Griak","Balola","Gara"}
 
 STRINGS.NAMES.FA_FIREBOULDER="Fire Boulder"

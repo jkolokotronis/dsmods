@@ -8,8 +8,13 @@ local function OnCreate(inst, scenariorunner)
 	local items = 
 	{
 		{
-			item = {"fa_lavapebble", "fa_ironpebble", "fa_coalpebble","fa_diamondpebble","fa_limestonepebble","fa_copperpebble","fa_silverpebble"},
-			count = 10,
+			item = {"redgem", "bluegem", "purplegem","yellowgem","orangegem","greengem"},
+			count = 5,
+			chance = 1,
+		},
+		{
+			item ="fa_diamondpebble",
+			count = 1,
 			chance = 1,
 		},
 	}   

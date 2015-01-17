@@ -8,12 +8,12 @@ local function OnCreate(inst, scenariorunner)
 	local items = 
 	{
 		{
-			item = {"fa_ironbar", "fa_pigironbar", "fa_coalbar","fa_goldbar","fa_copperbar","fa_steelbar","fa_silverbar","fa_lavabar"},
-			count = 8,
+			item = {"fa_bottle_wort", "fa_rummug", "fa_lightalemug","fa_ronsalemug","fa_dwarfalemug","fa_wineyeast","fa_distillingyeast","fa_brewingyeast"},
+			count = 5,
 			chance = 1,
 		},
 	}   
-
+	
 	chestfunctions.AddChestItems(inst, items)
 
 end

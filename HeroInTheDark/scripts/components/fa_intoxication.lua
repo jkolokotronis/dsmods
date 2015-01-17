@@ -103,7 +103,7 @@ function FA_Intoxication:DoDelta(delta)
     elseif self.current > self.max then
         self.current = self.max
     end
-    self.inst:PushEvent("fa_intoxicationdelta", {old= old, new = self.current,max=self.max})
+    self.inst:PushEvent("fa_intoxicationdelta", {oldpercent = old/self.max, newpercent = self.current/self.max,max=self.max})
     
 end
 
@@ -121,4 +121,7 @@ function FA_Intoxication:SetRate(rate)
     self.decrate = rate
 end
 
+function FA_Intoxication:GetRate()
+    return self.decrate
+end
 return FA_Intoxication

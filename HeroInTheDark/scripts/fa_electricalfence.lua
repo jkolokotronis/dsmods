@@ -160,7 +160,7 @@ function FA_ElectricalFence:StartTask()
         end
         self.lock=true
         for k,node in pairs(self.nodetable) do
-            if(node:IsAwake())then
+            if(not node:IsAsleep())then
                 local pos=Vector3(node.Transform:GetWorldPosition())
                 for k1,v in pairs(node.fa_nodelist) do
                     local p2=Vector3(v.Transform:GetWorldPosition())
