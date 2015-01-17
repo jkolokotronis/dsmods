@@ -26,7 +26,9 @@ function FA_IntoxicationBadge:SetPercent(val, max, penaltypercent)
 	self.topperanim:GetAnimState():SetPercent("anim", penaltypercent)
 end
 
+
 function FA_IntoxicationBadge:OnUpdate(dt)
+--[[
 	local rate = self.owner.components.fa_intoxication:GetRate()
 	
 	local small_down = .02
@@ -59,7 +61,7 @@ function FA_IntoxicationBadge:OnUpdate(dt)
 		self.arrowdir = anim
 		self.sanityarrow:GetAnimState():PlayAnimation(anim, true)
 	end
-	
+	]]
 end
 
 return FA_IntoxicationBadge

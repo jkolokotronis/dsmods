@@ -34,9 +34,43 @@ local cageassets=
     Asset( "ANIM", "anim/player_cage_drop.zip" ),
     Asset( "ANIM", "anim/fa_cagechains.zip" ),
     Asset("ANIM", "anim/fa_orcfort_cage.zip"),
+
+}
+local bluecageassets=
+{
+    Asset( "ANIM", "anim/player_cage_drop.zip" ),
+    Asset( "ANIM", "anim/fa_cagechains.zip" ),
+    Asset("ANIM", "anim/fa_orcfort_cage.zip"),
         Asset( "ANIM", "anim/bluegoblin.zip" ),
 
 }
+local redcageassets=
+{
+    Asset( "ANIM", "anim/player_cage_drop.zip" ),
+    Asset( "ANIM", "anim/fa_cagechains.zip" ),
+    Asset("ANIM", "anim/fa_orcfort_cage.zip"),
+        Asset( "ANIM", "anim/fa_redgoblin.zip" ),
+
+}
+local greencageassets=
+{
+    Asset( "ANIM", "anim/player_cage_drop.zip" ),
+    Asset( "ANIM", "anim/fa_cagechains.zip" ),
+    Asset("ANIM", "anim/fa_orcfort_cage.zip"),
+        Asset( "ANIM", "anim/goblin.zip" ),
+
+}
+local orccageassets=
+{
+    Asset( "ANIM", "anim/player_cage_drop.zip" ),
+    Asset( "ANIM", "anim/fa_cagechains.zip" ),
+    Asset("ANIM", "anim/fa_orcfort_cage.zip"),
+        Asset( "ANIM", "anim/goblin.zip" ),
+
+}
+
+
+
 local function fn(bank,bld,animname,loop)
 	local inst = CreateEntity()
 	local trans = inst.entity:AddTransform()
@@ -219,7 +253,77 @@ local function cagefn()
     return inst
 end
 
+local function fa_goblin_jailcage()
+    local inst = CreateEntity()
+    local trans = inst.entity:AddTransform()
+    local anim = inst.entity:AddAnimState()
+    inst.entity:AddSoundEmitter()
+         
+        inst.AnimState:SetBank("wilson")
+        inst.AnimState:SetBuild("goblin")
 
+        inst.AnimState:OverrideSymbol("chains", "fa_cagechains", "chains")
+        inst.AnimState:OverrideSymbol("cage", "fa_orcfort_cage", "cage")
+        inst.AnimState:PlayAnimation("fa_cagedrop",true)
+
+    inst:AddComponent("inspectable")
+
+    return inst
+end
+
+local function fa_goblin_red_jailcage()
+    local inst = CreateEntity()
+    local trans = inst.entity:AddTransform()
+    local anim = inst.entity:AddAnimState()
+    inst.entity:AddSoundEmitter()
+         
+        inst.AnimState:SetBank("wilson")
+        inst.AnimState:SetBuild("fa_redgoblin")
+
+        inst.AnimState:OverrideSymbol("chains", "fa_cagechains", "chains")
+        inst.AnimState:OverrideSymbol("cage", "fa_orcfort_cage", "cage")
+        inst.AnimState:PlayAnimation("fa_cagedrop",true)
+
+    inst:AddComponent("inspectable")
+
+    return inst
+end
+
+local function fa_goblin_blue_jailcage()
+    local inst = CreateEntity()
+    local trans = inst.entity:AddTransform()
+    local anim = inst.entity:AddAnimState()
+    inst.entity:AddSoundEmitter()
+         
+        inst.AnimState:SetBank("wilson")
+        inst.AnimState:SetBuild("bluegoblin")
+
+        inst.AnimState:OverrideSymbol("chains", "fa_cagechains", "chains")
+        inst.AnimState:OverrideSymbol("cage", "fa_orcfort_cage", "cage")
+        inst.AnimState:PlayAnimation("fa_cagedrop",true)
+
+    inst:AddComponent("inspectable")
+
+    return inst
+end
+
+local function fa_orc_jailcage()
+    local inst = CreateEntity()
+    local trans = inst.entity:AddTransform()
+    local anim = inst.entity:AddAnimState()
+    inst.entity:AddSoundEmitter()
+         
+        inst.AnimState:SetBank("wilson")
+        inst.AnimState:SetBuild("bluegoblin")
+
+        inst.AnimState:OverrideSymbol("chains", "fa_cagechains", "chains")
+        inst.AnimState:OverrideSymbol("cage", "fa_orcfort_cage", "cage")
+        inst.AnimState:PlayAnimation("fa_cagedrop",true)
+
+    inst:AddComponent("inspectable")
+
+    return inst
+end
 return Prefab( "common/fa_dorf_gold_pillar", fa_pillar_dwarf, fa_pillar_dwarf_assets),
 Prefab( "common/fa_dorf_stool", fa_stool, fa_stool_assets),
 Prefab( "common/fa_dorf_stool_blown", fa_stool_blown, fa_stool_assets),
@@ -229,8 +333,12 @@ Prefab( "common/fa_dorf_light", dorftorchfn, fa_dorftorch_assets),
 Prefab( "common/fa_minecart", fa_minecart, fa_minecart_assets),
 Prefab( "common/fa_playerjailcage", cagefn, cageassets),
 Prefab( "common/fa_fountain", fountainfn, fa_fountain_assets),
-Prefab( "common/fa_orcjailcage", cagefn, cageassets),
 Prefab( "common/fa_dorf_stool", fa_stool, fa_stool_assets),
 Prefab( "common/fa_dorf_stool_blown", fa_stool_blown, fa_stool_assets),
 Prefab( "common/fa_orc_table", fa_orc_table, fa_orc_table_assets),
-Prefab( "common/fa_orc_stool", fa_orc_stool, fa_orc_stool_assets)
+Prefab( "common/fa_orc_stool", fa_orc_stool, fa_orc_stool_assets),
+Prefab( "common/fa_goblin_jailcage", fa_goblin_jailcage, greencageassets),
+Prefab( "common/fa_goblin_blue_jailcage", fa_goblin_blue_jailcage, bluecageassets),
+Prefab( "common/fa_orc_jailcage", fa_orc_jailcage, orccageassets),
+Prefab( "common/fa_goblin_red_jailcage", fa_goblin_red_jailcage, redcageassets)
+

@@ -5,7 +5,7 @@
  </tileset>
  <layer name="BG_TILES" width="80" height="80">
   <data encoding="base64" compression="zlib">
-   eJzt2ksKxCAQBcDA3P/Os8paErU/pmonGJSADxv7uoCufsZTY6Cv6ud7tJ/d+63+f4D3Zs/z03xYfd/aPX/0PdDX6jzYnVfZ68s/OEf18529n+r/B3hP/fuM/INzdKt/u+UlUFf1fo9q62fvB1gnu3+u+xjoq1r9GJ0/6l+gqt155/0DuGXf70bzs9eXf3CuanmSnU/yD8gSnWfeP+C7Trv/RfcLAn1F9ydX70+Rd0AW9S8Q5bT6d3Y+8B3yb24+wCrZ/Syj+X/YsAKJ
+   eJzt21sKwyAQBdBA97/nrkDSRJ2HPedPCDoEvDjBXBfQ1cd4agz0VX1/39UTXW+19wO8N7ufV+fn7jyenV/+wTlW58HuvFo9n/yD/9W9/41WrR7gvWr9qv4XiNKt/83OV/kH56h+36Pa+tn1AOtk35/rPgb6qra/o/NH/wtUVS1vqtUDrPP0vBX9/Ox8T1U7HwP7yL/Y+QFGsv/vlX/ASPb5bzf5B4ycdv9E3gFVRH/Pk3fAr7L7393rA4x0y7+n5CWQJTtv7vLvC5pbAfA=
   </data>
  </layer>
  <objectgroup name="FG_OBJECTS" width="80" height="80">
@@ -28,11 +28,35 @@
   </object>
   <object type="fa_dorf_bucket_water" x="745" y="617"/>
   <object type="fa_dorf_gold_pillar" x="59" y="578"/>
-  <object type="fa_teleporter_dorf" x="1022" y="1215">
+  <object type="fa_teleporter_dorf" x="669" y="1249">
    <properties>
     <property name="data.sourcetag" value="Room_dorf_O"/>
     <property name="data.targettag" value="Room_dorf_P"/>
    </properties>
   </object>
+  <object type="fa_goblin_jailcage" x="828" y="194"/>
+  <object type="fa_goblin_blue_jailcage" x="494" y="151"/>
+  <object type="fa_orc_jailcage" x="493" y="345"/>
+  <object type="fa_goblin_red_jailcage" x="828" y="340"/>
+  <object type="fa_goblin_blue_jailcage" x="1157" y="123"/>
+  <object type="fa_orc_jailcage" x="1155" y="253"/>
+  <object type="fa_goblin_jailcage" x="1156" y="385"/>
+  <object type="fa_goblin_jailcage" x="1009" y="703"/>
+  <object type="fa_goblin_red_jailcage" x="188" y="126"/>
+  <object type="fa_goblin_red_jailcage" x="184" y="251"/>
+  <object type="fa_goblin_red_jailcage" x="182" y="372"/>
+  <object type="fa_goblin_red_jailcage" x="579" y="448"/>
+  <object type="fa_goblin_jailcage" x="871" y="446"/>
+  <object type="fa_goblin_blue_jailcage" x="478" y="445"/>
+  <object type="fa_goblin_red_jailcage" x="448" y="636"/>
+  <object type="fa_orc_jailcage" x="252" y="633"/>
+  <object type="fa_orc_jailcage" x="154" y="960"/>
+  <object type="fa_orc_jailcage" x="164" y="1150"/>
+  <object type="fa_dorf_gold_pillar" x="127" y="768"/>
+  <object type="fa_goblin_jailcage" x="1026" y="896"/>
+  <object type="fa_goblin_jailcage" x="829" y="958"/>
+  <object type="fa_goblin_jailcage" x="1025" y="1222"/>
+  <object type="fa_goblin_jailcage" x="1161" y="636"/>
+  <object type="fa_goblin_red_jailcage" x="1220" y="1085"/>
  </objectgroup>
 </map>
