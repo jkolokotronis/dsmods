@@ -148,7 +148,7 @@ local inst=fn()
 	    doer.AnimState:OverrideSymbol("cage", "fa_orcfort_cage", "cage")
 	    inst:RemoveFromScene()
 	    doer.AnimState:PlayAnimation("fa_cagedrop",true)
-	    DoTaskInTime(5,OnActivate)
+	    doer:DoTaskInTime(5,OnActivate)
     end
 	return inst
 end
@@ -164,7 +164,7 @@ local inst=fn()
 	    doer.AnimState:OverrideSymbol("cage", "fa_dorffort_rcage", "cage")
 	    inst:RemoveFromScene()
 	    doer.AnimState:PlayAnimation("fa_cagedrop",true)
-	    DoTaskInTime(5,OnActivate)
+	    doer:DoTaskInTime(5,OnActivate)
     end
 	return inst
 end
