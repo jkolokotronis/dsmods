@@ -40,12 +40,12 @@ local function fn(name)
     inst.AnimState:SetBuild(name)
 	inst.AnimState:PlayAnimation("idle")
 
-    inst:AddComponent("edible")
-    inst.components.edible.healthvalue=0
-    inst.components.edible.hungervalue=0
-    inst.components.edible.sanityvalue=0
+    inst:AddComponent("fa_drink")
+    inst.components.fa_drink.healthvalue=0
+    inst.components.fa_drink.hungervalue=0
+    inst.components.fa_drink.sanityvalue=0
     --this might need to change but... I see no reason to care
-    inst.components.edible.foodtype = "FA_POTION"
+    inst.components.fa_drink.foodtype = "FA_POTION"
     inst:AddComponent("tradable")
 
     
@@ -70,13 +70,13 @@ local function woodfn(Sim)
             water.Transform:SetPosition(pos.x, pos.y, pos.z)
         end
     end)
-    inst:RemoveComponent("edible")
+    inst:RemoveComponent("fa_drink")
     return inst
 end 
 
 local function molassesfn(Sim)
     local inst= fn("fa_barrel_molasses")
-    inst.components.edible.hungervalue=5
+    inst.components.fa_drink.hungervalue=5
     return inst
 end 
 
@@ -86,17 +86,13 @@ local function darkrumfn(Sim)
     inst.components.finiteuses:SetOnFinished( onfinished )
     inst.components.finiteuses:SetMaxUses(3)
     inst.components.finiteuses:SetUses(3)
-    inst.components.edible.hungervalue=5
-    inst.components.edible.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
-    inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_LONG
-
-    inst:ListenForEvent("oneaten",function(inst,data)
-        local eater=data.eater
-        if(eater and eater.components.fa_intoxication)then
-            eater.components.fa_intoxication:DoDelta(15)
-            eater.components.fa_bufftimers:AddBuff("physicaldr","PhysicalDR","DamageReduction",DR_LENGTH,{damagetype=FA_DAMAGETYPE.PHYSICAL,drdelta=20})
-        end
-    end)
+    inst.components.fa_drink.hungervalue=5
+    inst.components.fa_drink.intoxication=15
+    inst.components.fa_drink.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
+    inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_LONG
+    inst.components.fa_drink.ondrink=function(drink, eater)
+        eater.components.fa_bufftimers:AddBuff("physicaldr","PhysicalDR","DamageReduction",DR_LENGTH,{damagetype=FA_DAMAGETYPE.PHYSICAL,drdelta=20})
+    end
     return inst
 end 
 
@@ -106,17 +102,13 @@ local function bourbonfn(Sim)
     inst.components.finiteuses:SetOnFinished( onfinished )
     inst.components.finiteuses:SetMaxUses(3)
     inst.components.finiteuses:SetUses(3)
-    inst.components.edible.hungervalue=5
-    inst.components.edible.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
-    inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_LONG
-
-    inst:ListenForEvent("oneaten",function(inst,data)
-        local eater=data.eater
-        if(eater and eater.components.fa_intoxication)then
-            eater.components.fa_intoxication:DoDelta(15)
-            eater.components.fa_bufftimers:AddBuff("firedr","FireDR","DamageReduction",DR_LENGTH,{damagetype=FA_DAMAGETYPE.FIRE,drdelta=20})
-        end
-    end)
+    inst.components.fa_drink.hungervalue=5
+    inst.components.fa_drink.intoxication=15
+    inst.components.fa_drink.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
+    inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_LONG
+    inst.components.fa_drink.ondrink=function(drink, eater)
+        eater.components.fa_bufftimers:AddBuff("firedr","FireDR","DamageReduction",DR_LENGTH,{damagetype=FA_DAMAGETYPE.FIRE,drdelta=20})
+    end
     return inst
 end 
 
@@ -126,17 +118,11 @@ local function goldrumfn(Sim)
     inst.components.finiteuses:SetOnFinished( onfinished )
     inst.components.finiteuses:SetMaxUses(3)
     inst.components.finiteuses:SetUses(3)
-    inst.components.edible.hungervalue=5
-    inst.components.edible.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
-    inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_LONG
+    inst.components.fa_drink.hungervalue=5
+    inst.components.fa_drink.intoxication=15
+    inst.components.fa_drink.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
+    inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_LONG
 
-    inst:ListenForEvent("oneaten",function(inst,data)
-        local eater=data.eater
-        if(eater and eater.components.fa_intoxication)then
-            eater.components.fa_intoxication:DoDelta(15)
---            eater.components.fa_bufftimers:AddBuff("firedr","FireDR","DamageReduction",DR_LENGTH,{damagetype=FA_DAMAGETYPE.FIRE,drdelta=20})
-        end
-    end)
     return inst
 end 
 
@@ -146,17 +132,13 @@ local function flavoredrumfn(Sim)
     inst.components.finiteuses:SetOnFinished( onfinished )
     inst.components.finiteuses:SetMaxUses(3)
     inst.components.finiteuses:SetUses(3)
-    inst.components.edible.hungervalue=5
-    inst.components.edible.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
-    inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_LONG
-
-    inst:ListenForEvent("oneaten",function(inst,data)
-        local eater=data.eater
-        if(eater and eater.components.fa_intoxication)then
-            eater.components.fa_intoxication:DoDelta(15)
-            eater.components.health.fa_temphp=eater.components.health.fa_temphp+200
-        end
-    end)
+    inst.components.fa_drink.hungervalue=5
+    inst.components.fa_drink.intoxication=15
+    inst.components.fa_drink.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
+    inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_LONG
+    inst.components.fa_drink.ondrink=function(drink, eater)
+        eater.components.health.fa_temphp=eater.components.health.fa_temphp+200
+    end
     return inst
 end 
 
@@ -166,16 +148,10 @@ local function hotrumfn(Sim)
     inst.components.finiteuses:SetOnFinished( onfinished )
     inst.components.finiteuses:SetMaxUses(3)
     inst.components.finiteuses:SetUses(3)
-    inst.components.edible.hungervalue=5
-    inst.components.edible.temperaturedelta = TUNING.HOT_FOOD_BONUS_TEMP
-    inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_LONG
-
-    inst:ListenForEvent("oneaten",function(inst,data)
-        local eater=data.eater
-        if(eater and eater.components.fa_intoxication)then
-            eater.components.fa_intoxication:DoDelta(15)
-        end
-    end)
+    inst.components.fa_drink.hungervalue=5
+    inst.components.fa_drink.intoxication=15
+    inst.components.fa_drink.temperaturedelta = TUNING.HOT_FOOD_BONUS_TEMP
+    inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_LONG
 
     return inst
 end 
@@ -186,16 +162,10 @@ local function lightalefn(Sim)
     inst.components.finiteuses:SetOnFinished( onfinished )
     inst.components.finiteuses:SetMaxUses(3)
     inst.components.finiteuses:SetUses(3)
-    inst.components.edible.hungervalue=5
-    inst.components.edible.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
-    inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_AVERAGE
-
-    inst:ListenForEvent("oneaten",function(inst,data)
-        local eater=data.eater
-        if(eater and eater.components.fa_intoxication)then
-            eater.components.fa_intoxication:DoDelta(5)
-        end
-    end)
+    inst.components.fa_drink.hungervalue=5
+    inst.components.fa_drink.intoxication=5
+    inst.components.fa_drink.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
+    inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_AVERAGE
 
     return inst
 end 
@@ -207,15 +177,9 @@ local function ronsalefn(Sim)
     inst.components.finiteuses:SetMaxUses(3)
     inst.components.finiteuses:SetUses(3)
     inst.components.edible.hungervalue=5
+    inst.components.fa_drink.intoxication=5
     inst.components.edible.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
     inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_LONG
-
-    inst:ListenForEvent("oneaten",function(inst,data)
-        local eater=data.eater
-        if(eater and eater.components.fa_intoxication)then
-            eater.components.fa_intoxication:DoDelta(5)
-        end
-    end)
 
     return inst
 end 
@@ -226,16 +190,10 @@ local function drakealefn(Sim)
     inst.components.finiteuses:SetOnFinished( onfinished )
     inst.components.finiteuses:SetMaxUses(3)
     inst.components.finiteuses:SetUses(3)
-    inst.components.edible.hungervalue=5
-    inst.components.edible.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
-    inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_LONG
-
-    inst:ListenForEvent("oneaten",function(inst,data)
-        local eater=data.eater
-        if(eater and eater.components.fa_intoxication)then
-            eater.components.fa_intoxication:DoDelta(5)
-        end
-    end)
+    inst.components.fa_drink.hungervalue=5
+    inst.components.fa_drink.intoxication=5
+    inst.components.fa_drink.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
+    inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_LONG
 
     return inst
 end 
@@ -246,16 +204,10 @@ local function oriansalefn(Sim)
     inst.components.finiteuses:SetOnFinished( onfinished )
     inst.components.finiteuses:SetMaxUses(3)
     inst.components.finiteuses:SetUses(3)
-    inst.components.edible.hungervalue=5
-    inst.components.edible.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
-    inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_LONG
-
-    inst:ListenForEvent("oneaten",function(inst,data)
-        local eater=data.eater
-        if(eater and eater.components.fa_intoxication)then
-            eater.components.fa_intoxication:DoDelta(5)
-        end
-    end)
+    inst.components.fa_drink.hungervalue=5
+    inst.components.fa_drink.intoxication=5
+    inst.components.fa_drink.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
+    inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_LONG
 
     return inst
 end 
@@ -266,16 +218,10 @@ local function dorfalefn(Sim)
     inst.components.finiteuses:SetOnFinished( onfinished )
     inst.components.finiteuses:SetMaxUses(3)
     inst.components.finiteuses:SetUses(3)
-    inst.components.edible.hungervalue=5
-    inst.components.edible.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
-    inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_LONG
-
-    inst:ListenForEvent("oneaten",function(inst,data)
-        local eater=data.eater
-        if(eater and eater.components.fa_intoxication)then
-            eater.components.fa_intoxication:DoDelta(5)
-        end
-    end)
+    inst.components.fa_drink.hungervalue=5
+    inst.components.fa_drink.intoxication=5
+    inst.components.fa_drink.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
+    inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_LONG
 
     return inst
 end 
@@ -286,16 +232,10 @@ local function deathbrewfn(Sim)
     inst.components.finiteuses:SetOnFinished( onfinished )
     inst.components.finiteuses:SetMaxUses(3)
     inst.components.finiteuses:SetUses(3)
-    inst.components.edible.hungervalue=5
-    inst.components.edible.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
-    inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_LONG
-
-    inst:ListenForEvent("oneaten",function(inst,data)
-        local eater=data.eater
-        if(eater and eater.components.fa_intoxication)then
-            eater.components.fa_intoxication:DoDelta(5)
-        end
-    end)
+    inst.components.fa_drink.hungervalue=5
+    inst.components.fa_drink.intoxication=5
+    inst.components.fa_drink.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
+    inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_LONG
 
     return inst
 end 
@@ -306,17 +246,13 @@ local function lightrum(Sim)
     inst.components.finiteuses:SetOnFinished( onfinished )
     inst.components.finiteuses:SetMaxUses(3)
     inst.components.finiteuses:SetUses(3)
-    inst.components.edible.hungervalue=-10
-    inst.components.edible.temperaturedelta = TUNING.HOT_FOOD_BONUS_TEMP
-    inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_AVERAGE
-
-    inst:ListenForEvent("oneaten",function(inst,data)
-        local eater=data.eater
-        if(eater and eater.components.fa_intoxication)then
-            eater.components.fa_intoxication:DoDelta(15)
-            eater.components.fa_bufftimers:AddBuff("physicaldr","PhysicalDR","DamageReduction",DR_LENGTH,{damagetype=FA_DAMAGETYPE.PHYSICAL,drdelta=5})
-        end
-    end)
+    inst.components.fa_drink.hungervalue=-10
+    inst.components.fa_drink.intoxication=15
+    inst.components.fa_drink.temperaturedelta = TUNING.HOT_FOOD_BONUS_TEMP
+    inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_AVERAGE
+    inst.components.fa_drink.ondrink=function(drink, eater)
+        eater.components.fa_bufftimers:AddBuff("physicaldr","PhysicalDR","DamageReduction",DR_LENGTH,{damagetype=FA_DAMAGETYPE.PHYSICAL,drdelta=5})
+    end
     return inst
 end 
 
@@ -326,17 +262,13 @@ local function clearbourbonfn(Sim)
     inst.components.finiteuses:SetOnFinished( onfinished )
     inst.components.finiteuses:SetMaxUses(3)
     inst.components.finiteuses:SetUses(3)
-    inst.components.edible.hungervalue=-10
-    inst.components.edible.temperaturedelta = TUNING.HOT_FOOD_BONUS_TEMP
-    inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_LONG
-
-    inst:ListenForEvent("oneaten",function(inst,data)
-        local eater=data.eater
-        if(eater and eater.components.fa_intoxication)then
-            eater.components.fa_intoxication:DoDelta(15)
-            eater.components.fa_bufftimers:AddBuff("physicaldr","PhysicalDR","DamageReduction",DR_LENGTH,{damagetype=FA_DAMAGETYPE.FORCE,drdelta=5})
-        end
-    end)
+    inst.components.fa_drink.hungervalue=-10
+    inst.components.fa_drink.intoxication=15
+    inst.components.fa_drink.temperaturedelta = TUNING.HOT_FOOD_BONUS_TEMP
+    inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_LONG
+    inst.components.fa_drink.ondrink=function(drink, eater)
+        eater.components.fa_bufftimers:AddBuff("forcedr","ForceDR","DamageReduction",DR_LENGTH,{damagetype=FA_DAMAGETYPE.FORCE,drdelta=5})
+    end
     return inst
 end 
 
@@ -346,17 +278,13 @@ local function vodkafn(Sim)
     inst.components.finiteuses:SetOnFinished( onfinished )
     inst.components.finiteuses:SetMaxUses(3)
     inst.components.finiteuses:SetUses(3)
-    inst.components.edible.hungervalue=-10
-    inst.components.edible.temperaturedelta = TUNING.HOT_FOOD_BONUS_TEMP
-    inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_LONG
-
-    inst:ListenForEvent("oneaten",function(inst,data)
-        local eater=data.eater
-        if(eater and eater.components.fa_intoxication)then
-            eater.components.fa_intoxication:DoDelta(15)
-            eater.components.fa_bufftimers:AddBuff("physicaldr","PhysicalDR","DamageReduction",DR_LENGTH,{damagetype=FA_DAMAGETYPE.POISON,drdelta=5})
-        end
-    end)
+    inst.components.fa_drink.hungervalue=-10
+    inst.components.fa_drink.intoxication=15
+    inst.components.fa_drink.temperaturedelta = TUNING.HOT_FOOD_BONUS_TEMP
+    inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_LONG
+    inst.components.fa_drink.ondrink=function(drink, eater)
+        eater.components.fa_bufftimers:AddBuff("poisondr","PoisonDR","DamageReduction",DR_LENGTH,{damagetype=FA_DAMAGETYPE.POISON,drdelta=5})
+    end
     return inst
 end 
 
@@ -366,17 +294,13 @@ local function ginfn(Sim)
     inst.components.finiteuses:SetOnFinished( onfinished )
     inst.components.finiteuses:SetMaxUses(3)
     inst.components.finiteuses:SetUses(3)
-    inst.components.edible.hungervalue=-10
-    inst.components.edible.temperaturedelta = TUNING.HOT_FOOD_BONUS_TEMP
-    inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_AVERAGE
-
-    inst:ListenForEvent("oneaten",function(inst,data)
-        local eater=data.eater
-        if(eater and eater.components.fa_intoxication)then
-            eater.components.fa_intoxication:DoDelta(15)
-            eater.components.fa_bufftimers:AddBuff("physicaldr","PhysicalDR","DamageReduction",DR_LENGTH,{damagetype=FA_DAMAGETYPE.ACID,drdelta=5})
-        end
-    end)
+    inst.components.fa_drink.hungervalue=-10
+    inst.components.fa_drink.intoxication=15
+    inst.components.fa_drink.temperaturedelta = TUNING.HOT_FOOD_BONUS_TEMP
+    inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_AVERAGE
+    inst.components.fa_drink.ondrink=function(drink, eater)
+        eater.components.fa_bufftimers:AddBuff("aciddr","AcidDR","DamageReduction",DR_LENGTH,{damagetype=FA_DAMAGETYPE.ACID,drdelta=5})
+    end
     return inst
 end 
 
@@ -386,17 +310,13 @@ local function tequilafn(Sim)
     inst.components.finiteuses:SetOnFinished( onfinished )
     inst.components.finiteuses:SetMaxUses(3)
     inst.components.finiteuses:SetUses(3)
-    inst.components.edible.hungervalue=-10
-    inst.components.edible.temperaturedelta = TUNING.HOT_FOOD_BONUS_TEMP
-    inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_LONG
-
-    inst:ListenForEvent("oneaten",function(inst,data)
-        local eater=data.eater
-        if(eater and eater.components.fa_intoxication)then
-            eater.components.fa_intoxication:DoDelta(15)
-            eater.components.fa_bufftimers:AddBuff("physicaldr","PhysicalDR","DamageReduction",DR_LENGTH,{damagetype=FA_DAMAGETYPE.DEATH,drdelta=5})
-        end
-    end)
+    inst.components.fa_drink.hungervalue=-10
+    inst.components.fa_drink.intoxication=15
+    inst.components.fa_drink.temperaturedelta = TUNING.HOT_FOOD_BONUS_TEMP
+    inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_LONG
+    inst.components.fa_drink.ondrink=function(drink, eater)
+        eater.components.fa_bufftimers:AddBuff("deathdr","DeathDR","DamageReduction",DR_LENGTH,{damagetype=FA_DAMAGETYPE.DEATH,drdelta=15})
+    end
     return inst
 end 
 
@@ -406,9 +326,13 @@ local function whiskeyfn(Sim)
     inst.components.finiteuses:SetOnFinished( onfinished )
     inst.components.finiteuses:SetMaxUses(3)
     inst.components.finiteuses:SetUses(3)
-    inst.components.edible.hungervalue=-10
-    inst.components.edible.temperaturedelta = TUNING.HOT_FOOD_BONUS_TEMP
-    inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_AVERAGE
+    inst.components.fa_drink.hungervalue=-10
+    inst.components.fa_drink.intoxication=15
+    inst.components.fa_drink.temperaturedelta = TUNING.HOT_FOOD_BONUS_TEMP
+    inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_AVERAGE
+    inst.components.fa_drink.ondrink=function(drink, eater)
+        eater.components.fa_bufftimers:AddBuff("deathdr","DeathDR","DamageReduction",DR_LENGTH,{damagetype=FA_DAMAGETYPE.ELECTRIC,drdelta=5})
+    end
 
     inst:ListenForEvent("oneaten",function(inst,data)
         local eater=data.eater
@@ -426,17 +350,13 @@ local function baijuifn(Sim)
     inst.components.finiteuses:SetOnFinished( onfinished )
     inst.components.finiteuses:SetMaxUses(3)
     inst.components.finiteuses:SetUses(3)
-    inst.components.edible.hungervalue=-10
-    inst.components.edible.temperaturedelta = TUNING.HOT_FOOD_BONUS_TEMP
-    inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_LONG
-
-    inst:ListenForEvent("oneaten",function(inst,data)
-        local eater=data.eater
-        if(eater and eater.components.fa_intoxication)then
-            eater.components.fa_intoxication:DoDelta(15)
-            eater.components.fa_bufftimers:AddBuff("physicaldr","PhysicalDR","DamageReduction",DR_LENGTH,{damagetype=FA_DAMAGETYPE.FIRE,drdelta=5})
-        end
-    end)
+    inst.components.fa_drink.hungervalue=-10
+    inst.components.fa_drink.intoxication=15
+    inst.components.fa_drink.temperaturedelta = TUNING.HOT_FOOD_BONUS_TEMP
+    inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_LONG
+    inst.components.fa_drink.ondrink=function(drink, eater)
+        eater.components.fa_bufftimers:AddBuff("firedr","FireDR","DamageReduction",DR_LENGTH,{damagetype=FA_DAMAGETYPE.FIRE,drdelta=5})
+    end
     return inst
 end 
 
@@ -446,17 +366,13 @@ local function sojufn(Sim)
     inst.components.finiteuses:SetOnFinished( onfinished )
     inst.components.finiteuses:SetMaxUses(3)
     inst.components.finiteuses:SetUses(3)
-    inst.components.edible.hungervalue=-10
-    inst.components.edible.temperaturedelta = TUNING.HOT_FOOD_BONUS_TEMP
-    inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_LONG
-
-    inst:ListenForEvent("oneaten",function(inst,data)
-        local eater=data.eater
-        if(eater and eater.components.fa_intoxication)then
-            eater.components.fa_intoxication:DoDelta(15)
-            eater.components.fa_bufftimers:AddBuff("physicaldr","PhysicalDR","DamageReduction",DR_LENGTH,{damagetype=FA_DAMAGETYPE.COLD,drdelta=5})
-        end
-    end)
+    inst.components.fa_drink.hungervalue=-10
+    inst.components.fa_drink.intoxication=15
+    inst.components.fa_drink.temperaturedelta = TUNING.HOT_FOOD_BONUS_TEMP
+    inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_LONG
+    inst.components.fa_drink.ondrink=function(drink, eater)
+        eater.components.fa_bufftimers:AddBuff("colddr","ColdDR","DamageReduction",DR_LENGTH,{damagetype=FA_DAMAGETYPE.COLD,drdelta=5})
+    end
     return inst
 end 
 

@@ -228,10 +228,16 @@ local function clearobstacle(inst)
 	    
 	local function onload(inst, data)
 		--print("walls - onload")
-		makeobstacle(inst)
+		if(data and data.fakewall==true)then
+			inst:AddTag("fa_secretwall")
+			inst.Physics:SetCollides(false)
+		else
+			makeobstacle(inst)
+		end
 		if inst.components.health:GetPercent() <= 0 then
 			clearobstacle(inst)
 		end
+
 	end
 
 	local function onremoveentity(inst)

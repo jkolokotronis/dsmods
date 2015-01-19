@@ -29,6 +29,12 @@ local fa_dorftorch_assets={
 local fa_fountain_assets={
     Asset("ANIM","anim/fa_fountain.zip")
 }
+local fa_woodcoffin_assets={
+    Asset("ANIM","anim/fa_woodcoffin.zip")
+}
+local fa_stonecoffin_assets={
+    Asset("ANIM","anim/fa_stonecoffin.zip")
+}
 local cageassets=
 {
     Asset( "ANIM", "anim/player_cage_drop.zip" ),
@@ -111,6 +117,16 @@ local function fa_pillar_dwarf()
     return inst
 end
 
+local function fa_woodcoffin()
+    local inst= fn("fa_woodcoffin")
+    MakeObstaclePhysics(inst, 0.3)
+    return inst
+end
+local function fa_stonecoffin()
+    local inst= fn("fa_stonecoffin")
+    MakeObstaclePhysics(inst, 0.3)
+    return inst
+end
 local function fa_table()
     local inst= fn("fa_table")
     MakeObstaclePhysics(inst, 0.3)
@@ -333,6 +349,8 @@ Prefab( "common/fa_dorf_light", dorftorchfn, fa_dorftorch_assets),
 Prefab( "common/fa_minecart", fa_minecart, fa_minecart_assets),
 Prefab( "common/fa_playerjailcage", cagefn, cageassets),
 Prefab( "common/fa_fountain", fountainfn, fa_fountain_assets),
+Prefab( "common/fa_stonecoffin", fa_stonecoffin, fa_stonecoffin_assets),
+Prefab( "common/fa_woodcoffin", fa_woodcoffin, fa_woodcoffin_assets),
 Prefab( "common/fa_dorf_stool", fa_stool, fa_stool_assets),
 Prefab( "common/fa_dorf_stool_blown", fa_stool_blown, fa_stool_assets),
 Prefab( "common/fa_orc_table", fa_orc_table, fa_orc_table_assets),

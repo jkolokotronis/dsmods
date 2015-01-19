@@ -351,8 +351,7 @@ local function oneaten(inst,eater)
 	end
 end
 
-local function eatwonder(inst,data)
-	local eater=data.eater
+local function eatwonder(inst,eater)
 	if(eater and eater:HasTag("player"))then
 		local index=math.floor(1+(math.random() * #WONDER_EFFECTS))
 --		index=1
@@ -361,6 +360,9 @@ local function eatwonder(inst,data)
 			effect.fn(eater)
 		else
 			print("no effect??")
+		end
+		if(eater.components.inventory)then
+			eater.components.inventory:GiveItem( SpawnPrefab("fa_bottle_empty") )
 		end
 	end
 end
@@ -385,15 +387,15 @@ local function common(name)
 
 	inst:AddComponent("inspectable")	
 	
-    inst:AddComponent("edible")
-    inst.components.edible.healthvalue=0
-    inst.components.edible.hungervalue=0
-    inst.components.edible.sanityvalue=0
-    inst.components.edible.foodtype = "FA_POTION"
+    inst:AddComponent("fa_drink")
+    inst.components.fa_drink.healthvalue=0
+    inst.components.fa_drink.hungervalue=0
+    inst.components.fa_drink.sanityvalue=0
+    inst.components.fa_drink.foodtype = "FA_POTION"
     inst:AddComponent("stackable")
     inst.components.stackable.maxsize = 40
 
-    inst.components.edible.oneaten=oneaten
+    inst.components.fa_drink.ondrink=oneaten
 --    inst:ListenForEvent("oneaten",oneaten)
     
     return inst
@@ -402,7 +404,7 @@ end
 local function fnr(Sim)
 
 	local inst = common("bottle_r")
-    inst.components.edible.healthvalue = 150
+    inst.components.fa_drink.healthvalue = 150
     return inst
 
 end
@@ -410,7 +412,7 @@ end
 local function fny(Sim)
 
 	local inst = common("bottle_y")
-    inst.components.edible.hungervalue = 150
+    inst.components.fa_drink.hungervalue = 150
     return inst
 
 end
@@ -418,7 +420,7 @@ end
 local function fng(Sim)
 
 	local inst = common("bottle_g")
-    inst.components.edible.sanityvalue = 150
+    inst.components.fa_drink.sanityvalue = 150
     return inst
 
 end
@@ -427,16 +429,13 @@ end
 local function fnb(Sim)
 
 	local inst = common("bottle_b")
-
-	inst:ListenForEvent("oneaten",eatwonder)
-
+    inst.components.fa_drink.ondrink=eatwonder
     return inst
 
 end
 
 
-local function curepoison(inst,data)
-	local eater=data.eater
+local function curepoison(inst,eater)
 	if(eater and eater.fa_poison)then
         eater.fa_poison.components.spell:OnFinished()
     	local res=eater.components.health.fa_resistances[FA_DAMAGETYPE.POISON] or 0
@@ -453,17 +452,15 @@ local function curepoison(inst,data)
 end
 
 local function fncurepoison(Sim)
-
 	local inst = common("bottle_dark_lime")
-	inst:ListenForEvent("oneaten",curepoison)
-
+    inst.components.fa_drink.ondrink=curepoison
     return inst
 
 end
 
 local function fnempty()
 	local inst=common("bottle_empty")
-    inst:RemoveComponent("edible")
+    inst:RemoveComponent("fa_drink")
     inst:DoPeriodicTask(1,function()
     	if(not inst:IsInLimbo() and GetSeasonManager():IsRaining()) then
     		local pos=inst:GetPosition()
@@ -484,7 +481,7 @@ end
 
 local function fnoil()
 	local inst=common("bottle_dark_blue")
-    inst:RemoveComponent("edible")
+    inst:RemoveComponent("fa_drink")
 	return inst
 end
 
@@ -495,25 +492,25 @@ end
 
 local function fnfrozenessence()
 	local inst=common("bottle_1_1")
-    inst:RemoveComponent("edible")
+    inst:RemoveComponent("fa_drink")
 	return inst
 end
 
 local function fnlifeessence()
 	local inst=common("bottle_1_0")
-    inst:RemoveComponent("edible")
+    inst:RemoveComponent("fa_drink")
 	return inst
 end
 
 local function fnlightningessence()
 	local inst=common("bottle_1_9")
-    inst:RemoveComponent("edible")
+    inst:RemoveComponent("fa_drink")
 	return inst
 end
 
 local function fnpoisonessence()
 	local inst=common("bottle_1_8")
-    inst:RemoveComponent("edible")
+    inst:RemoveComponent("fa_drink")
 	return inst
 end
 
@@ -521,16 +518,15 @@ local function emptymug()
 	local inst=common("mug")
     inst.AnimState:SetBuild("fa_mug")
     inst.AnimState:PlayAnimation("empty")
-    inst.components.edible.hungervalue = 5
     inst.components.inventoryitem.imagename="fa_emptymug"
-    inst:RemoveComponent("edible")
+    inst:RemoveComponent("fa_drink")
     return inst
 end
 local function rummug()
 	local inst=common("mug")
     inst.AnimState:SetBuild("fa_mug")
     inst.AnimState:PlayAnimation("rum")
-    inst.components.edible.hungervalue = 5
+    inst.components.fa_drink.hungervalue = 5
     inst.components.inventoryitem.imagename="fa_rummug"
     return inst
 end
@@ -538,7 +534,7 @@ local function beermug()
 	local inst=common("mug")
     inst.AnimState:SetBuild("fa_mug")
     inst.AnimState:PlayAnimation("beer")
-    inst.components.edible.hungervalue = 5
+    inst.components.fa_drink.hungervalue = 5
     inst.components.inventoryitem.imagename="fa_beermug"
     return inst
 end
@@ -546,7 +542,7 @@ local function ronsalemug()
 	local inst=common("mug")
     inst.AnimState:SetBuild("fa_mug")
     inst.AnimState:PlayAnimation("beer")
-    inst:RemoveComponent("edible")
+    inst:RemoveComponent("fa_drink")
     inst.components.inventoryitem.imagename="fa_beermug"
     return inst
 end
@@ -554,7 +550,7 @@ local function dwarfalemug()
 	local inst=common("mug")
     inst.AnimState:SetBuild("fa_mug")
     inst.AnimState:PlayAnimation("beer")
-    inst:RemoveComponent("edible")
+    inst:RemoveComponent("fa_drink")
     inst.components.inventoryitem.imagename="fa_beermug"
     return inst
 end
@@ -567,7 +563,7 @@ end
 
 local function fnwort()
 	local inst=common("bottle_1_7")
-    inst.components.edible.hungervalue = 5
+    inst.components.fa_drink.hungervalue = 5
 	return inst
 end
 
@@ -576,15 +572,32 @@ local function winecommon(inst,eatfn)
     inst.components.finiteuses:SetOnFinished( onfinished )
     inst.components.finiteuses:SetMaxUses(3)
     inst.components.finiteuses:SetUses(3)
-    inst.components.edible.hungervalue=-5
-    inst:ListenForEvent("oneaten",function(inst,data)
-        local eater=data.eater
-        if(eater and eater.components.fa_intoxication)then
-            eater.components.fa_intoxication:DoDelta(10)
+    inst.components.fa_drink.hungervalue=-5
+    inst.components.fa_drink.intoxication=10
+
+	local function curepoison(inst,eater)
+		if(eater and eater.fa_poison)then
+        	eater.fa_poison.components.spell:OnFinished()
+    		local res=eater.components.health.fa_resistances[FA_DAMAGETYPE.POISON] or 0
+    		if(res<1)then
+    			eater.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=res+1
+    			eater:DoTaskInTime(POISON_IMMUNITY_TIMER,function()
+    				eater.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=eater.components.health.fa_resistances[FA_DAMAGETYPE.POISON]-1
+    			end)
+    		end
+		end
+		if(eater.components.inventory)then
+			eater.components.inventory:GiveItem( SpawnPrefab("fa_bottle_empty") )
+		end
+	end
+	inst.components.fa_drink.ondrink=function(inst,eater)
+        if(eater)then
             if(eatfn)then eatfn(inst) end
---            eater.components.fa_bufftimers:AddBuff("physicaldr","PhysicalDR","DamageReduction",DR_LENGTH,{damagetype=FA_DAMAGETYPE.ELECTRIC,drdelta=5})
+			if(eater.components.inventory)then
+				eater.components.inventory:GiveItem( SpawnPrefab("fa_bottle_empty") )
+			end
         end
-    end)
+    end
 
 end
 
@@ -610,8 +623,8 @@ end
 local function melonwine()
 	local inst=common("bottle_1_6")
 	winecommon(inst)
-    inst.components.edible.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
-    inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_AVERAGE
+    inst.components.fa_drink.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
+    inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_AVERAGE
 	return inst
 end
 
@@ -624,8 +637,8 @@ end
 local function goodberrywine()
 	local inst=common("bottle_1_7")
 	winecommon(inst)
-    inst.components.edible.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
-    inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_LONG
+    inst.components.fa_drink.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
+    inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_LONG
 	return inst
 end
 
@@ -638,8 +651,8 @@ end
 local function cactuswine()
 	local inst=common("bottle_1_2")
 	winecommon(inst)
-    inst.components.edible.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
-    inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_LONG
+    inst.components.fa_drink.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
+    inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_LONG
 	return inst
 end
 

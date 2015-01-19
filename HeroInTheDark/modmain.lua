@@ -73,11 +73,12 @@ require "fa_strings"
 require "fa_levelxptable"
 require "fa_stealthdetectiontable"
 require "fa_actions"
-require "fa_inventory_override"
-require "fa_inventorybar_override"
-require "fa_combat_override"
-require "fa_hounded_override"
-require "fa_behavior_override"
+require "overrides/fa_inventory_override"
+require "overrides/fa_inventorybar_override"
+require "overrides/fa_combat_override"
+require "overrides/fa_hounded_override"
+require "overrides/fa_behavior_override"
+require "overrides/fa_sanity_override"
 require "fa_electricalfence"
 require "fa_recipes"
 
@@ -341,6 +342,7 @@ Assets = {
     Asset( "ANIM", "anim/player_cage_drop.zip" ),
     Asset( "ANIM", "anim/fa_cagechains.zip" ),
     Asset( "ANIM", "anim/fa_orcfort_cage.zip" ),
+    Asset( "ANIM", "anim/fa_mug.zip" ),
 --    Asset( "ANIM", "anim/icebomb.zip" ),
 --    Asset( "ANIM", "anim/player_test.zip" ),
 }
@@ -390,48 +392,6 @@ RemapSoundEvent( "dontstarve/characters/wizard/hurt", "fa/characters/wizard/hurt
 RemapSoundEvent( "dontstarve/characters/wizard/talk_LP", "fa/characters/wizard/talk_LP" )
 RemapSoundEvent( "dontstarve/characters/dwarf/talk_LP", "fa/mobs/dwarf/talk_LP" )
 
-local EVIL_SANITY_AURA_OVERRIDE={
-    robin=-TUNING.SANITYAURA_MED,
-    pigman=-TUNING.SANITYAURA_MED,
-    crow=-TUNING.SANITYAURA_MED,
-    robin_winter=-TUNING.SANITYAURA_MED,
-    beefalo=-TUNING.SANITYAURA_MED,
-    babybeefalo=-TUNING.SANITYAURA_MED,
-    butterfly=-TUNING.SANITYAURA_MED,
-    spider_hider=0,
-    spider_spitter=0,
-    spider_dropper=0,
-    spider=0,
-    poisonspider=0,
-    flower_evil=TUNING.SANITYAURA_MED,
-    ghost=TUNING.SANITYAURA_MED,
-    skeletonspawn=TUNING.SANITYAURA_MED,
-    fa_drybones=TUNING.SANITYAURA_MED,
-    fa_dartdrybones=TUNING.SANITYAURA_MED,
-    fa_skull=TUNING.SANITYAURA_MED,
-    mound=TUNING.SANITYAURA_MED,
-    hound=0,
-    icehound=0,
-    firehound=0,
-    houndfire=0,
-    nightlight=TUNING.SANITYAURA_MED,--would have to properly code this
-    rabbit=-TUNING.SANITYAURA_MED,--and this
-    crawlinghorror=0,
-    terrorbeak=0,
-    shadowtentacle=0,
-    shadowwaxwell=0,
-    shadowhand=0,
-    slurper=0,
-    spiderqueen=-TUNING.SANITYAURA_MED,
-    spider_warrior=0,
-    tentacle=0,
-    tentacle_pillar_arm=0,
-    walrus=-TUNING.SANITYAURA_MED,
-    little_walrus=-TUNING.SANITYAURA_MED,
-    worm=0,
-    penguin=-TUNING.SANITYAURA_MED,
-    flower=-TUNING.SANITYAURA_MED
-}
 
 local FALLENLOOTTABLE=GLOBAL.FALLENLOOTTABLE
 local FALLENLOOTTABLEMERGED=GLOBAL.FALLENLOOTTABLEMERGED
@@ -594,9 +554,7 @@ local function hud_inventorypostinit_fix(cmp,inst)
 --        inst.components.inventory.maxslots=30
     end
 end
---this was breaking display BADLY. one would expect he'd use proper w/h numbers for 2 row calculations instead of reliance on the total....
---REWRITE THE WHOLE THING? 
-AddComponentPostInit("inventory", hud_inventorypostinit_fix)
+--AddComponentPostInit("inventory", hud_inventorypostinit_fix)
 
 if(string.find(GLOBAL.FA_ModCompat.rpghudmod.modinfo.description,"Custom UI"))then
     local function StatusPostInit(self,owner)
@@ -660,9 +618,9 @@ local function newControlsInit(class)
 -- TODO anything that messes up with default badges will likely break the positioning
 -- IDC to write another set of x-mod-compat crap, if it bothers you fix it yourself
 
-    class.brain:SetPosition(40,-40,0)
+    class.brain:SetPosition(40,-50,0)
     class.fa_intoxication = class:AddChild(FA_IntoxicationBadge(class.owner))
-    class.fa_intoxication:SetPosition(-40,-40,0)
+    class.fa_intoxication:SetPosition(-40,-50,0)
     class.fa_intoxication:SetPercent(class.owner.components.fa_intoxication:GetPercent(), class.owner.components.fa_intoxication.max, 0)
 
     class.inst:ListenForEvent("fa_intoxicationdelta", function(inst, data)  
@@ -1117,6 +1075,10 @@ AddClassPostConstruct("components/health",function(component)
     component.fa_dodgechance=component.fa_dodgechance or 0
     component.fa_temphp=component.fa_temphp or 0
 end)
+AddClassPostConstruct("components/sanity",function(component)
+    --no namespaces because if it clashes then it likely should clash anyway
+    component.duskmultiplier=1
+end)
 
 local function onFishingCollect(inst,data)
     local spawnPos = GLOBAL.Vector3(inst.Transform:GetWorldPosition() )
@@ -1211,6 +1173,7 @@ AddPrefabPostInit("world", function(inst)
         local inst = oldfn()
 
         inst:AddComponent("fa_bufftimers")
+        inst:AddComponent("fa_drinker")
         inst:AddComponent("fa_intoxication")
 
         if(GLOBAL.FA_ModCompat.alwaysonmod)then
@@ -1432,75 +1395,6 @@ AddPrefabPostInit("cave", function(inst)
     end
 end)
 
-local function evilSanityMod(inst)
-    local sanitymod=inst.components.sanity
-    function sanitymod:Recalc(dt)
-                
-                    local total_dapperness = self.dapperness or 0
-                    local mitigates_rain = false
-                    for k,v in pairs (self.inst.components.inventory.equipslots) do
-                        --might as well fix the compat PROPERLY while here eh
-                        local dapperness=nil
-                        if(v.components.equippable and v.components.equippable.GetDapperness) then
-                            dapperness= v.components.equippable:GetDapperness(self.inst)
-                        end
-                        if(not dapperness and v.components.dapperness)then
-                            dapperness=v.components.dapperness:GetDapperness(self.inst)
-                            if v.components.dapperness.mitigates_rain then
-                              mitigates_rain = true
-                            end
-                        end
-                        if dapperness then
-                            total_dapperness = total_dapperness + dapperness 
-                        end     
-                    end
-    
-                    local dapper_delta = total_dapperness*TUNING.SANITY_DAPPERNESS
-    
-                    local day = GetClock():IsDay() and not GetWorld():IsCave()
-                    local light_delta=0
-                    if day then 
-                        light_delta = GLOBAL.SANITY_DAY_LOSS
-                    end
-    
-                    local aura_delta = 0
-                    local x,y,z = self.inst.Transform:GetWorldPosition()
-                    local ents = GLOBAL.TheSim:FindEntities(x,y,z, TUNING.SANITY_EFFECT_RANGE, nil, {"FX", "NOCLICK", "DECOR","INLIMBO"} )
-                    for k,v in pairs(ents) do 
-
-                        local override=EVIL_SANITY_AURA_OVERRIDE[v.prefab]
-                        local aura_val=0
-                        if(override~=nil)then
-                            aura_val=override
-                        elseif v.components.sanityaura and v ~= self.inst then
-                            aura_val = v.components.sanityaura:GetAura(self.inst)
-                        end
-                        if(aura_val~=0)then
-                            local distsq = self.inst:GetDistanceSqToInst(v)
-                            aura_val = aura_val/math.max(1, distsq)
-                            if aura_val < 0 then
-                                aura_val = aura_val * self.neg_aura_mult
-                            end
-                            aura_delta = aura_delta + aura_val
-                        end
-                    end
-
-                    local rain_delta = 0
-                    if(not GLOBAL.FA_DLCACCESS)then
-                    if GetSeasonManager() and GetSeasonManager():IsRaining() and not mitigates_rain then
-                        rain_delta = -TUNING.DAPPERNESS_MED*1.5* GetSeasonManager():GetPrecipitationRate()
-                    end
-                    end
-
-                    self.rate = (dapper_delta + light_delta + aura_delta + rain_delta)  
-    
-                    if self.custom_rate_fn then
-                        self.rate = self.rate + self.custom_rate_fn(self.inst)
-                    end
-
-                    self:DoDelta(self.rate*dt, true)
-    end
-end
 
 AddSimPostInit(function(inst)
 
@@ -1541,11 +1435,8 @@ AddSimPostInit(function(inst)
             return true
         end
 
-        if inst:HasTag("evil") then
+--            PlayerSanityMod(inst)
 
-            evilSanityMod(inst)
-
-        end
         if (inst.prefab=="darkknight" or inst.prefab=="cleric" or inst.prefab=="paladin") then
             --add shields
             local r=Recipe("woodenshield", {Ingredient("log", 20),Ingredient("rope", 5) }, RECIPETABS.WAR,  GLOBAL.TECH.SCIENCE_ONE)

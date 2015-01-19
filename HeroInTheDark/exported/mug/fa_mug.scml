@@ -5,8 +5,23 @@
         <file id="1" name="_0028_mug-filled-with-rum.png" width="94" height="104" pivot_x="0" pivot_y="1"/>
         <file id="2" name="_0017_mug-full-of-beer.png" width="96" height="120" pivot_x="0" pivot_y="1"/>
     </folder>
+    <folder id="1" name="drink_override">
+        <file id="0" name="drink_override/swap.png" width="96" height="120" pivot_x="0.0612245" pivot_y="0.581967"/>
+    </folder>
     <entity id="0" name="fa_mug">
-        <animation id="0" name="empty" length="50">
+        <animation id="0" name="BUILD" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="swap">
+                <key id="0" spin="0">
+                    <object folder="1" file="0" x="2" y="20"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="empty" length="50">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -18,7 +33,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="1" name="rum" length="50">
+        <animation id="2" name="rum" length="50">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -30,7 +45,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="2" name="beer" length="50">
+        <animation id="3" name="beer" length="50">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>

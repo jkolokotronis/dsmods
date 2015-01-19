@@ -44,11 +44,77 @@ FA_CRAFTPICKUP.strfn = function(act)
         return STRINGS.ACTIONS.FA_CRAFTPICKUP
 end
 
-
 ACTIONS.FA_CRAFTPICKUP=FA_CRAFTPICKUP
 --FA_ModUtil.AddAction(FA_CRAFTPICKUP)
 
-SGWilson.actionhandlers[ACTIONS.FA_CRAFTPICKUP]=ActionHandler(ACTIONS.FA_CRAFTPICKUP, "dolongaction")
+local FA_DRINK=Action()
+FA_DRINK.id="FA_DRINK"
+
+FA_DRINK.fn = function(act)
+local obj = act.target or act.invobject
+print("drink",act.doer,obj)
+    if act.doer.components.fa_drinker then
+       return act.doer.components.fa_drinker:Drink(obj)
+    end
+end
+
+ACTIONS.FA_DRINK=FA_DRINK
+
+SGWilson.actionhandlers[ACTIONS.FA_DRINK]=ActionHandler(ACTIONS.FA_DRINK, "fa_drink")
+SGWilson.states["fa_drink"]= State{
+        name = "fa_drink",
+        tags ={"busy"},
+        onenter = function(inst)
+            inst.components.locomotor:Stop()
+            inst.AnimState:PlayAnimation("horn")
+            inst.AnimState:OverrideSymbol("horn01", "fa_mug", "drink_override")
+            --inst.AnimState:Hide("ARM_carry") 
+            inst.AnimState:Show("ARM_normal")
+            if inst.components.inventory.activeitem then-- and inst.components.inventory.activeitem.components.instrument then
+                print("act",inst.components.inventory.activeitem)
+                inst.components.inventory:ReturnActiveItem()
+            end
+            
+            inst.components.hunger:Pause()
+        end,
+        
+        onexit = function(inst)
+            if inst.components.inventory:GetEquippedItem(EQUIPSLOTS.HANDS) then
+                inst.AnimState:Show("ARM_carry") 
+                inst.AnimState:Hide("ARM_normal")
+            inst.components.hunger:Resume()
+            end
+        end,
+        
+        timeline=
+        {
+            TimeEvent(21*FRAMES, function(inst)
+         --       inst.SoundEmitter:PlaySound("dontstarve/common/horn_beefalo")
+                inst:PerformBufferedAction()
+            end),
+        },
+        
+        events=
+        {
+            EventHandler("animover", function(inst)
+                inst.sg:GoToState("idle")
+            end),
+        },
+
+    }    
+
+--[[
+    ActionHandler(ACTIONS.PLAY, function(inst, action)
+        if action.invobject then
+            if action.invobject:HasTag("flute") then
+                return "play_flute"
+            elseif action.invobject:HasTag("horn") then
+                return "play_horn"
+            end
+        end
+    end),
+]]
+
 
 local RELOAD = Action(1, true)
 RELOAD.id = "RELOAD"
