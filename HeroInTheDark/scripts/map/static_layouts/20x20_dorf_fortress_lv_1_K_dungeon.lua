@@ -304,7 +304,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_010"
+          }
         },
         {
           name = "",
@@ -315,7 +317,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_004"
+          }
         },
         {
           name = "",
@@ -326,7 +330,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_005"
+          }
         },
         {
           name = "",
@@ -337,7 +343,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_011"
+          }
         },
         {
           name = "",
@@ -348,7 +356,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_013"
+          }
         },
         {
           name = "",
@@ -359,7 +369,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_014"
+          }
         },
         {
           name = "",
@@ -370,7 +382,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_015"
+          }
         },
         {
           name = "",
@@ -381,7 +395,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_017"
+          }
         },
         {
           name = "",
@@ -392,7 +408,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_003"
+          }
         },
         {
           name = "",
@@ -403,7 +421,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_002"
+          }
         },
         {
           name = "",
@@ -414,7 +434,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_001"
+          }
         },
         {
           name = "",
@@ -425,7 +447,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_006"
+          }
         },
         {
           name = "",
@@ -436,7 +460,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_012"
+          }
         },
         {
           name = "",
@@ -447,7 +473,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_007"
+          }
         },
         {
           name = "",
@@ -458,7 +486,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_009"
+          }
         },
         {
           name = "",
@@ -469,7 +499,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_008"
+          }
         },
         {
           name = "",
@@ -480,7 +512,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_022"
+          }
         },
         {
           name = "",
@@ -491,7 +525,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_023"
+          }
         },
         {
           name = "",
@@ -513,7 +549,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_018"
+          }
         },
         {
           name = "",
@@ -524,7 +562,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_021"
+          }
         },
         {
           name = "",
@@ -535,7 +575,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_020"
+          }
         },
         {
           name = "",
@@ -546,7 +588,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_016"
+          }
         },
         {
           name = "",
@@ -557,7 +601,308 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_019"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_lever",
+          shape = "rectangle",
+          x = 102,
+          y = 417,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_001"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_lever",
+          shape = "rectangle",
+          x = 99,
+          y = 254,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_002"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_lever",
+          shape = "rectangle",
+          x = 98,
+          y = 91,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_003"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_lever",
+          shape = "rectangle",
+          x = 608,
+          y = 159,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_004"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_lever",
+          shape = "rectangle",
+          x = 612,
+          y = 353,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_005"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_lever",
+          shape = "rectangle",
+          x = 623,
+          y = 529,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_006"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_lever",
+          shape = "rectangle",
+          x = 413,
+          y = 529,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_007"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_lever",
+          shape = "rectangle",
+          x = 202,
+          y = 556,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_008"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_lever",
+          shape = "rectangle",
+          x = 512,
+          y = 556,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_009"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_lever",
+          shape = "rectangle",
+          x = 797,
+          y = 96,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_010"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_lever",
+          shape = "rectangle",
+          x = 742,
+          y = 413,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_011"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_lever",
+          shape = "rectangle",
+          x = 868,
+          y = 528,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_012"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_lever",
+          shape = "rectangle",
+          x = 1157,
+          y = 43,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_013"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_lever",
+          shape = "rectangle",
+          x = 1234,
+          y = 254,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_014"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_lever",
+          shape = "rectangle",
+          x = 1233,
+          y = 384,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_015"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_lever",
+          shape = "rectangle",
+          x = 1233,
+          y = 592,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_016"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_lever",
+          shape = "rectangle",
+          x = 1052,
+          y = 609,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_017"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_lever",
+          shape = "rectangle",
+          x = 1116,
+          y = 862,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_018"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_lever",
+          shape = "rectangle",
+          x = 1125,
+          y = 1058,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_019"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_lever",
+          shape = "rectangle",
+          x = 1023,
+          y = 1121,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_020"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_lever",
+          shape = "rectangle",
+          x = 740,
+          y = 991,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_021"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_lever",
+          shape = "rectangle",
+          x = 279,
+          y = 915,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_022"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_lever",
+          shape = "rectangle",
+          x = 278,
+          y = 1002,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.control_lever"] = "control_lever_dorfcage_023"
+          }
         }
       }
     }

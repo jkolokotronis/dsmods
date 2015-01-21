@@ -34,29 +34,236 @@
     <property name="data.targettag" value="Room_dorf_P"/>
    </properties>
   </object>
-  <object type="fa_goblin_jailcage" x="828" y="194"/>
-  <object type="fa_goblin_blue_jailcage" x="494" y="151"/>
-  <object type="fa_orc_jailcage" x="493" y="345"/>
-  <object type="fa_goblin_red_jailcage" x="828" y="340"/>
-  <object type="fa_goblin_blue_jailcage" x="1157" y="123"/>
-  <object type="fa_orc_jailcage" x="1155" y="253"/>
-  <object type="fa_goblin_jailcage" x="1156" y="385"/>
-  <object type="fa_goblin_jailcage" x="1009" y="703"/>
-  <object type="fa_goblin_red_jailcage" x="188" y="126"/>
-  <object type="fa_goblin_red_jailcage" x="184" y="251"/>
-  <object type="fa_goblin_red_jailcage" x="182" y="372"/>
-  <object type="fa_goblin_red_jailcage" x="579" y="448"/>
-  <object type="fa_goblin_jailcage" x="871" y="446"/>
-  <object type="fa_goblin_blue_jailcage" x="478" y="445"/>
-  <object type="fa_goblin_red_jailcage" x="448" y="636"/>
-  <object type="fa_orc_jailcage" x="252" y="633"/>
-  <object type="fa_orc_jailcage" x="154" y="960"/>
-  <object type="fa_orc_jailcage" x="164" y="1150"/>
+  <object type="fa_goblin_jailcage" x="828" y="194">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_010"/>
+   </properties>
+  </object>
+  <object type="fa_goblin_blue_jailcage" x="494" y="151">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_004"/>
+   </properties>
+  </object>
+  <object type="fa_orc_jailcage" x="493" y="345">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_005"/>
+   </properties>
+  </object>
+  <object type="fa_goblin_red_jailcage" x="828" y="340">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_011"/>
+   </properties>
+  </object>
+  <object type="fa_goblin_blue_jailcage" x="1157" y="123">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_013"/>
+   </properties>
+  </object>
+  <object type="fa_orc_jailcage" x="1155" y="253">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_014"/>
+   </properties>
+  </object>
+  <object type="fa_goblin_jailcage" x="1156" y="385">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_015"/>
+   </properties>
+  </object>
+  <object type="fa_goblin_jailcage" x="1009" y="703">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_017"/>
+   </properties>
+  </object>
+  <object type="fa_goblin_red_jailcage" x="188" y="126">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_003"/>
+   </properties>
+  </object>
+  <object type="fa_goblin_red_jailcage" x="184" y="251">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_002"/>
+   </properties>
+  </object>
+  <object type="fa_goblin_red_jailcage" x="182" y="372">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_001"/>
+   </properties>
+  </object>
+  <object type="fa_goblin_red_jailcage" x="579" y="448">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_006"/>
+   </properties>
+  </object>
+  <object type="fa_goblin_jailcage" x="871" y="446">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_012"/>
+   </properties>
+  </object>
+  <object type="fa_goblin_blue_jailcage" x="478" y="445">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_007"/>
+   </properties>
+  </object>
+  <object type="fa_goblin_red_jailcage" x="448" y="636">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_009"/>
+   </properties>
+  </object>
+  <object type="fa_orc_jailcage" x="252" y="633">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_008"/>
+   </properties>
+  </object>
+  <object type="fa_orc_jailcage" x="154" y="960">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_022"/>
+   </properties>
+  </object>
+  <object type="fa_orc_jailcage" x="164" y="1150">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_023"/>
+   </properties>
+  </object>
   <object type="fa_dorf_gold_pillar" x="127" y="768"/>
-  <object type="fa_goblin_jailcage" x="1026" y="896"/>
-  <object type="fa_goblin_jailcage" x="829" y="958"/>
-  <object type="fa_goblin_jailcage" x="1025" y="1222"/>
-  <object type="fa_goblin_jailcage" x="1161" y="636"/>
-  <object type="fa_goblin_red_jailcage" x="1220" y="1085"/>
+  <object type="fa_goblin_jailcage" x="1026" y="896">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_018"/>
+   </properties>
+  </object>
+  <object type="fa_goblin_jailcage" x="829" y="958">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_021"/>
+   </properties>
+  </object>
+  <object type="fa_goblin_jailcage" x="1025" y="1222">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_020"/>
+   </properties>
+  </object>
+  <object type="fa_goblin_jailcage" x="1161" y="636">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_016"/>
+   </properties>
+  </object>
+  <object type="fa_goblin_red_jailcage" x="1220" y="1085">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_019"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_lever" x="102" y="417">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_001"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_lever" x="99" y="254">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_002"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_lever" x="98" y="91">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_003"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_lever" x="608" y="159">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_004"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_lever" x="612" y="353">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_005"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_lever" x="623" y="529">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_006"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_lever" x="413" y="529">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_007"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_lever" x="202" y="556">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_008"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_lever" x="512" y="556">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_009"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_lever" x="797" y="96">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_010"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_lever" x="742" y="413">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_011"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_lever" x="868" y="528">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_012"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_lever" x="1157" y="43">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_013"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_lever" x="1234" y="254">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_014"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_lever" x="1233" y="384">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_015"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_lever" x="1233" y="592">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_016"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_lever" x="1052" y="609">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_017"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_lever" x="1116" y="862">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_018"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_lever" x="1125" y="1058">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_019"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_lever" x="1023" y="1121">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_020"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_lever" x="740" y="991">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_021"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_lever" x="279" y="915">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_022"/>
+   </properties>
+  </object>
+  <object type="fa_dorf_lever" x="278" y="1002">
+   <properties>
+    <property name="data.control_lever" value="control_lever_dorfcage_023"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

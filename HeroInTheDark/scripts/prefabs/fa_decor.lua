@@ -251,7 +251,7 @@ local function dorftorchfn()
 end
 
 
-local function cagefn()
+local function playercagefn()
     local inst = CreateEntity()
     local trans = inst.entity:AddTransform()
     local anim = inst.entity:AddAnimState()
@@ -271,89 +271,69 @@ end
 
 local function leverfn(self,inst,doer)
 --  this really does nothing at all
-    inst.AnimState:ClearOverrideSymbol("chains")
-    inst.AnimState:ClearOverrideSymbol("cage")
+    self.AnimState:ClearOverrideSymbol("chains")
+    self.AnimState:ClearOverrideSymbol("cage")
     
-    inst.AnimState:PlayAnimation("death")
+    self.AnimState:PlayAnimation("death")
     MakeLargeBurnable(self)
-    inst.components.burnable:Ignite()
-    inst.persists=false
-    inst:DoTaskInTime(10,function() inst:Remove() end)
+    self.components.burnable:Ignite()
+    self.persists=false
+    self:DoTaskInTime(10,function() self:Remove() end)
 end
 
-local function fa_goblin_jailcage()
+
+local onloadcage = function(inst, data)
+    if(data and data.control_lever)then
+        inst.control_lever =data.control_lever 
+        inst:AddTag(data.control_lever)
+    end
+end
+
+local onsavecage = function(inst, data)
+    data.control_lever=inst.control_lever 
+end
+
+
+
+local function cagefn(name)
     local inst = CreateEntity()
     local trans = inst.entity:AddTransform()
     local anim = inst.entity:AddAnimState()
     inst.entity:AddSoundEmitter()
     inst.leverfn=leverfn
          
-        inst.AnimState:SetBank("wilson")
-        inst.AnimState:SetBuild("goblin")
-
-        inst.AnimState:OverrideSymbol("chains", "fa_cagechains", "chains")
-        inst.AnimState:OverrideSymbol("cage", "fa_orcfort_cage", "cage")
-        inst.AnimState:PlayAnimation("fa_cagedrop",true)
+    inst.AnimState:SetBank("wilson")
+    inst.AnimState:SetBuild(name)
+    inst.AnimState:OverrideSymbol("chains", "fa_cagechains", "chains")
+    inst.AnimState:OverrideSymbol("cage", "fa_orcfort_cage", "cage")
+    inst.AnimState:PlayAnimation("fa_cagedrop",true)
 
     inst:AddComponent("inspectable")
 
+    inst.OnLoad = onloadcage
+    inst.OnSave = onsavecage
+
+    return inst
+
+end
+
+local function fa_goblin_jailcage()
+    local inst = cagefn("goblin")
     return inst
 end
 
 local function fa_goblin_red_jailcage()
-    local inst = CreateEntity()
-    local trans = inst.entity:AddTransform()
-    local anim = inst.entity:AddAnimState()
-    inst.entity:AddSoundEmitter()
-    inst.leverfn=leverfn
-         
-        inst.AnimState:SetBank("wilson")
-        inst.AnimState:SetBuild("fa_redgoblin")
-
-        inst.AnimState:OverrideSymbol("chains", "fa_cagechains", "chains")
-        inst.AnimState:OverrideSymbol("cage", "fa_orcfort_cage", "cage")
-        inst.AnimState:PlayAnimation("fa_cagedrop",true)
-
-    inst:AddComponent("inspectable")
-
+    local inst = cagefn("fa_redgoblin")
     return inst
 end
 
 local function fa_goblin_blue_jailcage()
-    local inst = CreateEntity()
-    local trans = inst.entity:AddTransform()
-    local anim = inst.entity:AddAnimState()
-    inst.entity:AddSoundEmitter()
-    inst.leverfn=leverfn
-         
-        inst.AnimState:SetBank("wilson")
-        inst.AnimState:SetBuild("bluegoblin")
-
-        inst.AnimState:OverrideSymbol("chains", "fa_cagechains", "chains")
-        inst.AnimState:OverrideSymbol("cage", "fa_orcfort_cage", "cage")
-        inst.AnimState:PlayAnimation("fa_cagedrop",true)
-
-    inst:AddComponent("inspectable")
-
+    local inst = cagefn("bluegoblin")
     return inst
 end
 
 local function fa_orc_jailcage()
-    local inst = CreateEntity()
-    local trans = inst.entity:AddTransform()
-    local anim = inst.entity:AddAnimState()
-    inst.entity:AddSoundEmitter()
-    inst.leverfn=leverfn
-         
-        inst.AnimState:SetBank("wilson")
-        inst.AnimState:SetBuild("bluegoblin")
-
-        inst.AnimState:OverrideSymbol("chains", "fa_cagechains", "chains")
-        inst.AnimState:OverrideSymbol("cage", "fa_orcfort_cage", "cage")
-        inst.AnimState:PlayAnimation("fa_cagedrop",true)
-
-    inst:AddComponent("inspectable")
-
+    local inst = cagefn("bluegoblin")
     return inst
 end
 return Prefab( "common/fa_dorf_gold_pillar", fa_pillar_dwarf, fa_pillar_dwarf_assets),
@@ -363,7 +343,7 @@ Prefab( "common/fa_clothes", fa_clothes, fa_clothes_assets),
 Prefab( "common/fa_dorf_table", fa_table, fa_table_assets),
 Prefab( "common/fa_dorf_light", dorftorchfn, fa_dorftorch_assets),
 Prefab( "common/fa_minecart", fa_minecart, fa_minecart_assets),
-Prefab( "common/fa_playerjailcage", cagefn, cageassets),
+Prefab( "common/fa_playerjailcage", playercagefn, cageassets),
 Prefab( "common/fa_fountain", fountainfn, fa_fountain_assets),
 Prefab( "common/fa_stonecoffin", fa_stonecoffin, fa_stonecoffin_assets),
 Prefab( "common/fa_woodcoffin", fa_woodcoffin, fa_woodcoffin_assets),

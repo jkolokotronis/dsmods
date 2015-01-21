@@ -27,11 +27,12 @@ local function OnActivate(inst,doer)
 	--inst.SoundEmitter:PlaySound("fa/teleporter/activate")
 	inst.AnimState:PlayAnimation("switchingon")
 	inst.AnimState:PushAnimation("on", true)
-
+	print("lever",inst.control_lever)
 	local pos=inst:GetPosition()
     local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 60,{inst.control_lever},{"INLIMBO"})
-		
+	
 	for k,v in pairs(ents) do
+		print("caught",v)
 		if(v.leverfn)then
 			v:leverfn(inst,doer)
 		end

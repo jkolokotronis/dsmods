@@ -52,7 +52,7 @@ function sanitymod:OnUpdate(dt)
     --recalc the % taking drunkedness into account if there
     if(self.inst.components.fa_intoxication and self.inst.components.fa_intoxication.current>=40)then
         --whatever am i supposed to do with this?
-        local adjusted=math.max(self:GetPercent()-(self.inst.components.fa_intoxication.current-40)/100.0,0)    
+        local adjusted=math.max(self:GetPercent()-(self.inst.components.fa_intoxication.current)/150.0,0)    
 --        local speed = easing.outQuad( 1 - adjusted, 0, .2, 1) 
         --self.fxtime = self.fxtime + dt*speed    
 --        PostProcessor:SetEffectTime(self.fxtime+dt*speed)

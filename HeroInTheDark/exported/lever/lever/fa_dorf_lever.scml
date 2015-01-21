@@ -55,27 +55,27 @@
                 </key>
                 <key id="4" time="499">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
-                    <object_ref id="1" timeline="3" key="0" z_index="1"/>
+                    <object_ref id="1" timeline="1" key="6" z_index="1"/>
                     <object_ref id="2" timeline="2" key="0" z_index="2"/>
                 </key>
                 <key id="5" time="611">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
-                    <object_ref id="1" timeline="3" key="1" z_index="1"/>
+                    <object_ref id="1" timeline="1" key="7" z_index="1"/>
                     <object_ref id="2" timeline="2" key="0" z_index="2"/>
                 </key>
                 <key id="6" time="740">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
-                    <object_ref id="1" timeline="3" key="2" z_index="1"/>
+                    <object_ref id="1" timeline="1" key="8" z_index="1"/>
                     <object_ref id="2" timeline="2" key="0" z_index="2"/>
                 </key>
                 <key id="7" time="873">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
-                    <object_ref id="1" timeline="3" key="3" z_index="1"/>
+                    <object_ref id="1" timeline="1" key="9" z_index="1"/>
                     <object_ref id="2" timeline="2" key="0" z_index="2"/>
                 </key>
                 <key id="8" time="1000">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
-                    <object_ref id="1" timeline="3" key="4" z_index="1"/>
+                    <object_ref id="1" timeline="1" key="10" z_index="1"/>
                     <object_ref id="2" timeline="2" key="0" z_index="2"/>
                 </key>
             </mainline>
@@ -100,30 +100,28 @@
                 <key id="4" time="498" spin="-1">
                     <object folder="0" file="3" x="-21.293121" y="158.134137" angle="2.602563"/>
                 </key>
-                <key id="5" time="498">
+                <key id="5" time="498" curve_type="instant">
                     <object folder="0" file="3" x="-22.999974" y="155" angle="2.602563"/>
+                </key>
+                <key id="6" time="499" spin="-1">
+                    <object folder="0" file="2" x="-22.999974" y="155" angle="2.602563"/>
+                </key>
+                <key id="7" time="611" spin="-1">
+                    <object folder="0" file="2" x="23.03734" y="142.87552" angle="342.88"/>
+                </key>
+                <key id="8" time="740" spin="-1">
+                    <object folder="0" file="2" x="61" y="117" angle="320.762"/>
+                </key>
+                <key id="9" time="873" spin="-1">
+                    <object folder="0" file="2" x="70.20769" y="88.88846" angle="303.735"/>
+                </key>
+                <key id="10" time="1000">
+                    <object folder="0" file="2" x="79" y="64" angle="287.475"/>
                 </key>
             </timeline>
             <timeline id="2" name="_0001_Ebene-5-Kopie">
                 <key id="0" spin="0">
                     <object folder="0" file="0" x="-173" y="158" angle="0"/>
-                </key>
-            </timeline>
-            <timeline id="3" name="_0000_Ebene-8_000">
-                <key id="0" time="499" spin="-1">
-                    <object folder="0" file="2" x="-23" y="156" angle="2.082565"/>
-                </key>
-                <key id="1" time="611" spin="-1">
-                    <object folder="0" file="2" x="23.037344" y="142.875519" angle="342.879941"/>
-                </key>
-                <key id="2" time="740" spin="-1">
-                    <object folder="0" file="2" x="61" y="117" angle="320.762633"/>
-                </key>
-                <key id="3" time="873" spin="-1">
-                    <object folder="0" file="2" x="70.207692" y="88.888462" angle="303.734613"/>
-                </key>
-                <key id="4" time="1000">
-                    <object folder="0" file="2" x="79" y="64" angle="287.474774"/>
                 </key>
             </timeline>
         </animation>
