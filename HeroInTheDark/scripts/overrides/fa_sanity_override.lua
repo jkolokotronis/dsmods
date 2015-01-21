@@ -1,4 +1,4 @@
-
+local easing = require("easing")
 local EVIL_SANITY_AURA_OVERRIDE={
     robin=-TUNING.SANITYAURA_MED,
     pigman=-TUNING.SANITYAURA_MED,
@@ -44,6 +44,26 @@ local EVIL_SANITY_AURA_OVERRIDE={
 
 
 local sanitymod=require "components/sanity"
+local sanity_onupdate=sanitymod.OnUpdate
+
+function sanitymod:OnUpdate(dt)
+    sanity_onupdate(self,dt)
+
+    --recalc the % taking drunkedness into account if there
+    if(self.inst.components.fa_intoxication and self.inst.components.fa_intoxication.current>=40)then
+        --whatever am i supposed to do with this?
+        local adjusted=math.max(self:GetPercent()-(self.inst.components.fa_intoxication.current-40)/100.0,0)    
+--        local speed = easing.outQuad( 1 - adjusted, 0, .2, 1) 
+        --self.fxtime = self.fxtime + dt*speed    
+--        PostProcessor:SetEffectTime(self.fxtime+dt*speed)
+
+        local distortion_value = easing.outQuad( adjusted, 0, 1, 1) 
+        PostProcessor:SetDistortionFactor(distortion_value)
+        PostProcessor:SetDistortionRadii( 0.5, 0.685 )
+
+    end
+end
+
 
 function sanitymod:Recalc(dt)
     local total_dapperness = self.dapperness or 0

@@ -135,7 +135,7 @@ local FA_Intoxication = Class(function(self, inst)
             onexit=function()
                 self.inst.components.hunger.hungerrate=self.inst.components.hunger.hungerrate-0.05
                 self.inst.components.eater.monsterimmune=self.monsterimmune
-                self.inst.components.eater.strongstomach=elf.strongstomach
+                self.inst.components.eater.strongstomach=self.strongstomach
                 self.inst.components.sanity.night_drain_mult=self.night_drain_mult
                  self.sanitytrans= self.sanitytrans-0.2
             end,
@@ -250,7 +250,7 @@ function FA_Intoxication:OnEatSomething( data )
     elseif(self.current>=60 and (food.prefab=="monstermeat" or food.prefab=="cookedmonstermeat" or food.prefab=="monstermeat_dried"))then
         self.inst.components.hunger:DoDelta(20)
     elseif(self.current>=60 and food.components.edible.ismeat)then
-        self.inst.components.hunger:DoDelta(food.edible.hungervalue/2.0)
+        self.inst.components.hunger:DoDelta(food.components.edible.hungervalue/2.0)
     elseif(self.current>=80 and food.prefab=="spoiled_food")then
         self.inst.components.hunger:DoDelta(5)
     elseif(self.current>=80 and food.prefab=="plantmeat")then
@@ -278,7 +278,7 @@ end
 
 function FA_Intoxication:OnLoad(data)
     if data.current then
-        self:DoDelta(self.current)
+        self:DoDelta(data.current)
     end
 end
 
