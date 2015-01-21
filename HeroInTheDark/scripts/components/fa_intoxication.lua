@@ -75,7 +75,7 @@ local FA_Intoxication = Class(function(self, inst)
                 self.inst.components.hunger.hungerrate=self.inst.components.hunger.hungerrate-0.05
                 self.inst.components.health.fa_dodgechance=self.inst.components.health.fa_dodgechance-0.05
                 self.inst.components.sanity.duskmultiplier=self.old_duskmultiplier
-                self.inst.components.eater.ignoresspoilage=elf.ignoresspoilage
+                self.inst.components.eater.ignoresspoilage=self.ignoresspoilage
             end,
             active=false            
         },
