@@ -185,6 +185,7 @@ local FA_Intoxication = Class(function(self, inst)
         {
             onenter=function()
                 local talk=GetString( self.inst.prefab, "FA_WONDER_SLEEP")
+                local eater=self.inst
                 if(talk and eater.components.talker) then eater.components.talker:Say(talk) end
                 eater.components.locomotor:Stop()
                 eater.sg:GoToState("sleep")
