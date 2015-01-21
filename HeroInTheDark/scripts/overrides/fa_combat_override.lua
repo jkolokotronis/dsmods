@@ -68,7 +68,7 @@ function Combat:DoAttack(target_override, weapon, projectile, stimuli, instancem
     end
     --it should probably go through armor or whatever equippable crap too
     if(projectile and projectile:HasTag("spellprojectile"))then
-        if(targ.components.health.fa_spellreflect and math.random()<fa_spellreflect)then
+        if( targ.components.inventory and targ.components.inventory:RollSpellReflect())then
             return
         end
     end
@@ -375,7 +375,8 @@ local SGWilson=require "stategraphs/SGwilson"
 local atkdevent=SGWilson.events["attacked"]
 local old_fn=atkdevent.fn
 atkdevent.fn=function(inst,data)
-    if(not inst.components.health:IsDead() and inst.components.health.fa_stunresistance and math.random()<inst.components.health.fa_stunresistance)then
+    local stunresistance=inst.components.health.fa_stunresistance+inst.components.inventory:GetStunResistance()
+    if(not inst.components.health:IsDead() and math.random()<stunresistance)then
         inst.SoundEmitter:PlaySound("dontstarve/wilson/hit")                    
         if inst.prefab ~= "wes" then
             local sound_name = inst.soundsname or inst.prefab

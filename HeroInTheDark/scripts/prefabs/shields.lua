@@ -278,6 +278,7 @@ local function MakeReflectShield()
     inst.AnimState:PlayAnimation("anim")
     inst.components.armor.fa_stunresistance=0.4
     inst.components.armor.fa_spellreflect=1
+    inst.components.armor.fa_spellreflectdrain=20
     inst.components.armor:InitCondition(REFLECT_SHIELD_DURA, REFLECT_SHIELD_ABSO )
 --    inst.components.equippable:SetOnEquip( reflectonequip )
     return inst

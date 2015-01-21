@@ -286,6 +286,7 @@ local function fa_goblin_jailcage()
     local trans = inst.entity:AddTransform()
     local anim = inst.entity:AddAnimState()
     inst.entity:AddSoundEmitter()
+    inst.leverfn=leverfn
          
         inst.AnimState:SetBank("wilson")
         inst.AnimState:SetBuild("goblin")
@@ -304,6 +305,7 @@ local function fa_goblin_red_jailcage()
     local trans = inst.entity:AddTransform()
     local anim = inst.entity:AddAnimState()
     inst.entity:AddSoundEmitter()
+    inst.leverfn=leverfn
          
         inst.AnimState:SetBank("wilson")
         inst.AnimState:SetBuild("fa_redgoblin")
@@ -322,6 +324,7 @@ local function fa_goblin_blue_jailcage()
     local trans = inst.entity:AddTransform()
     local anim = inst.entity:AddAnimState()
     inst.entity:AddSoundEmitter()
+    inst.leverfn=leverfn
          
         inst.AnimState:SetBank("wilson")
         inst.AnimState:SetBuild("bluegoblin")
@@ -340,6 +343,7 @@ local function fa_orc_jailcage()
     local trans = inst.entity:AddTransform()
     local anim = inst.entity:AddAnimState()
     inst.entity:AddSoundEmitter()
+    inst.leverfn=leverfn
          
         inst.AnimState:SetBank("wilson")
         inst.AnimState:SetBuild("bluegoblin")

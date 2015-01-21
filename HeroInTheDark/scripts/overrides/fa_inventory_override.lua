@@ -71,6 +71,31 @@ function Inventory:GetDodgeChance()
     return dodge
 end
 
+function Inventory:GetStunResistance()
+    local stunresistance=0
+    for k,v in pairs(self.equipslots) do
+        if v.components.armor and v.components.armor.fa_stunresistance then
+            stunresistance=stunresistance+ v.components.armor.fa_stunresistance
+        end
+    end
+    return stunresistance
+end
+
+function Inventory:RollSpellReflect()
+    --just run through each one and do separate rolls, otherwise how the heck would I could which one to damage?
+    local reflected=false
+    for k,v in pairs(self.equipslots) do
+        if v.components.armor and v.components.armor.fa_spellreflect then
+            if(math.random()<v.components.armor.fa_spellreflect)then
+                v.components.armor:SetCondition(v.components.armor.condition - v.components.armor.fa_spellreflectdrain)
+                reflected=true
+                break
+            end
+        end
+    end
+    return reflected
+end
+
 local inventory_applydamage_def=Inventory.ApplyDamage
 function Inventory:ApplyDamage(damage, attacker, weapon,type)
 --check resistance

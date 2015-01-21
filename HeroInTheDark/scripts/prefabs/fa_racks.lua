@@ -20,8 +20,25 @@ local prefabs =
 }
 
 local function PuppetOnOpen(inst)
+    if(inst.trapped)then
+        local pt = Vector3(inst.Transform:GetWorldPosition())
+        local particle = SpawnPrefab("poopcloud")
+        particle.Transform:SetPosition( pt.x, pt.y, pt.z )
+
+        local prefabname="fa_animatedarmor_"..inst.rack_type
+        local spider = SpawnPrefab(prefabname)
+        spider.Transform:SetPosition( pt.x, pt.y, pt.z )
+        --container.onopenfn call doesn't have opener ref, nothing i can do
+        local player = GetPlayer()
+        if(spider.components.combat)then
+            spider.components.combat:SuggestTarget(player)
+        end
+--      should i kill myself?
+        inst.trapped=false
+    else
         inst.AnimState:ClearOverrideSymbol("swap_hat")
         inst.AnimState:ClearOverrideSymbol("swap_body")
+    end
 end 
 
 local function PuppetOnClose(inst) 

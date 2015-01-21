@@ -540,35 +540,34 @@
   <object type="maxwelllight_area" x="325" y="505"/>
   <object type="maxwelllight_area" x="324" y="688"/>
   <object type="maxwelllight_area" x="327" y="817"/>
-  <object type="fa_weaponrack" x="1023" y="936"/>
-  <object type="fa_weaponrack" x="1023" y="1023"/>
-  <object type="fa_weaponrack" x="1024" y="736"/>
-  <object type="fa_weaponrack" x="1024" y="825"/>
-  <object type="fa_weaponrack" x="1023" y="513"/>
-  <object type="fa_weaponrack" x="1024" y="633"/>
-  <object type="fa_weaponrack" x="847" y="208"/>
-  <object type="fa_weaponrack" x="692" y="206"/>
-  <object type="fa_weaponrack" x="204" y="561"/>
-  <object type="fa_bluerack" x="846" y="368"/>
-  <object type="fa_pinkrack" x="1009" y="367"/>
-  <object type="fa_greenrack" x="1008" y="207"/>
-  <object type="fa_bluerack" x="525" y="368"/>
-  <object type="fa_pinkrack" x="690" y="369"/>
-  <object type="fa_greenrack" x="524" y="206"/>
-  <object type="fa_greenrack" x="78" y="179"/>
-  <object type="fa_bluerack" x="77" y="304"/>
-  <object type="fa_pinkrack" x="77" y="432"/>
-  <object type="fa_weaponrack" x="243" y="177"/>
-  <object type="fa_weaponrack" x="243" y="306"/>
-  <object type="fa_weaponrack" x="242" y="436"/>
-  <object type="fa_greenrack" x="77" y="561"/>
-  <object type="fa_pinkrack" x="206" y="689"/>
-  <object type="fa_bluerack" x="77" y="690"/>
-  <object type="fa_bluerack" x="77" y="1199"/>
-  <object type="fa_pinkrack" x="206" y="1198"/>
-  <object type="fa_weaponrack" x="368" y="1073"/>
-  <object type="fa_greenrack" x="77" y="1070"/>
-  <object type="fa_weaponrack" x="206" y="1075"/>
+  <object type="fa_weaponrack" x="1023" y="1023">
+   <properties>
+    <property name="data.rack_type" value="copper"/>
+    <property name="data.trapped" value="true"/>
+    <property name="scenario" value="fa_df_weaponrack"/>
+   </properties>
+  </object>
+  <object type="fa_bluerack" x="846" y="368">
+   <properties>
+    <property name="data.rack_type" value="steel"/>
+    <property name="data.trapped" value="true"/>
+    <property name="scenario" value="fa_df_armorrack"/>
+   </properties>
+  </object>
+  <object type="fa_pinkrack" x="1009" y="367">
+   <properties>
+    <property name="data.rack_type" value="copper"/>
+    <property name="data.trapped" value="true"/>
+    <property name="scenario" value="fa_df_armorrack"/>
+   </properties>
+  </object>
+  <object type="fa_greenrack" x="1008" y="207">
+   <properties>
+    <property name="data.rack_type" value="iron"/>
+    <property name="data.trapped" value="false"/>
+    <property name="scenario" value="fa_df_armorrack"/>
+   </properties>
+  </object>
   <object type="fa_dorf_bucket_water" x="460" y="455"/>
   <object type="fa_dorf_guard" x="591" y="922"/>
   <object type="fa_dorf_guard" x="545" y="1095"/>
@@ -593,6 +592,181 @@
    <properties>
     <property name="data.sourcetag" value="Room_dorf_CC"/>
     <property name="data.targettag" value="Room_dorf_DD"/>
+   </properties>
+  </object>
+  <object type="fa_weaponrack" x="1024" y="953">
+   <properties>
+    <property name="data.rack_type" value="copper"/>
+    <property name="data.trapped" value="false"/>
+    <property name="scenario" value="fa_df_weaponrack"/>
+   </properties>
+  </object>
+  <object type="fa_weaponrack" x="1022" y="828">
+   <properties>
+    <property name="data.rack_type" value="iron"/>
+    <property name="data.trapped" value="false"/>
+    <property name="scenario" value="fa_df_weaponrack"/>
+   </properties>
+  </object>
+  <object type="fa_weaponrack" x="1023" y="756">
+   <properties>
+    <property name="data.rack_type" value="iron"/>
+    <property name="data.trapped" value="true"/>
+    <property name="scenario" value="fa_df_weaponrack"/>
+   </properties>
+  </object>
+  <object type="fa_weaponrack" x="1022" y="515">
+   <properties>
+    <property name="data.rack_type" value="steel"/>
+    <property name="data.trapped" value="false"/>
+    <property name="scenario" value="fa_df_weaponrack"/>
+   </properties>
+  </object>
+  <object type="fa_weaponrack" x="1021" y="607">
+   <properties>
+    <property name="data.rack_type" value="steel"/>
+    <property name="data.trapped" value="true"/>
+    <property name="scenario" value="fa_df_weaponrack"/>
+   </properties>
+  </object>
+  <object type="fa_weaponrack" x="845" y="206">
+   <properties>
+    <property name="data.rack_type" value="silver"/>
+    <property name="data.trapped" value="false"/>
+    <property name="scenario" value="fa_df_weaponrack"/>
+   </properties>
+  </object>
+  <object type="fa_weaponrack" x="703" y="204">
+   <properties>
+    <property name="data.rack_type" value="silver"/>
+    <property name="data.trapped" value="true"/>
+    <property name="scenario" value="fa_df_weaponrack"/>
+   </properties>
+  </object>
+  <object type="fa_bluerack" x="539" y="377">
+   <properties>
+    <property name="data.rack_type" value="steel"/>
+    <property name="data.trapped" value="false"/>
+    <property name="scenario" value="fa_df_armorrack"/>
+   </properties>
+  </object>
+  <object type="fa_pinkrack" x="702" y="376">
+   <properties>
+    <property name="data.rack_type" value="copper"/>
+    <property name="data.trapped" value="false"/>
+    <property name="scenario" value="fa_df_armorrack"/>
+   </properties>
+  </object>
+  <object type="fa_greenrack" x="517" y="198">
+   <properties>
+    <property name="data.rack_type" value="iron"/>
+    <property name="data.trapped" value="false"/>
+    <property name="scenario" value="fa_df_armorrack"/>
+   </properties>
+  </object>
+  <object type="fa_greenrack" x="79" y="180">
+   <properties>
+    <property name="data.rack_type" value="silver"/>
+    <property name="data.trapped" value="false"/>
+    <property name="scenario" value="fa_df_armorrack"/>
+   </properties>
+  </object>
+  <object type="fa_bluerack" x="77" y="308">
+   <properties>
+    <property name="data.rack_type" value="steel"/>
+    <property name="data.trapped" value="true"/>
+    <property name="scenario" value="fa_df_armorrack"/>
+   </properties>
+  </object>
+  <object type="fa_pinkrack" x="76" y="439">
+   <properties>
+    <property name="data.rack_type" value="gold"/>
+    <property name="data.trapped" value="false"/>
+    <property name="scenario" value="fa_df_armorrack"/>
+   </properties>
+  </object>
+  <object type="fa_weaponrack" x="240" y="175">
+   <properties>
+    <property name="data.rack_type" value="copper"/>
+    <property name="data.trapped" value="false"/>
+    <property name="scenario" value="fa_df_weaponrack"/>
+   </properties>
+  </object>
+  <object type="fa_weaponrack" x="240" y="304">
+   <properties>
+    <property name="data.rack_type" value="iron"/>
+    <property name="data.trapped" value="false"/>
+    <property name="scenario" value="fa_df_weaponrack"/>
+   </properties>
+  </object>
+  <object type="fa_weaponrack" x="240" y="434">
+   <properties>
+    <property name="data.rack_type" value="steel"/>
+    <property name="data.trapped" value="false"/>
+    <property name="scenario" value="fa_df_weaponrack"/>
+   </properties>
+  </object>
+  <object type="fa_weaponrack" x="208" y="563">
+   <properties>
+    <property name="data.rack_type" value="silver"/>
+    <property name="data.trapped" value="false"/>
+    <property name="scenario" value="fa_df_weaponrack"/>
+   </properties>
+  </object>
+  <object type="fa_bluerack" x="80" y="563">
+   <properties>
+    <property name="data.rack_type" value="copper"/>
+    <property name="data.trapped" value="true"/>
+    <property name="scenario" value="fa_df_armorrack"/>
+   </properties>
+  </object>
+  <object type="fa_pinkrack" x="79" y="694">
+   <properties>
+    <property name="data.rack_type" value="iron"/>
+    <property name="data.trapped" value="false"/>
+    <property name="scenario" value="fa_df_armorrack"/>
+   </properties>
+  </object>
+  <object type="fa_greenrack" x="205" y="694">
+   <properties>
+    <property name="data.rack_type" value="silver"/>
+    <property name="data.trapped" value="false"/>
+    <property name="scenario" value="fa_df_armorrack"/>
+   </properties>
+  </object>
+  <object type="fa_bluerack" x="203" y="1201">
+   <properties>
+    <property name="data.rack_type" value="steel"/>
+    <property name="data.trapped" value="true"/>
+    <property name="scenario" value="fa_df_armorrack"/>
+   </properties>
+  </object>
+  <object type="fa_pinkrack" x="78" y="1204">
+   <properties>
+    <property name="data.rack_type" value="steel"/>
+    <property name="data.trapped" value="true"/>
+    <property name="scenario" value="fa_df_armorrack"/>
+   </properties>
+  </object>
+  <object type="fa_greenrack" x="78" y="1076">
+   <properties>
+    <property name="data.rack_type" value="silver"/>
+    <property name="data.trapped" value="false"/>
+    <property name="scenario" value="fa_df_armorrack"/>
+   </properties>
+  </object>
+  <object type="fa_weaponrack" x="204" y="1075">
+   <properties>
+    <property name="data.rack_type" value="steel"/>
+    <property name="data.trapped" value="false"/>
+    <property name="scenario" value="fa_df_weaponrack"/>
+   </properties>
+  </object>
+  <object type="fa_weaponrack" x="335" y="1076">
+   <properties>
+    <property name="data.rack_type" value="silver"/>
+    <property name="data.trapped" value="false"/>
+    <property name="scenario" value="fa_df_weaponrack"/>
    </properties>
   </object>
  </objectgroup>
