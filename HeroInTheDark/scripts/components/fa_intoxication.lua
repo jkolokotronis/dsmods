@@ -83,9 +83,11 @@ local FA_Intoxication = Class(function(self, inst)
         {
             onenter=function()
                 self.inst.components.hunger.hungerrate=self.inst.components.hunger.hungerrate+0.05
+                self.inst.components.health.absorb=self.inst.components.health.absorb-0.05
             end,
             onexit=function()
                 self.inst.components.hunger.hungerrate=self.inst.components.hunger.hungerrate-0.05
+                self.inst.components.health.absorb=self.inst.components.health.absorb+0.05
             end,
             active=false            
         },
@@ -171,9 +173,11 @@ local FA_Intoxication = Class(function(self, inst)
         {
             onenter=function()
                 self.inst.components.hunger.hungerrate=self.inst.components.hunger.hungerrate+0.1
+                self.inst.components.health.absorb=self.inst.components.health.absorb-0.2
             end,
             onexit=function()
                 self.inst.components.hunger.hungerrate=self.inst.components.hunger.hungerrate-0.1
+                self.inst.components.health.absorb=self.inst.components.health.absorb+0.2
             end,
             active=false            
         },
@@ -237,7 +241,6 @@ function FA_Intoxication:OnAttack(data)
 
     end
 end
- {target = targ, weapon = weapon, projectile = projectile})
 
 function FA_Intoxication:OnEatSomething( data )
     local food=data.food

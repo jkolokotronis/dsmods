@@ -103,18 +103,6 @@ SGWilson.states["fa_drink"]= State{
 
     }    
 
---[[
-    ActionHandler(ACTIONS.PLAY, function(inst, action)
-        if action.invobject then
-            if action.invobject:HasTag("flute") then
-                return "play_flute"
-            elseif action.invobject:HasTag("horn") then
-                return "play_horn"
-            end
-        end
-    end),
-]]
-
 
 local RELOAD = Action(1, true)
 RELOAD.id = "RELOAD"

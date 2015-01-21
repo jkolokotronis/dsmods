@@ -127,7 +127,7 @@ local function GetAdamant(inst)
         if(inst.loadedSpawn)then
             return
         end
-        local item=SpawnPrefab("fa_hat_adamant")
+        local item=SpawnPrefab("fa_hat_adamantine")
         inst.components.inventory:Equip(item)
         item=SpawnPrefab("fa_adamantinearmor")
         inst.components.inventory:Equip(item)
@@ -309,5 +309,5 @@ Prefab( "common/fa_animatedarmor_iron", ironspawn, assets),
 Prefab( "common/fa_animatedarmor_steel", steelspawn, assets),
 Prefab( "common/fa_animatedarmor_gold", goldspawn, assets),
 Prefab( "common/fa_animatedarmor_silver", silverspawn, assets),
-Prefab( "common/fa_animatedarmor_adamant", adamantspawn, assets)
+Prefab( "common/fa_animatedarmor_adamantine", adamantspawn, assets)
 

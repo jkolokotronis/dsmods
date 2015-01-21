@@ -33,6 +33,10 @@ local ARMOR_DURABILITY_SILVER=2500
 local ARMOR_ABSORPTION_SILVER=0.85
 local ARMOR_DURABILITY_GOLD=2000
 local ARMOR_ABSORPTION_GOLD=0.7
+local ARMOR_DURABILITY_SILVER=2500
+local ARMOR_ABSORPTION_SILVER=0.85
+local ARMOR_DURABILITY_ADAMANT=8500
+local ARMOR_ABSORPTION_ADAMANT=0.95
 
 local ARMOR_GOLD_DAPPERNESS=5.0/60
 local ARMOR_GOLD_FUELLEVEL=1200
@@ -93,7 +97,7 @@ local function steelarmor()
 end
 local function adamantinearmor()
     local inst =fn("fa_adamantinearmor")
-    inst.components.armor:InitCondition(ARMOR_DURABILITY_T3, ARMOR_ABSORPTION_T3)
+    inst.components.armor:InitCondition(ARMOR_DURABILITY_ADAMANT, ARMOR_ABSORPTION_ADAMANT)
     return inst
 end
 local function ironarmor()

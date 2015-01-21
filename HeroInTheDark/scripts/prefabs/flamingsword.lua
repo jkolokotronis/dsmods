@@ -55,6 +55,7 @@ local function fn(Sim)
 
     
     inst:AddTag("sharp")
+    inst:AddTag("sword")
     
     inst:AddComponent("weapon")
     inst.components.weapon:SetOnAttack(onattack)

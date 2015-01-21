@@ -8,7 +8,7 @@ local function OnCreate(inst, scenariorunner)
 	local items = 
 	{
 		{
-			item = "fa_hat_adamant",
+			item = "fa_hat_adamantine",
 			count = 1,
 			chance = 1,
 		},

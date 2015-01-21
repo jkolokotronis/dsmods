@@ -63,8 +63,8 @@ local function fn(Sim)
     inst.AnimState:SetBuild("fa_iceaxe")
     inst.AnimState:PlayAnimation("idle")
 
-    
     inst:AddTag("sharp")
+    inst:AddTag("axe")
     
     inst:AddComponent("weapon")
     inst.components.weapon:SetOnAttack(onattack)

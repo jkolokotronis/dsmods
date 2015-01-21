@@ -60,6 +60,7 @@ local function fn(Sim)
 --    inst.AnimState:SetMultColour(1, 1, 1, 0.6)
     
     inst:AddTag("sharp")
+    inst:AddTag("sword")
     
     inst:AddComponent("weapon")
     inst.components.weapon:SetOnAttack(onattack)

@@ -331,11 +331,21 @@ local distiller_recipes={
 
 local alchemy_recipes={
 	{
-		match={product={"fa_bottle_r"},cooktime=960},
+		match={product={"fa_boneshield"},cooktime=120},
 		test={
-			{ingred="poisonspidergland",count=4},
-			{ingred="stinger",count=3},
-			{ingred="fa_bottle_empty",count=1},
+			{ingred="houndstooth",count=5},
+			{ingred="hammer",count=1},
+			{ingred="nightmarefuel",count=2},
+		},
+	},
+	{
+		match={product={"fa_reflectshield"},cooktime=120},
+		test={
+			{ingred="fa_sand",count=4},
+			{ingred="fa_coppershield",count=1},
+			{ingred="hammer",count=1},
+			{ingred="torch",count=1},
+			{ingred="nightmarefuel",count=1},
 		},
 	},
 	{
@@ -1119,6 +1129,60 @@ local forge_recipes={
 		},
 	},
 	{
+		match={product={"fa_coppershield","fa_bottle_empty"},cooktime=60},
+		test={
+			{ingred="fa_copperbar",count=1},
+			{ingred=bottleany,count=1},
+			{ingred="hammer",count=1},
+			{ingred=isfuel,count=5},
+		},
+	},
+	{
+		match={product={"fa_ironshield","fa_bottle_empty"},cooktime=120},
+		test={
+			{ingred="fa_ironbar",count=1},
+			{ingred="fa_bottle_oil",count=1},
+			{ingred="hammer",count=1},
+			{ingred=isfuel,count=5},
+		},
+	},
+	{
+		match={product={"fa_goldshield","fa_bottle_empty"},cooktime=240},
+		test={
+			{ingred="fa_goldbar",count=1},
+			{ingred="fa_bottle_oil",count=1},
+			{ingred="hammer",count=1},
+			{ingred=isfuel,count=5},
+		},
+	},
+	{
+		match={product={"fa_silvershield","fa_bottle_empty"},cooktime=240},
+		test={
+			{ingred="fa_silverbar",count=1},
+			{ingred="fa_bottle_oil",count=1},
+			{ingred="hammer",count=1},
+			{ingred=isfuel,count=5},
+		},
+	},
+	{
+		match={product={"fa_steelshield","fa_bottle_empty"},cooktime=240},
+		test={
+			{ingred="fa_steelbar",count=1},
+			{ingred="fa_bottle_oil",count=1},
+			{ingred="hammer",count=1},
+			{ingred=isfuel,count=5},
+		},
+	},
+	{
+		match={product={"fa_adamantshield","fa_bottle_empty"},cooktime=480},
+		test={
+			{ingred="fa_adamantbar",count=1},
+			{ingred="fa_bottle_oil",count=1},
+			{ingred="hammer",count=1},
+			{ingred=isfuel,count=5},
+		},
+	},
+	{
 		match={product={"fa_lightningsword3","fa_bottle_empty"},cooktime=960},
 		test={
 			{ingred="fa_bottle_lightningessence",count=3},
@@ -1198,6 +1262,7 @@ local forge_recipes={
 		},
 	},
 }
+
 local FA_Matcher=Class(function(self, craftlists)
 	self.craftlists=craftlists
 end)

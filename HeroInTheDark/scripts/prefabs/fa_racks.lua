@@ -19,23 +19,9 @@ local prefabs =
 {
 }
 
-
-
 local function PuppetOnOpen(inst)
-    --this is stupid but so is the fact that inventory cant be accessed as container and all the copy paste between inventory/container 
-    local head=inst.components.inventory:Unequip(EQUIPSLOTS.HEAD,nil,true)
-    if(head)then
---        head.components.inventoryitem:RemoveFromOwner(true)
---        inst.components.container:GiveItem(head)
-    end
-    local body=inst.components.inventory:Unequip(EQUIPSLOTS.BODY,nil,true)
-    if(body)then
---        body.components.inventoryitem:RemoveFromOwner(true)
---        inst.components.container:GiveItem(body)
-    end
         inst.AnimState:ClearOverrideSymbol("swap_hat")
         inst.AnimState:ClearOverrideSymbol("swap_body")
-
 end 
 
 local function PuppetOnClose(inst) 
@@ -63,10 +49,17 @@ local function PuppetOnClose(inst)
     end
 end 
 
-local onloadfn = function(inst, data)
+--in truth rack_type is just init value but id rather have it here than make 50 more scenarios 
+local onload = function(inst, data)
+    if(data)then
+        inst.rack_type =   data.rack_type 
+        inst.trapped = data.trapped 
+    end
 end
 
-local onsavefn = function(inst, data)
+local onsave = function(inst, data)
+    data.rack_type = inst.rack_type
+    inst.trapped = data.trapped 
 end
 
 local function fn(name)
@@ -78,17 +71,12 @@ local function fn(name)
     inst.DynamicShadow:SetSize( 2, 1.5 )
     MakeObstaclePhysics(inst, .5)
     
---    inst.OnLoad=onloadfn
---    inst.OnSave=onsavefn
-
-
     local minimap = inst.entity:AddMiniMapEntity()
     minimap:SetIcon( "fa_puppet.tex" )
 
         anim:SetBank(name)
         anim:SetBuild(name)
         anim:PlayAnimation("idle")
-        
 
     inst:AddComponent("inspectable")
 
@@ -121,6 +109,8 @@ end
     inst.components.inventory.dropondeath = true
 
     inst:AddComponent("lootdropper")
+    inst.OnSave = onsave
+    inst.OnLoad = onload
 
     return inst
 end
@@ -140,6 +130,56 @@ local function greenfn()
     return inst
 end
 
+local function WeaponOnOpen(inst)
+    if(inst.trapped)then
+        local pt = Vector3(inst.Transform:GetWorldPosition())
+        local particle = SpawnPrefab("poopcloud")
+        particle.Transform:SetPosition( pt.x, pt.y, pt.z )
+
+        local prefabname="fa_animatedarmor_"..inst.rack_type
+        local spider = SpawnPrefab(prefabname)
+        spider.Transform:SetPosition( pt.x, pt.y, pt.z )
+        --container.onopenfn call doesn't have opener ref, nothing i can do
+        local player = GetPlayer()
+        if(spider.components.combat)then
+            spider.components.combat:SuggestTarget(player)
+        end
+--      should i kill myself?
+        inst.trapped=false
+    end
+--        inst.AnimState:ClearOverrideSymbol("swap_hat")
+end 
+
+local function WeaponOnClose(inst) 
+    local toprow=inst.components.container:FindItems(function(item)
+            if(item:HasTag("dagger") or item:HasTag("sword"))then
+                return true
+            else
+                return false
+            end
+        end)
+    for i=1,math.max(#toprow,4) do 
+        inst.AnimState:OverrideSymbol("sword"..i,toprow[i].prefab,"swap_weapon")
+    end
+    for i= #toprow+1,4 do
+        inst.AnimState:ClearOverrideSymbol("sword"..i)
+    end
+    local bottomrow=inst.components.container:FindItems(function(item)
+            if(item:HasTag("axe"))then
+                return true
+            else
+                return false
+            end
+        end)
+
+    for i=1,math.max(#bottomrow,3) do 
+        inst.AnimState:OverrideSymbol("axe"..i,toprow[i].prefab,"swap_weapon")
+    end
+    for i= #bottomrow+1,3 do
+        inst.AnimState:ClearOverrideSymbol("axe"..i)
+    end
+
+end 
 
 local function fnweap()
     local inst = CreateEntity()
@@ -149,11 +189,7 @@ local function fnweap()
     inst.entity:AddSoundEmitter()
     inst.entity:AddDynamicShadow()
     inst.DynamicShadow:SetSize( 2, 1.5 )
-    MakeObstaclePhysics(inst, .5)
-    
---    inst.OnLoad=onloadfn
---    inst.OnSave=onsavefn
-
+    MakeObstaclePhysics(inst, .5)    
 
 --    local minimap = inst.entity:AddMiniMapEntity()
 --    minimap:SetIcon( "fa_puppet.tex" )
@@ -191,8 +227,9 @@ end
     inst.components.container.widgetpos_controller = Vector3(0,200,0)
     inst.components.container.side_align_tip = 160
 
-
     inst:AddComponent("lootdropper")
+    inst.OnSave = onsave
+    inst.OnLoad = onload
 
     return inst
 end

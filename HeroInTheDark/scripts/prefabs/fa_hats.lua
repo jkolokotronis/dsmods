@@ -19,7 +19,7 @@ local assets_steel={
     Asset("ANIM", "anim/fa_hat_steel.zip"), 
 }
 local assets_adamant={
-    Asset("ANIM", "anim/fa_hat_adamant.zip"), 
+    Asset("ANIM", "anim/fa_hat_adamantine.zip"), 
 }
 local assets_silver={
     Asset("ANIM", "anim/fa_hat_silver.zip"), 
@@ -316,8 +316,8 @@ local function onequip(inst, owner, build)
     end
 
     local function fnadamant()
-        local inst=common("fa_hat_adamant")
-        inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_adamant") end  )
+        local inst=common("fa_hat_adamantine")
+        inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_adamantine") end  )
         inst.components.waterproofer:SetEffectiveness(ARMOR_ADAMANTHAT_WATERPROOFNESS)
         inst:AddComponent("armor")
         inst.components.armor:InitCondition(ARMOR_ADAMANTHAT, ARMOR_ADAMANTHAT_ABSORPTION)
@@ -348,7 +348,7 @@ local function onequip(inst, owner, build)
     end
 return Prefab( "common/inventory/hat_goblinking", fnking, assets_goblinking, prefabs),
 Prefab( "common/inventory/hat_pot", fnpot, assets_pot, prefabs),
-Prefab( "common/inventory/fa_hat_adamant", fnadamant, assets_adamant, prefabs),
+Prefab( "common/inventory/fa_hat_adamantine", fnadamant, assets_adamant, prefabs),
 Prefab( "common/inventory/fa_hat_copper", fncopper, assets_copper, prefabs),
 Prefab( "common/inventory/fa_hat_iron", fniron, assets_iron, prefabs),
 Prefab( "common/inventory/fa_hat_silver", fnsilver, assets_silver, prefabs),

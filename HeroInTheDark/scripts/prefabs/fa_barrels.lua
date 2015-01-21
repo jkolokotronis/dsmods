@@ -176,10 +176,10 @@ local function ronsalefn(Sim)
     inst.components.finiteuses:SetOnFinished( onfinished )
     inst.components.finiteuses:SetMaxUses(3)
     inst.components.finiteuses:SetUses(3)
-    inst.components.edible.hungervalue=5
+    inst.components.fa_drink.hungervalue=5
     inst.components.fa_drink.intoxication=5
-    inst.components.edible.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
-    inst.components.edible.temperatureduration =TUNING.FOOD_TEMP_LONG
+    inst.components.fa_drink.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
+    inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_LONG
 
     return inst
 end 

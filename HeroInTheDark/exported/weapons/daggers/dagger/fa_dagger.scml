@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
-    <folder id="0" name="swap_dagger">
-        <file id="0" name="swap_dagger/W_Dagger001.png" width="250" height="250" pivot_x="0.427536" pivot_y="0.442029"/>
+    <folder id="0" name="swap_weapon">
+        <file id="0" name="swap_weapon/W_Dagger001.png" width="250" height="250" pivot_x="0.427536" pivot_y="0.442029"/>
     </folder>
     <folder id="1">
         <file id="0" name="daggerground.png" width="93" height="93" pivot_x="0" pivot_y="1"/>

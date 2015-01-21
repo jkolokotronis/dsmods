@@ -38,45 +38,6 @@ function Armor:TakeDamage(damage_amount, attacker, weapon,element)
 
 
 local Health=require "components/health"
---the point of this thing is to allow 'buffers', e.g. temp hp 
-
---[[
-function Health:ApplyDamage(dmg, attacker,weapon,element)
-    local damage=dmg
-    local damagetype=element
-        if(not damagetype and weapon and weapon.components.weapon and weapon.components.weapon.fa_damagetype) then
-            damagetype=weapon.components.weapon.fa_damagetype
-        elseif(attacker and attacker.fa_damagetype)then
-            damagetype=attacker.fa_damagetype
-        end
-
-    if(not damagetype) then damagetype=FA_DAMAGETYPE.PHYSICAL end
---    if(damagetype)then
-        local res=self.fa_resistances[damagetype]
-        if(res) then damage=damage*(1-res) end
-        if(self.fa_protection[damagetype] and damage>0)then
-            if(self.fa_protection[damagetype]>damage)then
-                self.fa_protection[damagetype]=self.fa_protection[damagetype]-damage
-                damage=0
-            else
-                damage=damage-self.fa_protection[damagetype]
-                self.fa_protection[damagetype]=0
-            end
-        end
---    end
-    if(self.fa_temphp and damage>0)then
-        if(self.fa_temphp>damage)then
-                self.fa_temphp=self.fa_temphp-damage
-                damage=0
-            else
-                damage=damage-self.fa_temphp
-                self.fa_temphp=0
-            end
-    end
-
-    return damage
-end
---]]
 local Combat=require "components/combat"
 
 local combat_doattack_def=Combat.DoAttack
@@ -102,6 +63,12 @@ function Combat:DoAttack(target_override, weapon, projectile, stimuli, instancem
                 local epicentre = projectile or self.inst
                 self:DoAreaAttack(epicentre, self.areahitrange, weapon, nil, stimuli)
             end]]
+            return
+        end
+    end
+    --it should probably go through armor or whatever equippable crap too
+    if(projectile and projectile:HasTag("spellprojectile"))then
+        if(targ.components.health.fa_spellreflect and math.random()<fa_spellreflect)then
             return
         end
     end
@@ -213,37 +180,7 @@ function Combat:GetAttacked(attacker, damage, weapon,stimuli,element)
 end
 
 local FIRE_TIMESTART = 1.0
---[[
-function Health:DoFireDamage(amount1, doer)
-    if not self.invincible  then
-        if not self.takingfiredamage then
-            self.takingfiredamage = true
-            self.takingfiredamagestarttime =GetTime()
-            self.inst:StartUpdatingComponent(self)
-            self.inst:PushEvent("startfiredamage")
-            ProfileStatsAdd("onfire")
-        end
-        
-        local time = GetTime()
-        self.lastfiredamagetime = time
-        local amount=amount1
 
-        if(self.fa_resistances[FA_DAMAGETYPE.FIRE])then
-            self.fire_damage_scale=self.fa_resistances[FA_DAMAGETYPE.FIRE]
-        end
-        if(self.inst and self.inst.components and self.inst.components.inventory)then
-            amount = self.inst.components.inventory:ApplyDamage(amount, doer,nil,FA_DAMAGETYPE.FIRE)
-        end
-        
-        if time - self.takingfiredamagestarttime > FIRE_TIMESTART and amount ~= 0 then
-            --extra param might not be 'necesary'... since I know  from this string the cause is fire, i might as well use that. 
-            --But since this is dirty override, its irrelevant, anyone touching this code will collide regardless
-            self:DoDelta(-amount*self.fire_damage_scale, false, "fire")
-            self.inst:PushEvent("firedamage")       
-        end
-    end
-end
-]]
 local old_healthsave=Health.OnSave
 function Health:OnSave()    
     local data=old_healthsave(self)
@@ -432,4 +369,22 @@ local cant_have_attack ={"FX", "NOCLICK", "DECOR", "INLIMBO"}
 
 end
 
+end
+
+local SGWilson=require "stategraphs/SGwilson"
+local atkdevent=SGWilson.events["attacked"]
+local old_fn=atkdevent.fn
+atkdevent.fn=function(inst,data)
+    if(not inst.components.health:IsDead() and inst.components.health.fa_stunresistance and math.random()<inst.components.health.fa_stunresistance)then
+        inst.SoundEmitter:PlaySound("dontstarve/wilson/hit")                    
+        if inst.prefab ~= "wes" then
+            local sound_name = inst.soundsname or inst.prefab
+            local path = inst.talker_path_override or "dontstarve/characters/"
+            local sound_event = path..sound_name.."/hurt"
+            inst.SoundEmitter:PlaySound(inst.hurtsoundoverride or sound_event)
+        end
+        return
+    else
+        return old_fn(inst,data)
+    end
 end

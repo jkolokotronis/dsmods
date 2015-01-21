@@ -5918,99 +5918,15 @@ return {
           type = "fa_weaponrack",
           shape = "rectangle",
           x = 1023,
-          y = 936,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_weaponrack",
-          shape = "rectangle",
-          x = 1023,
           y = 1023,
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_weaponrack",
-          shape = "rectangle",
-          x = 1024,
-          y = 736,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_weaponrack",
-          shape = "rectangle",
-          x = 1024,
-          y = 825,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_weaponrack",
-          shape = "rectangle",
-          x = 1023,
-          y = 513,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_weaponrack",
-          shape = "rectangle",
-          x = 1024,
-          y = 633,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_weaponrack",
-          shape = "rectangle",
-          x = 847,
-          y = 208,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_weaponrack",
-          shape = "rectangle",
-          x = 692,
-          y = 206,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_weaponrack",
-          shape = "rectangle",
-          x = 204,
-          y = 561,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
+          properties = {
+            ["data.rack_type"] = "copper",
+            ["data.trapped"] = "true",
+            ["scenario"] = "fa_df_weaponrack"
+          }
         },
         {
           name = "",
@@ -6021,7 +5937,11 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.rack_type"] = "steel",
+            ["data.trapped"] = "true",
+            ["scenario"] = "fa_df_armorrack"
+          }
         },
         {
           name = "",
@@ -6032,7 +5952,11 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.rack_type"] = "copper",
+            ["data.trapped"] = "true",
+            ["scenario"] = "fa_df_armorrack"
+          }
         },
         {
           name = "",
@@ -6043,194 +5967,11 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_bluerack",
-          shape = "rectangle",
-          x = 525,
-          y = 368,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_pinkrack",
-          shape = "rectangle",
-          x = 690,
-          y = 369,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_greenrack",
-          shape = "rectangle",
-          x = 524,
-          y = 206,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_greenrack",
-          shape = "rectangle",
-          x = 78,
-          y = 179,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_bluerack",
-          shape = "rectangle",
-          x = 77,
-          y = 304,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_pinkrack",
-          shape = "rectangle",
-          x = 77,
-          y = 432,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_weaponrack",
-          shape = "rectangle",
-          x = 243,
-          y = 177,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_weaponrack",
-          shape = "rectangle",
-          x = 243,
-          y = 306,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_weaponrack",
-          shape = "rectangle",
-          x = 242,
-          y = 436,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_greenrack",
-          shape = "rectangle",
-          x = 77,
-          y = 561,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_pinkrack",
-          shape = "rectangle",
-          x = 206,
-          y = 689,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_bluerack",
-          shape = "rectangle",
-          x = 77,
-          y = 690,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_bluerack",
-          shape = "rectangle",
-          x = 77,
-          y = 1199,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_pinkrack",
-          shape = "rectangle",
-          x = 206,
-          y = 1198,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_weaponrack",
-          shape = "rectangle",
-          x = 368,
-          y = 1073,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_greenrack",
-          shape = "rectangle",
-          x = 77,
-          y = 1070,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_weaponrack",
-          shape = "rectangle",
-          x = 206,
-          y = 1075,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
+          properties = {
+            ["data.rack_type"] = "iron",
+            ["data.trapped"] = "false",
+            ["scenario"] = "fa_df_armorrack"
+          }
         },
         {
           name = "",
@@ -6422,6 +6163,381 @@ return {
           properties = {
             ["data.sourcetag"] = "Room_dorf_CC",
             ["data.targettag"] = "Room_dorf_DD"
+          }
+        },
+        {
+          name = "",
+          type = "fa_weaponrack",
+          shape = "rectangle",
+          x = 1024,
+          y = 953,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.rack_type"] = "copper",
+            ["data.trapped"] = "false",
+            ["scenario"] = "fa_df_weaponrack"
+          }
+        },
+        {
+          name = "",
+          type = "fa_weaponrack",
+          shape = "rectangle",
+          x = 1022,
+          y = 828,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.rack_type"] = "iron",
+            ["data.trapped"] = "false",
+            ["scenario"] = "fa_df_weaponrack"
+          }
+        },
+        {
+          name = "",
+          type = "fa_weaponrack",
+          shape = "rectangle",
+          x = 1023,
+          y = 756,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.rack_type"] = "iron",
+            ["data.trapped"] = "true",
+            ["scenario"] = "fa_df_weaponrack"
+          }
+        },
+        {
+          name = "",
+          type = "fa_weaponrack",
+          shape = "rectangle",
+          x = 1022,
+          y = 515,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.rack_type"] = "steel",
+            ["data.trapped"] = "false",
+            ["scenario"] = "fa_df_weaponrack"
+          }
+        },
+        {
+          name = "",
+          type = "fa_weaponrack",
+          shape = "rectangle",
+          x = 1021,
+          y = 607,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.rack_type"] = "steel",
+            ["data.trapped"] = "true",
+            ["scenario"] = "fa_df_weaponrack"
+          }
+        },
+        {
+          name = "",
+          type = "fa_weaponrack",
+          shape = "rectangle",
+          x = 845,
+          y = 206,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.rack_type"] = "silver",
+            ["data.trapped"] = "false",
+            ["scenario"] = "fa_df_weaponrack"
+          }
+        },
+        {
+          name = "",
+          type = "fa_weaponrack",
+          shape = "rectangle",
+          x = 703,
+          y = 204,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.rack_type"] = "silver",
+            ["data.trapped"] = "true",
+            ["scenario"] = "fa_df_weaponrack"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluerack",
+          shape = "rectangle",
+          x = 539,
+          y = 377,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.rack_type"] = "steel",
+            ["data.trapped"] = "false",
+            ["scenario"] = "fa_df_armorrack"
+          }
+        },
+        {
+          name = "",
+          type = "fa_pinkrack",
+          shape = "rectangle",
+          x = 702,
+          y = 376,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.rack_type"] = "copper",
+            ["data.trapped"] = "false",
+            ["scenario"] = "fa_df_armorrack"
+          }
+        },
+        {
+          name = "",
+          type = "fa_greenrack",
+          shape = "rectangle",
+          x = 517,
+          y = 198,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.rack_type"] = "iron",
+            ["data.trapped"] = "false",
+            ["scenario"] = "fa_df_armorrack"
+          }
+        },
+        {
+          name = "",
+          type = "fa_greenrack",
+          shape = "rectangle",
+          x = 79,
+          y = 180,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.rack_type"] = "silver",
+            ["data.trapped"] = "false",
+            ["scenario"] = "fa_df_armorrack"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluerack",
+          shape = "rectangle",
+          x = 77,
+          y = 308,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.rack_type"] = "steel",
+            ["data.trapped"] = "true",
+            ["scenario"] = "fa_df_armorrack"
+          }
+        },
+        {
+          name = "",
+          type = "fa_pinkrack",
+          shape = "rectangle",
+          x = 76,
+          y = 439,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.rack_type"] = "gold",
+            ["data.trapped"] = "false",
+            ["scenario"] = "fa_df_armorrack"
+          }
+        },
+        {
+          name = "",
+          type = "fa_weaponrack",
+          shape = "rectangle",
+          x = 240,
+          y = 175,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.rack_type"] = "copper",
+            ["data.trapped"] = "false",
+            ["scenario"] = "fa_df_weaponrack"
+          }
+        },
+        {
+          name = "",
+          type = "fa_weaponrack",
+          shape = "rectangle",
+          x = 240,
+          y = 304,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.rack_type"] = "iron",
+            ["data.trapped"] = "false",
+            ["scenario"] = "fa_df_weaponrack"
+          }
+        },
+        {
+          name = "",
+          type = "fa_weaponrack",
+          shape = "rectangle",
+          x = 240,
+          y = 434,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.rack_type"] = "steel",
+            ["data.trapped"] = "false",
+            ["scenario"] = "fa_df_weaponrack"
+          }
+        },
+        {
+          name = "",
+          type = "fa_weaponrack",
+          shape = "rectangle",
+          x = 208,
+          y = 563,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.rack_type"] = "silver",
+            ["data.trapped"] = "false",
+            ["scenario"] = "fa_df_weaponrack"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluerack",
+          shape = "rectangle",
+          x = 80,
+          y = 563,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.rack_type"] = "copper",
+            ["data.trapped"] = "true",
+            ["scenario"] = "fa_df_armorrack"
+          }
+        },
+        {
+          name = "",
+          type = "fa_pinkrack",
+          shape = "rectangle",
+          x = 79,
+          y = 694,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.rack_type"] = "iron",
+            ["data.trapped"] = "false",
+            ["scenario"] = "fa_df_armorrack"
+          }
+        },
+        {
+          name = "",
+          type = "fa_greenrack",
+          shape = "rectangle",
+          x = 205,
+          y = 694,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.rack_type"] = "silver",
+            ["data.trapped"] = "false",
+            ["scenario"] = "fa_df_armorrack"
+          }
+        },
+        {
+          name = "",
+          type = "fa_bluerack",
+          shape = "rectangle",
+          x = 203,
+          y = 1201,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.rack_type"] = "steel",
+            ["data.trapped"] = "true",
+            ["scenario"] = "fa_df_armorrack"
+          }
+        },
+        {
+          name = "",
+          type = "fa_pinkrack",
+          shape = "rectangle",
+          x = 78,
+          y = 1204,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.rack_type"] = "steel",
+            ["data.trapped"] = "true",
+            ["scenario"] = "fa_df_armorrack"
+          }
+        },
+        {
+          name = "",
+          type = "fa_greenrack",
+          shape = "rectangle",
+          x = 78,
+          y = 1076,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.rack_type"] = "silver",
+            ["data.trapped"] = "false",
+            ["scenario"] = "fa_df_armorrack"
+          }
+        },
+        {
+          name = "",
+          type = "fa_weaponrack",
+          shape = "rectangle",
+          x = 204,
+          y = 1075,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.rack_type"] = "steel",
+            ["data.trapped"] = "false",
+            ["scenario"] = "fa_df_weaponrack"
+          }
+        },
+        {
+          name = "",
+          type = "fa_weaponrack",
+          shape = "rectangle",
+          x = 335,
+          y = 1076,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.rack_type"] = "silver",
+            ["data.trapped"] = "false",
+            ["scenario"] = "fa_df_weaponrack"
           }
         }
       }

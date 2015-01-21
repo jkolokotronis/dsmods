@@ -98,6 +98,7 @@ end
 
 local function coppersword()
     local inst=common("fa_coppersword")
+    inst:AddTag("sword")
 
     inst.components.weapon:SetDamage(SWORD_DAMAGE_T1)
     inst.components.finiteuses:SetMaxUses(SWORD_USES_T1)
@@ -106,6 +107,7 @@ local function coppersword()
 end
 local function ironsword()
     local inst=common("fa_ironsword")
+    inst:AddTag("sword")
 
     inst.components.weapon:SetDamage(SWORD_DAMAGE_T2)
     inst.components.finiteuses:SetMaxUses(SWORD_USES_T2)
@@ -114,6 +116,7 @@ local function ironsword()
 end
 local function silversword()
     local inst=common("fa_silversword")
+    inst:AddTag("sword")
 
     inst:AddTag("fa_silver")
     inst.components.weapon:SetDamage(SWORD_DAMAGE_T2)
@@ -123,6 +126,7 @@ local function silversword()
 end
 local function steelsword()
     local inst=common("fa_steelsword")
+    inst:AddTag("sword")
 
     inst.components.weapon:SetDamage(SWORD_DAMAGE_T3)
     inst.components.finiteuses:SetMaxUses(SWORD_USES_T3)
@@ -131,6 +135,7 @@ local function steelsword()
 end
 local function adamantinesword()
     local inst=common("fa_adamantinesword")
+    inst:AddTag("sword")
 
     inst.components.weapon:SetDamage(SWORD_DAMAGE_T3)
     inst.components.finiteuses:SetMaxUses(SWORD_USES_T3)
@@ -139,6 +144,7 @@ local function adamantinesword()
 end
 local function copperaxe()
     local inst=common("fa_copperaxe")
+    inst:AddTag("axe")
 
     inst.components.weapon:SetDamage(AXE_DAMAGE_T1)
     inst.components.finiteuses:SetMaxUses(AXE_USES_T1)
@@ -147,6 +153,7 @@ local function copperaxe()
 end
 local function steelaxe()
     local inst=common("fa_steelaxe")
+    inst:AddTag("axe")
 
     inst.components.weapon:SetDamage(AXE_DAMAGE_T3)
     inst.components.finiteuses:SetMaxUses(AXE_USES_T3)
@@ -155,6 +162,7 @@ local function steelaxe()
 end
 local function adamantineaxe()
     local inst=common("fa_adamantineaxe")
+    inst:AddTag("axe")
 
     inst.components.weapon:SetDamage(AXE_DAMAGE_T3)
     inst.components.finiteuses:SetMaxUses(AXE_USES_T3)
@@ -163,6 +171,7 @@ local function adamantineaxe()
 end
 local function ironaxe()
     local inst=common("fa_ironaxe")
+    inst:AddTag("axe")
 
     inst.components.weapon:SetDamage(AXE_DAMAGE_T2)
     inst.components.finiteuses:SetMaxUses(AXE_USES_T2)
@@ -171,6 +180,7 @@ local function ironaxe()
 end
 local function silveraxe()
     local inst=common("fa_silveraxe")
+    inst:AddTag("axe")
 
     inst.components.weapon:SetDamage(AXE_DAMAGE_T2)
     inst.components.finiteuses:SetMaxUses(AXE_USES_T2)
@@ -179,6 +189,7 @@ local function silveraxe()
 end
 local function dorfkingaxe()
     local inst=common("fa_dorfkingaxe")
+    inst:AddTag("axe")
 
     inst.components.weapon:SetDamage(AXE_DAMAGE_T2)
     inst.components.finiteuses:SetMaxUses(AXE_USES_T2)
@@ -187,6 +198,7 @@ local function dorfkingaxe()
 end
 local function orckingaxe()
     local inst=common("fa_orckinghammer")
+    inst:AddTag("axe")
 
     inst.components.weapon:SetDamage(AXE_DAMAGE_T2)
     inst.components.finiteuses:SetMaxUses(AXE_USES_T2)
@@ -195,6 +207,7 @@ local function orckingaxe()
 end
 local function magesword()
     local inst=common("fa_coppersword")
+    inst:AddTag("sword")
     inst.components.weapon:SetDamage(inst.components.weapon.damage*2)
     inst:AddComponent("characterspecific")
     inst.components.characterspecific:SetOwner("wizard")

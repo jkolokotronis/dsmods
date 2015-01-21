@@ -269,6 +269,18 @@ local function cagefn()
     return inst
 end
 
+local function leverfn(self,inst,doer)
+--  this really does nothing at all
+    inst.AnimState:ClearOverrideSymbol("chains")
+    inst.AnimState:ClearOverrideSymbol("cage")
+    
+    inst.AnimState:PlayAnimation("death")
+    MakeLargeBurnable(self)
+    inst.components.burnable:Ignite()
+    inst.persists=false
+    inst:DoTaskInTime(10,function() inst:Remove() end)
+end
+
 local function fa_goblin_jailcage()
     local inst = CreateEntity()
     local trans = inst.entity:AddTransform()

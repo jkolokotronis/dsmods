@@ -47,6 +47,7 @@ local function fn(name)
     
     inst:AddTag("shadow")
     inst:AddTag("sharp")
+    inst:AddTag("sword")
     
     inst:AddComponent("weapon")
     inst.components.weapon:SetDamage(HOLY_SWORD_DAMAGE)

@@ -50,9 +50,9 @@ local function fn(Sim)
     inst.AnimState:SetBank("fa_vorpalaxe")
     inst.AnimState:SetBuild("fa_vorpalaxe")
     inst.AnimState:PlayAnimation("idle")
-
     
     inst:AddTag("sharp")
+    inst:AddTag("axe")
     
     inst:AddComponent("weapon")
     inst.components.weapon:SetOnAttack(onattack)
