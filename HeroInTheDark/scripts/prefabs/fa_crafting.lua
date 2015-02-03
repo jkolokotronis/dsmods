@@ -299,7 +299,7 @@ local function alchemyfn()
     inst.AnimState:SetBank("fa_alchemytable")
     inst.AnimState:SetBuild("fa_alchemytable")
     inst.AnimState:PlayAnimation("idle_close",true)
-    inst.Transform:SetScale(2.4, 2.4, 2.4)
+    inst.Transform:SetScale(1.15, 1.15, 1.15)
 
     inst.components.fa_furnace.matcher = matchers.AlchemyMatcher
     inst.components.fa_furnace.getverb=function() return "ALCHEMY" end
