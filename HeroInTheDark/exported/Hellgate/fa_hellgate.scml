@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r2">
+    <folder id="0">
+        <file id="0" name="_0006_Ebene-10-Kopie.png" width="981" height="499" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="_0004_licht-max.png" width="511" height="472" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="_0003_licht-75.png" width="511" height="472" pivot_x="0" pivot_y="1"/>
+        <file id="3" name="_0002_licht-125.png" width="511" height="472" pivot_x="0" pivot_y="1"/>
+        <file id="4" name="_0001_licht-25.png" width="494" height="447" pivot_x="0" pivot_y="1"/>
+        <file id="5" name="_0000_lciht-50.png" width="511" height="471" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="fa_hellgate">
+        <obj_info name="_0006_Ebene-10-Kopie" type="sprite">
+            <frames>
+                <i folder="0" file="0"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0004_licht-max" type="sprite">
+            <frames>
+                <i folder="0" file="3"/>
+                <i folder="0" file="1"/>
+                <i folder="0" file="5"/>
+                <i folder="0" file="2"/>
+            </frames>
+        </obj_info>
+        <animation id="0" name="idle" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                </key>
+                <key id="1" time="200">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                </key>
+                <key id="2" time="398">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="2" z_index="1"/>
+                </key>
+                <key id="3" time="600">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="3" z_index="1"/>
+                </key>
+                <key id="4" time="747">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="4" z_index="1"/>
+                </key>
+                <key id="5" time="891">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="5" z_index="1"/>
+                </key>
+            </mainline>
+            <timeline id="0" obj="0" name="_0006_Ebene-10-Kopie">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-465.625" y="323.4375"/>
+                </key>
+            </timeline>
+            <timeline id="1" obj="1" name="_0004_licht-max">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" x="-306.25" y="522.5"/>
+                </key>
+                <key id="1" time="200" spin="0">
+                    <object folder="0" file="1" x="-306.25" y="522.5"/>
+                </key>
+                <key id="2" time="398" spin="0">
+                    <object folder="0" file="5" x="-306.25" y="522.5"/>
+                </key>
+                <key id="3" time="600" spin="0">
+                    <object folder="0" file="2" x="-306.25" y="522.5"/>
+                </key>
+                <key id="4" time="747" spin="0">
+                    <object folder="0" file="5" x="-306.25" y="522.5"/>
+                </key>
+                <key id="5" time="891" spin="0">
+                    <object folder="0" file="1" x="-306.25" y="522.5"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

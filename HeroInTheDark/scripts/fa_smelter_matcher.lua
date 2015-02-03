@@ -7,6 +7,8 @@ local FAIL_PERSISTANT={
 	fa_adamantinebar="fa_adamantinebar"
 }
 
+local FN_DESCRIPTION={}
+
 local function isfuel(ing)
 	return ing=="charcoal" or ing=="fa_coalbar"
 end
@@ -32,6 +34,16 @@ end
 local function cornorwheat(ing)
 	return (ing=="fa_cutwheat" or ing=="corn")
 end
+
+-- fun stuff - TODO move this crap into strings?
+FN_DESCRIPTION[isfuel]="Fuel"
+FN_DESCRIPTION[bottleany]="Water"
+FN_DESCRIPTION[heavywater]="Heavy Water"
+FN_DESCRIPTION[anyanimal]="Animal"
+FN_DESCRIPTION[anymetalore]="Metal Ore"
+FN_DESCRIPTION[anyore]="Ore"
+FN_DESCRIPTION[anymeat]="Meat"
+FN_DESCRIPTION[cornorwheat]="Corn or Wheat"
 
 local keg_recipes={
 	{
@@ -670,7 +682,7 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"fa_ironsword","fa_bottle_empty"},cooktime=240},
+		match={product={"fa_ironsword","fa_bottle_empty"},cooktime=144},
 		test={
 			{ingred="fa_ironbar",count=3},
 			{ingred="fa_coalbar",count=4},
@@ -678,7 +690,15 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"fa_ironaxe","fa_bottle_empty"},cooktime=240},
+		match={product={"fa_ironsword","fa_bottle_empty"},cooktime=240},
+		test={
+			{ingred="fa_ironbar",count=3},
+			{ingred=isfuel,count=4},
+			{ingred=heavywater, count=1},
+		},
+	},
+	{
+		match={product={"fa_ironaxe","fa_bottle_empty"},cooktime=144},
 		test={
 			{ingred="fa_ironbar",count=4},
 			{ingred="fa_coalbar",count=3},
@@ -686,10 +706,26 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"fa_irondagger","fa_bottle_empty","fa_bottle_empty"},cooktime=240},
+		match={product={"fa_ironaxe","fa_bottle_empty"},cooktime=240},
+		test={
+			{ingred="fa_ironbar",count=4},
+			{ingred=isfuel,count=3},
+			{ingred=heavywater, count=1},
+		},
+	},
+	{
+		match={product={"fa_irondagger","fa_bottle_empty","fa_bottle_empty"},cooktime=144},
 		test={
 			{ingred="fa_ironbar",count=3},
 			{ingred="fa_coalbar",count=3},
+			{ingred=heavywater, count=2},
+		},
+	},
+	{
+		match={product={"fa_irondagger","fa_bottle_empty","fa_bottle_empty"},cooktime=240},
+		test={
+			{ingred="fa_ironbar",count=3},
+			{ingred=isfuel,count=3},
 			{ingred=heavywater, count=2},
 		},
 	},
@@ -1265,7 +1301,23 @@ local forge_recipes={
 
 local FA_Matcher=Class(function(self, craftlists)
 	self.craftlists=craftlists
+	self:BuildHash()
 end)
+
+
+-- I'll need hash matches for books, but ipairs are 250% faster for any other purpose
+function FA_Matcher:BuildHash()
+	self.hashtable={}
+	for k,v in ipairs(self.craftlists) do 
+		local product=v.match.product
+		local first=product[1]
+		--remember just first? or last?
+--		if(self.hashtable[first]==nil)then
+			self.hashtable[first]=v
+--		end
+	end
+end
+
 
 function FA_Matcher:GetProduct(itemlist)
 	for k,v in ipairs(self.craftlists) do
@@ -1373,12 +1425,14 @@ function FA_StandMatcher:GetFailResult(itemlist)
 	return  {product=product, cooktime=0}
 end
 
+
 local matchers={
 	SmelterMatcher=FA_Matcher(smelt_recipes),
 	AlchemyMatcher=FA_Matcher(alchemy_recipes),
 	ForgeMatcher=FA_Matcher(forge_recipes),
 	KegMatcher=FA_Matcher(keg_recipes),
-	DistillerMatcher=FA_Matcher(distiller_recipes)
+	DistillerMatcher=FA_Matcher(distiller_recipes),
+	FN_DESCRIPTION=FN_DESCRIPTION
 }
 
 

@@ -84,10 +84,14 @@ local FA_Intoxication = Class(function(self, inst)
             onenter=function()
                 self.inst.components.hunger.hungerrate=self.inst.components.hunger.hungerrate+0.05
                 self.inst.components.health.absorb=self.inst.components.health.absorb-0.05
+                self.inst.components.temperature.inherentinsulation=TUNING.INSULATION_SMALL+self.inst.components.temperature.inherentinsulation
+                inst.components.sanity.dapperness = inst.components.sanity.dapperness  -5.0/120
             end,
             onexit=function()
                 self.inst.components.hunger.hungerrate=self.inst.components.hunger.hungerrate-0.05
                 self.inst.components.health.absorb=self.inst.components.health.absorb+0.05
+                self.inst.components.temperature.inherentinsulation=self.inst.components.temperature.inherentinsulation-TUNING.INSULATION_SMALL
+                inst.components.sanity.dapperness = inst.components.sanity.dapperness + 5.0/120
             end,
             active=false            
         },
