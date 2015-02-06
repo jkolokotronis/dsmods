@@ -45,7 +45,7 @@ local states=
         name = "walk",
         tags = {"walk", "canrotate"},
         onenter = function(inst, playanim)
-            inst.AnimState:PlayAnimation('walk', true)
+            inst.AnimState:PlayAnimation('run', true)
             inst.components.locomotor:RunForward()
             
         end,
@@ -57,7 +57,7 @@ local states=
         
         onenter = function(inst)
             inst.components.locomotor:RunForward()
-            inst.AnimState:PlayAnimation("walk")
+            inst.AnimState:PlayAnimation("run")
             inst.sg.mem.foosteps = 0
         end,
 

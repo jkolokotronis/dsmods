@@ -48,7 +48,7 @@ local function fn()
 	local shadow = inst.entity:AddDynamicShadow()
 	shadow:SetSize( 3, 2 )
     inst.Transform:SetFourFaced()
-    inst.Transform:SetScale(0.85,0.85, 0.85)
+--    inst.Transform:SetScale(0.85,0.85, 0.85)
 	
     inst:AddTag("hostile")
     inst:AddTag("fa_good")
@@ -63,7 +63,7 @@ local function fn()
     inst.AnimState:PlayAnimation('idle',true)
     inst:AddComponent("locomotor") -- locomotor must be constructed before the stategraph
     inst.components.locomotor.runspeed = RUN_SPEED
-    inst:SetStateGraph("SGDryad")
+    inst:SetStateGraph("SGdryad")
 
 
     local brain = require "brains/dryadbrain"
