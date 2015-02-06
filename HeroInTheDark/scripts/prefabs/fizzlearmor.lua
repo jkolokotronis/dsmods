@@ -1,6 +1,6 @@
 local assets=
 {
-  Asset("ANIM", "anim/swap_reflectshield.zip"),
+  Asset("ANIM", "anim/fa_reflectshield.zip"),
 }
 local REFLECT_DAMAGE=60
 local ARMOR_ABSO=0
@@ -19,8 +19,6 @@ end
 
 local function onequip(inst, owner) 
 
-    owner.AnimState:OverrideSymbol("swap_body", "swap_reflectshield", "backpack")
-    owner.AnimState:OverrideSymbol("swap_body", "swap_reflectshield", "swap_body")
     inst:ListenForEvent("attacked", OnBlocked,owner)
     inst:ListenForEvent("blocked",OnBlocked, owner)
 end
@@ -38,8 +36,8 @@ local function fn(Sim)
 	inst.entity:AddAnimState()
     MakeInventoryPhysics(inst)
     
- inst.AnimState:SetBank("backpack1")
-    inst.AnimState:SetBuild("swap_reflectshield")
+ inst.AnimState:SetBank("fa_reflectshield")
+    inst.AnimState:SetBuild("fa_reflectshield")
     inst.AnimState:PlayAnimation("anim")
 
     local minimap = inst.entity:AddMiniMapEntity()
@@ -50,7 +48,7 @@ local function fn(Sim)
     
     inst:AddComponent("inventoryitem")
      inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_inventoryimages.xml"
-    inst.components.inventoryitem.imagename="shield"
+    inst.components.inventoryitem.imagename="fa_reflectshield"
 
     inst:AddComponent("equippable")
   if EQUIPSLOTS["BACK"] then
