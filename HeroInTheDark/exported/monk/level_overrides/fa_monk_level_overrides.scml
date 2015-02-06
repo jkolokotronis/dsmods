@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
+    <folder id="0" name="headbase_2">
+        <file id="0" name="headbase_2/headbase2-0.png" width="188" height="232" pivot_x="0.507976" pivot_y="0.13567"/>
+        <file id="1" name="headbase_2/headbase2-1.png" width="240" height="236" pivot_x="0.544809" pivot_y="0.143752"/>
+        <file id="2" name="headbase_2/headbase2-2.png" width="192" height="260" pivot_x="0.519789" pivot_y="0.136209"/>
+    </folder>
+    <folder id="1" name="headbase_3">
+        <file id="0" name="headbase_3/headbase3-0.png" width="188" height="232" pivot_x="0.507976" pivot_y="0.13567"/>
+        <file id="1" name="headbase_3/headbase3-1.png" width="240" height="236" pivot_x="0.544809" pivot_y="0.143752"/>
+        <file id="2" name="headbase_3/headbase3-2.png" width="192" height="260" pivot_x="0.519789" pivot_y="0.136209"/>
+    </folder>
+    <entity id="0" name="fa_monk_level_overrides">
+        <animation id="0" name="BUILD_PLAYER" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="1000">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="headbase_hat_0_1">
+                <key id="0" spin="0">
+                    <object folder="1" file="0" x="18.267916" y="-17.024691" pivot_x="0.55" pivot_y="0.1" angle="0" scale_x="0.762711" scale_y="0.762695"/>
+                </key>
+                <key id="1" time="1000" spin="0">
+                    <object folder="1" file="0" x="-0.127146" pivot_x="0.55" pivot_y="0.1" angle="0" scale_x="0.762711" scale_y="0.762695"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

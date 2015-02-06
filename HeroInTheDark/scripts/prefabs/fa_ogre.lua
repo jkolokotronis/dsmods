@@ -106,7 +106,9 @@ local function fn()
     inst.components.combat:SetKeepTargetFunction(KeepTargetFn)
 
     inst:AddComponent("lootdropper")
-    inst.components.lootdropper:SetLoot({"monstermeat",  "monstermeat"})
+    inst.components.lootdropper:SetLoot({"monstermeat", "monstermeat","monstermeat","monstermeat","monstermeat","monstermeat","monstermeat","monstermeat","monstermeat","monstermeat",
+        "boneshard","boneshard","boneshard","boneshard","boneshard","boneshard","boneshard","boneshard","boneshard","boneshard",
+        "beardhair","beardhair","beardhair","beardhair","beardhair"})
     inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLE.keys2,FALLENLOOTTABLE.TABLE_KEYS2_WEIGHT,0.1)
 --    inst:AddComponent("inspectable")
     

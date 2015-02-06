@@ -2,7 +2,6 @@ local assets=
 {
   Asset("ANIM", "anim/swap_marbleshield.zip"),
   Asset("ANIM", "anim/swap_rockshield.zip"),
-  Asset("ANIM", "anim/swap_reflectshield.zip"),
 }
 
 local boneshield_assets={
@@ -28,6 +27,9 @@ local steelshield_assets={
 }
 local adamantshield_assets={
   Asset("ANIM", "anim/fa_adamantineshield.zip"),
+}
+local reflectshield_assets={
+  Asset("ANIM", "anim/fa_reflectshield.zip"),
 }
 --[[
 local function boneonequip(inst, owner) 
@@ -273,9 +275,6 @@ end
 
 local function MakeReflectShield()
     local inst=fn("fa_reflectshield")
-    inst.AnimState:SetBank("swap_reflectshield")
-    inst.AnimState:SetBuild("swap_reflectshield")
-    inst.AnimState:PlayAnimation("anim")
     inst.components.armor.fa_stunresistance=0.4
     inst.components.armor.fa_spellreflect=1
     inst.components.armor.fa_spellreflectdrain=20
@@ -288,7 +287,7 @@ return Prefab( "common/inventory/fa_woodenshield", MakeWoodenShield, woodenshiel
         Prefab( "common/inventory/fa_rockshield", MakeRockShield, assets), 
         Prefab( "common/inventory/fa_marbleshield", MakeMarbleShield, assets), 
         Prefab( "common/inventory/fa_boneshield", MakeBoneShield, boneshield_assets),
-        Prefab( "common/inventory/fa_reflectshield", MakeReflectShield, assets),
+        Prefab( "common/inventory/fa_reflectshield", MakeReflectShield, reflectshield_assets),
         Prefab( "common/inventory/fa_coppershield", MakeCopperShield, coppershield_assets),
         Prefab( "common/inventory/fa_ironshield", MakeIronShield, ironshield_assets),
         Prefab( "common/inventory/fa_silvershield", MakeSilverShield, silvershield_assets),

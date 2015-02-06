@@ -18,6 +18,10 @@ local nut_assets={
 local flour_assets={
     Asset("ANIM", "anim/fa_flour.zip"),	
 }
+local dryadheart_assets={
+    Asset("ANIM", "anim/fa_dryadheart.zip"),	
+}
+
 
 local function common(name)
 		local inst = CreateEntity()
@@ -268,6 +272,20 @@ end
 	    return inst
 	end
 
+local function dryadheart(Sim)
+		local inst = common("fa_dryadheart")
+		
+		inst:AddComponent("edible")
+		inst.components.edible.healthvalue = 50
+		inst.components.edible.hungervalue = 100
+		inst.components.edible.sanityvalue = -50
+		inst.components.edible.foodtype = "MEAT"
+
+		inst:AddComponent("bait")
+		inst:AddComponent("tradable")
+
+		return inst
+	end
 
 return Prefab( "common/inventory/fa_goodberries", fn, assets),
 Prefab( "common/inventory/fa_nuts", fnnuts, nut_assets),
@@ -278,4 +296,5 @@ Prefab( "common/inventory/fa_dug_wheat", fndugwheat, wheat_assets),
 Prefab( "common/inventory/fa_wheat", fnwheat, wheat_assets),
 	Prefab( "common/inventory/fa_wineyeast", wineyeast, flour_assets),
 	Prefab( "common/inventory/fa_distillingyeast", distillingyeast, flour_assets),
+	Prefab( "common/inventory/fa_dryadheart", dryadheart, dryadheart_assets),
 	Prefab( "common/inventory/fa_brewingyeast", brewingyeast, flour_assets)

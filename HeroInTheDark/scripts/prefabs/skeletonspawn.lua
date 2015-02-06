@@ -31,6 +31,15 @@ local drybones_assets={
 local skull_assets={
     Asset("ANIM", "anim/fa_skull.zip"),
 }
+local zombie_assets={
+    Asset("ANIM", "anim/fa_zombie.zip"),
+}
+local ghoul_assets={
+    Asset("ANIM", "anim/fa_ghoul.zip"),
+}
+local mummy_assets={
+    Asset("ANIM", "anim/fa_mummy.zip"),
+}
 
 local PET_HEALTH=300
 
@@ -145,7 +154,7 @@ local function fn(Sim)
     light:SetIntensity(0.9)
     light:SetRadius(0.7)
     light:SetColour(155/255, 225/255, 250/255)
-    light:Enable(true)
+--    light:Enable(true)
 
 
     anim:SetBank("wilson")
@@ -261,8 +270,29 @@ local function firedartspawn(Sim)
     return inst
 end
 
+local function fa_zombie(Sim)
+    local inst=fn(Sim)
+    local anim=inst.AnimState
+    anim:SetBuild("fa_zombie")
+    return inst
+end
+local function fa_ghoul(Sim)
+    local inst=fn(Sim)
+    local anim=inst.AnimState
+    anim:SetBuild("fa_ghoul")
+    return inst
+end
+local function fa_mummy(Sim)
+    local inst=fn(Sim)
+    local anim=inst.AnimState
+    anim:SetBuild("fa_mummy")
+    return inst
+end
 
 return Prefab( "common/skeletonspawn", spawn, assets),
      Prefab( "common/fa_drybones", drybones, drybones_assets),
      Prefab("common/fa_dartdrybones", firedartspawn, drybones_assets),
-     Prefab("common/fa_skull", skull, skull_assets)
+     Prefab("common/fa_skull", skull, skull_assets),
+     Prefab("common/fa_zombie", fa_zombie, zombie_assets),
+     Prefab("common/fa_ghoul", fa_ghoul, ghoul_assets),
+     Prefab("common/fa_mummy", fa_mummy, mummy_assets)

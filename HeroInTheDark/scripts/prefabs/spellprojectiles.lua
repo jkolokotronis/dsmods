@@ -1,7 +1,7 @@
 local assets=
 {
     Asset("ANIM", "anim/fireball.zip"),
-        Asset("ANIM","anim/fireball_hit.zip"),
+    Asset("ANIM","anim/fireball_hit.zip"),
     Asset("ANIM", "anim/swap_blowdart.zip"),
     Asset("ANIM", "anim/blow_dart.zip"),
     Asset("ANIM", "anim/staff_projectile.zip"),

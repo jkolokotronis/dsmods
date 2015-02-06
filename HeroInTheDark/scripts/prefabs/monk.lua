@@ -34,8 +34,9 @@ local assets = {
         Asset( "ANIM", "anim/beard.zip" ),
 
 		-- Don't forget to include your character's custom assets!
-        Asset( "ANIM", "anim/monk.zip" ),
-        Asset("ANIM","anim/fa_zombie.zip")
+        Asset( "ANIM", "anim/fa_monk.zip" ),
+        Asset( "ANIM", "anim/fa_ghoul.zip" ),
+        Asset( "ANIM", "anim/fa_monk_level_overrides.zip" ),
 }
 local prefabs = {}
 
@@ -53,6 +54,9 @@ local KIBUFF_ABSORB=50
 local KIBUFF_REGEN=2
 local KIBUFF_SANITY=2
 
+local HEALTH_PER_LEVEL=3
+local SANITY_PER_LEVEL=3
+
 
 local onhitother=function(inst,data)
     local damage=data.damage
@@ -62,6 +66,31 @@ local onhitother=function(inst,data)
     end
 end
 
+local function headoverride(inst,level)
+    if(level>=20)then
+        inst.AnimState:OverrideSymbol("headbase_hat", "fa_monk_level_overrides", "headbase_3")
+        inst.AnimState:OverrideSymbol("headbase", "fa_monk_level_overrides", "headbase_3")
+    elseif(level>=10)then
+        inst.AnimState:OverrideSymbol("headbase_hat", "fa_monk_level_overrides", "headbase_2")
+        inst.AnimState:OverrideSymbol("headbase", "fa_monk_level_overrides", "headbase_2")
+    end
+end
+
+local function onxploaded(inst)
+    local level=inst.components.xplevel.level
+    if(level>1)then
+        inst.components.health.maxhealth= inst.components.health.maxhealth+HEALTH_PER_LEVEL*(level-1)
+        inst.components.sanity.max=inst.components.sanity.max+SANITY_PER_LEVEL*(level-1)
+        headoverride(inst,level)
+    end
+end
+
+local function onlevelup(inst,data)
+    local level=data.level
+    inst.components.health.maxhealth= inst.components.health.maxhealth+HEALTH_PER_LEVEL
+    inst.components.sanity.max=inst.components.sanity.max+SANITY_PER_LEVEL
+    headoverride(inst,level)
+end
 
 local onloadfn = function(inst, data)
     inst.fa_playername=data.fa_playername
@@ -98,7 +127,7 @@ local fn = function(inst)
 	-- a minimap icon must be specified
 	inst.MiniMapEntity:SetIcon( "wilson.png" )
 
-    inst.AnimState:SetBuild("fa_zombie")
+    inst.AnimState:SetBuild("fa_monk")
 
 	-- todo: Add an example special power here.
     inst.components.locomotor.runspeed=BASE_MS
@@ -233,6 +262,8 @@ local fn = function(inst)
 
     inst:ListenForEvent("onhitother", onhitother)
     inst:ListenForEvent("kidelta", updatekiboosts)
+    inst:ListenForEvent("xplevel_loaded",onxploaded)
+    inst:ListenForEvent("xplevelup", onlevelup)
 
 
     inst.OnLoad = onloadfn
