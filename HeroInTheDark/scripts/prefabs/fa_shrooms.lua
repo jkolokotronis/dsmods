@@ -24,7 +24,7 @@ local greenshroomcapassets=
     
 }
 
-local prebafs={}
+local prefabs={}
 
 local function onregenfn(inst)
 	inst.AnimState:PlayAnimation("idle", true)

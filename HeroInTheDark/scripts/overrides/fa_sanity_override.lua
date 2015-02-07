@@ -87,7 +87,7 @@ function sanitymod:Recalc(dt)
                     end
 
     -- WTB PROPER ? operator
-    if(self.dapperness_mult==nil)then
+    if(self.dapperness_mult~=nil)then
         total_dapperness = total_dapperness * self.dapperness_mult 
     end
 

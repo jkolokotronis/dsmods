@@ -142,8 +142,10 @@ local function onequip(inst, owner, build)
 
         inst:AddComponent("inspectable")
 
+        if(FA_DLCACCESS)then
         inst:AddComponent("waterproofer")
         inst.components.waterproofer:SetEffectiveness(TUNING.WATERPROOFNESS_ABSOLUTE)
+        end
 
         inst:AddComponent("inventoryitem")
         inst.components.inventoryitem.imagename = build
@@ -177,7 +179,9 @@ local function onequip(inst, owner, build)
             onunequip(inst,owner)
         end)
 
+        if(FA_DLCACCESS)then
         inst.components.waterproofer:SetEffectiveness(ARMOR_POTHAT_WATERPROOFNESS)
+        end
 
         local dapperfn=function(inst,owner)
             local seasonmanager=GetSeasonManager()
@@ -225,7 +229,9 @@ local function onequip(inst, owner, build)
             onunequip(inst,owner)
         end)
 
+        if(FA_DLCACCESS)then
         inst.components.waterproofer:SetEffectiveness(ARMOR_COPPERHAT_WATERPROOFNESS)
+        end
         inst:AddComponent("armor")
         inst.components.armor:InitCondition(ARMOR_COPPERHAT, ARMOR_COPPERHAT_ABSORPTION)
         return inst
@@ -246,8 +252,9 @@ local function onequip(inst, owner, build)
             end
             onunequip(inst,owner)
         end)
-
+        if(FA_DLCACCESS)then
         inst.components.waterproofer:SetEffectiveness(ARMOR_IRONHAT_WATERPROOFNESS)
+        end
         inst:AddComponent("armor")
         inst.components.armor:InitCondition(ARMOR_IRONHAT, ARMOR_IRONHAT_ABSORPTION)
         return inst
@@ -264,7 +271,9 @@ local function onequip(inst, owner, build)
             onunequip(inst,owner)
         end)
 
+        if(FA_DLCACCESS)then
         inst.components.waterproofer:SetEffectiveness(ARMOR_SILVERHAT_WATERPROOFNESS)
+        end
         inst:AddComponent("armor")
         inst.components.armor:InitCondition(ARMOR_SILVERHAT, ARMOR_SILVERHAT_ABSORPTION)
         return inst
@@ -273,8 +282,9 @@ local function onequip(inst, owner, build)
     local function fngold()
         local inst=common("fa_hat_gold")
         inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_gold") end  )
+        if(FA_DLCACCESS)then
         inst.components.waterproofer:SetEffectiveness(ARMOR_GOLDHAT_WATERPROOFNESS)
-
+        end
         if(FA_DLCACCESS)then
             inst.components.equippable.dapperness = -ARMOR_GOLD_DAPPERNESS
         else
@@ -309,7 +319,9 @@ local function onequip(inst, owner, build)
             end
             onunequip(inst,owner)
         end)
+        if(FA_DLCACCESS)then
         inst.components.waterproofer:SetEffectiveness(ARMOR_STEELHAT_WATERPROOFNESS)
+        end
         inst:AddComponent("armor")
         inst.components.armor:InitCondition(ARMOR_STEELHAT, ARMOR_STEELHAT_ABSORPTION)
         return inst
@@ -318,7 +330,9 @@ local function onequip(inst, owner, build)
     local function fnadamant()
         local inst=common("fa_hat_adamantine")
         inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_adamantine") end  )
+        if(FA_DLCACCESS)then
         inst.components.waterproofer:SetEffectiveness(ARMOR_ADAMANTHAT_WATERPROOFNESS)
+        end
         inst:AddComponent("armor")
         inst.components.armor:InitCondition(ARMOR_ADAMANTHAT, ARMOR_ADAMANTHAT_ABSORPTION)
         return inst

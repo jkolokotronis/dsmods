@@ -16,10 +16,17 @@ local DAMAGE = 50
 local ATTACK_PERIOD = 2
 local RUN_SPEED=2
 
+local TREEGUARD_COUNTER=8
+local LIGHTNING_COUNTER=5
+local PLANT_COUNTER=50
+local HEAL_COUNTER=5
+local GUST_COUNTER=50
+local SWARM_COUNTER=5
+local KICK_COUNTER=5
 
 local function RetargetFn(inst)
     local invader = FindEntity( inst, TUNING.MERM_TARGET_DIST, function(guy)
-        return guy:HasTag("character") and not guy:HasTag("ogre")
+        return guy:HasTag("character") 
     end)
     return invader
 end
@@ -37,6 +44,28 @@ local function OnAttacked(inst, data)
     if attacker and inst.components.combat:CanTarget(attacker) then
         inst.components.combat:SetTarget(attacker)
     end
+end
+
+local onloadfn = function(inst, data)
+     if(data)then
+        inst.fa_summontreeguard_counter=data.fa_summontreeguard_counter
+        inst.fa_calllightning_counter=data.fa_calllightning_counter
+        inst.fa_plantgrowth_counter=data.fa_plantgrowth_counter
+        inst.fa_heal_counter=data.fa_heal_counter
+        inst.fa_gustofwind_counter=data.fa_gustofwind_counter
+        inst.fa_summonswarm_counter=data.fa_summonswarm_counter
+        inst.fa_kick_counter=data.fa_kick_counter
+    end
+end
+
+local onsavefn = function(inst, data)
+        data.fa_summontreeguard_counter=inst.fa_summontreeguard_counter
+        data.fa_calllightning_counter=inst.fa_calllightning_counter
+        data.fa_plantgrowth_counter=inst.fa_plantgrowth_counter
+        data.fa_heal_counter=inst.fa_heal_counter
+        data.fa_gustofwind_counter=inst.fa_gustofwind_counter
+        data.fa_summonswarm_counter=inst.fa_summonswarm_counter
+        data.fa_kick_counter=inst.fa_kick_counter
 end
 
 local function fn()
@@ -59,6 +88,13 @@ local function fn()
     anim:SetBuild("fa_dryad") 
     anim:SetBank("fa_dryad") 
 
+        inst.fa_summontreeguard_counter=TREEGUARD_COUNTER
+        inst.fa_calllightning_counter=LIGHTNING_COUNTER
+        inst.fa_plantgrowth_counter=PLANT_COUNTER
+        inst.fa_heal_counter=HEAL_COUNTER
+        inst.fa_gustofwind_counter=GUST_COUNTER
+        inst.fa_summonswarm_counter=SWARM_COUNTER
+        inst.fa_kick_counter=KICK_COUNTER
 
     inst.AnimState:PlayAnimation('idle',true)
     inst:AddComponent("locomotor") -- locomotor must be constructed before the stategraph
@@ -94,10 +130,13 @@ local function fn()
     
     inst:ListenForEvent("attacked", OnAttacked)
 
-    inst:AddComponent("sleeper")
+--    inst:AddComponent("sleeper")
 
     MakeLargeBurnableCharacter(inst)
     MakeLargeFreezableCharacter(inst)
+
+    inst.OnSave=onsavefn
+    inst.OnLoad=onloadfn
 
     return inst
 end
