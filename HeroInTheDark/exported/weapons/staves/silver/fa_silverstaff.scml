@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
+    <folder id="0" name="swap_weapon">
+        <file id="0" name="swap_weapon/swap.png" width="93" height="388" pivot_x="0.376812" pivot_y="0.338569"/>
+    </folder>
+    <folder id="1">
+        <file id="0" name="ground.png" width="101" height="376" pivot_x="0.389474" pivot_y="0.442105"/>
+    </folder>
+    <entity id="0" name="fa_silverstaff">
+        <animation id="0" name="idle" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="swap">
+                <key id="0" spin="0">
+                    <object folder="1" file="0" x="10.478744" y="146.407279" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="BUILD" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="swap">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="51.385352" y="-368.184833" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

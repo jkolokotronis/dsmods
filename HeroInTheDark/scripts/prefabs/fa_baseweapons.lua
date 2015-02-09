@@ -37,6 +37,50 @@ local assets_orckingaxe={
     Asset("ANIM", "anim/fa_orckinghammer.zip"),
 }
 
+local assets_ironkama={
+    Asset("ANIM", "anim/fa_ironkama.zip"),    
+}
+local assets_silverkama={
+    Asset("ANIM", "anim/fa_silverkama.zip"),
+}
+local assets_steelkama={
+    Asset("ANIM", "anim/fa_steelkama.zip"), 
+}
+local assets_adamantinekama={
+    Asset("ANIM", "anim/fa_adamantinekama.zip"), 
+}
+local assets_copperkama={
+    Asset("ANIM", "anim/fa_copperkama.zip"),
+}
+local assets_woodenkama={
+    Asset("ANIM", "anim/fa_woodenkama.zip"),
+}
+local assets_goldkama={
+    Asset("ANIM", "anim/fa_goldkama.zip"),
+}
+
+local assets_ironstaff={
+    Asset("ANIM", "anim/fa_ironstaff.zip"),    
+}
+local assets_silverstaff={
+    Asset("ANIM", "anim/fa_silverstaff.zip"),
+}
+local assets_steelstaff={
+    Asset("ANIM", "anim/fa_steelstaff.zip"), 
+}
+local assets_adamantinestaff={
+    Asset("ANIM", "anim/fa_adamantinestaff.zip"), 
+}
+local assets_copperstaff={
+    Asset("ANIM", "anim/fa_copperstaff.zip"),
+}
+local assets_woodenstaff={
+    Asset("ANIM", "anim/fa_woodenstaff.zip"),
+}
+local assets_goldstaff={
+    Asset("ANIM", "anim/fa_goldstaff.zip"),
+}
+
 local AXE_DAMAGE_T1=55
 local AXE_DAMAGE_T2=75
 local AXE_DAMAGE_T3=90
@@ -217,6 +261,76 @@ local function magesword()
     return inst
 end
 
+local function fa_ironkama()
+    local inst=common("fa_ironkama")
+    inst:AddTag("unarmed")
+    return inst
+end
+local function fa_silverkama()
+    local inst=common("fa_silverkama")
+    inst:AddTag("unarmed")
+    return inst
+end
+local function fa_steelkama()
+    local inst=common("fa_steelkama")
+    inst:AddTag("unarmed")
+    return inst
+end
+local function fa_adamantinekama()
+    local inst=common("fa_adamantinekama")
+    inst:AddTag("unarmed")
+    return inst
+end
+local function fa_copperkama()
+    local inst=common("fa_copperkama")
+    inst:AddTag("unarmed")
+    return inst
+end
+local function fa_woodenkama()
+    local inst=common("fa_woodenkama")
+    inst:AddTag("unarmed")
+    return inst
+end
+local function fa_goldkama()
+    local inst=common("fa_goldkama")
+    inst:AddTag("unarmed")
+    return inst
+end
+local function fa_ironstaff()
+    local inst=common("fa_ironstaff")
+    inst:AddTag("unarmed")
+    return inst
+end
+local function fa_silverstaff()
+    local inst=common("fa_silverstaff")
+    inst:AddTag("unarmed")
+    return inst
+end
+local function fa_steelstaff()
+    local inst=common("fa_steelstaff")
+    inst:AddTag("unarmed")
+    return inst
+end
+local function fa_adamantinestaff()
+    local inst=common("fa_adamantinestaff")
+    inst:AddTag("unarmed")
+    return inst
+end
+local function fa_copperstaff()
+    local inst=common("fa_copperstaff")
+    inst:AddTag("unarmed")
+    return inst
+end
+local function fa_woodenstaff()
+    local inst=common("fa_woodenstaff")
+    inst:AddTag("unarmed")
+    return inst
+end
+local function fa_goldstaff()
+    local inst=common("fa_goldstaff")
+    inst:AddTag("unarmed")
+    return inst
+end
 return
     Prefab( "common/inventory/fa_coppersword",coppersword, assets_coppersword),
     Prefab( "common/inventory/fa_steelsword",steelsword, assets_steelsword),
@@ -230,4 +344,18 @@ return
     Prefab( "common/inventory/fa_silveraxe", silveraxe, assets_silveraxe),
     Prefab( "common/inventory/fa_dorfkingaxe", dorfkingaxe, assets_dorfkingaxe),
     Prefab( "common/inventory/fa_orckinghammer", orckingaxe, assets_orckingaxe),
-    Prefab( "common/inventory/fa_magesword", magesword, assets_coppersword)
+    Prefab( "common/inventory/fa_magesword", magesword, assets_coppersword),
+    Prefab( "common/inventory/fa_ironkama", fa_ironkama, assets_ironkama),
+    Prefab( "common/inventory/fa_silverkama", fa_silverkama, assets_silverkama),
+    Prefab( "common/inventory/fa_steelkama",fa_steelkama, assets_steelkama),
+    Prefab( "common/inventory/fa_adamantinekama",fa_adamantinekama, assets_adamantinekama),
+    Prefab( "common/inventory/fa_copperkama",fa_copperkama, assets_copperkama),
+    Prefab( "common/inventory/fa_woodenkama",fa_woodenkama, assets_woodenkama),
+    Prefab( "common/inventory/fa_goldkama",fa_goldkama, assets_goldkama),
+    Prefab( "common/inventory/fa_ironstaff", fa_ironstaff, assets_ironstaff),
+    Prefab( "common/inventory/fa_silverstaff", fa_silverstaff, assets_silverstaff),
+    Prefab( "common/inventory/fa_steelstaff",fa_steelstaff, assets_steelstaff),
+    Prefab( "common/inventory/fa_adamantinestaff",fa_adamantinestaff, assets_adamantinestaff),
+    Prefab( "common/inventory/fa_copperstaff",fa_copperstaff, assets_copperstaff),
+    Prefab( "common/inventory/fa_woodenstaff",fa_woodenstaff, assets_woodenstaff),
+    Prefab( "common/inventory/fa_goldstaff",fa_goldstaff, assets_goldstaff)
