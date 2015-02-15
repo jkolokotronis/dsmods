@@ -208,7 +208,7 @@ local function distillerfn()
     inst.AnimState:PlayAnimation("idle_close",true)
     inst.Transform:SetScale(0.5, 0.5, 0.5)
 
-    inst.components.fa_furnace.matcher = matchers.DistillerMAtcher
+    inst.components.fa_furnace:SetMatcher("DistillerMAtcher")
     inst.components.fa_furnace.getverb=function() return "BREW" end
 
 
@@ -221,8 +221,8 @@ local slotpos = {	Vector3(0,64+32+8+4,0),
 local widgetbuttoninfo = {
 	text = "Brew",
 	position = Vector3(0, -165, 0),
-	fn = function(inst)
-		inst.components.fa_furnace:StartCooking()	
+	fn = function(inst,doer)
+		inst.components.fa_furnace:StartCooking(doer)	
 	end,
 	
 	validfn = function(inst)
@@ -254,7 +254,7 @@ local function kegfn()
     inst.AnimState:PlayAnimation("idle_close",true)
     inst.Transform:SetScale(0.5, 0.5, 0.5)
 
-    inst.components.fa_furnace.matcher = matchers.KegMatcher
+    inst.components.fa_furnace:SetMatcher("KegMatcher")
     inst.components.fa_furnace.getverb=function() return "BREW" end
 
 
@@ -266,8 +266,8 @@ local slotpos = {	Vector3(0,64+32+8+4,0),
 local widgetbuttoninfo = {
 	text = "Brew",
 	position = Vector3(0, -165, 0),
-	fn = function(inst)
-		inst.components.fa_furnace:StartCooking()	
+	fn = function(inst,doer)
+		inst.components.fa_furnace:StartCooking(doer)	
 	end,
 	
 	validfn = function(inst)
@@ -301,7 +301,7 @@ local function alchemyfn()
     inst.AnimState:PlayAnimation("idle_close",true)
     inst.Transform:SetScale(1.15, 1.15, 1.15)
 
-    inst.components.fa_furnace.matcher = matchers.AlchemyMatcher
+    inst.components.fa_furnace:SetMatcher("AlchemyMatcher")
     inst.components.fa_furnace.getverb=function() return "ALCHEMY" end
 
 
@@ -315,8 +315,8 @@ local function alchemyfn()
 	local widgetbuttoninfo = {
 		text = "Mix",
 		position = Vector3(-130, -165, 0),
-		fn = function(inst)
-			inst.components.fa_furnace:StartCooking()	
+		fn = function(inst,doer)
+			inst.components.fa_furnace:StartCooking(doer)	
 		end,
 	
 		validfn = function(inst)
@@ -346,7 +346,7 @@ local function forgefn()
     inst.AnimState:PlayAnimation("idle_close",true)
     inst.Transform:SetScale(1.5, 1.5, 1.5)
 
-    inst.components.fa_furnace.matcher = matchers.ForgeMatcher
+    inst.components.fa_furnace:SetMatcher("ForgeMatcher")
     inst.components.fa_furnace.getverb=function() return "FORGE" end
 
 
@@ -360,8 +360,8 @@ local function forgefn()
 	local widgetbuttoninfo = {
 		text = "Forge",
 		position = Vector3(-130, -165, 0),
-		fn = function(inst)
-			inst.components.fa_furnace:StartCooking()	
+		fn = function(inst,doer)
+			inst.components.fa_furnace:StartCooking(doer)	
 		end,
 	
 		validfn = function(inst)
@@ -391,7 +391,7 @@ local function smelterfn()
     inst.AnimState:PlayAnimation("idle_close",true)
     inst.Transform:SetScale(1.7, 1.7, 1.7)
 
-    inst.components.fa_furnace.matcher = matchers.SmelterMatcher
+    inst.components.fa_furnace:SetMatcher("SmelterMatcher")
     inst.components.fa_furnace.getverb=function() return "SMELT" end
 
 
@@ -405,8 +405,8 @@ local function smelterfn()
 	local widgetbuttoninfo = {
 		text = "Smelt",
 		position = Vector3(-130, -165, 0),
-		fn = function(inst)
-			inst.components.fa_furnace:StartCooking()	
+		fn = function(inst,doer)
+			inst.components.fa_furnace:StartCooking(doer)	
 		end,
 	
 		validfn = function(inst)

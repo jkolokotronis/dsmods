@@ -104,6 +104,9 @@ FA_MOBXP_TABLE={
 	fa_animatedarmor_silver={default=80},
 	fa_animatedarmor_adamant={default=150},
 	fa_dorf_king_guard={default=100},
-	fa_dorf_guard={default=75}
-
+	fa_dorf_guard={default=75},
+	fa_skull={default=55},
+	fa_zombie={default=55},
+	fa_ghoul={default=55},
+	fa_mummy={default=55},
 }

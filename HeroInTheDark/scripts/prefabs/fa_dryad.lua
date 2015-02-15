@@ -100,6 +100,8 @@ local function fn()
     inst:AddComponent("locomotor") -- locomotor must be constructed before the stategraph
     inst.components.locomotor.runspeed = RUN_SPEED
     inst:SetStateGraph("SGdryad")
+    inst:AddComponent("leader")
+    inst:AddComponent("follower")
 
 
     local brain = require "brains/dryadbrain"

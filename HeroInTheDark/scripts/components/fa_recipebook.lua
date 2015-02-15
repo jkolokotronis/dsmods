@@ -1,26 +1,6 @@
 local matchers=require "fa_smelter_matcher"
 
 
-    Asset( "IMAGE", "images/notebookparts/alchemy-tab-Kopie.tex" ),
-    Asset( "IMAGE", "images/notebookparts/alchemy-tab.tex" ),
-    Asset( "IMAGE", "images/notebookparts/Alchemy-table-sketch.tex" ),
-    Asset( "IMAGE", "images/notebookparts/background.tex" ),
-    Asset( "IMAGE", "images/notebookparts/Exit-button.tex" ),
-    Asset( "IMAGE", "images/notebookparts/Foodpot-sketch.tex" ),
-    Asset( "IMAGE", "images/notebookparts/food_drinks-tab-Kopie.tex" ),
-    Asset( "IMAGE", "images/notebookparts/food_drinks-tab.tex" ),
-    Asset( "IMAGE", "images/notebookparts/Forge-sketch.tex" ),
-    Asset( "IMAGE", "images/notebookparts/forge-tab-Kopie.tex" ),
-    Asset( "IMAGE", "images/notebookparts/forge-tab.tex" ),
-    Asset( "IMAGE", "images/notebookparts/left.tex" ),
-    Asset( "IMAGE", "images/notebookparts/Other-sketch.tex" ),
-    Asset( "IMAGE", "images/notebookparts/other-tab-Kopie.tex" ),
-    Asset( "IMAGE", "images/notebookparts/other-tab.tex" ),
-    Asset( "IMAGE", "images/notebookparts/right.tex" ),
-    Asset( "IMAGE", "images/notebookparts/Smelter-sketch.tex" ),
-    Asset( "IMAGE", "images/notebookparts/smelter-tab-Kopie.tex" ),
-    Asset( "IMAGE", "images/notebookparts/smelter-tab.tex" ),
-
 local FA_RecipeBook_Category=Class(function(self,inst,matcher)
     self.inst=inst
     self.matcher=matcher
@@ -30,14 +10,12 @@ end)
 
 local FA_RecipeBook = Class(function(self, inst)
     self.inst = inst
-
-    SmelterMatcher=FA_Matcher(smelt_recipes),
-    AlchemyMatcher=FA_Matcher(alchemy_recipes),
-    ForgeMatcher=FA_Matcher(forge_recipes),
-    KegMatcher=FA_Matcher(keg_recipes),
-    DistillerMatcher=FA_Matcher(distiller_recipes),
-    FN_DESCRIPTION=FN_DESCRIPTION
-
+    self.recipes={}
+    self.recipes["SmelterMatcher"]=FA_RecipeBook_Category(self.inst,matchers["SmelterMatcher"])
+    self.recipes["AlchemyMatcher"]=FA_RecipeBook_Category(self.inst,matchers["AlchemyMatcher"])
+    self.recipes["ForgeMatcher"]=FA_RecipeBook_Category(self.inst,matchers["ForgeMatcher"])
+    self.recipes["KegMatcher"]=FA_RecipeBook_Category(self.inst,matchers["KegMatcher"])
+    self.recipes["DistillerMatcher"]=FA_RecipeBook_Category(self.inst,matchers["DistillerMatcher"])
 end)
 
 function FA_RecipeBook:AddRecipe(cat,recipe)

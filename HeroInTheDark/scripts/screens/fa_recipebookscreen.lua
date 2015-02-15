@@ -8,59 +8,28 @@ local Image = require "widgets/image"
 local Widget = require "widgets/widget"
 local NumericSpinner = require "widgets/numericspinner"
 local IngredientUI = require "widgets/ingredientui"
-local FA_SpellPopup = require "widgets/fa_spellpopup"
 local matchers=require "fa_smelter_matcher"
+local FA_SpellPopup = require "widgets/fa_spellpopup"
 	local HSEP=16
 	local YSEP=14
 	local HW=64
 	local HH=64
 	local PAGE_COUNT=5
 
-FASpellBookScreen = Class(Screen, function(self,inst,category,page)
+
+FARecipeBookScreen = Class(Screen, function(self,caster,category,page)
 	Screen._ctor(self, "FARecipeBookScreen")
-	self.inst=inst or GetPlayer()
+	self.caster=caster or GetPlayer()
 	self:DoInit()
 
-    self.category=category or "food" 
+    self.category=category or "KegMatcher" 
     self.page=page or 1
-    self:SetCategory(self.category)
-    self:SetPage(self.page)
---	self:SetLevel(self.level,self.page)
+    self:SetCategory(self.category,self.page)
 end)
 
-function FARecipeBookScreen:InitClass()
-	if(self.caster.prefab=="druid")then
-		self.bgframe:SetPosition(-35, 84, 0)
-		self.spell:SetPosition(-200, -70, 0)
-		self.leveltext:SetPosition(150,276,0)
-		self.spell_list:SetPosition(5, 205, 0)
-	    self.prevbutton:SetPosition(-380,-150,0)
-    	self.nextbutton:SetPosition(280,-150,0)
-		self.craftbutton:SetPosition(130,-130,0)
-    	self.closebutton:SetPosition(390,300,0)
-    elseif(self.caster.prefab=="wizard")then
-		self.bgframe:SetPosition(20, 80, 0)
-		self.spell:SetPosition(-130, -70, 0)
-		self.leveltext:SetPosition(210,274,0)
-		self.spell_list:SetPosition(78, 202, 0)
-	    self.prevbutton:SetPosition(-280,-170,0)
-    	self.nextbutton:SetPosition(320,-170,0)
-		self.craftbutton:SetPosition(200,-120,0)
-    	self.closebutton:SetPosition(450,295,0)
-	elseif(self.caster.prefab=="cleric")then
-		self.bgframe:SetPosition(82, 80, 0)
-		self.spell:SetPosition(-60, -65, 0)
-		self.leveltext:SetPosition(280,274,0)
-		self.spell_list:SetPosition(135, 205, 0)
-	    self.prevbutton:SetPosition(-175,-167,0)
-    	self.nextbutton:SetPosition(325,-167,0)
-		self.craftbutton:SetPosition(250,-110,0)
-    	self.closebutton:SetPosition(450,295,0)
-	end
-end
 
-function FASpellBookScreen:DoInit()
-	SetPause(true,"fa_spellcraft")
+function FARecipeBookScreen:DoInit()
+	SetPause(true,"fa_recipecraft")
 
     self.black = self:AddChild(Image("images/global.xml", "square.tex"))
     self.black:SetVRegPoint(ANCHOR_MIDDLE)
@@ -84,24 +53,42 @@ function FASpellBookScreen:DoInit()
 
 --	self.bgframe=self.root:AddChild(Image("images/fa_"..self.caster.prefab.."_bookframe.xml", "fa_"..self.caster.prefab.."_bookframe.tex"))
     
-		--[[
-    self.title = self.root:AddChild(Text(TITLEFONT, 50))
-    self.title:SetPosition(-180, 200, 0)
-
-    self.quote = self.root:AddChild(Text(BODYTEXTFONT, 30))
-    self.quote:SetVAlign(ANCHOR_TOP)
-    self.quote:SetPosition(-180, 70, 0)
-    self.quote:EnableWordWrap(true)
-    self.quote:SetRegionSize(250, 200)
-]]
---    self.leveltext=self.root:AddChild(Text(UIFONT, 32))
 
     self.recipe = self.root:AddChild(Widget("RECIPE"))
---    self.recipe:SetPosition(130, 640, 0)
 
     self.recipe_list= self.root:AddChild(Widget("RECIPELIST"))
 
+
+	self.foodbutton=self.root:AddChild(ImageButton("images/notebookparts/food_drinks-tab-Kopie.xml", "food_drinks-tab-Kopie.tex"))
+	self.foodbutton:SetPosition(117-453,3+300,0)
+    self.foodbutton:SetOnClick(function()
+    	print("wtf are you even working")
+    	self:SetCategory("KegMatcher",1)
+    	end)
+	self.forgebutton=self.root:AddChild(ImageButton("images/notebookparts/forge-tab-Kopie.xml", "forge-tab-Kopie.tex"))
+	self.forgebutton:SetPosition(265-458,14+280,0)
+    self.forgebutton:SetOnClick(function()
+    	self:SetCategory("ForgeMatcher",1)
+    	end)
+	self.smelterbutton=self.root:AddChild(ImageButton("images/notebookparts/smelter-tab-Kopie.xml", "smelter-tab-Kopie.tex"))
+	self.smelterbutton:SetPosition(414-466,14+270,0)
+    self.smelterbutton:SetOnClick(function()
+    	self:SetCategory("SmelterMatcher",1)
+    	end)
+	self.alchemybutton=self.root:AddChild(ImageButton("images/notebookparts/alchemy-tab-Kopie.xml", "alchemy-tab-Kopie.tex"))
+	self.alchemybutton:SetPosition(573-446,0+300,0)
+    self.alchemybutton:SetOnClick(function()
+    	self:SetCategory("AlchemyMatcher",1)
+    	end)
+	self.otherbutton=self.root:AddChild(ImageButton("images/notebookparts/other-tab-Kopie.xml", "other-tab-Kopie.tex"))
+	self.otherbutton:SetPosition(747-460,18+282,0)
+    self.otherbutton:SetOnClick(function()
+    	self:SetCategory("DistillerMatcher",1)
+    	end)
+
+
     self.prevbutton = self.root:AddChild(ImageButton("images/notebookparts/left.xml", "left.tex"))--, focus, disabled))
+	self.prevbutton:SetPosition(149-436,510+307,0)
     self.prevbutton:SetOnClick(function()
     		if(self.page>1)then
 	    		return self:SetCategory(self.category,self.page-1 )
@@ -110,6 +97,7 @@ function FASpellBookScreen:DoInit()
 	    	end
     	end)
     self.nextbutton = self.root:AddChild(ImageButton("images/notebookparts/right.xml", "right.tex"))
+	self.nextbutton:SetPosition(393-436,507+307,0)
     self.nextbutton:SetOnClick(function()
     	if(self.currentcount and self.currentcount>self.page*PAGE_COUNT)then
     		return self:SetCategory(self.category,self.page+1)
@@ -117,33 +105,35 @@ function FASpellBookScreen:DoInit()
 	    	return self:SetCategory(self.category+1,1 )
 	    end
     	end)
+
     self.closebutton = self.root:AddChild(ImageButton("images/notebookparts/Exit-button.xml", "Exit-button.tex"))
+	self.closebutton:SetPosition(938-477,26+237,0)
     self.closebutton:SetOnClick(function()
     	SetPause(false)
     	TheFrontEnd:PopScreen(self)
     end)
 
+--    self:InitClass()
 end
 
-function FASpellBookScreen:SetCategory(category,page)
-	self.leveltext:SetString("Level "..level)
-	self.craftbutton:Hide()
+function FARecipeBookScreen:SetCategory(category,page)
 	self.category=category
 	self.page=page
---	print("level",level,"page",page)
+	print("category",category,"page",page)
 
 	self.recipe_list:KillAllChildren()
 	local list={}
-	for i=1,#self.inst.fa_recipebook.recipes[category].recipes do
-		local sp=self.inst.fa_recipebook.recipes[category][i]
+	for i=1,#self.caster.components.fa_recipebook.recipes[category].recipes do
+		local sp=self.caster.components.fa_recipebook.recipes[category].recipes[i]
 		table.insert(list,sp)
 	end
 	self.currentcount=#list
+	print("count",#list)
 
 	for i=0,4 do
 		local r=list[(page-1)*PAGE_COUNT+i] 
 		if(r)then
-			local button=self.spell_list:AddChild(ImageButton(
+			local button=self.recipe_list:AddChild(ImageButton(
 				"images/inventoryimages/fa_inventoryimages.xml",
 				r..".tex",
 				r..".tex",
@@ -170,10 +160,10 @@ function FASpellBookScreen:SetCategory(category,page)
 	return true
 end
 
-function FASpellBookScreen:OnSelectRecipe(r)
+function FARecipeBookScreen:OnSelectRecipe(r)
 	self.selected=r
 	self.recipe:KillAllChildren()
-	local data=self.inst.components.fa_recipebook.recipes[self.category].matcher.hashtable[r]
+	local data=self.caster.components.fa_recipebook.recipes[self.category].matcher.hashtable[r]
 	local product=data.product
 	local cooktime=data.cooktime
 	local ingreds={}
@@ -184,7 +174,6 @@ function FASpellBookScreen:OnSelectRecipe(r)
 		if(type(v.ingred)=="function")then
             ing = ingred:AddChild(Text(SMALLNUMBERFONT, 24))
             ing:SetString(matchers.FN_DESCRIPTION[v.ingred])
-        end
 		else
 		    ing = ingred:AddChild(Image("images/inventoryimages/fa_inventoryimages", v.ingred))
 		end
@@ -196,8 +185,17 @@ function FASpellBookScreen:OnSelectRecipe(r)
 end
 
 
-function FASpellBookScreen:OnUpdate( dt )
+function FARecipeBookScreen:OnUpdate( dt )
 	return true
 end
 
-return FASpellBookScreen
+return FARecipeBookScreen
+
+
+
+
+
+
+
+
+

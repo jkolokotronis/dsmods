@@ -1,14 +1,17 @@
-
-local FA_Furnace = Class(function(self, inst,matcher)
+local matchers=require "fa_smelter_matcher"
+local FA_Furnace = Class(function(self, inst)
     self.inst = inst
     self.cooking = false
     self.done = false
     self.time=0
     self.product = nil
-    self.matcher = matcher
     self.inst:StartUpdatingComponent(self)
 end)
 
+function FA_Furnace:SetMatcher(matcher)
+    self.category=matcher
+    self.matcher = matchers[matcher]
+end
 
 function FA_Furnace:OnUpdate(dt)
 	if(self.cooking)then
@@ -61,7 +64,7 @@ function FA_Furnace:CanCook()
 end
 
 
-function FA_Furnace:StartCooking()
+function FA_Furnace:StartCooking(doer)
 	if not self.done and not self.cooking then
 		if self.inst.components.container then
 			
@@ -69,6 +72,13 @@ function FA_Furnace:StartCooking()
 
 			local res=self.matcher:Match(self:GetIngreds())
 			self.product=res.product
+			if(doer and self.product and #self.product>0 and doer.components.fa_recipebook)then
+				local first=self.product[1]
+				--avoiding 'excluded' entries - theres prob a nicer way 
+				if(matcher.hashtable[first])then
+					doer.components.fa_recipebook:AddRecipe(self.category,first)
+				end
+			end
 			cooktime=res.cooktime 
 			self.time=cooktime
 			self.done = nil

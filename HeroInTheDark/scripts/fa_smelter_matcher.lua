@@ -1228,70 +1228,70 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"fa_bottle_empty","blowdart_sleep"},cooktime=120},
+		match={product={"fa_bottle_empty","blowdart_sleep"},cooktime=120,ignorehash=true},
 		test={
 			{ingred="fa_sand",count=5},
 			{ingred="blowdart_sleep",count=1},
 		},
 	},
 	{
-		match={product={"fa_bottle_empty","blowdart_fire"},cooktime=120},
+		match={product={"fa_bottle_empty","blowdart_fire"},cooktime=120,ignorehash=true},
 		test={
 			{ingred="fa_sand",count=5},
 			{ingred="blowdart_fire",count=1},
 		},
 	},
 	{
-		match={product={"fa_bottle_empty","blowdart_pipe"},cooktime=120},
+		match={product={"fa_bottle_empty","blowdart_pipe"},cooktime=120,ignorehash=true},
 		test={
 			{ingred="fa_sand",count=5},
 			{ingred="blowdart_pipe",count=1},
 		},
 	},
 	{
-		match={product={"fa_ironbar","fa_ironbar","fa_ironbar","fa_ironbar","fa_ironbar","fa_ironbar"},cooktime=60},
+		match={product={"fa_ironbar","fa_ironbar","fa_ironbar","fa_ironbar","fa_ironbar","fa_ironbar"},cooktime=60,ignorehash=true},
 		test={
 			{ingred="fa_ironbarslag",count=6},
 			{ingred=isfuel,count=2},
 		},
 	},
 	{
-		match={product={"fa_pigironbar","fa_pigironbar","fa_pigironbar","fa_pigironbar","fa_pigironbar","fa_pigironbar"},cooktime=60},
+		match={product={"fa_pigironbar","fa_pigironbar","fa_pigironbar","fa_pigironbar","fa_pigironbar","fa_pigironbar"},cooktime=60,ignorehash=true},
 		test={
 			{ingred="fa_pigironbarslag",count=6},
 			{ingred=isfuel,count=2},
 		},
 	},
 	{
-		match={product={"fa_copperbar","fa_copperbar","fa_copperbar","fa_copperbar","fa_copperbar","fa_copperbar"},cooktime=60},
+		match={product={"fa_copperbar","fa_copperbar","fa_copperbar","fa_copperbar","fa_copperbar","fa_copperbar"},cooktime=60,ignorehash=true},
 		test={
 			{ingred="fa_copperbarslag",count=6},
 			{ingred=isfuel,count=2},
 		},
 	},
 	{
-		match={product={"fa_steelbar","fa_steelbar","fa_steelbar","fa_steelbar","fa_steelbar","fa_steelbar"},cooktime=60},
+		match={product={"fa_steelbar","fa_steelbar","fa_steelbar","fa_steelbar","fa_steelbar","fa_steelbar"},cooktime=60,ignorehash=true},
 		test={
 			{ingred="fa_steelbarslag",count=6},
 			{ingred=isfuel,count=2},
 		},
 	},
 	{
-		match={product={"fa_silverbar","fa_silverbar","fa_silverbar","fa_silverbar","fa_silverbar","fa_silverbar"},cooktime=60},
+		match={product={"fa_silverbar","fa_silverbar","fa_silverbar","fa_silverbar","fa_silverbar","fa_silverbar"},cooktime=60,ignorehash=true},
 		test={
 			{ingred="fa_silverbarslag",count=6},
 			{ingred=isfuel,count=2},
 		},
 	},
 	{
-		match={product={"fa_goldbar","fa_goldbar","fa_goldbar","fa_goldbar","fa_goldbar","fa_goldbar"},cooktime=60},
+		match={product={"fa_goldbar","fa_goldbar","fa_goldbar","fa_goldbar","fa_goldbar","fa_goldbar"},cooktime=60,ignorehash=true},
 		test={
 			{ingred="fa_goldbarslag",count=6},
 			{ingred=isfuel,count=2},
 		},
 	},
 	{
-		match={product={"fa_lavabar","fa_lavabar","fa_lavabar","fa_lavabar","fa_lavabar","fa_lavabar"},cooktime=60},
+		match={product={"fa_lavabar","fa_lavabar","fa_lavabar","fa_lavabar","fa_lavabar","fa_lavabar"},cooktime=60,ignorehash=true},
 		test={
 			{ingred="fa_lavabarslag",count=6},
 			{ingred=isfuel,count=2},
@@ -1309,12 +1309,14 @@ end)
 function FA_Matcher:BuildHash()
 	self.hashtable={}
 	for k,v in ipairs(self.craftlists) do 
-		local product=v.match.product
-		local first=product[1]
+		if not(v.match.ignorehash==true) then
+			local product=v.match.product
+			local first=product[1]
 		--remember just first? or last?
 --		if(self.hashtable[first]==nil)then
 			self.hashtable[first]=v
 --		end
+		end
 	end
 end
 

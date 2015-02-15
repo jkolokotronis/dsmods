@@ -151,7 +151,7 @@ function FASpellBookScreen:SetLevel(level,page)
 			local spell=list[(page-1)*PAGE_COUNT+i*4+j+1]
 			if(spell)then
 			local button=self.spell_list:AddChild(ImageButton(
-				"images/inventoryimages/fa_scroll_"..spell.school..".xml",
+				"images/inventoryimages/fa_inventoryimages.xml",
 				"fa_scroll_"..spell.school..".tex",
 				"fa_scroll_"..spell.school..".tex",
 				"fa_scroll_"..spell.school..".tex"

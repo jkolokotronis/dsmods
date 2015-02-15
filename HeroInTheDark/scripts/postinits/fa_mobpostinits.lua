@@ -485,6 +485,9 @@ FA_ModUtil.AddPrefabPostInit("leif",function(inst)
     inst:AddTag("fa_plant")
     inst:AddTag("fa_giant")
     inst:AddTag("fa_evil")
+    if(not inst.components.follower)then
+        inst:AddComponent("follower")
+    end
     inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.5
@@ -495,6 +498,9 @@ FA_ModUtil.AddPrefabPostInit("leif_sparse",function(inst)
     inst:AddTag("fa_plant")
     inst:AddTag("fa_giant")
     inst:AddTag("fa_evil")
+    if(not inst.components.follower)then
+        inst:AddComponent("follower")
+    end
     inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.5

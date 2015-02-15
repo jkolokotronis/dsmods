@@ -176,6 +176,7 @@ PrefabFiles = {
     "fa_bow",
     "fa_keys",
     "fa_chests",
+    "fa_recipebook",
     "fa_boots",
     "fa_rings",
     "fa_fireaxe",
@@ -898,6 +899,7 @@ AddPrefabPostInit("world", function(inst)
         inst:AddComponent("fa_bufftimers")
         inst:AddComponent("fa_drinker")
         inst:AddComponent("fa_intoxication")
+        inst:AddComponent("fa_recipebook")
 
         if(GLOBAL.FA_ModCompat.alwaysonmod)then
             print("alwayson", GLOBAL.FA_ModCompat.alwaysonmod.version)
