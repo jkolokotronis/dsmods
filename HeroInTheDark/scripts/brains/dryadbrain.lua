@@ -46,9 +46,8 @@ function DryadBrain:TryPush()
         if v:IsValid() and v.components.combat and not (v.components.health and v.components.health:IsDead()) and (v:HasTag("player") or v:HasTag("companion")) then
             local p1=Vector3(v.Transform:GetWorldPosition())
             local dsq = self.inst:GetDistanceSqToInst(v)
-            if(dsq>(FORCEPULL_MINRANGE*FORCEPULL_MINRANGE))then
                 local r=self.inst.Physics:GetRadius() + v.Physics:GetRadius() + KICK_RANGE
-                local vector = -(p1-pos):GetNormalized()
+                local vector = (pos-p1):GetNormalized()
                 local newpos=pos+vector*r
                 print("r",r,"oldpos",pos,"newpos",newpos)
                 if GetWorld().Map and GetWorld().Map:GetTileAtPoint(newpos.x, newpos.y, newpos.z) ~= GROUND.IMPASSABLE then
@@ -61,7 +60,6 @@ function DryadBrain:TryPush()
 
                     return true
                 end
-            end
         end
     end
     return false
@@ -71,6 +69,7 @@ function DryadBrain:TryHeal()
     if(self.inst.fa_heal_counter<=0 or self.inst.components.health.currenthealth>0.3*self.inst.components.health.maxhealth) then return false end
     self.inst.components.health:DoDelta(HEAL_DELTA)
     self.inst.fa_heal_counter=self.inst.fa_heal_counter-1
+        print("heal")
     return true
 end
 function DryadBrain:TryExtinguish() 
@@ -78,7 +77,7 @@ function DryadBrain:TryExtinguish()
 
 end
 function DryadBrain:TrySummon() 
-    if(self.inst.components.leader.numfollowers>=3)then return false end
+    if(self.inst.components.leader.numfollowers>=3 or self.inst.components.combat.target==nil)then return false end
     if(self.inst.fa_summontreeguard_counter>0 ) then 
         local pos=Vector3(self.inst.Transform:GetWorldPosition())
         local ents = TheSim:FindEntities(pos.x,pos.y,pos.z, LEIF_RANGE)
@@ -97,7 +96,7 @@ function DryadBrain:TrySummon()
                     tree.sg:GoToState("sleep")
                 end)
                 self.inst.fa_summontreeguard_counter=self.inst.fa_summontreeguard_counter-1
-                self.inst:FacePoint(v)
+                self.inst:FacePoint(pt)
                 self.inst.sg:GoToState("spell")
                 return true
             end
@@ -129,7 +128,7 @@ function DryadBrain:TryRegrow()
     if(self.inst.fa_plantgrowth_counter<=0) then return false end
     local range=15
     local hit=false
-    local pos = Vector3(reader.Transform:GetWorldPosition())
+    local pos = Vector3(self.inst.Transform:GetWorldPosition())
     local ents = TheSim:FindEntities(pos.x,pos.y,pos.z, range)
     for k,v in pairs(ents) do
         if v.components.pickable then
@@ -141,11 +140,14 @@ function DryadBrain:TryRegrow()
             hit=true
         end        
         if v:HasTag("tree") and v.components.growable and not v:HasTag("stump") then
+            if(v.components.growable.stage<2)then
             v.components.growable:DoGrowth()
             hit=true
+            end
         end
     end
     if(hit)then 
+        print("regrow")
         self.inst.fa_plantgrowth_counter=self.inst.fa_plantgrowth_counter-1 
         self.inst.sg:GoToState("spell")
     end

@@ -51,43 +51,49 @@ function FARecipeBookScreen:DoInit()
 	self.bg:SetScale(1, 1, 1)
 --    self.bg:SetScaleMode(SCALEMODE_FIXEDSCREEN_NONDYNAMIC)
 
+    self.sketch = self.root:AddChild(Image("images/notebookparts/notebookparts.xml", "Foodpot-sketch.tex"))
+    self.sketch:SetVRegPoint(ANCHOR_MIDDLE)
+    self.sketch:SetHRegPoint(ANCHOR_MIDDLE)
+    self.sketch:SetPosition(240,-190,0)
+
 --	self.bgframe=self.root:AddChild(Image("images/fa_"..self.caster.prefab.."_bookframe.xml", "fa_"..self.caster.prefab.."_bookframe.tex"))
     
 
     self.recipe = self.root:AddChild(Widget("RECIPE"))
+	self.recipe:SetPosition(150,180,0)
 
     self.recipe_list= self.root:AddChild(Widget("RECIPELIST"))
+	self.recipe_list:SetPosition(-340,280,0)
 
 
-	self.foodbutton=self.root:AddChild(ImageButton("images/notebookparts/food_drinks-tab-Kopie.xml", "food_drinks-tab-Kopie.tex"))
+	self.foodbutton=self.root:AddChild(ImageButton("images/notebookparts/notebookparts.xml","food_drinks-tab.tex", "food_drinks-tab-Kopie.tex"))
 	self.foodbutton:SetPosition(117-453,3+300,0)
     self.foodbutton:SetOnClick(function()
-    	print("wtf are you even working")
-    	self:SetCategory("KegMatcher",1)
+    	self:SetCategory("KegMatcher",1, "Foodpot-sketch.tex")
     	end)
-	self.forgebutton=self.root:AddChild(ImageButton("images/notebookparts/forge-tab-Kopie.xml", "forge-tab-Kopie.tex"))
+	self.forgebutton=self.root:AddChild(ImageButton("images/notebookparts/notebookparts.xml","forge-tab.tex", "forge-tab-Kopie.tex"))
 	self.forgebutton:SetPosition(265-458,14+280,0)
     self.forgebutton:SetOnClick(function()
-    	self:SetCategory("ForgeMatcher",1)
+    	self:SetCategory("ForgeMatcher",1,"Forge-sketch.tex")
     	end)
-	self.smelterbutton=self.root:AddChild(ImageButton("images/notebookparts/smelter-tab-Kopie.xml", "smelter-tab-Kopie.tex"))
+	self.smelterbutton=self.root:AddChild(ImageButton("images/notebookparts/notebookparts.xml","smelter-tab.tex", "smelter-tab-Kopie.tex"))
 	self.smelterbutton:SetPosition(414-466,14+270,0)
     self.smelterbutton:SetOnClick(function()
-    	self:SetCategory("SmelterMatcher",1)
+    	self:SetCategory("SmelterMatcher",1,"Smelter-sketch.tex")
     	end)
-	self.alchemybutton=self.root:AddChild(ImageButton("images/notebookparts/alchemy-tab-Kopie.xml", "alchemy-tab-Kopie.tex"))
-	self.alchemybutton:SetPosition(573-446,0+300,0)
+	self.alchemybutton=self.root:AddChild(ImageButton("images/notebookparts/notebookparts.xml","alchemy-tab.tex", "alchemy-tab-Kopie.tex"))
+	self.alchemybutton:SetPosition(573-446,0+302,0)
     self.alchemybutton:SetOnClick(function()
-    	self:SetCategory("AlchemyMatcher",1)
+    	self:SetCategory("AlchemyMatcher",1,"Alchemy-table-sketch.tex")
     	end)
-	self.otherbutton=self.root:AddChild(ImageButton("images/notebookparts/other-tab-Kopie.xml", "other-tab-Kopie.tex"))
-	self.otherbutton:SetPosition(747-460,18+282,0)
+	self.otherbutton=self.root:AddChild(ImageButton("images/notebookparts/notebookparts.xml","other-tab.tex", "other-tab-Kopie.tex"))
+	self.otherbutton:SetPosition(747-460,18+280,0)
     self.otherbutton:SetOnClick(function()
-    	self:SetCategory("DistillerMatcher",1)
+    	self:SetCategory("DistillerMatcher",1,"Other-sketch.tex")
     	end)
 
 
-    self.prevbutton = self.root:AddChild(ImageButton("images/notebookparts/left.xml", "left.tex"))--, focus, disabled))
+    self.prevbutton = self.root:AddChild(ImageButton("images/notebookparts/notebookparts.xml", "left.tex"))--, focus, disabled))
 	self.prevbutton:SetPosition(149-436,510+307,0)
     self.prevbutton:SetOnClick(function()
     		if(self.page>1)then
@@ -96,7 +102,7 @@ function FARecipeBookScreen:DoInit()
 	    		return self:SetCategory(self.category-1,1)
 	    	end
     	end)
-    self.nextbutton = self.root:AddChild(ImageButton("images/notebookparts/right.xml", "right.tex"))
+    self.nextbutton = self.root:AddChild(ImageButton("images/notebookparts/notebookparts.xml", "right.tex"))
 	self.nextbutton:SetPosition(393-436,507+307,0)
     self.nextbutton:SetOnClick(function()
     	if(self.currentcount and self.currentcount>self.page*PAGE_COUNT)then
@@ -106,8 +112,8 @@ function FARecipeBookScreen:DoInit()
 	    end
     	end)
 
-    self.closebutton = self.root:AddChild(ImageButton("images/notebookparts/Exit-button.xml", "Exit-button.tex"))
-	self.closebutton:SetPosition(938-477,26+237,0)
+    self.closebutton = self.root:AddChild(ImageButton("images/notebookparts/notebookparts.xml", "Exit-button.tex"))
+	self.closebutton:SetPosition(938-487,26+234,0)
     self.closebutton:SetOnClick(function()
     	SetPause(false)
     	TheFrontEnd:PopScreen(self)
@@ -116,9 +122,12 @@ function FARecipeBookScreen:DoInit()
 --    self:InitClass()
 end
 
-function FARecipeBookScreen:SetCategory(category,page)
+function FARecipeBookScreen:SetCategory(category,page,tex)
 	self.category=category
 	self.page=page
+	if(tex~=nil)then
+		self.sketch:SetTexture("images/notebookparts/notebookparts.xml", tex)
+	end
 	print("category",category,"page",page)
 
 	self.recipe_list:KillAllChildren()
@@ -142,7 +151,14 @@ function FARecipeBookScreen:SetCategory(category,page)
 			button:SetOnClick(function()
 						return self:OnSelectRecipe(r)
 					end)
-			button:SetPosition(150,-i*YSEP-i*HH,0)
+			button:SetPosition(0,-i*YSEP-i*HH,0)
+			local text= self.recipe_list:AddChild(Text(BODYTEXTFONT, 28))
+--    		self.quote:SetVAlign(ANCHOR_TOP)
+    		text:SetPosition(100,-i*YSEP-i*HH,0)
+		    text:EnableWordWrap(true)
+    		text:SetRegionSize(250, 80)
+--    		print("r:",r,"string",STRINGS.NAMES[string.upper(r)])
+    		text:SetString(STRINGS.NAMES[string.upper(r)])
 		end
 	end
 
@@ -167,18 +183,23 @@ function FARecipeBookScreen:OnSelectRecipe(r)
 	local product=data.product
 	local cooktime=data.cooktime
 	local ingreds={}
+	local i=0
 	for k,v in ipairs(data.test) do
-		local ingred=self.recipe:AddChild(Widget())
+		local ingred=self.recipe:AddChild(Widget("ing"))
 		local t={}
 		local ing=nil
 		if(type(v.ingred)=="function")then
-            ing = ingred:AddChild(Text(SMALLNUMBERFONT, 24))
+            ing = ingred:AddChild(Text(SMALLNUMBERFONT, 28))
             ing:SetString(matchers.FN_DESCRIPTION[v.ingred])
 		else
-		    ing = ingred:AddChild(Image("images/inventoryimages/fa_inventoryimages", v.ingred))
+			print("ingred",v.ingred)
+		    ing = ingred:AddChild(Image("images/inventoryimages/fa_inventoryimages.xml", v.ingred..".tex"))
 		end
-		local count=ingred:AddChild(Text(SMALLNUMBERFONT,24))
-		count:SetString("X "..v.count)
+		local count=ingred:AddChild(Text(SMALLNUMBERFONT,28))
+		count:SetString(v.count.." X ")
+  		count:SetPosition(0,-i*YSEP-i*HH,0)
+   		ing:SetPosition(80,-i*YSEP-i*HH,0)
+   		i=i+1
 	end
 
 	return true

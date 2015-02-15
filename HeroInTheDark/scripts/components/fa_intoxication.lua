@@ -178,10 +178,13 @@ local FA_Intoxication = Class(function(self, inst)
             onenter=function()
                 self.inst.components.hunger.hungerrate=self.inst.components.hunger.hungerrate+0.1
                 self.inst.components.health.absorb=self.inst.components.health.absorb-0.2
+                self.old_runspeed=self.inst.components.locomotor.GetRunSpeed
+                self.inst.components.locomotor.GetRunSpeed=function(self) return -self.old_runspeed(self) end
             end,
             onexit=function()
                 self.inst.components.hunger.hungerrate=self.inst.components.hunger.hungerrate-0.1
                 self.inst.components.health.absorb=self.inst.components.health.absorb+0.2
+                self.inst.components.locomotor.GetRunSpeed=self.old_runspeed
             end,
             active=false            
         },
@@ -206,6 +209,16 @@ local FA_Intoxication = Class(function(self, inst)
                     GetClock():MakeNextDay()
                     eater.sg:GoToState("wakeup")    
                     self:SetPercent(0)
+
+                    local spawn_point= Vector3(eater.Transform:GetWorldPosition())
+                    local tree = SpawnPrefab("pigman") 
+                    local pt = Vector3(spawn_point.x, 0, spawn_point.z)
+                    tree.Physics:SetCollides(false)
+                    tree.Physics:Teleport(pt.x, pt.y, pt.z) 
+                    tree.Physics:SetCollides(true)
+                    eater.components.leader:AddFollower(tree)
+                    tree.components.follower:AddLoyaltyTime(60*8*2)
+
                 end)
             end,
             onexit=function()

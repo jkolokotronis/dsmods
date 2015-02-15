@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<Atlas>
+	<Texture filename="notebookparts.tex" />
+	<Elements>
+		<Element name="0.tex" u1="0.000244141" u2="0.0285645" v1="0.693359" v2="0.998047" />
+		<Element name="1.tex" u1="0.0290527" u2="0.0505371" v1="0.740234" v2="0.998047" />
+		<Element name="2.tex" u1="0.0510254" u2="0.0695801" v1="0.748047" v2="0.998047" />
+		<Element name="3.tex" u1="0.0700684" u2="0.0881348" v1="0.748047" v2="0.998047" />
+		<Element name="4.tex" u1="0.088623" u2="0.101318" v1="0.740234" v2="0.998047" />
+		<Element name="5.tex" u1="0.101807" u2="0.119873" v1="0.716797" v2="0.998047" />
+		<Element name="6.tex" u1="0.120361" u2="0.151123" v1="0.751953" v2="0.998047" />
+		<Element name="7.tex" u1="0.151611" u2="0.173096" v1="0.740234" v2="0.998047" />
+		<Element name="8.tex" u1="0.173584" u2="0.19458" v1="0.744141" v2="0.998047" />
+		<Element name="9.tex" u1="0.195068" u2="0.22583" v1="0.751953" v2="0.998047" />
+		<Element name="Alchemy-table-sketch.tex" u1="0.226318" u2="0.307373" v1="0.537109" v2="0.998047" />
+		<Element name="Exit-button.tex" u1="0.307861" u2="0.355713" v1="0.541016" v2="0.998047" />
+		<Element name="Foodpot-sketch.tex" u1="0.356201" u2="0.438232" v1="0.611328" v2="0.998047" />
+		<Element name="Forge-sketch.tex" u1="0.438721" u2="0.519775" v1="0.626953" v2="0.998047" />
+		<Element name="Other-sketch.tex" u1="0.520264" u2="0.596436" v1="0.673828" v2="0.998047" />
+		<Element name="Smelter-sketch.tex" u1="0.596924" u2="0.680908" v1="0.560547" v2="0.998047" />
+		<Element name="alchemy-tab-Kopie.tex" u1="0.681396" u2="0.77124" v1="0.650391" v2="0.998047" />
+		<Element name="alchemy-tab.tex" u1="0.771729" u2="0.861572" v1="0.650391" v2="0.998047" />
+		<Element name="food_drinks-tab-Kopie.tex" u1="0.862061" u2="0.942139" v1="0.681641" v2="0.998047" />
+		<Element name="food_drinks-tab.tex" u1="0.000244141" u2="0.0803223" v1="0.212891" v2="0.533203" />
+		<Element name="forge-tab-Kopie.tex" u1="0.0808105" u2="0.154053" v1="0.236328" v2="0.533203" />
+		<Element name="forge-tab.tex" u1="0.154541" u2="0.228271" v1="0.236328" v2="0.533203" />
+		<Element name="left.tex" u1="0.22876" u2="0.283447" v1="0.287109" v2="0.533203" />
+		<Element name="other-tab-Kopie.tex" u1="0.283936" u2="0.356689" v1="0.259766" v2="0.533203" />
+		<Element name="other-tab.tex" u1="0.357178" u2="0.43042" v1="0.275391" v2="0.533203" />
+		<Element name="right.tex" u1="0.430908" u2="0.485596" v1="0.275391" v2="0.533203" />
+		<Element name="smelter-tab-Kopie.tex" u1="0.486084" u2="0.553467" v1="0.154297" v2="0.533203" />
+		<Element name="smelter-tab.tex" u1="0.553955" u2="0.621338" v1="0.154297" v2="0.533203" />
+	</Elements>
+</Atlas>

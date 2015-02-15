@@ -85,7 +85,7 @@ local states=
         
         onenter = function(inst) 
             inst.components.locomotor:RunForward()
-            inst.AnimState:PlayAnimation("walk",true)
+            inst.AnimState:PlayAnimation("run",true)
             
         end,
         
@@ -151,16 +151,15 @@ local states=
         onenter = function(inst, target)
             inst.sg.statemem.target = target
             inst.Physics:Stop()
-            inst.components.combat:StartAttack()
             inst.AnimState:PlayAnimation("stomp")
         end,
         timeline =
         {
-            TimeEvent(8*FRAMES, function(inst) inst.components.combat:DoAttack() end),
+            TimeEvent(8*FRAMES, function(inst) end),
         },
         events=
         {
-            EventHandler("animover", function(inst) inst.components.combat:SetTarget(nil) inst.sg:GoToState("idle") end),
+            EventHandler("animover", function(inst) inst.sg:GoToState("idle") end),
         },
     },
     State{
@@ -170,16 +169,15 @@ local states=
         onenter = function(inst, target)
             inst.sg.statemem.target = target
             inst.Physics:Stop()
-            inst.components.combat:StartAttack()
             inst.AnimState:PlayAnimation("spell")
         end,
         timeline =
         {
-            TimeEvent(8*FRAMES, function(inst) inst.components.combat:DoAttack() end),
+            TimeEvent(8*FRAMES, function(inst) end),
         },
         events=
         {
-            EventHandler("animover", function(inst) inst.components.combat:SetTarget(nil) inst.sg:GoToState("idle") end),
+            EventHandler("animover", function(inst) inst.sg:GoToState("idle") end),
         },
     },
 	State{

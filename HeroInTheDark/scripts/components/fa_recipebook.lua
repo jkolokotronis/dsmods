@@ -20,6 +20,9 @@ end)
 
 function FA_RecipeBook:AddRecipe(cat,recipe)
     if(self.recipes[cat])then
+        for k,v in ipairs(self.recipes[cat].recipes) do
+            if(v==recipe)then return end
+        end
         table.insert(self.recipes[cat].recipes,recipe)
     end
 end
@@ -37,16 +40,17 @@ function FA_RecipeBook:OnSave()
             table.insert(data.recipes[k],v1)
         end
     end 
+    return data
 end
 
 function FA_RecipeBook:OnLoad(data)
     for k,v in pairs(data.recipes) do
-        for k1,v1 in ipairs(v.recipes) do
-            if(self.recipes(k)==nil)then
+        for k1,v1 in ipairs(v) do
+            if(self.recipes[k]==nil)then
                 print("WARN: can't find category",k)
                 break
             else
-                table.insert(self.recipes[k],v1)
+                table.insert(self.recipes[k].recipes,v1)
             end
         end
     end 
