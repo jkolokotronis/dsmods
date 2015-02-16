@@ -11,7 +11,7 @@ local IngredientUI = require "widgets/ingredientui"
 local matchers=require "fa_smelter_matcher"
 local FA_SpellPopup = require "widgets/fa_spellpopup"
 	local HSEP=16
-	local YSEP=14
+	local YSEP=15
 	local HW=64
 	local HH=64
 	local PAGE_COUNT=5
@@ -94,7 +94,7 @@ function FARecipeBookScreen:DoInit()
 
 
     self.prevbutton = self.root:AddChild(ImageButton("images/notebookparts/notebookparts.xml", "left.tex"))--, focus, disabled))
-	self.prevbutton:SetPosition(149-436,510+307,0)
+	self.prevbutton:SetPosition(-300,-195,0)
     self.prevbutton:SetOnClick(function()
     		if(self.page>1)then
 	    		return self:SetCategory(self.category,self.page-1 )
@@ -103,7 +103,7 @@ function FARecipeBookScreen:DoInit()
 	    	end
     	end)
     self.nextbutton = self.root:AddChild(ImageButton("images/notebookparts/notebookparts.xml", "right.tex"))
-	self.nextbutton:SetPosition(393-436,507+307,0)
+	self.nextbutton:SetPosition(-100,-195,0)
     self.nextbutton:SetOnClick(function()
     	if(self.currentcount and self.currentcount>self.page*PAGE_COUNT)then
     		return self:SetCategory(self.category,self.page+1)
@@ -134,13 +134,15 @@ function FARecipeBookScreen:SetCategory(category,page,tex)
 	local list={}
 	for i=1,#self.caster.components.fa_recipebook.recipes[category].recipes do
 		local sp=self.caster.components.fa_recipebook.recipes[category].recipes[i]
+		print("sp",i,sp)
 		table.insert(list,sp)
 	end
 	self.currentcount=#list
 	print("count",#list)
 
-	for i=0,4 do
+	for i=1,5 do
 		local r=list[(page-1)*PAGE_COUNT+i] 
+		print(r)
 		if(r)then
 			local button=self.recipe_list:AddChild(ImageButton(
 				"images/inventoryimages/fa_inventoryimages.xml",

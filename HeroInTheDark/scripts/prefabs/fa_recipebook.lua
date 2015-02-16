@@ -59,7 +59,7 @@ local function fa_recipe(cat,name)
     inst.components.useableitem:SetCanInteractFn(function() return not inst.components.useableitem.inuse end)
     inst.components.useableitem:SetOnUseFn(function()
 	    local owner = inst.components.inventoryitem.owner
-	    owner.components.fa_recipebook:AddRecipe(inst.category,inst.recipename)
+	    GetPlayer().components.fa_recipebook:AddRecipe(inst.category,inst.recipename)
 --    	TheFrontEnd:PushScreen(FA_RecipeBookScreen(owner,inst.category))
     	inst:Remove()
     end)
