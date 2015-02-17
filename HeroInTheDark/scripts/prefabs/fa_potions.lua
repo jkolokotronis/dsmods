@@ -475,41 +475,41 @@ local function fnempty()
 end
 
 local function fnwater()
-	local inst=common("bottle_light_green")
+	local inst=common("bottle_water")
 	return inst
 end
 
 local function fnoil()
-	local inst=common("bottle_dark_blue")
+	local inst=common("bottle_oil")
     inst:RemoveComponent("fa_drink")
 	return inst
 end
 
 local function fnmineralwater()
-	local inst=common("bottle_light_cyan")
+	local inst=common("bottle_mineralwater")
 	return inst
 end
 
 local function fnfrozenessence()
-	local inst=common("bottle_1_1")
+	local inst=common("bottle_frozenessence")
     inst:RemoveComponent("fa_drink")
 	return inst
 end
 
 local function fnlifeessence()
-	local inst=common("bottle_1_0")
+	local inst=common("bottle_lifeessence")
     inst:RemoveComponent("fa_drink")
 	return inst
 end
 
 local function fnlightningessence()
-	local inst=common("bottle_1_9")
+	local inst=common("bottle_lightningessence")
     inst:RemoveComponent("fa_drink")
 	return inst
 end
 
 local function fnpoisonessence()
-	local inst=common("bottle_1_8")
+	local inst=common("bottle_poisonessence")
     inst:RemoveComponent("fa_drink")
 	return inst
 end

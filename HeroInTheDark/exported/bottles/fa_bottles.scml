@@ -163,7 +163,7 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="6" name="fa_bottle_dark_blue">
+    <entity id="6" name="fa_bottle_oil">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
@@ -403,7 +403,7 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="18" name="fa_bottle_light_cyan">
+    <entity id="18" name="fa_bottle_mineralwater">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
@@ -423,7 +423,7 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="19" name="fa_bottle_light_green">
+    <entity id="19" name="fa_bottle_water">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
@@ -557,7 +557,21 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="26" name="fa_bottle_1_1">
+    <entity id="26" name="fa_bottle_lifeessence">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="3" file="0" x="-68" y="108" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="27" name="fa_bottle_1_1">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
@@ -571,7 +585,21 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="27" name="fa_bottle_1_2">
+    <entity id="28" name="fa_bottle_frozenessence">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="3" file="1" x="-58" y="109" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="29" name="fa_bottle_1_2">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
@@ -585,7 +613,7 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="28" name="fa_bottle_1_3">
+    <entity id="30" name="fa_bottle_1_3">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
@@ -599,7 +627,7 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="29" name="fa_bottle_1_4">
+    <entity id="31" name="fa_bottle_1_4">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
@@ -613,7 +641,7 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="30" name="fa_bottle_1_5">
+    <entity id="32" name="fa_bottle_1_5">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
@@ -627,7 +655,7 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="31" name="fa_bottle_1_6">
+    <entity id="33" name="fa_bottle_1_6">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
@@ -641,7 +669,7 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="32" name="fa_bottle_1_7">
+    <entity id="34" name="fa_bottle_1_7">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
@@ -655,7 +683,7 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="33" name="fa_bottle_1_8">
+    <entity id="35" name="fa_bottle_1_8">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
@@ -669,7 +697,35 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="34" name="fa_bottle_1_9">
+    <entity id="36" name="fa_bottle_1_poisonessence">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="3" file="7" x="-59" y="106" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="37" name="fa_bottle_1_9">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="3" file="8" x="-62" y="106" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="38" name="fa_bottle_lightningessence">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
