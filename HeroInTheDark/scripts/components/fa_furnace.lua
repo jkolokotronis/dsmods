@@ -75,7 +75,7 @@ function FA_Furnace:StartCooking(doer)
 			if(doer and self.product and #self.product>0 and doer.components.fa_recipebook)then
 				local first=self.product[1]
 				--avoiding 'excluded' entries - theres prob a nicer way 
-				if(matcher.hashtable[first])then
+				if(self.matcher.hashtable[first])then
 					doer.components.fa_recipebook:AddRecipe(self.category,first)
 				end
 			end

@@ -153,7 +153,7 @@ local r=Recipe("charcoal", {Ingredient("goldnugget", 5)}, RECIPETABS.FA_DWARFTRA
 local r=Recipe("gunpowder", {Ingredient("goldnugget", 1)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFRESOURCESTAND, nil, nil, true)
 local r=Recipe("thulecite", {Ingredient("goldnugget", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFRESOURCESTAND, nil, nil, true)
 local r=Recipe("marble", {Ingredient("goldnugget", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFRESOURCESTAND, nil, nil, true,5)
-local r=Recipe("bleugem", {Ingredient("goldnugget", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFRESOURCESTAND, nil, nil, true)
+local r=Recipe("bluegem", {Ingredient("goldnugget", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFRESOURCESTAND, nil, nil, true)
 local r=Recipe("redgem", {Ingredient("goldnugget", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFRESOURCESTAND, nil, nil, true)
 
 local r=Recipe("fa_coppersword", {Ingredient("goldnugget", 25)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFEQUIPMENT, nil, nil, true)
