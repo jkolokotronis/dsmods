@@ -131,6 +131,7 @@ function FARecipeBookScreen:SetCategory(category,page,tex)
 	print("category",category,"page",page)
 
 	self.recipe_list:KillAllChildren()
+	self.recipe:KillAllChildren()
 	local list={}
 	for i=1,#self.caster.components.fa_recipebook.recipes[category].recipes do
 		local sp=self.caster.components.fa_recipebook.recipes[category].recipes[i]
@@ -195,7 +196,9 @@ function FARecipeBookScreen:OnSelectRecipe(r)
             ing:SetString(matchers.FN_DESCRIPTION[v.ingred])
 		else
 			print("ingred",v.ingred)
-		    ing = ingred:AddChild(Image("images/inventoryimages/fa_inventoryimages.xml", v.ingred..".tex"))
+			-- ui data does not belong to matcher level... screw oop principles
+			local atlas=v.atlas or "images/inventoryimages/fa_inventoryimages.xml"
+		    ing = ingred:AddChild(Image(atlas, v.ingred..".tex"))
 		end
 		local count=ingred:AddChild(Text(SMALLNUMBERFONT,28))
 		count:SetString(v.count.." X ")

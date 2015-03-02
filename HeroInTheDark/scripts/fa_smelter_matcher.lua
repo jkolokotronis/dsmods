@@ -49,7 +49,7 @@ local keg_recipes={
 	{
 		match={product={"fa_barrel_molasses"},cooktime=60},
 		test={
-			{ingred="pomegranate",count=4},
+			{ingred="pomegranate",count=4,atlas="images/inventoryimages.xml"},
 		},
 	},
 	{
@@ -78,7 +78,7 @@ local keg_recipes={
 		match={product={"fa_barrel_flavoredrum"},cooktime=960},
 		test={
 			{ingred="fa_barrel_lightrum",count=2},
-			{ingred="dragonfruit",count=1},
+			{ingred="dragonfruit",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="fa_barrel_wood",count=1},
 		},
 	},
@@ -143,7 +143,7 @@ local keg_recipes={
 		match={product={"fa_barrel_drakeale"},cooktime=960},
 		test={
 			{ingred="fa_bottle_wort",count=1},
-			{ingred="mandrake",count=1},
+			{ingred="mandrake",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="fa_brewingyeast",count=1},
 			{ingred="fa_barrel_wood",count=1},
 		},
@@ -152,7 +152,7 @@ local keg_recipes={
 		match={product={"fa_barrel_oriansale"},cooktime=960},
 		test={
 			{ingred="fa_bottle_wort",count=1},
-			{ingred="pumpkin",count=1},
+			{ingred="pumpkin",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="fa_brewingyeast",count=1},
 			{ingred="fa_barrel_wood",count=1},
 		},
@@ -161,7 +161,7 @@ local keg_recipes={
 		match={product={"fa_barrel_dorfale"},cooktime=960},
 		test={
 			{ingred="fa_bottle_wort",count=1},
-			{ingred="cutlichen",count=1},
+			{ingred="cutlichen",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="fa_brewingyeast",count=1},
 			{ingred="fa_barrel_wood",count=1},
 		},
@@ -170,7 +170,7 @@ local keg_recipes={
 		match={product={"fa_dwarfalemug"},cooktime=480},
 		test={
 			{ingred="fa_bottle_wort",count=1},
-			{ingred="cutlichen",count=1},
+			{ingred="cutlichen",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="fa_brewingyeast",count=1},
 			{ingred="fa_emptymug",count=1},
 		},
@@ -179,7 +179,7 @@ local keg_recipes={
 		match={product={"fa_barrel_deathbrew"},cooktime=960},
 		test={
 			{ingred="fa_bottle_wort",count=1},
-			{ingred="nightmarefuel",count=1},
+			{ingred="nightmarefuel",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="fa_brewingyeast",count=1},
 			{ingred="fa_barrel_wood",count=1},
 		},
@@ -189,7 +189,7 @@ local keg_recipes={
 		test={
 			{ingred="fa_wineyeast",count=1},
 			{ingred="fa_bottle_water",count=1},
-			{ingred="pomegranate",count=1},
+			{ingred="pomegranate",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="fa_barrel_wood",count=1},
 		},
 	},
@@ -198,7 +198,7 @@ local keg_recipes={
 		test={
 			{ingred="fa_wineyeast",count=1},
 			{ingred="fa_bottle_water",count=1},
-			{ingred="durian",count=1},
+			{ingred="durian",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="fa_barrel_wood",count=1},
 		},
 	},
@@ -207,7 +207,7 @@ local keg_recipes={
 		test={
 			{ingred="fa_wineyeast",count=1},
 			{ingred="fa_bottle_water",count=1},
-			{ingred="dragonfruit",count=1},
+			{ingred="dragonfruit",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="fa_barrel_wood",count=1},
 		},
 	},
@@ -216,7 +216,7 @@ local keg_recipes={
 		test={
 			{ingred="fa_wineyeast",count=1},
 			{ingred="fa_bottle_water",count=1},
-			{ingred="watermelon",count=1},
+			{ingred="watermelon",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="fa_barrel_wood",count=1},
 		},
 	},
@@ -225,7 +225,7 @@ local keg_recipes={
 		test={
 			{ingred="fa_wineyeast",count=1},
 			{ingred="fa_bottle_water",count=1},
-			{ingred="berries",count=1},
+			{ingred="berries",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="fa_barrel_wood",count=1},
 		},
 	},
@@ -243,7 +243,7 @@ local keg_recipes={
 		test={
 			{ingred="fa_wineyeast",count=1},
 			{ingred="fa_bottle_water",count=1},
-			{ingred="wormlight",count=1},
+			{ingred="wormlight",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="fa_barrel_wood",count=1},
 		},
 	},
@@ -252,7 +252,7 @@ local keg_recipes={
 		test={
 			{ingred="fa_wineyeast",count=1},
 			{ingred="fa_bottle_water",count=1},
-			{ingred="cactus_meat",count=1},
+			{ingred="cactus_meat",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="fa_barrel_wood",count=1},
 		},
 	},
@@ -261,7 +261,7 @@ local keg_recipes={
 		test={
 			{ingred="fa_wineyeast",count=1},
 			{ingred="fa_bottle_water",count=1},
-			{ingred="honey",count=1},
+			{ingred="honey",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="fa_barrel_wood",count=1},
 		},
 	},
@@ -281,7 +281,7 @@ local distiller_recipes={
 	{
 		match={product={"fa_barrel_clearbourbon"},cooktime=480},
 		test={
-			{ingred="corn",count=1},
+			{ingred="corn",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="fa_cutwheat",count=1},
 			{ingred="fa_distillingyeast",count=1},
 			{ingred="fa_barrel_water",count=1},
@@ -300,7 +300,7 @@ local distiller_recipes={
 		match={product={"fa_barrel_gin"},cooktime=480},
 		test={
 			{ingred="fa_mash",count=1},
-			{ingred="acorn",count=1},
+			{ingred="acorn",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="fa_distillingyeast",count=1},
 			{ingred="fa_barrel_water",count=1},
 		},
@@ -309,7 +309,7 @@ local distiller_recipes={
 		match={product={"fa_barrel_tequila"},cooktime=480},
 		test={
 			{ingred="fa_mash",count=1},
-			{ingred="cutlichen",count=1},
+			{ingred="cutlichen",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="fa_distillingyeast",count=1},
 			{ingred="fa_barrel_water",count=1},
 		},
@@ -318,7 +318,7 @@ local distiller_recipes={
 		match={product={"fa_barrel_whiskey"},cooktime=480},
 		test={
 			{ingred="fa_mash",count=1},
-			{ingred="corn",count=1},
+			{ingred="corn",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="fa_distillingyeast",count=1},
 			{ingred="fa_barrel_water",count=1},
 		},
@@ -345,8 +345,8 @@ local alchemy_recipes={
 	{
 		match={product={"fa_boneshield"},cooktime=120},
 		test={
-			{ingred="houndstooth",count=5},
-			{ingred="hammer",count=1},
+			{ingred="houndstooth",count=5,atlas="images/inventoryimages.xml"},
+			{ingred="hammer",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="nightmarefuel",count=2},
 		},
 	},
@@ -355,23 +355,23 @@ local alchemy_recipes={
 		test={
 			{ingred="fa_sand",count=4},
 			{ingred="fa_coppershield",count=1},
-			{ingred="hammer",count=1},
-			{ingred="torch",count=1},
+			{ingred="hammer",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="torch",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="nightmarefuel",count=1},
 		},
 	},
 	{
 		match={product={"fa_bottle_r"},cooktime=960},
 		test={
-			{ingred="spidergland",count=4},
-			{ingred="stinger",count=3},
+			{ingred="spidergland",count=4,atlas="images/inventoryimages.xml"},
+			{ingred="stinger",count=3,atlas="images/inventoryimages.xml"},
 			{ingred="fa_bottle_empty",count=1},
 		},
 	},
 	{
 		match={product={"fa_bottle_y"},cooktime=960},
 		test={
-			{ingred="petal",count=5},
+			{ingred="petal",count=5,atlas="images/inventoryimages.xml"},
 			{ingred="fa_orcskin",count=2},
 			{ingred="fa_bottle_empty",count=1},
 		},
@@ -379,7 +379,7 @@ local alchemy_recipes={
 	{
 		match={product={"fa_bottle_y"},cooktime=960},
 		test={
-			{ingred="petal",count=5},
+			{ingred="petal",count=5,atlas="images/inventoryimages.xml"},
 			{ingred="fa_goblinskin",count=2},
 			{ingred="fa_bottle_empty",count=1},
 		},
@@ -387,8 +387,8 @@ local alchemy_recipes={
 	{
 		match={product={"fa_bottle_g"},cooktime=960},
 		test={
-			{ingred="petal",count=5},
-			{ingred="nightmarefuel",count=2},
+			{ingred="petal",count=5,atlas="images/inventoryimages.xml"},
+			{ingred="nightmarefuel",count=2,atlas="images/inventoryimages.xml"},
 			{ingred="fa_bottle_empty",count=1},
 		},
 	},
@@ -397,14 +397,14 @@ local alchemy_recipes={
 		match={product={"fa_sand","fa_sand","fa_sand","fa_sand","fa_sand","fa_sand","fa_sand","fa_sand","fa_sand","fa_sand","fa_sand","fa_sand","fa_sand","fa_sand","fa_sand","fa_sand","fa_sand","fa_sand","fa_sand","fa_sand"}
 		,cooktime=30},
 		test={
-			{ingred="rocks",count=8},
+			{ingred="rocks",count=8,atlas="images/inventoryimages.xml"},
 		},
 	},
 	{
 		match={product={"fa_bottle_frozenessence"},cooktime=30},
 		test={
-			{ingred="ice",count=5},
-			{ingred="nightmarefuel",count=2},
+			{ingred="ice",count=5,atlas="images/inventoryimages.xml"},
+			{ingred="nightmarefuel",count=2,atlas="images/inventoryimages.xml"},
 			{ingred="fa_bottle_empty",count=1},
 		},
 	},
@@ -412,16 +412,16 @@ local alchemy_recipes={
 		match={product={"fa_bottle_lifeessence"},cooktime=30},
 		test={
 			{ingred=anyanimal,count=6},
-			{ingred="nightmarefuel",count=1},
+			{ingred="nightmarefuel",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="fa_bottle_empty",count=1},
 		},
 	},
 	{
 		match={product={"fa_bottle_lightningessence"},cooktime=30},
 		test={
-			{ingred="fireflies",count=4},
+			{ingred="fireflies",count=4,atlas="images/inventoryimages.xml"},
 			{ingred=anymetalore,count=1},
-			{ingred="nightmarefuel",count=1},
+			{ingred="nightmarefuel",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="fa_bottle_empty",count=1},
 		},
 	},
@@ -443,7 +443,7 @@ local alchemy_recipes={
 	{
 		match={product={"fa_bottle_water"},cooktime=30},
 		test={
-			{ingred="ice",count=4},
+			{ingred="ice",count=4,atlas="images/inventoryimages.xml"},
 			{ingred="fa_bottle_empty",count=1},
 		},
 	},
@@ -457,9 +457,9 @@ local alchemy_recipes={
 	{
 		match={product={"fa_key_generic"},cooktime=30},
 		test={
-			{ingred="nightmarefuel",count=1},
-			{ingred="boards",count=2},
-			{ingred="razor",count=1}
+			{ingred="nightmarefuel",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="boards",count=2,atlas="images/inventoryimages.xml"},
+			{ingred="razor",count=1,atlas="images/inventoryimages.xml"}
 		},
 	},
 	{
@@ -487,14 +487,14 @@ local smelt_recipes={
 	{
 		match={product={"fa_goldbar"},cooktime=72},
 		test={
-			{ingred="goldnugget",count=4},
+			{ingred="goldnugget",count=4,atlas="images/inventoryimages.xml"},
 			{ingred="fa_coalbar",count=4},
 		},
 	},
 	{
 		match={product={"fa_goldbar"},cooktime=120},
 		test={
-			{ingred="goldnugget",count=4},
+			{ingred="goldnugget",count=4,atlas="images/inventoryimages.xml"},
 			{ingred=isfuel,count=4}
 		},
 	},
@@ -509,7 +509,7 @@ local smelt_recipes={
 		match={product={"fa_pigironbar"},cooktime=360},
 		test={
 			{ingred="fa_ironbar",count=4},
-			{ingred="marble",count=2},
+			{ingred="marble",count=2,atlas="images/inventoryimages.xml"},
 			{ingred="fa_coalbar",count=2},
 		},
 	},
@@ -885,7 +885,7 @@ local forge_recipes={
 		match={product={"armorfire","fa_bottle_empty"},cooktime=120},
 		test={
 			{ingred="fa_lavabar",count=1},
-			{ingred="charcoal",count=3},
+			{ingred="charcoal",count=3,atlas="images/inventoryimages.xml"},
 			{ingred="fa_copperarmor",count=1},
 			{ingred=isfuel,count=2},
 			{ingred=bottleany, count=1},
@@ -895,7 +895,7 @@ local forge_recipes={
 		match={product={"armorfire2","fa_bottle_empty"},cooktime=480},
 		test={
 			{ingred="fa_lavabar",count=2},
-			{ingred="charcoal",count=2},
+			{ingred="charcoal",count=2,atlas="images/inventoryimages.xml"},
 			{ingred="fa_ironarmor",count=1},
 			{ingred=isfuel,count=2},
 			{ingred=heavywater, count=1},
@@ -915,7 +915,7 @@ local forge_recipes={
 		match={product={"armorfrost","fa_bottle_empty"},cooktime=120},
 		test={
 			{ingred="fa_bottle_frozenessence",count=1},
-			{ingred="charcoal",count=3},
+			{ingred="charcoal",count=3,atlas="images/inventoryimages.xml"},
 			{ingred="fa_copperarmor",count=1},
 			{ingred=isfuel,count=2},
 			{ingred=bottleany, count=1},
@@ -925,7 +925,7 @@ local forge_recipes={
 		match={product={"armorfrost2","fa_bottle_empty"},cooktime=480},
 		test={
 			{ingred="fa_bottle_frozenessence",count=2},
-			{ingred="charcoal",count=2},
+			{ingred="charcoal",count=2,atlas="images/inventoryimages.xml"},
 			{ingred="fa_ironarmor",count=1},
 			{ingred=isfuel,count=2},
 			{ingred=heavywater, count=1},
@@ -935,7 +935,7 @@ local forge_recipes={
 		match={product={"armorfrost3","fa_bottle_empty"},cooktime=960},
 		test={
 			{ingred="fa_bottle_frozenessence",count=3},
-			{ingred="fa_coalbar",count=1},
+			{ingred="fa_coalbar",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="fa_steelarmor",count=1},
 			{ingred=isfuel,count=2},
 			{ingred="fa_bottle_oil", count=1},
@@ -945,7 +945,7 @@ local forge_recipes={
 		match={product={"fa_fireaxe","fa_bottle_empty"},cooktime=240},
 		test={
 			{ingred="fa_lavabar",count=1},
-			{ingred="charcoal",count=3},
+			{ingred="charcoal",count=3,atlas="images/inventoryimages.xml"},
 			{ingred="fa_copperaxe",count=1},
 			{ingred=isfuel,count=2},
 			{ingred=bottleany, count=1},
@@ -955,7 +955,7 @@ local forge_recipes={
 		match={product={"fa_fireaxe2","fa_bottle_empty"},cooktime=480},
 		test={
 			{ingred="fa_lavabar",count=2},
-			{ingred="charcoal",count=2},
+			{ingred="charcoal",count=2,atlas="images/inventoryimages.xml"},
 			{ingred="fa_ironaxe",count=1},
 			{ingred="fa_coalbar",count=2},
 			{ingred=heavywater, count=1},
@@ -974,7 +974,7 @@ local forge_recipes={
 		match={product={"flamingsword","fa_bottle_empty"},cooktime=240},
 		test={
 			{ingred="fa_lavabar",count=1},
-			{ingred="charcoal",count=3},
+			{ingred="charcoal",count=3,atlas="images/inventoryimages.xml"},
 			{ingred="fa_coppersword",count=1},
 			{ingred=isfuel,count=2},
 			{ingred=bottleany, count=1},
@@ -984,7 +984,7 @@ local forge_recipes={
 		match={product={"flamingsword2","fa_bottle_empty"},cooktime=480},
 		test={
 			{ingred="fa_lavabar",count=2},
-			{ingred="charcoal",count=2},
+			{ingred="charcoal",count=2,atlas="images/inventoryimages.xml"},
 			{ingred="fa_ironsword",count=1},
 			{ingred="fa_coalbar",count=2},
 			{ingred=heavywater, count=1},
@@ -1003,7 +1003,7 @@ local forge_recipes={
 		match={product={"frostsword","fa_bottle_empty"},cooktime=240},
 		test={
 			{ingred="fa_bottle_frozenessence",count=1},
-			{ingred="charcoal",count=3},
+			{ingred="charcoal",count=3,atlas="images/inventoryimages.xml"},
 			{ingred="fa_coppersword",count=1},
 			{ingred=isfuel,count=2},
 			{ingred=bottleany, count=1},
@@ -1013,7 +1013,7 @@ local forge_recipes={
 		match={product={"frostsword2","fa_bottle_empty"},cooktime=480},
 		test={
 			{ingred="fa_bottle_frozenessence",count=2},
-			{ingred="charcoal",count=2},
+			{ingred="charcoal",count=2,atlas="images/inventoryimages.xml"},
 			{ingred="fa_ironsword",count=1},
 			{ingred="fa_coalbar",count=2},
 			{ingred=heavywater, count=1},
@@ -1032,7 +1032,7 @@ local forge_recipes={
 		match={product={"fa_iceaxe","fa_bottle_empty"},cooktime=240},
 		test={
 			{ingred="fa_bottle_frozenessence",count=1},
-			{ingred="charcoal",count=3},
+			{ingred="charcoal",count=3,atlas="images/inventoryimages.xml"},
 			{ingred="fa_copperaxe",count=1},
 			{ingred=isfuel,count=2},
 			{ingred=bottleany, count=1},
@@ -1042,7 +1042,7 @@ local forge_recipes={
 		match={product={"fa_iceaxe2","fa_bottle_empty"},cooktime=480},
 		test={
 			{ingred="fa_bottle_frozenessence",count=2},
-			{ingred="charcoal",count=2},
+			{ingred="charcoal",count=2,atlas="images/inventoryimages.xml"},
 			{ingred="fa_ironaxe",count=1},
 			{ingred="fa_coalbar",count=2},
 			{ingred=heavywater, count=1},
@@ -1061,7 +1061,7 @@ local forge_recipes={
 		match={product={"vorpalaxe","fa_bottle_empty"},cooktime=240},
 		test={
 			{ingred="fa_bottle_lifeessence",count=1},
-			{ingred="charcoal",count=3},
+			{ingred="charcoal",count=3,atlas="images/inventoryimages.xml"},
 			{ingred="fa_copperaxe",count=1},
 			{ingred=isfuel,count=2},
 			{ingred=bottleany, count=1},
@@ -1071,7 +1071,7 @@ local forge_recipes={
 		match={product={"vorpalaxe2","fa_bottle_empty"},cooktime=480},
 		test={
 			{ingred="fa_bottle_lifeessence",count=2},
-			{ingred="charcoal",count=2},
+			{ingred="charcoal",count=2,atlas="images/inventoryimages.xml"},
 			{ingred="fa_ironaxe",count=1},
 			{ingred="fa_coalbar",count=2},
 			{ingred=heavywater, count=1},
@@ -1090,7 +1090,7 @@ local forge_recipes={
 		match={product={"dagger","fa_bottle_empty"},cooktime=240},
 		test={
 			{ingred="fa_bottle_lifeessence",count=1},
-			{ingred="charcoal",count=3},
+			{ingred="charcoal",count=3,atlas="images/inventoryimages.xml"},
 			{ingred="fa_copperdagger",count=1},
 			{ingred=isfuel,count=2},
 			{ingred=bottleany, count=1},
@@ -1100,7 +1100,7 @@ local forge_recipes={
 		match={product={"dagger2","fa_bottle_empty"},cooktime=480},
 		test={
 			{ingred="fa_bottle_lifeessence",count=2},
-			{ingred="charcoal",count=2},
+			{ingred="charcoal",count=2,atlas="images/inventoryimages.xml"},
 			{ingred="fa_irondagger",count=1},
 			{ingred="fa_coalbar",count=2},
 			{ingred=heavywater, count=1},
@@ -1119,7 +1119,7 @@ local forge_recipes={
 		match={product={"fa_venomdagger1","fa_bottle_empty"},cooktime=240},
 		test={
 			{ingred="fa_bottle_poisonessence",count=1},
-			{ingred="charcoal",count=3},
+			{ingred="charcoal",count=3,atlas="images/inventoryimages.xml"},
 			{ingred="fa_copperdagger",count=1},
 			{ingred=isfuel,count=2},
 			{ingred=bottleany, count=1},
@@ -1129,7 +1129,7 @@ local forge_recipes={
 		match={product={"fa_venomdagger2","fa_bottle_empty"},cooktime=480},
 		test={
 			{ingred="fa_bottle_poisonessence",count=2},
-			{ingred="charcoal",count=2},
+			{ingred="charcoal",count=2,atlas="images/inventoryimages.xml"},
 			{ingred="fa_irondagger",count=1},
 			{ingred="fa_coalbar",count=2},
 			{ingred=heavywater, count=1},
@@ -1148,7 +1148,7 @@ local forge_recipes={
 		match={product={"fa_lightningsword","fa_bottle_empty"},cooktime=240},
 		test={
 			{ingred="fa_bottle_lightningessence",count=1},
-			{ingred="charcoal",count=3},
+			{ingred="charcoal",count=3,atlas="images/inventoryimages.xml"},
 			{ingred="fa_copperdagger",count=1},
 			{ingred=isfuel,count=2},
 			{ingred=bottleany, count=1},
@@ -1158,7 +1158,7 @@ local forge_recipes={
 		match={product={"fa_lightningsword2","fa_bottle_empty"},cooktime=480},
 		test={
 			{ingred="fa_bottle_lightningessence",count=2},
-			{ingred="charcoal",count=2},
+			{ingred="charcoal",count=2,atlas="images/inventoryimages.xml"},
 			{ingred="fa_irondagger",count=1},
 			{ingred="fa_coalbar",count=2},
 			{ingred=heavywater, count=1},
@@ -1169,7 +1169,7 @@ local forge_recipes={
 		test={
 			{ingred="fa_copperbar",count=1},
 			{ingred=bottleany,count=1},
-			{ingred="hammer",count=1},
+			{ingred="hammer",count=1,atlas="images/inventoryimages.xml"},
 			{ingred=isfuel,count=5},
 		},
 	},
@@ -1178,7 +1178,7 @@ local forge_recipes={
 		test={
 			{ingred="fa_ironbar",count=1},
 			{ingred="fa_bottle_oil",count=1},
-			{ingred="hammer",count=1},
+			{ingred="hammer",count=1,atlas="images/inventoryimages.xml"},
 			{ingred=isfuel,count=5},
 		},
 	},
@@ -1187,7 +1187,7 @@ local forge_recipes={
 		test={
 			{ingred="fa_goldbar",count=1},
 			{ingred="fa_bottle_oil",count=1},
-			{ingred="hammer",count=1},
+			{ingred="hammer",count=1,atlas="images/inventoryimages.xml"},
 			{ingred=isfuel,count=5},
 		},
 	},
@@ -1196,7 +1196,7 @@ local forge_recipes={
 		test={
 			{ingred="fa_silverbar",count=1},
 			{ingred="fa_bottle_oil",count=1},
-			{ingred="hammer",count=1},
+			{ingred="hammer",count=1,atlas="images/inventoryimages.xml"},
 			{ingred=isfuel,count=5},
 		},
 	},
@@ -1205,7 +1205,7 @@ local forge_recipes={
 		test={
 			{ingred="fa_steelbar",count=1},
 			{ingred="fa_bottle_oil",count=1},
-			{ingred="hammer",count=1},
+			{ingred="hammer",count=1,atlas="images/inventoryimages.xml"},
 			{ingred=isfuel,count=5},
 		},
 	},
@@ -1214,7 +1214,7 @@ local forge_recipes={
 		test={
 			{ingred="fa_adamantbar",count=1},
 			{ingred="fa_bottle_oil",count=1},
-			{ingred="hammer",count=1},
+			{ingred="hammer",count=1,atlas="images/inventoryimages.xml"},
 			{ingred=isfuel,count=5},
 		},
 	},
@@ -1231,21 +1231,21 @@ local forge_recipes={
 		match={product={"fa_bottle_empty","blowdart_sleep"},cooktime=120,ignorehash=true},
 		test={
 			{ingred="fa_sand",count=5},
-			{ingred="blowdart_sleep",count=1},
+			{ingred="blowdart_sleep",count=1,atlas="images/inventoryimages.xml"},
 		},
 	},
 	{
 		match={product={"fa_bottle_empty","blowdart_fire"},cooktime=120,ignorehash=true},
 		test={
 			{ingred="fa_sand",count=5},
-			{ingred="blowdart_fire",count=1},
+			{ingred="blowdart_fire",count=1,atlas="images/inventoryimages.xml"},
 		},
 	},
 	{
 		match={product={"fa_bottle_empty","blowdart_pipe"},cooktime=120},
 		test={
 			{ingred="fa_sand",count=5},
-			{ingred="blowdart_pipe",count=1},
+			{ingred="blowdart_pipe",count=1,atlas="images/inventoryimages.xml"},
 		},
 	},
 	{
