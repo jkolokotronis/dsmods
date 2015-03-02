@@ -1242,7 +1242,7 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"fa_bottle_empty","blowdart_pipe"},cooktime=120,ignorehash=true},
+		match={product={"fa_bottle_empty","blowdart_pipe"},cooktime=120},
 		test={
 			{ingred="fa_sand",count=5},
 			{ingred="blowdart_pipe",count=1},
