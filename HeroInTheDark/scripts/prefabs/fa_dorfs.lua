@@ -269,9 +269,10 @@ local function common()
     inst.components.trader.test=function(inst, item)
         if(item and item.components.equippable and item.components.equippable.equipslot == EQUIPSLOTS.RING)then
             return true
-        else 
-            return false
+        elseif(item and item.components.fa_drink)then
+            return true
         end
+        return false
     end
     inst.components.trader.onaccept=function(inst, giver, item)
         if item.components.equippable and item.components.equippable.equipslot == EQUIPSLOTS.RING then
@@ -281,6 +282,14 @@ local function common()
             end
             inst.components.inventory:Equip(item)
         end
+        if item.components.fa_drink then
+                giver.components.leader:AddFollower(inst)
+                if(item.prefab=="fa_barrel_dorfale" or item.prefab=="fa_dwarfalemug")then
+                inst.components.follower:AddLoyaltyTime(2^30)
+                else
+                inst.components.follower:AddLoyaltyTime(4*60)
+                end
+        end
     end
 
     inst:AddComponent("named")
@@ -288,7 +297,7 @@ local function common()
     inst.components.named:PickNewName()
     
     inst:AddComponent("follower")
---    inst.components.follower.maxfollowtime = TUNING.PIG_LOYALTY_MAXTIME
+    inst.components.follower.maxfollowtime = 2^30 --if its 0 addloyaltytime ends up breaking mobs immediately
     ------------------------------------------
     inst:AddComponent("health")
     inst.components.health:SetMaxHealth(DWARF_HEALTH)

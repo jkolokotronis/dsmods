@@ -23,7 +23,14 @@ local smelterassets =
 }
 local function onhammered(inst, worker)
 	if inst.components.fa_furnace.product and inst.components.fa_furnace.done then
-		inst.components.lootdropper:AddChanceLoot(inst.components.fa_furnace.product, 1)
+		local product=inst.components.fa_furnace.product 
+		if(type(product)=="table")then
+			for k,v in pairs(self.product) do
+				inst.components.lootdropper:AddChanceLoot(v, 1)
+			end
+		else
+			inst.components.lootdropper:AddChanceLoot(product, 1)
+		end
 	end
 	inst.components.lootdropper:DropLoot()
 	SpawnPrefab("collapse_small").Transform:SetPosition(inst.Transform:GetWorldPosition())

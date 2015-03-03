@@ -45,6 +45,7 @@ FA_CRAFTPICKUP.strfn = function(act)
 end
 
 ACTIONS.FA_CRAFTPICKUP=FA_CRAFTPICKUP
+SGWilson.actionhandlers[ACTIONS.FA_CRAFTPICKUP]=ActionHandler(ACTIONS.FA_CRAFTPICKUP, "dolongaction")
 --FA_ModUtil.AddAction(FA_CRAFTPICKUP)
 
 local FA_DRINK=Action()

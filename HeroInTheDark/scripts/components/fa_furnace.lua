@@ -72,7 +72,7 @@ function FA_Furnace:StartCooking(doer)
 
 			local res=self.matcher:Match(self:GetIngreds())
 			self.product=res.product
-			if(doer and self.product and #self.product>0 and doer.components.fa_recipebook)then
+			if(doer and (not res.fail) and self.product and #self.product>0 and doer.components.fa_recipebook)then
 				local first=self.product[1]
 				--avoiding 'excluded' entries - theres prob a nicer way 
 				if(self.matcher.hashtable[first])then

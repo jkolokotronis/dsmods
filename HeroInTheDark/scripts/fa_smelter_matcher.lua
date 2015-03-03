@@ -371,7 +371,7 @@ local alchemy_recipes={
 	{
 		match={product={"fa_bottle_y"},cooktime=960},
 		test={
-			{ingred="petal",count=5,atlas="images/inventoryimages.xml"},
+			{ingred="petals",count=5,atlas="images/inventoryimages.xml"},
 			{ingred="fa_orcskin",count=2},
 			{ingred="fa_bottle_empty",count=1},
 		},
@@ -379,7 +379,7 @@ local alchemy_recipes={
 	{
 		match={product={"fa_bottle_y"},cooktime=960},
 		test={
-			{ingred="petal",count=5,atlas="images/inventoryimages.xml"},
+			{ingred="petals",count=5,atlas="images/inventoryimages.xml"},
 			{ingred="fa_goblinskin",count=2},
 			{ingred="fa_bottle_empty",count=1},
 		},
@@ -387,7 +387,7 @@ local alchemy_recipes={
 	{
 		match={product={"fa_bottle_g"},cooktime=960},
 		test={
-			{ingred="petal",count=5,atlas="images/inventoryimages.xml"},
+			{ingred="petals",count=5,atlas="images/inventoryimages.xml"},
 			{ingred="nightmarefuel",count=2,atlas="images/inventoryimages.xml"},
 			{ingred="fa_bottle_empty",count=1},
 		},
@@ -1433,7 +1433,7 @@ function FA_StandMatcher:GetFailResult(itemlist)
 			table.insert(product,k)
 		end
 	end
-	return  {product=product, cooktime=0}
+	return  {product=product, cooktime=0,fail=true}
 end
 
 
