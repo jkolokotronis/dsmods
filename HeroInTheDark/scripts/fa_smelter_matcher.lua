@@ -1149,7 +1149,7 @@ local forge_recipes={
 		test={
 			{ingred="fa_bottle_lightningessence",count=1},
 			{ingred="charcoal",count=3,atlas="images/inventoryimages.xml"},
-			{ingred="fa_copperdagger",count=1},
+			{ingred="fa_coppersword",count=1},
 			{ingred=isfuel,count=2},
 			{ingred=bottleany, count=1},
 		},
@@ -1159,9 +1159,18 @@ local forge_recipes={
 		test={
 			{ingred="fa_bottle_lightningessence",count=2},
 			{ingred="charcoal",count=2,atlas="images/inventoryimages.xml"},
-			{ingred="fa_irondagger",count=1},
+			{ingred="fa_ironsword",count=1},
 			{ingred="fa_coalbar",count=2},
 			{ingred=heavywater, count=1},
+		},
+	},
+	{
+		match={product={"fa_lightningsword3","fa_bottle_empty"},cooktime=480},
+		test={
+			{ingred="fa_bottle_lightningessence",count=3},
+			{ingred="fa_steelword",count=1},
+			{ingred="fa_coalbar",count=3},
+			{ingred="fa_bottle_oil", count=1},
 		},
 	},
 	{

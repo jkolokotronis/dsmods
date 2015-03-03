@@ -75,9 +75,9 @@ function lootdropperPostInit(component)
         for k,v in pairs(prefabs) do
             local cookedAfter = v.."_cooked"
             local cookedBefore = "cooked"..v
-            if GLOBAL.PrefabExists(cookedAfter) then
+            if PrefabExists(cookedAfter) then
                 prefabs[k] = cookedAfter
-            elseif GLOBAL.PrefabExists(cookedBefore) then
+            elseif PrefabExists(cookedBefore) then
                 prefabs[k] = cookedBefore 
             else   
             --this was burning everything in list regardless of wether it can be actually burned        

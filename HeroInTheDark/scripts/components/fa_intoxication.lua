@@ -85,13 +85,13 @@ local FA_Intoxication = Class(function(self, inst)
                 self.inst.components.hunger.hungerrate=self.inst.components.hunger.hungerrate+0.05
                 self.inst.components.health.absorb=self.inst.components.health.absorb-0.05
                 self.inst.components.temperature.inherentinsulation=TUNING.INSULATION_SMALL+self.inst.components.temperature.inherentinsulation
-                inst.components.sanity.dapperness = inst.components.sanity.dapperness  -5.0/120
+                self.inst.components.sanity.dapperness = self.inst.components.sanity.dapperness  -5.0/120
             end,
             onexit=function()
                 self.inst.components.hunger.hungerrate=self.inst.components.hunger.hungerrate-0.05
                 self.inst.components.health.absorb=self.inst.components.health.absorb+0.05
                 self.inst.components.temperature.inherentinsulation=self.inst.components.temperature.inherentinsulation-TUNING.INSULATION_SMALL
-                inst.components.sanity.dapperness = inst.components.sanity.dapperness + 5.0/120
+                self.inst.components.sanity.dapperness = self.inst.components.sanity.dapperness + 5.0/120
             end,
             active=false            
         },
@@ -240,16 +240,17 @@ function FA_Intoxication:OnAttack(data)
     local rng=math.random()
     if(held_weapon and ((self.current>=90 and rng<=0.6) or (self.current>=70 and rng<=0.3) or (self.current>=50 and rng<0.15)))then
 
-    inst.components.inventory:Unequip(EQUIPSLOTS.HANDS, true) 
-    inst.components.inventory:DropItem(held_weapon)
+    self.inst.components.inventory:Unequip(EQUIPSLOTS.HANDS, true) 
+    self.inst.components.inventory:DropItem(held_weapon)
     if held_weapon.Physics then
+        local target=data.target
 
         local x, y, z = held_weapon:GetPosition():Get()
         y = .3
         held_weapon.Physics:Teleport(x,y,z)
 
         local hp = target:GetPosition()
-        local pt = inst:GetPosition()
+        local pt = self.inst:GetPosition()
         local vel = (hp - pt):GetNormalized()     
         local speed = 3 + (math.random() * 2)
         local angle = -math.atan2(vel.z, vel.x) + (math.random() * 20 - 10) * DEGREES
