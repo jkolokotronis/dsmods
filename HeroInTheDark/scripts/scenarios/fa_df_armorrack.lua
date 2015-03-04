@@ -7,7 +7,7 @@ local function OnCreate(inst, scenariorunner)
 	local rack_type=inst.rack_type
 	inst.components.container:GiveItem(SpawnPrefab("fa_"..rack_type.."armor"))
 	inst.components.container:GiveItem(SpawnPrefab("fa_hat_"..rack_type))
-
+	inst.components.container:Close()
 end
 
 local function OnLoad(inst, scenariorunner) 

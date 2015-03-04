@@ -542,7 +542,6 @@ local function ronsalemug()
 	local inst=common("mug")
     inst.AnimState:SetBuild("fa_mug")
     inst.AnimState:PlayAnimation("beer")
-    inst:RemoveComponent("fa_drink")
     inst.components.inventoryitem.imagename="fa_beermug"
     return inst
 end
@@ -550,7 +549,6 @@ local function dwarfalemug()
 	local inst=common("mug")
     inst.AnimState:SetBuild("fa_mug")
     inst.AnimState:PlayAnimation("beer")
-    inst:RemoveComponent("fa_drink")
     inst.components.inventoryitem.imagename="fa_beermug"
     return inst
 end

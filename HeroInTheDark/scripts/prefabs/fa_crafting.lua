@@ -215,7 +215,7 @@ local function distillerfn()
     inst.AnimState:PlayAnimation("idle_close",true)
     inst.Transform:SetScale(0.5, 0.5, 0.5)
 
-    inst.components.fa_furnace:SetMatcher("DistillerMAtcher")
+    inst.components.fa_furnace:SetMatcher("DistillerMatcher")
     inst.components.fa_furnace.getverb=function() return "BREW" end
 
 

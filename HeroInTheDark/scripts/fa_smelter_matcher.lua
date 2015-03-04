@@ -70,7 +70,7 @@ local keg_recipes={
 		match={product={"fa_barrel_goldrum"},cooktime=960},
 		test={
 			{ingred="fa_barrel_lightrum",count=2},
-			{ingred="fa_goldpebble",count=1},
+			{ingred="goldnugget",count=1},
 			{ingred="fa_barrel_wood",count=1},
 		},
 	},
