@@ -47,6 +47,7 @@ end
 
 local function fn(Sim)
 		local inst = common("goodberries")
+		inst.AnimState:SetBank("berries")
 		
 		inst:AddComponent("edible")
 		inst.components.edible.healthvalue = 5

@@ -31,14 +31,14 @@ local FA_StatusButton = Class(Widget, function(self,owner, data)
     self.cooldowntext:SetString("n/a")
 
     self.disabledtex=init.disabled or {}
-    self.disabledtex.atlas=self.disabledtex.atlas or "images/inventoryimages/fa_shields.xml"
+    self.disabledtex.atlas=self.disabledtex.atlas or "images/inventoryimages/fa_inventoryimages.xml"
     self.disabledtex.tex=self.disabledtex.tex or "fa_white.tex"
     self.normaltex=init.normaltex or {}
     self.normaltex.tex=self.normaltex.tex or "fa_white.tex"
-    self.normaltex.atlas=self.normaltex.atlas or "images/inventoryimages/fa_shields.xml"
+    self.normaltex.atlas=self.normaltex.atlas or "images/inventoryimages/fa_inventoryimages.xml"
     self.overtex=init.overtex or {}
     self.overtex.tex=self.overtex.tex or "fa_white.tex"
-    self.overtex.atlas=self.overtex.atlas or "images/inventoryimages/fa_shields.xml"
+    self.overtex.atlas=self.overtex.atlas or "images/inventoryimages/fa_inventoryimages.xml"
     self.text:SetString(init.text or "")
     if(init.fn)then
         self.OnClick=fn
