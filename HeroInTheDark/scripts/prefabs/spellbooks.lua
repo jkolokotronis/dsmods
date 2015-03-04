@@ -820,7 +820,7 @@ function MakeSpell(name, usefn, bookuses,school )
         if(school)then
             assetname="fa_scroll_"..school
 
-            inst.components.inventoryitem.atlasname="images/inventoryimages/"..assetname..".xml"
+            inst.components.inventoryitem.atlasname="images/inventoryimages/fa_inventoryimages.xml"
             inst.components.inventoryitem.imagename=assetname
         else
             inst.components.inventoryitem.imagename="book_brimstone"

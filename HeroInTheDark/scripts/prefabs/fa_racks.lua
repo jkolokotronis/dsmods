@@ -168,6 +168,7 @@ local function WeaponOnOpen(inst)
 end 
 
 local function WeaponOnClose(inst) 
+    print("triggered onclose")
     local toprow=inst.components.container:FindItems(function(item)
             if(item:HasTag("dagger") or item:HasTag("sword"))then
                 return true
@@ -175,7 +176,7 @@ local function WeaponOnClose(inst)
                 return false
             end
         end)
-    for i=1,math.max(#toprow,4) do 
+    for i=1,math.min(#toprow,4) do 
         inst.AnimState:OverrideSymbol("sword"..i,toprow[i].prefab,"swap_weapon")
     end
     for i= #toprow+1,4 do
@@ -189,8 +190,8 @@ local function WeaponOnClose(inst)
             end
         end)
 
-    for i=1,math.max(#bottomrow,3) do 
-        inst.AnimState:OverrideSymbol("axe"..i,toprow[i].prefab,"swap_weapon")
+    for i=1,math.min(#bottomrow,3) do 
+        inst.AnimState:OverrideSymbol("axe"..i,bottomrow[i].prefab,"swap_weapon")
     end
     for i= #bottomrow+1,3 do
         inst.AnimState:ClearOverrideSymbol("axe"..i)
@@ -233,8 +234,8 @@ end
     end
     inst:AddComponent("container")
     inst.components.container:SetNumSlots(#slotpos)
-    inst.components.container.onopenfn = PuppetOnOpen
-    inst.components.container.onclosefn = PuppetOnClose
+    inst.components.container.onopenfn = WeaponOnOpen
+    inst.components.container.onclosefn = WeaponOnClose
     inst.components.container.itemtestfn=itemtest
     
     inst.components.container.widgetslotpos = slotpos

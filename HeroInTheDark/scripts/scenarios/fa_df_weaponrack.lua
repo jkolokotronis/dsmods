@@ -11,7 +11,7 @@ local function OnCreate(inst, scenariorunner)
 	inst.components.container:GiveItem(SpawnPrefab("fa_"..rack_type.."sword"))
 	inst.components.container:GiveItem(SpawnPrefab("fa_"..rack_type.."axe"))
 	inst.components.container:GiveItem(SpawnPrefab("fa_"..rack_type.."axe"))
-	inst.components.container:Close()
+	inst.components.container.onclosefn(inst)
 end
 
 local function OnLoad(inst, scenariorunner) 

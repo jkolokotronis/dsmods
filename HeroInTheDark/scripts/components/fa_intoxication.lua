@@ -179,7 +179,7 @@ local FA_Intoxication = Class(function(self, inst)
                 self.inst.components.hunger.hungerrate=self.inst.components.hunger.hungerrate+0.1
                 self.inst.components.health.absorb=self.inst.components.health.absorb-0.2
                 self.old_runspeed=self.inst.components.locomotor.GetRunSpeed
-                self.inst.components.locomotor.GetRunSpeed=function(self) return -self.old_runspeed(self) end
+                self.inst.components.locomotor.GetRunSpeed=function(wah) return -self.old_runspeed(wah) end
             end,
             onexit=function()
                 self.inst.components.hunger.hungerrate=self.inst.components.hunger.hungerrate-0.1

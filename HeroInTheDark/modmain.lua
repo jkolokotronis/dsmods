@@ -900,6 +900,9 @@ AddPrefabPostInit("world", function(inst)
         inst:AddComponent("fa_drinker")
         inst:AddComponent("fa_intoxication")
         inst:AddComponent("fa_recipebook")
+        if(inst.components.fa_spellcaster==nil)then
+            inst:AddComponent("fa_spellcaster")
+        end
 
         if(GLOBAL.FA_ModCompat.alwaysonmod)then
             print("alwayson", GLOBAL.FA_ModCompat.alwaysonmod.version)

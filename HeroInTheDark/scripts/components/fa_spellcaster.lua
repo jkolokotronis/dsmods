@@ -21,7 +21,7 @@ function FA_Spellcaster:GetCastFailure()
 	local fail=self.castfailure
 	if(self.inst.components.inventory)then
 
-    for k,v in pairs(self.inst.components.inventory) do
+    for k,v in pairs(self.inst.components.inventory.equipslots) do
         if v.components.equippable and v.components.equippable.fa_castfailure then
             fail=fail+v.components.equippable.fa_castfailure 
         end

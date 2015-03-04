@@ -104,6 +104,46 @@ SGWilson.states["fa_drink"]= State{
 
     }    
 
+SGWilson.states["fa_spellfailed"]=State{
+        name = "fa_spellfailed",
+        tags = {"busy", "fa_spellfailed"},
+        onenter = function(inst)
+            inst.components.playercontroller:Enable(false)
+            if inst.components.locomotor then
+                inst.components.locomotor:StopMoving()
+            end
+            inst.AnimState:PlayAnimation("idle")
+            inst.SoundEmitter:PlaySound("dontstarve/common/freezecreature")
+            if(not inst.fa_fizzle_fx)then
+                local fx=SpawnPrefab("fa_spinningstarsfx")
+                fx.persists=false
+                local follower = fx.entity:AddFollower()
+                follower:FollowSymbol( inst.GUID, inst.components.combat.hiteffectsymbol, 0,  -200, -0.0001 )
+                inst.fa_fizzle_fx=fx
+            end
+        end,
+        
+        onexit = function(inst)
+            if(inst.fa_fizzle_fx)then
+                inst.fa_fizzle_fx:Remove()
+                inst.fa_fizzle_fx=nil
+            end
+            inst.components.playercontroller:Enable(true)
+        end,
+
+         timeline=
+        {
+            TimeEvent(5, function(inst)
+                if inst.sg.sg.states.hit then
+                    inst.sg:GoToState("hit")
+                else
+                    inst.sg:GoToState("idle")
+                end
+            end),
+        },
+    }
+
+
 
 local RELOAD = Action(1, true)
 RELOAD.id = "RELOAD"

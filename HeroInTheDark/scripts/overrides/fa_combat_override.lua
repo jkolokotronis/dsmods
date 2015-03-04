@@ -389,3 +389,39 @@ atkdevent.fn=function(inst,data)
         return old_fn(inst,data)
     end
 end
+
+local atkdevent=SGWilson.events["doattack"]
+local old_fn=atkdevent.fn
+atkdevent.fn=function(inst,data)
+    if not inst.components.health:IsDead() and not inst.sg:HasStateTag("attack")  then
+        local weapon = inst.components.combat and inst.components.combat:GetWeapon()
+        if(weapon and weapon:HasTag("wand") and inst.components.fa_spellcaster)then
+            local failchance=inst.components.fa_spellcaster:GetCastFailure()
+            if(failchance and failchance>math.random())then
+                inst.sg:GoToState("fa_spellfailed")
+                return
+            end
+        end
+    end
+    return old_fn(inst,data)
+end
+
+local readhandler=SGWilson.actionhandlers[ACTIONS.READ]
+local old_fn=readhandler.deststate
+readhandler.deststate=function(inst,action)
+    if(inst.components.fa_spellcaster and inst.components.fa_spellcaster:GetCastFailure()>meth.random())then
+        inst:ClearBufferedAction()
+        return "fa_spellfailed"
+    end
+    return old_fn(inst,action)
+end
+
+local readhandler=SGWilson.actionhandlers[ACTIONS.CASTSPELL]
+local old_fn=readhandler.deststate
+readhandler.deststate=function(inst,action)
+    if(inst.components.fa_spellcaster and inst.components.fa_spellcaster:GetCastFailure()>math.random())then
+        inst:ClearBufferedAction()
+        return "fa_spellfailed"
+    end
+    return old_fn(inst,action)
+end
