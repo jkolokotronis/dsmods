@@ -402,6 +402,274 @@ end
 
 FA_BuffUtil.DamageReduction=DamageReductionSpellStart
 
+local function damagetransformlistener(inst,data)
+        local deltapercent=data.newpercent-data.oldpercent
+        local delta=deltapercent*inst.components.health.maxhealth
+        if(delta<0)then
+            inst.components.sanity:DoDelta(-delta*1)
+        end
+end
+
+local dmgxformstart=function(inst)
+    local target=inst.components.spell.target
+    local variables=inst.components.spell.variables
+    if target then
+        target:ListenForEvent("healthdelta", damagetransformlistener)
+    end
+end
+
+local function DamageSanityTransformSpellStart( reader,timer,variables)
+    if(timer==nil or timer<=0)then return false end
+
+    if reader.fa_damagetransform then
+        reader.fa_damagetransform.components.spell.lifetime = 0
+        reader.fa_damagetransform.components.spell:ResumeSpell()
+        return
+    else
+
+    local inst=CreateEntity()
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_damagetransform"
+    inst.components.spell.duration = timer
+    inst.components.spell.variables=variables
+    inst.components.spell.ontargetfn = function(inst,target)
+        target.fa_damagetransform = inst
+        target:AddTag(inst.components.spell.spellname)
+    end
+    inst.components.spell.onstartfn = dmgxformstart
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+        local target=inst.components.spell.target
+        reader:RemoveEventCallback("healthdelta", damagetransformlistener)
+        inst.components.spell.target.fa_damagetransform = nil
+    end
+
+        inst.components.spell.resumefn = function(inst,timeleft)   end 
+        inst.components.spell.removeonfinish = true
+
+        inst.components.spell:SetTarget(reader)
+        inst.components.spell:StartSpell()
+    end
+    
+    return true
+end
+
+FA_BuffUtil.DamageSanityTransform=DamageSanityTransformSpellStart
+
+
+local function DamageMultiplierSpellStart( reader,timer,variables)
+    if(timer==nil or timer<=0)then return false end
+
+    if reader.fa_damagemultiplier then
+        reader.fa_damagereduction.components.spell:OnFinish()
+    else
+
+    local inst=CreateEntity()
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_damagemultiplier"
+    inst.components.spell.duration = timer
+    inst.components.spell.variables=variables
+    local multiplier=(variables and variables.multiplier) or 0.1
+    inst.components.spell.ontargetfn = function(inst,target)
+        target.fa_damagemultiplier = inst
+        target:AddTag(inst.components.spell.spellname)
+    end
+    inst.components.spell.onstartfn = function(inst)
+        reader.components.combat.damagemultiplier=reader.components.combat.damagemultiplier+multiplier
+        if(reader.components.combat.fa_basedamagemultiplier)then                       
+           reader.components.combat.fa_basedamagemultiplier=reader.components.combat.fa_basedamagemultiplier+multiplier
+        end
+    end
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+         reader.components.combat.damagemultiplier=reader.components.combat.damagemultiplier-multiplier
+        if(reader.components.combat.fa_basedamagemultiplier)then                       
+           reader.components.combat.fa_basedamagemultiplier=reader.components.combat.fa_basedamagemultiplier-multiplier
+        end
+        inst.components.spell.target.fa_damagemultiplier = nil
+    end
+
+        inst.components.spell.resumefn = function(inst,timeleft)   end 
+        inst.components.spell.removeonfinish = true
+
+        inst.components.spell:SetTarget(reader)
+        inst.components.spell:StartSpell()
+    end
+    
+    return true
+end
+
+FA_BuffUtil.DamageMultiplier=DamageMultiplierSpellStart
+
+
+
+local function DappernessSpellStart( reader,timer,variables)
+    if(timer==nil or timer<=0)then return false end
+
+    if reader.fa_dapperness then
+        reader.fa_dapperness.components.spell:OnFinish()
+    else
+
+    local inst=CreateEntity()
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_dapperness"
+    inst.components.spell.duration = timer
+    inst.components.spell.variables=variables
+    local dapperness=(variables and variables.dapperness) or 0.5
+    inst.components.spell.ontargetfn = function(inst,target)
+        target.fa_dapperness = inst
+        target:AddTag(inst.components.spell.spellname)
+    end
+    inst.components.spell.onstartfn = function(inst)
+        reader.components.sanity.dapperness=(reader.components.sanity.dapperness or 0)+dapperness
+    end
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+        reader.components.sanity.dapperness=(reader.components.sanity.dapperness or 0)-dapperness
+        inst.components.spell.target.fa_dapperness = nil
+    end
+
+        inst.components.spell.resumefn = function(inst,timeleft)   end 
+        inst.components.spell.removeonfinish = true
+
+        inst.components.spell:SetTarget(reader)
+        inst.components.spell:StartSpell()
+    end
+    
+    return true
+end
+
+FA_BuffUtil.Dapperness=DappernessSpellStart
+
+local function HealthRegenSpellStart( reader,timer,variables)
+    if(timer==nil or timer<=0)then return false end
+
+    if reader.fa_healthregen then
+        reader.fa_healthregen.components.spell:OnFinish()
+    else
+
+    local inst=CreateEntity()
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_healthregen"
+    inst.components.spell.duration = timer
+    inst.components.spell.variables=variables
+    local dapperness=(variables and variables.dapperness) or 0.5
+    inst.components.spell.ontargetfn = function(inst,target)
+        target.fa_healthregen = inst
+        target:AddTag(inst.components.spell.spellname)
+    end
+    inst.components.spell.onstartfn = function(inst)
+        if(reader.components.health.regen.task~=nil)then
+            reader.components.health:StartRegen(1, 1)
+        else
+            reader.components.health.regen.amount=reader.components.health.regen.amount+1*reader.components.health.regen.period
+        end
+    end
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+        if(reader.components.health.regen.task~=nil)then
+            reader.components.health.regen.amount=reader.components.health.regen.amount-1*reader.components.health.regen.period
+            if(reader.components.health.regen.amount<=0)then
+                reader.components.health:StopRegen()
+            end
+        end
+        inst.components.spell.target.fa_healthregen = nil
+    end
+
+        inst.components.spell.resumefn = function(inst,timeleft)   end 
+        inst.components.spell.removeonfinish = true
+
+        inst.components.spell:SetTarget(reader)
+        inst.components.spell:StartSpell()
+    end
+    
+    return true
+end
+
+FA_BuffUtil.HealthRegen=HealthRegenSpellStart
+
+local fearreflectevent=function(owner,data) 
+    if(data and data.attacker and math.random()<=0.5)then
+        local target=data.attacker
+        --the whole spell crap should really be in single place... in next lifetime
+        if(target.fa_fear)then target.fa_fear.components.spell:OnFinish() end
+        
+        local inst=CreateEntity()
+        inst.persists=false
+        inst:AddTag("FX")
+        inst:AddTag("NOCLICK")
+        local spell = inst:AddComponent("spell")
+        inst.components.spell.spellname = "fa_fear"
+        inst.components.spell.duration = 15
+        inst.components.spell.ontargetfn = function(inst,target)
+            target.fa_fear = inst
+        end
+               --inst.components.spell.onstartfn = function() end
+        inst.components.spell.onfinishfn = function(inst)
+            if not inst.components.spell.target then return end
+            inst.components.spell.target.fa_fear = nil
+        end
+        inst.components.spell.resumefn = function() end
+        inst.components.spell.removeonfinish = true
+
+        inst.components.spell:SetTarget(target)
+        inst.components.spell:StartSpell()
+        
+    end
+end
+
+local function FearReflectSpellStart( reader,timer,variables)
+    if(timer==nil or timer<=0)then return false end
+
+    if reader.fa_fearreflect then
+        reader.fa_fearreflect.components.spell.lifetime = 0
+        reader.fa_fearreflect.components.spell:ResumeSpell()
+        return
+    else
+
+    local inst=CreateEntity()
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_fearreflect"
+    inst.components.spell.duration = timer
+    inst.components.spell.variables=variables
+    local dapperness=(variables and variables.dapperness) or 0.5
+    inst.components.spell.ontargetfn = function(inst,target)
+        target.fa_fearreflect = inst
+        target:AddTag(inst.components.spell.spellname)
+    end
+    inst.components.spell.onstartfn = function(inst)
+        reader:ListenForEvent("attacked",fearreflectevent)
+        reader:ListenForEvent("blocked",fearreflectevent)
+    end
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+        reader:RemoveEventCallback("blocked", fearreflectevent)
+        reader:RemoveEventCallback("attacked", fearreflectevent)
+        inst.components.spell.target.fa_fearreflect = nil
+    end
+
+        inst.components.spell.resumefn = function(inst,timeleft)   end 
+        inst.components.spell.removeonfinish = true
+
+        inst.components.spell:SetTarget(reader)
+        inst.components.spell:StartSpell()
+    end
+    
+    return true
+end
+
+FA_BuffUtil.FearReflect=FearReflectSpellStart
+
 local lightfn=function(inst, target, variables)
     if target then
         inst.Transform:SetPosition(target:GetPosition():Get())

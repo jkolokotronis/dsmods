@@ -5,25 +5,25 @@
         <file id="1" name="_0001s_0004_Ebene-6.png" width="1073" height="1227" pivot_x="0" pivot_y="1"/>
     </folder>
     <folder id="1" name="sword1">
-        <file id="0" name="sword1/_0008_Iron-Sw.png" width="533" height="357" pivot_x="0.641121" pivot_y="0.164345"/>
+        <file id="0" name="sword1/_0008_Iron-Sw.png" width="1" height="1" pivot_x="0.641121" pivot_y="0.164345"/>
     </folder>
     <folder id="2" name="sword2">
-        <file id="0" name="sword2/_0010_Cop-Sw.png" width="533" height="357" pivot_x="0.635514" pivot_y="0.153203"/>
+        <file id="0" name="sword2/_0010_Cop-Sw.png" width="1" height="1" pivot_x="0.635514" pivot_y="0.153203"/>
     </folder>
     <folder id="3" name="sword3">
-        <file id="0" name="sword3/swap.png" width="70" height="258" pivot_x="0.458333" pivot_y="0.242308"/>
+        <file id="0" name="sword3/swap.png" width="1" height="1" pivot_x="0.458333" pivot_y="0.242308"/>
     </folder>
     <folder id="4" name="sword4">
-        <file id="0" name="sword4/swap (2).png" width="70" height="258" pivot_x="0.486111" pivot_y="0.234615"/>
+        <file id="0" name="sword4/swap (2).png" width="1" height="1" pivot_x="0.486111" pivot_y="0.234615"/>
     </folder>
     <folder id="5" name="axe1">
-        <file id="0" name="axe1/_0013_Iron-Axe.png" width="202" height="271" pivot_x="0.460784" pivot_y="0.282051"/>
+        <file id="0" name="axe1/_0013_Iron-Axe.png" width="1" height="1" pivot_x="0.460784" pivot_y="0.282051"/>
     </folder>
     <folder id="6" name="axe2">
-        <file id="0" name="axe2/_0015_cop-axe.png" width="202" height="271" pivot_x="0.460784" pivot_y="0.282051"/>
+        <file id="0" name="axe2/_0015_cop-axe.png" width="1" height="1" pivot_x="0.460784" pivot_y="0.282051"/>
     </folder>
     <folder id="7" name="axe3">
-        <file id="0" name="axe3/_0014_Silver-Axe.png" width="210" height="273" pivot_x="0.460784" pivot_y="0.282051"/>
+        <file id="0" name="axe3/_0014_Silver-Axe.png" width="1" height="1" pivot_x="0.460784" pivot_y="0.282051"/>
     </folder>
     <entity id="0" name="fa_weaponrack">
         <animation id="0" name="idle" length="1000">

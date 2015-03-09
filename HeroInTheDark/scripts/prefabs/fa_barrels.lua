@@ -52,7 +52,7 @@ local function fn(name)
     inst:AddComponent("inspectable")
     
     inst:AddComponent("inventoryitem")
-    inst.components.inventoryitem.imagename="fa_barrel"
+    inst.components.inventoryitem.imagename="fa_barrel_wood"
     inst.components.inventoryitem.atlasname="images/inventoryimages/fa_inventoryimages.xml"
 
 	return inst
@@ -61,12 +61,10 @@ end
 local function woodfn(Sim)
 	local inst= fn("fa_barrel_wood")
      inst:DoPeriodicTask(1,function()
-        if(not inst:IsInLimbo() and GetSeasonManager():IsRaining()) then
+        if(not inst:IsInLimbo() and GetSeasonManager() and GetSeasonManager():IsRaining()) then
             local pos=inst:GetPosition()
-            local stack=inst.components.stackable.stacksize
             inst:Remove()
             local water=SpawnPrefab("fa_barrel_water")
-            water.components.stackable.stacksize=stack
             water.Transform:SetPosition(pos.x, pos.y, pos.z)
         end
     end)
@@ -122,6 +120,9 @@ local function goldrumfn(Sim)
     inst.components.fa_drink.intoxication=15
     inst.components.fa_drink.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
     inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_LONG
+    inst.components.fa_drink.ondrink=function(drink, eater)
+        eater.components.fa_bufftimers:AddBuff("dmg2sanity","DMG2Sanity","DamageSanityTransform",DR_LENGTH)
+    end
 
     return inst
 end 
@@ -152,7 +153,12 @@ local function hotrumfn(Sim)
     inst.components.fa_drink.intoxication=15
     inst.components.fa_drink.temperaturedelta = TUNING.HOT_FOOD_BONUS_TEMP
     inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_LONG
-
+    inst.components.fa_drink.ondrink=function(drink, eater)
+        eater.components.fa_bufftimers:AddBuff("endureelementscold","EndureCold","EndureElements",DR_LENGTH)
+        if(eater.components.moisture)then
+            eater.components.moisture:DoDelta(-10)
+        end
+    end
     return inst
 end 
 
@@ -167,6 +173,13 @@ local function lightalefn(Sim)
     inst.components.fa_drink.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
     inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_AVERAGE
 
+    inst.components.fa_drink.ondrink=function(inst,eater)
+        if(eater)then
+            if(eater.components.fa_bufftimers)then
+                eater.components.fa_bufftimers:AddBuff("damagemultiplier","DmgBoost","DamageMultiplier",2*60,{multiplier=0.1})
+            end
+        end
+    end
     return inst
 end 
 
@@ -181,6 +194,13 @@ local function ronsalefn(Sim)
     inst.components.fa_drink.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
     inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_LONG
 
+    inst.components.fa_drink.ondrink=function(inst,eater)
+        if(eater)then
+            if(eater.components.fa_bufftimers)then
+                eater.components.fa_bufftimers:AddBuff("damagemultiplier","DmgBoost","DamageMultiplier",2*60,{multiplier=0.2})
+            end
+        end
+    end
     return inst
 end 
 
@@ -195,6 +215,38 @@ local function drakealefn(Sim)
     inst.components.fa_drink.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
     inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_LONG
 
+    inst.components.fa_drink.ondrink=function(inst,eater)
+        if(eater:HasTag("player"))then
+            eater.components.locomotor:Stop()
+                eater.sg:GoToState("sleep")
+                eater.components.health:SetInvincible(true)
+                eater.components.playercontroller:Enable(false)
+                GetPlayer().HUD:Hide()
+                TheFrontEnd:Fade(false,1)
+                eater:DoTaskInTime(1.2, function() 
+                    GetPlayer().HUD:Show()
+                    TheFrontEnd:Fade(true,1) 
+                    eater.components.health:SetInvincible(false)
+                    eater.components.playercontroller:Enable(true)
+                    GetClock():MakeNextDay()
+                    eater.sg:GoToState("wakeup")    
+
+                    local spawn_point= Vector3(eater.Transform:GetWorldPosition())
+                    local tree = SpawnPrefab("mandrake") 
+                    local pt = Vector3(spawn_point.x, 0, spawn_point.z)
+                    tree.Physics:SetCollides(false)
+                    tree.Physics:Teleport(pt.x, pt.y, pt.z) 
+                    tree.Physics:SetCollides(true)
+                    eater.components.leader:AddFollower(tree)
+                    local tree = SpawnPrefab("mandrake") 
+                    tree.Physics:SetCollides(false)
+                    tree.Physics:Teleport(pt.x, pt.y, pt.z) 
+                    tree.Physics:SetCollides(true)
+                    eater.components.leader:AddFollower(tree)
+
+                    end)
+        end
+    end
     return inst
 end 
 
@@ -337,7 +389,6 @@ local function whiskeyfn(Sim)
     inst:ListenForEvent("oneaten",function(inst,data)
         local eater=data.eater
         if(eater and eater.components.fa_intoxication)then
-            eater.components.fa_intoxication:DoDelta(15)
             eater.components.fa_bufftimers:AddBuff("physicaldr","PhysicalDR","DamageReduction",DR_LENGTH,{damagetype=FA_DAMAGETYPE.ELECTRIC,drdelta=5})
         end
     end)
