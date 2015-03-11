@@ -70,7 +70,7 @@ local keg_recipes={
 		match={product={"fa_barrel_goldrum"},cooktime=960},
 		test={
 			{ingred="fa_barrel_lightrum",count=2},
-			{ingred="goldnugget",count=1},
+			{ingred="goldnugget",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="fa_barrel_wood",count=1},
 		},
 	},
@@ -550,7 +550,7 @@ local smelt_recipes={
 			{ingred="fa_coalbar",count=2},
 			{ingred="fa_ironbar",count=2},
 			{ingred="fa_pigironbar",count=2},
-			{ingred="marble",count=2},
+			{ingred="marble",count=2,atlas="images/inventoryimages.xml"},
 		},
 	},
 	{
@@ -603,28 +603,28 @@ local smelt_recipes={
 		},
 	},
 	{
-		match={product={"fa_lavapebble","fa_lavapebble","fa_lavapebble","fa_lavapebble","fa_lavapebble","fa_lavapebble"},cooktime=60},
+		match={product={"fa_lavapebble","fa_lavapebble","fa_lavapebble","fa_lavapebble","fa_lavapebble","fa_lavapebble"},cooktime=60,ignorehash=true},
 		test={
 			{ingred="fa_lavaslag",count=6},
 			{ingred=isfuel,count=2},
 		},
 	},
 	{
-		match={product={"fa_ironpebble","fa_ironpebble","fa_ironpebble","fa_ironpebble","fa_ironpebble","fa_ironpebble"},cooktime=60},
+		match={product={"fa_ironpebble","fa_ironpebble","fa_ironpebble","fa_ironpebble","fa_ironpebble","fa_ironpebble"},cooktime=60,ignorehash=true},
 		test={
 			{ingred="fa_ironslag",count=6},
 			{ingred=isfuel,count=2},
 		},
 	},
 	{
-		match={product={"fa_silverpebble","fa_silverpebble","fa_silverpebble","fa_silverpebble","fa_silverpebble","fa_silverpebble"},cooktime=60},
+		match={product={"fa_silverpebble","fa_silverpebble","fa_silverpebble","fa_silverpebble","fa_silverpebble","fa_silverpebble"},cooktime=60,ignorehash=true},
 		test={
 			{ingred="fa_silverslag",count=6},
 			{ingred=isfuel,count=2},
 		},
 	},
 	{
-		match={product={"fa_copperpebble","fa_copperpebble","fa_copperpebble","fa_copperpebble","fa_copperpebble","fa_copperpebble"},cooktime=60},
+		match={product={"fa_copperpebble","fa_copperpebble","fa_copperpebble","fa_copperpebble","fa_copperpebble","fa_copperpebble"},cooktime=60,ignorehash=true},
 		test={
 			{ingred="fa_copperslag",count=6},
 			{ingred=isfuel,count=2},

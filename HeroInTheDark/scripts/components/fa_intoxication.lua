@@ -130,6 +130,12 @@ local FA_Intoxication = Class(function(self, inst)
                 self.inst.components.hunger.hungerrate=self.inst.components.hunger.hungerrate+0.05
                 self.monsterimmune=self.inst.components.eater.monsterimmune
                 self.inst.components.eater.monsterimmune=true
+                self.foodprefs=deepcopy(self.inst.components.eater.foodprefs)
+                if(FA_DLCACCESS)then
+                    --I still dont get why was this mess necesary...
+                    self.ablefoods=deepcopy(self.inst.components.eater.ablefoods)
+                end
+                self.inst.components.eater:SetCanEatHorrible()
                 self.strongstomach=self.inst.components.eater.strongstomach
                 self.inst.components.eater.strongstomach=true
                 self.night_drain_mult=self.inst.components.sanity.night_drain_mult
@@ -140,6 +146,10 @@ local FA_Intoxication = Class(function(self, inst)
                 self.inst.components.hunger.hungerrate=self.inst.components.hunger.hungerrate-0.05
                 self.inst.components.eater.monsterimmune=self.monsterimmune
                 self.inst.components.eater.strongstomach=self.strongstomach
+                self.inst.components.eater.foodprefs=self.foodprefs
+                self.foodprefs=nil
+                self.inst.components.eater.ablefoods=self.ablefoods
+                self.ablefoods=nil
                 self.inst.components.sanity.night_drain_mult=self.night_drain_mult
                  self.sanitytrans= self.sanitytrans-0.2
             end,
@@ -150,8 +160,24 @@ local FA_Intoxication = Class(function(self, inst)
             onenter=function()
                 self.inst.components.hunger.hungerrate=self.inst.components.hunger.hungerrate+0.05
                 self.inst.components.health.fa_dodgechance=self.inst.components.health.fa_dodgechance+0.2
+                self.invsliptask=self.inst:DoPeriodicTask(60,function(inst)
+                    local count=self.inst.components.inventory:NumItems()
+                    if(count<=0)then return end
+                    local index=math.random(count)
+                    for k,v in pairs( self.inst.components.inventory.itemslots) do
+                        if(k==index)then
+                            self.inst.components.inventory:DropItem(v, false,true)
+                            self.inst.components.talker:Say(GetString(v.prefab, "ANNOUNCE_TOOL_SLIP"))
+                            break
+                        end
+                    end
+                end)
             end,
             onexit=function()
+                if(self.invsliptask)then
+                    self.invsliptask:Cancel()
+                    self.invsliptask=nil
+                end
                 self.inst.components.hunger.hungerrate=self.inst.components.hunger.hungerrate-0.05
                 self.inst.components.health.fa_dodgechance=self.inst.components.health.fa_dodgechance-0.2
             end,

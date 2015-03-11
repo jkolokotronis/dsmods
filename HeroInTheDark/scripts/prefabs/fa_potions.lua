@@ -597,7 +597,7 @@ local function ftest(name)
 end
 
 local function fnwort()
-	local inst=common("bottle_1_7")
+	local inst=common("bottle_wort")
     inst.components.fa_drink.hungervalue = 5
 	return inst
 end
@@ -623,7 +623,7 @@ end
 
 
 local function pomegranatewine()
-	local inst=common("bottle_1_2")
+	local inst=common("pomegranate_wine")
 	winecommon(inst)
 
 	inst.components.fa_drink.ondrink=function(inst,eater)
@@ -640,7 +640,7 @@ local function pomegranatewine()
 end
 
 local function durianwine()
-	local inst=common("bottle_1_2")
+	local inst=common("durian_wine")
 	winecommon(inst)
 	inst.components.fa_drink.ondrink=function(inst,eater)
 	    if(eater)then
@@ -657,7 +657,7 @@ local function durianwine()
 end
 
 local function dragonwine()
-	local inst=common("bottle_1_0")
+	local inst=common("dragon_wine")
 	winecommon(inst)
 	inst.components.fa_drink.ondrink=function(inst,eater)
 	    if(eater)then
@@ -673,7 +673,7 @@ local function dragonwine()
 end
 
 local function melonwine()
-	local inst=common("bottle_1_6")
+	local inst=common("melon_wine")
 	winecommon(inst)
     inst.components.fa_drink.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
     inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_AVERAGE
@@ -692,7 +692,7 @@ local function melonwine()
 end
 
 local function redwine()
-	local inst=common("bottle_1_0")
+	local inst=common("red_wine")
 	winecommon(inst)
 
 	inst.components.fa_drink.ondrink=function(inst,eater)
@@ -709,7 +709,7 @@ local function redwine()
 end
 
 local function goodberrywine()
-	local inst=common("bottle_1_7")
+	local inst=common("goodberry_wine")
 	winecommon(inst)
     inst.components.fa_drink.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
     inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_LONG
@@ -717,7 +717,7 @@ local function goodberrywine()
 	inst.components.fa_drink.ondrink=function(inst,eater)
 	    if(eater)then
 	    	if(eater.components.fa_bufftimers)then
-	            eater.components.fa_bufftimers:AddBuff("dapperness","Dapperness","Dapperness",3*60,{dapperness=1})
+	            eater.components.fa_bufftimers:AddBuff("dapperness","Dapperness","Dapperness",4*60,{dapperness=1})
 	    	end
 			if((not inst.components.finiteuses or inst.components.finiteuses.current <= 1) and eater.components.inventory)then
 				eater.components.inventory:GiveItem( SpawnPrefab("fa_bottle_empty") )
@@ -728,22 +728,61 @@ local function goodberrywine()
 end
 
 local function glowingwine()
-	local inst=common("bottle_1_9")
+	local inst=common("glowing_wine")
 	winecommon(inst)
+
+	inst.components.fa_drink.ondrink=function(inst,eater)
+	    if(eater)then
+	    	if(eater.components.fa_bufftimers)then
+	            eater.components.fa_bufftimers:AddBuff("friendlyworms","FriendlyWorms","FriendlyWorms",2*60)
+	    	end
+			if((not inst.components.finiteuses or inst.components.finiteuses.current <= 1) and eater.components.inventory)then
+				eater.components.inventory:GiveItem( SpawnPrefab("fa_bottle_empty") )
+			end
+        end
+    end
 	return inst
 end
 
 local function cactuswine()
-	local inst=common("bottle_1_2")
+	local inst=common("cactus_wine")
 	winecommon(inst)
     inst.components.fa_drink.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
     inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_LONG
+
+	inst.components.fa_drink.ondrink=function(inst,eater)
+	    if(eater)then
+	    	if(eater:HasTag("player"))then
+
+    		local light = SpawnPrefab("fa_darkvision_fx")
+    		light.components.spell:SetTarget(reader)
+	    	light.components.spell:StartSpell()
+
+	    	end
+			if((not inst.components.finiteuses or inst.components.finiteuses.current <= 1) and eater.components.inventory)then
+				eater.components.inventory:GiveItem( SpawnPrefab("fa_bottle_empty") )
+			end
+        end
+    end
+
+
 	return inst
 end
 
 local function mead()
-	local inst=common("bottle_1_7")
+	local inst=common("mead")
 	winecommon(inst)
+
+	inst.components.fa_drink.ondrink=function(inst,eater)
+	    if(eater)then
+	    	if(eater.components.fa_bufftimers)then
+	            eater.components.fa_bufftimers:AddBuff("friendlybees","FriendlyBees","FriendlyBees",2*60)
+	    	end
+			if((not inst.components.finiteuses or inst.components.finiteuses.current <= 1) and eater.components.inventory)then
+				eater.components.inventory:GiveItem( SpawnPrefab("fa_bottle_empty") )
+			end
+        end
+    end
 	return inst
 end
 

@@ -341,7 +341,22 @@ FA_ModUtil.AddPrefabPostInit("worm",function(inst)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.5
     inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-0.5
     inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.5
+    --this can cause mod compat issues but only if spell is active - theres prob a better way
+    local orig_targetfn=inst.components.combat.targetfn 
+    inst.components.combat.targetfn=function(inst)
+
+        if(not inst.sg:HasStateTag("lure") and GetPlayer() and GetPlayer().fa_friendlyworms)then
+            return FindEntity(inst, TUNING.WORM_TARGET_DIST, function(guy) 
+                if guy.components.combat and guy.components.health and not guy.components.health:IsDead() then
+                    return ( guy:HasTag("character") or guy:HasTag("monster") or guy:HasTag("animal")) and not guy:HasTag("prey") and not (guy.prefab == inst.prefab) and not guy.fa_friendlyworms
+                end
+            end)
+        else
+            return orig_targetfn(inst)
+        end
+    end
 end)
+
 FA_ModUtil.AddPrefabPostInit("koalefant_summer",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_neutral")

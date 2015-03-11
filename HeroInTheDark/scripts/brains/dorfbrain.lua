@@ -11,6 +11,9 @@ local MAX_CHASE_TIME = 15
 local MAX_CHASE_DIST = 40
 local RUN_AWAY_DIST = 5
 local STOP_RUN_AWAY_DIST = 8
+local MIN_FOLLOW_DIST = 2
+local MAX_FOLLOW_DIST = 9
+local TARGET_FOLLOW_DIST = 5
 
 
 local DorfBrain = Class(Brain, function(self, inst)
@@ -37,6 +40,7 @@ function DorfBrain:OnStart()
         WhileNode( function() return self.inst.components.health.takingfiredamage and not (self.inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE] and self.inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]>=1) end,
          "OnFire", Panic(self.inst)),
           ChaseAndAttack(self.inst, MAX_CHASE_TIME,MAX_CHASE_DIST),
+        Follow(self.inst, function() return self.inst.components.follower.leader end, MIN_FOLLOW_DIST, TARGET_FOLLOW_DIST, MAX_FOLLOW_DIST, true),
         Wander(self.inst, function() 
             if(self.inst.components.homeseeker and self.inst.components.homeseeker.home)then
                 return self.inst.components.homeseeker:GetHomePos()

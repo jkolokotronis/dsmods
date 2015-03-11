@@ -670,6 +670,97 @@ end
 
 FA_BuffUtil.FearReflect=FearReflectSpellStart
 
+local function FriendlyBeesSpellStart( reader,timer,variables)
+    if(timer==nil or timer<=0)then return false end
+
+    if reader.fa_friendlybees then
+        reader.fa_friendlybees.components.spell.lifetime = 0
+        reader.fa_friendlybees.components.spell:ResumeSpell()
+        return
+    else
+
+    local inst=CreateEntity()
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_friendlybees"
+    inst.components.spell.duration = timer
+    inst.components.spell.variables=variables
+    local dapperness=(variables and variables.dapperness) or 0.5
+    inst.components.spell.ontargetfn = function(inst,target)
+        target.fa_friendlybees = inst
+        target:AddTag(inst.components.spell.spellname)
+    end
+    inst.components.spell.onstartfn = function(inst)
+        if(reader:HasTag("insect"))then
+            inst.fa_ignoreinsect=true
+        else
+            reader:AddTag("insect")
+        end
+    end
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+        if(not inst.fa_ignoreinsect)then
+            reader:RemoveTag("insect")
+        end
+        inst.components.spell.target.fa_friendlybees = nil
+    end
+
+        inst.components.spell.resumefn = function(inst,timeleft)   end 
+        inst.components.spell.removeonfinish = true
+
+        inst.components.spell:SetTarget(reader)
+        inst.components.spell:StartSpell()
+    end
+    
+    return true
+end
+
+FA_BuffUtil.FriendlyBees=FriendlyBeesSpellStart
+
+local function FriendlyWormsSpellStart( reader,timer,variables)
+    if(timer==nil or timer<=0)then return false end
+
+    if reader.fa_friendlyworms then
+        reader.fa_friendlyworms.components.spell.lifetime = 0
+        reader.fa_friendlyworms.components.spell:ResumeSpell()
+        return
+    else
+
+    local inst=CreateEntity()
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_friendlyworms"
+    inst.components.spell.duration = timer
+    inst.components.spell.variables=variables
+    local dapperness=(variables and variables.dapperness) or 0.5
+    inst.components.spell.ontargetfn = function(inst,target)
+        target.fa_friendlyworms = inst
+        target:AddTag(inst.components.spell.spellname)
+    end
+    inst.components.spell.onstartfn = function(inst)
+
+    end
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+
+        inst.components.spell.target.fa_friendlyworms = nil
+    end
+
+        inst.components.spell.resumefn = function(inst,timeleft)   end 
+        inst.components.spell.removeonfinish = true
+
+        inst.components.spell:SetTarget(reader)
+        inst.components.spell:StartSpell()
+    end
+    
+    return true
+end
+
+FA_BuffUtil.FriendlyWorms=FriendlyWormsSpellStart
+
+
 local lightfn=function(inst, target, variables)
     if target then
         inst.Transform:SetPosition(target:GetPosition():Get())

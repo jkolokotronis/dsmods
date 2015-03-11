@@ -543,7 +543,7 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="25" name="fa_bottle_1_0">
+    <entity id="25" name="fa_red_wine">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
@@ -557,7 +557,7 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="26" name="fa_bottle_lifeessence">
+    <entity id="26" name="fa_dragon_wine">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
@@ -571,7 +571,21 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="27" name="fa_bottle_1_1">
+    <entity id="27" name="fa_bottle_lifeessence">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="3" file="0" x="-68" y="108" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="28" name="fa_bottle_1_1">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
@@ -585,7 +599,7 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="28" name="fa_bottle_frozenessence">
+    <entity id="29" name="fa_bottle_frozenessence">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
@@ -599,7 +613,7 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="29" name="fa_bottle_1_2">
+    <entity id="30" name="fa_cactus_wine">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
@@ -613,7 +627,35 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="30" name="fa_bottle_1_3">
+    <entity id="31" name="fa_durian_wine">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="3" file="9" x="-60" y="106" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="32" name="fa_pomegranate_wine">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="3" file="9" x="-60" y="106" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="33" name="fa_bottle_1_3">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
@@ -627,7 +669,7 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="31" name="fa_bottle_1_4">
+    <entity id="34" name="fa_bottle_1_4">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
@@ -641,7 +683,7 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="32" name="fa_bottle_1_5">
+    <entity id="35" name="fa_bottle_1_5">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
@@ -655,7 +697,7 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="33" name="fa_bottle_1_6">
+    <entity id="36" name="fa_melon_wine">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
@@ -669,7 +711,7 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="34" name="fa_bottle_1_7">
+    <entity id="37" name="fa_mead">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
@@ -683,7 +725,35 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="35" name="fa_bottle_1_8">
+    <entity id="38" name="fa_goodberry_wine">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="3" file="6" x="-58" y="106" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="39" name="fa_bottle_wort">
+        <animation id="0" name="idle" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="3" file="6" x="-58" y="106" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="40" name="fa_bottle_1_8">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
@@ -697,7 +767,7 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="36" name="fa_bottle_1_poisonessence">
+    <entity id="41" name="fa_bottle_1_poisonessence">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
@@ -711,7 +781,7 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="37" name="fa_bottle_1_9">
+    <entity id="42" name="fa_glowing_wine">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
@@ -725,7 +795,7 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="38" name="fa_bottle_lightningessence">
+    <entity id="43" name="fa_bottle_lightningessence">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
