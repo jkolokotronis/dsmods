@@ -662,7 +662,7 @@ local function dragonwine()
 	inst.components.fa_drink.ondrink=function(inst,eater)
 	    if(eater)then
 	    	if(eater.components.fa_bufftimers)then
-			    reader.components.fa_bufftimers:AddBuff("healthregen","HealthRegen","HealthRegen",3*60)
+			    eater.components.fa_bufftimers:AddBuff("healthregen","HealthRegen","HealthRegen",3*60)
 	    	end
 			if((not inst.components.finiteuses or inst.components.finiteuses.current <= 1) and eater.components.inventory)then
 				eater.components.inventory:GiveItem( SpawnPrefab("fa_bottle_empty") )
@@ -681,7 +681,7 @@ local function melonwine()
 	inst.components.fa_drink.ondrink=function(inst,eater)
 	    if(eater)then
 	    	if(eater.components.fa_bufftimers)then
-			    reader.components.fa_bufftimers:AddBuff("endureelementsheat","EndureHeat","EndureElements",4*60,{summer=true})
+			    eater.components.fa_bufftimers:AddBuff("endureelementsheat","EndureHeat","EndureElements",4*60,{summer=true})
 	    	end
 			if((not inst.components.finiteuses or inst.components.finiteuses.current <= 1) and eater.components.inventory)then
 				eater.components.inventory:GiveItem( SpawnPrefab("fa_bottle_empty") )
@@ -698,7 +698,7 @@ local function redwine()
 	inst.components.fa_drink.ondrink=function(inst,eater)
 	    if(eater)then
 	    	if(eater.components.fa_bufftimers)then
-			    reader.components.fa_bufftimers:AddBuff("endureelementsheat","EndureHeat","EndureElements",4*60,{summer=true})
+			    eater.components.fa_bufftimers:AddBuff("endureelementsheat","EndureHeat","EndureElements",4*60,{summer=true})
 	    	end
 			if((not inst.components.finiteuses or inst.components.finiteuses.current <= 1) and eater.components.inventory)then
 				eater.components.inventory:GiveItem( SpawnPrefab("fa_bottle_empty") )
@@ -755,7 +755,7 @@ local function cactuswine()
 	    	if(eater:HasTag("player"))then
 
     		local light = SpawnPrefab("fa_darkvision_fx")
-    		light.components.spell:SetTarget(reader)
+    		light.components.spell:SetTarget(eater)
 	    	light.components.spell:StartSpell()
 
 	    	end

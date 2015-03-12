@@ -161,7 +161,7 @@ local keg_recipes={
 		match={product={"fa_barrel_dorfale"},cooktime=960},
 		test={
 			{ingred="fa_bottle_wort",count=1},
-			{ingred="cutlichen",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="cutlichen",count=1},
 			{ingred="fa_brewingyeast",count=1},
 			{ingred="fa_barrel_wood",count=1},
 		},
@@ -170,7 +170,7 @@ local keg_recipes={
 		match={product={"fa_dwarfalemug"},cooktime=480},
 		test={
 			{ingred="fa_bottle_wort",count=1},
-			{ingred="cutlichen",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="cutlichen",count=1},
 			{ingred="fa_brewingyeast",count=1},
 			{ingred="fa_emptymug",count=1},
 		},
@@ -309,7 +309,7 @@ local distiller_recipes={
 		match={product={"fa_barrel_tequila"},cooktime=480},
 		test={
 			{ingred="fa_mash",count=1},
-			{ingred="cutlichen",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="cutlichen",count=1},
 			{ingred="fa_distillingyeast",count=1},
 			{ingred="fa_barrel_water",count=1},
 		},

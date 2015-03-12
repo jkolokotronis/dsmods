@@ -54,6 +54,7 @@ local function fn(Sim)
 		inst.components.edible.hungervalue = 1
 		inst.components.edible.sanityvalue = 10
 		inst.components.edible.foodtype = "VEGGIE"
+    	inst.components.inventoryitem.imagename="fa_goodberries"
 
 		inst:AddComponent("perishable")
 		inst.components.perishable:SetPerishTime(TUNING.PERISH_MED)
