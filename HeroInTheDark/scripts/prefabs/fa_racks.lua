@@ -86,6 +86,13 @@ local onsave = function(inst, data)
     inst.trapped = data.trapped 
 end
 
+
+local loadpostpass=function(inst,data)
+    if(inst.components.container.onclosefn)then
+        inst.components.container.onclosefn(inst)
+    end
+end
+
 local function fn(name)
     local inst = CreateEntity()
     inst.entity:AddTransform()
@@ -255,6 +262,7 @@ end
     inst:AddComponent("lootdropper")
     inst.OnSave = onsave
     inst.OnLoad = onload
+    inst.LoadPostPass=loadpostpass
 
     return inst
 end
