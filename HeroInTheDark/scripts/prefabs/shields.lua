@@ -101,7 +101,7 @@ local function fn(name)
     minimap:SetIcon( name..".tex" )
     inst.AnimState:SetBank(name)
     inst.AnimState:SetBuild(name)
-    inst.AnimState:PlayAnimation(idle)
+    inst.AnimState:PlayAnimation("idle")
 
   inst:AddComponent("inventoryitem")
   inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_inventoryimages.xml"
@@ -258,6 +258,7 @@ local function onboneequip(inst, owner)
     inst:ListenForEvent("attacked",OnBoneBlocked,owner)
     inst:ListenForEvent("blocked",OnBoneBlocked, owner)
 end
+
 
 local function onboneunequip(inst, owner) 
     inst:RemoveEventCallback("blocked", OnBoneBlocked, owner)

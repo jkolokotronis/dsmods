@@ -394,6 +394,7 @@ local function common(name)
     inst.components.fa_drink.foodtype = "FA_POTION"
     inst:AddComponent("stackable")
     inst.components.stackable.maxsize = 40
+    inst:AddComponent("tradable")
 
     inst.components.fa_drink.ondrink=oneaten
 --    inst:ListenForEvent("oneaten",oneaten)

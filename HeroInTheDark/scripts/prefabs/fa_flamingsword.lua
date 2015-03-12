@@ -108,6 +108,6 @@ local function t3()
     return inst
 end
 
-return Prefab( "common/inventory/flamingsword", t1, assets),
-Prefab( "common/inventory/flamingsword2", t2, assets),
-Prefab( "common/inventory/flamingsword3", t3, assets) 
+return Prefab( "common/inventory/fa_flamingsword", t1, assets),
+Prefab( "common/inventory/fa_flamingsword2", t2, assets),
+Prefab( "common/inventory/fa_flamingsword3", t3, assets) 

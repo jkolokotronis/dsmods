@@ -105,12 +105,12 @@ FALLENLOOTTABLE={
 
             armorfire=50,
             armorfrost=50,
-            dagger=50,
+            fa_dagger=50,
             fa_venomdagger1=50,
-            flamingsword=50,
-            frostsword=50,
-            undeadbanesword=50,
-            vorpalaxe=50,
+            fa_flamingsword=50,
+            fa_frostsword=50,
+            fa_undeadbanesword=50,
+            fa_vorpalaxe=50,
             fa_lightningsword=50,
             fa_bottle_r=50,
             fa_bottle_y=50,
@@ -122,11 +122,11 @@ FALLENLOOTTABLE={
             fa_bottle_empty=50,  
     },
     tier2={
-            undeadbanesword2=35,
+            fa_undeadbanesword2=35,
             fa_ring_speed=35
     },
     tier3={
-            undeadbanesword3=15,
+            fa_undeadbanesword3=15,
             fa_redtotem_item=15,
             fa_bluetotem_item=15,
             fa_ring_frozen=15,

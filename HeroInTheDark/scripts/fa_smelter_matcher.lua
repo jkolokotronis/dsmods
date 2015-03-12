@@ -347,7 +347,7 @@ local alchemy_recipes={
 		test={
 			{ingred="houndstooth",count=5,atlas="images/inventoryimages.xml"},
 			{ingred="hammer",count=1,atlas="images/inventoryimages.xml"},
-			{ingred="nightmarefuel",count=2},
+			{ingred="nightmarefuel",count=2,atlas="images/inventoryimages.xml"},
 		},
 	},
 	{
@@ -971,7 +971,7 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"flamingsword","fa_bottle_empty"},cooktime=240},
+		match={product={"fa_flamingsword","fa_bottle_empty"},cooktime=240},
 		test={
 			{ingred="fa_lavabar",count=1},
 			{ingred="charcoal",count=3,atlas="images/inventoryimages.xml"},
@@ -981,7 +981,7 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"flamingsword2","fa_bottle_empty"},cooktime=480},
+		match={product={"fa_flamingsword2","fa_bottle_empty"},cooktime=480},
 		test={
 			{ingred="fa_lavabar",count=2},
 			{ingred="charcoal",count=2,atlas="images/inventoryimages.xml"},
@@ -991,7 +991,7 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"flamingsword3","fa_bottle_empty"},cooktime=960},
+		match={product={"fa_flamingsword3","fa_bottle_empty"},cooktime=960},
 		test={
 			{ingred="fa_lavabar",count=3},
 			{ingred="fa_coalbar",count=3},
@@ -1000,7 +1000,7 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"frostsword","fa_bottle_empty"},cooktime=240},
+		match={product={"fa_frostsword","fa_bottle_empty"},cooktime=240},
 		test={
 			{ingred="fa_bottle_frozenessence",count=1},
 			{ingred="charcoal",count=3,atlas="images/inventoryimages.xml"},
@@ -1010,7 +1010,7 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"frostsword2","fa_bottle_empty"},cooktime=480},
+		match={product={"fa_frostsword2","fa_bottle_empty"},cooktime=480},
 		test={
 			{ingred="fa_bottle_frozenessence",count=2},
 			{ingred="charcoal",count=2,atlas="images/inventoryimages.xml"},
@@ -1020,7 +1020,7 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"frostsword3","fa_bottle_empty"},cooktime=960},
+		match={product={"fa_frostsword3","fa_bottle_empty"},cooktime=960},
 		test={
 			{ingred="fa_bottle_frozenessence",count=3},
 			{ingred="fa_coalbar",count=3},
@@ -1225,15 +1225,6 @@ local forge_recipes={
 			{ingred="fa_bottle_oil",count=1},
 			{ingred="hammer",count=1,atlas="images/inventoryimages.xml"},
 			{ingred=isfuel,count=5},
-		},
-	},
-	{
-		match={product={"fa_lightningsword3","fa_bottle_empty"},cooktime=960},
-		test={
-			{ingred="fa_bottle_lightningessence",count=3},
-			{ingred="fa_coalbar",count=3},
-			{ingred="fa_steeldagger",count=1},
-			{ingred="fa_bottle_oil", count=1},
 		},
 	},
 	{

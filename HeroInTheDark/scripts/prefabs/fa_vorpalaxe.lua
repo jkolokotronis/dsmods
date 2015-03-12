@@ -104,6 +104,6 @@ local function t3()
     inst.components.finiteuses:SetUses(VORPALAXE_USES_T3)
     return inst
 end
-return Prefab( "common/inventory/vorpalaxe", t1, assets),
-    Prefab( "common/inventory/vorpalaxe2", t2, assets),
-    Prefab( "common/inventory/vorpalaxe3", t3, assets)
+return Prefab( "common/inventory/fa_vorpalaxe", t1, assets),
+    Prefab( "common/inventory/fa_vorpalaxe2", t2, assets),
+    Prefab( "common/inventory/fa_vorpalaxe3", t3, assets)

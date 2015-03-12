@@ -112,6 +112,6 @@ local function t3()
     inst.components.finiteuses:SetUses(UBSWORD_USES_T3)
     return inst
 end
-return Prefab( "common/inventory/undeadbanesword", t1, assets),
-    Prefab( "common/inventory/undeadbanesword2", t2, assets),
-    Prefab( "common/inventory/undeadbanesword3", t3, assets) 
+return Prefab( "common/inventory/fa_undeadbanesword", t1, assets),
+    Prefab( "common/inventory/fa_undeadbanesword2", t2, assets),
+    Prefab( "common/inventory/fa_undeadbanesword3", t3, assets) 

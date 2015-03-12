@@ -233,9 +233,9 @@ local function venom3()
 end
 
 
-return Prefab( "common/inventory/dagger", t1, assets),
-    Prefab( "common/inventory/dagger2", t2, assets),
-    Prefab( "common/inventory/dagger3", t3, assets),
+return Prefab( "common/inventory/fa_dagger", t1, assets),
+    Prefab( "common/inventory/fa_dagger2", t2, assets),
+    Prefab( "common/inventory/fa_dagger3", t3, assets),
     Prefab( "common/inventory/fa_copperdagger",copper, assets_copper),
     Prefab( "common/inventory/fa_steeldagger",steel, assets_steel),
     Prefab( "common/inventory/fa_adamantinedagger",adamantine, assets_adamantine),
