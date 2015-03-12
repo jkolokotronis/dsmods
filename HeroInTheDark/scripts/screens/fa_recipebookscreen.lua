@@ -183,6 +183,7 @@ function FARecipeBookScreen:OnSelectRecipe(r)
 	self.selected=r
 	self.recipe:KillAllChildren()
 	local data=self.caster.components.fa_recipebook.recipes[self.category].matcher.hashtable[r]
+	if(data==nil)then return end
 	local product=data.product
 	local cooktime=data.cooktime
 	local ingreds={}

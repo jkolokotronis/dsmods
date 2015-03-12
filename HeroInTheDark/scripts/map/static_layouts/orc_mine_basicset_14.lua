@@ -143,7 +143,7 @@ return {
         },
         {
           name = "",
-          type = "flamingsword3",
+          type = "fa_flamingsword3",
           shape = "rectangle",
           x = 254,
           y = 241,

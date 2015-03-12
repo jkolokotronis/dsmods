@@ -212,6 +212,9 @@ local function npc()
 
     inst.components.lootdropper:SetLoot({ "fa_ring_demon"})
 
+    inst.components.health:SetInvincible(true)
+    inst:AddTag("notarget")
+
     local deathfn=function()
         inst.components.lootdropper:DropLoot()
     end

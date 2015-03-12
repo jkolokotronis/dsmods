@@ -36,16 +36,15 @@ local function PuppetOnOpen(inst)
 --      should i kill myself?
         inst.trapped=false
     else
-       for k,v in pairs(self.equipslots) do
-       end
+--       for k,v in pairs(inst.components.inventory.equipslots) do
         if(inst.components.inventory.equipslots[EQUIPSLOTS.HEAD])then
             inst.components.inventory:Unequip(EQUIPSLOTS.HEAD)
         end
         if(inst.components.inventory.equipslots[EQUIPSLOTS.BODY])then
             inst.components.inventory:Unequip(EQUIPSLOTS.BODY)
         end
---        inst.AnimState:ClearOverrideSymbol("swap_hat")
---        inst.AnimState:ClearOverrideSymbol("swap_body")
+        inst.AnimState:ClearOverrideSymbol("swap_hat")
+        inst.AnimState:ClearOverrideSymbol("swap_body")
     end
 end 
 

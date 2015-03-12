@@ -1058,7 +1058,7 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"vorpalaxe","fa_bottle_empty"},cooktime=240},
+		match={product={"fa_vorpalaxe","fa_bottle_empty"},cooktime=240},
 		test={
 			{ingred="fa_bottle_lifeessence",count=1},
 			{ingred="charcoal",count=3,atlas="images/inventoryimages.xml"},
@@ -1068,7 +1068,7 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"vorpalaxe2","fa_bottle_empty"},cooktime=480},
+		match={product={"fa_vorpalaxe2","fa_bottle_empty"},cooktime=480},
 		test={
 			{ingred="fa_bottle_lifeessence",count=2},
 			{ingred="charcoal",count=2,atlas="images/inventoryimages.xml"},
@@ -1078,7 +1078,7 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"vorpalaxe3","fa_bottle_empty"},cooktime=960},
+		match={product={"fa_vorpalaxe3","fa_bottle_empty"},cooktime=960},
 		test={
 			{ingred="fa_bottle_lifeessence",count=3},
 			{ingred="fa_coalbar",count=3},
@@ -1087,7 +1087,7 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"dagger","fa_bottle_empty"},cooktime=240},
+		match={product={"fa_dagger","fa_bottle_empty"},cooktime=240},
 		test={
 			{ingred="fa_bottle_lifeessence",count=1},
 			{ingred="charcoal",count=3,atlas="images/inventoryimages.xml"},
@@ -1097,7 +1097,7 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"dagger2","fa_bottle_empty"},cooktime=480},
+		match={product={"fa_dagger2","fa_bottle_empty"},cooktime=480},
 		test={
 			{ingred="fa_bottle_lifeessence",count=2},
 			{ingred="charcoal",count=2,atlas="images/inventoryimages.xml"},
@@ -1107,7 +1107,7 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"dagger3","fa_bottle_empty"},cooktime=960},
+		match={product={"fa_dagger3","fa_bottle_empty"},cooktime=960},
 		test={
 			{ingred="fa_bottle_lifeessence",count=3},
 			{ingred="fa_coalbar",count=3},
@@ -1221,7 +1221,7 @@ local forge_recipes={
 	{
 		match={product={"fa_adamantshield","fa_bottle_empty"},cooktime=480},
 		test={
-			{ingred="fa_adamantbar",count=1},
+			{ingred="fa_adamantinebar",count=1},
 			{ingred="fa_bottle_oil",count=1},
 			{ingred="hammer",count=1,atlas="images/inventoryimages.xml"},
 			{ingred=isfuel,count=5},

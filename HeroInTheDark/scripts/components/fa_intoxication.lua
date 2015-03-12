@@ -134,6 +134,8 @@ local FA_Intoxication = Class(function(self, inst)
                 if(FA_DLCACCESS)then
                     --I still dont get why was this mess necesary...
                     self.ablefoods=deepcopy(self.inst.components.eater.ablefoods)
+                    --SetCanEatHorrible is bugged and doesnt add to their 'new' ablefoods list
+                    table.insert(self.inst.components.eater.ablefoods, "HORRIBLE")
                 end
                 self.inst.components.eater:SetCanEatHorrible()
                 self.strongstomach=self.inst.components.eater.strongstomach
@@ -297,6 +299,9 @@ function FA_Intoxication:OnEatSomething( data )
         self.inst.components.hunger:DoDelta(food.components.edible.hungervalue/2.0)
     elseif(self.current>=80 and food.prefab=="spoiled_food")then
         self.inst.components.hunger:DoDelta(5)
+        local poop=SpawnPrefab("poop")
+        local spawn_point= Vector3(eater.Transform:GetWorldPosition())
+        poop.Physics:Teleport(spawn_point.x,spawn_point.y,spawn_point.z)
     elseif(self.current>=80 and food.prefab=="plantmeat")then
         self.inst.components.hunger:DoDelta(TUNING.CALORIES_MED)
     end

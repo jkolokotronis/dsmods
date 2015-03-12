@@ -49,7 +49,7 @@ local function fn()
     MakeInventoryPhysics(inst)
 
     local minimap = inst.entity:AddMiniMapEntity()
-    minimap:SetIcon( "firearmor.tex" )
+    minimap:SetIcon( "armorfire.tex" )
     
     inst.AnimState:SetBank("fa_firearmor")
     inst.AnimState:SetBuild("fa_firearmor")
@@ -60,7 +60,7 @@ local function fn()
     inst:AddComponent("inventoryitem")
 	inst.components.inventoryitem.foleysound = "dontstarve/movement/foley/marblearmour"
      inst.components.inventoryitem.atlasname = "images/inventoryimages/fa_inventoryimages.xml"
-    inst.components.inventoryitem.imagename="fa_firearmor"
+    inst.components.inventoryitem.imagename="armorfire"
     
     inst:AddComponent("armor")
     inst.components.armor.fa_resistances={}
