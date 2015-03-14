@@ -357,7 +357,7 @@ local alchemy_recipes={
 			{ingred="fa_coppershield",count=1},
 			{ingred="hammer",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="torch",count=1,atlas="images/inventoryimages.xml"},
-			{ingred="nightmarefuel",count=1},
+			{ingred="nightmarefuel",count=1,atlas="images/inventoryimages.xml"},
 		},
 	},
 	{
@@ -1168,7 +1168,7 @@ local forge_recipes={
 		match={product={"fa_lightningsword3","fa_bottle_empty"},cooktime=480},
 		test={
 			{ingred="fa_bottle_lightningessence",count=3},
-			{ingred="fa_steelword",count=1},
+			{ingred="fa_steelsword",count=1},
 			{ingred="fa_coalbar",count=3},
 			{ingred="fa_bottle_oil", count=1},
 		},

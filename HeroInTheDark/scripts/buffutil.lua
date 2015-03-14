@@ -463,7 +463,7 @@ local function DamageMultiplierSpellStart( reader,timer,variables)
     if(timer==nil or timer<=0)then return false end
 
     if reader.fa_damagemultiplier then
-        reader.fa_damagereduction.components.spell:OnFinish()
+        reader.fa_damagemultiplier.components.spell:OnFinish()
     else
 
     local inst=CreateEntity()
@@ -559,7 +559,6 @@ local function HealthRegenSpellStart( reader,timer,variables)
     inst.components.spell.spellname = "fa_healthregen"
     inst.components.spell.duration = timer
     inst.components.spell.variables=variables
-    local dapperness=(variables and variables.dapperness) or 0.5
     inst.components.spell.ontargetfn = function(inst,target)
         target.fa_healthregen = inst
         target:AddTag(inst.components.spell.spellname)
@@ -887,54 +886,6 @@ end
 FA_BuffUtil.Light=LightSpellStart
 
 
---[[
-local function apply_bb_damage(reader)
-	if(reader.buff_timers["bladebarrier"].cooldowntimer<=0)then
-		reader.bladeBarrierTimer:Cancel()
-		reader.bladeBarrierTimer=nil
-        reader.bladeBarrierAnim:Remove()
-	else
-		local pos=Vector3(reader.Transform:GetWorldPosition())
-		local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, BB_RADIUS,nil,{"player","INLIMBO","companion"})
-    	for k,v in pairs(ents) do
-        	if ( v.components.combat and not (v.components.health and v.components.health:IsDead())) then
-                local boom=SpawnPrefab("fa_bladebarrier_hitfx")
-                local current = Vector3(v.Transform:GetWorldPosition() )
-                local direction = (pos - current):GetNormalized()
-                local angle = math.acos(direction:Dot(Vector3(1, 0, 0) ) ) / DEGREES
-                boom.Transform:SetRotation(angle)
-                local follower = boom.entity:AddFollower()
-                follower:FollowSymbol(v.GUID, v.components.combat.hiteffectsymbol, 0, 0.1, -0.0001)
-                
-                boom:ListenForEvent("animover", function()  boom:Remove() end)
-
-            	v.components.combat:GetAttacked(reader, BB_DAMAGE, nil)
-        	end
-    	end
-	end
-end
-
-function BladeBarrierSpellStart(reader,timer)
-    if(timer==nil or timer<=0)then return false end
-    
-	if(reader.bladeBarrierTimer) then
-        reader.bladeBarrierTimer:Cancel()
-    end
-    reader.bladeBarrierTimer=reader:DoPeriodicTask(1, function() apply_bb_damage(reader) end)
-
-    local boom=SpawnPrefab("fa_bladebarrierfx")
-    boom.entity:AddDynamicShadow()
-    boom.persists=false
---    boom.DynamicShadow:SetSize( .8, .5 )
-    boom.Transform:SetScale(5, 5, 1)
-    local follower = boom.entity:AddFollower()
-    follower:FollowSymbol(reader.GUID, reader.components.combat.hiteffectsymbol, 0, 0.1, -0.0001)
---    boom.entity:SetParent(reader.entity)
---    boom.Transform:SetPosition(0, 0.2, 0)
-    reader.bladeBarrierAnim=boom
-end
-]]
-
 local function casterbbdamage(inst, target)
     local tags={}
     local blocktags={}
@@ -1260,8 +1211,66 @@ local function PoisonSpellStart(target,timer,variables,attacker)
   return true
 end
 
-
 FA_BuffUtil.Poison=PoisonSpellStart
+
+
+local deathbrewevent=function(owner,data) 
+    if(owner and owner:IsValid() and not owner.components.health:IsDead())then
+        owner.components.health:DoDelta(1)
+    end
+end
+
+local deathkillevent=function(inst,data)
+    if(math.random()<0.2)then
+        local poop=SpawnPrefab("nightmarefuel")
+        local spawn_point= Vector3(inst.Transform:GetWorldPosition())
+        poop.Physics:Teleport(spawn_point.x,spawn_point.y,spawn_point.z)
+    end
+end
+
+local function DeathBrewSpellStart( reader,timer,variables)
+    if(timer==nil or timer<=0)then return false end
+
+    if reader.fa_deathbrew then
+        reader.fa_deathbrew.components.spell.lifetime = 0
+        reader.fa_deathbrew.components.spell:ResumeSpell()
+        return
+    else
+
+    local inst=CreateEntity()
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_deathbrew"
+    inst.components.spell.duration = timer
+    inst.components.spell.ontargetfn = function(inst,target)
+        target.fa_deathbrew = inst
+        target:AddTag(inst.components.spell.spellname)
+    end
+    inst.components.spell.onstartfn = function(inst)
+        reader:ListenForEvent("onhitother",deathbrewevent)
+        reader:ListenForEvent("killed", deathkillevent)
+    end
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+        reader:RemoveEventCallback("onhitother", deathbrewevent)
+        reader:RemoveEventCallback("killed", deathkillevent)
+        inst.components.spell.target.fa_deathbrew = nil
+    end
+
+        inst.components.spell.resumefn = function(inst,timeleft)   end 
+        inst.components.spell.removeonfinish = true
+
+        inst.components.spell:SetTarget(reader)
+        inst.components.spell:StartSpell()
+    end
+    
+    return true
+end
+
+FA_BuffUtil.DeathBrew=DeathBrewSpellStart
+
+
 
 function LichSpellStart(reader,timer)
 

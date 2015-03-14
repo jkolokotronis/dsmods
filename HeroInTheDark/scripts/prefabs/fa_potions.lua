@@ -529,6 +529,13 @@ local function rummug()
     inst.AnimState:PlayAnimation("rum")
     inst.components.fa_drink.hungervalue = 5
     inst.components.inventoryitem.imagename="fa_rummug"
+	inst.components.fa_drink.ondrink=function(inst,eater)
+	    if(eater)then
+			if(eater.components.inventory)then
+				eater.components.inventory:GiveItem( SpawnPrefab("fa_emptymug") )
+			end
+        end
+    end
     return inst
 end
 local function beermug()
@@ -537,6 +544,13 @@ local function beermug()
     inst.AnimState:PlayAnimation("beer")
     inst.components.fa_drink.hungervalue = 5
     inst.components.inventoryitem.imagename="fa_beermug"
+	inst.components.fa_drink.ondrink=function(inst,eater)
+	    if(eater)then
+			if(eater.components.inventory)then
+				eater.components.inventory:GiveItem( SpawnPrefab("fa_emptymug") )
+			end
+        end
+    end
     return inst
 end
 local function lightalemug()
@@ -555,7 +569,7 @@ local function lightalemug()
 	            eater.components.fa_bufftimers:AddBuff("damagemultiplier","DmgBoost","DamageMultiplier",2*60,{multiplier=0.1})
 	    	end
 			if(eater.components.inventory)then
-				eater.components.inventory:GiveItem( SpawnPrefab("fa_bottle_empty") )
+				eater.components.inventory:GiveItem( SpawnPrefab("fa_emptymug") )
 			end
         end
     end
@@ -577,7 +591,7 @@ local function ronsalemug()
 	            eater.components.fa_bufftimers:AddBuff("damagemultiplier","DmgBoost","DamageMultiplier",2*60,{multiplier=0.2})
 	    	end
 			if(eater.components.inventory)then
-				eater.components.inventory:GiveItem( SpawnPrefab("fa_bottle_empty") )
+				eater.components.inventory:GiveItem( SpawnPrefab("fa_emptymug") )
 			end
         end
     end
@@ -699,7 +713,7 @@ local function redwine()
 	inst.components.fa_drink.ondrink=function(inst,eater)
 	    if(eater)then
 	    	if(eater.components.fa_bufftimers)then
-			    eater.components.fa_bufftimers:AddBuff("endureelementsheat","EndureHeat","EndureElements",4*60,{summer=true})
+			    eater.components.fa_bufftimers:AddBuff("healthregen","HealthRegen","HealthRegen",4*60)
 	    	end
 			if((not inst.components.finiteuses or inst.components.finiteuses.current <= 1) and eater.components.inventory)then
 				eater.components.inventory:GiveItem( SpawnPrefab("fa_bottle_empty") )

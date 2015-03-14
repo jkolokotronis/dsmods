@@ -289,6 +289,11 @@ local function deathbrewfn(Sim)
     inst.components.fa_drink.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
     inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_LONG
 
+    inst.components.fa_drink.ondrink=function(inst,eater)
+            if(eater.components.fa_bufftimers)then
+                eater.components.fa_bufftimers:AddBuff("deathbrew","DeathBrew","DeathBrew",4*60)
+            end
+    end
     return inst
 end 
 

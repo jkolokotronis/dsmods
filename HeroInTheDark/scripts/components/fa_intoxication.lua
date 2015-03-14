@@ -300,7 +300,7 @@ function FA_Intoxication:OnEatSomething( data )
     elseif(self.current>=80 and food.prefab=="spoiled_food")then
         self.inst.components.hunger:DoDelta(5)
         local poop=SpawnPrefab("poop")
-        local spawn_point= Vector3(eater.Transform:GetWorldPosition())
+        local spawn_point= Vector3(self.inst.Transform:GetWorldPosition())
         poop.Physics:Teleport(spawn_point.x,spawn_point.y,spawn_point.z)
     elseif(self.current>=80 and food.prefab=="plantmeat")then
         self.inst.components.hunger:DoDelta(TUNING.CALORIES_MED)
