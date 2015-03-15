@@ -564,7 +564,7 @@ local function HealthRegenSpellStart( reader,timer,variables)
         target:AddTag(inst.components.spell.spellname)
     end
     inst.components.spell.onstartfn = function(inst)
-        if(reader.components.health.regen.task~=nil)then
+        if(reader.components.health.regen==nil or reader.components.health.regen.task==nil)then
             reader.components.health:StartRegen(1, 1)
         else
             reader.components.health.regen.amount=reader.components.health.regen.amount+1*reader.components.health.regen.period
@@ -574,7 +574,7 @@ local function HealthRegenSpellStart( reader,timer,variables)
         if not inst.components.spell.target then
             return
         end
-        if(reader.components.health.regen.task~=nil)then
+        if(reader.components.health.regen and reader.components.health.regen.task~=nil)then
             reader.components.health.regen.amount=reader.components.health.regen.amount-1*reader.components.health.regen.period
             if(reader.components.health.regen.amount<=0)then
                 reader.components.health:StopRegen()
