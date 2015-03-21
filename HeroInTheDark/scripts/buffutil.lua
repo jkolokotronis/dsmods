@@ -1271,6 +1271,68 @@ end
 FA_BuffUtil.DeathBrew=DeathBrewSpellStart
 
 
+local function SpiderWhispererSpellStart( reader,timer,variables)
+    if(timer==nil or timer<=0)then return false end
+
+    if reader.prefab=="webber" or (not reader.fa_spiderwhisperer and reader:HasTag("spiderwhisperer")) then
+        return false
+    end
+
+    if reader.fa_spiderwhisperer then
+        reader.fa_spiderwhisperer.components.spell.lifetime = 0
+        reader.fa_spiderwhisperer.components.spell:ResumeSpell()
+        return
+    else
+
+    local inst=CreateEntity()
+    local spell = inst:AddComponent("spell")
+    inst.components.spell.spellname = "fa_spiderwhisperer"
+    inst.components.spell.duration = timer
+    inst.components.spell.ontargetfn = function(inst,target)
+        target.fa_spiderwhisperer = inst
+        target:AddTag(inst.components.spell.spellname)
+    end
+    inst.components.spell.onstartfn = function()
+        if(reader:HasTag("monster"))then
+            inst.permanentmonster=true
+        else
+            reader:AddTag("monster")
+        end
+        reader:AddTag("spiderwhisperer")
+        reader.AnimState:OverrideSymbol("cheeks", "webber", "cheeks")
+        reader.AnimState:OverrideSymbol("headbase_hat", "webber", "headbase_hat")
+        reader.AnimState:OverrideSymbol("headbase", "webber", "headbase")
+        reader.AnimState:OverrideSymbol("face", "webber", "face")
+        reader.AnimState:OverrideSymbol("hairpigtails", "webber", "hairpigtails")
+
+    end
+    inst.components.spell.onfinishfn = function(inst)
+        if not inst.components.spell.target then
+            return
+        end
+        if not inst.permanentmonster then
+            reader:RemoveTag("monster")
+        end
+        reader:RemoveTag("spiderwhisperer")
+        reader.AnimState:ClearOverrideSymbol("cheeks")
+        reader.AnimState:ClearOverrideSymbol("headbase_hat")
+        reader.AnimState:ClearOverrideSymbol("headbase")
+        reader.AnimState:ClearOverrideSymbol("face")
+        reader.AnimState:ClearOverrideSymbol("hairpigtails")
+        inst.components.spell.target.fa_spiderwhisperer = nil
+    end
+
+        inst.components.spell.resumefn = function(inst,timeleft)   end 
+        inst.components.spell.removeonfinish = true
+
+        inst.components.spell:SetTarget(reader)
+        inst.components.spell:StartSpell()
+    end
+    
+    return true
+end
+
+FA_BuffUtil.SpiderWhisperer=SpiderWhispererSpellStart
 
 function LichSpellStart(reader,timer)
 

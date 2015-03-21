@@ -261,6 +261,11 @@ local function oriansalefn(Sim)
     inst.components.fa_drink.temperaturedelta = TUNING.COLD_FOOD_BONUS_TEMP
     inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_LONG
 
+    inst.components.fa_drink.ondrink=function(inst,eater)
+            if(eater.components.fa_bufftimers)then
+                eater.components.fa_bufftimers:AddBuff("spiderwhisperer","OrianBrew","SpiderWhisperer",8*60)
+            end
+    end
     return inst
 end 
 
