@@ -65,6 +65,7 @@ local function fn(name)
         owner.AnimState:Show("ARM_carry") 
         owner.AnimState:Hide("ARM_normal") 
     end
+    inst.components.equippable:SetOnEquip( onequip )
     inst.components.equippable:SetOnUnequip( onunequip )
     
     return inst
