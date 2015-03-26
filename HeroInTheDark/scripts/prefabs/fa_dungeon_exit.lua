@@ -72,15 +72,23 @@ local function OnActivate(inst)
 		local cave_num =  SaveGameIndex:GetCurrentCaveNum()
 		---
 		if inst.fa_level_up==0 then
-			SaveGameIndex:SaveCurrent(function() SaveGameIndex:LeaveCave(onsaved) 
-			Sleep(1) end, "ascend", cave_num)
+			SaveGameIndex:SaveCurrent(function() 
+				SaveGameIndex:LeaveCave(onsaved) 
+				if(FA_ModCompat.memspikefixed)then
+					pcall(function()
+    					Sleep(FA_ModCompat.memspikefix_delay)
+	                end)
+				end
+			end, "ascend", cave_num)
 		else
 			-- Ascend
 --			local level = level - 1
 			
 			SaveGameIndex:SaveCurrent(function() SaveGameIndex:EnterCave(onsaved,nil, cave_num, inst.fa_level_up)
 				if(FA_ModCompat.memspikefixed)then
-					Sleep(FA_ModCompat.memspikefix_delay)
+					pcall(function()
+    					Sleep(FA_ModCompat.memspikefix_delay)
+	                end)
 				end
 			end, "ascend", cave_num)
 		end

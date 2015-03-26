@@ -100,7 +100,9 @@ local function OnActivate(inst)
 			SaveGameIndex:SaveCurrent(function() 
 				SaveGameIndex:EnterCave(onsaved,nil, inst.cavenum, level_to_go) 
 				if(FA_ModCompat.memspikefixed)then
-					Sleep(FA_ModCompat.memspikefix_delay)
+					pcall(function()
+    					Sleep(FA_ModCompat.memspikefix_delay)
+	                end)
 				end
 			 end, "descend", inst.cavenum)
 		end
