@@ -409,7 +409,7 @@ end
 local readhandler=SGWilson.actionhandlers[ACTIONS.READ]
 local old_fn=readhandler.deststate
 readhandler.deststate=function(inst,action)
-    if(inst.components.fa_spellcaster and inst.components.fa_spellcaster:GetCastFailure()>meth.random())then
+    if(inst.components.fa_spellcaster and inst.components.fa_spellcaster:GetCastFailure()>math.random())then
         inst:ClearBufferedAction()
         return "fa_spellfailed"
     end
