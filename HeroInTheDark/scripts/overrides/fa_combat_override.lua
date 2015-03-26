@@ -214,9 +214,11 @@ local old_healthdodelta=Health.DoDelta
 function Health:DoDelta(amount, overtime, cause, ignore_invincible,dmgtype)
     local damage=-amount
     local damagetype=dmgtype
+    local burningdamage=false
     if(not damagetype)then
         if(cause=="fire" or cause=="hot")then
             damagetype=FA_DAMAGETYPE.FIRE
+            burningdamage=true
         elseif(cause=="cold")then
             damagetype=FA_DAMAGETYPE.COLD
         end
@@ -236,7 +238,7 @@ function Health:DoDelta(amount, overtime, cause, ignore_invincible,dmgtype)
 -- even if it hits temp hp, it will not 'remove' hp but it should trigger the indicator (it got hit, but it went into temp, as opposed to simply being eaten by prot from el)
     --    print("damage",damage,damagetype)
     if(FA_ModUtil.GetModConfigData("damageindicators"))then
-        if math.abs(damage) > 0.1 and (damage>0 or self:GetPercent()<1) then
+        if  ( math.abs(damage) > 0.1 and (damage>0 or self:GetPercent()<1)) and (not burningdamage or (self.inst:HasTag("character") or self.inst:HasTag("monster") or self.inst:HasTag("animal"))) then
             FA_ModUtil.MakeDamageEntity(self.inst, -damage,damagetype)
         end
     end
