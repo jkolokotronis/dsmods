@@ -619,6 +619,7 @@ end
 
 local function winecommon(inst,eatfn)
     inst:AddComponent("finiteuses")
+    isnt:RemoveComponent("stackable")
     inst.components.finiteuses:SetOnFinished( onfinished)
     inst.components.finiteuses:SetMaxUses(3)
     inst.components.finiteuses:SetUses(3)
