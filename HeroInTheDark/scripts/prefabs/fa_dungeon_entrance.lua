@@ -52,7 +52,7 @@ local function ReturnChildren(inst)
 	end
 end
 
-local function OnActivate(inst)
+local function OnActivate(inst,doer)
 
     ProfileStatsSet("cave_entrance_used", true)
 
@@ -99,10 +99,8 @@ local function OnActivate(inst)
 			print("level", Levels.cave_levels[level_to_go].name)
 			SaveGameIndex:SaveCurrent(function() 
 				SaveGameIndex:EnterCave(onsaved,nil, inst.cavenum, level_to_go) 
-				if(FA_ModCompat.memspikefixed)then
-					pcall(function()
-    					Sleep(FA_ModCompat.memspikefix_delay)
-	                end)
+				if(FA_ModCompat.memspikefixed and doer)then
+   					Sleep(FA_ModCompat.memspikefix_delay)
 				end
 			 end, "descend", inst.cavenum)
 		end

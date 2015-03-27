@@ -83,7 +83,7 @@ configuration_options =
             {description = "On", data = true},
             {description = "Off", data = false}
         },
-        default = true,
+        default = false,
     }
 }
 

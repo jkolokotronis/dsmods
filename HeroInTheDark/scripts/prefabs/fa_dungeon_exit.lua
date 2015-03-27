@@ -53,7 +53,7 @@ local function onload(inst, data)
 --	end
 end
 
-local function OnActivate(inst)
+local function OnActivate(inst,doer)
 
 --	SetPause(true)
 	local level = GetWorld().topology.level_number or 1
@@ -74,10 +74,8 @@ local function OnActivate(inst)
 		if inst.fa_level_up==0 then
 			SaveGameIndex:SaveCurrent(function() 
 				SaveGameIndex:LeaveCave(onsaved) 
-				if(FA_ModCompat.memspikefixed)then
-					pcall(function()
+				if(FA_ModCompat.memspikefixed and doer)then
     					Sleep(FA_ModCompat.memspikefix_delay)
-	                end)
 				end
 			end, "ascend", cave_num)
 		else
@@ -85,10 +83,8 @@ local function OnActivate(inst)
 --			local level = level - 1
 			
 			SaveGameIndex:SaveCurrent(function() SaveGameIndex:EnterCave(onsaved,nil, cave_num, inst.fa_level_up)
-				if(FA_ModCompat.memspikefixed)then
-					pcall(function()
+				if(FA_ModCompat.memspikefixed and doer)then
     					Sleep(FA_ModCompat.memspikefix_delay)
-	                end)
 				end
 			end, "ascend", cave_num)
 		end
