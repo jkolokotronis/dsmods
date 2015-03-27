@@ -315,13 +315,24 @@ function Inventory:ConsumeByName(item, amount)
 
     
     if self.overflow and total_num_found < amount then
-        total_num_found=total_num_found + self.overflow.components.container:ConsumeByName(item, (amount - total_num_found))
+        local overflow_enough, overflow_found = self.overflow.components.container:Has(item, (amount - total_num_found))
+        if(overflow_found>0)then
+            self.overflow.components.container:ConsumeByName(item, (amount - total_num_found))
+            total_num_found=total_num_found+overflow_found
+        end
     end
 
     if(total_num_found<amount) then
         for k,v in pairs(self.itemslots) do
             if(v.components.container)then
-                 total_num_found=total_num_found + v.components.container:ConsumeByName(item, (amount - total_num_found))
+                local overflow_enough, overflow_found = v.components.container:Has(item, (amount - total_num_found))
+                if(overflow_found>0)then
+                    v.components.container:ConsumeByName(item, (amount - total_num_found))
+                    total_num_found=total_num_found+overflow_found
+                    if(total_num_found>=amount)then
+                        break
+                    end
+                end
             end       
         end
     end
