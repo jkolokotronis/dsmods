@@ -147,12 +147,12 @@ local inst=fn()
 	inst.AnimState:SetBank("fa_orcfort_cage")
     inst.Transform:SetScale(1, 1, 1)
     inst.components.activatable.OnActivate = function(inst,doer)
-    	SetPause(true)
+--    	SetPause(true)
     	doer.AnimState:OverrideSymbol("chains", "fa_cagechains", "chains")
 	    doer.AnimState:OverrideSymbol("cage", "fa_orcfort_cage", "cage")
 	    inst:RemoveFromScene()
 	    doer.AnimState:PlayAnimation("fa_cagedrop",true)
-	    doer:DoTaskInTime(5,OnActivate)
+	    doer:DoTaskInTime(2,function() OnActivate(inst,doer) end)
     end
 	return inst
 end
@@ -163,12 +163,12 @@ local inst=fn()
 	inst.AnimState:SetBuild("fa_dorffort_rcage")
 	inst.AnimState:SetBank("fa_dorffort_rcage")
     inst.components.activatable.OnActivate = function(inst,doer)
-    	SetPause(true)
+--    	SetPause(true)
     	doer.AnimState:OverrideSymbol("chains", "fa_cagechains", "chains")
 	    doer.AnimState:OverrideSymbol("cage", "fa_dorffort_rcage", "cage")
 	    inst:RemoveFromScene()
 	    doer.AnimState:PlayAnimation("fa_cagedrop",true)
-	    doer:DoTaskInTime(5,OnActivate)
+	    doer:DoTaskInTime(2,function() OnActivate(inst,doer) end)
     end
 	return inst
 end

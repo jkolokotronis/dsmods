@@ -170,7 +170,7 @@ function FA_ElectricalFence:StartTask()
                     local alpha=math.atan(WALL_WIDTH/dist)
                     local r=math.tan(alpha)*WALL_WIDTH+dist
                     local angle=node:GetAngleToPoint(v:GetPosition())
-                    local ents = TheSim:FindEntities(middle.x, middle.y, middle.z, r,self.dotags,self.donttags)
+                    local ents = TheSim:FindEntities(middle.x, middle.y, middle.z, r,nil,self.donttags)
                     for i,caught in pairs(ents) do
                         if(caught and caught.components.combat and not (caught.components.health and caught.components.health:IsDead()))then
                             local caughtangle=node:GetAngleToPoint(caught:GetPosition())-angle
@@ -201,6 +201,7 @@ function FA_FenceManager:ConfigFence(tag,caster,dotags, donttags)
     local fence=self.fences[tag]
     if(fence==nil)then
         fence=FA_ElectricalFence()
+        self.fences[tag]=fence
     end
     fence:Config(caster,dotags,donttags)
 end
@@ -236,6 +237,7 @@ function FA_FenceManager:AddNode(node)
     local fence=self.fences[tag]
     if(fence==nil)then
         fence=FA_ElectricalFence()
+        self.fences[tag]=fence
     end
     fence:AddNode(node)
 end
@@ -249,15 +251,5 @@ end
 
 local FenceManager=FA_FenceManager()
 
-FA_ModUtil.AddPrefabPostInit("world",function(inst)
-    inst:DoTaskInTime(0,function()
-        --need to delay activate for player, but i could just fire it up for the rest without delays? Meh
---        inst:DoTaskInTime(0,function()
-            FenceManager:ConfigFence("lightningfence",GetPlayer(),{"lightningfence"}, {"FX", "DECOR","INLIMBO","pet","companion","player","lightningfence"})
-            FenceManager:ConfigFence("lightningfence_kos",nil,{"lightningfence_kos"},{"FX", "DECOR","INLIMBO","lightningfence"})
-            FenceManager:Init()
-        end)
---    end)
-end)
 
 return {FenceManager=FenceManager}

@@ -391,6 +391,15 @@ local function fndorfotherrecipes()
     return inst
 end
 
+local function fndorflantern()
+    local inst = Prefabs["lantern"].fn()
+    return inst
+end
+local function fndorfgunpowder()
+    local inst = Prefabs["gunpowder"].fn()
+    return inst
+end
+
 return Prefab( "common/objects/fa_dorfhut", fnhut, hutassets, prefabs ),
 Prefab( "common/objects/fa_dorfbed", fnbed, bedassets, prefabs ),
 Prefab( "common/objects/fa_dorfstand", fnstand, standassets, prefabs ),
@@ -405,4 +414,6 @@ Prefab( "common/objects/fa_dorfstand_recipe_weapon_5", fnweaponrecipes, standass
 Prefab( "common/objects/fa_dorfstand_equipment_6", fndorfequipment, standassets, prefabs ),
 Prefab( "common/objects/fa_dorfstand_recipe_armor_7", fndorfarmorrecipes, standassets, prefabs ),
 Prefab( "common/objects/fa_dorfstand_recipe_smelting_8", fndorfsmelterrecipes, standassets, prefabs ),
-Prefab( "common/objects/fa_dorfstand_recipe_other_9", fndorfotherrecipes, standassets, prefabs )
+Prefab( "common/objects/fa_dorfstand_recipe_other_9", fndorfotherrecipes, standassets, prefabs ),
+Prefab( "common/objects/fa_dorf_lantern", fndorflantern, {}, {} ),
+Prefab( "common/objects/fa_dorf_gunpowder", fndorfgunpowder, {}, {} )

@@ -124,7 +124,7 @@ local r=Recipe("multitool_axe_pickaxe", {Ingredient("bluegem", 2)}, RECIPETABS.F
 local r=Recipe("sewing_kit", {Ingredient("goldnugget", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFITEMSTAND, nil, nil, true)
 local r=Recipe("armorslurper", {Ingredient("fa_diamondpebble", 1,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFITEMSTAND, nil, nil, true)
 local r=Recipe("sewing_kit", {Ingredient("goldnugget", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFITEMSTAND, nil, nil, true)
-local r=Recipe("lantern", {Ingredient("goldnugget", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFITEMSTAND, nil, nil, true)
+local r=Recipe("fa_dorf_lantern", {Ingredient("goldnugget", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFITEMSTAND, nil, nil, true)
 local r=Recipe("trap_teeth", {Ingredient("goldnugget", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFITEMSTAND, nil, nil, true)
 --Dwarf bed	2 red gems
 local r=Recipe("yellowstaff", {Ingredient("fa_diamondpebble", 3,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFITEMSTAND, nil, nil, true)
@@ -134,7 +134,6 @@ r.atlas = "images/inventoryimages/fa_inventoryimages.xml"
 local r=Recipe("fa_smalldorfbag", {Ingredient("fa_diamondpebble", 7,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFITEMSTAND, nil, nil, true)
 r.image="fa_bag.tex"
 r.atlas = "images/inventoryimages/fa_inventoryimages.xml"
-local r=Recipe("yellowstaff", {Ingredient("fa_diamondpebble", 3,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFITEMSTAND, nil, nil, true)
 local r=Recipe("fa_recipebook", {Ingredient("fa_diamondpebble", 3,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER,TECH.FA_DORFITEMSTAND, nil, nil, true)
 r.image="book_birds.tex"
 
@@ -150,7 +149,7 @@ r.atlas = "images/inventoryimages/fa_inventoryimages.xml"
 local r=Recipe("fa_dorfbed_player", {Ingredient("bluegem", 2)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFRESOURCESTAND, "fa_dorfbed_player_placer",nil,true)
 r.image="tent.tex"
 local r=Recipe("charcoal", {Ingredient("goldnugget", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFRESOURCESTAND, nil, nil, true,20)
-local r=Recipe("gunpowder", {Ingredient("goldnugget", 1)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFRESOURCESTAND, nil, nil, true)
+local r=Recipe("fa_dorf_gunpowder", {Ingredient("goldnugget", 1)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFRESOURCESTAND, nil, nil, true)
 local r=Recipe("thulecite", {Ingredient("goldnugget", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFRESOURCESTAND, nil, nil, true)
 local r=Recipe("marble", {Ingredient("goldnugget", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFRESOURCESTAND, nil, nil, true,5)
 local r=Recipe("bluegem", {Ingredient("goldnugget", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFRESOURCESTAND, nil, nil, true)

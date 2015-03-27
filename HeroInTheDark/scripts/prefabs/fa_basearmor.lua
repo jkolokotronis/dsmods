@@ -116,10 +116,10 @@ local function goldarmor()
 
 
         if(FA_DLCACCESS)then
-            inst.components.equippable.dapperness = -ARMOR_GOLD_DAPPERNESS
+            inst.components.equippable.dapperness = ARMOR_GOLD_DAPPERNESS
         else
             inst:AddComponent("dapperness")
-            inst.components.dapperness.dapperness = -ARMOR_GOLD_DAPPERNESS
+            inst.components.dapperness.dapperness = ARMOR_GOLD_DAPPERNESS
         end
 
 

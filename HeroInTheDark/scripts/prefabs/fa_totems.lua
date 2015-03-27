@@ -467,7 +467,8 @@ end
 local function bluefn_player()
     local inst=bluefn()
     inst:AddTag("companion")
-    data.fa_fencetag="lightningfence"
+    inst.fa_fencetag="lightningfence"
+    inst:AddTag(inst.fa_fencetag)
     
     inst:AddComponent("machine")
     inst.components.machine.ison = true
@@ -501,6 +502,7 @@ end
     end
     if(data and data.fa_fencetag)then
         inst.fa_fencetag=data.fa_fencetag
+        inst:RemoveTag("lightningfence_kos")
         inst:AddTag(inst.fa_fencetag)
         --something has to do configuration, and tags are unknown before load
         --this is extremely ugly place to put it in
@@ -513,6 +515,7 @@ end
 local function bluefn_kos(Sim)
     local inst=bluefn(Sim)
     inst.fa_fencetag="lightningfence_kos"
+        inst:AddTag("lightningfence_kos")
     if(FenceManager.initialized)then
         inst:DoTaskInTime(0.1,function(inst)
             FenceManager:AddNode(inst)

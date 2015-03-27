@@ -286,10 +286,10 @@ local function onequip(inst, owner, build)
         inst.components.waterproofer:SetEffectiveness(ARMOR_GOLDHAT_WATERPROOFNESS)
         end
         if(FA_DLCACCESS)then
-            inst.components.equippable.dapperness = -ARMOR_GOLD_DAPPERNESS
+            inst.components.equippable.dapperness = ARMOR_GOLD_DAPPERNESS
         else
             inst:AddComponent("dapperness")
-            inst.components.dapperness.dapperness = -ARMOR_GOLD_DAPPERNESS
+            inst.components.dapperness.dapperness = ARMOR_GOLD_DAPPERNESS
         end
 
         inst:AddComponent("fueled")

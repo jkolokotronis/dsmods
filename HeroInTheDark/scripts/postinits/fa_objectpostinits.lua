@@ -1,4 +1,17 @@
 
+local fences=require "fa_electricalfence"
+local FenceManager=fences.FenceManager
+
+FA_ModUtil.AddPrefabPostInit("world",function(inst)
+    inst:DoTaskInTime(0,function()
+        --need to delay activate for player, but i could just fire it up for the rest without delays? Meh
+--        inst:DoTaskInTime(0,function()
+            FenceManager:ConfigFence("lightningfence",GetPlayer(),{"lightningfence"}, {"FX", "DECOR","INLIMBO","pet","companion","player","lightningfence"})
+            FenceManager:ConfigFence("lightningfence_kos",nil,{"lightningfence_kos"},{"FX", "DECOR","INLIMBO","lightningfence"})
+            FenceManager:Init()
+        end)
+--    end)
+end)
 
 local doSkeletonSpawn=function(inst)
     local skel=SpawnPrefab("skeletonspawn")
