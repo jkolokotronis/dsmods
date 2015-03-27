@@ -393,10 +393,39 @@ end
 
 local function fndorflantern()
     local inst = Prefabs["lantern"].fn()
+    inst.components.inventoryitem.imagename="lantern"
     return inst
 end
 local function fndorfgunpowder()
     local inst = Prefabs["gunpowder"].fn()
+    inst.components.inventoryitem.imagename="gunpowder"
+    return inst
+end
+
+local function fa_dorf_sewing_kit()
+    local inst = Prefabs["sewing_kit"].fn()
+    inst.components.inventoryitem.imagename="sewing_kit"
+    return inst
+end
+
+local function fa_dorf_pickaxe()
+    local inst = Prefabs["multitool_axe_pickaxe"].fn()
+    inst.components.inventoryitem.imagename="multitool_axe_pickaxe"
+    return inst
+end
+local function fa_dorf_trap()
+    local inst = Prefabs["trap_teeth"].fn()
+    inst.components.inventoryitem.imagename="trap_teeth"
+    return inst
+end
+local function fa_dorf_hungerbelt()
+    local inst = Prefabs["armorslurper"].fn()
+    inst.components.inventoryitem.imagename="armorslurper"
+    return inst
+end
+local function fa_dorf_yellowstaff()
+    local inst = Prefabs["yellowstaff"].fn()
+    inst.components.inventoryitem.imagename="yellowstaff"
     return inst
 end
 
@@ -416,4 +445,12 @@ Prefab( "common/objects/fa_dorfstand_recipe_armor_7", fndorfarmorrecipes, standa
 Prefab( "common/objects/fa_dorfstand_recipe_smelting_8", fndorfsmelterrecipes, standassets, prefabs ),
 Prefab( "common/objects/fa_dorfstand_recipe_other_9", fndorfotherrecipes, standassets, prefabs ),
 Prefab( "common/objects/fa_dorf_lantern", fndorflantern, {}, {} ),
-Prefab( "common/objects/fa_dorf_gunpowder", fndorfgunpowder, {}, {} )
+Prefab( "common/objects/fa_dorf_gunpowder", fndorfgunpowder, {}, {} ),
+Prefab( "common/objects/fa_dorf_sewing_kit", fa_dorf_sewing_kit, {}, {} ),
+Prefab( "common/objects/fa_dorf_pickaxe", fa_dorf_pickaxe, {}, {} ),
+Prefab( "common/objects/fa_dorf_trap", fa_dorf_trap, {}, {} ),
+Prefab( "common/objects/fa_dorf_hungerbelt", fa_dorf_hungerbelt, {}, {} ),
+Prefab( "common/objects/fa_dorf_yellowstaff", fa_dorf_yellowstaff, {}, {} )
+
+
+
