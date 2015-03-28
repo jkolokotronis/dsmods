@@ -620,10 +620,22 @@ local function newControlsInit(class)
 -- TODO anything that messes up with default badges will likely break the positioning
 -- IDC to write another set of x-mod-compat crap, if it bothers you fix it yourself
 
+  --@Sentelin:if user have Always On Status mod,move intoxic widget,if not remain in same position.
+
     class.brain:SetPosition(40,-50,0)
+
+    if(GLOBAL.FA_ModCompat.alwaysonmod)then
     class.fa_intoxication = class:AddChild(FA_IntoxicationBadge(class.owner))
-    class.fa_intoxication:SetPosition(-40,-50,0)
+    class.fa_intoxication:SetPosition(-57,-70,0)
+    
+    elseif(not GLOBAL.FA_ModCompat.alwaysmod)then
+    class.fa_intoxication = class:AddChild(FA_IntoxicationBadge(class.owner))
+    class.fa_intoxication:SetPosition(-40,-50,0) 
+    
+  end
+
     class.fa_intoxication:SetPercent(class.owner.components.fa_intoxication:GetPercent(), class.owner.components.fa_intoxication.max, 0)
+
 
     class.inst:ListenForEvent("fa_intoxicationdelta", function(inst, data)  
        class.fa_intoxication:SetPercent(data.newpercent, data.max)
