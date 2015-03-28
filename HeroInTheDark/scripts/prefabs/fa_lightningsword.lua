@@ -37,7 +37,7 @@ local function stunfx(inst,attacker,target)
         inst.persists=false
         local spell = inst:AddComponent("spell")
         inst.components.spell.spellname = "fa_lightningstun"
-        inst.components.spell.duration = HOLDPERSON_DURATION
+        inst.components.spell.duration = LIGHTNINGSWORD_STUN_DURATION
         inst.components.spell.ontargetfn = function(inst,target)
             local follower = inst.entity:AddFollower()
             follower:FollowSymbol( target.GUID, target.components.combat.hiteffectsymbol, 0, -200, -0.0001 )
@@ -56,7 +56,7 @@ end
 
 local function onattack(inst, attacker, target)
     if(target.components.health:IsInvincible() == false and target.components.burnable and not target.components.fueled and math.random()<=inst.procRate)then
-        if not(target:HasTag("fa_undead") or target:HasTag("fa_contruct")) then
+        if not(target:HasTag("fa_undead") or target:HasTag("fa_contruct") or target:HasTag("player")) then
             stunfx(inst,attacker,target)
         end
         local pos=Vector3(reader.Transform:GetWorldPosition())
