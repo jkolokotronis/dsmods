@@ -59,7 +59,7 @@ local function onattack(inst, attacker, target)
         if not(target:HasTag("fa_undead") or target:HasTag("fa_contruct") or target:HasTag("player")) then
             stunfx(inst,attacker,target)
         end
-        local pos=Vector3(reader.Transform:GetWorldPosition())
+        local pos=Vector3(target.Transform:GetWorldPosition())
         local lightning = SpawnPrefab("lightning")
         lightning.Transform:SetPosition(pos:Get())
 
