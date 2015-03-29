@@ -283,23 +283,23 @@ end
 local function goldspawn(Sim)
     local inst=fn(Sim)
     inst.components.inventory.dropondeath = true
-    inst.components.health:SetMaxHealth(STEEL_HP)
-    GetSteel(inst)
+    inst.components.health:SetMaxHealth(GOLD_HP)
+    GetGold(inst)
     return inst
 end
 
 local function silverspawn(Sim)
     local inst=fn(Sim)
     inst.components.inventory.dropondeath = true
-    inst.components.health:SetMaxHealth(STEEL_HP)
-    GetGold(inst)
+    inst.components.health:SetMaxHealth(SILVER_HP)
+    GetSilver(inst)
     return inst
 end
 
 local function adamantspawn(Sim)
     local inst=fn(Sim)
     inst.components.inventory.dropondeath = true
-    inst.components.health:SetMaxHealth(STEEL_HP)
+    inst.components.health:SetMaxHealth(ADAMANT_HP)
     GetAdamant(inst)
     return inst
 end

@@ -143,7 +143,7 @@ local function getkingguardinventory(inst)
         if(inst.loadedSpawn)then
             return
         end
-        local item=SpawnPrefab("fa_animatedarmor_gold")
+        local item=SpawnPrefab("fa_goldarmor")
         inst.components.inventory:Equip(item)
         item=SpawnPrefab("fa_silveraxe")
         inst.components.inventory:Equip(item)
