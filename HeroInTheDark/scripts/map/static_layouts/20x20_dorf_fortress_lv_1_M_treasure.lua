@@ -3725,67 +3725,14 @@ return {
           name = "",
           type = "fa_minotaurchest",
           shape = "rectangle",
-          x = 140,
-          y = 971,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_minotaurchest",
-          shape = "rectangle",
-          x = 74,
-          y = 973,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_minotaurchest",
-          shape = "rectangle",
-          x = 140,
-          y = 908,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_minotaurchest",
-          shape = "rectangle",
-          x = 74,
-          y = 906,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_minotaurchest",
-          shape = "rectangle",
-          x = 138,
-          y = 844,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_minotaurchest",
-          shape = "rectangle",
           x = 74,
           y = 842,
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["scenario"] = "fa_df_treasurychest_minotaur"
+          }
         },
         {
           name = "",
@@ -4231,100 +4178,14 @@ return {
           name = "",
           type = "fa_pandoraschest",
           shape = "rectangle",
-          x = 200,
-          y = 970,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_pandoraschest",
-          shape = "rectangle",
-          x = 200,
-          y = 908,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_pandoraschest",
-          shape = "rectangle",
-          x = 203,
-          y = 844,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_pandoraschest",
-          shape = "rectangle",
-          x = 202,
-          y = 778,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_pandoraschest",
-          shape = "rectangle",
-          x = 138,
-          y = 779,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_pandoraschest",
-          shape = "rectangle",
           x = 74,
           y = 779,
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_skullchest",
-          shape = "rectangle",
-          x = 203,
-          y = 714,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_skullchest",
-          shape = "rectangle",
-          x = 139,
-          y = 714,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_skullchest",
-          shape = "rectangle",
-          x = 76,
-          y = 715,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
+          properties = {
+            ["scenario"] = "fa_df_treasurychest_pandora"
+          }
         },
         {
           name = "",
@@ -4335,238 +4196,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_skullchest",
-          shape = "rectangle",
-          x = 140,
-          y = 653,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_skullchest",
-          shape = "rectangle",
-          x = 205,
-          y = 654,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_treasurechest",
-          shape = "rectangle",
-          x = 203,
-          y = 587,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_treasurechest",
-          shape = "rectangle",
-          x = 138,
-          y = 588,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_treasurechest",
-          shape = "rectangle",
-          x = 75,
-          y = 587,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_treasurechest",
-          shape = "rectangle",
-          x = 76,
-          y = 523,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_treasurechest",
-          shape = "rectangle",
-          x = 142,
-          y = 523,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_treasurechest",
-          shape = "rectangle",
-          x = 204,
-          y = 524,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_treasurechest",
-          shape = "rectangle",
-          x = 200,
-          y = 458,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_treasurechest",
-          shape = "rectangle",
-          x = 139,
-          y = 461,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_treasurechest",
-          shape = "rectangle",
-          x = 75,
-          y = 460,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_treasurechest",
-          shape = "rectangle",
-          x = 201,
-          y = 394,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_treasurechest",
-          shape = "rectangle",
-          x = 76,
-          y = 396,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_treasurechest",
-          shape = "rectangle",
-          x = 140,
-          y = 397,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_treasurechest",
-          shape = "rectangle",
-          x = 200,
-          y = 331,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_treasurechest",
-          shape = "rectangle",
-          x = 75,
-          y = 333,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_treasurechest",
-          shape = "rectangle",
-          x = 139,
-          y = 334,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_treasurechest",
-          shape = "rectangle",
-          x = 199,
-          y = 268,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_treasurechest",
-          shape = "rectangle",
-          x = 74,
-          y = 270,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_treasurechest",
-          shape = "rectangle",
-          x = 138,
-          y = 271,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_treasurechest",
-          shape = "rectangle",
-          x = 199,
-          y = 205,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
+          properties = {
+            ["scenario"] = "fa_df_treasurychest_skull"
+          }
         },
         {
           name = "",
@@ -4577,18 +4209,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_treasurechest",
-          shape = "rectangle",
-          x = 138,
-          y = 208,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
+          properties = {
+            ["scenario"] = "fa_df_treasurychest"
+          }
         },
         {
           name = "",
@@ -7774,8 +7397,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_001",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_001",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -7788,8 +7411,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_001",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_001",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -7802,8 +7425,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_002",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_002",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -7816,8 +7439,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_002",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_002",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -7830,8 +7453,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_003",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_003",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -7844,8 +7467,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_003",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_003",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -7858,8 +7481,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_004",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_004",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -7872,8 +7495,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_004",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_004",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -7886,8 +7509,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_005",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_005",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -7900,8 +7523,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_005",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_005",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -7914,8 +7537,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_006",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_006",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -7928,8 +7551,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_006",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_006",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -7942,8 +7565,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_007",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_007",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -7956,8 +7579,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_007",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_007",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -7970,8 +7593,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_008",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_008",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -7984,8 +7607,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_008",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_008",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -7998,8 +7621,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_009",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_009",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -8012,8 +7635,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_009",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_009",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -8246,8 +7869,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_010",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_010",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -8271,8 +7894,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_010",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_010",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -8351,8 +7974,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_011",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_011",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -8365,8 +7988,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_011",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_011",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -8423,8 +8046,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_012",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_012",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -8448,8 +8071,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_012",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_012",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -8473,8 +8096,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_013",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_013",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -8487,8 +8110,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_013",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_013",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -8534,8 +8157,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_014",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_014",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -8548,8 +8171,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_014",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_014",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -8578,17 +8201,6 @@ return {
         },
         {
           name = "",
-          type = "fa_skullchest",
-          shape = "rectangle",
-          x = 328,
-          y = 145,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
           type = "fa_bluetotem_kos",
           shape = "rectangle",
           x = 413,
@@ -8597,8 +8209,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_015",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_015",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -8622,8 +8234,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_015",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_015",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -8647,8 +8259,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_016",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_016",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -8661,8 +8273,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_016",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_016",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -8752,8 +8364,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_017",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_017",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -8766,8 +8378,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_017",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_017",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -8791,8 +8403,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_018",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_018",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -8816,8 +8428,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_018",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_018",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -8830,8 +8442,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_019",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_019",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -8844,8 +8456,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_019",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_019",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -8913,8 +8525,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_020",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_020",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -8938,8 +8550,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_020",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_020",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -8985,8 +8597,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_021",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_021",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -8999,8 +8611,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_021",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_021",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -9035,8 +8647,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_022",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_022",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -9049,8 +8661,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_022",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_022",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -9085,8 +8697,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_023",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_023",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -9110,8 +8722,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_023",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_023",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -9303,17 +8915,6 @@ return {
         },
         {
           name = "",
-          type = "fa_treasurechest",
-          shape = "rectangle",
-          x = 601,
-          y = 147,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
           type = "fa_diamondpebble",
           shape = "rectangle",
           x = 555,
@@ -9410,8 +9011,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_024",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_024",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -9424,8 +9025,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_024",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_024",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -9471,8 +9072,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_025",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_025",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -9485,8 +9086,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_025",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_025",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -9532,8 +9133,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_026",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_026",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -9546,8 +9147,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_026",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_026",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -9560,8 +9161,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_027",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_027",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -9585,8 +9186,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_027",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_027",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -10031,17 +9632,6 @@ return {
         },
         {
           name = "",
-          type = "fa_skullchest",
-          shape = "rectangle",
-          x = 1239,
-          y = 956,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
           type = "maxwelllight_area",
           shape = "rectangle",
           x = 1245,
@@ -10061,8 +9651,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_028",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_028",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -10097,8 +9687,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_028",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_028",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -10111,8 +9701,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_029",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_029",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -10147,8 +9737,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_029",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_029",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -10337,8 +9927,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_030",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_030",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -10351,8 +9941,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_030",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_030",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -10365,8 +9955,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_031",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_031",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -10379,8 +9969,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_031",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_031",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -10393,8 +9983,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_032",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_032",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -10407,8 +9997,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_032",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_032",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -10421,8 +10011,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_033",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_033",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -10435,8 +10025,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_033",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_033",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -10449,8 +10039,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_034",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_034",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -10463,8 +10053,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_034",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_034",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -10477,8 +10067,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_035",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_035",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -10491,8 +10081,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_035",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_035",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -10505,8 +10095,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_036",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_036",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -10519,8 +10109,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_036",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_036",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -10533,8 +10123,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_037",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_037",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -10547,8 +10137,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_037",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_037",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -10561,8 +10151,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_038",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_038",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -10575,8 +10165,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_038",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_038",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -10589,8 +10179,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_039",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_039",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -10603,8 +10193,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_039",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_039",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -10617,8 +10207,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_040",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_040",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -10631,8 +10221,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_040",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_040",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -11470,8 +11060,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_041",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_041",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -11506,8 +11096,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_041",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_041",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -11520,8 +11110,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_042",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_042",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -11556,8 +11146,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_042",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_042",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -11570,8 +11160,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_043",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_043",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -11606,8 +11196,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_043",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_043",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -11631,8 +11221,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_044",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_044",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -11656,8 +11246,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_044",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_044",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -11681,8 +11271,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_045",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_045",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -11706,8 +11296,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.fa_fencetag"] = "fa_fencetag_045",
-            ["data.fueled.rate"] = "0"
+            ["fa_fencetag"] = "fa_fencetag_045",
+            ["fueled.rate"] = "0"
           }
         },
         {
@@ -11973,6 +11563,500 @@ return {
           height = 0,
           visible = true,
           properties = {}
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 202,
+          y = 207,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 140,
+          y = 205,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 202,
+          y = 269,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 74,
+          y = 269,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 140,
+          y = 267,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 138,
+          y = 331,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 72,
+          y = 333,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 200,
+          y = 333,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 202,
+          y = 398,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 74,
+          y = 398,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 140,
+          y = 396,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 144,
+          y = 461,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 78,
+          y = 463,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 206,
+          y = 463,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 76,
+          y = 524,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 204,
+          y = 524,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 142,
+          y = 522,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 73,
+          y = 589,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 201,
+          y = 589,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 139,
+          y = 587,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_skullchest",
+          shape = "rectangle",
+          x = 138,
+          y = 653,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest_skull"
+          }
+        },
+        {
+          name = "",
+          type = "fa_skullchest",
+          shape = "rectangle",
+          x = 202,
+          y = 655,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest_skull"
+          }
+        },
+        {
+          name = "",
+          type = "fa_skullchest",
+          shape = "rectangle",
+          x = 137,
+          y = 716,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest_skull"
+          }
+        },
+        {
+          name = "",
+          type = "fa_skullchest",
+          shape = "rectangle",
+          x = 74,
+          y = 715,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest_skull"
+          }
+        },
+        {
+          name = "",
+          type = "fa_skullchest",
+          shape = "rectangle",
+          x = 201,
+          y = 718,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest_skull"
+          }
+        },
+        {
+          name = "",
+          type = "fa_pandoraschest",
+          shape = "rectangle",
+          x = 139,
+          y = 779,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest_pandora"
+          }
+        },
+        {
+          name = "",
+          type = "fa_pandoraschest",
+          shape = "rectangle",
+          x = 203,
+          y = 779,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest_pandora"
+          }
+        },
+        {
+          name = "",
+          type = "fa_minotaurchest",
+          shape = "rectangle",
+          x = 137,
+          y = 844,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest_minotaur"
+          }
+        },
+        {
+          name = "",
+          type = "fa_minotaurchest",
+          shape = "rectangle",
+          x = 202,
+          y = 842,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest_minotaur"
+          }
+        },
+        {
+          name = "",
+          type = "fa_minotaurchest",
+          shape = "rectangle",
+          x = 74,
+          y = 908,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest_minotaur"
+          }
+        },
+        {
+          name = "",
+          type = "fa_minotaurchest",
+          shape = "rectangle",
+          x = 202,
+          y = 908,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest_minotaur"
+          }
+        },
+        {
+          name = "",
+          type = "fa_minotaurchest",
+          shape = "rectangle",
+          x = 137,
+          y = 910,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest_minotaur"
+          }
+        },
+        {
+          name = "",
+          type = "fa_minotaurchest",
+          shape = "rectangle",
+          x = 74,
+          y = 971,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest_minotaur"
+          }
+        },
+        {
+          name = "",
+          type = "fa_minotaurchest",
+          shape = "rectangle",
+          x = 202,
+          y = 971,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest_minotaur"
+          }
+        },
+        {
+          name = "",
+          type = "fa_minotaurchest",
+          shape = "rectangle",
+          x = 137,
+          y = 973,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest_minotaur"
+          }
+        },
+        {
+          name = "",
+          type = "fa_skullchest",
+          shape = "rectangle",
+          x = 325,
+          y = 145,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest_skull"
+          }
+        },
+        {
+          name = "",
+          type = "fa_treasurechest",
+          shape = "rectangle",
+          x = 603,
+          y = 150,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest"
+          }
+        },
+        {
+          name = "",
+          type = "fa_skullchest",
+          shape = "rectangle",
+          x = 1222,
+          y = 958,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["scenario"] = "fa_df_treasurychest_skull"
+          }
         }
       }
     }

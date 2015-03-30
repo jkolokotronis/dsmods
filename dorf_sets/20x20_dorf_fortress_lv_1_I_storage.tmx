@@ -1183,19 +1183,19 @@
   <object type="fa_barrel_lightrum" x="654" y="1021"/>
   <object type="fa_barrel_lightrum" x="654" y="1069"/>
   <object type="fa_barrel_lightrum" x="654" y="1045"/>
-  <object type="fa_teleporter_dorf" x="579" y="745">
+  <object type="fa_teleporter_dorf" x="582" y="718">
    <properties>
     <property name="data.sourcetag" value="Room_dorf_GG"/>
     <property name="data.targettag" value="Room_dorf_HH"/>
    </properties>
   </object>
-  <object type="fa_teleporter_dorf" x="803" y="740">
+  <object type="fa_teleporter_dorf" x="753" y="719">
    <properties>
     <property name="data.sourcetag" value="Room_dorf_Z"/>
     <property name="data.targettag" value="Room_dorf_Y"/>
    </properties>
   </object>
-  <object type="fa_teleporter_dorf" x="705" y="639">
+  <object type="fa_teleporter_dorf" x="679" y="652">
    <properties>
     <property name="data.sourcetag" value="Room_dorf_FF"/>
     <property name="data.targettag" value="Room_dorf_EE"/>
