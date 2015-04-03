@@ -355,6 +355,21 @@ return {
           visible = true,
           properties = {}
         },
+
+        {
+          name = "",
+          type = "fa_dorfsecret_entrance",
+          shape = "rectangle",
+          x = 607,
+          y = 96,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.fa_cavename"] = "DWARF_FORTRESS_SECRETS"
+          }
+        },
+
         {
           name = "",
           type = "fa_dorf_gold_pillar",

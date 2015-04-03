@@ -22,6 +22,51 @@ local assets_adamantine=
 {
     Asset("ANIM", "anim/fa_adamantinearmor.zip"),
 }
+local assets_fa_abjurationrobe=
+{
+    Asset("ANIM", "anim/fa_abjurationrobe.zip"),
+}
+local assets_fa_conjurationrobe=
+{
+    Asset("ANIM", "anim/fa_conjurationrobe.zip"),
+}
+local assets_fa_divinationrobe=
+{
+    Asset("ANIM", "anim/fa_divinationrobe.zip"),
+}
+local assets_fa_enchantmentrobe=
+{
+    Asset("ANIM", "anim/fa_enchantmentrobe.zip"),
+}
+local assets_fa_evocationrobe=
+{
+    Asset("ANIM", "anim/fa_evocationrobe.zip"),
+}
+local assets_fa_illusionrobee=
+{
+    Asset("ANIM", "anim/fa_illusionrobe.zip"),
+}
+local assets_fa_necromancyrobe=
+{
+    Asset("ANIM", "anim/fa_necromancyrobe.zip"),
+}
+local assets_fa_transmutationrobe=
+{
+    Asset("ANIM", "anim/fa_transmutationrobe.zip"),
+}
+local assets_fa_heavyleatherarmor=
+{
+    Asset("ANIM", "anim/fa_heavyleatherarmor.zip"),
+}
+local assets_fa_lightleatherarmor=
+{
+    Asset("ANIM", "anim/fa_lightleatherarmor.zip"),
+}
+local assets_fa_plainrobe=
+{
+    Asset("ANIM", "anim/fa_plainrobe.zip"),
+}
+
 
 local ARMOR_ABSORPTION_T1=0.70
 local ARMOR_ABSORPTION_T2=0.80
@@ -37,9 +82,17 @@ local ARMOR_DURABILITY_SILVER=2500
 local ARMOR_ABSORPTION_SILVER=0.85
 local ARMOR_DURABILITY_ADAMANT=8500
 local ARMOR_ABSORPTION_ADAMANT=0.95
+local ARMOR_DURABILITY_LEATHER=1000
+local ARMOR_ABSORPTION_LEATHER=0.5
+local ARMOR_DURABILITY_HEAVYLEATHER=1500
+local ARMOR_ABSORPTION_HEAVYLEATHER=0.60
 
 local ARMOR_GOLD_DAPPERNESS=5.0/60
 local ARMOR_GOLD_FUELLEVEL=1200
+
+local ARMOR_ROBE_DURA=1000
+local ARMOR_ROBE_ABSO=0.1
+local ROBE_CL_BONUS=5
 
 
     local function generic_perish(inst)
@@ -144,10 +197,102 @@ local function goldarmor()
     return inst
 end
 
+local function fa_heavyleatherarmor()
+    local inst =fn("fa_heavyleatherarmor")
+    inst.components.armor:InitCondition(ARMOR_DURABILITY_HEAVYLEATHER, ARMOR_ABSORPTION_HEAVYLEATHER)
+    return inst
+end
+
+local function fa_lightleatherarmor()
+    local inst =fn("fa_lightleatherarmor")
+    inst.components.armor:InitCondition(ARMOR_DURABILITY_LEATHER, ARMOR_ABSORPTION_LEATHER)
+    return inst
+end
+
+local function fa_plainrobe()
+    local inst =fn("fa_plainrobe")
+    inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
+    return inst
+end
+local function fa_abjurationrobe()
+    local inst =fn("fa_abjurationrobe")
+    inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
+    inst.components.equippable.fa_casterlevel={}
+    inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.ABJURATION]=ROBE_CL_BONUS
+    return inst
+end
+
+local function fa_conjurationrobe()
+    local inst =fn("fa_conjurationrobe")
+    inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
+    inst.components.equippable.fa_casterlevel={}
+    inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.CONJURATION]=ROBE_CL_BONUS
+    return inst
+end
+
+local function fa_divinationrobe()
+    local inst =fn("fa_divinationrobe")
+    inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
+    inst.components.equippable.fa_casterlevel={}
+    inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.DIVINATION]=ROBE_CL_BONUS
+    return inst
+end
+
+local function fa_enchantmentrobe()
+    local inst =fn("fa_enchantmentrobe")
+    inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
+    inst.components.equippable.fa_casterlevel={}
+    inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.ENCHANTMENT]=ROBE_CL_BONUS
+    return inst
+end
+
+local function fa_evocationrobe()
+    local inst =fn("fa_evocationrobe")
+    inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
+    inst.components.equippable.fa_casterlevel={}
+    inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.EVOCATION]=ROBE_CL_BONUS
+    return inst
+end
+
+local function fa_illusionrobe()
+    local inst =fn("fa_illusionrobe")
+    inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
+    inst.components.equippable.fa_casterlevel={}
+    inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.ILLUSION]=ROBE_CL_BONUS
+    return inst
+end
+
+local function fa_necromancyrobe()
+    local inst =fn("fa_necromancyrobe")
+    inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
+    inst.components.equippable.fa_casterlevel={}
+    inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.NECROMANCY]=ROBE_CL_BONUS
+    return inst
+end
+
+local function fa_transmutationrobe()
+    local inst =fn("fa_transmutationrobe")
+    inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
+    inst.components.equippable.fa_casterlevel={}
+    inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.TRANSMUTATION]=ROBE_CL_BONUS
+    return inst
+end
+
 return
     Prefab( "common/inventory/fa_copperarmor",copperarmor, assets_copper),
     Prefab( "common/inventory/fa_steelarmor",steelarmor, assets_steel),
     Prefab( "common/inventory/fa_adamantinearmor",adamantinearmor, assets_adamantine),
     Prefab( "common/inventory/fa_ironarmor", ironarmor, assets_iron),
     Prefab( "common/inventory/fa_silverarmor", silverarmor, assets_silver),
-    Prefab( "common/inventory/fa_goldarmor", goldarmor, assets_gold)
+    Prefab( "common/inventory/fa_goldarmor", goldarmor, assets_gold),
+    Prefab( "common/inventory/fa_plainrobe", fa_plainrobe, assets_fa_plainrobe),
+    Prefab( "common/inventory/fa_lightleatherarmor", fa_lightleatherarmor, assets_fa_lightleatherarmor),
+    Prefab( "common/inventory/fa_heavyleatherarmor", fa_heavyleatherarmor, assets_fa_heavyleatherarmor),
+    Prefab( "common/inventory/fa_abjurationrobe", fa_abjurationrobe, assets_fa_abjurationrobe),
+    Prefab( "common/inventory/fa_conjurationrobe", fa_conjurationrobe, assets_fa_conjurationrobe),
+    Prefab( "common/inventory/fa_divinationrobe", fa_divinationrobe, assets_fa_divinationrobe),
+    Prefab( "common/inventory/fa_enchantmentrobe", fa_enchantmentrobe, assets_fa_enchantmentrobe),
+    Prefab( "common/inventory/fa_evocationrobe", fa_evocationrobe, assets_fa_evocationrobe),
+    Prefab( "common/inventory/fa_illusionrobe", fa_illusionrobe, assets_fa_illusionrobee),
+    Prefab( "common/inventory/fa_necromancyrobe", fa_necromancyrobe, assets_fa_necromancyrobe),
+    Prefab( "common/inventory/fa_transmutationrobe", fa_transmutationrobe, assets_fa_transmutationrobe)

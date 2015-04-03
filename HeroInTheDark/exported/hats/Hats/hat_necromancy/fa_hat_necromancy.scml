@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
+    <folder id="0" name="swap_hat">
+        <file id="0" name="swap_hat/swap_hat-0.png" width="301" height="254" pivot_x="0.481227" pivot_y="-0.220088"/>
+        <file id="1" name="swap_hat/swap_hat-1.png" width="289" height="295" pivot_x="0.629397" pivot_y="-0.096625"/>
+        <file id="2" name="swap_hat/swap_hat-2.png" width="309" height="312" pivot_x="0.523435" pivot_y="-0.0569341"/>
+        <file id="3" name="swap_hat/swap_hat-3.png" width="309" height="312" pivot_x="0.558686" pivot_y="-0.180347"/>
+    </folder>
+    <entity id="0" name="fa_hat_necromancy">
+        <animation id="0" name="idle" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="swap_hat-3">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" x="32.333333" y="-115.333333" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

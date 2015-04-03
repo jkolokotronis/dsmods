@@ -321,16 +321,16 @@ FA_LEVELDATA["DWARF_FORTRESS"]={
 			"FADwarfFortressTask3",
 		},
 		required_prefabs = {
---		"fa_mine_exit",
+		"fa_dorfcage_exit",
 		},
 		background_node_range={0,1}
 
 	}
 
 FA_LEVELDATA["DWARF_FORTRESS_SECRETS"]={
-		id="DWARF_FORTRESS",
+		id="DWARF_FORTRESS_SECRETS",
 		nomaxwell=true,
-		name="Dwarf Fortress",
+		name="Dwarf Fortress Secret",
 		overrides={
 			{"world_size", 		"huge"},
 			{"day", 			"onlydusk"}, 
@@ -345,7 +345,7 @@ FA_LEVELDATA["DWARF_FORTRESS_SECRETS"]={
 			{"boons", 			"never"},
 			{"poi", 			"never"},
 			{"traps", 			"never"},
-			{"start_setpeice", 	"FADorfFortressStartRoom"},
+			{"start_setpeice", 	"FADorfFortressSecret3"},
 			{"start_node",		"FA_BGDwarfFortressStart"},
 		},
 		tasks={

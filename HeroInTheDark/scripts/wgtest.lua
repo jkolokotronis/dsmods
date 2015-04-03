@@ -76,6 +76,9 @@ local function DorfPostPop(graph,entities, width, height)
 	end
 end
 AddLevelPostPopoulate("DWARF_FORTRESS",DorfPostPop)
+AddLevelPostPopoulate("DWARF_FORTRESS_SECRETS",DorfPostPop)
+
+
 -- I tried all I could to avoid this, but the amount of inline string/prefab checks is too high to do what I need done
 -- stuff needs to be disconnected
 -- islands are not enough/not even working in caves
@@ -213,8 +216,7 @@ local function UpdateTerrainValues(world_gen_choices)
 	end
 end
 
-
-LevelGenerates["DWARF_FORTRESS"]=function(prefab, map_width, map_height, tasks, world_gen_choices, level_type, level)
+local DFLevelGenerate=function(prefab, map_width, map_height, tasks, world_gen_choices, level_type, level)
 	--print("Generate",prefab, map_width, map_height, tasks, world_gen_choices, level_type)
 	local start_time = GetTimeReal()
 
@@ -679,3 +681,7 @@ LevelGenerates["DWARF_FORTRESS"]=function(prefab, map_width, map_height, tasks, 
 
 	return save
 end
+
+
+LevelGenerates["DWARF_FORTRESS_SECRETS"]=DFLevelGenerate
+LevelGenerates["DWARF_FORTRESS"]=DFLevelGenerate

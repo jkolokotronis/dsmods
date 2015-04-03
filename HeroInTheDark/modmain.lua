@@ -978,7 +978,7 @@ local function UpdateWorldGenScreen(self, profile, cb, world_gen_options)
                 self.worldanim:GetAnimState():PlayAnimation("idle", true)
                 self.verbs = GLOBAL.shuffleArray(GLOBAL.STRINGS.UI.WORLDGEN.MINES.VERBS)
                 self.nouns = GLOBAL.shuffleArray(GLOBAL.STRINGS.UI.WORLDGEN.MINES.NOUNS)
-            elseif(data.id=="DWARF_FORTRESS") then
+            elseif(data.id=="DWARF_FORTRESS" or data.id=="DWARF_FORTRESS_SECRETS") then
                 self.worldanim:GetAnimState():SetBank("generating_mine_cave")
                 self.worldanim:GetAnimState():SetBuild("generating_mine_cave")
                 self.worldanim:GetAnimState():PlayAnimation("idle", true)
@@ -1097,7 +1097,7 @@ AddPrefabPostInit("cave", function(inst)
                     self.clock=self.sidepanel:AddChild(FA_WarClock(owner))
                 end)
             end
-            if(data.id=="ORC_MINES" or data.id=="DWARF_FORTRESS" or data.id=="ORC_FORTRESS")then
+            if(data.id=="ORC_MINES" or data.id=="DWARF_FORTRESS" or data.id=="DWARF_FORTRESS_SECRETS" or data.id=="ORC_FORTRESS")then
                 OrcMinesPostInit(inst)
             end
 
