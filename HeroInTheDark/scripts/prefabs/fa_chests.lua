@@ -51,6 +51,10 @@ local function common(origprefab,locklevel)
     	end
     end)
 
+
+		inst.OnSave = nil 
+        inst.OnLoad = nil
+
     return inst
 end
 
@@ -74,6 +78,8 @@ local function fa_mine_skullchest()
 
 	local inst =Prefabs["skullchest"].fn()
 	inst:RemoveComponent("burnable")
+		inst.OnSave = nil 
+        inst.OnLoad = nil
 	return inst
 end
 
