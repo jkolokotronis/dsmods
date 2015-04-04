@@ -596,7 +596,7 @@ local fn = function(inst)
     function inst.components.locomotor:GetSpeedMultiplier()
         local res=old_speedmult(self)
         local body=self.inst.components.inventory:GetEquippedItem(EQUIPSLOTS.BODY)
-        if(body and body.components.armor and not body:HasTag("fa_boundarmor"))then
+        if(body and body.components.armor and not (body:HasTag("fa_boundarmor") or body:HasTag("fa_robe")))then
             res=res*ARMOR_SPEED_MULT
         end
         return res

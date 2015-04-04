@@ -211,11 +211,13 @@ end
 
 local function fa_plainrobe()
     local inst =fn("fa_plainrobe")
+    inst:AddTag("fa_robe")
     inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
     return inst
 end
 local function fa_abjurationrobe()
     local inst =fn("fa_abjurationrobe")
+    inst:AddTag("fa_robe")
     inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
     inst.components.equippable.fa_casterlevel={}
     inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.ABJURATION]=ROBE_CL_BONUS
@@ -224,6 +226,7 @@ end
 
 local function fa_conjurationrobe()
     local inst =fn("fa_conjurationrobe")
+    inst:AddTag("fa_robe")
     inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
     inst.components.equippable.fa_casterlevel={}
     inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.CONJURATION]=ROBE_CL_BONUS
@@ -232,6 +235,7 @@ end
 
 local function fa_divinationrobe()
     local inst =fn("fa_divinationrobe")
+    inst:AddTag("fa_robe")
     inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
     inst.components.equippable.fa_casterlevel={}
     inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.DIVINATION]=ROBE_CL_BONUS
@@ -240,6 +244,7 @@ end
 
 local function fa_enchantmentrobe()
     local inst =fn("fa_enchantmentrobe")
+    inst:AddTag("fa_robe")
     inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
     inst.components.equippable.fa_casterlevel={}
     inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.ENCHANTMENT]=ROBE_CL_BONUS
@@ -248,6 +253,7 @@ end
 
 local function fa_evocationrobe()
     local inst =fn("fa_evocationrobe")
+    inst:AddTag("fa_robe")
     inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
     inst.components.equippable.fa_casterlevel={}
     inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.EVOCATION]=ROBE_CL_BONUS
@@ -256,6 +262,7 @@ end
 
 local function fa_illusionrobe()
     local inst =fn("fa_illusionrobe")
+    inst:AddTag("fa_robe")
     inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
     inst.components.equippable.fa_casterlevel={}
     inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.ILLUSION]=ROBE_CL_BONUS
@@ -264,6 +271,7 @@ end
 
 local function fa_necromancyrobe()
     local inst =fn("fa_necromancyrobe")
+    inst:AddTag("fa_robe")
     inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
     inst.components.equippable.fa_casterlevel={}
     inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.NECROMANCY]=ROBE_CL_BONUS
@@ -272,6 +280,7 @@ end
 
 local function fa_transmutationrobe()
     local inst =fn("fa_transmutationrobe")
+    inst:AddTag("fa_robe")
     inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
     inst.components.equippable.fa_casterlevel={}
     inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.TRANSMUTATION]=ROBE_CL_BONUS
