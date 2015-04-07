@@ -93,6 +93,8 @@ function FA_ElectricalFence:RemoveNode(node)
         Sleep(0.1)
     end
 
+    if(node==nil) then return end
+    
     self.lock=true
 
 	if(self.nodetable[node.GUID])then
