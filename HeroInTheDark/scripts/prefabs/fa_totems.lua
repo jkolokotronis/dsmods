@@ -418,7 +418,7 @@ local function redfn(Sim)
 end
 
 local function outoffuel(inst)
-	FA_ElectricalFence.RemoveNode(inst)
+--	FenceManager:RemoveNode(inst)
 	inst.components.health:Kill()
 end
 
@@ -461,6 +461,11 @@ local function bluefn(Sim)
 	inst.fa_nodelist={}
 	inst.fa_effectlist={}
 
+
+    inst.OnRemoveEntity = function()
+        FenceManager:RemoveNode(inst)
+    end
+
     return inst
 end
 
@@ -487,9 +492,6 @@ local function bluefn_player()
         end)
     else
         FenceManager:RegisterNode(inst)
-    end
-    inst.OnRemoveEntity = function(inst)
-        FenceManager:RemoveNode(inst)
     end
 
     return inst
@@ -523,9 +525,7 @@ local function bluefn_kos(Sim)
     else
         FenceManager:RegisterNode(inst)
     end
-    inst.OnRemoveEntity = function(inst)
-        FenceManager:RemoveNode(inst)
-    end
+    
     inst.OnLoad=onloadbluekos
    
     return inst
