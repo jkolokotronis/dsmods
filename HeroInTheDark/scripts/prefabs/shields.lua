@@ -133,14 +133,8 @@ local function fn(name)
     return not(owner:HasTag("player")) or (owner:HasTag("fa_shielduser"))
   end
   
-  if EQUIPSLOTS["BACK"] then
-      inst.components.equippable.equipslot = EQUIPSLOTS.BACK
-  elseif EQUIPSLOTS["PACK"] then
       inst.components.equippable.equipslot = EQUIPSLOTS.PACK
-  else
-      inst.components.equippable.equipslot = EQUIPSLOTS.BODY
-  end    
-
+  
   inst:AddTag("shield")    
 --    inst.components.equippable:SetOnUnequip( onunequip )
     inst:AddComponent("armor")

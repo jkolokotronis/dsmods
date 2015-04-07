@@ -342,6 +342,7 @@ local function redfnbase(Sim)
     
     inst:ListenForEvent("attacked", OnAttacked)
     inst:ListenForEvent("onhitother",onhitother)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=1
 
     inst:AddComponent("inventory")
 
