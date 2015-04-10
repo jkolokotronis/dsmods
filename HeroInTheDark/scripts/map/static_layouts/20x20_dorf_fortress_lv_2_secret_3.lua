@@ -8749,41 +8749,8 @@ return {
           name = "",
           type = "fa_dorf_wall_1",
           shape = "rectangle",
-          x = 249,
-          y = 1198,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_dorf_wall_1",
-          shape = "rectangle",
-          x = 247,
-          y = 1221,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_dorf_wall_1",
-          shape = "rectangle",
           x = 247,
           y = 1244,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_dorf_wall_1",
-          shape = "rectangle",
-          x = 248,
-          y = 1176,
           width = 0,
           height = 0,
           visible = true,
@@ -14705,6 +14672,45 @@ return {
             ["data.fakewall"] = "true"
           }
         },
+        {
+          name = "",
+          type = "fa_dorf_wall_1",
+          shape = "rectangle",
+          x = 245,
+          y = 1175,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.fakewall"] = "true"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_wall_1",
+          shape = "rectangle",
+          x = 245,
+          y = 1197,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.fakewall"] = "true"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_wall_1",
+          shape = "rectangle",
+          x = 246,
+          y = 1221,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.fakewall"] = "true"
+          }
+        }
       }
     }
   }

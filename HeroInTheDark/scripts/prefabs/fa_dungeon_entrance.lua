@@ -421,6 +421,13 @@ local function hellgate()
 	inst.AnimState:SetBank("fa_hellgate")
 	inst.MiniMapEntity:SetIcon("cave_open.png")
 	Open(inst)
+	
+    local light = inst.entity:AddLight()
+    inst.Light:Enable(true)
+	inst.Light:SetRadius(3)
+    inst.Light:SetFalloff(0.7)
+    inst.Light:SetIntensity(.7)
+    inst.Light:SetColour(235/255,62/255,12/255)
 
 	return inst
 end
