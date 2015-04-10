@@ -35,7 +35,7 @@ local function OnCreate(inst, scenariorunner)
 end
 
 local function triggertrap(inst,scenariorunner)
-	FA_ScenarioUtil.FA_SpawnPrefabInProx(inst,"fa_redtotem_kos",2)
+	FA_ScenarioUtil.FA_SpawnPrefabInProx(inst,"fa_redtotem_kos",2,8)
 	scenariorunner:ClearScenario()
 end
 
