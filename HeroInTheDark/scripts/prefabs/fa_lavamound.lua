@@ -138,12 +138,12 @@ local function fn(Sim)
                 inst.fa_digtime=data.fa_digtime
                 inst.fa_digresettask=inst:DoTaskInTime(MOUND_RESET_PERIOD-GetTime()+inst.fa_digtime,mound_reset)
             else
-                inst.fa_digtime=GLOBAL.GetTime()
+                inst.fa_digtime=GetTime()
                 inst.fa_digresettask=inst:DoTaskInTime(MOUND_RESET_PERIOD, mound_reset)
             end
 
-            local nexttime=inst.components.spawner.nextspawntime or GLOBAL.SKELETONSPAWNDELAY*math.random()
-            inst.components.spawner:Configure( "skeletonspawn",GLOBAL.SKELETONSPAWNDELAY,nexttime)
+            local nexttime=inst.components.spawner.nextspawntime or SKELETONSPAWNDELAY*math.random()
+            inst.components.spawner:Configure( "skeletonspawn",SKELETONSPAWNDELAY,nexttime)
 	    end
     end           
     
