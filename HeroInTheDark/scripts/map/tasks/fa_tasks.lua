@@ -48,7 +48,9 @@ AddTask("FADwarfFortressSecrets", {
 		room_choices={
 			["FA_DwarfFortressSecret1"] = 1,
 			["FA_DwarfFortressSecret2"] = 1,
+			["FA_DwarfFortressSecret3"] = 1,
 			["FA_DwarfFortressSecret4"]=1,
+			["FA_DwarfFortressSecret5"] = 1,
 			
 		},
 		room_bg=GROUND.FUNGUSRED,

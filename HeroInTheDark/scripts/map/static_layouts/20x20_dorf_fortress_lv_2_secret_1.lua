@@ -7218,6 +7218,232 @@ return {
           height = 0,
           visible = true,
           properties = {}
+        },
+        {
+          name = "",
+          type = "fa_stairs_down",
+          shape = "rectangle",
+          x = 1078,
+          y = 1131,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.sourcetag"] = "stairs_down_1",
+            ["data.targettag"] = "stairs_up_2"
+          }
+        },
+        {
+          name = "",
+          type = "fa_stairs_up",
+          shape = "rectangle",
+          x = 1054,
+          y = 761,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.sourcetag"] = "stairs_up_1",
+            ["data.targettag"] = "stairs_down_entrance"
+          }
+        },
+        {
+          name = "",
+          type = "skeleton",
+          shape = "rectangle",
+          x = 1090,
+          y = 1019,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "skeleton",
+          shape = "rectangle",
+          x = 1226,
+          y = 1213,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "skeleton",
+          shape = "rectangle",
+          x = 494,
+          y = 1107,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "skeleton",
+          shape = "rectangle",
+          x = 190,
+          y = 1020,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "skeleton",
+          shape = "rectangle",
+          x = 1197,
+          y = 597,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "skeletonspawn",
+          shape = "rectangle",
+          x = 1080,
+          y = 509,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "skeletonspawn",
+          shape = "rectangle",
+          x = 1191,
+          y = 1166,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "skeletonspawn",
+          shape = "rectangle",
+          x = 487,
+          y = 906,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "skeletonspawn",
+          shape = "rectangle",
+          x = 771,
+          y = 755,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "skeletonspawn",
+          shape = "rectangle",
+          x = 845,
+          y = 1239,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "skeletonspawn",
+          shape = "rectangle",
+          x = 824,
+          y = 1116,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "skeletonspawn",
+          shape = "rectangle",
+          x = 735,
+          y = 1197,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "skeletonspawn",
+          shape = "rectangle",
+          x = 70,
+          y = 824,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "skeletonspawn",
+          shape = "rectangle",
+          x = 175,
+          y = 69,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "skeletonspawn",
+          shape = "rectangle",
+          x = 214,
+          y = 189,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "skeletonspawn",
+          shape = "rectangle",
+          x = 1067,
+          y = 197,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_redtotem_kos",
+          shape = "rectangle",
+          x = 316,
+          y = 1021,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_redtotem_kos",
+          shape = "rectangle",
+          x = 198,
+          y = 332,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
         }
       }
     }

@@ -5,6 +5,15 @@ local assets=
 
 }
 
+local dungeonentranceassets=
+{
+	Asset("ANIM", "anim/fa_dungeon_entrance.zip"),
+
+}
+local dungeonexitassets=
+{
+	Asset("ANIM", "anim/fa_dungeon_exit.zip"),
+}
 local prefabs={}
 
 local function GetVerb(inst)
@@ -78,5 +87,57 @@ local function fn(Sim)
     return inst
 end
 
+local function stairs_down()
+	local inst = CreateEntity()
+	local trans = inst.entity:AddTransform()
+	local anim = inst.entity:AddAnimState()
+    inst.entity:AddSoundEmitter()
+    MakeObstaclePhysics(inst, 0.7)
+    local minimap = inst.entity:AddMiniMapEntity()
+	minimap:SetIcon("cave_open.png")
+    anim:SetBank("fa_dungeon_entrance")
+    anim:SetBuild("fa_dungeon_entrance")
+    inst.AnimState:PlayAnimation("idle_open", true)
+
+	inst:AddComponent("activatable")
+	inst.components.activatable.OnActivate = OnActivate
+	inst.components.activatable.inactive = true
+	inst.components.activatable.getverb = function()
+		return STRINGS.ACTIONS.ACTIVATE.ENTER
+	end
+	inst.components.activatable.quickaction = true
+	inst.OnSave = onsave
+	inst.OnLoad = onload
+	return inst
+end
+
+local function stairs_up()
+	local inst = CreateEntity()
+	local trans = inst.entity:AddTransform()
+	local anim = inst.entity:AddAnimState()
+    inst.entity:AddSoundEmitter()
+    inst.Transform:SetScale(2, 2, 2)
+    MakeObstaclePhysics(inst, 0.7)
+    local minimap = inst.entity:AddMiniMapEntity()
+	minimap:SetIcon("cave_open2.png")
+	inst.AnimState:SetBuild("fa_dungeon_exit")
+	inst.AnimState:SetBank("fa_dungeon_exit")
+    inst.AnimState:PlayAnimation("idle", true)
+
+	inst:AddComponent("activatable")
+	inst.components.activatable.OnActivate = OnActivate
+	inst.components.activatable.inactive = true
+	inst.components.activatable.getverb = function()
+		return STRINGS.ACTIONS.ACTIVATE.CLIMB
+	end
+	inst.components.activatable.quickaction = true
+	inst.OnSave = onsave
+	inst.OnLoad = onload
+	return inst
+
+end
+
 return Prefab( "common/fa_teleporter", fn, assets, prefabs),
-Prefab( "common/fa_teleporter_dorf", fn, assets, prefabs) 
+Prefab( "common/fa_teleporter_dorf", fn, assets, prefabs),
+Prefab( "common/fa_stairs_down", stairs_down, dungeonentranceassets, prefabs),
+Prefab( "common/fa_stairs_up", stairs_up, dungeonexitassets, prefabs)

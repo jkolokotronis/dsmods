@@ -8,6 +8,12 @@ require "prefabutil"
 local lava_assets={
 		Asset("ANIM", "anim/fa_lavawall.zip"),
 }
+local orc_assets={
+	Asset("ANIM", "anim/fa_orcwall_1.zip"),
+}
+local bloody_orc_assets={
+	Asset("ANIM", "anim/fa_orcwall_2.zip"),
+}
 local LAVAWALL_HEALTH=2000
 
 	local function makeobstacle(inst)
@@ -57,6 +63,57 @@ local LAVAWALL_HEALTH=2000
 			inst.AnimState:PlayAnimation(anim_to_play)		
 		end
 	end
+
+local function clearobstacle(inst)
+	    local ground = GetWorld()
+	    if ground then
+	    	local pt = Point(inst.Transform:GetWorldPosition())
+	    	ground.Pathfinder:RemoveWall(pt.x, pt.y, pt.z)
+	    end
+	end
+
+	local function test_wall(inst, pt)
+		local tiletype = GetGroundTypeAtPosition(pt)
+		local ground_OK = tiletype ~= GROUND.IMPASSABLE 
+		
+		if ground_OK then
+			local ents = TheSim:FindEntities(pt.x,pt.y,pt.z, 2, nil, {"NOBLOCK", "player", "FX", "INLIMBO", "DECOR"}) -- or we could include a flag to the search?
+
+			for k, v in pairs(ents) do
+				if v ~= inst and v.entity:IsValid() and v.entity:IsVisible() and not v.components.placer and v.parent == nil then
+					local dsq = distsq( Vector3(v.Transform:GetWorldPosition()), pt)
+					if v:HasTag("wall") then
+						if dsq < .1 then return false end
+					else
+						if  dsq< 1 then return false end
+					end
+				end
+			end
+			
+			return true
+
+		end
+		return false
+		
+	end
+	local function onremoveentity(inst)
+		clearobstacle(inst)
+	end
+
+	local function onload(inst, data)
+		--print("walls - onload")
+		if(data and data.fakewall==true)then
+			inst:AddTag("fa_secretwall")
+			inst.Physics:SetCollides(false)
+		else
+			makeobstacle(inst)
+		end
+		if inst.components.health and inst.components.health:GetPercent() <= 0 then
+			clearobstacle(inst)
+		end
+
+	end
+
 	local function stonewallfn(Sim)
 		local inst = CreateEntity()
 		local trans = inst.entity:AddTransform()
@@ -70,6 +127,8 @@ local LAVAWALL_HEALTH=2000
 	    anim:PlayAnimation("3_4", false)
 		
 		MakeSnowCovered(inst)
+	    inst.OnLoad = onload
+	    inst.OnRemoveEntity = onremoveentity
 		
 		return inst
 	end
@@ -127,38 +186,6 @@ local function ondeploywall(inst, pt, deployer,data)
 		inst:Remove()
 	end
 
-local function clearobstacle(inst)
-	    local ground = GetWorld()
-	    if ground then
-	    	local pt = Point(inst.Transform:GetWorldPosition())
-	    	ground.Pathfinder:RemoveWall(pt.x, pt.y, pt.z)
-	    end
-	end
-
-	local function test_wall(inst, pt)
-		local tiletype = GetGroundTypeAtPosition(pt)
-		local ground_OK = tiletype ~= GROUND.IMPASSABLE 
-		
-		if ground_OK then
-			local ents = TheSim:FindEntities(pt.x,pt.y,pt.z, 2, nil, {"NOBLOCK", "player", "FX", "INLIMBO", "DECOR"}) -- or we could include a flag to the search?
-
-			for k, v in pairs(ents) do
-				if v ~= inst and v.entity:IsValid() and v.entity:IsVisible() and not v.components.placer and v.parent == nil then
-					local dsq = distsq( Vector3(v.Transform:GetWorldPosition()), pt)
-					if v:HasTag("wall") then
-						if dsq < .1 then return false end
-					else
-						if  dsq< 1 then return false end
-					end
-				end
-			end
-			
-			return true
-
-		end
-		return false
-		
-	end
 
 
 	local function itemfn(data)
@@ -226,23 +253,7 @@ local function clearobstacle(inst)
 		makeobstacle(inst)
 	end
 	    
-	local function onload(inst, data)
-		--print("walls - onload")
-		if(data and data.fakewall==true)then
-			inst:AddTag("fa_secretwall")
-			inst.Physics:SetCollides(false)
-		else
-			makeobstacle(inst)
-		end
-		if inst.components.health:GetPercent() <= 0 then
-			clearobstacle(inst)
-		end
 
-	end
-
-	local function onremoveentity(inst)
-		clearobstacle(inst)
-	end
 
 	local function normfn(data)
 		local inst = CreateEntity()
@@ -329,12 +340,26 @@ local function dorfwallfn()
 	inst.AnimState:SetBuild("fa_lavawall")
 	return inst
 end
+local function fa_orcwall_1()
+	local inst=stonewallfn()
+	inst.AnimState:SetBank("fa_orcwall_1")
+	inst.AnimState:SetBuild("fa_orcwall_1")
+	return inst
+end
+local function fa_orcwall_2()
+	local inst=stonewallfn()
+	inst.AnimState:SetBank("fa_orcwall_2")
+	inst.AnimState:SetBuild("fa_orcwall_2")
+	return inst
+end
 
 
 return Prefab( "common/fa_dungeon_wall", stonewallfn, assets),
 	Prefab( "common/fa_dorf_wall_1", dorfwallfn, lava_assets),
 	Prefab( "common/fa_dungeon_marblepillar", pillarfn, assets),
 	Prefab( "common/fa_lavawall",lavafn , lava_assets),
+	Prefab( "common/fa_orcwall_1",fa_orcwall_1 , orc_assets),
+	Prefab( "common/fa_orcwall_2",fa_orcwall_2 , bloody_orc_assets),
 	Prefab( "common/fa_lavawall_item", lavaitemfn, lava_assets, {"fa_lavawall", "fa_lavawall_placer"}),
 	MakePlacer("common/fa_lavawall_placer", "fa_lavawall", "fa_lavawall", "1_2", false, false, true) 
 	

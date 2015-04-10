@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r2">
+    <folder id="0">
+        <file id="0" name="_0000s_0001s_0007_Ebene-62.png" width="646" height="591" pivot_x="0.49226" pivot_y="0.072758"/>
+        <file id="1" name="_0000s_0001s_0003_Ebene-74-Kopie.png" width="83" height="76" pivot_x="0.506024" pivot_y="0.973684"/>
+        <file id="2" name="_0000s_0001s_0004_Ebene-74-Kopie-2.png" width="83" height="77" pivot_x="0.53012" pivot_y="0.948052"/>
+        <file id="3" name="_0000s_0001s_0005_Ebene-74.png" width="83" height="77" pivot_x="0.53012" pivot_y="0.974026"/>
+        <file id="4" name="_0000s_0001s_0006_Ebene-62-Kopie.png" width="646" height="591" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="fa_olivetree">
+        <obj_info name="_0000s_0001s_0007_Ebene-62" type="sprite">
+            <frames>
+                <i folder="0" file="0"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0001s_0003_Ebene-74-Kopie" type="sprite">
+            <frames>
+                <i folder="0" file="1"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0001s_0003_Ebene-74-Kopie_000" type="sprite">
+            <frames>
+                <i folder="0" file="1"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0001s_0003_Ebene-74-Kopie_001" type="sprite">
+            <frames>
+                <i folder="0" file="1"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0001s_0005_Ebene-74" type="sprite">
+            <frames>
+                <i folder="0" file="3"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0001s_0005_Ebene-74_000" type="sprite">
+            <frames>
+                <i folder="0" file="3"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0001s_0005_Ebene-74_001" type="sprite">
+            <frames>
+                <i folder="0" file="3"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0001s_0004_Ebene-74-Kopie-2" type="sprite">
+            <frames>
+                <i folder="0" file="2"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0001s_0004_Ebene-74-Kopie-2_000" type="sprite">
+            <frames>
+                <i folder="0" file="2"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0001s_0004_Ebene-74-Kopie-2_001" type="sprite">
+            <frames>
+                <i folder="0" file="2"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0001s_0006_Ebene-62-Kopie" type="sprite">
+            <frames>
+                <i folder="0" file="4"/>
+            </frames>
+        </obj_info>
+        <animation id="0" name="no olives yet (after picking rotten)" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" obj="0" name="_0000s_0001s_0007_Ebene-62">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-3.908642" y="13.424709"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="winter" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" obj="10" name="_0000s_0001s_0006_Ebene-62-Kopie">
+                <key id="0" spin="0">
+                    <object folder="0" file="4" x="-321.429907" y="561.747664"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="2" name="young unripe olives " length="3000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                </key>
+                <key id="1" time="636">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                </key>
+                <key id="2" time="1002">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                </key>
+                <key id="3" time="1350">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="1" z_index="3"/>
+                </key>
+                <key id="4" time="2172">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="1" z_index="3"/>
+                </key>
+                <key id="5" time="2370">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="2" z_index="3"/>
+                </key>
+                <key id="6" time="2496">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="2" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="2" z_index="3"/>
+                </key>
+            </mainline>
+            <timeline id="0" obj="0" name="_0000s_0001s_0007_Ebene-62">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-3.908642" y="13.424709"/>
+                </key>
+            </timeline>
+            <timeline id="1" obj="1" name="_0000s_0001s_0003_Ebene-74-Kopie">
+                <key id="0" spin="-1">
+                    <object folder="0" file="1" x="-187.032266" y="323.159657"/>
+                </key>
+                <key id="1" time="636">
+                    <object folder="0" file="1" x="-187.032266" y="323.159657" angle="343.882558" scale_x="1" scale_y="1"/>
+                </key>
+                <key id="2" time="2172" spin="-1">
+                    <object folder="0" file="1" x="-187.032266" y="323.159657" angle="19.602642" scale_x="1" scale_y="1"/>
+                </key>
+            </timeline>
+            <timeline id="2" obj="2" name="_0000s_0001s_0003_Ebene-74-Kopie_000">
+                <key id="0" spin="-1">
+                    <object folder="0" file="1" x="147.174388" y="323.809524"/>
+                </key>
+                <key id="1" time="1002">
+                    <object folder="0" file="1" x="147.174388" y="323.809524" angle="348.268501" scale_x="1"/>
+                </key>
+                <key id="2" time="2496" spin="-1">
+                    <object folder="0" file="1" x="147.174388" y="323.809524" angle="17.225751" scale_x="1"/>
+                </key>
+            </timeline>
+            <timeline id="3" obj="3" name="_0000s_0001s_0003_Ebene-74-Kopie_001">
+                <key id="0" spin="-1">
+                    <object folder="0" file="1" x="-49.04196" y="410.970976"/>
+                </key>
+                <key id="1" time="1350">
+                    <object folder="0" file="1" x="-49.04196" y="410.970976" angle="349.389284" scale_x="1" scale_y="1"/>
+                </key>
+                <key id="2" time="2370" spin="-1">
+                    <object folder="0" file="1" x="-49.04196" y="410.970976" angle="18.916241" scale_x="1" scale_y="1"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="3" name="ripe olives" length="3000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                </key>
+                <key id="1" time="717">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                </key>
+                <key id="2" time="918">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                </key>
+                <key id="3" time="1047">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="1" z_index="3"/>
+                </key>
+                <key id="4" time="1905">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="1" z_index="3"/>
+                </key>
+                <key id="5" time="2091">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="2" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="1" z_index="3"/>
+                </key>
+                <key id="6" time="2409">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="2" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="2" z_index="3"/>
+                </key>
+            </mainline>
+            <timeline id="0" obj="0" name="_0000s_0001s_0007_Ebene-62">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-3.908642" y="13.424709"/>
+                </key>
+            </timeline>
+            <timeline id="1" obj="4" name="_0000s_0001s_0005_Ebene-74">
+                <key id="0" spin="-1">
+                    <object folder="0" file="3" x="-186.46879" y="323.000002"/>
+                </key>
+                <key id="1" time="717">
+                    <object folder="0" file="3" x="-186.46879" y="323.000002" angle="346.129964" scale_y="1"/>
+                </key>
+                <key id="2" time="1905" spin="-1">
+                    <object folder="0" file="3" x="-186.46879" y="323.000002" angle="16.740289" scale_x="1" scale_y="1"/>
+                </key>
+            </timeline>
+            <timeline id="2" obj="5" name="_0000s_0001s_0005_Ebene-74_000">
+                <key id="0" spin="-1">
+                    <object folder="0" file="3" x="-48.18754" y="410.500002"/>
+                </key>
+                <key id="1" time="918">
+                    <object folder="0" file="3" x="-48.18754" y="410.500002" angle="346.306293"/>
+                </key>
+                <key id="2" time="2091" spin="-1">
+                    <object folder="0" file="3" x="-48.18754" y="410.500002" angle="13.556287" scale_x="1" scale_y="1"/>
+                </key>
+            </timeline>
+            <timeline id="3" obj="6" name="_0000s_0001s_0005_Ebene-74_001">
+                <key id="0" spin="-1">
+                    <object folder="0" file="3" x="149.46871" y="323.781252"/>
+                </key>
+                <key id="1" time="1047">
+                    <object folder="0" file="3" x="149.46871" y="323.781252" angle="347.744033" scale_x="1"/>
+                </key>
+                <key id="2" time="2409" spin="-1">
+                    <object folder="0" file="3" x="149.46871" y="323.781252" angle="10.484167" scale_x="1" scale_y="1"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="4" name="ripe olives shake tree fall down" length="500" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                </key>
+                <key id="1" time="71">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                </key>
+                <key id="2" time="162">
+                    <object_ref id="0" timeline="0" key="2" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                </key>
+                <key id="3" time="241">
+                    <object_ref id="0" timeline="0" key="3" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                </key>
+                <key id="4" time="342">
+                    <object_ref id="0" timeline="0" key="4" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                </key>
+                <key id="5" time="499">
+                    <object_ref id="0" timeline="0" key="5" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="1" z_index="3"/>
+                </key>
+                <key id="6" time="500">
+                    <object_ref id="0" timeline="0" key="5" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" obj="0" name="_0000s_0001s_0007_Ebene-62">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-3.908642" y="13.424709"/>
+                </key>
+                <key id="1" time="71" spin="0">
+                    <object folder="0" file="0" x="-3.908642" y="12.239457" scale_y="0.972753"/>
+                </key>
+                <key id="2" time="162" spin="0">
+                    <object folder="0" file="0" x="-3.908642" y="13.269546" scale_y="0.996433"/>
+                </key>
+                <key id="3" time="241" spin="0">
+                    <object folder="0" file="0" x="-3.908642" y="11.621403" scale_y="0.958545"/>
+                </key>
+                <key id="4" time="342" spin="0">
+                    <object folder="0" file="0" x="-3.908642" y="13.424709"/>
+                </key>
+                <key id="5" time="499" spin="0">
+                    <object folder="0" file="0" x="-3.908642" y="13.424709"/>
+                </key>
+            </timeline>
+            <timeline id="1" obj="4" name="_0000s_0001s_0005_Ebene-74">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" x="-186.46879" y="323.000002"/>
+                </key>
+                <key id="1" time="499" spin="0">
+                    <object folder="0" file="3" x="-179.939818" y="59.042993"/>
+                </key>
+            </timeline>
+            <timeline id="2" obj="5" name="_0000s_0001s_0005_Ebene-74_000">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" x="-48.18754" y="410.500002"/>
+                </key>
+                <key id="1" time="499" spin="0">
+                    <object folder="0" file="3" x="-64.976325" y="54.204675"/>
+                </key>
+            </timeline>
+            <timeline id="3" obj="6" name="_0000s_0001s_0005_Ebene-74_001">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" x="149.46871" y="323.781252"/>
+                </key>
+                <key id="1" time="499" spin="0">
+                    <object folder="0" file="3" x="143.872448" y="52.36256"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="5" name="rotten olives" length="3000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                </key>
+                <key id="1" time="492">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                </key>
+                <key id="2" time="729">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                </key>
+                <key id="3" time="894">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="1" z_index="3"/>
+                </key>
+                <key id="4" time="1935">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="1" z_index="3"/>
+                </key>
+                <key id="5" time="1992">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="2" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="1" z_index="3"/>
+                </key>
+                <key id="6" time="2148">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="2" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="2" z_index="3"/>
+                </key>
+            </mainline>
+            <timeline id="0" obj="0" name="_0000s_0001s_0007_Ebene-62">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-3.908642" y="13.424709"/>
+                </key>
+            </timeline>
+            <timeline id="1" obj="7" name="_0000s_0001s_0004_Ebene-74-Kopie-2">
+                <key id="0">
+                    <object folder="0" file="2" x="-187.775741" y="321.233649"/>
+                </key>
+                <key id="1" time="492">
+                    <object folder="0" file="2" x="-187.775741" y="321.233649" angle="7.163964"/>
+                </key>
+                <key id="2" time="1935" spin="-1">
+                    <object folder="0" file="2" x="-187.775741" y="321.233649" angle="15.592797" scale_x="1" scale_y="1"/>
+                </key>
+            </timeline>
+            <timeline id="2" obj="8" name="_0000s_0001s_0004_Ebene-74-Kopie-2_000">
+                <key id="0" spin="-1">
+                    <object folder="0" file="2" x="-48.523404" y="409.084116"/>
+                </key>
+                <key id="1" time="729">
+                    <object folder="0" file="2" x="-48.523404" y="409.084116" angle="349.448539" scale_x="1" scale_y="1"/>
+                </key>
+                <key id="2" time="1992" spin="-1">
+                    <object folder="0" file="2" x="-48.523404" y="409.084116" angle="4.649675" scale_y="1"/>
+                </key>
+            </timeline>
+            <timeline id="3" obj="9" name="_0000s_0001s_0004_Ebene-74-Kopie-2_001">
+                <key id="0" spin="-1">
+                    <object folder="0" file="2" x="150.542016" y="322.168228"/>
+                </key>
+                <key id="1" time="894">
+                    <object folder="0" file="2" x="150.542016" y="322.168228" angle="353.218485" scale_x="1"/>
+                </key>
+                <key id="2" time="2148" spin="-1">
+                    <object folder="0" file="2" x="150.542016" y="322.168228" angle="12.786935" scale_x="1" scale_y="1"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="6" name="rotten olives shake tree fall down" length="500" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                </key>
+                <key id="1" time="73">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                </key>
+                <key id="2" time="146">
+                    <object_ref id="0" timeline="0" key="2" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                </key>
+                <key id="3" time="242">
+                    <object_ref id="0" timeline="0" key="3" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                </key>
+                <key id="4" time="313">
+                    <object_ref id="0" timeline="0" key="4" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                </key>
+                <key id="5" time="499">
+                    <object_ref id="0" timeline="0" key="4" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="1" z_index="3"/>
+                </key>
+            </mainline>
+            <timeline id="0" obj="0" name="_0000s_0001s_0007_Ebene-62">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-3.908642" y="13.424709"/>
+                </key>
+                <key id="1" time="73" spin="0">
+                    <object folder="0" file="0" x="-3.908642" y="12.102112" scale_y="0.969595"/>
+                </key>
+                <key id="2" time="146" spin="0">
+                    <object folder="0" file="0" x="-3.908642" y="14.16229" scale_y="1.016956"/>
+                </key>
+                <key id="3" time="242" spin="0">
+                    <object folder="0" file="0" x="-3.908642" y="12.376802" scale_y="0.97591"/>
+                </key>
+                <key id="4" time="313" spin="0">
+                    <object folder="0" file="0" x="-3.908642" y="13.424709"/>
+                </key>
+            </timeline>
+            <timeline id="1" obj="7" name="_0000s_0001s_0004_Ebene-74-Kopie-2">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="-187.775741" y="321.233649"/>
+                </key>
+                <key id="1" time="499" spin="0">
+                    <object folder="0" file="2" x="-191.514059" y="66.093462"/>
+                </key>
+            </timeline>
+            <timeline id="2" obj="8" name="_0000s_0001s_0004_Ebene-74-Kopie-2_000">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="-48.523404" y="409.084116"/>
+                </key>
+                <key id="1" time="499" spin="0">
+                    <object folder="0" file="2" x="-68.149573" y="66.093462"/>
+                </key>
+            </timeline>
+            <timeline id="3" obj="9" name="_0000s_0001s_0004_Ebene-74-Kopie-2_001">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="150.542016" y="322.168228"/>
+                </key>
+                <key id="1" time="499" spin="0">
+                    <object folder="0" file="2" x="149.607437" y="60.485985"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

@@ -99,6 +99,7 @@ Layouts["FADorfFortressSecret1"]=StaticLayout.Get("map/static_layouts/20x20_dorf
 Layouts["FADorfFortressSecret2"]=StaticLayout.Get("map/static_layouts/20x20_dorf_fortress_lv_2_secret_2")
 Layouts["FADorfFortressSecret3"]=StaticLayout.Get("map/static_layouts/20x20_dorf_fortress_lv_2_secret_3")
 Layouts["FADorfFortressSecret4"]=StaticLayout.Get("map/static_layouts/20x20_dorf_fortress_lv_2_secret_4")
+Layouts["FADorfFortressSecret5"]=StaticLayout.Get("map/static_layouts/20x20_dorf_fortress_lv_2_secret_5")
 
 Layouts["FATestwithimpass"]=StaticLayout.Get("map/static_layouts/testwithimpass")
 Layouts["FAOrcMineBasicsetTrap1"]=StaticLayout.Get("map/static_layouts/orc_mine_basicset_trap_1")

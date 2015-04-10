@@ -126,25 +126,17 @@ return {
       objects = {
         {
           name = "",
-          type = "fa_dungeon_exit",
+          type = "fa_stairs_up",
           shape = "rectangle",
           x = 1146,
           y = 1148,
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "spawnpoint",
-          shape = "rectangle",
-          x = 1217,
-          y = 1186,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
+          properties = {
+            ["data.sourcetag"] = "stairs_up_4",
+            ["data.targettag"] = "stairs_down_3"
+          }
         },
         {
           name = "",
@@ -1384,14 +1376,17 @@ return {
         },
         {
           name = "",
-          type = "fa_dungeon_entrance",
+          type = "fa_stairs_down",
           shape = "rectangle",
           x = 164,
           y = 1160,
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.sourcetag"] = "stairs_down_4",
+            ["data.targettag"] = "stairs_up_5"
+          }
         }
       }
     }

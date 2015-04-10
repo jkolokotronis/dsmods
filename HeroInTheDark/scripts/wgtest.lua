@@ -217,6 +217,7 @@ local function UpdateTerrainValues(world_gen_choices)
 end
 
 local DFLevelGenerate=function(prefab, map_width, map_height, tasks, world_gen_choices, level_type, level)
+	local SKIP_GEN_CHECKS=false
 	--print("Generate",prefab, map_width, map_height, tasks, world_gen_choices, level_type)
 	local start_time = GetTimeReal()
 

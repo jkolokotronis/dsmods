@@ -345,7 +345,7 @@ FA_LEVELDATA["DWARF_FORTRESS_SECRETS"]={
 			{"boons", 			"never"},
 			{"poi", 			"never"},
 			{"traps", 			"never"},
-			{"start_setpeice", 	"FADorfFortressSecret3"},
+			{"start_setpeice", 	"FADorfFortressSecretEntrance"},
 			{"start_node",		"FA_BGDwarfFortressStart"},
 		},
 		tasks={

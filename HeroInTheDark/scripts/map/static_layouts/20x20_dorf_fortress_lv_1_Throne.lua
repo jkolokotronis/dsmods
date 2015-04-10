@@ -355,21 +355,6 @@ return {
           visible = true,
           properties = {}
         },
-
-        {
-          name = "",
-          type = "fa_dorfsecret_entrance",
-          shape = "rectangle",
-          x = 607,
-          y = 96,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {
-            ["data.fa_cavename"] = "DWARF_FORTRESS_SECRETS"
-          }
-        },
-
         {
           name = "",
           type = "fa_dorf_gold_pillar",
@@ -663,6 +648,19 @@ return {
           properties = {
             ["data.sourcetag"] = "Room_dorf_XX",
             ["data.targettag"] = "Room_dorf_A"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorfsecret_entrance",
+          shape = "rectangle",
+          x = 1215,
+          y = 64,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.fa_cavename"] = "DWARF_FORTRESS_SECRETS"
           }
         }
       }

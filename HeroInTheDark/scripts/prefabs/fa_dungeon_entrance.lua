@@ -32,6 +32,10 @@ local dorffortassets=
 	
 }
 
+local hellgateassets={
+	Asset("ANIM", "anim/fa_hellgate.zip"),
+}
+
 
 local prefabs = 
 {
@@ -411,9 +415,20 @@ local function dorfsecretfn()
 	return inst
 end
 
+local function hellgate()
+	local inst=fn()
+	inst.AnimState:SetBuild("fa_hellgate")
+	inst.AnimState:SetBank("fa_hellgate")
+	inst.MiniMapEntity:SetIcon("cave_open.png")
+	Open(inst)
+
+	return inst
+end
+
 return Prefab( "common/fa_dungeon_entrance", dungfn, assets, prefabs),
 Prefab( "common/fa_mine_entrance", minefn, mineassets, prefabs),
 Prefab( "common/fa_mine_entrance_grass", minegrassfn, minegrassassets, prefabs),
 Prefab( "common/fa_orcfort", orcfort, orcfortassets, prefabs),
 Prefab("common/fa_dorffort",dorffort, dorffortassets,prefabs),
+Prefab("common/fa_hellgate",hellgate, hellgateassets,prefabs),
 Prefab("common/fa_dorfsecret_entrance",dorfsecretfn, {},{})

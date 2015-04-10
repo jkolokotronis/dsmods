@@ -8835,14 +8835,17 @@ return {
         },
         {
           name = "",
-          type = "fa_dungeon_exit",
+          type = "fa_stairs_up",
           shape = "rectangle",
           x = 106,
           y = 100,
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.sourcetag"] = "stairs_up_3",
+            ["data.targettag"] = "stairs_down_2"
+          }
         },
         {
           name = "",
@@ -9308,14 +9311,17 @@ return {
         },
         {
           name = "",
-          type = "fa_dungeon_entrance",
+          type = "fa_stairs_down",
           shape = "rectangle",
           x = 128,
           y = 1088,
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.sourcetag"] = "stairs_down_3",
+            ["data.targettag"] = "stairs_up_4"
+          }
         },
         {
           name = "",
@@ -14699,17 +14705,6 @@ return {
             ["data.fakewall"] = "true"
           }
         },
-        {
-          name = "",
-          type = "spawnpoint",
-          shape = "rectangle",
-          x = 188,
-          y = 135,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        }
       }
     }
   }

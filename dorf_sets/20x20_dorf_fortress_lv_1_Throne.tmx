@@ -71,5 +71,6 @@
     <property name="data.targettag" value="Room_dorf_A"/>
    </properties>
   </object>
+  <object type="fa_dorfsecret_entrance" x="1215" y="64"/>
  </objectgroup>
 </map>
