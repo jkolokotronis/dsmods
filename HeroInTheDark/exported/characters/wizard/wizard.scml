@@ -83,9 +83,39 @@
         <file id="2" name="arm_lower/arm_lower-2.png" width="64" height="40" pivot_x="0.761711" pivot_y="0.710013"/>
     </folder>
     <folder id="9" name="headbase_hat">
-        <file id="0" name="headbase_hat/headbase_hat-0.png" width="216" height="260" pivot_x="0.509306" pivot_y="0.16567"/>
+        <file id="0" name="headbase_hat/headbase_hat-0.png" width="216" height="260" pivot_x="0.507976" pivot_y="0.16567"/>
         <file id="1" name="headbase_hat/headbase_hat-1.png" width="212" height="264" pivot_x="0.533651" pivot_y="0.179008"/>
-        <file id="2" name="headbase_hat/headbase_hat-2.png" width="220" height="260" pivot_x="0.519789" pivot_y="0.122659"/>
+        <file id="2" name="headbase_hat/headbase_hat-2.png" width="220" height="260" pivot_x="0.519789" pivot_y="0.136209"/>
+    </folder>
+    <folder id="10" name="headbase_5">
+        <file id="0" name="headbase_5/headbase_5-0.png" width="216" height="260" pivot_x="0.507976" pivot_y="0.16567"/>
+        <file id="1" name="headbase_5/headbase_5-1.png" width="212" height="264" pivot_x="0.533651" pivot_y="0.179008"/>
+        <file id="2" name="headbase_5/headbase_5-2.png" width="220" height="260" pivot_x="0.519789" pivot_y="0.136209"/>
+    </folder>
+    <folder id="11" name="headbase_10">
+        <file id="0" name="headbase_10/headbase_10-0.png" width="216" height="260" pivot_x="0.507976" pivot_y="0.16567"/>
+        <file id="1" name="headbase_10/headbase_10-1.png" width="212" height="264" pivot_x="0.533651" pivot_y="0.179008"/>
+        <file id="2" name="headbase_10/headbase_10-2.png" width="220" height="260" pivot_x="0.519789" pivot_y="0.136209"/>
+    </folder>
+    <folder id="12" name="headbase_20">
+        <file id="0" name="headbase_20/headbase_20-0.png" width="216" height="260" pivot_x="0.507976" pivot_y="0.16567"/>
+        <file id="1" name="headbase_20/headbase_20-1.png" width="212" height="264" pivot_x="0.533651" pivot_y="0.179008"/>
+        <file id="2" name="headbase_20/headbase_20-2.png" width="220" height="260" pivot_x="0.519789" pivot_y="0.136209"/>
+    </folder>
+    <folder id="13" name="headbase_hat_5">
+        <file id="0" name="headbase_hat_5/headbase_hat_5-0.png" width="216" height="260" pivot_x="0.507976" pivot_y="0.16567"/>
+        <file id="1" name="headbase_hat_5/headbase_hat_5-1.png" width="212" height="264" pivot_x="0.533651" pivot_y="0.179008"/>
+        <file id="2" name="headbase_hat_5/headbase_hat_5-2.png" width="220" height="260" pivot_x="0.519789" pivot_y="0.136209"/>
+    </folder>
+    <folder id="14" name="headbase_hat_10">
+        <file id="0" name="headbase_hat_10/headbase_hat_10-0.png" width="216" height="260" pivot_x="0.507976" pivot_y="0.16567"/>
+        <file id="1" name="headbase_hat_10/headbase_hat_10-1.png" width="212" height="264" pivot_x="0.533651" pivot_y="0.179008"/>
+        <file id="2" name="headbase_hat_10/headbase_hat_10-2.png" width="220" height="260" pivot_x="0.519789" pivot_y="0.136209"/>
+    </folder>
+    <folder id="15" name="headbase_hat_20">
+        <file id="0" name="headbase_hat_20/headbase_hat_20-0.png" width="216" height="260" pivot_x="0.507976" pivot_y="0.16567"/>
+        <file id="1" name="headbase_hat_20/headbase_hat_20-1.png" width="212" height="264" pivot_x="0.533651" pivot_y="0.179008"/>
+        <file id="2" name="headbase_hat_20/headbase_hat_20-2.png" width="220" height="260" pivot_x="0.519789" pivot_y="0.136209"/>
     </folder>
     <entity id="0" name="wizard">
         <animation id="0" name="BUILD_PLAYER" length="1000">

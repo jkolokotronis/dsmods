@@ -481,6 +481,8 @@ local function enableL7spells() end
 local function enableL8spells() end
 local function enableL9spells() end
 
+
+
 local function onxploaded(inst)
     local level=inst.components.xplevel.level
     inst.components.fa_spellcaster.casterlevel=level
@@ -489,6 +491,8 @@ local function onxploaded(inst)
     end
     if(level>=5)then
         enableL3spells()
+        inst.AnimState:OverrideSymbol("headbase", "wizard", "headbase_5")
+        inst.AnimState:OverrideSymbol("headbase_hat", "wizard", "headbase_hat_5")
     end
     if(level>=7)then
         enableL4spells()
@@ -497,6 +501,8 @@ local function onxploaded(inst)
         enableL5spells()
     end
     if(level>=10)then
+        inst.AnimState:OverrideSymbol("headbase", "wizard", "headbase_10")
+        inst.AnimState:OverrideSymbol("headbase_hat", "wizard", "headbase_hat_10")
     end
     if(level>=11)then
         enableL6spells()
@@ -509,6 +515,10 @@ local function onxploaded(inst)
     end
     if(level>=19)then
         enableL9spells()
+    end
+    if(level==20)then
+        inst.AnimState:OverrideSymbol("headbase", "wizard", "headbase_20")
+        inst.AnimState:OverrideSymbol("headbase_hat", "wizard", "headbase_hat_20")
     end
     if(level>1)then
         inst.components.sanity.max=inst.components.sanity.max+SANITY_PER_LEVEL*(level-1)
@@ -525,11 +535,15 @@ local function onlevelup(inst,data)
         enableL2spells()
     elseif(level==5)then
         enableL3spells()
+        inst.AnimState:OverrideSymbol("headbase", "wizard", "headbase_5")
+        inst.AnimState:OverrideSymbol("headbase_hat", "wizard", "headbase_hat_5")
     elseif(level==7)then
         enableL4spells()
     elseif(level==9)then
         enableL5spells()
     elseif(level==10)then
+        inst.AnimState:OverrideSymbol("headbase", "wizard", "headbase_10")
+        inst.AnimState:OverrideSymbol("headbase_hat", "wizard", "headbase_hat_10")
     elseif(level==11)then
         enableL6spells()
     elseif(level==14)then
@@ -539,7 +553,8 @@ local function onlevelup(inst,data)
     elseif(level==19)then
         enableL9spells()
     elseif(level==20)then
-
+        inst.AnimState:OverrideSymbol("headbase", "wizard", "headbase_20")
+        inst.AnimState:OverrideSymbol("headbase_hat", "wizard", "headbase_hat_20")
     end
 
     --effectively, this is same as [1,currentlevel]

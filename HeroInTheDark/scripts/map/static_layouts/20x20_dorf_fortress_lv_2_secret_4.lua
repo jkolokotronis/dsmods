@@ -126,7 +126,7 @@ return {
       objects = {
         {
           name = "",
-          type = "fa_stairs_up",
+          type = "fa_dungeon_exit",
           shape = "rectangle",
           x = 1146,
           y = 1148,
@@ -134,9 +134,20 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.sourcetag"] = "stairs_up_4",
-            ["data.targettag"] = "stairs_down_3"
+            ["data.sourcetag"] = "dorf_secret_6",
+            ["data.targettag"] = "dorf_secret_5"
           }
+        },
+        {
+          name = "",
+          type = "spawnpoint",
+          shape = "rectangle",
+          x = 1217,
+          y = 1186,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
         },
         {
           name = "",
@@ -1376,7 +1387,7 @@ return {
         },
         {
           name = "",
-          type = "fa_stairs_down",
+          type = "fa_dungeon_entrance",
           shape = "rectangle",
           x = 164,
           y = 1160,
@@ -1384,9 +1395,53 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.sourcetag"] = "stairs_down_4",
-            ["data.targettag"] = "stairs_up_5"
+            ["data.sourcetag"] = "dorf_secret_7",
+            ["data.targettag"] = "dorf_secret_8"
           }
+        },
+        {
+          name = "",
+          type = "skeleton",
+          shape = "rectangle",
+          x = 420,
+          y = 923,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "skeleton",
+          shape = "rectangle",
+          x = 733,
+          y = 226,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "skeleton",
+          shape = "rectangle",
+          x = 1189,
+          y = 414,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "skeleton",
+          shape = "rectangle",
+          x = 1114,
+          y = 920,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
         }
       }
     }

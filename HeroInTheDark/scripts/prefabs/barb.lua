@@ -174,6 +174,7 @@ end
 
 local function rageStart(inst)
     local resist=RAGE_RESIST
+    inst.components.health.fa_stunresistance=inst.components.health.fa_stunresistance+1
 	if(inst.components.xplevel.level<20)then
         inst.components.locomotor.runspeed=RAGE_MS_DELTA+inst.components.locomotor.runspeed
        inst.components.combat.min_attack_period=def_attack_period/1.3       
@@ -189,6 +190,7 @@ local function rageStart(inst)
 end
 
 local function rageEnd(inst)
+    inst.components.health.fa_stunresistance=inst.components.health.fa_stunresistance-1
     doresistdelta(inst,-inst.fa_rage_resistboost)
     inst.fa_rage_resistboost=nil
 	inst.components.locomotor.runspeed=inst.components.locomotor.runspeed-RAGE_MS_DELTA

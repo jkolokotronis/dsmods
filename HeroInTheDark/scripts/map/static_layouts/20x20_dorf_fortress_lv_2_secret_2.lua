@@ -7069,7 +7069,7 @@ return {
         },
         {
           name = "",
-          type = "fa_stairs_up",
+          type = "fa_dungeon_exit",
           shape = "rectangle",
           x = 117,
           y = 92,
@@ -7077,13 +7077,24 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.sourcetag"] = "stairs_up_2",
-            ["data.targettag"] = "stairs_down_1"
+            ["data.sourcetag"] = "dorf_secret_2",
+            ["data.targettag"] = "dorf_secret_1"
           }
         },
         {
           name = "",
-          type = "fa_stairs_down",
+          type = "spawnpoint",
+          shape = "rectangle",
+          x = 194,
+          y = 72,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dungeon_entrance",
           shape = "rectangle",
           x = 114,
           y = 217,
@@ -7091,8 +7102,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.sourcetag"] = "stairs_down_2",
-            ["data.targettag"] = "stairs_up_3"
+            ["data.sourcetag"] = "dorf_secret_3",
+            ["data.targettag"] = "dorf_secret_4"
           }
         },
         {
@@ -8678,6 +8689,83 @@ return {
           shape = "rectangle",
           x = 106,
           y = 1184,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "goblinsign_3",
+          shape = "rectangle",
+          x = 319,
+          y = 85,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "goblinsign_3",
+          shape = "rectangle",
+          x = 449,
+          y = 83,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "goblinsign_3",
+          shape = "rectangle",
+          x = 577,
+          y = 82,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "goblinsign_3",
+          shape = "rectangle",
+          x = 705,
+          y = 82,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "goblinsign_3",
+          shape = "rectangle",
+          x = 831,
+          y = 84,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "goblinsign_3",
+          shape = "rectangle",
+          x = 1104,
+          y = 83,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "goblinsign_5",
+          shape = "rectangle",
+          x = 956,
+          y = 88,
           width = 0,
           height = 0,
           visible = true,

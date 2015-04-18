@@ -7221,7 +7221,7 @@ return {
         },
         {
           name = "",
-          type = "fa_stairs_down",
+          type = "fa_dungeon_entrance",
           shape = "rectangle",
           x = 1078,
           y = 1131,
@@ -7229,23 +7229,31 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.sourcetag"] = "stairs_down_1",
-            ["data.targettag"] = "stairs_up_2"
+            ["data.sourcetag"] = "dorf_secret_1",
+            ["data.targettag"] = "dorf_secret_2"
           }
         },
         {
           name = "",
-          type = "fa_stairs_up",
+          type = "fa_dungeon_exit",
           shape = "rectangle",
           x = 1054,
           y = 761,
           width = 0,
           height = 0,
           visible = true,
-          properties = {
-            ["data.sourcetag"] = "stairs_up_1",
-            ["data.targettag"] = "stairs_down_entrance"
-          }
+          properties = {}
+        },
+        {
+          name = "",
+          type = "spawnpoint",
+          shape = "rectangle",
+          x = 1067,
+          y = 824,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
         },
         {
           name = "",

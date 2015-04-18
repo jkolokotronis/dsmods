@@ -125,7 +125,7 @@ PrefabFiles = {
     "fa_pebbles",
     "fa_rocks",
     "fa_lavarain",
-    "fa_sand",
+    "fa_drops",
     "fa_fissures",
     "fa_forcefields",
     "fa_fissurefx",

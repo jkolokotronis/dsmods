@@ -83,6 +83,10 @@ local assets_fa_hat_plain=
 {
     Asset("ANIM", "anim/fa_hat_plain.zip"),
 }
+local assets_fa_hat_leprechaun=
+{
+    Asset("ANIM", "anim/fa_hat_leprechaun.zip"),
+}
 
 local prefabs ={}
 
@@ -509,6 +513,13 @@ local function onequip(inst, owner, build)
         inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
         return inst
     end
+    local function fa_hat_leprechaun()
+        local inst=common("fa_hat_leprechaun")
+        inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_leprechaun") end  )
+        inst:AddComponent("armor")
+        inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
+        return inst
+    end
 
 
 
@@ -533,5 +544,8 @@ Prefab( "common/inventory/fa_hat_necromancy", fa_hat_necromancy, assets_fa_hat_n
 Prefab( "common/inventory/fa_hat_transmutation", fa_hat_transmutation, assets_fa_hat_transmutation, prefabs),
 Prefab( "common/inventory/fa_hat_heavyleather", fa_hat_heavyleather, assets_fa_hat_heavyleather, prefabs),
 Prefab( "common/inventory/fa_hat_lightleather", fa_hat_lightleather, assets_fa_hat_lightleather, prefabs),
-Prefab( "common/inventory/fa_hat_plain", fa_hat_plain, assets_fa_hat_plain, prefabs)
+Prefab( "common/inventory/fa_hat_plain", fa_hat_plain, assets_fa_hat_plain, prefabs),
+Prefab( "common/inventory/fa_hat_leprechaun", fa_hat_leprechaun, assets_fa_hat_leprechaun, prefabs)
+
+
 

@@ -21,7 +21,9 @@ local function GetVerb(inst)
 end
 
 local function OnActivate(inst,doer)
-		inst.SoundEmitter:PlaySound("fa/teleporter/activate")
+	if(inst.soundfx)then
+		inst.SoundEmitter:PlaySound(inst.soundfx)
+	end
 	--inst.AnimState:PushAnimation("idle_on", true)
 	
 	local dest=TheSim:FindFirstEntityWithTag(inst.targettag)
@@ -63,6 +65,7 @@ local function fn(Sim)
 	local trans = inst.entity:AddTransform()
 	local anim = inst.entity:AddAnimState()
     inst.entity:AddSoundEmitter()
+    inst.soundfx="fa/teleporter/activate"
     MakeObstaclePhysics(inst, 0.7)
     local minimap = inst.entity:AddMiniMapEntity()
 	minimap:SetIcon("teleportato.png")

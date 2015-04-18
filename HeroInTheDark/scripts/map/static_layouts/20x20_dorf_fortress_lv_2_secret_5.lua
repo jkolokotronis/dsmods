@@ -126,7 +126,18 @@ return {
       objects = {
         {
           name = "",
-          type = "fa_stairs_up",
+          type = "spawnpoint",
+          shape = "rectangle",
+          x = 510,
+          y = 315,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dungeon_exit",
           shape = "rectangle",
           x = 738,
           y = 262,
@@ -134,8 +145,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.sourcetag"] = "stairs_up_5",
-            ["data.targettag"] = "stairs_down_4"
+            ["data.sourcetag"] = "dorf_secret_8",
+            ["data.targettag"] = "dorf_secret_7"
           }
         },
         {
@@ -738,17 +749,6 @@ return {
           shape = "rectangle",
           x = 250,
           y = 628,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_hellgate",
-          shape = "rectangle",
-          x = 491,
-          y = 466,
           width = 0,
           height = 0,
           visible = true,

@@ -74,7 +74,9 @@ local orccageassets=
         Asset( "ANIM", "anim/goblin.zip" ),
 
 }
-
+local fa_silkrollassets={
+        Asset( "ANIM", "anim/fa_silkroll.zip" ),    
+}
 
 
 local function fn(bank,bld,animname,loop)
@@ -336,6 +338,16 @@ local function fa_orc_jailcage()
     local inst = cagefn("bluegoblin")
     return inst
 end
+
+local function fa_silkroll()
+    local inst= fn("fa_stonecoffin")
+    MakeInventoryPhysics(inst)
+    inst:RemoveTag("NOCLICK")
+    MakeSmallBurnable(inst)
+    return inst
+end
+
+
 return Prefab( "common/fa_dorf_gold_pillar", fa_pillar_dwarf, fa_pillar_dwarf_assets),
 Prefab( "common/fa_dorf_stool", fa_stool, fa_stool_assets),
 Prefab( "common/fa_dorf_stool_blown", fa_stool_blown, fa_stool_assets),
@@ -354,5 +366,6 @@ Prefab( "common/fa_orc_stool", fa_orc_stool, fa_orc_stool_assets),
 Prefab( "common/fa_goblin_jailcage", fa_goblin_jailcage, greencageassets),
 Prefab( "common/fa_goblin_blue_jailcage", fa_goblin_blue_jailcage, bluecageassets),
 Prefab( "common/fa_orc_jailcage", fa_orc_jailcage, orccageassets),
-Prefab( "common/fa_goblin_red_jailcage", fa_goblin_red_jailcage, redcageassets)
+Prefab( "common/fa_goblin_red_jailcage", fa_goblin_red_jailcage, redcageassets),
+Prefab( "common/fa_silkroll", fa_silkroll, fa_silkrollassets)
 
