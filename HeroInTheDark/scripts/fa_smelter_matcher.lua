@@ -588,7 +588,7 @@ local alchemy_recipes={
 		},
 	},
 	{
-		match={product={"fa_hat_abjuration"},cooktime=60*6},
+		match={product={"fa_hat_abjuration"},cooktime=60*3},
 		test={
 			{ingred="fa_silkroll",count=2},
 			{ingred="razor",count=1,atlas="images/inventoryimages.xml"},
@@ -599,7 +599,7 @@ local alchemy_recipes={
 		},
 	},
 	{
-		match={product={"fa_hat_conjuration"},cooktime=60*6},
+		match={product={"fa_hat_conjuration"},cooktime=60*3},
 		test={
 			{ingred="fa_silkroll",count=2},
 			{ingred="razor",count=1,atlas="images/inventoryimages.xml"},
@@ -610,7 +610,7 @@ local alchemy_recipes={
 		},
 	},
 	{
-		match={product={"fa_hat_divination"},cooktime=60*6},
+		match={product={"fa_hat_divination"},cooktime=60*3},
 		test={
 			{ingred="fa_silkroll",count=2},
 			{ingred="razor",count=1,atlas="images/inventoryimages.xml"},
@@ -620,7 +620,7 @@ local alchemy_recipes={
 		},
 	},
 	{
-		match={product={"fa_hat_enchantment"},cooktime=60*6},
+		match={product={"fa_hat_enchantment"},cooktime=60*3},
 		test={
 			{ingred="fa_silkroll",count=2},
 			{ingred="razor",count=1,atlas="images/inventoryimages.xml"},
@@ -630,7 +630,7 @@ local alchemy_recipes={
 		},
 	},
 	{
-		match={product={"fa_hat_evocation"},cooktime=60*6},
+		match={product={"fa_hat_evocation"},cooktime=60*3},
 		test={
 			{ingred="fa_silkroll",count=2},
 			{ingred="razor",count=1,atlas="images/inventoryimages.xml"},
@@ -641,7 +641,7 @@ local alchemy_recipes={
 		},
 	},
 	{
-		match={product={"fa_hat_illusion"},cooktime=60*6},
+		match={product={"fa_hat_illusion"},cooktime=60*3},
 		test={
 			{ingred="fa_silkroll",count=2},
 			{ingred="razor",count=1,atlas="images/inventoryimages.xml"},
@@ -651,7 +651,7 @@ local alchemy_recipes={
 		},
 	},
 	{
-		match={product={"fa_hat_necromancy"},cooktime=60*6},
+		match={product={"fa_hat_necromancy"},cooktime=60*3},
 		test={
 			{ingred="fa_silkroll",count=2},
 			{ingred="razor",count=1,atlas="images/inventoryimages.xml"},
@@ -660,7 +660,7 @@ local alchemy_recipes={
 		},
 	},
 	{
-		match={product={"fa_hat_transmutation"},cooktime=60*6},
+		match={product={"fa_hat_transmutation"},cooktime=60*3},
 		test={
 			{ingred="fa_silkroll",count=2},
 			{ingred="razor",count=1,atlas="images/inventoryimages.xml"},
@@ -1062,22 +1062,21 @@ local forge_recipes={
 		},
 	},
 	{
-		match={product={"fa_ironstaff","fa_bottle_empty","fa_bottle_empty"},cooktime=240},
+		match={product={"fa_ironstaff","fa_bottle_empty"},cooktime=240},
 		test={
 			{ingred="fa_ironbar",count=1},
 			{ingred="boards",count=2,atlas="images/inventoryimages.xml"},
-			{ingred=isfuel, count=3},
-			{ingred=bottleany, count=2},
+			{ingred=isfuel, count=4},
+			{ingred=heavywater, count=1},
 		},
 	},
 	{
-		match={product={"fa_steeltaff","fa_bottle_empty","fa_bottle_empty"},cooktime=360},
+		match={product={"fa_steeltaff","fa_bottle_empty"},cooktime=360},
 		test={
 			{ingred="fa_steelbar",count=1},
 			{ingred="boards",count=2,atlas="images/inventoryimages.xml"},
-			{ingred="fa_coalbar", count=2},
-			{ingred=isfuel, count=1},
-			{ingred="fa_bottle_oil", count=2},
+			{ingred="fa_coalbar", count=4},
+			{ingred="fa_bottle_oil", count=1},
 		},
 	},
 	{
@@ -1085,8 +1084,8 @@ local forge_recipes={
 		test={
 			{ingred="fa_silverbar",count=1},
 			{ingred="boards",count=2,atlas="images/inventoryimages.xml"},
-			{ingred="fa_coalbar", count=3},
-			{ingred="fa_bottle_oil", count=2},
+			{ingred="fa_coalbar", count=4},
+			{ingred="fa_bottle_oil", count=1},
 		},
 	},
 	{
@@ -1094,8 +1093,8 @@ local forge_recipes={
 		test={
 			{ingred="fa_goldbar",count=1},
 			{ingred="boards",count=2,atlas="images/inventoryimages.xml"},
-			{ingred="fa_coalbar", count=3},
-			{ingred="fa_bottle_oil", count=2},
+			{ingred="fa_coalbar", count=4},
+			{ingred="fa_bottle_oil", count=1},
 		},
 	},	
 	{
@@ -1103,8 +1102,8 @@ local forge_recipes={
 		test={
 			{ingred="fa_adamantinebar",count=1},
 			{ingred="boards",count=2,atlas="images/inventoryimages.xml"},
-			{ingred="fa_coalbar", count=3},
-			{ingred="fa_bottle_oil", count=2},
+			{ingred="fa_coalbar", count=4},
+			{ingred="fa_bottle_oil", count=1},
 		},
 	},	
 	{

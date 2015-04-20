@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
     <folder id="0">
-        <file id="0" name="wortox heart ground.png" width="312" height="259" pivot_x="0" pivot_y="1"/>
+        <file id="0" name="wortox heart ground.png" width="220" height="183" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="fa_wortoxheart">
         <animation id="0" name="idle" length="1000">
@@ -12,7 +12,7 @@
             </mainline>
             <timeline id="0" name="wortox heart ground">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-152.631579" y="218.421053"/>
+                    <object folder="0" file="0" x="-104.631579" y="156.421053" angle="0"/>
                 </key>
             </timeline>
         </animation>

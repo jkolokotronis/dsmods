@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
     <folder id="0">
-        <file id="0" name="old mummy sand ground.png" width="401" height="228" pivot_x="0" pivot_y="1"/>
+        <file id="0" name="old mummy sand ground.png" width="300" height="171" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="fa_mummysand">
         <animation id="0" name="idle" length="1000">
@@ -12,7 +12,7 @@
             </mainline>
             <timeline id="0" name="old mummy sand ground">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-207" y="155"/>
+                    <object folder="0" file="0" x="-157" y="117" angle="0"/>
                 </key>
             </timeline>
         </animation>

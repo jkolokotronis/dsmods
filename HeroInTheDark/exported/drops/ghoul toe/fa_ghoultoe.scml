@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
     <folder id="0">
-        <file id="0" name="ghoul toe ground.png" width="225" height="130" pivot_x="0" pivot_y="1"/>
+        <file id="0" name="ghoul toe ground.png" width="150" height="87" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="fa_ghoultoe">
         <animation id="0" name="idle" length="1000">
@@ -12,7 +12,7 @@
             </mainline>
             <timeline id="0" name="ghoul toe ground">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-120" y="103"/>
+                    <object folder="0" file="0" x="-77" y="71" angle="0"/>
                 </key>
             </timeline>
         </animation>

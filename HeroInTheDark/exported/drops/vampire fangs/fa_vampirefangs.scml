@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
     <folder id="0">
-        <file id="0" name="vampire fangs ground.png" width="273" height="147" pivot_x="0" pivot_y="1"/>
+        <file id="0" name="vampire fangs ground.png" width="190" height="102" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="fa_vampirefangs">
         <animation id="0" name="idle" length="1000">
@@ -12,7 +12,7 @@
             </mainline>
             <timeline id="0" name="vampire fangs ground">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-142" y="129"/>
+                    <object folder="0" file="0" x="-96" y="82" angle="0"/>
                 </key>
             </timeline>
         </animation>
