@@ -82,17 +82,19 @@ local ARMOR_DURABILITY_SILVER=2500
 local ARMOR_ABSORPTION_SILVER=0.85
 local ARMOR_DURABILITY_ADAMANT=8500
 local ARMOR_ABSORPTION_ADAMANT=0.95
-local ARMOR_DURABILITY_LEATHER=1000
-local ARMOR_ABSORPTION_LEATHER=0.5
+local ARMOR_DURABILITY_LEATHER=1200
+local ARMOR_ABSORPTION_LEATHER=0.65
 local ARMOR_DURABILITY_HEAVYLEATHER=1500
-local ARMOR_ABSORPTION_HEAVYLEATHER=0.60
+local ARMOR_ABSORPTION_HEAVYLEATHER=0.75
 
 local ARMOR_GOLD_DAPPERNESS=5.0/60
 local ARMOR_GOLD_FUELLEVEL=1200
+local DIV_ROBE_DAPPERNESS=5.0/60
 
 local ARMOR_ROBE_DURA=1000
-local ARMOR_ROBE_ABSO=0.1
-local ROBE_CL_BONUS=5
+local ARMOR_ROBE_ABSO=0.6
+local ARMOR_ROBE_ABJ_ABSO=0.65
+local ROBE_CL_BONUS=2
 
 
     local function generic_perish(inst)
@@ -218,7 +220,7 @@ end
 local function fa_abjurationrobe()
     local inst =fn("fa_abjurationrobe")
     inst:AddTag("fa_robe")
-    inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
+    inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABJ_ABSO)
     inst.components.equippable.fa_casterlevel={}
     inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.ABJURATION]=ROBE_CL_BONUS
     return inst
@@ -230,6 +232,8 @@ local function fa_conjurationrobe()
     inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
     inst.components.equippable.fa_casterlevel={}
     inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.CONJURATION]=ROBE_CL_BONUS
+    inst.components.armor.fa_resistances={}
+    inst.components.armor.fa_resistances[FA_DAMAGETYPE.POISON]=0.2
     return inst
 end
 
@@ -239,6 +243,12 @@ local function fa_divinationrobe()
     inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
     inst.components.equippable.fa_casterlevel={}
     inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.DIVINATION]=ROBE_CL_BONUS
+        if(FA_DLCACCESS)then
+            inst.components.equippable.dapperness = DIV_ROBE_DAPPERNESS
+        else
+            inst:AddComponent("dapperness")
+            inst.components.dapperness.dapperness = DIV_ROBE_DAPPERNESS
+        end
     return inst
 end
 
@@ -257,6 +267,8 @@ local function fa_evocationrobe()
     inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
     inst.components.equippable.fa_casterlevel={}
     inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.EVOCATION]=ROBE_CL_BONUS
+    inst.components.armor.fa_resistances={}
+    inst.components.armor.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=0.3
     return inst
 end
 
@@ -275,6 +287,8 @@ local function fa_necromancyrobe()
     inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
     inst.components.equippable.fa_casterlevel={}
     inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.NECROMANCY]=ROBE_CL_BONUS
+    inst.components.armor.fa_resistances={}
+    inst.components.armor.fa_resistances[FA_DAMAGETYPE.DEATH]=0.2
     return inst
 end
 

@@ -74,10 +74,6 @@ local orccageassets=
         Asset( "ANIM", "anim/goblin.zip" ),
 
 }
-local fa_silkrollassets={
-        Asset( "ANIM", "anim/fa_silkroll.zip" ),    
-}
-
 
 local function fn(bank,bld,animname,loop)
 	local inst = CreateEntity()
@@ -366,6 +362,4 @@ Prefab( "common/fa_orc_stool", fa_orc_stool, fa_orc_stool_assets),
 Prefab( "common/fa_goblin_jailcage", fa_goblin_jailcage, greencageassets),
 Prefab( "common/fa_goblin_blue_jailcage", fa_goblin_blue_jailcage, bluecageassets),
 Prefab( "common/fa_orc_jailcage", fa_orc_jailcage, orccageassets),
-Prefab( "common/fa_goblin_red_jailcage", fa_goblin_red_jailcage, redcageassets),
-Prefab( "common/fa_silkroll", fa_silkroll, fa_silkrollassets)
-
+Prefab( "common/fa_goblin_red_jailcage", fa_goblin_red_jailcage, redcageassets)

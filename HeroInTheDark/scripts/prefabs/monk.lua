@@ -62,7 +62,11 @@ local onhitother=function(inst,data)
     local damage=data.damage
     local weapon=inst.components.combat:GetWeapon()
     if(damage and damage>0) and (not weapon or weapon:HasTag("unarmed"))then
-        inst.components.kibar:DoDelta(KI_ATTACK_INCREASE)
+        local kiboost=KI_ATTACK_INCREASE
+        if(weapon and weapon.fa_kiboost)then
+            kiboost=kiboost+weapon.fa_kiboost
+        end
+        inst.components.kibar:DoDelta(kiboost)
     end
 end
 

@@ -1179,8 +1179,10 @@ AddSimPostInit(function(inst)
 
         if (inst.prefab=="darkknight" or inst.prefab=="cleric" or inst.prefab=="paladin") then
             --add shields
-            local r=Recipe("fa_woodenshield", {Ingredient("boards", 5),Ingredient("rope", 5) }, RECIPETABS.WAR,  GLOBAL.TECH.SCIENCE_ONE)
-            r.image="fa_woodenshield.tex"
+            local r=Recipe("fa_woodenshield", {Ingredient("boards", 5),Ingredient("rope", 5) }, RECIPETABS.WAR,  GLOBAL.TECH.NONE)
+            r.atlas = "images/inventoryimages/fa_inventoryimages.xml"
+        elseif(inst.prefab=="monk")then
+            local r=Recipe("fa_woodenkama", {Ingredient("boards", 3),Ingredient("rope", 3)}, RECIPETABS.WAR,  GLOBAL.TECH.NONE)
             r.atlas = "images/inventoryimages/fa_inventoryimages.xml"
         end
         inst:ListenForEvent("fishingcollect",onFishingCollect)

@@ -291,11 +291,11 @@ local function fa_vampire(Sim)
             return guy:HasTag("character") and not guy:HasTag("undead")
         end)
         if(invader)then
-            if not inst.aggroedthen
+            if not inst.aggroed then
                 inst.aggroed=true
                 inst.AnimState:OverrideSymbol("face", "fa_vampire", "face_aggro")
             end
-        elseif inst.aggroed=true
+        elseif inst.aggroed==true then
             inst.aggroed=false
             inst.AnimState:ClearOverrideSymbol("face")
         end

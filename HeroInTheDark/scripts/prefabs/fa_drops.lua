@@ -38,6 +38,11 @@ local wortoxheart_assets=
 {
 	Asset("ANIM", "anim/fa_wortoxheart.zip"),
 }
+local silkroll_assets=
+{
+    Asset("ANIM", "anim/fa_silkroll.zip"),
+}
+
 
 
 
@@ -128,6 +133,10 @@ local function fa_wortoxheart()
     local inst=fn("fa_wortoxheart")
     return inst
 end
+local function fa_silkroll()
+    local inst=fn("fa_silkroll")
+    return inst
+end
 
 
 
@@ -140,6 +149,7 @@ Prefab( "common/inventory/fa_zombietoe", zombietoe, zombietoe_assets),
 Prefab( "common/inventory/fa_batdevilheart", batdevilheart, batdevilheart_assets),
 Prefab( "common/inventory/fa_hellhoundribs", fa_hellhoundribs, hellhoundribs_assets),
 Prefab( "common/inventory/fa_hellwormliver", fa_hellwormliver, hellwormliver_assets),
-Prefab( "common/inventory/fa_wortoxheart", fa_wortoxheart, wortoxheart_assets)
+Prefab( "common/inventory/fa_wortoxheart", fa_wortoxheart, wortoxheart_assets),
+Prefab( "common/inventory/fa_silkroll", fa_silkroll, silkroll_assets)
 
 

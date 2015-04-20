@@ -113,6 +113,10 @@ local ARMOR_GOLDHAT_ABSORPTION = .7
 local ARMOR_GOLDHAT_WATERPROOFNESS=0.2
 local ARMOR_GOBLINKING=20000
 local ARMOR_GOBLINKING_ABSORPTION= 0.3
+local ARMOR_DORFKINGHAT = 8500
+local ARMOR_DORFKINGHAT_ABSORPTION = .95
+local ARMOR_ORCKINGHAT = 8500
+local ARMOR_ORCKINGHAT_ABSORPTION = .95
 
 local ARMOR_GOLD_DAPPERNESS=5.0/60
 local ARMOR_GOLD_FUELLEVEL=1200
@@ -122,13 +126,14 @@ local ARMOR_SILVER_DR=5
 local ARMOR_DORF_CROWN=1000
 local ARMOR_DORF_CROWN_ABSORPTION=0.2
 
-local ARMOR_LEATHERHAT=1000
-local ARMOR_ABSORPTION_LEATHER=0.5
+local ARMOR_LEATHERHAT=1200
+local ARMOR_ABSORPTION_LEATHER=0.55
 local ARMOR_HEAVYLEATHERHAT=1500
-local ARMOR_ABSORPTION_HEAVYLEATHER=0.60
+local ARMOR_ABSORPTION_HEAVYLEATHER=0.70
 
 local ARMOR_ROBE_DURA=1000
-local ARMOR_ROBE_ABSO=0.1
+local ARMOR_ROBE_ABSO=0.5
+local ARMOR_ABJURATION_ABSO=0.55
 local ROBE_CL_BONUS=2
 
     local function generic_perish(inst)
@@ -408,23 +413,24 @@ local function onequip(inst, owner, build)
         local inst=common("fa_hat_dorfking")
         inst.components.equippable:SetOnEquip( function(inst,owner) opentop_onequip(inst,owner,"fa_hat_dorfking") end  )
         inst:AddComponent("armor")
-        inst.components.armor:InitCondition(ARMOR_ADAMANTHAT, ARMOR_ADAMANTHAT_ABSORPTION)
+        inst.components.armor:InitCondition(ARMOR_DORFKINGHAT, ARMOR_DORFKINGHAT_ABSORPTION)
         return inst
     end
     local function fnorcking()
         local inst=common("fa_hat_orcking")
         inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_orcking") end  )
         inst:AddComponent("armor")
-        inst.components.armor:InitCondition(ARMOR_ADAMANTHAT, ARMOR_ADAMANTHAT_ABSORPTION)
+        inst.components.armor:InitCondition(ARMOR_ORCKINGHAT, ARMOR_ORCKINGHAT_ABSORPTION)
         return inst
     end
-
 
     local function fa_hat_abjuration()
         local inst=common("fa_hat_abjuration")
         inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_abjuration") end  )
         inst:AddComponent("armor")
-        inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
+        inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ABJURATION_ABSO)
+        inst.components.armor.fa_resistances={}
+        inst.components.armor.fa_resistances[FA_DAMAGETYPE.COLD]=0.25
         inst.components.equippable.fa_casterlevel={}
         inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.ABJURATION]=ROBE_CL_BONUS
         return inst
@@ -434,6 +440,8 @@ local function onequip(inst, owner, build)
         inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_conjuration") end  )
         inst:AddComponent("armor")
         inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
+        inst.components.armor.fa_resistances={}
+        inst.components.armor.fa_resistances[FA_DAMAGETYPE.POISON]=0.25
         inst.components.equippable.fa_casterlevel={}
         inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.CONJURATION]=ROBE_CL_BONUS
         return inst
@@ -443,6 +451,8 @@ local function onequip(inst, owner, build)
         inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_divination") end  )
         inst:AddComponent("armor")
         inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
+        inst.components.armor.fa_resistances={}
+        inst.components.armor.fa_resistances[FA_DAMAGETYPE.HOLY]=0.25
         inst.components.equippable.fa_casterlevel={}
         inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.DIVINATION]=ROBE_CL_BONUS
         return inst
@@ -452,6 +462,8 @@ local function onequip(inst, owner, build)
         inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_enchantment") end  )
         inst:AddComponent("armor")
         inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
+        inst.components.armor.fa_resistances={}
+        inst.components.armor.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=0.25
         inst.components.equippable.fa_casterlevel={}
         inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.ENCHANTMENT]=ROBE_CL_BONUS
         return inst
@@ -461,6 +473,8 @@ local function onequip(inst, owner, build)
         inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_evocation") end  )
         inst:AddComponent("armor")
         inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
+        inst.components.armor.fa_resistances={}
+        inst.components.armor.fa_resistances[FA_DAMAGETYPE.FIRE]=0.25
         inst.components.equippable.fa_casterlevel={}
         inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.EVOCATION]=ROBE_CL_BONUS
         return inst
@@ -479,6 +493,8 @@ local function onequip(inst, owner, build)
         inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_necromancy") end  )
         inst:AddComponent("armor")
         inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
+        inst.components.armor.fa_resistances={}
+        inst.components.armor.fa_resistances[FA_DAMAGETYPE.DEATH]=0.25
         inst.components.equippable.fa_casterlevel={}
         inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.NECROMANCY]=ROBE_CL_BONUS
         return inst
@@ -488,6 +504,30 @@ local function onequip(inst, owner, build)
         inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_transmutation") end  )
         inst:AddComponent("armor")
         inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
+        inst.components.waterproofer:SetEffectiveness(1)
+
+        if(FA_DLCACCESS)then
+            inst:ListenForEvent("rainstop", function() 
+                if(inst.fa_raintask)then
+                    inst.fa_raintask:Cancel()
+                end
+            end, GetWorld()) 
+            inst:ListenForEvent("rainstart", function() 
+                if(inst.fa_raintask)then
+                    inst.fa_raintask:Cancel()
+                end
+                inst.fa_raintask=DoPeriodicTask(60,function()
+                    if(inst.components.equippable:IsEquipped() and math.random()<0.5)then
+                        local owner=inst.components.inventoryitem.owner
+                        if(owner and owner:IsValid() and not (owner.components.health and owner.components.health:IsDead()))then
+                            local ice = SpawnPrefab("ice")
+                            ice.Transform:SetPosition(owner.Transform:GetWorldPosition())  
+                        end
+                    end
+                end)
+            end, GetWorld()) 
+        end
+
         inst.components.equippable.fa_casterlevel={}
         inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.TRANSMUTATION]=ROBE_CL_BONUS
         return inst
