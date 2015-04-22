@@ -61,6 +61,13 @@ local SANITY_PER_LEVEL=3
 local onhitother=function(inst,data)
     local damage=data.damage
     local weapon=inst.components.combat:GetWeapon()
+    if(item and item.components.armor and (eslot==EQUIPSLOTS.BODY or eslot==EQUIPSLOTS.HEAD) and not (item:HasTag("fa_robe") or item:HasTag("fa_cloth")))then return end
+    --not catching onequip because of all sorts of 'usable' objects that shouldnt reset ki - cutting trees, mining, whatever particular 'usable' thing
+    --shouldn't be 'that' problematic performance wise
+    if(weapon and not weapon:HasTag("unarmed"))then
+        inst.components.kibar:SetPercent(0)
+        return
+    end
     if(damage and damage>0) and (not weapon or weapon:HasTag("unarmed"))then
         local kiboost=KI_ATTACK_INCREASE
         if(weapon and weapon.fa_kiboost)then
@@ -94,6 +101,14 @@ local function onlevelup(inst,data)
     inst.components.health.maxhealth= inst.components.health.maxhealth+HEALTH_PER_LEVEL
     inst.components.sanity.max=inst.components.sanity.max+SANITY_PER_LEVEL
     headoverride(inst,level)
+end
+
+local function onequip(inst,data)
+    local item=data.item
+    local eslot=data.eslot
+    if(item and item.components.armor and (eslot==EQUIPSLOTS.BODY or eslot==EQUIPSLOTS.HEAD) and not (item:HasTag("fa_robe") or item:HasTag("fa_cloth")))then
+        inst.components.kibar:SetPercent(0)
+    end
 end
 
 local onloadfn = function(inst, data)
@@ -268,7 +283,7 @@ local fn = function(inst)
     inst:ListenForEvent("kidelta", updatekiboosts)
     inst:ListenForEvent("xplevel_loaded",onxploaded)
     inst:ListenForEvent("xplevelup", onlevelup)
-
+    inst:ListenForEvent("equip",onequip)
 
     inst.OnLoad = onloadfn
     inst.OnSave = onsavefn

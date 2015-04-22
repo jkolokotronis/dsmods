@@ -428,6 +428,7 @@ local function onequip(inst, owner, build)
         local inst=common("fa_hat_abjuration")
         inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_abjuration") end  )
         inst:AddComponent("armor")
+        inst:AddTag("fa_cloth")
         inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ABJURATION_ABSO)
         inst.components.armor.fa_resistances={}
         inst.components.armor.fa_resistances[FA_DAMAGETYPE.COLD]=0.25
@@ -439,6 +440,7 @@ local function onequip(inst, owner, build)
         local inst=common("fa_hat_conjuration")
         inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_conjuration") end  )
         inst:AddComponent("armor")
+        inst:AddTag("fa_cloth")
         inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
         inst.components.armor.fa_resistances={}
         inst.components.armor.fa_resistances[FA_DAMAGETYPE.POISON]=0.25
@@ -450,6 +452,7 @@ local function onequip(inst, owner, build)
         local inst=common("fa_hat_divination")
         inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_divination") end  )
         inst:AddComponent("armor")
+        inst:AddTag("fa_cloth")
         inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
         inst.components.armor.fa_resistances={}
         inst.components.armor.fa_resistances[FA_DAMAGETYPE.HOLY]=0.25
@@ -461,6 +464,7 @@ local function onequip(inst, owner, build)
         local inst=common("fa_hat_enchantment")
         inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_enchantment") end  )
         inst:AddComponent("armor")
+        inst:AddTag("fa_cloth")
         inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
         inst.components.armor.fa_resistances={}
         inst.components.armor.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=0.25
@@ -472,6 +476,7 @@ local function onequip(inst, owner, build)
         local inst=common("fa_hat_evocation")
         inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_evocation") end  )
         inst:AddComponent("armor")
+        inst:AddTag("fa_cloth")
         inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
         inst.components.armor.fa_resistances={}
         inst.components.armor.fa_resistances[FA_DAMAGETYPE.FIRE]=0.25
@@ -483,6 +488,7 @@ local function onequip(inst, owner, build)
         local inst=common("fa_hat_illusion")
         inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_illusion") end  )
         inst:AddComponent("armor")
+        inst:AddTag("fa_cloth")
         inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
         inst.components.equippable.fa_casterlevel={}
         inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.ILLUSION]=ROBE_CL_BONUS
@@ -492,6 +498,7 @@ local function onequip(inst, owner, build)
         local inst=common("fa_hat_necromancy")
         inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_necromancy") end  )
         inst:AddComponent("armor")
+        inst:AddTag("fa_cloth")
         inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
         inst.components.armor.fa_resistances={}
         inst.components.armor.fa_resistances[FA_DAMAGETYPE.DEATH]=0.25
@@ -503,6 +510,7 @@ local function onequip(inst, owner, build)
         local inst=common("fa_hat_transmutation")
         inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_transmutation") end  )
         inst:AddComponent("armor")
+        inst:AddTag("fa_cloth")
         inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
         inst.components.waterproofer:SetEffectiveness(1)
 
@@ -536,6 +544,7 @@ local function onequip(inst, owner, build)
         local inst=common("fa_hat_heavyleather")
         inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_heavyleather") end  )
         inst:AddComponent("armor")
+        inst:AddTag("fa_cloth")
         inst.components.armor:InitCondition(ARMOR_HEAVYLEATHERHAT, ARMOR_ABSORPTION_HEAVYLEATHER)
         return inst
     end
@@ -543,6 +552,7 @@ local function onequip(inst, owner, build)
         local inst=common("fa_hat_lightleather")
         inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_lightleather") end  )
         inst:AddComponent("armor")
+        inst:AddTag("fa_cloth")
         inst.components.armor:InitCondition(ARMOR_LEATHERHAT, ARMOR_ABSORPTION_LEATHER)
         return inst
     end
@@ -550,6 +560,7 @@ local function onequip(inst, owner, build)
         local inst=common("fa_hat_plain")
         inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_plain") end  )
         inst:AddComponent("armor")
+        inst:AddTag("fa_cloth")
         inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
         return inst
     end

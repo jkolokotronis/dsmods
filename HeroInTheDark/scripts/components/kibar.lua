@@ -80,7 +80,7 @@ end
 function KiBar:SetPercent(p)
     local old = self.current
     self.current  = p*self.max
-    self.inst:PushEvent("kidelta", {oldpercent = old/self.max, newpercent = p})
+    self.inst:PushEvent("kidelta", {oldpercent = old/self.max, new = p})
 
 end
 
