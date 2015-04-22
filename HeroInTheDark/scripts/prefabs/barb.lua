@@ -177,16 +177,17 @@ local function rageStart(inst)
     inst.components.health.fa_stunresistance=inst.components.health.fa_stunresistance+1
 	if(inst.components.xplevel.level<20)then
         inst.components.locomotor.runspeed=RAGE_MS_DELTA+inst.components.locomotor.runspeed
-       inst.components.combat.min_attack_period=def_attack_period/1.3       
+       inst.components.combat.min_attack_period=def_attack_period/1.3    
+        inst.AnimState:SetBuild("barbarian_rage")   
     else
         resist=RAGE_RESIST20
 	   inst.components.locomotor.runspeed=RAGE_MS_DELTA+inst.components.locomotor.runspeed
-	   inst.components.combat.min_attack_period=def_attack_period/1.5	    
+	   inst.components.combat.min_attack_period=def_attack_period/1.5	   
+        inst.AnimState:SetBuild("barbarian_rage2") 
     end
     inst.fa_rage_resistboost=resist
     doresistdelta(inst,resist)
         inst.task = inst:DoPeriodicTask(RAGE_PERIOD, function() rageProc(inst) end)
-        inst.AnimState:SetBuild("barbarian_rage")
 end
 
 local function rageEnd(inst)

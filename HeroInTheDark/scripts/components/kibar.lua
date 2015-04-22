@@ -53,8 +53,6 @@ function KiBar:SetMax(amount)
     self.current = amount
 end
 
-
-
 function KiBar:DoDelta(delta, overtime, ignore_invincible)
     
     if self.redirect then
@@ -83,8 +81,6 @@ function KiBar:SetPercent(p)
     self.inst:PushEvent("kidelta", {oldpercent = old/self.max, new = p})
 
 end
-
-
 
 function KiBar:SetRate(rate)
     self.decrate = rate
