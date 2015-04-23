@@ -61,7 +61,10 @@ local SANITY_PER_LEVEL=3
 local onhitother=function(inst,data)
     local damage=data.damage
     local weapon=inst.components.combat:GetWeapon()
-    if(item and item.components.armor and (eslot==EQUIPSLOTS.BODY or eslot==EQUIPSLOTS.HEAD) and not (item:HasTag("fa_robe") or item:HasTag("fa_cloth")))then return end
+    local item=inst.components.inventory:GetEquippedItem(EQUIPSLOTS.BODY)
+    if(item and item.components.armor and not (item:HasTag("fa_robe") or item:HasTag("fa_cloth")))then return end
+    local item=inst.components.inventory:GetEquippedItem(EQUIPSLOTS.HEAD)
+    if(item and item.components.armor and not (item:HasTag("fa_robe") or item:HasTag("fa_cloth")))then return end
     --not catching onequip because of all sorts of 'usable' objects that shouldnt reset ki - cutting trees, mining, whatever particular 'usable' thing
     --shouldn't be 'that' problematic performance wise
     if(weapon and not weapon:HasTag("unarmed"))then
