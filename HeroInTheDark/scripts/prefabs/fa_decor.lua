@@ -2,6 +2,9 @@
 local fa_pillar_dwarf_assets={
     Asset( "ANIM", "anim/fa_pillar_dwarf.zip" ),
 }
+local fa_orcpillar_assets={
+    Asset( "ANIM", "anim/fa_orcpillar.zip" ),
+}
 local fa_stool_assets={
     Asset( "ANIM", "anim/fa_stool.zip" ),
 }
@@ -75,6 +78,13 @@ local orccageassets=
 
 }
 
+local torture1assets={
+    Asset("ANIM","anim/fa_torture_1.zip")
+}
+local torture2assets={
+    Asset("ANIM","anim/fa_torture_2.zip")
+}
+
 local function fn(bank,bld,animname,loop)
 	local inst = CreateEntity()
 	local trans = inst.entity:AddTransform()
@@ -100,6 +110,23 @@ end
 
 local function fa_pillar_dwarf()
 	local inst= fn("fa_pillar_dwarf")
+    MakeObstaclePhysics(inst, 1)
+    inst.Transform:SetScale(1.3,1.3,1.3)
+
+    inst.fire1 = SpawnPrefab( "pigtorch_flame" )
+    local follower = inst.fire1.entity:AddFollower()
+    follower:FollowSymbol( inst.GUID, "fire1", 0, 0, 0.1 )
+    inst.fire1.components.firefx:SetLevel(2,true)
+    inst.fire2 = SpawnPrefab( "pigtorch_flame" )
+    local follower = inst.fire2.entity:AddFollower()
+    follower:FollowSymbol( inst.GUID, "fire2", 0, 0, 0.1 )
+    inst.fire2.components.firefx:SetLevel(2,true)
+
+    return inst
+end
+
+local function fa_orcpillar()
+    local inst= fn("fa_orcpillar")
     MakeObstaclePhysics(inst, 1)
     inst.Transform:SetScale(1.3,1.3,1.3)
 
@@ -335,16 +362,19 @@ local function fa_orc_jailcage()
     return inst
 end
 
-local function fa_silkroll()
-    local inst= fn("fa_stonecoffin")
-    MakeInventoryPhysics(inst)
-    inst:RemoveTag("NOCLICK")
-    MakeSmallBurnable(inst)
+local function fa_torture_1()
+    local inst= fn("fa_torture_1")
+    return inst
+end
+
+local function fa_torture_2()
+    local inst= fn("fa_torture_2")
     return inst
 end
 
 
 return Prefab( "common/fa_dorf_gold_pillar", fa_pillar_dwarf, fa_pillar_dwarf_assets),
+Prefab( "common/fa_orcpillar", fa_orcpillar, fa_orcpillar_assets),
 Prefab( "common/fa_dorf_stool", fa_stool, fa_stool_assets),
 Prefab( "common/fa_dorf_stool_blown", fa_stool_blown, fa_stool_assets),
 Prefab( "common/fa_clothes", fa_clothes, fa_clothes_assets),
@@ -362,4 +392,7 @@ Prefab( "common/fa_orc_stool", fa_orc_stool, fa_orc_stool_assets),
 Prefab( "common/fa_goblin_jailcage", fa_goblin_jailcage, greencageassets),
 Prefab( "common/fa_goblin_blue_jailcage", fa_goblin_blue_jailcage, bluecageassets),
 Prefab( "common/fa_orc_jailcage", fa_orc_jailcage, orccageassets),
-Prefab( "common/fa_goblin_red_jailcage", fa_goblin_red_jailcage, redcageassets)
+Prefab( "common/fa_goblin_red_jailcage", fa_goblin_red_jailcage, redcageassets),
+Prefab( "common/fa_orcrefuse", orcrefuse, fa_orcrefuse_assets),
+Prefab( "common/fa_torture_1", fa_torture_1, torture1assets),
+Prefab( "common/fa_torture_2", fa_torture_2, torture2assets)

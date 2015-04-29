@@ -36,16 +36,10 @@
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
                 </key>
-                <key id="1" time="50">
-                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
-                </key>
             </mainline>
             <timeline id="0" name="rock01">
                 <key id="0" spin="0">
                     <object folder="0" file="3" x="-7" y="-33" angle="0"/>
-                </key>
-                <key id="1" time="50" spin="0">
-                    <object folder="0" file="3" x="20.320755" y="-46.100784" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -54,16 +48,10 @@
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
                 </key>
-                <key id="1" time="200">
-                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
-                </key>
             </mainline>
             <timeline id="0" name="rock01">
                 <key id="0" spin="0">
                     <object folder="0" file="2" x="-28" y="-40" angle="0"/>
-                </key>
-                <key id="1" time="200" spin="0">
-                    <object folder="0" file="2" x="376.229437" y="-108.910307" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -72,16 +60,10 @@
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
                 </key>
-                <key id="1" time="200">
-                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
-                </key>
             </mainline>
             <timeline id="0" name="rock01">
                 <key id="0" spin="0">
                     <object folder="0" file="1" x="-28" y="-34" angle="0"/>
-                </key>
-                <key id="1" time="200" spin="0">
-                    <object folder="0" file="1" x="414.113636" y="-276.653814" angle="0"/>
                 </key>
             </timeline>
         </animation>

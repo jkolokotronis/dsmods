@@ -201,6 +201,7 @@ PrefabFiles = {
     "unicorn",
     "fa_dorfs",
     "fa_elves",
+    "fa_elfhuts",
     "fa_dorfhut",
     "fa_orchut",
     "fa_orc",

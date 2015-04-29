@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
+    <folder id="0">
+        <file id="0" name="_0017_day-links-door-closed.png" width="945" height="965" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="_0015_day-links-door-open.png" width="945" height="965" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="_0016_Ebene-92-Kopie.png" width="946" height="995" pivot_x="0" pivot_y="1"/>
+        <file id="3" name="_0006_Ebene-104.png" width="52" height="48" pivot_x="0.519231" pivot_y="0.364583"/>
+        <file id="4" name="_0007_Ebene-105.png" width="56" height="53" pivot_x="0.419643" pivot_y="0.533333"/>
+        <file id="5" name="_0008_Ebene-106.png" width="52" height="44" pivot_x="0.509615" pivot_y="0.477273"/>
+        <file id="6" name="_0000_normal-snow-links.png" width="906" height="857" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="fa_elfhouse_a">
+        <animation id="0" name="summer day idle" length="3000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="_0017_day-links-door-closed">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-952.851406" y="1817.188755" angle="0" scale_x="2" scale_y="2"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="summer day door open " length="500">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="1">
+                    <object_ref id="0" timeline="1" key="0" z_index="0"/>
+                </key>
+                <key id="2" time="394">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+                <key id="3" time="500">
+                    <object_ref id="0" timeline="0" key="2" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="_0017_day-links-door-closed">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-952.851406" y="1817.188755" angle="0" scale_x="2" scale_y="2"/>
+                </key>
+                <key id="1" time="394" spin="0">
+                    <object folder="0" file="0" x="-952.851406" y="1817.188755" angle="0" scale_x="2" scale_y="2"/>
+                </key>
+                <key id="2" time="500" spin="0">
+                    <object folder="0" file="0" x="-952.851406" y="1817.188755" angle="0" scale_x="2" scale_y="2"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="_0015_day-links-door-open">
+                <key id="0" time="1" spin="0">
+                    <object folder="0" file="1" x="-953.333333" y="1817.333333" angle="0" scale_x="2" scale_y="2"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="2" name="summer evening/night idle" length="3000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="_0016_Ebene-92-Kopie">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="-953" y="1817.5" angle="0" scale_x="2" scale_y="2"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="3" name="spring day idle" length="3000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="1" z_index="5"/>
+                    <object_ref id="6" timeline="6" key="0" z_index="6"/>
+                    <object_ref id="7" timeline="7" key="0" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="0" z_index="8"/>
+                    <object_ref id="9" timeline="9" key="0" z_index="9"/>
+                    <object_ref id="10" timeline="10" key="0" z_index="10"/>
+                </key>
+                <key id="1" time="717">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="1" z_index="5"/>
+                    <object_ref id="6" timeline="6" key="1" z_index="6"/>
+                    <object_ref id="7" timeline="7" key="0" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="0" z_index="8"/>
+                    <object_ref id="9" timeline="9" key="0" z_index="9"/>
+                    <object_ref id="10" timeline="10" key="0" z_index="10"/>
+                </key>
+                <key id="2" time="1203">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="3" z_index="5"/>
+                    <object_ref id="6" timeline="6" key="1" z_index="6"/>
+                    <object_ref id="7" timeline="7" key="0" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="0" z_index="8"/>
+                    <object_ref id="9" timeline="9" key="0" z_index="9"/>
+                    <object_ref id="10" timeline="10" key="0" z_index="10"/>
+                </key>
+                <key id="3" time="1530">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="3" z_index="5"/>
+                    <object_ref id="6" timeline="6" key="1" z_index="6"/>
+                    <object_ref id="7" timeline="7" key="0" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="0" z_index="8"/>
+                    <object_ref id="9" timeline="9" key="1" z_index="9"/>
+                    <object_ref id="10" timeline="10" key="1" z_index="10"/>
+                </key>
+                <key id="4" time="1965">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="3" z_index="5"/>
+                    <object_ref id="6" timeline="6" key="1" z_index="6"/>
+                    <object_ref id="7" timeline="7" key="0" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="0" z_index="8"/>
+                    <object_ref id="9" timeline="9" key="1" z_index="9"/>
+                    <object_ref id="10" timeline="10" key="1" z_index="10"/>
+                </key>
+                <key id="5" time="2157">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="3" z_index="5"/>
+                    <object_ref id="6" timeline="6" key="1" z_index="6"/>
+                    <object_ref id="7" timeline="7" key="1" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="0" z_index="8"/>
+                    <object_ref id="9" timeline="9" key="1" z_index="9"/>
+                    <object_ref id="10" timeline="10" key="1" z_index="10"/>
+                </key>
+                <key id="6" time="2394">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="3" z_index="5"/>
+                    <object_ref id="6" timeline="6" key="1" z_index="6"/>
+                    <object_ref id="7" timeline="7" key="1" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="1" z_index="8"/>
+                    <object_ref id="9" timeline="9" key="1" z_index="9"/>
+                    <object_ref id="10" timeline="10" key="1" z_index="10"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="_0017_day-links-door-closed">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-952.851406" y="1817.188755" angle="0" scale_x="2" scale_y="2"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="_0006_Ebene-104">
+                <key id="0">
+                    <object folder="0" file="3" x="546.500024" y="763.999968" angle="0" scale_x="1.405941" scale_y="1.405941"/>
+                </key>
+                <key id="1" time="2394" spin="-1">
+                    <object folder="0" file="3" x="546.500024" y="763.999968" angle="17.598036" scale_x="1.405941" scale_y="1.405941"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="_0007_Ebene-105">
+                <key id="0" spin="-1">
+                    <object folder="0" file="4" x="-445.499984" y="1143.499965" angle="86.327672" scale_x="1.305344" scale_y="1.305344"/>
+                </key>
+                <key id="1" time="717">
+                    <object folder="0" file="4" x="-445.499984" y="1143.499965" angle="70.272287" scale_x="1.305344" scale_y="1.305344"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="_0008_Ebene-106">
+                <key id="0">
+                    <object folder="0" file="5" x="670.49996" y="206.500024" angle="0" scale_x="1.446602" scale_y="1.446602"/>
+                </key>
+                <key id="1" time="1965" spin="-1">
+                    <object folder="0" file="5" x="670.49996" y="206.500024" angle="20.381517" scale_x="1.446602" scale_y="1.446602"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="_0007_Ebene-105_000">
+                <key id="0">
+                    <object folder="0" file="4" x="317.5" y="1275" angle="0" scale_x="1.259542" scale_y="1.114346"/>
+                </key>
+                <key id="1" time="717" spin="-1">
+                    <object folder="0" file="4" x="317.5" y="1275" angle="19.339794" scale_x="1.259542" scale_y="1.114346"/>
+                </key>
+            </timeline>
+            <timeline id="5" name="_0008_Ebene-106_000">
+                <key id="0" spin="-1">
+                    <object folder="0" file="5" x="-740.883664" y="190.496175" pivot_x="0.514114" pivot_y="0.473548" angle="62.878697" scale_x="1.335169" scale_y="1.335169"/>
+                </key>
+                <key id="1" spin="-1">
+                    <object folder="0" file="5" x="-747.441655" y="158.135853" pivot_x="0.05621" pivot_y="0.32179" angle="62.878697" scale_x="1.335169" scale_y="1.335169"/>
+                </key>
+                <key id="2" time="1203" spin="-1">
+                    <object folder="0" file="5" x="-751.371883" y="194.578801" pivot_x="0.05621" pivot_y="0.32179" angle="43.252726" scale_x="1.335169" scale_y="1.335169"/>
+                </key>
+                <key id="3" time="1203">
+                    <object folder="0" file="5" x="-734.325739" y="222.856471" pivot_x="0.514114" pivot_y="0.473548" angle="43.252726" scale_x="1.335169" scale_y="1.335169"/>
+                </key>
+            </timeline>
+            <timeline id="6" name="_0008_Ebene-106_001">
+                <key id="0">
+                    <object folder="0" file="5" x="-632.5" y="120" angle="0"/>
+                </key>
+                <key id="1" time="717" spin="-1">
+                    <object folder="0" file="5" x="-632.5" y="120" angle="27.050597"/>
+                </key>
+            </timeline>
+            <timeline id="7" name="_0007_Ebene-105_001">
+                <key id="0" spin="-1">
+                    <object folder="0" file="4" x="-390" y="1295" angle="53.530766"/>
+                </key>
+                <key id="1" time="2157">
+                    <object folder="0" file="4" x="-390" y="1295" angle="28.159881"/>
+                </key>
+            </timeline>
+            <timeline id="8" name="_0008_Ebene-106_002">
+                <key id="0" spin="-1">
+                    <object folder="0" file="5" x="715" y="762.5" angle="0"/>
+                </key>
+                <key id="1" time="2394">
+                    <object folder="0" file="5" x="715" y="762.5" angle="342.403948"/>
+                </key>
+            </timeline>
+            <timeline id="9" name="_0006_Ebene-104_001">
+                <key id="0" spin="-1">
+                    <object folder="0" file="3" x="307.5" y="1405" angle="0"/>
+                </key>
+                <key id="1" time="1530">
+                    <object folder="0" file="3" x="307.5" y="1405" angle="340.750474"/>
+                </key>
+            </timeline>
+            <timeline id="10" name="_0007_Ebene-105_002">
+                <key id="0" spin="-1">
+                    <object folder="0" file="4" x="147.5" y="1577.5" angle="60.708638" scale_x="1.269" scale_y="1.269"/>
+                </key>
+                <key id="1" time="1530">
+                    <object folder="0" file="4" x="147.5" y="1577.5" angle="46.902814" scale_x="1.269" scale_y="1.269"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="4" name="spring day door open" length="500">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="1" z_index="5"/>
+                    <object_ref id="6" timeline="6" key="0" z_index="6"/>
+                    <object_ref id="7" timeline="7" key="0" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="0" z_index="8"/>
+                    <object_ref id="9" timeline="9" key="0" z_index="9"/>
+                    <object_ref id="10" timeline="10" key="0" z_index="10"/>
+                </key>
+                <key id="1" time="1">
+                    <object_ref id="0" timeline="11" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="1" z_index="5"/>
+                    <object_ref id="6" timeline="6" key="0" z_index="6"/>
+                    <object_ref id="7" timeline="7" key="0" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="0" z_index="8"/>
+                    <object_ref id="9" timeline="9" key="0" z_index="9"/>
+                    <object_ref id="10" timeline="10" key="0" z_index="10"/>
+                </key>
+                <key id="2" time="114">
+                    <object_ref id="0" timeline="11" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="3" z_index="5"/>
+                    <object_ref id="6" timeline="6" key="0" z_index="6"/>
+                    <object_ref id="7" timeline="7" key="1" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="0" z_index="8"/>
+                    <object_ref id="9" timeline="9" key="1" z_index="9"/>
+                    <object_ref id="10" timeline="10" key="0" z_index="10"/>
+                </key>
+                <key id="3" time="204">
+                    <object_ref id="0" timeline="11" key="2" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="3" z_index="5"/>
+                    <object_ref id="6" timeline="6" key="1" z_index="6"/>
+                    <object_ref id="7" timeline="7" key="1" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="0" z_index="8"/>
+                    <object_ref id="9" timeline="9" key="1" z_index="9"/>
+                    <object_ref id="10" timeline="10" key="0" z_index="10"/>
+                </key>
+                <key id="4" time="245">
+                    <object_ref id="0" timeline="11" key="3" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="3" z_index="5"/>
+                    <object_ref id="6" timeline="6" key="1" z_index="6"/>
+                    <object_ref id="7" timeline="7" key="1" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="0" z_index="8"/>
+                    <object_ref id="9" timeline="9" key="1" z_index="9"/>
+                    <object_ref id="10" timeline="10" key="1" z_index="10"/>
+                </key>
+                <key id="5" time="394">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="3" z_index="5"/>
+                    <object_ref id="6" timeline="6" key="1" z_index="6"/>
+                    <object_ref id="7" timeline="7" key="1" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="0" z_index="8"/>
+                    <object_ref id="9" timeline="9" key="1" z_index="9"/>
+                    <object_ref id="10" timeline="10" key="1" z_index="10"/>
+                </key>
+                <key id="6" time="462">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="3" z_index="5"/>
+                    <object_ref id="6" timeline="6" key="1" z_index="6"/>
+                    <object_ref id="7" timeline="7" key="1" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="1" z_index="8"/>
+                    <object_ref id="9" timeline="9" key="1" z_index="9"/>
+                    <object_ref id="10" timeline="10" key="1" z_index="10"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="_0017_day-links-door-closed">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-952.851406" y="1817.188755" angle="0" scale_x="2" scale_y="2"/>
+                </key>
+                <key id="1" time="394" spin="0">
+                    <object folder="0" file="0" x="-952.851406" y="1817.188755" angle="0" scale_x="2" scale_y="2"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="_0006_Ebene-104">
+                <key id="0" spin="-1">
+                    <object folder="0" file="3" x="546.500024" y="763.999968" angle="0" scale_x="1.405941" scale_y="1.405941"/>
+                </key>
+                <key id="1" time="114">
+                    <object folder="0" file="3" x="546.500024" y="763.999968" angle="353.408617" scale_x="1.405941" scale_y="1.405941"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="_0007_Ebene-105">
+                <key id="0" spin="-1">
+                    <object folder="0" file="4" x="-445.499984" y="1143.499965" angle="86.327672" scale_x="1.305344" scale_y="1.305344"/>
+                </key>
+                <key id="1" time="245">
+                    <object folder="0" file="4" x="-445.499984" y="1143.499965" angle="81.416585" scale_x="1.305344" scale_y="1.305344"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="_0008_Ebene-106">
+                <key id="0">
+                    <object folder="0" file="5" x="670.49996" y="206.500024" angle="0" scale_x="1.446602" scale_y="1.446602"/>
+                </key>
+                <key id="1" time="114" spin="-1">
+                    <object folder="0" file="5" x="670.49996" y="206.500024" angle="14.975344" scale_x="1.446602" scale_y="1.446602"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="_0007_Ebene-105_000">
+                <key id="0">
+                    <object folder="0" file="4" x="317.5" y="1275" angle="0" scale_x="1.259542" scale_y="1.114346"/>
+                </key>
+                <key id="1" time="245" spin="-1">
+                    <object folder="0" file="4" x="317.5" y="1275" angle="11.67575" scale_x="1.259542" scale_y="1.114346"/>
+                </key>
+            </timeline>
+            <timeline id="5" name="_0008_Ebene-106_000">
+                <key id="0" spin="-1">
+                    <object folder="0" file="5" x="-741.164192" y="187.431314" pivot_x="0.472982" pivot_y="0.454015" angle="62.878697" scale_x="1.335169" scale_y="1.335169"/>
+                </key>
+                <key id="1" spin="-1">
+                    <object folder="0" file="5" x="-747.441655" y="158.135853" pivot_x="0.05621" pivot_y="0.32179" angle="62.878697" scale_x="1.335169" scale_y="1.335169"/>
+                </key>
+                <key id="2" time="114" spin="-1">
+                    <object folder="0" file="5" x="-744.989964" y="188.52119" pivot_x="0.05621" pivot_y="0.32179" angle="55.265602" scale_x="1.335169" scale_y="1.335169"/>
+                </key>
+                <key id="3" time="114">
+                    <object folder="0" file="5" x="-734.886687" y="216.726764" pivot_x="0.472982" pivot_y="0.454015" angle="55.265602" scale_x="1.335169" scale_y="1.335169"/>
+                </key>
+            </timeline>
+            <timeline id="6" name="_0008_Ebene-106_001">
+                <key id="0">
+                    <object folder="0" file="5" x="-632.5" y="120" angle="0"/>
+                </key>
+                <key id="1" time="204" spin="-1">
+                    <object folder="0" file="5" x="-632.5" y="120" angle="14.615136"/>
+                </key>
+            </timeline>
+            <timeline id="7" name="_0007_Ebene-105_001">
+                <key id="0">
+                    <object folder="0" file="4" x="-390" y="1295" angle="53.530766"/>
+                </key>
+                <key id="1" time="114" spin="-1">
+                    <object folder="0" file="4" x="-390" y="1295" angle="59.634171"/>
+                </key>
+            </timeline>
+            <timeline id="8" name="_0008_Ebene-106_002">
+                <key id="0" spin="-1">
+                    <object folder="0" file="5" x="715" y="762.5" angle="0"/>
+                </key>
+                <key id="1" time="462">
+                    <object folder="0" file="5" x="715" y="762.5" angle="354.908475"/>
+                </key>
+            </timeline>
+            <timeline id="9" name="_0006_Ebene-104_001">
+                <key id="0" spin="-1">
+                    <object folder="0" file="3" x="307.5" y="1405" angle="0"/>
+                </key>
+                <key id="1" time="114">
+                    <object folder="0" file="3" x="307.5" y="1405" angle="355.451359"/>
+                </key>
+            </timeline>
+            <timeline id="10" name="_0007_Ebene-105_002">
+                <key id="0" spin="-1">
+                    <object folder="0" file="4" x="147.5" y="1577.5" angle="60.708638" scale_x="1.269" scale_y="1.269"/>
+                </key>
+                <key id="1" time="245">
+                    <object folder="0" file="4" x="147.5" y="1577.5" angle="51.915643" scale_x="1.269" scale_y="1.269"/>
+                </key>
+            </timeline>
+            <timeline id="11" name="_0015_day-links-door-open_000">
+                <key id="0" time="1" spin="0">
+                    <object folder="0" file="1" x="-953.125" y="1816.75" angle="0" scale_x="2" scale_y="2"/>
+                </key>
+                <key id="1" time="114" spin="0">
+                    <object folder="0" file="1" x="-953.125" y="1816.75" angle="0" scale_x="2" scale_y="2"/>
+                </key>
+                <key id="2" time="204" spin="0">
+                    <object folder="0" file="1" x="-953.437977" y="1816.75" angle="0" scale_x="2" scale_y="2"/>
+                </key>
+                <key id="3" time="245" spin="0">
+                    <object folder="0" file="1" x="-953.125" y="1816.75" angle="0" scale_x="2" scale_y="2"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="5" name="spring evening/night idle" length="3000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="10" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="1" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="4" key="1" z_index="5"/>
+                    <object_ref id="6" timeline="5" key="0" z_index="6"/>
+                    <object_ref id="7" timeline="6" key="0" z_index="7"/>
+                    <object_ref id="8" timeline="7" key="0" z_index="8"/>
+                    <object_ref id="9" timeline="8" key="0" z_index="9"/>
+                    <object_ref id="10" timeline="9" key="0" z_index="10"/>
+                </key>
+                <key id="1" time="1449">
+                    <object_ref id="0" timeline="10" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="1" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="4" key="3" z_index="5"/>
+                    <object_ref id="6" timeline="5" key="1" z_index="6"/>
+                    <object_ref id="7" timeline="6" key="1" z_index="7"/>
+                    <object_ref id="8" timeline="7" key="1" z_index="8"/>
+                    <object_ref id="9" timeline="8" key="1" z_index="9"/>
+                    <object_ref id="10" timeline="9" key="1" z_index="10"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="_0006_Ebene-104">
+                <key id="0">
+                    <object folder="0" file="3" x="546.500024" y="763.999968" angle="0" scale_x="1.405941" scale_y="1.405941"/>
+                </key>
+                <key id="1" time="1449" spin="-1">
+                    <object folder="0" file="3" x="546.500024" y="763.999968" angle="8.182175" scale_x="1.405941" scale_y="1.405941"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="_0007_Ebene-105">
+                <key id="0">
+                    <object folder="0" file="4" x="-445.499984" y="1143.499965" angle="86.327672" scale_x="1.305344" scale_y="1.305344"/>
+                </key>
+                <key id="1" time="1449" spin="-1">
+                    <object folder="0" file="4" x="-445.499984" y="1143.499965" angle="93.897084" scale_x="1.305344" scale_y="1.305344"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="_0008_Ebene-106">
+                <key id="0">
+                    <object folder="0" file="5" x="670.49996" y="206.500024" angle="0" scale_x="1.446602" scale_y="1.446602"/>
+                </key>
+                <key id="1" time="1449" spin="-1">
+                    <object folder="0" file="5" x="670.49996" y="206.500024" angle="4.727539" scale_x="1.446602" scale_y="1.446602"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="_0007_Ebene-105_000">
+                <key id="0">
+                    <object folder="0" file="4" x="317.5" y="1275" angle="0" scale_x="1.259542" scale_y="1.114346"/>
+                </key>
+                <key id="1" time="1449" spin="-1">
+                    <object folder="0" file="4" x="317.5" y="1275" angle="6.468498" scale_x="1.259542" scale_y="1.114346"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="_0008_Ebene-106_000">
+                <key id="0">
+                    <object folder="0" file="5" x="-741.508865" y="194.581909" pivot_x="0.562386" pivot_y="0.514725" angle="62.878697" scale_x="1.335169" scale_y="1.335169"/>
+                </key>
+                <key id="1">
+                    <object folder="0" file="5" x="-747.441655" y="158.135853" pivot_x="0.05621" pivot_y="0.32179" angle="62.878697" scale_x="1.335169" scale_y="1.335169"/>
+                </key>
+                <key id="2" time="1449">
+                    <object folder="0" file="5" x="-736.169189" y="194.106999" pivot_x="0.05621" pivot_y="0.32179" angle="71.203954" scale_x="1.335169" scale_y="1.335169"/>
+                </key>
+                <key id="3" time="1449" spin="-1">
+                    <object folder="0" file="5" x="-735.57603" y="231.028011" pivot_x="0.562386" pivot_y="0.514725" angle="71.203954" scale_x="1.335169" scale_y="1.335169"/>
+                </key>
+            </timeline>
+            <timeline id="5" name="_0008_Ebene-106_001">
+                <key id="0">
+                    <object folder="0" file="5" x="-632.5" y="120" angle="0"/>
+                </key>
+                <key id="1" time="1449" spin="-1">
+                    <object folder="0" file="5" x="-632.5" y="120" angle="6.849558"/>
+                </key>
+            </timeline>
+            <timeline id="6" name="_0007_Ebene-105_001">
+                <key id="0">
+                    <object folder="0" file="4" x="-390" y="1295" angle="53.530766"/>
+                </key>
+                <key id="1" time="1449" spin="-1">
+                    <object folder="0" file="4" x="-390" y="1295" angle="63.551403"/>
+                </key>
+            </timeline>
+            <timeline id="7" name="_0008_Ebene-106_002">
+                <key id="0">
+                    <object folder="0" file="5" x="715" y="762.5" angle="0"/>
+                </key>
+                <key id="1" time="1449" spin="-1">
+                    <object folder="0" file="5" x="715" y="762.5" angle="8.105794"/>
+                </key>
+            </timeline>
+            <timeline id="8" name="_0006_Ebene-104_001">
+                <key id="0">
+                    <object folder="0" file="3" x="307.5" y="1405" angle="0"/>
+                </key>
+                <key id="1" time="1449" spin="-1">
+                    <object folder="0" file="3" x="307.5" y="1405" angle="8.467285"/>
+                </key>
+            </timeline>
+            <timeline id="9" name="_0007_Ebene-105_002">
+                <key id="0">
+                    <object folder="0" file="4" x="147.5" y="1577.5" angle="60.708638" scale_x="1.269" scale_y="1.269"/>
+                </key>
+                <key id="1" time="1449" spin="-1">
+                    <object folder="0" file="4" x="147.5" y="1577.5" angle="70.679934" scale_x="1.269" scale_y="1.269"/>
+                </key>
+            </timeline>
+            <timeline id="10" name="_0016_Ebene-92-Kopie_000">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="-953.515152" y="1817.151515" angle="0" scale_x="2" scale_y="2"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="6" name="winter day idle" length="3000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="_0017_day-links-door-closed">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-952.851406" y="1817.188755" angle="0" scale_x="2" scale_y="2"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="_0000_normal-snow-links">
+                <key id="0" spin="0">
+                    <object folder="0" file="6" x="-920.448618" y="1752.262389" angle="0" scale_x="2" scale_y="2"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="7" name="winter day door open" length="500">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                </key>
+                <key id="1">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                </key>
+                <key id="2" time="1">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="1" key="0" z_index="2"/>
+                </key>
+                <key id="3" time="394">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="_0017_day-links-door-closed">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-952.851406" y="1817.188755" angle="0" scale_x="2" scale_y="2"/>
+                </key>
+                <key id="1" time="394" spin="0">
+                    <object folder="0" file="0" x="-952.851406" y="1817.188755" angle="0" scale_x="2" scale_y="2"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="_0000_normal-snow-links">
+                <key id="0" spin="0">
+                    <object folder="0" file="6" x="-920.448618" y="1752.262389" angle="0" scale_x="2" scale_y="2"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="_0015_day-links-door-open_002">
+                <key id="0" time="1" spin="0">
+                    <object folder="0" file="1" x="-953" y="1817.181818" angle="0" scale_x="2" scale_y="2"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="8" name="winter evening/night idle" length="3000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="1" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="0" z_index="1"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="_0000_normal-snow-links">
+                <key id="0" spin="0">
+                    <object folder="0" file="6" x="-920.448618" y="1752.262389" angle="0" scale_x="2" scale_y="2"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="_0016_Ebene-92-Kopie_001">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="-953.380952" y="1818.047619" angle="0" scale_x="2" scale_y="2"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>
