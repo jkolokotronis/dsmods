@@ -71,6 +71,10 @@ function KiBar:DoDelta(delta, overtime, ignore_invincible)
     
 end
 
+function KiBar:GetCurrent()
+    return self.current
+end
+
 function KiBar:GetPercent(p)
     return self.current / self.max
 end

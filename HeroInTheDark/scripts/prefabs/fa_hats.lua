@@ -91,6 +91,10 @@ local assets_hat_pigking=
 {
     Asset("ANIM", "anim/fa_hat_pigking.zip"),
 }
+local assets_hat_witch=
+{
+    Asset("ANIM", "anim/fa_hat_witch.zip"),
+}
 
 local prefabs ={}
 
@@ -582,6 +586,13 @@ local function onequip(inst, owner, build)
         inst.components.armor:InitCondition(ARMOR_GOBLINKING, ARMOR_GOBLINKING_ABSORPTION)
         return inst
     end
+    local function fa_hat_witch()
+        local inst=common("fa_hat_witch")
+        inst.components.equippable:SetOnEquip( function(inst,owner) onequip(inst,owner,"fa_hat_witch") end  )
+        inst:AddComponent("armor")
+        inst.components.armor:InitCondition(ARMOR_ROBE_DURA, ARMOR_ROBE_ABSO)
+        return inst
+    end
 
 
 
@@ -608,7 +619,8 @@ Prefab( "common/inventory/fa_hat_heavyleather", fa_hat_heavyleather, assets_fa_h
 Prefab( "common/inventory/fa_hat_lightleather", fa_hat_lightleather, assets_fa_hat_lightleather, prefabs),
 Prefab( "common/inventory/fa_hat_plain", fa_hat_plain, assets_fa_hat_plain, prefabs),
 Prefab( "common/inventory/fa_hat_pigking", fa_hat_pigking, assets_hat_pigking, prefabs),
-Prefab( "common/inventory/fa_hat_leprechaun", fa_hat_leprechaun, assets_fa_hat_leprechaun, prefabs)
+Prefab( "common/inventory/fa_hat_leprechaun", fa_hat_leprechaun, assets_fa_hat_leprechaun, prefabs),
+Prefab( "common/inventory/fa_hat_witch", fa_hat_witch, assets_hat_witch, prefabs)
 
 
 

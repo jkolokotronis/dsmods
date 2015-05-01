@@ -350,6 +350,7 @@ Assets = {
     Asset( "ANIM", "anim/fa_cagechains.zip" ),
     Asset( "ANIM", "anim/fa_orcfort_cage.zip" ),
     Asset( "ANIM", "anim/fa_mug.zip" ),
+    Asset( "ANIM", "anim/fa_animation.zip" ),
 --    Asset( "ANIM", "anim/icebomb.zip" ),
 --    Asset( "ANIM", "anim/player_test.zip" ),
 }
@@ -404,7 +405,6 @@ local FALLENLOOTTABLE=GLOBAL.FALLENLOOTTABLE
 local FALLENLOOTTABLEMERGED=GLOBAL.FALLENLOOTTABLEMERGED
 
            
-
 --[[
     local SGWilson=require "stategraphs/SGwilson"
     SGWilson.states["idle"]= GLOBAL.State{
@@ -414,12 +414,11 @@ local FALLENLOOTTABLEMERGED=GLOBAL.FALLENLOOTTABLEMERGED
             
             inst.components.locomotor:Stop()
 
-            inst.AnimState:PlayAnimation("fa_cagedrop", true)
+            inst.AnimState:PlayAnimation("fa_whirlwind", true)
 
         end,        
     }
 ]]
-
 -- Let the game know Wod is a male, for proper pronouns during the end-game sequence.
 -- Possible genders here are MALE, FEMALE, or ROBOT
 table.insert(GLOBAL.CHARACTER_GENDERS.FEMALE, "thief")
