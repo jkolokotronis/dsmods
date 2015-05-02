@@ -226,11 +226,15 @@ local r=Recipe("fa_ironarmor_recipe", {Ingredient("fa_diamondpebble", 4,"images/
 r.image="blueprint.tex"
 local r=Recipe("fa_steelarmor_recipe", {Ingredient("fa_diamondpebble", 8,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
 r.image="blueprint.tex"
+local r=Recipe("fa_heavyleatherarmor_recipe", {Ingredient("fa_diamondpebble", 5,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
+r.image="blueprint.tex"
 local r=Recipe("fa_hat_copper_recipe", {Ingredient("goldnugget", 20)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
 r.image="blueprint.tex"
 local r=Recipe("fa_hat_iron_recipe", {Ingredient("fa_diamondpebble", 3,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
 r.image="blueprint.tex"
 local r=Recipe("fa_hat_steel_recipe", {Ingredient("fa_diamondpebble", 6,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_hat_heavyleather_recipe", {Ingredient("fa_diamondpebble", 3,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
 r.image="blueprint.tex"
 
 local r=Recipe("fa_copperbar_recipe", {Ingredient("goldnugget", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFSMELTRECIPESTAND, nil, nil, true)

@@ -126,7 +126,7 @@ local function onxploaded(inst)
             inst.components.hunger.hungerrate=inst.components.hunger.hungerrate*0.75
         end
         if level==20 then
-            inst.components.health.absorb= inst.components.health.absorb+CAPSTONE_DR
+            inst.components.health.fa_damagereduction[FA_DAMAGETYPE.PHYSICAL]= inst.components.health.fa_damagereduction[FA_DAMAGETYPE.PHYSICAL]+CAPSTONE_DR
         end
     end
 end
@@ -163,7 +163,7 @@ local function onlevelup(inst,data)
     elseif level==19 then
             inst.components.hunger.hungerrate=inst.components.hunger.hungerrate*0.75
     elseif level==20 then
-        inst.components.health.absorb= inst.components.health.absorb+CAPSTONE_DR
+        inst.components.health.fa_damagereduction[FA_DAMAGETYPE.PHYSICAL]= inst.components.health.fa_damagereduction[FA_DAMAGETYPE.PHYSICAL]+CAPSTONE_DR
     end
 end
 
@@ -233,7 +233,8 @@ local fn = function(inst)
 	inst.components.hunger:SetMax(150)
     inst.components.combat:SetDefaultDamage(UNARMED_DAMAGE)
     inst.fa_meleedamagemultiplier=1
-
+    inst.components.health.fa_damagereduction={}
+    inst.components.health.fa_damagereduction[FA_DAMAGETYPE.PHYSICAL]=0
 
     local calcdamage_old=inst.components.combat.CalcDamage
     function inst.components.combat:CalcDamage (target, weapon, multiplier)
@@ -354,10 +355,10 @@ local fn = function(inst)
         },
         [10]={
             onenter=function()
-                inst.components.health.absorb= inst.components.health.absorb+KIBUFF_ABSORB
+                inst.components.health.fa_damagereduction[FA_DAMAGETYPE.PHYSICAL]= inst.components.health.fa_damagereduction[FA_DAMAGETYPE.PHYSICAL]+KIBUFF_ABSORB
             end,
             onexit=function()
-                inst.components.health.absorb= inst.components.health.absorb-KIBUFF_ABSORB
+                inst.components.health.fa_damagereduction[FA_DAMAGETYPE.PHYSICAL]= inst.components.health.fa_damagereduction[FA_DAMAGETYPE.PHYSICAL]-KIBUFF_ABSORB
             end,
             active=false
         },

@@ -120,5 +120,8 @@ return Prefab( "common/inventory/fa_recipebook", fn, assets),
  Prefab( "common/inventory/fa_bottle_empty_recipe",  recipegen("ForgeMatcher","fa_bottle_empty"), assets),
  Prefab( "common/inventory/fa_bottle_y_recipe",  recipegen("AlchemyMatcher","fa_bottle_y"), assets),
  Prefab( "common/inventory/fa_bottle_g_recipe",  recipegen("AlchemyMatcher","fa_bottle_g"), assets),
- Prefab( "common/inventory/fa_bottle_r_recipe",  recipegen("AlchemyMatcher","fa_bottle_r"), assets)
+ Prefab( "common/inventory/fa_bottle_r_recipe",  recipegen("AlchemyMatcher","fa_bottle_r"), assets),
+
+ Prefab( "common/inventory/fa_heavyleatherarmor_recipe",  recipegen("ForgeMatcher","fa_heavyleatherarmor"), assets),
+ Prefab( "common/inventory/fa_hat_heavyleather_recipe",  recipegen("ForgeMatcher","fa_hat_heavyleather"), assets)
 
