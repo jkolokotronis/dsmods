@@ -8802,7 +8802,7 @@ return {
         },
         {
           name = "",
-          type = "fa_dungeon_exit",
+          type = "fa_stairs_up",
           shape = "rectangle",
           x = 106,
           y = 100,
@@ -9278,7 +9278,7 @@ return {
         },
         {
           name = "",
-          type = "fa_dungeon_entrance",
+          type = "fa_stairs_down",
           shape = "rectangle",
           x = 128,
           y = 1088,

@@ -137,7 +137,7 @@ return {
         },
         {
           name = "",
-          type = "fa_dungeon_exit",
+          type = "fa_stairs_up",
           shape = "rectangle",
           x = 738,
           y = 262,

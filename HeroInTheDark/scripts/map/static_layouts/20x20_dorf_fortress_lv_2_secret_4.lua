@@ -126,7 +126,7 @@ return {
       objects = {
         {
           name = "",
-          type = "fa_dungeon_exit",
+          type = "fa_stairs_up",
           shape = "rectangle",
           x = 1146,
           y = 1148,
@@ -1387,7 +1387,7 @@ return {
         },
         {
           name = "",
-          type = "fa_dungeon_entrance",
+          type = "fa_stairs_down",
           shape = "rectangle",
           x = 164,
           y = 1160,

@@ -7221,7 +7221,7 @@ return {
         },
         {
           name = "",
-          type = "fa_dungeon_entrance",
+          type = "fa_stairs_down",
           shape = "rectangle",
           x = 1078,
           y = 1131,
