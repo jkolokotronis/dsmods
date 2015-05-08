@@ -4,7 +4,7 @@ local KiBar = Class(function(self, inst)
     self.current = self.max
 
     self.decrate = 1
-    self.period = 10
+    self.period = 5
     
 	self.inst:ListenForEvent("respawn", function(inst) self:OnRespawn() end)
 --    self.task = self.inst:DoPeriodicTask(self.period, function() self:DoDec(self.period) end)
@@ -82,7 +82,7 @@ end
 function KiBar:SetPercent(p)
     local old = self.current
     self.current  = p*self.max
-    self.inst:PushEvent("kidelta", {old = old/self.max, new = p,max=self.max})
+    self.inst:PushEvent("kidelta", {old = old, new = self.current,max=self.max})
 
 end
 
