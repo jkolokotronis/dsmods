@@ -14,6 +14,9 @@
         <file id="10" name="_0005_nut.png" width="121" height="177" pivot_x="0.438017" pivot_y="0.983051"/>
         <file id="11" name="_0007_winter.png" width="997" height="1196" pivot_x="0.471698" pivot_y="0.037143"/>
         <file id="12" name="_0000_wimter-nut.png" width="122" height="177" pivot_x="0.47541" pivot_y="0.949153"/>
+        <file id="13" name="burned.png" width="724" height="1075" pivot_x="0.464968" pivot_y="0.297143"/>
+        <file id="14" name="trunk tiny.png" width="554" height="508" pivot_x="0" pivot_y="1"/>
+        <file id="15" name="full stump.png" width="997" height="1196" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="entity_000">
         <obj_info name="_0001_Ebene-4" type="sprite">
@@ -141,6 +144,21 @@
                 <i folder="0" file="12"/>
             </frames>
         </obj_info>
+        <obj_info name="burned" type="sprite">
+            <frames>
+                <i folder="0" file="13"/>
+            </frames>
+        </obj_info>
+        <obj_info name="trunk tiny" type="sprite">
+            <frames>
+                <i folder="0" file="14"/>
+            </frames>
+        </obj_info>
+        <obj_info name="full stump" type="sprite">
+            <frames>
+                <i folder="0" file="15"/>
+            </frames>
+        </obj_info>
         <animation id="0" name="just planted" length="2000" interval="100">
             <mainline>
                 <key id="0">
@@ -152,10 +170,10 @@
             </mainline>
             <timeline id="0" obj="0" name="_0001_Ebene-4">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="14.904794" y="-16.333333"/>
+                    <object folder="0" file="0" x="14.904794" y="-16.333333" angle="0"/>
                 </key>
                 <key id="1" time="1002" spin="0">
-                    <object folder="0" file="0" x="14.904794" y="-16.719023" scale_y="0.97143"/>
+                    <object folder="0" file="0" x="14.904794" y="-16.719023" angle="0" scale_y="0.97143"/>
                 </key>
             </timeline>
         </animation>
@@ -180,28 +198,108 @@
             </mainline>
             <timeline id="0" obj="1" name="_0002_Ebene-2">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="9.705882" y="-24.862825"/>
+                    <object folder="0" file="1" x="9.705882" y="-24.862825" angle="0"/>
                 </key>
                 <key id="1" time="1252" spin="0">
-                    <object folder="0" file="1" x="9.705882" y="-25.994714" scale_y="0.972052"/>
+                    <object folder="0" file="1" x="9.705882" y="-25.994714" angle="0" scale_y="0.972052"/>
                 </key>
             </timeline>
             <timeline id="1" obj="2" name="_0000_Ebene-3">
                 <key id="0">
-                    <object folder="0" file="2" x="176.58802" y="382.254998"/>
+                    <object folder="0" file="2" x="176.58802" y="382.254998" angle="0"/>
                 </key>
                 <key id="1" time="717" spin="-1">
-                    <object folder="0" file="2" x="176.58802" y="375.0886" angle="3.413447" scale_x="1" scale_y="0.98399"/>
+                    <object folder="0" file="2" x="176.58802" y="375.0886" angle="3.413447" scale_y="0.98399"/>
                 </key>
                 <key id="2" time="1252" spin="-1">
-                    <object folder="0" file="2" x="176.58802" y="369.745014" scale_y="0.972052"/>
+                    <object folder="0" file="2" x="176.58802" y="369.745014" angle="0" scale_y="0.972052"/>
                 </key>
                 <key id="3" time="1775">
-                    <object folder="0" file="2" x="176.58802" y="374.984667" angle="358.761277" scale_x="1" scale_y="0.983758"/>
+                    <object folder="0" file="2" x="176.58802" y="374.984667" angle="358.761277" scale_y="0.983758"/>
                 </key>
             </timeline>
         </animation>
-        <animation id="2" name="spring tree " length="2000" interval="100">
+        <animation id="2" name="young tree stump" length="2500" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="2" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="717">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                </key>
+                <key id="2" time="1252">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                </key>
+                <key id="3" time="1775">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="2" z_index="1"/>
+                </key>
+            </mainline>
+            <timeline id="0" obj="1" name="_0002_Ebene-2">
+                <key id="0" time="1252" spin="0">
+                    <object folder="0" file="1" x="9.705882" y="-25.994714" angle="0" scale_y="0.972052"/>
+                </key>
+            </timeline>
+            <timeline id="1" obj="2" name="_0000_Ebene-3">
+                <key id="0" time="717" spin="-1">
+                    <object folder="0" file="2" x="176.58802" y="375.0886" angle="3.413447" scale_y="0.98399"/>
+                </key>
+                <key id="1" time="1252" spin="-1">
+                    <object folder="0" file="2" x="176.58802" y="369.745014" angle="0" scale_y="0.972052"/>
+                </key>
+                <key id="2" time="1775">
+                    <object folder="0" file="2" x="176.58802" y="374.984667" angle="358.761277" scale_y="0.983758"/>
+                </key>
+            </timeline>
+            <timeline id="2" obj="26" name="trunk tiny">
+                <key id="0" spin="0">
+                    <object folder="0" file="14" x="-234.375" y="445.3125"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="3" name="young tree burned" length="2500" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="2" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="717">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                </key>
+                <key id="2" time="1252">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                </key>
+                <key id="3" time="1775">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="2" z_index="1"/>
+                </key>
+            </mainline>
+            <timeline id="0" obj="1" name="_0002_Ebene-2">
+                <key id="0" time="1252" spin="0">
+                    <object folder="0" file="1" x="9.705882" y="-25.994714" angle="0" scale_y="0.972052"/>
+                </key>
+            </timeline>
+            <timeline id="1" obj="2" name="_0000_Ebene-3">
+                <key id="0" time="717" spin="-1">
+                    <object folder="0" file="2" x="176.58802" y="375.0886" angle="3.413447" scale_y="0.98399"/>
+                </key>
+                <key id="1" time="1252" spin="-1">
+                    <object folder="0" file="2" x="176.58802" y="369.745014" angle="0" scale_y="0.972052"/>
+                </key>
+                <key id="2" time="1775">
+                    <object folder="0" file="2" x="176.58802" y="374.984667" angle="358.761277" scale_y="0.983758"/>
+                </key>
+            </timeline>
+            <timeline id="2" obj="25" name="burned">
+                <key id="0" spin="0">
+                    <object folder="0" file="13" x="16.981132" y="-26.415094" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="4" name="spring tree " length="2000" interval="100">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -212,14 +310,54 @@
             </mainline>
             <timeline id="0" obj="3" name="_0008_spring">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="10.596554" y="-30.907761"/>
+                    <object folder="0" file="3" x="10.596554" y="-30.907761" angle="0"/>
                 </key>
                 <key id="1" time="1002" spin="0">
-                    <object folder="0" file="3" x="10.596554" y="-31.212746" scale_y="0.993226"/>
+                    <object folder="0" file="3" x="10.596554" y="-31.212746" angle="0" scale_y="0.993226"/>
                 </key>
             </timeline>
         </animation>
-        <animation id="3" name="spring tree with flowers" length="2500" interval="100">
+        <animation id="5" name="full tree stump" length="2000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="1" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="1002">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" obj="3" name="_0008_spring">
+                <key id="0" time="1002" spin="0">
+                    <object folder="0" file="3" x="10.596554" y="-31.212746" angle="0" scale_y="0.993226"/>
+                </key>
+            </timeline>
+            <timeline id="1" obj="27" name="full stump">
+                <key id="0" spin="0">
+                    <object folder="0" file="15" x="-430.880102" y="1120.33801"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="6" name="full grown tree burned" length="2000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="1" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="1002">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" obj="3" name="_0008_spring">
+                <key id="0" time="1002" spin="0">
+                    <object folder="0" file="3" x="10.596554" y="-31.212746" angle="0" scale_y="0.993226"/>
+                </key>
+            </timeline>
+            <timeline id="1" obj="25" name="burned">
+                <key id="0" spin="0">
+                    <object folder="0" file="13" x="-8.018868" y="-56.415094" angle="0" scale_x="1.377723" scale_y="1.234885"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="7" name="spring tree with flowers" length="2500" interval="100">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -320,63 +458,63 @@
             </mainline>
             <timeline id="0" obj="3" name="_0008_spring">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="10.596554" y="-30.907761"/>
+                    <object folder="0" file="3" x="10.596554" y="-30.907761" angle="0"/>
                 </key>
                 <key id="1" time="1252" spin="0">
-                    <object folder="0" file="3" x="10.596554" y="-31.407481" scale_y="0.988901"/>
+                    <object folder="0" file="3" x="10.596554" y="-31.407481" angle="0" scale_y="0.988901"/>
                 </key>
             </timeline>
             <timeline id="1" obj="4" name="_0003_flower-1">
                 <key id="0" spin="-1">
-                    <object folder="0" file="4" x="-204.719823" y="568.860433" angle="52.21489" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="4" x="-204.719823" y="568.860433" angle="52.21489"/>
                 </key>
                 <key id="1" time="600">
-                    <object folder="0" file="4" x="-205.740691" y="564.730682" angle="42.160511" scale_x="1" scale_y="0.994683"/>
+                    <object folder="0" file="4" x="-205.740691" y="564.730682" angle="42.160511" scale_y="0.994683"/>
                 </key>
                 <key id="2" time="1252">
-                    <object folder="0" file="4" x="-204.719823" y="561.703837" angle="52.21489" scale_x="1" scale_y="0.988901"/>
+                    <object folder="0" file="4" x="-204.719823" y="561.703837" angle="52.21489" scale_y="0.988901"/>
                 </key>
                 <key id="3" time="1927" spin="-1">
-                    <object folder="0" file="4" x="-204.719823" y="565.576144" angle="61.319578" scale_x="1" scale_y="0.994906"/>
+                    <object folder="0" file="4" x="-204.719823" y="565.576144" angle="61.319578" scale_y="0.994906"/>
                 </key>
             </timeline>
             <timeline id="2" obj="5" name="_0002_flower-2">
                 <key id="0" spin="-1">
-                    <object folder="0" file="5" x="-207.344255" y="571.537302" angle="114.213052" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="5" x="-207.344255" y="571.537302" angle="114.213052"/>
                 </key>
                 <key id="1" time="600">
-                    <object folder="0" file="5" x="-207.859967" y="567.810607" angle="104.158673" scale_x="1" scale_y="0.994683"/>
+                    <object folder="0" file="5" x="-207.859967" y="567.810607" angle="104.158673" scale_y="0.994683"/>
                 </key>
                 <key id="2" time="1252">
-                    <object folder="0" file="5" x="-207.344255" y="564.350995" angle="114.213052" scale_x="1" scale_y="0.988901"/>
+                    <object folder="0" file="5" x="-207.344255" y="564.350995" angle="114.213052" scale_y="0.988901"/>
                 </key>
                 <key id="3" time="1927" spin="-1">
-                    <object folder="0" file="5" x="-207.732616" y="567.790536" angle="123.31774" scale_x="1" scale_y="0.994906"/>
+                    <object folder="0" file="5" x="-207.732616" y="567.790536" angle="123.31774" scale_y="0.994906"/>
                 </key>
             </timeline>
             <timeline id="3" obj="6" name="_0001_flower3">
                 <key id="0" spin="-1">
-                    <object folder="0" file="6" x="-209.217223" y="574.341425" angle="119.8103" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="6" x="-209.217223" y="574.341425" angle="119.8103"/>
                 </key>
                 <key id="1" time="600">
                     <object folder="0" file="6" x="-209.217223" y="570.883974" angle="109.755921" scale_y="0.994683"/>
                 </key>
                 <key id="2" time="1252">
-                    <object folder="0" file="6" x="-209.217223" y="567.123996" angle="119.8103" scale_x="1" scale_y="0.988901"/>
+                    <object folder="0" file="6" x="-209.217223" y="567.123996" angle="119.8103" scale_y="0.988901"/>
                 </key>
                 <key id="3" time="1927" spin="-1">
-                    <object folder="0" file="6" x="-210.023448" y="570.248851" angle="128.914989" scale_x="1" scale_y="0.994906"/>
+                    <object folder="0" file="6" x="-210.023448" y="570.248851" angle="128.914989" scale_y="0.994906"/>
                 </key>
             </timeline>
             <timeline id="4" obj="7" name="_0003_flower-1_000">
                 <key id="0" spin="-1">
-                    <object folder="0" file="4" x="-141.176471" y="802.941176"/>
+                    <object folder="0" file="4" x="-141.176471" y="802.941176" angle="0"/>
                 </key>
                 <key id="1" time="832">
                     <object folder="0" file="4" x="-141.157192" y="796.793732" angle="353.436241" scale_y="0.992623"/>
                 </key>
                 <key id="2" time="1252">
-                    <object folder="0" file="4" x="-141.176471" y="793.1865" scale_y="0.988901"/>
+                    <object folder="0" file="4" x="-141.176471" y="793.1865" angle="0" scale_y="0.988901"/>
                 </key>
                 <key id="3" time="1795" spin="-1">
                     <object folder="0" file="4" x="-141.176471" y="797.428514" angle="11.368417" scale_y="0.993728"/>
@@ -384,13 +522,13 @@
             </timeline>
             <timeline id="5" obj="8" name="_0002_flower-2_000">
                 <key id="0" spin="-1">
-                    <object folder="0" file="5" x="-138.235294" y="802.941176"/>
+                    <object folder="0" file="5" x="-138.235294" y="802.941176" angle="0"/>
                 </key>
                 <key id="1" time="832">
                     <object folder="0" file="5" x="-138.235294" y="796.457529" angle="353.436241" scale_y="0.992623"/>
                 </key>
                 <key id="2" time="1252">
-                    <object folder="0" file="5" x="-138.235294" y="793.1865" scale_y="0.988901"/>
+                    <object folder="0" file="5" x="-138.235294" y="793.1865" angle="0" scale_y="0.988901"/>
                 </key>
                 <key id="3" time="1795" spin="-1">
                     <object folder="0" file="5" x="-138.293" y="798.008269" angle="11.368417" scale_y="0.993728"/>
@@ -398,13 +536,13 @@
             </timeline>
             <timeline id="6" obj="9" name="_0001_flower3_000">
                 <key id="0" spin="-1">
-                    <object folder="0" file="6" x="-133.823529" y="808.823529"/>
+                    <object folder="0" file="6" x="-133.823529" y="808.823529" angle="0"/>
                 </key>
                 <key id="1" time="832">
                     <object folder="0" file="6" x="-133.185003" y="801.75391" angle="353.436241" scale_y="0.992623"/>
                 </key>
                 <key id="2" time="1252">
-                    <object folder="0" file="6" x="-133.823529" y="799.003564" scale_y="0.988901"/>
+                    <object folder="0" file="6" x="-133.823529" y="799.003564" angle="0" scale_y="0.988901"/>
                 </key>
                 <key id="3" time="1795" spin="-1">
                     <object folder="0" file="6" x="-135.120033" y="804.608671" angle="11.368417" scale_y="0.993728"/>
@@ -412,7 +550,7 @@
             </timeline>
             <timeline id="7" obj="10" name="_0003_flower-1_001">
                 <key id="0">
-                    <object folder="0" file="4" x="85.294118" y="597.058824" angle="330.642246" scale_y="1"/>
+                    <object folder="0" file="4" x="85.294118" y="597.058824" angle="330.642246"/>
                 </key>
                 <key id="1" time="725" spin="-1">
                     <object folder="0" file="4" x="85.294118" y="592.735119" angle="341.356322" scale_y="0.993575"/>
@@ -426,7 +564,7 @@
             </timeline>
             <timeline id="8" obj="11" name="_0002_flower-2_001">
                 <key id="0">
-                    <object folder="0" file="5" x="93.144706" y="596.017419" angle="330.642246" scale_y="1"/>
+                    <object folder="0" file="5" x="93.144706" y="596.017419" angle="330.642246"/>
                 </key>
                 <key id="1" time="725" spin="-1">
                     <object folder="0" file="5" x="93.20021" y="593.17793" angle="341.356322" scale_y="0.993575"/>
@@ -440,7 +578,7 @@
             </timeline>
             <timeline id="9" obj="12" name="_0001_flower3_001">
                 <key id="0">
-                    <object folder="0" file="6" x="97.710865" y="595.13623" angle="330.642246" scale_y="1"/>
+                    <object folder="0" file="6" x="97.710865" y="595.13623" angle="330.642246"/>
                 </key>
                 <key id="1" time="725" spin="-1">
                     <object folder="0" file="6" x="97.849535" y="593.166552" angle="341.356322" scale_y="0.993575"/>
@@ -453,7 +591,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="4" name="summer with unripe nuts" length="2500" interval="100">
+        <animation id="8" name="summer with unripe nuts" length="2500" interval="100">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -506,21 +644,21 @@
             </mainline>
             <timeline id="0" obj="13" name="_0009_summer">
                 <key id="0" spin="0">
-                    <object folder="0" file="7" x="31.8125" y="-45.875"/>
+                    <object folder="0" file="7" x="31.8125" y="-45.875" angle="0"/>
                 </key>
                 <key id="1" time="1267" spin="0">
-                    <object folder="0" file="7" x="31.8125" y="-46.128958" scale_y="0.991405"/>
+                    <object folder="0" file="7" x="31.8125" y="-46.128958" angle="0" scale_y="0.991405"/>
                 </key>
             </timeline>
             <timeline id="1" obj="14" name="_0004_unripe-nut">
                 <key id="0" spin="-1">
-                    <object folder="0" file="8" x="-205.838694" y="566.419281"/>
+                    <object folder="0" file="8" x="-205.838694" y="566.419281" angle="0"/>
                 </key>
                 <key id="1" time="622">
-                    <object folder="0" file="8" x="-205.838694" y="563.709829" angle="346.356991" scale_x="1" scale_y="0.995779"/>
+                    <object folder="0" file="8" x="-205.838694" y="563.709829" angle="346.356991" scale_y="0.995779"/>
                 </key>
                 <key id="2" time="1267">
-                    <object folder="0" file="8" x="-205.838694" y="560.902445" scale_y="0.991405"/>
+                    <object folder="0" file="8" x="-205.838694" y="560.902445" angle="0" scale_y="0.991405"/>
                 </key>
                 <key id="3" time="1795" spin="-1">
                     <object folder="0" file="8" x="-205.838694" y="563.263606" angle="8.733859" scale_y="0.995083"/>
@@ -528,34 +666,34 @@
             </timeline>
             <timeline id="2" obj="15" name="_0004_unripe-nut_000">
                 <key id="0" spin="-1">
-                    <object folder="0" file="8" x="-138.709677" y="798.387097"/>
+                    <object folder="0" file="8" x="-138.709677" y="798.387097" angle="0"/>
                 </key>
                 <key id="1" time="827">
-                    <object folder="0" file="8" x="-138.709677" y="793.483676" angle="347.190636" scale_x="1" scale_y="0.994388"/>
+                    <object folder="0" file="8" x="-138.709677" y="793.483676" angle="347.190636" scale_y="0.994388"/>
                 </key>
                 <key id="2" time="1267">
-                    <object folder="0" file="8" x="-138.709677" y="790.876419" scale_y="0.991405"/>
+                    <object folder="0" file="8" x="-138.709677" y="790.876419" angle="0" scale_y="0.991405"/>
                 </key>
                 <key id="3" time="1942" spin="-1">
-                    <object folder="0" file="8" x="-138.709677" y="794.989772" angle="5.6084" scale_x="1" scale_y="0.996112"/>
+                    <object folder="0" file="8" x="-138.709677" y="794.989772" angle="5.6084" scale_y="0.996112"/>
                 </key>
             </timeline>
             <timeline id="3" obj="16" name="_0004_unripe-nut_001">
                 <key id="0" spin="-1">
-                    <object folder="0" file="8" x="90.322581" y="604.83871"/>
+                    <object folder="0" file="8" x="90.322581" y="604.83871" angle="0"/>
                 </key>
                 <key id="1" time="467">
-                    <object folder="0" file="8" x="90.322581" y="602.6821" angle="352.556741" scale_x="1" scale_y="0.99683"/>
+                    <object folder="0" file="8" x="90.322581" y="602.6821" angle="352.556741" scale_y="0.99683"/>
                 </key>
                 <key id="2" time="1267">
-                    <object folder="0" file="8" x="90.322581" y="598.991646" scale_y="0.991405"/>
+                    <object folder="0" file="8" x="90.322581" y="598.991646" angle="0" scale_y="0.991405"/>
                 </key>
                 <key id="3" time="1707" spin="-1">
                     <object folder="0" file="8" x="90.322581" y="601.079036" angle="8.61327" scale_y="0.994473"/>
                 </key>
             </timeline>
         </animation>
-        <animation id="5" name="autumn with ripe nuts" length="2500" interval="100">
+        <animation id="9" name="autumn with ripe nuts" length="2500" interval="100">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -608,56 +746,56 @@
             </mainline>
             <timeline id="0" obj="17" name="_0010_autumn">
                 <key id="0" spin="0">
-                    <object folder="0" file="9" x="24.034819" y="-40.795216"/>
+                    <object folder="0" file="9" x="24.034819" y="-40.795216" angle="0"/>
                 </key>
                 <key id="1" time="1247" spin="0">
-                    <object folder="0" file="9" x="24.034819" y="-41.019426" scale_y="0.993533"/>
+                    <object folder="0" file="9" x="24.034819" y="-41.019426" angle="0" scale_y="0.993533"/>
                 </key>
             </timeline>
             <timeline id="1" obj="18" name="_0005_nut">
                 <key id="0" spin="-1">
-                    <object folder="0" file="10" x="-209.857086" y="574.142884"/>
+                    <object folder="0" file="10" x="-209.857086" y="574.142884" angle="0"/>
                 </key>
                 <key id="1" time="547">
-                    <object folder="0" file="10" x="-209.857086" y="572.299205" angle="347.075377" scale_x="1" scale_y="0.997162"/>
+                    <object folder="0" file="10" x="-209.857086" y="572.299205" angle="347.075377" scale_y="0.997162"/>
                 </key>
                 <key id="2" time="1247">
-                    <object folder="0" file="10" x="-209.857086" y="569.94199" scale_y="0.993533"/>
+                    <object folder="0" file="10" x="-209.857086" y="569.94199" angle="0" scale_y="0.993533"/>
                 </key>
                 <key id="3" time="1930" spin="-1">
-                    <object folder="0" file="10" x="-209.857086" y="572.2311" angle="3.933289" scale_x="1" scale_y="0.997057"/>
+                    <object folder="0" file="10" x="-209.857086" y="572.2311" angle="3.933289" scale_y="0.997057"/>
                 </key>
             </timeline>
             <timeline id="2" obj="19" name="_0005_nut_000">
                 <key id="0" spin="-1">
-                    <object folder="0" file="10" x="-144.1428" y="808.428598"/>
+                    <object folder="0" file="10" x="-144.1428" y="808.428598" angle="0"/>
                 </key>
                 <key id="1" time="637">
                     <object folder="0" file="10" x="-144.1428" y="805.50761" angle="349.700645" scale_y="0.996695"/>
                 </key>
                 <key id="2" time="1247">
-                    <object folder="0" file="10" x="-144.1428" y="802.712624" scale_y="0.993533"/>
+                    <object folder="0" file="10" x="-144.1428" y="802.712624" angle="0" scale_y="0.993533"/>
                 </key>
                 <key id="3" time="1817" spin="-1">
-                    <object folder="0" file="10" x="-144.1428" y="805.313906" angle="5.577315" scale_x="1" scale_y="0.996476"/>
+                    <object folder="0" file="10" x="-144.1428" y="805.313906" angle="5.577315" scale_y="0.996476"/>
                 </key>
             </timeline>
             <timeline id="3" obj="20" name="_0005_nut_001">
                 <key id="0" spin="-1">
-                    <object folder="0" file="10" x="85.8572" y="615.571456"/>
+                    <object folder="0" file="10" x="85.8572" y="615.571456" angle="0"/>
                 </key>
                 <key id="1" time="737">
-                    <object folder="0" file="10" x="85.8572" y="612.929577" angle="353.838535" scale_x="1" scale_y="0.996177"/>
+                    <object folder="0" file="10" x="85.8572" y="612.929577" angle="353.838535" scale_y="0.996177"/>
                 </key>
                 <key id="2" time="1247">
-                    <object folder="0" file="10" x="85.8572" y="611.102651" scale_y="0.993533"/>
+                    <object folder="0" file="10" x="85.8572" y="611.102651" angle="0" scale_y="0.993533"/>
                 </key>
                 <key id="3" time="1645" spin="-1">
                     <object folder="0" file="10" x="85.8572" y="612.520894" angle="9.340568" scale_y="0.995586"/>
                 </key>
             </timeline>
         </animation>
-        <animation id="6" name="winter with frozen ripe nuts" length="1000" interval="100">
+        <animation id="10" name="winter with frozen ripe nuts" length="1000" interval="100">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -668,22 +806,22 @@
             </mainline>
             <timeline id="0" obj="21" name="_0007_winter">
                 <key id="0" spin="0">
-                    <object folder="0" file="11" x="39.972561" y="-30.631889"/>
+                    <object folder="0" file="11" x="39.972561" y="-30.631889" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" obj="22" name="_0000_wimter-nut">
                 <key id="0" spin="0">
-                    <object folder="0" file="12" x="-207.909071" y="568.272808"/>
+                    <object folder="0" file="12" x="-207.909071" y="568.272808" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" obj="23" name="_0000_wimter-nut_000">
                 <key id="0" spin="0">
-                    <object folder="0" file="12" x="-140.983607" y="801.639344"/>
+                    <object folder="0" file="12" x="-140.983607" y="801.639344" angle="0"/>
                 </key>
             </timeline>
             <timeline id="3" obj="24" name="_0000_wimter-nut_001">
                 <key id="0" spin="0">
-                    <object folder="0" file="12" x="88.52459" y="609.836066"/>
+                    <object folder="0" file="12" x="88.52459" y="609.836066" angle="0"/>
                 </key>
             </timeline>
         </animation>

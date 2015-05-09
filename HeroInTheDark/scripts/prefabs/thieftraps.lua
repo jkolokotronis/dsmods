@@ -96,40 +96,20 @@ local function OnFireExplode(inst, target)
     boom.Transform:SetPosition(pos.x, pos.y, pos.z)
     boom:ListenForEvent("animover", function() print("cleanup") boom:Remove() end)
 
---[[
-    local explode = SpawnPrefab("explode_small")
-    local pos = inst:GetPosition()
-    explode.Transform:SetPosition(pos.x, pos.y, pos.z)
-
-    --local explode = PlayFX(pos,"explode", "explode", "small")
-    explode.AnimState:SetBloomEffectHandle( "shaders/anim.ksh" )
-    explode.AnimState:SetLightOverride(1)
-
-    GetClock():DoLightningLighting()
-]]
-    
     GetPlayer().components.playercontroller:ShakeCamera(inst, "FULL", 0.7, 0.02, .5, 40)
 
-    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, TRAP_EXPLOSION_RANGE)
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, TRAP_EXPLOSION_RANGE,nil,{"FX","INLIMBO"})
 
     for k,v in pairs(ents) do
-        local inpocket = v.components.inventoryitem and v.components.inventoryitem:IsHeld()
 
-        if not inpocket then
-
-            if v.components.workable and not v:HasTag("busy") then --Haaaaaaack!
-                v.components.workable:WorkedBy(self.inst, self.buildingdamage)
-            elseif v.components.burnable and not v.components.fueled  then
+            if v.components.burnable and not v.components.fueled then
                 v.components.burnable:Ignite()
             end
-
 
             if v.components.combat and v ~= inst then
                 v.components.combat:GetAttacked(inst, TUNING.GUNPOWDER_DAMAGE, nil,nil,FA_DAMAGETYPE.FIRE)
             end
---            v:PushEvent("explosion", {explosive = inst})
 
-        end
     end
 
     local world = GetWorld()    --bleh, better way to do this?    
@@ -190,6 +170,11 @@ local function OnTentacleExplode(inst,target)
             Sleep(.33)
         end
     end)
+
+    inst.AnimState:PlayAnimation("trap")
+    if inst.components.finiteuses then
+        inst.components.finiteuses:Use(1)
+    end
     return true    
 end
 

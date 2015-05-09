@@ -192,7 +192,7 @@ local onsavefn = function(inst, data)
 end
 
 local updatekiboosts=function(inst,data)
-    for i=1,math.floor(data.new/10) do
+    for i=1,math.ceil(data.new/10) do
         local bufftostart=inst.kibuffs[i]
         if(bufftostart and not bufftostart.active)then
             bufftostart.active=true
@@ -200,7 +200,7 @@ local updatekiboosts=function(inst,data)
         end
     end
     if(data.old>data.new)then
-        for i=math.floor(data.new/10)+1,math.floor(data.old/10) do
+        for i=math.ceil(data.new/10)+1,math.ceil(data.old/10) do
             local bufftostart=inst.kibuffs[i]
             if(bufftostart and bufftostart.active)then
                 bufftostart.active=false
@@ -299,16 +299,16 @@ local fn = function(inst)
             onenter=function()
                 inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=1
                 inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]+0.5
-                inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]+0.5
-                inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]+0.5
-                inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]+0.5
+                inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]+0.5
+                inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]+0.5
+                inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]+0.5
             end,
             onexit=function()
                 inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0
                 inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]-0.5
-                inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]-0.5
-                inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]-0.5
-                inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]-0.5
+                inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]-0.5
+                inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]-0.5
+                inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]-0.5
             end,
             active=false
         },
