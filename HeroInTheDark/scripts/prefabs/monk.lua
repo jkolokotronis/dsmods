@@ -192,7 +192,7 @@ local onsavefn = function(inst, data)
 end
 
 local updatekiboosts=function(inst,data)
-    for i=1,math.ceil(data.new/10) do
+    for i=1,math.floor((data.new+0.9)/10) do
         local bufftostart=inst.kibuffs[i]
         if(bufftostart and not bufftostart.active)then
             bufftostart.active=true
@@ -200,7 +200,7 @@ local updatekiboosts=function(inst,data)
         end
     end
     if(data.old>data.new)then
-        for i=math.ceil(data.new/10)+1,math.ceil(data.old/10) do
+        for i=math.floor((data.new+0.9)/10)+1,math.floor((data.old+0.9)/10) do
             local bufftostart=inst.kibuffs[i]
             if(bufftostart and bufftostart.active)then
                 bufftostart.active=false
