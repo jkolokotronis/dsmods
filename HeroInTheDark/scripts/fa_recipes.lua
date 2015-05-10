@@ -89,11 +89,11 @@ local r=Recipe("fa_smallwandcase", {Ingredient("fa_orcskin", 4,"images/inventory
 r.image="fa_wand_case.tex"
 r.atlas = "images/inventoryimages/fa_inventoryimages.xml"
 local r=Recipe("fa_bottle_curepoison", {Ingredient("poisonspidergland", 4,"images/inventoryimages/fa_inventoryimages.xml"), Ingredient("spidergland", 4), Ingredient("fa_bottle_r",1,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.SURVIVAL,  TECH.NONE)
-r.image="fa_bottle_light_green.tex"
+r.image="fa_bottle_dark_lime.tex"
 r.atlas = "images/inventoryimages/fa_inventoryimages.xml"
 local r=Recipe("fa_barrel_wood", {Ingredient("fa_copperbar", 4,"images/inventoryimages/fa_inventoryimages.xml"), Ingredient("boards", 2)}, RECIPETABS.SURVIVAL,  TECH.NONE)
 r.image="fa_barrel_wood.tex"
---r.atlas = "images/inventoryimages/fa_barrel_wood.xml"
+r.atlas = "images/inventoryimages/fa_inventoryimages.xml"
 
 local r=Recipe("fa_hat_plain", {Ingredient("silk", 2),Ingredient("beefalowool", 3),Ingredient("razor", 1) }, RECIPETABS.WAR,  TECH.NONE)
 r.atlas = "images/inventoryimages/fa_inventoryimages.xml"

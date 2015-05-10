@@ -15,6 +15,9 @@ local HASTE_SPEED_BOOST=TUNING.WILSON_RUN_SPEED
 local HASTE_DODGE_BOOST=0.25
 local HASTE_ATTACK_BOOST=0.5
 
+local SHIELD_PROTECTION=50
+local CURE_SER=20
+
 FA_BuffUtil={}
 
 function InitBuffBar(inst,buff,timer,class,name)
@@ -1333,6 +1336,56 @@ local function SpiderWhispererSpellStart( reader,timer,variables)
 end
 
 FA_BuffUtil.SpiderWhisperer=SpiderWhispererSpellStart
+
+--the timer is being ignored, left in as 
+function ShieldSpellStart(reader,timer,variables)
+
+    local cl
+    if(variables and variables.cloverride~=nil)then
+        cl=variables.cloverride
+    else
+        cl=1 
+        if(reader.components.fa_spellcaster)then
+            cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.ABJURATION)
+        end
+    end
+    local damage=(1+math.floor(cl/5))*SHIELD_PROTECTION
+    local current_protection= reader.components.health.fa_protection[FA_DAMAGETYPE.PHYSICAL] or 0
+    --not sure if i want to let it accumulate
+    if(current_protection>damage) then return false 
+    else
+        reader.components.health:SetProtection(damage,FA_DAMAGETYPE.PHYSICAL)
+    end
+
+    return true
+end
+
+FA_BuffUtil.Shield=ShieldSpellStart
+
+function CureSeriousStart(reader,timer,variables)
+
+    local cl
+    if(variables and variables.cloverride~=nil)then
+        cl=variables.cloverride
+    else
+        cl=1 
+        if(reader.components.fa_spellcaster)then
+            cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.CONJURATION)
+        end
+    end
+
+    local boom =SpawnPrefab("fa_heal_greenfx")
+    local follower = boom.entity:AddFollower()
+    follower:FollowSymbol(reader.GUID,reader.components.combat.hiteffectsymbol, 0, 100, -0.0001)
+    boom.persists=false
+    boom:ListenForEvent("animover", function()  boom:Remove() end)
+    reader.components.health:DoDelta(CURE_SER*(1+math.floor(cl/4)))
+    return true
+
+end
+
+FA_BuffUtil.CureSerious=CureSeriousStart
+
 
 function LichSpellStart(reader,timer)
 

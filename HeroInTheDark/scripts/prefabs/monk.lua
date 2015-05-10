@@ -235,6 +235,10 @@ local fn = function(inst)
     inst.fa_meleedamagemultiplier=1
     inst.components.health.fa_damagereduction={}
     inst.components.health.fa_damagereduction[FA_DAMAGETYPE.PHYSICAL]=0
+    inst.components.health.fa_damagereduction[FA_DAMAGETYPE.FIRE]=0
+    inst.components.health.fa_damagereduction[FA_DAMAGETYPE.ACID]=0
+    inst.components.health.fa_damagereduction[FA_DAMAGETYPE.ELECTRIC]=0
+    inst.components.health.fa_damagereduction[FA_DAMAGETYPE.COLD]=0
 
     local calcdamage_old=inst.components.combat.CalcDamage
     function inst.components.combat:CalcDamage (target, weapon, multiplier)
@@ -356,9 +360,17 @@ local fn = function(inst)
         [10]={
             onenter=function()
                 inst.components.health.fa_damagereduction[FA_DAMAGETYPE.PHYSICAL]= inst.components.health.fa_damagereduction[FA_DAMAGETYPE.PHYSICAL]+KIBUFF_ABSORB
+                inst.components.health.fa_damagereduction[FA_DAMAGETYPE.FIRE]= inst.components.health.fa_damagereduction[FA_DAMAGETYPE.FIRE]+KIBUFF_ABSORB
+                inst.components.health.fa_damagereduction[FA_DAMAGETYPE.ACID]= inst.components.health.fa_damagereduction[FA_DAMAGETYPE.ACID]+KIBUFF_ABSORB
+                inst.components.health.fa_damagereduction[FA_DAMAGETYPE.ELECTRIC]= inst.components.health.fa_damagereduction[FA_DAMAGETYPE.ELECTRIC]+KIBUFF_ABSORB
+                inst.components.health.fa_damagereduction[FA_DAMAGETYPE.COLD]= inst.components.health.fa_damagereduction[FA_DAMAGETYPE.COLD]+KIBUFF_ABSORB
             end,
             onexit=function()
                 inst.components.health.fa_damagereduction[FA_DAMAGETYPE.PHYSICAL]= inst.components.health.fa_damagereduction[FA_DAMAGETYPE.PHYSICAL]-KIBUFF_ABSORB
+                inst.components.health.fa_damagereduction[FA_DAMAGETYPE.FIRE]= inst.components.health.fa_damagereduction[FA_DAMAGETYPE.FIRE]-KIBUFF_ABSORB
+                inst.components.health.fa_damagereduction[FA_DAMAGETYPE.ACID]= inst.components.health.fa_damagereduction[FA_DAMAGETYPE.ACID]-KIBUFF_ABSORB
+                inst.components.health.fa_damagereduction[FA_DAMAGETYPE.ELECTRIC]= inst.components.health.fa_damagereduction[FA_DAMAGETYPE.ELECTRIC]-KIBUFF_ABSORB
+                inst.components.health.fa_damagereduction[FA_DAMAGETYPE.COLD]= inst.components.health.fa_damagereduction[FA_DAMAGETYPE.COLD]-KIBUFF_ABSORB
             end,
             active=false
         },

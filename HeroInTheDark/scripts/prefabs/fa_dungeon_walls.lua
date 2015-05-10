@@ -50,6 +50,14 @@ local LAVAWALL_HEALTH=2000
 		return anim_to_play
 	end
 
+local function clearobstacle(inst)
+	    local ground = GetWorld()
+	    if ground then
+	    	local pt = Point(inst.Transform:GetWorldPosition())
+	    	ground.Pathfinder:RemoveWall(pt.x, pt.y, pt.z)
+	    end
+	end
+	
 	local function onhealthchange(inst, old_percent, new_percent)
 		
 		if old_percent <= 0 and new_percent > 0 then makeobstacle(inst) end
@@ -64,13 +72,6 @@ local LAVAWALL_HEALTH=2000
 		end
 	end
 
-local function clearobstacle(inst)
-	    local ground = GetWorld()
-	    if ground then
-	    	local pt = Point(inst.Transform:GetWorldPosition())
-	    	ground.Pathfinder:RemoveWall(pt.x, pt.y, pt.z)
-	    end
-	end
 
 	local function test_wall(inst, pt)
 		local tiletype = GetGroundTypeAtPosition(pt)
