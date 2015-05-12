@@ -7254,8 +7254,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "dorf_secret_1",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "dorf_secret_1",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8324,8 +8324,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "dorf_secret_1",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "dorf_secret_1",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8338,8 +8338,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "dorf_secret_2",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "dorf_secret_2",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8352,8 +8352,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "dorf_secret_2",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "dorf_secret_2",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8366,8 +8366,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "dorf_secret_3",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "dorf_secret_3",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8380,8 +8380,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "dorf_secret_3",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "dorf_secret_3",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8394,8 +8394,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "dorf_secret_4",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "dorf_secret_4",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8408,8 +8408,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "dorf_secret_4",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "dorf_secret_4",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8422,8 +8422,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "dorf_secret_5",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "dorf_secret_5",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8436,8 +8436,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "dorf_secret_5",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "dorf_secret_5",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8450,8 +8450,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "dorf_secret_6",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "dorf_secret_6",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8464,8 +8464,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "dorf_secret_6",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "dorf_secret_6",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8478,8 +8478,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "dorf_secret_7",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "dorf_secret_7",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
@@ -8492,8 +8492,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["fa_fencetag"] = "dorf_secret_7",
-            ["fueled.rate"] = "0"
+            ["data.fa_fencetag"] = "dorf_secret_7",
+            ["data.fueled.rate"] = "0"
           }
         },
         {
