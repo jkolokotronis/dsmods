@@ -43,7 +43,8 @@ local prefabs = {}
 
 local BASE_MS=1.0*TUNING.WILSON_RUN_SPEED
 local UNARMED_DAMAGE=TUNING.UNARMED_DAMAGE*4
-local MAX_KI=100
+local MAX_KI=10
+local KI_LEVEL_INCREASE=10
 local KI_ATTACK_INCREASE=1
 
 local KIBUFF_MS=0.5*TUNING.WILSON_RUN_SPEED
@@ -92,6 +93,7 @@ end
 
 local function onxploaded(inst)
     local level=inst.components.xplevel.level
+    inst.components.kibar.max=math.min(KI_LEVEL_INCREASE*level,100)
     if(level>1)then
         inst.components.health.maxhealth= inst.components.health.maxhealth+HEALTH_PER_LEVEL*(level-1)
         inst.components.hunger.max=inst.components.hunger.max+HUNGER_PER_LEVEL*(level-1)
@@ -136,6 +138,9 @@ local function onlevelup(inst,data)
     inst.components.health.maxhealth= inst.components.health.maxhealth+HEALTH_PER_LEVEL
     inst.components.hunger.max=inst.components.hunger.max+HUNGER_PER_LEVEL
     headoverride(inst,level)
+    if(level<=10)then
+        inst.components.kibar.max=KI_LEVEL_INCREASE*level
+    end
     if(level==3)then
         inst.components.locomotor.runspeed=inst.components.locomotor.runspeed+0.1*TUNING.WILSON_RUN_SPEED
     elseif(level==4)then
@@ -317,27 +322,6 @@ local fn = function(inst)
             active=false
         },
         [7]={
-        --it is possible this will lead to heal effects - if there are additional effects on this layer... will have to come back here later
-            onenter=function()
-            inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+KIBUFF_IMPROVEDSTRIKE-KIBUFF_STRIKE
-            inst.fa_damagetype=FA_DAMAGETYPE.HOLY
-            end,
-            onexit=function()
-            inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier-KIBUFF_IMPROVEDSTRIKE+KIBUFF_STRIKE
-            inst.fa_damagetype=nil
-            end,
-            active=false
-        },
-        [8]={
-            onenter=function()
-            inst.components.health.fa_dodgechance=inst.components.health.fa_dodgechance-KIBUFF_EVASION+KIBUFF_GREATEREVASION
-            end,
-            onexit=function()
-            inst.components.health.fa_dodgechance=inst.components.health.fa_dodgechance+KIBUFF_EVASION-KIBUFF_GREATEREVASION
-            end,
-            active=false
-        },
-        [9]={
             onenter=function()
                 if not inst.components.health.regen or not inst.components.health.regen.task then
                     inst.components.health:StartRegen(KIBUFF_REGEN, 1)
@@ -354,6 +338,27 @@ local fn = function(inst)
                     inst.components.health:StopRegen()
                 end
                 inst.components.sanity.dapperness=inst.components.sanity.dapperness-KIBUFF_SANITY
+            end,
+            active=false
+        },
+        [8]={
+            onenter=function()
+            inst.components.health.fa_dodgechance=inst.components.health.fa_dodgechance-KIBUFF_EVASION+KIBUFF_GREATEREVASION
+            end,
+            onexit=function()
+            inst.components.health.fa_dodgechance=inst.components.health.fa_dodgechance+KIBUFF_EVASION-KIBUFF_GREATEREVASION
+            end,
+            active=false
+        },
+        [9]={
+        --it is possible this will lead to heal effects - if there are additional effects on this layer... will have to come back here later
+            onenter=function()
+            inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier+KIBUFF_IMPROVEDSTRIKE-KIBUFF_STRIKE
+            inst.fa_damagetype=FA_DAMAGETYPE.HOLY
+            end,
+            onexit=function()
+            inst.components.combat.damagemultiplier=inst.components.combat.damagemultiplier-KIBUFF_IMPROVEDSTRIKE+KIBUFF_STRIKE
+            inst.fa_damagetype=nil
             end,
             active=false
         },
