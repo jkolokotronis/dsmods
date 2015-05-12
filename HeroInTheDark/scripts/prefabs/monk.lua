@@ -537,56 +537,6 @@ local fn = function(inst)
         },
     }
 
-    sg.states["fa_whirlwind"]=State{
-        name = "fa_whirlwind",
-        tags = {"attack", "notalking", "abouttoattack", "busy"},
-        onenter = function(inst)
-            inst.components.locomotor:Stop()
-            inst.components.combat:StartAttack()
-            inst.AnimState:PlayAnimation("fa_whirlwind")
-            inst.components.playercontroller:Enable(false)
-        end,
-
-        onexit=function(inst)
-            inst.components.playercontroller:Enable(true)
-        end,
-        events=
-        {
-            EventHandler("animover", function(inst)
-                inst.sg:GoToState("idle")
-            end),
-        },
-
-
-        timeline=
-        {
-            TimeEvent(4*FRAMES, function(inst) 
-                local pos=Vector3(inst.Transform:GetWorldPosition())
-                local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 10,nil,{"INLIMBO","FX","DECOR","player","companion"})
-                for k,v in pairs(ents) do
-                    if v:IsValid() and v.components.combat and not (v.components.health and v.components.health:IsDead()) 
-                        and not(v.components.follower and v.components.follower.leader and v.components.follower.leader:HasTag("player"))then
-                            inst.components.combat:DoAttack(v, nil, nil, nil, 5)
-                    end
-                end
-            end),
-            TimeEvent(18*FRAMES, function(inst) 
-                local pos=Vector3(inst.Transform:GetWorldPosition())
-                local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 10,nil,{"INLIMBO","FX","DECOR","player","companion"})
-                for k,v in pairs(ents) do
-                    if v:IsValid() and v.components.combat and not (v.components.health and v.components.health:IsDead()) 
-                        and not(v.components.follower and v.components.follower.leader and v.components.follower.leader:HasTag("player"))then
-                            inst.components.combat:DoAttack(v, nil, nil, nil, 5)
-                    end
-                end
-                inst.sg:RemoveStateTag("abouttoattack") 
-            end),
-            TimeEvent(24*FRAMES, function(inst)
-                inst.sg:RemoveStateTag("attack")
-                inst.sg:RemoveStateTag("busy")
-            end),            
-        },
-    }
 
     inst.newControlsInit = function (cnt)
         if(cnt.buffbar)then
@@ -667,7 +617,7 @@ local fn = function(inst)
         end
 
         inst.whirlwindCooldownButton=CooldownButton(cnt.owner)
-        inst.whirlwindCooldownButton:SetText("Whirlwind")
+        inst.whirlwindCooldownButton:SetText("Wrlwind")
         inst.whirlwindCooldownButton:SetOnClick(function() 
             inst.sg:GoToState("fa_whirlwind")
             return true

@@ -1,0 +1,33 @@
+1. largest map size.
+
+2. split into biomes, 
+
+a. spooky forest (like base game) lots of poison spiders, contains many not so normal trees
+
+b. Dedicious forest (like base game and can contain another pig king) 30% chance to spawn a unicorn during fall, low twigs, low berry bush
+
+c. elven forest (looks like normal forest grass), contains the elf town zone, contains all the new plants, and a small mix of the normal trees, (maybe 75% vs 25%)
+30% chance to spawn a unicorn during fall during summerlow twigs, low berry bush
+
+d. slightly normal forest (contains a mix of 25% new plants and 75% normal trees, this is the zone in also.low twigs, low berry bush
+30% chance to spawn a unicorn during winter
+
+e. normal forest normal forest (contains a mix of 50% new plants and 50% normal trees
+30% chance to spawn a unicorn during spring
+
+f. small swamp biome (no orcs) goblin huts can spawn but no cave entrances), spawns with one to two Ogres
+
+g. season length is 4 days for each season, giants can spawn. 
+
+Dryad tree can spawn in any forest during world gen. 
+ 
+ "Dryad's tree" linked to that dryad,
+ the dryad will be immune to dmg until that tree is cut down. 
+The dryad will not move far from the tree.  
+ 
+Dryad tree requires 20 chops which enrage her.
+
+Satyrs have small chance to spawn from stumps.
+
+
+

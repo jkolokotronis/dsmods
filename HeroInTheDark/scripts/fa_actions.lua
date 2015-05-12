@@ -48,6 +48,38 @@ ACTIONS.FA_CRAFTPICKUP=FA_CRAFTPICKUP
 SGWilson.actionhandlers[ACTIONS.FA_CRAFTPICKUP]=ActionHandler(ACTIONS.FA_CRAFTPICKUP, "dolongaction")
 --FA_ModUtil.AddAction(FA_CRAFTPICKUP)
 
+
+local FA_LOCKPICK=Action(1)
+FA_LOCKPICK.id="FA_CRAFTPICKUP"
+
+FA_LOCKPICK.fn = function(act)
+    if act.target.components.lock then
+        if act.target.components.lock:IsLocked() then
+            local key=act.invobject
+            local test=key.components.fa_lockpick:TryUnlock(act.target,act.doer)
+            --this could go in tryunlock, but how safe is it to destroy object from a member component of said object?
+            if(test)then
+                if key.components.stackable and key.components.stackable.stacksize > 1 then
+                    key = key.components.stackable:Get()
+
+                else
+                    key.components.inventoryitem:RemoveFromOwner()
+                end
+            key:Remove()
+            return test
+            end
+        end
+        return false
+    end
+end
+
+FA_LOCKPICK.strfn = function(act)
+        return STRINGS.ACTIONS.FA_LOCKPICK
+end
+
+ACTIONS.FA_LOCKPICK=FA_LOCKPICK
+SGWilson.actionhandlers[ACTIONS.FA_LOCKPICK]=ActionHandler(ACTIONS.FA_LOCKPICK, "dolongaction")
+
 local FA_DRINK=Action()
 FA_DRINK.id="FA_DRINK"
 
@@ -143,6 +175,56 @@ SGWilson.states["fa_spellfailed"]=State{
         },
     }
 
+
+SGWilson.states["fa_whirlwind"]=State{
+        name = "fa_whirlwind",
+        tags = {"attack", "notalking", "abouttoattack", "busy"},
+        onenter = function(inst)
+            inst.components.locomotor:Stop()
+            inst.components.combat:StartAttack()
+            inst.AnimState:PlayAnimation("fa_whirlwind")
+            inst.components.playercontroller:Enable(false)
+        end,
+
+        onexit=function(inst)
+            inst.components.playercontroller:Enable(true)
+        end,
+        events=
+        {
+            EventHandler("animover", function(inst)
+                inst.sg:GoToState("idle")
+            end),
+        },
+
+        timeline=
+        {
+            TimeEvent(4*FRAMES, function(inst) 
+                local pos=Vector3(inst.Transform:GetWorldPosition())
+                local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 10,nil,{"INLIMBO","FX","DECOR","player","companion"})
+                for k,v in pairs(ents) do
+                    if v:IsValid() and v.components.combat and not (v.components.health and v.components.health:IsDead()) 
+                        and not(v.components.follower and v.components.follower.leader and v.components.follower.leader:HasTag("player"))then
+                            inst.components.combat:DoAttack(v, nil, nil, nil, 5)
+                    end
+                end
+            end),
+            TimeEvent(18*FRAMES, function(inst) 
+                local pos=Vector3(inst.Transform:GetWorldPosition())
+                local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 10,nil,{"INLIMBO","FX","DECOR","player","companion"})
+                for k,v in pairs(ents) do
+                    if v:IsValid() and v.components.combat and not (v.components.health and v.components.health:IsDead()) 
+                        and not(v.components.follower and v.components.follower.leader and v.components.follower.leader:HasTag("player"))then
+                            inst.components.combat:DoAttack(v, nil, nil, nil, 5)
+                    end
+                end
+                inst.sg:RemoveStateTag("abouttoattack") 
+            end),
+            TimeEvent(24*FRAMES, function(inst)
+                inst.sg:RemoveStateTag("attack")
+                inst.sg:RemoveStateTag("busy")
+            end),            
+        },
+    }
 
 
 local RELOAD = Action(1, true)

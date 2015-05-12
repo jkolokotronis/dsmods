@@ -165,8 +165,7 @@ inst:AddComponent("eater")
 
     
     inst:AddComponent("lootdropper")
-    inst.components.lootdropper:SetLoot({ "boneshard","boneshard"})
-     inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLE.keys1,FALLENLOOTTABLE.TABLE_KEYS1_WEIGHT,0.05)
+    inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLE.keys1,FALLENLOOTTABLE.TABLE_KEYS1_WEIGHT,0.05)
 
     inst:AddComponent("inventory")
 --    inst:AddComponent("sanity")
@@ -218,7 +217,7 @@ end
 local function spawn(Sim)
     local inst=fn(Sim)
     inst:AddTag("skeleton")
-    local anim=inst.AnimState
+    inst.components.lootdropper:SetLoot({ "boneshard","boneshard"})
 
     inst.components.inventory.dropondeath = true
     GetInventory(inst)
@@ -233,6 +232,8 @@ local function drybones(Sim)
     anim:SetBank("wilson")
     anim:SetBuild("drybones")
     anim:PlayAnimation("idle")
+    inst.components.lootdropper:SetLoot({ "boneshard","boneshard"})
+    
 
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=1
     return inst
@@ -246,6 +247,7 @@ local function skull(Sim)
     anim:SetBank("wilson")
     anim:SetBuild("fa_skull")
     anim:PlayAnimation("idle")
+    inst.components.lootdropper:SetLoot({ "boneshard","boneshard"})
 
     return inst
 end
@@ -256,6 +258,7 @@ local function firedartspawn(Sim)
     local anim=inst.AnimState
     inst.components.inventory.dropondeath = true
     GetFireDart(inst)
+    inst.components.lootdropper:SetLoot({ "boneshard","boneshard"})
     return inst
 end
 
