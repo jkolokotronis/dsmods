@@ -10,6 +10,10 @@ local hutassets_c =
 {
     Asset("ANIM", "anim/fa_elfhouse_c.zip"),   
 }
+local standassets =
+{
+    Asset("ANIM", "anim/fa_elfstand.zip"),   
+}
 local prefabs = 
 {
 }
@@ -165,9 +169,76 @@ local function fnhut_c(Sim)
     return inst
 end
 
-return Prefab( "common/objects/fa_elfhouse_a", fnhut_a, hutassets_a),
-Prefab( "common/objects/fa_elfhouse_b", fnhut_b, hutassets_b),
-Prefab( "common/objects/fa_elfhouse_c", fnhut_c, hutassets_c)
+
+local function fnstand(techtree)
+    local inst=fn()
+    local light = inst.entity:AddLight()
+
+    light:SetFalloff(2)
+    light:SetIntensity(.5)
+    light:SetRadius(3)
+    light:Enable(true)
+    light:SetColour(180/255, 35/255, 50/255)
+    inst.Transform:SetScale(1.7,1.7, 1.7)
+     MakeObstaclePhysics(inst, 2)
+    inst.AnimState:SetBank("fa_elfstand")
+    inst.AnimState:SetBuild("fa_elfstand")
+    inst.AnimState:PlayAnimation("idle",true)
+
+    inst:AddTag("prototyper")
+    inst:AddComponent("prototyper")
+
+    inst.components.prototyper.onturnon =function(prot)
+        prot.Light:Enable(true)
+        light:SetIntensity(.8)
+        light:SetRadius(4.5)
+    end
+
+    inst.components.prototyper.onturnoff = function(prot)
+        light:SetIntensity(.5)
+        light:SetRadius(3)
+        GetPlayer().components.builder.accessible_tech_trees[techtree] = 0
+        GetPlayer():PushEvent("techtreechange", {level = GetPlayer().components.builder.accessible_tech_trees})
+    end
+
+    inst.OnRemoveEntity = function(inst)
+        GetPlayer().components.builder.accessible_tech_trees[techtree] = 0
+        GetPlayer():PushEvent("techtreechange", {level = GetPlayer().components.builder.accessible_tech_trees})
+    end
+
+    inst.components.prototyper.trees = TUNING.PROTOTYPER_TREES[techtree]
+    inst.components.prototyper.onactivate = function() end
+
+    return inst
+end
+
+local function fa_elf_merchant_1()
+    local inst=fnstand("FA_ELFROBERECIPESTAND")
+    inst.AnimState:PlayAnimation("full",true)
+    --[[
+    inst.AnimState:OverrideSymbol("swap_item_1", "cook_pot_food", "baconeggs")
+    inst.AnimState:OverrideSymbol("swap_item_2", "cook_pot_food", "meatballs")
+    inst.AnimState:OverrideSymbol("swap_item_3", "cook_pot_food", "bonestew")
+    inst.AnimState:OverrideSymbol("swap_item_4", "cook_pot_food", "kabobs")
+    inst.AnimState:OverrideSymbol("swap_item_5", "cook_pot_food", "icecream")
+]]
+    return inst
+end
+local function fa_elf_merchant_2()
+    local inst=fnstand("FA_ELFSPELLSTAND")
+    inst.AnimState:PlayAnimation("full",true)
+    return inst
+end
+local function fa_elf_merchant_3()
+    local inst=fnstand("FA_ELFWEAPONRECIPESTAND")
+    inst.AnimState:PlayAnimation("full",true)
+    return inst
+end
 
 
-
+return Prefab( "common/objects/fa_elfhut_fighter", fnhut_a, hutassets_a),
+Prefab( "common/objects/fa_elfhut_ranger", fnhut_b, hutassets_b),
+Prefab( "common/objects/fa_elfhut_mage", fnhut_c, hutassets_c),
+Prefab( "common/objects/fa_elf_merchant_1", fa_elf_merchant_1, standassets),
+Prefab( "common/objects/fa_elf_merchant_2", fa_elf_merchant_2, standassets),
+Prefab( "common/objects/fa_elf_merchant_3", fa_elf_merchant_3, standassets)

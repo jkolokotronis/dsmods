@@ -1,0 +1,14 @@
+1. using the fountain cures the player of all diseases, poison etc and heals sanity/hunger/ for 30 each, heals hp 25.
+
+2. The fountain can be used twice before going into idle, "good" is the first use, "bad" is the second use. 
+
+3.after using twice the fountain will go idle for 5 days. 
+
+4. unbreakable. 
+
+5. spawns 1 anywhere in the main map, spawns a 2nd inside elven forest anywhere. 
+
+6. the fountain has a halo of light above it.
+
+7. after using the fountain for the 2nd time before it goes to idle, it relocates to a random location, not too far away, in order to prevent
+players from camping it. 

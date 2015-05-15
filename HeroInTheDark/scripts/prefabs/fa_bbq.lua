@@ -121,9 +121,15 @@ end
 					    loot.components.perishable:SetPercent(1) --always full perishable
 					end
 					harvester.components.inventory:GiveItem(loot, nil, Vector3(TheSim:GetScreenPos(self.inst.Transform:GetWorldPosition())))
+					harvester.components.inventory:GiveItem(loot, nil, Vector3(TheSim:GetScreenPos(self.inst.Transform:GetWorldPosition())))
 				end
+
+		if self.onharvest then
+			self.onharvest(self.inst)
+		end
+		return true
 	end
-	return old_harvest(self,harvester)
+
 end
 
 

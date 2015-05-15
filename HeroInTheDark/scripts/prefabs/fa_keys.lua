@@ -2,7 +2,10 @@ local assets=
 {
     Asset("ANIM", "anim/fa_keys.zip"),
 }
-
+local lockpick_assets=
+{
+    Asset("ANIM", "anim/fa_lockpick.zip"),
+}
 local function fn(type,keylevel)
 		local inst = CreateEntity()
 		inst.entity:AddTransform()
@@ -51,9 +54,35 @@ local function fnswift()
 	return fn("swift",4)
 end
 
+local function lockpickfn()
+		local inst = CreateEntity()
+		inst.entity:AddTransform()
+		inst.entity:AddAnimState()
+		MakeInventoryPhysics(inst)
+		
+		inst.AnimState:SetBank("fa_lockpick")
+		inst.AnimState:SetBuild("fa_lockpick")
+		inst.AnimState:PlayAnimation("idle")
+	    local minimap = inst.entity:AddMiniMapEntity()
+    	minimap:SetIcon( "fa_lockpick.tex" )
+
+    inst:AddComponent("stackable")
+	inst.components.stackable.maxsize = 99
+
+		inst:AddComponent("inspectable")
+	    inst:AddComponent("inventoryitem")
+    	inst.components.inventoryitem.imagename="fa_lockpick"
+    	inst.components.inventoryitem.atlasname="images/inventoryimages/fa_inventoryimages.xml"
+
+    inst:AddComponent("fa_lockpick")
+
+    return inst
+
+end
 
 return Prefab( "common/inventory/fa_key_foli", fnfoli, assets),
 Prefab( "common/inventory/fa_key_jewel", fnjewel, assets),
 Prefab( "common/inventory/fa_key_skeleton", fnskeleton, assets),
 Prefab( "common/inventory/fa_key_generic", fngeneric, assets),
-Prefab( "common/inventory/fa_key_swift", fnswift, assets)
+Prefab( "common/inventory/fa_key_swift", fnswift, assets),
+Prefab( "common/inventory/fa_lockpick", lockpickfn, lockpick_assets)

@@ -4,7 +4,7 @@ require "constants"
 
 
 
-RECIPETABS["FA_DWARFTRADER"] = {str = "FA_DWARFTRADER", sort=999, icon = "fa_dorf.tex", icon_atlas ="minimap/fa_minimap.xml"}
+RECIPETABS["FA_DWARFTRADER"] = {str = "FA_DWARFTRADER", sort=999, icon = "fa_shopicon.tex", icon_atlas ="images/inventoryimages/fa_inventoryimages.xml"}
 STRINGS.TABS.FA_DWARFTRADER = "Trader"
 
 --wicker is already fixing the hardcoded crap - I see no reason to reinvent the wheel
@@ -75,6 +75,13 @@ AddTech("FA_DORFSMELTRECIPESTAND")
 AddPrototyper("FA_DORFSMELTRECIPESTAND","FA_DORFSMELTRECIPESTAND",2)
 AddTech("FA_DORFOTHERRECIPESTAND")
 AddPrototyper("FA_DORFOTHERRECIPESTAND","FA_DORFOTHERRECIPESTAND",2)
+
+AddTech("FA_ELFROBERECIPESTAND")
+AddPrototyper("FA_ELFROBERECIPESTAND","FA_ELFROBERECIPESTAND",2)
+AddTech("FA_ELFSPELLSTAND")
+AddPrototyper("FA_ELFSPELLSTAND","FA_ELFSPELLSTAND",2)
+AddTech("FA_ELFWEAPONRECIPESTAND")
+AddPrototyper("FA_ELFWEAPONRECIPESTAND","FA_ELFWEAPONRECIPESTAND",2)
 
 local r=Recipe("fa_tinyscrollcase", {Ingredient("fa_goblinskin", 4,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("pigskin", 4),Ingredient("twigs", 10)}, RECIPETABS.SURVIVAL,  TECH.MAGIC_TWO)    
 r.image="fa_scroll_case.tex"
@@ -220,6 +227,30 @@ r.image="blueprint.tex"
 local r=Recipe("fa_steeldagger_recipe", {Ingredient("fa_diamondpebble", 6,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
 r.image="blueprint.tex"
 
+
+local r=Recipe("fa_silversword_recipe", {Ingredient("fa_diamondpebble", 7,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_silveraxe_recipe", {Ingredient("fa_diamondpebble", 7,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_silverdagger_recipe", {Ingredient("fa_diamondpebble", 7,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_flamingsword_recipe", {Ingredient("fa_diamondpebble", 25,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_fireaxe_recipe", {Ingredient("fa_diamondpebble", 25,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_frostsword_recipe", {Ingredient("fa_diamondpebble", 25,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_iceaxe_recipe", {Ingredient("fa_diamondpebble", 25,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_vorpalaxe_recipe", {Ingredient("fa_diamondpebble", 25,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_dagger_recipe", {Ingredient("fa_diamondpebble", 25,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_lightningsword_recipe", {Ingredient("fa_diamondpebble", 25,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_venomdagger1_recipe", {Ingredient("fa_diamondpebble", 25,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
+r.image="blueprint.tex"
+
 local r=Recipe("fa_copperarmor_recipe", {Ingredient("goldnugget", 20)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
 r.image="blueprint.tex"
 local r=Recipe("fa_ironarmor_recipe", {Ingredient("fa_diamondpebble", 4,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
@@ -228,13 +259,40 @@ local r=Recipe("fa_steelarmor_recipe", {Ingredient("fa_diamondpebble", 8,"images
 r.image="blueprint.tex"
 local r=Recipe("fa_heavyleatherarmor_recipe", {Ingredient("fa_diamondpebble", 5,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
 r.image="blueprint.tex"
+local r=Recipe("fa_armorfrost_recipe", {Ingredient("fa_diamondpebble", 25,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_armorfire_recipe", {Ingredient("fa_diamondpebble", 25,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_silverarmor_recipe", {Ingredient("fa_diamondpebble", 8,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_goldarmor_recipe", {Ingredient("fa_diamondpebble", 8,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
+r.image="blueprint.tex"
 local r=Recipe("fa_hat_copper_recipe", {Ingredient("goldnugget", 20)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
 r.image="blueprint.tex"
 local r=Recipe("fa_hat_iron_recipe", {Ingredient("fa_diamondpebble", 3,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
 r.image="blueprint.tex"
 local r=Recipe("fa_hat_steel_recipe", {Ingredient("fa_diamondpebble", 6,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
 r.image="blueprint.tex"
+local r=Recipe("fa_hat_silver_recipe", {Ingredient("fa_diamondpebble", 8,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_hat_gold_recipe", {Ingredient("fa_diamondpebble", 8,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
+r.image="blueprint.tex"
 local r=Recipe("fa_hat_heavyleather_recipe", {Ingredient("fa_diamondpebble", 3,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
+r.image="blueprint.tex"
+
+local r=Recipe("fa_coppershield_recipe", {Ingredient("goldnugget", 20)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_ironshield_recipe", {Ingredient("fa_diamondpebble", 3,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_goldshield_recipe", {Ingredient("fa_diamondpebble", 4,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_silvershield_recipe", {Ingredient("fa_diamondpebble", 4,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_steelshield_recipe", {Ingredient("fa_diamondpebble", 6,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_boneshield_recipe", {Ingredient("fa_diamondpebble", 3,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_reflectshield_recipe", {Ingredient("fa_diamondpebble", 10,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFARMORRECIPES, nil, nil, true)
 r.image="blueprint.tex"
 
 local r=Recipe("fa_copperbar_recipe", {Ingredient("goldnugget", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFSMELTRECIPESTAND, nil, nil, true)
@@ -262,3 +320,146 @@ local r=Recipe("fa_bottle_g_recipe", {Ingredient("goldnugget", 5)}, RECIPETABS.F
 r.image="blueprint.tex"
 local r=Recipe("fa_bottle_r_recipe", {Ingredient("goldnugget", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
 r.image="blueprint.tex"
+
+local r=Recipe("fa_bottle_water_recipe", {Ingredient("goldnugget", 5)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_bottle_oil_recipe", {Ingredient("fa_diamondpebble", 5,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_bottle_mineralwater_recipe",  {Ingredient("fa_diamondpebble", 3,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_bottle_frozenessence_recipe", {Ingredient("fa_diamondpebble", 10,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_bottle_lifeessence_recipe",  {Ingredient("fa_diamondpebble", 10,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_bottle_lightningessence_recipe",  {Ingredient("fa_diamondpebble", 10,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_bottle_poisonessence_recipe",  {Ingredient("fa_diamondpebble", 10,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_bottle_curepoison_recipe",  {Ingredient("fa_diamondpebble", 5,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_wineyeast_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_distillingyeast_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_brewingyeast_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_mash_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_bottle_wort_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+
+
+local r=Recipe("fa_barrel_molasses_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_barrel_darkrum_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_barrel_bourbon_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_barrel_goldrum_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_barrel_flavoredrum_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_barrel_hotrum_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_lightalemug_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_ronsalemug_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_barrel_lightale_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_barrel_ronsale_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_barrel_drakeale_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_barrel_oriansale_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_barrel_dorfale_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_dwarfalemug_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_barrel_deathbrew_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_pomegranate_wine_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_durian_wine_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_dragon_wine_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_melon_wine_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_red_wine_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_goodberry_wine_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_glowing_wine_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_cactus_wine_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_mead_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_barrel_lightrum_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_barrel_clearbourbon_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_barrel_vodka_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_barrel_gin_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_barrel_tequila_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_barrel_whiskey_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_barrel_baijui_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_barrel_soju_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+
+local r=Recipe("fa_abjurationrobe_recipe",{Ingredient("fa_pomegranate_wine", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_lightrum", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_goldrum", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_darkrum", 1,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_ELFROBERECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_conjurationrobe_recipe",{Ingredient("fa_durian_wine", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_clearbourbon", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_flavoredrum", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_goldrum", 1,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_ELFROBERECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_divinationrobe_recipe",{Ingredient("fa_dragon_wine", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_vodka", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_hotrum", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_pomegranate_wine", 1,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_ELFROBERECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_enchantmentrobe_recipe",{Ingredient("fa_melon_wine", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_gin", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_lightale", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_durian_wine", 1,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_ELFROBERECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_evocationrobe_recipe",{Ingredient("fa_red_wine", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_tequila", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_ronsale", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_dragon_wine", 1,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_ELFROBERECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_illusionrobe_recipe",{Ingredient("fa_mead", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_whiskey", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_oriansale", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_cactus_wine", 1,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_ELFROBERECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_necromancyrobe_recipe",{Ingredient("fa_glowing_wine", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_baijui", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_deathbrew", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_deathbrew", 1,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_ELFROBERECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_transmutationrobe_recipe",{Ingredient("fa_cactus_wine", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_soju", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_dorfale", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_mead", 1,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_ELFROBERECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+
+local r=Recipe("fa_hat_abjuration_recipe",{Ingredient("fa_pomegranate_wine", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_lightrum", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_goldrum", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_darkrum", 1,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_ELFROBERECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_hat_conjuration_recipe",{Ingredient("fa_durian_wine", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_clearbourbon", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_flavoredrum", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_goldrum", 1,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_ELFROBERECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_hat_divination_recipe",{Ingredient("fa_dragon_wine", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_vodka", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_hotrum", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_pomegranate_wine", 1,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_ELFROBERECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_hat_enchantment_recipe",{Ingredient("fa_melon_wine", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_gin", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_lightale", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_durian_wine", 1,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_ELFROBERECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_hat_evocation_recipe",{Ingredient("fa_red_wine", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_tequila", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_ronsale", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_dragon_wine", 1,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_ELFROBERECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_hat_illusion_recipe",{Ingredient("fa_mead", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_whiskey", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_oriansale", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_cactus_wine", 1,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_ELFROBERECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_hat_necromancy_recipe",{Ingredient("fa_glowing_wine", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_baijui", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_deathbrew", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_deathbrew", 1,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_ELFROBERECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_hat_transmutation_recipe",{Ingredient("fa_cactus_wine", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_soju", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_barrel_dorfale", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_mead", 1,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_ELFROBERECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+
+local r=Recipe("fa_copperstaff_recipe",{Ingredient("fa_pomegranate_wine", 1,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_ELFWEAPONRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_silverstaff_recipe",{Ingredient("fa_durian_wine", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_dragon_wine", 1,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_ELFWEAPONRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_steelstaff_recipe",{Ingredient("fa_red_wine", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_durian_wine", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_dragon_wine", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_pomegranate_wine", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_melon_wine", 1,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_ELFWEAPONRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_ironstaff_recipe",{Ingredient("fa_melon_wine", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_durian_wine", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_pomegranate_wine", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_red_wine", 1,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_ELFWEAPONRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_goldstaff_recipe",{Ingredient("fa_dragon_wine", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_melon_wine", 1,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_ELFWEAPONRECIPESTAND, nil, nil, true)
+r.image="blueprint.tex"
+
+--AddTech("FA_ELFSPELLSTAND")
+--AddPrototyper("FA_ELFSPELLSTAND","FA_ELFSPELLSTAND",2)
+--AddTech("FA_ELFWEAPONRECIPESTAND")
+--AddPrototyper("FA_ELFWEAPONRECIPESTAND","FA_ELFWEAPONRECIPESTAND",2)
