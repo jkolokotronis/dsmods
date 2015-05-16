@@ -7,7 +7,9 @@ a. spooky forest (like base game) lots of poison spiders, contains many not so n
 b. Dedicious forest (like base game and can contain another pig king) 30% chance to spawn a unicorn during fall, low twigs, low berry bush
 
 c. elven forest (looks like normal forest grass), contains the elf town zone, contains all the new plants, and a small mix of the normal trees, (maybe 75% vs 25%)
-30% chance to spawn a unicorn during fall during summerlow twigs, low berry bush
+30% chance to spawn a unicorn during fall during summerlow twigs, low berry bush, the random stuff in the biome contain all elf hut types
+around 4 to 6 huts surrounded by either a group of 4 fast farms or 4 grape vines, the elf treeguards are the largest of the treeguards and have double life of the largest ones (other stats the same, but 
+the tree of life will summon more to replace the ones that die off.
 
 d. slightly normal forest (contains a mix of 25% new plants and 75% normal trees, this is the zone in also.low twigs, low berry bush
 30% chance to spawn a unicorn during winter
@@ -19,7 +21,7 @@ f. small swamp biome (no orcs) goblin huts can spawn but no cave entrances), spa
 
 g. season length is 4 days for each season, giants can spawn. 
 
-Dryad tree can spawn in any forest during world gen. 
+Dryad tree can spawn in any forest during world gen. (there should be at least several biome, guess will have to tweek this)
  
  "Dryad's tree" linked to that dryad,
  the dryad will be immune to dmg until that tree is cut down. 
@@ -27,7 +29,11 @@ The dryad will not move far from the tree.
  
 Dryad tree requires 20 chops which enrage her.
 
-Satyrs have small chance to spawn from stumps.
+Satyrs have small chance to spawn from stumps.(somewhere on the sheets)
+
+1 fa_fountain can spawn in any of the biomes, yes in the overworld too there will be another, gods have multiple places of worship etc
+
+Tree of life has a fruit that will grow during a rand time/season, short duration, stats will come later
 
 
 

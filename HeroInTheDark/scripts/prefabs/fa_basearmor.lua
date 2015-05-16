@@ -238,7 +238,7 @@ local function fa_abjurationrobe()
     inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.ABJURATION]=ROBE_CL_BONUS
 
     inst.components.equippable:SetOnEquip(function(inst,owner)
-        owner.AnimState:OverrideSymbol("swap_body", name, "swap_body")
+        owner.AnimState:OverrideSymbol("swap_body", "fa_abjurationrobe", "swap_body")
         inst:ListenForEvent("attacked", aburationproc,owner)
     end)
     inst.components.equippable:SetOnUnequip( function(inst,owner)
@@ -288,7 +288,7 @@ local function fa_conjurationrobe()
     inst.components.armor.fa_resistances={}
     inst.components.armor.fa_resistances[FA_DAMAGETYPE.POISON]=0.2
     inst.components.equippable:SetOnEquip(function(inst,owner)
-        owner.AnimState:OverrideSymbol("swap_body", name, "swap_body")
+        owner.AnimState:OverrideSymbol("swap_body", "fa_conjurationrobe", "swap_body")
         inst:ListenForEvent("attacked", conjurationproc,owner)
     end)
     inst.components.equippable:SetOnUnequip( function(inst,owner)
@@ -316,7 +316,7 @@ local function fa_divinationrobe()
             inst.components.dapperness.dapperness = DIV_ROBE_DAPPERNESS
         end
     inst.components.equippable:SetOnEquip(function(inst,owner)
-        owner.AnimState:OverrideSymbol("swap_body", name, "swap_body")
+        owner.AnimState:OverrideSymbol("swap_body", "fa_divinationrobe", "swap_body")
         inst:ListenForEvent("attacked", divinationproc,owner)
     end)
     inst.components.equippable:SetOnUnequip( function(inst,owner)
@@ -362,7 +362,7 @@ local function fa_enchantmentrobe()
     inst.components.equippable.fa_casterlevel={}
     inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.ENCHANTMENT]=ROBE_CL_BONUS
     inst.components.equippable:SetOnEquip(function(inst,owner)
-        owner.AnimState:OverrideSymbol("swap_body", name, "swap_body")
+        owner.AnimState:OverrideSymbol("swap_body", "fa_enchantmentrobe", "swap_body")
         inst:ListenForEvent("attacked", enchantmentproc,owner)
     end)
     inst.components.equippable:SetOnUnequip( function(inst,owner)
@@ -383,14 +383,14 @@ local function divinationproc(owner,data)
             data.attacker.components.freezable:AddColdness(4)
             data.attacker.components.freezable:SpawnShatterFX()
         end
-        data.attacker.components.combat:GetAttacked(attacker, 50, nil,nil,FA_DAMAGETYPE.COLD)  
+        data.attacker.components.combat:GetAttacked(owner, 50, nil,nil,FA_DAMAGETYPE.COLD)  
     end
     elseif(math.random()<0.1)then
         owner.SoundEmitter:PlaySound("dontstarve/wilson/hit_armour")
         if(data and data.attacker and  data.attacker.components.burnable and not data.attacker.components.fueled )then
             data.attacker.components.burnable:Ignite()    
         end
-        data.attacker.components.combat:GetAttacked(attacker, 50, nil,nil,FA_DAMAGETYPE.FIRE)    
+        data.attacker.components.combat:GetAttacked(owner, 50, nil,nil,FA_DAMAGETYPE.FIRE)    
     end
 end
 
@@ -403,7 +403,7 @@ local function fa_evocationrobe()
     inst.components.armor.fa_resistances={}
     inst.components.armor.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=0.3
     inst.components.equippable:SetOnEquip(function(inst,owner)
-        owner.AnimState:OverrideSymbol("swap_body", name, "swap_body")
+        owner.AnimState:OverrideSymbol("swap_body", "fa_evocationrobe", "swap_body")
         inst:ListenForEvent("attacked", divinationproc,owner)
     end)
     inst.components.equippable:SetOnUnequip( function(inst,owner)
@@ -443,7 +443,7 @@ local function fa_illusionrobe()
     inst.components.equippable.fa_casterlevel={}
     inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.ILLUSION]=ROBE_CL_BONUS
     inst.components.equippable:SetOnEquip(function(inst,owner)
-        owner.AnimState:OverrideSymbol("swap_body", name, "swap_body")
+        owner.AnimState:OverrideSymbol("swap_body", "fa_illusionrobe", "swap_body")
         inst:ListenForEvent("attacked", illusionproc,owner)
     end)
     inst.components.equippable:SetOnUnequip( function(inst,owner)
@@ -494,7 +494,7 @@ local function fa_necromancyrobe()
     inst.components.armor.fa_resistances={}
     inst.components.armor.fa_resistances[FA_DAMAGETYPE.DEATH]=0.2
     inst.components.equippable:SetOnEquip(function(inst,owner)
-        owner.AnimState:OverrideSymbol("swap_body", name, "swap_body")
+        owner.AnimState:OverrideSymbol("swap_body", "fa_necromancyrobe", "swap_body")
         inst:ListenForEvent("attacked", necroproc,owner)
     end)
     inst.components.equippable:SetOnUnequip( function(inst,owner)
@@ -523,7 +523,7 @@ local function fa_transmutationrobe()
     inst.components.equippable.fa_casterlevel={}
     inst.components.equippable.fa_casterlevel[FA_SPELL_SCHOOLS.TRANSMUTATION]=ROBE_CL_BONUS
     inst.components.equippable:SetOnEquip(function(inst,owner)
-        owner.AnimState:OverrideSymbol("swap_body", name, "swap_body")
+        owner.AnimState:OverrideSymbol("swap_body", "fa_transmutationrobe", "swap_body")
         inst:ListenForEvent("attacked", transmutationproc,owner)
     end)
     inst.components.equippable:SetOnUnequip( function(inst,owner)
