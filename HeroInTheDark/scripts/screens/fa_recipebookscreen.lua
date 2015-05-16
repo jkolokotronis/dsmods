@@ -10,6 +10,8 @@ local NumericSpinner = require "widgets/numericspinner"
 local IngredientUI = require "widgets/ingredientui"
 local matchers=require "fa_smelter_matcher"
 local FA_SpellPopup = require "widgets/fa_spellpopup"
+local FA_HoverHax = require "widgets/fa_hoverhax"
+--local HoverText = require "widgets/hoverer"
 	local HSEP=16
 	local YSEP=15
 	local HW=64
@@ -20,11 +22,18 @@ local FA_SpellPopup = require "widgets/fa_spellpopup"
 FARecipeBookScreen = Class(Screen, function(self,caster,category,page)
 	Screen._ctor(self, "FARecipeBookScreen")
 	self.caster=caster or GetPlayer()
+
+
 	self:DoInit()
 
     self.category=category or "KegMatcher" 
     self.page=page or 1
+
     self:SetCategory(self.category,self.page)
+	self.hover = self:AddChild(FA_HoverHax(self))
+	self.hover:SetScaleMode(SCALEMODE_PROPORTIONAL)
+	self.hover.isFE = true
+
 end)
 
 
@@ -157,7 +166,7 @@ function FARecipeBookScreen:SetCategory(category,page,tex)
 			button:SetPosition(0,-i*YSEP-i*HH,0)
 			local text= self.recipe_list:AddChild(Text(BODYTEXTFONT, 28))
     		text:SetHAlign(ANCHOR_LEFT)
-    		text:SetPosition(100,-i*YSEP-i*HH,0)
+    		text:SetPosition(170,-i*YSEP-i*HH,0)
 		    text:EnableWordWrap(true)
     		text:SetRegionSize(250, 80)
 --    		print("r:",r,"string",STRINGS.NAMES[string.upper(r)])
@@ -196,10 +205,13 @@ function FARecipeBookScreen:OnSelectRecipe(r)
             ing = ingred:AddChild(Text(SMALLNUMBERFONT, 28))
             ing:SetString(matchers.FN_DESCRIPTION[v.ingred])
 		else
-			print("ingred",v.ingred)
+--			print("ingred",v.ingred)
 			-- ui data does not belong to matcher level... screw oop principles
 			local atlas=v.atlas or "images/inventoryimages/fa_inventoryimages.xml"
 		    ing = ingred:AddChild(Image(atlas, v.ingred..".tex"))
+		    local tooltip=STRINGS.NAMES[string.upper(v.ingred)]
+		    print('ingred',tooltip)
+		    ing:SetTooltip(tooltip)
 		end
 		local count=ingred:AddChild(Text(SMALLNUMBERFONT,28))
 		count:SetString(v.count.." X ")
@@ -213,6 +225,7 @@ end
 
 
 function FARecipeBookScreen:OnUpdate( dt )
+--	self.hover:OnUpdate()
 	return true
 end
 

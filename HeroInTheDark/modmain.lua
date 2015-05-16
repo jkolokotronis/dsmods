@@ -493,10 +493,10 @@ local function resurrectableinit(inst)
 
     local old_DoResurrect=inst.DoResurrect
     function inst:DoResurrect()
-        self.inst:PushEvent("resurrect")
         if self.inst.components.inventory then
             local item = self.inst.components.inventory:GetEquippedItem(GLOBAL.EQUIPSLOTS.NECK)
             if item and item.prefab == "amulet" then
+                self.inst:PushEvent("resurrect")
                 self.inst.sg:GoToState("amulet_rebirth")
                 return true
             end
@@ -509,8 +509,8 @@ end
 
 AddComponentPostInit("resurrectable", resurrectableinit)
 
-
-local function newOnExit(inst)
+local SGWilson=require "stategraphs/SGwilson"
+SGWilson.states["amulet_rebirth"].onexit=function(inst)
 
     inst.components.hunger:SetPercent(2/3)
     inst.components.health:Respawn(TUNING.RESURRECT_HEALTH)
@@ -535,10 +535,6 @@ local function newOnExit(inst)
 
 end
 
-local function SGWilsonPostInit(sg)
-    sg.states["amulet_rebirth"].onexit = newOnExit
-end
-AddStategraphPostInit("wilson", SGWilsonPostInit)
 
 if(GetModConfigData("doubleinventoryspace")==true)then
     AddComponentPostInit("inventory", function(cmp,inst)
