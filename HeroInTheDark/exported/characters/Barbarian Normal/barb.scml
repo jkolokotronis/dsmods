@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
     <folder id="0" name="face">
-        <file id="0" name="face/face-0.png" width="160" height="130" pivot_x="0.494528" pivot_y="0.562892"/>
-        <file id="1" name="face/face-1.png" width="160" height="130" pivot_x="0.494528" pivot_y="0.562892"/>
-        <file id="2" name="face/face-2.png" width="160" height="130" pivot_x="0.494528" pivot_y="0.562892"/>
-        <file id="3" name="face/face-3.png" width="160" height="130" pivot_x="0.494528" pivot_y="0.562892"/>
-        <file id="4" name="face/face-4.png" width="603" height="182" pivot_x="0.967172" pivot_y="0.472513"/>
-        <file id="5" name="face/face-5.png" width="603" height="182" pivot_x="0.967172" pivot_y="0.452097"/>
-        <file id="6" name="face/face-6.png" width="603" height="182" pivot_x="0.967562" pivot_y="0.477359"/>
-        <file id="7" name="face/face-7.png" width="603" height="182" pivot_x="0.967172" pivot_y="0.447236"/>
-        <file id="8" name="face/face-8.png" width="160" height="130" pivot_x="0.494528" pivot_y="0.792892"/>
-        <file id="9" name="face/face-9.png" width="160" height="130" pivot_x="0.496403" pivot_y="0.809588"/>
-        <file id="10" name="face/face-10.png" width="160" height="130" pivot_x="0.497966" pivot_y="0.576657"/>
-        <file id="11" name="face/face-11.png" width="160" height="130" pivot_x="0.494528" pivot_y="0.551254"/>
-        <file id="12" name="face/face-12.png" width="160" height="130" pivot_x="0.497966" pivot_y="0.478039"/>
-        <file id="13" name="face/face-13.png" width="160" height="130" pivot_x="0.496403" pivot_y="0.454031"/>
+        <file id="0" name="face/face-0.png" width="160" height="130" pivot_x="0.494528" pivot_y="0.602892"/>
+        <file id="1" name="face/face-1.png" width="160" height="130" pivot_x="0.494528" pivot_y="0.602892"/>
+        <file id="2" name="face/face-2.png" width="160" height="130" pivot_x="0.494528" pivot_y="0.602892"/>
+        <file id="3" name="face/face-3.png" width="160" height="130" pivot_x="0.494528" pivot_y="0.602892"/>
+        <file id="4" name="face/face-4.png" width="603" height="182" pivot_x="0.967172" pivot_y="0.502513"/>
+        <file id="5" name="face/face-5.png" width="603" height="182" pivot_x="0.967172" pivot_y="0.502513"/>
+        <file id="6" name="face/face-6.png" width="603" height="182" pivot_x="0.967562" pivot_y="0.502513"/>
+        <file id="7" name="face/face-7.png" width="603" height="182" pivot_x="0.967172" pivot_y="0.502513"/>
+        <file id="8" name="face/face-8.png" width="160" height="130" pivot_x="0.494528" pivot_y="0.602892"/>
+        <file id="9" name="face/face-9.png" width="160" height="130" pivot_x="0.496403" pivot_y="0.602892"/>
+        <file id="10" name="face/face-10.png" width="160" height="130" pivot_x="0.497966" pivot_y="0.602892"/>
+        <file id="11" name="face/face-11.png" width="160" height="130" pivot_x="0.494528" pivot_y="0.602892"/>
+        <file id="12" name="face/face-12.png" width="160" height="130" pivot_x="0.497966" pivot_y="0.602892"/>
+        <file id="13" name="face/face-13.png" width="160" height="130" pivot_x="0.496403" pivot_y="0.602892"/>
     </folder>
     <folder id="1" name="headbase">
-        <file id="0" name="headbase/headbase-0.png" width="245" height="289" pivot_x="0.507976" pivot_y="0.13567"/>
-        <file id="1" name="headbase/headbase-1.png" width="240" height="293" pivot_x="0.544809" pivot_y="0.143752"/>
-        <file id="2" name="headbase/headbase-2.png" width="220" height="260" pivot_x="0.519789" pivot_y="0.136209"/>
+        <file id="0" name="headbase/headbase-0.png" width="245" height="289" pivot_x="0.507976" pivot_y="0.16567"/>
+        <file id="1" name="headbase/headbase-1.png" width="240" height="293" pivot_x="0.544809" pivot_y="0.173752"/>
+        <file id="2" name="headbase/headbase-2.png" width="220" height="260" pivot_x="0.519789" pivot_y="0.166209"/>
     </folder>
     <folder id="2" name="torso">
         <file id="0" name="torso/torso-0.png" width="96" height="124" pivot_x="0.499993" pivot_y="0.165109"/>
@@ -54,8 +54,8 @@
         <file id="8" name="leg/leg-8.png" width="40" height="68" pivot_x="0.507797" pivot_y="0.859175"/>
     </folder>
     <folder id="5" name="cheeks">
-        <file id="0" name="cheeks/cheeks-0.png" width="64" height="60" pivot_x="0.508586" pivot_y="0.449592"/>
-        <file id="1" name="cheeks/cheeks-1.png" width="64" height="60" pivot_x="0.461711" pivot_y="0.432092"/>
+        <file id="0" name="cheeks/cheeks-0.png" width="64" height="60" pivot_x="0.508586" pivot_y="0.479592"/>
+        <file id="1" name="cheeks/cheeks-1.png" width="64" height="60" pivot_x="0.461711" pivot_y="0.462092"/>
     </folder>
     <folder id="6" name="arm_upper">
         <file id="0" name="arm_upper/arm_upper-0.png" width="48" height="68" pivot_x="0.578115" pivot_y="0.794125"/>
@@ -83,9 +83,9 @@
         <file id="2" name="arm_lower/arm_lower-2.png" width="64" height="40" pivot_x="0.761711" pivot_y="0.710013"/>
     </folder>
     <folder id="9" name="headbase_hat">
-        <file id="0" name="headbase_hat/headbase_hat-0.png" width="245" height="289" pivot_x="0.507976" pivot_y="0.13567"/>
-        <file id="1" name="headbase_hat/headbase_hat-1.png" width="240" height="293" pivot_x="0.544809" pivot_y="0.143752"/>
-        <file id="2" name="headbase_hat/headbase_hat-2.png" width="220" height="260" pivot_x="0.519789" pivot_y="0.136209"/>
+        <file id="0" name="headbase_hat/headbase_hat-0.png" width="245" height="289" pivot_x="0.507976" pivot_y="0.16567"/>
+        <file id="1" name="headbase_hat/headbase_hat-1.png" width="240" height="293" pivot_x="0.544809" pivot_y="0.173752"/>
+        <file id="2" name="headbase_hat/headbase_hat-2.png" width="220" height="260" pivot_x="0.519789" pivot_y="0.166209"/>
     </folder>
     <entity id="0" name="barb">
         <animation id="0" name="BUILD_PLAYER" length="1000">

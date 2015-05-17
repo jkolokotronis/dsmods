@@ -174,7 +174,32 @@ SGWilson.states["fa_spellfailed"]=State{
             end),
         },
     }
+local function whirlwind_attack(inst)
 
+                local pos=Vector3(inst.Transform:GetWorldPosition())
+                local range=5
+                local weapon=inst.components.combat:GetWeapon()
+                --cant use ranged weapons
+                if(weapon and weapon.components.weapon:CanRangedAttack()) then weapon=nil end
+                if(weapon) then range=8 end
+                local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, range,nil,{"INLIMBO","FX","DECOR","player","companion"})
+                for k,v in pairs(ents) do
+                    if v:IsValid() and v.components.combat and not (v.components.health and v.components.health:IsDead()) 
+                        and not(v.components.follower and v.components.follower.leader and v.components.follower.leader:HasTag("player"))then
+                            inst:PushEvent("onattackother", {target = v, weapon = weapon})
+                            local damage = inst.components.combat:CalcDamage(v, weapon)
+                            v.components.combat:GetAttacked(inst, damage*5, weapon)
+                            if weapon then
+                                weapon.components.weapon:OnAttack(inst, v)
+                            end
+                            inst.components.combat.lastdoattacktime = GetTime()
+                            if weapon and weapon.components.finiteuses then
+                                weapon.components.finiteuses:Use((weapon.components.weapon.attackwear or 1)*4)
+                            end
+--                            inst.components.combat:DoAttack(v, nil, nil, nil, 5)
+                    end
+                end
+end
 
 SGWilson.states["fa_whirlwind"]=State{
         name = "fa_whirlwind",
@@ -199,24 +224,10 @@ SGWilson.states["fa_whirlwind"]=State{
         timeline=
         {
             TimeEvent(4*FRAMES, function(inst) 
-                local pos=Vector3(inst.Transform:GetWorldPosition())
-                local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 10,nil,{"INLIMBO","FX","DECOR","player","companion"})
-                for k,v in pairs(ents) do
-                    if v:IsValid() and v.components.combat and not (v.components.health and v.components.health:IsDead()) 
-                        and not(v.components.follower and v.components.follower.leader and v.components.follower.leader:HasTag("player"))then
-                            inst.components.combat:DoAttack(v, nil, nil, nil, 5)
-                    end
-                end
+                whirlwind_attack(inst)
             end),
             TimeEvent(18*FRAMES, function(inst) 
-                local pos=Vector3(inst.Transform:GetWorldPosition())
-                local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 10,nil,{"INLIMBO","FX","DECOR","player","companion"})
-                for k,v in pairs(ents) do
-                    if v:IsValid() and v.components.combat and not (v.components.health and v.components.health:IsDead()) 
-                        and not(v.components.follower and v.components.follower.leader and v.components.follower.leader:HasTag("player"))then
-                            inst.components.combat:DoAttack(v, nil, nil, nil, 5)
-                    end
-                end
+                whirlwind_attack(inst)
                 inst.sg:RemoveStateTag("abouttoattack") 
             end),
             TimeEvent(24*FRAMES, function(inst)
