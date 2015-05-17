@@ -102,11 +102,11 @@ local r=Recipe("fa_barrel_wood", {Ingredient("fa_copperbar", 4,"images/inventory
 r.image="fa_barrel_wood.tex"
 r.atlas = "images/inventoryimages/fa_inventoryimages.xml"
 
-local r=Recipe("fa_hat_plain", {Ingredient("silk", 2),Ingredient("beefalowool", 3),Ingredient("razor", 1) }, RECIPETABS.WAR,  TECH.NONE)
+local r=Recipe("fa_hat_plain", {Ingredient("silk", 6),Ingredient("beefalowool", 6),Ingredient("razor", 1) }, RECIPETABS.WAR,  TECH.NONE)
 r.atlas = "images/inventoryimages/fa_inventoryimages.xml"
 local r=Recipe("fa_hat_lightleather", {Ingredient("pigskin", 4),Ingredient("rope", 1),Ingredient("razor", 1) }, RECIPETABS.WAR,  TECH.NONE)
 r.atlas = "images/inventoryimages/fa_inventoryimages.xml"
-local r=Recipe("fa_plainrobe", {Ingredient("silk", 4),Ingredient("beefalowool", 4),Ingredient("razor", 1) }, RECIPETABS.WAR,  TECH.NONE)
+local r=Recipe("fa_plainrobe", {Ingredient("silk", 8),Ingredient("beefalowool", 8),Ingredient("razor", 1) }, RECIPETABS.WAR,  TECH.NONE)
 r.atlas = "images/inventoryimages/fa_inventoryimages.xml"
 local r=Recipe("fa_lightleatherarmor", {Ingredient("pigskin", 6),Ingredient("rope", 1),Ingredient("razor", 1) }, RECIPETABS.WAR,  TECH.NONE)
 r.atlas = "images/inventoryimages/fa_inventoryimages.xml"

@@ -580,14 +580,6 @@ local alchemy_recipes={
 		},
 	},
 	{
-		match={product={"fa_plainrobe"},cooktime=60*3},
-		test={
-			{ingred="fa_silkroll",count=3},
-			{ingred="razor",count=1,atlas="images/inventoryimages.xml"},
-			{ingred="beefalowool",count=4,atlas="images/inventoryimages.xml"},
-		},
-	},
-	{
 		match={product={"fa_hat_abjuration"},cooktime=60*3},
 		test={
 			{ingred="fa_silkroll",count=2},
