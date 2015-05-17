@@ -227,6 +227,16 @@ r.image="blueprint.tex"
 local r=Recipe("fa_steeldagger_recipe", {Ingredient("fa_diamondpebble", 6,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
 r.image="blueprint.tex"
 
+local r=Recipe("fa_ironkama_recipe", {Ingredient("fa_diamondpebble", 3,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_silverkama_recipe", {Ingredient("fa_diamondpebble", 7,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_steelkama_recipe", {Ingredient("fa_diamondpebble", 6,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_copperkama_recipe", {Ingredient("goldnugget", 20)}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
+r.image="blueprint.tex"
+local r=Recipe("fa_goldkama_recipe", {Ingredient("fa_diamondpebble", 7,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
+r.image="blueprint.tex"
 
 local r=Recipe("fa_silversword_recipe", {Ingredient("fa_diamondpebble", 7,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFWEAPONRECIPES, nil, nil, true)
 r.image="blueprint.tex"

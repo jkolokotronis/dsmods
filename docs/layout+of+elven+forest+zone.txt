@@ -29,11 +29,11 @@ The dryad will not move far from the tree.
  
 Dryad tree requires 20 chops which enrage her.
 
-Satyrs have small chance to spawn from stumps.(somewhere on the sheets)
+Satyrs have small chance to spawn from stumps.(somewhere on the sheets, just make some code so satyrs can't spawn near other ones if possible)
 
 1 fa_fountain can spawn in any of the biomes, yes in the overworld too there will be another, gods have multiple places of worship etc
 
 Tree of life has a fruit that will grow during a rand time/season, short duration, stats will come later
 
-
+Giving an elf a ripe fruit from that zone will make them friendly.
 
