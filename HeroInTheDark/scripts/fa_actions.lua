@@ -193,9 +193,6 @@ local function whirlwind_attack(inst)
                                 weapon.components.weapon:OnAttack(inst, v)
                             end
                             inst.components.combat.lastdoattacktime = GetTime()
-                            if weapon and weapon.components.finiteuses then
-                                weapon.components.finiteuses:Use((weapon.components.weapon.attackwear or 1)*4)
-                            end
 --                            inst.components.combat:DoAttack(v, nil, nil, nil, 5)
                     end
                 end
