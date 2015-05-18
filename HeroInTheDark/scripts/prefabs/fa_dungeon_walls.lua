@@ -326,7 +326,7 @@ local function ondeploywall(inst, pt, deployer,data)
 		return inst
 	end
 
-local lavawall_data={name = "lava", tags={"stone"}, heater=20, loot = "fa_lavapebble", maxloots = 2, maxhealth=LAVAWALL_HEALTH, buildsound="dontstarve/common/place_structure_stone", destroysound="dontstarve/common/destroy_stone"}
+local lavawall_data={name = "lava", tags={"stone"}, heater=50, loot = "fa_lavapebble", maxloots = 2, maxhealth=LAVAWALL_HEALTH, buildsound="dontstarve/common/place_structure_stone", destroysound="dontstarve/common/destroy_stone"}
 
 local function lavafn()
 	local inst=normfn(lavawall_data)

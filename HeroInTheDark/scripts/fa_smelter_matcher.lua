@@ -455,6 +455,13 @@ local alchemy_recipes={
 		},
 	},
 	{
+		match={product={"fa_bottle_curepoison"},cooktime=120},
+		test={
+			{ingred="poisonspidergland",count=4},
+			{ingred="fa_bottle_empty",count=1},
+		},
+	},
+	{
 		match={product={"fa_key_generic"},cooktime=30},
 		test={
 			{ingred="nightmarefuel",count=1,atlas="images/inventoryimages.xml"},
