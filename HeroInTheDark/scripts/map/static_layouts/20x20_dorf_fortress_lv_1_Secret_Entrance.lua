@@ -124,6 +124,19 @@ return {
       opacity = 1,
       properties = {},
       objects = {
+      
+        {
+          name = "",
+          type = "spawnpoint",
+          shape = "rectangle",
+          x = 678,
+          y = 584,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+
         {
           name = "",
           type = "fa_dorf_wall_1",
@@ -467,19 +480,6 @@ return {
           visible = true,
           properties = {}
         },
-
-        {
-          name = "",
-          type = "spawnpoint",
-          shape = "rectangle",
-          x = 678,
-          y = 584,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-
         {
           name = "",
           type = "fa_dorf_gold_pillar",
@@ -615,8 +615,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.sourcetag"] = "stairs_down_entrance",
-            ["data.targettag"] = "stairs_up_1"
+            ["data.sourcetag"] = "dorf_stairs_pre",
+            ["data.targettag"] = "dorf_stairs_0"
           }
         },
         {
@@ -860,6 +860,21 @@ return {
           height = 0,
           visible = true,
           properties = {}
+        },
+        {
+          name = "",
+          type = "fa_teleporter_dorf",
+          shape = "rectangle",
+          x = 222,
+          y = 671,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.hidden"] = "true",
+            ["data.sourcetag"] = "dorf_secret_entrance",
+            ["data.targettag"] = "dorf_secret_hell"
+          }
         }
       }
     }

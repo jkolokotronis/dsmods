@@ -205,7 +205,7 @@ end
 local function onsave(inst, data)
 	data.cavenum = inst.cavenum
 	data.fa_cavename=inst.fa_cavename
---	data.open = inst.open
+	data.open = inst.open
 end           
 
 local function onload(inst, data)

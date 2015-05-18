@@ -28,8 +28,8 @@ STRINGS.CHARACTER_DESCRIPTIONS.darkknight = "1.  Hates good things.\n2.  Is not 
 STRINGS.CHARACTER_QUOTES.darkknight = "\"When you gaze long into an abyss, the abyss also gazes into you.\""
 STRINGS.CHARACTERS.DARKKNIGHT = {}
 
-STRINGS.CHARACTER_TITLES.monk = "monk"
-STRINGS.CHARACTER_NAMES.monk = "monk"
+STRINGS.CHARACTER_TITLES.monk = "The Monk"
+STRINGS.CHARACTER_NAMES.monk = "The Monk"
 STRINGS.CHARACTER_DESCRIPTIONS.monk = "* An example of how to create a mod character."
 STRINGS.CHARACTER_QUOTES.monk = "\"I am a blank slate.\""
 STRINGS.CHARACTERS.MONK = {}

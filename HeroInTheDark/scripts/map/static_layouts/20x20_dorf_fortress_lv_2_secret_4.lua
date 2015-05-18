@@ -134,20 +134,9 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.sourcetag"] = "dorf_secret_6",
-            ["data.targettag"] = "dorf_secret_5"
+            ["data.sourcetag"] = "dorf_stairs_6",
+            ["data.targettag"] = "dorf_stairs_5"
           }
-        },
-        {
-          name = "",
-          type = "spawnpoint",
-          shape = "rectangle",
-          x = 1217,
-          y = 1186,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
         },
         {
           name = "",
@@ -1395,8 +1384,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.sourcetag"] = "dorf_secret_7",
-            ["data.targettag"] = "dorf_secret_8"
+            ["data.sourcetag"] = "dorf_stairs_7",
+            ["data.targettag"] = "dorf_stairs_8"
           }
         },
         {

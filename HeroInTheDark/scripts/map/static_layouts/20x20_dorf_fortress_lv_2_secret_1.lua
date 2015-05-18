@@ -7229,31 +7229,23 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.sourcetag"] = "dorf_secret_1",
-            ["data.targettag"] = "dorf_secret_2"
+            ["data.sourcetag"] = "dorf_stairs_1",
+            ["data.targettag"] = "dorf_stairs_2"
           }
         },
         {
           name = "",
-          type = "fa_dungeon_exit",
+          type = "fa_stairs_up",
           shape = "rectangle",
           x = 1054,
           y = 761,
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "spawnpoint",
-          shape = "rectangle",
-          x = 1067,
-          y = 824,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
+          properties = {
+            ["data.sourcetag"] = "dorf_stairs_0",
+            ["data.targettag"] = "dorf_stairs_pre"
+          }
         },
         {
           name = "",

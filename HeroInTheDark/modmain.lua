@@ -197,8 +197,6 @@ PrefabFiles = {
     "wands",
     "fa_dryad",
     "fa_dryadtree",
-    "satyr",
-    "unicorn",
     "fa_dorfs",
     "fa_elves",
     "fa_elfhuts",
@@ -208,9 +206,7 @@ PrefabFiles = {
     "fa_ogre",
     "fa_troll",
     "goblin",
-    "wolf",
     "goblinhut",
-    "wolfmound",
 	"thief",
 	"barb",
 	"cleric",
@@ -1261,11 +1257,10 @@ else
     end
 end
 
---[[
 AddClassPostConstruct("screens/characterselectscreen", function(self)
-    self:SelectCharacter "barb"
+    self.characterdetails:SetRegionSize( 450, 140 )
 end)
-]]
+
 AddClassPostConstruct("screens/newgamescreen", function(self)
     self.character = "barb"          
     local atlas = "images/saveslot_portraits/"..self.character..".xml"
@@ -1279,10 +1274,12 @@ AddModCharacter("paladin")
 AddModCharacter("cleric")
 AddModCharacter("darkknight")
 AddModCharacter("wizard")
+AddModCharacter("monk")
 
+--[[
 AddModCharacter("ranger")
 AddModCharacter("thief")
-AddModCharacter("monk")
 AddModCharacter("necromancer")
 AddModCharacter("tinkerer")
 AddModCharacter("bard")
+]]

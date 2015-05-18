@@ -8810,8 +8810,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.sourcetag"] = "dorf_secret_4",
-            ["data.targettag"] = "dorf_secret_3"
+            ["data.sourcetag"] = "dorf_stairs_4",
+            ["data.targettag"] = "dorf_stairs_3"
           }
         },
         {
@@ -9286,8 +9286,8 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.sourcetag"] = "dorf_secret_5",
-            ["data.targettag"] = "dorf_secret_6"
+            ["data.sourcetag"] = "dorf_stairs_5",
+            ["data.targettag"] = "dorf_stairs_6"
           }
         },
         {
@@ -14671,17 +14671,6 @@ return {
           properties = {
             ["data.fakewall"] = "true"
           }
-        },
-        {
-          name = "",
-          type = "spawnpoint",
-          shape = "rectangle",
-          x = 188,
-          y = 135,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
         },
         {
           name = "",

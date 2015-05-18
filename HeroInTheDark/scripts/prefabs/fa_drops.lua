@@ -50,6 +50,10 @@ local goldenlocks_assets=
 {
     Asset("ANIM", "anim/fa_goldenlocks.zip"),
 }
+local satyrhorn_assets=
+{
+    Asset("ANIM", "anim/fa_satyrhorn.zip"),
+}
 
 
 
@@ -153,6 +157,10 @@ local function fa_goldenlocks()
     local inst=fn("fa_goldenlocks")
     return inst
 end
+local function fa_satyrhorn()
+    local inst=fn("fa_satyrhorn")
+    return inst
+end
 
 return Prefab( "common/inventory/fa_sand", sand, assets),
 Prefab( "common/inventory/fa_ghoultoe", ghoultoe, ghoultoe_assets),
@@ -166,6 +174,7 @@ Prefab( "common/inventory/fa_hellwormliver", fa_hellwormliver, hellwormliver_ass
 Prefab( "common/inventory/fa_wortoxheart", fa_wortoxheart, wortoxheart_assets),
 Prefab( "common/inventory/fa_silkroll", fa_silkroll, silkroll_assets),
 Prefab( "common/inventory/fa_unicornhorn", fa_unicornhorn, unicorn_assets),
-Prefab( "common/inventory/fa_goldenlocks", fa_goldenlocks, goldenlocks_assets)
+Prefab( "common/inventory/fa_goldenlocks", fa_goldenlocks, goldenlocks_assets),
+Prefab( "common/inventory/fa_satyrhorn", fa_satyrhorn, satyrhorn_assets)
 
 

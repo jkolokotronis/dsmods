@@ -126,17 +126,6 @@ return {
       objects = {
         {
           name = "",
-          type = "spawnpoint",
-          shape = "rectangle",
-          x = 510,
-          y = 315,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
           type = "fa_stairs_up",
           shape = "rectangle",
           x = 738,
@@ -145,8 +134,9 @@ return {
           height = 0,
           visible = true,
           properties = {
-            ["data.sourcetag"] = "dorf_secret_8",
-            ["data.targettag"] = "dorf_secret_7"
+            ["data.reactivate"] = "dorf_secret_entrance",
+            ["data.sourcetag"] = "dorf_stairs_8",
+            ["data.targettag"] = "dorf_stairs_7"
           }
         },
         {
@@ -1061,6 +1051,20 @@ return {
           height = 0,
           visible = true,
           properties = {}
+        },
+        {
+          name = "",
+          type = "fa_teleporter_dorf",
+          shape = "rectangle",
+          x = 638,
+          y = 1087,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.sourcetag"] = "dorf_secret_hell",
+            ["data.targettag"] = "dorf_secret_entrance"
+          }
         }
       }
     }
