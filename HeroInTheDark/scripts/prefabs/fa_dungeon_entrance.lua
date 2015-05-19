@@ -420,14 +420,25 @@ local function hellgate()
 	inst.AnimState:SetBuild("fa_hellgate")
 	inst.AnimState:SetBank("fa_hellgate")
 	inst.MiniMapEntity:SetIcon("cave_open.png")
-	Open(inst)
-	
+
     local light = inst.entity:AddLight()
     inst.Light:Enable(true)
 	inst.Light:SetRadius(3)
     inst.Light:SetFalloff(0.7)
     inst.Light:SetIntensity(.7)
     inst.Light:SetColour(235/255,62/255,12/255)
+
+
+    inst:RemoveComponent("workable")
+    inst.open = true
+	inst:AddComponent("activatable")
+    inst.components.activatable.OnActivate = function(inst)
+
+    	GetPlayer().components.talker:Say("The entrance is blocked")
+	end
+    inst.components.activatable.inactive = true
+    inst.components.activatable.getverb = GetVerb
+	inst.components.activatable.quickaction = true
 
 	return inst
 end

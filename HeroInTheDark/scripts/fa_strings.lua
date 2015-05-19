@@ -30,8 +30,8 @@ STRINGS.CHARACTERS.DARKKNIGHT = {}
 
 STRINGS.CHARACTER_TITLES.monk = "The Monk"
 STRINGS.CHARACTER_NAMES.monk = "The Monk"
-STRINGS.CHARACTER_DESCRIPTIONS.monk = "* An example of how to create a mod character."
-STRINGS.CHARACTER_QUOTES.monk = "\"I am a blank slate.\""
+STRINGS.CHARACTER_QUOTES.monk = "\"He is able who thinks he is able.\""
+STRINGS.CHARACTER_DESCRIPTIONS.monk = "1.  Only likes Cloth armor.\n2.  Only likes monk weapons.\n3.  Has ki that grants special abilities.\n4. Gets special attacks."
 STRINGS.CHARACTERS.MONK = {}
 
 STRINGS.CHARACTER_TITLES.necromancer = "necromancer"
