@@ -126,25 +126,17 @@ return {
       objects = {
         {
           name = "",
-          type = "fa_dungeon_exit",
+          type = "fa_stairs_up",
           shape = "rectangle",
           x = 1146,
           y = 1148,
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "spawnpoint",
-          shape = "rectangle",
-          x = 1217,
-          y = 1186,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
+          properties = {
+            ["data.sourcetag"] = "dorf_stairs_6",
+            ["data.targettag"] = "dorf_stairs_5"
+          }
         },
         {
           name = "",
@@ -1384,10 +1376,57 @@ return {
         },
         {
           name = "",
-          type = "fa_dungeon_entrance",
+          type = "fa_stairs_down",
           shape = "rectangle",
           x = 164,
           y = 1160,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.sourcetag"] = "dorf_stairs_7",
+            ["data.targettag"] = "dorf_stairs_8"
+          }
+        },
+        {
+          name = "",
+          type = "skeleton",
+          shape = "rectangle",
+          x = 420,
+          y = 923,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "skeleton",
+          shape = "rectangle",
+          x = 733,
+          y = 226,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "skeleton",
+          shape = "rectangle",
+          x = 1189,
+          y = 414,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "skeleton",
+          shape = "rectangle",
+          x = 1114,
+          y = 920,
           width = 0,
           height = 0,
           visible = true,

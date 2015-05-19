@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
+    <folder id="0">
+        <file id="0" name="sword in stone.png" width="363" height="528" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="no sword.png" width="364" height="250" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="fa_darksword_stone">
+        <animation id="0" name="sword" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="sword in stone">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-163" y="488"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="empty" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="sword in stone">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-164" y="210"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

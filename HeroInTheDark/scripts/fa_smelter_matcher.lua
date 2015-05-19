@@ -455,6 +455,13 @@ local alchemy_recipes={
 		},
 	},
 	{
+		match={product={"fa_bottle_curepoison"},cooktime=120},
+		test={
+			{ingred="poisonspidergland",count=4},
+			{ingred="fa_bottle_empty",count=1},
+		},
+	},
+	{
 		match={product={"fa_key_generic"},cooktime=30},
 		test={
 			{ingred="nightmarefuel",count=1,atlas="images/inventoryimages.xml"},
@@ -480,7 +487,195 @@ local alchemy_recipes={
 			{ingred="fa_redshroomcap",count=2},
 		},
 	},
-
+	{
+		match={product={"fa_silkroll"},cooktime=30},
+		test={
+			{ingred="silk",count=4,atlas="images/inventoryimages.xml"},
+		},
+	},
+	{
+		match={product={"fa_abjurationrobe"},cooktime=60*6},
+		test={
+			{ingred="fa_silkroll",count=3},
+			{ingred="razor",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="beefalowool",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="nightmarefuel",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="bluegem",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="redgem",count=1,atlas="images/inventoryimages.xml"},
+		},
+	},
+	{
+		match={product={"fa_abjurationrobe"},cooktime=60*6},
+		test={
+			{ingred="fa_silkroll",count=3},
+			{ingred="razor",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="beefalowool",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="nightmarefuel",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="bluegem",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="redgem",count=1,atlas="images/inventoryimages.xml"},
+		},
+	},
+	{
+		match={product={"fa_conjurationrobe"},cooktime=60*6},
+		test={
+			{ingred="fa_silkroll",count=3},
+			{ingred="razor",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="beefalowool",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="nightmarefuel",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="cutlichen",count=1},
+			{ingred="petals_evil",count=1,atlas="images/inventoryimages.xml"},
+		},
+	},
+	{
+		match={product={"fa_divinationrobe"},cooktime=60*6},
+		test={
+			{ingred="fa_silkroll",count=3},
+			{ingred="razor",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="beefalowool",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="nightmarefuel",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="fa_silverpebble",count=2},
+		},
+	},
+	{
+		match={product={"fa_enchantmentrobe"},cooktime=60*6},
+		test={
+			{ingred="fa_silkroll",count=3},
+			{ingred="razor",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="beefalowool",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="nightmarefuel",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="fireflies",count=2,atlas="images/inventoryimages.xml"},
+		},
+	},
+	{
+		match={product={"fa_evocationrobe"},cooktime=60*6},
+		test={
+			{ingred="fa_silkroll",count=3},
+			{ingred="razor",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="beefalowool",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="nightmarefuel",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="fa_lavapebble",count=1},
+			{ingred="ice",count=1,atlas="images/inventoryimages.xml"},
+		},
+	},
+	{
+		match={product={"fa_illusionrobe"},cooktime=60*6},
+		test={
+			{ingred="fa_silkroll",count=3},
+			{ingred="razor",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="beefalowool",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="nightmarefuel",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="bluegem",count=2,atlas="images/inventoryimages.xml"},
+		},
+	},
+	{
+		match={product={"fa_necromancyrobe"},cooktime=60*6},
+		test={
+			{ingred="fa_silkroll",count=3},
+			{ingred="razor",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="beefalowool",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="nightmarefuel",count=3,atlas="images/inventoryimages.xml"},
+		},
+	},
+	{
+		match={product={"fa_transmutationrobe"},cooktime=60*6},
+		test={
+			{ingred="fa_silkroll",count=3},
+			{ingred="razor",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="beefalowool",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="nightmarefuel",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="fa_sand",count=2},
+		},
+	},
+	{
+		match={product={"fa_hat_abjuration"},cooktime=60*3},
+		test={
+			{ingred="fa_silkroll",count=2},
+			{ingred="razor",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="beefalowool",count=2,atlas="images/inventoryimages.xml"},
+			{ingred="nightmarefuel",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="bluegem",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="redgem",count=1,atlas="images/inventoryimages.xml"},
+		},
+	},
+	{
+		match={product={"fa_hat_conjuration"},cooktime=60*3},
+		test={
+			{ingred="fa_silkroll",count=2},
+			{ingred="razor",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="beefalowool",count=2,atlas="images/inventoryimages.xml"},
+			{ingred="nightmarefuel",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="cutlichen",count=1},
+			{ingred="petals_evil",count=1,atlas="images/inventoryimages.xml"},
+		},
+	},
+	{
+		match={product={"fa_hat_divination"},cooktime=60*3},
+		test={
+			{ingred="fa_silkroll",count=2},
+			{ingred="razor",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="beefalowool",count=2,atlas="images/inventoryimages.xml"},
+			{ingred="nightmarefuel",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="fa_silverpebble",count=2},
+		},
+	},
+	{
+		match={product={"fa_hat_enchantment"},cooktime=60*3},
+		test={
+			{ingred="fa_silkroll",count=2},
+			{ingred="razor",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="beefalowool",count=2,atlas="images/inventoryimages.xml"},
+			{ingred="nightmarefuel",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="fireflies",count=2,atlas="images/inventoryimages.xml"},
+		},
+	},
+	{
+		match={product={"fa_hat_evocation"},cooktime=60*3},
+		test={
+			{ingred="fa_silkroll",count=2},
+			{ingred="razor",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="beefalowool",count=2,atlas="images/inventoryimages.xml"},
+			{ingred="nightmarefuel",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="fa_lavapebble",count=1},
+			{ingred="ice",count=1,atlas="images/inventoryimages.xml"},
+		},
+	},
+	{
+		match={product={"fa_hat_illusion"},cooktime=60*3},
+		test={
+			{ingred="fa_silkroll",count=2},
+			{ingred="razor",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="beefalowool",count=2,atlas="images/inventoryimages.xml"},
+			{ingred="nightmarefuel",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="bluegem",count=2,atlas="images/inventoryimages.xml"},
+		},
+	},
+	{
+		match={product={"fa_hat_necromancy"},cooktime=60*3},
+		test={
+			{ingred="fa_silkroll",count=2},
+			{ingred="razor",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="beefalowool",count=2,atlas="images/inventoryimages.xml"},
+			{ingred="nightmarefuel",count=3,atlas="images/inventoryimages.xml"},
+		},
+	},
+	{
+		match={product={"fa_hat_transmutation"},cooktime=60*3},
+		test={
+			{ingred="fa_silkroll",count=2},
+			{ingred="razor",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="beefalowool",count=2,atlas="images/inventoryimages.xml"},
+			{ingred="nightmarefuel",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="fa_sand",count=2},
+		},
+	},
+	{
+		match={product={"fa_hat_plain"},cooktime=60*3},
+		test={
+			{ingred="fa_silkroll",count=2},
+			{ingred="razor",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="beefalowool",count=5,atlas="images/inventoryimages.xml"},
+		},
+	},
 }
 
 local smelt_recipes={
@@ -778,6 +973,139 @@ local forge_recipes={
 		},
 	},
 	{
+		match={product={"fa_adamantinesword","fa_bottle_empty"},cooktime=1200},
+		test={
+			{ingred="fa_adamantinebar",count=3},
+			{ingred="fa_coalbar",count=4},
+			{ingred="fa_bottle_oil", count=1},
+		},
+	},
+	{
+		match={product={"fa_adamantineaxe","fa_bottle_empty"},cooktime=1200},
+		test={
+			{ingred="fa_adamantinebar",count=4},
+			{ingred="fa_coalbar",count=3},
+			{ingred="fa_bottle_oil", count=1},
+		},
+	},
+	{
+		match={product={"fa_adamantinedagger","fa_bottle_empty","fa_bottle_empty"},cooktime=1200},
+		test={
+			{ingred="fa_adamantinebar",count=3},
+			{ingred="fa_coalbar",count=3},
+			{ingred="fa_bottle_oil", count=2},
+		},
+	},
+	{
+		match={product={"fa_copperkama","fa_bottle_empty","fa_bottle_empty"},cooktime=120},
+		test={
+			{ingred="fa_copperbar",count=2},
+			{ingred="boards",count=1,atlas="images/inventoryimages.xml"},
+			{ingred=isfuel, count=4},
+			{ingred=bottleany, count=1},
+		},
+	},
+	{
+		match={product={"fa_ironkama","fa_bottle_empty","fa_bottle_empty"},cooktime=240},
+		test={
+			{ingred="fa_ironbar",count=2},
+			{ingred="boards",count=1,atlas="images/inventoryimages.xml"},
+			{ingred=isfuel, count=3},
+			{ingred=heavywater, count=2},
+		},
+	},
+	{
+		match={product={"fa_steelkama","fa_bottle_empty","fa_bottle_empty"},cooktime=480},
+		test={
+			{ingred="fa_steelbar",count=2},
+			{ingred="boards",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="fa_coalbar", count=2},
+			{ingred=isfuel, count=1},
+			{ingred="fa_bottle_oil", count=2},
+		},
+	},
+	{
+		match={product={"fa_silverkama","fa_bottle_empty","fa_bottle_empty"},cooktime=960},
+		test={
+			{ingred="fa_silverbar",count=2},
+			{ingred="boards",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="fa_coalbar", count=3},
+			{ingred="fa_bottle_oil", count=2},
+		},
+	},
+	{
+		match={product={"fa_goldkama","fa_bottle_empty","fa_bottle_empty"},cooktime=960},
+		test={
+			{ingred="fa_goldbar",count=2},
+			{ingred="boards",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="fa_coalbar", count=3},
+			{ingred="fa_bottle_oil", count=2},
+		},
+	},
+	{
+		match={product={"fa_adamantinekama","fa_bottle_empty","fa_bottle_empty"},cooktime=1200},
+		test={
+			{ingred="fa_adamantinebar",count=2},
+			{ingred="boards",count=1,atlas="images/inventoryimages.xml"},
+			{ingred="fa_coalbar", count=3},
+			{ingred="fa_bottle_oil", count=2},
+		},
+	},
+	{
+		match={product={"fa_copperstaff","fa_bottle_empty"},cooktime=120},
+		test={
+			{ingred="fa_copperbar",count=1},
+			{ingred="boards",count=2,atlas="images/inventoryimages.xml"},
+			{ingred=isfuel, count=4},
+			{ingred=bottleany, count=1},
+		},
+	},
+	{
+		match={product={"fa_ironstaff","fa_bottle_empty"},cooktime=240},
+		test={
+			{ingred="fa_ironbar",count=1},
+			{ingred="boards",count=2,atlas="images/inventoryimages.xml"},
+			{ingred=isfuel, count=4},
+			{ingred=heavywater, count=1},
+		},
+	},
+	{
+		match={product={"fa_steelstaff","fa_bottle_empty"},cooktime=360},
+		test={
+			{ingred="fa_steelbar",count=1},
+			{ingred="boards",count=2,atlas="images/inventoryimages.xml"},
+			{ingred="fa_coalbar", count=4},
+			{ingred="fa_bottle_oil", count=1},
+		},
+	},
+	{
+		match={product={"fa_silverstaff","fa_bottle_empty","fa_bottle_empty"},cooktime=480},
+		test={
+			{ingred="fa_silverbar",count=1},
+			{ingred="boards",count=2,atlas="images/inventoryimages.xml"},
+			{ingred="fa_coalbar", count=4},
+			{ingred="fa_bottle_oil", count=1},
+		},
+	},
+	{
+		match={product={"fa_goldstaff","fa_bottle_empty","fa_bottle_empty"},cooktime=480},
+		test={
+			{ingred="fa_goldbar",count=1},
+			{ingred="boards",count=2,atlas="images/inventoryimages.xml"},
+			{ingred="fa_coalbar", count=4},
+			{ingred="fa_bottle_oil", count=1},
+		},
+	},	
+	{
+		match={product={"fa_adamantinestaff","fa_bottle_empty","fa_bottle_empty"},cooktime=60*14},
+		test={
+			{ingred="fa_adamantinebar",count=1},
+			{ingred="boards",count=2,atlas="images/inventoryimages.xml"},
+			{ingred="fa_coalbar", count=4},
+			{ingred="fa_bottle_oil", count=1},
+		},
+	},	
+	{
 		match={product={"fa_copperarmor","fa_bottle_empty","fa_bottle_empty"},cooktime=72},
 		test={
 			{ingred="fa_copperbar",count=4},
@@ -823,6 +1151,23 @@ local forge_recipes={
 			{ingred="fa_silverbar",count=5},
 			{ingred="fa_coalbar",count=1},
 			{ingred="fa_bottle_oil", count=2},
+		},
+	},
+	{
+		match={product={"fa_adamantinearmor","fa_bottle_empty","fa_bottle_empty"},cooktime=1200},
+		test={
+			{ingred="fa_adamantinebar",count=5},
+			{ingred="fa_coalbar",count=1},
+			{ingred="fa_bottle_oil", count=2},
+		},
+	},
+	{
+		match={product={"fa_heavyleatherarmor","fa_bottle_empty","fa_bottle_empty"},cooktime=120},
+		test={
+			{ingred="fa_copperbar",count=1},
+			{ingred="pigskin",count=4,atlas="images/inventoryimages.xml"},
+			{ingred=isfuel,count=1},
+			{ingred=bottleany, count=2},
 		},
 	},
 	{
@@ -879,6 +1224,23 @@ local forge_recipes={
 			{ingred="fa_silverbar",count=2},
 			{ingred="fa_coalbar",count=3},
 			{ingred="fa_bottle_oil", count=3},
+		},
+	},
+	{
+		match={product={"fa_hat_adamantine","fa_bottle_empty","fa_bottle_empty","fa_bottle_empty"},cooktime=960},
+		test={
+			{ingred="fa_adamantinebar",count=2},
+			{ingred="fa_coalbar",count=3},
+			{ingred="fa_bottle_oil", count=3},
+		},
+	},
+	{
+		match={product={"fa_hat_heavyleather","fa_bottle_empty","fa_bottle_empty"},cooktime=120},
+		test={
+			{ingred="fa_copperbar",count=1},
+			{ingred="pigskin",count=3,atlas="images/inventoryimages.xml"},
+			{ingred=isfuel,count=1},
+			{ingred=bottleany, count=2},
 		},
 	},
 	{

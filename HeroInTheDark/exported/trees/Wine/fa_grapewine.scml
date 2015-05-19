@@ -1,0 +1,699 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r4.1">
+    <folder id="0">
+        <file id="0" name="_0000s_0003s_0024_normal.png" width="465" height="575" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="_0000s_0003s_0030_wine-stuff.png" width="176" height="543" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="_0000s_0003s_0005_green1.png" width="221" height="245" pivot_x="0.434389" pivot_y="0.534694"/>
+        <file id="3" name="_0000s_0003s_0006_green2.png" width="302" height="286" pivot_x="0.44898" pivot_y="0.510917"/>
+        <file id="4" name="_0000s_0003s_0007_green3.png" width="315" height="169" pivot_x="0.48254" pivot_y="0.502959"/>
+        <file id="5" name="_0000s_0003s_0013_flower.png" width="56" height="86" pivot_x="0.553571" pivot_y="0.906977"/>
+        <file id="6" name="_0000s_0003s_0018_youn-grapes.png" width="44" height="62" pivot_x="0.522727" pivot_y="0.887097"/>
+        <file id="7" name="_0000s_0003s_0023_autumn.png" width="465" height="575" pivot_x="0" pivot_y="1"/>
+        <file id="8" name="_0000s_0003s_0000_h3.png" width="245" height="255" pivot_x="0.55102" pivot_y="0.568627"/>
+        <file id="9" name="_0000s_0003s_0001_h2.png" width="221" height="245" pivot_x="0.484163" pivot_y="0.522449"/>
+        <file id="10" name="_0000s_0003s_0002_h1.png" width="315" height="169" pivot_x="0.520635" pivot_y="0.491124"/>
+        <file id="11" name="_0000s_0003s_0010_full-fruit-.png" width="55" height="99" pivot_x="0.490909" pivot_y="0.959596"/>
+        <file id="12" name="_0000s_0003s_0017_youn-grapes-Kopie.png" width="57" height="83" pivot_x="0" pivot_y="1"/>
+        <file id="13" name="_0000s_0003s_0015_kerngehause.png" width="48" height="84" pivot_x="0.416667" pivot_y="0.880952"/>
+        <file id="14" name="_0000s_0003s_0022_wint.png" width="465" height="575" pivot_x="0" pivot_y="1"/>
+        <file id="15" name="burned.png" width="465" height="575" pivot_x="0.658065" pivot_y="0.078261"/>
+    </folder>
+    <entity id="0" name="fa_grapewine">
+        <obj_info name="_0000s_0003s_0024_normal" type="sprite">
+            <frames>
+                <i folder="0" file="0"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0003s_0030_wine-stuff" type="sprite">
+            <frames>
+                <i folder="0" file="1"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0003s_0005_green1" type="sprite">
+            <frames>
+                <i folder="0" file="2"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0003s_0007_green3" type="sprite">
+            <frames>
+                <i folder="0" file="4"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0003s_0006_green2" type="sprite">
+            <frames>
+                <i folder="0" file="3"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0003s_0013_flower" type="sprite">
+            <frames>
+                <i folder="0" file="5"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0003s_0013_flower_000" type="sprite">
+            <frames>
+                <i folder="0" file="5"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0003s_0013_flower_001" type="sprite">
+            <frames>
+                <i folder="0" file="5"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0003s_0018_youn-grapes" type="sprite">
+            <frames>
+                <i folder="0" file="6"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0003s_0018_youn-grapes_000" type="sprite">
+            <frames>
+                <i folder="0" file="6"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0003s_0018_youn-grapes_001" type="sprite">
+            <frames>
+                <i folder="0" file="6"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0003s_0023_autumn" type="sprite">
+            <frames>
+                <i folder="0" file="7"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0003s_0000_h3" type="sprite">
+            <frames>
+                <i folder="0" file="8"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0003s_0001_h2" type="sprite">
+            <frames>
+                <i folder="0" file="9"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0003s_0002_h1" type="sprite">
+            <frames>
+                <i folder="0" file="10"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0003s_0010_full-fruit-" type="sprite">
+            <frames>
+                <i folder="0" file="11"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0003s_0010_full-fruit-_000" type="sprite">
+            <frames>
+                <i folder="0" file="11"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0003s_0010_full-fruit-_001" type="sprite">
+            <frames>
+                <i folder="0" file="11"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0003s_0015_kerngehause" type="sprite">
+            <frames>
+                <i folder="0" file="13"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0003s_0015_kerngehause_000" type="sprite">
+            <frames>
+                <i folder="0" file="13"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0003s_0015_kerngehause_001" type="sprite">
+            <frames>
+                <i folder="0" file="13"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0003s_0023_autumn_000" type="sprite">
+            <frames>
+                <i folder="0" file="7"/>
+            </frames>
+        </obj_info>
+        <obj_info name="_0000s_0003s_0022_wint" type="sprite">
+            <frames>
+                <i folder="0" file="14"/>
+            </frames>
+        </obj_info>
+        <obj_info name="burned" type="sprite">
+            <frames>
+                <i folder="0" file="15"/>
+            </frames>
+        </obj_info>
+        <animation id="0" name="empty vines green " length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="1" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="0" z_index="1"/>
+                </key>
+            </mainline>
+            <timeline id="0" obj="0" name="_0000s_0003s_0024_normal">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-289.61039" y="540.25974" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" obj="1" name="_0000s_0003s_0030_wine-stuff">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-88.934714" y="508.046683" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="burned" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" obj="23" name="burned">
+                <key id="0" spin="0">
+                    <object folder="0" file="15" x="15.584416" y="10.38961"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="2" name="empty vines brown" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                </key>
+            </mainline>
+            <timeline id="0" obj="1" name="_0000s_0003s_0030_wine-stuff">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-88.934714" y="508.046683" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" obj="21" name="_0000s_0003s_0023_autumn_000">
+                <key id="0" spin="0">
+                    <object folder="0" file="7" x="-289.256198" y="539.669421" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="3" name="empty winter" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                </key>
+            </mainline>
+            <timeline id="0" obj="1" name="_0000s_0003s_0030_wine-stuff">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-88.934714" y="508.046683" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" obj="22" name="_0000s_0003s_0022_wint">
+                <key id="0" spin="0">
+                    <object folder="0" file="14" x="-288.429752" y="539.669421" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="4" name="empty vines with green leaves" length="3000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="0" z_index="4"/>
+                </key>
+                <key id="1" time="1500">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="1" z_index="4"/>
+                </key>
+            </mainline>
+            <timeline id="0" obj="1" name="_0000s_0003s_0030_wine-stuff">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-88.934714" y="508.046683" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" obj="0" name="_0000s_0003s_0024_normal">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-289.61039" y="540.25974" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="2" obj="2" name="_0000s_0003s_0005_green1">
+                <key id="0">
+                    <object folder="0" file="2" x="56.637332" y="449.538492" angle="0"/>
+                </key>
+                <key id="1" time="1500" spin="-1">
+                    <object folder="0" file="2" x="56.637332" y="449.538492" angle="2.690718"/>
+                </key>
+            </timeline>
+            <timeline id="3" obj="3" name="_0000s_0003s_0007_green3">
+                <key id="0">
+                    <object folder="0" file="4" x="20.131968" y="139.076994" angle="0"/>
+                </key>
+                <key id="1" time="1500" spin="-1">
+                    <object folder="0" file="4" x="20.131968" y="139.076994" angle="1.775861"/>
+                </key>
+            </timeline>
+            <timeline id="4" obj="4" name="_0000s_0003s_0006_green2">
+                <key id="0">
+                    <object folder="0" file="3" x="-191.197702" y="407.879114" angle="0"/>
+                </key>
+                <key id="1" time="1500" spin="-1">
+                    <object folder="0" file="3" x="-191.197702" y="407.879114" angle="1.380362"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="5" name="green leaves and flower" length="3000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="7" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="5" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="6" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="2" key="0" z_index="5"/>
+                    <object_ref id="6" timeline="3" key="0" z_index="6"/>
+                    <object_ref id="7" timeline="4" key="0" z_index="7"/>
+                </key>
+                <key id="1" time="1107">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="7" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="5" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="6" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="2" key="0" z_index="5"/>
+                    <object_ref id="6" timeline="3" key="0" z_index="6"/>
+                    <object_ref id="7" timeline="4" key="0" z_index="7"/>
+                </key>
+                <key id="2" time="1506">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="7" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="5" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="6" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="2" key="1" z_index="5"/>
+                    <object_ref id="6" timeline="3" key="1" z_index="6"/>
+                    <object_ref id="7" timeline="4" key="1" z_index="7"/>
+                </key>
+                <key id="3" time="1695">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="7" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="5" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="6" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="2" key="1" z_index="5"/>
+                    <object_ref id="6" timeline="3" key="1" z_index="6"/>
+                    <object_ref id="7" timeline="4" key="1" z_index="7"/>
+                </key>
+                <key id="4" time="1956">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="7" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="5" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="6" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="2" key="1" z_index="5"/>
+                    <object_ref id="6" timeline="3" key="1" z_index="6"/>
+                    <object_ref id="7" timeline="4" key="1" z_index="7"/>
+                </key>
+            </mainline>
+            <timeline id="0" obj="1" name="_0000s_0003s_0030_wine-stuff">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-88.934714" y="508.046683" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" obj="0" name="_0000s_0003s_0024_normal">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-289.61039" y="540.25974" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="2" obj="2" name="_0000s_0003s_0005_green1">
+                <key id="0">
+                    <object folder="0" file="2" x="56.637332" y="449.538492" angle="0"/>
+                </key>
+                <key id="1" time="1506" spin="-1">
+                    <object folder="0" file="2" x="56.637332" y="449.538492" angle="2.35722"/>
+                </key>
+            </timeline>
+            <timeline id="3" obj="3" name="_0000s_0003s_0007_green3">
+                <key id="0">
+                    <object folder="0" file="4" x="20.131968" y="139.076994" angle="0"/>
+                </key>
+                <key id="1" time="1506" spin="-1">
+                    <object folder="0" file="4" x="20.131968" y="139.076994" angle="2.040042"/>
+                </key>
+            </timeline>
+            <timeline id="4" obj="4" name="_0000s_0003s_0006_green2">
+                <key id="0">
+                    <object folder="0" file="3" x="-191.197702" y="407.879114" angle="0"/>
+                </key>
+                <key id="1" time="1506" spin="-1">
+                    <object folder="0" file="3" x="-191.197702" y="407.879114" angle="2.294387"/>
+                </key>
+            </timeline>
+            <timeline id="5" obj="5" name="_0000s_0003s_0013_flower">
+                <key id="0">
+                    <object folder="0" file="5" x="-211.094293" y="480.847538" angle="0"/>
+                </key>
+                <key id="1" time="1956" spin="-1">
+                    <object folder="0" file="5" x="-211.094293" y="480.847538" angle="4.827882"/>
+                </key>
+            </timeline>
+            <timeline id="6" obj="6" name="_0000s_0003s_0013_flower_000">
+                <key id="0">
+                    <object folder="0" file="5" x="-122.719032" y="303.57027" angle="0"/>
+                </key>
+                <key id="1" time="1107" spin="-1">
+                    <object folder="0" file="5" x="-122.719032" y="303.57027" angle="5.094979"/>
+                </key>
+            </timeline>
+            <timeline id="7" obj="7" name="_0000s_0003s_0013_flower_001">
+                <key id="0">
+                    <object folder="0" file="5" x="78.107414" y="340.760353" angle="0"/>
+                </key>
+                <key id="1" time="1695" spin="-1">
+                    <object folder="0" file="5" x="78.107414" y="340.760353" angle="6.294966"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="6" name="green leaves and green grapes" length="3000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="7" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="5" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="6" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="2" key="0" z_index="5"/>
+                    <object_ref id="6" timeline="3" key="0" z_index="6"/>
+                    <object_ref id="7" timeline="4" key="0" z_index="7"/>
+                </key>
+                <key id="1" time="1176">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="7" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="5" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="6" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="2" key="0" z_index="5"/>
+                    <object_ref id="6" timeline="3" key="0" z_index="6"/>
+                    <object_ref id="7" timeline="4" key="0" z_index="7"/>
+                </key>
+                <key id="2" time="1503">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="7" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="5" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="6" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="2" key="1" z_index="5"/>
+                    <object_ref id="6" timeline="3" key="1" z_index="6"/>
+                    <object_ref id="7" timeline="4" key="1" z_index="7"/>
+                </key>
+                <key id="3" time="1632">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="7" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="5" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="6" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="2" key="1" z_index="5"/>
+                    <object_ref id="6" timeline="3" key="1" z_index="6"/>
+                    <object_ref id="7" timeline="4" key="1" z_index="7"/>
+                </key>
+                <key id="4" time="1878">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="7" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="5" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="6" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="2" key="1" z_index="5"/>
+                    <object_ref id="6" timeline="3" key="1" z_index="6"/>
+                    <object_ref id="7" timeline="4" key="1" z_index="7"/>
+                </key>
+            </mainline>
+            <timeline id="0" obj="1" name="_0000s_0003s_0030_wine-stuff">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-88.934714" y="508.046683" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" obj="0" name="_0000s_0003s_0024_normal">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-289.61039" y="540.25974" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="2" obj="2" name="_0000s_0003s_0005_green1">
+                <key id="0">
+                    <object folder="0" file="2" x="56.637332" y="449.538492" angle="0"/>
+                </key>
+                <key id="1" time="1503" spin="-1">
+                    <object folder="0" file="2" x="56.637332" y="449.538492" angle="1.709697"/>
+                </key>
+            </timeline>
+            <timeline id="3" obj="3" name="_0000s_0003s_0007_green3">
+                <key id="0">
+                    <object folder="0" file="4" x="20.131968" y="139.076994" angle="0"/>
+                </key>
+                <key id="1" time="1503" spin="-1">
+                    <object folder="0" file="4" x="20.131968" y="139.076994" angle="0.996711"/>
+                </key>
+            </timeline>
+            <timeline id="4" obj="4" name="_0000s_0003s_0006_green2">
+                <key id="0">
+                    <object folder="0" file="3" x="-191.197702" y="407.879114" angle="0"/>
+                </key>
+                <key id="1" time="1503" spin="-1">
+                    <object folder="0" file="3" x="-191.197702" y="407.879114" angle="0.762337"/>
+                </key>
+            </timeline>
+            <timeline id="5" obj="8" name="_0000s_0003s_0018_youn-grapes">
+                <key id="0">
+                    <object folder="0" file="6" x="-213.363648" y="470.685964" angle="0"/>
+                </key>
+                <key id="1" time="1176" spin="-1">
+                    <object folder="0" file="6" x="-213.363648" y="470.685964" angle="7.20629"/>
+                </key>
+            </timeline>
+            <timeline id="6" obj="9" name="_0000s_0003s_0018_youn-grapes_000">
+                <key id="0">
+                    <object folder="0" file="6" x="70.107426" y="340.107452" angle="0"/>
+                </key>
+                <key id="1" time="1632" spin="-1">
+                    <object folder="0" file="6" x="70.107426" y="340.107452" angle="5.301634"/>
+                </key>
+            </timeline>
+            <timeline id="7" obj="10" name="_0000s_0003s_0018_youn-grapes_001">
+                <key id="0">
+                    <object folder="0" file="6" x="-124.10745" y="300.438031" angle="0"/>
+                </key>
+                <key id="1" time="1878" spin="-1">
+                    <object folder="0" file="6" x="-124.10745" y="300.438031" angle="5.413368"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="7" name="red leaves and ripe grapes" length="3000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="7" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="5" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="6" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="2" key="0" z_index="5"/>
+                    <object_ref id="6" timeline="3" key="0" z_index="6"/>
+                    <object_ref id="7" timeline="4" key="0" z_index="7"/>
+                </key>
+                <key id="1" time="1302">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="7" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="5" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="6" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="2" key="0" z_index="5"/>
+                    <object_ref id="6" timeline="3" key="0" z_index="6"/>
+                    <object_ref id="7" timeline="4" key="0" z_index="7"/>
+                </key>
+                <key id="2" time="1503">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="7" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="5" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="6" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="2" key="1" z_index="5"/>
+                    <object_ref id="6" timeline="3" key="1" z_index="6"/>
+                    <object_ref id="7" timeline="4" key="1" z_index="7"/>
+                </key>
+                <key id="3" time="1635">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="7" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="5" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="6" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="2" key="1" z_index="5"/>
+                    <object_ref id="6" timeline="3" key="1" z_index="6"/>
+                    <object_ref id="7" timeline="4" key="1" z_index="7"/>
+                </key>
+                <key id="4" time="1848">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="7" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="5" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="6" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="2" key="1" z_index="5"/>
+                    <object_ref id="6" timeline="3" key="1" z_index="6"/>
+                    <object_ref id="7" timeline="4" key="1" z_index="7"/>
+                </key>
+            </mainline>
+            <timeline id="0" obj="1" name="_0000s_0003s_0030_wine-stuff">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-88.934714" y="508.046683" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" obj="11" name="_0000s_0003s_0023_autumn">
+                <key id="0" spin="0">
+                    <object folder="0" file="7" x="-290.082645" y="540.495868" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="2" obj="12" name="_0000s_0003s_0000_h3">
+                <key id="0">
+                    <object folder="0" file="8" x="-166.652993" y="409.834596" angle="0"/>
+                </key>
+                <key id="1" time="1503" spin="-1">
+                    <object folder="0" file="8" x="-166.652993" y="409.834596" angle="2.230038"/>
+                </key>
+            </timeline>
+            <timeline id="3" obj="13" name="_0000s_0003s_0001_h2">
+                <key id="0">
+                    <object folder="0" file="9" x="66.504155" y="446.636369" angle="0"/>
+                </key>
+                <key id="1" time="1503" spin="-1">
+                    <object folder="0" file="9" x="66.504155" y="446.636369" angle="1.651226"/>
+                </key>
+            </timeline>
+            <timeline id="4" obj="14" name="_0000s_0003s_0002_h1">
+                <key id="0">
+                    <object folder="0" file="10" x="32.247959" y="137.140452" angle="0"/>
+                </key>
+                <key id="1" time="1503" spin="-1">
+                    <object folder="0" file="10" x="32.247959" y="137.140452" angle="2.285188"/>
+                </key>
+            </timeline>
+            <timeline id="5" obj="15" name="_0000s_0003s_0010_full-fruit-">
+                <key id="0">
+                    <object folder="0" file="11" x="-213.495873" y="481.123971" angle="0"/>
+                </key>
+                <key id="1" time="1302" spin="-1">
+                    <object folder="0" file="11" x="-213.495873" y="481.123971" angle="4.910915"/>
+                </key>
+            </timeline>
+            <timeline id="6" obj="16" name="_0000s_0003s_0010_full-fruit-_000">
+                <key id="0">
+                    <object folder="0" file="11" x="66.669416" y="362.115706" angle="0"/>
+                </key>
+                <key id="1" time="1848" spin="-1">
+                    <object folder="0" file="11" x="66.669416" y="362.115706" angle="4.910915"/>
+                </key>
+            </timeline>
+            <timeline id="7" obj="17" name="_0000s_0003s_0010_full-fruit-_001">
+                <key id="0">
+                    <object folder="0" file="11" x="-122.586782" y="312.52893" angle="0"/>
+                </key>
+                <key id="1" time="1635" spin="-1">
+                    <object folder="0" file="11" x="-122.586782" y="312.52893" angle="5.918975"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="8" name="red leaves and dried up grapes" length="3000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="7" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="5" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="6" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="2" key="0" z_index="5"/>
+                    <object_ref id="6" timeline="3" key="0" z_index="6"/>
+                    <object_ref id="7" timeline="4" key="0" z_index="7"/>
+                </key>
+                <key id="1" time="1287">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="7" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="5" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="6" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="2" key="0" z_index="5"/>
+                    <object_ref id="6" timeline="3" key="0" z_index="6"/>
+                    <object_ref id="7" timeline="4" key="0" z_index="7"/>
+                </key>
+                <key id="2" time="1506">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="7" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="5" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="6" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="2" key="1" z_index="5"/>
+                    <object_ref id="6" timeline="3" key="1" z_index="6"/>
+                    <object_ref id="7" timeline="4" key="1" z_index="7"/>
+                </key>
+                <key id="3" time="1770">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="7" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="5" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="6" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="2" key="1" z_index="5"/>
+                    <object_ref id="6" timeline="3" key="1" z_index="6"/>
+                    <object_ref id="7" timeline="4" key="1" z_index="7"/>
+                </key>
+            </mainline>
+            <timeline id="0" obj="1" name="_0000s_0003s_0030_wine-stuff">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-88.934714" y="508.046683" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" obj="11" name="_0000s_0003s_0023_autumn">
+                <key id="0" spin="0">
+                    <object folder="0" file="7" x="-290.082645" y="540.495868" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="2" obj="12" name="_0000s_0003s_0000_h3">
+                <key id="0">
+                    <object folder="0" file="8" x="-166.652993" y="409.834596" angle="0"/>
+                </key>
+                <key id="1" time="1506" spin="-1">
+                    <object folder="0" file="8" x="-166.652993" y="409.834596" angle="0.773027"/>
+                </key>
+            </timeline>
+            <timeline id="3" obj="13" name="_0000s_0003s_0001_h2">
+                <key id="0">
+                    <object folder="0" file="9" x="66.504155" y="446.636369" angle="0"/>
+                </key>
+                <key id="1" time="1506" spin="-1">
+                    <object folder="0" file="9" x="66.504155" y="446.636369" angle="2.768742"/>
+                </key>
+            </timeline>
+            <timeline id="4" obj="14" name="_0000s_0003s_0002_h1">
+                <key id="0">
+                    <object folder="0" file="10" x="32.247959" y="137.140452" angle="0"/>
+                </key>
+                <key id="1" time="1506" spin="-1">
+                    <object folder="0" file="10" x="32.247959" y="137.140452" angle="2.251777"/>
+                </key>
+            </timeline>
+            <timeline id="5" obj="18" name="_0000s_0003s_0015_kerngehause">
+                <key id="0">
+                    <object folder="0" file="13" x="-218.016513" y="468.512365" angle="0"/>
+                </key>
+                <key id="1" time="1287" spin="-1">
+                    <object folder="0" file="13" x="-218.016513" y="468.512365" angle="6.468779"/>
+                </key>
+            </timeline>
+            <timeline id="6" obj="19" name="_0000s_0003s_0015_kerngehause_000">
+                <key id="0" spin="-1">
+                    <object folder="0" file="13" x="64.628115" y="342.89253" angle="0"/>
+                </key>
+                <key id="1" time="1770">
+                    <object folder="0" file="13" x="64.628115" y="342.89253" angle="358.180214"/>
+                </key>
+            </timeline>
+            <timeline id="7" obj="20" name="_0000s_0003s_0015_kerngehause_001">
+                <key id="0">
+                    <object folder="0" file="13" x="-128.760315" y="306.528894" angle="0"/>
+                </key>
+                <key id="1" time="1287" spin="-1">
+                    <object folder="0" file="13" x="-128.760315" y="306.528894" angle="3.988697"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

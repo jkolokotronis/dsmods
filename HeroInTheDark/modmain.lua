@@ -125,7 +125,7 @@ PrefabFiles = {
     "fa_pebbles",
     "fa_rocks",
     "fa_lavarain",
-    "fa_sand",
+    "fa_drops",
     "fa_fissures",
     "fa_forcefields",
     "fa_fissurefx",
@@ -197,19 +197,16 @@ PrefabFiles = {
     "wands",
     "fa_dryad",
     "fa_dryadtree",
-    "satyr",
-    "unicorn",
     "fa_dorfs",
     "fa_elves",
+    "fa_elfhuts",
     "fa_dorfhut",
     "fa_orchut",
     "fa_orc",
     "fa_ogre",
     "fa_troll",
     "goblin",
-    "wolf",
     "goblinhut",
-    "wolfmound",
 	"thief",
 	"barb",
 	"cleric",
@@ -349,6 +346,7 @@ Assets = {
     Asset( "ANIM", "anim/fa_cagechains.zip" ),
     Asset( "ANIM", "anim/fa_orcfort_cage.zip" ),
     Asset( "ANIM", "anim/fa_mug.zip" ),
+    Asset( "ANIM", "anim/fa_animation.zip" ),
 --    Asset( "ANIM", "anim/icebomb.zip" ),
 --    Asset( "ANIM", "anim/player_test.zip" ),
 }
@@ -403,7 +401,6 @@ local FALLENLOOTTABLE=GLOBAL.FALLENLOOTTABLE
 local FALLENLOOTTABLEMERGED=GLOBAL.FALLENLOOTTABLEMERGED
 
            
-
 --[[
     local SGWilson=require "stategraphs/SGwilson"
     SGWilson.states["idle"]= GLOBAL.State{
@@ -413,12 +410,11 @@ local FALLENLOOTTABLEMERGED=GLOBAL.FALLENLOOTTABLEMERGED
             
             inst.components.locomotor:Stop()
 
-            inst.AnimState:PlayAnimation("fa_cagedrop", true)
+            inst.AnimState:PlayAnimation("fa_whirlwind", true)
 
         end,        
     }
 ]]
-
 -- Let the game know Wod is a male, for proper pronouns during the end-game sequence.
 -- Possible genders here are MALE, FEMALE, or ROBOT
 table.insert(GLOBAL.CHARACTER_GENDERS.FEMALE, "thief")
@@ -493,10 +489,10 @@ local function resurrectableinit(inst)
 
     local old_DoResurrect=inst.DoResurrect
     function inst:DoResurrect()
-        self.inst:PushEvent("resurrect")
         if self.inst.components.inventory then
             local item = self.inst.components.inventory:GetEquippedItem(GLOBAL.EQUIPSLOTS.NECK)
             if item and item.prefab == "amulet" then
+                self.inst:PushEvent("resurrect")
                 self.inst.sg:GoToState("amulet_rebirth")
                 return true
             end
@@ -509,8 +505,8 @@ end
 
 AddComponentPostInit("resurrectable", resurrectableinit)
 
-
-local function newOnExit(inst)
+local SGWilson=require "stategraphs/SGwilson"
+SGWilson.states["amulet_rebirth"].onexit=function(inst)
 
     inst.components.hunger:SetPercent(2/3)
     inst.components.health:Respawn(TUNING.RESURRECT_HEALTH)
@@ -535,10 +531,6 @@ local function newOnExit(inst)
 
 end
 
-local function SGWilsonPostInit(sg)
-    sg.states["amulet_rebirth"].onexit = newOnExit
-end
-AddStategraphPostInit("wilson", SGWilsonPostInit)
 
 if(GetModConfigData("doubleinventoryspace")==true)then
     AddComponentPostInit("inventory", function(cmp,inst)
@@ -978,7 +970,7 @@ local function UpdateWorldGenScreen(self, profile, cb, world_gen_options)
                 self.worldanim:GetAnimState():PlayAnimation("idle", true)
                 self.verbs = GLOBAL.shuffleArray(GLOBAL.STRINGS.UI.WORLDGEN.MINES.VERBS)
                 self.nouns = GLOBAL.shuffleArray(GLOBAL.STRINGS.UI.WORLDGEN.MINES.NOUNS)
-            elseif(data.id=="DWARF_FORTRESS") then
+            elseif(data.id=="DWARF_FORTRESS" or data.id=="DWARF_FORTRESS_SECRETS") then
                 self.worldanim:GetAnimState():SetBank("generating_mine_cave")
                 self.worldanim:GetAnimState():SetBuild("generating_mine_cave")
                 self.worldanim:GetAnimState():PlayAnimation("idle", true)
@@ -1097,7 +1089,7 @@ AddPrefabPostInit("cave", function(inst)
                     self.clock=self.sidepanel:AddChild(FA_WarClock(owner))
                 end)
             end
-            if(data.id=="ORC_MINES" or data.id=="DWARF_FORTRESS" or data.id=="ORC_FORTRESS")then
+            if(data.id=="ORC_MINES" or data.id=="DWARF_FORTRESS" or data.id=="DWARF_FORTRESS_SECRETS" or data.id=="ORC_FORTRESS")then
                 OrcMinesPostInit(inst)
             end
 
@@ -1179,8 +1171,10 @@ AddSimPostInit(function(inst)
 
         if (inst.prefab=="darkknight" or inst.prefab=="cleric" or inst.prefab=="paladin") then
             --add shields
-            local r=Recipe("fa_woodenshield", {Ingredient("boards", 5),Ingredient("rope", 5) }, RECIPETABS.WAR,  GLOBAL.TECH.SCIENCE_ONE)
-            r.image="fa_woodenshield.tex"
+            local r=Recipe("fa_woodenshield", {Ingredient("boards", 5),Ingredient("rope", 5) }, RECIPETABS.WAR,  GLOBAL.TECH.NONE)
+            r.atlas = "images/inventoryimages/fa_inventoryimages.xml"
+        elseif(inst.prefab=="monk")then
+            local r=Recipe("fa_woodenkama", {Ingredient("boards", 3),Ingredient("rope", 3)}, RECIPETABS.WAR,  GLOBAL.TECH.NONE)
             r.atlas = "images/inventoryimages/fa_inventoryimages.xml"
         end
         inst:ListenForEvent("fishingcollect",onFishingCollect)
@@ -1263,11 +1257,10 @@ else
     end
 end
 
---[[
 AddClassPostConstruct("screens/characterselectscreen", function(self)
-    self:SelectCharacter "barb"
+    self.characterdetails:SetRegionSize( 450, 140 )
 end)
-]]
+
 AddClassPostConstruct("screens/newgamescreen", function(self)
     self.character = "barb"          
     local atlas = "images/saveslot_portraits/"..self.character..".xml"
@@ -1281,10 +1274,12 @@ AddModCharacter("paladin")
 AddModCharacter("cleric")
 AddModCharacter("darkknight")
 AddModCharacter("wizard")
+AddModCharacter("monk")
 
+--[[
 AddModCharacter("ranger")
 AddModCharacter("thief")
-AddModCharacter("monk")
 AddModCharacter("necromancer")
 AddModCharacter("tinkerer")
 AddModCharacter("bard")
+]]

@@ -1,6 +1,7 @@
 
 local MakePlayerCharacter = require "prefabs/player_common"
 
+local CooldownButton = require "widgets/cooldownbutton"
 local RageBuff = require "widgets/ragebuff"
 
 local assets = {
@@ -35,6 +36,7 @@ local assets = {
 		-- Don't forget to include your character's custom assets!
         Asset( "ANIM", "anim/barb.zip" ),
         Asset( "ANIM", "anim/barbarian_rage.zip" ),
+        Asset( "ANIM", "anim/barbarian_rage2.zip" ),
 }
 local prefabs = {}
 
@@ -63,10 +65,12 @@ local ref
 
 local onloadfn = function(inst, data)
     inst.fa_playername=data.fa_playername
+    inst.whirlwindcooldowntimer=data.whirlwindcooldowntimer
 end
 
 local onsavefn = function(inst, data)
     data.fa_playername=inst.fa_playername
+    data.whirlwindcooldowntimer=inst.whirlwindCooldownButton.cooldowntimer
 end
 
 
@@ -127,6 +131,8 @@ local function onlevelup(inst,data)
          inst.components.locomotor.runspeed=inst.components.locomotor.runspeed+0.1*TUNING.WILSON_RUN_SPEED
     elseif level==11 then
         inst.components.combat.fa_basedamagemultiplier=inst.components.combat.fa_basedamagemultiplier+0.1
+    elseif level==12 then
+        inst.whirlwindCooldownButton:Show()
     elseif level==14 then
         inst.components.combat.fa_basedamagemultiplier=inst.components.combat.fa_basedamagemultiplier+0.1        
     elseif level==15 then
@@ -174,21 +180,24 @@ end
 
 local function rageStart(inst)
     local resist=RAGE_RESIST
+    inst.components.health.fa_stunresistance=inst.components.health.fa_stunresistance+1
 	if(inst.components.xplevel.level<20)then
         inst.components.locomotor.runspeed=RAGE_MS_DELTA+inst.components.locomotor.runspeed
-       inst.components.combat.min_attack_period=def_attack_period/1.3       
+       inst.components.combat.min_attack_period=def_attack_period/1.3    
+        inst.AnimState:SetBuild("barbarian_rage")   
     else
         resist=RAGE_RESIST20
 	   inst.components.locomotor.runspeed=RAGE_MS_DELTA+inst.components.locomotor.runspeed
-	   inst.components.combat.min_attack_period=def_attack_period/1.5	    
+	   inst.components.combat.min_attack_period=def_attack_period/1.5	   
+        inst.AnimState:SetBuild("barbarian_rage2") 
     end
     inst.fa_rage_resistboost=resist
     doresistdelta(inst,resist)
         inst.task = inst:DoPeriodicTask(RAGE_PERIOD, function() rageProc(inst) end)
-        inst.AnimState:SetBuild("barbarian_rage")
 end
 
 local function rageEnd(inst)
+    inst.components.health.fa_stunresistance=inst.components.health.fa_stunresistance-1
     doresistdelta(inst,-inst.fa_rage_resistboost)
     inst.fa_rage_resistboost=nil
 	inst.components.locomotor.runspeed=inst.components.locomotor.runspeed-RAGE_MS_DELTA
@@ -254,6 +263,23 @@ local fn = function(inst)
          if(inst.components.xplevel.level<9)then
             inst.rageBuff:Hide()
         end
+
+        inst.whirlwindCooldownButton=CooldownButton(class.owner)
+        inst.whirlwindCooldownButton:SetText("Wrlwind")
+        inst.whirlwindCooldownButton:SetOnClick(function() 
+            inst.sg:GoToState("fa_whirlwind")
+            return true
+        end)
+        inst.whirlwindCooldownButton:SetCooldown(120)
+        if(inst.whirlwindcooldowntimer and inst.whirlwindcooldowntimer>0)then
+             inst.whirlwindCooldownButton:ForceCooldown(inst.whirlwindcooldowntimer)
+        end
+        local htbtn=class:AddChild(inst.whirlwindCooldownButton)
+        htbtn:SetPosition(-250,-40,0)
+        if(inst.components.xplevel.level<12)then
+            inst.whirlwindCooldownButton:Hide()
+        end
+
     end
 
 	

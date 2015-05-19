@@ -804,6 +804,42 @@ AddRoom("FA_DwarfFortressSecret2",{
 									}, 
 					            }
 	})
+AddRoom("FA_DwarfFortressSecret3",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.FUNGUSGREEN,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FADorfFortressSecret3"] = 1,
+									}, 
+					            }
+	})
+
+AddRoom("FA_DwarfFortressSecret4",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.FUNGUSGREEN,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FADorfFortressSecret4"] = 1,
+									}, 
+					            }
+	})
+
+AddRoom("FA_DwarfFortressSecret5",{
+		colour={r=0.2,g=0.0,b=0.2,a=0.3},
+					value = GROUND.FUNGUSGREEN,	
+					contents =  {
+
+									countstaticlayouts = 
+									{
+										["FADorfFortressSecret5"] = 1,
+									}, 
+					            }
+	})
+
 
 
 AddRoom("FA_DwarfFortressRoom1",{

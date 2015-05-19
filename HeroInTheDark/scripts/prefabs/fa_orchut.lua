@@ -4,6 +4,9 @@ local assets =
     Asset("ANIM", "anim/fa_orcflag.zip"),
     Asset("SOUND", "sound/pig.fsb"),
 }
+local bedassets={
+    Asset("ANIM", "anim/fa_orcbed.zip"),    
+}
 
 local throneassets =
 {
@@ -55,12 +58,21 @@ local function onhit(inst, worker)
 	inst.AnimState:PushAnimation("idle")
 end
 
-local function fn(Sim)
-	local inst = CreateEntity()
-	local trans = inst.entity:AddTransform()
-	local anim = inst.entity:AddAnimState()
-    local light = inst.entity:AddLight()
+local function common(name)
+    local inst = CreateEntity()
+    local trans = inst.entity:AddTransform()
+    local anim = inst.entity:AddAnimState()
     inst.entity:AddSoundEmitter()
+
+    anim:SetBank(name)
+    anim:SetBuild(name)
+    anim:PlayAnimation("idle",true)
+    return inst
+end
+
+local function fn(Sim)
+    local inst=common("fa_orchut")
+    local light = inst.entity:AddLight()
     local shadow = inst.entity:AddDynamicShadow()
     shadow:SetSize( 20, 10 )
     inst.Transform:SetScale(2,2, 2)
@@ -75,9 +87,6 @@ local function fn(Sim)
     
     MakeObstaclePhysics(inst, 4)
 
-    anim:SetBank("fa_orchut")
-    anim:SetBuild("fa_orchut")
-    anim:PlayAnimation("idle",true)
 
     inst:AddTag("structure")
     inst:AddComponent("lootdropper")
@@ -145,20 +154,13 @@ end
 
 
 local function fnthrone()
-   local inst = CreateEntity()
-    local trans = inst.entity:AddTransform()
-    local anim = inst.entity:AddAnimState()
+    local inst=common("fa_orcthrone")
     local light = inst.entity:AddLight()
-    inst.entity:AddSoundEmitter()
     local shadow = inst.entity:AddDynamicShadow()
     shadow:SetSize( 5, 5 )
     
     MakeObstaclePhysics(inst, 1)
 
-    anim:SetBank("fa_orcthrone")
-    anim:SetBuild("fa_orcthrone")
-    anim:PlayAnimation("idle",true)
-    
     inst:AddComponent("childspawner")
     inst.components.childspawner.childname = "fa_orc_king"
     inst.components.childspawner:SetRegenPeriod(TUNING.SPIDERDEN_REGEN_TIME)
@@ -175,6 +177,21 @@ local function fnthrone()
     return inst
 end
 
+local function fnbed()
+    local inst=common("fa_orcbed")
+    inst:AddComponent("inspectable")
+    inst:AddComponent("childspawner")
+    inst.components.childspawner.childname = "fa_orc_iron"
+    inst.components.childspawner:SetRegenPeriod(TUNING.SPIDERDEN_REGEN_TIME)
+    inst.components.childspawner:SetSpawnPeriod(TUNING.SPIDERDEN_RELEASE_TIME)
+--    inst.components.childspawner.spawnoffscreen=true
+    inst.components.childspawner:SetMaxChildren(1)
+    inst.components.childspawner:StartSpawning()
+    MakeSnowCovered(inst, .01)
+    return inst
+end
+
 return Prefab( "common/objects/fa_orchut", fn, assets, prefabs ),
-Prefab( "common/objects/fa_orcthrone", fnthrone, throneassets, prefabs )
+Prefab( "common/objects/fa_orcthrone", fnthrone, throneassets, prefabs ),
+Prefab( "common/objects/fa_orcbed", fnbed, bedassets, prefabs )
 

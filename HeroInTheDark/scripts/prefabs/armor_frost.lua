@@ -18,6 +18,8 @@ local ARMORFROST_PROC_T3=0.3
 local ARMORFROST_COLDNESS=1
 local FROZEN_DEBUFF_LENGTH=10
 
+local FA_BuffUtil=require "buffutil"
+
 local function OnBlocked(owner,data) 
     local inst = owner.components.inventory:GetEquippedItem(EQUIPSLOTS.BODY)
     if(not inst) then return end

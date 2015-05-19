@@ -44,6 +44,9 @@ local DAGGER_USES_COPPER=115
 local DAGGER_USES_IRON=225
 local DAGGER_USES_STEEL=350
 
+local DAGGER_DAMAGE_ADAMANTINE=105
+local DAGGER_USE_ADAMANTINE=1000
+
 local POISON_PERIOD=5
 local POISON_LENGTH=25
 local POISON_DAMAGE = 50
@@ -173,9 +176,9 @@ end
 
 local function adamantine()
     local inst=common("fa_adamantinedagger")
-    inst.components.weapon:SetDamage(DAGGER_DAMAGE_T3)
-    inst.components.finiteuses:SetMaxUses(DAGGER_USES_STEEL)
-    inst.components.finiteuses:SetUses(DAGGER_USES_STEEL)
+    inst.components.weapon:SetDamage(DAGGER_DAMAGE_ADAMANTINE)
+    inst.components.finiteuses:SetMaxUses(DAGGER_USE_ADAMANTINE)
+    inst.components.finiteuses:SetUses(DAGGER_USE_ADAMANTINE)
     return inst
 end
 local function silver()

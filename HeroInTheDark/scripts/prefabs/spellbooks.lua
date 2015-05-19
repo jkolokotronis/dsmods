@@ -44,7 +44,6 @@ local LIGHTNING_DAMAGE=100
 local BUFF_LENGTH=100
 local HASTE_LENGTH=60
 local LONGSTRIDER_LENGTH=120
-local SHIELD_PROTECTION=50
 local EXPRETREAT_LENGTH=120
 local INVISIBILITY_LENGTH=120
 local BB_LENGTH=12
@@ -62,9 +61,9 @@ local  NATURESPAWN_SUMMON_TIME=60
 
 local CURE_LIGHT=10
 local CURE_MOD=15
-local CURE_SER=20
 local CURE_CRIT=25
 
+local FA_BuffUtil=require "buffutil"
 
 function curelightfn(inst, reader)
     local cl=1
@@ -122,17 +121,8 @@ function curemodfn(inst, reader)
 end
 
 function cureserfn(inst, reader)
-    local cl=1
-    if(reader.components.fa_spellcaster)then
-        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.CONJURATION)
-    end
-    local boom =SpawnPrefab("fa_heal_greenfx")
-    local follower = boom.entity:AddFollower()
-    follower:FollowSymbol(reader.GUID,reader.components.combat.hiteffectsymbol, 0, 100, -0.0001)
-    boom.persists=false
-    boom:ListenForEvent("animover", function()  boom:Remove() end)
-    reader.components.health:DoDelta(CURE_SER*(1+math.floor(cl/4)))
-    return true
+    return FA_BuffUtil.CureSerious(reader)
+
 end
 
 function  curecritfn(inst, reader)
@@ -687,18 +677,7 @@ function falselifefn(inst,reader)
 end
 
 function shieldfn(inst,reader)
-    local cl=1
-    if(reader.components.fa_spellcaster)then
-        cl=reader.components.fa_spellcaster:GetCasterLevel(FA_SPELL_SCHOOLS.ABJURATION)
-    end
-    local damage=(1+math.floor(cl/5))*SHIELD_PROTECTION
-    local current_protection= reader.components.health.fa_protection[FA_DAMAGETYPE.PHYSICAL] or 0
-    --not sure if i want to let it accumulate
-    if(current_protection>damage) then return false 
-    else
-        reader.components.health:SetProtection(damage,FA_DAMAGETYPE.PHYSICAL)
-    end
-    return true
+    return FA_BuffUtil.Shield(reader)
 end
 
 --hmph this makes no sense whatsoever without the whole water/ach logic, ill just leave it as is for now

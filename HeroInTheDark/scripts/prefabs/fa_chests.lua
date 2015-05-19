@@ -8,6 +8,7 @@ local assets=
 	Asset("ANIM", "anim/pandoras_chest.zip"),
 	Asset("ANIM", "anim/skull_chest.zip"),
 	Asset("ANIM", "anim/pandoras_chest_large.zip"),
+	Asset("ANIM", "anim/fa_ui_chest_5x4.zip"),
 }
 
 local prefabs =
@@ -58,12 +59,27 @@ local function common(origprefab,locklevel)
     return inst
 end
 
+local slotpos = {}
+
+for y = 3, 0, -1 do
+	for x = -1, 3 do
+		table.insert(slotpos, Vector3(80*x-80*2+80, 80*y-80*2+40,0))
+	end
+end
+
 local function fa_treasurechest()
 	return common("treasurechest",1)
 end
 
 local function fa_pandoraschest()
-	return common("pandoraschest",3)
+	local inst= common("pandoraschest",3)
+		inst.components.container:SetNumSlots(#slotpos)
+		inst.components.container.widgetslotpos = slotpos
+		inst.components.container.widgetanimbank = "fa_ui_chest_5x4"
+		inst.components.container.widgetanimbuild = "fa_ui_chest_5x4"
+		inst.components.container.widgetpos = Vector3(0,200,0)
+		inst.components.container.side_align_tip = 160
+		return inst
 end
 
 local function fa_skullchest()
@@ -71,7 +87,14 @@ local function fa_skullchest()
 end
 
 local function fa_minotaurchest()
-	return common("minotaurchest",4)
+	local inst=common("minotaurchest",4)
+			inst.components.container:SetNumSlots(#slotpos)
+		inst.components.container.widgetslotpos = slotpos
+		inst.components.container.widgetanimbank = "fa_ui_chest_5x4"
+		inst.components.container.widgetanimbuild = "fa_ui_chest_5x4"
+		inst.components.container.widgetpos = Vector3(0,200,0)
+		inst.components.container.side_align_tip = 160
+		return inst
 end
 
 local function fa_mine_skullchest()

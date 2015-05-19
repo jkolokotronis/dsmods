@@ -32,12 +32,18 @@ local dorffortassets=
 	
 }
 
+local hellgateassets={
+	Asset("ANIM", "anim/fa_hellgate.zip"),
+}
+
 
 local prefabs = 
 {
 	"bat",
 	"exitcavelight"
 }
+
+local SECRET_ENTRANCE_WORKLEFT=100
 
 local function GetVerb(inst)
 	return STRINGS.ACTIONS.ACTIVATE.ENTER
@@ -127,12 +133,6 @@ local function OnActivate(inst,doer)
 end
 
 local function MakeRuins(inst)
---	inst.AnimState:SetBank("ruins_entrance")
---	inst.AnimState:SetBuild("ruins_entrance")
-
-	if inst.components.lootdropper then
-		inst.components.lootdropper:SetLoot({"thulecite", "thulecite_pieces", "thulecite_pieces"})
-	end
 
 	inst.MiniMapEntity:SetIcon("ruins_closed.png")
 
@@ -140,31 +140,25 @@ end
 
 local function Open(inst)
 
-	inst.startspawningfn = function()	
-		inst.components.childspawner:StopRegen()	
-		inst.components.childspawner:StartSpawning()
-	end
-
-	inst.stopspawningfn = function()
-		inst.components.childspawner:StartRegen()
+	if(inst.components.childspawner)then
+		inst.startspawningfn = function()	
+			inst.components.childspawner:StopRegen()	
+			inst.components.childspawner:StartSpawning()
+		end
+		inst.stopspawningfn = function()
+			inst.components.childspawner:StartRegen()
+			inst.components.childspawner:StopSpawning()
+			ReturnChildren(inst)
+		end
 		inst.components.childspawner:StopSpawning()
-		ReturnChildren(inst)
+		inst:ListenForEvent("dusktime", inst.startspawningfn, GetWorld())
+		inst:ListenForEvent("daytime", inst.stopspawningfn, GetWorld())
 	end
-	inst.components.childspawner:StopSpawning()
-	inst:ListenForEvent("dusktime", inst.startspawningfn, GetWorld())
-	inst:ListenForEvent("daytime", inst.stopspawningfn, GetWorld())
-
 
     inst.AnimState:PlayAnimation("idle_open", true)
     inst:RemoveComponent("workable")
     
     inst.open = true
---[[
-    inst.name = STRINGS.NAMES.CAVE_ENTRANCE_OPEN
-	if SaveGameIndex:GetCurrentMode() == "cave" then
-        inst.name = STRINGS.NAMES.CAVE_ENTRANCE_OPEN_CAVE
-    end
-	]]
 
 	inst:RemoveComponent("lootdropper")
 
@@ -183,23 +177,14 @@ local function OnWork(inst, worker, workleft)
 	if workleft <= 0 then
 		inst.SoundEmitter:PlaySound("dontstarve/wilson/rock_break")
 		inst.components.lootdropper:DropLoot(pt)
-        ProfileStatsSet("cave_entrance_opened", true)
 		Open(inst)
-	else				
-		if workleft < TUNING.ROCKS_MINE*(1/3) then
-			inst.AnimState:PlayAnimation("low")
-		elseif workleft < TUNING.ROCKS_MINE*(2/3) then
-			inst.AnimState:PlayAnimation("med")
-		else
-			inst.AnimState:PlayAnimation("idle_closed")
-		end
 	end
 end
 
 
 local function Close(inst)
 
-	if inst.open then
+	if inst.open and inst.components.childspawner then
 		inst:RemoveEventCallback("daytime", inst.stopspawningfn)
 		inst:RemoveEventCallback("dusktime", inst.startspawningfn)
 	end
@@ -213,12 +198,6 @@ local function Close(inst)
 	inst:AddComponent("lootdropper")
 	inst.components.lootdropper:SetLoot({"rocks", "rocks", "flint", "flint", "flint"})
 
---[[
-    inst.name = STRINGS.NAMES.CAVE_ENTRANCE_CLOSED
-	if SaveGameIndex:GetCurrentMode() == "cave" then
-        inst.name = STRINGS.NAMES.CAVE_ENTRANCE_CLOSED_CAVE
-    end
-]]
     inst.open = false
 end      
 
@@ -226,20 +205,13 @@ end
 local function onsave(inst, data)
 	data.cavenum = inst.cavenum
 	data.fa_cavename=inst.fa_cavename
---	data.open = inst.open
+	data.open = inst.open
 end           
 
 local function onload(inst, data)
 	inst.cavenum = data and data.cavenum 
 	inst.fa_cavename=data and data.fa_cavename
 
-	if GetWorld():IsCave() then
-		MakeRuins(inst)
-	end
-
-	if data and data.open then
---		Open(inst)
-	end
 end
 
 local function GetStatus(inst)
@@ -263,11 +235,6 @@ local function fn(Sim)
 	inst.components.inspectable:RecordViews()
 	inst.components.inspectable.getstatus = GetStatus
 
-	inst:AddComponent( "childspawner" )
-	inst.components.childspawner:SetRegenPeriod(60)
-	inst.components.childspawner:SetSpawnPeriod(.1)
-	inst.components.childspawner:SetMaxChildren(6)
-	inst.components.childspawner.childname = "bat"
 --    Close(inst)
 	inst.OnSave = onsave
 	inst.OnLoad = onload
@@ -283,8 +250,13 @@ end
 local function dungfn()
 	local inst=fn()
 	inst.saveseasons=true
-	inst.AnimState:SetBuild("fa_dungeon_entrance")
-	inst.AnimState:SetBank("fa_dungeon_entrance")
+
+	inst:AddComponent( "childspawner" )
+	inst.components.childspawner:SetRegenPeriod(60)
+	inst.components.childspawner:SetSpawnPeriod(.1)
+	inst.components.childspawner:SetMaxChildren(6)
+	inst.components.childspawner.childname = "bat"
+
 	Open(inst)
 	return inst
 end
@@ -294,6 +266,13 @@ local function minefn()
 	inst.AnimState:SetBuild("fa_mine_entrance")
 	inst.AnimState:SetBank("fa_mine_entrance")
     inst.Transform:SetScale(1.3,1.3, 1.3)
+
+	inst:AddComponent( "childspawner" )
+	inst.components.childspawner:SetRegenPeriod(60)
+	inst.components.childspawner:SetSpawnPeriod(.1)
+	inst.components.childspawner:SetMaxChildren(6)
+	inst.components.childspawner.childname = "bat"
+
 	Open(inst)
 	return inst
 end
@@ -302,6 +281,13 @@ local function minegrassfn()
 	inst.AnimState:SetBuild("fa_mine_entrance_grass")
 	inst.AnimState:SetBank("fa_mine_entrance_grass")
     inst.Transform:SetScale(1.3,1.3, 1.3)
+
+	inst:AddComponent( "childspawner" )
+	inst.components.childspawner:SetRegenPeriod(60)
+	inst.components.childspawner:SetSpawnPeriod(.1)
+	inst.components.childspawner:SetMaxChildren(6)
+	inst.components.childspawner.childname = "bat"
+
 	Open(inst)
 	return inst
 end
@@ -309,6 +295,7 @@ local function orcfort()
 	local inst=fn()
 	inst.AnimState:SetBuild("fa_orcfort")
 	inst.AnimState:SetBank("fa_orcfort")
+	inst:AddComponent( "childspawner" )
 	inst.components.childspawner:SetMaxChildren(3)
 	inst.components.childspawner.childname = "fa_orc_iron"
 	inst.components.childspawner:StartRegen()	
@@ -364,6 +351,7 @@ local function dorffort()
 	local inst=fn()
 	inst.AnimState:SetBuild("fa_dorffortentrance")
 	inst.AnimState:SetBank("fa_dorffortentrance")
+	inst:AddComponent( "childspawner" )
 	inst.components.childspawner:SetMaxChildren(3)
 	inst.components.childspawner.childname = "fa_dorf"
 	inst.components.childspawner:StartRegen()	
@@ -385,8 +373,80 @@ local function dorffort()
 	return inst
 end
 
+local function dorfsecretfn()
+	local inst=fn()
+	inst.AnimState:SetBank("ruins_entrance")
+	inst.AnimState:SetBuild("ruins_entrance")
+	inst.MiniMapEntity:SetIcon("ruins_closed.png")
+
+    inst.AnimState:PlayAnimation("idle_closed", true)
+
+	inst:AddComponent("workable")
+	inst.components.workable:SetWorkAction(ACTIONS.MINE)
+	inst.components.workable.savestate=true
+	inst.components.workable:SetWorkLeft(SECRET_ENTRANCE_WORKLEFT)
+	inst:AddComponent("lootdropper")
+	inst.components.lootdropper:SetLoot({"rocks", "rocks", "flint", "flint", "flint"})
+
+	
+	inst.components.workable:SetOnWorkCallback(
+		function(inst, worker, workleft)
+			local pt = Point(inst.Transform:GetWorldPosition())
+			if workleft <= 0 then
+				inst.SoundEmitter:PlaySound("dontstarve/wilson/rock_break")
+				inst.components.lootdropper:DropLoot(pt)
+				Open(inst)
+			elseif workleft < SECRET_ENTRANCE_WORKLEFT*(1/3) then
+					inst.AnimState:PlayAnimation("low")
+			elseif workleft <SECRET_ENTRANCE_WORKLEFT*(2/3) then
+					inst.AnimState:PlayAnimation("med")
+			else
+					inst.AnimState:PlayAnimation("idle_closed")
+			end
+		end)     
+
+	inst.OnLoad = function(inst, data)
+		inst.cavenum = data and data.cavenum 
+		inst.fa_cavename=data and data.fa_cavename
+		if data and data.open then
+			Open(inst)
+		end
+	end
+	return inst
+end
+
+local function hellgate()
+	local inst=fn()
+	inst.AnimState:SetBuild("fa_hellgate")
+	inst.AnimState:SetBank("fa_hellgate")
+	inst.MiniMapEntity:SetIcon("cave_open.png")
+
+    local light = inst.entity:AddLight()
+    inst.Light:Enable(true)
+	inst.Light:SetRadius(3)
+    inst.Light:SetFalloff(0.7)
+    inst.Light:SetIntensity(.7)
+    inst.Light:SetColour(235/255,62/255,12/255)
+
+
+    inst:RemoveComponent("workable")
+    inst.open = true
+	inst:AddComponent("activatable")
+    inst.components.activatable.OnActivate = function(inst)
+
+    	GetPlayer().components.talker:Say("The entrance is blocked")
+	end
+    inst.components.activatable.inactive = true
+    inst.components.activatable.getverb = GetVerb
+	inst.components.activatable.quickaction = true
+
+	return inst
+end
+
 return Prefab( "common/fa_dungeon_entrance", dungfn, assets, prefabs),
 Prefab( "common/fa_mine_entrance", minefn, mineassets, prefabs),
 Prefab( "common/fa_mine_entrance_grass", minegrassfn, minegrassassets, prefabs),
 Prefab( "common/fa_orcfort", orcfort, orcfortassets, prefabs),
-Prefab("common/fa_dorffort",dorffort, dorffortassets,prefabs)
+Prefab("common/fa_dorffort",dorffort, dorffortassets,prefabs),
+Prefab("common/fa_hellgate",hellgate, hellgateassets,prefabs),
+Prefab("common/fa_dorfsecret_entrance",dorfsecretfn, {},{})

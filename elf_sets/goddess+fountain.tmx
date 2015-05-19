@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="20" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="tiles" tilewidth="64" tileheight="64">
+  <image source="../tiles/tiles.png" width="512" height="512"/>
+ </tileset>
+ <layer name="BG_TILES" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBhZgJ3K/JEGRsOPMjAafpSB0fCjDFA7/ADcnwCw
+  </data>
+ </layer>
+ <objectgroup name="FG_OBJECTS" width="20" height="20">
+  <object type="fa_fountain" x="158" y="158"/>
+  <object type="flower" x="255" y="60"/>
+  <object type="flower" x="224" y="96"/>
+  <object type="flower" x="290" y="98"/>
+  <object type="flower" x="289" y="160"/>
+  <object type="flower" x="225" y="163"/>
+  <object type="flower" x="256" y="221"/>
+  <object type="flower" x="300" y="208"/>
+  <object type="flower" x="295" y="245"/>
+  <object type="flower" x="261" y="298"/>
+  <object type="flower" x="300" y="298"/>
+  <object type="flower" x="145" y="275"/>
+  <object type="flower" x="229" y="282"/>
+  <object type="flower" x="195" y="266"/>
+  <object type="flower" x="229" y="249"/>
+  <object type="flower" x="217" y="204"/>
+  <object type="flower" x="291" y="37"/>
+  <object type="flower" x="168" y="230"/>
+  <object type="flower" x="190" y="95"/>
+  <object type="flower" x="114" y="123"/>
+  <object type="flower" x="142" y="50"/>
+  <object type="flower" x="124" y="82"/>
+  <object type="flower" x="151" y="120"/>
+  <object type="flower" x="169" y="63"/>
+  <object type="flower" x="180" y="32"/>
+  <object type="flower" x="249" y="23"/>
+  <object type="flower" x="222" y="53"/>
+  <object type="flower" x="43" y="62"/>
+  <object type="flower" x="14" y="53"/>
+  <object type="flower" x="48" y="32"/>
+  <object type="flower" x="19" y="18"/>
+  <object type="flower" x="71" y="57"/>
+  <object type="flower" x="81" y="26"/>
+  <object type="flower" x="79" y="90"/>
+  <object type="flower" x="107" y="51"/>
+  <object type="flower" x="126" y="24"/>
+  <object type="flower" x="83" y="117"/>
+  <object type="flower" x="157" y="90"/>
+  <object type="flower" x="19" y="143"/>
+  <object type="flower" x="52" y="119"/>
+  <object type="flower" x="29" y="105"/>
+  <object type="flower" x="17" y="79"/>
+  <object type="flower" x="52" y="88"/>
+  <object type="flower" x="92" y="159"/>
+  <object type="flower" x="69" y="184"/>
+  <object type="flower" x="12" y="184"/>
+  <object type="flower" x="39" y="168"/>
+  <object type="flower" x="63" y="144"/>
+  <object type="flower" x="67" y="223"/>
+  <object type="flower" x="40" y="239"/>
+  <object type="flower" x="97" y="239"/>
+  <object type="flower" x="120" y="214"/>
+  <object type="flower" x="91" y="199"/>
+  <object type="flower" x="47" y="198"/>
+  <object type="flower" x="40" y="272"/>
+  <object type="flower" x="13" y="288"/>
+  <object type="flower" x="70" y="288"/>
+  <object type="flower" x="93" y="263"/>
+  <object type="flower" x="64" y="248"/>
+  <object type="flower" x="20" y="247"/>
+  <object type="flower" x="145" y="303"/>
+  <object type="flower" x="115" y="287"/>
+  <object type="flower" x="168" y="278"/>
+  <object type="flower" x="88" y="303"/>
+  <object type="flower" x="234" y="307"/>
+  <object type="flower" x="200" y="291"/>
+  <object type="flower" x="257" y="190"/>
+  <object type="flower" x="262" y="153"/>
+  <object type="flower" x="255" y="127"/>
+  <object type="flower" x="260" y="90"/>
+ </objectgroup>
+</map>

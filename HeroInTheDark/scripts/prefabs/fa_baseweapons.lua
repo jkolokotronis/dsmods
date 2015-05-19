@@ -94,6 +94,47 @@ local SWORD_USES_T1=115
 local SWORD_USES_T2=225
 local SWORD_USES_T3=350
 
+local ADAMANTINE_SWORD_DAMAGE=120
+local ADAMANTINE_SWORD_USES=1000
+local ADAMANTINE_AXE_DAMAGE=135
+local ADAMANTINE_AXE_USES=1000
+
+local WOOD_KAMA_DAMAGE=30
+local WOOD_KAMA_USES=120
+local COPPER_KAMA_DAMAGE=40
+local COPPER_KAMA_USES=150
+local COPPER_KAMA_KI=1
+local SILVER_KAMA_DAMAGE=50
+local SILVER_KAMA_USES=200
+local SILVER_KAMA_KI=1
+local GOLD_KAMA_DAMAGE=35
+local GOLD_KAMA_USES=200
+local IRON_KAMA_DAMAGE=60
+local IRON_KAMA_USES=250
+local IRON_KAMA_KI=2
+local STEEL_KAMA_DAMAGE=70
+local STEEL_KAMA_USES=375
+local STEEL_KAMA_KI=3
+local ADAMANTINE_KAMA_DAMAGE=90
+local ADAMANTINE_KAMA_USES=1000
+local ADAMANTINE_KAMA_KI=5
+
+
+local WOODEN_STAFF_DAMAGE=30
+local WOODEN_STAFF_USES=120
+local COPPER_STAFF_DAMAGE=35
+local COPPER_STAFF_USES=150
+local SILVER_STAFF_DAMAGE=35
+local SILVER_STAFF_USES=200
+local GOLDEN_STAFF_DAMAGE=35
+local GOLDEN_STAFF_USES=200
+local GOLDEN_STAFF_DAPPERNESS=3.0/60
+local IRON_STAFF_DAMAGE=40
+local IRON_STAFF_USES=250
+local STEEL_STAFF_DAMAGE=45
+local STEEL_STAFF_USES=375
+local ADAMANTINE_STAFF_DAMAGE=60
+local ADAMANTINE_STAFF_USES=1000
 
 local function onfinished(inst)
     inst.SoundEmitter:PlaySound("dontstarve/common/gem_shatter")
@@ -181,9 +222,9 @@ local function adamantinesword()
     local inst=common("fa_adamantinesword")
     inst:AddTag("sword")
 
-    inst.components.weapon:SetDamage(SWORD_DAMAGE_T3)
-    inst.components.finiteuses:SetMaxUses(SWORD_USES_T3)
-    inst.components.finiteuses:SetUses(SWORD_USES_T3)
+    inst.components.weapon:SetDamage(ADAMANTINE_SWORD_DAMAGE)
+    inst.components.finiteuses:SetMaxUses(ADAMANTINE_AXE_USES)
+    inst.components.finiteuses:SetUses(ADAMANTINE_AXE_USES)
     return inst
 end
 local function copperaxe()
@@ -208,9 +249,9 @@ local function adamantineaxe()
     local inst=common("fa_adamantineaxe")
     inst:AddTag("axe")
 
-    inst.components.weapon:SetDamage(AXE_DAMAGE_T3)
-    inst.components.finiteuses:SetMaxUses(AXE_USES_T3)
-    inst.components.finiteuses:SetUses(AXE_USES_T3)
+    inst.components.weapon:SetDamage(ADAMANTINE_AXE_DAMAGE)
+    inst.components.finiteuses:SetMaxUses(ADAMANTINE_AXE_USES)
+    inst.components.finiteuses:SetUses(ADAMANTINE_AXE_USES)
     return inst
 end
 local function ironaxe()
@@ -263,72 +304,151 @@ end
 
 local function fa_ironkama()
     local inst=common("fa_ironkama")
+    inst.components.weapon:SetDamage(IRON_KAMA_DAMAGE)
+    inst.components.finiteuses:SetMaxUses(IRON_KAMA_USES)
+    inst.components.finiteuses:SetUses(IRON_KAMA_USES)
+    inst.fa_kiboost=IRON_KAMA_KI
     inst:AddTag("unarmed")
     return inst
 end
 local function fa_silverkama()
     local inst=common("fa_silverkama")
+    inst.components.weapon:SetDamage(SILVER_KAMA_DAMAGE)
+    inst.components.finiteuses:SetMaxUses(SILVER_KAMA_USES)
+    inst.components.finiteuses:SetUses(SILVER_KAMA_USES)
+    inst.fa_kiboost=SILVER_KAMA_KI
     inst:AddTag("unarmed")
     return inst
 end
 local function fa_steelkama()
     local inst=common("fa_steelkama")
+    inst.components.weapon:SetDamage(STEEL_KAMA_DAMAGE)
+    inst.components.finiteuses:SetMaxUses(STEEL_KAMA_USES)
+    inst.components.finiteuses:SetUses(STEEL_KAMA_USES)
+    inst.fa_kiboost=STEEL_KAMA_KI
     inst:AddTag("unarmed")
     return inst
 end
 local function fa_adamantinekama()
     local inst=common("fa_adamantinekama")
+    inst.components.weapon:SetDamage(ADAMANTINE_KAMA_DAMAGE)
+    inst.components.finiteuses:SetMaxUses(ADAMANTINE_KAMA_USES)
+    inst.components.finiteuses:SetUses(ADAMANTINE_KAMA_USES)
+    inst.fa_kiboost=ADAMANTINE_KAMA_KI
     inst:AddTag("unarmed")
     return inst
 end
 local function fa_copperkama()
     local inst=common("fa_copperkama")
+    inst.components.weapon:SetDamage(COPPER_KAMA_DAMAGE)
+    inst.components.finiteuses:SetMaxUses(COPPER_KAMA_USES)
+    inst.components.finiteuses:SetUses(COPPER_KAMA_USES)
+    inst.fa_kiboost=COPPER_KAMA_KI
     inst:AddTag("unarmed")
     return inst
 end
 local function fa_woodenkama()
     local inst=common("fa_woodenkama")
+    inst.components.weapon:SetDamage(WOOD_KAMA_DAMAGE)
+    inst.components.finiteuses:SetMaxUses(WOOD_KAMA_USES)
+    inst.components.finiteuses:SetUses(WOOD_KAMA_USES)
     inst:AddTag("unarmed")
     return inst
 end
 local function fa_goldkama()
     local inst=common("fa_goldkama")
+    inst.components.weapon:SetDamage(GOLD_KAMA_DAMAGE)
+    inst.components.finiteuses:SetMaxUses(GOLD_KAMA_USES)
+    inst.components.finiteuses:SetUses(GOLD_KAMA_USES)
     inst:AddTag("unarmed")
+
+    local function onattack(inst, attacker, target)
+        if(attacker and attacker.components.sanity)then
+            attacker.components.sanity:DoDelta(1)
+        end
+    end
+    inst.components.weapon:SetOnAttack(onattack)
+    
     return inst
 end
+
 local function fa_ironstaff()
     local inst=common("fa_ironstaff")
+    inst.components.weapon:SetDamage(IRON_STAFF_DAMAGE)
+    inst.components.finiteuses:SetMaxUses(IRON_STAFF_USES)
+    inst.components.finiteuses:SetUses(IRON_STAFF_USES)
     inst:AddTag("unarmed")
+    inst:AddTag("staff")
     return inst
 end
 local function fa_silverstaff()
     local inst=common("fa_silverstaff")
+    inst.components.weapon:SetDamage(SILVER_STAFF_DAMAGE)
+    inst.components.finiteuses:SetMaxUses(SILVER_STAFF_USES)
+    inst.components.finiteuses:SetUses(SILVER_STAFF_USES)
     inst:AddTag("unarmed")
+    inst:AddTag("staff")
+
+    local function onattack(inst, attacker, target)
+        if(attacker and target and target:HasTag("undead")) then
+          target.components.combat:GetAttacked(attacker, inst.components.weapon.damage*0.5, nil)
+        end
+    end
+    inst.components.weapon:SetOnAttack(onattack)
+
     return inst
 end
 local function fa_steelstaff()
     local inst=common("fa_steelstaff")
+    inst.components.weapon:SetDamage(STEEL_STAFF_DAMAGE)
+    inst.components.finiteuses:SetMaxUses(STEEL_STAFF_USES)
+    inst.components.finiteuses:SetUses(STEEL_STAFF_USES)
     inst:AddTag("unarmed")
+    inst:AddTag("staff")
     return inst
 end
 local function fa_adamantinestaff()
     local inst=common("fa_adamantinestaff")
+    inst.components.weapon:SetDamage(ADAMANTINE_STAFF_DAMAGE)
+    inst.components.finiteuses:SetMaxUses(ADAMANTINE_STAFF_USES)
+    inst.components.finiteuses:SetUses(ADAMANTINE_STAFF_USES)
     inst:AddTag("unarmed")
+    inst:AddTag("staff")
     return inst
 end
 local function fa_copperstaff()
     local inst=common("fa_copperstaff")
+    inst.components.weapon:SetDamage(COPPER_STAFF_DAMAGE)
+    inst.components.finiteuses:SetMaxUses(COPPER_STAFF_USES)
+    inst.components.finiteuses:SetUses(COPPER_STAFF_USES)
     inst:AddTag("unarmed")
+    inst:AddTag("staff")
     return inst
 end
 local function fa_woodenstaff()
     local inst=common("fa_woodenstaff")
+    inst.components.weapon:SetDamage(WOODEN_STAFF_DAMAGE)
+    inst.components.finiteuses:SetMaxUses(WOODEN_STAFF_USES)
+    inst.components.finiteuses:SetUses(WOODEN_STAFF_USES)
     inst:AddTag("unarmed")
+    inst:AddTag("staff")
     return inst
 end
 local function fa_goldstaff()
     local inst=common("fa_goldstaff")
+    inst.components.weapon:SetDamage(GOLDEN_STAFF_DAMAGE)
+    inst.components.finiteuses:SetMaxUses(GOLDEN_STAFF_USES)
+    inst.components.finiteuses:SetUses(GOLDEN_STAFF_USES)
+
+        if(FA_DLCACCESS)then
+            inst.components.equippable.dapperness = GOLDEN_STAFF_DAPPERNESS
+        else
+            inst:AddComponent("dapperness")
+            inst.components.dapperness.dapperness = GOLDEN_STAFF_DAPPERNESS
+        end
+
     inst:AddTag("unarmed")
+    inst:AddTag("staff")
     return inst
 end
 return

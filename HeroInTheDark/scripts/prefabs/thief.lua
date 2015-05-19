@@ -67,22 +67,6 @@ local PICKPOCKET_COOLDOWN_MK2=4*60
 
 STRINGS.TABS.SUBTERFUGE = "Subterfuge"
 
-STRINGS.NAMES.TRAP_DOUBLETEETH = "Double Teeth Trap"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.TRAP_DOUBLETEETH = "Double Teeth Trap"
-STRINGS.RECIPE_DESC.TRAP_DOUBLETEETH = "Double Teeth Trap"
-
-STRINGS.NAMES.TRAP_ICE = "Ice Trap"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.TRAP_ICE = "Ice Trap"
-STRINGS.RECIPE_DESC.TRAP_ICE = "Ice Trap"
-
-STRINGS.NAMES.TRAP_FIRE = "Fire Trap"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.TRAP_FIRE = "Fire Trap"
-STRINGS.RECIPE_DESC.TRAP_FIRE = "Fire Trap"
-
-STRINGS.NAMES.TRAP_TENTACLE = "Tentacle Trap"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.TRAP_TENTACLE = "Tentacle Trap"
-STRINGS.RECIPE_DESC.TRAP_TENTACLE = "Tentacle Trap"
-
 
 local function enabletraps()
 
@@ -90,7 +74,10 @@ local function enabletraps()
     r.image="book_brimstone.tex"
     r=Recipe("bow", {Ingredient("twigs", 2), Ingredient("rope", 1),Ingredient("pigskin", 1)}, RECIPETABS.SUBTERFUGE,{SCIENCE = 1})
     r.image="woodbow.tex"
-    r.atlas = "images/inventoryimages/woodbow.xml"
+    r.atlas = "images/inventoryimages/fa_inventoryimages.xml"
+    r=Recipe("fa_lockpick", {Ingredient("fa_copperbar", 1,"images/inventoryimages/fa_inventoryimages.xml"), Ingredient("hammer", 1),Ingredient("razor", 1)}, RECIPETABS.SUBTERFUGE,TECH.SCIENCE_ONE,nil, nil, false,2)
+    r.image="fa_lockpick.tex"
+    r.atlas = "images/inventoryimages/fa_inventoryimages.xml"
     r=Recipe("trap_doubleteeth", {Ingredient("houndstooth", 5), Ingredient("boards", 2), Ingredient("rocks", 2)}, RECIPETABS.SUBTERFUGE, {SCIENCE = 2})
     r.image="trap_teeth.tex"
     r=Recipe("trap_fire", {Ingredient("gunpowder", 4),Ingredient("boards", 2), Ingredient("rocks", 2)}, RECIPETABS.SUBTERFUGE, {SCIENCE = 2})

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
+    <folder id="0">
+        <file id="0" name="orc pillar.png" width="1016" height="2047" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <folder id="1" name="fire1">
+        <file id="0" name="fire1/swap1.png" width="16" height="16" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <folder id="2" name="fire2">
+        <file id="0" name="fire2/swap2.png" width="16" height="16" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="fa_orcpillar">
+        <animation id="0" name="idle" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="orc pillar">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-511.888889" y="1905.444444"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="swap1_000">
+                <key id="0" spin="0">
+                    <object folder="1" file="0" x="-262.962963" y="195.592593"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="swap2">
+                <key id="0" spin="0">
+                    <object folder="2" file="0" x="125.925926" y="950.296296"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

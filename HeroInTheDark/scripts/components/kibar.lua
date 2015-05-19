@@ -4,7 +4,7 @@ local KiBar = Class(function(self, inst)
     self.current = self.max
 
     self.decrate = 1
-    self.period = 10
+    self.period = 5
     
 	self.inst:ListenForEvent("respawn", function(inst) self:OnRespawn() end)
 --    self.task = self.inst:DoPeriodicTask(self.period, function() self:DoDec(self.period) end)
@@ -53,8 +53,6 @@ function KiBar:SetMax(amount)
     self.current = amount
 end
 
-
-
 function KiBar:DoDelta(delta, overtime, ignore_invincible)
     
     if self.redirect then
@@ -73,6 +71,10 @@ function KiBar:DoDelta(delta, overtime, ignore_invincible)
     
 end
 
+function KiBar:GetCurrent()
+    return self.current
+end
+
 function KiBar:GetPercent(p)
     return self.current / self.max
 end
@@ -80,11 +82,9 @@ end
 function KiBar:SetPercent(p)
     local old = self.current
     self.current  = p*self.max
-    self.inst:PushEvent("kidelta", {oldpercent = old/self.max, newpercent = p})
+    self.inst:PushEvent("kidelta", {old = old, new = self.current,max=self.max})
 
 end
-
-
 
 function KiBar:SetRate(rate)
     self.decrate = rate

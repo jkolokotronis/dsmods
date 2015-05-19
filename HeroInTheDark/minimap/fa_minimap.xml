@@ -30,13 +30,14 @@
 		<Element name="fa_wheat.tex" u1="0.781494" u2="0.812256" v1="0.503906" v2="0.996094" />
 		<Element name="goblin.tex" u1="0.812744" u2="0.843506" v1="0.503906" v2="0.996094" />
 		<Element name="marbleshield.tex" u1="0.843994" u2="0.874756" v1="0.503906" v2="0.996094" />
-		<Element name="necromancer.tex" u1="0.875244" u2="0.906006" v1="0.503906" v2="0.996094" />
-		<Element name="paladin.tex" u1="0.906494" u2="0.937256" v1="0.503906" v2="0.996094" />
-		<Element name="ranger.tex" u1="0.937744" u2="0.968506" v1="0.503906" v2="0.996094" />
-		<Element name="reflectshield.tex" u1="0.968994" u2="0.999756" v1="0.503906" v2="0.996094" />
-		<Element name="rockshield.tex" u1="0.000244141" u2="0.0310059" v1="0.00390625" v2="0.496094" />
-		<Element name="tinkerer.tex" u1="0.0314941" u2="0.0622559" v1="0.00390625" v2="0.496094" />
-		<Element name="wizard.tex" u1="0.0627441" u2="0.0935059" v1="0.00390625" v2="0.496094" />
-		<Element name="woodshield.tex" u1="0.0939941" u2="0.124756" v1="0.00390625" v2="0.496094" />
+		<Element name="monk.tex" u1="0.875244" u2="0.906006" v1="0.503906" v2="0.996094" />
+		<Element name="necromancer.tex" u1="0.906494" u2="0.937256" v1="0.503906" v2="0.996094" />
+		<Element name="paladin.tex" u1="0.937744" u2="0.968506" v1="0.503906" v2="0.996094" />
+		<Element name="ranger.tex" u1="0.968994" u2="0.999756" v1="0.503906" v2="0.996094" />
+		<Element name="reflectshield.tex" u1="0.000244141" u2="0.0310059" v1="0.00390625" v2="0.496094" />
+		<Element name="rockshield.tex" u1="0.0314941" u2="0.0622559" v1="0.00390625" v2="0.496094" />
+		<Element name="tinkerer.tex" u1="0.0627441" u2="0.0935059" v1="0.00390625" v2="0.496094" />
+		<Element name="wizard.tex" u1="0.0939941" u2="0.124756" v1="0.00390625" v2="0.496094" />
+		<Element name="woodshield.tex" u1="0.125244" u2="0.156006" v1="0.00390625" v2="0.496094" />
 	</Elements>
 </Atlas>

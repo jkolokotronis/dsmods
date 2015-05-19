@@ -71,5 +71,10 @@
     <property name="data.targettag" value="Room_dorf_A"/>
    </properties>
   </object>
+  <object type="fa_dorfsecret_entrance" x="1215" y="64">
+   <properties>
+    <property name="data.fa_cavename" value="DWARF_FORTRESS_SECRETS"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

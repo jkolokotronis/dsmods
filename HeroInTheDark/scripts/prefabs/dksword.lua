@@ -8,6 +8,11 @@ local assets2=
     Asset("ANIM", "anim/fa_evilsword2.zip"),
     
 }
+local assetsstone=
+{
+    Asset("ANIM", "anim/fa_darksword_stone.zip"),
+    
+}
 local assets3=
 {
     Asset("ANIM", "anim/fa_evilsword3.zip"),
@@ -91,7 +96,60 @@ local function up3()
     return inst
 end
 
+local function fa_darksword_stone()
+    local inst = CreateEntity()
+    local trans = inst.entity:AddTransform()
+    local anim = inst.entity:AddAnimState()
+    local sound = inst.entity:AddSoundEmitter()
+    inst.empty=false
+
+    MakeObstaclePhysics(inst,0.5)
+    anim:SetBank("fa_darksword_stone")
+    anim:SetBuild("fa_darksword_stone")
+    anim:PlayAnimation("sword")
+    inst:AddComponent("inspectable")
+
+    local function onsave(inst, data)
+        data.empty = inst.empty
+    end
+
+    local function onload(inst, data)
+        if data and data.empty then
+            inst.empty = data.empty
+            inst.AnimState:PlayAnimation("empty",true)
+            inst.components.activatable.inactive = false
+        end
+    end
+    inst.OnSave = onsave 
+    inst.OnLoad = onload 
+
+    inst:AddComponent("activatable")
+    inst.components.activatable.OnActivate = function(inst,doer)
+    
+        local axe=doer.components.inventory:FindItem(function(i) return (i and i.prefab=="fa_evilsword2") end)
+        if(axe)then
+            axe.components.inventoryitem:RemoveFromOwner(true)
+            axe:Remove()
+            inst.empty = true
+            inst.AnimState:PlayAnimation("empty",true)
+            local upgrade=SpawnPrefab("fa_evilsword3")
+            doer.components.inventory:GiveItem(upgrade)
+        else
+            inst.components.activatable.inactive=true
+        end
+
+    end
+    
+    inst.components.activatable.inactive = true
+    inst.components.activatable.getverb = function() return STRINGS.ACTIONS.ACTIVATE.PULL end
+    inst.components.activatable.quickaction = false
+
+    return inst
+end
+
 return Prefab( "common/inventory/dksword", base, assets),
 Prefab( "common/inventory/fa_evilsword2", up2, assets2),
-Prefab( "common/inventory/fa_evilsword3", up3, assets3)
+Prefab( "common/inventory/fa_evilsword3", up3, assets3),
+Prefab( "common/inventory/fa_darksword_stone", fa_darksword_stone, assetsstone)
+
 

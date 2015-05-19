@@ -124,6 +124,19 @@ return {
       opacity = 1,
       properties = {},
       objects = {
+      
+        {
+          name = "",
+          type = "spawnpoint",
+          shape = "rectangle",
+          x = 678,
+          y = 584,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+
         {
           name = "",
           type = "fa_dorf_wall_1",
@@ -217,7 +230,7 @@ return {
           type = "fa_dorf_wall_1",
           shape = "rectangle",
           x = 605,
-          y = 515,
+          y = 512,
           width = 0,
           height = 0,
           visible = true,
@@ -228,7 +241,7 @@ return {
           type = "fa_dorf_wall_1",
           shape = "rectangle",
           x = 761,
-          y = 514,
+          y = 511,
           width = 0,
           height = 0,
           visible = true,
@@ -239,7 +252,7 @@ return {
           type = "fa_dorf_wall_1",
           shape = "rectangle",
           x = 739,
-          y = 514,
+          y = 511,
           width = 0,
           height = 0,
           visible = true,
@@ -250,7 +263,7 @@ return {
           type = "fa_dorf_wall_1",
           shape = "rectangle",
           x = 584,
-          y = 516,
+          y = 513,
           width = 0,
           height = 0,
           visible = true,
@@ -261,7 +274,7 @@ return {
           type = "fa_dorf_wall_1",
           shape = "rectangle",
           x = 694,
-          y = 515,
+          y = 512,
           width = 0,
           height = 0,
           visible = true,
@@ -272,7 +285,7 @@ return {
           type = "fa_dorf_wall_1",
           shape = "rectangle",
           x = 672,
-          y = 515,
+          y = 512,
           width = 0,
           height = 0,
           visible = true,
@@ -283,7 +296,7 @@ return {
           type = "fa_dorf_wall_1",
           shape = "rectangle",
           x = 716,
-          y = 514,
+          y = 511,
           width = 0,
           height = 0,
           visible = true,
@@ -294,7 +307,7 @@ return {
           type = "fa_dorf_wall_1",
           shape = "rectangle",
           x = 627,
-          y = 515,
+          y = 512,
           width = 0,
           height = 0,
           visible = true,
@@ -305,7 +318,7 @@ return {
           type = "fa_dorf_wall_1",
           shape = "rectangle",
           x = 650,
-          y = 515,
+          y = 512,
           width = 0,
           height = 0,
           visible = true,
@@ -317,17 +330,6 @@ return {
           shape = "rectangle",
           x = 583,
           y = 605,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_dorf_wall_1",
-          shape = "rectangle",
-          x = 583,
-          y = 582,
           width = 0,
           height = 0,
           visible = true,
@@ -360,17 +362,6 @@ return {
           type = "fa_dorf_wall_1",
           shape = "rectangle",
           x = 583,
-          y = 560,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "fa_dorf_wall_1",
-          shape = "rectangle",
-          x = 583,
           y = 672,
           width = 0,
           height = 0,
@@ -386,7 +377,9 @@ return {
           width = 0,
           height = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["data.fakewall"] = "true"
+          }
         },
         {
           name = "",
@@ -478,10 +471,10 @@ return {
         },
         {
           name = "",
-          type = "fa_teleporter_dorf",
+          type = "fa_dungeon_exit",
           shape = "rectangle",
-          x = 635,
-          y = 653,
+          x = 668,
+          y = 604,
           width = 0,
           height = 0,
           visible = true,
@@ -585,6 +578,303 @@ return {
           height = 0,
           visible = true,
           properties = {}
+        },
+        {
+          name = "",
+          type = "fa_dorf_wall_1",
+          shape = "rectangle",
+          x = 583,
+          y = 560,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.fakewall"] = "true"
+          }
+        },
+        {
+          name = "",
+          type = "fa_dorf_wall_1",
+          shape = "rectangle",
+          x = 584,
+          y = 583,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.fakewall"] = "true"
+          }
+        },
+        {
+          name = "",
+          type = "fa_stairs_down",
+          shape = "rectangle",
+          x = 1152,
+          y = 1087,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.sourcetag"] = "dorf_stairs_pre",
+            ["data.targettag"] = "dorf_stairs_0"
+          }
+        },
+        {
+          name = "",
+          type = "bat",
+          shape = "rectangle",
+          x = 381,
+          y = 864,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bat",
+          shape = "rectangle",
+          x = 94,
+          y = 804,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bat",
+          shape = "rectangle",
+          x = 419,
+          y = 995,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bat",
+          shape = "rectangle",
+          x = 173,
+          y = 1186,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bat",
+          shape = "rectangle",
+          x = 490,
+          y = 1185,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bat",
+          shape = "rectangle",
+          x = 734,
+          y = 876,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bat",
+          shape = "rectangle",
+          x = 861,
+          y = 931,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bat",
+          shape = "rectangle",
+          x = 1115,
+          y = 1180,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bat",
+          shape = "rectangle",
+          x = 1190,
+          y = 777,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bat",
+          shape = "rectangle",
+          x = 992,
+          y = 610,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bat",
+          shape = "rectangle",
+          x = 999,
+          y = 348,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bat",
+          shape = "rectangle",
+          x = 1181,
+          y = 92,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bat",
+          shape = "rectangle",
+          x = 826,
+          y = 94,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bat",
+          shape = "rectangle",
+          x = 256,
+          y = 98,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bat",
+          shape = "rectangle",
+          x = 132,
+          y = 228,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bat",
+          shape = "rectangle",
+          x = 545,
+          y = 342,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bat",
+          shape = "rectangle",
+          x = 168,
+          y = 414,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "skeleton",
+          shape = "rectangle",
+          x = 220,
+          y = 859,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "skeleton",
+          shape = "rectangle",
+          x = 740,
+          y = 1185,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "skeleton",
+          shape = "rectangle",
+          x = 1191,
+          y = 929,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "skeleton",
+          shape = "rectangle",
+          x = 508,
+          y = 85,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "skeleton",
+          shape = "rectangle",
+          x = 546,
+          y = 612,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "fa_teleporter_dorf",
+          shape = "rectangle",
+          x = 222,
+          y = 671,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {
+            ["data.hidden"] = "true",
+            ["data.sourcetag"] = "dorf_secret_entrance",
+            ["data.targettag"] = "dorf_secret_hell"
+          }
         }
       }
     }

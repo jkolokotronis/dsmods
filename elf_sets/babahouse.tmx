@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="20" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="tiles" tilewidth="64" tileheight="64">
+  <image source="../tiles/tiles.png" width="512" height="512"/>
+ </tileset>
+ <layer name="BG_TILES" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBhZgJ0An4lE9SMNjIYfZWA0/CgDlIbXaPihAkrDDwCYzwCX
+  </data>
+ </layer>
+ <objectgroup name="FG_OBJECTS" width="20" height="20">
+  <object type="livingtree" x="95" y="33"/>
+  <object type="livingtree" x="224" y="34"/>
+  <object type="livingtree" x="256" y="94"/>
+  <object type="livingtree" x="63" y="98"/>
+  <object type="livingtree" x="98" y="157"/>
+  <object type="livingtree" x="223" y="157"/>
+  <object type="livingtree" x="18" y="208"/>
+  <object type="livingtree" x="45" y="285"/>
+  <object type="fa_babahouse" x="254" y="252"/>
+  <object type="flower_evil" x="44" y="242"/>
+  <object type="flower_evil" x="144" y="296"/>
+  <object type="flower_evil" x="145" y="255"/>
+  <object type="flower_evil" x="147" y="213"/>
+  <object type="flower_evil" x="195" y="211"/>
+  <object type="flower_evil" x="212" y="93"/>
+  <object type="flower_evil" x="104" y="89"/>
+  <object type="flower_evil" x="27" y="40"/>
+  <object type="flower_evil" x="35" y="155"/>
+  <object type="flower_evil" x="292" y="187"/>
+  <object type="flower_evil" x="297" y="127"/>
+  <object type="flower_evil" x="298" y="65"/>
+  <object type="flower_evil" x="283" y="26"/>
+ </objectgroup>
+</map>

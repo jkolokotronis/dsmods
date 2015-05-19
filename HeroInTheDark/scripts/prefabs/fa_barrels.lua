@@ -393,15 +393,9 @@ local function whiskeyfn(Sim)
     inst.components.fa_drink.temperaturedelta = TUNING.HOT_FOOD_BONUS_TEMP
     inst.components.fa_drink.temperatureduration =TUNING.FOOD_TEMP_AVERAGE
     inst.components.fa_drink.ondrink=function(drink, eater)
-        eater.components.fa_bufftimers:AddBuff("deathdr","DeathDR","DamageReduction",DR_LENGTH,{damagetype=FA_DAMAGETYPE.ELECTRIC,drdelta=5})
+        eater.components.fa_bufftimers:AddBuff("electricdr","ElectDR","DamageReduction",DR_LENGTH,{damagetype=FA_DAMAGETYPE.ELECTRIC,drdelta=5})
     end
 
-    inst:ListenForEvent("oneaten",function(inst,data)
-        local eater=data.eater
-        if(eater and eater.components.fa_intoxication)then
-            eater.components.fa_bufftimers:AddBuff("physicaldr","PhysicalDR","DamageReduction",DR_LENGTH,{damagetype=FA_DAMAGETYPE.ELECTRIC,drdelta=5})
-        end
-    end)
     return inst
 end 
 

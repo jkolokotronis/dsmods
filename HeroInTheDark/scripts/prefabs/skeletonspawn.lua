@@ -1,28 +1,5 @@
 local assets=
 {
-        Asset( "ANIM", "anim/player_basic.zip" ),
-        Asset( "ANIM", "anim/player_idles_shiver.zip" ),
-        Asset( "ANIM", "anim/player_actions.zip" ),
-        Asset( "ANIM", "anim/player_actions_axe.zip" ),
-        Asset( "ANIM", "anim/player_actions_pickaxe.zip" ),
-        Asset( "ANIM", "anim/player_actions_shovel.zip" ),
-        Asset( "ANIM", "anim/player_actions_blowdart.zip" ),
-        Asset( "ANIM", "anim/player_actions_eat.zip" ),
-        Asset( "ANIM", "anim/player_actions_item.zip" ),
-        Asset( "ANIM", "anim/player_actions_uniqueitem.zip" ),
-        Asset( "ANIM", "anim/player_actions_bugnet.zip" ),
-        Asset( "ANIM", "anim/player_actions_fishing.zip" ),
-        Asset( "ANIM", "anim/player_actions_boomerang.zip" ),
-        Asset( "ANIM", "anim/player_bush_hat.zip" ),
-        Asset( "ANIM", "anim/player_attacks.zip" ),
-        Asset( "ANIM", "anim/player_idles.zip" ),
-        Asset( "ANIM", "anim/player_rebirth.zip" ),
-        Asset( "ANIM", "anim/player_jump.zip" ),
-        Asset( "ANIM", "anim/player_amulet_resurrect.zip" ),
-        Asset( "ANIM", "anim/player_teleport.zip" ),
-        Asset( "ANIM", "anim/wilson_fx.zip" ),
-        Asset( "ANIM", "anim/player_one_man_band.zip" ),
-
     Asset("ANIM", "anim/wilton.zip"),
 }
 local drybones_assets={
@@ -39,6 +16,15 @@ local ghoul_assets={
 }
 local mummy_assets={
     Asset("ANIM", "anim/fa_mummy.zip"),
+}
+local leprechaun_assets={
+    Asset("ANIM", "anim/fa_leprechaun.zip"),
+}
+local vampire_assets={
+    Asset("ANIM", "anim/fa_vampire.zip"),
+}
+local batdevil_assets={
+    Asset("ANIM", "anim/fa_batdevil.zip"),
 }
 
 local PET_HEALTH=300
@@ -164,7 +150,6 @@ local function fn(Sim)
     anim:Hide("ARM_carry")
     anim:Hide("hat")
     anim:Hide("hat_hair")
-    inst:AddTag("skeleton")
     inst:AddTag("undead")
     inst:AddTag("scarytoprey")
     inst:AddTag("monster")
@@ -180,8 +165,7 @@ inst:AddComponent("eater")
 
     
     inst:AddComponent("lootdropper")
-    inst.components.lootdropper:SetLoot({ "boneshard","boneshard"})
-     inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLE.keys1,FALLENLOOTTABLE.TABLE_KEYS1_WEIGHT,0.05)
+    inst.components.lootdropper:AddFallenLootTable(FALLENLOOTTABLE.keys1,FALLENLOOTTABLE.TABLE_KEYS1_WEIGHT,0.05)
 
     inst:AddComponent("inventory")
 --    inst:AddComponent("sanity")
@@ -232,7 +216,8 @@ end
 
 local function spawn(Sim)
     local inst=fn(Sim)
-    local anim=inst.AnimState
+    inst:AddTag("skeleton")
+    inst.components.lootdropper:SetLoot({ "boneshard","boneshard"})
 
     inst.components.inventory.dropondeath = true
     GetInventory(inst)
@@ -241,11 +226,14 @@ end
 
 local function drybones(Sim)
     local inst=fn(Sim)
+    inst:AddTag("skeleton")
     local anim=inst.AnimState
     inst.Transform:SetScale(1.5, 1.5, 1.5)
     anim:SetBank("wilson")
     anim:SetBuild("drybones")
     anim:PlayAnimation("idle")
+    inst.components.lootdropper:SetLoot({ "boneshard","boneshard"})
+    
 
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=1
     return inst
@@ -253,20 +241,24 @@ end
 
 local function skull(Sim)
     local inst=fn(Sim)
+    inst:AddTag("skeleton")
     local anim=inst.AnimState
 --    inst.Transform:SetScale(2, 2, 2)
     anim:SetBank("wilson")
     anim:SetBuild("fa_skull")
     anim:PlayAnimation("idle")
+    inst.components.lootdropper:SetLoot({ "boneshard","boneshard"})
 
     return inst
 end
 
 local function firedartspawn(Sim)
      local inst=drybones(Sim)
+    inst:AddTag("skeleton")
     local anim=inst.AnimState
     inst.components.inventory.dropondeath = true
     GetFireDart(inst)
+    inst.components.lootdropper:SetLoot({ "boneshard","boneshard"})
     return inst
 end
 
@@ -284,8 +276,42 @@ local function fa_ghoul(Sim)
 end
 local function fa_mummy(Sim)
     local inst=fn(Sim)
-    local anim=inst.AnimState
-    anim:SetBuild("fa_mummy")
+    inst.AnimState:SetBuild("fa_mummy")
+    return inst
+end
+local function fa_leprechaun(Sim)
+    local inst=fn(Sim)
+    inst.AnimState:SetBuild("fa_leprechaun")
+    return inst
+end
+local function fa_vampire(Sim)
+    local inst=fn(Sim)
+    inst.AnimState:SetBuild("fa_vampire")
+    inst.aggroed=false
+
+    inst.components.combat:SetRetargetFunction(1, function(inst)
+        local invader = FindEntity(inst, TUNING.MERM_TARGET_DIST, function(guy)
+            return guy:HasTag("character") and not guy:HasTag("undead")
+        end)
+        if(invader)then
+            if not inst.aggroed then
+                inst.aggroed=true
+                inst.AnimState:OverrideSymbol("face", "fa_vampire", "face_aggro")
+            end
+        elseif inst.aggroed==true then
+            inst.aggroed=false
+            inst.AnimState:ClearOverrideSymbol("face")
+        end
+        return invader
+    end)
+
+    return inst
+end
+
+local function fa_batdevil(Sim)
+    local inst=fn(Sim)
+    inst.AnimState:SetBuild("fa_batdevil")
+
     return inst
 end
 
@@ -295,4 +321,7 @@ return Prefab( "common/skeletonspawn", spawn, assets),
      Prefab("common/fa_skull", skull, skull_assets),
      Prefab("common/fa_zombie", fa_zombie, zombie_assets),
      Prefab("common/fa_ghoul", fa_ghoul, ghoul_assets),
-     Prefab("common/fa_mummy", fa_mummy, mummy_assets)
+     Prefab("common/fa_mummy", fa_mummy, mummy_assets),
+     Prefab("common/fa_leprechaun", fa_leprechaun, leprechaun_assets),
+     Prefab("common/fa_batdevil", fa_batdevil, batdevil_assets),
+     Prefab("common/fa_vampire", fa_vampire, vampire_assets)
