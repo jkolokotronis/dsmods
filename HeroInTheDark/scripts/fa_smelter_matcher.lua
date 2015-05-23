@@ -29,7 +29,7 @@ local function anyore(ing)
 	return (anymetalore(ing) or ing=="fa_coalpebble" or ing=="fa_limestonepebble" or ing=="rocks" or ing=="flint" )
 end
 local function anymeat(ing)
-	return (ing=="smallmeat" or ing=="meat" or ing=="monstermeat" or ing=="drumstick" or ing=="batwing")
+	return (ing=="smallmeat" or ing=="froglegs" or ing=="fish" or ing=="meat" or ing=="monstermeat" or ing=="drumstick" or ing=="batwing")
 end
 local function cornorwheat(ing)
 	return (ing=="fa_cutwheat" or ing=="corn")

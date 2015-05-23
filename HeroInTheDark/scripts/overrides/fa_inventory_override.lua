@@ -148,7 +148,7 @@ end
 --why the hell do you have ignoregoincontainer when you're not even using it... 
 --need to prevent autodropping of containers
 function Inventory:SetActiveItem(item)
-    if item and (item.components.inventoryitem.cangoincontainer or self.ignorescangoincontainer) or item == nil then
+    if item and (item.components.inventoryitem.cangoincontainer or (self.ignorescangoincontainer and not item.components.equippable)) or item == nil then
         self.activeitem = item
         self.inst:PushEvent("newactiveitem", {item=item})
 
