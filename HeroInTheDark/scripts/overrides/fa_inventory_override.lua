@@ -160,6 +160,16 @@ function Inventory:SetActiveItem(item)
     end
 end
 
+function Inventory:CanTakeItemInSlot(item, slot)
+
+    if not (item and item.components.inventoryitem and (item.components.inventoryitem.cangoincontainer or (self.ignorescangoincontainer and not item.components.equippable)) ) then
+        return false
+    end
+
+    return item and item.components.inventoryitem ~= nil
+end
+
+
 local inventory_finditem_def=Inventory.FindItem
 function Inventory:FindItem(fn)
     local found=inventory_finditem_def(self,fn)
