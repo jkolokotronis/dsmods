@@ -39,7 +39,7 @@ function FA_StatusBar:RegisterBuffs()
     if(self.player.components.health.fa_temphp and self.player.components.health.fa_temphp>0)then
     	local data={
     		buttontint={r=1,g=1,b=1,a=1},
-    		normaltex={tex="fa_heart"},
+    		normaltex={tex="fa_heart.tex"},
     		text=""..math.floor(self.player.components.health.fa_temphp)
 	    }
 		local btn=FA_StatusButton(self.owner,data)
@@ -52,7 +52,7 @@ function FA_StatusBar:RegisterBuffs()
 	    	local t=FA_DAMAGE_INDICATORS[k]
     		local data={
     			buttontint={r=t[1],g=t[2],b=t[3],a=t[4]},
-    			normaltex={tex="fa_white"},
+    			normaltex={tex="fa_white.tex"},
     			text=""..math.floor(v)
 	    	}
 	    	local btn=FA_StatusButton(self.owner,data)
@@ -80,7 +80,7 @@ function FA_StatusBar:TempHPDelta(old,new)
 		if(not btn)then
 			local data={
     		buttontint={r=1,g=1,b=1,a=1},
-    		normaltex={tex="fa_heart"}
+    		normaltex={tex="fa_heart.tex"}
 		    }
 			btn=FA_StatusButton(self.owner,data)
 			self.root:AddChild(btn)
@@ -104,7 +104,7 @@ function FA_StatusBar:ProtectionDelta(old,new,damagetype)
 			local t=FA_DAMAGE_INDICATORS[damagetype]
     		local data={
     			buttontint={r=t[1],g=t[2],b=t[3],a=t[4]},
-    			normaltex={tex="fa_white"},
+    			normaltex={tex="fa_white.tex"},
     			text=""..math.floor(new)
 	    	}
 			btn=FA_StatusButton(self.owner,data)

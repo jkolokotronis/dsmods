@@ -717,7 +717,7 @@ local function newControlsInit(class)
         local statusbar=FA_StatusBar(xabilitybar.owner)
         xabilitybar:AddChild(statusbar)
         xabilitybar.statusbar=statusbar
-        statusbar:SetPosition(-300,-30,0)
+        statusbar:SetPosition(-320,-30,0)
 
         inst:ListenForEvent("fa_temphpdelta",function(inst,data)
             statusbar:TempHPDelta(data.old, data.new)

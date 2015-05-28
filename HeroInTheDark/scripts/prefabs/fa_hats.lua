@@ -532,7 +532,7 @@ local function onequip(inst, owner, build)
                 if(inst.fa_raintask)then
                     inst.fa_raintask:Cancel()
                 end
-                inst.fa_raintask=DoPeriodicTask(60,function()
+                inst.fa_raintask=inst:DoPeriodicTask(60,function()
                     if(inst.components.equippable:IsEquipped() and math.random()<0.5)then
                         local owner=inst.components.inventoryitem.owner
                         if(owner and owner:IsValid() and not (owner.components.health and owner.components.health:IsDead()))then

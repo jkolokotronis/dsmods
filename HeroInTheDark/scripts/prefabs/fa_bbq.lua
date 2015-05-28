@@ -117,10 +117,15 @@ end
 	if self:IsDone() then
 		local loot = SpawnPrefab(self.product)
 				if loot then
-					if loot and loot.components.perishable then
+					if loot.components.perishable then
 					    loot.components.perishable:SetPercent(1) --always full perishable
 					end
-					harvester.components.inventory:GiveItem(loot, nil, Vector3(TheSim:GetScreenPos(self.inst.Transform:GetWorldPosition())))
+					if(loot.components.stackable)then
+						loot.components.stackable.stacksize=2
+					else
+						local cpy=SpawnPrefab(self.product)
+						harvester.components.inventory:GiveItem(cpy, nil, Vector3(TheSim:GetScreenPos(self.inst.Transform:GetWorldPosition())))
+					end
 					harvester.components.inventory:GiveItem(loot, nil, Vector3(TheSim:GetScreenPos(self.inst.Transform:GetWorldPosition())))
 				end
 

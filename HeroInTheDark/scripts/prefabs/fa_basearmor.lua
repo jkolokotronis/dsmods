@@ -221,13 +221,14 @@ end
 
 local function aburationproc(owner,data) 
     local roll=math.random()
+    print("roll",roll)
     local variables={}
     if(roll<=0.01)then
         variables.cloverride=20
-        FA_BuffUtil.Shield(data.attacker,nil,variables)
+        FA_BuffUtil.Shield(owner,nil,variables)
     elseif(roll<=0.1)then
         variables.cloverride=10
-        FA_BuffUtil.Shield(data.attacker,nil,variables)
+        FA_BuffUtil.Shield(owner,nil,variables)
     end
 end
 local function fa_abjurationrobe()
