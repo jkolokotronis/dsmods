@@ -8,7 +8,7 @@ local function OnCreate(inst, scenariorunner)
 	local items = 
 	{
 		{
-			item = {"fa_bottle_wort", "fa_rummug", "fa_lightalemug","fa_ronsalemug","fa_dwarfalemug","fa_wineyeast","fa_distillingyeast","fa_brewingyeast"},
+			item = {"fa_wort", "fa_rummug", "fa_lightalemug","fa_ronsalemug","fa_dwarfalemug","fa_wineyeast","fa_distillingyeast","fa_brewingyeast"},
 			count = 5,
 			chance = 1,
 		},

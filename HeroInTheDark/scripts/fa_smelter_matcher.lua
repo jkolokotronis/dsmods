@@ -97,7 +97,7 @@ local keg_recipes={
 		},
 	},
 	{
-		match={product={"fa_bottle_wort"},cooktime=120},
+		match={product={"fa_wort"},cooktime=120},
 		test={
 			{ingred="fa_mash",count=2},
 			{ingred="fa_bottle_water",count=2},
@@ -106,7 +106,7 @@ local keg_recipes={
 	{
 		match={product={"fa_lightalemug"},cooktime=480},
 		test={
-			{ingred="fa_bottle_wort",count=1},
+			{ingred="fa_wort",count=1},
 			{ingred="fa_bottle_water",count=1},
 			{ingred="fa_brewingyeast",count=1},
 			{ingred="fa_emptymug",count=1},
@@ -115,7 +115,7 @@ local keg_recipes={
 	{
 		match={product={"fa_ronsalemug"},cooktime=480},
 		test={
-			{ingred="fa_bottle_wort",count=1},
+			{ingred="fa_wort",count=1},
 			{ingred="fa_mash",count=1},
 			{ingred="fa_brewingyeast",count=1},
 			{ingred="fa_emptymug",count=1},
@@ -124,7 +124,7 @@ local keg_recipes={
 	{
 		match={product={"fa_barrel_lightale"},cooktime=960},
 		test={
-			{ingred="fa_bottle_wort",count=1},
+			{ingred="fa_wort",count=1},
 			{ingred="fa_bottle_water",count=1},
 			{ingred="fa_brewingyeast",count=1},
 			{ingred="fa_barrel_wood",count=1},
@@ -133,7 +133,7 @@ local keg_recipes={
 	{
 		match={product={"fa_barrel_ronsale"},cooktime=960},
 		test={
-			{ingred="fa_bottle_wort",count=1},
+			{ingred="fa_wort",count=1},
 			{ingred="fa_mash",count=1},
 			{ingred="fa_brewingyeast",count=1},
 			{ingred="fa_barrel_wood",count=1},
@@ -142,7 +142,7 @@ local keg_recipes={
 	{
 		match={product={"fa_barrel_drakeale"},cooktime=960},
 		test={
-			{ingred="fa_bottle_wort",count=1},
+			{ingred="fa_wort",count=1},
 			{ingred="mandrake",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="fa_brewingyeast",count=1},
 			{ingred="fa_barrel_wood",count=1},
@@ -151,7 +151,7 @@ local keg_recipes={
 	{
 		match={product={"fa_barrel_oriansale"},cooktime=960},
 		test={
-			{ingred="fa_bottle_wort",count=1},
+			{ingred="fa_wort",count=1},
 			{ingred="pumpkin",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="fa_brewingyeast",count=1},
 			{ingred="fa_barrel_wood",count=1},
@@ -160,7 +160,7 @@ local keg_recipes={
 	{
 		match={product={"fa_barrel_dorfale"},cooktime=960},
 		test={
-			{ingred="fa_bottle_wort",count=1},
+			{ingred="fa_wort",count=1},
 			{ingred="cutlichen",count=1},
 			{ingred="fa_brewingyeast",count=1},
 			{ingred="fa_barrel_wood",count=1},
@@ -169,7 +169,7 @@ local keg_recipes={
 	{
 		match={product={"fa_dwarfalemug"},cooktime=480},
 		test={
-			{ingred="fa_bottle_wort",count=1},
+			{ingred="fa_wort",count=1},
 			{ingred="cutlichen",count=1},
 			{ingred="fa_brewingyeast",count=1},
 			{ingred="fa_emptymug",count=1},
@@ -178,7 +178,7 @@ local keg_recipes={
 	{
 		match={product={"fa_barrel_deathbrew"},cooktime=960},
 		test={
-			{ingred="fa_bottle_wort",count=1},
+			{ingred="fa_wort",count=1},
 			{ingred="nightmarefuel",count=1,atlas="images/inventoryimages.xml"},
 			{ingred="fa_brewingyeast",count=1},
 			{ingred="fa_barrel_wood",count=1},

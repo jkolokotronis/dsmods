@@ -355,7 +355,7 @@ local r=Recipe("fa_brewingyeast_recipe",  {Ingredient("fa_diamondpebble", 2,"ima
 r.image="blueprint.tex"
 local r=Recipe("fa_mash_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
 r.image="blueprint.tex"
-local r=Recipe("fa_bottle_wort_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
+local r=Recipe("fa_wort_recipe",  {Ingredient("fa_diamondpebble", 2,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_DORFOTHERRECIPESTAND, nil, nil, true)
 r.image="blueprint.tex"
 
 

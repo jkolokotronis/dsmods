@@ -32,7 +32,6 @@ FA_MOBXP_TABLE={
 	spider_dropper={default=50},
 	crawlinghorror={default=30},
 	terrorbeak={default=35},
-	eyeplant={default=10},
 	worm={default=50},
 	koalefant_summer={default=40},
 	koalefant_winter={default=40},

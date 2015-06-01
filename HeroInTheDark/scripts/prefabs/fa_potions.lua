@@ -611,11 +611,6 @@ local function ftest(name)
 	end
 end
 
-local function fnwort()
-	local inst=common("bottle_wort")
-    inst.components.fa_drink.hungervalue = 5
-	return inst
-end
 
 local function winecommon(inst,eatfn)
     inst:AddComponent("finiteuses")
@@ -816,7 +811,6 @@ return Prefab( "common/inventory/fa_bottle_r", fnr, Assets),
 	Prefab( "common/inventory/fa_bottle_poisonessence", fnpoisonessence, Assets),
 	Prefab( "common/inventory/fa_bottle_curepoison", fncurepoison, Assets),
 	Prefab( "common/inventory/fa_emptymug", emptymug, mugassets),
-	Prefab( "common/inventory/fa_bottle_wort", fnwort, mugassets),
 	Prefab( "common/inventory/fa_rummug", rummug, mugassets),
 	Prefab( "common/inventory/fa_lightalemug", lightalemug, mugassets),
 	Prefab( "common/inventory/fa_ronsalemug", ronsalemug, mugassets),
@@ -832,30 +826,3 @@ return Prefab( "common/inventory/fa_bottle_r", fnr, Assets),
 	Prefab( "common/inventory/fa_cactus_wine", cactuswine, Assets),
 	Prefab( "common/inventory/fa_mead", mead, Assets)
 
-
-
---[[
-
-Pomegranate wine
-Durian wine
-Dragon wine
-Melon Wine
-Red wine
-Goodberry Wine
-Glowing wine
-Cactus Wine
-Mead
-
-	,
-	Prefab( "common/inventory/fa_bottle_1_0", ftest("bottle_1_0"), Assets),
-	Prefab( "common/inventory/fa_bottle_1_1", ftest("bottle_1_1"), Assets),
-	Prefab( "common/inventory/fa_bottle_1_2", ftest("bottle_1_2"), Assets),
-	Prefab( "common/inventory/fa_bottle_1_3", ftest("bottle_1_3"), Assets),
-	Prefab( "common/inventory/fa_bottle_1_4", ftest("bottle_1_4"), Assets),
-	Prefab( "common/inventory/fa_bottle_1_5", ftest("bottle_1_5"), Assets),
-	Prefab( "common/inventory/fa_bottle_1_6", ftest("bottle_1_6"), Assets),
-	Prefab( "common/inventory/fa_bottle_1_7", ftest("bottle_1_7"), Assets),
-	Prefab( "common/inventory/fa_bottle_1_8", ftest("bottle_1_8"), Assets),
-	Prefab( "common/inventory/fa_bottle_1_9", ftest("bottle_1_9"), Assets)
-]]
-	

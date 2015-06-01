@@ -191,7 +191,7 @@ return Prefab( "common/inventory/fa_recipebook", fn, assets),
  Prefab( "common/inventory/fa_goldkama_recipe",  recipegen("ForgeMatcher","fa_goldkama"), assets),
 
  Prefab( "common/inventory/fa_mash_recipe",  recipegen("KegMatcher","fa_mash"), assets),
- Prefab( "common/inventory/fa_bottle_wort_recipe",  recipegen("KegMatcher","fa_bottle_wort"), assets),
+ Prefab( "common/inventory/fa_wort_recipe",  recipegen("KegMatcher","fa_wort"), assets),
 
  Prefab( "common/inventory/fa_barrel_molasses_recipe",  recipegen("KegMatcher","fa_barrel_molasses"), assets),
  Prefab( "common/inventory/fa_barrel_darkrum_recipe",  recipegen("KegMatcher","fa_barrel_darkrum"), assets),

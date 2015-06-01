@@ -10601,7 +10601,7 @@ return {
         },
         {
           name = "",
-          type = "fa_bottle_wort",
+          type = "fa_wort",
           shape = "rectangle",
           x = 967,
           y = 346,
@@ -10612,7 +10612,7 @@ return {
         },
         {
           name = "",
-          type = "fa_bottle_wort",
+          type = "fa_wort",
           shape = "rectangle",
           x = 945,
           y = 347,
@@ -10623,7 +10623,7 @@ return {
         },
         {
           name = "",
-          type = "fa_bottle_wort",
+          type = "fa_wort",
           shape = "rectangle",
           x = 923,
           y = 347,
@@ -10634,7 +10634,7 @@ return {
         },
         {
           name = "",
-          type = "fa_bottle_wort",
+          type = "fa_wort",
           shape = "rectangle",
           x = 903,
           y = 348,
@@ -10645,7 +10645,7 @@ return {
         },
         {
           name = "",
-          type = "fa_bottle_wort",
+          type = "fa_wort",
           shape = "rectangle",
           x = 882,
           y = 347,
@@ -10656,7 +10656,7 @@ return {
         },
         {
           name = "",
-          type = "fa_bottle_wort",
+          type = "fa_wort",
           shape = "rectangle",
           x = 859,
           y = 348,

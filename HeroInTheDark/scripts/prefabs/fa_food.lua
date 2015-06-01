@@ -22,6 +22,22 @@ local dryadheart_assets={
     Asset("ANIM", "anim/fa_dryadheart.zip"),	
 }
 
+local yeast_assets={
+    Asset("ANIM", "anim/fa_wineyeast.zip"),	
+}
+local mash_assets={
+    Asset("ANIM", "anim/fa_mash.zip"),	
+}
+local brewingyeast_assets={
+    Asset("ANIM", "anim/fa_brewingyeast.zip"),	
+}
+local distillingyeast_assets={
+    Asset("ANIM", "anim/fa_distillingyeast.zip"),	
+}
+local wort_assets={
+    Asset("ANIM", "anim/fa_wort.zip"),	
+}
+
 
 local function common(name)
 		local inst = CreateEntity()
@@ -103,17 +119,24 @@ local function fnflour(Sim)
 		return inst
 	end
 
-
+local function fnwort()
+	local inst = common("fa_wort")
+		return inst
+end
+local function fnmash()
+	local inst = common("fa_mash")
+		return inst
+end
 local function wineyeast()
-	local inst = common("fa_flour")
+	local inst = common("fa_wineyeast")
     return inst
 end
 local function distillingyeast()
-	local inst = common("fa_flour")
+	local inst = common("fa_distillingyeast")
     return inst
 end
 local function brewingyeast()
-	local inst = common("fa_flour")
+	local inst = common("fa_brewingyeast")
     return inst
 end
 
@@ -292,11 +315,12 @@ local function dryadheart(Sim)
 return Prefab( "common/inventory/fa_goodberries", fn, assets),
 Prefab( "common/inventory/fa_nuts", fnnuts, nut_assets),
 Prefab( "common/inventory/fa_flour", fnflour, flour_assets),
-Prefab( "common/inventory/fa_mash", fnflour, flour_assets),
+Prefab( "common/inventory/fa_mash", fnmash, mash_assets),
+Prefab( "common/inventory/fa_wort", fnwort, wort_assets),
 Prefab( "common/inventory/fa_cutwheat", fncutwheat, cutwheat_assets),
 Prefab( "common/inventory/fa_dug_wheat", fndugwheat, wheat_assets),
 Prefab( "common/inventory/fa_wheat", fnwheat, wheat_assets),
-	Prefab( "common/inventory/fa_wineyeast", wineyeast, flour_assets),
-	Prefab( "common/inventory/fa_distillingyeast", distillingyeast, flour_assets),
+	Prefab( "common/inventory/fa_wineyeast", wineyeast, yeast_assets),
+	Prefab( "common/inventory/fa_distillingyeast", distillingyeast, distillingyeast_assets),
 	Prefab( "common/inventory/fa_dryadheart", dryadheart, dryadheart_assets),
-	Prefab( "common/inventory/fa_brewingyeast", brewingyeast, flour_assets)
+	Prefab( "common/inventory/fa_brewingyeast", brewingyeast, brewingyeast_assets)
