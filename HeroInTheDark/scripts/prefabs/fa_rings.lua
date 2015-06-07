@@ -375,7 +375,7 @@ local function stopdemon( inst,owner )
         owner.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=owner.components.health.fa_resistances[FA_DAMAGETYPE.COLD]+1
         owner.components.combat.defaultdamage=owner.components.combat.fa_defaultdamageback
         owner.components.locomotor.runspeed=owner.components.locomotor.runspeed-0.1*TUNING.WILSON_RUN_SPEED
-        owner:RemoveEventCallback("onhitother", demonattack, owner)
+        owner:RemoveEventCallback("onattackother", demonattack, owner)
         owner:RemoveEventCallback("attacked", OnBlocked, owner)
         owner:RemoveEventCallback("blocked", OnBlocked, owner)
         owner.components.health.maxhealth=owner.components.health.maxhealth-100
