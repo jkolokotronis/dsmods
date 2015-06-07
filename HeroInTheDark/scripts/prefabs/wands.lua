@@ -1625,8 +1625,8 @@ local function onattackreducehumanoid(staff, target, orpos)
     if(not target:HasTag("fa_humanoid")) then return false end
     local attacker = staff.components.inventoryitem.owner
     if(target.fa_reduce)then 
-            target.fa_enlarge.components.spell.lifetime = 0
-            target.fa_enlarge.components.spell:ResumeSpell()
+            target.fa_reduce.components.spell.lifetime = 0
+            target.fa_reduce.components.spell:ResumeSpell()
     else
         local inst=CreateEntity()
         inst.persists=false

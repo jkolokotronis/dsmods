@@ -825,6 +825,14 @@ local smelt_recipes={
 			{ingred=isfuel,count=2},
 		},
 	},
+
+	{
+		match={product={"fa_copperbar","fa_ironbar"},cooktime=60,ignorehash=true},
+		test={
+			{ingred="hat_pot",count=6},
+			{ingred=isfuel,count=2},
+		},
+	},
 }
 
 local forge_recipes={

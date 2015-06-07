@@ -123,4 +123,8 @@ Layouts["FAOrcMineBasicset12"]=StaticLayout.Get("map/static_layouts/orc_mine_bas
 Layouts["FAOrcMineBasicset13"]=StaticLayout.Get("map/static_layouts/orc_mine_basicset_13")
 Layouts["FAOrcMineBasicset14"]=StaticLayout.Get("map/static_layouts/orc_mine_basicset_14")
 
+Layouts["FAElfBabaHouse"]=StaticLayout.Get("map/static_layouts/fa_elf_babahouse")
+Layouts["FAElfTown"]=StaticLayout.Get("map/static_layouts/fa_elftown")
+Layouts["FAElfGoddessFountain"]=StaticLayout.Get("map/static_layouts/fa_goddessfountain")
+
 Layouts["FAOrcMineWortox"]=StaticLayout.Get("map/static_layouts/orc_mine_wortox_npc")

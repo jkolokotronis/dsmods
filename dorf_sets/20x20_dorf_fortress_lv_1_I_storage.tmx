@@ -988,12 +988,12 @@
   <object type="fa_emptymug" x="1111" y="323"/>
   <object type="fa_emptymug" x="1112" y="300"/>
   <object type="fa_emptymug" x="1111" y="278"/>
-  <object type="fa_bottle_wort" x="967" y="346"/>
-  <object type="fa_bottle_wort" x="945" y="347"/>
-  <object type="fa_bottle_wort" x="923" y="347"/>
-  <object type="fa_bottle_wort" x="903" y="348"/>
-  <object type="fa_bottle_wort" x="882" y="347"/>
-  <object type="fa_bottle_wort" x="859" y="348"/>
+  <object type="fa_wort" x="967" y="346"/>
+  <object type="fa_wort" x="945" y="347"/>
+  <object type="fa_wort" x="923" y="347"/>
+  <object type="fa_wort" x="903" y="348"/>
+  <object type="fa_wort" x="882" y="347"/>
+  <object type="fa_wort" x="859" y="348"/>
   <object type="fa_wineyeast" x="814" y="349"/>
   <object type="fa_wineyeast" x="793" y="348"/>
   <object type="fa_wineyeast" x="773" y="349"/>

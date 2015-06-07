@@ -109,6 +109,7 @@ local function OnActivate(inst,doer)
    					Sleep(FA_ModCompat.memspikefix_delay)
 				end
 			 end, "descend", inst.cavenum)
+			
 		end
 
 		if not inst.cavenum then

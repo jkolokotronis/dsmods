@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
+    <folder id="0">
+        <file id="0" name="spring tree chopped.png" width="923" height="299" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="summer chopped tree.png" width="923" height="299" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="autumn chopped dryad tree.png" width="923" height="299" pivot_x="0" pivot_y="1"/>
+        <file id="3" name="winter chopped tree.png" width="920" height="301" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="fa_dryadtree_stump">
+        <animation id="0" name="spring_cut" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="spring tree chopped">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-439.5" y="201.5" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="summer_cut" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="spring tree chopped">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-439.5" y="201.5" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="2" name="autumn_cut" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="spring tree chopped">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="-439.5" y="201.5" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="3" name="winter_cut" length="50">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="spring tree chopped">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" x="-436.5" y="202.5" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

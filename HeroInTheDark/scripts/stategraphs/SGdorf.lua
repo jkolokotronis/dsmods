@@ -541,21 +541,36 @@ local states=
     State{ name = "mine_start",
         tags = {"premine", "working"},
         onenter = function(inst)
+--this 'could' fail if the inv slots are full, but we're dealing with a mob that can have like 3 items total
+            inst.sg.statemem.fa_equippedweapon=inst.components.inventory:Unequip(EQUIPSLOTS.HANDS)
+
+            inst.AnimState:OverrideSymbol("swap_object", "swap_pickaxe", "swap_pickaxe")
+            inst.AnimState:Show("ARM_carry") 
+            inst.AnimState:Hide("ARM_normal")
+        
             inst.components.locomotor:Stop()
             inst.AnimState:PlayAnimation("pickaxe_pre")
         end,
         
         events=
         {
-            EventHandler("unequip", function(inst) inst.sg:GoToState("idle") end ),
             EventHandler("animover", function(inst) inst.sg:GoToState("mine") end),
         },
+
+        onexit=function(inst)
+            if(inst.sg.statemem.fa_equippedweapon and inst.sg.statemem.fa_equippedweapon:IsValid())then
+                inst.components.inventory:Equip(inst.sg.statemem.fa_equippedweapon)
+            end
+            inst.sg.statemem.fa_equippedweapon=nil
+        end,
     },
     
     State{
         name = "mine",
         tags = {"premine", "mining", "working"},
         onenter = function(inst)
+            inst.sg.statemem.fa_equippedweapon=inst.components.inventory:Unequip(EQUIPSLOTS.HANDS)
+            inst.AnimState:OverrideSymbol("swap_object", "swap_pickaxe", "swap_pickaxe")
 			inst.sg.statemem.action = inst:GetBufferedAction()
             inst.AnimState:PlayAnimation("pickaxe_loop")
         end,
@@ -588,13 +603,18 @@ local states=
         
         events=
         {
-            EventHandler("unequip", function(inst) inst.sg:GoToState("idle") end ),
             EventHandler("animover", function(inst) 
                 inst.AnimState:PlayAnimation("pickaxe_pst") 
                 inst.sg:GoToState("idle", true)
             end ),
             
-        },        
+        },  
+        onexit=function(inst)
+            if(inst.sg.statemem.fa_equippedweapon and inst.sg.statemem.fa_equippedweapon:IsValid())then
+                inst.components.inventory:Equip(inst.sg.statemem.fa_equippedweapon)
+            end
+            inst.sg.statemem.fa_equippedweapon=nil
+        end,      
     },
     
     

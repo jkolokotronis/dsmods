@@ -23,9 +23,6 @@ local leprechaun_assets={
 local vampire_assets={
     Asset("ANIM", "anim/fa_vampire.zip"),
 }
-local batdevil_assets={
-    Asset("ANIM", "anim/fa_batdevil.zip"),
-}
 
 local PET_HEALTH=300
 
@@ -308,12 +305,6 @@ local function fa_vampire(Sim)
     return inst
 end
 
-local function fa_batdevil(Sim)
-    local inst=fn(Sim)
-    inst.AnimState:SetBuild("fa_batdevil")
-
-    return inst
-end
 
 return Prefab( "common/skeletonspawn", spawn, assets),
      Prefab( "common/fa_drybones", drybones, drybones_assets),
@@ -323,5 +314,4 @@ return Prefab( "common/skeletonspawn", spawn, assets),
      Prefab("common/fa_ghoul", fa_ghoul, ghoul_assets),
      Prefab("common/fa_mummy", fa_mummy, mummy_assets),
      Prefab("common/fa_leprechaun", fa_leprechaun, leprechaun_assets),
-     Prefab("common/fa_batdevil", fa_batdevil, batdevil_assets),
      Prefab("common/fa_vampire", fa_vampire, vampire_assets)

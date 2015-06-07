@@ -12,12 +12,12 @@
         <file id="8" name="_0002s_0005_blatt-spring-6.png" width="212" height="219" pivot_x="0.580189" pivot_y="0.538813"/>
         <file id="9" name="_0002s_0006_blatt-spring-7.png" width="369" height="229" pivot_x="0.476965" pivot_y="0.449782"/>
         <file id="10" name="_0001s_0001_blatt-sommer-1.png" width="793" height="372" pivot_x="0.557377" pivot_y="0.577957"/>
-        <file id="11" name="_0001s_0000_blatt-sommer-2.png" width="1164" height="344" pivot_x="0.546392" pivot_y="0.531977"/>
+        <file id="11" name="_0001s_0000_blatt-sommer-2.png" width="582" height="172" pivot_x="0.546392" pivot_y="0.531977"/>
         <file id="12" name="_0000s_0006_autumn-tree.png" width="1027" height="909" pivot_x="0" pivot_y="1"/>
         <file id="13" name="_0000s_0001_blat-herbst1.png" width="912" height="293" pivot_x="0.555921" pivot_y="0.477816"/>
-        <file id="14" name="_0000s_0000_blatt-herbst-2.png" width="1165" height="475" pivot_x="0.540773" pivot_y="0.44"/>
+        <file id="14" name="_0000s_0000_blatt-herbst-2.png" width="583" height="238" pivot_x="0.540773" pivot_y="0.44"/>
         <file id="15" name="_0003s_0004_baum-winter.png" width="1027" height="909" pivot_x="0" pivot_y="1"/>
-        <file id="16" name="_0003s_0000_blattwerk-winter.png" width="1165" height="518" pivot_x="0" pivot_y="1"/>
+        <file id="16" name="_0003s_0000_blattwerk-winter.png" width="583" height="259" pivot_x="0" pivot_y="1"/>
         <file id="17" name="_0003s_0003_sonnenflecken-winter-1.png" width="464" height="195" pivot_x="0" pivot_y="1"/>
         <file id="18" name="_0003s_0002_sonnenflecken-winter2.png" width="464" height="195" pivot_x="0" pivot_y="1"/>
         <file id="19" name="_0003s_0001_sonnenflecken-winter-3.png" width="464" height="195" pivot_x="0" pivot_y="1"/>
@@ -256,31 +256,31 @@
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
                     <object_ref id="1" timeline="4" key="0" z_index="1"/>
                     <object_ref id="2" timeline="1" key="0" z_index="2"/>
-                    <object_ref id="3" timeline="2" key="0" z_index="3"/>
+                    <object_ref id="3" timeline="2" key="1" z_index="3"/>
                 </key>
                 <key id="2" time="1785">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
                     <object_ref id="1" timeline="4" key="1" z_index="1"/>
                     <object_ref id="2" timeline="1" key="0" z_index="2"/>
-                    <object_ref id="3" timeline="2" key="1" z_index="3"/>
+                    <object_ref id="3" timeline="2" key="2" z_index="3"/>
                 </key>
                 <key id="3" time="1883">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
                     <object_ref id="1" timeline="5" key="0" z_index="1"/>
                     <object_ref id="2" timeline="1" key="0" z_index="2"/>
-                    <object_ref id="3" timeline="2" key="1" z_index="3"/>
+                    <object_ref id="3" timeline="2" key="2" z_index="3"/>
                 </key>
                 <key id="4" time="2110">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
                     <object_ref id="1" timeline="5" key="1" z_index="1"/>
                     <object_ref id="2" timeline="1" key="1" z_index="2"/>
-                    <object_ref id="3" timeline="2" key="1" z_index="3"/>
+                    <object_ref id="3" timeline="2" key="2" z_index="3"/>
                 </key>
                 <key id="5" time="2915">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
                     <object_ref id="1" timeline="6" key="0" z_index="1"/>
                     <object_ref id="2" timeline="1" key="1" z_index="2"/>
-                    <object_ref id="3" timeline="2" key="1" z_index="3"/>
+                    <object_ref id="3" timeline="2" key="2" z_index="3"/>
                 </key>
             </mainline>
             <timeline id="0" name="_0001s_0006_Ebene-41-Kopie">
@@ -298,10 +298,13 @@
             </timeline>
             <timeline id="2" name="_0001s_0000_blatt-sommer-2">
                 <key id="0" spin="-1">
-                    <object folder="0" file="11" x="14.947656" y="610.929913" angle="0"/>
+                    <object folder="0" file="11" x="14.947656" y="610.929913" angle="0" scale_x="2" scale_y="2"/>
                 </key>
-                <key id="1" time="1785">
-                    <object folder="0" file="11" x="14.947656" y="610.929913" angle="359.398141"/>
+                <key id="1" time="987" spin="-1">
+                    <object folder="0" file="11" x="14.947656" y="610.929913" angle="359.667207" scale_x="2" scale_y="2"/>
+                </key>
+                <key id="2" time="1785">
+                    <object folder="0" file="11" x="14.947656" y="610.929913" angle="359.398141" scale_x="2" scale_y="2"/>
                 </key>
             </timeline>
             <timeline id="3" name="_0001s_0005_sonnenflecken-sommer-1">
@@ -349,43 +352,43 @@
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
                     <object_ref id="1" timeline="4" key="0" z_index="1"/>
                     <object_ref id="2" timeline="1" key="0" z_index="2"/>
-                    <object_ref id="3" timeline="2" key="1" z_index="3"/>
+                    <object_ref id="3" timeline="2" key="2" z_index="3"/>
                 </key>
                 <key id="3" time="1428">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
                     <object_ref id="1" timeline="4" key="1" z_index="1"/>
                     <object_ref id="2" timeline="1" key="1" z_index="2"/>
-                    <object_ref id="3" timeline="2" key="1" z_index="3"/>
+                    <object_ref id="3" timeline="2" key="3" z_index="3"/>
                 </key>
                 <key id="4" time="1743">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
                     <object_ref id="1" timeline="4" key="2" z_index="1"/>
                     <object_ref id="2" timeline="1" key="2" z_index="2"/>
-                    <object_ref id="3" timeline="2" key="1" z_index="3"/>
+                    <object_ref id="3" timeline="2" key="4" z_index="3"/>
                 </key>
                 <key id="5" time="2128">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
                     <object_ref id="1" timeline="5" key="0" z_index="1"/>
                     <object_ref id="2" timeline="1" key="2" z_index="2"/>
-                    <object_ref id="3" timeline="2" key="1" z_index="3"/>
+                    <object_ref id="3" timeline="2" key="5" z_index="3"/>
                 </key>
                 <key id="6" time="2324">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
                     <object_ref id="1" timeline="5" key="1" z_index="1"/>
                     <object_ref id="2" timeline="1" key="2" z_index="2"/>
-                    <object_ref id="3" timeline="2" key="2" z_index="3"/>
+                    <object_ref id="3" timeline="2" key="6" z_index="3"/>
                 </key>
                 <key id="7" time="3021">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
                     <object_ref id="1" timeline="5" key="2" z_index="1"/>
                     <object_ref id="2" timeline="1" key="3" z_index="2"/>
-                    <object_ref id="3" timeline="2" key="2" z_index="3"/>
+                    <object_ref id="3" timeline="2" key="6" z_index="3"/>
                 </key>
                 <key id="8" time="3167">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
                     <object_ref id="1" timeline="6" key="0" z_index="1"/>
                     <object_ref id="2" timeline="1" key="3" z_index="2"/>
-                    <object_ref id="3" timeline="2" key="2" z_index="3"/>
+                    <object_ref id="3" timeline="2" key="6" z_index="3"/>
                 </key>
             </mainline>
             <timeline id="0" name="_0000s_0006_autumn-tree">
@@ -409,13 +412,25 @@
             </timeline>
             <timeline id="2" name="_0000s_0000_blatt-herbst-2">
                 <key id="0">
-                    <object folder="0" file="14" x="9.167212" y="643.722222" angle="0"/>
+                    <object folder="0" file="14" x="9.167212" y="643.722222" angle="0" scale_x="2" scale_y="2"/>
                 </key>
                 <key id="1" time="414" spin="-1">
-                    <object folder="0" file="14" x="9.167212" y="643.722222" angle="0.708051"/>
+                    <object folder="0" file="14" x="9.167212" y="643.722222" angle="0.708051" scale_x="2" scale_y="2"/>
                 </key>
-                <key id="2" time="2324">
-                    <object folder="0" file="14" x="9.167212" y="643.722222" angle="358.539878"/>
+                <key id="2" time="861" spin="-1">
+                    <object folder="0" file="14" x="9.167212" y="643.722222" angle="0.20063" scale_x="2" scale_y="2"/>
+                </key>
+                <key id="3" time="1428" spin="-1">
+                    <object folder="0" file="14" x="9.167212" y="643.722222" angle="359.55699" scale_x="2" scale_y="2"/>
+                </key>
+                <key id="4" time="1743" spin="-1">
+                    <object folder="0" file="14" x="9.167212" y="643.722222" angle="359.199411" scale_x="2" scale_y="2"/>
+                </key>
+                <key id="5" time="2128" spin="-1">
+                    <object folder="0" file="14" x="9.167212" y="643.722222" angle="358.762371" scale_x="2" scale_y="2"/>
+                </key>
+                <key id="6" time="2324">
+                    <object folder="0" file="14" x="9.167212" y="643.722222" angle="358.539878" scale_x="2" scale_y="2"/>
                 </key>
             </timeline>
             <timeline id="3" name="_0000s_0005_sonnenflecken-autumn-2">
@@ -484,7 +499,7 @@
             </timeline>
             <timeline id="1" name="_0003s_0000_blattwerk-winter">
                 <key id="0" spin="0">
-                    <object folder="0" file="16" x="-622.222222" y="945.833333" angle="0"/>
+                    <object folder="0" file="16" x="-622.222222" y="945.833333" angle="0" scale_x="2" scale_y="2"/>
                 </key>
             </timeline>
             <timeline id="2" name="_0003s_0003_sonnenflecken-winter-1_002">

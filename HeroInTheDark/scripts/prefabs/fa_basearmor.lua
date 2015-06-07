@@ -144,11 +144,13 @@ end
 local function copperarmor()
     local inst =fn("fa_copperarmor")
     inst.components.armor:InitCondition(ARMOR_DURABILITY_T1, ARMOR_ABSORPTION_T1)
+    inst.components.armor.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.3
     return inst
 end
 local function steelarmor()
     local inst =fn("fa_steelarmor")
     inst.components.armor:InitCondition(ARMOR_DURABILITY_T3, ARMOR_ABSORPTION_T3)
+    inst.components.armor.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.2
     return inst
 end
 local function adamantinearmor()
@@ -159,16 +161,19 @@ end
 local function ironarmor()
     local inst =fn("fa_ironarmor")
     inst.components.armor:InitCondition(ARMOR_DURABILITY_T2, ARMOR_ABSORPTION_T2)
+    inst.components.armor.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.2
     return inst
 end
 local function silverarmor()
     local inst =fn("fa_silverarmor")
     inst.components.armor:InitCondition(ARMOR_DURABILITY_SILVER, ARMOR_ABSORPTION_SILVER)
+    inst.components.armor.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.2
     return inst
 end
 local function goldarmor()
     local inst =fn("fa_goldarmor")
     inst.components.armor:InitCondition(ARMOR_DURABILITY_GOLD, ARMOR_ABSORPTION_GOLD)
+    inst.components.armor.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.1
 
 
         if(FA_DLCACCESS)then

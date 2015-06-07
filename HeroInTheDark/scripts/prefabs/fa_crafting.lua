@@ -25,7 +25,7 @@ local function onhammered(inst, worker)
 	if inst.components.fa_furnace.product and inst.components.fa_furnace.done then
 		local product=inst.components.fa_furnace.product 
 		if(type(product)=="table")then
-			for k,v in pairs(self.product) do
+			for k,v in pairs(product) do
 				inst.components.lootdropper:AddChanceLoot(v, 1)
 			end
 		else
