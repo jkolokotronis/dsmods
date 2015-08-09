@@ -72,6 +72,11 @@ SetSharedLootTable( 'fa_coalrock',
     {'fa_coalpebble',  1.00},
     {'fa_coalpebble',  1.00},
     {'fa_coalpebble',  0.80},
+    {'fa_coalpebble',  0.80},
+    {'fa_coalpebble',  0.80},
+    {'fa_coalpebble',  0.80},
+    {'fa_coalpebble',  0.80},
+    {'fa_coalpebble',  0.40},
     {'fa_coalpebble',  0.40},
 })
 

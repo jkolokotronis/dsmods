@@ -269,6 +269,14 @@ function Health:DoDelta(amount, overtime, cause, ignore_invincible,dmgtype)
     return old_healthdodelta(self,-damage, overtime, cause, ignore_invincible)
 end
 
+local old_healthdofiredamage=Health.DoFireDamage
+function Health:DoFireDamage(amount, doer, instant)
+    if ((not self:IsValid()) or (self.fire_damage_scale==nil)) then
+        return
+    else
+        return old_healthdofiredamage(self,amount,doer,instant)
+    end
+end
 
 if(FA_ModUtil.GetModConfigData("extracontrollerrange"))then
     print('overriding controller max range')
