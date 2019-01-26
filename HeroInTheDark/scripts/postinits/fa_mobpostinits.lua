@@ -29,41 +29,66 @@ local function AddRingAsTradeOption(inst)
     end
 end
 
-FA_ModUtil.AddPrefabPostInit("rabbithole", function(inst) FA_ModUtil.addT1LootPrefabPostInit(inst,0.05) end)
 FA_ModUtil.AddPrefabPostInit("rabbit", makestackablePrefabPostInit)
+FA_ModUtil.AddPrefabPostInit("mole", makestackablePrefabPostInit)
+FA_ModUtil.AddPrefabPostInit("crow", makestackablePrefabPostInit)
+FA_ModUtil.AddPrefabPostInit("robin", makestackablePrefabPostInit)
+FA_ModUtil.AddPrefabPostInit("robin_winter", makestackablePrefabPostInit)
+FA_ModUtil.AddPrefabPostInit("glowfly", makestackablePrefabPostInit)
+FA_ModUtil.AddPrefabPostInit("kingfisher", makestackablePrefabPostInit)
+FA_ModUtil.AddPrefabPostInit("pigeon", makestackablePrefabPostInit)
+FA_ModUtil.AddPrefabPostInit("parrot_blue", makestackablePrefabPostInit)
+FA_ModUtil.AddPrefabPostInit("piko", makestackablePrefabPostInit)
+FA_ModUtil.AddPrefabPostInit("piko_orange", makestackablePrefabPostInit)
+FA_ModUtil.AddPrefabPostInit("crab", makestackablePrefabPostInit)
+FA_ModUtil.AddPrefabPostInit("jellyfish", makestackablePrefabPostInit)
+FA_ModUtil.AddPrefabPostInit("parrot", makestackablePrefabPostInit)
+FA_ModUtil.AddPrefabPostInit("parrot_pirate", makestackablePrefabPostInit)
+FA_ModUtil.AddPrefabPostInit("seagull", makestackablePrefabPostInit)
+FA_ModUtil.AddPrefabPostInit("seagull_water", makestackablePrefabPostInit)
+FA_ModUtil.AddPrefabPostInit("toucan", makestackablePrefabPostInit)
+FA_ModUtil.AddPrefabPostInit("rainbowjellyfish", makestackablePrefabPostInit)
+FA_ModUtil.AddPrefabPostInit("lobster", makestackablePrefabPostInit)
 
 FA_ModUtil.AddPrefabPostInit("bee",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_neutral")
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.5
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.4
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=-0.1
+end)
+FA_ModUtil.AddPrefabPostInit("bat",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.5
+    if(not inst.components.follower)then
+        inst:AddComponent("follower")
+    end
 end)
 FA_ModUtil.AddPrefabPostInit("killerbee",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_neutral")
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.5
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.4
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=-0.1
 end)
 FA_ModUtil.AddPrefabPostInit("mosquito",function(inst)
     inst:AddTag("fa_animal")
-    inst:AddTag("fa_neutral")
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.5
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.5
+    inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.4
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=-0.1
 end)
 FA_ModUtil.AddPrefabPostInit("spider",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.2
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.25
 end)
 FA_ModUtil.AddPrefabPostInit("spider_warrior",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.5
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.25
 end)
 FA_ModUtil.AddPrefabPostInit("frog",function(inst)
@@ -72,6 +97,8 @@ FA_ModUtil.AddPrefabPostInit("frog",function(inst)
     if(not inst.components.follower)then
         inst:AddComponent("follower")
     end
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.2
     inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
 end)
 FA_ModUtil.AddPrefabPostInit("merm",function(inst)
@@ -84,13 +111,15 @@ FA_ModUtil.AddPrefabPostInit("merm",function(inst)
     FA_ModUtil.addKeyTable1PostInit(inst,0.05)
     FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
     inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.3
     inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
     inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.25
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.2
 end)
 FA_ModUtil.AddPrefabPostInit("pigguard",function(inst)
     inst:AddTag("fa_humanoid")
-    inst:AddTag("fa_evil")
+    inst:AddTag("fa_neutral")
     inst:AddTag("pickpocketable")
     if(not inst.components.follower)then
         inst:AddComponent("follower")
@@ -99,7 +128,25 @@ FA_ModUtil.AddPrefabPostInit("pigguard",function(inst)
     FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
     inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.4
+	
+	local onsetwerefn_old=inst.components.werebeast.onsetwerefn
+    inst.components.werebeast:SetOnWereFn(function(inst)
+        if onsetwerefn_old then onsetwerefn_old(inst) end
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.65
+		inst:RemoveTag("fa_neutral")
+		inst:AddTag("fa_evil")
+    end)
+    local onsetnormalfn_old=inst.components.werebeast.onsetnormalfn
+    inst.components.werebeast:SetOnNormalFn(function(inst)
+        if onsetnormalfn_old then onsetnormalfn_old(inst) end
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.4
+		inst:RemoveTag("fa_evil")
+		inst:AddTag("fa_neutral")
+    end)
+
 end)
 FA_ModUtil.AddPrefabPostInit("pigman",function(inst)
     inst:AddTag("fa_humanoid")
@@ -116,12 +163,16 @@ FA_ModUtil.AddPrefabPostInit("pigman",function(inst)
         if onsetwerefn_old then onsetwerefn_old(inst) end
         inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
         inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.6
+		inst:RemoveTag("fa_good")
+		inst:AddTag("fa_evil")
     end)
     local onsetnormalfn_old=inst.components.werebeast.onsetnormalfn
     inst.components.werebeast:SetOnNormalFn(function(inst)
         if onsetnormalfn_old then onsetnormalfn_old(inst) end
         inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
         inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2
+		inst:RemoveTag("fa_evil")
+		inst:AddTag("fa_good")
     end)
     AddRingAsTradeOption(inst)
 
@@ -148,6 +199,579 @@ FA_ModUtil.AddPrefabPostInit("pigking",function(inst)
         return onacceptitem(inst,giver,item)
     end
 end)
+FA_ModUtil.AddPrefabPostInit("pigman_beautician",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_florist",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_erudite",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_hatmaker",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_storeowner",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_banker",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.25)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_collector",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_hunter",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_mayor",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.25)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_mechanic",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_professor",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_usher",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_farmer",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_miner",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_queen",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.25)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_beautician_shopkeep",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_florist_shopkeep",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_erudite_shopkeep",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_hatmaker_shopkeep",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_storeowner_shopkeep",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_banker_shopkeep",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.25)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_shopkeep",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_hunter_shopkeep",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_mayor_shopkeep",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.25)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_farmer_shopkeep",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_miner_shopkeep",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_collector_shopkeep",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_professor_shopkeep",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_royalguard_2",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigman_royalguard",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_good")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("pigbandit",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_evil")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("ancient_herald",function(inst)
+    inst:AddTag("undead")
+    inst:AddTag("fa_evil")
+    FA_ModUtil.addKeyTable2PostInit(inst,0.15)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.15) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-1
+end)
+FA_ModUtil.AddPrefabPostInit("pigghost",function(inst)
+	if(not inst.components.lootdropper)then
+        inst:AddComponent("lootdropper")
+    end
+    inst:AddTag("undead")
+    inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-1
+    inst.components.lootdropper:AddChanceLoot("nightmarefuel",0.75)
+    inst.components.lootdropper:AddChanceLoot("nightmarefuel",0.18) 
+end)
+FA_ModUtil.AddPrefabPostInit("dungbeetle",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.4
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+end)
+FA_ModUtil.AddPrefabPostInit("mandrakeman",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_plant")
+    inst:AddTag("fa_neutral")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.5
+end)
+FA_ModUtil.AddPrefabPostInit("giantgrub",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=-0.4
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=0.5
+end)
+FA_ModUtil.AddPrefabPostInit("glowfly",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+end)
+FA_ModUtil.AddPrefabPostInit("rabid_beetle",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+end)
+FA_ModUtil.AddPrefabPostInit("gnat",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+end)
+FA_ModUtil.AddPrefabPostInit("grabbing_vine",function(inst)
+    inst:AddTag("fa_plant")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("hippopotamoose",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
+end)
+FA_ModUtil.AddPrefabPostInit("kingfisher",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
+end)
+FA_ModUtil.AddPrefabPostInit("parrot_blue",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
+end)
+FA_ModUtil.AddPrefabPostInit("pigeon",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
+end)
+FA_ModUtil.AddPrefabPostInit("antman",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_evil")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.3
+end)
+FA_ModUtil.AddPrefabPostInit("antman_warrior",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_evil")
+    inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.2
+end)
+FA_ModUtil.AddPrefabPostInit("antman_warrior_egg",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.5
+end)
+FA_ModUtil.AddPrefabPostInit("piko",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+end)
+FA_ModUtil.AddPrefabPostInit("piko_orange",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+end)
+FA_ModUtil.AddPrefabPostInit("pangolden",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.2
+end)
+FA_ModUtil.AddPrefabPostInit("peagawk",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+end)
+FA_ModUtil.AddPrefabPostInit("bill",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+end)
+FA_ModUtil.AddPrefabPostInit("pog",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.2
+end)
+FA_ModUtil.AddPrefabPostInit("frog_poison",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
+end)
+FA_ModUtil.AddPrefabPostInit("pugalisk",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_giant")
+    inst:AddTag("fa_evil")
+    FA_ModUtil.addKeyTable2PostInit(inst,0.15)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.6
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=-0.6
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.4
+end)
+FA_ModUtil.AddPrefabPostInit("antqueen",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_giant")
+    inst:AddTag("fa_evil")
+    FA_ModUtil.addKeyTable2PostInit(inst,0.15)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=-0.4
+end)
+FA_ModUtil.AddPrefabPostInit("scorpion",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.6
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("mean_flytrap",function(inst)
+    inst:AddTag("fa_plant")
+    inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("adult_flytrap",function(inst)
+    inst:AddTag("fa_plant")
+    inst:AddTag("fa_evil")
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.05) 
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.4
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2
+end)
+FA_ModUtil.AddPrefabPostInit("spider_monkey",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.3
+end)
+FA_ModUtil.AddPrefabPostInit("thunderbird",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=1.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+end)
+FA_ModUtil.AddPrefabPostInit("vampirebat",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("snake_amphibious",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.4
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.4
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=-0.4
+end)
+FA_ModUtil.AddPrefabPostInit("weevole",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+end)
+FA_ModUtil.AddPrefabPostInit("ro_bin",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=-0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+end)
 FA_ModUtil.AddPrefabPostInit("tentacle",function(inst)
     inst:AddTag("fa_magicalbeast")
     inst:AddTag("fa_evil")
@@ -160,8 +784,6 @@ FA_ModUtil.AddPrefabPostInit("hound",function(inst)
     inst:AddTag("fa_evil")
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=-0.5
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.5
 end)
 FA_ModUtil.AddPrefabPostInit("firehound",function(inst)
     inst:AddTag("fa_animal")
@@ -174,6 +796,16 @@ FA_ModUtil.AddPrefabPostInit("icehound",function(inst)
     inst:AddTag("fa_evil")
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-1
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=1.5
+end)
+FA_ModUtil.AddPrefabPostInit("smallbird",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+end)
+FA_ModUtil.AddPrefabPostInit("teenbird",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
 end)
 FA_ModUtil.AddPrefabPostInit("tallbird",function(inst)
     inst:AddTag("fa_animal")
@@ -195,6 +827,7 @@ FA_ModUtil.AddPrefabPostInit("walrus",function(inst)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.4
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=-0.2
 end)
 FA_ModUtil.AddPrefabPostInit("little_walrus",function(inst)
     inst:AddTag("fa_humanoid")
@@ -206,21 +839,78 @@ FA_ModUtil.AddPrefabPostInit("little_walrus",function(inst)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=-0.1
 end)
 FA_ModUtil.AddPrefabPostInit("krampus",function(inst)
     inst:AddTag("fa_humanoid")
     inst:AddTag("fa_evil")
+    inst:AddTag("pickpocketable")
     FA_ModUtil.addKeyTable1PostInit(inst,0.05)
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-0.1
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=0.2
     inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
 end)
+FA_ModUtil.AddPrefabPostInit("ghost",function(inst)
+    if(not inst.components.lootdropper)then
+        inst:AddComponent("lootdropper")
+    end
+    if(not inst.components.follower)then
+        inst:AddComponent("follower")
+    end
+    inst:AddTag("undead")
+    inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-1
+    inst.components.lootdropper:AddChanceLoot("nightmarefuel",0.75)
+    inst.components.lootdropper:AddChanceLoot("nightmarefuel",0.18)
+end)
 FA_ModUtil.AddPrefabPostInit("monkey",function(inst)
     inst:AddTag("fa_humanoid")
-    inst:AddTag("fa_evil")
+    inst:AddTag("fa_neutral")
     FA_ModUtil.addKeyTable1PostInit(inst,0.05)
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+	inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+	inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+	local monky_old=inst.OnLoad
+    inst.OnLoad = function(inst)
+    if monky_old then monky_old(inst) end
+	if GetNightmareClock() then
+		local phase = GetNightmareClock():GetPhase()
+		if phase == "nightmare" or phase == "dawn" then
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.2
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1.5
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-1
+		inst:RemoveTag("fa_neutral")
+		inst:AddTag("fa_evil")
+	else
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=0
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=0
+		inst:RemoveTag("fa_evil")
+		inst:AddTag("fa_neutral")
+	end
+	end
+	end
+	inst:ListenForEvent("nightmarestart",function()
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.2
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1.5
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-1
+		inst:RemoveTag("fa_neutral")
+		inst:AddTag("fa_evil")
+	end, GetWorld())
+	inst:ListenForEvent("calmstart",function()
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=0
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=0
+		inst:RemoveTag("fa_evil")
+		inst:AddTag("fa_neutral")
+	end, GetWorld())
 end)
 FA_ModUtil.AddPrefabPostInit("knight",function(inst)
     inst:AddTag("fa_construct")
@@ -230,6 +920,7 @@ FA_ModUtil.AddPrefabPostInit("knight",function(inst)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.5
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.5
     inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.25
     inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.25
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=-0.3
 end)
@@ -240,7 +931,9 @@ FA_ModUtil.AddPrefabPostInit("knight_nightmare",function(inst)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=1.5
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.5
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.5
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1.15
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.25
     inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.25
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=-0.3
 end)
@@ -252,6 +945,7 @@ FA_ModUtil.AddPrefabPostInit("bishop",function(inst)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.5
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.5
     inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.1
     inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.25
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=-0.3
 end)
@@ -262,7 +956,9 @@ FA_ModUtil.AddPrefabPostInit("bishop_nightmare",function(inst)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=1.5
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.5
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.5
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1.15
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.1
     inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.25
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=-0.3
 end)
@@ -274,8 +970,9 @@ FA_ModUtil.AddPrefabPostInit("rook",function(inst)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.5
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.5
     inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.25
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=-0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.45
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.35
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=-0.4
 end)
 FA_ModUtil.AddPrefabPostInit("rook_nightmare",function(inst)
     inst:AddTag("fa_construct")
@@ -284,9 +981,19 @@ FA_ModUtil.AddPrefabPostInit("rook_nightmare",function(inst)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=1.5
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.5
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.5
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.25
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=-0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1.15
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.45
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.35
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=-0.4
+end)
+FA_ModUtil.AddPrefabPostInit("tentacle_pillar",function(inst)
+    inst:AddTag("fa_magicalbeast")
+    inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2
 end)
 FA_ModUtil.AddPrefabPostInit("tentacle_pillar_arm",function(inst)
     inst:AddTag("fa_magicalbeast")
@@ -298,40 +1005,52 @@ end)
 FA_ModUtil.AddPrefabPostInit("spider_hider",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_evil")
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.3
     inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-0.5
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.3
 end)
 FA_ModUtil.AddPrefabPostInit("spider_spitter",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_evil")
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.3
     inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-0.5
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.3
 end)
 FA_ModUtil.AddPrefabPostInit("spider_dropper",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_evil")
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.3
     inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-0.5
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.3
 end)
 FA_ModUtil.AddPrefabPostInit("crawlinghorror",function(inst)
     inst:AddTag("undead")
     inst:AddTag("fa_evil")
     inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-1
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.5
 end)
 FA_ModUtil.AddPrefabPostInit("terrorbeak",function(inst)
     inst:AddTag("undead")
     inst:AddTag("fa_evil")
     inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-1
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.5
+end)
+FA_ModUtil.AddPrefabPostInit("lureplant",function(inst)
+    inst:AddTag("fa_plant")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.1
 end)
 FA_ModUtil.AddPrefabPostInit("eyeplant",function(inst)
     inst:AddTag("fa_plant")
     inst:AddTag("fa_neutral")
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=-0.2
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
     inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.1
 end)
@@ -341,6 +1060,7 @@ FA_ModUtil.AddPrefabPostInit("worm",function(inst)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.5
     inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-0.5
     inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=0.5
     --this can cause mod compat issues but only if spell is active - theres prob a better way
     local orig_targetfn=inst.components.combat.targetfn 
     inst.components.combat.targetfn=function(inst)
@@ -377,16 +1097,6 @@ FA_ModUtil.AddPrefabPostInit("koalefant_winter",function(inst)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.3
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=1.5
 end)
-FA_ModUtil.AddPrefabPostInit("smallbird",function(inst)
-    inst:AddTag("fa_animal")
-    inst:AddTag("fa_neutral")
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
-end)
-FA_ModUtil.AddPrefabPostInit("teenbird",function(inst)
-    inst:AddTag("fa_animal")
-    inst:AddTag("fa_neutral")
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
-end)
 FA_ModUtil.AddPrefabPostInit("slurtle",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_neutral")
@@ -394,7 +1104,8 @@ FA_ModUtil.AddPrefabPostInit("slurtle",function(inst)
         inst:AddComponent("follower")
     end
     inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-0.1
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.2
 end)
 FA_ModUtil.AddPrefabPostInit("snurtle",function(inst)
     inst:AddTag("fa_animal")
@@ -427,15 +1138,33 @@ FA_ModUtil.AddPrefabPostInit("penguin",function(inst)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.5
 end)
 FA_ModUtil.AddPrefabPostInit("bunnyman",function(inst)
-    inst:AddTag("fa_animal")
+    inst:AddTag("fa_humanoid")
     inst:AddTag("fa_neutral")
     inst:AddTag("pickpocketable")
     FA_ModUtil.addKeyTable1PostInit(inst,0.05)
     FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.2
     AddRingAsTradeOption(inst)
+	local beardy_old=inst.CheckTransformState
+    inst.CheckTransformState = function(inst)
+        if beardy_old then beardy_old(inst) end
+		if inst.beardlord then
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.3
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.3
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1.5
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-1
+		inst:RemoveTag("fa_neutral")
+		inst:AddTag("fa_evil")
+	else
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.2
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=0
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=0
+		inst:RemoveTag("fa_evil")
+		inst:AddTag("fa_neutral")
+	end
+	end
 end)
 FA_ModUtil.AddPrefabPostInit("rocky",function(inst)
     inst:AddTag("fa_animal")
@@ -445,7 +1174,7 @@ FA_ModUtil.AddPrefabPostInit("rocky",function(inst)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.5
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.5
     inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=1
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=0.25
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.25
     inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.25
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=-0.3
     AddRingAsTradeOption(inst)
@@ -453,14 +1182,26 @@ end)
 FA_ModUtil.AddPrefabPostInit("crow",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
 end)
 FA_ModUtil.AddPrefabPostInit("robin",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=-0.6
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
 end)
 FA_ModUtil.AddPrefabPostInit("robin_winter",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.6
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
 end)
 FA_ModUtil.AddPrefabPostInit("babybeefalo",function(inst)
     inst:AddTag("fa_animal")
@@ -476,25 +1217,55 @@ FA_ModUtil.AddPrefabPostInit("perd",function(inst)
     if(not inst.components.follower)then
         inst:AddComponent("follower")
     end
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
 end)
 FA_ModUtil.AddPrefabPostInit("butterfly",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=1.5
 end)
 FA_ModUtil.AddPrefabPostInit("rabbit",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+	local fur_old=inst.CheckTransformState
+    inst.CheckTransformState = function(inst)
+        if fur_old then fur_old(inst) end
+		if inst.iswinterrabbit then
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.3
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.8
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=0
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=0
+		inst:RemoveTag("fa_evil")
+		inst:AddTag("fa_neutral")
+		elseif inst.israbbit then
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.2
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=0
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=0
+		inst:RemoveTag("fa_evil")
+		inst:AddTag("fa_neutral")
+		else
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.3
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.3
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1.5
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-1
+		inst:RemoveTag("fa_neutral")
+		inst:AddTag("fa_evil")
+	end
+	end
 end)
 FA_ModUtil.AddPrefabPostInit("spiderqueen",function(inst)
     inst:AddTag("fa_animal")
+    inst:AddTag("fa_giant")
     inst:AddTag("fa_evil")
     FA_ModUtil.addKeyTable2PostInit(inst,0.15)
     FA_ModUtil.addFullLootPrefabPostInit(inst,0.15) 
     inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.1
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
 end)
 FA_ModUtil.AddPrefabPostInit("leif",function(inst)
     inst:AddTag("fa_plant")
@@ -507,7 +1278,9 @@ FA_ModUtil.AddPrefabPostInit("leif",function(inst)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.5
     inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=0.1
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.1
 end)
 FA_ModUtil.AddPrefabPostInit("leif_sparse",function(inst)
     inst:AddTag("fa_plant")
@@ -520,7 +1293,9 @@ FA_ModUtil.AddPrefabPostInit("leif_sparse",function(inst)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.5
     inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=0.1
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=-0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.1
 
 end)
 FA_ModUtil.AddPrefabPostInit("deerclops",function(inst)
@@ -534,7 +1309,7 @@ FA_ModUtil.AddPrefabPostInit("deerclops",function(inst)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.5
 end)
 FA_ModUtil.AddPrefabPostInit("minotaur",function(inst)
-    inst:AddTag("fa_construct")
+    inst:AddTag("fa_animal")
     inst:AddTag("fa_giant")
     inst:AddTag("fa_evil")
     --should not happen
@@ -544,13 +1319,10 @@ FA_ModUtil.AddPrefabPostInit("minotaur",function(inst)
     FA_ModUtil.addKeyTable2PostInit(inst,0.15)
     table.insert(inst.components.lootdropper.loot,"fa_scroll_45")
     table.insert(inst.components.lootdropper.loot,"fa_scroll_45")
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=2
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.75
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.5
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.25
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=1
     inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.25
 end)
 FA_ModUtil.AddPrefabPostInit("dragonfly",function(inst)
     inst:AddTag("fa_animal")
@@ -561,6 +1333,8 @@ FA_ModUtil.AddPrefabPostInit("dragonfly",function(inst)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=1.5
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=-1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.5
 end)
 FA_ModUtil.AddPrefabPostInit("bearger",function(inst)
     inst:AddTag("fa_animal")
@@ -569,9 +1343,12 @@ FA_ModUtil.AddPrefabPostInit("bearger",function(inst)
     FA_ModUtil.addKeyTable2PostInit(inst,0.15)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
     inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.2
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=-0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=0.25
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.25
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.25
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.25
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=-0.4
 end)
 FA_ModUtil.AddPrefabPostInit("moose",function(inst)
     inst:AddTag("fa_animal")
@@ -583,37 +1360,38 @@ FA_ModUtil.AddPrefabPostInit("moose",function(inst)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=1.5
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=-0.2
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.3
 end)
 FA_ModUtil.AddPrefabPostInit("mossling",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=1
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=-0.1
 end)
 FA_ModUtil.AddPrefabPostInit("buzzard",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
 end)
 FA_ModUtil.AddPrefabPostInit("catcoon",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_neutral")
     FA_ModUtil.addKeyTable1PostInit(inst,0.05)
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.2
 end)
 FA_ModUtil.AddPrefabPostInit("glommer",function(inst)
-    inst:AddTag("fa_animal")
+    inst:AddTag("fa_magicalbeast")
     inst:AddTag("fa_good")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=1.5
 end)
 FA_ModUtil.AddPrefabPostInit("mole",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_neutral")
-end)
-FA_ModUtil.AddPrefabPostInit("bat",function(inst)
-    inst:AddTag("fa_animal")
-    inst:AddTag("fa_neutral")
-    if(not inst.components.follower)then
-        inst:AddComponent("follower")
-    end
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=0.5
 end)
 FA_ModUtil.AddPrefabPostInit("lightninggoat",function(inst)
     inst:AddTag("fa_animal")
@@ -627,70 +1405,632 @@ end)
 FA_ModUtil.AddPrefabPostInit("warg",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_evil")
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.15)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_13",0.25)
     inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.2
     inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
     inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2
+end)
+FA_ModUtil.AddPrefabPostInit("spat",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.15)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_13",0.25)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.25
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.25
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.25
 end)
 FA_ModUtil.AddPrefabPostInit("birchnutdrake",function(inst)
     inst:AddTag("fa_animal")
     inst:AddTag("fa_neutral")
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.1
 end)
---[[
-AddPrefabPostInit("deciduous_root",function(inst)
-    inst:AddTag("fa_plant")
+FA_ModUtil.AddPrefabPostInit("chester",function(inst)
+    inst:AddTag("fa_magicalbeast")
+    inst:AddTag("fa_good")
+	inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.6
+	inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=-0.5
+    local chester_old=inst.OnLoad
+    inst.OnLoad = function(inst)
+	if chester_old then chester_old(inst) end
+		if inst.ChesterState=="NORMAL" then
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.6
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=-0.5
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=0
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=0
+		elseif inst.ChesterState=="SHADOW" then
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1.5
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-1
+		elseif inst.ChesterState=="SNOW" then
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-1
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=1.5
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=0
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=0
+	end
+	end
+	local morph_old=inst.MorphChester
+    inst.MorphChester = function(inst)
+        if morph_old then morph_old(inst) end
+		if inst.ChesterState=="NORMAL" then
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.6
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=-0.5
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=0
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=0
+		elseif inst.ChesterState=="SHADOW" then
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1.5
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-1
+		elseif inst.ChesterState=="SNOW" then
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-1
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=1.5
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=0
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=0
+	end
+	end
+end)
+FA_ModUtil.AddPrefabPostInit("packim",function(inst)
+    inst:AddTag("fa_magicalbeast")
+    inst:AddTag("fa_good")
+	inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+	inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+	inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.5
+	inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
+    local pack_old=inst.OnLoad
+    inst.OnLoad = function(inst)
+	if pack_old then pack_old(inst) end
+		if inst.PackimState=="NORMAL" then
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.5
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
+		elseif inst.PackimState=="FAT" then
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.5
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.1
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
+		elseif inst.PackimState=="FIRE" then
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=1.5
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=-1
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.5
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
+	end
+	end
+	local packim_old=inst.components.hunger.onStarve
+	inst.components.hunger:SetOnStarve(function(inst)
+    if packim_old then packim_old(inst) end
+	if inst.PackimState=="NORMAL" then
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.5
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
+	end
+	end)
+	local packf_old=inst.tryeat
+    inst.tryeat = function(inst)
+	local ret=false
+	if packf_old then ret=packf_old(inst) end 
+	if inst.PackimState=="FAT" then
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.5
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.1
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
+	end
+	return ret
+	end
+	local packh_old=inst.checkfiretransform
+    inst.checkfiretransform = function(inst)
+	local ret=false
+	if packh_old then ret=packh_old(inst) end 
+	if inst.PackimState=="FIRE" then
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=1.5
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=-1
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.5
+		inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
+	end
+	return ret
+	end
+end)
+FA_ModUtil.AddPrefabPostInit("whale_blue",function(inst)
+    inst:AddTag("fa_animal")
     inst:AddTag("fa_neutral")
---    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.6
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.6
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.4
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=-0.3
 end)
-]]
-FA_ModUtil.AddPrefabPostInit("ghost",function(inst)
+FA_ModUtil.AddPrefabPostInit("whale_white",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.7
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.6
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.35
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=-0.3
+end)
+FA_ModUtil.AddPrefabPostInit("whale_carcass_blue",function(inst)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.15)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_13",0.25)
+end)
+FA_ModUtil.AddPrefabPostInit("whale_carcass_white",function(inst)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.25)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_13",0.35)
+end)
+FA_ModUtil.AddPrefabPostInit("ballphin",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_good")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=-0.3
+end)
+FA_ModUtil.AddPrefabPostInit("crab",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.1
+end)
+FA_ModUtil.AddPrefabPostInit("crocodog",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("poisoncrocodog",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.6
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("watercrocodog",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.8
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.6
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.8
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("solofish",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.2
+end)
+FA_ModUtil.AddPrefabPostInit("doydoy",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.2
+end)
+FA_ModUtil.AddPrefabPostInit("doydoybaby",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+end)
+FA_ModUtil.AddPrefabPostInit("dragoon",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=1.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=-1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.25
+end)
+FA_ModUtil.AddPrefabPostInit("mermfisher",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst:AddTag("pickpocketable")
+	FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.25
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.2
+end)
+FA_ModUtil.AddPrefabPostInit("knightboat",function(inst)
+    inst:AddTag("fa_construct")
+    inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=1.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.25
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.25
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=-0.3
+end)
+FA_ModUtil.AddPrefabPostInit("flup",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=0.2
+end)
+FA_ModUtil.AddPrefabPostInit("jellyfish_planted",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=1.5
+end)
+FA_ModUtil.AddPrefabPostInit("mosquito_poison",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.6
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.4
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=-0.1
+end)
+FA_ModUtil.AddPrefabPostInit("snake",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=-0.4
+end)
+FA_ModUtil.AddPrefabPostInit("snake_poison",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.6
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=-0.4
+end)
+FA_ModUtil.AddPrefabPostInit("treeguard",function(inst)
+    inst:AddTag("fa_plant")
+    inst:AddTag("fa_giant")
+    inst:AddTag("fa_evil")
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.15)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.15)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.2
+end)
+FA_ModUtil.AddPrefabPostInit("parrot",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
+end)
+FA_ModUtil.AddPrefabPostInit("parrot_pirate",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.2)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
+end)
+FA_ModUtil.AddPrefabPostInit("seagull",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.8
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
+end)
+FA_ModUtil.AddPrefabPostInit("seagull_water",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.8
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
+end)
+FA_ModUtil.AddPrefabPostInit("toucan",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
+end)
+FA_ModUtil.AddPrefabPostInit("pirateghost",function(inst)
     if(not inst.components.lootdropper)then
         inst:AddComponent("lootdropper")
     end
-    if(not inst.components.follower)then
-        inst:AddComponent("follower")
-    end
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=1
-    inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-1
-    inst.components.lootdropper:AddChanceLoot("nightmarefuel",0.75)
-    inst.components.lootdropper:AddChanceLoot("nightmarefuel",0.18) 
     inst:AddTag("undead")
     inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.DEATH]=1.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-1
+    inst.components.lootdropper:AddChanceLoot("nightmarefuel",0.75)
+    inst.components.lootdropper:AddChanceLoot("nightmarefuel",0.18)
+end)
+FA_ModUtil.AddPrefabPostInit("primeape",function(inst)
+    inst:AddTag("fa_humanoid")
+    inst:AddTag("fa_neutral")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+	inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+	inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.2
+end)
+FA_ModUtil.AddPrefabPostInit("rainbowjellyfish_planted",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=1.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=1.5
+end)
+FA_ModUtil.AddPrefabPostInit("kraken_tentacle",function(inst)
+    inst:AddTag("fa_magicalbeast")
+    inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
+end)
+FA_ModUtil.AddPrefabPostInit("kraken",function(inst)
+    inst:AddTag("fa_magicalbeast")
+    inst:AddTag("fa_giant")
+    inst:AddTag("fa_evil")
+    FA_ModUtil.addKeyTable2PostInit(inst,0.1)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.15)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.15)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.6
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.6
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.4
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=-0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=0.6
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
+end)
+FA_ModUtil.AddPrefabPostInit("sharx",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
+end)
+FA_ModUtil.AddPrefabPostInit("twister",function(inst)
+    inst:AddTag("fa_magicalbeast")
+    inst:AddTag("fa_giant")
+    inst:AddTag("fa_evil")
+    FA_ModUtil.addKeyTable2PostInit(inst,0.15)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=1.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=1.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.6
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.6
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2
+end)
+FA_ModUtil.AddPrefabPostInit("twister_seal",function(inst)
+    inst:AddTag("fa_magicalbeast")
+    inst:AddTag("fa_neutral")
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_5",0.25)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.HOLY]=0.5
+end)
+FA_ModUtil.AddPrefabPostInit("sharkitten",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=0.2
+end)
+FA_ModUtil.AddPrefabPostInit("stungray",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_evil")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.6
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.3
+end)
+FA_ModUtil.AddPrefabPostInit("swordfish",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.2
+end)
+FA_ModUtil.AddPrefabPostInit("tigershark",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_giant")
+    inst:AddTag("fa_evil")
+    FA_ModUtil.addKeyTable2PostInit(inst,0.15)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_35",0.25)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=0.5
+end)
+FA_ModUtil.AddPrefabPostInit("ox",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.2
+end)
+FA_ModUtil.AddPrefabPostInit("babyox",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.2
+end)
+FA_ModUtil.AddPrefabPostInit("wildbore",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+	inst:AddTag("pickpocketable")
+    FA_ModUtil.addKeyTable1PostInit(inst,0.05)
+    FA_ModUtil.addFullLootPrefabPostInit(inst,0.1)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2
+
+    local onsetwerefn_old=inst.components.werebeast.onsetwerefn
+    inst.components.werebeast:SetOnWereFn(function(inst)
+        if onsetwerefn_old then onsetwerefn_old(inst) end
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.2
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.6
+		inst:RemoveTag("fa_neutral")
+		inst:AddTag("fa_evil")
+    end)
+    local onsetnormalfn_old=inst.components.werebeast.onsetnormalfn
+    inst.components.werebeast:SetOnNormalFn(function(inst)
+        if onsetnormalfn_old then onsetnormalfn_old(inst) end
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.1
+        inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.2
+		inst:RemoveTag("fa_evil")
+		inst:AddTag("fa_neutral")
+    end)
+end)
+FA_ModUtil.AddPrefabPostInit("lobster",function(inst)
+    inst:AddTag("fa_animal")
+    inst:AddTag("fa_neutral")
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ELECTRIC]=-0.5
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=-0.2
 end)
 
+FA_ModUtil.AddPrefabPostInit("rabbithole", function(inst) FA_ModUtil.addT1LootPrefabPostInit(inst,0.1) end)
+FA_ModUtil.AddPrefabPostInit("crabhole", function(inst) FA_ModUtil.addT1LootPrefabPostInit(inst,0.1) end)
+FA_ModUtil.AddPrefabPostInit("dungpile", function(inst) FA_ModUtil.addT1LootPrefabPostInit(inst,0.1) end)
+FA_ModUtil.AddPrefabPostInit("gnatmound", function(inst) FA_ModUtil.addT1LootPrefabPostInit(inst,0.05) end)
+FA_ModUtil.AddPrefabPostInit("molehill", function(inst) FA_ModUtil.addT1LootPrefabPostInit(inst,0.03) end)
+FA_ModUtil.AddPrefabPostInit("catcoonden", function(inst) FA_ModUtil.addT1LootPrefabPostInit(inst,0.3) end)
 FA_ModUtil.AddPrefabPostInit("mermhouse", function(inst) 
     FA_ModUtil.addFullStructureLootPrefabPostInit(inst,0.2) 
     inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.15)
 end)
+FA_ModUtil.AddPrefabPostInit("mermhouse_fisher", function(inst) 
+    FA_ModUtil.addFullStructureLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+end)
+FA_ModUtil.AddPrefabPostInit("ballphinhouse", function(inst) 
+    FA_ModUtil.addFullStructureLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+end)
 FA_ModUtil.AddPrefabPostInit("pighouse", function(inst) 
+    FA_ModUtil.addFullStructureLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+end)
+FA_ModUtil.AddPrefabPostInit("wildborehouse", function(inst) 
+    FA_ModUtil.addFullStructureLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+end)
+FA_ModUtil.AddPrefabPostInit("primeapebarrel", function(inst) 
+    FA_ModUtil.addFullStructureLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+end)
+FA_ModUtil.AddPrefabPostInit("rabbithouse", function(inst) 
+	FA_ModUtil.addFullStructureLootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+end)
+FA_ModUtil.AddPrefabPostInit("dragoonden", function(inst) 
+	FA_ModUtil.addFullStructureLootPrefabPostInit(inst,0.25) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_13",0.15)
+end)
+FA_ModUtil.AddPrefabPostInit("spiderhole", function(inst) 
+    FA_ModUtil.addFullStructureLootPrefabPostInit(inst,0.2) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_12",0.15)
+end)
+FA_ModUtil.AddPrefabPostInit("monkeybarrel", function(inst) 
     FA_ModUtil.addFullStructureLootPrefabPostInit(inst,0.2) 
     inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.15)
 end)
-FA_ModUtil.AddPrefabPostInit("rabbithouse", function(inst) FA_ModUtil.addFullStructureLootPrefabPostInit(inst,0.2) end)
+FA_ModUtil.AddPrefabPostInit("antcombhole", function(inst) 
+    FA_ModUtil.addFullStructureLootPrefabPostInit(inst,0.2) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.15)
+end)
+FA_ModUtil.AddPrefabPostInit("mandrakehouse", function(inst) 
+    FA_ModUtil.addFullStructureLootPrefabPostInit(inst,0.2) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_15",0.15)
+end)
+FA_ModUtil.AddPrefabPostInit("wreck", function(inst) 
+    FA_ModUtil.addFullStructureLootPrefabPostInit(inst,0.5) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_13",0.5)
+end)
+FA_ModUtil.AddPrefabPostInit("roc_nest_house", function(inst) 
+    FA_ModUtil.addFullStructureLootPrefabPostInit(inst,1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_25",1)
+end)
 
-FA_ModUtil.AddPrefabPostInit("spiderden", function(inst) 
+FA_ModUtil.AddPrefabPostInit("beehive",function(inst)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.8
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=-0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.3
+end)
+FA_ModUtil.AddPrefabPostInit("wasphive",function(inst)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=0.8
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=-0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.3
+end)
+FA_ModUtil.AddPrefabPostInit("houndmound", function(inst) 
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.ACID]=1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=-0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=0.6
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.PHYSICAL]=0.4
     FA_ModUtil.addT1LootPrefabPostInit(inst,0.15) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+end)
+FA_ModUtil.AddPrefabPostInit("slurtlehole", function(inst) 
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.COLD]=0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.6
+    FA_ModUtil.addT1LootPrefabPostInit(inst,0.15) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.1)
+end)
+FA_ModUtil.AddPrefabPostInit("spiderden", function(inst) 
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.3
+    FA_ModUtil.addT1LootPrefabPostInit(inst,0.1) 
     inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
 end)
 FA_ModUtil.AddPrefabPostInit("poisonspiderden", function(inst) 
-    FA_ModUtil.addT1LootPrefabPostInit(inst,0.15) 
+    FA_ModUtil.addT1LootPrefabPostInit(inst,0.1) 
     inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
 end)
 FA_ModUtil.AddPrefabPostInit("spiderden_2", function(inst) 
-    FA_ModUtil.addT1T2LootPrefabPostInit(inst,0.15) 
-    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.3
+    FA_ModUtil.addT1T2LootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_12",0.05)
 end)
 FA_ModUtil.AddPrefabPostInit("poisonspiderden_2", function(inst) 
-    FA_ModUtil.addT1T2LootPrefabPostInit(inst,0.15) 
-    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
+    FA_ModUtil.addT1T2LootPrefabPostInit(inst,0.1) 
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_12",0.05)
 end)
 FA_ModUtil.AddPrefabPostInit("spiderden_3", function(inst) 
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.POISON]=1
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FORCE]=0.3
+    inst.components.health.fa_resistances[FA_DAMAGETYPE.FIRE]=-0.3
     FA_ModUtil.addFullStructureLootPrefabPostInit(inst,0.15) 
-    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_13",0.05)
 end)
 FA_ModUtil.AddPrefabPostInit("poisonspiderden_3", function(inst) 
     FA_ModUtil.addFullStructureLootPrefabPostInit(inst,0.15) 
-    inst.components.lootdropper:AddChanceLoot("fa_scroll_1",0.05)
+    inst.components.lootdropper:AddChanceLoot("fa_scroll_13",0.05)
 end)
