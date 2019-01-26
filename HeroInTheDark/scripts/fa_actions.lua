@@ -4,7 +4,7 @@ require "actions"
 local DIG_SAND_CHANCE=0.35
 local MINE_DIAMOND_CHANCE=0.05
 
-local FA_FURNACE=Action(1)
+local FA_FURNACE=Action({},1)
 FA_FURNACE.id="FA_FURNACE"
 
 FA_FURNACE.fn = function(act)
@@ -30,7 +30,7 @@ ACTIONS.FA_FURNACE=FA_FURNACE
 SGWilson.actionhandlers[ACTIONS.FA_FURNACE]=ActionHandler(ACTIONS.FA_FURNACE, "doshortaction")
 --FA_ModUtil.AddAction(FA_FURNACE)
 
-local FA_CRAFTPICKUP=Action(1)
+local FA_CRAFTPICKUP=Action({},1)
 FA_CRAFTPICKUP.id="FA_CRAFTPICKUP"
 
 FA_CRAFTPICKUP.fn = function(act)
@@ -49,7 +49,7 @@ SGWilson.actionhandlers[ACTIONS.FA_CRAFTPICKUP]=ActionHandler(ACTIONS.FA_CRAFTPI
 --FA_ModUtil.AddAction(FA_CRAFTPICKUP)
 
 
-local FA_LOCKPICK=Action(1)
+local FA_LOCKPICK=Action({},1)
 FA_LOCKPICK.id="FA_CRAFTPICKUP"
 
 FA_LOCKPICK.fn = function(act)
@@ -80,7 +80,7 @@ end
 ACTIONS.FA_LOCKPICK=FA_LOCKPICK
 SGWilson.actionhandlers[ACTIONS.FA_LOCKPICK]=ActionHandler(ACTIONS.FA_LOCKPICK, "dolongaction")
 
-local FA_DRINK=Action()
+local FA_DRINK=Action({})
 FA_DRINK.id="FA_DRINK"
 
 FA_DRINK.fn = function(act)
@@ -235,7 +235,7 @@ SGWilson.states["fa_whirlwind"]=State{
     }
 
 
-local RELOAD = Action(1, true)
+local RELOAD = Action({},1, true)
 RELOAD.id = "RELOAD"
 RELOAD.str = "Reload"
 RELOAD.fn = function(act)
@@ -249,7 +249,7 @@ ACTIONS.RELOAD = RELOAD
 
 
 
-local FA_MEND=Action(1, true)
+local FA_MEND=Action({},1, true)
 FA_MEND.id="FA_MEND"
 FA_MEND.str="Mend"
 FA_MEND.fn=function(act)

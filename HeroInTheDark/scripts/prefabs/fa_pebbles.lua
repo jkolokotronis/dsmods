@@ -125,10 +125,10 @@ Prefab( "common/inventory/fa_ironslag", slagfn, pebble_assets),
 Prefab( "common/inventory/fa_silverslag", slagfn, pebble_assets),
 Prefab( "common/inventory/fa_copperslag", slagfn, pebble_assets),
 
-Prefab( "common/inventory/fa_ironbarslag", slagfn, assets,prefabs),
-Prefab( "common/inventory/fa_pigironbarslag", slagfn, assets,prefabs),
-Prefab( "common/inventory/fa_copperbarslag", slagfn, assets,prefabs),
-Prefab( "common/inventory/fa_steelbarslag", slagfn, assets,prefabs),
-Prefab( "common/inventory/fa_silverbarslag", slagfn, assets,prefabs),
-Prefab( "common/inventory/fa_goldbarslag", slagfn, assets,prefabs),
-Prefab( "common/inventory/fa_lavabarslag", slagfn, assets,prefabs)
+Prefab( "common/inventory/fa_ironbarslag", slagfn, pebble_assets,prefabs),
+Prefab( "common/inventory/fa_pigironbarslag", slagfn, pebble_assets,prefabs),
+Prefab( "common/inventory/fa_copperbarslag", slagfn, pebble_assets,prefabs),
+Prefab( "common/inventory/fa_steelbarslag", slagfn, pebble_assets,prefabs),
+Prefab( "common/inventory/fa_silverbarslag", slagfn, pebble_assets,prefabs),
+Prefab( "common/inventory/fa_goldbarslag", slagfn, pebble_assets,prefabs),
+Prefab( "common/inventory/fa_lavabarslag", slagfn, pebble_assets,prefabs)
