@@ -118,7 +118,21 @@ function FA_SpellPopup:Refresh()
         end
         local has, num_found = owner.components.inventory:Has(v.type, RoundUp(v.amount * owner.components.builder.ingredientmod))
         
-        local ing = self.contents:AddChild(IngredientUI(v.atlas, v.type..".tex", v.amount, num_found, has, STRINGS.NAMES[string.upper(v.type)], owner))
+
+        local item_img = v.type
+        if SaveGameIndex:IsModeShipwrecked() and SW_ICONS[item_img] ~= nil then
+            item_img = SW_ICONS[item_img]
+        end
+        if SaveGameIndex:IsModePorkland() and PORK_ICONS[item_img] ~= nil then
+            item_img = PORK_ICONS[item_img]
+        end
+
+        local ing
+        if(SaveGameIndex:IsModePorkland()) then  
+            ing = self.contents:AddChild(IngredientUI(v:GetAtlas(item_img..".tex"), item_img..".tex", v.amount, num_found, has, STRINGS.NAMES[string.upper(v.type)], owner))
+        else
+            ing = self.contents:AddChild(IngredientUI(v.atlas, item_img..".tex", v.amount, num_found, has, STRINGS.NAMES[string.upper(v.type)], owner))
+        end
         ing:SetPosition(Vector3(offset, y, 0))
         offset = offset + (w+ div)
         self.ing[k] = ing

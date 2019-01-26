@@ -8,11 +8,15 @@ local MergeMaps=GLOBAL.MergeMaps
 GLOBAL.FA_DLCACCESS=false
 GLOBAL.FA_SWACCESS=false
 GLOBAL.FA_SWWORLD=false
+GLOBAL.FA_PORKWORLD=false
+GLOBAL.FA_PORKACCESS=false
 
 GLOBAL.xpcall(function()
                     GLOBAL.FA_DLCACCESS= GLOBAL.IsDLCEnabled and GLOBAL.REIGN_OF_GIANTS and GLOBAL.IsDLCEnabled(GLOBAL.REIGN_OF_GIANTS)
                     GLOBAL.FA_SWACCESS= GLOBAL.IsDLCEnabled and GLOBAL.CAPY_DLC and GLOBAL.IsDLCEnabled(GLOBAL.CAPY_DLC)
                     GLOBAL.FA_SWWORLD= GLOBAL.SaveGameIndex and GLOBAL.SaveGameIndex:IsModeShipwrecked() 
+                    GLOBAL.FA_PORKACCESS=GLOBAL.IsDLCEnabled and GLOBAL.PORKLAND_DLC and GLOBAL.IsDLCEnabled(GLOBAL.PORKLAND_DLC)
+                    GLOBAL.FA_PORKWORLD= GLOBAL.SaveGameIndex and GLOBAL.SaveGameIndex:IsModePorkland() 
                 end,
                 function()
                     --if the calls crashed im assuming outdated code and dlc is off by default
@@ -20,9 +24,10 @@ GLOBAL.xpcall(function()
                 end
             )
 print("dlc_sw",GLOBAL.FA_SWACCESS)
+print("dlc_porker",GLOBAL.FA_SWACCESS)
 
 --swcompat turns off rog flag for some ridic reason, too lazy to redo every check
-GLOBAL.FA_DLCACCESS=GLOBAL.FA_DLCACCESS or GLOBAL.FA_SWACCESS
+GLOBAL.FA_DLCACCESS=GLOBAL.FA_DLCACCESS or GLOBAL.FA_SWACCESS or GLOBAL.FA_PORKACCESS
 
 GLOBAL.FA_ModCompat={}
 GLOBAL.FA_ModCompat.memspikefix_delay=1

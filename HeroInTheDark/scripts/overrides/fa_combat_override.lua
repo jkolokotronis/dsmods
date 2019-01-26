@@ -40,8 +40,8 @@ function Armor:TakeDamage(damage_amount, attacker, weapon,element)
 local Health=require "components/health"
 local Combat=require "components/combat"
 
--- the check was removed for SW and SW only, mostly just a dirty hack at this point
-if(FA_SWACCESS)then
+-- the check was removed for SW+, mostly just a dirty hack at this point
+if(FA_SWACCESS or FA_PORKACCESS)then
     local combat_calcdamage_def=Combat.CalcDamage
 
     function Combat:CalcDamage(target, weapon, multiplier,...)
@@ -99,6 +99,7 @@ function Combat:GetAttacked(attacker, damage, weapon,stimuli,element)
     local init_damage = damage
     local poisonAttack = false 
     local poisonGasAttack = false 
+    local damageredirecttarget = self.redirectdamagefn and self.redirectdamagefn(self.inst, attacker, damage, weapon, stimuli) or nil
 
     if self.inst:HasTag("poisonable") and attacker then 
         if (attacker.components.combat and attacker.components.combat.poisonous) or 
@@ -182,7 +183,7 @@ function Combat:GetAttacked(attacker, damage, weapon,stimuli,element)
         --why are you so inclined to prevent healing by damage, silly klei?
         if damage~=0 and self.inst.components.health:IsInvincible() == false then
 
-            self.inst.components.health:DoDelta(-damage, nil, attacker and attacker.prefab or "NIL",nil,damagetype)
+            self.inst.components.health:DoDelta(-damage, nil, attacker and attacker.prefab or "NIL",nil,nil,damagetype)
             if self.inst.components.health:GetPercent() <= 0 then
                 if attacker then
                     attacker:PushEvent("killed", {victim = self.inst})
@@ -209,6 +210,20 @@ function Combat:GetAttacked(attacker, damage, weapon,stimuli,element)
             blocked = true
         end
     end
+
+    local redirect_combat = damageredirecttarget ~= nil and damageredirecttarget.components.combat or nil
+    if redirect_combat and not blocked then
+        redirect_combat:GetAttacked(attacker, damage, weapon, stimuli)
+        if self.inst == GetPlayer() then
+            GetPlayer():PushEvent("mountattacked")                  
+            GetPlayer():PushEvent("mounthurt")                      
+        end     
+        self.inst:PushEvent("attacked", {attacker = attacker, damage = damage, weapon = weapon, redirected=true}) 
+        if redirect_combat and redirect_combat.hurtsound then
+            self.inst.SoundEmitter:PlaySound(redirect_combat.hurtsound)
+        end     
+        blocked = true
+    end 
     
     local boating = false 
     if self.inst.components.driver and self.inst.components.driver:GetIsDriving() then 
@@ -227,10 +242,13 @@ function Combat:GetAttacked(attacker, damage, weapon,stimuli,element)
     end
 
     if not blocked then
+
         if TUNING.DO_SEA_DAMAGE_TO_BOAT and (self.inst.components.driver and self.inst.components.driver.vehicle and self.inst.components.driver.vehicle.components.boathealth) then
             self.inst:PushEvent("boatattacked", {attacker = attacker, damage = damage, weapon = weapon, stimuli = stimuli})
         else
-            self.inst:PushEvent("attacked", {attacker = attacker, damage = damage, weapon = weapon, stimuli = stimuli})
+            if not self.inst:HasTag("noflinch") then
+                self.inst:PushEvent("attacked", {attacker = attacker, damage = damage, weapon = weapon, stimuli = stimuli})
+            end
         end
 
         if self.onhitfn then
@@ -287,7 +305,13 @@ function Health:SetProtection(amount,damagetype)
 end
 local old_healthdodelta=Health.DoDelta
 --since I'm never using 'cause', I can safely assume that cause=="fire" means I should calculate the res
-function Health:DoDelta(amount, overtime, cause, ignore_invincible,dmgtype)
+function Health:DoDelta(amount, overtime, cause, ignore_invincible,skipredirect,dmgtype)
+
+    if self.redirect and not skipredirect then
+        self.redirect(self.inst, amount, overtime, cause, ignore_invincible,false,dmgtype)
+        return
+    end
+
     local damage=-amount
     local damagetype=dmgtype
     local burningdamage=false
@@ -297,6 +321,11 @@ function Health:DoDelta(amount, overtime, cause, ignore_invincible,dmgtype)
             burningdamage=true
         elseif(cause=="cold")then
             damagetype=FA_DAMAGETYPE.COLD
+        elseif(cause=="poison")then
+            damagetype=FA_DAMAGETYPE.POISON
+-- TODO figure what to do with gas damage
+        elseif(cause=="gas")then
+            damagetype=FA_DAMAGETYPE.POISON
         end
     end
     --needed cause this whole thing makes no sense on 'healing', no matter what causes it

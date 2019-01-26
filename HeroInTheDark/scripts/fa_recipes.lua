@@ -4,7 +4,7 @@ require "constants"
 
 
 
-RECIPETABS["FA_DWARFTRADER"] = {str = "FA_DWARFTRADER", sort=999, icon = "fa_shopicon.tex", icon_atlas ="images/inventoryimages/fa_inventoryimages.xml"}
+RECIPETABS["FA_DWARFTRADER"] = {str = "FA_DWARFTRADER", sort=999, icon = "fa_shopicon.tex", icon_atlas ="images/inventoryimages/fa_inventoryimages.xml",crafting_station = true}
 STRINGS.TABS.FA_DWARFTRADER = "Trader"
 
 --wicker is already fixing the hardcoded crap - I see no reason to reinvent the wheel
@@ -30,8 +30,24 @@ if(not FA_ModCompat.UnA)then
 				return true
 			end
 		end
-	 
-		return self.freebuildmode or table.contains(self.recipes, recname)
+		if FA_PORKACCESS then
+
+			local crafting_station_pass = true
+		    if recipe then
+        		for i,level in pairs(recipe.level)do
+        		    if RECIPETABS[i] and RECIPETABS[i].crafting_station and level > 0 then            
+                		if self.accessible_tech_trees[i] == 0 then
+                		    crafting_station_pass = false
+              		  	end
+            		end
+        		end
+    		end
+
+			return (self.freebuildmode or self.jellybrainhat or self:IsBuildBuffered(recname) or table.contains(self.recipes, recname)) and crafting_station_pass
+
+		else
+			return self.freebuildmode or self.jellybrainhat or table.contains(self.recipes, recname)
+		end
 	end
 end
 
