@@ -32,14 +32,26 @@ local AddLevelPostPopoulate=function(levelid,fn)
 	end
 	table.insert(LevelPostPopulate[levelid],fn)
 end
---need to be able to filter in graph otherwise im risking total chaos
 require "map/storygen"
+--need to be able to filter in graph otherwise im risking total chaos
+--no longer used in sw
+--[[
 local old_start=Story.GenerationPipeline
 function Story:GenerationPipeline(...)
 	print("generation pipeline fix for ",self.level.id)
 	self.rootNode.story_level=self.level.id
 	return old_start(self,...)
 end
+]]
+
+local old_start=Story.GenerateNodesFromTasks
+function Story:GenerateNodesFromTasks(...)
+	print("generation pipeline fix for ",self.level.id)
+	self.rootNode.story_level=self.level.id
+	return old_start(self,...)
+end
+
+
 --apparently post gen is useless/too late/faulty/whatever
 require "map/network"
 local graph_postpop=Graph.GlobalPostPopulate

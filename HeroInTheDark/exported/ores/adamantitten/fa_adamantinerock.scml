@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
     <folder id="0" name="rock01">
-        <file id="0" name="rock01/rock01-0.png" width="740" height="696" pivot_x="0.496216" pivot_y="0.437081"/>
-        <file id="1" name="rock01/rock01-1.png" width="867" height="622" pivot_x="0.596099" pivot_y="0.502719"/>
-        <file id="2" name="rock01/rock01-2.png" width="812" height="687" pivot_x="0.53089" pivot_y="0.802597"/>
+        <file id="0" name="rock01/rock01-0.png" width="740" height="696" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="rock01/rock01-1.png" width="867" height="622" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="rock01/rock01-2.png" width="812" height="687" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="fa_adamantinerock">
         <animation id="0" name="anim" length="67">
@@ -14,7 +14,7 @@
             </mainline>
             <timeline id="0" name="rock01">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-14.71622" y="211.32062" angle="0"/>
+                    <object folder="0" file="0" x="-365.71622" y="561.32062" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -26,7 +26,7 @@
             </mainline>
             <timeline id="0" name="rock01">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-14.716216" y="211.320622" angle="0"/>
+                    <object folder="0" file="0" x="-365.716216" y="561.320622" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -38,7 +38,7 @@
             </mainline>
             <timeline id="0" name="rock01">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="106.310811" y="465.374676" angle="0"/>
+                    <object folder="0" file="2" x="-309.689189" y="558.374676" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -50,7 +50,7 @@
             </mainline>
             <timeline id="0" name="rock01">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="137.121622" y="224.834135" angle="0"/>
+                    <object folder="0" file="1" x="-363.878378" y="492.834135" angle="0"/>
                 </key>
             </timeline>
         </animation>

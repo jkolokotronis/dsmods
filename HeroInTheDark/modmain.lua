@@ -6,14 +6,23 @@ require "stategraph"
 local MergeMaps=GLOBAL.MergeMaps
 
 GLOBAL.FA_DLCACCESS=false
+GLOBAL.FA_SWACCESS=false
+GLOBAL.FA_SWWORLD=false
+
 GLOBAL.xpcall(function()
                     GLOBAL.FA_DLCACCESS= GLOBAL.IsDLCEnabled and GLOBAL.REIGN_OF_GIANTS and GLOBAL.IsDLCEnabled(GLOBAL.REIGN_OF_GIANTS)
+                    GLOBAL.FA_SWACCESS= GLOBAL.IsDLCEnabled and GLOBAL.CAPY_DLC and GLOBAL.IsDLCEnabled(GLOBAL.CAPY_DLC)
+                    GLOBAL.FA_SWWORLD= GLOBAL.SaveGameIndex and GLOBAL.SaveGameIndex:IsModeShipwrecked() 
                 end,
                 function()
                     --if the calls crashed im assuming outdated code and dlc is off by default
                     print("dlc crash")
                 end
             )
+print("dlc_sw",GLOBAL.FA_SWACCESS)
+
+--swcompat turns off rog flag for some ridic reason, too lazy to redo every check
+GLOBAL.FA_DLCACCESS=GLOBAL.FA_DLCACCESS or GLOBAL.FA_SWACCESS
 
 GLOBAL.FA_ModCompat={}
 GLOBAL.FA_ModCompat.memspikefix_delay=1
@@ -30,7 +39,7 @@ FA_ModUtil.AddStategraphActionHandler=AddStategraphActionHandler
 for _, mod in ipairs( GLOBAL.ModManager.mods ) do
         if mod.modinfo.id == "RPG HUD" or mod.modinfo.name == "RPG HUD"   then
             GLOBAL.FA_ModCompat.rpghudmod=mod
---            print("hud version",mod,mod.modinfo.id,mod.modinfo.name, mod.modinfo.description)
+           print("hud version",mod,  mod.modinfo.name, mod.modinfo.description)
         elseif  mod.modinfo.id == "memspikefix" or mod.modinfo.name == "memspikefix"  then
             GLOBAL.FA_ModCompat.memspikefixed=true
         elseif mod.modinfo.id=="Always On Status" or mod.modinfo.name=="Always On Status" then
@@ -579,6 +588,18 @@ if(string.find(GLOBAL.FA_ModCompat.rpghudmod.modinfo.description,"Custom UI"))th
 end
 
 end
+
+--prevent onequip crashes 
+if(GLOBAL.FA_SWACCESS)then
+    local ContainerWidget=require "widgets/containerwidget"
+    local callback=ContainerWidget.OnItemEquip
+    function ContainerWidget:OnItemEquip(item, slot)
+     if slot and self.boatEquip[slot] then
+        return callback(self,item,slot)
+     end
+    end
+end
+
 
 
  local function OpenBackpack(self) 

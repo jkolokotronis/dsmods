@@ -1,8 +1,7 @@
 require "prefabutil"
 	local assets =
 	{
-		Asset("ANIM", "anim/wall.zip"),
-		Asset("ANIM", "anim/wall_stone.zip"),
+		Asset("ANIM", "anim/fa_wall.zip"),
 		Asset("ANIM", "anim/marble_pillar.zip"),
 	}
 local lava_assets={
@@ -123,8 +122,8 @@ local function clearobstacle(inst)
 		inst:AddTag("wall")
 		MakeObstaclePhysics(inst, .7)    
 		inst.entity:SetCanSleep(false)
-		anim:SetBank("wall")
-		anim:SetBuild("wall_stone")
+		anim:SetBank("fa_wall")
+		anim:SetBuild("fa_wall")
 	    anim:PlayAnimation("3_4", false)
 		
 		MakeSnowCovered(inst)

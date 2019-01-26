@@ -4,7 +4,7 @@
         <file id="0" name="swap_weapon/swap.png" width="86" height="409" pivot_x="0.460938" pivot_y="0.33665"/>
     </folder>
     <folder id="1">
-        <file id="0" name="ground.png" width="94" height="402" pivot_x="0.389474" pivot_y="0.442105"/>
+        <file id="0" name="ground.png" width="94" height="402" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="fa_steelstaff">
         <animation id="0" name="idle" length="1000">
@@ -15,7 +15,7 @@
             </mainline>
             <timeline id="0" name="swap">
                 <key id="0" spin="0">
-                    <object folder="1" file="0" x="13.478744" y="155.407279" angle="0"/>
+                    <object folder="1" file="0" x="-28.521256" y="377.407279" angle="0"/>
                 </key>
             </timeline>
         </animation>

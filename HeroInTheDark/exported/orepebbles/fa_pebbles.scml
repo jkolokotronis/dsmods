@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
     <folder id="0" name="symbol_ebef5fef">
-        <file id="0" name="symbol_ebef5fef/symbol_ebef5fef-0.png" width="192" height="116" pivot_x="0.459242" pivot_y="0.27522"/>
-        <file id="1" name="symbol_ebef5fef/symbol_ebef5fef-1.png" width="160" height="120" pivot_x="0.448591" pivot_y="0.306462"/>
-        <file id="2" name="symbol_ebef5fef/symbol_ebef5fef-2.png" width="192" height="108" pivot_x="0.467836" pivot_y="0.304866"/>
+        <file id="0" name="symbol_ebef5fef/symbol_ebef5fef-0.png" width="192" height="116" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="symbol_ebef5fef/symbol_ebef5fef-1.png" width="160" height="120" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="symbol_ebef5fef/symbol_ebef5fef-2.png" width="192" height="108" pivot_x="0" pivot_y="1"/>
     </folder>
     <folder id="1">
         <file id="0" name="DiffGroundArts_0002_silver-ore--Kopie.png" width="223" height="146" pivot_x="0" pivot_y="1"/>
@@ -14,6 +14,7 @@
         <file id="5" name="AdaBoulder_0004_ground-with-shadow.png" width="228" height="166" pivot_x="0" pivot_y="1"/>
         <file id="6" name="LS_0008_Lime-ground-shadow.png" width="292" height="198" pivot_x="0" pivot_y="1"/>
         <file id="7" name="rock_diamond_g.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
+        <file id="8" name="Tetraboulder_0003_ground-tetra.png" width="279" height="205" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="fa_lavapebble">
         <animation id="0" name="f1" length="34">
@@ -27,10 +28,10 @@
             </mainline>
             <timeline id="0" name="rocks01_LAYER_Layer 1">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" y="0.049" angle="0"/>
+                    <object folder="0" file="0" x="-96" y="89.049" angle="0"/>
                 </key>
                 <key id="1" time="34" spin="0">
-                    <object folder="0" file="0" y="0.049" angle="0"/>
+                    <object folder="0" file="0" x="0" y="0.049" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -45,10 +46,10 @@
             </mainline>
             <timeline id="0" name="rocks01_LAYER_Layer 1">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" y="0.049" angle="0"/>
+                    <object folder="0" file="1" x="-85" y="84.049" angle="0"/>
                 </key>
                 <key id="1" time="34" spin="0">
-                    <object folder="0" file="1" y="0.049" angle="0"/>
+                    <object folder="0" file="1" x="0" y="0.049" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -63,10 +64,10 @@
             </mainline>
             <timeline id="0" name="rocks01_LAYER_Layer 1">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" y="0.049" angle="0"/>
+                    <object folder="0" file="2" x="-97" y="77.049" angle="0"/>
                 </key>
                 <key id="1" time="34" spin="0">
-                    <object folder="0" file="2" y="0.049" angle="0"/>
+                    <object folder="0" file="2" x="0" y="0.049" angle="0"/>
                 </key>
             </timeline>
         </animation>

@@ -40,6 +40,22 @@ function Armor:TakeDamage(damage_amount, attacker, weapon,element)
 local Health=require "components/health"
 local Combat=require "components/combat"
 
+-- the check was removed for SW and SW only, mostly just a dirty hack at this point
+if(FA_SWACCESS)then
+    local combat_calcdamage_def=Combat.CalcDamage
+
+    function Combat:CalcDamage(target, weapon, multiplier,...)
+        if target:HasTag("alwaysblock") then
+            return 0
+        end
+
+        local m = multiplier or 1
+        if self.damagemultiplier then m = m * self.damagemultiplier end
+        return combat_calcdamage_def(self,target,weapon,m,...)
+    end
+
+end
+
 local combat_doattack_def=Combat.DoAttack
 function Combat:DoAttack(target_override, weapon, projectile, stimuli, instancemult)
     local targ = target_override or self.target
@@ -81,9 +97,58 @@ function Combat:GetAttacked(attacker, damage, weapon,stimuli,element)
     local blocked = false
     local player = GetPlayer()
     local init_damage = damage
+    local poisonAttack = false 
+    local poisonGasAttack = false 
+
+    if self.inst:HasTag("poisonable") and attacker then 
+        if (attacker.components.combat and attacker.components.combat.poisonous) or 
+            ((attacker.components.poisonable and attacker.components.poisonable:IsPoisoned() and attacker.components.poisonable.transfer_poison_on_attack) 
+            and (attacker.components.combat and not attacker.components.combat:GetWeapon())) then
+            
+            poisonAttack = true 
+            if (attacker.components.combat and attacker.components.combat.poisonous and attacker.components.combat.gasattack) then 
+                poisonGasAttack = true 
+            end 
+        end 
+    end 
 
     self.lastattacker = attacker
-    if self.inst.components.health and damage then   
+
+    if poisonGasAttack and self.inst.components.poisonable then 
+        self.inst.components.poisonable:Poison(true)
+        return
+    end
+
+    if TUNING.DO_SEA_DAMAGE_TO_BOAT and damage and (self.inst.components.driver and self.inst.components.driver.vehicle and self.inst.components.driver.vehicle.components.boathealth) then
+        local boathealth = self.inst.components.driver.vehicle.components.boathealth
+        if damage > 0 and boathealth:IsInvincible() == false then
+            boathealth:DoDelta(-damage, "combat", attacker and attacker.prefab or "NIL")
+            -- if boathealth:GetPercent() <= 0 then
+            --  if attacker then
+            --      attacker:PushEvent("killed", {victim = self.inst})
+            --  end
+
+            --  if METRICS_ENABLED and attacker and attacker == GetPlayer() then
+            --      ProfileStatsAdd("kill_"..self.inst.prefab)
+            --      FightStat_AddKill(self.inst,damage,weapon)
+            --  end
+            --  if METRICS_ENABLED and attacker and attacker.components.follower and attacker.components.follower.leader == GetPlayer() then
+            --      ProfileStatsAdd("kill_by_minion"..self.inst.prefab)
+            --      FightStat_AddKillByFollower(self.inst,damage,weapon)
+            --  end
+            --  if METRICS_ENABLED and attacker and attacker.components.mine then
+            --      ProfileStatsAdd("kill_by_trap_"..self.inst.prefab)
+            --      FightStat_AddKillByMine(self.inst,damage)
+            --  end
+                
+            --  if self.onkilledbyother then
+            --      self.onkilledbyother(self.inst, attacker)
+            --  end
+            -- end
+        else
+            blocked = true
+        end
+    elseif self.inst.components.health and damage then   
 
             local damagetype=element
             if(not damagetype and weapon and weapon.components.weapon and weapon.components.weapon.fa_damagetype) then
@@ -145,23 +210,29 @@ function Combat:GetAttacked(attacker, damage, weapon,stimuli,element)
         end
     end
     
-
-    if self.inst.SoundEmitter then
+    local boating = false 
+    if self.inst.components.driver and self.inst.components.driver:GetIsDriving() then 
+        boating = true 
+    end 
+    --Don't play the impact the sounds when boating, it's actually the boat that takes the damage and the sound are played in the boat health component 
+    if self.inst.SoundEmitter and not boating then
         local hitsound = self:GetImpactSound(self.inst, weapon)
         if hitsound then
             self.inst.SoundEmitter:PlaySound(hitsound)
             --print (hitsound)
         end
-
         if self.hurtsound then
             self.inst.SoundEmitter:PlaySound(self.hurtsound)
         end
-
     end
-    
+
     if not blocked then
-         self.inst:PushEvent("attacked", {attacker = attacker, damage = damage, weapon = weapon, stimuli = stimuli})
-    
+        if TUNING.DO_SEA_DAMAGE_TO_BOAT and (self.inst.components.driver and self.inst.components.driver.vehicle and self.inst.components.driver.vehicle.components.boathealth) then
+            self.inst:PushEvent("boatattacked", {attacker = attacker, damage = damage, weapon = weapon, stimuli = stimuli})
+        else
+            self.inst:PushEvent("attacked", {attacker = attacker, damage = damage, weapon = weapon, stimuli = stimuli})
+        end
+
         if self.onhitfn then
             self.onhitfn(self.inst, attacker, damage)
         end
@@ -170,6 +241,11 @@ function Combat:GetAttacked(attacker, damage, weapon,stimuli,element)
             attacker:PushEvent("onhitother", {target = self.inst, damage = damage, stimuli = stimuli})
             if attacker.components.combat and attacker.components.combat.onhitotherfn then
                 attacker.components.combat.onhitotherfn(attacker, self.inst, damage, stimuli)
+            end
+            if poisonAttack then 
+                if self.inst.components.poisonable then
+                    self.inst.components.poisonable:Poison()
+                end
             end
         end
     else
@@ -271,7 +347,7 @@ end
 
 local old_healthdofiredamage=Health.DoFireDamage
 function Health:DoFireDamage(amount, doer, instant)
-    if ((not self:IsValid()) or (self.fire_damage_scale==nil)) then
+    if ((not self.inst:IsValid()) or (self.fire_damage_scale==nil)) then
         return
     else
         return old_healthdofiredamage(self,amount,doer,instant)

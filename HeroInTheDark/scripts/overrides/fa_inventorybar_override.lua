@@ -269,7 +269,7 @@ INTERSEP = 11		--MOD
 		local slot=self.equip[v.slot] 
 		local x = -total_e/2 + W/2 + (k-1)*W + (k-1)*SEP	
 --		local x = total_w/2 - W/2 - (5-k)*W - (5-k)*SEP	--MOD
-		slot:SetPosition(x,y+151,0)						--MOD
+		slot:SetPosition(x,y+131,0)						--MOD
 --		table.insert(eslot_order, slot)	
 	end 
 
@@ -297,7 +297,7 @@ INTERSEP = 11		--MOD
 	end
 	elseif(GetPlayer().components.inventory.maxslots==55)then
 
-		self.bgequip:SetPosition(Vector3(0, 60, 0))
+		self.bgequip:SetPosition(Vector3(0, 70, 0))
 	--being that i have overwritten all that crap up already, i should be able to just...
 		for k, v in ipairs(self.equipslotinfo) do
 --		local slot = EquipSlot(v.slot, v.atlas, v.image, self.owner)
@@ -305,7 +305,7 @@ INTERSEP = 11		--MOD
 			local slot=self.equip[v.slot] 
 			local x = -total_e/2 + W/2 + (k-1)*W + (k-1)*SEP	
 --		local x = total_w/2 - W/2 - (5-k)*W - (5-k)*SEP	--MOD
-			slot:SetPosition(x,y+151,0)						--MOD
+			slot:SetPosition(x,y+100,0)						--MOD
 --		table.insert(eslot_order, slot)	
 		end 
 

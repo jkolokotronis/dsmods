@@ -4,7 +4,7 @@
         <file id="0" name="swap_hat/swap_hat-0.png" width="300" height="231" pivot_x="0.511227" pivot_y="-0.300088"/>
         <file id="1" name="swap_hat/swap_hat-1.png" width="282" height="260" pivot_x="0.639397" pivot_y="-0.156625"/>
         <file id="2" name="swap_hat/swap_hat-2.png" width="303" height="266" pivot_x="0.523435" pivot_y="-0.106934"/>
-        <file id="3" name="swap_hat/swap_hat-3.png" width="303" height="266" pivot_x="0.558686" pivot_y="-0.180347"/>
+        <file id="3" name="swap_hat/swap_hat-3.png" width="303" height="266" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="fa_hat_transmutation">
         <animation id="0" name="idle" length="1000">
@@ -15,7 +15,7 @@
             </mainline>
             <timeline id="0" name="swap_hat-3">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="20.333333" y="-99.333333" angle="0"/>
+                    <object folder="0" file="3" x="-166.030303" y="205.212122" angle="0"/>
                 </key>
             </timeline>
         </animation>

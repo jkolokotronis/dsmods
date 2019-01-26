@@ -4,7 +4,7 @@
         <file id="0" name="swap_hat/swap_hat-0.png" width="212" height="270" pivot_x="0.501227" pivot_y="0.055088"/>
         <file id="1" name="swap_hat/swap_hat-1.png" width="234" height="253" pivot_x="0.609397" pivot_y="0.102625"/>
         <file id="2" name="swap_hat/swap_hat-2.png" width="212" height="266" pivot_x="0.503435" pivot_y="0.096934"/>
-        <file id="3" name="swap_hat/swap_hat-3.png" width="316" height="267" pivot_x="0.558686" pivot_y="-0.180347"/>
+        <file id="3" name="swap_hat/swap_hat-3.png" width="316" height="267" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="fa_hat_silver">
         <animation id="0" name="idle" length="1000">
@@ -15,7 +15,7 @@
             </mainline>
             <timeline id="0" name="swap_hat-3">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="5" y="-68.333333"/>
+                    <object folder="0" file="3" x="-167.727273" y="240.757576" angle="0"/>
                 </key>
             </timeline>
         </animation>

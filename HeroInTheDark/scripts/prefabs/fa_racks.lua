@@ -35,13 +35,20 @@ local function PuppetOnOpen(inst)
         end
 --      should i kill myself?
         inst.trapped=false
+--        inst:Remove()
     else
 --       for k,v in pairs(inst.components.inventory.equipslots) do
         if(inst.components.inventory.equipslots[EQUIPSLOTS.HEAD])then
-            inst.components.inventory:Unequip(EQUIPSLOTS.HEAD)
+            local i=inst.components.inventory:Unequip(EQUIPSLOTS.HEAD)
+            if(i~=nil and FA_SWACCESS)then
+                inst.components.container:GiveItem(i)
+            end
         end
         if(inst.components.inventory.equipslots[EQUIPSLOTS.BODY])then
-            inst.components.inventory:Unequip(EQUIPSLOTS.BODY)
+            local i=inst.components.inventory:Unequip(EQUIPSLOTS.BODY)
+            if(i~=nil and FA_SWACCESS)then
+                inst.components.container:GiveItem(i)
+            end
         end
         inst.AnimState:ClearOverrideSymbol("swap_hat")
         inst.AnimState:ClearOverrideSymbol("swap_body")
@@ -57,7 +64,12 @@ local function PuppetOnClose(inst)
             end
         end)
     if(item)then
-        item.components.inventoryitem:RemoveFromOwner(true)
+--  for some moronic reason the order is reverted in sw
+--        item.components.inventoryitem:RemoveFromOwner(true)
+
+        if item.components.inventoryitem.owner.components.inventory then
+            item.components.inventoryitem.owner.components.inventory:RemoveItem(item, true)
+        end
         inst.components.inventory:Equip(item)
     end
     local item=inst.components.container:FindItem(function(item)
@@ -68,7 +80,9 @@ local function PuppetOnClose(inst)
             end
         end)
     if(item)then
-        item.components.inventoryitem:RemoveFromOwner(true)
+        if item.components.inventoryitem.owner.components.inventory then
+            item.components.inventoryitem.owner.components.inventory:RemoveItem(item, true)
+        end
         inst.components.inventory:Equip(item)
     end
 end 
@@ -222,6 +236,7 @@ local function fnweap()
     inst.entity:AddDynamicShadow()
     inst.DynamicShadow:SetSize( 2, 1.5 )
     MakeObstaclePhysics(inst, .5)    
+    inst.Transform:SetScale(0.5, 0.5, 0.5)
 
 --    local minimap = inst.entity:AddMiniMapEntity()
 --    minimap:SetIcon( "fa_puppet.tex" )

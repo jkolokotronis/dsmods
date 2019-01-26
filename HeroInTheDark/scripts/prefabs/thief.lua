@@ -75,7 +75,8 @@ local function enabletraps()
     r=Recipe("bow", {Ingredient("twigs", 2), Ingredient("rope", 1),Ingredient("pigskin", 1)}, RECIPETABS.SUBTERFUGE,{SCIENCE = 1})
     r.image="woodbow.tex"
     r.atlas = "images/inventoryimages/fa_inventoryimages.xml"
-    r=Recipe("fa_lockpick", {Ingredient("fa_copperbar", 1,"images/inventoryimages/fa_inventoryimages.xml"), Ingredient("hammer", 1),Ingredient("razor", 1)}, RECIPETABS.SUBTERFUGE,TECH.SCIENCE_ONE,nil, nil, false,2)
+    r=Recipe("fa_lockpick", {Ingredient("fa_copperbar", 1,"images/inventoryimages/fa_inventoryimages.xml"), Ingredient("hammer", 1),Ingredient("razor", 1)}, RECIPETABS.SUBTERFUGE,TECH.SCIENCE_ONE)
+    r.numtogive=2
     r.image="fa_lockpick.tex"
     r.atlas = "images/inventoryimages/fa_inventoryimages.xml"
     r=Recipe("trap_doubleteeth", {Ingredient("houndstooth", 5), Ingredient("boards", 2), Ingredient("rocks", 2)}, RECIPETABS.SUBTERFUGE, {SCIENCE = 2})

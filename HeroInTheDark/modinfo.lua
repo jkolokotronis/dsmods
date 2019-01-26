@@ -4,13 +4,13 @@ description = "This mod will incorporate traditional fantasy elements and lore w
 author = "kraken121 / DeathDisciple"
 version = "0.2.2 Beta"
 
-
 forumthread = "/files/file/518-mod-hero-in-the-dark/"
 icon_atlas = "modicon.xml"
 icon = "modicon.tex"
 
 dont_starve_compatible = true
 reign_of_giants_compatible = true
+shipwrecked_compatible = true
 
 configuration_options =
 {

@@ -333,7 +333,7 @@ local function cagefn(name)
     inst.AnimState:OverrideSymbol("cage", "fa_orcfort_cage", "cage")
     inst.AnimState:PlayAnimation("fa_cagedrop",true)
 
-    inst:AddComponent("inspectable")
+--    inst:AddComponent("inspectable")
 
     inst.OnLoad = onloadcage
     inst.OnSave = onsavecage

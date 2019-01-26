@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
     <folder id="0" name="symbol_31">
-        <file id="0" name="symbol_31/symbol_31-0.png" width="200" height="184" pivot_x="0.499997" pivot_y="0.500003"/>
+        <file id="0" name="symbol_31/symbol_31-0.png" width="200" height="184" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="fa_bag">
         <animation id="0" name="idle" length="34">
@@ -9,16 +9,10 @@
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
                 </key>
-                <key id="1" time="34">
-                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
-                </key>
             </mainline>
             <timeline id="0" name="element_31">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-4.699" y="68.599" angle="0"/>
-                </key>
-                <key id="1" time="34" spin="0">
-                    <object folder="0" file="0" x="-4.699" y="68.599" angle="0"/>
+                    <object folder="0" file="0" x="-116.699" y="146.599" angle="0"/>
                 </key>
             </timeline>
         </animation>

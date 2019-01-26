@@ -69,6 +69,7 @@ FA_LEVELDATA["GOBLIN_CAVE"]={
 			{"protected", 		"never"},
 			{"start_setpeice", 	"FAGoblinDungeonStart"},
 			{"start_node",		"FA_GoblinRoomEntry"},
+			{"roads", 			"never"},
 		},
 		tasks={
 			"FAGoblinDungeon1",
@@ -126,6 +127,7 @@ FA_LEVELDATA["GOBLIN_CAVE_2"]={
 			{"start_setpeice", 	"FAGoblinDungeonStart2"},
 --			{"start_setpeice", 	"FAGoblinRoom_1"},
 			{"start_node",		"FA_GoblinRoomEntry"},
+			{"roads", 			"never"},
 		},
 		tasks={
 			
@@ -174,6 +176,7 @@ FA_LEVELDATA["GOBLIN_CAVE_3"]={
 			{"start_setpeice", 	"FAGoblinDungeonStart3"},
 --			{"start_setpeice", 	"FAGoblinRoom_1"},
 			{"start_node",		"FA_GoblinRoomEntry"},
+			{"roads", 			"never"},
 		},
 		tasks={
 			
@@ -221,6 +224,7 @@ FA_LEVELDATA["GOBLIN_CAVE_BOSSLEVEL"]={
 			{"start_setpeice", 	"FAGoblinBossroom1"},
 --			{"start_setpeice", 	"FAGoblinDungeonStart3"},
 			{"start_node",		"FA_BGEmpty"},
+			{"roads", 			"never"},
 		},
 		tasks={
 --			"FAEmpty1",
@@ -265,6 +269,7 @@ FA_LEVELDATA["ORC_MINES"]={
 			{"protected", 		"never"},
 			{"start_setpeice", 	"FAMineExit"},
 			{"start_node",		"FA_BGLava"},
+			{"roads", 			"never"},
 		},
 		tasks={
 			"FA_RuinsStart",
@@ -375,6 +380,7 @@ FA_LEVELDATA["ORC_FORTRESS"]={
 			{"protected", 		"never"},
 			{"start_setpeice", 	"FADungeonStart"},
 			{"start_node",		"BGWilds"},
+			{"roads", 			"never"},
 		},
 		tasks={
 			"RuinsStart",
@@ -415,6 +421,7 @@ FA_LEVELDATA["CRYPT_LEVEL_1"]={
 			{"protected", 		"never"},
 			{"start_setpeice", 	"RuinsStart"},
 			{"start_node",		"BGWilds"},
+			{"roads", 			"never"},
 		},
 		tasks={
 			"RuinsStart",

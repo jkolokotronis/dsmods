@@ -1,27 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b5">
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8_2">
     <folder id="0" name="swap_hat">
         <file id="0" name="swap_hat/swap_hat-0.png" width="224" height="141" pivot_x="0.511565" pivot_y="-0.187629"/>
         <file id="1" name="swap_hat/swap_hat-1.png" width="224" height="169" pivot_x="0.747881" pivot_y="-0.128059"/>
         <file id="2" name="swap_hat/swap_hat-2.png" width="224" height="141" pivot_x="0.545904" pivot_y="-0.0955703"/>
-        <file id="3" name="swap_hat/swap_hat-3.png" width="224" height="141" pivot_x="0.5" pivot_y="0.398601"/>
+        <file id="3" name="swap_hat/swap_hat-3.png" width="224" height="141" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="hat_goblinking">
         <animation id="0" name="idle" length="50">
             <mainline>
                 <key id="0">
-                    <object_ref id="0" name="swap_hat_3_0" folder="0" file="3" abs_x="-4.776416" abs_y="6.325528" abs_pivot_x="0.5" abs_pivot_y="0.398601" abs_angle="0" abs_scale_x="0.762711" abs_scale_y="0.762695" abs_a="1" timeline="0" key="0" z_index="0"/>
-                </key>
-                <key id="1" time="50">
-                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
                 </key>
             </mainline>
             <timeline id="0" name="swap_hat_3_0">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="-4.776416" y="6.325528" angle="0" scale_x="0.762711" scale_y="0.762695"/>
-                </key>
-                <key id="1" time="50" spin="0">
-                    <object folder="0" file="3" x="-4.776416" y="6.325528" angle="0" scale_x="0.762711" scale_y="0.762695"/>
+                    <object folder="0" file="3" x="-100.230961" y="79.052801" angle="0" scale_x="0.762711" scale_y="0.762695"/>
                 </key>
             </timeline>
         </animation>
