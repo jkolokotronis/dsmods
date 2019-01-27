@@ -137,6 +137,13 @@ function self:Rebuild()
         
     end
 
+-- credit tmleach
+
+    --shipwrecked boat widget
+    
+    if self.boatwidget then
+        self.boatwidget:SetPosition(Vector3(total_e,y+85, 0))
+    end 
 
 	local old_backpack = self.backpack
 	if self.backpack then

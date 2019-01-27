@@ -24,7 +24,9 @@ GLOBAL.xpcall(function()
                 end
             )
 print("dlc_sw",GLOBAL.FA_SWACCESS)
-print("dlc_porker",GLOBAL.FA_SWACCESS)
+print("dlc_porker",GLOBAL.FA_PORKACCESS)
+print("dlc_sww",GLOBAL.FA_SWWORLD)
+print("dlc_porkerw",GLOBAL.FA_PORKWORLD)
 
 --swcompat turns off rog flag for some ridic reason, too lazy to redo every check
 GLOBAL.FA_DLCACCESS=GLOBAL.FA_DLCACCESS or GLOBAL.FA_SWACCESS or GLOBAL.FA_PORKACCESS
@@ -49,6 +51,8 @@ for _, mod in ipairs( GLOBAL.ModManager.mods ) do
             GLOBAL.FA_ModCompat.memspikefixed=true
         elseif mod.modinfo.id=="Always On Status" or mod.modinfo.name=="Always On Status" then
             GLOBAL.FA_ModCompat.alwaysonmod=mod
+        elseif mod.modinfo.id=="Combined Status" or mod.modinfo.name=="Combined Status" then
+            GLOBAL.FA_ModCompat.combinedstatusmod=mod
         elseif  mod.modinfo.id=="upandaway" or mod.modinfo.name=="upandaway"  then
             GLOBAL.FA_ModCompat.UnA=mod
         end
@@ -639,13 +643,15 @@ local function newControlsInit(class)
 -- IDC to write another set of x-mod-compat crap, if it bothers you fix it yourself
 
   --@Sentelin:if user have Always On Status mod,move intoxic widget,if not remain in same position.
-
-    class.brain:SetPosition(40,-50,0)
-
+    if(not GLOBAL.FA_ModCompat.combinedstatusmod)then
+        class.brain:SetPosition(40,-50,0)
+    end
     if(GLOBAL.FA_ModCompat.alwaysonmod)then
     class.fa_intoxication = class:AddChild(FA_IntoxicationBadge(class.owner))
     class.fa_intoxication:SetPosition(-57,-70,0)
-    
+    elseif(GLOBAL.FA_ModCompat.combinedstatusmod)then
+        class.fa_intoxication = class:AddChild(FA_IntoxicationBadge(class.owner))
+        class.fa_intoxication:SetPosition(-60,-40,0)    
     elseif(not GLOBAL.FA_ModCompat.alwaysmod)then
     class.fa_intoxication = class:AddChild(FA_IntoxicationBadge(class.owner))
     class.fa_intoxication:SetPosition(-40,-50,0) 
@@ -943,6 +949,9 @@ AddPrefabPostInit("world", function(inst)
                     print("alwayson failsafe")
                 end)
             end
+        
+        elseif(GLOBAL.FA_ModCompat.combinedstatusmod)then
+            
         end
  
         local oldsavefn=inst.OnSave
