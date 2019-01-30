@@ -6,32 +6,32 @@ STRINGS.CHARACTERS.THIEF = {}
 
 STRINGS.CHARACTER_TITLES.barb = "The Barbarian"
 STRINGS.CHARACTER_NAMES.barb = "Brute strength and raw fury!"
-STRINGS.CHARACTER_DESCRIPTIONS.barb = "1.  The Lower his life the stronger his attacks\n2.  Chops / mines 50% faster, is more hungry\n3.  Can eat raw meats with no neg effects\n4.  RAGE!"
-STRINGS.CHARACTER_QUOTES.barb = "\"Don't get me angry!\""
+STRINGS.CHARACTER_DESCRIPTIONS.barb = "*Gets stronger by fighting\n*Is more efficient at manual work\n*Consumes more food and eats raw meat"
+STRINGS.CHARACTER_QUOTES.barb = "\"I'll crack yer skull open!\""
 STRINGS.CHARACTERS.BARB = {}
 
 STRINGS.CHARACTER_TITLES.cleric = "The Cleric"
 STRINGS.CHARACTER_NAMES.cleric = "The Cleric"
-STRINGS.CHARACTER_DESCRIPTIONS.cleric = "1.  Strong against the undead.\n2.  Can use Cleric spells.\n3.  Can use shields.\n4.  Does not like darkness."
-STRINGS.CHARACTER_QUOTES.cleric = "\"The Dark cannot claim what Light does not surrender.\""
+STRINGS.CHARACTER_DESCRIPTIONS.cleric = "*Strong against the undead but fears darkness\n*Can use Cleric spells\n*Can use shields"
+STRINGS.CHARACTER_QUOTES.cleric = "\"The darkness cannot claim what light does not surrender.\""
 STRINGS.CHARACTERS.CLERIC = {}
 
 STRINGS.CHARACTER_TITLES.druid = "The Druid"
 STRINGS.CHARACTER_NAMES.druid = "Nature's protector"
-STRINGS.CHARACTER_DESCRIPTIONS.druid = "1.  Animal companion\n2.  Druid spells\n3.  Loses sanity from destroying trees, grass and saplings\n4.  Loses sanity for killing innocents"
-STRINGS.CHARACTER_QUOTES.druid = "\"When nature has work to be done, she creates a genius.\""
+STRINGS.CHARACTER_DESCRIPTIONS.druid = "*Has an animal companion\n*Can use Druid spells\n*Loses sanity from hurting nature and innocents"
+STRINGS.CHARACTER_QUOTES.druid = "\"When nature has work to be done, she calls upon a genius.\""
 STRINGS.CHARACTERS.DRUID = {}
 
 STRINGS.CHARACTER_TITLES.darkknight = "The Shadow Knight"
 STRINGS.CHARACTER_NAMES.darkknight = "The Shadow Knight"
-STRINGS.CHARACTER_DESCRIPTIONS.darkknight = "1.  Hates good things.\n2.  Is not afraid of evil things.\n3.  Can use shields.\n4.  Has evil powers and a dark sword."
-STRINGS.CHARACTER_QUOTES.darkknight = "\"When you gaze long into an abyss, the abyss also gazes into you.\""
+STRINGS.CHARACTER_DESCRIPTIONS.darkknight = "*Has evil powers and a dark sword\n*Is comforted by evil but hates the good\n*Can use shields"
+STRINGS.CHARACTER_QUOTES.darkknight = "\"If you gaze into the abyss, the abyss gazes back into you.\""
 STRINGS.CHARACTERS.DARKKNIGHT = {}
 
 STRINGS.CHARACTER_TITLES.monk = "The Monk"
 STRINGS.CHARACTER_NAMES.monk = "The Monk"
 STRINGS.CHARACTER_QUOTES.monk = "\"He is able who thinks he is able.\""
-STRINGS.CHARACTER_DESCRIPTIONS.monk = "1.  Only likes Cloth armor.\n2.  Only likes monk weapons.\n3.  Has ki that grants special abilities.\n4. Gets special attacks."
+STRINGS.CHARACTER_DESCRIPTIONS.monk = "*Is more comfortable wearing cloth armor\n*Prefers using monk weapons\n*Channels ki to grant special abilities"
 STRINGS.CHARACTERS.MONK = {}
 
 STRINGS.CHARACTER_TITLES.necromancer = "necromancer"
@@ -42,7 +42,7 @@ STRINGS.CHARACTERS.NECROMANCER = {}
 
 STRINGS.CHARACTER_TITLES.wizard = "The Wizard"
 STRINGS.CHARACTER_NAMES.wizard = "The Wizard"
-STRINGS.CHARACTER_DESCRIPTIONS.wizard = "1.  Has trouble using most armors and weapons.\n2.  More effective at using wands and books.\n3.  High sanity, low health.\n4.  Can scribe wizard scrolls into his book."
+STRINGS.CHARACTER_DESCRIPTIONS.wizard = "*Has trouble using most armors and weapons\n*Better at using wands and books\n*Is researching many types of magic into his book"
 STRINGS.CHARACTER_QUOTES.wizard = "\"The only sovereign you can allow to rule you is reason.\""
 STRINGS.CHARACTERS.WIZARD = {}
 
@@ -54,7 +54,7 @@ STRINGS.CHARACTERS.TINKERER = {}
 
 STRINGS.CHARACTER_TITLES.paladin = "The Paladin"
 STRINGS.CHARACTER_NAMES.paladin = "The Paladin"
-STRINGS.CHARACTER_DESCRIPTIONS.paladin = "1.  Starts with trusty holy sword\n2.  Can use shields\n3.  Battles evil\n4.  Divine Defender"
+STRINGS.CHARACTER_DESCRIPTIONS.paladin = "*Battles evil with his trusty holy sword\n*Can use Paladin spells\n*Can use shields"
 STRINGS.CHARACTER_QUOTES.paladin = "\"Nothing will stop the righteous!\""
 STRINGS.CHARACTERS.PALADIN = {}
 
@@ -70,8 +70,8 @@ STRINGS.CHARACTER_DESCRIPTIONS.bard = "* An example of how to create a mod chara
 STRINGS.CHARACTER_QUOTES.bard = "\"I am a blank slate.\""
 STRINGS.CHARACTERS.BARD = {}
 -- You can also add any kind of custom dialogue that you would like. Don't forget to make
--- categores that don't exist yet using = {}
--- note: these are UPPER-CASE charcacter name
+-- categories that don't exist yet using = {}
+-- note: these are UPPER-CASE character name
 
 STRINGS.CHARACTERS.THIEF.DESCRIBE = {}
 STRINGS.CHARACTERS.THIEF.DESCRIBE.EVERGREEN = "A template description of a tree."
@@ -1214,8 +1214,8 @@ STRINGS.CHARACTERS.GENERIC.DESCRIBE.TRAP_CIRCLEOFDEATH = "Circle of Death"
 STRINGS.RECIPE_DESC.TRAP_CIRCLEOFDEATH = "Circle of Death"
 
 STRINGS.NAMES.FA_SPELL_MENDING = "Mending"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_SPELL_MENDING = "makes repairs on an object."
-STRINGS.RECIPE_DESC.FA_SPELL_MENDING = "makes repairs on an object."
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_SPELL_MENDING = "Repairs an object."
+STRINGS.RECIPE_DESC.FA_SPELL_MENDING = "Repairs an object."
 STRINGS.NAMES.FA_SPELL_CURELIGHTWOUNDS = "Cure light wounds"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_SPELL_CURELIGHTWOUNDS = "Cures light wounds."
 STRINGS.RECIPE_DESC.FA_SPELL_CURELIGHTWOUNDS = "Cures light wounds."
@@ -1355,8 +1355,8 @@ STRINGS.NAMES.FA_SPELL_DANCINGLIGHT = "Dancing Light"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_SPELL_DANCINGLIGHT = "Creates a light source for 2 days that dances around."
 STRINGS.RECIPE_DESC.FA_SPELL_DANCINGLIGHT = "Creates a light source for 2 days that dances around."
 STRINGS.NAMES.FA_SPELL_LIGHT = "Light"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_SPELL_LIGHT = "Creats a light source in the area."
-STRINGS.RECIPE_DESC.FA_SPELL_LIGHT = "Creats a light source in the area."
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_SPELL_LIGHT = "Creates a light source in the area."
+STRINGS.RECIPE_DESC.FA_SPELL_LIGHT = "Creates a light source in the area."
 STRINGS.NAMES.FA_SPELL_FROSTRAY = "Ray of Frost"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.FA_SPELL_FROSTRAY = "Ray of Frost that deals cold damage."
 STRINGS.RECIPE_DESC.FA_SPELL_FROSTRAY = "Ray of Frost that deals cold damage."
