@@ -64,6 +64,7 @@ local function AddPrototyper(name,tech,level)
 	TUNING.PROTOTYPER_TREES[name][tech]=level
 end
 
+
 --[[
 TECH.FA_FOODSTAND={ FA_FOODSTAND=2}
 for k,v in pairs(TUNING.PROTOTYPER_TREES) do
@@ -73,6 +74,12 @@ TUNING.PROTOTYPER_TREES.FA_FOODSTAND=deepcopy(TECH.NONE)
 TUNING.PROTOTYPER_TREES.FA_FOODSTAND["FA_FOODSTAND"]=2
 TECH.NONE.FA_FOODSTAND=0
 ]]
+
+--since tech.lost doesnt exist in vanilla, and since dnd is devil's work, it's only right
+TECH.FA_SPELL=deepcopy(TECH.NONE)
+TECH.FA_SPELL["MAGIC"] = 666
+
+
 AddTech("FA_FOODSTAND")
 AddPrototyper("FA_FOODSTAND","FA_FOODSTAND",2)
 AddTech("FA_DORFITEMSTAND")

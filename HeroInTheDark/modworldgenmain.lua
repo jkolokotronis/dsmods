@@ -95,6 +95,7 @@ AddRoomPreInit("CaveRoom", AddCaveRocksPreInit2)
 AddRoomPreInit("NoisyCave", AddCaveRocksPreInit2)
 AddRoomPreInit("FungusRoom", AddCaveRocksPreInit2)
 
+AddRoomPreInit("VolcanoNoise", AddCaveRocksPreInit2)
 
 
 local function AddGoblinEntrancePreInit(task)
@@ -207,6 +208,8 @@ local function OrcMineBoonsOverride(level)
 end
 
 AddLevelPreInit("SURVIVAL_DEFAULT", AddScrollBoons)
+AddLevelPreInit("SHIPWRECKED_DEFAULT", AddScrollBoons)
+AddLevelPreInit("PORKLAND_DEFAULT", AddScrollBoons)
 AddLevelPreInit("SURVIVAL_DEFAULT_PLUS", AddScrollBoons)
 AddLevelPreInit("ORC_MINES", OrcMineBoonsOverride)
 

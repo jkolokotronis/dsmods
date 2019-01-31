@@ -752,7 +752,7 @@ local fn = function(inst)
     end
 
 
-    RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex"}--, icon_atlas = "images/inventoryimages/herotab.xml"}
+    RECIPETABS["SPELLS"] = {str = "SPELLS", sort=999, icon = "tab_book.tex",crafting_station = false}--, icon_atlas = "images/inventoryimages/herotab.xml"}
     enableL1spells()
 
     inst.newControlsInit = function (class)

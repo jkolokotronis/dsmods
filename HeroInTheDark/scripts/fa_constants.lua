@@ -47,8 +47,6 @@ TUNING.GHOST_SPEED = 5
 TUNING.GHOST_HEALTH = 300
 TUNING.GHOST_DAMAGE=30
 
---since tech.lost doesnt exist in vanilla, and since dnd is devil's work, it's only right
-TECH.FA_SPELL={MAGIC = 666, SCIENCE = 666, ANCIENT = 666}
 
 
 SANITY_DAY_LOSS=-100.0/(300*10)
