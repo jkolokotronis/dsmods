@@ -490,7 +490,7 @@ AddPrefabPostInit("icepack", changetopack)
 local function resurrectableinit(inst)
 
     local old_findclosestres=inst.FindClosestResurrector
-    function inst:FindClosestResurrector ()
+    function inst:FindClosestResurrector (...)
         local res = nil
         if self.inst.components.inventory then
             local item = self.inst.components.inventory:GetEquippedItem(GLOBAL.EQUIPSLOTS.NECK)
@@ -499,11 +499,11 @@ local function resurrectableinit(inst)
             end
         end
 
-        return old_findclosestres(self)
+        return old_findclosestres(self,...)
     end
 
     local old_canresurrect=inst.CanResurrect
-    function inst:CanResurrect()
+    function inst:CanResurrect(...)
         if self.inst.components.inventory then
             local item = self.inst.components.inventory:GetEquippedItem(GLOBAL.EQUIPSLOTS.NECK)
             if item and item.prefab == "amulet" then
@@ -511,11 +511,11 @@ local function resurrectableinit(inst)
             end
         end
 
-        return old_canresurrect(self)
+        return old_canresurrect(self,...)
     end
 
     local old_DoResurrect=inst.DoResurrect
-    function inst:DoResurrect()
+    function inst:DoResurrect(...)
         if self.inst.components.inventory then
             local item = self.inst.components.inventory:GetEquippedItem(GLOBAL.EQUIPSLOTS.NECK)
             if item and item.prefab == "amulet" then
@@ -525,7 +525,7 @@ local function resurrectableinit(inst)
             end
         end
         
-        return old_DoResurrect(self)     
+        return old_DoResurrect(self,...)     
     end
 
 end
