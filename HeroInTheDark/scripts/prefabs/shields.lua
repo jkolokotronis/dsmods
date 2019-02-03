@@ -90,6 +90,10 @@ local REFLECT_SHIELD_ABSO=0.20
 local REFLECT_SHIELD_DURA=400
 
 local SHIELD_WALKMULT=0.95
+-- this is dumb but so are the changes
+if(FA_SWACCESS or FA_PORKACCESS)then
+    SHIELD_WALKMULT=SHIELD_WALKMULT-1
+end
 
 
 local function fn(name)
@@ -153,7 +157,7 @@ local function MakeRockShield()
     inst.AnimState:SetBuild("swap_rockshield")
     inst.AnimState:PlayAnimation("anim")
     inst.components.armor:InitCondition(ROCK_SHIELD_DURA, ROCK_SHIELD_ABSO )
-    inst.components.equippable.walkspeedmult = TUNING.SHIELD_WALKMULT
+    inst.components.equippable.walkspeedmult = SHIELD_WALKMULT
 --    inst.components.equippable:SetOnEquip( rockonequip )
     return inst
 end
@@ -164,7 +168,7 @@ local function MakeMarbleShield()
     inst.AnimState:SetBuild("swap_marbleshield")
     inst.AnimState:PlayAnimation("anim")
     inst.components.armor:InitCondition(MARBLE_SHIELD_DURA, MARBLE_SHIELD_ABSO )
-    inst.components.equippable.walkspeedmult = TUNING.SHIELD_WALKMULT
+    inst.components.equippable.walkspeedmult = SHIELD_WALKMULT
 --    inst.components.equippable:SetOnEquip( marbleonequip )
     return inst
 end
@@ -179,7 +183,7 @@ local function MakeWoodenShield()
     inst:AddComponent("edible")
     inst.components.edible.foodtype = "WOOD"
     inst.components.edible.woodiness = 5
-    inst.components.equippable.walkspeedmult = TUNING.SHIELD_WALKMULT
+    inst.components.equippable.walkspeedmult = SHIELD_WALKMULT
 
     MakeSmallBurnable(inst, TUNING.SMALL_BURNTIME)
     MakeSmallPropagator(inst)
@@ -192,42 +196,42 @@ end
 local function MakeCopperShield()
     local inst=fn("fa_coppershield")
     inst.components.armor:InitCondition(COPPER_SHIELD_DURA, COPPER_SHIELD_ABSO )
-    inst.components.equippable.walkspeedmult = TUNING.SHIELD_WALKMULT
+    inst.components.equippable.walkspeedmult = SHIELD_WALKMULT
     inst.components.armor.fa_stunresistance=0.3
     return inst
 end
 local function MakeIronShield()
     local inst=fn("fa_ironshield")
     inst.components.armor:InitCondition(IRON_SHIELD_DURA, IRON_SHIELD_ABSO )
-    inst.components.equippable.walkspeedmult = TUNING.SHIELD_WALKMULT
+    inst.components.equippable.walkspeedmult = SHIELD_WALKMULT
     inst.components.armor.fa_stunresistance=0.5
     return inst
 end
 local function MakeSilverShield()
     local inst=fn("fa_silvershield")
     inst.components.armor:InitCondition(SILVER_SHIELD_DURA, SILVER_SHIELD_ABSO )
-    inst.components.equippable.walkspeedmult = TUNING.SHIELD_WALKMULT
+    inst.components.equippable.walkspeedmult = SHIELD_WALKMULT
     inst.components.armor.fa_stunresistance=0.5
     return inst
 end
 local function MakeGoldShield()
     local inst=fn("fa_goldshield")
     inst.components.armor:InitCondition(GOLD_SHIELD_DURA, GOLD_SHIELD_ABSO )
-    inst.components.equippable.walkspeedmult = TUNING.SHIELD_WALKMULT
+    inst.components.equippable.walkspeedmult = SHIELD_WALKMULT
     inst.components.armor.fa_stunresistance=0.5
     return inst
 end
 local function MakeSteelShield()
     local inst=fn("fa_steelshield")
     inst.components.armor:InitCondition(STEEL_SHIELD_DURA, STEEL_SHIELD_ABSO )
-    inst.components.equippable.walkspeedmult = TUNING.SHIELD_WALKMULT
+    inst.components.equippable.walkspeedmult = SHIELD_WALKMULT
     inst.components.armor.fa_stunresistance=0.7
     return inst
 end
 local function MakeAdamantShield()
     local inst=fn("fa_adamantineshield")
     inst.components.armor:InitCondition(ADAMANT_SHIELD_DURA,ADAMANT_SHIELD_ABSO )
-    inst.components.equippable.walkspeedmult = TUNING.SHIELD_WALKMULT
+    inst.components.equippable.walkspeedmult = SHIELD_WALKMULT
     inst.components.armor.fa_stunresistance=0.95
     return inst
 end
@@ -273,7 +277,7 @@ end
 local function MakeBoneShield()
     local inst=fn("fa_boneshield")
     inst.components.armor:InitCondition(BONE_SHIELD_DURA, BONE_SHIELD_ABSO )
-    inst.components.equippable.walkspeedmult = TUNING.SHIELD_WALKMULT
+    inst.components.equippable.walkspeedmult = SHIELD_WALKMULT
     inst.components.armor.fa_stunresistance=0.4
     inst.components.equippable:SetOnUnequip( onboneunequip )
     inst.components.equippable:SetOnEquip(onboneequip)
@@ -286,7 +290,7 @@ local function MakeReflectShield()
     inst.components.armor.fa_spellreflect=1
     inst.components.armor.fa_spellreflectdrain=20
     inst.components.armor:InitCondition(REFLECT_SHIELD_DURA, REFLECT_SHIELD_ABSO )
-    inst.components.equippable.walkspeedmult = TUNING.SHIELD_WALKMULT
+    inst.components.equippable.walkspeedmult = SHIELD_WALKMULT
 --    inst.components.equippable:SetOnEquip( reflectonequip )
     return inst
 end

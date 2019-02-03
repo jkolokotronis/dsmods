@@ -5,6 +5,7 @@ require "util"
 require "stategraph"
 local MergeMaps=GLOBAL.MergeMaps
 
+GLOBAL.FA_ROGACCESS=false
 GLOBAL.FA_DLCACCESS=false
 GLOBAL.FA_SWACCESS=false
 --GLOBAL.FA_SWWORLD=false
@@ -12,7 +13,7 @@ GLOBAL.FA_SWACCESS=false
 GLOBAL.FA_PORKACCESS=false
 
 GLOBAL.xpcall(function()
-                    GLOBAL.FA_DLCACCESS= GLOBAL.IsDLCEnabled and GLOBAL.REIGN_OF_GIANTS and GLOBAL.IsDLCEnabled(GLOBAL.REIGN_OF_GIANTS)
+                    GLOBAL.FA_ROGACCESS= GLOBAL.IsDLCEnabled and GLOBAL.REIGN_OF_GIANTS and GLOBAL.IsDLCEnabled(GLOBAL.REIGN_OF_GIANTS)
                     GLOBAL.FA_SWACCESS= GLOBAL.IsDLCEnabled and GLOBAL.CAPY_DLC and GLOBAL.IsDLCEnabled(GLOBAL.CAPY_DLC)
                     GLOBAL.FA_PORKACCESS=GLOBAL.IsDLCEnabled and GLOBAL.PORKLAND_DLC and GLOBAL.IsDLCEnabled(GLOBAL.PORKLAND_DLC)
                 end,
@@ -38,7 +39,7 @@ print("dlc_porker",GLOBAL.FA_PORKACCESS)
 --print("dlc_porkerw",GLOBAL.FA_PORKWORLD)
 
 --swcompat turns off rog flag for some ridic reason, too lazy to redo every check
-GLOBAL.FA_DLCACCESS=GLOBAL.FA_DLCACCESS or GLOBAL.FA_SWACCESS or GLOBAL.FA_PORKACCESS
+GLOBAL.FA_DLCACCESS=GLOBAL.FA_ROGACCESS or GLOBAL.FA_SWACCESS or GLOBAL.FA_PORKACCESS
 
 GLOBAL.FA_ModCompat={}
 GLOBAL.FA_ModCompat.memspikefix_delay=1

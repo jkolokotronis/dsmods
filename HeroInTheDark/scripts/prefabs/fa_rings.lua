@@ -14,6 +14,10 @@ local DEMON_DAPPERNESS=-5/60
 local RING_FUELLEVEL=200
 local DEMON_FUELLEVEL=666
 local SPEED_MULT=1.5
+-- this is dumb but so are the changes
+if(FA_SWACCESS or FA_PORKACCESS)then
+    SPEED_MULT=SPEED_MULT-1
+end
 
 local function onfinished(inst)
     inst:Remove()

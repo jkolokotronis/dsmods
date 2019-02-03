@@ -117,7 +117,7 @@ local function FA_InspireAgilitySpellStart( reader,timer)
         if not inst.components.spell.target then
             return
         end
-        reader.components.locomotor.runspeed=reader.components.locomotor.runspeed+IA_MS_BOOST
+        reader.components.locomotor.runspeed=reader.components.locomotor.runspeed-IA_MS_BOOST
         inst.components.spell.target.fa_inspireagility = nil
     end
 

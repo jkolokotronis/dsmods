@@ -15,6 +15,12 @@ local ARMORFIRE_SLOW_T3 = 0.95
 local ARMORFIRE_PROC_T1=0.1
 local ARMORFIRE_PROC_T2=0.2
 local ARMORFIRE_PROC_T3=0.3
+-- this is dumb but so are the changes
+if(FA_SWACCESS or FA_PORKACCESS)then
+    ARMORFIRE_SLOW_T1=ARMORFIRE_SLOW_T1-1
+    ARMORFIRE_SLOW_T2=ARMORFIRE_SLOW_T2-1
+    ARMORFIRE_SLOW_T3=ARMORFIRE_SLOW_T3-1
+end
 
 local function OnBlocked(owner,data) 
     local inst = owner.components.inventory:GetEquippedItem(EQUIPSLOTS.BODY)

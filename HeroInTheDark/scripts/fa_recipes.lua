@@ -4,7 +4,7 @@ require "constants"
 
 
 
-RECIPETABS["FA_DWARFTRADER"] = {str = "FA_DWARFTRADER", sort=999, icon = "fa_shopicon.tex", icon_atlas ="images/inventoryimages/fa_inventoryimages.xml",crafting_station = true}
+RECIPETABS["FA_DWARFTRADER"] = {str = "FA_DWARFTRADER", sort=999, icon = "fa_shopicon.tex", icon_atlas ="images/inventoryimages/fa_inventoryimages.xml",crafting_station = false}
 STRINGS.TABS.FA_DWARFTRADER = "Trader"
 
 --wicker is already fixing the hardcoded crap - I see no reason to reinvent the wheel

@@ -17,6 +17,12 @@ local ARMORFROST_PROC_T2=0.2
 local ARMORFROST_PROC_T3=0.3
 local ARMORFROST_COLDNESS=1
 local FROZEN_DEBUFF_LENGTH=10
+-- this is dumb but so are the changes
+if(FA_SWACCESS or FA_PORKACCESS)then
+    ARMORFROST_SLOW_T1=ARMORFROST_SLOW_T1-1
+    ARMORFROST_SLOW_T2=ARMORFROST_SLOW_T2-1
+    ARMORFROST_SLOW_T3=ARMORFROST_SLOW_T3-1
+end
 
 local FA_BuffUtil=require "buffutil"
 
@@ -95,7 +101,7 @@ local function t1()
     inst:AddTag("tier1")
     inst.procRate=ARMORFROST_PROC_T1
     inst.components.armor:InitCondition(ARMORFROST_DURABILITY_T1, ARMORFROST_ABSORPTION_T1)
-    inst.components.equippable.walkspeedmult = ARMORFROST_SLOW_T1
+    inst.components.equippable.walkspeedmult = ARMORFROST_SLOW_T1 
     return inst
 end
 
