@@ -39,6 +39,10 @@ local function flyerDefault(inst)
     appendNode(inst.bt.root,dazeNode(inst),1)
     appendNode(inst.bt.root,stunNode(inst),1)
 end
+-- @TODO what exactly do I want to do here?
+local function fishDefault(inst)
+    return flyerDefault(inst)
+end
 
 local function walkerDefault(inst)
     appendNode(inst.bt.root,fearnode(inst),1)
@@ -174,7 +178,7 @@ local MosquitoBrain=require "brains/mosquitobrain"
 local old_onstart=MosquitoBrain.OnStart
 function MosquitoBrain:OnStart()
         old_onstart(self)
-        walkerDefault(self)
+        flyerDefault(self)
 end
 local NightmareMonkeyBrain=require "brains/nightmaremonkeybrain"
 local old_onstart=NightmareMonkeyBrain.OnStart
@@ -328,6 +332,263 @@ function MoleBrain:OnStart()
     end
     local node=WhileNode( function() return self.inst.fa_stun~=nil or self.inst.fa_daze~=nil end, "Stun",StandStill(self.inst,fn))
     appendNode(self.bt.root, node,1)
+end
+
+end
+-- there is no way for me to distinguish sw world with pork support from pork world at this point, sw flag is OFF...
+if(FA_SWACCESS or FA_PORKACCESS)then
+
+local CrabBrain=require "brains/crabbrain"
+local old_onstart=CrabBrain.OnStart
+function CrabBrain:OnStart()
+    old_onstart(self)
+    appendNode(self.bt.root,fearnode(self),1)
+    appendNode(self.bt.root,dazeNode(self),1)
+    appendNode(self.bt.root,stunNode(self),1)
+    appendNode(self.bt.root,rootNoAttackNode(self),1)
+end
+local LobsterBrain=require "brains/lobsterbrain"
+local old_onstart=LobsterBrain.OnStart
+function LobsterBrain:OnStart()
+    old_onstart(self)
+    appendNode(self.bt.root,fearnode(self),1)
+    appendNode(self.bt.root,dazeNode(self),1)
+    appendNode(self.bt.root,stunNode(self),1)
+    appendNode(self.bt.root,rootNoAttackNode(self),1)
+end
+local DoydoyBrain=require "brains/doydoybrain"
+local old_onstart=DoydoyBrain.OnStart
+function DoydoyBrain:OnStart()
+        old_onstart(self)
+        walkerDefault(self)
+end
+local DragoonBrain=require "brains/dragoonbrain"
+local old_onstart=DragoonBrain.OnStart
+function DragoonBrain:OnStart()
+        old_onstart(self)
+        walkerDefault(self)
+end
+local MermFisherBrain=require "brains/mermfisherbrain"
+local old_onstart=MermFisherBrain.OnStart
+function MermFisherBrain:OnStart()
+        old_onstart(self)
+        walkerDefault(self)
+end
+local FlupBrain=require "brains/flupbrain"
+local old_onstart=FlupBrain.OnStart
+function FlupBrain:OnStart()
+        old_onstart(self)
+--        walkerDefault(self)
+    local node=WhileNode( function() return (not inst.sg:HasStateTag("jumping") and not inst.sg:HasStateTag("ambusher") and self.inst.fa_fear~=nil) end, 
+        "Fear", Panic(self.inst))
+    appendNode(self.bt.root,node ,1)
+    local node=WhileNode( function() 
+        return (not inst.sg:HasStateTag("jumping") and not inst.sg:HasStateTag("ambusher") and self.inst.fa_stun~=nil) end, 
+        "Stun", StandStill(self.inst))
+    appendNode(self.bt.root,node ,1)
+    local node=WhileNode( function() 
+        return (not inst.sg:HasStateTag("jumping") and not inst.sg:HasStateTag("ambusher") and self.inst.fa_daze~=nil) end, 
+        "Daze", StandStill(self.inst))
+    appendNode(self.bt.root,node ,1)
+    local node=WhileNode( function() 
+        return (not inst.sg:HasStateTag("jumping") and not inst.sg:HasStateTag("ambusher") and self.inst.fa_root~=nil) end, 
+        "Root", StandAndAttack(self.inst))
+    appendNode(self.bt.root,node ,1)
+
+end
+-- TODO check if spitting works while rooted
+local SnakeBrain=require "brains/snakebrain"
+local old_onstart=SnakeBrain.OnStart
+function SnakeBrain:OnStart()
+        old_onstart(self)
+        walkerDefault(self)
+end
+local PrimeapeBrain=require "brains/primeapebrain"
+local old_onstart=PrimeapeBrain.OnStart
+function PrimeapeBrain:OnStart()
+        old_onstart(self)
+        walkerDefault(self)
+end
+-- TODO does fear work proper? they lack fire-panic
+local SharkittenBrain=require "brains/sharkittenbrain"
+local old_onstart=SharkittenBrain.OnStart
+function SharkittenBrain:OnStart()
+        old_onstart(self)
+        walkerDefault(self)
+end
+local WildboreGuardBrain=require "brains/wildboreguardbrain"
+local old_onstart=WildboreGuardBrain.OnStart
+function WildboreGuardBrain:OnStart()
+        old_onstart(self)
+        walkerDefault(self)
+end
+local WildboreBrain=require "brains/wildborebrain"
+local old_onstart=WildboreBrain.OnStart
+function WildboreBrain:OnStart()
+        old_onstart(self)
+        walkerDefault(self)
+end
+local CrocodogBrain=require "brains/crocodogbrain"
+local old_onstart=CrocodogBrain.OnStart
+function CrocodogBrain:OnStart()
+        old_onstart(self)
+        walkerDefault(self)
+end
+local WhiteWhaleBrain=require "brains/whitewhalebrain"
+local old_onstart=WhiteWhaleBrain.OnStart
+function WhiteWhaleBrain:OnStart()
+        old_onstart(self)
+    appendNode(inst.bt.root,fearnode(inst),2)
+    appendNode(inst.bt.root,dazeNode(inst),2)
+    appendNode(inst.bt.root,stunNode(inst),2)
+end
+local BallphinBrain=require "brains/ballphinbrain"
+local old_onstart=BallphinBrain.OnStart
+function BallphinBrain:OnStart()
+        old_onstart(self)
+    appendNode(inst.bt.root,fearnode(inst),2)
+    appendNode(inst.bt.root,dazeNode(inst),2)
+    appendNode(inst.bt.root,stunNode(inst),2)
+end
+local KnightBoatBrain=require "brains/knightboatbrain"
+local old_onstart=KnightBoatBrain.OnStart
+function KnightBoatBrain:OnStart()
+        old_onstart(self)
+        fishDefault(self)
+end
+local SharxBrain=require "brains/sharxbrain"
+local old_onstart=SharxBrain.OnStart
+function SharxBrain:OnStart()
+        old_onstart(self)
+        fishDefault(self)
+end
+local SwordfishBrain=require "brains/swordfishbrain"
+local old_onstart=SwordfishBrain.OnStart
+function SwordfishBrain:OnStart()
+        old_onstart(self)
+        fishDefault(self)
+end
+local StungrayBrain=require "brains/stungraybrain"
+local old_onstart=StungrayBrain.OnStart
+function StungrayBrain:OnStart()
+        old_onstart(self)
+        fishDefault(self)
+end
+
+end
+
+if(FA_PORKACCESS)then
+
+local PigBanditBrain=require "brains/pigbanditbrain"
+local old_onstart=PigBanditBrain.OnStart
+function PigBanditBrain:OnStart()
+        old_onstart(self)
+        walkerDefault(self)
+end
+local PigTraderBrain=require "brains/pigtraderbrain"
+local old_onstart=PigTraderBrain.OnStart
+function PigTraderBrain:OnStart()
+        old_onstart(self)
+        walkerDefault(self)
+end
+local GlowflyBrain=require "brains/glowflybrain"
+local old_onstart=GlowflyBrain.OnStart
+function GlowflyBrain:OnStart()
+        old_onstart(self)
+    appendNode(inst.bt.root.children[1].children[2],fearnode(inst),1)
+    appendNode(inst.bt.root.children[1].children[2],dazeNode(inst),1)
+    appendNode(inst.bt.root.children[1].children[2],stunNode(inst),1)
+end
+--[[
+    local root = PriorityNode(
+    {
+      WhileNode( function() return not self.inst:HasTag("cocoon") end, "is not cocoon", 
+        PriorityNode{
+            WhileNode( function() return self.inst.components.health.takingfiredamage end, "OnFire", Panic(self.inst)),
+            ]]
+
+local HippopotamooseBrain=require "brains/hippopotamoosebrain"
+local old_onstart=HippopotamooseBrain.OnStart
+function HippopotamooseBrain:OnStart()
+        old_onstart(self)
+    appendNode(self.bt.root, WhileNode( function() 
+        return (not inst.sg:HasStateTag("leapattack") and self.inst.fa_fear~=nil) end, 
+        "Fear", Panic(self.inst)),1)
+    appendNode(self.bt.root, WhileNode( function() 
+        return (not inst.sg:HasStateTag("leapattack") and self.inst.fa_stun~=nil) end, 
+        "Stun", StandStill(self.inst)),1)
+    appendNode(self.bt.root, WhileNode( function() 
+        return (not inst.sg:HasStateTag("leapattack") and self.inst.fa_daze~=nil) end, 
+        "Daze", StandStill(self.inst)),1)
+end
+local AntBrain=require "brains/antbrain"
+local old_onstart=AntBrain.OnStart
+function AntBrain:OnStart()
+        old_onstart(self)
+        walkerDefault(self)
+end
+local AntWarriorBrain=require "brains/antwarriorbrain"
+local old_onstart=AntWarriorBrain.OnStart
+function AntWarriorBrain:OnStart()
+        old_onstart(self)
+        walkerDefault(self)
+end
+local PikoBrain=require "brains/pikobrain"
+local old_onstart=PikoBrain.OnStart
+function PikoBrain:OnStart()
+        old_onstart(self)
+        walkerDefault(self)
+end
+local BillBrain=require "brains/billbrain"
+local old_onstart=BillBrain.OnStart
+function BillBrain:OnStart()
+        old_onstart(self)
+        walkerDefault(self)
+end
+local PogBrain=require "brains/pogbrain"
+local old_onstart=PogBrain.OnStart
+function PogBrain:OnStart()
+        old_onstart(self)
+        walkerDefault(self)
+end
+local SpiderMonkeyBrain=require "brains/spidermonkeybrain"
+local old_onstart=SpiderMonkeyBrain.OnStart
+function SpiderMonkeyBrain:OnStart()
+        old_onstart(self)
+        walkerDefault(self)
+end
+-- @TODO scorps use spider brain - check 
+-- @TODO should plants be immune to root?
+local FlytrapBrain=require "brains/flytrapbrain"
+local old_onstart=FlytrapBrain.OnStart
+function FlytrapBrain:OnStart()
+        old_onstart(self)
+    appendNode(inst.bt.root,fearnode(inst),1)
+    appendNode(inst.bt.root,dazeNode(inst),1)
+    appendNode(inst.bt.root,stunNode(inst),1)
+end
+local ThunderbirdBrain=require "brains/thunderbirdbrain"
+local old_onstart=ThunderbirdBrain.OnStart
+function ThunderbirdBrain:OnStart()
+        old_onstart(self)
+        flyerDefault(self)
+end
+-- leaving shield as higher priority 
+-- part of me wants to make fear > shield
+local WeevoleBrain=require "brains/weevolebrain"
+local old_onstart=WeevoleBrain.OnStart
+function WeevoleBrain:OnStart()
+        old_onstart(self)
+    appendNode(inst.bt.root.children[1].children[2],fearnode(inst),2)
+    appendNode(inst.bt.root.children[1].children[2],dazeNode(inst),2)
+    appendNode(inst.bt.root.children[1].children[2],stunNode(inst),2)
+    appendNode(inst.bt.root.children[1].children[2],rootAttackNode(inst),2)
+end
+local VampireBatBrain=require "brains/vampirebatbrain"
+local old_onstart=VampireBatBrain.OnStart
+function VampireBatBrain:OnStart()
+        old_onstart(self)
+        flyerDefault(self)
 end
 
 end
