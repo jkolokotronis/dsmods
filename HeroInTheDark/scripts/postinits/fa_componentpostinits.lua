@@ -67,8 +67,18 @@ function lootdropperPostInit(component)
         return loots
     end
 
-    function component:DropLoot(pt)
-    local prefabs = self:GenerateLoot()
+    -- I can either keep it at this (vanilla) and risk lack of compatibility with other mods/calls or rewrite the calls conditionally 
+    -- maybe if I have nothing better to do
+    function component:DropLoot(pt,loots)
+
+    if GetWorld().getworldgenoptions and  GetWorld().getworldgenoptions(GetWorld())[lootprefab] and GetWorld().getworldgenoptions(GetWorld())[lootprefab] == "never" then
+        return
+    end
+
+    local prefabs=loots
+    if(prefabs==nil)then
+        prefabs = self:GenerateLoot()
+    end
     local burn=false
     if not self.inst.components.fueled and self.inst.components.burnable and self.inst.components.burnable:IsBurning() then
         burn=true
@@ -93,6 +103,7 @@ function lootdropperPostInit(component)
         end
     end
     end
+
 
 end
 

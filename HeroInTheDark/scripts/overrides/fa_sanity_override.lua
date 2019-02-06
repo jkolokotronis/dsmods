@@ -91,10 +91,6 @@ function sanitymod:Recalc(dt)
         total_dapperness = total_dapperness * self.dapperness_mult 
     end
 
-    local moisture_delta=0
-    if(self.GetMoistureDelta)then
-        moisture_delta=self:GetMoistureDelta()
-    end
 
     local dapper_delta = total_dapperness*TUNING.SANITY_DAPPERNESS
     
@@ -103,7 +99,24 @@ function sanitymod:Recalc(dt)
     
     local day = GetClock():IsDay() and not GetWorld():IsCave()
     
-    if day then 
+    local isInside = false
+    local isInPlayerHouse = false
+
+    if(FA_PORKACCESS)then
+    if self.inst == GetPlayer() then
+        -- In House - gain sanity 
+        -- in other interiors no day/night effect
+        -- outside, general day/night drain
+        isInside = TheCamera.interior
+        isInPlayerHouse = GetInteriorSpawner() and GetInteriorSpawner():InPlayerRoom() or false
+    end
+    end
+
+    if isInPlayerHouse then
+        light_delta=TUNING.SANITY_PLAYERHOUSE_GAIN
+    elseif isInside then
+        light_delta=0
+    elseif day then 
         if(self.inst:HasTag("evil"))then
             light_delta= SANITY_DAY_LOSS
         else
@@ -132,6 +145,7 @@ function sanitymod:Recalc(dt)
         end
 
     end
+
     
     local aura_delta = 0
     local x,y,z = self.inst.Transform:GetWorldPosition()
@@ -162,7 +176,41 @@ function sanitymod:Recalc(dt)
         end
     end
 
-    self.rate = (dapper_delta + moisture_delta + light_delta + aura_delta ) 
+    local moisture_delta=0
+    if(self.GetMoistureDelta)then
+        moisture_delta=self:GetMoistureDelta()
+    else
+    -- non dlc mode
+        moisture_delta=rain_delta
+    end
+
+    local drivabledelta = 0 
+    if self.inst.components.driver then 
+        local vehicle = self.inst.components.driver.vehicle
+        if vehicle then 
+            if vehicle.components.drivable then
+                drivabledelta = vehicle.components.drivable:GetSanityDrain()
+            elseif vehicle.components.searchable then
+                drivabledelta = vehicle.components.searchable:GetSanityDrain()
+            end
+        end 
+    end 
+
+    local poisondelta = 0
+    if self.inst.components.poisonable and self.inst.components.poisonable:IsPoisoned() then
+        poisondelta = -self.inst.components.poisonable.damage_per_interval * TUNING.POISON_SANITY_SCALE
+    end
+
+    local mount = self.inst.components.rider and self.inst.components.rider:IsRiding() and self.inst.components.rider:GetMount() or nil
+    if mount and mount.components.sanityaura  then
+        local aura_val = mount.components.sanityaura:GetAura(self.inst)
+        aura_delta = aura_delta + aura_val
+    end
+
+    self.rate = (dapper_delta + moisture_delta + light_delta + aura_delta + drivabledelta + poisondelta)
+    if(self.GetRateModifier)then
+        self.rate = self.rate * self:GetRateModifier() 
+    end
     
     if self.custom_rate_fn then
         self.rate = self.rate + self.custom_rate_fn(self.inst)
