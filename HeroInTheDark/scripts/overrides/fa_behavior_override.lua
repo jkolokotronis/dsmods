@@ -495,9 +495,9 @@ local GlowflyBrain=require "brains/glowflybrain"
 local old_onstart=GlowflyBrain.OnStart
 function GlowflyBrain:OnStart()
         old_onstart(self)
-    appendNode(self.inst.bt.root.children[1].children[2],fearnode(self),1)
-    appendNode(self.inst.bt.root.children[1].children[2],dazeNode(self),1)
-    appendNode(self.inst.bt.root.children[1].children[2],stunNode(self),1)
+    appendNode(self.bt.root.children[1].children[2],fearnode(self),1)
+    appendNode(self.bt.root.children[1].children[2],dazeNode(self),1)
+    appendNode(self.bt.root.children[1].children[2],stunNode(self),1)
 end
 --[[
     local root = PriorityNode(
@@ -563,9 +563,9 @@ local FlytrapBrain=require "brains/flytrapbrain"
 local old_onstart=FlytrapBrain.OnStart
 function FlytrapBrain:OnStart()
         old_onstart(self)
-    appendNode(self.inst.bt.root,fearnode(self),1)
-    appendNode(self.inst.bt.root,dazeNode(self),1)
-    appendNode(self.inst.bt.root,stunNode(self),1)
+    appendNode(self.bt.root,fearnode(self),1)
+    appendNode(self.bt.root,dazeNode(self),1)
+    appendNode(self.bt.root,stunNode(self),1)
 end
 local ThunderbirdBrain=require "brains/thunderbirdbrain"
 local old_onstart=ThunderbirdBrain.OnStart
@@ -579,10 +579,10 @@ local WeevoleBrain=require "brains/weevolebrain"
 local old_onstart=WeevoleBrain.OnStart
 function WeevoleBrain:OnStart()
         old_onstart(self)
-    appendNode(self.inst.bt.root.children[1].children[2],fearnode(self),2)
-    appendNode(self.inst.bt.root.children[1].children[2],dazeNode(self),2)
-    appendNode(self.inst.bt.root.children[1].children[2],stunNode(self),2)
-    appendNode(self.inst.bt.root.children[1].children[2],rootAttackNode(self),2)
+    appendNode(self.bt.root.children[1].children[2],fearnode(self),2)
+    appendNode(self.bt.root.children[1].children[2],dazeNode(self),2)
+    appendNode(self.bt.root.children[1].children[2],stunNode(self),2)
+    appendNode(self.bt.root.children[1].children[2],rootAttackNode(self),2)
 end
 local VampireBatBrain=require "brains/vampirebatbrain"
 local old_onstart=VampireBatBrain.OnStart

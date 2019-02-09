@@ -4,13 +4,14 @@ require "constants"
 
 
 
-RECIPETABS["FA_DWARFTRADER"] = {str = "FA_DWARFTRADER", sort=999, icon = "fa_shopicon.tex", icon_atlas ="images/inventoryimages/fa_inventoryimages.xml",crafting_station = false}
+RECIPETABS["FA_DWARFTRADER"] = {str = "FA_DWARFTRADER", sort=99, icon = "fa_shopicon.tex", icon_atlas ="images/inventoryimages/fa_inventoryimages.xml"}
 STRINGS.TABS.FA_DWARFTRADER = "Trader"
 
+local Builder = require "components/builder"
 --wicker is already fixing the hardcoded crap - I see no reason to reinvent the wheel
+--@TODO I don't think it's been updated, bug @simplex about it or remove the check?
 if(not FA_ModCompat.UnA)then
 	print("patching hardcoded builder tech bonuses")
-	local Builder = require "components/builder"
 
 	function Builder:KnowsRecipe(recname)
 		local recipe = GetRecipe(recname)
@@ -36,13 +37,12 @@ if(not FA_ModCompat.UnA)then
 		    if recipe then
         		for i,level in pairs(recipe.level)do
         		    if RECIPETABS[i] and RECIPETABS[i].crafting_station and level > 0 then            
-                		if self.accessible_tech_trees[i] == 0 then
+                		if (self.accessible_tech_trees[i]== 0) then
                 		    crafting_station_pass = false
               		  	end
             		end
         		end
     		end
-
 			return (self.freebuildmode or self.jellybrainhat or self:IsBuildBuffered(recname) or table.contains(self.recipes, recname)) and crafting_station_pass
 
 		else
@@ -55,6 +55,9 @@ local function AddTech(name)
 	for k,v in pairs(TUNING.PROTOTYPER_TREES) do
     	v[name]=0
 	end 
+	for k,v in pairs(TECH) do
+		v[name]=0
+	end
 	TECH.NONE[name]=0
 end
 local function AddPrototyper(name,tech,level)
@@ -65,15 +68,37 @@ local function AddPrototyper(name,tech,level)
 end
 
 
---[[
-TECH.FA_FOODSTAND={ FA_FOODSTAND=2}
-for k,v in pairs(TUNING.PROTOTYPER_TREES) do
-    v["FA_FOODSTAND"]=0
-end 
-TUNING.PROTOTYPER_TREES.FA_FOODSTAND=deepcopy(TECH.NONE)
-TUNING.PROTOTYPER_TREES.FA_FOODSTAND["FA_FOODSTAND"]=2
-TECH.NONE.FA_FOODSTAND=0
-]]
+-- porkland custom tech levels are fucked entirely, due to hardcoded available techs directly in EvaluateTechTrees
+-- 2 options: rewrite the function entirely (due to event trigger at the end, just adding shit at the end won't work)
+-- or inject a 'fix' in some other call mid way where it doesnt belong
+-- OR catch the event, add the missing stuff, fire it again, causing potential issue with gui etc
+
+if FA_PORKACCESS then
+	FA_ModUtil.AddComponentPostInit("builder", function(cmp,inst)
+
+    inst:ListenForEvent("techtreechange", function(inst, data)
+--    	print("data ",data," ignore ",data.ignore)
+    	print("FA_FOODSTAND ",cmp.accessible_tech_trees["FA_FOODSTAND"])
+    	if(data and data.ignore)then
+--    		print("ignoring")
+    		return
+    	end
+    	for i,v in pairs(TECH.NONE) do
+    		cmp.accessible_tech_trees[i]=cmp.accessible_tech_trees[i] or v
+    	end
+		inst:PushEvent("techtreechange", {level = cmp.accessible_tech_trees,ignore=true})
+
+    end, inst)
+
+    end)
+
+	function Builder:MergeAccessibleTechTrees(tree)
+		for i,v in pairs(tree) do
+			self.accessible_tech_trees[i]=(self.accessible_tech_trees[i] or 0) + tree[i]
+		end
+	end
+
+end
 
 --since tech.lost doesnt exist in vanilla, and since dnd is devil's work, it's only right
 TECH.FA_SPELL=deepcopy(TECH.NONE)
@@ -156,8 +181,16 @@ local r=Recipe("fa_lavawall_item", {Ingredient("fa_lavabar", 4,"images/inventory
 r.image="fa_lavawall.tex"
 r.atlas = "images/inventoryimages/fa_inventoryimages.xml"
 
-local r=Recipe("baconeggs", {Ingredient("fa_copperpebble", 4,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_FOODSTAND)
+
+
+
+
+
+--game_type, placer, min_spacing, nounlock, 
+
+local r=Recipe("baconeggs", {Ingredient("fa_copperpebble", 4,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_FOODSTAND,nil,nil,nil,true)
 r.nounlock=true
+
 local r=Recipe("meatballs", {Ingredient("fa_copperpebble", 3,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_FOODSTAND)
 r.nounlock=true
 local r=Recipe("bonestew", {Ingredient("fa_ironpebble", 4,"images/inventoryimages/fa_inventoryimages.xml")}, RECIPETABS.FA_DWARFTRADER, TECH.FA_FOODSTAND)
@@ -663,6 +696,7 @@ r.image="blueprint.tex"
 local r=Recipe("fa_goldstaff_recipe",{Ingredient("fa_dragon_wine", 1,"images/inventoryimages/fa_inventoryimages.xml"),Ingredient("fa_melon_wine", 1,"images/inventoryimages/fa_inventoryimages.xml")},  RECIPETABS.FA_DWARFTRADER, TECH.FA_ELFWEAPONRECIPESTAND)
 r.nounlock=true
 r.image="blueprint.tex"
+
 
 --AddTech("FA_ELFSPELLSTAND")
 --AddPrototyper("FA_ELFSPELLSTAND","FA_ELFSPELLSTAND",2)

@@ -71,10 +71,6 @@ function lootdropperPostInit(component)
     -- maybe if I have nothing better to do
     function component:DropLoot(pt,loots)
 
-    if GetWorld().getworldgenoptions and  GetWorld().getworldgenoptions(GetWorld())[lootprefab] and GetWorld().getworldgenoptions(GetWorld())[lootprefab] == "never" then
-        return
-    end
-
     local prefabs=loots
     if(prefabs==nil)then
         prefabs = self:GenerateLoot()
