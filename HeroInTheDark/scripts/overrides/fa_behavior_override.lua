@@ -379,19 +379,19 @@ local old_onstart=FlupBrain.OnStart
 function FlupBrain:OnStart()
         old_onstart(self)
 --        walkerDefault(self)
-    local node=WhileNode( function() return (not inst.sg:HasStateTag("jumping") and not inst.sg:HasStateTag("ambusher") and self.inst.fa_fear~=nil) end, 
+    local node=WhileNode( function() return (not self.inst.sg:HasStateTag("jumping") and not self.inst.sg:HasStateTag("ambusher") and self.inst.fa_fear~=nil) end, 
         "Fear", Panic(self.inst))
     appendNode(self.bt.root,node ,1)
     local node=WhileNode( function() 
-        return (not inst.sg:HasStateTag("jumping") and not inst.sg:HasStateTag("ambusher") and self.inst.fa_stun~=nil) end, 
+        return (not self.inst.sg:HasStateTag("jumping") and not self.inst.sg:HasStateTag("ambusher") and self.inst.fa_stun~=nil) end, 
         "Stun", StandStill(self.inst))
     appendNode(self.bt.root,node ,1)
     local node=WhileNode( function() 
-        return (not inst.sg:HasStateTag("jumping") and not inst.sg:HasStateTag("ambusher") and self.inst.fa_daze~=nil) end, 
+        return (not self.inst.sg:HasStateTag("jumping") and not self.inst.sg:HasStateTag("ambusher") and self.inst.fa_daze~=nil) end, 
         "Daze", StandStill(self.inst))
     appendNode(self.bt.root,node ,1)
     local node=WhileNode( function() 
-        return (not inst.sg:HasStateTag("jumping") and not inst.sg:HasStateTag("ambusher") and self.inst.fa_root~=nil) end, 
+        return (not self.inst.sg:HasStateTag("jumping") and not self.inst.sg:HasStateTag("ambusher") and self.inst.fa_root~=nil) end, 
         "Root", StandAndAttack(self.inst))
     appendNode(self.bt.root,node ,1)
 
@@ -438,17 +438,17 @@ local WhiteWhaleBrain=require "brains/whitewhalebrain"
 local old_onstart=WhiteWhaleBrain.OnStart
 function WhiteWhaleBrain:OnStart()
         old_onstart(self)
-    appendNode(inst.bt.root,fearnode(inst),2)
-    appendNode(inst.bt.root,dazeNode(inst),2)
-    appendNode(inst.bt.root,stunNode(inst),2)
+    appendNode(self.inst.bt.root,fearnode(inst),2)
+    appendNode(self.inst.bt.root,dazeNode(inst),2)
+    appendNode(self.inst.bt.root,stunNode(inst),2)
 end
 local BallphinBrain=require "brains/ballphinbrain"
 local old_onstart=BallphinBrain.OnStart
 function BallphinBrain:OnStart()
         old_onstart(self)
-    appendNode(inst.bt.root,fearnode(inst),2)
-    appendNode(inst.bt.root,dazeNode(inst),2)
-    appendNode(inst.bt.root,stunNode(inst),2)
+    appendNode(self.inst.bt.root,fearnode(inst),2)
+    appendNode(self.inst.bt.root,dazeNode(inst),2)
+    appendNode(self.inst.bt.root,stunNode(inst),2)
 end
 local KnightBoatBrain=require "brains/knightboatbrain"
 local old_onstart=KnightBoatBrain.OnStart
@@ -495,9 +495,9 @@ local GlowflyBrain=require "brains/glowflybrain"
 local old_onstart=GlowflyBrain.OnStart
 function GlowflyBrain:OnStart()
         old_onstart(self)
-    appendNode(inst.bt.root.children[1].children[2],fearnode(inst),1)
-    appendNode(inst.bt.root.children[1].children[2],dazeNode(inst),1)
-    appendNode(inst.bt.root.children[1].children[2],stunNode(inst),1)
+    appendNode(self.inst.bt.root.children[1].children[2],fearnode(self),1)
+    appendNode(self.inst.bt.root.children[1].children[2],dazeNode(self),1)
+    appendNode(self.inst.bt.root.children[1].children[2],stunNode(self),1)
 end
 --[[
     local root = PriorityNode(
@@ -512,13 +512,13 @@ local old_onstart=HippopotamooseBrain.OnStart
 function HippopotamooseBrain:OnStart()
         old_onstart(self)
     appendNode(self.bt.root, WhileNode( function() 
-        return (not inst.sg:HasStateTag("leapattack") and self.inst.fa_fear~=nil) end, 
+        return (not self.inst.sg:HasStateTag("leapattack") and self.inst.fa_fear~=nil) end, 
         "Fear", Panic(self.inst)),1)
     appendNode(self.bt.root, WhileNode( function() 
-        return (not inst.sg:HasStateTag("leapattack") and self.inst.fa_stun~=nil) end, 
+        return (not self.inst.sg:HasStateTag("leapattack") and self.inst.fa_stun~=nil) end, 
         "Stun", StandStill(self.inst)),1)
     appendNode(self.bt.root, WhileNode( function() 
-        return (not inst.sg:HasStateTag("leapattack") and self.inst.fa_daze~=nil) end, 
+        return (not self.inst.sg:HasStateTag("leapattack") and self.inst.fa_daze~=nil) end, 
         "Daze", StandStill(self.inst)),1)
 end
 local AntBrain=require "brains/antbrain"
@@ -563,9 +563,9 @@ local FlytrapBrain=require "brains/flytrapbrain"
 local old_onstart=FlytrapBrain.OnStart
 function FlytrapBrain:OnStart()
         old_onstart(self)
-    appendNode(inst.bt.root,fearnode(inst),1)
-    appendNode(inst.bt.root,dazeNode(inst),1)
-    appendNode(inst.bt.root,stunNode(inst),1)
+    appendNode(self.inst.bt.root,fearnode(self),1)
+    appendNode(self.inst.bt.root,dazeNode(self),1)
+    appendNode(self.inst.bt.root,stunNode(self),1)
 end
 local ThunderbirdBrain=require "brains/thunderbirdbrain"
 local old_onstart=ThunderbirdBrain.OnStart
@@ -579,10 +579,10 @@ local WeevoleBrain=require "brains/weevolebrain"
 local old_onstart=WeevoleBrain.OnStart
 function WeevoleBrain:OnStart()
         old_onstart(self)
-    appendNode(inst.bt.root.children[1].children[2],fearnode(inst),2)
-    appendNode(inst.bt.root.children[1].children[2],dazeNode(inst),2)
-    appendNode(inst.bt.root.children[1].children[2],stunNode(inst),2)
-    appendNode(inst.bt.root.children[1].children[2],rootAttackNode(inst),2)
+    appendNode(self.inst.bt.root.children[1].children[2],fearnode(self),2)
+    appendNode(self.inst.bt.root.children[1].children[2],dazeNode(self),2)
+    appendNode(self.inst.bt.root.children[1].children[2],stunNode(self),2)
+    appendNode(self.inst.bt.root.children[1].children[2],rootAttackNode(self),2)
 end
 local VampireBatBrain=require "brains/vampirebatbrain"
 local old_onstart=VampireBatBrain.OnStart
