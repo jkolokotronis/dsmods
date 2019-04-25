@@ -74,6 +74,8 @@ end
 -- OR catch the event, add the missing stuff, fire it again, causing potential issue with gui etc
 
 if FA_PORKACCESS then
+-- nope, now it's causing severe artifacts, there's no easy fix
+--[[
 	FA_ModUtil.AddComponentPostInit("builder", function(cmp,inst)
 
     inst:ListenForEvent("techtreechange", function(inst, data)
@@ -92,11 +94,107 @@ if FA_PORKACCESS then
 
     end)
 
+]]
 	function Builder:MergeAccessibleTechTrees(tree)
 		for i,v in pairs(tree) do
 			self.accessible_tech_trees[i]=(self.accessible_tech_trees[i] or 0) + tree[i]
 		end
 	end
+
+function Builder:EvaluateTechTrees()
+	local pos = self.inst:GetPosition()
+    
+    local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, TUNING.RESEARCH_MACHINE_DIST, {"prototyper"},{"INTERIOR_LIMBO"})
+
+    local interiorSpawner = GetWorld().components.interiorspawner
+
+	-- insert our home prototyper in the list since we don't carry it around (and potentially wouldn't hit the radius for FindEntities)
+    if interiorSpawner then
+        table.insert(ents,interiorSpawner.homeprototyper)
+    end
+
+	local old_accessible_tech_trees = deepcopy(self.accessible_tech_trees or TECH.NONE)
+	local old_prototyper = self.current_prototyper
+	local old_craftingstation = self.current_craftingstation
+	self.current_prototyper = nil
+
+	local prototyper_active = false
+	local craftingstation_active = false
+	local allprototypers = {}
+
+	for k, v in pairs(ents) do
+		if v.components.prototyper and v.components.prototyper:CanCurrentlyPrototype() then
+			-- the nearest prototyper and the nearest crafting station
+			local enabled = false
+			if not v.components.prototyper:GetIsDisabled() then
+				if v.components.prototyper.craftingstation then
+					if not craftingstation_active then
+						craftingstation_active = true
+						enabled = true
+					end
+				else
+					if not prototyper_active then
+						prototyper_active = true
+						enabled = true
+					end
+				end
+			end
+			allprototypers[v] = enabled
+		end
+	end
+
+	self.accessible_tech_trees = deepcopy(TECH.NONE)
+	--add any character specific bonuses to your current tech levels.
+	self.accessible_tech_trees.SCIENCE = self.science_bonus
+	self.accessible_tech_trees.MAGIC = self.magic_bonus
+	self.accessible_tech_trees.ANCIENT = self.ancient_bonus
+	self.accessible_tech_trees.OBSIDIAN = self.obsidian_bonus
+	self.accessible_tech_trees.HOME = self.home_bonus
+	self.accessible_tech_trees.CITY = self.city_bonus
+	self.accessible_tech_trees.LOST = 0
+
+	for entity,enabled in pairs(allprototypers) do
+		if enabled then
+			self:MergeAccessibleTechTrees(entity.components.prototyper:GetTechTrees())
+			if entity.components.prototyper.craftingstation then
+				self.current_craftingstation = entity
+			else
+				self.current_prototyper = entity
+			end
+			entity.components.prototyper:TurnOn()
+		else
+			entity.components.prototyper:TurnOff()
+		end
+	end
+
+	local trees_changed = false
+	
+	for k, v in pairs(old_accessible_tech_trees) do
+		if v ~= self.accessible_tech_trees[k] then 
+			trees_changed = true
+			break
+		end
+	end
+	if not trees_changed then
+		for k, v in pairs(self.accessible_tech_trees) do
+			if v ~= old_accessible_tech_trees[k] then 
+				trees_changed = true
+				break
+			end
+		end
+	end
+
+	if old_prototyper and old_prototyper.components.prototyper and old_prototyper:IsValid() and old_prototyper ~= self.current_prototyper then
+		old_prototyper.components.prototyper:TurnOff()
+	end
+	if old_craftingstation and old_craftingstation.components.prototyper and old_craftingstation:IsValid() and old_craftingstation ~= self.current_craftingstation then
+		old_craftingstation.components.prototyper:TurnOff()
+	end
+
+	if trees_changed then
+		self.inst:PushEvent("techtreechange", {level = self.accessible_tech_trees})
+	end
+end
 
 end
 
