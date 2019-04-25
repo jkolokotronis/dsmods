@@ -438,17 +438,17 @@ local WhiteWhaleBrain=require "brains/whitewhalebrain"
 local old_onstart=WhiteWhaleBrain.OnStart
 function WhiteWhaleBrain:OnStart()
         old_onstart(self)
-    appendNode(self.inst.bt.root,fearnode(inst),2)
-    appendNode(self.inst.bt.root,dazeNode(inst),2)
-    appendNode(self.inst.bt.root,stunNode(inst),2)
+    appendNode(self.bt.root,fearnode(self),2)
+    appendNode(self.bt.root,dazeNode(self),2)
+    appendNode(self.bt.root,stunNode(self),2)
 end
 local BallphinBrain=require "brains/ballphinbrain"
 local old_onstart=BallphinBrain.OnStart
 function BallphinBrain:OnStart()
         old_onstart(self)
-    appendNode(self.inst.bt.root,fearnode(inst),2)
-    appendNode(self.inst.bt.root,dazeNode(inst),2)
-    appendNode(self.inst.bt.root,stunNode(inst),2)
+    appendNode(self.bt.root,fearnode(self),2)
+    appendNode(self.bt.root,dazeNode(self),2)
+    appendNode(self.bt.root,stunNode(self),2)
 end
 local KnightBoatBrain=require "brains/knightboatbrain"
 local old_onstart=KnightBoatBrain.OnStart
