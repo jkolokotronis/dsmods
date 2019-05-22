@@ -1049,18 +1049,23 @@ local function setTopologyType(inst,type)
 end
 
 local function OrcMinesPostInit(inst)
-    local waves = inst.entity:AddWaveComponent()
-
+--[[
     waves:SetRegionSize( 40, 20 )
     waves:SetRegionNumWaves( 8 )
-    waves:SetWaveTexture(GLOBAL.resolvefilepath("images/lava2.tex"))--GLOBAL.resolvefilepath("images/lava.tex")
-    waves:SetWaveEffect( "shaders/waves.ksh" ) -- texture.ksh
     waves:SetWaveSize( 2048, 512 )
+]]
 --[[ this will collide with other overrides, turning default back to standard cc manager
     the other option is to rely on the knowledge of how level is set which is not ideal
     GLOBAL.GetWorld().components.colourcubemanager:SetOverrideColourCube(
         GLOBAL.resolvefilepath "colour_cubes/lavacube.tex"
     )]]
+    local waves = inst.entity:AddWaveComponent()
+    inst.WaveComponent:SetRegionSize(13.5, 2.5)                     -- wave texture u repeat, forward distance between waves
+    inst.WaveComponent:SetWaveSize(80, 3.5)                         -- wave mesh width and height
+    waves:SetWaveTexture(GLOBAL.resolvefilepath("images/lava2.tex"))
+--    waves:SetWaveTexture( "images/volcano_cloud.tex" )
+    --waves:SetWaveTexture( "images/lava_active.tex" )
+    waves:SetWaveEffect( "shaders/waves.ksh" )
 
     local SEASONS=GLOBAL.SEASONS
     if(FA_DLCACCESS)then

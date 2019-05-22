@@ -22,6 +22,10 @@ local function onattack(inst, attacker, target)
     local rng=math.random()
     if(target and (not target:HasTag("epic")) and target.components.health and target.components.combat  and math.random()<=inst.procRate) then
           target.components.health:Kill()
+          attacker:PushEvent("killed", {victim = target})
+          if target.onkilledbyother then
+              target.onkilledbyother(target.inst, attacker)
+          end
      end
 end
 

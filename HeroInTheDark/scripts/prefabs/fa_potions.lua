@@ -453,7 +453,7 @@ local function curepoison(inst,eater)
 end
 
 local function fncurepoison(Sim)
-	local inst = common("bottle_curepoison")
+	local inst = common("bottle_y")
     inst.components.fa_drink.ondrink=curepoison
     return inst
 

@@ -151,7 +151,9 @@ local ROBE_CL_BONUS=2
 local function onequip(inst, owner, build)
         owner.AnimState:OverrideSymbol("swap_hat", build, "swap_hat")
         owner.AnimState:Show("HAT")
-        owner.AnimState:Show("HAT_HAIR")
+--      TODO I should prob remove old names
+--        owner.AnimState:Show("HAT_HAIR")
+        owner.AnimState:Show("HAIR_HAT")
         owner.AnimState:Hide("HAIR_NOHAT")
         owner.AnimState:Hide("HAIR")
         
@@ -167,7 +169,8 @@ local function onequip(inst, owner, build)
 
     local function onunequip(inst, owner)
         owner.AnimState:Hide("HAT")
-        owner.AnimState:Hide("HAT_HAIR")
+--        owner.AnimState:Hide("HAT_HAIR")
+        owner.AnimState:Show("HAIR_HAT")
         owner.AnimState:Show("HAIR_NOHAT")
         owner.AnimState:Show("HAIR")
 
