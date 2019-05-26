@@ -2,7 +2,7 @@ name = "Hero in the Dark"
 id="herointhedark"
 description = "This mod will incorporate traditional fantasy elements and lore while retaining the artistic style and the survive or die elements of Don\'t Starve. A large focus of the lore and design of the mod will be from D&D and other games/books within the genre."
 author = "kraken121 / DeathDisciple"
-version = "0.2.5 Beta"
+version = "0.2.5.2 Beta"
 
 forumthread = "/files/file/518-mod-hero-in-the-dark/"
 icon_atlas = "modicon.xml"

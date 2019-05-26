@@ -87,8 +87,8 @@ local function DorfPostPop(graph,entities, width, height)
 		end
 	end
 end
-AddLevelPostPopoulate("DWARF_FORTRESS",DorfPostPop)
-AddLevelPostPopoulate("DWARF_FORTRESS_SECRETS",DorfPostPop)
+--AddLevelPostPopoulate("DWARF_FORTRESS",DorfPostPop)
+--AddLevelPostPopoulate("DWARF_FORTRESS_SECRETS",DorfPostPop)
 
 
 -- I tried all I could to avoid this, but the amount of inline string/prefab checks is too high to do what I need done
