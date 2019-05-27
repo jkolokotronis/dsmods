@@ -77,9 +77,10 @@ local function DorfPostPop(graph,entities, width, height)
 	end
 ]]
 --	print("w h",width,height)
-	for i=1,width do
-		for j=1,height do
-			local tile=WorldSim:GetVisualTileAtPosition(i,j)
+	for i=0,width-1 do
+		for j=0,height-1 do
+--			local tile=WorldSim:GetVisualTileAtPosition(i,j)
+			local tile=WorldSim:GetTile(i, j)
 			if(tile and tile==FA_FAKE_TILE)then
 --				print("fake ",i,j)
 				WorldSim:SetTile(i,j, GROUND.IMPASSABLE)
@@ -87,8 +88,8 @@ local function DorfPostPop(graph,entities, width, height)
 		end
 	end
 end
---AddLevelPostPopoulate("DWARF_FORTRESS",DorfPostPop)
---AddLevelPostPopoulate("DWARF_FORTRESS_SECRETS",DorfPostPop)
+AddLevelPostPopoulate("DWARF_FORTRESS",DorfPostPop)
+AddLevelPostPopoulate("DWARF_FORTRESS_SECRETS",DorfPostPop)
 
 
 -- I tried all I could to avoid this, but the amount of inline string/prefab checks is too high to do what I need done
